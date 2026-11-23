@@ -41,7 +41,7 @@ seo:
     - walibi drukte kalender
 ---
 
-[Walibi Holland](ref:walibi-holland) verkoopt zijn abonnementen voor seizoen 2027 nog tot en met maandag 30 november online goedkoper. De Explore, de goedkoopste van de drie, kost dan € 75 in plaats van € 95. Walibi noemt de actie Black Friday en ze loopt sinds vrijdag 20 november. Elk abonnement en de Family & Friends-deal hebben een eigen voorraad, en als die op is, stopt de korting daarop al vóór 30 november.
+[Walibi Holland](ref:walibi-holland) verkoopt zijn abonnementen voor seizoen 2027 nog tot en met maandag 30 november online goedkoper. De Explore, de goedkoopste van de drie, kost dan € 75 in plaats van € 95. Walibi noemt de actie Black Friday, al begon ze een week vóór die dag, op vrijdag 20 november. Elk abonnement en de Family & Friends-deal hebben een eigen voorraad, en als die op is, stopt de korting daarop al vóór 30 november.
 
 Alle drie de abonnementen gelden alleen voor seizoen 2027, dus niet een jaar vanaf de dag dat je koopt.
 
@@ -57,7 +57,7 @@ Met elk van de drie kom je op alle gewone openingsdagen het park in, en ook op d
 
 Kinderen tot en met twee jaar mogen gratis naar binnen. Vanaf drie jaar hebben ze een eigen abonnement nodig, tegen de gewone prijs. Een abonnement is persoonlijk, met foto, en je mag het niet overdragen of doorverkopen. Ben je het kwijt of thuis vergeten, dan betaal je € 7,50 administratiekosten.
 
-Als abonnementhouder kun je in plaats van € 12,50 per dag ook voor € 35 een parkeerabonnement voor het hele seizoen kopen. Dat geldt voor elke auto, één per dag, en vanaf je derde bezoek heb je het eruit. Tijdens de Fright Nights parkeert iedereen gratis. Zelf zou ik de Experience nemen, want voor € 20 meer dan de Explore krijg je twee avonden Fright Nights. De Exclusive kost € 235 meer dan Experience en parkeerabonnement samen. Dat is het waard als je op drukke dagen de Fast Lane wilt gebruiken of vaker dan twee keer naar de Fright Nights wilt.
+Als abonnementhouder kun je in plaats van € 12,50 per dag ook voor € 35 een parkeerabonnement voor het hele seizoen kopen. Dat geldt voor elke auto, één per dag, en vanaf je derde bezoek heb je het eruit. Tijdens de Fright Nights parkeert iedereen gratis. Zelf zou ik de Experience nemen, want voor € 20 meer dan de Explore krijg je twee avonden Fright Nights. Tegenover Experience en parkeerabonnement, samen € 130, krijg je met de Exclusive van € 365 de Fast Lane, zoveel Fright Nights als je kunt reserveren en 20 in plaats van 10 procent korting. Dat is het waard als je vaak op drukke dagen gaat of meer dan twee avonden naar de Fright Nights wilt.
 
 ## De Family & Friends-deal
 
@@ -77,9 +77,9 @@ Walibi Belgium in Waver verkoopt zijn eigen abonnementen [in de Black Week tot 2
 
 ## Wanneer je het abonnement voor het eerst gebruikt
 
-Walibi Holland blijft dicht tot de seizoensstart op vrijdag 26 maart 2027. De data van de Halloween Spooky Days en de Fright Nights 2027 maakt Walibi later bekend. Wil je de korting in Movie Park Germany, Toverland of een ander partnerpark gebruiken, dan vind je de eerste openingsdag van elk park in ons [overzicht van de seizoensstart 2027](/blog/pretpark-seizoensstart-2027).
+Vóór de start van seizoen 2027 op vrijdag 26 maart heeft het park geen openingsdagen. De data van de Halloween Spooky Days en de Fright Nights 2027 maakt Walibi later bekend. Movie Park Germany, Toverland en de andere partnerparken gaan op verschillende data open, die je in ons [overzicht van de seizoensstart 2027](/blog/pretpark-seizoensstart-2027) vindt.
 
-Met een abonnement kun je de drukke dagen overslaan; in de [gids over de drukte](/blog/walibi-holland-drukte) zie je in welke weken en vakanties het rustig is in Walibi Holland. Op een rustige dag begin je met de attracties uit de gids over [“hard gaan”](/blog/walibi-holland-untamed-hard-gaan).
+Ook met een abonnement moet je op uitverkochte dagen reserveren, dus je hebt er het meest aan in de weken en vakanties waarin het rustig is in Walibi Holland; welke dat zijn, zie je in de [gids over de drukte](/blog/walibi-holland-drukte). Op een rustige dag begin je bij Untamed en werk je daarna de rest van de gids over [“hard gaan”](/blog/walibi-holland-untamed-hard-gaan) af.
 
 ```stats-widget slug=walibi-holland show=months
 

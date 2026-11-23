@@ -41,7 +41,7 @@ seo:
     - walibi drukte kalender
 ---
 
-[Walibi Holland](ref:walibi-holland) is selling its annual passes for the 2027 season at a discount online until Monday, 30 November. The cheapest of the three, the Explore, is down from €95 to €75. Walibi calls it Black Friday, and the sale started on Friday, 20 November. Each pass and the Family & Friends Deal has its own allocation, and once that runs out the discount on it ends early.
+[Walibi Holland](ref:walibi-holland) is selling its annual passes for the 2027 season at a discount online until Monday, 30 November. The cheapest of the three, the Explore, is down from €95 to €75. Walibi calls it Black Friday, although the sale started a week before the day itself, on Friday, 20 November. Each pass and the Family & Friends Deal has its own allocation, and once that runs out the discount on it ends early.
 
 The three passes, which Walibi calls abonnementen, are valid for the 2027 season only, not for a year from the day you buy.
 
@@ -57,7 +57,7 @@ All three get you into the park on every regular opening day, plus the event day
 
 Children up to two get in free; from three they need their own pass at the regular price. The pass is personal, carries your photo and can't be passed on or resold. If you lose it or leave it at home, a replacement costs a €7.50 admin fee.
 
-Instead of paying €12.50 a day, pass holders can buy a season parking pass for €35. It works for any car, one per day, and pays for itself from the third visit. Parking at Fright Nights is free for everyone. I'd buy the Experience, since €20 on top of the Explore gets you two Fright Nights evenings. The Exclusive costs €235 more than the Experience and the parking pass together. That's worth it if you want the Fast Lane on busy days or plan to go to Fright Nights more than twice.
+Instead of paying €12.50 a day, pass holders can buy a season parking pass for €35. It works for any car, one per day, and pays for itself from the third visit. Parking at Fright Nights is free for everyone. I'd buy the Experience, since €20 on top of the Explore gets you two Fright Nights evenings. Compared with the Experience and the parking pass, €130 together, the €365 Exclusive adds the Fast Lane, as many Fright Nights as you can reserve, and 20% off instead of 10%. That's worth it if you often go on busy days or want more than two Fright Nights evenings.
 
 ## The Family & Friends Deal
 
@@ -77,9 +77,9 @@ Walibi Belgium in Wavre is selling its own annual passes for less [during Black 
 
 ## When you can first use it
 
-Walibi Holland stays closed until the season opens on Friday, 26 March 2027. Walibi says it'll announce the 2027 dates for the Halloween Spooky Days and Fright Nights later. For the discounts at Movie Park Germany, Toverland and the other partner parks, our [2027 season start overview](/blog/theme-park-season-start-2027) has each park's first day.
+The park has no opening days before the 2027 season starts on Friday, 26 March. Walibi says it'll announce the 2027 dates for the Halloween Spooky Days and Fright Nights later. Movie Park Germany, Toverland and the other partner parks open on different dates, listed in our [2027 season start overview](/blog/theme-park-season-start-2027).
 
-With a pass you can skip the busy days; the [crowds guide](/blog/walibi-holland-crowds) lists the weeks and school holidays when Walibi Holland is quiet. On a quiet day, start with the rides from the ["hard gaan" guide](/blog/walibi-holland-untamed-hard-gaan).
+Even with a pass you need a reservation on sold-out days, so it's most useful in the weeks and school holidays when Walibi Holland is quiet; the [crowds guide](/blog/walibi-holland-crowds) lists them. On a quiet day, start at Untamed and work through the rest of the ["hard gaan" guide](/blog/walibi-holland-untamed-hard-gaan).
 
 ```stats-widget slug=walibi-holland show=months
 

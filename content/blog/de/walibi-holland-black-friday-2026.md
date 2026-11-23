@@ -41,7 +41,7 @@ seo:
     - walibi drukte kalender
 ---
 
-[Walibi Holland](ref:walibi-holland) verkauft seine Jahreskarten für die Saison 2027 noch bis Montag, den 30. November, online günstiger. Der Explore, die billigste der drei, kostet 75 statt 95 €. Die Aktion, die Walibi Black Friday nennt, läuft seit Freitag, dem 20. November. Jede Karte und der Family-&-Friends-Deal haben ein eigenes Kontingent, und wenn es leer ist, endet der Rabatt dafür vor dem 30. November.
+[Walibi Holland](ref:walibi-holland) verkauft seine Jahreskarten für die Saison 2027 noch bis Montag, den 30. November, online günstiger. Der Explore, die billigste der drei, kostet 75 statt 95 €. Walibi nennt die Aktion Black Friday, obwohl sie schon eine Woche vor dem eigentlichen Tag begonnen hat, am Freitag, dem 20. November. Jede Karte und der Family-&-Friends-Deal haben ein eigenes Kontingent, und wenn es leer ist, endet der Rabatt dafür vor dem 30. November.
 
 Die drei Karten, bei Walibi Abonnements genannt, gelten nur für die Saison 2027 und nicht ein Jahr ab Kaufdatum.
 
@@ -57,7 +57,7 @@ Mit jeder der drei Karten kommst du an allen regulären Öffnungstagen in den Pa
 
 Kinder bis zwei Jahre kommen umsonst rein, ab drei brauchen sie eine eigene Karte zum normalen Kartenpreis. Die Karte ist persönlich, mit Foto, und lässt sich weder übertragen noch weiterverkaufen. Eine verlorene oder vergessene Karte kostet 7,50 € Bearbeitungsgebühr.
 
-Statt der 12,50 € pro Tag kannst du als Karteninhaber für 35 € einen Parkpass für die ganze Saison kaufen. Er gilt für jedes Auto, eines pro Tag, und rechnet sich ab dem dritten Besuch. An den Fright Nights ist das Parken für alle umsonst. Ich würde den Experience kaufen, denn für 20 € mehr als beim Explore bekommst du zwei Abende Fright Nights. Der Exclusive kostet 235 € mehr als Experience und Parkpass zusammen. Das lohnt sich, wenn du an vollen Tagen die Fast Lane nehmen oder öfter als zweimal zu den Fright Nights willst.
+Statt der 12,50 € pro Tag kannst du als Karteninhaber für 35 € einen Parkpass für die ganze Saison kaufen. Er gilt für jedes Auto, eines pro Tag, und rechnet sich ab dem dritten Besuch. An den Fright Nights ist das Parken für alle umsonst. Ich würde den Experience kaufen, denn für 20 € mehr als beim Explore bekommst du zwei Abende Fright Nights. Gegenüber Experience und Parkpass, zusammen 130 €, bringt dir der Exclusive für 365 € die Fast Lane, so viele Fright Nights, wie du reservieren kannst, und 20 statt 10 % Rabatt. Das lohnt sich, wenn du oft an vollen Tagen kommst oder mehr als zwei Abende Fright Nights willst.
 
 ## Der Family-&-Friends-Deal
 
@@ -77,9 +77,9 @@ Walibi Belgium in Wavre verkauft seine eigenen Jahreskarten [in der Black Week b
 
 ## Wann du die Karte zum ersten Mal nutzt
 
-Walibi Holland bleibt bis zum Saisonstart am Freitag, 26. März 2027, geschlossen. Die Termine der Halloween Spooky Days und der Fright Nights 2027 will Walibi später bekannt geben. Für die Rabatte im Movie Park Germany, im Toverland und in den anderen Partnerparks nennt unser [Überblick zum Saisonstart 2027](/blog/freizeitpark-saisonstart-2027) den ersten Öffnungstag jedes Parks.
+Vor dem Start der Saison 2027 am Freitag, dem 26. März, hat der Park keine Öffnungstage. Die Termine der Halloween Spooky Days und der Fright Nights 2027 will Walibi später bekannt geben. Movie Park Germany, Toverland und die anderen Partnerparks öffnen an unterschiedlichen Tagen, die unser [Überblick zum Saisonstart 2027](/blog/freizeitpark-saisonstart-2027) auflistet.
 
-Mit der Karte kannst du die vollen Tage auslassen; der [Andrang-Guide](/blog/walibi-holland-andrang) zeigt, in welchen Wochen und Ferien in Walibi Holland wenig los ist. An einem ruhigen Tag fängst du mit den Bahnen aus dem Guide zu [„hard gaan“](/blog/walibi-holland-untamed-hard-gaan) an.
+An ausverkauften Tagen brauchst du auch mit Karte eine Reservierung, deshalb bringt sie am meisten in den Wochen und Ferien, in denen in Walibi Holland wenig los ist; der [Andrang-Guide](/blog/walibi-holland-andrang) zeigt, welche das sind. An einem ruhigen Tag fängst du bei Untamed an und nimmst danach die übrigen Bahnen aus dem Guide zu [„hard gaan“](/blog/walibi-holland-untamed-hard-gaan) mit.
 
 ```stats-widget slug=walibi-holland show=months
 

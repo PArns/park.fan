@@ -41,7 +41,7 @@ seo:
     - walibi drukte kalender
 ---
 
-Hasta el lunes 30 de noviembre, [Walibi Holland](ref:walibi-holland) vende online sus pases anuales de la temporada 2027 a precio rebajado. El Explore, el más económico de los tres, cuesta 75 € en lugar de 95 €. La promoción, a la que Walibi llama Black Friday, empezó el viernes 20 de noviembre. Cada pase y el Family & Friends Deal tienen su propio cupo, y cuando se agota, el descuento de ese producto termina antes del 30 de noviembre.
+Hasta el lunes 30 de noviembre, [Walibi Holland](ref:walibi-holland) vende online sus pases anuales de la temporada 2027 a precio rebajado. El Explore, el más económico de los tres, cuesta 75 € en lugar de 95 €. Walibi llama a la promoción Black Friday, aunque empezó una semana antes del propio día, el viernes 20 de noviembre. Cada pase y el Family & Friends Deal tienen su propio cupo, y cuando se agota, el descuento de ese producto termina antes del 30 de noviembre.
 
 Los tres pases, que Walibi llama abonnementen, valen solo para la temporada 2027, no durante un año a partir de la compra.
 
@@ -57,7 +57,7 @@ Con cualquiera de los tres entras al parque todos los días de apertura normales
 
 Los niños de hasta dos años entran gratis, y desde los tres necesitan su propio pase al precio normal. El pase es personal, lleva foto y no se puede ceder ni revender. Si lo pierdes o te lo dejas en casa, pagas 7,50 € de gestión.
 
-En lugar de los 12,50 € diarios, como titular puedes comprar por 35 € un pase de aparcamiento para toda la temporada. Vale para cualquier coche, uno por día, y sale a cuenta desde la tercera visita. En las Fright Nights aparcar es gratis para todo el mundo. Yo me quedaría con el Experience, porque por 20 € más que el Explore tienes dos noches de Fright Nights. El Exclusive cuesta 235 € más que el Experience y el pase de aparcamiento juntos. Compensa si quieres usar la Fast Lane en los días llenos o ir a las Fright Nights más de dos veces.
+En lugar de los 12,50 € diarios, como titular puedes comprar por 35 € un pase de aparcamiento para toda la temporada. Vale para cualquier coche, uno por día, y sale a cuenta desde la tercera visita. En las Fright Nights aparcar es gratis para todo el mundo. Yo me quedaría con el Experience, porque por 20 € más que el Explore tienes dos noches de Fright Nights. Frente al Experience con el pase de aparcamiento, 130 € entre los dos, el Exclusive de 365 € añade la Fast Lane, todas las Fright Nights que puedas reservar y un 20 % de descuento en vez de un 10 %. Compensa si vas a menudo en días llenos o quieres más de dos noches de Fright Nights.
 
 ## El Family & Friends Deal
 
@@ -77,9 +77,9 @@ Walibi Belgium, en Wavre, vende sus propios pases anuales más baratos [durante 
 
 ## Cuándo puedes estrenar el pase
 
-Walibi Holland sigue cerrado hasta que arranque la temporada, el viernes 26 de marzo de 2027. Las fechas de los Halloween Spooky Days y de las Fright Nights de 2027 las dará a conocer Walibi más adelante. Para los descuentos en Movie Park Germany, Toverland y los demás parques asociados, nuestro [resumen de aperturas de 2027](/blog/apertura-parques-atracciones-2027) da el primer día de apertura de cada parque.
+El parque no abre ningún día antes de que empiece la temporada 2027, el viernes 26 de marzo. Las fechas de los Halloween Spooky Days y de las Fright Nights de 2027 las dará a conocer Walibi más adelante. Movie Park Germany, Toverland y los demás parques asociados abren en fechas distintas, que recoge nuestro [resumen de aperturas de 2027](/blog/apertura-parques-atracciones-2027).
 
-Con el pase puedes saltarte los días llenos; la [guía de afluencia](/blog/walibi-holland-afluencia) recoge las semanas y las vacaciones escolares en que Walibi Holland está tranquilo. En un día tranquilo, empieza por las atracciones de la guía sobre [«hard gaan»](/blog/walibi-holland-untamed-hard-gaan).
+Incluso con pase, en los días agotados necesitas reserva, así que donde más rinde es en las semanas y las vacaciones escolares en que Walibi Holland está tranquilo; la [guía de afluencia](/blog/walibi-holland-afluencia) las recoge. En un día tranquilo, empieza por Untamed y sigue con el resto de atracciones de la guía sobre [«hard gaan»](/blog/walibi-holland-untamed-hard-gaan).
 
 ```stats-widget slug=walibi-holland show=months
 
