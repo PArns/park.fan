@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Heide Park, LEGOLAND Deutschland and Movie Park are selling their 2027 annual passes for less over Black Friday. Many Black Friday deals in Europe end on 30 November.
+  Heide Park, LEGOLAND Deutschland and Movie Park are selling their 2027 annual passes for less over Black Friday. Eight of the deals end on Monday, 30 November.
 tags:
   - news
   - black-friday
@@ -49,7 +49,7 @@ coverImage:
 seo:
   title: 'Theme park Black Friday deals on 2027 annual passes'
   description: >-
-    Heide Park, LEGOLAND, Movie Park, Bobbejaanland and more are selling 2027 annual passes for less on Black Friday, many only until 30 November.
+    Heide Park, LEGOLAND, Movie Park, Bobbejaanland and more are selling 2027 annual passes for less on Black Friday, eight deals only until 30 November.
   keywords:
     - Black Friday theme park
     - Black Friday theme parks 2026
@@ -122,11 +122,11 @@ Nigloland's spring ticket costs the same for adults and children, is valid on on
 
 ## Spain
 
-With the code BLACKPAW26, dated and flexible adult tickets for PortAventura World are half price if they cover several days or more than one of its three parks, PortAventura Park, Ferrari Land and [Caribe Aquatic Park](ref:caribe-aquatic-park). The resort is selling 1,000 tickets this way in total, on portaventuraworld.com. The last day you can visit is 9 January 2028. The blocked dates are 5 to 8 December, 12 and 13 December, and 19 December to 6 January 2027.
+With the code BLACKPAW26, dated and flexible adult tickets for PortAventura World are half price if they cover several days or more than one of its three parks, PortAventura Park, Ferrari Land and [Caribe Aquatic Park](ref:caribe-aquatic-park). The resort is selling 1,000 tickets this way in total, on portaventuraworld.com. Tickets are good for visits until 9 January 2028, except 5 to 8 December, 12 and 13 December and 19 December to 6 January 2027.
 
-Hotel Roulette puts you in a four-star hotel in the resort, and you find out which one the day before you arrive. There are at most 20 rooms a night, bookings can't be refunded, and the last night you can stay is 7 January 2028. The Ponient hotels are outside the resort, and there your stay has to end by 6 January 2028 at the latest, depending on the hotel.
+Hotel Roulette puts you in a four-star hotel in the resort, and you find out which one the day before you arrive. At most 20 rooms a night go this way, for nights up to 7 January 2028, and since bookings can't be refunded, the wheel's choice is final. The Ponient hotels are outside the resort, and depending on the hotel, you check out there by 6 January 2028 at the latest.
 
-At Parque Warner and Parque de Atracciones near Madrid, the Bono Parques is valid from the day you buy it, so whatever's left of 2026 comes free on top of all of 2027. The Platino works in 27 parks and includes free parking, and you can pay in three monthly instalments. Neither park has published a quota, unlike Bellewaerde or PortAventura.
+A Bono Parques for Parque Warner and Parque de Atracciones near Madrid bought this week already gets you in for the rest of 2026, and then for all of 2027. The Platino works in 27 parks and includes free parking, and you can pay in three monthly instalments. Neither park has published a quota for the Bono, so unlike at Bellewaerde, there's no Wednesday alarm to set.
 
 ## Italy
 
@@ -144,6 +144,6 @@ LEGOLAND Billund's 2027 season passes are already valid from December 2026. Rene
 
 The Guldkortet is valid all through summer 2027 at Gröna Lund, concerts in the park included.
 
-At [Energylandia](/blog/energylandia-wait-times-tips) in Poland the Black Weeks prices cover reduced tickets and two- and three-day tickets too; you can buy ten at most, and only on ticket.energylandia.pl. They're all valid from 4 December 2026. The peak-season ticket is valid until 31 October 2027, the off-peak ticket until 25 June and from 1 September to 31 October 2027, and the Winter Kingdom ticket until 31 January 2027. Gift tickets and afternoon tickets for Winter Kingdom, the Energy Pass, annual passes and parking tickets aren't part of the deal.
+In Poland, [Energylandia](/blog/energylandia-wait-times-tips) keeps its annual passes and the Energy Pass out of the Black Weeks, along with gift tickets, Winter Kingdom afternoon tickets and parking. The prices do cover reduced tickets and two- and three-day tickets; you can buy ten at most, and only on ticket.energylandia.pl. They're all valid from 4 December 2026. The peak-season ticket is valid until 31 October 2027, the off-peak ticket until 25 June and from 1 September to 31 October 2027, and the Winter Kingdom ticket until 31 January 2027.
 
 Sources: [Heide Park Black Fun Days](https://www.heide-park.de/black-friday/), [LEGOLAND Deutschland Black Fun Days](https://www.legoland.de/tickets/angebote/black-fun-days/), [Movie Park Black November Deal](https://www.movieparkgermany.de/tickets-kaufen/black_november_deal), [Phantasialand Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/), [Bobbejaanland Black November](https://www.bobbejaanland.be/plan-je-bezoek/promoties-en-kortingen/black-november-2026), [Bellewaerde Black Friday](https://www.bellewaerde.be/park/nl/tickets/promoties/black-friday), [Nigloland Offre Black Friday](https://www.nigloland.fr/offre-black-friday/), [PortAventura Black Days tickets](https://www.portaventuraworld.com/promociones/black-days-entradas-descuento), [PortAventura Black Days hotels](https://www.portaventuraworld.com/promociones/black-days-hoteles), [PortAventura Ponient hotels](https://www.portaventuraworld.com/promociones/black-friday-hoteles-ponient), [Parque Warner Bonos](https://www.parquewarner.com/comprar-entradas/bonos), [Parque de Atracciones Bonos](https://www.parquedeatracciones.es/comprar-entradas/bonos), [Gardaland Offerta Black Friday](https://www.gardaland.it/offerta-black-friday/), [Mirabilandia Black Friday](https://www.mirabilandia.it/black-friday), [Mirabilandia Abbonamenti](https://www.mirabilandia.it/calendario-e-tariffe/tariffe/abbonamenti), [Gröna Lund Guldkortet](https://www.gronalund.com/biljetter/guldkortet), [Energylandia Black Weeks](https://energylandia.pl/wydarzenia/black-weeks-bilety-taniej/), [LEGOLAND Billund Black Friday](https://www.legoland.dk/tilbud/black-friday-i-legoland-billund/), [Fårup Sommerland Black Nights](https://www.faarupsommerland.dk/overnatning/black-nights/), [Merlin Annual Pass](https://www.merlinannualpass.co.uk/buy-passes/), [Alton Towers Black Friday](https://www.altontowers.com/short-breaks/offers-packages/black-friday/), [Thorpe Park Black Friday](https://www.thorpepark.com/short-breaks/offers-packages/black-friday/), [Chessington Black Friday](https://www.chessington.com/short-breaks/offers-packages/black-friday/), [LEGOLAND Windsor Black Friday](https://www.legoland.co.uk/short-breaks/offers-and-packages/black-friday/), [Walibi Belgium passes](https://www.walibi.be/nl/tickets/pass), [Walibi Belgium pass shop](https://reservation.walibi.be/passes?locale=nl-NL), [Walibi Holland Black Friday](https://www.walibi.nl/nl/acties/blackfriday), [Walibi Holland annual passes](https://www.walibi.nl/nl/tickets/abonnementen).

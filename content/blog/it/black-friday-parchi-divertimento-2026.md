@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Heide Park, LEGOLAND Deutschland e Movie Park vendono a prezzo ridotto i loro abbonamenti 2027 per il Black Friday. In Europa molte offerte del Black Friday finiscono il 30 novembre.
+  Heide Park, LEGOLAND Deutschland e Movie Park vendono a prezzo ridotto i loro abbonamenti 2027 per il Black Friday. Otto delle offerte scadono lunedì 30 novembre.
 tags:
   - notizie
   - black-friday
@@ -49,7 +49,7 @@ coverImage:
 seo:
   title: 'Black Friday nei parchi: abbonamento 2027 scontato'
   description: >-
-    Heide Park, LEGOLAND, Movie Park, Bobbejaanland e altri parchi scontano l'abbonamento 2027 per il Black Friday, molti solo fino al 30 novembre.
+    Heide Park, LEGOLAND, Movie Park, Bobbejaanland e altri parchi scontano l'abbonamento 2027 per il Black Friday, otto offerte solo fino al 30 novembre.
   keywords:
     - Black Friday parchi divertimento
     - Black Friday parchi divertimento 2026
@@ -122,11 +122,11 @@ Il biglietto di primavera di Nigloland costa uguale per adulti e bambini, vale u
 
 ## Spagna
 
-Con il codice BLACKPAW26 i biglietti adulto di PortAventura World, con data o flessibili, costano la metà se valgono per più giorni o per più di uno dei tre parchi, PortAventura Park, Ferrari Land e il [Caribe Aquatic Park](ref:caribe-aquatic-park). In tutto il resort mette in vendita così 1.000 biglietti, da comprare su portaventuraworld.com. L'ultimo giorno di visita è il 9 gennaio 2028. Sono esclusi dal 5 all'8 dicembre, il 12 e 13 dicembre e dal 19 dicembre al 6 gennaio 2027.
+Con il codice BLACKPAW26 i biglietti adulto di PortAventura World, con data o flessibili, costano la metà se valgono per più giorni o per più di uno dei tre parchi, PortAventura Park, Ferrari Land e il [Caribe Aquatic Park](ref:caribe-aquatic-park). In tutto il resort mette in vendita così 1.000 biglietti, da comprare su portaventuraworld.com. Valgono per visite fino al 9 gennaio 2028, tranne dal 5 all'8 dicembre, il 12 e 13 dicembre e dal 19 dicembre al 6 gennaio 2027.
 
-Con l'Hotel Roulette ti tocca un quattro stelle del resort, e quale lo scopri il giorno prima dell'arrivo. Le camere sono al massimo 20 a notte, la prenotazione non è rimborsabile e l'ultima notte possibile è quella del 7 gennaio 2028. Gli hotel Ponient stanno fuori dal resort, e lì il soggiorno deve finire entro il 6 gennaio 2028, a seconda dell'hotel.
+Con l'Hotel Roulette ti tocca un quattro stelle del resort, e quale lo scopri il giorno prima dell'arrivo. Così si prenotano al massimo 20 camere a notte, per notti fino al 7 gennaio 2028, e siccome la prenotazione non è rimborsabile, quel che decide la roulette è definitivo. Gli hotel Ponient stanno fuori dal resort, e lì, a seconda dell'hotel, lasci la camera entro il 6 gennaio 2028.
 
-Al Parque Warner e al Parque de Atracciones, vicino a Madrid, il Bono Parques vale dall'acquisto, quindi quel che resta del 2026 te lo regalano insieme a tutto il 2027. Il Platino vale in 27 parchi con il parcheggio gratuito, e puoi pagare in tre rate mensili. Nessuno dei due parchi ha pubblicato un contingente, a differenza di Bellewaerde o PortAventura.
+Un Bono Parques per il Parque Warner e il Parque de Atracciones, vicino a Madrid, comprato questa settimana ti fa già entrare per il resto del 2026, e poi per tutto il 2027. Il Platino vale in 27 parchi con il parcheggio gratuito, e puoi pagare in tre rate mensili. Nessuno dei due parchi ha pubblicato un contingente per il Bono, quindi, a differenza di Bellewaerde, mercoledì puoi metterti tranquillo in coda dal fornaio.
 
 ## Italia
 
@@ -144,7 +144,7 @@ I pass stagionali 2027 di LEGOLAND Billund valgono già da dicembre 2026. Chi ri
 
 Il Guldkortet vale per tutta l'estate 2027 a Gröna Lund, concerti nel parco compresi.
 
-Da [Energylandia](/blog/energylandia-tempi-di-attesa-consigli), in Polonia, i prezzi delle Black Weeks valgono anche per i biglietti ridotti e per quelli da due e tre giorni; ne compri al massimo dieci, e solo su ticket.energylandia.pl. Valgono tutti dal 4 dicembre 2026. Il biglietto di alta stagione vale fino al 31 ottobre 2027, quello di bassa stagione fino al 25 giugno e dal 1° settembre al 31 ottobre 2027, quello per il Winter Kingdom fino al 31 gennaio 2027. Restano fuori i biglietti regalo e quelli pomeridiani per il Winter Kingdom, l'Energy Pass, gli abbonamenti annuali e i biglietti del parcheggio.
+In Polonia [Energylandia](/blog/energylandia-tempi-di-attesa-consigli) tiene fuori dalle Black Weeks gli abbonamenti annuali e l'Energy Pass, insieme ai biglietti regalo, a quelli pomeridiani per il Winter Kingdom e al parcheggio. I prezzi valgono invece anche per i biglietti ridotti e per quelli da due e tre giorni; ne compri al massimo dieci, e solo su ticket.energylandia.pl. Valgono tutti dal 4 dicembre 2026. Il biglietto di alta stagione vale fino al 31 ottobre 2027, quello di bassa stagione fino al 25 giugno e dal 1° settembre al 31 ottobre 2027, quello per il Winter Kingdom fino al 31 gennaio 2027.
 
 Fonti:
 [Heide Park Black Fun Days](https://www.heide-park.de/black-friday/),
