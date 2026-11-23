@@ -248,6 +248,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
         */
         { key: 'favorites', href: '/favorites', label: t('favorites') },
         { key: 'alerts', href: '/alerts', label: t('alerts') },
+        { key: 'developerPortal', href: DEVELOPERS_PATH, label: t('developerPortal') },
       ],
     },
     {
@@ -330,15 +331,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
             </ul>
             <PreferredSourceButton />
             <InstallAppButton />
-            <p className="text-muted-foreground text-sm">
-              <Link
-                href={DEVELOPERS_PATH}
-                prefetch={false}
-                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-              >
-                {t('developerPortal')}
-              </Link>
-            </p>
           </div>
 
           {/* Popular parks: one column per country, each under the same rule the link columns
