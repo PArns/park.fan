@@ -30,7 +30,8 @@
 
 - Official entity name: park.fan
 - Homepage: https://park.fan
-- Logo: `public/logo-big.svg` (dark theme: `public/logo-big-dark.svg`), square mark `public/icon.svg`
+- Logo: `public/logo-big.svg` (dark theme: `public/logo-big-dark.svg`), square mark `public/icon.svg`;
+  every logo file and how to use it: [corporate identity](docs/design/ci.md)
 - sameAs profiles: Instagram https://www.instagram.com/part_82/ and Facebook
   https://www.facebook.com/park.fan.coasters, in that order, from `ORGANIZATION_PROFILES` in
   `lib/seo/schema-identity.ts`, which the footer's follow row reads too. Author: https://arns.dev,

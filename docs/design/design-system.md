@@ -18,5 +18,6 @@ is dark by default. Existing components, hooks and class constants are listed in
 | [Cards and heroes](cards-and-heroes.md)  | pointer depth on cards, park and blog cards as rows on phones, full-bleed heroes on phones, landing-page heads                                                     |
 | [Ride page](ride-page.md)                | the ride page's header card, chapter row, rope-drop stand-in panel, typical-waits colour rank, history calendar                                                    |
 | [Touch targets](touch-targets.md)        | the button scale's 44 px phone tier, `PHONE_HIT_AREA`, overlapping targets                                                                                         |
+| [Corporate identity](ci.md)              | the name, the logo files and how to use them, colours, type, Parky, voice, claim and song, social profiles, and the page that owns each                            |
 
 Tooling for design review: [impeccable](../development/impeccable.md).
