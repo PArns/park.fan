@@ -23,7 +23,7 @@ import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
 import { HeroStats } from '@/components/home/hero-stats';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
-import { HeroRail } from '@/components/home/hero-rail';
+import { HeroRail, HeroRailParkActions } from '@/components/home/hero-rail';
 import { ParkCompassSlot } from '@/components/home/park-compass-slot';
 import { AnnounceSection } from '@/components/home/announce-section';
 import { HomeReading } from '@/components/home/home-reading';
@@ -42,6 +42,7 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
 import { SectionMark } from '@/components/analytics/section-mark';
 import { SectionSeenTracker } from '@/components/analytics/section-seen-tracker';
+import { cn } from '@/lib/utils';
 
 const LocationBanner = nextDynamic(
   () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
@@ -71,6 +72,12 @@ export const revalidate = 604800;
 // The hero photo: a deterministic pick per 5-minute window, identical for concurrent requests and
 // re-picked on each shell regeneration. Server-rendered for LCP.
 const HERO_TTL_MS = 5 * 60_000;
+
+// Tailwind's `container` tiers, asked of `@container/page` instead of the window, which an open
+// planner makes wider than the page. The hero's text, its card rail and the park's block line up
+// on it.
+const HERO_CONTAINER_CLASS =
+  'mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]';
 
 // The favourites and the popular parks are sections other pages draw as bands of their own. Here
 // they stand inside a stop (`HomeStop`), which sets the room and holds the heading, so their band
@@ -149,49 +156,61 @@ export default async function HomePage({ params }: HomePageProps) {
           className="hero-entering relative z-10 -mt-12"
         >
           <HeroRotationProvider>
-            {/* The photo, with the text on its lower edge. Its bottom padding is the room the
-              card rail below takes from it (`-mt-10`, from `md` `-mt-44`) plus the gap above the
-              rail, so the cards stand on the photo and the text sits high enough for them to be
-              read on the first screen; on a phone the photo is as tall as its text. */}
-            <div className="relative flex flex-col justify-end px-4 pt-20 pb-16 md:min-h-[min(40rem,74svh)] md:px-6 md:pt-24 md:pb-52">
+            {/* The photo runs from under the header down to the card rail's foot, so the cards
+              stand on it. The park's block, which arrives after load, stays outside: the photo's
+              box keeps its height and its crop. */}
+            <div className="relative">
               <HeroBackground
                 imageSrc={randomHeroImage}
                 blurDataURL={heroBlurDataUrl(randomHeroImage)}
                 alt={getMediaAltBySrc(randomHeroImage, locale) ?? undefined}
               />
-              {/* Closes the entrance window, so content that streams in later does not replay it
-                (see HeroEntranceGate). Outside the text column on purpose: a child there would
-                shift the content stagger's nth-child by one. */}
-              <HeroEntranceGate />
-              {/* Tailwind's `container` tiers, asked of `@container/page` instead of the window,
-                which an open planner makes wider than the page. `z-20` lifts the open search
-                list over the card rail, which overlaps the photo from `md`. */}
-              <div className="relative z-20 mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
-                <HeroTextPanel className="hero-in-stagger">
-                  {/* Rendered with the page, counts and all: Parky's slot is in the first HTML,
-                    so his button finds it at once (the counts come from a week's cache). */}
-                  <HeroStats />
-                  <HeroInlineSearch
-                    placeholder={tHome('hero.searchExamples')}
-                    label={tHome('hero.searchPlaceholder')}
-                    className="mt-6 max-w-2xl"
-                  />
-                </HeroTextPanel>
+              {/* The text on the photo. Its bottom padding is the room the card rail below takes
+                from it (`-mt-10`, from `md` `-mt-44`) plus the gap above the rail, so the text sits
+                high enough for the cards to be read on the first screen; on a phone it is as tall
+                as its text. */}
+              <div className="relative flex flex-col justify-end px-4 pt-20 pb-16 md:min-h-[min(40rem,74svh)] md:px-6 md:pt-24 md:pb-52">
+                {/* Closes the entrance window, so content that streams in later does not replay it
+                  (see HeroEntranceGate). Outside the text column on purpose: a child there would
+                  shift the content stagger's nth-child by one. */}
+                <HeroEntranceGate />
+                {/* `z-20` lifts the open search list over the card rail, which overlaps the text's
+                  box from `md`. */}
+                <div className={cn('relative z-20', HERO_CONTAINER_CLASS)}>
+                  <HeroTextPanel className="hero-in-stagger">
+                    {/* Rendered with the page, counts and all: Parky's slot is in the first HTML,
+                      so his button finds it at once (the counts come from a week's cache). */}
+                    <HeroStats />
+                    <HeroInlineSearch
+                      placeholder={tHome('hero.searchExamples')}
+                      label={tHome('hero.searchPlaceholder')}
+                      className="mt-6 max-w-2xl"
+                    />
+                  </HeroTextPanel>
+                </div>
+
+                {/* Hero image attribution: the current image's park / city / country. */}
+                {heroMeta && (
+                  <HeroImageInfoSwitch>
+                    <HeroImageInfo meta={heroMeta} src={randomHeroImage} />
+                  </HeroImageInfoSwitch>
+                )}
               </div>
 
-              {/* Hero image attribution: the current image's park / city / country. */}
-              {heroMeta && (
-                <HeroImageInfoSwitch>
-                  <HeroImageInfo meta={heroMeta} src={randomHeroImage} />
-                </HeroImageInfoSwitch>
-              )}
+              {/* What the headline asks, answered: the rides near the visitor with a short queue
+                right now, or the parks near them. */}
+              <div className="relative z-10 -mt-10 px-4 md:-mt-44 md:px-6">
+                <div className={HERO_CONTAINER_CLASS}>
+                  <HeroRail className="hero-in-stagger hero-in-late" />
+                </div>
+              </div>
             </div>
 
-            {/* What the headline asks, answered: the rides near the visitor with a short queue
-              right now, or the parks near them. Over the photo's lower edge from `md`. */}
-            <div className="relative z-10 -mt-10 px-4 md:-mt-44 md:px-6">
-              <div className="mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
-                <HeroRail className="hero-in-stagger hero-in-late" />
+            {/* `--hero-in-i: 3` keeps the block's place in the rail's entrance, after the heading,
+              the cards and the location row. */}
+            <div className="px-4 md:px-6">
+              <div className={HERO_CONTAINER_CLASS}>
+                <HeroRailParkActions className="hero-in-stagger hero-in-late [--hero-in-i:3]" />
               </div>
             </div>
           </HeroRotationProvider>

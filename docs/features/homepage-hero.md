@@ -1,7 +1,7 @@
 # Homepage hero
 
 The homepage hero: the rotating park photo over the full width, the question and the search on its
-lower edge, and over that edge a row of cards that answers the question. Open this when changing the
+lower part, and on the photo a row of cards that answers the question. Open this when changing the
 hero's text, its search field, its card rail, its photo or its motion. Entry point:
 `app/[locale]/page.tsx`. Everything under the hero is [the homepage](homepage.md).
 
@@ -17,13 +17,15 @@ hero's text, its search field, its card rail, its photo or its motion. Entry poi
 │  │ 🔍 Europa-Park, Taron, Efteling …        │   list opens under it on focus │
 │  └──────────────────────────────────────────┘                               │
 │  KURZE ANSTELLZEITEN IN DEINER NÄHE                         Alle anzeigen → │
-│ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐  ← over the photo's  │
-└─│ photo  │─│        │─│        │─│        │─│        │──── lower edge ──────┘
-  │ Taron  │ │ …      │ │        │ │        │ │        │
-  │ 5 Min  │ │        │ │        │ │        │ │        │
-  │ ▬──────│ │        │ │        │ │        │ │        │
-  └────────┘ └────────┘ └────────┘ └────────┘ └────────┘
-  ◎ Standort aktiv
+│ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐  ← on the photo,     │
+│ │ photo  │ │        │ │        │ │        │ │        │    which fades out   │
+│ │ Taron  │ │ …      │ │        │ │        │ │        │    behind them       │
+│ │ 5 Min  │ │        │ │        │ │        │ │        │                      │
+│ │ ▬──────│ │        │ │        │ │        │ │        │                      │
+│ └────────┘ └────────┘ └────────┘ └────────┘ └────────┘                      │
+│  ◎ Standort aktiv                                                           │
+└────────────────────────────────────────────────── the photo ends here ──────┘
+  ┌ the park's block, in or next to a park ┐
 ```
 
 ## The photo and its scrims
@@ -31,14 +33,26 @@ hero's text, its search field, its card rail, its photo or its motion. Entry poi
 The photo runs under the header (`-mt-12` on the section) and stands as it is: no panel or glass over
 it. `HeroBackground` (`components/layout/hero-background.tsx`) paints three scrims in the page's own
 `--background`, so the photo runs into the page in either theme and the text above them takes the
-theme's foreground: one under the header, one rising from the lower edge behind the headline and
-the field, and from `md`, where the text stays at the left, one from the left.
+theme's foreground: one under the header, one rising from the photo's foot behind the cards, the
+field and the intro (`.hero-foot-scrim` in `app/globals.css`), and from `md`, where the text stays at
+the left, one from the left.
 
-- **Its height:** on a phone as tall as its text, which starts 32 px under the header (`pt-20`);
-  from `md` at least `min(40rem, 74svh)`, the text filling it from the bottom (`justify-end`). Its
-  bottom padding is the room the card rail takes from it and the gap above the rail: `pb-16`
-  against `-mt-10` on a phone, `pb-52` against `-mt-44` (176 px) from `md`, so the cards stand on
-  the photo on either.
+- **Its height:** the photo fills one box with the text and the card rail, from under the header
+  to the location row under the cards, so the cards stand on it on every viewport. The text's box
+  is on a phone as tall as its text, which starts 32 px under the header (`pt-20`), and from `md` at
+  least `min(40rem, 74svh)`, the text filling it from the bottom (`justify-end`). Its bottom padding
+  is the room the card rail takes from it and the gap above the rail: `pb-16` against `-mt-10` on a
+  phone, `pb-52` against `-mt-44` (176 px) from `md`. The park's block, which arrives after load,
+  stands under the box, so the photo's crop never changes under the reader.
+- **The foot scrim is measured from the foot, in `rem`, not in percent of the photo.** The rail
+  and the text above it keep their distance from the foot at every window height: solid behind the
+  location row, 90 % at 13rem, 80 % at 24rem (the rail's heading row), 50 % at 36rem (the intro),
+  clear at 48rem. The light theme takes 88 % at the heading row, because its link colour reaches
+  barely 5:1 on white. Measured on 2026-11-23 over all 53 hero photos at 390, 800, 1024 and 1628 px,
+  in both themes, on the brightest tenth of the pixels behind each text: the rail's heading and
+  „Alle anzeigen" keep 4.5:1 or better, and so does the intro, but on the brightest photo at 390 px
+  (4.3:1) and 800 px (4.0:1), where it had 3.5:1 and 3.3:1 before. The percent scrim stretched
+  over the taller box gave the intro 2.7:1 and the link 2.4:1 at 1628 px.
 - **One photo per five minutes** (`pickHeroImage`), the same for every request in that window, so
   the shell stays cacheable. A visitor in a park gets that park's photos as a crossfade
   (`HeroRotationProvider`, `InParkHeroImages`).
@@ -147,7 +161,7 @@ that scrolls sideways with the next card in view. What it shows, in order:
   link leads to the park's page in a park, to the compass while that is on the page
   ([the in-park compass](park-compass.md)), and to `/parks` otherwise.
 - **Under the cards** stands the location row (`HomeLocationRow`), at one height in every state: the
-  button while nothing is decided, „Standort aktiv", or how to lift a block. The corner banner
+  button while nothing is decided, „Standort aktiv", or how to lift a block. The photo ends with it. The corner banner
   (`LocationBanner`) asks from `md` only; a phone has this row instead.
 - **Clicks** count as `internal_link_clicked` with block `nearby` and the card's park or ride.
 
@@ -195,7 +209,7 @@ desktop panel and the phone's palette share. The events and their rules for ever
 
 When `/api/nearby` places the visitor inside a park (`in_park`, or the nearest park under 1 km) or
 within 5 km of one, `HeroParkActions` (`components/home/hero-park-actions.tsx`) stands under the
-card rail: four cells, 2×2 on a phone and one row from `md`, the park link carrying the park's name.
+card rail, below the photo (`HeroRailParkActions`): four cells, 2×2 on a phone and one row from `md`, the park link carrying the park's name.
 The hero's text stays the general one for everybody.
 
 | Cell           | Shows                                                | Leads to                                      |
