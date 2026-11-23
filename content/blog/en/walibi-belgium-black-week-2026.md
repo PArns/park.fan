@@ -46,7 +46,7 @@ seo:
 
 [Walibi Belgium](ref:walibi-belgium) in Wavre is selling its annual passes at up to 35 percent off until Sunday, 29 November. During Black Week the basic Walibi Pass costs €100.75 instead of €155, and the three Premium passes, Gold, Ruby and Diamond, are 15 percent cheaper. The sale opened in the webshop today, while the park itself stays closed until Walibi Winter.
 
-Walibi has put a waiting room in front of the shop, and a notice in it promises the same price on every day of the sale. If the queue today is too long, close the tab and come back on Thursday, when the pass costs exactly the same. You only get into the shop when it's your turn, and you have to accept functional cookies for that. Once you're in, you have ten minutes to place your order, and if the clock runs out you're sent to the back of the queue.
+Walibi has put a waiting room in front of the shop, and a notice in it promises the same price on every day of the sale, so if the queue is long today you can close the tab and try again on Thursday. You only get into the shop when it's your turn, and you have to accept functional cookies for that. Once you're in, you have ten minutes to place your order, and if the clock runs out you're sent to the back of the queue.
 
 ## What the six passes cost
 
@@ -76,7 +76,7 @@ Every pass except the Aqualibi Pass also works at the Nocturnes (the evening ope
 
 With the Walibi, Aqualibi, Red&Blue and Gold passes you pay for parking on every visit, €13 per car. Pass holders can buy a parking pass in the park for €40 that takes two number plates, and from your fourth visit by car it costs less than paying each time. If an order has five Walibi, Aqualibi or Red&Blue passes in it, the code FUNTIME takes half off the fifth. Walibi's pass page doesn't say whether the code works on top of the Black Week price.
 
-For most people making [the drive to Wavre from Germany](/blog/walibi-belgium-wait-times-tips), I'd take the basic Walibi Pass. A day ticket for 2027 costs from €45, so the pass has paid for itself by your third visit. Red&Blue only beats the Walibi Pass if you go to Aqualibi next door at least three times, since a visit there costs from €27.50 for anyone 1.20 m or taller. Children under one metre don't need anything for either park.
+For most people making [the drive to Wavre from Germany](/blog/walibi-belgium-wait-times-tips), I'd take the basic Walibi Pass. A day ticket for 2027 costs from €45 and a Walibi Winter day €57 at the full price, so the pass has paid for itself after two winter days or three visits next season. Red&Blue only beats the Walibi Pass if you go to Aqualibi next door at least three times, since a visit there costs from €27.50 for anyone 1.20 m or taller. Children under one metre don't need anything for either park.
 
 ## When the pass starts
 
@@ -84,7 +84,7 @@ The pass is valid for twelve months from the date you buy it. Because the park i
 
 ## Walibi Winter and the last rides on Loup-Garou
 
-The next date in the park is the Walibi Winter Run on Friday, 4 December, a timed evening run through the lit-up park. The day after, the fourth edition of [Walibi Winter](/blog/winter-theme-parks-2026) begins, and it runs until 3 January 2027. Spread across eight winter zones there's a toboggan run, an ice show, a Christmas market and a Christmas film in the 4D cinema, plus a covered 630 m² ice rink from Saturday, 19 December. An early-bird day ticket costs €45 instead of €57. Pass holders never need to book. At the full €57, two winter days already cost more than the Walibi Pass at €100.75.
+The next date in the park is the Walibi Winter Run on Friday, 4 December, a timed evening run through the lit-up park. The day after, the fourth edition of [Walibi Winter](/blog/winter-theme-parks-2026) begins, and it runs until 3 January 2027. There's a toboggan run, an ice show and a Christmas market, the 4D cinema shows a Christmas film, and from Saturday, 19 December, you can skate on a 630 m² rink under a roof. An early-bird day ticket costs €45 instead of €57. Pass holders never need to book.
 
 ```best-days-widget slug=walibi-belgium
 

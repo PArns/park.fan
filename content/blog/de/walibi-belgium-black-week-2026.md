@@ -46,7 +46,7 @@ seo:
 
 [Walibi Belgium](ref:walibi-belgium) in Wavre verkauft seine Jahreskarten bis Sonntag, 29. November, um bis zu 35 Prozent billiger. Der einfache Walibi-Pass kostet in der Black Week 100,75 € statt 155 €, die drei Premium-Pässe Gold, Ruby und Diamond gibt es 15 Prozent günstiger. Die Aktion läuft seit heute im Webshop, während der Park selbst bis zum Walibi Winter geschlossen hat.
 
-Vor den Shop hat Walibi einen Warteraum gesetzt, und ein Hinweis darin verspricht für jeden Tag der Aktion denselben Preis. Ist dir die Warteschlange heute zu lang, mach den Tab zu und komm am Donnerstag wieder, dann kostet der Pass genau dasselbe. Erst wenn du an der Reihe bist, kommst du in den Shop, und dafür musst du funktionale Cookies zulassen. Dort hast du zehn Minuten für die Bestellung. Danach stehst du wieder hinten an.
+Vor den Shop hat Walibi einen Warteraum gesetzt, und ein Hinweis darin verspricht für jeden Tag der Aktion denselben Preis, sodass du bei einer langen Warteschlange heute den Tab schließen und es am Donnerstag noch einmal versuchen kannst. Erst wenn du an der Reihe bist, kommst du in den Shop, und dafür musst du funktionale Cookies zulassen. Dort hast du zehn Minuten für die Bestellung. Danach stehst du wieder hinten an.
 
 ## Was die sechs Pässe kosten
 
@@ -76,7 +76,7 @@ Jeder Pass außer dem Aqualibi-Pass gilt auch an den Nocturnes (den Abendöffnun
 
 Den Parkplatz zahlst du mit den anderen Pässen bei jedem Besuch, 13 € pro Auto. Für Passinhaber gibt es im Park einen Parkpass für 40 €, auf den zwei Kennzeichen passen. Ab dem vierten Besuch mit dem Auto ist er billiger, als jedes Mal zu zahlen. Stecken fünf Walibi-, Aqualibi- oder Red&Blue-Pässe in einer Bestellung, kostet der fünfte mit dem Code FUNTIME die Hälfte. Ob der Code zusätzlich zum Black-Week-Preis gilt, nennt Walibi auf der Passseite nicht.
 
-Für die meisten, die [aus Deutschland nach Wavre fahren](/blog/walibi-belgium-wartezeiten-tipps), würde ich den einfachen Walibi-Pass nehmen. Ein Tagesticket für 2027 kostet ab 45 €, ab dem dritten Besuch hast du den Pass also wieder drin. Red&Blue lohnt sich gegenüber dem Walibi-Pass erst, wenn du mindestens dreimal ins Aqualibi nebenan gehst, denn ein Besuch dort kostet ab 1,20 m Größe ab 27,50 €. Kinder unter einem Meter brauchen für beide Parks gar nichts.
+Für die meisten, die [aus Deutschland nach Wavre fahren](/blog/walibi-belgium-wartezeiten-tipps), würde ich den einfachen Walibi-Pass nehmen. Ein Tagesticket für 2027 kostet ab 45 € und ein Tag Walibi Winter zum vollen Preis 57 €, nach zwei Wintertagen oder drei Besuchen in der nächsten Saison hast du den Pass also wieder drin. Red&Blue lohnt sich gegenüber dem Walibi-Pass erst, wenn du mindestens dreimal ins Aqualibi nebenan gehst, denn ein Besuch dort kostet ab 1,20 m Größe ab 27,50 €. Kinder unter einem Meter brauchen für beide Parks gar nichts.
 
 ## Ab wann der Pass gilt
 
@@ -84,7 +84,7 @@ Der Pass gilt zwölf Monate ab dem Kaufdatum. Weil der Park gerade geschlossen h
 
 ## Walibi Winter und die letzten Fahrten auf dem Loup-Garou
 
-Der nächste Termin im Park ist der Walibi Winter Run am Freitag, 4. Dezember, ein Abendlauf mit Zeitmessung durch den beleuchteten Park, und am Tag darauf beginnt die vierte Ausgabe von [Walibi Winter](/blog/winter-freizeitparks-2026), die bis zum 3. Januar 2027 läuft. Auf acht Winterzonen verteilt gibt es eine Rodelbahn, eine Eisshow, einen Weihnachtsmarkt und einen Weihnachtsfilm im 4D-Kino, ab Samstag, 19. Dezember, auch eine überdachte Eisbahn mit 630 m². Ein Tagesticket kostet als Early Bird 45 € statt 57 €. Eine Reservierung brauchst du mit dem Pass an keinem Wintertag. Zum vollen Preis von 57 € kosten zwei Wintertage schon mehr als der Walibi-Pass für 100,75 €.
+Der nächste Termin im Park ist der Walibi Winter Run am Freitag, 4. Dezember, ein Abendlauf mit Zeitmessung durch den beleuchteten Park, und am Tag darauf beginnt die vierte Ausgabe von [Walibi Winter](/blog/winter-freizeitparks-2026), die bis zum 3. Januar 2027 läuft. Es gibt eine Rodelbahn, eine Eisshow und einen Weihnachtsmarkt, im 4D-Kino läuft ein Weihnachtsfilm, und ab Samstag, 19. Dezember, kannst du auf 630 m² unter einem Dach Schlittschuh laufen. Ein Tagesticket kostet als Early Bird 45 € statt 57 €. Eine Reservierung brauchst du mit dem Pass an keinem Wintertag.
 
 ```best-days-widget slug=walibi-belgium
 

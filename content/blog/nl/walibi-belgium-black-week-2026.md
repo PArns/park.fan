@@ -45,7 +45,7 @@ seo:
 
 [Walibi Belgium](ref:walibi-belgium) in Waver verkoopt zijn jaarpassen tot en met zondag 29 november met tot 35 procent korting. De gewone Walibi PASS kost in de Black Week € 100,75 in plaats van € 155, en de drie Premium-passen Gold, Ruby en Diamond zijn 15 procent goedkoper. De actie loopt sinds vandaag in de webshop. Het park zelf blijft dicht tot Walibi Winter.
 
-Voor de shop heeft Walibi een wachtruimte gezet, en een melding daarin belooft dezelfde prijs op elke dag van de actie. Is de rij vandaag te lang, sluit dan het tabblad en kom donderdag terug, want dan kost de pass precies hetzelfde. Pas als je aan de beurt bent, kom je in de shop. Daarvoor moet je functionele cookies toestaan. Vanaf dan heb je tien minuten om te bestellen. Daarna sluit je weer achteraan aan.
+Voor de shop heeft Walibi een wachtruimte gezet, en een melding daarin belooft dezelfde prijs op elke dag van de actie, dus is de rij vandaag lang, dan kun je het tabblad sluiten en het donderdag opnieuw proberen. Pas als je aan de beurt bent, kom je in de shop. Daarvoor moet je functionele cookies toestaan. Vanaf dan heb je tien minuten om te bestellen. Daarna sluit je weer achteraan aan.
 
 ## Wat de zes passen kosten
 
@@ -75,7 +75,7 @@ Elke pass behalve de Aqualibi PASS geldt ook op de Nocturnes (de avondopeningen)
 
 Met de andere passen betaal je bij elk bezoek € 13 per auto voor de parking. Passhouders kunnen in het park een Parking Pass van € 40 kopen, waarop twee nummerplaten passen. Vanaf je vierde bezoek met de auto is die goedkoper dan telkens betalen. Zitten er vijf Walibi-, Aqualibi- of Red&Blue-passen in één bestelling, dan kost de vijfde met de code FUNTIME de helft. Of die code ook bovenop de Black Week-prijs geldt, vermeldt Walibi niet op de passpagina.
 
-Voor de meeste bezoekers die [naar Waver rijden](/blog/walibi-belgium-wachttijden-tips) zou ik de gewone Walibi PASS nemen. Een dagticket voor 2027 kost vanaf € 45, dus vanaf het derde bezoek heb je de pass terugverdiend. Red&Blue loont tegenover de Walibi PASS pas als je minstens drie keer naar Aqualibi ernaast gaat, want wie 1,20 meter of groter is, betaalt daar vanaf € 27,50 per bezoek. Kinderen onder één meter hebben voor geen van beide parken een ticket nodig.
+Voor de meeste bezoekers die [naar Waver rijden](/blog/walibi-belgium-wachttijden-tips) zou ik de gewone Walibi PASS nemen. Een dagticket voor 2027 kost vanaf € 45 en een dag Walibi Winter tegen de volle prijs € 57, dus na twee winterdagen of drie bezoeken volgend seizoen heb je de pass terugverdiend. Red&Blue loont tegenover de Walibi PASS pas als je minstens drie keer naar Aqualibi ernaast gaat, want wie 1,20 meter of groter is, betaalt daar vanaf € 27,50 per bezoek. Kinderen onder één meter hebben voor geen van beide parken een ticket nodig.
 
 ## Vanaf wanneer de pass geldt
 
@@ -83,7 +83,7 @@ De pass is twaalf maanden geldig vanaf de aankoopdatum. Omdat het park nu dicht 
 
 ## Walibi Winter en de laatste ritten in de Loup-Garou
 
-Het volgende evenement in het park is de Walibi Winter Run op vrijdag 4 december, een avondloop met tijdsregistratie door het verlichte park. Een dag later begint de vierde editie van [Walibi Winter](/blog/winter-pretparken-2026), die tot 3 januari 2027 loopt. Verspreid over acht winterzones vind je een rodelbaan, een ijsshow, een kerstmarkt en een kerstfilm in de 4D-bioscoop, en vanaf zaterdag 19 december ook een overdekte schaatsbaan van 630 m². Een dagticket kost als early bird € 45 in plaats van € 57. Passhouders hoeven nooit te reserveren. Tegen de volle € 57 kosten twee winterdagen al meer dan de Walibi PASS van € 100,75.
+Het volgende evenement in het park is de Walibi Winter Run op vrijdag 4 december, een avondloop met tijdsregistratie door het verlichte park. Een dag later begint de vierde editie van [Walibi Winter](/blog/winter-pretparken-2026), die tot 3 januari 2027 loopt. Er is een rodelbaan, een ijsshow en een kerstmarkt, in de 4D-bioscoop draait een kerstfilm, en vanaf zaterdag 19 december kun je overdekt schaatsen op een baan van 630 m². Een dagticket kost als early bird € 45 in plaats van € 57. Passhouders hoeven nooit te reserveren.
 
 ```best-days-widget slug=walibi-belgium
 

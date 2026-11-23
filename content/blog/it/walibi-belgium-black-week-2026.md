@@ -46,7 +46,7 @@ seo:
 
 Fino a domenica 29 novembre [Walibi Belgium](ref:walibi-belgium), a Wavre, vende i suoi pass annuali con uno sconto che arriva al 35 per cento. Nella Black Week il pass Walibi semplice costa 100,75 € invece di 155 €, e i tre pass Premium Gold, Ruby e Diamond scendono del 15 per cento. La promozione è partita oggi nel negozio online, mentre il parco resta chiuso fino al Walibi Winter.
 
-Davanti al negozio Walibi ha messo una sala d'attesa, e un avviso al suo interno promette lo stesso prezzo per tutti i giorni della promozione. Se oggi la coda è troppo lunga, chiudi la scheda e torna giovedì, quando il pass costa esattamente lo stesso. Entri nel negozio solo quando arriva il tuo turno, e solo se accetti i cookie funzionali. A quel punto hai dieci minuti per completare l'ordine, poi torni in fondo alla fila.
+Davanti al negozio Walibi ha messo una sala d'attesa, e un avviso al suo interno promette lo stesso prezzo per tutti i giorni della promozione, quindi se oggi la coda è lunga puoi chiudere la scheda e riprovare giovedì. Entri nel negozio solo quando arriva il tuo turno, e solo se accetti i cookie funzionali. A quel punto hai dieci minuti per completare l'ordine, poi torni in fondo alla fila.
 
 ## Quanto costano i sei pass
 
@@ -76,7 +76,7 @@ Tutti i pass tranne l'Aqualibi valgono anche per le Nocturnes (le aperture seral
 
 Con gli altri pass il parcheggio lo paghi a ogni visita, 13 € ad auto. Al parco chi ha un pass può comprare un abbonamento al parcheggio da 40 €, valido per due targhe. Dalla quarta visita in auto costa meno che pagare ogni volta. Se in un ordine ci sono cinque pass Walibi, Aqualibi o Red&Blue, con il codice FUNTIME il quinto costa la metà. Sulla pagina dei pass Walibi non dice se il codice si somma al prezzo della Black Week.
 
-Se vieni [a Wavre dall'estero](/blog/walibi-belgium-tempi-di-attesa-consigli), nella maggior parte dei casi io prenderei il pass Walibi semplice. Per il 2027 un biglietto giornaliero costa da 45 €, quindi dalla terza visita il pass si è ripagato. Il Red&Blue conviene più del pass Walibi solo se vai almeno tre volte all'Aqualibi lì accanto, dove una visita costa da 27,50 € a partire da 1,20 m d'altezza. Ai bambini sotto il metro non serve nulla per nessuno dei due parchi.
+Se vieni [a Wavre dall'estero](/blog/walibi-belgium-tempi-di-attesa-consigli), nella maggior parte dei casi io prenderei il pass Walibi semplice. Per il 2027 un biglietto giornaliero costa da 45 € e una giornata al Walibi Winter 57 € a prezzo pieno, quindi il pass si ripaga dopo due giornate d'inverno o tre visite nella prossima stagione. Il Red&Blue conviene più del pass Walibi solo se vai almeno tre volte all'Aqualibi lì accanto, dove una visita costa da 27,50 € a partire da 1,20 m d'altezza. Ai bambini sotto il metro non serve nulla per nessuno dei due parchi.
 
 ## Da quando vale il pass
 
@@ -84,7 +84,7 @@ Il pass vale dodici mesi dalla data d'acquisto. Siccome però il parco ora è ch
 
 ## Il Walibi Winter e le ultime corse sul Loup-Garou
 
-Il prossimo appuntamento al parco è il Walibi Winter Run di venerdì 4 dicembre, una corsa serale cronometrata tra le luci del parco. Il giorno dopo comincia la quarta edizione del [Walibi Winter](/blog/parchi-divertimenti-inverno-2026), che va avanti fino al 3 gennaio 2027. Nelle otto zone invernali trovi una pista per slittini, uno spettacolo sul ghiaccio, un mercatino di Natale e un film natalizio nel cinema 4D. Da sabato 19 dicembre si aggiunge una pista di pattinaggio coperta di 630 m². Il biglietto giornaliero early bird costa 45 € invece di 57 €. Con il pass non devi prenotare in nessun giorno dell'inverno. A prezzo pieno, 57 €, due giornate d'inverno costano già più del pass Walibi a 100,75 €.
+Il prossimo appuntamento al parco è il Walibi Winter Run di venerdì 4 dicembre, una corsa serale cronometrata tra le luci del parco. Il giorno dopo comincia la quarta edizione del [Walibi Winter](/blog/parchi-divertimenti-inverno-2026), che va avanti fino al 3 gennaio 2027. Ci sono una pista per slittini, uno spettacolo sul ghiaccio e un mercatino di Natale, il cinema 4D proietta un film natalizio e da sabato 19 dicembre puoi pattinare al coperto su una pista di 630 m². Il biglietto giornaliero early bird costa 45 € invece di 57 €. Con il pass non devi prenotare in nessun giorno dell'inverno.
 
 ```best-days-widget slug=walibi-belgium
 
