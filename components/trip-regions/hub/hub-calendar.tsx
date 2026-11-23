@@ -876,10 +876,7 @@ const PhoneGroup = memo(function PhoneGroup({
                 >
                   {formatHubDate(day.date, locale, 'day')}
                 </time>
-                <SignalBar
-                  segments={daySignals(day, stormCode)}
-                  className="mt-0.5 w-[calc(100%+0.25rem)]"
-                />
+                <DaySignalLanes day={day} storm={storm} />
               </button>
             </div>
           );
@@ -1023,15 +1020,39 @@ function HolidayLine({ names }: { names: string }) {
 }
 
 /**
- * A day's segments of the signal bar under its date, in the crowd calendar's order: a school
- * break, a public holiday, then the region's storm season, dashed before its peak.
+ * A date's signals under it as the crowd tile's bars (`SignalBar`), one lane each, so a run of days
+ * reads as one line along the week: the holidays (a public holiday's red over the school break's
+ * yellow, the whole width of its day, since half a day of each looked shifted on a timeline), and
+ * in a region with a storm season in the window its own lane under it, dashed before its peak.
+ * Wider than the column by the gap and centred on it, so neighbouring days meet. Empty lanes keep
+ * their height, so the dates stay level.
  */
-function daySignals(day: TripCalendarDay, storm: StormCode | undefined): SignalSegment[] {
-  const segments: SignalSegment[] = [];
-  if (day.isSchoolVacation) segments.push({ key: 'school', className: DAY_SIGNAL_CLASS.school });
-  if (day.isHoliday) segments.push({ key: 'holiday', className: DAY_SIGNAL_CLASS.holiday });
-  if (storm) segments.push({ key: 'storm', className: STORM_SIGNAL_CLASS[stormSignal(storm)] });
-  return segments;
+function DaySignalLanes({
+  day,
+  storm,
+}: {
+  day: TripCalendarDay;
+  /** The window's storm days (`useStormDays`), `null` for a region without one in it. */
+  storm: ReadonlyMap<string, StormCode> | null;
+}) {
+  const holiday: SignalSegment[] = day.isHoliday
+    ? [{ key: 'holiday', className: DAY_SIGNAL_CLASS.holiday }]
+    : day.isSchoolVacation
+      ? [{ key: 'school', className: DAY_SIGNAL_CLASS.school }]
+      : [];
+  const code = storm?.get(day.date);
+  return (
+    <span className="mt-0.5 flex w-[calc(100%+0.25rem)] flex-col gap-px">
+      <SignalBar segments={holiday} />
+      {storm && (
+        <SignalBar
+          segments={
+            code ? [{ key: 'storm', className: STORM_SIGNAL_CLASS[stormSignal(code)] }] : []
+          }
+        />
+      )}
+    </span>
+  );
 }
 
 /**
@@ -1493,14 +1514,8 @@ const MatrixHead = memo(function MatrixHead({
                 <span className="text-muted-foreground h-3 text-[9px]">
                   {dayBasis(day) === 'long_range' ? t('outlook') : ''}
                 </span>
-                {/* The day's signals on the timeline itself, where a date is picked: the crowd
-                    tile's bar (`SignalBar`), a segment each for a school break, a public holiday
-                    and the storm season. Wider than the column by the gap, so a run of days
-                    reads as one line. */}
-                <SignalBar
-                  segments={daySignals(day, stormCode)}
-                  className="mt-0.5 w-[calc(100%+0.25rem)]"
-                />
+                {/* The day's signals on the timeline itself, where a date is picked. */}
+                <DaySignalLanes day={day} storm={storm} />
               </button>
             </th>
           );

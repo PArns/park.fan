@@ -248,11 +248,13 @@ reads as what the chapter is about, where „01“ said only where it stands.
    - **From `lg`** a `<table role="grid">` with a caption naming the week, `scope`d headers, one tab
      stop and arrow keys within the week, Enter plans the day: parks by resort down the side, each
      with its quietest day under its name, seven tiles across. Above the tiles each date (a button
-     to the day, in the tab order) with its signal bar, the crowd tile's own (`SignalBar` in
-     `components/parks/signal-bar.tsx`): a 3 px bar, a segment each for a school break (yellow), a
-     public holiday (red) and the storm season (violet), wider than its column by the gap, so a
-     run of days reads as one line; the park calendar draws the same bar along a tile's top edge,
-     and both legends key the same colours. Under it „Ferien & Feiertage“ names the day's holidays,
+     to the day, in the tab order) with its signal bars, the crowd tile's own (`SignalBar` in
+     `components/parks/signal-bar.tsx`, `DaySignalLanes`): 3 px lanes, wider than the column by the
+     gap, so a run of days reads as one line along the week. The first lane holds the holidays, a
+     public holiday's red the whole width of its day over the school break's yellow (half a day of
+     each, as a tile splits its bar, looked shifted on a timeline); in a region with a storm season
+     in the window a second lane holds it, violet, dashed before its peak. The park calendar draws
+     the same bar along a tile's top edge, and both legends key the same colours. Under it „Ferien & Feiertage“ names the day's holidays,
      that row only where a day of the window fills it, so a week never adds one. A park whose whole
      window says one thing (Saisonpause, no hours yet, open without a forecast, `parkState`) is one
      line instead of seven tiles.

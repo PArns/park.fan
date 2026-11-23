@@ -10,6 +10,9 @@ import { EARLY_CLOSE_CORNER, HUB_CELL, HUB_CELL_BEST, HUB_CELL_PICKED } from './
 /** The size a key's small tile is drawn at. */
 const SWATCH = 'h-6 w-8 text-[11px]';
 
+/** A small tile with a mark before its figure and a ring inside its edge: room for all three. */
+const MARK_SWATCH = 'h-6 gap-1 px-2 text-[11px]';
+
 /** One key: one or more small tiles drawn the way the calendar draws them, and their words. */
 function Key({ children, label }: { children: React.ReactNode; label: string }) {
   return (
@@ -45,14 +48,13 @@ export async function HubLegend() {
           <span
             className={cn(
               HUB_CELL,
-              SWATCH,
-              'gap-0.5',
+              MARK_SWATCH,
               HUB_CELL_BEST,
               CROWD_TILE_CLASS.low,
               CROWD_TEXT_CLASS.low
             )}
           >
-            <Star aria-hidden className="text-primary size-2.5 fill-current" />
+            <Star aria-hidden className="text-primary size-3 fill-current" />
             35
           </span>
         </Key>
@@ -60,8 +62,7 @@ export async function HubLegend() {
           <span
             className={cn(
               HUB_CELL,
-              SWATCH,
-              'gap-0.5',
+              MARK_SWATCH,
               HUB_CELL_PICKED,
               CROWD_TILE_CLASS.low,
               CROWD_TEXT_CLASS.low
@@ -69,9 +70,9 @@ export async function HubLegend() {
           >
             <span
               aria-hidden
-              className="bg-primary text-primary-foreground flex size-3 items-center justify-center rounded-full"
+              className="bg-primary text-primary-foreground flex size-3.5 items-center justify-center rounded-full"
             >
-              <Check className="size-2" strokeWidth={3.5} />
+              <Check className="size-2.5" strokeWidth={3.5} />
             </span>
             45
           </span>
