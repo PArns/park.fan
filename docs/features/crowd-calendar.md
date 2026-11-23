@@ -148,11 +148,13 @@ index shows (`parkCalendarMonthsShown`), in place of the shown month alone; the 
 season card's list, today to a year ahead, so neither adds a request per chip.
 
 **The weather on a tile** is `DayWeather` (`components/common/day-weather.tsx`). Within the
-forecast's reach (about 16 days) the forecast's icon and its low–high. Past it the API sends the
-date's climate normal (`weather.basis: "climate_normal"`, the 2015–2024 average for the date), and
-the tile says so: no weather icon, a history mark, „Ø“ and the range half of such days' highs fell
-in („Ø 11°–14°“), muted. The legend keys it once („Ø Durchschnitt vergangener Jahre, keine
-Vorhersage“, `showClimateKey`), and a screen reader hears the same on each tile. An older API sends
+forecast's reach (about 16 days) the forecast's icon and its low–high in the foreground ink. Past
+it the API sends the date's climate normal (`weather.basis: "climate_normal"`, the 2015–2024
+average for the date), and the tile says so: no icon, „Ø“ and the range half of such days' highs
+fell in („Ø 11°–14°“), muted. An icon would claim a sky nobody forecast, so its absence is the
+mark. The legend keys both tokens side by side as the tiles draw them (`WeatherKey`: the icon with
+„Vorhersage“, „Ø Durchschnitt vergangener Jahre, keine Vorhersage“, `showClimateKey`), the same key
+the region hub uses, and a screen reader hears the average named on each tile. An older API sends
 the normal without its range; the tile then shows the mean high („Ø 12°“). Before this the tile
 drew a normal exactly like a forecast.
 

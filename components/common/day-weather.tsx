@@ -1,5 +1,5 @@
 import { createElement } from 'react';
-import { History } from 'lucide-react';
+import { Sun } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
@@ -26,11 +26,13 @@ export function TempRange({ low, high }: { low?: number; high?: number }) {
 }
 
 /**
- * A day's weather in one short line. A forecast: its icon and the low–high („9–18°“). The date's
- * average over past years: a history mark, „Ø“ and the range half of such days' highs fell in
- * („Ø 15–19°“), muted and without a weather icon, so it never reads as the day's forecast; a screen
- * reader hears what it is. `compact`, for a phone's narrow day columns: the forecast's icon and
- * high, a normal's „Ø 17°“. `null` without a temperature.
+ * A day's weather in one short line, the same token in every calendar. A forecast: its condition
+ * icon and the low–high („9–18°“) in the foreground ink. The date's average over past years: „Ø“
+ * and the range half of such days' highs fell in („Ø 15–19°“), muted and without an icon, so the two
+ * tell apart at a glance and an average never reads as the day's forecast; a screen reader hears
+ * what it is. `compact`, for a phone's narrow day columns: the forecast's icon and high, an
+ * average's „Ø 17°“. The token sets its own ink, so a muted tile floor cannot flatten the
+ * difference. `null` without a temperature.
  */
 export function DayWeather({
   weather,
@@ -46,28 +48,31 @@ export function DayWeather({
   if (isClimateNormal(weather)) {
     return (
       <span
-        className={cn('text-muted-foreground inline-flex items-center gap-1', className)}
+        className={cn(
+          'text-muted-foreground inline-block whitespace-nowrap tabular-nums',
+          className
+        )}
         data-weather-basis="climate_normal"
         title={t('normal')}
       >
-        {!compact && <History className="size-3 shrink-0" aria-hidden="true" />}
-        <span className="tabular-nums">
-          Ø{compact ? '' : ' '}
-          {!compact && weather.tempMaxP25 != null && weather.tempMaxP75 != null ? (
-            <TempRange low={weather.tempMaxP25} high={weather.tempMaxP75} />
-          ) : (
-            <Temp celsius={weather.tempMax} />
-          )}
-        </span>
+        Ø{compact ? '' : ' '}
+        {!compact && weather.tempMaxP25 != null && weather.tempMaxP75 != null ? (
+          <TempRange low={weather.tempMaxP25} high={weather.tempMaxP75} />
+        ) : (
+          <Temp celsius={weather.tempMax} />
+        )}
         <span className="sr-only">{t('normal')}</span>
       </span>
     );
   }
   return (
-    <span className={cn('inline-flex items-center gap-1', className)}>
+    <span
+      className={cn('text-foreground/80 inline-flex items-center gap-1', className)}
+      data-weather-basis="forecast"
+    >
       {weather.icon != null &&
         createElement(getWeatherConfig(weather.icon).icon, {
-          className: 'size-3 shrink-0',
+          className: 'size-3.5 shrink-0',
           'aria-hidden': true,
         })}
       <span className="tabular-nums">
@@ -79,6 +84,47 @@ export function DayWeather({
           <Temp celsius={weather.tempMax} />
         )}
       </span>
+    </span>
+  );
+}
+
+/**
+ * Several days' average over past years as one label across them, drawn as a dimension line: a
+ * tick, a rule, „Ø 8–12°“, a rule, a tick (`weatherRuns` gives the envelope of the days' ranges).
+ * One day is the plain {@link DayWeather}. A screen reader hears how many days it covers.
+ */
+export function WeatherSpan({
+  weather,
+  days,
+  className,
+}: {
+  weather: DayWeatherData | null | undefined;
+  days: number;
+  className?: string;
+}) {
+  const t = useTranslations('dayWeather');
+  if (days <= 1 || !isClimateNormal(weather)) {
+    return <DayWeather weather={weather} className={className} />;
+  }
+  const line = 'bg-muted-foreground/40';
+  return (
+    <span className={cn('flex w-full items-center', className)}>
+      <span aria-hidden className={cn('h-2 w-px shrink-0', line)} />
+      <span aria-hidden className={cn('h-px flex-1', line)} />
+      <span
+        className="text-muted-foreground px-1.5 tabular-nums"
+        title={t('normalSpan', { count: days })}
+      >
+        Ø{' '}
+        {weather?.tempMaxP25 != null && weather.tempMaxP75 != null ? (
+          <TempRange low={weather.tempMaxP25} high={weather.tempMaxP75} />
+        ) : weather?.tempMax != null ? (
+          <Temp celsius={weather.tempMax} />
+        ) : null}
+        <span className="sr-only">{t('normalSpan', { count: days })}</span>
+      </span>
+      <span aria-hidden className={cn('h-px flex-1', line)} />
+      <span aria-hidden className={cn('h-2 w-px shrink-0', line)} />
     </span>
   );
 }
@@ -130,20 +176,20 @@ export function ClimateNormalDetail({
 }
 
 /**
- * The key under a calendar whose days show averages: „Ø Schnitt 2015–2024 für das Datum, keine
- * Vorhersage“ with the history mark the days carry.
+ * The weather key of a calendar, the two tokens as the cells draw them: a forecast's icon with
+ * „Vorhersage“, and „Ø“ with „Durchschnitt vergangener Jahre, keine Vorhersage“.
  */
-export function ClimateNormalKey({ period, className }: { period?: string; className?: string }) {
+export function WeatherKey({ className }: { className?: string }) {
   const t = useTranslations('dayWeather');
   return (
     <span
-      className={cn(
-        'text-muted-foreground inline-flex items-center gap-1.5 text-xs whitespace-nowrap',
-        className
-      )}
+      className={cn('inline-flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px]', className)}
     >
-      <History className="size-3 shrink-0" aria-hidden="true" />
-      {period ? t('key', { period: period.replace('-', '–') }) : t('keyNoPeriod')}
+      <span className="text-foreground/80 inline-flex items-center gap-1 whitespace-nowrap">
+        <Sun className="size-3.5 shrink-0" aria-hidden="true" />
+        {t('keyForecast')}
+      </span>
+      <span className="text-muted-foreground whitespace-nowrap">{t('keyNoPeriod')}</span>
     </span>
   );
 }

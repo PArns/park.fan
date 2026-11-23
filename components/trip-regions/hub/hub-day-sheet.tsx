@@ -28,6 +28,7 @@ import {
   shortestLines,
   shortParkName,
   tintLevel,
+  splitsWeather,
 } from '@/lib/trip-regions/hub-data';
 import { shownWait } from '@/lib/trip-regions/plan-week';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
@@ -45,6 +46,7 @@ import type {
 } from '@/lib/trip-regions/types';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import { PlanSelect } from '../planner/plan-controls';
+import { DayWeather } from '@/components/common/day-weather';
 
 /** How many big rides a park lists for its day. */
 const BIG_RIDES = 5;
@@ -158,12 +160,22 @@ export function HubDaySheet({
             <div className="space-y-5 p-4">
               {groups.map((group) => (
                 <section key={group.key} aria-labelledby={`sheet-${group.key}`}>
-                  <h3
-                    id={`sheet-${group.key}`}
-                    className="text-muted-foreground mb-2 text-xs font-semibold tracking-wider uppercase"
-                  >
-                    {group.name}
-                  </h3>
+                  <div className="mb-2 flex items-baseline justify-between gap-3">
+                    <h3
+                      id={`sheet-${group.key}`}
+                      className="text-muted-foreground text-xs font-semibold tracking-wider uppercase"
+                    >
+                      {group.name}
+                    </h3>
+                    {!splitsWeather(group) && (
+                      <DayWeather
+                        weather={
+                          group.parks.map((p) => day.parks[p.slug]?.weather).find(Boolean) ?? null
+                        }
+                        className="shrink-0 text-xs"
+                      />
+                    )}
+                  </div>
                   <ol className="space-y-2">
                     {rankGroupParks(day, group.parks, group.key).map(
                       ({ park, day: parkDay }, index) => (
@@ -183,6 +195,7 @@ export function HubDaySheet({
                           area={area}
                           areaName={areaName}
                           locale={locale}
+                          weather={splitsWeather(group) ? parkDay?.weather : undefined}
                           plannable={
                             day.date >= todayIso &&
                             parkDay?.status === 'OPERATING' &&
@@ -220,6 +233,7 @@ function SheetPark({
   area,
   areaName,
   locale,
+  weather,
   plannable,
   onPlan,
 }: {
@@ -234,6 +248,8 @@ function SheetPark({
   area: string;
   areaName: string;
   locale: string;
+  /** A day trip's own weather, where its group shows none for all (`splitsWeather`). */
+  weather?: TripParkDay['weather'];
   plannable: boolean;
   onPlan: () => void;
 }) {
@@ -294,7 +310,10 @@ function SheetPark({
               <span className="text-muted-foreground text-xs">{t('noForecast')}</span>
             ) : null}
           </div>
-          <p className="text-muted-foreground mt-0.5 text-sm tabular-nums">{status}</p>
+          <p className="text-muted-foreground mt-0.5 flex flex-wrap items-center gap-x-2 text-sm tabular-nums">
+            {status}
+            <DayWeather weather={weather} className="text-xs" />
+          </p>
           {ahead && dayGuestClose(ahead.day) && (
             <p className="mt-0.5 text-sm">
               {t('ahead', {

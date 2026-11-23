@@ -1,6 +1,6 @@
 'use client';
 
-import { ClimateNormalKey } from '@/components/common/day-weather';
+import { WeatherKey } from '@/components/common/day-weather';
 import type { CSSProperties, ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 
@@ -38,8 +38,8 @@ export interface CalendarLegendKey {
  * know no bridge days, key only theirs. `extraSignals` keys what a caller draws beyond the holidays,
  * such as a region's storm season or the Week view's blocks, after them in the same row.
  * `seasonKinds` keys the season icons the shown month draws, and only those: a month without a
- * season has no season key. `showClimateKey` says what a day's „Ø“ is: past the forecast's reach a
- * tile shows the date's average over past years, never a forecast.
+ * season has no season key. `showClimateKey` keys the weather's two tokens (`WeatherKey`): past the
+ * forecast's reach a tile shows the date's average over past years, never a forecast.
  */
 export function ParkCalendarLegend({
   showCrowd = true,
@@ -161,7 +161,7 @@ export function ParkCalendarLegend({
         </div>
       )}
 
-      {showClimateKey && <ClimateNormalKey className="text-[11px]" />}
+      {showClimateKey && <WeatherKey />}
     </div>
   );
 }

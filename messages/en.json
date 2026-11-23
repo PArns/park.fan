@@ -869,7 +869,7 @@
     "calendarLegend": "Legend",
     "calendarLegendGroups": {
       "crowd": "Crowds",
-      "signals": "Signals"
+      "signals": "Holidays & breaks"
     },
     "eventTypesLabel": "Event Types",
     "crowdLevelsLabel": "Crowd Levels",
@@ -6584,12 +6584,14 @@
   },
   "dayWeather": {
     "normal": "Average of past years for this date, not a forecast",
-    "key": "Ø average {period}, not a forecast",
     "keyNoPeriod": "Ø average of past years, not a forecast",
     "detailTitle": "Typical weather",
     "typicalHigh": "Daytime usually <range></range>",
     "typicalLow": "at night usually <range></range>",
     "wetDays": "{count, plural, =0 {rarely rain} =1 {rain on 1 day in 10} other {rain on # days in 10}}",
-    "detailNote": "Average of {period} for this date; on half of those days the value fell within the range. Forecasts reach about 16 days ahead."
+    "detailNote": "Average of {period} for this date; on half of those days the value fell within the range. Forecasts reach about 16 days ahead.",
+    "keyForecast": "Forecast",
+    "normalSpan": "Average of past years for these {count} days, not a forecast",
+    "rowLabel": "Weather in {park}"
   }
 }

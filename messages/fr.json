@@ -869,7 +869,7 @@
     "calendarLegend": "Légende",
     "calendarLegendGroups": {
       "crowd": "Affluence",
-      "signals": "Signaux"
+      "signals": "Vacances & jours fériés"
     },
     "eventTypesLabel": "Types d’événements",
     "crowdLevelsLabel": "Niveaux d’affluence",
@@ -6584,12 +6584,14 @@
   },
   "dayWeather": {
     "normal": "Moyenne des années passées pour cette date, pas une prévision",
-    "key": "Ø moyenne {period}, pas une prévision",
     "keyNoPeriod": "Ø moyenne des années passées, pas une prévision",
     "detailTitle": "Météo en moyenne",
     "typicalHigh": "En journée, en général <range></range>",
     "typicalLow": "la nuit, en général <range></range>",
     "wetDays": "{count, plural, =0 {rarement de pluie} =1 {pluie 1 jour sur 10} other {pluie # jours sur 10}}",
-    "detailNote": "Moyenne {period} pour cette date ; la moitié de ces jours se situait dans cette fourchette. Les prévisions portent sur 16 jours environ."
+    "detailNote": "Moyenne {period} pour cette date ; la moitié de ces jours se situait dans cette fourchette. Les prévisions portent sur 16 jours environ.",
+    "keyForecast": "Prévision",
+    "normalSpan": "Moyenne des années passées pour ces {count} jours, pas une prévision",
+    "rowLabel": "Météo à {park}"
   }
 }

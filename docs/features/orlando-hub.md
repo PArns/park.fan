@@ -88,19 +88,25 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   first column and above the list (`StormKey`). The signal violet (`STORM_SIGNAL_CLASS`), dashed for the
   season, solid for its peak, in `tripPlanner.climate`'s words, and in the date's accessible name.
   Never a crowd tint, and no longer a lane under the calendar, where nobody looking for a date saw it.
-- **The weather** is in each resort's heading row, along the dates: the forecast with its icon and
-  low–high, past its reach the date's average over past years, muted with a history mark and the
-  range half of such days' highs fell in („Ø 15–19°“, `DayWeather` in
-  `components/common/day-weather.tsx`). A resort is one place, read at its first park
-  (`weatherParks`), so Japan shows Tokyo, Osaka, Fuji and Nagoya each their own. The day trips lie
-  apart (Knott's, Six Flags Magic Mountain inland, SeaWorld San Diego; Tampa from Orlando), so their
-  group heading carries none and each of their parks has its own row right above its tiles
-  (`ParkWeatherRow`). Consecutive days of a week whose average reads alike in °C share one cell with a
-  hairline across the days it covers (`weatherRuns`), so a row is not seven times „Ø 8°–12°“; a
-  forecast day stays its own. The phone's resort card gives each date the forecast's icon and high,
-  or „Ø 17°“, and a day trip each of its parks the same line above its tiles. A key under the grid
-  and above the phone's list says what „Ø“ is (`ClimateNormalKey`). `sliceCalendar` keeps the
-  weather of those parks only, and of it only the fields the rows draw.
+- **The weather** is in each resort's heading row, along the dates, the same token as the park's
+  crowd calendar (`DayWeather` in `components/common/day-weather.tsx`): the forecast with its icon
+  and low–high in the foreground ink, past its reach the date's average over past years, muted,
+  without an icon, as „Ø“ and the range half of such days' highs fell in („Ø 15–19°“). A resort is
+  one place, read at its first park (`weatherParks`), so Japan shows Tokyo, Osaka, Fuji and Nagoya
+  each their own. A day-trip group of several parks lies apart (Knott's, Six Flags Magic Mountain
+  inland, SeaWorld San Diego; Tampa from Orlando), so its heading carries none and each of its parks
+  has its own row right above its tiles (`ParkWeatherRow`, named for a screen reader by a row
+  header); a group of one park keeps the heading row (`splitsWeather` in
+  `lib/trip-regions/hub-data.ts` decides for the grid, the phone and the day sheet alike). All
+  consecutive averages of a week share one label, drawn as a dimension line across the days it
+  covers, „├── Ø 7–12° ──┤“, over the envelope of their ranges (`weatherRuns`, `WeatherSpan`), so a
+  row is not seven times „Ø 8°–12°“; a forecast day stays its own. The phone's resort card gives
+  each date the forecast's icon and high, or „Ø 17°“, joined across the days the same way, and a
+  day trip each of its parks the same line above its tiles. The legend keys the forecast and the
+  average side by side (`WeatherKey`), the key the park calendar shows too; the day sheet names the
+  day's weather beside the group, or beside each park of a split day trip. `sliceCalendar` keeps the
+  weather of those parks only, and of it only the fields the rows draw: an average sends its basis,
+  its mean high and its range, no icon and no low.
 - **Two places to tick, one store.** In the first answer a chip per headliner park („Bereits
   besucht? Abhaken“, then „3 von 7 Parks abgehakt“), sideways on a phone like the resort filter; in
   the calendar a ring before each park's name (`VisitedToggle`, 44 px to the touch, on the phone

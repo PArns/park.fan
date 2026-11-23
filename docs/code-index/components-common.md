@@ -78,9 +78,10 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 ### [`day-weather.tsx`](../../components/common/day-weather.tsx)
 
 - `TempRange` _component_: Two temperatures as one range, „15–19°“, or one figure where both round alike in the reader's unit; `null` when either is missing.
-- `DayWeather` _component_: A day's weather in one short line. A forecast: its icon and the low–high („9–18°“).
+- `DayWeather` _component_: A day's weather in one short line, the same token in every calendar. A forecast: its condition icon and the low–high („9–18°“) in the foreground ink.
+- `WeatherSpan` _component_: Several days' average over past years as one label across them, drawn as a dimension line: a tick, a rule, „Ø 8–12°“, a rule, a tick (`weatherRuns` gives the envelope of the days' ranges). One day is the plain `DayWeather`.
 - `ClimateNormalDetail` _component_: A climate normal spelled out for a day's detail: „Tagsüber meist 15–19°, nachts meist 7–11°“, how often such a day brings rain, and what the figures are (`period`, the years averaged).
-- `ClimateNormalKey` _component_: The key under a calendar whose days show averages: „Ø Schnitt 2015–2024 für das Datum, keine Vorhersage“ with the history mark the days carry.
+- `WeatherKey` _component_: The weather key of a calendar, the two tokens as the cells draw them: a forecast's icon with „Vorhersage“, and „Ø“ with „Durchschnitt vergangener Jahre, keine Vorhersage“.
 
 ### [`dialog-hero.tsx`](../../components/common/dialog-hero.tsx)
 

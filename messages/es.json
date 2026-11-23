@@ -869,7 +869,7 @@
     "calendarLegend": "Leyenda",
     "calendarLegendGroups": {
       "crowd": "Afluencia",
-      "signals": "Señales"
+      "signals": "Vacaciones y festivos"
     },
     "eventTypesLabel": "Tipos de eventos",
     "crowdLevelsLabel": "Niveles de afluencia",
@@ -6584,12 +6584,14 @@
   },
   "dayWeather": {
     "normal": "Media de años anteriores para esta fecha, no es un pronóstico",
-    "key": "Ø media {period}, no es un pronóstico",
     "keyNoPeriod": "Ø media de años anteriores, no es un pronóstico",
     "detailTitle": "Tiempo de media",
     "typicalHigh": "De día, normalmente <range></range>",
     "typicalLow": "de noche, normalmente <range></range>",
     "wetDays": "{count, plural, =0 {rara vez llueve} =1 {lluvia 1 de cada 10 días} other {lluvia # de cada 10 días}}",
-    "detailNote": "Media de {period} para esta fecha; la mitad de esos días quedó dentro del rango. Hay pronóstico unos 16 días antes."
+    "detailNote": "Media de {period} para esta fecha; la mitad de esos días quedó dentro del rango. Hay pronóstico unos 16 días antes.",
+    "keyForecast": "Pronóstico",
+    "normalSpan": "Media de años anteriores para estos {count} días, no es un pronóstico",
+    "rowLabel": "El tiempo en {park}"
   }
 }

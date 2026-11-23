@@ -26,48 +26,58 @@ export function isClimateNormal(
   return weather?.basis === 'climate_normal';
 }
 
-/** A run of days that one cell draws: `length` days from `start`, with the first day's weather. */
-export interface WeatherRun<T extends DayWeatherData = DayWeatherData> {
+/** A run of days that one cell draws: `length` days from `start`, and what the cell says of them. */
+export interface WeatherRun {
   start: number;
   length: number;
-  weather: T | undefined;
-}
-
-/** What a day of a run reads as: its rounded range, or its rounded high where it has no range. */
-function normalKey(weather: DayWeatherData): string {
-  return weather.tempMaxP25 != null && weather.tempMaxP75 != null
-    ? `${Math.round(weather.tempMaxP25)}:${Math.round(weather.tempMaxP75)}`
-    : `${Math.round(weather.tempMax ?? NaN)}`;
+  /** One day's weather as it is; a run of averages as their envelope (`weatherRuns`). */
+  weather: DayWeatherData | undefined;
 }
 
 /**
- * The days a row of cells draws, consecutive days that read the same joined: past the forecast the
- * average over past years changes by a degree in weeks, so a row of seven „Ø 8°–12°“ says one thing
- * seven times. Only averages join, and only where both read alike in °C; a forecast day, a day
- * without weather and a day `breakAt` says starts a run of its own (a calendar's week, so a run never
- * crosses what the row pages by).
+ * Days of averages as one label: the lowest of their lower quartiles to the highest of their upper
+ * ones, or where a day has no range, the lowest to the highest mean high. In °C, rendered in either
+ * unit, so the label stays honest in °F too.
  */
-export function weatherRuns<T extends DayWeatherData>(
-  days: readonly (T | undefined)[],
+function envelope(days: readonly DayWeatherData[]): DayWeatherData {
+  const highs = days.map((d) => d.tempMax ?? NaN);
+  const ranged = days.every((d) => d.tempMaxP25 != null && d.tempMaxP75 != null);
+  return {
+    basis: 'climate_normal',
+    tempMax: highs.reduce((a, b) => a + b, 0) / highs.length,
+    tempMaxP25: ranged ? Math.min(...days.map((d) => d.tempMaxP25!)) : Math.min(...highs),
+    tempMaxP75: ranged ? Math.max(...days.map((d) => d.tempMaxP75!)) : Math.max(...highs),
+  };
+}
+
+/**
+ * The cells a row of days draws. Past the forecast the average over past years changes by a degree
+ * in weeks, so a row of seven „Ø 8°–12°“ says one thing seven times: consecutive days of averages
+ * share one cell, labelled with their envelope. A forecast day, a day without weather and a day
+ * `breakAt` names (a calendar's week, so a run never crosses what the row pages by) start a cell
+ * of their own.
+ */
+export function weatherRuns(
+  days: readonly (DayWeatherData | undefined)[],
   breakAt: (index: number) => boolean = () => false
-): WeatherRun<T>[] {
-  const runs: WeatherRun<T>[] = [];
+): WeatherRun[] {
+  const runs: Array<{ start: number; length: number }> = [];
   days.forEach((weather, index) => {
     const last = runs[runs.length - 1];
-    const previous = last ? days[last.start] : undefined;
-    if (
-      last &&
+    const joins =
+      last !== undefined &&
       !breakAt(index) &&
       isClimateNormal(weather) &&
-      isClimateNormal(previous) &&
       weather?.tempMax != null &&
-      previous?.tempMax != null &&
-      normalKey(weather) === normalKey(previous)
-    ) {
-      last.length += 1;
-    } else {
-      runs.push({ start: index, length: 1, weather });
-    }
+      isClimateNormal(days[last.start]) &&
+      days[last.start]?.tempMax != null;
+    if (joins) last.length += 1;
+    else runs.push({ start: index, length: 1 });
   });
-  return runs;
+  return runs.map(({ start, length }) => ({
+    start,
+    length,
+    weather:
+      length === 1 ? days[start] : envelope(days.slice(start, start + length) as DayWeatherData[]),
+  }));
 }

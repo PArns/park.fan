@@ -869,7 +869,7 @@
     "calendarLegend": "Legenda",
     "calendarLegendGroups": {
       "crowd": "Affluenza",
-      "signals": "Segnali"
+      "signals": "Vacanze e festività"
     },
     "eventTypesLabel": "Tipi di evento",
     "crowdLevelsLabel": "Livelli di affluenza",
@@ -6584,12 +6584,14 @@
   },
   "dayWeather": {
     "normal": "Media degli anni passati per questa data, non una previsione",
-    "key": "Ø media {period}, non una previsione",
     "keyNoPeriod": "Ø media degli anni passati, non una previsione",
     "detailTitle": "Meteo in media",
     "typicalHigh": "Di giorno di solito <range></range>",
     "typicalLow": "di notte di solito <range></range>",
     "wetDays": "{count, plural, =0 {raramente pioggia} =1 {pioggia 1 giorno su 10} other {pioggia # giorni su 10}}",
-    "detailNote": "Media {period} per questa data; in metà di quei giorni il valore rientrava nell’intervallo. Le previsioni arrivano a circa 16 giorni."
+    "detailNote": "Media {period} per questa data; in metà di quei giorni il valore rientrava nell’intervallo. Le previsioni arrivano a circa 16 giorni.",
+    "keyForecast": "Previsione",
+    "normalSpan": "Media degli anni passati per questi {count} giorni, non una previsione",
+    "rowLabel": "Meteo a {park}"
   }
 }

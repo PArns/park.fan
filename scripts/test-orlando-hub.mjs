@@ -763,10 +763,9 @@ test('the slice keeps the weather of those parks only, and of it the drawn field
     ),
   };
   const sliced = sliceCalendar(calendar, [day], weatherParks(region)).days[0].parks;
+  // An average keeps what its cell draws: no icon, no low.
   assert.deepEqual(sliced['magic-kingdom-park'].weather, {
     basis: 'climate_normal',
-    icon: 3,
-    tempMin: 13.1,
     tempMax: 24.2,
     tempMaxP25: 22.4,
     tempMaxP75: 26.1,
@@ -779,7 +778,7 @@ test('the slice keeps the weather of those parks only, and of it the drawn field
   );
 });
 
-test('days whose average reads alike share a cell, a forecast and a week break never do', () => {
+test("a week's averages share one cell with their envelope; a forecast and a week break never join", () => {
   const normal = (p25, p75) => ({
     basis: 'climate_normal',
     tempMax: (p25 + p75) / 2,
@@ -801,26 +800,29 @@ test('days whose average reads alike share a cell, a forecast and a week break n
     [
       [0, 1],
       [1, 1],
-      [2, 2],
-      [4, 1],
+      [2, 3],
       [5, 1],
       [6, 1],
     ]
   );
-  // Seven alike days split where the row pages to the next week.
+  // The joined cell says the envelope: the lowest lower quartile to the highest upper one.
+  assert.equal(runs[2].weather.tempMaxP25, 7.4);
+  assert.equal(runs[2].weather.tempMaxP75, 12.1);
+  assert.equal(runs[0].weather, forecast);
+  // Seven averages split where the row pages to the next week.
   const week = Array.from({ length: 7 }, () => normal(8, 12));
   assert.deepEqual(
     weatherRuns(week, (i) => i === 4).map((r) => r.length),
     [4, 3]
   );
-  // Without a range the rounded high decides.
-  assert.equal(
-    weatherRuns([
-      { basis: 'climate_normal', tempMax: 17.2 },
-      { basis: 'climate_normal', tempMax: 16.9 },
-    ]).length,
-    1
-  );
+  // Without a range the envelope runs from the lowest to the highest mean high.
+  const [plain] = weatherRuns([
+    { basis: 'climate_normal', tempMax: 17.2 },
+    { basis: 'climate_normal', tempMax: 15.9 },
+  ]);
+  assert.equal(plain.length, 2);
+  assert.equal(plain.weather.tempMaxP25, 15.9);
+  assert.equal(plain.weather.tempMaxP75, 17.2);
 });
 
 console.log(`\n${passed} passed`);

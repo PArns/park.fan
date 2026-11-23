@@ -992,7 +992,7 @@
     "calendarLegend": "Legende",
     "calendarLegendGroups": {
       "crowd": "Andrang",
-      "signals": "Signalleiste"
+      "signals": "Ferien & Feiertage"
     },
     "eventTypesLabel": "Event-Typen",
     "crowdLevelsLabel": "Auslastungsstufen",
@@ -6584,12 +6584,14 @@
   },
   "dayWeather": {
     "normal": "Durchschnitt vergangener Jahre für dieses Datum, keine Vorhersage",
-    "key": "Ø Durchschnitt {period}, keine Vorhersage",
     "keyNoPeriod": "Ø Durchschnitt vergangener Jahre, keine Vorhersage",
     "detailTitle": "Wetter im Schnitt",
     "typicalHigh": "Tagsüber meist <range></range>",
     "typicalLow": "nachts meist <range></range>",
     "wetDays": "{count, plural, =0 {selten Regen} =1 {Regen an 1 von 10 Tagen} other {Regen an # von 10 Tagen}}",
-    "detailNote": "Schnitt der Jahre {period} für dieses Datum; an der Hälfte dieser Tage lag der Wert in der Spanne. Vorhersagen gibt es etwa 16 Tage im Voraus."
+    "detailNote": "Schnitt der Jahre {period} für dieses Datum; an der Hälfte dieser Tage lag der Wert in der Spanne. Vorhersagen gibt es etwa 16 Tage im Voraus.",
+    "keyForecast": "Vorhersage",
+    "normalSpan": "Durchschnitt vergangener Jahre für diese {count} Tage, keine Vorhersage",
+    "rowLabel": "Wetter in {park}"
   }
 }

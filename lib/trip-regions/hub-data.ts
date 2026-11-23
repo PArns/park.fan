@@ -913,6 +913,23 @@ const HUB_WEATHER_FIELDS = [
   'tempMaxP75',
 ] as const satisfies readonly (keyof TripDayWeather)[];
 
+/** What an average over past years draws of those: no cell shows its icon or its low. */
+const HUB_NORMAL_FIELDS = [
+  'basis',
+  'tempMax',
+  'tempMaxP25',
+  'tempMaxP75',
+] as const satisfies readonly (keyof TripDayWeather)[];
+
+/**
+ * Whether a group's parks show their weather each on its own: day trips of several parks, which lie
+ * apart (Knott's, Six Flags Magic Mountain inland, SeaWorld San Diego). A resort is one place, and
+ * so is a day trip of one park: their heading carries one weather for all.
+ */
+export function splitsWeather(group: RegionGroup): boolean {
+  return group.kind === 'day_trip' && group.parks.length > 1;
+}
+
 /**
  * The parks whose weather the hub's calendar draws: a resort's first, which stands for the resort's
  * place, and every park of the day trips, which lie apart (Knott's in Buena Park, SeaWorld in San
@@ -921,7 +938,7 @@ const HUB_WEATHER_FIELDS = [
 export function weatherParks(region: TripRegion): ReadonlySet<string> {
   return new Set(
     regionGroups(region).flatMap((group) =>
-      group.kind === 'day_trip' ? group.parks.map((p) => p.slug) : [group.parks[0].slug]
+      splitsWeather(group) ? group.parks.map((p) => p.slug) : [group.parks[0].slug]
     )
   );
 }
@@ -959,7 +976,12 @@ export function sliceCalendar(
           {
             ...picked(park, HUB_PARK_DAY_FIELDS),
             ...(park.weather &&
-              weatherParks.has(slug) && { weather: picked(park.weather, HUB_WEATHER_FIELDS) }),
+              weatherParks.has(slug) && {
+                weather: picked(
+                  park.weather,
+                  park.weather.basis === 'climate_normal' ? HUB_NORMAL_FIELDS : HUB_WEATHER_FIELDS
+                ),
+              }),
           },
         ])
       ),
