@@ -565,6 +565,14 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 - `UNIT_TITLE` _const_: What a unit's chart is called when it stands beside others.
 - Types: `MetricUnit`, `MetricKey`, `SortColumn`
 
+### [`weather-closure.ts`](../../lib/admin/weather-closure.ts)
+
+- `weatherClosureState` _function_: The ride's state; `publishable` is the API's verdict and wins over the probability.
+- `filterWeatherClosureRides` _function_: The rides a filter and a search keep, in the API's order. The search matches the park or the ride name, without case.
+- `leadingProfile` _function_: The cause whose profile explains the ride best, for the row's figures; null without either.
+- `NEAR_PROBABILITY` _const_: From this probability on, a ride that is not shown counts as close to the bar.
+- Types: `WeatherClosureProfile`, `WeatherClosureRide`, `WeatherClosureReport`, `WeatherClosureState`, `WeatherClosureFilter`
+
 ### [`world-map.ts`](../../lib/admin/world-map.ts)
 
 - `countryShadePercent` _function_: How strongly a country is shaded, as the percentage of the brand colour in its fill: 0 for none, then 18 to 90 by its share of the biggest raised to `exponent`.

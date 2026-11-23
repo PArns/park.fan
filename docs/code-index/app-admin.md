@@ -1284,3 +1284,9 @@ Route `/admin/traffic/trip-planner` (page).
 Route `/admin/users` (page).
 
 - `default (UsersPage)` _component_
+
+### [`weather-closure/page.tsx`](../../app/admin/weather-closure/page.tsx)
+
+Route `/admin/weather-closure` (page).
+
+- `default (WeatherClosurePage)` _component_: Which rides close in the cold or after snow, as the weekly job learned it, and which of them the site names on the ride's status. One button runs the job again.

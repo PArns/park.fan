@@ -81,15 +81,15 @@ inset's margin and border); a page that fills the viewport subtracts it, as the 
 
 **The sidebar is sorted by what a person does**, not by which API serves a page (`_app/nav.ts`):
 
-| Group        | Entries                                                                             |
-| ------------ | ----------------------------------------------------------------------------------- |
-| (top)        | Übersicht                                                                           |
-| Kuratieren   | Parks, Datenqualität, Duplikate, Stilllegungen, Änderungen                          |
-| Reiseplaner  | Saisons, Tickets                                                                    |
-| Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                                 |
-| Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Reiseplaner, Beliebtheit), Parky (3)  |
-| Betrieb      | System, Queues, ML-Zentrale (Modellvergleich), Parks live, Wartung                  |
-| Konto (foot) | Mein Konto, Konten, API-Keys: in the account menu at the sidebar's foot, and in `/` |
+| Group        | Entries                                                                              |
+| ------------ | ------------------------------------------------------------------------------------ |
+| (top)        | Übersicht                                                                            |
+| Kuratieren   | Parks, Datenqualität, Duplikate, Stilllegungen, Änderungen                           |
+| Reiseplaner  | Saisons, Tickets                                                                     |
+| Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                                  |
+| Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Reiseplaner, Beliebtheit), Parky (3)   |
+| Betrieb      | System, Queues, ML-Zentrale (Modellvergleich), Kälte und Schnee, Parks live, Wartung |
+| Konto (foot) | Mein Konto, Konten, API-Keys: in the account menu at the sidebar's foot, and in `/`  |
 
 Datenqualität sits with the editors because its cards ask curation questions (season or gone?).
 Saisons and Tickets are what the trip planner plans with, so they have a group of their own; the
@@ -773,6 +773,17 @@ models in one sentence and the switch rule.
 - **`?beispiel=1`** shows `lib/admin/model-comparison-fixture.ts`: the mockup's verdicts and real
   Europa-Park archive rows of 2026-10-10; its `live` blocks, the confirmed pending cell and the
   overdue date are invented to show those states.
+
+## Kälte und Schnee: `/admin/weather-closure`
+
+The weekly job's per-ride profiles behind the public „Vermutlich wegen Kälte geschlossen“ line
+(`WeatherClosureNote`): which rides close in the cold or after snow, from which temperature, and
+which of them the site names. Three tiles (rides with a profile, shown on the site, close to the
+bar), then every ride from 50 %, the surest first. A ride's bar is green when the site shows it,
+amber from 75 % up and grey below, with a mark at the site's bar (90 %). The colours and filters are
+pure in `lib/admin/weather-closure.ts` (`pnpm test:admin-weather-closure`). „Jetzt neu berechnen“
+(editor) queues `POST /v1/admin/weather-closure/rebuild`; the run takes a few minutes, so the page
+says to reload rather than polling.
 
 ## The admin on a phone
 
