@@ -6,6 +6,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import type { SeasonEventKind } from '@/lib/parks/park-season-days';
 import { cn } from '@/lib/utils';
 import { TILE_BEST_RING, TILE_PICKED_RING } from './calendar-tile-marks';
+import { SignalBar, type SignalSegment } from './signal-bar';
 import {
   CROWD_TEXT_CLASS,
   CROWD_TILE_CLASS,
@@ -56,7 +57,7 @@ export interface CalendarDayTileProps extends Omit<ComponentProps<'div'>, 'onSel
   picked?: string | null;
   seasons?: readonly TileSeasonMark[];
   /** The bar along the top edge, one segment per signal (holidays, school breaks). */
-  signals?: readonly { key: string; className: string }[];
+  signals?: readonly SignalSegment[];
   /** More chips beside the season icons, before the level (the park calendar's works chip). */
   chips?: ReactNode;
   hours?: ReactNode;
@@ -212,13 +213,7 @@ export function CalendarDayTile({
 
       {/* Inside the cell's rounding, so it reads as part of the tile rather than a chip laid on it.
        */}
-      {signals.length > 0 && (
-        <span className="pointer-events-none absolute inset-x-0 top-0 flex h-[3px]">
-          {signals.map((s) => (
-            <span key={s.key} className={cn('h-full flex-1', s.className)} />
-          ))}
-        </span>
-      )}
+      {signals.length > 0 && <SignalBar segments={signals} className="absolute inset-x-0 top-0" />}
 
       {compact ? (
         // The wait leads, the season icons at its end, so the level's line keeps its width.

@@ -803,6 +803,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ShowCard` _component_: Card linking to a show: name, seasonal badge, today's showtimes while it runs or its status badge when it does not, with a notification bell and a favorite star in the corner.
 
+### [`signal-bar.tsx`](../../components/parks/signal-bar.tsx)
+
+- `SignalBar` _component_: A day's signals as one bar, a segment each (school break, public holiday, a region's storm season, …), so a day shows all of them at once in the colours `DAY_SIGNAL_CLASS` and `STORM_SIGNAL_CLASS` give.
+- Types: `SignalSegment`
+
 ### [`single-rider-badge.tsx`](../../components/parks/single-rider-badge.tsx)
 
 - `SingleRiderBadge` _component_: „Single Rider": that the ride has such a queue at all.

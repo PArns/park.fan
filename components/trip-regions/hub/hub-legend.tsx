@@ -3,6 +3,8 @@ import { Check, ChevronDown, Star } from 'lucide-react';
 import { CROWD_TILE_CLASS, CROWD_TEXT_CLASS } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
 import { WeatherKey } from '@/components/common/day-weather';
+import { DaySignalKey } from '@/components/parks/day-signal-key';
+import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { EARLY_CLOSE_CORNER, HUB_CELL, HUB_CELL_BEST, HUB_CELL_PICKED } from './hub-cell-styles';
 
 /** The size a key's small tile is drawn at. */
@@ -20,13 +22,16 @@ function Key({ children, label }: { children: React.ReactNode; label: string }) 
 
 /**
  * How to read the calendar, at the top of its chapter. In view: the wait, the ring with the star
- * (each park's quietest day of the week), the ring with the tick (a day the visitor picked), one line that says what the colour means (a day against the park's own normal day, the crowd
+ * (each park's quietest day of the week), the ring with the tick (a day the visitor picked), the
+ * signal bar's school break and public holiday as the park calendar keys them (the storm season is
+ * keyed beside the grid, where a region has one), one line that says what the colour means (a day against the park's own normal day, the crowd
  * level and nothing else) and the weather's two tokens, forecast and average (`WeatherKey`). Under „So liest du den Kalender“ the rarer mark, the early close. A
  * tile says closed, the level and „Zeiten folgen" in words, so none of them needs a key; what the
  * figure is and how far the forecast reaches are the chapter's questions.
  */
 export async function HubLegend() {
   const t = await getTranslations('tripHub.legend');
+  const tSignals = await getTranslations('attractions.historyLegend');
   const row = 'text-muted-foreground flex flex-wrap items-center gap-x-4 gap-y-2 text-xs';
   return (
     <div className="space-y-2">
@@ -75,6 +80,10 @@ export async function HubLegend() {
           <span aria-hidden className={cn(HUB_CELL, 'h-6 w-4', CROWD_TILE_CLASS.low)} />
           <span aria-hidden className={cn(HUB_CELL, 'h-6 w-4', CROWD_TILE_CLASS.high)} />
         </Key>
+        <li className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <DaySignalKey className={DAY_SIGNAL_CLASS.school} label={tSignals('schoolVacation')} />
+          <DaySignalKey className={DAY_SIGNAL_CLASS.holiday} label={tSignals('holiday')} />
+        </li>
         <li>
           <WeatherKey />
         </li>

@@ -14,9 +14,11 @@ import {
 } from 'react';
 import { useTranslations } from 'next-intl';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { CalendarDayTile, type CalendarDayTileProps } from '@/components/parks/calendar-day-tile';
 import { CalendarIcon, CalendarSeasonIcon } from '@/components/parks/calendar-icon-sprite';
 import { SEASON_ICON_QUIET_CLASS } from '@/components/parks/season-kind-icon';
+import { SignalBar, type SignalSegment } from '@/components/parks/signal-bar';
 import { cn } from '@/lib/utils';
 import { HubFilterChip as FilterChip } from './hub-filter-chip';
 import { useLocationHash } from '@/lib/hooks/use-location-hash';
@@ -548,8 +550,10 @@ function WeekNav({
       navRef.current?.querySelector<HTMLElement>(`[data-hub-week-chip="${shown}"]`)?.focus();
     }
   };
+  // The park calendar's month step (`Button` outline icon, 44 px on a phone); `aria-disabled`, not
+  // `disabled`, so the arrow keys still page from an arrow at either end.
   const arrow =
-    'border-border/60 hover:bg-muted/50 focus-visible:ring-ring inline-flex size-11 shrink-0 items-center justify-center rounded-full border transition-[opacity,background-color] focus-visible:ring-2 focus-visible:outline-none aria-disabled:cursor-default aria-disabled:opacity-40 aria-disabled:hover:bg-transparent sm:size-9';
+    'shrink-0 transition-[opacity,background-color] aria-disabled:cursor-default aria-disabled:opacity-40 aria-disabled:hover:bg-transparent';
   return (
     <div
       ref={navRef}
@@ -558,32 +562,38 @@ function WeekNav({
       onKeyDown={onKeyDown}
       className="flex scroll-mt-24 flex-wrap items-center gap-2"
     >
-      <button
+      <Button
         type="button"
+        variant="outline"
+        size="icon"
         data-hub-week-prev=""
         aria-label={t('weekPrev')}
         aria-disabled={week === 0}
         onClick={() => onWeek(week - 1, 'arrow')}
         className={arrow}
       >
-        <ChevronLeft aria-hidden className="size-5" />
-      </button>
+        <ChevronLeft aria-hidden className="h-4 w-4" />
+      </Button>
+      {/* Centred and fixed-width from `sm`, like the park calendar's month, so the arrows hold
+          still while the dates change length. */}
       <p
         aria-live="polite"
-        className="min-w-0 flex-1 text-center text-base font-semibold sm:min-w-56 sm:flex-none"
+        className="min-w-0 flex-1 text-center font-semibold sm:w-56 sm:flex-none"
       >
         {formatDateRange(current.from, current.to, locale, { weekday: true })}
       </p>
-      <button
+      <Button
         type="button"
+        variant="outline"
+        size="icon"
         data-hub-week-next=""
         aria-label={t('weekNext')}
         aria-disabled={week === last}
         onClick={() => onWeek(week + 1, 'arrow')}
         className={arrow}
       >
-        <ChevronRight aria-hidden className="size-5" />
-      </button>
+        <ChevronRight aria-hidden className="h-4 w-4" />
+      </Button>
       <div className="hidden flex-wrap items-center gap-2 sm:ml-auto sm:flex">
         {weeks.map((w, i) => (
           <FilterChip
@@ -866,21 +876,9 @@ const PhoneGroup = memo(function PhoneGroup({
                 >
                   {formatHubDate(day.date, locale, 'day')}
                 </time>
-                {holidays && (
-                  <span
-                    aria-hidden
-                    className={cn(
-                      'absolute top-1 right-1 size-1.5 rounded-full',
-                      DAY_SIGNAL_CLASS[day.isHoliday ? 'holiday' : 'school']
-                    )}
-                  />
-                )}
-                <span
-                  aria-hidden
-                  className={cn(
-                    'mt-0.5 h-1 w-full rounded-full',
-                    stormCode && STORM_SIGNAL_CLASS[stormSignal(stormCode)]
-                  )}
+                <SignalBar
+                  segments={daySignals(day, stormCode)}
+                  className="mt-0.5 w-[calc(100%+0.25rem)]"
                 />
               </button>
             </div>
@@ -1020,19 +1018,20 @@ function PhoneWeatherRow({
 }
 
 /** A day's holidays as one line: the signal colour of a public holiday or a school break, the names. */
-function HolidayLine({ day, names }: { day: TripCalendarDay; names: string }) {
-  return (
-    <span className="flex items-start gap-1.5 text-[11px] leading-tight">
-      <span
-        aria-hidden
-        className={cn(
-          'mt-[3px] size-1.5 shrink-0 rounded-full',
-          DAY_SIGNAL_CLASS[day.isHoliday ? 'holiday' : 'school']
-        )}
-      />
-      <span className="line-clamp-2">{names}</span>
-    </span>
-  );
+function HolidayLine({ names }: { names: string }) {
+  return <span className="line-clamp-2 block text-[11px] leading-tight">{names}</span>;
+}
+
+/**
+ * A day's segments of the signal bar under its date, in the crowd calendar's order: a school
+ * break, a public holiday, then the region's storm season, dashed before its peak.
+ */
+function daySignals(day: TripCalendarDay, storm: StormCode | undefined): SignalSegment[] {
+  const segments: SignalSegment[] = [];
+  if (day.isSchoolVacation) segments.push({ key: 'school', className: DAY_SIGNAL_CLASS.school });
+  if (day.isHoliday) segments.push({ key: 'holiday', className: DAY_SIGNAL_CLASS.holiday });
+  if (storm) segments.push({ key: 'storm', className: STORM_SIGNAL_CLASS[stormSignal(storm)] });
+  return segments;
 }
 
 /**
@@ -1199,7 +1198,7 @@ const Matrix = memo(function Matrix({
 
   const rowOf = new Map(rows.map((slug, i) => [slug, i]));
   return (
-    <div className="border-border/60 bg-card/40 rounded-xl border">
+    <div>
       <table
         ref={tableRef}
         role="grid"
@@ -1419,8 +1418,8 @@ function VisitedColumnKey({ className }: { className?: string }) {
 }
 
 /**
- * The grid's head: each date, a button that opens the day, with the storm season under it, then
- * the day's holidays. Its props do not change with the week, so paging skips it. The holidays' row
+ * The grid's head: each date, a button that opens the day, with the day's signal bar under it
+ * (school break, public holiday, storm season), then the names of the day's holidays. Its props do not change with the week, so paging skips it. The holidays' row
  * is drawn when a day of the window fills it, so turning a week never adds a row.
  */
 const MatrixHead = memo(function MatrixHead({
@@ -1494,14 +1493,13 @@ const MatrixHead = memo(function MatrixHead({
                 <span className="text-muted-foreground h-3 text-[9px]">
                   {dayBasis(day) === 'long_range' ? t('outlook') : ''}
                 </span>
-                {/* The storm season on the timeline itself, where a date is picked, not in a
-                    lane under the calendar; the empty bar keeps every date the same height. */}
-                <span
-                  aria-hidden
-                  className={cn(
-                    'mt-0.5 h-1.5 w-[calc(100%+0.25rem)]',
-                    stormCode && STORM_SIGNAL_CLASS[stormSignal(stormCode)]
-                  )}
+                {/* The day's signals on the timeline itself, where a date is picked: the crowd
+                    tile's bar (`SignalBar`), a segment each for a school break, a public holiday
+                    and the storm season. Wider than the column by the gap, so a run of days
+                    reads as one line. */}
+                <SignalBar
+                  segments={daySignals(day, stormCode)}
+                  className="mt-0.5 w-[calc(100%+0.25rem)]"
                 />
               </button>
             </th>
@@ -1518,7 +1516,7 @@ const MatrixHead = memo(function MatrixHead({
             const day = days[slot.index];
             return (
               <td key={day.date} className={cn('h-8 px-1 align-top', HUB_WEEK_CELL[slot.week])}>
-                {holidays[slot.index] && <HolidayLine day={day} names={holidays[slot.index]} />}
+                {holidays[slot.index] && <HolidayLine names={holidays[slot.index]} />}
               </td>
             );
           })}
@@ -1900,8 +1898,8 @@ const ParkEventRows = memo(function ParkEventRows({
 
 /**
  * The school breaks of the week shown, above the phone's cards, in the region's words („US-Schulferien:
- * Thanksgiving Break, 21.–29. Nov.") beside the dot each of their dates carries. They belong to no
- * park, so they have no bar. Every week's line stacks in one cell, so paging moves nothing.
+ * Thanksgiving Break, 21.–29. Nov.") beside the yellow of the bar under their dates. They belong to
+ * no park, so they have no event bar. Every week's line stacks in one cell, so paging moves nothing.
  */
 function BreakKey({
   lanes,
@@ -1934,7 +1932,7 @@ function BreakKey({
             <span key={lane.id} className="flex items-center gap-1.5">
               <span
                 aria-hidden
-                className={cn('size-1.5 shrink-0 rounded-full', DAY_SIGNAL_CLASS.school)}
+                className={cn('h-[3px] w-3 shrink-0 rounded-full', DAY_SIGNAL_CLASS.school)}
               />
               {tRegion('break', {
                 name: lane.name

@@ -83,7 +83,8 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   measured a year back) keeps its "outlook" label. A last-year day is never offered as a pick: no
   ring and no star.
 - **The storm season** (Orlando's hurricanes, Japan's typhoons) is on the timeline itself, where a
-  date is picked: a bar under each date of the week grid and of the phone's week, by
+  date is picked: a segment of the signal bar under each date of the week grid and of the phone's
+  week (`SignalBar`, below), by
   the planner's own `stormCodeOn` from the region's `weather.storm`, and its name in the grid's
   first column and above the list (`StormKey`). The signal violet (`STORM_SIGNAL_CLASS`), dashed for the
   season, solid for its peak, in `tripPlanner.climate`'s words, and in the date's accessible name.
@@ -184,10 +185,16 @@ number would (`ChapterHeading` without `index`): the order is the calendar first
 reads as what the chapter is about, where „01“ said only where it stands.
 
 1. **Die nächsten 30 Tage** (`HubCalendar`, client; on a month page „Tag für Tag im <month>“),
-   with one line under the title: „Bei jedem Park ist sein ruhigster Tag der Woche markiert“. The
+   with one line under the title: „Bei jedem Park ist sein ruhigster Tag der Woche markiert“. From
+   `lg` the chapter is the park calendar's box: a frosted heading band (`ChapterHeading frosted`)
+   as the lid of a glass card (`TILE_GLASS_LG`) holding the key, the week's arrows, the grid and
+   the lines under it; the table draws no card of its own inside it. A phone keeps its resort
+   cards without a frame around them, since a 44 px tile has no width to give. The week's arrows
+   are the park calendar's month step (`Button` outline icon, 44 px on a phone), the dates between
+   them centred at a fixed width so the arrows hold still. The
    question a visitor brings is which day to give each park, since a trip visits every park once,
    not the same park five times. The key comes first (`HubLegend`, handed in as `legend`): the peak
-   wait, the ring with the star (each park's quietest day of the week), the ring with the tick (a
+   wait, the ring with the star (each park's quietest day of the week), the signal bar's school break and public holiday, the ring with the tick (a
    day the visitor picked) and one line for the colour; under „So liest du den Kalender“ the early
    close. Under the key one line says what a press on a tile does (`HubPickLine`, below). Then a
    week at a time, because a wall of thirty similar numbers decided nothing:
@@ -241,18 +248,21 @@ reads as what the chapter is about, where „01“ said only where it stands.
    - **From `lg`** a `<table role="grid">` with a caption naming the week, `scope`d headers, one tab
      stop and arrow keys within the week, Enter plans the day: parks by resort down the side, each
      with its quietest day under its name, seven tiles across. Above the tiles each date (a button
-     to the day, in the tab order), the
-     storm bar and „Ferien & Feiertage“ with the signal dot of a public holiday or a school break,
+     to the day, in the tab order) with its signal bar, the crowd tile's own (`SignalBar` in
+     `components/parks/signal-bar.tsx`): a 3 px bar, a segment each for a school break (yellow), a
+     public holiday (red) and the storm season (violet), wider than its column by the gap, so a
+     run of days reads as one line; the park calendar draws the same bar along a tile's top edge,
+     and both legends key the same colours. Under it „Ferien & Feiertage“ names the day's holidays,
      that row only where a day of the window fills it, so a week never adds one. A park whose whole
      window says one thing (Saisonpause, no hours yet, open without a forecast, `parkState`) is one
      line instead of seven tiles.
    - **A phone** gets the same grid at its width (`PhoneWeek`): a card per resort with the week's
-     dates (a button each, the storm bar, a dot for a holiday), then each park's name with its
+     dates (a button each, with the same signal bar), then each park's name with its
      quietest day and its seven days as 44 px tiles (`CalendarDayTile`, `density="mini"`: the wait
      without its unit, the star in the corner, the rest in the tile's accessible name and the day
      sheet). Above the cards, the week's US school breaks in one line each („US-Schulferien:
      Thanksgiving-Ferien, 21.–29. Nov.“, `BreakKey`), the planner's runs (`breakRuns`), beside
-     the dot their dates carry.
+     the yellow of the bar under their dates.
    - **Each park's events go under its tiles, on the same seven columns** (`parkWeekEvents`, a
      week of one park). Under the old design a lane of 30 notches without dates sat below the
      whole grid, and a visitor in November 2026 could not tell which day a party fell on. Now:

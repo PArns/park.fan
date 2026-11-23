@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
  * The line above the hub calendar's grid that says what a press on a tile does. Without a pick:
  * pick a day at a park and the other parks show their quietest free day. With picks: how many days
  * are planned, that the stars now mark the free days, and a button that clears them. The button
- * stays mounted and fades, so the line keeps its height. `announced` is what the last press
+ * stays mounted and fades, out of the flow while hidden. `announced` is what the last press
  * changed, for a screen reader (`aria-live`).
  */
 export function HubPickLine({
@@ -24,7 +24,7 @@ export function HubPickLine({
   const t = useTranslations('tripHub.calendar');
   const picking = count > 0;
   return (
-    <div className="text-muted-foreground flex min-h-11 flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:min-h-8">
+    <div className="text-muted-foreground relative flex min-h-11 flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:min-h-8">
       <p className="flex min-w-0 items-center gap-1.5">
         {picking ? (
           <span
@@ -54,7 +54,8 @@ export function HubPickLine({
         tabIndex={picking ? 0 : -1}
         className={cn(
           'text-primary-ink hover:text-foreground min-h-11 text-xs font-medium underline-offset-2 transition-[opacity,visibility] duration-200 hover:underline sm:min-h-0',
-          !picking && 'invisible opacity-0'
+          // Out of the flow while hidden, so on a phone it holds no empty line of its own.
+          !picking && 'invisible absolute right-0 opacity-0'
         )}
       >
         {t('picksReset')}
