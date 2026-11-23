@@ -61,7 +61,8 @@ interface ParkTitleHeaderProps {
    * column (`TitleCardWindowSplit`).
    */
   windowPane?: TitleCardWindow;
-  /** A rail along the card's bottom edge, under the window — the park's fresh news. */
+  /** A rail along the card's bottom edge, under the window — the park's fresh news. Always the
+   *  card's last child. */
   note?: React.ReactNode;
 }
 
@@ -244,11 +245,13 @@ export async function ParkTitleHeader({
               </ParkLinksFlyout>
             )}
           </div>
+          {/* In the text column, not under the split: the window and the rail both reach into the
+            card's bottom padding (`-mb-6`), so anything after them lands on top of them. */}
+          {children}
         </div>
       </TitleCardWindowSplit>
 
       {note}
-      {children}
     </>
   );
 }
