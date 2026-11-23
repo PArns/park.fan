@@ -2796,6 +2796,26 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Switch Track'],
   },
   {
+    id: 'drop',
+    name: 'Abfahrt',
+    shortDefinition:
+      'Jede weitere Abfahrt nach der ersten, auf Achterbahnen und Wasserbahnen mit mehreren Liften.',
+    definition:
+      'Eine Abfahrt ist ein Gefälle im Streckenverlauf. Die erste nach Lifthill oder Launch hat einen eigenen Begriff, den First Drop; jede spätere heißt einfach Abfahrt. Fahrgeschäfte mit mehr als einem Lift haben mehrere: Eine Wildwasserbahn fährt oft zweimal hoch und zweimal hinunter, und jede Abfahrt endet im Wasser.\n\nWelche Abfahrt die größte ist, ist unterschiedlich. Auf [Chiapas](/de/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) im Phantasialand ist die letzte von drei Abfahrten die höchste, mit über 15 Metern und 53 Grad.',
+    relatedTermIds: ['first-drop', 'lifthill', 'splashdown'],
+    aliases: ['Abfahrten', 'Gefälle'],
+  },
+  {
+    id: 'backwards-drop',
+    name: 'Rückwärts-Abfahrt',
+    shortDefinition:
+      'Eine Abfahrt, die rückwärts gefahren wird, meist nachdem eine Weiche den Zug oder das Boot umgelenkt hat.',
+    definition:
+      'Bei einer Rückwärts-Abfahrt geht es mit dem Rücken voran hinunter. Die Fahrgäste sehen nicht, was kommt, und dadurch wirkt schon eine mittlere Höhe größer. Dafür hält die Bahn das Fahrzeug auf einer Weiche oder in einer Sackgasse an und schickt es den Weg zurück, den es gekommen ist.\n\nAuf [Chiapas](/de/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) im Phantasialand fährt das Boot in einen Tempel, der sich als Sackgasse herausstellt, und stürzt dann fast zehn Meter rückwärts hinaus. Eine zweite Weiche unten dreht es wieder in Fahrtrichtung.',
+    relatedTermIds: ['switch-track', 'drop', 'first-drop'],
+    aliases: ['Rückwärtsabfahrt', 'Rückwärtsschuss'],
+  },
+  {
     id: 'turntable',
     name: 'Drehscheibe',
     shortDefinition:

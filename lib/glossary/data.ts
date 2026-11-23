@@ -3193,6 +3193,30 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'drop',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'drop',
+      de: 'abfahrt',
+      fr: 'descente',
+      it: 'discesa',
+      nl: 'afdaling',
+      es: 'bajada',
+    },
+  },
+  {
+    id: 'backwards-drop',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'backwards-drop',
+      de: 'rueckwaerts-abfahrt',
+      fr: 'descente-en-arriere',
+      it: 'discesa-all-indietro',
+      nl: 'achterwaartse-afdaling',
+      es: 'bajada-hacia-atras',
+    },
+  },
+  {
     id: 'turntable',
     category: 'coaster-elements',
     slugs: {

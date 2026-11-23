@@ -2755,6 +2755,25 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Switch Track'],
   },
   {
+    id: 'drop',
+    name: 'Afdaling',
+    shortDefinition:
+      'Elke afdaling na de eerste, op een achtbaan of waterattractie met meerdere liften.',
+    definition:
+      'Een afdaling is een helling in het parcours. De eerste na de lifthill of lancering heeft een eigen term, de first drop; elke latere heet gewoon afdaling. Attracties met meer dan één lift hebben er meerdere: een boomstamattractie gaat vaak twee keer omhoog en twee keer omlaag, en elke afdaling eindigt in het water.\n\nDe grootste is niet altijd de eerste. Op [Chiapas](/nl/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) in Phantasialand is de laatste van drie afdalingen de hoogste, ruim 15 meter onder 53 graden.',
+    relatedTermIds: ['first-drop', 'lifthill', 'splashdown'],
+    aliases: ['afdalingen'],
+  },
+  {
+    id: 'backwards-drop',
+    name: 'Achterwaartse afdaling',
+    shortDefinition:
+      'Een afdaling die achteruit wordt gereden, meestal nadat een wissel de trein of boot heeft teruggestuurd.',
+    definition:
+      'Bij een achterwaartse afdaling gaat de trein of boot met de achterkant voorop naar beneden. De passagiers zien niet wat er komt, en daardoor voelt een gemiddelde hoogte groter. Om daar te komen stopt de attractie het voertuig op een wissel of in een doodlopend stuk en stuurt het terug langs de weg die het kwam.\n\nOp [Chiapas](/nl/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) in Phantasialand vaart de boot een tempel in die doodlopend blijkt, en valt er dan bijna tien meter achteruit weer uit. Een tweede wissel onderaan zet hem weer met de neus vooruit.',
+    relatedTermIds: ['switch-track', 'drop', 'first-drop'],
+  },
+  {
     id: 'turntable',
     name: 'Draaischijf',
     shortDefinition:

@@ -13,6 +13,8 @@ const KINDS: Record<string, ElementKind> = {
   lifthill: 'launch',
   'vertical-lift': 'launch',
   'first-drop': 'launch',
+  drop: 'launch',
+  'backwards-drop': 'launch',
   'beyond-vertical-drop': 'launch',
   'dive-drop': 'launch',
   'drop-track': 'launch',

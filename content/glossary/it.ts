@@ -2769,6 +2769,25 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Switch Track'],
   },
   {
+    id: 'drop',
+    name: 'Discesa',
+    shortDefinition:
+      "Ogni discesa dopo la prima, su un coaster o un'attrazione acquatica con più lift.",
+    definition:
+      "Una discesa è un tratto in pendenza del percorso. La prima dopo il lift o il lancio ha un termine proprio, il first drop; ogni discesa successiva è semplicemente una discesa. Le attrazioni con più di un lift ne hanno diverse: un log flume spesso sale due volte e scende due volte, e ogni discesa finisce in acqua.\n\nLa più grande non è sempre la prima. Su [Chiapas](/it/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) a Phantasialand l'ultima delle tre discese è la più alta, oltre 15 metri con 53 gradi di pendenza.",
+    relatedTermIds: ['first-drop', 'lifthill', 'splashdown'],
+    aliases: ['discese'],
+  },
+  {
+    id: 'backwards-drop',
+    name: "Discesa all'indietro",
+    shortDefinition:
+      "Una discesa percorsa all'indietro, di solito dopo che uno scambio ha rimandato indietro il treno o la barca.",
+    definition:
+      "In una discesa all'indietro il treno o la barca scende la pendenza a ritroso. I passeggeri non vedono cosa arriva, e anche un'altezza media sembra più grande. Per arrivarci, l'attrazione ferma il veicolo su uno scambio o in un vicolo cieco e lo rimanda indietro da dove è venuto.\n\nSu [Chiapas](/it/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) a Phantasialand la barca entra in un tempio che si rivela un vicolo cieco, e ne esce con una discesa all'indietro di quasi dieci metri. Un secondo scambio in fondo la rimette nel verso giusto.",
+    relatedTermIds: ['switch-track', 'drop', 'first-drop'],
+  },
+  {
     id: 'turntable',
     name: 'Piattaforma girevole',
     shortDefinition:
