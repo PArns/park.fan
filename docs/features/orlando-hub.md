@@ -194,9 +194,12 @@ reads as what the chapter is about, where „01“ said only where it stands.
    them centred at a fixed width so the arrows hold still. The
    question a visitor brings is which day to give each park, since a trip visits every park once,
    not the same park five times. The key comes first (`HubLegend`, handed in as `legend`): the peak
-   wait, the ring with the star (each park's quietest day of the week), the signal bar's school break and public holiday, the ring with the tick (a
-   day the visitor picked) and one line for the colour; under „So liest du den Kalender“ the early
-   close. Under the key one line says what a press on a tile does (`HubPickLine`, below). Then a
+   wait, the ring with the star (each park's quietest day of the week), the ring with the tick (a
+   day the visitor picked), the colour, the signal bar's school break and public holiday, the early
+   close's folded corner and the weather, all in one list (a disclosure held the early close
+   alone, a click for one key). Above it the resorts as checkboxes (`HubFilterChip` with `check`):
+   several can be ticked at once, „Alle Parks“ clears the ticks, every resort ticked reads as all.
+   Under the key one line says what a press on a tile does (`HubPickLine`, below). Then a
    week at a time, because a wall of thirty similar numbers decided nothing:
    - **The week.** Seven days from the window's first (the region's today on the hub), so the first
      week is the one ahead („Sa., 14. – Fr., 20. Nov.“); the last week holds what is left and keeps
@@ -229,22 +232,31 @@ reads as what the chapter is about, where „01“ said only where it stands.
      both themes without reading as one.
    - **A press on a park's tile plans that park on that day** (`hubPicks` in
      `lib/trip-regions/hub-picks.ts`, per region in localStorage, none on the server and while
-     hydrating). The tile gets a tick in the star's place and a ring a pixel stronger
-     (`TILE_PICKED_RING`), the other parks' tiles of that date fade (`HUB_CELL_TAKEN`), and the
-     week is planned around it (`weekMarks`): the parks picked keep their day, and every other park
-     gets a free day of its own, as many parks as there are free days, spread so their days lie the
-     least above each park's quietest free day in printed minutes (`spreadParks`, exact over the
-     free days as a bit mask). Without that spread, one pick moved six stars onto the same next
-     day. A park left over, with more parks than free days, and a park ticked off as visited keep
-     their quietest free day and claim none. One day per park and week: a press on another day of
-     the same park moves its pick, a press on the picked day takes it back, a press on a date
-     another park holds moves the date over (`pickHubDay`). A closed tile takes no press. The
-     star's name says which it is (`quietest`, or `quietestFree` in a week with a pick), and so
-     does the note beside the park, a tick and the picked day instead of the star. The line above
-     the grid (`HubPickLine`) says what a press does, or how many days are planned with
-     „Auswahl zurücksetzen“, which stays mounted and fades; a screen reader hears each press
-     („Disneyland am Montag, 23. November eingeplant“, `aria-live`). „Reise löschen“ clears the
-     picks with the trip (`clearTrip`).
+     hydrating). A press is a switch per day (`pickHubDay`): it adds the day to the park, so a park
+     can be planned on as many days as a visitor wants to spend there; a press on a picked day takes
+     it back; a press on a date another park holds moves the date over. A closed tile takes no
+     press. The tile gets a tick and a ring a pixel stronger in the pick's own fuchsia
+     (`TILE_PICKED_RING`, `PICK_BADGE`, `--signal-pick`), so a choice never reads as the star's blue
+     suggestion; the other parks' tiles of that date fade (`HUB_CELL_TAKEN`); beside the park's name
+     a fuchsia „2×“ counts its planned days in the window (`PlannedCount`), and the note under it
+     names the week's picked days („✓ Di., 24. · Fr., 27.“) above its star.
+   - **The stars stay.** The week is planned around the picks (`weekMarks`): every park without a
+     pick that week gets a free day of its own, as many parks as there are free days, spread so
+     their days lie the least above each park's quietest free day in printed minutes
+     (`spreadParks`, exact over the free days as a bit mask); without that spread one pick moved
+     six stars onto the same next day. A park with picks, a park left over (more parks than free
+     days) and a park ticked off as visited keep their star on their quietest free day, so a planned
+     park still shows where a further visit would be quietest. The star's name says which it is
+     (`quietest`, or `quietestFree` in a week with a pick).
+   - **Into the trip planner.** The line above the grid (`HubPickLine`) says what a press does; with
+     picks it counts the days, says what the stars mean now and offers „In den Reiseplaner
+     übernehmen“ and „Auswahl zurücksetzen“, which stay mounted and fade. The first turns the picks
+     into a plan (`picksPlanQuery`): from the first picked day to the last, at most a trip's 21 days,
+     both ends park days; each picked park with as many visits as it has days (at most three); every
+     picked day locked to its park (`lock=`), so the plan keeps the visitor's days and fills the
+     rest. The planner on screen takes it through `tripPlannerBridge.apply`, else the hub opens with
+     the query at `#planner`. A screen reader hears each press („Disneyland am Montag, 23. November
+     eingeplant“, `aria-live`). „Reise löschen“ clears the picks with the trip (`clearTrip`).
    - **From `lg`** a `<table role="grid">` with a caption naming the week, `scope`d headers, one tab
      stop and arrow keys within the week, Enter plans the day: parks by resort down the side, each
      with its quietest day under its name, seven tiles across. Above the tiles each date (a button

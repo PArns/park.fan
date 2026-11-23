@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import type { SeasonEventKind } from '@/lib/parks/park-season-days';
 import { cn } from '@/lib/utils';
-import { TILE_BEST_RING, TILE_PICKED_RING } from './calendar-tile-marks';
+import { PICK_BADGE, TILE_BEST_RING, TILE_PICKED_RING } from './calendar-tile-marks';
 import { SignalBar, type SignalSegment } from './signal-bar';
 import {
   CROWD_TEXT_CLASS,
@@ -137,7 +137,10 @@ export function CalendarDayTile({
         {picked ? (
           <span
             aria-hidden
-            className="bg-primary text-primary-foreground absolute top-0.5 left-0.5 flex size-3.5 items-center justify-center rounded-full"
+            className={cn(
+              PICK_BADGE,
+              'absolute top-0.5 left-0.5 flex size-3.5 items-center justify-center rounded-full'
+            )}
           >
             <CalendarIcon name="check" className="size-2.5" strokeWidth={3.5} />
           </span>
@@ -270,7 +273,10 @@ export function CalendarDayTile({
             role="img"
             aria-label={picked}
             title={picked}
-            className="bg-primary text-primary-foreground flex size-3.5 shrink-0 items-center justify-center rounded-full"
+            className={cn(
+              PICK_BADGE,
+              'flex size-3.5 shrink-0 items-center justify-center rounded-full'
+            )}
           >
             <CalendarIcon name="check" className="size-2.5" strokeWidth={3.5} />
           </span>

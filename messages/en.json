@@ -437,8 +437,7 @@
       "minutes": "Peak wait at the big rides, in minutes",
       "quietest": "quietest day of the week at that park",
       "early": "closes early for day guests",
-      "howTo": "How to read this",
-      "colour": "Colour: the day against a normal day at that park",
+      "colour": "Colour: busier or quieter than a normal day at this park",
       "picked": "planned by you"
     },
     "calendar": {
@@ -472,14 +471,15 @@
       "sourcesTravel": "Travel times: {attribution}",
       "titleMonth": "Day by day in {month}",
       "picked": "planned by you",
-      "quietestFree": "suggested free day",
+      "quietestFree": "best day still free",
       "cellTaken": "already planned for {park}",
-      "pickHint": "Pick a day at a park to plan it. The other parks then each get a free day of their own, as quiet as possible.",
+      "pickHint": "Select a day to plan the park on it; select it again to remove it. You can plan several days per park.",
       "picksCount": "{count, plural, one {# day planned} other {# days planned}}",
-      "picksNote": "The stars give every other park a free day of its own, as quiet as possible.",
+      "picksNote": "The stars show each park’s best day that is still free.",
       "picksReset": "Clear picks",
       "pickedAnnounce": "{park} planned for {date}",
-      "unpickedAnnounce": "{park} no longer planned for {date}"
+      "unpickedAnnounce": "{park} no longer planned for {date}",
+      "picksApply": "Use in the trip planner"
     },
     "lanes": {
       "expected": "dates expected",
@@ -490,13 +490,13 @@
       "allWeek": "All week: {names}"
     },
     "sheet": {
-      "intro": "Each resort’s best park comes first; an early close counts against it",
+      "intro": "In each resort the park with the shortest wait comes first. An early close counts against a park.",
       "stayingAt": "Hotel",
       "minutes": "{minutes} min",
       "noForecast": "open, no forecast",
       "closedFor": "Closed: {name}",
-      "lastYear": "Last year’s figure: the same weekday, as we measured it.",
-      "outlook": "Outlook: a wider error than the forecast.",
+      "lastYear": "Last year’s figure, measured on the same weekday.",
+      "outlook": "Outlook: less accurate than the forecast.",
       "ticketedEvening": "{name} from {time}: day guests leave at {leave}",
       "eveningEvent": "Evening event",
       "shorterDay": "Shorter day: day guests leave at {leave}",
@@ -508,12 +508,12 @@
       "ridesHint": "Each ride at its busiest time of day.",
       "planDay": "Open in the day planner",
       "planTrip": "Plan a trip from this day",
-      "noHoursFigure": "No hours published yet. The figure is the forecast; hours are not counted.",
+      "noHoursFigure": "No opening hours yet. The wait is forecast all the same.",
       "ahead": "Ranked above {park}, where day guests must leave at {time}."
     },
     "when": {
       "none": "The quietest trips of the year could not be loaded.",
-      "lastYearNote": "Dates more than 60 days ahead are ranked on last year’s measured days.",
+      "lastYearNote": "For dates more than 60 days ahead we use last year’s measurements.",
       "rank": "No. {rank}",
       "plan": "Plan this trip",
       "allWeeks": "Compare every week of the year",
@@ -541,7 +541,7 @@
       "open": "Open the trip planner"
     },
     "tile": {
-      "line": "The quietest day of each week for all {count} parks {inRegion}, from the peak-wait forecast",
+      "line": "For all {count} parks {inRegion}: the quietest day of each week, from our peak-wait forecast",
       "question": "Which day is quietest at {resort}?",
       "calendarResort": "{resort} Crowd Calendar"
     },
@@ -553,11 +553,11 @@
         "qMonth": "Which park is quietest in {month}?"
       },
       "accuracy": {
-        "planner": "The further away the day, the larger the error. It is the same measure as “How accurate is this?” in the trip planner, which states it with every plan.",
+        "planner": "The further away the day, the larger the error. The trip planner gives it for every plan under “How accurate is this?”.",
         "plannerNoFigure": "The further away the day, the larger the error; the trip planner states it in minutes with every plan, under “How accurate is this?”.",
         "q": "How far ahead does the forecast reach, and how accurate is it?",
-        "horizon": "The forecast reaches 60 days ahead. Further out a day shows the same weekday last year as we measured it, and the trip planner ranks those days on last year too: the long-range forecast ran well too low and almost flat for them, and last year’s measured days come closer.",
-        "figure": "Over the last {days} days our forecast of the peak wait, made {lead, plural, =1 {a day} =7 {a week} other {# days}} ahead, was off by {minutes} min on average, measured across {parks} parks.",
+        "horizon": "The forecast reaches 60 days ahead. For later days we show last year’s measurement for the same weekday, and the trip planner uses it too. The long-range forecast ran well too low and almost flat for those days; last year comes closer.",
+        "figure": "Made {lead, plural, =1 {a day} =7 {a week} other {# days}} ahead, our forecast of the peak wait was off by {minutes} min on average over the last {days} days. We measured it across {parks} parks.",
         "rounding": "Days less than five minutes apart count as equal."
       },
       "breaks": {
@@ -570,7 +570,7 @@
       "title": "Frequently asked questions",
       "events": {
         "party": "{name} ({parks}, {count, plural, =1 {# night} other {# nights}}, separate ticket)",
-        "partyNote": "On a separately ticketed night the park closes early for day guests; in the calendar such a day has a corner.",
+        "partyNote": "On a separately ticketed night the park closes early for day guests. In the calendar such a day has a folded corner at the top right.",
         "q": "Which events are on in the coming weeks?",
         "aMonth": "On in {month}: {list}.",
         "qMonth": "Which events are on in {month}?",
@@ -610,7 +610,7 @@
       "links": "The model behind it: <fancast>Fancast</fancast>. Everything else: <howto>how park.fan works</howto>.",
       "hours": {
         "q": "How long are the parks open in the coming weeks?",
-        "early": "On {count, plural, =1 {# day} other {# days}} at least one big park closes earlier than usual for day guests; in the calendar such a day has a corner.",
+        "early": "On {count, plural, =1 {# day} other {# days}} at least one big park closes earlier than usual for day guests. In the calendar these days have a folded corner at the top right.",
         "park": "{park} {hours}",
         "qMonth": "How long are the parks open in {month}?",
         "a": "The big parks’ most common hours: {parks}."
@@ -623,12 +623,12 @@
       "link": "{park} Crowd Calendar"
     },
     "accuracy": {
-      "line": "Our forecast of the peak wait, made {lead, plural, =1 {a day} =7 {a week} other {# days}} ahead, was <link>off by {minutes} min on average</link> over the last {days} days."
+      "line": "Made {lead, plural, =1 {a day} =7 {a week} other {# days}} ahead, our forecast was <link>off by {minutes} min on average</link> over the last {days} days."
     },
     "question": "Which park on which day?",
     "nextTitle": "{region} trip planner",
     "regionGuide": "{region} travel guide",
-    "lastYearFrom": "From {date}: last year’s figures, each the same weekday as we measured it.",
+    "lastYearFrom": "From {date} we show last year’s measurements, each from the same weekday.",
     "howItWorks": {
       "title": "How the trip planner plans your days {inRegion}",
       "planTitle": "Your trip",
@@ -3995,7 +3995,7 @@
       "bandAxis": "Bar from {from} to {to}"
     },
     "details": {
-      "minutesCaption": "The peak wait: the big rides’ wait at their busiest, the figure the plan compares days by. The colour compares the day with this park’s typical day.",
+      "minutesCaption": "Peak wait: how long you queue for the big rides at the busiest time. The plan compares days by it. The colour shows whether the day is busier or quieter than usual for this park.",
       "hours": "Open {range}",
       "noHours": "No hours published for this day yet.",
       "earlyYours": {
@@ -6602,7 +6602,7 @@
     "typicalHigh": "Daytime usually <range></range>",
     "typicalLow": "at night usually <range></range>",
     "wetDays": "{count, plural, =0 {rarely rain} =1 {rain on 1 day in 10} other {rain on # days in 10}}",
-    "detailNote": "Average of {period} for this date; on half of those days the value fell within the range. Forecasts reach about 16 days ahead.",
+    "detailNote": "Average of {period} for this date. On half of those days the value fell within the range. A forecast comes about 16 days ahead.",
     "keyForecast": "Forecast",
     "normalSpan": "Average of past years for these {count} days, not a forecast",
     "rowLabel": "Weather in {park}"

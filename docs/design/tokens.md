@@ -117,6 +117,21 @@ keeps the storm season's distance from both.
 | light                          | 6.19 on white | 4.98             | `extreme` 0.143, closed 0.161, storm 0.220 | `oklch(0.52 0.22 350)` |
 | dark (card `oklch(0.205 0 0)`) | 7.16          | 5.96             | `extreme` 0.127, storm 0.158               | `oklch(0.74 0.17 350)` |
 
+## Pick
+
+`--signal-pick` (`ring-signal-pick`, `bg-signal-pick`) marks a day the visitor picked in the trip
+hub's calendar: the tile's ring (`TILE_PICKED_RING`) and the round badge behind the tick
+(`PICK_BADGE`, the tick in `text-background`), in `components/parks/calendar-tile-marks.ts`. Fuchsia,
+because the star's suggestion beside it is the brand blue and the hue wheel around them is taken:
+the crowd tiers from teal to red, the storm violet, the holiday signals. It keeps the heat magenta's
+distance from its neighbours; heat never shows in the hub's calendar. A ring is a graphic and needs
+3 : 1, the tick on the badge too:
+
+| `--signal-pick` | on the page   | on the weakest tile | tick on it | nearest neighbours (OKLab)                | value                  |
+| --------------- | ------------- | ------------------- | ---------- | ----------------------------------------- | ---------------------- |
+| light           | 4.49 on white | 3.84                | 4.49       | heat 0.129, storm 0.141                   | `oklch(0.6 0.24 325)`  |
+| dark            | 7.90          | 7.15 on the card    | 7.90       | heat 0.234, storm 0.247, brand blue 0.250 | `oklch(0.74 0.18 330)` |
+
 ## Badges
 
 A badge is `Badge` (`components/ui/badge.tsx`) plus **one** class from `@layer utilities` that

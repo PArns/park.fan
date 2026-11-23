@@ -3,22 +3,27 @@
 import { Check, MousePointerClick } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { PICK_BADGE } from '@/components/parks/calendar-tile-marks';
 
 /**
  * The line above the hub calendar's grid that says what a press on a tile does. Without a pick:
  * pick a day at a park and the other parks show their quietest free day. With picks: how many days
- * are planned, that the stars now mark the free days, and a button that clears them. The button
- * stays mounted and fades, out of the flow while hidden. `announced` is what the last press
+ * are planned, what the stars mean now, the button that takes the picks into the trip planner and
+ * the one that clears them. The buttons stay mounted and fade, out of the flow while hidden. `announced` is what the last press
  * changed, for a screen reader (`aria-live`).
  */
 export function HubPickLine({
   count,
   announced,
+  onApply,
   onReset,
 }: {
   /** The days of the window with a pick. */
   count: number;
   announced: string;
+  /** Opens the trip planner on the picks (`picksPlanQuery`). */
+  onApply: () => void;
   onReset: () => void;
 }) {
   const t = useTranslations('tripHub.calendar');
@@ -29,7 +34,10 @@ export function HubPickLine({
         {picking ? (
           <span
             aria-hidden
-            className="bg-primary text-primary-foreground flex size-4 shrink-0 items-center justify-center rounded-full"
+            className={cn(
+              PICK_BADGE,
+              'flex size-4 shrink-0 items-center justify-center rounded-full'
+            )}
           >
             <Check className="size-3" strokeWidth={3.5} />
           </span>
@@ -47,19 +55,26 @@ export function HubPickLine({
           )}
         </span>
       </p>
-      <button
-        type="button"
-        onClick={onReset}
+      {/* Mounted while hidden and out of the flow, so they fade and hold no empty line on a phone. */}
+      <span
         aria-hidden={!picking}
-        tabIndex={picking ? 0 : -1}
         className={cn(
-          'text-primary-ink hover:text-foreground min-h-11 text-xs font-medium underline-offset-2 transition-[opacity,visibility] duration-200 hover:underline sm:min-h-0',
-          // Out of the flow while hidden, so on a phone it holds no empty line of its own.
+          'flex items-center gap-3 transition-[opacity,visibility] duration-200',
           !picking && 'invisible absolute right-0 opacity-0'
         )}
       >
-        {t('picksReset')}
-      </button>
+        <Button type="button" size="sm" onClick={onApply} tabIndex={picking ? 0 : -1}>
+          {t('picksApply')}
+        </Button>
+        <button
+          type="button"
+          onClick={onReset}
+          tabIndex={picking ? 0 : -1}
+          className="text-primary-ink hover:text-foreground min-h-11 text-xs font-medium underline-offset-2 hover:underline sm:min-h-0"
+        >
+          {t('picksReset')}
+        </button>
+      </span>
       <p aria-live="polite" className="sr-only">
         {announced}
       </p>
