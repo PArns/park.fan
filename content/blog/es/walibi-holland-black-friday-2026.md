@@ -2,7 +2,7 @@
 title: 'Walibi Holland rebaja el pase anual hasta el 30 de noviembre'
 translationKey: walibi-holland-black-friday-2026
 date: '2026-11-23'
-time: '12:00'
+time: '13:56'
 author: patrick
 mode: published
 featured: false

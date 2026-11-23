@@ -2,7 +2,7 @@
 title: 'Walibi Holland sconta gli abbonamenti fino al 30 novembre'
 translationKey: walibi-holland-black-friday-2026
 date: '2026-11-23'
-time: '12:00'
+time: '13:56'
 author: patrick
 mode: published
 featured: false
