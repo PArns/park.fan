@@ -92,51 +92,15 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   low–high, past its reach the date's average over past years, muted with a history mark and the
   range half of such days' highs fell in („Ø 15–19°“, `DayWeather` in
   `components/common/day-weather.tsx`). A resort is one place, read at its first park
-  (`weatherParks`), so Japan shows Tokyo, Osaka, Fuji and Nagoya each their own. The phone's resort
-  card gives each date the forecast's icon and high, or „Ø 17°“. A key under the grid and above the
-  phone's list says what „Ø“ is (`ClimateNormalKey`). `sliceCalendar` keeps the weather of those
-  parks only, and of it only the fields the row draws.
-
-## Simple first, more on request
-
-| Level | What                        | Where                                                                                                           |
-| ----- | --------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| 0     | what the page is for        | the head: the question, one line, „Reise planen“, „Zum Kalender“ and what the planner asks                      |
-| 0     | the answer                  | under the buttons: the day's tip, the best park per resort on one named day, the quietest days ahead            |
-| 1     | the overview                | a week: tiles with wait, level, hours; each park's quietest day ringed and starred, its events as bars under it |
-| 2     | everything else about a day | the day sheet: ranked parks, hours, perks, evenings, seasons, travel, five rides                                |
-| 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date                                    |
-
-The head stands on Parky's picture of the region (`hub.scene`, `/media/reiseplaner/parky-<region>-tag.webp`),
-the one the header's planner band, the park pages' tile and the blog's head show, not on a park
-photo: the hub is the planner's page and the calendar's, for every park of the region. The closing band
-shows the same scene in the evening (`hub.eveningScene`, `parky-<region>-abend.webp`), so the
-page does not end on the picture it began with.
-
-The first phone screen holds the H1 (the search term as its small first line, „Welcher Park an
-welchem Tag?“ as its big one), the lead, the two buttons and the answer. The calendar is the first chapter and starts where the head ends (660 to 750 px at 390 × 844), because it is what visitors come for: between 13 and 19 November 2026 „Zum Kalender“ got 100 clicks and „Reise planen“ 30. With the planner first, its chapter (500 to 770 px) had pushed the calendar's first week down to 1607–1937 px. The answer names its day ("Sat, Nov 14, Orlando time"),
-never "today", because a cached copy outlives midnight. After every pick has closed it is about
-tomorrow (`glanceDay`). Its first row is the day's one tip („Tipp für Fr., 20. Nov.: Universal
-Studios 30 Min., ruhiger als an einem normalen Tag dort“, `dayPick`): of the resorts' own picks, the
-headliner park that is quietest against its own normal day (the API's crowd level), then a full day
-over an early close, then the shorter wait, then the longer day. Minutes first would hand the tip to
-the park that is always quiet: on 20 November 2026 SeaWorld at 20 min against its usual 30, on the
-24th Busch Gardens at 10. A non-headliner and a last-year day never win, which `pnpm test:orlando-hub`
-pins. The second row is the headliner parks to tick off ([parks already visited](#parks-already-visited)).
-The third names each group with a headliner park (`glanceLines`) under „Je Resort“: a resort of one
-park is answered by that park (Universal Studios Hollywood), a group without a headliner (SeaWorld
-Orlando, the day trips) stays out. The level is said in words beside the tip only, the thing it
-was picked on; a badge beside each resort's best park read as a contradiction. The last row is
-each of those groups' quietest day in the window, a date said once where they share it. The rows
-about the day are `HubDayTip`, in the browser; the box and the quietest days are `HubGlance`, on
-the server, and both get the calendar's own day and region objects, so the payload carries them
-once.
-
-## Parks already visited
-
-On a trip the question is not only which park is quiet today but which one is still ahead. A
-visitor ticks off where they have been, and the tip moves on to a park not seen yet.
-
+  (`weatherParks`), so Japan shows Tokyo, Osaka, Fuji and Nagoya each their own. The day trips lie
+  apart (Knott's, Six Flags Magic Mountain inland, SeaWorld San Diego; Tampa from Orlando), so their
+  group heading carries none and each of their parks has its own row right above its tiles
+  (`ParkWeatherRow`). Consecutive days of a week whose average reads alike in °C share one cell with a
+  hairline across the days it covers (`weatherRuns`), so a row is not seven times „Ø 8°–12°“; a
+  forecast day stays its own. The phone's resort card gives each date the forecast's icon and high,
+  or „Ø 17°“, and a day trip each of its parks the same line above its tiles. A key under the grid
+  and above the phone's list says what „Ø“ is (`ClimateNormalKey`). `sliceCalendar` keeps the
+  weather of those parks only, and of it only the fields the rows draw.
 - **Two places to tick, one store.** In the first answer a chip per headliner park („Bereits
   besucht? Abhaken“, then „3 von 7 Parks abgehakt“), sideways on a phone like the resort filter; in
   the calendar a ring before each park's name (`VisitedToggle`, 44 px to the touch, on the phone

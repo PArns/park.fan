@@ -914,11 +914,16 @@ const HUB_WEATHER_FIELDS = [
 ] as const satisfies readonly (keyof TripDayWeather)[];
 
 /**
- * The parks whose weather the hub's calendar draws: each resort's first, which stands for the
- * resort's place. `sliceCalendar` keeps the weather of these alone.
+ * The parks whose weather the hub's calendar draws: a resort's first, which stands for the resort's
+ * place, and every park of the day trips, which lie apart (Knott's in Buena Park, SeaWorld in San
+ * Diego, Six Flags Magic Mountain inland). `sliceCalendar` keeps the weather of these alone.
  */
 export function weatherParks(region: TripRegion): ReadonlySet<string> {
-  return new Set(regionGroups(region).map((group) => group.parks[0].slug));
+  return new Set(
+    regionGroups(region).flatMap((group) =>
+      group.kind === 'day_trip' ? group.parks.map((p) => p.slug) : [group.parks[0].slug]
+    )
+  );
 }
 
 /** What the hub's calendar reads of a day besides its parks. */

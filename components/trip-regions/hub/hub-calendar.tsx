@@ -75,7 +75,7 @@ import { clearTripPagePark, HubDaySheet } from './hub-day-sheet';
 import { startTripPlanner } from './hub-hero-action';
 import { VisitedDim, VisitedMark, VisitedRow, VisitedToggle } from './hub-visited';
 import { ClimateNormalKey, DayWeather } from '@/components/common/day-weather';
-import { isClimateNormal } from '@/lib/utils/day-weather';
+import { isClimateNormal, weatherRuns } from '@/lib/utils/day-weather';
 
 /** The history state key of an open day sheet, which Back closes. */
 const SHEET_ENTRY = 'hubDaySheet';
@@ -774,6 +774,17 @@ const PhoneGroup = memo(function PhoneGroup({
                   />
                 )}
               </div>
+              {group.kind === 'day_trip' &&
+                !state &&
+                days.some((d) => d.parks[park.slug]?.weather?.tempMax != null) && (
+                  <div className="mt-1 grid grid-cols-7 gap-1 text-center text-[10px]">
+                    {days.map((day, index) => (
+                      <div key={day.date} className={pageOf(index)}>
+                        <DayWeather compact weather={day.parks[park.slug]?.weather} />
+                      </div>
+                    ))}
+                  </div>
+                )}
               {state ? (
                 <p className="border-border/40 bg-muted/20 text-muted-foreground mt-1 flex h-9 items-center rounded-lg border px-3 text-xs">
                   {t(state)}
@@ -1028,6 +1039,9 @@ const Matrix = memo(function Matrix({
                 />
               ) : (
                 <Fragment key={park.slug}>
+                  {group.kind === 'day_trip' && (
+                    <ParkWeatherRow slug={park.slug} days={days} slots={slots} />
+                  )}
                   <ParkRow
                     region={region}
                     todayIso={todayIso}
@@ -1072,26 +1086,79 @@ const Matrix = memo(function Matrix({
 /**
  * The park whose weather a resort's dates show: its first park with weather in the window. A
  * resort is one place, and a region over several cities (Tokyo, Osaka, Fuji) shows each its own.
+ * The day trips lie apart, so they have none: each of their parks shows its own (`ParkWeatherRow`).
  */
 function weatherPark(group: RegionGroup, days: readonly TripCalendarDay[]): string | null {
+  if (group.kind === 'day_trip') return null;
   return (
     group.parks.find((park) => days.some((d) => d.parks[park.slug]?.weather?.tempMax != null))
       ?.slug ?? null
   );
 }
 
-/** Whether a resort in view shows a day's average over past years, which the grid then keys. */
+/** The parks whose weather the grid draws for the groups in view: a resort's one, each day trip. */
+function drawnWeatherParks(days: readonly TripCalendarDay[], groups: readonly RegionGroup[]) {
+  return groups.flatMap((group) =>
+    group.kind === 'day_trip'
+      ? group.parks.map((p) => p.slug)
+      : [weatherPark(group, days)].filter((slug): slug is string => slug !== null)
+  );
+}
+
+/** Whether the grid in view shows a day's average over past years, which it then keys. */
 function hasClimateNormal(days: readonly TripCalendarDay[], groups: readonly RegionGroup[]) {
-  return groups.some((group) => {
-    const lead = weatherPark(group, days);
-    return lead !== null && days.some((d) => isClimateNormal(d.parks[lead]?.weather));
+  return drawnWeatherParks(days, groups).some((slug) =>
+    days.some((d) => isClimateNormal(d.parks[slug]?.weather))
+  );
+}
+
+/**
+ * One park's weather along the week's dates (`DayWeather`). Consecutive days of a week whose
+ * average over past years reads the same share one cell (`weatherRuns`), with a hairline either
+ * side across the days it covers; a forecast day stays its own.
+ */
+function WeatherCells({
+  slug,
+  days,
+  slots,
+  className,
+}: {
+  slug: string;
+  days: readonly TripCalendarDay[];
+  slots: readonly Slot[];
+  className?: string;
+}) {
+  const runs = weatherRuns(
+    slots.map((slot) => (slot.index === null ? undefined : days[slot.index].parks[slug]?.weather)),
+    (i) => i > 0 && (slots[i].week !== slots[i - 1].week || slots[i].index === null)
+  );
+  return runs.map((run) => {
+    const slot = slots[run.start];
+    return slot.index === null ? (
+      <td key={`pad-${run.start}`} aria-hidden className={HUB_WEEK_CELL[slot.week]} />
+    ) : (
+      <td
+        key={days[slot.index].date}
+        colSpan={run.length}
+        className={cn('text-center text-[11px]', HUB_WEEK_CELL[slot.week], className)}
+      >
+        {run.length > 1 ? (
+          <span className="flex items-center gap-2 px-2">
+            <span aria-hidden className="bg-border h-px flex-1" />
+            <DayWeather weather={run.weather} />
+            <span aria-hidden className="bg-border h-px flex-1" />
+          </span>
+        ) : (
+          <DayWeather weather={run.weather} />
+        )}
+      </td>
+    );
   });
 }
 
 /**
- * A resort's heading with its weather along the dates (`DayWeather`): the forecast, past its reach
- * the date's average over past years. Without weather in the window, the heading alone across the
- * row, as before.
+ * A group's heading row. A resort's carries its weather along the dates (`WeatherCells`); the day
+ * trips' and a resort without weather in the window have the heading alone across the row.
  */
 function GroupHead({
   group,
@@ -1119,18 +1186,29 @@ function GroupHead({
       <th scope="rowgroup" className={heading}>
         {group.name}
       </th>
-      {slots.map((slot, i) =>
-        slot.index === null ? (
-          <td key={`pad-${i}`} aria-hidden className={HUB_WEEK_CELL[slot.week]} />
-        ) : (
-          <td
-            key={days[slot.index].date}
-            className={cn('px-1 pt-3 pb-1 text-center text-[11px]', HUB_WEEK_CELL[slot.week])}
-          >
-            <DayWeather weather={days[slot.index].parks[lead]?.weather} />
-          </td>
-        )
-      )}
+      <WeatherCells slug={lead} days={days} slots={slots} className="px-1 pt-3 pb-1" />
+    </tr>
+  );
+}
+
+/**
+ * A day trip's weather row, right above its tiles: each day trip lies somewhere else, so each
+ * shows its own. Nothing where the park has no weather in the window.
+ */
+function ParkWeatherRow({
+  slug,
+  days,
+  slots,
+}: {
+  slug: string;
+  days: readonly TripCalendarDay[];
+  slots: readonly Slot[];
+}) {
+  if (!days.some((d) => d.parks[slug]?.weather?.tempMax != null)) return null;
+  return (
+    <tr>
+      <td aria-hidden />
+      <WeatherCells slug={slug} days={days} slots={slots} className="px-1 pt-2 pb-0.5" />
     </tr>
   );
 }

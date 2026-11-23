@@ -33,9 +33,12 @@ import {
   shortGroupName,
   shortParkName,
   slimRegion,
+  sliceCalendar,
+  weatherParks,
   withGroupNames,
   factDays,
 } from '../lib/trip-regions/hub-data.ts';
+import { weatherRuns } from '../lib/utils/day-weather.ts';
 import {
   isTripRegionMonthInRange,
   parseTripRegionMonth,
@@ -731,6 +734,93 @@ test("a park's star is its quietest day of the week, one for every park with an 
   // The fixture's Magic Kingdom: 40 on six days, the 16th the longest of them (09:00–23:00).
   assert.equal(quietestDay(calendar.days.slice(0, 7), 'magic-kingdom-park'), '2026-11-16');
   assert.equal(quietestDay(calendar.days.slice(7), 'magic-kingdom-park'), '2026-11-19');
+});
+
+test("a resort's weather is its first park's, a day trip's each park's own", () => {
+  const parks = weatherParks(region);
+  assert.ok(parks.has('magic-kingdom-park'));
+  assert.ok(!parks.has('epcot'));
+  for (const slug of ['legoland-florida', 'busch-gardens-tampa', 'adventure-island-tampa']) {
+    assert.ok(parks.has(slug), slug);
+  }
+});
+
+test('the slice keeps the weather of those parks only, and of it the drawn fields', () => {
+  const weather = {
+    tempMax: 24.2,
+    tempMin: 13.1,
+    icon: 3,
+    basis: 'climate_normal',
+    tempMaxP25: 22.4,
+    tempMaxP75: 26.1,
+    wetDayPercent: 20,
+    precipitationMm: 2,
+  };
+  const day = {
+    ...calendar.days[0],
+    parks: Object.fromEntries(
+      Object.entries(calendar.days[0].parks).map(([slug, p]) => [slug, { ...p, weather }])
+    ),
+  };
+  const sliced = sliceCalendar(calendar, [day], weatherParks(region)).days[0].parks;
+  assert.deepEqual(sliced['magic-kingdom-park'].weather, {
+    basis: 'climate_normal',
+    icon: 3,
+    tempMin: 13.1,
+    tempMax: 24.2,
+    tempMaxP25: 22.4,
+    tempMaxP75: 26.1,
+  });
+  assert.equal(sliced.epcot.weather, undefined);
+  assert.ok(sliced['busch-gardens-tampa'].weather);
+  assert.equal(
+    sliceCalendar(calendar, [day]).days[0].parks['magic-kingdom-park'].weather,
+    undefined
+  );
+});
+
+test('days whose average reads alike share a cell, a forecast and a week break never do', () => {
+  const normal = (p25, p75) => ({
+    basis: 'climate_normal',
+    tempMax: (p25 + p75) / 2,
+    tempMaxP25: p25,
+    tempMaxP75: p75,
+  });
+  const forecast = { basis: 'forecast', tempMax: 20, tempMin: 10, icon: 1 };
+  const runs = weatherRuns([
+    forecast,
+    forecast,
+    normal(8.2, 12.1),
+    normal(7.9, 11.8),
+    normal(7.4, 11.6),
+    undefined,
+    normal(7.4, 11.6),
+  ]);
+  assert.deepEqual(
+    runs.map((r) => [r.start, r.length]),
+    [
+      [0, 1],
+      [1, 1],
+      [2, 2],
+      [4, 1],
+      [5, 1],
+      [6, 1],
+    ]
+  );
+  // Seven alike days split where the row pages to the next week.
+  const week = Array.from({ length: 7 }, () => normal(8, 12));
+  assert.deepEqual(
+    weatherRuns(week, (i) => i === 4).map((r) => r.length),
+    [4, 3]
+  );
+  // Without a range the rounded high decides.
+  assert.equal(
+    weatherRuns([
+      { basis: 'climate_normal', tempMax: 17.2 },
+      { basis: 'climate_normal', tempMax: 16.9 },
+    ]).length,
+    1
+  );
 });
 
 console.log(`\n${passed} passed`);
