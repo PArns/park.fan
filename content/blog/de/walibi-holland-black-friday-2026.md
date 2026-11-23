@@ -53,11 +53,11 @@ Die drei Karten, bei Walibi Abonnements genannt, gelten nur für die Saison 2027
 | Experience | 95 €         | 115 €       | zwei Abende            | 12,50 € pro Tag | nein        | 10 %                       |
 | Exclusive  | 365 €        | 395 €       | alle, mit Reservierung | inbegriffen     | Gold Single | 20 %                       |
 
-Mit jeder der drei Karten kommst du an allen regulären Öffnungstagen in den Park, dazu an den Event-Tagen Walibi Play, LEKKERGAAN und Zomerse Zaterdagen. Nicht rein kommst du an Sonderveranstaltungen, an Tagen, an denen der Park vermietet ist, und an ausverkauften Tagen ohne Reservierung. An den Halloween Spooky Days gelten Explore und Experience nur an den Tagen ohne Fright Nights. Mit dem Fast Lane Gold Single des Exclusive nimmst du an jeder teilnehmenden Bahn einmal pro Besuchstag den Fast-Lane-Eingang, an den Fright Nights nur an zwei Abenden, die du selbst aussuchst. Attraktionen, die extra kosten, und Alkohol sind vom höheren Rabatt des Exclusive ausgenommen.
+Mit jeder der drei Karten kommst du an allen regulären Öffnungstagen in den Park, dazu an den Event-Tagen Walibi Play, LEKKERGAAN und Zomerse Zaterdagen. Nicht rein kommst du an Sonderveranstaltungen, an Tagen, an denen der Park vermietet ist, und an ausverkauften Tagen ohne Reservierung. An den Halloween Spooky Days gelten Explore und Experience nur an den Tagen ohne Fright Nights. Mit dem Fast Lane Gold Single des Exclusive nimmst du an jeder teilnehmenden Bahn einmal pro Besuchstag den Fast-Lane-Eingang, an den Fright Nights nur an zwei Abenden, die du selbst aussuchst. Die 20 % des Exclusive gelten nicht für Alkohol und nicht für Attraktionen, die extra kosten.
 
 Kinder bis zwei Jahre kommen umsonst rein, ab drei brauchen sie eine eigene Karte zum normalen Kartenpreis. Die Karte ist persönlich, mit Foto, und lässt sich weder übertragen noch weiterverkaufen. Eine verlorene oder vergessene Karte kostet 7,50 € Bearbeitungsgebühr.
 
-Statt der 12,50 € pro Tag kannst du als Karteninhaber für 35 € einen Parkpass für die ganze Saison kaufen. Er gilt für jedes Auto, eines pro Tag, und rechnet sich ab dem dritten Besuch. An den Fright Nights ist das Parken für alle umsonst. Ich würde zum Experience greifen, denn die 20 € Aufpreis gegenüber dem Explore sind der Eintritt für zwei Abende Fright Nights. Der Exclusive kostet 235 € mehr als Experience und Parkpass zusammen. Das lohnt sich, wenn du an vollen Tagen die Fast Lane nehmen oder öfter als zweimal zu den Fright Nights willst.
+Statt der 12,50 € pro Tag kannst du als Karteninhaber für 35 € einen Parkpass für die ganze Saison kaufen. Er gilt für jedes Auto, eines pro Tag, und rechnet sich ab dem dritten Besuch. An den Fright Nights ist das Parken für alle umsonst. Ich würde den Experience kaufen, denn für 20 € mehr als beim Explore bekommst du zwei Abende Fright Nights. Der Exclusive kostet 235 € mehr als Experience und Parkpass zusammen. Das lohnt sich, wenn du an vollen Tagen die Fast Lane nehmen oder öfter als zweimal zu den Fright Nights willst.
 
 ## Der Family-&-Friends-Deal
 
@@ -77,9 +77,9 @@ Walibi Belgium in Wavre verkauft seine eigenen Jahreskarten [in der Black Week b
 
 ## Wann du die Karte zum ersten Mal nutzt
 
-Walibi Holland bleibt bis zum Saisonstart am Freitag, 26. März 2027, geschlossen. Die Termine der Halloween Spooky Days und der Fright Nights 2027 will Walibi später bekannt geben. Die Partnerparks wie der Movie Park Germany oder das Toverland öffnen zu eigenen Terminen, die im [Überblick zum Saisonstart 2027](/blog/freizeitpark-saisonstart-2027) stehen.
+Walibi Holland bleibt bis zum Saisonstart am Freitag, 26. März 2027, geschlossen. Die Termine der Halloween Spooky Days und der Fright Nights 2027 will Walibi später bekannt geben. Für die Rabatte im Movie Park Germany, im Toverland und in den anderen Partnerparks nennt unser [Überblick zum Saisonstart 2027](/blog/freizeitpark-saisonstart-2027) den ersten Öffnungstag jedes Parks.
 
-Weil die Karte an allen regulären Öffnungstagen gilt, kannst du die ruhigen nehmen. Welche Wochen und Ferien in Walibi Holland ruhig sind, zeigt der [Andrang-Guide](/blog/walibi-holland-andrang). Die Bahnen, die du an so einem Tag zuerst fährst, beschreibt der Guide zu [„hard gaan“](/blog/walibi-holland-untamed-hard-gaan).
+Mit der Karte kannst du die vollen Tage auslassen; der [Andrang-Guide](/blog/walibi-holland-andrang) zeigt, in welchen Wochen und Ferien in Walibi Holland wenig los ist. An einem ruhigen Tag fängst du mit den Bahnen aus dem Guide zu [„hard gaan“](/blog/walibi-holland-untamed-hard-gaan) an.
 
 ```stats-widget slug=walibi-holland show=months
 
