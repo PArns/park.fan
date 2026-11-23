@@ -2,7 +2,7 @@
 title: 'Zum Black Friday gibt es Jahreskarten für 2027 günstiger'
 translationKey: black-friday-freizeitparks-2026
 date: '2026-11-23'
-time: '12:00'
+time: '13:58'
 author: patrick
 mode: published
 featured: false

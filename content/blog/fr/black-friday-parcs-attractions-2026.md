@@ -2,7 +2,7 @@
 title: 'Les abonnements annuels 2027 baissent pour le Black Friday'
 translationKey: black-friday-freizeitparks-2026
 date: '2026-11-23'
-time: '12:00'
+time: '13:58'
 author: patrick
 mode: published
 featured: false
