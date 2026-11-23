@@ -75,6 +75,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/glossary/[term]': ['nearby', 'parkCard'],
   '/how-park-fan-works': [
     'attractions',
+    'dayWeather',
     'nearby',
     'parkCard',
     'parks',
@@ -109,6 +110,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/parks/[continent]/[country]/[city]': ['nearby', 'parkCard'],
   '/parks/[continent]/[country]/[city]/[park]': [
     'attractions',
+    'dayWeather',
     'location',
     'nearby',
     'parkCard',
@@ -125,6 +127,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/parks/[continent]/[country]/[city]/[park]/[attraction]': [
     'attractions',
+    'dayWeather',
     'nearby',
     'parks.calendarLegendGroups',
     'parks.clock',
@@ -145,6 +148,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/parks/[continent]/[country]/[city]/[park]/average-wait-times': [
     'attractions',
+    'dayWeather',
     'location',
     'nearby',
     'parkCard',
@@ -159,6 +163,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]': [
     'attractions',
+    'dayWeather',
     'location',
     'nearby',
     'parkCard',
@@ -173,6 +178,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/parks/[continent]/[country]/[city]/[park]/with-kids': [
     'attractions',
+    'dayWeather',
     'location',
     'nearby',
     'parkCard',
@@ -195,6 +201,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'assistant.interview.start',
     'assistant.interview.steps',
     'attractions.historyLegend',
+    'dayWeather',
     'parks.calendarLegendGroups',
     'parks.holidayContext',
     'parks.seasons',
@@ -217,6 +224,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/trip-regions/[region]/best-time-to-visit/[[...resort]]': [],
   '/ui': [
     'attractions',
+    'dayWeather',
     'nearby',
     'parkCard',
     'parks',

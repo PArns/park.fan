@@ -25,6 +25,7 @@ import {
   HUB_WINDOW_DAYS,
   resortMonthSummaries,
   sliceCalendar,
+  weatherParks,
   slimRegion,
 } from '@/lib/trip-regions/hub-data';
 import { hubPhoto } from '@/lib/trip-regions/hub-media';
@@ -131,7 +132,9 @@ export async function TripRegionHubPage({
   // day to its client rows, so the page's payload carries them once.
   const clientRegion = slimRegion(region);
   const clientCalendar =
-    calendar && windowDays.length > 0 ? sliceCalendar(calendar, windowDays) : null;
+    calendar && windowDays.length > 0
+      ? sliceCalendar(calendar, windowDays, weatherParks(region))
+      : null;
   const answerDate = calendar ? glanceDay(calendar, region, todayIso, nowMs)?.date : undefined;
   const answerDay = clientCalendar?.days.find((d) => d.date === answerDate) ?? null;
   const lastYearDays = calendar?.days.filter((d) => dayBasis(d) === 'last_year') ?? [];

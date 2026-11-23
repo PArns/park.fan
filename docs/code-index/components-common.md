@@ -75,6 +75,13 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 
 - `CompactNumberWithTooltip` _component_: Renders a compact number (e.g. 4.9M, 4,9 Mio.) with a tooltip showing the full locale-formatted value and a suffix.
 
+### [`day-weather.tsx`](../../components/common/day-weather.tsx)
+
+- `TempRange` _component_: Two temperatures as one range, „15–19°“, or one figure where both round alike in the reader's unit; `null` when either is missing.
+- `DayWeather` _component_: A day's weather in one short line. A forecast: its icon and the low–high („9–18°“).
+- `ClimateNormalDetail` _component_: A climate normal spelled out for a day's detail: „Tagsüber meist 15–19°, nachts meist 7–11°“, how often such a day brings rain, and what the figures are (`period`, the years averaged).
+- `ClimateNormalKey` _component_: The key under a calendar whose days show averages: „Ø Schnitt 2015–2024 für das Datum, keine Vorhersage“ with the history mark the days carry.
+
 ### [`dialog-hero.tsx`](../../components/common/dialog-hero.tsx)
 
 - `DialogHeroClose` _component_: The close button of a band that brings its own (the dialog then passes `showCloseButton={false}`), shared by `DialogHero` and `PushDialogHero`.

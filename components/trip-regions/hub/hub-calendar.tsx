@@ -73,7 +73,9 @@ import {
 } from './hub-cell-styles';
 import { clearTripPagePark, HubDaySheet } from './hub-day-sheet';
 import { startTripPlanner } from './hub-hero-action';
-import { VisitedDim, VisitedRow, VisitedToggle } from './hub-visited';
+import { VisitedDim, VisitedMark, VisitedRow, VisitedToggle } from './hub-visited';
+import { ClimateNormalKey, DayWeather } from '@/components/common/day-weather';
+import { isClimateNormal } from '@/lib/utils/day-weather';
 
 /** The history state key of an open day sheet, which Back closes. */
 const SHEET_ENTRY = 'hubDaySheet';
@@ -630,6 +632,10 @@ function PhoneWeek({
     <div data-week={week} className="group/week space-y-3">
       {storm && <StormKey storm={storm} className="text-muted-foreground text-xs" />}
       <BreakKey lanes={lanes} weeks={weeks} locale={card.locale} />
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+        <VisitedColumnKey />
+        {hasClimateNormal(card.days, groups) && <ClimateNormalKey />}
+      </div>
       <ul aria-label={t('listLabel')} className="space-y-3">
         {groups.map((group) => (
           <PhoneGroup key={group.key} group={group} storm={storm} lanes={lanes} {...card} />
@@ -677,6 +683,7 @@ const PhoneGroup = memo(function PhoneGroup({
   const tClimate = useTranslations('tripPlanner.climate');
   const label = useCellLabel(locale, timezone, lanes);
   const pageOf = (index: number) => HUB_WEEK_ITEM[Math.floor(index / HUB_WEEK_DAYS)];
+  const lead = weatherPark(group, days);
   return (
     <li className="border-border/60 bg-card/60 rounded-xl border p-3">
       <h3 className="text-muted-foreground text-[11px] font-semibold tracking-wider uppercase">
@@ -731,6 +738,13 @@ const PhoneGroup = memo(function PhoneGroup({
                     stormCode && STORM_SIGNAL_CLASS[stormSignal(stormCode)]
                   )}
                 />
+                {lead && (
+                  <DayWeather
+                    compact
+                    weather={day.parks[lead]?.weather}
+                    className="mt-0.5 min-h-3.5 text-[10px]"
+                  />
+                )}
               </button>
             </div>
           );
@@ -1001,15 +1015,7 @@ const Matrix = memo(function Matrix({
         />
         {groups.map((group) => (
           <tbody key={group.key}>
-            <tr>
-              <th
-                scope="rowgroup"
-                colSpan={HUB_WEEK_DAYS + 1}
-                className="text-muted-foreground px-2 pt-3 pb-1 text-left text-[11px] font-semibold tracking-wider uppercase"
-              >
-                {group.name}
-              </th>
-            </tr>
+            <GroupHead group={group} days={days} slots={slots} />
             {group.parks.map((park) => {
               const state = states.get(park.slug);
               const r = rowOf.get(park.slug) ?? 0;
@@ -1056,9 +1062,97 @@ const Matrix = memo(function Matrix({
           </tbody>
         ))}
       </table>
+      {hasClimateNormal(days, groups) && (
+        <ClimateNormalKey className="border-border/40 w-full border-t px-3 py-2" />
+      )}
     </div>
   );
 });
+
+/**
+ * The park whose weather a resort's dates show: its first park with weather in the window. A
+ * resort is one place, and a region over several cities (Tokyo, Osaka, Fuji) shows each its own.
+ */
+function weatherPark(group: RegionGroup, days: readonly TripCalendarDay[]): string | null {
+  return (
+    group.parks.find((park) => days.some((d) => d.parks[park.slug]?.weather?.tempMax != null))
+      ?.slug ?? null
+  );
+}
+
+/** Whether a resort in view shows a day's average over past years, which the grid then keys. */
+function hasClimateNormal(days: readonly TripCalendarDay[], groups: readonly RegionGroup[]) {
+  return groups.some((group) => {
+    const lead = weatherPark(group, days);
+    return lead !== null && days.some((d) => isClimateNormal(d.parks[lead]?.weather));
+  });
+}
+
+/**
+ * A resort's heading with its weather along the dates (`DayWeather`): the forecast, past its reach
+ * the date's average over past years. Without weather in the window, the heading alone across the
+ * row, as before.
+ */
+function GroupHead({
+  group,
+  days,
+  slots,
+}: {
+  group: RegionGroup;
+  days: readonly TripCalendarDay[];
+  slots: readonly Slot[];
+}) {
+  const lead = weatherPark(group, days);
+  const heading =
+    'text-muted-foreground px-2 pt-3 pb-1 text-left text-[11px] font-semibold tracking-wider uppercase';
+  if (!lead) {
+    return (
+      <tr>
+        <th scope="rowgroup" colSpan={HUB_WEEK_DAYS + 1} className={heading}>
+          {group.name}
+        </th>
+      </tr>
+    );
+  }
+  return (
+    <tr>
+      <th scope="rowgroup" className={heading}>
+        {group.name}
+      </th>
+      {slots.map((slot, i) =>
+        slot.index === null ? (
+          <td key={`pad-${i}`} aria-hidden className={HUB_WEEK_CELL[slot.week]} />
+        ) : (
+          <td
+            key={days[slot.index].date}
+            className={cn('px-1 pt-3 pb-1 text-center text-[11px]', HUB_WEEK_CELL[slot.week])}
+          >
+            <DayWeather weather={days[slot.index].parks[lead]?.weather} />
+          </td>
+        )
+      )}
+    </tr>
+  );
+}
+
+/**
+ * What the ring before a park's name is for, in the ring's own look: „Bereits besucht?“. A tick
+ * fades the park's days and moves the day's tip on; it changes no park choice.
+ */
+function VisitedColumnKey({ className }: { className?: string }) {
+  const t = useTranslations('tripHub.visited');
+  return (
+    <span
+      className={cn(
+        'text-muted-foreground flex items-center gap-1.5 text-[11px] font-medium',
+        className
+      )}
+    >
+      <VisitedMark visited={false} className="size-3.5" />
+      {t('column')}
+    </span>
+  );
+}
 
 /**
  * The grid's head: each date, a button that opens the day, with the storm season under it, then
@@ -1096,6 +1190,7 @@ const MatrixHead = memo(function MatrixHead({
         >
           <span className="sr-only">{t('parkColumn')}</span>
           {storm && <StormKey storm={storm} className="text-muted-foreground" />}
+          <VisitedColumnKey className="mt-1.5" />
         </th>
         {slots.map((slot, i) => {
           if (slot.index === null) return filler(slot, i);

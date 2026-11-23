@@ -210,6 +210,7 @@ export function ParkCalendarPanel({
         <ParkCalendarLegend
           showWorks={(park.attractions ?? []).some((ride) => worksPeriodsOf(ride).length > 0)}
           seasonKinds={seasonKinds}
+          showClimateKey
         />
 
         {/* The reservation travels as three custom properties, not classes, because Tailwind cannot

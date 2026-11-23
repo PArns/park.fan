@@ -24,6 +24,7 @@ import type { TripHotelKind } from './registry';
 import type {
   TicketLink,
   TripBasis,
+  TripClimate,
   TripCrowdLevel,
   TripPerk,
   TripRegion,
@@ -139,6 +140,11 @@ export interface PlanDay {
   perks?: TripPerk[];
   /** A one-park day's high; a hop day's parks carry their own. */
   weather?: PlanDayWeather;
+  /**
+   * The date's typical weather, on every kind of day: the average over past years at the day's
+   * park (a day without one at its city's), never a forecast. Absent from an API before PAR-1411.
+   */
+  climate?: TripClimate;
   travel?: PlanTravel;
   between?: PlanTravel;
   /**

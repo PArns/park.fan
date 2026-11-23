@@ -431,7 +431,8 @@
       "allDone": "Los {count} parques ya están visitados. Para una segunda visita:",
       "toggle": "{park}: ya visitado",
       "tick": "Marcar {park} como visitado",
-      "untick": "Quitar {park} de los visitados"
+      "untick": "Quitar {park} de los visitados",
+      "column": "¿Ya visitado?"
     },
     "legend": {
       "minutes": "Espera punta en las grandes atracciones, en minutos",
@@ -6580,5 +6581,15 @@
       "export": "Descargar datos",
       "failed": "La descarga no ha funcionado. Inténtalo de nuevo."
     }
+  },
+  "dayWeather": {
+    "normal": "Media de años anteriores para esta fecha, no es un pronóstico",
+    "key": "Ø media {period}, no es un pronóstico",
+    "keyNoPeriod": "Ø media de años anteriores, no es un pronóstico",
+    "detailTitle": "Tiempo de media",
+    "typicalHigh": "De día, normalmente <range></range>",
+    "typicalLow": "de noche, normalmente <range></range>",
+    "wetDays": "{count, plural, =0 {rara vez llueve} =1 {lluvia 1 de cada 10 días} other {lluvia # de cada 10 días}}",
+    "detailNote": "Media de {period} para esta fecha; la mitad de esos días quedó dentro del rango. Hay pronóstico unos 16 días antes."
   }
 }

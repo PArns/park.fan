@@ -426,12 +426,13 @@
       "pickLevel": "{level, select, very_low {viel ruhiger als an einem normalen Tag dort} low {ruhiger als an einem normalen Tag dort} moderate {ein normaler Tag dort} other {voller als an einem normalen Tag dort}}"
     },
     "visited": {
-      "ask": "Schon dort gewesen? Abhaken",
+      "ask": "Bereits besucht? Abhaken",
       "count": "{count} von {total} Parks abgehakt",
       "allDone": "Alle {count} Parks abgehakt. Für einen zweiten Besuch:",
-      "toggle": "{park}: schon dort gewesen",
+      "toggle": "{park}: bereits besucht",
       "tick": "{park} als besucht abhaken",
-      "untick": "Haken bei {park} entfernen"
+      "untick": "Haken bei {park} entfernen",
+      "column": "Bereits besucht?"
     },
     "legend": {
       "minutes": "Spitzenwartezeit der großen Bahnen, in Minuten",
@@ -6580,5 +6581,15 @@
       "export": "Daten herunterladen",
       "failed": "Der Download hat nicht geklappt. Versuch es noch einmal."
     }
+  },
+  "dayWeather": {
+    "normal": "Durchschnitt vergangener Jahre für dieses Datum, keine Vorhersage",
+    "key": "Ø Durchschnitt {period}, keine Vorhersage",
+    "keyNoPeriod": "Ø Durchschnitt vergangener Jahre, keine Vorhersage",
+    "detailTitle": "Wetter im Schnitt",
+    "typicalHigh": "Tagsüber meist <range></range>",
+    "typicalLow": "nachts meist <range></range>",
+    "wetDays": "{count, plural, =0 {selten Regen} =1 {Regen an 1 von 10 Tagen} other {Regen an # von 10 Tagen}}",
+    "detailNote": "Schnitt der Jahre {period} für dieses Datum; an der Hälfte dieser Tage lag der Wert in der Spanne. Vorhersagen gibt es etwa 16 Tage im Voraus."
   }
 }

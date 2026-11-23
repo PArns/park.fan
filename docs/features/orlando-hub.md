@@ -88,6 +88,14 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   first column and above the list (`StormKey`). The signal violet (`STORM_SIGNAL_CLASS`), dashed for the
   season, solid for its peak, in `tripPlanner.climate`'s words, and in the date's accessible name.
   Never a crowd tint, and no longer a lane under the calendar, where nobody looking for a date saw it.
+- **The weather** is in each resort's heading row, along the dates: the forecast with its icon and
+  low–high, past its reach the date's average over past years, muted with a history mark and the
+  range half of such days' highs fell in („Ø 15–19°“, `DayWeather` in
+  `components/common/day-weather.tsx`). A resort is one place, read at its first park
+  (`weatherParks`), so Japan shows Tokyo, Osaka, Fuji and Nagoya each their own. The phone's resort
+  card gives each date the forecast's icon and high, or „Ø 17°“. A key under the grid and above the
+  phone's list says what „Ø“ is (`ClimateNormalKey`). `sliceCalendar` keeps the weather of those
+  parks only, and of it only the fields the row draws.
 
 ## Simple first, more on request
 
@@ -129,10 +137,12 @@ once.
 On a trip the question is not only which park is quiet today but which one is still ahead. A
 visitor ticks off where they have been, and the tip moves on to a park not seen yet.
 
-- **Two places to tick, one store.** In the first answer a chip per headliner park („Schon dort
-  gewesen? Abhaken“, then „3 von 7 Parks abgehakt“), sideways on a phone like the resort filter; in
+- **Two places to tick, one store.** In the first answer a chip per headliner park („Bereits
+  besucht? Abhaken“, then „3 von 7 Parks abgehakt“), sideways on a phone like the resort filter; in
   the calendar a ring before each park's name (`VisitedToggle`, 44 px to the touch, on the phone
-  and in the table). Both write `visitedParks(region)` (`lib/trip-regions/visited-parks.ts`), and
+  and in the table), keyed „Bereits besucht?“ with the ring's own look in the grid's first column
+  and above the phone's list (`VisitedColumnKey`). Without the key the rings read as a park choice;
+  a tick changes no park choice. Both write `visitedParks(region)` (`lib/trip-regions/visited-parks.ts`), and
   every mark reads it, so a tick in one place shows in the other at once.
 - **What a tick does.** The tip (`dayPick(day, region, visited)`) and each resort's park
   (`glanceLines`) pass over a ticked park for the group's next headliner in the day sheet's order

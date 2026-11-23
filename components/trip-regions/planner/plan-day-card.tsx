@@ -14,6 +14,7 @@ import { lockOn, type PlanDay, type TripPlan } from '@/lib/trip-regions/plan';
 import {
   cardWarnings,
   dayHeat,
+  dayWeatherOf,
   dayWhy,
   earlyPerk,
   isHotDay,
@@ -32,6 +33,7 @@ import { regionOrShared } from '@/lib/trip-regions/region-words';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
+import { DayWeather } from '@/components/common/day-weather';
 import { HeatFigure, useDayMarkerText, useDayParks, useEveningName } from './plan-day-bits';
 import { PlanDayGlow } from './plan-day-glow';
 import { useBaseName } from './plan-place-words';
@@ -52,7 +54,9 @@ const PHOTO_PILL = 'rounded-md bg-black/50 px-2 py-0.5 text-xs font-semibold tex
  * way from the hotel, two sentences on why this day (the API's reason, then the runner-up day in
  * the same figure the card shows, `dayRunnerUp`) and chips for what changes the day: the hotel's
  * early slot, the evening, and the warnings in the crowd ink. A hot day carries its high beside
- * the date („Ø 32°“), a day in the storm season the season's band as the card's top edge, and with
+ * the date („Ø 32°“), any other day its weather (`DayWeather`: the forecast's high, past its reach
+ * the date's usual range, „Ø 15–19°“), a day in the storm season the season's band as the card's
+ * top edge, and with
  * „Extremes Wetter vermeiden“ on a hot day says no cooler one fitted. A press on the photo or the
  * text opens the day's sheet. Without a photo the head is a tinted field with the park's code.
  *
@@ -100,6 +104,7 @@ export function PlanDayCard({
   const pinned = lockOn(state, day.date) !== null;
   const hot = isHotDay(day);
   const heat = dayHeat(day);
+  const weather = hot ? null : dayWeatherOf(day);
   const storm = stormCodeOn(day.date, region.weather);
   const photo = first ? photos[first.slug] : undefined;
   const park = first ? parkBySlug.get(first.slug) : undefined;
@@ -284,6 +289,11 @@ export function PlanDayCard({
                 >
                   <ThermometerSun className="text-signal-heat size-3.5 shrink-0" />
                   {heat && <HeatFigure weather={heat} />}
+                </span>
+              )}
+              {weather && (
+                <span className={cn(PHOTO_PILL, 'px-1.5')}>
+                  <DayWeather weather={weather} className="text-white/85" />
                 </span>
               )}
               {pinned && (

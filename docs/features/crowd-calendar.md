@@ -147,6 +147,15 @@ seasons, for a screen reader and on hover. The page asks for the seasons once ov
 index shows (`parkCalendarMonthsShown`), in place of the shown month alone; the outlook reads the
 season card's list, today to a year ahead, so neither adds a request per chip.
 
+**The weather on a tile** is `DayWeather` (`components/common/day-weather.tsx`). Within the
+forecast's reach (about 16 days) the forecast's icon and its low–high. Past it the API sends the
+date's climate normal (`weather.basis: "climate_normal"`, the 2015–2024 average for the date), and
+the tile says so: no weather icon, a history mark, „Ø“ and the range half of such days' highs fell
+in („Ø 11°–14°“), muted. The legend keys it once („Ø Durchschnitt vergangener Jahre, keine
+Vorhersage“, `showClimateKey`), and a screen reader hears the same on each tile. An older API sends
+the normal without its range; the tile then shows the mean high („Ø 12°“). Before this the tile
+drew a normal exactly like a forecast.
+
 ## The day dialog
 
 `ParkCalendarDayDetail`, a Radix dialog, so it works on touch where a tooltip does not. It opens on
@@ -158,7 +167,9 @@ dialog shows the old day dimmed until the new month lands.
 
 It shows the schedule (open, closed, not yet published; estimated hours marked), the ticket price,
 the crowd level with the headliner forecast or, for a past day, the actual waits, local and
-neighbouring-country holidays (names through `translateHolidayName`), the weather, an hour-by-hour
+neighbouring-country holidays (names through `translateHolidayName`), the weather (past the
+forecast's reach the date's average over past years, „Wetter im Schnitt“: the range half of such
+days' highs and lows fell in and how often such a day brings rain, `ClimateNormalDetail`), an hour-by-hour
 crowd chart for today and tomorrow only (`useCalendarDayHourly`, asked only while the dialog is
 open), the rides closed for works that day, the day's seasons by name (`SeasonHeadline`, the line
 the park's season card uses, with the status only where it is not `confirmed`, the separate ticket

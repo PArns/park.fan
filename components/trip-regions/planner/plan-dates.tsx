@@ -43,7 +43,8 @@ import {
   type StormCode,
 } from '@/lib/trip-regions/date-facts';
 import { dayGuestClose, shortGroupName } from '@/lib/trip-regions/hub-data';
-import type { TripCalendarDay, TripRegionPark } from '@/lib/trip-regions/types';
+import type { TripCalendarDay, TripDayWeather, TripRegionPark } from '@/lib/trip-regions/types';
+import { DayWeather } from '@/components/common/day-weather';
 import { holidaySignals, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { sentenceCase } from '@/lib/utils/sentence-case';
 import { usePresetArrival } from '@/lib/trip-regions/planner-ui';
@@ -69,6 +70,8 @@ interface DateFacts {
   storm: StormCode | null;
   /** In Japan's rainy season, which the answers name but do not price. */
   rainy: boolean;
+  /** The weather at the region's climate park: the forecast, past its reach the usual range. */
+  weather: TripDayWeather | undefined;
 }
 
 /**
@@ -194,6 +197,7 @@ export function PlanDates({
         nye: isNewYearsEve(day.date),
         storm: stormCodeOn(day.date, region.weather),
         rainy: weatherNotesOn(day.date, region.weather).includes('rainy_season'),
+        weather: day.parks[region.weather?.climatePark ?? '']?.weather,
       });
     }
     return out;
@@ -647,9 +651,9 @@ function MonthChips({
 }
 
 /**
- * The line under the date grid: the date last pointed at, focused or pressed, with its pick in words
- * and why it won (overall, then the other resorts' picks it beat), and the night's parties. Before
- * any, a hint that it is there.
+ * The line under the date grid: the date last pointed at, focused or pressed, with its weather
+ * (`DayWeather`), its pick in words and why it won (overall, then the other resorts' picks it
+ * beat), and the night's parties. Before any, a hint that it is there.
  */
 function PlanDateInfo({
   shownDate,
@@ -689,8 +693,9 @@ function PlanDateInfo({
         <p className="text-muted-foreground">{t('infoHint')}</p>
       ) : (
         <>
-          <p className="mb-1 flex items-center gap-1.5 text-sm font-medium">
+          <p className="mb-1 flex flex-wrap items-center gap-1.5 text-sm font-medium">
             {dayLabel(date)}
+            <DayWeather weather={fact.weather} className="text-xs font-normal" />
             {fact.nye && (
               <>
                 <Sparkles className="text-primary-ink size-3.5" aria-hidden="true" />

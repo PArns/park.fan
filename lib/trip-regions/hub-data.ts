@@ -23,6 +23,7 @@ import type {
   TripCrowdLevel,
   TripLeg,
   TripParkDay,
+  TripDayWeather,
   TripRegion,
   TripRegionGroup,
   TripRegionPark,
@@ -902,6 +903,24 @@ const HUB_PARK_DAY_FIELDS = [
   'dayGuestCloseAt',
 ] as const satisfies readonly (keyof TripParkDay)[];
 
+/** What the hub's resort rows draw of a day's weather (`DayWeather`). */
+const HUB_WEATHER_FIELDS = [
+  'basis',
+  'icon',
+  'tempMin',
+  'tempMax',
+  'tempMaxP25',
+  'tempMaxP75',
+] as const satisfies readonly (keyof TripDayWeather)[];
+
+/**
+ * The parks whose weather the hub's calendar draws: each resort's first, which stands for the
+ * resort's place. `sliceCalendar` keeps the weather of these alone.
+ */
+export function weatherParks(region: TripRegion): ReadonlySet<string> {
+  return new Set(regionGroups(region).map((group) => group.parks[0].slug));
+}
+
 /** What the hub's calendar reads of a day besides its parks. */
 const HUB_DAY_FIELDS = [
   'date',
@@ -917,7 +936,11 @@ const HUB_DAY_FIELDS = [
  * as the hub's client part draws it: everything it passes is in the page's RSC payload, a park's
  * day per tile (docs/rules/the-page-render-is-the-bigger-half-of-the-api-budget-and-it.md).
  */
-export function sliceCalendar(calendar: TripCalendar, days: TripCalendarDay[]): TripCalendar {
+export function sliceCalendar(
+  calendar: TripCalendar,
+  days: TripCalendarDay[],
+  weatherParks: ReadonlySet<string> = new Set()
+): TripCalendar {
   const from = days[0]?.date ?? calendar.meta.from;
   const to = days[days.length - 1]?.date ?? calendar.meta.to;
   return {
@@ -926,7 +949,14 @@ export function sliceCalendar(calendar: TripCalendar, days: TripCalendarDay[]): 
     days: days.map((day) => ({
       ...picked(day, HUB_DAY_FIELDS),
       parks: Object.fromEntries(
-        Object.entries(day.parks).map(([slug, park]) => [slug, picked(park, HUB_PARK_DAY_FIELDS)])
+        Object.entries(day.parks).map(([slug, park]) => [
+          slug,
+          {
+            ...picked(park, HUB_PARK_DAY_FIELDS),
+            ...(park.weather &&
+              weatherParks.has(slug) && { weather: picked(park.weather, HUB_WEATHER_FIELDS) }),
+          },
+        ])
       ),
     })),
     seasons: calendar.seasons.filter((s) => s.endDate >= from && s.startDate <= to),

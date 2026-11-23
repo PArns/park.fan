@@ -426,12 +426,13 @@
       "pickLevel": "{level, select, very_low {much quieter than a normal day there} low {quieter than a normal day there} moderate {a normal day there} other {busier than a normal day there}}"
     },
     "visited": {
-      "ask": "Been there already? Tick it off",
+      "ask": "Already visited? Tick it off",
       "count": "{count} of {total} parks ticked off",
       "allDone": "All {count} parks ticked off. For a second visit:",
-      "toggle": "{park}: been there",
+      "toggle": "{park}: already visited",
       "tick": "Tick off {park} as visited",
-      "untick": "Take the tick off {park}"
+      "untick": "Take the tick off {park}",
+      "column": "Already visited?"
     },
     "legend": {
       "minutes": "Peak wait at the big rides, in minutes",
@@ -6580,5 +6581,15 @@
       "export": "Download data",
       "failed": "The download did not work. Please try again."
     }
+  },
+  "dayWeather": {
+    "normal": "Average of past years for this date, not a forecast",
+    "key": "Ø average {period}, not a forecast",
+    "keyNoPeriod": "Ø average of past years, not a forecast",
+    "detailTitle": "Typical weather",
+    "typicalHigh": "Daytime usually <range></range>",
+    "typicalLow": "at night usually <range></range>",
+    "wetDays": "{count, plural, =0 {rarely rain} =1 {rain on 1 day in 10} other {rain on # days in 10}}",
+    "detailNote": "Average of {period} for this date; on half of those days the value fell within the range. Forecasts reach about 16 days ahead."
   }
 }

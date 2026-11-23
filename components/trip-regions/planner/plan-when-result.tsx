@@ -1,5 +1,6 @@
 'use client';
 
+import { ClimateNormalDetail, DayWeather } from '@/components/common/day-weather';
 import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarCheck, Info } from 'lucide-react';
@@ -268,6 +269,7 @@ function WindowCard({
           {regionOrShared(tRegion, t, `reason.${reason}`)}
         </span>
       )}
+      {window.climate && <DayWeather weather={window.climate} className="text-sm" />}
       {/* The peak's sentence names the season, so its chip would say it twice. */}
       <ClimateChips codes={climateChips(window.warnings).filter((code) => code !== peak)} />
       {peak && (
@@ -405,6 +407,9 @@ function WindowSheet({
               {t('when.average', { minutes: window.rangeAverageWait })}
             </span>
           </p>
+          {window.climate && (
+            <ClimateNormalDetail weather={window.climate} period={window.climate.period} />
+          )}
           {windowReasons(window).length > 0 && (
             <ul className="flex flex-col gap-1">
               {windowReasons(window).map((r) => (

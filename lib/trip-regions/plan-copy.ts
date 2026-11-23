@@ -9,6 +9,7 @@ import {
   type TripPlan,
 } from './plan';
 import type { TripEarlyKind, TripPerk, TripWhenWindow } from './types';
+import type { DayWeatherData } from '@/lib/utils/day-weather';
 
 /**
  * Which sentence a plan's codes become. Pure: the codes are the API's (`docs/frontend/trip-regions.md`),
@@ -100,6 +101,27 @@ export function dayHeat(
     if (weather && (!hottest || weather.tempMax > hottest.tempMax)) hottest = weather;
   }
   return hottest;
+}
+
+/**
+ * What a plan day's weather pill shows (`DayWeather`): the forecast's high where the day has one,
+ * past its reach the date's average over past years with the range half of such days' highs fell
+ * in (`climate`), on every kind of day. `null` where the API sends neither.
+ */
+export function dayWeatherOf(
+  day: Pick<PlanDay, 'weather' | 'climate' | 'parks'>
+): DayWeatherData | null {
+  const forecast = day.weather ?? day.parks.find((p) => p.weather)?.weather;
+  if (forecast?.basis === 'forecast') return { basis: 'forecast', tempMax: forecast.tempMax };
+  if (day.climate) {
+    return {
+      basis: 'climate_normal',
+      tempMax: day.climate.tempMax,
+      tempMaxP25: day.climate.tempMaxP25,
+      tempMaxP75: day.climate.tempMaxP75,
+    };
+  }
+  return forecast ?? null;
 }
 
 /** A trip's hot park days with figures of one basis (`null`: no figure), and the highest of them. */

@@ -1,5 +1,7 @@
 'use client';
 
+import { DayWeather } from '@/components/common/day-weather';
+import { dayWeatherOf } from '@/lib/trip-regions/plan-copy';
 import { Fragment, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { BedDouble, ChevronRight, Lock, PlaneLanding, PlaneTakeoff } from 'lucide-react';
@@ -120,7 +122,7 @@ const QUIET_ICON = { arrival: PlaneLanding, departure: PlaneTakeoff, rest: BedDo
 /**
  * A day without a park and without a run of its own, as one row: the arrival, the departure, and a
  * rest day the visitor's rule set or pinned, which keeps its bed. In a region with bases the
- * arrival and departure name the city.
+ * arrival and departure name the city. The day's weather at its end, as on a park day's card.
  */
 function QuietDayRow({ day, onOpenDay }: { day: PlanDay; onOpenDay: (date: string) => void }) {
   const t = useTranslations('tripPlanner');
@@ -165,6 +167,7 @@ function QuietDayRow({ day, onOpenDay }: { day: PlanDay; onOpenDay: (date: strin
       <span aria-hidden="true" className="text-muted-foreground min-w-0 flex-1 truncate">
         {what}
       </span>
+      <DayWeather weather={dayWeatherOf(day)} className="shrink-0 text-xs" />
       {pinned && <Lock className="text-primary-ink size-3.5 shrink-0" aria-hidden="true" />}
       <ChevronRight className="text-muted-foreground size-4 shrink-0" aria-hidden="true" />
       <PlanDayGlow date={day.date} />

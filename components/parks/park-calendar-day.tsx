@@ -1,6 +1,6 @@
 'use client';
 
-import { createElement, memo } from 'react';
+import { memo } from 'react';
 import { Info } from 'lucide-react';
 import type { CalendarDay } from '@/lib/api/types';
 import type { RideInWorks } from '@/lib/utils/works-period';
@@ -10,10 +10,9 @@ import { useSeasonLabel } from './season-headline';
 import { CalendarDayTile } from './calendar-day-tile';
 import { useTranslations, useLocale } from 'next-intl';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
-import { Temp } from '@/components/common/unit-display';
+import { DayWeather } from '@/components/common/day-weather';
 import { format, parseISO } from 'date-fns';
 import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
-import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
@@ -247,18 +246,7 @@ function ParkCalendarDayComponent({
           </span>
         )
       }
-      weather={
-        day.weather && (
-          <span className="flex items-center gap-1">
-            {createElement(getWeatherConfig(day.weather.icon).icon, {
-              className: 'h-3 w-3 shrink-0',
-            })}
-            <span className="tabular-nums">
-              <Temp celsius={day.weather.tempMin} />–<Temp celsius={day.weather.tempMax} />
-            </span>
-          </span>
-        )
-      }
+      weather={day.weather && <DayWeather weather={day.weather} />}
     />
   );
 }
