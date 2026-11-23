@@ -29,6 +29,7 @@ import {
   Route,
   Search,
   Server,
+  Snowflake,
   Ticket,
   TrendingUp,
   UserRound,
@@ -401,6 +402,13 @@ const NAV_GROUPS: NavGroup[] = [
             keywords: ['modelle', 'vergleich', 'matrix', 'chronos', 'tft', 'pcn', 'prognose'],
           },
         ],
+      },
+      {
+        href: '/admin/weather-closure',
+        label: 'Kälte und Schnee',
+        icon: Snowflake,
+        description: 'Welche Bahnen bei Kälte oder Schnee schließen, und wann die Seite es sagt',
+        keywords: ['wetter', 'kälte', 'schnee', 'temperatur', 'geschlossen', 'winter'],
       },
       {
         href: '/admin/analytics',

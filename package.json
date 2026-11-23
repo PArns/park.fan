@@ -69,6 +69,7 @@
     "test:warnings-in-opening-hours": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-warnings-in-opening-hours.mjs",
     "test:weather-chart-axis": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-weather-chart-axis.mjs",
     "test:umami-events": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-umami-events.mjs",
+    "test:admin-weather-closure": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-weather-closure.mjs",
     "test:admin-live-traffic": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-live-traffic.mjs",
     "test:admin-parky-elements": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-parky-elements.mjs",
     "test:admin-site-analytics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-site-analytics.mjs",
