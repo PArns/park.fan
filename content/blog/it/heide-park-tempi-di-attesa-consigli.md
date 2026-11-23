@@ -367,6 +367,9 @@ lunghe d’autunno questo non vale, perché le attrazioni acquatiche chiudono al
 calare del buio. **Scream** e il **Big Loop** sono i riempitivi fra due grandi
 attrazioni.
 
+> [!PARKY]
+> In una lunga giornata d’autunno il piano cambia: si gira solo dalle 12, e le attrazioni acquatiche chiudono verso le 17, quindi ci bagniamo prima delle cinque. Nei giorni di Halloween, verso le 16, aprono i tre maze, di cui prenotiamo prima le fasce orarie online, e tra un maze e l’altro mi aggrappo a una frittella. Quello che ci sta in mezzo lo sistemiamo nel [pianificatore della giornata](/trip-planner).
+
 ## Pratico: come arrivare, biglietti, orari
 
 **Come arrivare.** Heide Park 1, 29614 Soltau, sulla **A7** fra Amburgo e
@@ -396,6 +399,9 @@ entrano gratis, ma serve un biglietto da 0 € dal negozio online.
 
 **Mangiare.** Sulla nostra pagina del parco ci sono 21 punti di ristoro, dalla Schmalzkuchen-Schmiede, un chiosco di frittelle sulla
 terrazza di Colossos, fino al Wirtshaus des Admirals, un ristorante a buffet nella Bucht der Piraten. La pizza si trova da Pizza Scream e la Flammkuchen alla Flammkuchen Factory, entrambi in Transilvania, e la salsiccia della Turingia alla griglia di lava all’Heide Park Grill, all’ingresso. Il Frau Mümmels Kiosk nel Peppa Pig Land vende bowl, e molti ristoranti hanno alternative vegetali.
+
+> [!PARKY]
+> L’abbonamento lo compriamo solo a ridosso della nostra prima visita del 2027: vale dodici mesi dall’acquisto, e a Soltau fino a fine marzo non gira niente. Comprato a dicembre, perderebbe mesi interi in cui io Colossos posso solo sognarlo. Se veniamo anche di sabato, ci vuole il Silber Pass, perché nel 2026 il Bronze Pass non valeva nella maggior parte dei sabati da aprile a ottobre.
 
 ## Domande frequenti sull’Heide Park
 

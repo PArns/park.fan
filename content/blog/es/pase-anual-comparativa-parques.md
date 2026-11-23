@@ -28,7 +28,7 @@ coverImage:
   caption: 'Symbolica en el Efteling. El pase Classic está bloqueado allí 68 días en 2027.'
   credit: 'park.fan'
 seo:
-  title: 'Pases anuales 2026: Toverland 160 €, Phantasialand ninguno'
+  title: 'Pases anuales comparados: Europa-Park, Efteling, Toverland'
   description: >-
     En el Efteling, Europa-Park y Toverland, el pase anual más barato se
     amortiza con cuatro a seis visitas. Phantasialand no tiene pase anual desde
@@ -211,6 +211,9 @@ niño de menos de 90 cm hay un pase gratuito si un progenitor tiene pase anual. 
 categoría de altura, se paga la diferencia por cada mes restante.
 
 Si compras el pase un día de visita y pagas el año entero, el parque te devuelve la entrada de ese día. La lista de socios de marzo de 2026 incluye entre otros Walibi Holland con un 20 % salvo en las Halloween Fright Nights, Attractiepark Hellendoorn con un 35 %, los parques Plopsa con un 40 % para visitantes desde 1 m, Bobbejaanland con un 20 % y Freizeit-Land Geiselwind con un 40 %.
+
+> [!PARKY] Cómpralo allí
+> Para el Magic Member sacamos una entrada de día normal para la primera visita y decidimos ya en el parque: si pagamos el pase del año entero ese mismo día, Toverland nos devuelve la entrada. Así el primer día se convierte en una prueba gratis, si nos animamos. Comprado en taquilla, el pase vale luego un año desde ese día.
 
 ### Las condiciones
 

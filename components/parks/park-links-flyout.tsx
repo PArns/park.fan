@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { cn } from '@/lib/utils';
@@ -36,14 +36,16 @@ function placeLinks(root: HTMLElement, panel: HTMLElement): AbovePlacement | nul
 
 /**
  * „Mehr ›" beside the planner in the park's title card: the park's outbound links (website,
- * tickets, Wikipedia, socials) slide out to its right when the pointer reaches the button, on focus
- * or on a tap, so the row holds one call to action instead of a dozen buttons. They close when the
- * pointer leaves the whole title card, not the button: a strip that shut as the mouse crossed to it
- * was the annoying part. The links float over the layout rather than joining
+ * tickets, Wikipedia, socials) slide out to its right when the pointer reaches the button, on
+ * keyboard focus or on a tap, so the row holds one call to action instead of a dozen buttons. They
+ * close when the pointer leaves the whole title card, not the button: a strip that shut as the
+ * mouse crossed to it was the annoying part. The links float over the layout rather than joining
  * the row: a hover is no input that excuses a layout shift, and a row that wrapped would be one.
  * Where they do not fit beside the button inside the row it stands in (its parent, as wide as the
  * title card's text), they open over the row on an opaque panel, so they never reach the guide's
- * window beside the text or run off a tablet's screen.
+ * window beside the text or run off a tablet's screen. Closed, the panel is `display: none`, not
+ * only invisible: an invisible panel beside the button still widens the page, and on an iPad
+ * WebKit lets that width be panned despite the `overflow-x: clip` on `<body>`.
  * They arrive server-rendered as `children`. Each opening is `park_links_opened`, with the park.
  */
 export function ParkLinksFlyout({
@@ -69,13 +71,15 @@ export function ParkLinksFlyout({
     }
   }, []);
   const toggle = (next: boolean) => {
-    if (next && !open) {
-      trackSiteEvent('park_links_opened', {}, parkId);
-      // In the same commit as `open`, so the links never show at the side they do not fit.
-      place();
-    }
+    if (next && !open) trackSiteEvent('park_links_opened', {}, parkId);
     setOpen(next);
   };
+
+  // After the commit that displays the panel, since a closed one has no width to measure, and
+  // before the paint, so the links never show at the side they do not fit.
+  useLayoutEffect(() => {
+    if (open) place();
+  }, [open, place]);
 
   // The card around the row, the `GlassCard` of `ParkPageShell`; leaving it is what closes.
   useEffect(() => {
@@ -100,7 +104,9 @@ export function ParkLinksFlyout({
     <div
       ref={rootRef}
       className={cn('relative', className)}
-      onFocus={() => toggle(true)}
+      // Keyboard focus only: a tap focuses the button in Chromium before its click, so opening on
+      // that focus let the click close the links again in the same tap.
+      onFocus={(event) => event.target.matches(':focus-visible') && toggle(true)}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) toggle(false);
       }}
@@ -128,13 +134,13 @@ export function ParkLinksFlyout({
         ref={panelRef}
         style={above ? { left: above.left, maxWidth: above.maxWidth } : undefined}
         className={cn(
-          'absolute z-20 flex items-center gap-3 whitespace-nowrap transition-[opacity,translate] duration-200 motion-reduce:transition-none',
+          // `transition-discrete` keeps it displayed until the fade out ends; `starting:` gives the
+          // fade in its first frame after `display: none`.
+          'absolute z-20 flex items-center gap-3 whitespace-nowrap transition-[opacity,translate,display] transition-discrete duration-200 motion-reduce:transition-none starting:-translate-x-2 starting:opacity-0',
           above
             ? 'bg-popover border-border/60 bottom-full mb-2 w-max flex-wrap rounded-xl border p-2 shadow-lg'
             : 'top-1/2 left-full -translate-y-1/2 pl-2',
-          open
-            ? 'visible translate-x-0 opacity-100'
-            : 'pointer-events-none invisible -translate-x-2 opacity-0'
+          open ? 'translate-x-0 opacity-100' : 'pointer-events-none hidden -translate-x-2 opacity-0'
         )}
       >
         {children}

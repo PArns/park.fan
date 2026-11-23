@@ -83,6 +83,21 @@ not in the grid, so they are in the first byte; they stop where the window ends 
 a 404. `ParkCalendarMonthIndex` (server) links every month of the window as a labelled `<nav>`, so
 every month is one hop from every other.
 
+**The star.** Each week row's quietest open day, ahead of today, gets the star and the accent ring
+(`bestDayDates` in `ParkCalendarGrid`: the month summary's `rankOf`, crowd bucket with the headliner
+wait as the tie-break, a tie to the earlier date), named „ruhigster Tag der Woche“ on the tile and
+in the legend (`showBestKey`). The trip hub's rule (`quietestDay`), drawn by the tile itself
+(`TILE_BEST_RING`), so a star means the same in both calendars. Before, every day half a crowd
+bucket below the month's median got „Empfohlen“, about half a quiet month, which repeated the
+level's word. The demos without a grid still read the API's `recommendation` as „Empfohlen“.
+
+**Hours and legend.** A tile prints the park's hours as plain park time, „08:00–23:00“
+(`formatHoursRange`, as the hub does); the legend says once „Zeiten in Ortszeit des Parks“
+(`showLocalTimes`), and the day dialog keeps the visitor's own time on hover. A dotted, hoverable
+time on every tile was noise. The legend draws the six crowd tiers as the tiles draw them, tint,
+rim and ink (on a phone one ramp with its ends named), and the weekday header tints Saturday and
+Sunday like the hub's.
+
 **`ParkCalendarGrid`** is `ssr: false`: it formats against the browser clock and picks a week grid
 (desktop) or a two-column list (phones) from the viewport. Its loading box is the grid's real height
 for that month (`calendarGridReservation`, `lib/parks/calendar-grid-geometry.ts`;
@@ -124,9 +139,12 @@ month without a season. A season over more than half the month (a winter season)
 the crowd colours. The icon names its seasons on hover and in the tile's `aria-label`, with the
 status where it is not `confirmed`.
 
-**Season names.** From `lg`, where the week grid's tile has the height, the name stands on a line of
-its own under the status word, with the icon in front of it, and the status row drops its icon; the
-tile stays 150 px. The two-column list below `lg` keeps the icon alone. The two-day comparison takes
+**Season names.** From `lg`, where the week grid's tile has the height, a season that stands out
+has its name on a line of its own under the status word, with the icon in front of it, and the
+status row drops its icon; the tile stays 150 px. A quiet season (over half the month, or only
+expected) keeps only its icon on the tile and is named once above the grid with its dates in the
+month („Holidays at the Disneyland Resort · 1.–31. Dez.“, `quietSeasonRuns`), since its name on
+every tile repeated one line thirty times and was cut off on each. The two-column list below `lg` keeps the icon alone. The two-day comparison takes
 each pick's seasons into its store (`dayComparisonStore.toggle`), because `seasonDaysOfMonth` covers
 only the month on screen, and opens its rows with a „Saison" row: the event, „Reguläre Saison" or
 „Geschlossen". The row is never scored, since a winter event makes a different day, not a better
@@ -147,6 +165,17 @@ seasons, for a screen reader and on hover. The page asks for the seasons once ov
 index shows (`parkCalendarMonthsShown`), in place of the shown month alone; the outlook reads the
 season card's list, today to a year ahead, so neither adds a request per chip.
 
+**The weather on a tile** is `DayWeather` (`components/common/day-weather.tsx`). Within the
+forecast's reach (about 16 days) the forecast's icon and its low–high in the foreground ink. Past
+it the API sends the date's climate normal (`weather.basis: "climate_normal"`, the 2015–2024
+average for the date), and the tile says so: no icon, „Ø“ and the range half of such days' highs
+fell in („Ø 11°–14°“), muted. An icon would claim a sky nobody forecast, so its absence is the
+mark. The legend keys both tokens side by side as the tiles draw them (`WeatherKey`: the icon with
+„Vorhersage“, „Ø Durchschnitt vergangener Jahre, keine Vorhersage“, `showClimateKey`), the same key
+the region hub uses, and a screen reader hears the average named on each tile. An older API sends
+the normal without its range; the tile then shows the mean high („Ø 12°“). Before this the tile
+drew a normal exactly like a forecast.
+
 ## The day dialog
 
 `ParkCalendarDayDetail`, a Radix dialog, so it works on touch where a tooltip does not. It opens on
@@ -158,7 +187,9 @@ dialog shows the old day dimmed until the new month lands.
 
 It shows the schedule (open, closed, not yet published; estimated hours marked), the ticket price,
 the crowd level with the headliner forecast or, for a past day, the actual waits, local and
-neighbouring-country holidays (names through `translateHolidayName`), the weather, an hour-by-hour
+neighbouring-country holidays (names through `translateHolidayName`), the weather (past the
+forecast's reach the date's average over past years, „Wetter im Schnitt“: the range half of such
+days' highs and lows fell in and how often such a day brings rain, `ClimateNormalDetail`), an hour-by-hour
 crowd chart for today and tomorrow only (`useCalendarDayHourly`, asked only while the dialog is
 open), the rides closed for works that day, the day's seasons by name (`SeasonHeadline`, the line
 the park's season card uses, with the status only where it is not `confirmed`, the separate ticket

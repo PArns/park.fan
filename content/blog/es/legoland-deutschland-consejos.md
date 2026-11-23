@@ -338,6 +338,9 @@ Según el parque, están bajo techo la **Tempel X-pedition**, **LEGO NINJAGO The
 Studios**, **LEGOLAND ATLANTIS by SEA LIFE** y la **LEGO Fabrik**. Atlantis tiene según Wikipedia más de 2.000 peces, y su túnel de cristal mide ocho metros.
 Además hay una **Regen Rallye**, un juego de acertijos para los días de lluvia.
 
+> [!PARKY] Vamos igual
+> Si el pronóstico dice lluvia, no nos quedamos en casa: los días de lluvia, las esperas aquí fueron un 17 % más cortas. Cuando cae un chaparrón, nos metemos en los LEGO Studios o en LEGO NINJAGO The Ride, y yo sujeto el paraguas y disfruto de cada cola más corta. En cuanto para, somos los primeros en volver a salir.
+
 Entre el 24 de diciembre de 2025 y el 5 de octubre de 2026 cayeron en Legoland Deutschland al menos dos milímetros de lluvia en el 18 % de los días de apertura. El
 propio parque recomienda paraguas, poncho de lluvia, calzado impermeable y ropa de recambio.
 
@@ -387,6 +390,9 @@ El **WinterWonder LEGOLAND** se celebra en 2026/27 en días sueltos: 28 y 29 de 
 11 al 13, del 18 al 23 y del 26 al 30 de diciembre, y del 2 al 10 de enero de 2027. Hay una pista de
 hielo, pistas de curling y espectáculos cada media hora, y en muchas atracciones pone «abierto según el
 tiempo». Hasta el 15 de noviembre, una entrada de venta anticipada cuesta 22 € en lugar de 36 €.
+
+> [!PARKY] Primero el pase
+> Si en 2027 vamos a ir dos veces a Legoland de todos modos, compramos el pase anual, desde 99 €, antes del primer día del WinterWonder, el 28 de noviembre: con él, la entrada al WinterWonder es gratis, y sin él cuesta 36 €. Si luego una atracción con el «abierto según el tiempo» se queda cerrada, me fastidia la mitad, porque en verano volvemos. Suma dos días de verano al precio mínimo en línea de 39 € y el pase ya está amortizado.
 
 Legoland también ha anunciado el primer LEGO Harry Potter Land del mundo y el primer alojamiento con esa
 temática. El parque no da año de apertura.

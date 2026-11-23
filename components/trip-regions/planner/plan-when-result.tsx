@@ -1,5 +1,6 @@
 'use client';
 
+import { ClimateNormalDetail, DayWeather } from '@/components/common/day-weather';
 import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarCheck, Info } from 'lucide-react';
@@ -14,12 +15,14 @@ import {
   weekInWindow,
   windowReasons,
   windowWarnings,
+  type FoundWindows,
 } from '@/lib/trip-regions/plan-when';
 import { lastYearFrom } from '@/lib/trip-regions/best-time';
 import type { TripWhen, TripWhenWindow } from '@/lib/trip-regions/types';
 import { Button } from '@/components/ui/button';
 import { Sheet } from '@/components/ui/sheet';
 import { usePlanContext, useTripEvents } from './plan-context';
+import { PLAN_FOCUS, PLAN_PILL, PLAN_PILL_IDLE } from './plan-controls';
 import { PlanSheetContent } from './plan-sheet';
 import { useSeasonName } from './use-day-facts';
 import { ClimateChips } from './plan-day-bits';
@@ -27,7 +30,8 @@ import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { sentenceCase } from '@/lib/utils/sentence-case';
 
 /**
- * The When mode's answer, simple first. Level 0: the three best windows as cards, each with its
+ * The When mode's answer once the visitor asks to compare the windows (a search's best window is
+ * planned at once, `PlanWhenPicked`), simple first. Level 0: the three best windows as cards, each with its
  * dates, the big rides' wait, how far below the period's average it lies and one reason; one line
  * under the title says from which week the figures are last year's, since after the forecast's
  * days nearly every week is. Level 1: the year strip, a bar per week in primary ink with the
@@ -62,7 +66,7 @@ export function PlanWhenResult({
     });
 
   const plan = (window: TripWhenWindow) => {
-    track('trip_window_planned', { rank: window.rank });
+    track('trip_window_planned', { rank: window.rank, via: 'card' });
     setOpen(null);
     onPlan((state) => planWindow(state, { from: window.from, to: window.to }));
   };
@@ -130,6 +134,87 @@ export function PlanWhenResult({
   );
 }
 
+/**
+ * The line over the plan of a window the search found, „Die ruhigsten 7 Tage im gewählten
+ * Zeitraum: 9.–15. Jan.“, also for the live region that announces it.
+ */
+export function usePickedLine(found: FoundWindows, picked: FoundWindows['windows'][number]) {
+  const t = useTranslations('tripPlanner.when');
+  const { locale } = usePlanContext();
+  return t('picked', {
+    rank: String(picked.rank),
+    days: found.search.days,
+    range: shortRange(locale, picked.from, picked.to),
+  });
+}
+
+/**
+ * Over the plan of a window the search found: why these dates, the other windows as chips that
+ * plan theirs instead, and „Alle vergleichen“ back to the search's cards and year strip.
+ */
+export function PlanWhenPicked({
+  found,
+  picked,
+  onList,
+}: {
+  found: FoundWindows;
+  picked: FoundWindows['windows'][number];
+  onList: () => void;
+}) {
+  const t = useTranslations('tripPlanner.when');
+  const { locale, update } = usePlanContext();
+  const track = useTripEvents();
+  const line = usePickedLine(found, picked);
+  const others = found.windows.filter((w) => w.rank !== picked.rank);
+  return (
+    <div className="flex flex-col gap-2" data-plan-when-picked={picked.rank}>
+      <p className="flex gap-2 text-sm font-medium">
+        <CalendarCheck className="text-primary-ink mt-0.5 size-4 shrink-0" aria-hidden="true" />
+        {line}
+      </p>
+      <div
+        role="group"
+        aria-labelledby={others.length > 0 ? 'plan-when-others' : undefined}
+        className="flex flex-wrap items-center gap-2"
+      >
+        {others.length > 0 && (
+          <span id="plan-when-others" className="text-muted-foreground text-xs font-medium">
+            {t('others')}
+          </span>
+        )}
+        {others.map((window) => (
+          <button
+            key={window.rank}
+            type="button"
+            onClick={() => {
+              track('trip_window_planned', { rank: window.rank, via: 'chip' });
+              update((state) => planWindow(state, window));
+            }}
+            className={cn(PLAN_PILL, PLAN_PILL_IDLE, 'tabular-nums', PLAN_FOCUS)}
+          >
+            {shortRange(locale, window.from, window.to)}
+          </button>
+        ))}
+        <button
+          type="button"
+          onClick={onList}
+          className={cn(
+            'text-primary-ink min-h-11 rounded-md px-2 text-sm font-medium underline-offset-4 hover:underline lg:min-h-9',
+            PLAN_FOCUS
+          )}
+        >
+          {t('compare')}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/** A window's dates as its chip says them: „9.–15. Jan.“ */
+function shortRange(locale: string, from: string, to: string): string {
+  return formatParkDayRange(locale, from, to, { day: 'numeric', month: 'short' });
+}
+
 function WindowCard({
   window,
   label,
@@ -184,6 +269,7 @@ function WindowCard({
           {regionOrShared(tRegion, t, `reason.${reason}`)}
         </span>
       )}
+      {window.climate && <DayWeather weather={window.climate} className="text-sm" />}
       {/* The peak's sentence names the season, so its chip would say it twice. */}
       <ClimateChips codes={climateChips(window.warnings).filter((code) => code !== peak)} />
       {peak && (
@@ -321,6 +407,9 @@ function WindowSheet({
               {t('when.average', { minutes: window.rangeAverageWait })}
             </span>
           </p>
+          {window.climate && (
+            <ClimateNormalDetail weather={window.climate} period={window.climate.period} />
+          )}
           {windowReasons(window).length > 0 && (
             <ul className="flex flex-col gap-1">
               {windowReasons(window).map((r) => (

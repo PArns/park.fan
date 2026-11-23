@@ -47,7 +47,16 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`cdn-cache-headers.ts`](../../lib/api/cdn-cache-headers.ts)
 
 - `cdnCacheHeaders` _function_: Cache headers for an API route meant to sit in a shared cache.
+- `tagPurgedCacheRule` _function_: The `next.config.ts` rule of a route the backend rings: its windows without the tags, which name one park.
+- `tagPurgedCacheHeaders` _function_: The handler's headers of a route the backend rings: the rule's, plus the tags that end Vercel's copy.
 - `NO_STORE` _const_: The headers for an error response from a route under a shared rule in `next.config.ts`.
+- `FORECAST_WINDOW` _const_: The calendar month and the best-days snapshot: a ring reaches a reader at most 70 minutes late.
+- `PARKY_TIP_WINDOW` _const_: Parky's day tip: the forecast's window, and an hour in the browser, which is as long as the month the dialog shows it on stays fresh there (`CALENDAR_STALE_TIME_MS`).
+- `PARKY_TIP_TODAY_WINDOW` _const_: Parky's tip for the park's today itself, which says how busy the day has been so far.
+- `CALENDAR_TODAY_WINDOW` _const_: A calendar range that holds the park's today, whose „Heute bisher" is the level so far: the month the grid and the day dialog show, and the today panel's single day. No `max-age`, as for `FORECAST_WINDOW`: the tab's copy is TanStack's.
+- `PARKY_TIP_NONE_SECONDS` _const_: How long „nothing to say" from the tip relay is kept, in every cache including the tab's: the API's own window for its 204.
+- `PARKY_TIP_NONE_WINDOW` _const_: Parky's day tip when the API has nothing to say.
+- Types: `TagPurgedWindow`
 
 ### [`client.ts`](../../lib/api/client.ts)
 
@@ -113,13 +122,15 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`integrated-calendar.ts`](../../lib/api/integrated-calendar.ts)
 
 - `getIntegratedCalendar` _function_: Fetch a park's integrated calendar (hours, weather, holidays per day) in one uncached call. `from` defaults to today and `to` to 30 days later on the API side.
+- `parkCalendarCacheTag` _function_: Cache tag for ONE park's calendar: the `/calendar` relay's copy at Vercel's edge, a month page's summary and Parky's day tip relay.
+- `bestDaysCacheTag` _function_: Cache tag for a park's best-days snapshot, server read and relay, which the backend rings after every forecast warmup. The slug alone, as the API sends it: two parks that share one are rung together, which costs a refetch and nothing else.
 - `getBestDaysCalendar` _function_: Best-days snapshot for the SSR seed, data-cached and tagged so repeat renders never touch the backend. Feeds the best-days section and the crowd FAQ and its FAQPage JSON-LD.
 - `getBestDaysSnapshotFresh` _function_: Live (no-store) best-days snapshot for the `/api/parks/.../best-days` client-poll proxy, so it reflects the backend's latest snapshot. Mirrors `getParkByGeoPathFresh`.
 - `getBestDaysForApiKey` _function_: The best-days snapshot read with a caller's own data key and nothing of the server's, so the API applies that key's revocation, parks and hourly allowance to this read.
 - `getBestDaysCalendarSeed` _function_: Timeout-bounded `getBestDaysCalendar` for the park page's streamed SEO seed.
 - `getCalendarMonthSeed` _function_: Timeout-bounded month fetch for the calendar page's streamed summary, like `getBestDaysCalendarSeed`: a timeout drops only the summary card.
 - `BEST_DAYS_REVALIDATE` _const_: Data-cache window for the SSR best-days snapshot. Only the fallback cadence: the backend fires `revalidateTag('best-days:<slug>')` after every forecast warmup, and `analyzeBestDays` re-filters against a fresh „today" on every render.
-- `CALENDAR_MONTH_REVALIDATE` _const_: How long a month page's server-rendered summary may be reused: a day, since what it says (open days, quietest and busiest days, usual hours) does not change within one.
+- `CALENDAR_MONTH_REVALIDATE` _const_: How long a month page's server-rendered summary may be reused when no ring comes: a day.
 - Types: `CalendarHourlyMode`, `BestDaysByDayOfWeek`, `BestDaysSnapshot`
 
 ### [`keyed-read.ts`](../../lib/api/keyed-read.ts)

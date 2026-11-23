@@ -382,6 +382,9 @@ del 17 de julio al 31 de agosto. Las semanas con las dos a la vez, del 17 de jul
 son las que te conviene evitar en Soltau. A partir del 1 de septiembre solo Baviera y
 Baden-Wurtemberg siguen de vacaciones, y en 2026 esas fueron las semanas más tranquilas del verano.
 
+> [!PARKY] Rumbo a Soltau
+> Desde Baja Sajonia vamos al Heide Park entre el 8 y el 16 de julio de 2027, antes de que el 17 empiecen las vacaciones en NRW. El lunes 12 de julio ya lo apunto a lápiz, porque los parques todavía no han publicado sus días de apertura de 2027. En 2026 el lunes fue el laborable de vacaciones más tranquilo en el Heide Park, un 21 % por debajo de los otros cuatro.
+
 Renania-Palatinado tiene vacaciones del 26 de junio al 8 de agosto, así que coincide con NRW del 17 de
 julio al 8 de agosto. Son algo más de tres semanas, como en 2026, y según nuestra medición es cuando
 el Plopsaland está lleno. Hesse, Renania-Palatinado y el Sarre empiezan a finales de

@@ -8,7 +8,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 15. November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 20. November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -115,11 +115,11 @@ export function DatenschutzDE() {
         <p>
           Im lokalen Speicher (Local Storage) Ihres Browsers legen wir Einstellungen ab, etwa das
           Farbschema, Ihren Tagesplan, die zuletzt im Reiseplaner geplante Reise je Region samt den
-          Angaben zu Ihrer Gruppe, die Sie Parky genannt haben, den Park Ihres letzten Chats mit
-          Parky, Ihre Benachrichtigungen, Ihre Entscheidung zur Standortfreigabe und zur Statistik,
-          dazu zwischengespeicherte Ergebnisse. Diese Daten bleiben auf Ihrem Gerät. Was davon an
-          unseren Server geht, steht in den Abschnitten zu Tagesplaner, Parky und
-          Push-Benachrichtigungen.
+          Angaben zu Ihrer Gruppe, die Sie Parky genannt haben, die Parks, die Sie im Kalender einer
+          Region als besucht abgehakt haben, den Park Ihres letzten Chats mit Parky, Ihre
+          Benachrichtigungen, Ihre Entscheidung zur Standortfreigabe und zur Statistik, dazu
+          zwischengespeicherte Ergebnisse. Diese Daten bleiben auf Ihrem Gerät. Was davon an unseren
+          Server geht, steht in den Abschnitten zu Tagesplaner, Parky und Push-Benachrichtigungen.
         </p>
         <p>
           Für diese Cookies und Einträge braucht es keine Einwilligung, weil sie für die von Ihnen

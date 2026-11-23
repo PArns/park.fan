@@ -83,6 +83,9 @@ En métro, on prend la ligne Bundang jusqu’à Giheung, puis l’EverLine, qui 
 
 Les jumelles panda devraient se montrer au public pour la dernière fois le 11 décembre, avant de partir pour la Chine pendant la troisième semaine de décembre. Depuis le 13 novembre, elles sont en quarantaine au Panda Second House et ne restent visibles qu’avec des restrictions, dans l’enclos intérieur. L’arbre et les jumelles le même jour, c’est donc possible pendant trois semaines, et avec la parade en plus, seulement du 27 novembre au 11 décembre. Comment se passent les visites chez les pandas, nous l’expliquons dans notre article sur les [adieux de Rui Bao et Hui Bao](/news/everland-pandas-ruibao-huibao-adieu).
 
+> [!PARKY]
+> On prend un jour entre le 1er et le 11 décembre, plutôt au début : on paie alors déjà le tarif de décembre, on voit la parade et Magic in the Sky, et on aperçoit encore les jumelles, même si ce n’est qu’avec des restrictions, dans l’enclos intérieur. Deux pandas qui déménagent en Chine, je tiens à leur dire au revoir en personne. Les horaires de la parade et du spectacle, on les vérifie avant dans le programme du jour sur everland.com.
+
 [Everland](ref:everland?full)
 
 Sources :

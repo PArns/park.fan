@@ -93,6 +93,9 @@ De Gold Pass kost $155 en geldt in 2026 en 2027 in alle Six Flags-parken aan de 
 
 Parkeren kost vanaf $42 op General Parking en vanaf $62 op Preferred Parking, telkens plus belasting. Een plek bij de hoofdingang (Front Gate) kost vanaf $77, bijna net zoveel als het dagticket zelf. Het adres voor de navigatie is 26101 Magic Mountain Pkwy, Valencia, CA 91355.
 
+> [!PARKY] Pass, geen ticket
+> Staat Magic Mountain in 2027 op onze reis door Californië, dan kopen we tot en met 30 november de Silver Pass in plaats van een Good Any Day Ticket, ook voor één bezoek: allebei kosten ze $79, maar bij de pass zit General Parking, dat anders vanaf $42 plus belasting kost. Van dat parkeergeld koop ik een flinke stapel churros. De dag zelf leggen we daarna vast in de [reisplanner](/california#planner).
+
 ## Andere Six Flags-parken en de Thrill Glider
 
 Six Flags heeft Holiday in the Park deze winter in [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) en in [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026) vernieuwd. Knott's Berry Farm, waar de Gold Pass ook geldt, verandert in [Knott's Merry Farm](/news/knotts-merry-farm-2026). In Magic Mountain zelf is de volgende grote nieuwigheid de [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), een achtbaan van Vekoma die in 2027 open moet gaan.

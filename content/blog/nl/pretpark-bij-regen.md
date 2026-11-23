@@ -232,6 +232,9 @@ geen minimumlengte, wie kleiner is dan respectievelijk 100 of 110 centimeter
 rijdt er met een volwassene mee. Voor hen staan in Berlin ook de paardencarrousel, Die 3 Mausketiere
 en het Verrückte Hotel Tartüff.
 
+> [!PARKY]
+> Regent het in Brühl, dan gaan we eerst naar Wuze Town: Winja's Fear, Winja's Force en Crazy Bats rijden daar in dezelfde hal, drie achtbanen zonder dat er een druppel op ons valt. Daarna neemt Mystery Castle ons binnen in zijn toren 65 meter mee omhoog, en tegen de regen helpt het dak, tegen de hoogte helaas niet. Taron en Black Mamba bewaren we voor de droge momenten daartussen.
+
 ![Een reusachtige aardewerken pot met open deksel, er staat een ladder tegenaan | In de hal van Winja’s Fear & Force in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
 Taron, Black Mamba en de andere grote achtbanen rijden buiten.

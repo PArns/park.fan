@@ -165,6 +165,9 @@ Zolang de zomertijd geldt, gaat de zon in Brühl pas na sluitingstijd onder. Van
 oktober is ze al rond 17:20 uur weg, en vlak voor 18 uur is het donker. In het laatste halfuur voor
 sluitingstijd gaan in Klugheim de lichten aan, terwijl Taron nog rijdt.
 
+> [!PARKY]
+> Doordeweeks bewaren we Taron voor de middag: vanaf 14 uur is de wachtrij nog maar ongeveer twee derde zo lang als ’s ochtends. Vanaf 25 oktober nemen we de laatste rit in het halfuur voor sluitingstijd, als in Klugheim de lichten aangaan, en tussen de basaltrotsen in het donker krijg ik kippenvel tot onder mijn hoed. De rest van de dag plannen we attractie voor attractie in de [dagplanner](/trip-planner).
+
 ## Hoe lang de rustige dagen nog duren
 
 De halloweenavonden in de buurparken stoppen tussen 1 november bij Walibi Holland en 15 november in

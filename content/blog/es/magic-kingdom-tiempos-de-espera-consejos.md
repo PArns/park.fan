@@ -303,6 +303,9 @@ Single Pass de TRON costó 19 dólares los dos días, y el de Seven Dwarfs Mine
 Train, 11 dólares el 30 de septiembre. Ese día no se podía comprar ninguno de los
 dos, aunque el de TRON ya volvía a estar a la venta para el día siguiente.
 
+> [!PARKY] Para el Mine Train
+> Sin hotel de Disney, si compramos un Single Pass, que sea el de Seven Dwarfs Mine Train y no el de TRON: TRON lo montamos a la apertura, cuando su cola es más corta, mientras que el Mine Train sigue igual de lleno desde mediodía hasta la noche. Los siete enanitos ya tienen a su Gruñón, no hace falta que yo haga de octavo en la cola toda la tarde. El 30 de septiembre su pase costaba 11 dólares, ocho menos que el de TRON, y para ese mismo día no quedaba ninguno de los dos, así que lo compramos antes.
+
 ## Cuándo conviene ir
 
 ```stats-widget slug=magic-kingdom-park show=months,weekdays
@@ -341,6 +344,9 @@ según la noche, y los niños de tres a nueve años pagan diez dólares menos.
 Incluye el desfile Mickey's Once Upon a Christmastime Parade y los fuegos
 artificiales Minnie's Wonderful Christmastime Fireworks Show. Esas noches el
 parque también cierra antes para todos los demás.
+
+> [!PARKY]
+> Sin entrada para la fiesta, ponemos Magic Kingdom en un día sin fiesta: hasta el 14 de diciembre abre entonces hasta las 22:00 o las 23:00 en vez de hasta las 18:00, y el día termina con Happily Ever After. Unos fuegos artificiales al cierre no me los quita nadie. Ese día de tu viaje lo buscamos en el [planificador de viajes](/orlando#planner).
 
 ## Lo que ha cerrado y lo que viene
 

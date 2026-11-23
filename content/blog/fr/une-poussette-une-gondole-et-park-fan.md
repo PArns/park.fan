@@ -275,6 +275,9 @@ prévient quand la file d’une attraction passe sous un seuil que vous avez cho
 park.fan n’appartient à aucun groupe, n’a ni paywall ni publicité, et celui qui
 le construit fait la queue lui-même.
 
+> [!PARKY]
+> Plutôt que de rester agrippés à la rambarde de Taron, on règle une notification push pour lui et, en attendant, on chasse les souris à 5000 dans Maus au Chocolat, et je ne chipe celles de personne. Dès que la file de Taron passe sous notre seuil, le téléphone nous prévient et on file vers Klugheim.
+
 ## Ce que ce blog doit devenir
 
 Un temps d’attente seul ne sert pas à grand-chose. Le même chiffre veut dire quelque

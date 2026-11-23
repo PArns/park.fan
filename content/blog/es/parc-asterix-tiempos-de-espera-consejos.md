@@ -465,6 +465,9 @@ d’Obélix, un desfile y un mercado navideño. Las montañas rusas funcionan «
 general», dice el parque; las de agua no. Una entrada de Navidad sin fecha
 cuesta 57 euros.
 
+> [!PARKY] Buena elección
+> La entrada de Navidad de 57 euros no tiene fecha, y eso lo aprovechamos: elegimos el día cuando ya hay previsión del tiempo. Con temperaturas bajo cero, según el parque, además de las atracciones de agua cierran algunas otras, y un día así hasta yo me limitaría a hacer piruetas en la Patinoire Viking. Allí los patines son gratis.
+
 Entre el 9 de noviembre y el 18 de diciembre de 2026 el parque está cerrado, y
 también desde el 4 de enero hasta que empieza la temporada en primavera. Desde
 2007 abre hasta después de las vacaciones de otoño; antes cerraba en septiembre.
@@ -530,6 +533,9 @@ Quais de Lutèce, de 2020, con 149 habitaciones y cuatro estrellas. Para una noc
 con un día de entrada, el parque anuncia desde 99, 102 y 111 euros por persona,
 calculado para dos adultos y dos niños en temporada alta. Hasta el parque hay
 menos de diez minutos a pie, el aparcamiento es gratis y entras media hora antes.
+
+> [!PARKY]
+> En un viaje a París añadimos en el [planificador de viajes](/paris#planner) una noche en uno de los hoteles del Parc Astérix. Los huéspedes entran media hora antes que los demás en las zonas de Toutatis y Égypte, cosa que ya me pone nervioso en el desayuno, y aparcan gratis en vez de pagar 25 euros al día.
 
 En la app se puede reservar mesa en tres restaurantes: Le Relais Gaulois
 (autoservicio, 28,90 euros, a mediodía Astérix y Obélix pasan por las mesas),

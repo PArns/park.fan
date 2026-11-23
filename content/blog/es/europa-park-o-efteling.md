@@ -180,6 +180,9 @@ En invierno los dos parques abren hasta la noche. En Winterzauber, el Europa-Par
 
 Si sales después de comer, los dos parques venden una entrada de tarde desde las 16:00. En el Europa-Park está a la venta del 2 de noviembre al 9 de enero: 41,50 € para adultos, y 47 € a partir del 23 de diciembre. Efteling la vende del 21 de diciembre al 3 de enero por 33 €, y si la compras con aparcamiento, este te cuesta 10 € en lugar de 15 €.
 
+> [!PARKY] Merece la pena
+> Si entre el 21 de diciembre y el 3 de enero salimos después de comer, cogemos la entrada de tarde de Efteling: 33 € desde las 16:00, y hasta las 20:00 nos quedan cuatro horas, salvo en Nochevieja. En el Europa-Park, esa misma tarde cuesta 47 € a partir del 23 de diciembre y termina como pronto a las 19:00, y esa cuenta hasta yo la hago rápido. El aparcamiento lo compramos junto con la entrada, así nos cuesta 10 € en lugar de 15 €.
+
 Patinar se puede en los dos parques, y el Europa-Park suma un mercado navideño en el Schlosspark Balthasar. La pista de hielo de Efteling está este invierno cubierta en parte. Además, el 1 de diciembre reabre allí Raveleijn, con un espectáculo nuevo que el parque ha creado con el francés Puy du Fou y con la atracción giratoria Ravenring.
 
 Para Halloween solo sirve uno de los dos, porque Efteling no lo celebra. En el Europa-Park, la temporada de Halloween de 2026 dura hasta el 1 de noviembre. Por la noche, hasta el 7 de noviembre, está además [Traumatica](ref:traumatica), un evento de terror para mayores de 16 años de viernes a domingo y algunos jueves, con entradas desde 45 €. Del 2 al 27 de noviembre llega el HALLOWinter, con apertura de 11:00 hasta las 19:00 como pronto.

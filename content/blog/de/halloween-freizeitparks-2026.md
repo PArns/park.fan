@@ -401,6 +401,9 @@ nicht. Am **31. Oktober** bleibt der Park bis 23 Uhr offen, mit Feuerwerk, und
 das ist der einzige Tag im Jahr, an dem auch Erwachsene verkleidet kommen
 dürfen.
 
+> [!PARKY] Gönn dir
+> Das Kostüm heben wir uns für Paris auf: Im Movie Park dürfen sich nur Kinder bis 1,40 m verkleiden, im Disneyland Park am 31. Oktober auch Erwachsene. Ich geh einfach als Sprechblase, das fällt dort keinem auf. An dem Abend bleibt der Park bis 23 Uhr offen, mit Feuerwerk.
+
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 
 ### Alton Towers

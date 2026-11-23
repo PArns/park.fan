@@ -423,6 +423,25 @@ export interface TripParkDay {
   closesEarly?: true;
   /** When the day guests leave on such a day, park-local ISO with offset. */
   dayGuestCloseAt?: string;
+  /** The park's weather that day: the forecast, past its reach the date's average over past years. */
+  weather?: TripDayWeather;
+}
+
+/**
+ * A park's weather on a region calendar day: within the forecast's reach (about 16 days) the
+ * forecast, past it the date's climate normal (`basis: 'climate_normal'`) with the range half of
+ * such days' highs fell in and the chance of a rain day. Absent from an API before PAR-1411.
+ */
+export interface TripDayWeather {
+  tempMax?: number;
+  tempMin?: number;
+  precipitationMm?: number;
+  /** WMO code: the forecast's, a normal's most frequent. */
+  icon?: number;
+  basis?: 'forecast' | 'climate_normal';
+  tempMaxP25?: number;
+  tempMaxP75?: number;
+  wetDayPercent?: number;
 }
 
 /** Why a resort's pick is the pick: the shortest wait, or the shorter waits close early. */
@@ -601,6 +620,8 @@ export interface TripWhenWindow {
   seasons: string[];
   /** Park days of the plan that close early for day guests. */
   closesEarlyDays: number;
+  /** The window's typical weather at the region's climate park, over all its days; never a forecast. */
+  climate?: TripClimate;
   plan?: {
     days: Array<{ date: string; kind: string; parks: string[] }>;
     /** The chosen parks this window has no day for; present only when it leaves one out. */
@@ -669,15 +690,28 @@ export interface TripMonth {
  * The climate normal of a month at the region's reference park (Magic Kingdom): the long-run
  * mean of the calendar month, never a forecast. Shown as "usually", with its period.
  */
-export interface TripMonthClimate {
+export type TripMonthClimate = TripClimate;
+
+/**
+ * A span's typical weather from the climate normals: a plan day's (`climate`), a `/when` window's
+ * over its days, a month's. The date's average over `period`, never a forecast. The percentiles and
+ * `wetDayPercent` are absent from an API before PAR-1411 and while a park's normals predate them.
+ */
+export interface TripClimate {
   /** Mean daily high, °C. */
   tempMax: number;
   /** Mean daily low, °C. */
   tempMin: number;
-  /** Rain over the month, mm. */
+  /** The range half of such days' highs fell in (25th–75th percentile), °C. */
+  tempMaxP25?: number;
+  tempMaxP75?: number;
+  /** The same for the lows. */
+  tempMinP25?: number;
+  tempMinP75?: number;
+  /** A day's mean precipitation, a window's or a month's total, mm. */
   precipitationMm: number;
-  /** Days with rain in a usual month, where the API counts them. */
-  rainDays?: number;
+  /** The chance a day of the span is a rain day (at least 1 mm), in percent. */
+  wetDayPercent?: number;
   basis: 'climate_normal';
   /** The years averaged, `2015-2024`. */
   period: string;

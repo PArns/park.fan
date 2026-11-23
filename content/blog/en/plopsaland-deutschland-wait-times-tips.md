@@ -26,7 +26,7 @@ parkLinks:
 rideLinks:
   - plopsaland-deutschland/*
 seo:
-  title: 'Plopsaland Deutschland 2026: wait times, prices, best days'
+  title: 'Plopsaland Deutschland (Holiday Park): tips and best days'
   description: >-
     At the former Holiday Park in Haßloch, you'll queue only a few minutes for
     most rides. Fridays are quietest, except for the Halloween Fridays in
@@ -118,6 +118,9 @@ In our measurements you wait longer here than at any other ride in the park.
 a ride of one minute and 30 seconds), and
 the only one under a roof, and it belongs to the Holiday Indoor hall, opened in 2018 across
 5,000 square metres.
+
+> [!PARKY]
+> In March and November we check the temperature in Haßloch before we set off. Below eight degrees GeForce and Sky Scream stand still, and I'd hate to miss the three GeForce hills that lift us out of our seats. Of the four coasters, only 100% Wolf, which starts from five degrees, and Tabaluga's Rollercoaster in the hall keep running then. If the forecast is that low, we'd rather pick a warmer day.
 
 ## Water rides and towers
 

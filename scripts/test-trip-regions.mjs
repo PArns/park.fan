@@ -8,6 +8,7 @@
  * Run: pnpm test:trip-regions
  */
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync } from 'node:fs';
 import { getPathMatch } from 'next/dist/shared/lib/router/utils/path-match.js';
 import { locales } from '../i18n/config.ts';
@@ -23,6 +24,11 @@ import {
   tripRegionTitle,
 } from '../lib/trip-regions/registry.ts';
 import {
+  TRIP_API_TYPES_HASH,
+  TRIP_API_VERSION,
+  tripRegionApiUrl,
+} from '../lib/trip-regions/api.ts';
+import {
   tripRegionFolder,
   tripRegionHeaders,
   tripRegionRedirects,
@@ -37,7 +43,12 @@ import { tripRegionRedirect } from '../lib/trip-regions/redirects.ts';
 import { regionOrShared } from '../lib/trip-regions/region-words.ts';
 import { buildTripIcs } from '../lib/trip-regions/plan-ics.ts';
 import { formatHubMonth, shortParkName } from '../lib/trip-regions/hub-data.ts';
-import { MAX_DESCRIPTION_LENGTH, MAX_TITLE_LENGTH } from '../lib/utils/metadata.ts';
+import {
+  MAX_DESCRIPTION_LENGTH,
+  MAX_TITLE_WIDTH_PX,
+  fitTitle,
+  titleWidth,
+} from '../lib/utils/metadata.ts';
 
 let passed = 0;
 const test = (name, fn) => {
@@ -174,8 +185,12 @@ test("every region's titles and plain descriptions fit a search result, in every
         const text = fill(hub[key]);
         assert.ok(text.length <= limit, `${locale} ${region.slug}.hub.${key}: ${text.length}`);
       };
-      fits('metaTitle', MAX_TITLE_LENGTH);
-      fits('metaTitleMonthShort', MAX_TITLE_LENGTH);
+      const fitsWidth = (key) => {
+        const width = titleWidth(fill(hub[key]));
+        assert.ok(width <= MAX_TITLE_WIDTH_PX, `${locale} ${region.slug}.hub.${key}: ${width} px`);
+      };
+      fitsWidth('metaTitle');
+      fitsWidth('metaTitleMonthShort');
       fits('metaDescriptionPlain', MAX_DESCRIPTION_LENGTH);
       fits('metaDescriptionMonthPlain', MAX_DESCRIPTION_LENGTH);
     }
@@ -361,6 +376,32 @@ test("a park's place word is dropped, every region's", () => {
   assert.equal(shortParkName('SeaWorld Orlando'), 'SeaWorld');
   assert.equal(shortParkName('Busch Gardens Tampa Bay'), 'Busch Gardens');
   assert.equal(shortParkName("Disney's Animal Kingdom Theme Park"), 'Animal Kingdom');
+});
+
+test('a title is fitted by its width, not its count of characters', () => {
+  // Lower case is narrow and Title Case wide: two titles of 50 characters differ by about 100 px.
+  assert.ok(titleWidth('Phantasialand: Wartezeiten LIVE & Auslastung heute') < 500);
+  assert.ok(titleWidth('WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW') > MAX_TITLE_WIDTH_PX);
+  assert.equal(titleWidth('é'), titleWidth('e'));
+  assert.equal(fitTitle('W'.repeat(40), 'short'), 'short');
+  assert.equal(fitTitle('fits', 'also fits'), 'fits');
+  assert.equal(fitTitle('W'.repeat(40), 'W'.repeat(35)), 'W'.repeat(35));
+});
+
+test('every trip-region read carries the API version, and a change of the types asks for it', () => {
+  assert.ok(tripRegionApiUrl('/v1/trip-regions/orlando').endsWith(`?v=${TRIP_API_VERSION}`));
+  assert.ok(
+    tripRegionApiUrl('/v1/trip-regions/orlando/plan?from=x').endsWith(`&v=${TRIP_API_VERSION}`)
+  );
+  const hash = createHash('sha256')
+    .update(readFileSync(new URL('../lib/trip-regions/types.ts', import.meta.url)))
+    .digest('hex')
+    .slice(0, 12);
+  assert.equal(
+    hash,
+    TRIP_API_TYPES_HASH,
+    `lib/trip-regions/types.ts changed. If this frontend now reads a field the API has just added, raise TRIP_API_VERSION in lib/trip-regions/api.ts; either way set TRIP_API_TYPES_HASH to '${hash}'.`
+  );
 });
 
 console.log(`\n${passed} passed`);

@@ -217,6 +217,10 @@ async function walk(browser, region, locale) {
           .locator('[data-plan-day-card="park"]')
           .first()
           .locator('[data-plan-day-actions] button')
+          .click();
+        await page
+          .getByRole('dialog')
+          .locator('button')
           .filter({ has: page.locator('svg.lucide-arrow-left-right') })
           .click();
         top = page.locator('[data-plan-swap-mode]');

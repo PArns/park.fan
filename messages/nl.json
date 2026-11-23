@@ -266,7 +266,6 @@
       "tools": "Hulpmiddelen",
       "germany": "Duitsland",
       "usa": "Verenigde Staten",
-      "resources": "Ontwikkelaars & tools",
       "legal": "Juridisch"
     },
     "regions": {
@@ -274,7 +273,7 @@
       "northAmerica": "Pretparken in Noord-Amerika",
       "asia": "Pretparken in Azië"
     },
-    "api": "API documentatie",
+    "developerPortal": "Ontwikkelaarsportaal",
     "impressum": "Colofon",
     "howto": "Wachttijden begrijpen",
     "planner": "Dagplanner",
@@ -420,14 +419,27 @@
       "monthTitleLastYear": "De rustigste dagen in {month} vorig jaar",
       "quietPark": "({park}, ongeveer {minutes} min)",
       "quietestTo": "Het rustigst tot {date}",
-      "best": "Beste park per resort, <time>{date}</time>"
+      "best": "Beste park per resort, <time>{date}</time>",
+      "pick": "Tip voor <time>{date}</time>",
+      "perResort": "Per resort",
+      "pickLevel": "{level, select, very_low {veel rustiger dan een normale dag daar} low {rustiger dan een normale dag daar} moderate {een normale dag daar} other {drukker dan een normale dag daar}}"
+    },
+    "visited": {
+      "ask": "Al bezocht? Vink af",
+      "count": "{count} van {total} parken afgevinkt",
+      "allDone": "Alle {count} parken afgevinkt. Voor een tweede bezoek:",
+      "toggle": "{park}: al bezocht",
+      "tick": "{park} afvinken als bezocht",
+      "untick": "Vinkje bij {park} weghalen",
+      "column": "Al bezocht?"
     },
     "legend": {
       "minutes": "Piekwachttijd bij de grote attracties, in minuten",
       "quietest": "rustigste dag van de week in dat park",
       "early": "sluit eerder voor dagbezoekers",
       "howTo": "Zo lees je dit",
-      "colour": "Kleur: de dag vergeleken met een gewone dag in dat park"
+      "colour": "Kleur: de dag vergeleken met een gewone dag in dat park",
+      "picked": "door jou ingepland"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -458,13 +470,24 @@
       "stateOpen": "Open, geen voorspelling",
       "cellNoHours": "openingstijden nog niet gepubliceerd",
       "sourcesTravel": "Reistijden: {attribution}",
-      "titleMonth": "Dag voor dag in {month}"
+      "titleMonth": "Dag voor dag in {month}",
+      "picked": "door jou ingepland",
+      "quietestFree": "voorgestelde vrije dag",
+      "cellTaken": "al ingepland voor {park}",
+      "pickHint": "Kies bij een park een dag om die in te plannen. De andere parken krijgen dan elk een eigen vrije dag, zo rustig mogelijk.",
+      "picksCount": "{count, plural, one {# dag ingepland} other {# dagen ingepland}}",
+      "picksNote": "De sterren geven elk ander park een eigen vrije dag, zo rustig mogelijk.",
+      "picksReset": "Keuze wissen",
+      "pickedAnnounce": "{park} ingepland op {date}",
+      "unpickedAnnounce": "{park} niet meer ingepland op {date}"
     },
     "lanes": {
-      "summaryLabel": "Evenementen",
-      "nights": "{name}: {count, plural, =1 {# avond} other {# avonden}}",
       "expected": "data verwacht",
-      "allDays": "elke dag"
+      "dayGuestsUntil": "daggasten tot {time}",
+      "separateTicket": "avondevenement, eigen ticket",
+      "from": "vanaf {date}",
+      "until": "tot {date}",
+      "allWeek": "De hele week: {names}"
     },
     "sheet": {
       "intro": "Per resort staat het beste park bovenaan; een vroege sluiting telt mee",
@@ -484,6 +507,7 @@
       "ridesNone": "Geen cijfers per attractie voor deze dag.",
       "ridesHint": "Elke attractie op haar drukste moment van de dag.",
       "planDay": "Openen in de dagplanner",
+      "planTrip": "Reis vanaf deze dag plannen",
       "noHoursFigure": "Nog geen openingstijden. Het cijfer is de voorspelling; openingstijden tellen niet mee.",
       "ahead": "Staat boven {park}, waar dagbezoekers om {time} moeten vertrekken."
     },
@@ -517,7 +541,9 @@
       "open": "Reisplanner openen"
     },
     "tile": {
-      "line": "Jij geeft je reisdagen op, de planner zegt welk van de {count} parken op welke dag het rustigst is"
+      "line": "De rustigste dag van elke week voor alle {count} parken {inRegion}, volgens de prognose van de piekwachttijd",
+      "question": "Op welke dag is het in {resort} het rustigst?",
+      "calendarResort": "Druktekalender {resort}"
     },
     "faq": {
       "parks": {
@@ -646,6 +672,7 @@
   },
   "parks": {
     "liveLink": "{park}: live wachttijden",
+    "calendarLink": "{park}: druktekalender voor de komende dagen",
     "liveFreshness": {
       "asOf": "Bijgewerkt",
       "outdated": "Niet actueel",
@@ -851,7 +878,7 @@
     "calendarLegend": "Legenda",
     "calendarLegendGroups": {
       "crowd": "Drukte",
-      "signals": "Signalen"
+      "signals": "Vakanties & feestdagen"
     },
     "eventTypesLabel": "Event types",
     "crowdLevelsLabel": "Drukteniveaus",
@@ -859,6 +886,10 @@
     "specialDaysLabel": "Speciale dagen",
     "schoolVacation": "Schoolvakantie",
     "bestDay": "Aanbevolen",
+    "calendarMarks": {
+      "quietestOfWeek": "rustigste dag van de week",
+      "localTimes": "Tijden in de lokale tijd van het park"
+    },
     "bridgeDay": "Brugdag",
     "holiday": "Feestdag",
     "eventTypes": {
@@ -1290,6 +1321,10 @@
       "metaTitle": "{park}: druktekalender voor {month}",
       "metaTitleShort": "{park}: drukte in {month}",
       "metaTitleBare": "{park}: {month}",
+      "yearTitle": "{park}: druktekalender {years}",
+      "yearTitleShort": "{park}: drukte {years}",
+      "yearTitleBare": "{park}: drukte {years}",
+      "h1SuffixYears": "Druktekalender {years}",
       "metaDescription": "Wanneer is het rustig in {park} in {city}? Drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden, met AI-voorspelling per dag.",
       "metaDescriptionNoCity": "Wanneer is het rustig in {park}? Verwachte drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden.",
       "intro": "Voor elke dag van de komende maanden: verwachte drukte, openingstijden en de schoolvakanties en feestdagen die van invloed zijn op {park}. Tik op een dag voor de details.",
@@ -2809,6 +2844,10 @@
             "title": "Historie",
             "description": "Gemeten wachttijden achteraf: parkstatistieken, uurprofiel, de dagcurve en historie van een attractie, gebruikelijke wachttijden, rope drop, storingen."
           },
+          "typical-waits": {
+            "title": "Gebruikelijke wachttijden",
+            "description": "De gebruikelijke wachttijden van elke attractie en welke attracties de headliners van het park zijn, in het detail van park en attractie. De historie bevat ze ook."
+          },
           "platform": {
             "title": "Platformcijfers",
             "description": "Live totalen over alle parken, de ticker en de beste bezoektijden in het algemeen."
@@ -3540,7 +3579,7 @@
     "page": {
       "title": "Je parkdag attractie voor attractie plannen",
       "lead": "Zeg welke attracties je wilt. Met de voorspelde wachttijden erbij zie je of ze allemaal vóór sluitingstijd aan de beurt komen. De dagplanner is gratis, blijft in je browser en vraagt geen account.",
-      "metaTitle": "Pretparkdag plannen rond de wachttijden | park.fan",
+      "metaTitle": "Pretparkdag plannen rond de wachttijden",
       "metaDescription": "Plan je pretparkdag met de voorspelde wachttijden: attracties op een tijdlijn, shows en pauzes ertussen, en een markering waar je kind te klein voor is.",
       "yourPlans": "{count, plural, one {Eén geplande dag} other {# geplande dagen}}",
       "introTitle": "Nog niets gepland",
@@ -3854,7 +3893,8 @@
         "hotel": "Hotel: {area}"
       },
       "arrivalIn": "Aankomst in {city}",
-      "departureFrom": "Vertrek uit {city}"
+      "departureFrom": "Vertrek uit {city}",
+      "share": "Delen"
     },
     "spare": {
       "day": "vrije dag",
@@ -4117,7 +4157,6 @@
     "keep": {
       "addAll": "Naar de dagplanner",
       "ics": "In de agenda (.ics)",
-      "copy": "Link kopiëren",
       "copied": "Link gekopieerd",
       "added": "{count, plural, =1 {1 parkdag staat} other {# parkdagen staan}} in de dagplanner, eerst {park} op {date}.",
       "openPlanner": "Eerste dag openen",
@@ -4164,7 +4203,10 @@
       "stripLegend": "Hoogte: de piekwachttijd van je parken die week. De streepjes eronder tonen je voorstellen.",
       "sketch": "Dag voor dag",
       "rankedLower": "lager gerangschikt: {reasons}",
-      "stormPeak": "{season}: lager gerangschikt vanwege het stormrisico, ook bij korte wachttijden."
+      "stormPeak": "{season}: lager gerangschikt vanwege het stormrisico, ook bij korte wachttijden.",
+      "picked": "{rank, select, 1 {De rustigste {days} dagen in je periode} other {Voorstel {rank} van je zoekopdracht}}: {range}",
+      "others": "Andere periodes",
+      "compare": "Alles vergelijken"
     },
     "evening": {
       "plus": "+ avond: {name}",
@@ -4379,7 +4421,8 @@
         "hopping": "{hopper} inbegrepen"
       },
       "later": "Al tickets?",
-      "enter": "Invullen"
+      "enter": "Invullen",
+      "line": "Tickets voor {count, plural, =1 {1 parkdag} other {# parkdagen}}"
     },
     "move": {
       "mode": {
@@ -4517,7 +4560,12 @@
         "show": "Plan nu tonen"
       },
       "dates": {
-        "months": "Maand"
+        "months": "Maand",
+        "mode": "Je reisdata",
+        "known": "Ik weet mijn data",
+        "find": "Data zoeken",
+        "quiet": "Volgende rustige week: {range}",
+        "quietTake": "Overnemen"
       },
       "parks": {
         "lead": "De grote parken zijn al gekozen, en met een tik op een foto voeg je een park toe of haal je het weg",
@@ -4533,7 +4581,8 @@
         "weather": {
           "label": "Extreem weer vermijden",
           "hint": "Pretparken op de koelere dagen, waterparken op de heetste{storm, select, hurricane {; de piek van het orkaanseizoen telt zwaarder} typhoon {; de piek van het tyfoonseizoen telt zwaarder} other {}}"
-        }
+        },
+        "fitted": "Voor {days, plural, one {# dag} other {# dagen}} {parks, plural, one {is # park} other {zijn # parken}} alvast gekozen. Je kunt er meer bij nemen."
       },
       "spare": {
         "title": "{count, plural, =1 {1 dag zonder park} other {# dagen zonder park}}",
@@ -4584,7 +4633,8 @@
       "ask": "Wat vind je van dit idee voor mijn plan: {idea}?",
       "applied": "In het plan: {idea}.",
       "inPlan": "In het plan",
-      "otherDay": "Andere dag"
+      "otherDay": "Andere dag",
+      "dismiss": "Idee verbergen"
     },
     "weather": {
       "heatDays": "{count, plural, =1 {1 hete parkdag} other {# hete parkdagen}}",
@@ -4598,6 +4648,12 @@
       "noCooler": "Er paste geen koelere dag in het plan",
       "keyHeat": "Hete parkdag",
       "keyHeatNormal": "Hete parkdag; Ø is het gemiddelde van eerdere jaren"
+    },
+    "past": {
+      "started": "Deze reis is op {date} begonnen.",
+      "ended": "Deze reis is op {date} begonnen en is al voorbij.",
+      "fromToday": "Vanaf vandaag plannen",
+      "newDates": "Nieuwe data kiezen"
     }
   },
   "tripRegions": {
@@ -4612,7 +4668,7 @@
       "hub": {
         "title": "Orlando drukte-kalender",
         "monthTitle": "Orlando drukte-kalender {month}",
-        "metaTitle": "Orlando drukte-kalender {years} & reisplanner",
+        "metaTitle": "Orlando drukte-kalender {years}: Disney World en Universal",
         "metaTitleMonth": "Orlando in {month}: drukte bij Disney en Universal",
         "metaTitleMonthShort": "Orlando drukte-kalender {month}",
         "metaDescription": "Welk park in Orlando op welke dag, met Epic Universe. Het rustigst in de komende 30 dagen: {verdict}.",
@@ -4627,8 +4683,7 @@
         },
         "lanes": {
           "break": "Amerikaanse schoolvakantie: {name}, {dates}",
-          "unnamedBreak": "Amerikaanse schoolvakantie",
-          "none": "Geen evenementen of Amerikaanse schoolvakanties in deze dagen."
+          "unnamedBreak": "Amerikaanse schoolvakantie"
         },
         "sheet": {
           "kicker": "Orlando · één dag",
@@ -4641,9 +4696,7 @@
         "when": {
           "kicker": "Disney World en Universal",
           "title": "Beste reistijd voor Orlando in {year}",
-          "titleNoYear": "Beste reistijd voor Orlando",
-          "pageLink": "Beste reistijd voor Orlando in {year}",
-          "pageLinkNoYear": "Beste reistijd voor Orlando"
+          "pageLink": "Beste reistijd voor Orlando in {year}"
         },
         "faq": {
           "title": "Vragen over de drukte in Orlando",
@@ -5002,8 +5055,7 @@
         },
         "lanes": {
           "break": "Schoolvakantie in Los Angeles: {name}, {dates}",
-          "unnamedBreak": "Schoolvakantie in Los Angeles",
-          "none": "Deze dagen zijn er geen evenementen en geen schoolvakanties in Los Angeles."
+          "unnamedBreak": "Schoolvakantie in Los Angeles"
         },
         "sheet": {
           "kicker": "Zuid-Californië · één dag",
@@ -5012,9 +5064,7 @@
         "when": {
           "kicker": "Disneyland en Universal",
           "title": "Beste reistijd voor Disneyland en Universal Hollywood {year}",
-          "titleNoYear": "Beste reistijd voor Disneyland en Universal Hollywood",
-          "pageLink": "Beste reistijd voor Disneyland en Universal Hollywood {year}",
-          "pageLinkNoYear": "Beste reistijd voor Disneyland en Universal Hollywood"
+          "pageLink": "Beste reistijd voor Disneyland en Universal Hollywood {year}"
         },
         "reasons": {
           "school_break": "in de schoolvakantie in Los Angeles"
@@ -5288,8 +5338,7 @@
         },
         "lanes": {
           "break": "Japanse schoolvakanties: {name}, {dates}",
-          "unnamedBreak": "Japanse schoolvakanties",
-          "none": "Geen evenementen in deze dagen."
+          "unnamedBreak": "Japanse schoolvakanties"
         },
         "sheet": {
           "kicker": "Japan · één dag",
@@ -5301,9 +5350,7 @@
         "when": {
           "kicker": "Tokyo Disney en USJ",
           "title": "Beste reistijd voor Tokyo Disney en USJ in {year}",
-          "titleNoYear": "Beste reistijd voor Tokyo Disney en USJ",
-          "pageLink": "Beste reistijd voor Tokyo Disney en USJ in {year}",
-          "pageLinkNoYear": "Beste reistijd voor Tokyo Disney en USJ"
+          "pageLink": "Beste reistijd voor Tokyo Disney en USJ in {year}"
         },
         "reasons": {
           "school_break": "in de Japanse schoolvakantie"
@@ -5617,8 +5664,7 @@
         },
         "lanes": {
           "break": "Schoolvakantie Parijs (zone C): {name}, {dates}",
-          "unnamedBreak": "Schoolvakantie Parijs (zone C)",
-          "none": "Geen evenementen en geen schoolvakantie in Parijs in deze dagen."
+          "unnamedBreak": "Schoolvakantie Parijs (zone C)"
         },
         "sheet": {
           "kicker": "Parijs · één dag",
@@ -5631,9 +5677,7 @@
         "when": {
           "kicker": "Reizen met alle drie de parken",
           "title": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
-          "titleNoYear": "Beste reistijd voor Disneyland Paris & Parc Astérix",
-          "pageLink": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
-          "pageLinkNoYear": "Beste reistijd voor Disneyland Paris & Parc Astérix"
+          "pageLink": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}"
         },
         "reasons": {
           "school_break": "schoolvakantie Parijs"
@@ -6420,6 +6464,7 @@
     },
     "tip": {
       "label": "Parky's tip",
+      "looking": "Parky bekijkt de dag eens goed…",
       "good": "Topdag!",
       "meh": "Gaat wel",
       "bad": "Liever niet",
@@ -6464,7 +6509,7 @@
     "syncNow": "Nu synchroniseren",
     "syncedAt": "Laatst gesynchroniseerd: {when}",
     "neverSynced": "Nog niet gesynchroniseerd",
-    "whatSyncs": "Favorieten, attracties waarin je zat en °C of °F worden gesynchroniseerd. Je dagplanning en je meldingen blijven op het apparaat waar je ze hebt ingesteld.",
+    "whatSyncs": "Favorieten, attracties waarin je zat, de parken die je op een reis hebt afgevinkt en °C of °F worden gesynchroniseerd. Je dagplanning en je meldingen blijven op het apparaat waar je ze hebt ingesteld.",
     "auth": {
       "registerTitle": "Account aanmaken",
       "registerLead": "Je favorieten en attracties op elk apparaat. Gratis, zonder reclame.",
@@ -6549,5 +6594,17 @@
       "export": "Gegevens downloaden",
       "failed": "Het downloaden lukte niet. Probeer het opnieuw."
     }
+  },
+  "dayWeather": {
+    "normal": "Gemiddelde van eerdere jaren voor deze datum, geen voorspelling",
+    "keyNoPeriod": "Ø gemiddelde van eerdere jaren, geen voorspelling",
+    "detailTitle": "Weer gemiddeld",
+    "typicalHigh": "Overdag meestal <range></range>",
+    "typicalLow": "'s nachts meestal <range></range>",
+    "wetDays": "{count, plural, =0 {zelden regen} =1 {regen op 1 van de 10 dagen} other {regen op # van de 10 dagen}}",
+    "detailNote": "Gemiddelde van {period} voor deze datum; op de helft van die dagen lag de waarde binnen de marge. Voorspellingen zijn er zo’n 16 dagen vooruit.",
+    "keyForecast": "Voorspelling",
+    "normalSpan": "Gemiddelde van eerdere jaren voor deze {count} dagen, geen voorspelling",
+    "rowLabel": "Weer in {park}"
   }
 }

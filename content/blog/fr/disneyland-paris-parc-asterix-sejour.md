@@ -110,6 +110,9 @@ Filotomatix, le coupe-file du Parc Astérix, est valable pour une personne et un
 
 Un jour de semaine hors vacances scolaires, je garderais mon argent et je suivrais l’ordre des attractions de nos guides du [Disneyland Paris](/blog/disneyland-paris-temps-d-attente-conseils) et du [Parc Astérix](/blog/parc-asterix-temps-d-attente-conseils). Notre [comparatif des coupe-file](/blog/coupe-file-parcs-d-attractions-comparatif) met Premier Access et Filotomatix à côté des pass des autres grands parcs européens.
 
+> [!PARKY] Mets ton réveil
+> Avec Filotomatix, Toutatis n’est inclus que dans l’Illimité, mais les clients des hôtels du parc y ont accès avec l’Early Entry, 30 minutes avant l’ouverture officielle. Si on reste deux jours, c’est donc là qu’on file le deuxième matin, le petit-déjeuner du séjour peut bien attendre. Les jours de nocturnes de Peur sur le Parc et lors des journées spéciales, il n’y a pas d’Early Entry, et la météo doit aussi suivre.
+
 ## Le soir : spectacles nocturnes et Disney Village
 
 Les deux parcs Disney ont un spectacle nocturne chaque soir. Au Parc Disneyland, c’est Disney Tales of Magic devant le château, avec drones, projections, fontaines et feux d’artifice. À Disney Adventure World, plus de 380 drones volent au-dessus du nouveau lac et naviguent dessus dans Disney Cascade of Lights, depuis le 29 mars 2026. Pour les deux spectacles, Disney vend des places réservées en supplément, mais on peut très bien regarder sans.
@@ -187,6 +190,9 @@ Comme les zones sont décalées d’une semaine en février et en avril, une par
 ### Jours fériés et ponts
 
 En mai 2027, le 1er et le 8 mai tombent un samedi, et le seul pont est donc celui de l’Ascension. L’Ascension tombe le jeudi 6 mai, et le vendredi qui suit, les écoles sont fermées dans toute la France. Le lundi de Pentecôte est le 17 mai.
+
+> [!PARKY]
+> Pour un séjour dans les trois parcs hors vacances scolaires, on choisit mai ou juin 2027 : du 3 avril au 2 mai, il y a toujours une zone en vacances, à partir du 3 juillet toutes, et en février, le Parc Astérix dort encore. On évite seulement l’Ascension, le 6 mai, avec le vendredi sans école qui suit, et le lundi de Pentecôte, le 17 mai. Avec ces dates, le [planificateur de séjour](/paris#planner) répartit les trois parcs sur les jours.
 
 ### Les événements Disney
 

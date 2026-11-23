@@ -239,6 +239,9 @@ Wildfire a Kolmården è la montagna russa più veloce e più alta della Svezia.
 - Colossos, Heide Park: da 1,40 m
 - Expedition GeForce, Plopsaland Deutschland: da 1,40 m
 
+> [!PARKY]
+> Con 1,20 metri comincia la caccia ai record: da lì un bambino può salire su Wodan con un adulto, la numero tre d’Europa tra le montagne russe in legno per velocità e altezza. Con 1,30 metri e otto anni si aggiunge Voltron Nevera, la montagna russa con più inversioni in Germania, e le tacche sullo stipite della porta si controllano molto più spesso. Da 1,40 metri a Salou aspettano tre delle quattro montagne russe più veloci d’Europa.
+
 ## Domande frequenti
 
 ### Qual è la montagna russa più veloce d’Europa?

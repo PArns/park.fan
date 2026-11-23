@@ -136,6 +136,9 @@ Nelle 25 serate di Mickey's Very Merry Christmas Party, chi non ha il biglietto 
 
 Le ore che una serata di festa ti toglie mancano per le attrazioni, e per questo una giornata conta, nel calendario e nel pianificatore, secondo le ore che hai con il biglietto giornaliero. Un giorno di festa pesa perciò fino a una volta e mezza più di una giornata piena con la stessa attesa di picco. Nella maggior parte delle serate di festa di novembre e dicembre 2026 l’anello va così ad Animal Kingdom, anche quando quel giorno Magic Kingdom ha un’attesa di picco un po’ più corta. Animal Kingdom chiude quasi ogni giorno alle 18, e per quel parco è una giornata normale.
 
+> [!PARKY]
+> Se una serata di festa cade durante il viaggio, quel giorno andiamo ad Animal Kingdom. Uscire da Magic Kingdom alle 18 mentre gli ospiti della festa restano mi farebbe troppa rabbia. Magic Kingdom avrà un giorno senza festa, in cui di solito resta aperto fino alle 21 o più tardi, e quel giorno lo scegliamo nel [pianificatore di viaggio](/orlando#planner).
+
 Anche Disney After Hours si paga a parte, ma comincia solo dopo la chiusura normale, in alcune serate da gennaio ad agosto 2027 a Magic Kingdom, a EPCOT e agli Hollywood Studios. Siccome nessuno con il biglietto giornaliero deve uscire prima, una serata così non conta contro il parco nel calendario.
 
 Da Universal in autunno sono le serate a essere corte. Nelle sere di Halloween Horror Nights del 2026, Universal Studios chiudeva alle 17 per chi aveva il biglietto giornaliero, in 49 serate tra il 28 agosto e il 1° novembre. La festa di Halloween di Magic Kingdom si è tenuta nel 2026 in 38 serate, dal 7 agosto al 31 ottobre. Per il 2027 nessuna delle due serie è ancora fissata, e finché i parchi non pubblicano le serate, il calendario non segna nessuna chiusura anticipata.
@@ -238,6 +241,9 @@ Con il **Park Hopper** passi in un secondo parco lo stesso giorno, in qualsiasi 
 ### Universal Orlando
 
 Da Universal compri da uno a cinque giorni, e il periodo comincia alla data scelta: due giorni entro quattro, tre entro cinque e cinque entro sette. Con i biglietti da tre giorni in su entri a Epic Universe. Con uno o due giorni ti serve per questo un biglietto Epic Universe a parte, oppure il pacchetto con un giorno agli Studios o a Islands of Adventure e un giorno a Epic Universe. I prezzi dei biglietti e dell’Express Pass li trovi nella nostra [guida a Universal](/blog/universal-orlando-tempi-di-attesa-consigli). Con il **Park-to-Park** passi da un parco all’altro lo stesso giorno e sali sull’Hogwarts Express.
+
+> [!PARKY] Meglio tre giorni
+> Se Epic Universe è sulla nostra lista, da Universal prendiamo subito tre giorni, perché solo da tre in su è compreso nel biglietto. Pagare un biglietto a parte per il parco dove facciamo la coda più lunga mi farebbe brontolare due volte. Così Studios, Islands of Adventure ed Epic Universe hanno un giorno ciascuno, tutti e tre entro cinque giorni.
 
 ### SeaWorld, Busch Gardens e LEGOLAND
 

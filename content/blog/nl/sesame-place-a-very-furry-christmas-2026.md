@@ -53,6 +53,9 @@ Bij de Oscar's Wacky Taxi Stage staat de 1-2-3 Christmas Tree, ruim negen meter 
 
 De kerstman vind je in Santa's Furry Workshop naast het Sesame Street Theater. In de rij staan hoeft daar dit jaar niet meer. Je meldt je aan bij de Tinsel Tent voor de werkplaats, krijgt een sms als jullie aan de beurt zijn en hebt dan 20 minuten om er te komen. Kinderen schrijven brieven aan de kerstman bij Letters to Santa in Mr. Hooper's Gift Shop. Kerstavond is de laatste dag met de kerstman, en de virtuele wachtrij sluit dan om 14.00 uur. Van 26 december tot 3 januari zit Santa Cookie Monster in de werkplaats.
 
+> [!PARKY]
+> Bij de Tinsel Tent melden we ons meteen na aankomst aan voor de kerstman, en daarna ontdooien we bij warme chocolademelk in de Winter Warm-Up Lounge in Elmo's Pizza Kitchen. Een wachtrij waarin ik mag zitten en chocolademelk drinken, daar teken ik voor. Komt de sms, dan hebben we 20 minuten om bij de werkplaats naast het Sesame Street Theater te komen. Op kerstavond melden we ons voor 14.00 uur aan, want dan sluit de virtuele wachtrij.
+
 ## Openingsdagen en openingstijden
 
 Het park is meestal open op vrijdag van 16.00 tot 20.00 uur, op zaterdag van 11.00 tot 19.00 uur en op zondag van 13.00 tot 18.00 uur, in lokale tijd. Van maandag tot en met donderdag blijft het tot 17 december dicht, ook op Thanksgiving, 26 november. Afwijkend zijn:

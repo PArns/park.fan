@@ -24,7 +24,7 @@ coverImage:
   caption: 'À son ouverture en 2002, aucun coaster en acier d’Europe ne montait plus haut que ce lift.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Les montagnes russes les plus rapides, hautes et longues d’Europe'
+  title: 'Attraction la plus rapide d’Europe : le top 10 des coasters'
   description: >-
     Red Force fait 180 km/h et 112 mètres, Big One a le plus long parcours, The Smiler 14 inversions. Silver Star et Kärnan sont les plus rapides d’Allemagne.
   keywords:
@@ -238,6 +238,9 @@ Wildfire, à Kolmården, est la montagne russe la plus rapide et la plus haute d
 - Taron, Phantasialand : à partir de 1,30 m avec un adulte, seul à partir de 1,40 m
 - Colossos, Heide Park : à partir de 1,40 m
 - Expedition GeForce, Plopsaland Deutschland : à partir de 1,40 m
+
+> [!PARKY]
+> À 1,20 m, la chasse aux records commence : un enfant peut alors monter sur Wodan avec un adulte, numéro trois des montagnes russes en bois d’Europe pour la vitesse et la hauteur. À 1,30 m et huit ans s’ajoute Voltron Nevera, celle qui compte le plus d’inversions en Allemagne, et les traits de crayon sur le chambranle se vérifient bien plus souvent. Dès 1,40 m, trois des quatre montagnes russes les plus rapides d’Europe attendent à Salou.
 
 ## Questions fréquentes
 

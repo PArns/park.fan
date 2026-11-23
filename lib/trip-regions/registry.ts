@@ -133,20 +133,21 @@ export interface TripHubResort {
 
 /** What the hub shows of the region beside the API's answers. */
 export interface TripHub {
-  /** The hero photos as media sources, the first the catalog still has wins. */
-  heroPhotos: readonly string[];
   /** The hotel area the day sheet's drive times start from before the reader picks one. */
   defaultArea?: string;
   faq: TripHubFaq;
-  /** The planner's four steps as screenshots, chapter 01 of the hub without a plan. */
+  /** The planner's four steps as screenshots, the hub's planner chapter without a plan. */
   howItWorks: TripHubShots;
   /** The resorts chapter's cards, in the order they stand; a group not listed has no card. */
   resorts: readonly TripHubResort[];
   /**
-   * The region's Parky scene as a picture (a media id), for the closing band: the drawn scene
+   * The region's Parky scene by day as a picture (a media id), the hub's head: the drawn scene
    * carries gradient ids, so it may stand on a page only once.
    */
   scene: string;
+  /** The same scene in the evening (a media id), for the closing band, so the page ends on a
+   * picture of its own and not on the head's again. */
+  eveningScene: string;
 }
 
 /** A kind of hotel the planner offers, and the hotel area such a stay is usually in. */

@@ -481,6 +481,9 @@ Reifenrutsche, La Glissade d'Obélix, ein Umzug und ein Weihnachtsmarkt. Die
 Achterbahnen fahren nach Angaben des Parks „in der Regel“, die Wasserbahnen
 nicht. Ein Weihnachtsticket ohne festes Datum kostet 57 Euro.
 
+> [!PARKY] Gute Wahl
+> Das Weihnachtsticket für 57 Euro hat kein festes Datum, und das nutzen wir: Den Tag suchen wir uns erst aus, wenn der Wetterbericht steht. Bei Minusgraden bleiben laut Park neben den Wasserbahnen auch einzelne andere Attraktionen zu, und an so einem Tag würde selbst ich nur Pirouetten auf der Patinoire Viking drehen. Die Schlittschuhe dort kosten nichts.
+
 Zwischen dem 9. November und dem 18. Dezember 2026 ist der Park zu, ebenso ab
 dem 4. Januar bis zum Saisonstart im Frühjahr. Seit 2007 bleibt er bis nach den
 Herbstferien offen, vorher schloss er im September, und Winterbetrieb gab es von
@@ -545,6 +548,9 @@ von 2020 mit 149 Zimmern und vier Sternen. Für eine Nacht mit einem Tag Eintrit
 nennt der Park ab 99, 102 und 111 Euro pro Person, gerechnet für zwei Erwachsene
 und zwei Kinder in der Hochsaison. Zu Fuß sind es weniger als zehn Minuten in den
 Park, Parken ist frei, und du kommst eine halbe Stunde früher hinein.
+
+> [!PARKY]
+> Im [Reiseplaner](/paris#planner) tragen wir bei einer Paris-Reise eine Nacht in einem der Hotels am Parc Astérix ein. Hotelgäste dürfen eine halbe Stunde vor allen anderen in die Bereiche Toutatis und Égypte, da bin ich schon beim Frühstück aufgeregt, und sie parken umsonst statt für 25 Euro am Tag.
 
 Tische kannst du in der App für drei Restaurants reservieren: Le
 Relais Gaulois (Selbstbedienung, 28,90 Euro, mittags kommen Astérix und Obelix an

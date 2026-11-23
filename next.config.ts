@@ -3,6 +3,12 @@ import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import { HOMEPAGE_LINK_HEADER } from './lib/agents/api-catalog';
+import {
+  CALENDAR_TODAY_WINDOW,
+  FORECAST_WINDOW,
+  PARKY_TIP_NONE_WINDOW,
+  tagPurgedCacheRule,
+} from './lib/api/cdn-cache-headers';
 import { LICENSE_LINK_HEADER } from './lib/agents/licensing';
 import { HOWTO_CANONICAL_SEGMENT, HOWTO_SEGMENTS } from './lib/howto/segments';
 import { LIVE_TRIP_REGIONS } from './lib/trip-regions/registry';
@@ -652,6 +658,35 @@ const nextConfig: NextConfig = {
       );
     }
 
+    // 12b. News posts removed as duplicates of another post on the same story. The
+    // removed slug was the same in every locale, the surviving post has one per
+    // locale, so each locale gets its own pair (news path and blog path). The bare
+    // form is left to the proxy, which picks the reader's locale first.
+    const removedDuplicateNews: Array<[string, Record<string, string>]> = [
+      [
+        'pirates-of-the-caribbean-magic-kingdom-2027',
+        {
+          de: 'pirates-of-the-caribbean-magic-kingdom-renovierung-2027',
+          en: 'pirates-of-the-caribbean-magic-kingdom-renovation-2027',
+          fr: 'pirates-of-the-caribbean-magic-kingdom-renovation-2027',
+          nl: 'pirates-of-the-caribbean-magic-kingdom-renovatie-2027',
+          es: 'pirates-of-the-caribbean-magic-kingdom-renovacion-2027',
+          it: 'pirates-of-the-caribbean-magic-kingdom-ristrutturazione-2027',
+        },
+      ],
+    ];
+    for (const [oldSlug, targets] of removedDuplicateNews) {
+      for (const [locale, newSlug] of Object.entries(targets)) {
+        for (const section of ['news', 'blog']) {
+          rules.push({
+            source: `/${locale}/${section}/${oldSlug}`,
+            destination: `/${locale}/news/${newSlug}`,
+            permanent: true,
+          });
+        }
+      }
+    }
+
     // 13. The changelog exists in English only, so every other spelling of its
     // URL points at the one page that exists. Without these the proxy would
     // treat `/changelog` like any other unprefixed path and send a German
@@ -943,15 +978,13 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=604800'),
       },
       {
-        // A day, and it is the handler's own number rather than a second opinion: the route
-        // was raised from 300 s to 86400 on 2026-09-02 when today's cell stopped carrying a
-        // live occupancy reading, and this rule stayed at 300 — so the two halves disagreed by
-        // a factor of 288 for three days, and which one a visitor got depended on the platform.
-        // Measured against `pnpm start` on this build, `curl -D -` gave `s-maxage=300` while
-        // the handler was asking for a day. Keep the two identical; the reasoning for the value
-        // lives at the handler, where the payload is.
+        // The handler sends `FORECAST_WINDOW` (Vercel until the backend rings the tag, Cloudflare an
+        // hour) and `CALENDAR_TODAY_WINDOW` for a range holding the park's today, which a rule cannot
+        // see. It carries the shorter, so where the rule wins (`next start`) a month is asked again
+        // sooner; on Vercel the handler's own window stands
+        // (docs/architecture/cdn-caching.md#routes-the-backend-rings).
         source: '/api/parks/:continent/:country/:city/:park/calendar',
-        headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=86400'),
+        headers: tagPurgedCacheRule(CALENDAR_TODAY_WINDOW),
       },
       {
         // Five minutes, and it is the handler's own number — the day-detail dialog's hourly curve
@@ -964,13 +997,18 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=300, stale-while-revalidate=300'),
       },
       {
-        // Parky's day tip: the handler's own six hours, kept identical.
+        // Parky's day tip: its handler sends `PARKY_TIP_WINDOW` with a tip, `PARKY_TIP_TODAY_WINDOW`
+        // with today's and the minutes of `PARKY_TIP_NONE_WINDOW` with a 204, and a rule can tell
+        // none of them apart. It carries the shortest, so where the rule wins (`next start`) a tip
+        // is asked again sooner and a 204 is never kept for the tip's day; on Vercel the handler's
+        // own window stands.
         source: '/api/parks/:continent/:country/:city/:park/parky-tip',
-        headers: sharedCache('public, max-age=21600, s-maxage=21600, stale-while-revalidate=3600'),
+        headers: tagPurgedCacheRule(PARKY_TIP_NONE_WINDOW),
       },
       {
+        // The best-days snapshot: rung with the calendar, the same constant as its handler.
         source: '/api/parks/:continent/:country/:city/:park/best-days',
-        headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
+        headers: tagPurgedCacheRule(FORECAST_WINDOW),
       },
       {
         // The trip regions' relay: a region a day, its keyed routes the API's hour. The

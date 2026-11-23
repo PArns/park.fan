@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
   const url = `${SITE_URL}/${locale}/${segment}/${termSlug}`;
 
-  const title = `${term.name} – ${t('termTitleSuffix')} | park.fan`;
+  const title = `${term.name} – ${t('termTitleSuffix')}`;
   const description = fitSentences(glossaryPlainText(term.definition.split('\n\n')[0]), 155);
   const allTerms = await getGlossaryTerms(locale as Locale);
   const relatedNames = term.relatedTermIds

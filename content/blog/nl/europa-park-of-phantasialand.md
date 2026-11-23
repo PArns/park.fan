@@ -2,16 +2,12 @@
 title: 'In Europa-Park sta je korter in de rij dan in Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
-updatedAt: '2026-11-15'
+updatedAt: '2026-11-18'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Met een kind tussen 1,00 en 1,30 meter kan er in Europa-Park meer dan in
-  Phantasialand. Alleen in Phantasialand koop je met de Quick Pass een kortere
-  rij. In de zomervakantie stond je daar bijna twee keer zo lang in de rij als
-  op een doordeweekse dag zonder schoolvakantie, in Europa-Park ruim een derde
-  langer.
+  Met een kind tussen 1,00 en 1,30 meter kan er in Europa-Park meer. In de zomervakantie stond je in Phantasialand bijna twee keer zo lang als doordeweeks, in Europa-Park ruim een derde langer.
 tags:
   - europa-park
   - phantasialand
@@ -99,7 +95,7 @@ In Phantasialand koop je je met de Quick Pass langs de gewone rij. Voor één ri
 - 10 € op Black Mamba of Chiapas,
 - 12 € op Taron.
 
-Op de infopagina van het park staat Colorado Adventure nog voor 5 €, in de webshop kost een rit 7 €. River Quest staat op dit moment op geen van beide lijsten. F.L.Y. zit alleen in de Quick Pass Ultimate. Die kost 80 €, geeft één rit op elk van deze tien attracties en daarbovenop F.L.Y.
+In de winter kost Chiapas maar 5 €. River Quest staat op dit moment niet op de infopagina van het park en niet in de webshop. F.L.Y. zit alleen in de Quick Pass Ultimate. Die kost 80 €, geeft één rit op elk van deze tien attracties en daarbovenop F.L.Y.
 
 Je koopt hem in de webshop van het park, waarna hij als pdf met QR-code in je mailbox komt, of bij de gastenservice in de themawereld Berlin. Hij geldt alleen op de dag van de boeking, dus koop hem op de ochtend van je bezoek en niet de avond ervoor. Het aantal is beperkt.
 
@@ -178,6 +174,9 @@ Tien van de overdekte attracties in [Europa-Park](ref:europa-park?bare) zijn sta
 ## In de winter
 
 Tijdens Winterzauber heeft Europa-Park een kerstmarkt in het Historischer Schlosspark Balthasar, een ijsbaan, het reuzenrad Bellevue en een skischool voor kinderen met snowtubes. Voor de winter kondigt het park tot 23 uur showprogramma per dag aan, waaronder een kerstcircus. Vanaf november verkoopt het een avondticket dat vanaf 16 uur toegang geeft. Volwassenen betalen tot 22 december 41,50 € en daarna 47 €, kinderen 35 tot 40 €, en aan de kassa komt er niets bij. Op 10 januari is het park alleen nog open voor hotelgasten en genodigden.
+
+> [!PARKY] De avond loont
+> Tijdens Winterzauber nemen we het avondticket vanaf 16 uur, tot 22 december voor 41,50 € per volwassene, en aan de kassa kost het niets meer. Het park is in de winter open tot minstens 19 uur, dus hebben we drie uur voor de kerstmarkt, het reuzenrad Bellevue en de ijsbaan, waar ik eerder rol dan glij. Een hele dag kost volwassenen online 67 tot 76 €, aan de kassa 10 € meer.
 
 Fjord-Rafting en de Tiroler Wildwasserbahn rijden in Europa-Park alleen tot het einde van het halloweenseizoen op 1 november, Atlantica SuperSplash tot het einde van HALLOWinter op 27 november. Poseidon staat in alle vier de seizoenen op het programma.
 

@@ -344,6 +344,9 @@ hanno invece code molto più corte subito dopo l’apertura che a mezzogiorno.
 Comincia quindi da lì e tieni Peter Pan per la sera. Fra le 12 e le 14 tutte
 e otto le attrazioni della tabella oraria hanno la coda più lunga.
 
+> [!PARKY] Qui sì
+> Se non restiamo fino all’ultima ora, il nostro Premier Access One va a Peter Pan: lì fa risparmiare più tempo che a Hyperspace Mountain, e il 25 settembre costava solo un euro in più. Per un volo verso l’Isola che non c’è, quell’euro lo spendo volentieri. Si compra solo una volta dentro il parco, nell’app, e Hyperspace Mountain lo facciamo comunque subito dopo l’apertura.
+
 E se prenoti entrambi i parchi, inverti l’ordine consueto e parti da Adventure
 World, dove la nostra analisi del rope drop indica per Ratatouille e per il
 Tower of Terror il risparmio più grande legato a una partenza anticipata. La coda di Frozen Ever After è più corta la sera, e c’è una fila single rider.

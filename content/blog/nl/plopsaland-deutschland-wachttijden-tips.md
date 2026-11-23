@@ -26,7 +26,7 @@ parkLinks:
 rideLinks:
   - plopsaland-deutschland/*
 seo:
-  title: 'Plopsaland Deutschland 2026: wachttijden, prijzen, beste dagen'
+  title: 'Plopsaland Deutschland (Holiday Park): tips en beste dagen'
   description: >-
     In het vroegere Holiday Park in Haßloch wacht je bij de meeste attracties
     maar een paar minuten. Het rustigst is het op vrijdag, behalve met
@@ -119,6 +119,9 @@ In onze metingen wacht je hier langer dan bij elke andere attractie in het park.
 een minuut en 30 seconden) en de
 enige onder een dak: hij hoort bij de hal Holiday Indoor, die in 2018 op 5.000 vierkante meter
 openging.
+
+> [!PARKY]
+> In maart en november kijken we voor vertrek naar de temperatuur in Haßloch. Onder de acht graden staan GeForce en Sky Scream stil, en de drie heuvels van GeForce die ons uit de stoel tillen, mis ik niet graag. Van de vier achtbanen rijden dan alleen 100% Wolf, die al vanaf vijf graden gaat, en Tabaluga's Rollercoaster in de hal. Geeft de voorspelling zo weinig aan, dan kiezen we liever een warmere dag.
 
 ## Waterattracties en torens
 

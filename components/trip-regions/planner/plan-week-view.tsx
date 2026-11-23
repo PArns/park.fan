@@ -31,7 +31,8 @@ import {
 import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 import { sentenceCase } from '@/lib/utils/sentence-case';
 import { HEAT_CHIP_CLASS, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
-import { dayHeat, isHotDay } from '@/lib/trip-regions/plan-copy';
+import { dayHeat, dayWeatherOf, isHotDay } from '@/lib/trip-regions/plan-copy';
+import { DayWeather } from '@/components/common/day-weather';
 import { stormCodeOn, stormSignal, type StormCode } from '@/lib/trip-regions/date-facts';
 import {
   TRIP_WEEK_PX_PER_MIN,
@@ -193,10 +194,13 @@ export function PlanWeekView({
   const axis = shown[0] ? tripColumnGrid(shown[0], canvas, pxPerMin) : null;
   // Owned tickets add a line under each column's date, the header grows by it on every column.
   const ticketLine = (plan.meta.tickets ?? []).length > 0;
-  // So does the weather row, where a day of the page is hot or in the storm season.
+  // So does the weather row, where a day of the page has weather, is hot or in the storm season.
   const weatherRow = shown.some((span) => {
     const day = dayBy.get(span.date);
-    return (day !== undefined && isHotDay(day)) || stormCodeOn(span.date, region.weather) !== null;
+    return (
+      (day !== undefined && (isHotDay(day) || dayWeatherOf(day) !== null)) ||
+      stormCodeOn(span.date, region.weather) !== null
+    );
   });
   const header = headerOf(ticketLine, weatherRow);
 
@@ -625,6 +629,7 @@ function WeekColumn({
           <WeatherRow
             heat={day ? dayHeat(day) : null}
             hot={hot}
+            dayWeather={day ? dayWeatherOf(day) : null}
             storms={[storm]}
             last={weather.last}
             phone={phone}
@@ -939,19 +944,22 @@ function WeekColumn({
 
 /**
  * A column header's weather row, a picture of the day label's words and so hidden from a screen
- * reader: a hot park day's pill („Ø 32°“, the icon alone on a phone), and under it the storm
- * season's band, a segment per date, run through the gap to the next column so the page reads as
- * one band.
+ * reader: a hot park day's pill („Ø 32°“, the icon alone on a phone), any other day's weather
+ * (`DayWeather`, compact on a phone: the forecast's high, past its reach the date's usual range),
+ * and under it the storm season's band, a segment per date, run through the gap to the next column
+ * so the page reads as one band.
  */
 function WeatherRow({
   heat,
   hot,
+  dayWeather = null,
   storms,
   last,
   phone,
 }: {
   heat: ReturnType<typeof dayHeat>;
   hot: boolean;
+  dayWeather?: ReturnType<typeof dayWeatherOf>;
   storms: ReadonlyArray<StormCode | null>;
   last: boolean;
   phone: boolean;
@@ -959,6 +967,9 @@ function WeatherRow({
   return (
     <span aria-hidden="true" className="mt-auto flex flex-col self-stretch">
       <span className="flex h-5 items-center justify-center">
+        {!hot && dayWeather && (
+          <DayWeather weather={dayWeather} compact={phone} className="text-[10px]" />
+        )}
         {hot && (
           <span
             className={cn(

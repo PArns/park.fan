@@ -578,6 +578,9 @@ boutiques ou regardez un spectacle. L’attente ne dévore
 plus votre journée, et le parc répartit la demande de façon plus contrôlée sur
 les heures.
 
+> [!PARKY]
+> À l’Europa-Park, on n’a droit qu’à un créneau VirtualLine à la fois, et chez nous, il va à Voltron : c’est lui qui a l’attente médiane la plus longue du parc. Pour Voltron, c’est mon téléphone qui fait la queue, et pendant ce temps je décolle de mon siège sur Wodan. Comme les places sont très limitées, on le réserve dans l’application dès qu’il s’en libère un.
+
 Pour ceux qui préfèrent faire la queue avec leurs pieds plutôt qu’avec leur
 pouce, les parcs travaillent en parallèle sur la gare elle-même :
 

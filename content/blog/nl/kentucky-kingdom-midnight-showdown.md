@@ -60,6 +60,9 @@ Met Gold en Diamond krijg je 50 procent korting op een normaal dagticket in zeve
 
 Een dagticket kost online vanaf 24,99 dollar als je het minstens 24 uur van tevoren voor een vaste dag koopt, aan de kassa 49,99 dollar. Twee dagen achter elkaar kosten online vanaf 34,99 dollar. Wie twee keer zou komen en aan de kassa zou betalen, is met een Silver-pass al goedkoper uit. Ben je 15 of jonger, dan kom je alleen binnen met iemand van 21 of ouder.
 
+> [!PARKY] Silver is genoeg
+> Gaan we naar Christmas at Kentucky Kingdom en in het voorjaar nog een keer voor Midnight Showdown, dan nemen we de Silver Pass: die geldt vanaf nu voor allebei, en met de pass parkeren we op openingsdagen gratis in plaats van voor 15 dollar per auto. Bij het eerste hoefgetrappel galoppeer ik in gedachten al weg. Gold of Diamond nemen we alleen als Dollywood of Silver Dollar City ook op het lijstje staan, want daar geven die 50 procent korting op een normaal dagticket.
+
 ## Kerst in het park
 
 Christmas at Kentucky Kingdom loopt op bepaalde dagen van 21 november tot 2 januari en zit bij het dagticket inbegrepen. Tot en met 20 november kost een kerstticket online 24,99 dollar voor iedereen vanaf vier jaar. In het park branden meer dan 1,5 miljoen lampjes en staan ruim 300 kerstbomen. Op de sneeuwhelling Blizzard Bluff glij je met een band over echte sneeuw naar beneden, op zes banen en over 175 voet, zo’n 53 meter. De waterattracties en een paar andere attracties blijven in de winter dicht.

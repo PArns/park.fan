@@ -24,7 +24,7 @@ coverImage:
   caption: 'When it opened in 2002, no steel coaster in Europe climbed higher than this lift hill.'
   credit: 'Patrick Arns'
 seo:
-  title: "Europe's fastest, tallest and longest roller coasters"
+  title: 'Which is Europe’s fastest and tallest roller coaster?'
   description: >-
     Red Force hits 180 km/h and stands 112 metres tall, Big One has the longest track, The Smiler 14 inversions. Silver Star and Kärnan are Germany's fastest.
   keywords:
@@ -238,6 +238,9 @@ Wildfire at Kolmården is Sweden's fastest and tallest roller coaster. Helix at 
 - Taron, Phantasialand: from 1.30 m with an adult, from 1.40 m alone
 - Colossos, Heide Park: at least 1.40 m
 - Expedition GeForce, Plopsaland Deutschland: at least 1.40 m
+
+> [!PARKY]
+> At 1.20 m the record hunt begins: from then on a child can ride Wodan with an adult, Europe's number three wooden coaster for speed and height. At 1.30 m and age eight, Voltron Nevera joins the list, the coaster with the most inversions in Germany, and the pencil marks on the doorframe get checked a lot more often. From 1.40 m, three of Europe's four fastest coasters are waiting in Salou.
 
 ## Frequently asked questions
 

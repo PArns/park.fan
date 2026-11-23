@@ -221,6 +221,9 @@ Quien solo quiera la noche compra una entrada Soirée (acceso desde las 17:00) o
 (desde las 20:00). Las dos incluyen el espectáculo nocturno y las atracciones que siguen abiertas
 por la noche.
 
+> [!PARKY]
+> Si solo venimos por la noche, cogemos la entrada Soirée y pagamos el aparcamiento con la tarifa desde las 14:00, 8 euros en vez de 13. La Clé des Songes va incluida en las dos entradas de noche y se celebra también con lluvia, y por imágenes sobre el agua con pirotecnia me quedo despierto hasta tarde con gusto. Antes montamos en las atracciones que siguen abiertas por la noche.
+
 ## Cuánto se espera aquí
 
 Hasta principios de octubre de 2026 hemos medido 228 días. El Futuroscope tiene muchos puntos del programa
@@ -295,6 +298,9 @@ diciembre son escasos.
 
 Quien
 sea flexible elegirá un jueves o un viernes fuera de las vacaciones escolares francesas.
+
+> [!PARKY] Mejor el domingo
+> Hasta el 18 de diciembre el parque solo abre los fines de semana, así que vamos el domingo: el sábado es aquí, con mucha diferencia, el día con más gente de la semana, y el domingo tiene, junto con el jueves y el viernes, las esperas más cortas. El sábado lo pasamos con la ilusión del día siguiente, que no exige hacer ninguna cola. Después, el parque abre todos los días hasta el 3 de enero.
 
 ### Futuroween 2026
 

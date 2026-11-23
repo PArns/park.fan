@@ -238,6 +238,9 @@ Les enfants peuvent entrer seuls dans les parcs à partir de 12 ans.
 
 Pour Halloween, le code SUSTO26 donne jusqu’à 30 % de réduction sur les billets pour des visites du 19 septembre au 15 novembre, à utiliser avant le 15 novembre. Le code ESCAPEPAW donne 40 % sur les visites en semaine si vous achetez avant le 14 octobre et venez avant le 4 décembre.
 
+> [!PARKY] Prendre deux jours
+> Si on ne dort pas dans un hôtel du resort, on prend tout de suite deux jours pour le parc : 43 € en ligne au lieu de 37 €, le deuxième jour coûte donc 6 €. Une journée entière pour moins qu’un seul accès Express ONE, rien que d’y penser, je décolle un peu de mon siège. Dans un hôtel du resort, elle est de toute façon incluse, puisqu’une nuit y donne déjà deux jours d’accès au parc.
+
 ### Abonnements annuels
 
 Les quatre abonnements annuels valent 365 jours à partir de l’achat. Les juniors sont les enfants de 4 à 10 ans, les seniors ont 60 ans et plus, les enfants de 0 à 3 ans entrent gratuitement.
@@ -294,6 +297,9 @@ Vous ne pouvez pas apporter de nourriture ni de boissons dans le parc. Une zone 
 Avec service à table, vous pouvez manger à l’Iron Horse à Far West (burgers, travers, steaks), au Raco de Mar à Mediterrània (salades et plats de riz), à la Vinosfera avec des tapas et à la Hacienda El Charro à México. En libre-service, il y a entre autres le Bora Bora à Polynesia, La Cantina à México, le Marco Polo à China (buffet) et le Sichuan. À Ferrari Land, la Trattoria Maranello propose à table salades, pizzas, pâtes, viande et poisson. Pour aller plus vite, le Pit Lane est en libre-service, avec en plus Paddock, Finish Line, Ice Cream Box et Stop & Go.
 
 Les casiers existent en trois tailles : petit 8 €, moyen 11 € et grand 15 €. S’y ajoutent des casiers près des attractions, 2 euros pour un sac à dos, à quatre endroits : entre Shambhala et Dragon Khan, à l’entrée de Furius Baco, à côté de Tutuki Splash et à l’accès de Silver River Flume. Une fois ouvert, le casier est libre pour le client suivant, et le rouvrir coûte de nouveau.
+
+> [!PARKY]
+> On enferme le sac à dos entre Shambhala et Dragon Khan, et on fait les deux avant de rouvrir le casier : on ne paie ainsi les 2 euros qu’une fois. À 134 km/h, je ne veux de toute façon rien sur les genoux. Dans le [planificateur de journée](/trip-planner), on les place l’une juste après l’autre.
 
 Une poussette simple coûte 12 euros de location plus 12 euros de caution, une poussette double 18 euros plus 12 euros de caution, un fauteuil roulant 12 euros plus 10 euros. Les visiteurs avec un handicap reconnu à partir de 33 % et une mobilité réduite justifiée reçoivent une carte pour l’« Exclusive Access » aux attractions et aux spectacles, avec jusqu’à quatre accompagnateurs sur les attractions.
 

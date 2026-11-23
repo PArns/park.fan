@@ -149,6 +149,9 @@ Al Parc Astérix, nelle sere d’estate, abbiamo misurato fino alle 21, e nell�
 
 Il Parque de Atracciones de Madrid, nella Casa de Campo, apre solo a mezzogiorno, e lì la prima ora è la più tranquilla, mentre la fila più lunga la trovi all’inizio della serata. Chi prima di Blackpool Pleasure Beach dorme fino a tardi non si perde niente, perché lì l’attesa alle grandi attrazioni resta quasi uguale per tutto il giorno.
 
+> [!PARKY]
+> Il rope drop per me è sacro, ma non lo spreco: a Thorpe Park all’apertura non andiamo subito a Hyperia, perché lì la coda resta quasi uguale tutto il giorno. A PortAventura teniamo Uncharted per la sera, visto che la sua prima ora è la più lunga della giornata, e nel [pianificatore della giornata](/trip-planner) la mettiamo subito in fondo.
+
 ## Che differenza ha fatto la pioggia
 
 Nei giorni di pioggia la gente ha fatto code più corte che nei giorni asciutti dello stesso mese in tutti e dodici i parchi del nostro [confronto sulla pioggia](/blog/parco-divertimenti-con-la-pioggia), al Movie Park Germany di quasi un terzo. Lì conta come giorno di pioggia un giorno con almeno due millimetri di precipitazioni. Una previsione di pioggia per sabato è quindi più un motivo per partire che per restare sul divano, soprattutto in direzione Movie Park, purché non siano annunciati temporali.

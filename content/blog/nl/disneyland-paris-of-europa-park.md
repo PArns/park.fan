@@ -170,6 +170,9 @@ Voor Parijs geeft Disney alleen vaste prijzen voor de kassa bij de ingang. Daar 
 
 Disney stelt de prijs van Premier Access One elke dag opnieuw vast. Een rit in Frozen Ever After kan € 23 per persoon kosten, voor een gezin van vier dus € 92, in Big Thunder Mountain € 18 en in Hyperspace Mountain € 16. Premier Access One koop je pas in het park, in de app, en je krijgt er een tijdslot bij. Zonder smartphone kan het in City Hall in het Disneyland Park of bij Studio Services in Disney Adventure World. Ultimate kun je ook vooraf kopen en heeft geen tijdslot; een vaste prijs geeft Disney daarvoor niet. Elke Premier Access hoort bij één ticket en is niet over te dragen, dus het gezin heeft er een per persoon nodig. Alleen kinderen onder de drie hebben geen eigen exemplaar nodig als een volwassene er een heeft.
 
+> [!PARKY]
+> Frozen Ever After doen we in Disney Adventure World meteen bij opening, want daar levert een vroege start het meest op, en in de [dagplanner](/trip-planner) staat de boottocht bij ons daarom helemaal bovenaan. Premier Access kan een gezin van vier daar € 92 kosten, en dan bevriest zelfs mijn glimlach. Wie later op de dag de groep even wil loslaten, neemt single rider.
+
 Voor eigen eten heeft Parijs een picknickplek tussen het parkeerterrein en de ingang. Maaltijden waarvoor je een koelbox, een tafel of grote bakken nodig hebt, mogen de parken niet in. Het Europa-Park heeft picknickplekken in het Schlosspark Balthasar, in het Duitse themagebied en naast Wodan.
 
 Met overnachting biedt het Europa-Park in het zomer- en halloweenseizoen het arrangement “Alles erleben” aan, vanaf € 192 per persoon in een vijfpersoonskamer, met een dag in het park, een dag in Rulantica en ontbijt.
@@ -199,6 +202,9 @@ Het halloweenseizoen eindigt in beide resorts op 1 november. In Parijs volgt van
 Wanneer het in Parijs druk wordt, hangt af van de Franse schoolvakanties. De kerstvakantie loopt in heel Frankrijk van 19 december 2026 tot 3 januari 2027. De winter- en de voorjaarsvakantie zijn over drie zones verdeeld: voor Parijs (zone C) van 6 tot 21 februari en van 3 tot 18 april 2027, voor de Elzas met Straatsburg (zone B) van 20 februari tot 7 maart en van 17 april tot 2 mei.
 
 Januari was tot nu toe in alle drie de parken de rustigste maand. Tussen de dagen van de week zit weinig verschil, behalve in het Europa-Park, waar het op zaterdag duidelijk drukker is dan op andere dagen. Vier van de vijf drukste dagen daar waren zaterdagen: 2 mei, 22 augustus en 19 en 26 september 2026. In de twee parken in Parijs vielen de drukste dagen juist vaak op werkdagen in de vakantie, zoals 23 en 24 februari 2026, in de Parijse wintervakantie.
+
+> [!PARKY] Januari in Parijs
+> In januari gaan we naar Parijs, en dan pas na de 3e, als de Franse kerstvakantie voorbij is: januari was tot nu toe in alle drie de parken de rustigste maand, en Rust gaat na 9 januari toch dicht. Voor zulke korte wachtrijen neem ik graag de dikke sjaal mee. Welk van de twee parken in Parijs op welke reisdag komt, leggen we vast in de [reisplanner](/paris#planner).
 
 ### Disneyland Park
 

@@ -28,9 +28,11 @@ coverImage:
   caption: 'Taron dans le village de basalte de Klugheim, pour moi le plus beau coin du parc.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand : Quick Pass, jours calmes, temps d’attente'
+  title: 'Conseils pour Phantasialand : quand prendre le Quick Pass ?'
   description: >-
-    Réduire l’attente au Phantasialand : le bon jour, le Quick Pass, vendu aussi en ligne, et le Wintertraum, par un habitué depuis plus de trente ans.
+    Un jour calme, pas besoin de Quick Pass au Phantasialand. Un jour de foule,
+    il vaut le coup pour Taron (12 €) et F.L.Y., seulement dans l’Ultimate (80
+    €).
   keywords:
     - Temps d’attente Phantasialand
     - Éviter les temps d’attente Phantasialand
@@ -239,6 +241,9 @@ octobre et novembre 2026 : **35 €, 59 € et 78 €**, soit plus du double po
 même journée de parc. La boutique met en avant des billets dès **44 €**. On peut
 aussi venir sur un coup de tête, mais seulement en ligne et seulement jusqu’à 14 h
 le jour même, au prix du jour et à condition que la date ne soit pas complète.
+
+> [!PARKY] Fais-toi plaisir
+> On réserve dès que la date est fixée. Si on décroche le palier à 35 € au lieu de celui à 59 € pour octobre ou novembre, il reste 24 €, soit, j’ai recompté deux fois, exactement deux Quick Pass pour Taron. On les achète le matin même de la visite.
 
 Il n’y a plus de cartes annuelles. Le Phantasialand a retiré sa Club-Karte de
 la vente pendant la pandémie et ne l’a jamais remise en vente; les dernières ont

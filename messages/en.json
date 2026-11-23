@@ -266,7 +266,6 @@
       "tools": "Tools",
       "germany": "Germany",
       "usa": "United States",
-      "resources": "Developers & Tools",
       "legal": "Legal"
     },
     "regions": {
@@ -274,7 +273,7 @@
       "northAmerica": "Theme Parks in North America",
       "asia": "Theme Parks in Asia"
     },
-    "api": "API Documentation",
+    "developerPortal": "Developer portal",
     "impressum": "Imprint",
     "howto": "Understanding wait times",
     "planner": "Day planner",
@@ -420,14 +419,27 @@
       "monthTitleLastYear": "Quietest days in {month} last year",
       "quietPark": "({park}, about {minutes} min)",
       "quietestTo": "Quietest to {date}",
-      "best": "Best park per resort, <time>{date}</time>"
+      "best": "Best park per resort, <time>{date}</time>",
+      "pick": "Tip for <time>{date}</time>",
+      "perResort": "Per resort",
+      "pickLevel": "{level, select, very_low {much quieter than a normal day there} low {quieter than a normal day there} moderate {a normal day there} other {busier than a normal day there}}"
+    },
+    "visited": {
+      "ask": "Already visited? Tick it off",
+      "count": "{count} of {total} parks ticked off",
+      "allDone": "All {count} parks ticked off. For a second visit:",
+      "toggle": "{park}: already visited",
+      "tick": "Tick off {park} as visited",
+      "untick": "Take the tick off {park}",
+      "column": "Already visited?"
     },
     "legend": {
       "minutes": "Peak wait at the big rides, in minutes",
       "quietest": "quietest day of the week at that park",
       "early": "closes early for day guests",
       "howTo": "How to read this",
-      "colour": "Colour: the day against a normal day at that park"
+      "colour": "Colour: the day against a normal day at that park",
+      "picked": "planned by you"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -458,13 +470,24 @@
       "stateOpen": "Open, no forecast",
       "cellNoHours": "hours not published yet",
       "sourcesTravel": "Travel times: {attribution}",
-      "titleMonth": "Day by day in {month}"
+      "titleMonth": "Day by day in {month}",
+      "picked": "planned by you",
+      "quietestFree": "suggested free day",
+      "cellTaken": "already planned for {park}",
+      "pickHint": "Pick a day at a park to plan it. The other parks then each get a free day of their own, as quiet as possible.",
+      "picksCount": "{count, plural, one {# day planned} other {# days planned}}",
+      "picksNote": "The stars give every other park a free day of its own, as quiet as possible.",
+      "picksReset": "Clear picks",
+      "pickedAnnounce": "{park} planned for {date}",
+      "unpickedAnnounce": "{park} no longer planned for {date}"
     },
     "lanes": {
-      "summaryLabel": "Events",
-      "nights": "{name}: {count, plural, =1 {# night} other {# nights}}",
       "expected": "dates expected",
-      "allDays": "every day"
+      "dayGuestsUntil": "day guests until {time}",
+      "separateTicket": "evening event, separate ticket",
+      "from": "from {date}",
+      "until": "until {date}",
+      "allWeek": "All week: {names}"
     },
     "sheet": {
       "intro": "Each resort’s best park comes first; an early close counts against it",
@@ -484,6 +507,7 @@
       "ridesNone": "No ride figures for this day.",
       "ridesHint": "Each ride at its busiest time of day.",
       "planDay": "Open in the day planner",
+      "planTrip": "Plan a trip from this day",
       "noHoursFigure": "No hours published yet. The figure is the forecast; hours are not counted.",
       "ahead": "Ranked above {park}, where day guests must leave at {time}."
     },
@@ -517,7 +541,9 @@
       "open": "Open the trip planner"
     },
     "tile": {
-      "line": "You give your dates, and the planner tells you which of the {count} parks is quietest on which day"
+      "line": "The quietest day of each week for all {count} parks {inRegion}, from the peak-wait forecast",
+      "question": "Which day is quietest at {resort}?",
+      "calendarResort": "{resort} Crowd Calendar"
     },
     "faq": {
       "parks": {
@@ -646,6 +672,7 @@
   },
   "parks": {
     "liveLink": "{park}: live wait times",
+    "calendarLink": "{park} crowd calendar: the quietest days ahead",
     "liveFreshness": {
       "asOf": "As of",
       "outdated": "Not up to date",
@@ -851,7 +878,7 @@
     "calendarLegend": "Legend",
     "calendarLegendGroups": {
       "crowd": "Crowds",
-      "signals": "Signals"
+      "signals": "Holidays & breaks"
     },
     "eventTypesLabel": "Event Types",
     "crowdLevelsLabel": "Crowd Levels",
@@ -859,6 +886,10 @@
     "specialDaysLabel": "Special Days",
     "schoolVacation": "School Vacation",
     "bestDay": "Recommended",
+    "calendarMarks": {
+      "quietestOfWeek": "quietest day of the week",
+      "localTimes": "Times in the park's local time"
+    },
     "bridgeDay": "Bridge Day",
     "holiday": "Holiday",
     "eventTypes": {
@@ -1290,6 +1321,10 @@
       "metaTitle": "{park} Crowd Calendar & Opening Hours, {month}",
       "metaTitleShort": "{park} Crowd Calendar, {month}",
       "metaTitleBare": "{park}: {month}",
+      "yearTitle": "{park} Crowd Calendar {years}: Best Days to Visit",
+      "yearTitleShort": "{park} Crowd Calendar {years}: When to Go",
+      "yearTitleBare": "{park} Crowd Calendar {years}",
+      "h1SuffixYears": "Crowd Calendar {years}",
       "metaDescription": "When is {park} in {city} quiet? Day-by-day crowds, opening hours, school holidays and weather for the months ahead, with an AI forecast per day.",
       "metaDescriptionNoCity": "When is {park} quiet? Expected crowds per day, opening hours, school holidays and weather for the months ahead.",
       "intro": "For every day of the months ahead: expected crowds, opening hours, and the school and public holidays that affect {park}. Tap a day for the details.",
@@ -2809,6 +2844,10 @@
             "title": "History",
             "description": "Measured wait times looking back: park statistics, hourly profile, a ride's day curve and history, typical waits, rope drop, outages."
           },
+          "typical-waits": {
+            "title": "Typical waits",
+            "description": "Each ride's typical wait times and which rides are the park's headliners, in the park and ride detail. History includes them."
+          },
           "platform": {
             "title": "Platform figures",
             "description": "Live totals across all parks, the ticker and the best times to visit overall."
@@ -3540,7 +3579,7 @@
     "page": {
       "title": "Plan your park day ride by ride",
       "lead": "Say which rides you want. With the forecast waits in place, you’ll see whether they all fit in before the park closes. The day planner is free, stays in your browser and needs no account.",
-      "metaTitle": "Theme park day planner: plan around wait times | park.fan",
+      "metaTitle": "Theme park day planner: plan around wait times",
       "metaDescription": "Plan a theme park day against the forecast wait times: rides on a timeline, shows and breaks in between, and a flag on every ride your child is too short for.",
       "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",
       "introTitle": "Nothing planned yet",
@@ -3854,7 +3893,8 @@
         "hotel": "Hotel: {area}"
       },
       "arrivalIn": "Arrival in {city}",
-      "departureFrom": "Departure from {city}"
+      "departureFrom": "Departure from {city}",
+      "share": "Share"
     },
     "spare": {
       "day": "free day",
@@ -4117,7 +4157,6 @@
     "keep": {
       "addAll": "Copy to the day planner",
       "ics": "Add to calendar (.ics)",
-      "copy": "Copy link",
       "copied": "Link copied",
       "added": "{count, plural, =1 {1 park day is} other {# park days are}} in the day planner, starting with {park} on {date}.",
       "openPlanner": "Open the first day",
@@ -4164,7 +4203,10 @@
       "stripLegend": "Height: your parks’ peak wait that week. The marks underneath show your options.",
       "sketch": "Day by day",
       "rankedLower": "ranked lower: {reasons}",
-      "stormPeak": "{season}: ranked lower for the storm risk, even with short waits."
+      "stormPeak": "{season}: ranked lower for the storm risk, even with short waits.",
+      "picked": "{rank, select, 1 {The quietest {days} days in your period} other {Option {rank} of your search}}: {range}",
+      "others": "Other dates",
+      "compare": "Compare all"
     },
     "evening": {
       "plus": "+ evening: {name}",
@@ -4379,7 +4421,8 @@
         "hopping": "{hopper} included"
       },
       "later": "Already have tickets?",
-      "enter": "Add them"
+      "enter": "Add them",
+      "line": "Tickets for {count, plural, =1 {1 park day} other {# park days}}"
     },
     "move": {
       "mode": {
@@ -4517,7 +4560,12 @@
         "show": "Show the plan now"
       },
       "dates": {
-        "months": "Month"
+        "months": "Month",
+        "mode": "Your dates",
+        "known": "I know my dates",
+        "find": "Find dates",
+        "quiet": "Next quiet week: {range}",
+        "quietTake": "Use these dates"
       },
       "parks": {
         "lead": "The big ones are chosen already, and a tap on a picture adds a park or takes it out",
@@ -4533,7 +4581,8 @@
         "weather": {
           "label": "Avoid extreme weather",
           "hint": "Theme parks on the cooler days, water parks on the hottest{storm, select, hurricane {; the peak of hurricane season counts for more} typhoon {; the peak of typhoon season counts for more} other {}}"
-        }
+        },
+        "fitted": "For {days, plural, one {# day} other {# days}}, {parks, plural, one {# park is} other {# parks are}} picked to start with. You can add more."
       },
       "spare": {
         "title": "{count, plural, =1 {1 day without a park} other {# days without a park}}",
@@ -4584,7 +4633,8 @@
       "ask": "What do you think of this idea for my plan: {idea}?",
       "applied": "In the plan: {idea}.",
       "inPlan": "Add to the plan",
-      "otherDay": "Another day"
+      "otherDay": "Another day",
+      "dismiss": "Hide this idea"
     },
     "weather": {
       "heatDays": "{count, plural, =1 {1 hot park day} other {# hot park days}}",
@@ -4598,6 +4648,12 @@
       "noCooler": "No cooler day fitted the plan",
       "keyHeat": "Hot park day",
       "keyHeatNormal": "Hot park day; Ø is the average of past years"
+    },
+    "past": {
+      "started": "This trip started on {date}.",
+      "ended": "This trip started on {date} and is already over.",
+      "fromToday": "Plan from today",
+      "newDates": "Choose new dates"
     }
   },
   "tripRegions": {
@@ -4612,7 +4668,7 @@
       "hub": {
         "title": "Orlando Crowd Calendar",
         "monthTitle": "Orlando Crowd Calendar {month}",
-        "metaTitle": "Orlando Crowd Calendar {years} & Trip Planner",
+        "metaTitle": "Disney World & Universal Orlando Crowd Calendar {years}",
         "metaTitleMonth": "Orlando Crowd Calendar {month}: Disney & Universal",
         "metaTitleMonthShort": "Orlando Crowd Calendar {month}",
         "metaDescription": "Which Orlando park on which day, Epic Universe included. Quietest in the next 30 days: {verdict}.",
@@ -4627,8 +4683,7 @@
         },
         "lanes": {
           "break": "US school holidays: {name}, {dates}",
-          "unnamedBreak": "US school holidays",
-          "none": "No events or US school holidays in these days."
+          "unnamedBreak": "US school holidays"
         },
         "sheet": {
           "kicker": "Orlando · one day",
@@ -4641,9 +4696,7 @@
         "when": {
           "kicker": "Disney World and Universal",
           "title": "Best time to visit Orlando in {year}",
-          "titleNoYear": "Best time to visit Orlando",
-          "pageLink": "Best time to visit Orlando in {year}",
-          "pageLinkNoYear": "Best time to visit Orlando"
+          "pageLink": "Best time to visit Orlando in {year}"
         },
         "faq": {
           "title": "Questions about Orlando crowds",
@@ -5002,8 +5055,7 @@
         },
         "lanes": {
           "break": "Los Angeles school holidays: {name}, {dates}",
-          "unnamedBreak": "Los Angeles school holidays",
-          "none": "No events or Los Angeles school holidays in these days."
+          "unnamedBreak": "Los Angeles school holidays"
         },
         "sheet": {
           "kicker": "Southern California · one day",
@@ -5012,9 +5064,7 @@
         "when": {
           "kicker": "Disneyland and Universal",
           "title": "Best time to visit Disneyland & Universal Hollywood in {year}",
-          "titleNoYear": "Best time to visit Disneyland & Universal Hollywood",
-          "pageLink": "Best time to visit Disneyland & Universal Hollywood in {year}",
-          "pageLinkNoYear": "Best time to visit Disneyland & Universal Hollywood"
+          "pageLink": "Best time to visit Disneyland & Universal Hollywood in {year}"
         },
         "reasons": {
           "school_break": "during Los Angeles school holidays"
@@ -5288,8 +5338,7 @@
         },
         "lanes": {
           "break": "Japanese school holidays: {name}, {dates}",
-          "unnamedBreak": "Japanese school holidays",
-          "none": "No events in these days."
+          "unnamedBreak": "Japanese school holidays"
         },
         "sheet": {
           "kicker": "Japan · one day",
@@ -5301,9 +5350,7 @@
         "when": {
           "kicker": "Tokyo Disney and USJ",
           "title": "Best time to visit Tokyo Disney and USJ in {year}",
-          "titleNoYear": "Best time to visit Tokyo Disney and USJ",
-          "pageLink": "Best time to visit Tokyo Disney and USJ in {year}",
-          "pageLinkNoYear": "Best time to visit Tokyo Disney and USJ"
+          "pageLink": "Best time to visit Tokyo Disney and USJ in {year}"
         },
         "reasons": {
           "school_break": "during Japanese school holidays"
@@ -5617,8 +5664,7 @@
         },
         "lanes": {
           "break": "Paris school holidays (zone C): {name}, {dates}",
-          "unnamedBreak": "Paris school holidays (zone C)",
-          "none": "No events and no Paris school holidays in these days."
+          "unnamedBreak": "Paris school holidays (zone C)"
         },
         "sheet": {
           "kicker": "Paris · one day",
@@ -5631,9 +5677,7 @@
         "when": {
           "kicker": "Trips with all three parks",
           "title": "Best time to visit Disneyland Paris & Parc Astérix in {year}",
-          "titleNoYear": "Best time to visit Disneyland Paris & Parc Astérix",
-          "pageLink": "Best time to visit Disneyland Paris & Parc Astérix in {year}",
-          "pageLinkNoYear": "Best time to visit Disneyland Paris & Parc Astérix"
+          "pageLink": "Best time to visit Disneyland Paris & Parc Astérix in {year}"
         },
         "reasons": {
           "school_break": "Paris school holidays"
@@ -6420,6 +6464,7 @@
     },
     "tip": {
       "label": "Parky's tip",
+      "looking": "Parky is taking a closer look at the day…",
       "good": "Great day!",
       "meh": "So-so",
       "bad": "Better not",
@@ -6464,7 +6509,7 @@
     "syncNow": "Sync now",
     "syncedAt": "Last synced: {when}",
     "neverSynced": "Not synced yet",
-    "whatSyncs": "Favorites, ridden rides and °C or °F are synced. Your day plan and your alerts stay on the device where you set them up.",
+    "whatSyncs": "Favorites, ridden rides, the parks ticked off on a trip and °C or °F are synced. Your day plan and your alerts stay on the device where you set them up.",
     "auth": {
       "registerTitle": "Create an account",
       "registerLead": "Your favorites and ridden rides on every device. Free, without ads.",
@@ -6549,5 +6594,17 @@
       "export": "Download data",
       "failed": "The download did not work. Please try again."
     }
+  },
+  "dayWeather": {
+    "normal": "Average of past years for this date, not a forecast",
+    "keyNoPeriod": "Ø average of past years, not a forecast",
+    "detailTitle": "Typical weather",
+    "typicalHigh": "Daytime usually <range></range>",
+    "typicalLow": "at night usually <range></range>",
+    "wetDays": "{count, plural, =0 {rarely rain} =1 {rain on 1 day in 10} other {rain on # days in 10}}",
+    "detailNote": "Average of {period} for this date; on half of those days the value fell within the range. Forecasts reach about 16 days ahead.",
+    "keyForecast": "Forecast",
+    "normalSpan": "Average of past years for these {count} days, not a forecast",
+    "rowLabel": "Weather in {park}"
   }
 }

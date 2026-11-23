@@ -236,7 +236,7 @@ export async function BestTimePage(props: BestTimePageProps) {
           </nav>
         </div>
 
-        <SectionShell id="year" index="01" title={t('strip.title')} icon={CalendarRange}>
+        <SectionShell id="year" title={t('strip.title')} icon={CalendarRange}>
           <P>{t('strip.lead', { parks: resortName, year })}</P>
           <YearStrip
             when={when}
@@ -247,7 +247,7 @@ export async function BestTimePage(props: BestTimePageProps) {
           />
         </SectionShell>
 
-        <SectionShell id="months" index="02" title={t('months.title')} icon={CalendarDays}>
+        <SectionShell id="months" title={t('months.title')} icon={CalendarDays}>
           <MonthRows
             regionSlug={region.slug}
             weather={region.weather}
@@ -262,7 +262,7 @@ export async function BestTimePage(props: BestTimePageProps) {
           />
         </SectionShell>
 
-        <SectionShell id="weeks" index="03" title={t('weeks.title')} icon={Trophy}>
+        <SectionShell id="weeks" title={t('weeks.title')} icon={Trophy}>
           <BestWorstWeeks
             regionSlug={region.slug}
             when={when}
@@ -274,7 +274,7 @@ export async function BestTimePage(props: BestTimePageProps) {
         </SectionShell>
 
         {regions.length > 0 && (
-          <SectionShell id="school-holidays" index="04" title={t('holidays.title')} icon={School}>
+          <SectionShell id="school-holidays" title={t('holidays.title')} icon={School}>
             <P>{t('holidays.lead', { days })}</P>
             <p className="text-muted-foreground text-sm">{t('holidays.note', { days })}</p>
             <SchoolHolidayLinks

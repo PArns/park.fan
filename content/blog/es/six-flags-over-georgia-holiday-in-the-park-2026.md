@@ -76,6 +76,9 @@ La entrada de un día cuesta desde 35 $. Hasta el 30 de noviembre, como oferta d
 
 El Gold Pass cuesta 79 $ y sirve en 2026 y 2027 en todos los parques Six Flags de la costa este, con aparcamiento, Fright Fest y Holiday in the Park incluidos. Quien ya lo tenga lo renueva por 69 $, y quien prefiera pagar cada mes tiene la Gold Membership por 7 $ al mes más 20 $ de cuota de alta. A todo se suman hasta 9,99 $ de gastos de gestión e impuestos. Quien compre o renueve un pase, o contrate una Membership nueva, hasta el 30 de noviembre recibe además una entrada Bring-A-Friend, que hay que usar como tarde el 3 de enero de 2027.
 
+> [!PARKY] Un pase para dos
+> Si vamos dos, uno compra el Silver Pass por 69 $ como muy tarde el 30 de noviembre y el otro entra con la entrada Bring-A-Friend que hasta esa fecha viene con cada pase. Dos entradas de un día ya cuestan juntas desde 70 $, y con el pase nos ahorramos además los 39 $ del aparcamiento. Después sigue valiendo hasta el Labor Day de 2027, con los dos parques acuáticos.
+
 Como novedad, Six Flags deja entrar gratis a todo el que tenga 65 años o más, para que los abuelos también vengan, mientras los nietos siguen pagando desde 35 $. Quien se registre en línea y haga su primera visita como tarde el 3 de enero de 2027 entra gratis hasta esa fecha. En la entrada hay que enseñar cada vez un documento con la fecha de nacimiento.
 
 Sin pase, el aparcamiento cuesta 39 $ y el Preferred Parking 49 $, en ambos casos más la tasa. La dirección para el navegador es 275 Riverside Parkway, Austell, GA 30168.

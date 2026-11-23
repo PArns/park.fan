@@ -233,6 +233,9 @@ pas de taille minimale, un enfant de moins de 100 ou de 110 centimètres y monte
 avec un adulte. À Berlin, ils ont en plus le carrousel de chevaux, Die 3 Mausketiere et le
 Verrückte Hotel Tartüff.
 
+> [!PARKY]
+> S’il pleut à Brühl, on file d’abord à Wuze Town : Winja's Fear, Winja's Force et Crazy Bats roulent dans le même bâtiment, trois montagnes russes sans qu’une goutte nous tombe dessus. Ensuite, Mystery Castle nous monte à 65 mètres à l’intérieur de son bâtiment, et le toit protège de la pluie, hélas pas de la hauteur. Taron et Black Mamba, on les garde pour les éclaircies.
+
 ![Un pot en terre géant au couvercle ouvert, une échelle appuyée contre lui. | Dans le bâtiment de Winja’s Fear & Force, Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
 Taron, Black Mamba et les autres grandes montagnes russes roulent en plein air.

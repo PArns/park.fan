@@ -78,6 +78,9 @@ Am günstigsten sind der 15., 20., 22. und 27. November und im Dezember die Mitt
 
 Ohne Åkpass bezahlst du jede Fahrt mit Kupons zu je 25 Kronen. [Balder](ref:liseberg/balder) kostet vier davon. Wer Balder mehr als zweimal fahren will, ist mit dem Åkpass günstiger dran. Das Lisebergspasset für 395 Kronen gilt zwölf Monate als Eintritt, das Guldpasset für 2.595 Kronen zwölf Monate für Eintritt und alle Fahrten.
 
+> [!PARKY] Unter der Woche
+> Im Dezember nehmen wir einen Mittwoch oder Donnerstag bis zum 17.: Dann zahlen wir am wenigsten und haben von 15 bis 21 Uhr sechs Stunden für Luma Celestia, die Märkte und die großen Bahnen. Balder fahre ich mit Åkpass sowieso öfter als zweimal, Kupons zählen mag ich in der Kälte nicht. Die Tickets kaufen wir online, an der Kasse zahlst du immer mehr.
+
 ## Welche Bahnen im Winter fahren
 
 Im Eintritt sind das Tomtehuset mit dem Weihnachtsmann, die Eisbahn, Barnens Paradis (ab vier Jahren) und die Blomsterkarusellen enthalten. Die großen Bahnen brauchen den Åkpass oder Kupons:

@@ -298,6 +298,9 @@ dollari il 30 settembre. Quel giorno non si potevano comprare né l’uno né
 l’altro. Il 30 settembre, però, quello di TRON si poteva già comprare di
 nuovo per il giorno successivo.
 
+> [!PARKY] Per il Mine Train
+> Senza hotel Disney, se prendiamo un Single Pass, è quello per il Seven Dwarfs Mine Train e non quello per TRON: TRON lo facciamo all’apertura, quando la coda è più corta, mentre il Mine Train resta pieno uguale da mezzogiorno fino a sera. I sette nani hanno già il loro Brontolo, non serve che io faccia l’ottavo in coda per tutto il pomeriggio. Il 30 settembre il suo pass costava 11 dollari, otto meno di quello per TRON, e per lo stesso giorno non ne restava nessuno dei due, quindi lo compriamo prima.
+
 ## Quando andarci
 
 ```stats-widget slug=magic-kingdom-park show=months,weekdays
@@ -336,6 +339,9 @@ dai tre ai nove anni pagano dieci dollari in meno. La festa comprende la parata
 Mickey's Once Upon a Christmastime Parade e lo spettacolo pirotecnico Minnie's
 Wonderful Christmastime Fireworks Show. Anche in queste sere il parco chiude
 prima per tutti gli altri.
+
+> [!PARKY]
+> Senza biglietto per la festa, mettiamo Magic Kingdom in un giorno senza festa: fino al 14 dicembre resta aperto fino alle 22 o alle 23 invece che fino alle 18, e la giornata finisce con Happily Ever After. Ai fuochi d’artificio a fine giornata non rinuncio. Quel giorno del viaggio lo scegliamo nel [pianificatore di viaggio](/orlando#planner).
 
 ## Cosa ha chiuso e cosa arriva
 

@@ -379,6 +379,9 @@ Bewijzen kan ik dat niet.
 Het langst sta je rond twaalf uur in de rij, en tot in de vroege avond blijft de
 wachttijd lang. Het kortst is hij in het laatste uur.
 
+> [!PARKY]
+> Voor Disneyland Park betekent dat: we boeken de reis wanneer het ons uitkomt, want de vakantie scheelt hier maar ongeveer 3 procent en de dag van de week ook nauwelijks iets. Korte rijen halen we via de klok, dus blijven we tot het laatste uur, ook al zit ik dan al te gapen. Welk park op welke dag aan de beurt is, zetten we in de [reisplanner](/paris#planner).
+
 Het park ging op 12 april 1992 open als Euro Disneyland en heet sinds maart 2002
 Disneyland Park.
 

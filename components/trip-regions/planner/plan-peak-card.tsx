@@ -2,21 +2,25 @@
 
 import { useId, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { ChevronDown } from 'lucide-react';
+import { Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { TripPlan } from '@/lib/trip-regions/plan';
 import { planSavings } from '@/lib/trip-regions/plan-copy';
 import { shownTotals } from '@/lib/trip-regions/plan-week';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { useTripEvents } from './plan-context';
-import { PLAN_FOCUS } from './plan-controls';
+import { ActionRow } from './plan-day-actions';
+
+/** The peak card's figures: the shown ones (`shownTotals`), whether the order matters the API's. */
+function useSavings(plan: TripPlan, calendar: TripCalendar | undefined) {
+  return planSavings({ ...plan.totals, ...shownTotals(plan, calendar) });
+}
 
 /**
  * The peak wait on the planned days as a card: the figure large, how much less it is than the
  * average of the trip's days (or that the order barely matters), the two as bars in primary blue
- * (never crowd colours, which mean something else), the forecast's error per ride and day, and
- * „Wie genau ist das?“ with the average and the error in sentences. The figures are the shown ones
- * (`shownTotals`); whether the order matters stays the API's call (`planSavings`).
+ * (never crowd colours, which mean something else) and the forecast's error per ride and day. The
+ * same in sentences is „Wie genau ist das?“ in the result's „Mehr“ (`PlanAccuracy`).
  */
 export function PlanPeakCard({
   plan,
@@ -28,10 +32,7 @@ export function PlanPeakCard({
   className?: string;
 }) {
   const t = useTranslations('tripPlanner');
-  const track = useTripEvents();
-  const savings = planSavings({ ...plan.totals, ...shownTotals(plan, calendar) });
-  const id = useId();
-  const [open, setOpen] = useState(false);
+  const savings = useSavings(plan, calendar);
   if (!savings) return null;
   const top = Math.max(savings.planned, savings.average, 1);
   const bars = [
@@ -86,37 +87,55 @@ export function PlanPeakCard({
           </div>
         ))}
       </div>
-      <div className="flex flex-wrap items-center gap-2">
-        {savings.expectedError !== null && (
-          <span className="bg-muted text-muted-foreground rounded-full px-2.5 py-1 text-xs tabular-nums">
-            {t('result.peak.error', { minutes: savings.expectedError })}
-          </span>
+      {savings.expectedError !== null && (
+        <span className="bg-muted text-muted-foreground self-start rounded-full px-2.5 py-1 text-xs tabular-nums">
+          {t('result.peak.error', { minutes: savings.expectedError })}
+        </span>
+      )}
+    </section>
+  );
+}
+
+/**
+ * „Wie genau ist das?“ as an entry of the result's „Mehr“: opens on the average day and the
+ * forecast's error in sentences. Nothing where the plan has no figures.
+ */
+export function PlanAccuracy({
+  plan,
+  calendar,
+}: {
+  plan: TripPlan;
+  calendar: TripCalendar | undefined;
+}) {
+  const t = useTranslations('tripPlanner');
+  const track = useTripEvents();
+  const savings = useSavings(plan, calendar);
+  const id = useId();
+  const [open, setOpen] = useState(false);
+  if (!savings) return null;
+  return (
+    <>
+      <ActionRow
+        icon={Info}
+        title={t('answer.accuracy')}
+        expanded={open}
+        controls={id}
+        onClick={() => {
+          if (!open) track('trip_accuracy_opened', { surface: 'plan' });
+          setOpen(!open);
+        }}
+      />
+      <li
+        id={id}
+        className={cn(
+          'text-muted-foreground px-2 pb-2 pl-13 text-sm transition-[opacity,visibility] duration-200',
+          open ? 'visible opacity-100' : 'invisible h-0 overflow-hidden pb-0 opacity-0'
         )}
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-controls={id}
-          onClick={() => {
-            if (!open) track('trip_accuracy_opened', { surface: 'plan' });
-            setOpen(!open);
-          }}
-          className={cn(
-            'text-primary-ink inline-flex min-h-11 items-center gap-1 rounded-md px-1 text-sm font-medium underline-offset-4 hover:underline lg:min-h-8',
-            PLAN_FOCUS
-          )}
-        >
-          {t('answer.accuracy')}
-          <ChevronDown
-            className={cn('size-3.5 transition-transform duration-200', open && 'rotate-180')}
-            aria-hidden="true"
-          />
-        </button>
-      </div>
-      <p id={id} hidden={!open} className="text-muted-foreground text-sm">
+      >
         {t('answer.averageDay', { minutes: savings.average })}
         {savings.expectedError !== null &&
           ` ${t('answer.error', { minutes: savings.expectedError })}`}
-      </p>
-    </section>
+      </li>
+    </>
   );
 }

@@ -26,7 +26,7 @@ parkLinks:
 rideLinks:
   - rulantica/*
 seo:
-  title: 'Rulantica 2026: toboganes, precios y los días más tranquilos'
+  title: 'Rulantica en invierno: días más tranquilos y precios'
   description: >-
     Rulantica en invierno: entradas desde 28 euros, alturas mínimas de 90 a 140
     centímetros y enero y marzo como meses más tranquilos.
@@ -388,6 +388,9 @@ día, solo comprar, y el parque recomienda llevar las propias. Se paga con la
 **RulaBand**, una pulsera con transpondedor que además hace de tarjeta de acceso y
 de llave de la taquilla. Los gastos se cargan en la pulsera y se pagan al salir. El
 wifi es gratis. El **ResortPass Gold** del Europa-Park incluye dos entradas de día de Rulantica.
+
+> [!PARKY] Merece la pena
+> Si de todos modos dormimos en uno de los hoteles del Europa-Park Erlebnis-Resort, compramos la entrada Best-Preis, de 28 a 48 euros en lugar de los 38 a 54 de la entrada de día. Como huéspedes del hotel entramos a las 9:00 h, media hora antes que los demás, y yo me meto en la cabina de caída con los ojos cerrados, con vértigo y todo. La taquilla, además, ya va incluida desde los doce años.
 
 En su página, el parque menciona el Parkscout plus Award de 2020 a 2025 («el mejor
 parque acuático de Europa») y el EWA Professional Award de 2025 por una oferta

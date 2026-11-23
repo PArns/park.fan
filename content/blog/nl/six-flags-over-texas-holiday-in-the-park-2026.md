@@ -105,6 +105,9 @@ Voor diezelfde $69 verkoopt het park tot en met 30 november als Black Friday-act
 
 Parkeren kost vanaf $39, Preferred Parking vanaf $55, telkens plus kosten en belasting. Het adres voor de navigatie is 2201 Road to Six Flags, Arlington, TX 76011.
 
+> [!PARKY] Liever de pass
+> Kopen we uiterlijk 30 november, dan nemen we in plaats van het Good Any Day Ticket de Silver Pass, voor dezelfde $69. Volgens de evenementpagina geldt die al tijdens Holiday in the Park, en parkeren, anders vanaf $39, zit erbij. Dat geld geef ik liever uit aan chocolademelk dan aan een parkeerplek. Met het Bring-A-Friend-ticket nemen we in december meteen iemand mee, want het moet uiterlijk 5 januari gebruikt zijn.
+
 ## Gratis naar binnen vanaf 65
 
 Sinds deze winter komt gratis het park in wie op of vóór 31 december 1961 geboren is. Aanmelden kan alleen online. De toegang wordt daarna bij de ingang geactiveerd, en bij elk bezoek laat je een identiteitsbewijs met geboortedatum zien. Het eerste bezoek moet uiterlijk 31 december 2026 plaatsvinden. Op de ticketpagina loopt de actie de ene keer tot 31 december 2026 en de andere keer tot 5 januari 2027, in de vragen en antwoorden tot 5 januari 2027.

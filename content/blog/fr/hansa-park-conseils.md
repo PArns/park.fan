@@ -26,10 +26,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026 : horaires, tarifs et coasters'
+  title: 'Horaires du Hansa-Park 2027 et prix de la carte de saison'
   description: >-
-    Hansa-Park 2026 : ouvert du 26 mars au 25 octobre, sans un jour de
-    fermeture. Saison 2027 dès le 25 mars. Tarifs, parking et les huit coasters.
+    Le Hansa-Park prévoit sa saison 2027 du 25 mars au 24 octobre. Achetée avant
+    l’ouverture, la carte de saison coûte 120 €, ensuite 140 €.
   keywords:
     - Hansa-Park
     - Hansa-Park conseils
@@ -413,6 +413,9 @@ le stationnement revient à 1 € par jour.
 
 **Compris dans le billet.** Toutes les attractions, tous les spectacles et toutes les activités
 participatives en service. Quelques prestations comme l’orpaillage sont payantes à part.
+
+> [!PARKY] À prendre tôt
+> Si on vient trois fois ou plus en 2027, on prend la carte de saison d’ici le 24 mars : elle coûte alors 120 € au lieu de 140 €, et en tant qu’adultes, on se gare pour 1 € par jour au lieu de 7 €. Ce qu’on économise finit chez Elins Vafflejern. Trois billets à partir de 12 ans coûtaient déjà 159 € en 2026.
 
 ## Ce qui arrive en 2027
 

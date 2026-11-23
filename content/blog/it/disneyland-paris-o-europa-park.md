@@ -170,6 +170,9 @@ Per Parigi Disney indica prezzi fissi solo alla cassa all’ingresso. Lì due gi
 
 Disney fissa ogni giorno un nuovo prezzo per il Premier Access One. Un giro su Frozen Ever After può costare 23 € a persona, cioè 92 € per una famiglia di quattro, su Big Thunder Mountain 18 € e su Hyperspace Mountain 16 €. Il Premier Access One si compra solo nel parco, dall’app, e in cambio ricevi una fascia oraria. Senza smartphone puoi comprarlo alla City Hall del Disneyland Park o agli Studio Services di Disney Adventure World. L’Ultimate si può prendere anche in anticipo e non ha fascia oraria, ma Disney non ne indica un prezzo fisso. Ogni Premier Access è legato a un biglietto e non si può cedere, quindi alla famiglia ne serve uno a testa. Solo i bambini sotto i tre anni non ne hanno bisogno, se un adulto ce l’ha.
 
+> [!PARKY]
+> Frozen Ever After lo facciamo a Disney Adventure World appena apre, perché è lì che arrivare presto rende di più, e nel [pianificatore della giornata](/trip-planner) il giro in barca sta quindi in cima. Il Premier Access lì può costare 92 € a una famiglia di quattro, e mi si gela persino il sorriso. Chi più tardi accetta di separarsi dal gruppo prende il single rider.
+
 Per il cibo portato da casa Parigi ha un’area picnic tra il parcheggio e l’ingresso. I pasti per cui servono borsa frigo, tavolo o contenitori ingombranti non possono entrare nei parchi. L’Europa-Park ha aree picnic nel parco del castello Balthasar, nell’area tematica tedesca e accanto a Wodan.
 
 Con il pernottamento, nelle stagioni estiva e di Halloween, l’Europa-Park propone il pacchetto «Alles erleben» da 192 € a persona in camera da cinque letti, con un giorno al parco, un giorno a Rulantica e la colazione.
@@ -199,6 +202,9 @@ La stagione di Halloween finisce in entrambi i resort il 1° novembre. A Parigi 
 Quando Parigi si riempie dipende dalle vacanze scolastiche francesi. Quelle di Natale vanno in tutto il paese dal 19 dicembre 2026 al 3 gennaio 2027. Le vacanze invernali e quelle di primavera sono scaglionate in tre zone, per Parigi (zona C) dal 6 al 21 febbraio e dal 3 al 18 aprile 2027, per l’Alsazia con Strasburgo (zona B) dal 20 febbraio al 7 marzo e dal 17 aprile al 2 maggio.
 
 In tutti e tre i parchi finora il mese con meno gente è stato gennaio. Tra i giorni della settimana le differenze sono piccole, e solo all’Europa-Park il sabato è molto più affollato degli altri giorni. Quattro dei suoi cinque giorni più pieni sono stati sabati, il 2 maggio, il 22 agosto e il 19 e 26 settembre 2026. Nei due parchi di Parigi invece i giorni più pieni sono caduti spesso in settimana durante le vacanze, come il 23 e il 24 febbraio 2026, nelle vacanze invernali parigine.
+
+> [!PARKY] Gennaio a Parigi
+> A gennaio andiamo a Parigi, ma solo dopo il 3, quando in Francia finiscono le vacanze di Natale: in tutti e tre i parchi finora il mese con meno gente è stato gennaio, e Rust dopo il 9 gennaio chiude comunque. Per code così corte porto volentieri la sciarpa pesante. Quale dei due parchi di Parigi va in quale giorno del viaggio, lo decidiamo nel [pianificatore di viaggio](/paris#planner).
 
 ### Disneyland Park
 

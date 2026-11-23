@@ -237,6 +237,9 @@ Los niños pueden entrar a los parques sin adulto a partir de los 12 años.
 
 Para Halloween hay el código SUSTO26, con hasta un 30 por ciento de descuento en entradas para visitas del 19 de septiembre al 15 de noviembre, que hay que canjear antes del 15 de noviembre. El código ESCAPEPAW da un 40 por ciento en visitas entre semana si compras hasta el 14 de octubre y vienes antes del 4 de diciembre.
 
+> [!PARKY] Mejor dos días
+> Si no dormimos en un hotel del resort, compramos directamente dos días de parque: 43 € online en vez de 37 €, así que el segundo día cuesta 6 €. Un día entero de parque por menos que un solo acceso de Express ONE, y solo de pensarlo ya me despego un poco del asiento. En un hotel del resort ese día viene incluido igualmente, porque allí una noche ya da dos días de acceso al parque.
+
 ### Pases anuales
 
 Los cuatro pases anuales valen 365 días desde la compra. Los júniors son niños de 4 a 10 años, los séniors tienen 60 o más, y los niños de 0 a 3 años no pagan.
@@ -293,6 +296,9 @@ No se puede entrar al parque con comida ni bebida. Delante de la entrada hay una
 Con servicio en mesa se come en el Iron Horse de Far West (hamburguesas, costillas, chuletones), en el Raco de Mar de Mediterrània (ensaladas y arroces), en la Vinosfera con tapas y en la Hacienda El Charro de México. De autoservicio hay, entre otros, el Bora Bora en Polynesia, La Cantina en México, el Marco Polo en China (bufé) y el Sichuan. En Ferrari Land, la Trattoria Maranello sirve en la mesa ensaladas, pizza, pasta, carne y pescado. Más rápido es el Pit Lane, de autoservicio, y además están el Paddock, el Finish Line, el Ice Cream Box y el Stop & Go.
 
 Las taquillas vienen en tres tamaños: pequeña 8 €, mediana 11 € y grande 15 €. Además hay taquillas en las atracciones, a 2 euros por una mochila, en cuatro sitios: entre Shambhala y Dragon Khan, en la entrada de Furius Baco, junto a Tutuki Splash y en el acceso a Silver River Flume. Al abrirlas quedan libres para el siguiente visitante, y volver a abrir cuesta de nuevo.
+
+> [!PARKY]
+> La mochila la dejamos en la taquilla entre Shambhala y Dragon Khan y montamos en las dos antes de volver a abrirla: así pagamos los 2 euros una sola vez. A 134 km/h tampoco quiero nada encima de las rodillas. En el [planificador del día](/trip-planner) las ponemos una justo detrás de otra.
 
 Un cochecito individual cuesta 12 euros de alquiler más 12 euros de fianza, uno doble 18 euros más 12 euros de fianza, y una silla de ruedas 12 euros más 10 euros. Los visitantes con una discapacidad reconocida del 33 por ciento o más y movilidad reducida acreditada reciben una acreditación para el «Exclusive Access» a atracciones y espectáculos, con hasta cuatro acompañantes en las atracciones.
 

@@ -170,6 +170,9 @@ Pour Paris, Disney ne donne de prix fixes que pour la caisse à l’entrée. Là
 
 Disney fixe chaque jour un nouveau prix pour Premier Access One. Un passage sur Frozen Ever After peut coûter 23 € par personne, soit 92 € pour une famille de quatre, 18 € sur Big Thunder Mountain et 16 € sur Hyperspace Mountain. Premier Access One s’achète dans l’appli une fois dans le parc, et donne un créneau horaire. Sans smartphone, il faut passer à City Hall au Disneyland Park ou aux Studio Services à Disney Adventure World. Ultimate se vend aussi à l’avance et sans créneau, mais Disney n’en donne pas de prix fixe. Chaque Premier Access est lié à un billet et ne se cède pas, si bien que la famille doit en prendre un par personne. Seuls les enfants de moins de trois ans n’en ont pas besoin si un adulte en a un.
 
+> [!PARKY]
+> Frozen Ever After, on le fait à Disney Adventure World dès l’ouverture, car c’est là qu’arriver tôt rapporte le plus, et dans le [planificateur de journée](/trip-planner), cette balade en bateau passe donc tout en haut. Le Premier Access peut y coûter 92 € à une famille de quatre, de quoi geler même mon sourire. Qui veut bien se séparer du groupe plus tard dans la journée prend la file single rider.
+
 Pour manger ce que tu as apporté, Paris a une aire de pique-nique entre le parking et l’entrée. Les repas qui demandent une glacière, une table ou des récipients encombrants n’entrent pas dans les parcs. L’Europa-Park a des aires de pique-nique dans le parc du château Balthasar, dans la zone allemande et à côté de Wodan.
 
 Avec nuitée, l’Europa-Park propose en saison d’été et d’Halloween la formule « Alles erleben » à partir de 192 € par personne en chambre de cinq lits, avec une journée au parc, une journée à Rulantica et le petit-déjeuner.
@@ -199,6 +202,9 @@ La saison d’Halloween se termine le 1er novembre dans les deux resorts. À Par
 L’affluence à Paris dépend des vacances scolaires françaises. Celles de Noël vont du 19 décembre 2026 au 3 janvier 2027 dans tout le pays. Les vacances d’hiver et de printemps sont échelonnées en trois zones : pour Paris (zone C), du 6 au 21 février et du 3 au 18 avril 2027 ; pour l’Alsace et Strasbourg (zone B), du 20 février au 7 mars et du 17 avril au 2 mai.
 
 Dans les trois parcs, janvier a été jusqu’ici le mois le plus calme. D’un jour de la semaine à l’autre, les écarts sont faibles, sauf à l’Europa-Park, où le samedi est nettement plus chargé que les autres jours. Quatre de ses cinq journées les plus chargées étaient des samedis : le 2 mai, le 22 août, puis les 19 et 26 septembre 2026. Dans les deux parcs parisiens, les journées les plus chargées tombaient au contraire souvent en semaine pendant les vacances, par exemple les 23 et 24 février 2026, lors des vacances d’hiver de la zone parisienne.
+
+> [!PARKY] Janvier à Paris
+> En janvier, on va à Paris, mais seulement après le 3, une fois les vacances de Noël terminées : dans les trois parcs, janvier a été jusqu’ici le mois le plus calme, et Rust ferme de toute façon après le 9 janvier. Pour des files aussi courtes, je prends volontiers la grosse écharpe. Les deux parcs parisiens, on les répartit sur les jours du voyage dans le [planificateur de voyage](/paris#planner).
 
 ### Disneyland Park
 

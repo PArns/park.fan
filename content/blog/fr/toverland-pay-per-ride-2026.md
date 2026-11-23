@@ -84,6 +84,9 @@ Toverland continue de vendre le billet journée habituel les jours Pay per Ride,
 
 Le mercredi, un billet journée adulte coûte autant que 18,5 tickets, soit un peu plus de six tours sur les grosses attractions. Le week-end, il en vaut 21,5, un peu plus de sept grands tours. À partir du septième grand tour un mercredi, et du huitième le week-end, le billet journée revient moins cher. La remise sur quantité commence à 25 tickets, soit 47,50 €, et à ce prix le billet journée aurait déjà été moins cher.
 
+> [!PARKY] Billet à l’avance
+> Si on compte enchaîner les grosses attractions, on achète le billet journée au moins sept jours à l’avance : avec la remise maximale de 7 €, il revient moins cher que les tickets un grand tour plus tôt pour un adulte, dès le sixième un mercredi et dès le septième le week-end. Troy, Fēnix et Booster Bike deux fois chacun, ça fait déjà six, et deux fois, pour moi, c’est plutôt un minimum. Si un tour sur chacun nous suffit, on reste au Pay per Ride.
+
 Dans un groupe, on peut mélanger billets journée et Pay per Ride. Si vous accompagnez un enfant qui, à cause de sa taille, ne peut monter dans une attraction qu’avec un adulte, il vous faut vous aussi un billet journée ou des tickets. Les billets anniversaire et les billets retour, ainsi que les billets de l’opération de printemps « 2e visite gratuite », restent des billets journée tout compris.
 
 Les Magic Members dont l’abonnement est valide profitent aussi des jours Pay per Ride sans limite et sans supplément, sans réservation ni tickets. Le parking n’est pas compris dans l’abonnement ; l’abonnement parking coûte 50 € par an ou 4,50 € par mois.

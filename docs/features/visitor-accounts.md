@@ -1,7 +1,8 @@
 # Visitor accounts (`/login`, `/account`) and members-only content
 
 A visitor's own account on park.fan (role `user` in the API's account system), so favorites,
-ridden rides and the temperature unit follow them to every device they sign in on. **Not linked
+ridden rides, the parks ticked off as visited on a trip and the temperature unit follow them to
+every device they sign in on. **Not linked
 yet:** `/login` and `/account` are `noindex`, not in the sitemap, and nothing on the site points to
 them; a member reaches the sign-in only by its address.
 
@@ -61,11 +62,15 @@ erases the storage.
   script-readable marker `parkfan_account` for role `user` (`setSessionMarkers`). `AccountSyncGate`
   loads `lib/account/sync.ts` only when the marker is set, so no other visitor downloads it.
 - **On start** (`accountSyncStep`): a browser that never synced with this account merges, keeping
-  both sides' favorites and ridden rides and its own unit; one whose account changed on another
+  both sides' favorites, ridden rides and visited parks (a park ticked on both with its later date)
+  and its own unit; one whose account changed on another
   device since its last sync takes the account's copy; otherwise its own copy goes up if it
   differs. The last agreement is kept in `localStorage` under `parkfan_account_sync`.
-- **After that**, a change to favorites, ridden rides or the unit is pushed a second later
-  (`PUT /api/account/data`). A 401 removes the marker and stops the sync.
+- **After that**, a change to favorites, ridden rides, visited parks or the unit is pushed a second
+  later (`PUT /api/account/data`). Visited parks go as `{ region, park, date }` from every region's
+  store (`readAllVisited`, `replaceAllVisited` in `lib/trip-regions/visited-parks.ts`); a tick
+  drops the region's ticks of an earlier trip, so the account does not collect them, and an
+  answer without `visitedParks` reads as none. A 401 removes the marker and stops the sync.
 - **What stays on the device:** the day plan (its trip id is its credential) and push alerts (bound
   to the browser's push subscription).
 

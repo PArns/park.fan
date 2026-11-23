@@ -223,6 +223,9 @@ Alle achtbanen blijven ’s avonds rijden, en het park adverteert met Hyperia en
 
 In oktober en in het tussenseizoen blijven bij wind, kou of zware regen sommige banen dicht. De grenzen van het park staan op zijn pagina over de Return Guarantee: Hyperia rijdt tot 47 mph wind, Nemesis Inferno en SAW tot 40 mph, Colossus en The Swarm tot 35 mph, Stealth alleen tot 31 mph, Zodiac tot 25 en Vortex tot 23 mph. Er wordt op hoogte gemeten, dus op de grond kan het windstiller aanvoelen. De achtbanen rijden vanaf 5 graden Celsius, bij zware regen blijven Nemesis Inferno en SAW stilstaan. De Return Guarantee geldt alleen op afzonderlijke dagen, met terugwerkende kracht, als het park minstens een uur last had van storingen. In 2026 waren dat 4 april, 25 mei en 13 augustus, in te wisselen tot 30 september 2026.
 
+> [!PARKY]
+> Is er voor de middag zware regen voorspeld, dan nemen we Nemesis Inferno en SAW meteen na de opening, want juist die twee blijven dan stilstaan. Komt het met bakken uit de hemel, dan rijden we The Walking Dead binnen in de piramidehal, voor wat regen ga ik echt niet naar huis. De rest van de dag zetten we baan voor baan in de [dagplanner](/trip-planner).
+
 ## Tickets, passen en prijzen
 
 Het park adverteert voor zijn dagtickets met “vanaf £ 32” bij boeking vooraf. De prijzen hangen af van de datum. Tijdens de Fright Nights kost het ticket aan de kassa £ 66. Studenten krijgen bij boeking vooraf korting.
@@ -248,6 +251,9 @@ Op de pagina van het park staan onder meer Vibes Bar & Kitchen in de Dome, Plane
 De **Thorpe Shark Cabins** zijn 90 kamers van scheepscontainers, met een haaienbek als ingang. Ze openden in 2013 als “The Crash Pad” van aanbieder Snoozebox, in 2014 kocht het park ze en gaf ze een nieuwe naam. Een vast hotel met 250 bedden was al in 2011 goedgekeurd, maar is nooit gebouwd. Elke kamer heeft een tweepersoonsbed, een stapelbed en een badkamer met inloopdouche. Inchecken kan vanaf 15 uur, het ontbijtbuffet is in Vibes Bar & Kitchen. Nieuw voor 2026 is een kamer met het thema Fright Nights.
 
 In het pakket “Overnight Stay” zitten twee dagen parktoegang, ontbijt, parkeren ter waarde van £ 12, wifi, tien procent korting in de winkels en het uur Fastrack. De prijzen beginnen bij £ 77 per persoon, bij vier personen op de kamer, op geselecteerde dagen van maandag tot en met donderdag. De Fright-Nights-pakketten beginnen bij £ 109 per persoon. In de themakamers van Hyperia, The Swarm, Nemesis Inferno, Stealth en Colossus krijgen gasten op de tweede dag extra een Coasters Fastrack met zes ritten op Colossus, Hyperia, Nemesis Inferno, SAW, Stealth en The Swarm.
+
+> [!PARKY] Blijven slapen
+> Voor 2027 boeken we de Shark Cabins met z’n vieren, van maandag tot en met donderdag: dan hebben we twee parkdagen met ontbijt en parkeren vanaf £ 77 per persoon, terwijl twee dagtickets vooraf al vanaf £ 64 kosten. Naar binnen gaat het door de haaienbek, en het bovenste stapelbed is van mij. Nemen we een van de themakamers, dan komt er op de tweede dag nog een Coasters Fastrack met zes ritten bij, Hyperia inbegrepen.
 
 ## Wat nieuw is en wat dicht is
 

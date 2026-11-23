@@ -114,6 +114,9 @@ Outside summer and the holiday weeks, Elmo only works weekends. From September 8
 
 SeaWorld San Diego holds its [Christmas Celebration](/news/seaworld-san-diego-christmas-celebration-2026) every day from November 13, 2026 to January 3, 2027, included in admission. Howl-O-Scream, with a ticket of its own, ran from September 11 to October 31 in 2026, and for 2027 SeaWorld lists select nights from September 10 to October 31.
 
+> [!PARKY] Good timing
+> For the Christmas events we go between November 30 and December 18: by then they're all running at Disneyland, Universal, Knott's and SeaWorld, and Los Angeles schools have no days off. I never skip fireworks at closing time. So our LEGOLAND day is December 5 or 12, both fireworks nights at the Christmas Bricktacular.
+
 ![White letters reading SeaWorld San Diego on a yellow canopy under a grey sky. | SeaWorld started here on Mission Bay in 1964.](/media/seaworld-san-diego/sign.jpg)
 
 ## Where to stay
@@ -162,6 +165,9 @@ Without a rental car you can reach Universal, Disneyland and LEGOLAND by train a
 ### Airports
 
 Disney lists six airports for the Disneyland Resort, closest first: John Wayne (SNA) in Santa Ana, Long Beach (LGB), Los Angeles International (LAX), Ontario (ONT), Hollywood Burbank (BUR) and San Diego (SAN). From the station at Burbank airport the Pacific Surfliner runs to Anaheim without a change, and the airport's free LOT D shuttle bus takes you to the station. San Diego International is just under five kilometres northwest of downtown San Diego and suits the southern end of the trip: fly into Los Angeles and out of San Diego, and you skip the drive back through the whole region.
+
+> [!PARKY] Split the stay
+> We fly into Los Angeles, stay on Harbor Boulevard for Disneyland, Knott's, Universal and Magic Mountain, and move to the Gaslamp Quarter for the three southern parks. From there SeaWorld is 13 minutes away instead of 111, and over four hours in the car for a Sesame Place day would be too much freeway for too little Elmo. We fly home from San Diego, and in the [trip planner](/california#planner) we set the two halves up separately.
 
 ## Tickets
 

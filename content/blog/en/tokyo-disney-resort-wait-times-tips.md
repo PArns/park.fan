@@ -281,6 +281,9 @@ An example for DisneySea on an ordinary autumn day with a 9 am opening:
 
 Tokyo Disneyland works the same way, with Big Thunder Mountain and Splash Mountain in the morning and Enchanted Tale of Beauty and the Beast either with Premier Access or in the evening.
 
+> [!PARKY] Evening it is
+> At Tokyo Disneyland we skip Premier Access for Enchanted Tale of Beauty and the Beast: at 2,500 yen it costs more there than at any other ride in the park. The resort itself would rather send guests over in the evening, when the queue is usually shorter than in the morning, so Beauty and the Beast get the last dance in our [day planner](/trip-planner). Before we go, we check the resort's calendar to see whether the park is open until 9 pm that day or closes at 6:30 pm.
+
 ## Tickets and prices
 
 The ticket is called the **1-Day Passport**. The price depends on the date, and on any given day both parks cost the same. As of 3 October 2026, for dates from October 2026 to February 2027:
@@ -297,6 +300,9 @@ Children up to three get in free. In October and November 2026 most days are at 
 If you're arriving later, you can buy one of two shorter passes. The **After 3 Passport** is valid at weekends and on public holidays from 3 pm and costs adults 7,900 to 9,900 yen, and the **After 5 Passport** is valid Monday to Friday, except public holidays, from 5 pm and costs 6,000 or 6,600 yen. Guests with disabilities and one companion get their own 1-Day Passport, at 7,900 to 9,900 yen for adults. The resort's ticket page doesn't list an annual pass. If you're coming on several days, you buy a separate pass for each one.
 
 Tickets are sold online only, on the website and in the app, and the ticket booths at the entrance are closed. Guests at a Disney hotel can also buy them at the hotel. Sales open every day at 2 pm Japan time for the day two months later, which is 6 am in Central Europe in winter and 7 am in summer. You can buy up to ten tickets per order, and there's no refund if you cancel. For re-entry on the same day, tell a staff member at the exit as you leave, and you can come back in later on the same ticket.
+
+> [!PARKY]
+> Since you pick the park when you buy, we first spread the two over your trip in the [trip planner](/japan#planner), and if there's a Saturday, DisneySea gets it: the day of the week hardly matters there, while Saturday is noticeably busier at Tokyo Disneyland. Then we set the alarm for 6 am Central European time in winter, an hour I'm normally only up for rope drop, and buy each day the morning it goes on sale.
 
 ## Getting there
 

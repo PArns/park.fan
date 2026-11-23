@@ -44,6 +44,9 @@ Ein Vokalquartett singt Weihnachtsklassiker, und eine Reihe Follies-Tänzerinnen
 
 Beim Namen ist sich Six Flags selbst nicht einig: Die Pressemitteilung vom 4. November nennt die Show „Snoopy's Christmas Follies“, der Event-Guide des Parks „Snoopy's Merry Christmas Follies“. Snoopy stand zur Merry Farm schon in früheren Wintern auf dem Eis, etwa in „Snoopy's Night Before Christmas“.
 
+> [!PARKY]
+> Morgens schauen wir als Erstes in der Six-Flags-App nach, wann die Eisshow an diesem Tag läuft, denn mit dem Programm vom Vortag kommen wir nicht weiter. Für einen Beagle auf Kufen verschiebe ich gern auch mal eine Achterbahn. Die Bahnen ordnen wir dann im [Tagesplaner](/trip-planner) um die Vorstellung herum.
+
 ## Lichter, Shows und der Weihnachtsmann
 
 Zwischen Girlanden und großen Schneeflocken hängen Tausende Lichter. Den Holiday Lighting Moment gibt es jeden Abend im ganzen Park. Die Lichter auf der Main Street und der Schoolhouse Road in Ghost Town tanzen bei Snow and Glow zu Weihnachtsmusik, während es schneit. Im Calico Park geht bei der „'Tis the Season Tree Lighting Ceremony“ der Weihnachtsbaum an.

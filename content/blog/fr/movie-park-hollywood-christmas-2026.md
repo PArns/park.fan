@@ -80,6 +80,9 @@ Les pass annuels 2027 sont déjà valables, et les formules Platin, Gold et Silb
 
 La Santa Experience se paie à part : 5 € pour les adultes, 3 € pour les enfants de 4 à 11 ans. Elle est ouverte de 13 h à 16 h 30, le vendredi à partir de 15 h seulement. Chaque place assise dans le train demande un billet, et les moins de quatre ans voyagent gratuitement sur les genoux. Les enfants de moins de huit ans n’entrent qu’avec un adulte. La glissade sur glace coûte aussi un supplément, mais le parc n’en a pas encore annoncé le montant.
 
+> [!PARKY]
+> Comme le billet en ligne coûte le même prix sur les 21 jours, on évite les vendredis : les autres jours de fête, on entre dès 12 h au lieu de 14 h, et deux heures de plus pour le même prix, même S.A.D., le clap grincheux, n’y trouverait rien à redire. Avec des enfants, ça compte double, car la Santa Experience ouvre alors dès 13 h au lieu de 15 h.
+
 ## Patinoire, spectacles et lumières
 
 Plus d’un million de lumières habillent les quatre zones Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza et Wild West Christmas, contre un peu plus de 800 000 l’an dernier. Restent de l’an dernier la patinoire couverte de 360 mètres carrés, le curling bavarois (Eisstockschießen), le mapping show et la cuisine américaine.

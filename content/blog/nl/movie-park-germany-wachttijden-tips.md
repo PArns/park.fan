@@ -30,10 +30,10 @@ coverImage:
   caption: 'Zes weken per jaar heet dit park Horrorwood Studios, en zo staat het dan ook in lichtletters bij de ingang.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park wachttijden & Halloween 2026, zonder Batman'
+  title: 'Movie Park: wanneer is het rustig? Beste dagen en tips'
   description: >-
-    Movie Park met gemeten wachttijden: de weekdag waar tipsites naast zitten,
-    het najaarsrooster, Halloween tot 8/11 en hoe je de kassatoeslag ontloopt.
+    In Movie Park sta je op vrijdag het kortst in de rij, en zondag is rustiger
+    dan zaterdag. Hollywood Christmas loopt van 27 november tot 5 januari.
   keywords:
     - Movie Park Germany
     - Movie Park wachttijden
@@ -535,6 +535,9 @@ Voor de pas zelf geldt:
 - **Er is een dagcontingent.** Elk bezoek moet vooraf worden aangemeld, en de
   volgende boeking kan pas de dag na je bezoek. Spontaan gaan werkt met een pas
   dus slechter dan met een dagticket.
+
+> [!PARKY] Gold wint
+> Rijden we in 2027 vaker dan twee keer met de auto naartoe, dan nemen we Gold in plaats van Silber: Gold kost € 20 meer, de parkeerkaart voor Silber alleen al € 25, en zonder die kaart betaal je € 9 per bezoek. Bij Gold krijgen we er ook nog drie keer gratis entree in Bobbejaanland bij, zo reken ik graag. Gesloten dagen heeft Gold bovendien niet.
 
 **Route.** Het adres is **Warner-Allee 1, 46244 Bottrop**. Met de auto via de
 A31, en daar via afrit 39 Bottrop-Feldhausen, ook als je navigatie een andere

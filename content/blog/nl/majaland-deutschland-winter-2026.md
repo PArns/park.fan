@@ -86,6 +86,9 @@ Expedition GeForce, Sky Scream en de andere grote attracties uit onze [gids voor
 
 Vanaf 4 december zit de Kerstman op elke openingsdag in het Indoor Theater. Kinderen kunnen hem hun verlanglijstje geven en krijgen allemaal een stuk chocolade van chocolatier Wawi. Op zaterdag 5 december is op het Platz der Fontänen voor de tweede keer de Plopsa Nikolauslauf, een hardloopwedstrijd met afstanden voor kinderen en volwassenen. Het park opent de inschrijving binnenkort. Van 4 tot en met 10 februari 2027 viert Plopsa Indoor carnaval, met een kinderdisco. Wie in de winter jarig is, kan het pakket “Majas Geburtstagszauber” boeken, met een bezoek van Maja bij de prijs inbegrepen.
 
+> [!PARKY] Een adventsvrijdag
+> Voor de Kerstman nemen we een vrijdag vanaf 4 december, dus de 4e, 11e of 18e: dan zit hij al in het Indoor Theater, en een kaartje met vaste datum kost online € 16 in plaats van € 27 of € 29 in het weekend. Het verlanglijstje stoppen we vooraf in de tas, op het mijne staat alleen een reserve-reuzenrad voor mijn hoed. Maja's show om 13.00 of 16.00 uur speelt in hetzelfde theater en zit bij de toegangsprijs inbegrepen.
+
 ## Wat er verandert ten opzichte van vorige winter
 
 In de winter van 2025/26 heette hetzelfde deel van het park nog Majaland Pfalz. Toen was het open van 7 november tot 22 maart, dit keer is het al op 14 maart afgelopen, en het goedkoopste kaartje kostte € 20 tegen nu € 16. De naam Holiday Park had het park al eind juni 2025 laten vallen. Nieuw waren destijds de Maja-show en het eerste winterseizoen van De Smurfen Avontuur.

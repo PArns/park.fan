@@ -1,0 +1,25 @@
+{
+  "title": "Parky-Szene Paris, Abend",
+  "tags": ["diagram", "night"],
+  "alt": {
+    "de": "Parky mit Seidentuch auf einer Caféterrasse an der Seine am Abend, die Tasse steht auf dem Tisch, er schaut staunend zum goldenen, funkelnden Eiffelturm, die Laterne und die Fenster leuchten.",
+    "en": "Parky in his silk scarf on a café terrace by the Seine in the evening, his cup on the table, looking up in wonder at the golden, sparkling Eiffel Tower, the street lamp and the windows lit.",
+    "nl": "Parky met zijden sjaal op een caféterras aan de Seine in de avond, zijn kopje op tafel, vol verwondering kijkend naar de gouden, fonkelende Eiffeltoren, de lantaarn en de ramen verlicht.",
+    "fr": "Parky, foulard de soie au cou, sur une terrasse de café au bord de la Seine le soir, sa tasse sur la table, regarde émerveillé la tour Eiffel dorée qui scintille, le réverbère et les fenêtres allumés.",
+    "es": "Parky con su pañuelo de seda en una terraza junto al Sena por la noche, la taza sobre la mesa, mirando asombrado la torre Eiffel dorada y centelleante, con la farola y las ventanas encendidas.",
+    "it": "Parky con il foulard di seta su una terrazza di un caffè lungo la Senna la sera, la tazza sul tavolo, guarda incantato la Tour Eiffel dorata e scintillante, il lampione e le finestre accesi."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.89,
+    "y": 0.55
+  },
+  "bannerFocus": {
+    "x": 0.47,
+    "y": 0.55
+  },
+  "shotAt": "2026-11-19"
+}

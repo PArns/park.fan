@@ -3,8 +3,10 @@ import { interviewEnded, interviewStore } from '@/lib/assistant/interview';
 import { forgetTripChange } from '@/lib/assistant/trip-context';
 import { tripPlannerBridge } from './planner-bridge';
 import { tripWizardAnswered } from './planner-ui';
+import { hubPicks } from './hub-picks';
 import { forgetTrip } from './remembered-trip';
 import { tripTicketAnswer } from './ticket-answer';
+import { visitedParks } from './visited-parks';
 
 /** A trip cleared by {@link clearTrip}, kept in memory until it is put back or dropped. */
 export interface ClearedTrip {
@@ -29,6 +31,8 @@ export interface ClearedTrip {
  *   would otherwise put back on the next bare visit and Parky reads with every question;
  * - the questions answered in the assistant, in this tab (`tripWizardAnswered`);
  * - the answer to „Schon Tickets?“ (`tripTicketAnswer`);
+ * - the parks ticked off as visited in the hub (`visitedParks`), which belong to this trip;
+ * - the days picked in the hub calendar (`hubPicks`);
  * - Parky's trip interview for this region, where one runs (`interviewStore`), and his last
  *   change, so his undo cannot bring the trip back (`forgetTripChange`).
  *
@@ -42,6 +46,8 @@ export function clearTrip(region: string): ClearedTrip {
   const remembered = forgetTrip(region);
   const answered = tripWizardAnswered.forget(region);
   const tickets = tripTicketAnswer(region).forget();
+  const visited = visitedParks(region).forget();
+  const picks = hubPicks(region).forget();
   const change = forgetTripChange(region);
   const running = interviewStore.getSnapshot();
   const interview = running?.kind === 'trip' && running.region === region ? running : null;
@@ -55,6 +61,8 @@ export function clearTrip(region: string): ClearedTrip {
       remembered();
       answered();
       tickets();
+      visited();
+      picks();
       change();
       if (interview) interviewStore.set(interview);
       if (planner) {

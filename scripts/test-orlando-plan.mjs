@@ -17,6 +17,15 @@ import {
   readPlanQuery,
   writePlanQuery,
 } from '../lib/trip-regions/plan-query.ts';
+import { headlinersForTrip, parkDaysHeld } from '../lib/trip-regions/trip-fit.ts';
+import {
+  pastTrip,
+  planFromToday,
+  quietWeek,
+  quietWeekWindow,
+  searchFromToday,
+} from '../lib/trip-regions/trip-dates.ts';
+import { addDays } from '../lib/utils/park-day.ts';
 import {
   parkDaysAvailable,
   planProblem,
@@ -110,6 +119,9 @@ import {
 } from '../lib/trip-regions/date-facts.ts';
 import { formatGridHours } from '../lib/planner/park-time.ts';
 import {
+  backToSearch,
+  foundWindows,
+  pickedWindow,
   holidayRegionsFor,
   percentBelowAverage,
   rankedLower,
@@ -1552,16 +1564,19 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   };
   test(
     'a length other than the API’s default is sent',
-    whenRequestQuery({
-      ...DEFAULT_PLAN_STATE,
-      when: { from: '2027-01-01', to: '2027-02-01' },
-      days: 12,
-    }).days,
+    whenRequestQuery(
+      {
+        ...DEFAULT_PLAN_STATE,
+        when: { from: '2027-01-01', to: '2027-02-01' },
+        days: 12,
+      },
+      '2026-11-19'
+    ).days,
     '12'
   );
   test(
     'the /when request: range, region, three windows, the trip options, no pins, the default length left out',
-    whenRequestQuery(state),
+    whenRequestQuery(state, '2026-11-19'),
     {
       from: '2027-01-01',
       to: '2027-11-12',
@@ -2824,12 +2839,14 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
         slug: 'magic-kingdom-park',
         name: 'Magic Kingdom Park',
         path: '/parks/north-america/united-states/orlando/magic-kingdom-park',
+        resort: 'Walt Disney World',
       },
       {
         id: 'id-epcot',
         slug: 'epcot',
         name: 'EPCOT',
         path: '/parks/north-america/united-states/orlando/epcot',
+        resort: 'Walt Disney World',
       },
       {
         id: 'id-bg',
@@ -3387,6 +3404,262 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'without bases only the travel days drop out',
     usableAlternatives(alternatives, 'tokyo-disneyland', days, undefined).map((a) => a.date),
     ['2027-01-16', '2027-01-18', '2027-01-19']
+  );
+}
+
+// ── A search's best window planned at once, the others kept ─────────────────
+{
+  const search = {
+    ...DEFAULT_PLAN_STATE,
+    when: { from: '2027-01-01', to: '2027-03-31' },
+    days: 7,
+    within: 'DE-NW',
+  };
+  const found = foundWindows(search, [
+    { rank: 2, from: '2027-02-06', to: '2027-02-12' },
+    { rank: 1, from: '2027-01-09', to: '2027-01-15' },
+  ]);
+  test(
+    'foundWindows: the windows by rank, the search as the address had it',
+    found && [found.windows.map((w) => w.rank), found.search.within, found.search.days],
+    [[1, 2], 'DE-NW', 7]
+  );
+  test('foundWindows: no windows, nothing to keep', foundWindows(search, []), null);
+  const planned = planWindow(search, found.windows[0]);
+  test('pickedWindow: the plan of rank 1 is rank 1', pickedWindow(found, planned)?.rank, 1);
+  test(
+    'pickedWindow: other dates are no found window',
+    pickedWindow(found, { ...planned, to: '2027-01-16' }),
+    null
+  );
+  const back = backToSearch(
+    { ...planned, locks: [{ target: 'epcot', date: '2027-01-10' }] },
+    found
+  );
+  test(
+    'backToSearch: the search again, without dates or pins',
+    [back.when, back.within, back.from, back.to, back.locks.length],
+    [search.when, 'DE-NW', null, null, 0]
+  );
+}
+
+// ── The parks a trip starts with, and a trip that began before today ─────────────
+{
+  const SEVEN = [
+    'magic-kingdom-park',
+    'epcot',
+    'disneys-hollywood-studios',
+    'disneys-animal-kingdom-theme-park',
+    'universal-studios-florida',
+    'universal-islands-of-adventure',
+    'universal-epic-universe',
+  ];
+  const trip = (from, to, extra = {}) => ({ ...DEFAULT_PLAN_STATE, from, to, ...extra });
+  const fiveDays = trip('2027-02-01', '2027-02-05');
+  test('five days, free travel days: three park days', parkDaysHeld(fiveDays), 3);
+  test(
+    'a park on each travel day: five, under the rule’s four in a row plus a rest day',
+    parkDaysHeld({ ...fiveDays, arrival: 'park', departure: 'park' }),
+    4
+  );
+  test(
+    'rest=none keeps every day',
+    parkDaysHeld({ ...fiveDays, rest: 'none', arrival: 'park', departure: 'park' }),
+    5
+  );
+  test(
+    'rest=max:2 rests every third day',
+    parkDaysHeld(trip('2027-02-01', '2027-02-10', { rest: 'max:2' })),
+    6
+  );
+  test(
+    'ten days hold seven park days under the automatic rule',
+    parkDaysHeld(trip('2027-02-01', '2027-02-10')),
+    7
+  );
+  test(
+    'a five-day Orlando trip starts with three headliners, in the region’s order',
+    headlinersForTrip(SEVEN, fiveDays),
+    SEVEN.slice(0, 3)
+  );
+  test(
+    'ten days hold all seven: the same list',
+    headlinersForTrip(SEVEN, trip('2027-02-01', '2027-02-10')) === SEVEN,
+    true
+  );
+  test('without dates, all of them', headlinersForTrip(SEVEN, DEFAULT_PLAN_STATE) === SEVEN, true);
+  test(
+    'a day trip still starts with one',
+    headlinersForTrip(SEVEN, trip('2027-02-01', '2027-02-01')),
+    [SEVEN[0]]
+  );
+  test(
+    'a pinned headliner stays, the others fill the rest in order',
+    headlinersForTrip(SEVEN, {
+      ...fiveDays,
+      locks: [{ target: 'universal-epic-universe', date: '2027-02-03' }],
+    }),
+    ['magic-kingdom-park', 'epcot', 'universal-epic-universe']
+  );
+  const scope = { today: '2027-01-15', allHeadliners: SEVEN };
+  const three = SEVEN.slice(0, 3);
+  test(
+    'the request names the trip’s headliners while the visitor has chosen none',
+    planRequestQuery(fiveDays, three, false, scope)?.parks,
+    three.join(',')
+  );
+  test(
+    'all of them fit: the request leaves `parks` to the API, as the address does',
+    planRequestQuery(trip('2027-02-01', '2027-02-10'), SEVEN, false, scope)?.parks,
+    undefined
+  );
+  test(
+    'a visitor’s own parks are never trimmed',
+    planRequestQuery(
+      { ...fiveDays, parks: SEVEN.map((slug) => ({ slug, visits: null })) },
+      three,
+      false,
+      scope
+    )?.parks,
+    SEVEN.join(',')
+  );
+  test(
+    'the address keeps an untouched choice out of `parks`',
+    writePlanQuery(fiveDays),
+    'from=2027-02-01&to=2027-02-05'
+  );
+  test(
+    'no request before the region’s today is read',
+    planRequestQuery(fiveDays, three, false, { ...scope, today: null }),
+    null
+  );
+
+  const today = '2027-02-03';
+  test('a trip ahead is not past', pastTrip(trip('2027-02-03', '2027-02-08'), today), null);
+  test(
+    'a trip that began yesterday is under way',
+    pastTrip(trip('2027-02-02', '2027-02-08'), today),
+    'started'
+  );
+  test(
+    'a trip whose last day was yesterday is over',
+    pastTrip(trip('2027-01-25', '2027-02-02'), today),
+    'ended'
+  );
+  test(
+    'the last day today is still under way',
+    pastTrip(trip('2027-01-28', '2027-02-03'), today),
+    'started'
+  );
+  test(
+    'a trip under way asks no plan',
+    planRequestQuery(trip('2027-02-02', '2027-02-08'), SEVEN, false, {
+      today,
+      allHeadliners: SEVEN,
+    }),
+    null
+  );
+  const underWay = trip('2027-02-01', '2027-02-08', {
+    hotel: 'disney_deluxe',
+    locks: [
+      { target: 'epcot', date: '2027-02-02' },
+      { target: 'magic-kingdom-park', date: '2027-02-05' },
+    ],
+  });
+  const rest = planFromToday(underWay, today);
+  test(
+    '„Ab heute planen“: from today to the last day',
+    [rest.from, rest.to],
+    [today, '2027-02-08']
+  );
+  test(
+    '„Ab heute planen“ keeps the answers and drops the pins already past',
+    [rest.hotel, rest.locks],
+    ['disney_deluxe', [{ target: 'magic-kingdom-park', date: '2027-02-05' }]]
+  );
+  test(
+    'a trip that is over is not replanned',
+    planFromToday(trip('2027-01-20', '2027-01-25'), today).from,
+    '2027-01-20'
+  );
+
+  test(
+    'a search ahead is asked as it is',
+    searchFromToday({ from: '2027-03-01', to: '2027-06-01' }, 10, today),
+    { from: '2027-03-01', to: '2027-06-01' }
+  );
+  test(
+    'a search that began searches from today',
+    searchFromToday({ from: '2027-01-01', to: '2027-06-01' }, 10, today),
+    { from: today, to: '2027-06-01' }
+  );
+  test(
+    'a search whose rest is shorter than the trip searches the next twelve months',
+    searchFromToday({ from: '2027-01-01', to: '2027-02-08' }, 10, today),
+    { from: today, to: '2028-02-03' }
+  );
+  test(
+    'the /when request asks from today, never before',
+    whenRequestQuery(
+      { ...DEFAULT_PLAN_STATE, when: { from: '2027-01-01', to: '2027-06-01' } },
+      today
+    )?.from,
+    today
+  );
+  test(
+    'no /when request before the region’s today is read',
+    whenRequestQuery(
+      { ...DEFAULT_PLAN_STATE, when: { from: '2027-03-01', to: '2027-06-01' } },
+      null
+    ),
+    null
+  );
+
+  const day = (date, waits) => ({
+    date,
+    isHoliday: false,
+    isSchoolVacation: false,
+    parks: Object.fromEntries(
+      waits.map((wait, i) => [
+        SEVEN[i],
+        wait === null
+          ? { status: 'CLOSED', crowdLevel: 'closed', basis: 'none', hoursPublished: false }
+          : {
+              status: 'OPERATING',
+              crowdLevel: 'low',
+              basis: 'forecast',
+              hoursPublished: true,
+              headlinerWait: wait,
+            },
+      ])
+    ),
+  });
+  const span = quietWeekWindow('2027-01-31');
+  test('the suggestion reads eight weeks of first days from tomorrow', span, {
+    from: '2027-02-01',
+    to: '2027-04-03',
+  });
+  const days = Array.from({ length: 20 }, (_, i) => {
+    const date = addDays('2027-02-01', i);
+    // Busy at first, quiet from 8 February, and Magic Kingdom closed on the 9th.
+    const base = i < 7 ? 60 : 30;
+    return day(date, [i === 8 ? null : base, base + 10]);
+  });
+  test(
+    'the quietest week, the earliest of equals; a day with a park closed counts by the parks open',
+    quietWeek(days, SEVEN.slice(0, 2), '2027-02-01'),
+    { from: '2027-02-10', to: '2027-02-16' }
+  );
+  test(
+    'no week where the calendar has fewer than seven days',
+    quietWeek(days.slice(0, 6), SEVEN, '2027-02-01'),
+    null
+  );
+  const gap = days.map((d, i) => (i === 12 ? day(d.date, [null, null]) : d));
+  test(
+    'a day without any figure leaves its weeks out',
+    quietWeek(gap, SEVEN.slice(0, 2), '2027-02-01'),
+    { from: '2027-02-14', to: '2027-02-20' }
   );
 }
 

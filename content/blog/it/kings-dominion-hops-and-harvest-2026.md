@@ -81,6 +81,9 @@ In tutti e sette i giorni il parco apre dalle 11 alle 19. Il prezzo del bigliett
 
 A questi si aggiungono una commissione fino a 9,99 dollari e le tasse. Alla cassa lo stesso giorno costa 90 dollari. La festa è compresa nel normale biglietto giornaliero, e i bambini fino a due anni entrano senza biglietto. Il parcheggio costa online 39 dollari, un posto nel Preferred Parking 49. Il parco acquatico Soak City a novembre resta chiuso.
 
+> [!PARKY] Meglio domenica
+> Per Hops & Harvest scegliamo una domenica: online la giornata costa 45 dollari invece dei 55 del sabato, e i musicisti suonano agli stessi orari in tutti e sette i giorni. I dieci dollari di differenza li ho già investiti in Cinnamon Donut Holes. Se ci va bene solo il venerdì dopo il Thanksgiving, sono 49 dollari, e quel giorno ci sono anche le cosce di tacchino.
+
 ```best-days-widget slug=kings-dominion
 
 ```

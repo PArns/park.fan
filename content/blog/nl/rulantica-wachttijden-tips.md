@@ -25,7 +25,7 @@ parkLinks:
 rideLinks:
   - rulantica/*
 seo:
-  title: 'Rulantica 2026: glijbanen, prijzen en de rustigste dagen'
+  title: 'Rulantica in de winter: rustigste dagen en ticketprijzen'
   description: >-
     Rulantica in de winter: tickets vanaf 28 euro, minimale lengtes van 90 tot
     140 centimeter en januari en maart als rustigste maanden.
@@ -386,6 +386,9 @@ inbegrepen. Handdoeken kun je als dagbezoeker niet lenen, alleen kopen, het park
 raadt eigen handdoeken aan. Betaald wordt met de **RulaBand**, een
 transponderarmband die ook toegangskaart en kluissleutel is. Uitgaven worden op
 de band geboekt en bij het verlaten betaald. Wifi is gratis. De **ResortPass Gold** van het Europa-Park bevat twee Rulantica-dagtickets.
+
+> [!PARKY] De moeite waard
+> Slapen we toch al in een van de hotels van het Erlebnis-Resort, dan kopen we het Best-Preis-Ticket voor 28 tot 48 euro in plaats van het dagticket voor 38 tot 54. Als hotelgasten zijn we om 9:00 uur binnen, een half uur voor alle anderen, en in de valcabine stap ik met mijn ogen dicht, hoogtevrees of niet. Het kluisje zit er vanaf twaalf jaar ook al bij.
 
 Op zijn pagina noemt het park de Parkscout plus Award 2020 tot 2025 (“Europas
 bester Wasserpark”) en de EWA Professional Award 2025 voor innovatieve

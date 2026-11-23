@@ -53,6 +53,9 @@ All'Oscar's Wacky Taxi Stage si alza il 1-2-3 Christmas Tree, alto poco più di 
 
 Babbo Natale si incontra nel Santa's Furry Workshop, accanto al Sesame Street Theater. Quest'anno lì non serve più mettersi in fila. Ci si registra al Tinsel Tent davanti al laboratorio, si riceve un SMS quando arriva il proprio turno e da lì si hanno 20 minuti per arrivare. Le lettere a Babbo Natale i bambini le scrivono a Letters to Santa, nel Mr. Hooper's Gift Shop. La Vigilia è l'ultimo giorno con Babbo Natale, e quel giorno la coda virtuale chiude alle 14. Dal 26 dicembre al 3 gennaio nel laboratorio siede Santa Cookie Monster.
 
+> [!PARKY]
+> Al Tinsel Tent ci registriamo per Babbo Natale appena arrivati, poi ci scaldiamo con una cioccolata calda nella Winter Warm-Up Lounge di Elmo's Pizza Kitchen. Una coda in cui posso stare seduto con una cioccolata calda è proprio il mio genere di coda. Quando arriva l'SMS abbiamo 20 minuti per raggiungere il laboratorio accanto al Sesame Street Theater. La Vigilia ci registriamo prima delle 14, quando chiude la coda virtuale.
+
 ## Giorni e orari di apertura
 
 Il parco è aperto di norma il venerdì dalle 16 alle 20, il sabato dalle 11 alle 19 e la domenica dalle 13 alle 18, in ora locale. Dal lunedì al giovedì resta chiuso fino al 17 dicembre, anche il giorno del Ringraziamento, il 26 novembre. Fanno eccezione:

@@ -2,15 +2,12 @@
 title: 'You’ll queue less at Europa-Park than at Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
-updatedAt: '2026-11-15'
+updatedAt: '2026-11-18'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  With a child between 1.00 and 1.30 metres, more is open to you at Europa-Park
-  than at Phantasialand. Only Phantasialand sells a shorter queue, the Quick
-  Pass. In the summer holidays its queues ran almost twice as long as on a
-  weekday outside the holidays, Europa-Park’s a good third longer.
+  With a child of 1.00 to 1.30 metres, more is open at Europa-Park. In the summer holidays Phantasialand’s queues ran almost twice as long as on a normal weekday, Europa-Park’s a good third longer.
 tags:
   - europa-park
   - phantasialand
@@ -98,7 +95,7 @@ Phantasialand’s Quick Pass lets you buy your way past the regular queue. For a
 - €10 on Black Mamba or Chiapas,
 - €12 on Taron.
 
-The park’s information page still lists Colorado Adventure at €5, while the online shop charges €7. River Quest isn’t on either list at the moment. F.L.Y. comes only with the Quick Pass Ultimate, which costs €80 and includes one go on each of those ten rides plus F.L.Y.
+In winter Chiapas costs only €5. River Quest is on neither the park’s information page nor the online shop at the moment. F.L.Y. comes only with the Quick Pass Ultimate, which costs €80 and includes one go on each of those ten rides plus F.L.Y.
 
 You can buy it in the park’s online shop, which emails it to you as a PDF with a QR code, or at Guest Services in the Berlin themed area. It’s only valid on the day you book it, so buy it on the morning of your visit, not the evening before. There are a limited number.
 
@@ -177,6 +174,9 @@ Ten of the covered attractions at [Europa-Park](ref:europa-park?bare) are statio
 ## In winter
 
 During Winterzauber, Europa-Park has a Christmas market in the Historischer Schlosspark Balthasar, an ice rink, the Bellevue Ferris wheel and a children’s ski school with snow tubes. The park promises up to 23 hours of shows a day over the winter, a Christmas circus among them. From November it sells an evening ticket for entry from 4 pm. Adults pay €41.50 until 22 December and €47 after that, children €35 to €40, and there's no extra charge at the gate. On 10 January the park opens only to hotel guests and invited guests.
+
+> [!PARKY] Evenings pay off
+> During Winterzauber we take the evening ticket from 4 pm, €41.50 per adult until 22 December, and it costs no more at the gate. The park’s open until at least 7 pm in winter, which leaves us three hours for the Christmas market, the Bellevue wheel and the ice rink, where I roll more than I glide. A whole day costs adults €67 to €76 online and €10 more at the gate.
 
 At Europa-Park, Fjord-Rafting and the Tiroler Wildwasserbahn run only until the end of the Halloween season on 1 November, and Atlantica SuperSplash until HALLOWinter ends on 27 November. Poseidon is on the schedule in all four seasons.
 

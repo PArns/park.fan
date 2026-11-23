@@ -25,7 +25,7 @@ parkLinks:
 rideLinks:
   - rulantica/*
 seo:
-  title: 'Rulantica 2026: scivoli, prezzi e i giorni più tranquilli'
+  title: 'Rulantica in inverno: giorni più tranquilli e prezzi'
   description: >-
     Rulantica in inverno: biglietti da 28 €, altezze minime da 90 a 140 cm e i
     mesi più tranquilli, gennaio e marzo.
@@ -380,6 +380,9 @@ si possono solo comprare, e il parco consiglia di portare i propri. Si paga con 
 **RulaBand**, un braccialetto con transponder che è anche tessera d’ingresso e
 chiave dell’armadietto. Le spese vengono addebitate sul braccialetto e saldate
 all’uscita. Il WiFi è gratuito. Il **ResortPass Gold** dell’Europa-Park comprende due biglietti giornalieri per Rulantica.
+
+> [!PARKY] Ne vale la pena
+> Se dormiamo comunque in uno degli hotel dell’Europa-Park Erlebnis-Resort, prendiamo il biglietto al prezzo migliore, da 28 a 48 €, invece del giornaliero da 38 a 54 €. Da ospiti dell’hotel entriamo alle 9:00, mezz’ora prima di tutti gli altri, e nella cabina a caduta salgo a occhi chiusi, vertigini o no. Anche l’armadietto, dai dodici anni, è già incluso.
 
 Sulla sua pagina il parco cita il Parkscout plus Award dal 2020 al 2025 (“il
 miglior parco acquatico d’Europa”) e l’EWA Professional Award 2025 per

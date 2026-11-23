@@ -662,6 +662,9 @@ deux voies.
 chaleur de midi, **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** se glisse entre deux. Dans la dernière heure, refais Untamed, car le
 parcours tourne sensiblement plus vite le soir que le matin.
 
+> [!PARKY]
+> Dans le [planificateur de journée](/trip-planner), on cale le déjeuner tôt, vers onze heures et demie chez Flavors. Depuis la terrasse au bord de l’eau, on regarde les trains passer sur les deux voies de YOY, ce qui pour moi vaut déjà la moitié d’un tour, et on n’embarque qu’en fin de journée, quand la file y est un peu plus courte qu’à midi.
+
 ## Pratique
 
 **Billets.** Walibi pratique des **tarifs dynamiques**, le billet journée coûte
@@ -694,6 +697,9 @@ donc différemment selon la date.
 
 Le [Toverland](ref:attractiepark-toverland), à une bonne centaine de kilomètres
 plus au sud, ne vend aucun fast pass.
+
+> [!PARKY] Dans le mille
+> Notre journée Walibi, c’est un jeudi de juin hors vacances, réservé tôt et en ligne. En 2026, chaque jeudi de juin affichait une affluence faible dans notre calendrier, et pour les jours calmes les prix en ligne démarrent selon la date à environ 25 €, contre un prix de référence de 46 € au guichet. La différence part en frites, et ce jour-là on n’a pas besoin de Fast Lane pour Untamed.
 
 **Accès.** Le parc se trouve au Spijkweg 30 à **Biddinghuizen**, commune de
 Dronten. Depuis la Ruhr il faut deux bonnes heures selon le trafic, depuis

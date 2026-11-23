@@ -18,11 +18,13 @@ import {
   type PlanSearchRange,
 } from './plan-query';
 import type { PlanIdea } from './plan-ideas';
+import { pastTrip } from './trip-dates';
 import type { TripChangeKind } from '@/lib/assistant/actions';
 import type { TripHotelKind } from './registry';
 import type {
   TicketLink,
   TripBasis,
+  TripClimate,
   TripCrowdLevel,
   TripPerk,
   TripRegion,
@@ -138,6 +140,11 @@ export interface PlanDay {
   perks?: TripPerk[];
   /** A one-park day's high; a hop day's parks carry their own. */
   weather?: PlanDayWeather;
+  /**
+   * The date's typical weather, on every kind of day: the average over past years at the day's
+   * park (a day without one at its city's), never a forecast. Absent from an API before PAR-1411.
+   */
+  climate?: TripClimate;
   travel?: PlanTravel;
   between?: PlanTravel;
   /**
@@ -382,18 +389,37 @@ export interface PlanSpareDayPark {
   days: PlanAlternative[];
 }
 
+/** What the planner on screen checks a request against beside the state. */
+export interface PlanRequestScope {
+  /** The region's today, `null` until the browser has read its clock: nothing is asked before. */
+  today: string | null;
+  /**
+   * Every headliner of the region, the API's own default pick. While the trip's `headliners`
+   * (`headlinersForTrip`) are fewer and the visitor has chosen no parks, the request names them.
+   */
+  allHeadliners: readonly string[];
+}
+
 /**
  * The `/plan` request's query, or `null` while the plan cannot be asked for: no dates yet, or a
  * problem {@link planProblem} names, which the API would answer with a 400. With the catalog, a
- * ticket the dates miss (`ticketProblem` in `plan-tickets.ts`) holds the request back as well.
+ * ticket the dates miss (`ticketProblem` in `plan-tickets.ts`) holds the request back as well, and
+ * with the planner's `scope` a trip that began before today (`pastTrip`, `window_in_past`). The
+ * address leaves an untouched choice out of `parks`, so the trip's own headliners go only here.
  */
 export function planRequestQuery(
   state: TripPlanState,
   headliners: readonly string[],
-  ticketBlocked = false
+  ticketBlocked = false,
+  scope?: PlanRequestScope
 ): Record<string, string> | null {
   if (state.when || ticketBlocked || planProblem(state, headliners)) return null;
-  return Object.fromEntries(planQueryEntries(state));
+  if (scope && (!scope.today || pastTrip(state, scope.today))) return null;
+  const named =
+    scope !== undefined && state.parks === null && headliners.length < scope.allHeadliners.length;
+  return Object.fromEntries(
+    planQueryEntries(named ? { ...state, parks: effectiveParks(state, headliners) } : state)
+  );
 }
 
 // ── Trip arithmetic ──────────────────────────────────────────────────────────

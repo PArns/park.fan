@@ -109,6 +109,9 @@ Filotomatix, Parc Astérix's pass, is for one person and one day, and you use it
 
 On a weekday outside the French school holidays I'd save the money on both and get by with the ride order from our guides to [Disneyland Paris](/blog/disneyland-paris-wait-times-tips) and [Parc Astérix](/blog/parc-asterix-wait-times-tips). Our [fast pass comparison](/blog/fast-pass-theme-parks-compared) puts Premier Access and Filotomatix next to the passes of the other big parks in Europe.
 
+> [!PARKY] Set the alarm
+> With Filotomatix, Toutatis only comes with Illimité, but guests at the park's hotels get on it with Early Entry, 30 minutes before official opening. If we're staying two days, that's where we head on the second morning, and the breakfast in the hotel package can wait. There's no early entry on Peur sur le Parc nocturne days or special event days, and the weather has to play along too.
+
 ## Evenings: night shows and Disney Village
 
 Both Disney parks have a night show every evening. Disneyland Park runs Disney Tales of Magic at the castle, with drones, projections, fountains and fireworks. At Disney Adventure World, Disney Cascade of Lights has put more than 380 drones in the air above the new lake and on its water since 29 March 2026. Disney sells reserved spots for both shows at extra cost, but you can watch without one.
@@ -186,6 +189,9 @@ Because the zones are a week apart in February and April, some part of France is
 ### Public holidays and long weekends
 
 In May 2027, 1 May and 8 May fall on a Saturday, so the only long weekend is the one after Ascension. Ascension is on Thursday 6 May, and schools all over France are off on the Friday after it. Whit Monday is 17 May.
+
+> [!PARKY]
+> For a trip to all three parks outside the French school holidays, we go in May or June 2027: from 3 April to 2 May some zone is always off, from 3 July they all are, and in February Parc Astérix is still asleep. We only avoid Ascension on 6 May, with the school-free Friday after it, and Whit Monday on 17 May. With those dates, the [trip planner](/paris#planner) spreads the three parks over the days.
 
 ### Disney's events
 

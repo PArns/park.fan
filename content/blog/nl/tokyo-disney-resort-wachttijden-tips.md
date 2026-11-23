@@ -280,6 +280,9 @@ Een voorbeeld voor DisneySea op een gewone herfstdag met opening om negen uur:
 
 In Tokyo Disneyland werkt hetzelfde patroon, met 's ochtends Big Thunder Mountain en Splash Mountain, en Enchanted Tale of Beauty and the Beast met Premier Access of 's avonds.
 
+> [!PARKY] Liever 's avonds
+> In Tokyo Disneyland laten we Premier Access voor Enchanted Tale of Beauty and the Beast schieten: met 2.500 yen is die daar duurder dan bij elke andere attractie in het park. Het resort stuurt gasten er zelf liever 's avonds heen, omdat de rij dan meestal korter is dan 's ochtends, dus krijgen Belle en het Beest in onze [dagplanner](/trip-planner) de laatste dans. Vooraf kijken we in de kalender van het resort of het park die dag tot 21.00 uur open is of al om 18.30 uur sluit.
+
 ## Tickets en prijzen
 
 Het ticket heet **1-Day Passport**. De prijs hangt af van de datum, en op elke dag kosten beide parken hetzelfde. Stand van 3 oktober 2026, voor bezoeken van oktober 2026 tot en met februari 2027:
@@ -296,6 +299,9 @@ Kinderen tot en met drie jaar mogen gratis naar binnen. In oktober en november 2
 Kom je pas later op de dag, dan koop je een van de twee kortere passen. De **After 3 Passport** geldt in het weekend en op feestdagen vanaf 15.00 uur en kost voor volwassenen 7.900 tot 9.900 yen. De **After 5 Passport** geldt van maandag tot en met vrijdag, behalve op feestdagen, vanaf 17.00 uur en kost 6.000 of 6.600 yen. Voor gasten met een beperking en één begeleider is er een eigen 1-Day Passport, voor volwassenen tussen 7.900 en 9.900 yen. Een jaarkaart staat niet op de ticketpagina van het resort. Wie meerdere dagen komt, koopt voor elke dag een eigen pas.
 
 Tickets worden alleen nog online verkocht, op de website en in de app, en de kassa's bij de ingang zijn dicht. Gasten van een Disneyhotel kunnen ook in het hotel kopen. De verkoop begint elke dag om 14.00 uur Japanse tijd, voor de dag twee maanden later. In Nederland en België is dat in de winter 6.00 uur 's ochtends en in de zomer 7.00 uur. Per bestelling kun je tot tien tickets kopen, en als je zelf afzegt, krijg je geen geld terug. Wil je op dezelfde dag opnieuw naar binnen, dan meld je dat bij het weggaan aan een medewerker bij de uitgang, en later kom je met hetzelfde ticket weer binnen.
+
+> [!PARKY]
+> Omdat je het park al bij het kopen vastlegt, verdelen we de twee eerst in de [reisplanner](/japan#planner) over je reisdagen, en een zaterdag krijgt DisneySea: daar maakt de dag van de week nauwelijks verschil, in Tokyo Disneyland is zaterdag merkbaar drukker. Daarna zetten we de wekker, in de winter op 6.00 uur, zo vroeg sta ik anders alleen voor rope drop op, en kopen we elke dag zodra die in de verkoop gaat.
 
 ## Reisinformatie
 

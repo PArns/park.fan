@@ -292,6 +292,9 @@ level, our live data listed the Multi Pass at $27 and the Premier Pass at $329.
 The next day they were $23 and $299. The Single Pass for TRON cost $19 on both
 days, and for Seven Dwarfs Mine Train $11 on 30 September. Neither could be bought that day. TRON's came back for 1 October.
 
+> [!PARKY] Buy the Mine Train
+> Without a Disney hotel, if we buy a Single Pass at all, it's the one for Seven Dwarfs Mine Train, not TRON: we ride TRON at opening, when its queue is shortest, while the Mine Train stays just as busy from midday into the evening. The seven dwarfs already have a Grumpy, so I don't need to spend the afternoon in that queue as the eighth. On 30 September its pass cost $11, $8 less than TRON's, and neither was left for the same day, so we buy ours ahead.
+
 ## When to go
 
 ```stats-widget slug=magic-kingdom-park show=months,weekdays
@@ -327,6 +330,9 @@ $189 to $229 plus tax depending on the night, and children aged three to nine
 pay $10 less. The party has its own parade, Mickey's Once Upon a Christmastime
 Parade, and its own fireworks, Minnie's Wonderful Christmastime Fireworks Show.
 On these nights, too, the park closes early for everyone else.
+
+> [!PARKY]
+> Without a party ticket, we put Magic Kingdom on a day with no party: until 14 December it's then open until 22:00 or 23:00 instead of 18:00, and the day ends with Happily Ever After. I'm not giving up fireworks at closing time. We pick that day of your trip in the [trip planner](/orlando#planner).
 
 ## What is closed, and what is coming
 

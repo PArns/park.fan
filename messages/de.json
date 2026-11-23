@@ -266,7 +266,6 @@
       "tools": "Werkzeuge",
       "germany": "Deutschland",
       "usa": "USA",
-      "resources": "Entwickler & Tools",
       "legal": "Rechtliches"
     },
     "regions": {
@@ -274,7 +273,7 @@
       "northAmerica": "Freizeitparks in Nordamerika",
       "asia": "Freizeitparks in Asien"
     },
-    "api": "API Dokumentation",
+    "developerPortal": "Entwicklerportal",
     "impressum": "Impressum",
     "howto": "Wartezeiten verstehen",
     "planner": "Tagesplaner",
@@ -420,14 +419,27 @@
       "monthTitleLastYear": "Die ruhigsten Tage im {month} im Vorjahr",
       "quietPark": "({park}, etwa {minutes} Min.)",
       "quietestTo": "Am leersten bis {date}",
-      "best": "Bester Park je Resort, <time>{date}</time>"
+      "best": "Bester Park je Resort, <time>{date}</time>",
+      "pick": "Tipp für <time>{date}</time>",
+      "perResort": "Je Resort",
+      "pickLevel": "{level, select, very_low {viel ruhiger als an einem normalen Tag dort} low {ruhiger als an einem normalen Tag dort} moderate {ein normaler Tag dort} other {voller als an einem normalen Tag dort}}"
+    },
+    "visited": {
+      "ask": "Bereits besucht? Abhaken",
+      "count": "{count} von {total} Parks abgehakt",
+      "allDone": "Alle {count} Parks abgehakt. Für einen zweiten Besuch:",
+      "toggle": "{park}: bereits besucht",
+      "tick": "{park} als besucht abhaken",
+      "untick": "Haken bei {park} entfernen",
+      "column": "Bereits besucht?"
     },
     "legend": {
       "minutes": "Spitzenwartezeit der großen Bahnen, in Minuten",
       "quietest": "ruhigster Tag der Woche in diesem Park",
       "early": "schließt früher für Tagesgäste",
       "howTo": "So liest du den Kalender",
-      "colour": "Farbe: der Tag im Vergleich zu einem normalen Tag dieses Parks"
+      "colour": "Farbe: der Tag im Vergleich zu einem normalen Tag dieses Parks",
+      "picked": "von dir eingeplant"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -458,13 +470,24 @@
       "stateOpen": "Geöffnet, keine Prognose",
       "cellNoHours": "Öffnungszeiten noch nicht veröffentlicht",
       "sourcesTravel": "Fahrzeiten: {attribution}",
-      "titleMonth": "Tag für Tag im {month}"
+      "titleMonth": "Tag für Tag im {month}",
+      "picked": "von dir eingeplant",
+      "quietestFree": "vorgeschlagener freier Tag",
+      "cellTaken": "schon für {park} eingeplant",
+      "pickHint": "Wähl bei einem Park einen Tag, um ihn einzuplanen. Die anderen Parks bekommen dann je einen eigenen freien Tag, so ruhig wie möglich.",
+      "picksCount": "{count, plural, one {# Tag eingeplant} other {# Tage eingeplant}}",
+      "picksNote": "Die Sterne geben jedem anderen Park einen eigenen freien Tag, so ruhig wie möglich.",
+      "picksReset": "Auswahl zurücksetzen",
+      "pickedAnnounce": "{park} am {date} eingeplant",
+      "unpickedAnnounce": "{park} am {date} nicht mehr eingeplant"
     },
     "lanes": {
-      "summaryLabel": "Events",
-      "nights": "{name}: {count, plural, =1 {# Abend} other {# Abende}}",
       "expected": "Termine erwartet",
-      "allDays": "jeden Tag"
+      "dayGuestsUntil": "Tagesgäste bis {time}",
+      "separateTicket": "Abend-Event, eigenes Ticket",
+      "from": "ab {date}",
+      "until": "bis {date}",
+      "allWeek": "Die ganze Woche: {names}"
     },
     "sheet": {
       "intro": "Pro Resort steht der beste Park oben; ein früher Schluss zählt mit",
@@ -484,6 +507,7 @@
       "ridesNone": "Für diesen Tag gibt es keine Werte für einzelne Bahnen.",
       "ridesHint": "Jede Bahn zu ihrer vollsten Tageszeit.",
       "planDay": "Im Tagesplaner öffnen",
+      "planTrip": "Reise ab diesem Tag planen",
       "noHoursFigure": "Noch keine Öffnungszeiten. Der Wert ist die Prognose; die Öffnungszeiten zählen nicht mit.",
       "ahead": "Steht vor {park}, weil Tagesgäste dort um {time} gehen müssen."
     },
@@ -517,7 +541,9 @@
       "open": "Reiseplaner öffnen"
     },
     "tile": {
-      "line": "Du nennst deine Reisetage, der Planer sagt dir, welcher der {count} Parks an welchem Tag am leersten ist"
+      "line": "Der ruhigste Tag jeder Woche für alle {count} Parks {inRegion}, nach der Prognose der Spitzenwartezeit",
+      "question": "Wann ist es in {resort} am ruhigsten?",
+      "calendarResort": "Andrang-Kalender {resort}"
     },
     "faq": {
       "parks": {
@@ -646,6 +672,7 @@
   },
   "parks": {
     "liveLink": "{park}: Wartezeiten live",
+    "calendarLink": "{park}: Andrangskalender & Auslastung der nächsten Tage",
     "liveFreshness": {
       "asOf": "Stand",
       "outdated": "Nicht aktuell",
@@ -974,7 +1001,7 @@
     "calendarLegend": "Legende",
     "calendarLegendGroups": {
       "crowd": "Andrang",
-      "signals": "Signalleiste"
+      "signals": "Ferien & Feiertage"
     },
     "eventTypesLabel": "Event-Typen",
     "crowdLevelsLabel": "Auslastungsstufen",
@@ -982,6 +1009,10 @@
     "specialDaysLabel": "Besondere Tage",
     "schoolVacation": "Schulferien",
     "bestDay": "Empfohlen",
+    "calendarMarks": {
+      "quietestOfWeek": "ruhigster Tag der Woche",
+      "localTimes": "Zeiten in Ortszeit des Parks"
+    },
     "bridgeDay": "Brückentag",
     "holiday": "Feiertag",
     "eventTypes": {
@@ -1290,6 +1321,10 @@
       "metaTitle": "{park}: Andrangskalender & Auslastung {month}",
       "metaTitleShort": "{park}: Andrangskalender {month}",
       "metaTitleBare": "{park}: {month}",
+      "yearTitle": "{park}: Andrangskalender & Auslastung {years}",
+      "yearTitleShort": "{park}: Andrangskalender {years}",
+      "yearTitleBare": "{park}: Andrangskalender {years}",
+      "h1SuffixYears": "Andrangskalender {years}",
       "metaDescription": "Wann ist es {inPark} in {city} leer? Andrangskalender mit KI-Prognose der Auslastung pro Tag, dazu Öffnungszeiten, Ferien und Wetter.",
       "metaDescriptionNoCity": "Wann ist es {inPark} leer? Andrangskalender mit KI-Prognose der Auslastung pro Tag, dazu Öffnungszeiten, Ferien und Wetter.",
       "intro": "Für jeden Tag der nächsten Monate: erwarteter Andrang, Öffnungszeiten, Ferien und Feiertage, die {inPark} zählen. Tippe auf einen Tag für die Details.",
@@ -2030,8 +2065,8 @@
       "title": "Freizeitparks weltweit: Wartezeiten, Karte & Übersicht",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
       "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender {forPark} in {city}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
-      "titleTemplate": "{park} Wartezeiten LIVE – {city}",
-      "titleTemplateNoCity": "{park} – Wartezeiten LIVE & beste Tage",
+      "titleTemplate": "{park}: Wartezeiten LIVE & Auslastung heute",
+      "titleTemplateNoCity": "{park}: Wartezeiten LIVE & Auslastung heute",
       "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender {forPark}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
       "metaDescriptionFacts": "Live-Wartezeiten {forPark}, alle 5 Minuten neu. Ruhigste Tage: {quietDays}. Dazu Crowd-Kalender, Prognose & Öffnungszeiten.",
       "metaDescriptionFactsShort": "Live-Wartezeiten {forPark}, alle 5 Minuten neu. Ruhigste Tage: {quietDays}. Dazu der Crowd-Kalender.",
@@ -2809,6 +2844,10 @@
             "title": "Verlauf",
             "description": "Gemessene Wartezeiten im Rückblick: Parkstatistik, Stundenprofil, Tageskurve und Verlauf einer Attraktion, typische Wartezeiten, Rope Drop, Ausfälle."
           },
+          "typical-waits": {
+            "title": "Typische Wartezeiten",
+            "description": "Die typischen Wartezeiten jeder Attraktion und welche Attraktionen die Headliner des Parks sind, in den Details von Park und Attraktion. Der Verlauf enthält sie auch."
+          },
           "platform": {
             "title": "Plattformzahlen",
             "description": "Live-Summen über alle Parks, der Ticker und die besten Besuchszeiten insgesamt."
@@ -3540,7 +3579,7 @@
     "page": {
       "title": "Deinen Parktag Bahn für Bahn planen",
       "lead": "Leg fest, welche Bahnen du fahren willst. Mit den vorhergesagten Wartezeiten siehst du, ob alle vor Parkschluss drankommen. Der Tagesplaner kostet nichts, liegt in deinem Browser und braucht kein Konto.",
-      "metaTitle": "Freizeitpark-Tag planen: Wartezeiten einrechnen | park.fan",
+      "metaTitle": "Freizeitpark-Tag planen: Wartezeiten einrechnen",
       "metaDescription": "Plane deinen Freizeitpark-Tag mit den vorhergesagten Wartezeiten: Bahnen auf eine Zeitleiste, Shows und Pausen dazwischen, Hinweis, wo dein Kind zu klein ist.",
       "yourPlans": "{count, plural, one {Ein geplanter Tag} other {# geplante Tage}}",
       "introTitle": "Noch nichts geplant",
@@ -3854,7 +3893,8 @@
         "hotel": "Hotel: {area}"
       },
       "arrivalIn": "Anreise, Ankunft in {city}",
-      "departureFrom": "Abreise ab {city}"
+      "departureFrom": "Abreise ab {city}",
+      "share": "Teilen"
     },
     "spare": {
       "day": "freier Tag",
@@ -4117,7 +4157,6 @@
     "keep": {
       "addAll": "In den Tagesplaner übernehmen",
       "ics": "In den Kalender (.ics)",
-      "copy": "Link kopieren",
       "copied": "Link kopiert",
       "added": "{count, plural, =1 {1 Parktag steht} other {# Parktage stehen}} im Tagesplaner, zuerst {park} am {date}.",
       "openPlanner": "Ersten Tag öffnen",
@@ -4164,7 +4203,10 @@
       "stripLegend": "Höhe: die Spitzenwartezeit deiner Parks in dieser Woche. Die Marken darunter zeigen deine Vorschläge.",
       "sketch": "Tag für Tag",
       "rankedLower": "weiter hinten eingeordnet: {reasons}",
-      "stormPeak": "{season}: wegen der Sturmgefahr weiter hinten eingeordnet, auch bei kurzen Wartezeiten."
+      "stormPeak": "{season}: wegen der Sturmgefahr weiter hinten eingeordnet, auch bei kurzen Wartezeiten.",
+      "picked": "{rank, select, 1 {Die ruhigsten {days} Tage im gewählten Zeitraum} other {Vorschlag {rank} deiner Suche}}: {range}",
+      "others": "Weitere Zeiträume",
+      "compare": "Alle vergleichen"
     },
     "evening": {
       "plus": "+ Abend: {name}",
@@ -4379,7 +4421,8 @@
         "hopping": "{hopper} inklusive"
       },
       "later": "Schon Tickets?",
-      "enter": "Eintragen"
+      "enter": "Eintragen",
+      "line": "Tickets für {count, plural, =1 {1 Parktag} other {# Parktage}}"
     },
     "move": {
       "mode": {
@@ -4517,7 +4560,12 @@
         "show": "Plan jetzt zeigen"
       },
       "dates": {
-        "months": "Monat"
+        "months": "Monat",
+        "mode": "Deine Reisedaten",
+        "known": "Ich kenne meine Daten",
+        "find": "Daten finden",
+        "quiet": "Nächste ruhige Woche: {range}",
+        "quietTake": "Übernehmen"
       },
       "parks": {
         "lead": "Die großen sind schon gewählt, und mit einem Tipp auf ein Bild nimmst du einen Park dazu oder wählst ihn ab",
@@ -4533,7 +4581,8 @@
         "weather": {
           "label": "Extremes Wetter vermeiden",
           "hint": "Themenparks auf die kühleren Tage, Wasserparks auf die heißesten{storm, select, hurricane {; die Hochphase der Hurrikansaison zählt mehr} typhoon {; die Hochphase der Taifunsaison zählt mehr} other {}}"
-        }
+        },
+        "fitted": "Für {days, plural, one {# Tag} other {# Tage}} {parks, plural, one {ist # Park} other {sind # Parks}} vorgewählt. Du kannst weitere dazunehmen."
       },
       "spare": {
         "title": "{count, plural, =1 {1 Tag ohne Park} other {# Tage ohne Park}}",
@@ -4584,7 +4633,8 @@
       "ask": "Was hältst du von dieser Idee für meinen Plan: {idea}?",
       "applied": "Im Plan: {idea}.",
       "inPlan": "In den Plan",
-      "otherDay": "Anderen Tag"
+      "otherDay": "Anderen Tag",
+      "dismiss": "Idee ausblenden"
     },
     "weather": {
       "heatDays": "{count, plural, =1 {1 heißer Parktag} other {# heiße Parktage}}",
@@ -4598,6 +4648,12 @@
       "noCooler": "Kein kühlerer Tag passte in den Plan",
       "keyHeat": "Heißer Parktag",
       "keyHeatNormal": "Heißer Parktag; Ø ist der Schnitt vergangener Jahre"
+    },
+    "past": {
+      "started": "Diese Reise hat am {date} begonnen.",
+      "ended": "Diese Reise hat am {date} begonnen und ist schon vorbei.",
+      "fromToday": "Ab heute planen",
+      "newDates": "Neue Daten wählen"
     }
   },
   "tripRegions": {
@@ -4612,7 +4668,7 @@
       "hub": {
         "title": "Orlando Andrang-Kalender",
         "monthTitle": "Orlando Andrang-Kalender {month}",
-        "metaTitle": "Orlando Andrang-Kalender {years} & Reiseplaner",
+        "metaTitle": "Orlando Andrang-Kalender {years}: Disney World & Universal",
         "metaTitleMonth": "Orlando im {month}: Andrang bei Disney & Universal",
         "metaTitleMonthShort": "Orlando Andrang-Kalender {month}",
         "metaDescription": "Welcher Park in Orlando an welchem Tag, mit Epic Universe. Am ruhigsten in den nächsten 30 Tagen: {verdict}.",
@@ -4627,8 +4683,7 @@
         },
         "lanes": {
           "break": "US-Schulferien: {name}, {dates}",
-          "unnamedBreak": "US-Schulferien",
-          "none": "In diesen Tagen gibt es keine Events und keine US-Schulferien."
+          "unnamedBreak": "US-Schulferien"
         },
         "sheet": {
           "kicker": "Orlando · ein Tag",
@@ -4641,9 +4696,7 @@
         "when": {
           "kicker": "Disney World und Universal",
           "title": "Beste Reisezeit für Orlando {year}",
-          "titleNoYear": "Beste Reisezeit für Orlando",
-          "pageLink": "Beste Reisezeit für Orlando {year}",
-          "pageLinkNoYear": "Beste Reisezeit für Orlando"
+          "pageLink": "Beste Reisezeit für Orlando {year}"
         },
         "faq": {
           "title": "Fragen zum Andrang in Orlando",
@@ -5002,8 +5055,7 @@
         },
         "lanes": {
           "break": "Schulferien in Los Angeles: {name}, {dates}",
-          "unnamedBreak": "Schulferien in Los Angeles",
-          "none": "In diesen Tagen gibt es keine Events und keine Schulferien in Los Angeles."
+          "unnamedBreak": "Schulferien in Los Angeles"
         },
         "sheet": {
           "kicker": "Südkalifornien · ein Tag",
@@ -5012,9 +5064,7 @@
         "when": {
           "kicker": "Disneyland und Universal",
           "title": "Beste Reisezeit für Disneyland & Universal Hollywood {year}",
-          "titleNoYear": "Beste Reisezeit für Disneyland & Universal Hollywood",
-          "pageLink": "Beste Reisezeit für Disneyland & Universal Hollywood {year}",
-          "pageLinkNoYear": "Beste Reisezeit für Disneyland & Universal Hollywood"
+          "pageLink": "Beste Reisezeit für Disneyland & Universal Hollywood {year}"
         },
         "reasons": {
           "school_break": "in den Schulferien in Los Angeles"
@@ -5288,8 +5338,7 @@
         },
         "lanes": {
           "break": "Japanische Schulferien: {name}, {dates}",
-          "unnamedBreak": "Japanische Schulferien",
-          "none": "Keine Events in diesen Tagen."
+          "unnamedBreak": "Japanische Schulferien"
         },
         "sheet": {
           "kicker": "Japan · ein Tag",
@@ -5301,9 +5350,7 @@
         "when": {
           "kicker": "Tokyo Disney und USJ",
           "title": "Beste Reisezeit für Tokyo Disney & USJ {year}",
-          "titleNoYear": "Beste Reisezeit für Tokyo Disney & USJ",
-          "pageLink": "Beste Reisezeit für Tokyo Disney & USJ {year}",
-          "pageLinkNoYear": "Beste Reisezeit für Tokyo Disney & USJ"
+          "pageLink": "Beste Reisezeit für Tokyo Disney & USJ {year}"
         },
         "reasons": {
           "school_break": "in den japanischen Schulferien"
@@ -5617,8 +5664,7 @@
         },
         "lanes": {
           "break": "Schulferien in Paris (Zone C): {name}, {dates}",
-          "unnamedBreak": "Schulferien in Paris (Zone C)",
-          "none": "In diesen Tagen gibt es keine Events und keine Schulferien in Paris."
+          "unnamedBreak": "Schulferien in Paris (Zone C)"
         },
         "sheet": {
           "kicker": "Paris · ein Tag",
@@ -5631,9 +5677,7 @@
         "when": {
           "kicker": "Reisen mit allen drei Parks",
           "title": "Beste Reisezeit für Disneyland Paris & Parc Astérix {year}",
-          "titleNoYear": "Beste Reisezeit für Disneyland Paris & Parc Astérix",
-          "pageLink": "Beste Reisezeit für Disneyland Paris & Parc Astérix {year}",
-          "pageLinkNoYear": "Beste Reisezeit für Disneyland Paris & Parc Astérix"
+          "pageLink": "Beste Reisezeit für Disneyland Paris & Parc Astérix {year}"
         },
         "reasons": {
           "school_break": "Schulferien in Paris"
@@ -6420,6 +6464,7 @@
     },
     "tip": {
       "label": "Parkys Tipp",
+      "looking": "Parky schaut sich den Tag genauer an…",
       "good": "Top-Tag!",
       "meh": "Geht so",
       "bad": "Lieber nicht",
@@ -6464,7 +6509,7 @@
     "syncNow": "Jetzt abgleichen",
     "syncedAt": "Zuletzt abgeglichen: {when}",
     "neverSynced": "Noch nicht abgeglichen",
-    "whatSyncs": "Abgeglichen werden Favoriten, gefahrene Attraktionen und °C oder °F. Dein Tagesplan und deine Erinnerungen bleiben auf dem Gerät, auf dem du sie angelegt hast.",
+    "whatSyncs": "Abgeglichen werden Favoriten, gefahrene Attraktionen, die auf einer Reise abgehakten Parks und °C oder °F. Dein Tagesplan und deine Erinnerungen bleiben auf dem Gerät, auf dem du sie angelegt hast.",
     "auth": {
       "registerTitle": "Konto anlegen",
       "registerLead": "Deine Favoriten und gefahrenen Attraktionen auf jedem Gerät. Kostenlos, ohne Werbung.",
@@ -6549,5 +6594,17 @@
       "export": "Daten herunterladen",
       "failed": "Der Download hat nicht geklappt. Versuch es noch einmal."
     }
+  },
+  "dayWeather": {
+    "normal": "Durchschnitt vergangener Jahre für dieses Datum, keine Vorhersage",
+    "keyNoPeriod": "Ø Durchschnitt vergangener Jahre, keine Vorhersage",
+    "detailTitle": "Wetter im Schnitt",
+    "typicalHigh": "Tagsüber meist <range></range>",
+    "typicalLow": "nachts meist <range></range>",
+    "wetDays": "{count, plural, =0 {selten Regen} =1 {Regen an 1 von 10 Tagen} other {Regen an # von 10 Tagen}}",
+    "detailNote": "Schnitt der Jahre {period} für dieses Datum; an der Hälfte dieser Tage lag der Wert in der Spanne. Vorhersagen gibt es etwa 16 Tage im Voraus.",
+    "keyForecast": "Vorhersage",
+    "normalSpan": "Durchschnitt vergangener Jahre für diese {count} Tage, keine Vorhersage",
+    "rowLabel": "Wetter in {park}"
   }
 }

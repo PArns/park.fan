@@ -223,7 +223,8 @@ nothing ever opens a hub that answers 404. The API's side is its `docs/frontend/
 (`bases`), the city an airport serves (`startBase`, `endBase`), the hotel-change buffer and the
 plan's stay suggestion; the widget applies the query like any other, and the receipt says
 „Reiseplaner: Route geändert“ (kind `route`) or „Zeit für Hotelwechsel eingestellt“ (`buffer`).
-A date search arrives as `when=…&days=…`, which the planner opens in its finder.
+A date search arrives as `when=…&days=…`, which the planner answers with the plan of the best
+window and the others as chips over it ([the When mode](orlando-planner.md#the-when-mode)).
 
 Reminders (`lib/assistant/alerts-context.ts`, `alert-writes.ts`) carry the ids the push endpoints
 take: `alert_ride_set` the ride's UUID as `rideId`, a `kind` (`wait_below` with
@@ -833,6 +834,13 @@ pressed (`askParky`). Both carry `element` and `kind` from `PARKY_ELEMENT_KINDS`
 callout's `post`, the empty state's `not_found`, `error`, `favorites` or `search`. The pressable part
 only stands where Parky shows for the visitor, so both events count the same people. `/admin/assistant`
 shows them per kind with the click rate („Parkys Elemente“), and the links followed in his answers.
+
+A tap on the calendar's day tip hands the chat more than its question: `askParky` keeps the park's
+path, the day and the sentence shown (`AskDayTip`), `takeParkyAsk` reads them once, and the chat
+sends them as `dayTip` with its first question. The API reads the sentence it serves for that day in
+the chat's language, from its own tip cache, and the day's facts (the lines the tip is written
+from), and gives Parky both, so he answers from the tip he wrote rather than looking the day up
+again. The sentence the browser sends is accepted and not used: Parky would defend it as his own.
 
 ## Checks
 

@@ -14,6 +14,7 @@ import {
   stepQuestions,
   tripWizardFacts,
   tripWizardSteps,
+  wizardPass,
   wizardStepIndex,
 } from '../lib/trip-regions/wizard-steps.ts';
 import { answerSpare, longestFreeRun, spareQuestion } from '../lib/trip-regions/spare-days.ts';
@@ -105,6 +106,30 @@ const noCatalog = tripWizardSteps(
 );
 assert.deepEqual(noCatalog[4].questions, ['evenings', 'fireworks', 'blocks']);
 assert.ok(!keys(noCatalog).includes('tickets'), 'no catalog, no ticket question');
+
+// The first pass ends on Tempo: Evenings and Tickets are later steps, reached from the result.
+assert.deepEqual(
+  orlando.filter((s) => s.later).map((s) => s.key),
+  ['evenings', 'tickets']
+);
+assert.deepEqual(keys(wizardPass(orlando, [])), ['dates', 'parks', 'hotel', 'pace']);
+assert.deepEqual(keys(wizardPass(weekend, [])), ['dates', 'parks', 'route', 'pace']);
+// Opened on a later step from the answers, the walk takes that step in its place, and only it.
+assert.deepEqual(keys(wizardPass(orlando, ['tickets'])), [
+  'dates',
+  'parks',
+  'hotel',
+  'pace',
+  'tickets',
+]);
+const evenings = wizardPass(orlando, ['evenings']);
+assert.deepEqual(keys(evenings), ['dates', 'parks', 'hotel', 'pace', 'evenings']);
+assert.equal(wizardStepIndex(evenings, 'evenings'), 4);
+// Japan's evening question, merged into Tempo, is asked on the first pass.
+assert.deepEqual(keys(wizardPass(japan, [])), ['dates', 'parks', 'route', 'hotels', 'pace']);
+assert.equal(wizardStepIndex(wizardPass(japan, []), 'evenings'), 4);
+// Past the first pass is the finale, never a later step nobody opened.
+assert.equal(wizardStepIndex(wizardPass(orlando, []), 'tickets'), -1);
 
 // Days without a park: Japan, 14–30 January, three parks twice each (the API's answer for it).
 const kinds = 'A P R P T P P R R R R R P R R P D'.split(' ');

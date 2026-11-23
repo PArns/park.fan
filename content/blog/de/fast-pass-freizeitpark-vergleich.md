@@ -28,7 +28,7 @@ coverImage:
   caption: 'Talocan im Themenbereich Mexico, unter einer Tempelwand mit Totenkopf-Reliefs.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Fast Pass im Freizeitpark: Preise und Bahnen im Vergleich'
+  title: 'Fast Pass in 15 Parks: was Quick Pass und Speedy Pass kosten'
   description: >-
     Quick Pass, Express, Fastrack und Premier Access in 15 Parks. Im Phantasialand kostet der
     Quick Pass, auch online, 5 bis 12 € je Fahrt, der Ultimate 80 €.
@@ -351,6 +351,9 @@ Abend deutlich kürzer als um die Mittagszeit, Premier Access brauchst du dort e
 dazwischen. Furius Baco im PortAventura Park hat ab dem frühen Nachmittag eine fast halb so lange
 Warteschlange wie am Vormittag. An Hyperia im Thorpe Park hilft keine Uhrzeit, von 10 bis 17 Uhr
 bleibt die Wartezeit fast gleich.
+
+> [!PARKY]
+> Premier Access One gibt es im Disneyland Paris ohnehin nur am Besuchstag, und auch dann kaufen wir ihn nicht schon beim Croissant: Morgens fahren wir die großen Bahnen ohne, und erst gegen Mittag sehen wir, welche uns noch fehlt. Ist das Kontingent an einem vollen Tag bis dahin verkauft, heben wir die Bahn für den späten Abend auf, wenn die Warteschlangen wieder kürzer sind.
 
 Mammut und Blue Tornado fährst du im Gardaland am besten nachmittags, gegen 11 Uhr sind ihre
 Warteschlangen am längsten. Für Pégase Express und Tonnerre 2 Zeus im Parc Astérix lohnt sich der Abend.

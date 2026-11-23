@@ -20,6 +20,8 @@ export interface TripRegionLinkPark {
   name: string;
   /** The park's page, locale-free: `/parks/north-america/united-states/orlando/epcot`. */
   path: string;
+  /** Its resort's name without "Resort" ("Walt Disney World"); absent for a day trip. */
+  resort?: string;
 }
 
 /**
@@ -38,7 +40,7 @@ export interface TripRegionWords {
 
 /** One trip region, reduced to what its links need. */
 export interface TripRegionLinks {
-  /** The registry's slug, whose hub (`tripRegionPath`) holds the planner as chapter 03. */
+  /** The registry's slug, whose hub (`tripRegionPath`) holds the planner chapter. */
   slug: string;
   /** The API's name, in English: what a search matches; a link shows `words`. */
   name: string;
@@ -60,14 +62,19 @@ export function tripRegionLinks(
   region: Pick<TripRegion, 'slug' | 'name' | 'groups' | 'parks'>
 ): TripRegionLinks | null {
   if (!liveTripRegion(region.slug)) return null;
-  const resorts = region.groups
-    .filter((group) => group.kind === 'resort')
-    .map((group) => shortGroupName(group.name));
+  const resorts = new Map(
+    region.groups
+      .filter((group) => group.kind === 'resort')
+      .map((group) => [group.key, shortGroupName(group.name)])
+  );
   return {
     slug: region.slug,
     name: region.name,
-    names: [region.name, ...resorts],
-    parks: region.parks.map(({ id, slug, name, path }) => ({ id, slug, name, path })),
+    names: [region.name, ...resorts.values()],
+    parks: region.parks.map(({ id, slug, name, path, group }) => {
+      const resort = resorts.get(group);
+      return { id, slug, name, path, ...(resort ? { resort } : {}) };
+    }),
   };
 }
 

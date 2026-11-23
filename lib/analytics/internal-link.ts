@@ -27,6 +27,8 @@ const LINK_BLOCKS = [
   'trip_tile',
   'trip_answer',
   'trip_parks',
+  'trip_months',
+  'trip_when',
   'trip_home',
   'day_home',
   'nav',

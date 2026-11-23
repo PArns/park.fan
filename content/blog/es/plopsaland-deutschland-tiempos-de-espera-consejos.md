@@ -26,7 +26,7 @@ parkLinks:
 rideLinks:
   - plopsaland-deutschland/*
 seo:
-  title: 'Plopsaland Deutschland 2026: tiempos de espera, precios, mejores días'
+  title: 'Plopsaland Deutschland (Holiday Park): cuándo ir y consejos'
   description: >-
     En el antiguo Holiday Park de Haßloch se espera solo unos minutos en la
     mayoría de las atracciones. Fuera de Halloween, el viernes es el día más
@@ -119,6 +119,9 @@ En nuestras mediciones, aquí se espera más que en cualquier otra atracción de
 un minuto y 30 segundos de viaje) y
 la única bajo techo: pertenece a la nave Holiday Indoor, abierta en 2018 sobre 5.000 metros
 cuadrados.
+
+> [!PARKY]
+> En marzo y en noviembre miramos la temperatura en Haßloch antes de salir. Por debajo de ocho grados, GeForce y Sky Scream se quedan paradas, y a las tres colinas de GeForce que nos levantan del asiento no renuncio a gusto. De las cuatro montañas rusas solo funcionan entonces 100% Wolf, que arranca ya a partir de cinco grados, y Tabaluga's Rollercoaster, en la nave. Si el pronóstico marca tan poco, preferimos buscar un día más templado.
 
 ## Atracciones de agua y torres
 

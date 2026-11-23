@@ -280,6 +280,9 @@ Un ejemplo para DisneySea en un día normal de otoño con apertura a las nueve:
 
 En Tokyo Disneyland vale el mismo esquema: por la mañana Big Thunder Mountain y Splash Mountain, y Enchanted Tale of Beauty and the Beast con Premier Access o a última hora.
 
+> [!PARKY] Mejor de noche
+> En Tokyo Disneyland nos ahorramos el Premier Access de Enchanted Tale of Beauty and the Beast: con 2.500 yenes, allí sale más caro que en cualquier otra atracción del parque. El propio resort prefiere mandar a la gente a última hora, porque entonces la cola suele ser más corta que por la mañana, así que en nuestro [planificador del día](/trip-planner) la Bella y la Bestia se quedan con el último baile. Antes miramos en el calendario del resort si ese día el parque está abierto hasta las 21:00 o cierra ya a las 18:30.
+
 ## Entradas y precios
 
 La entrada se llama **1-Day Passport**. El precio depende de la fecha, y cada día los dos parques cuestan lo mismo. A 3 de octubre de 2026, para fechas de octubre de 2026 a febrero de 2027:
@@ -296,6 +299,9 @@ Los niños de hasta tres años entran gratis. En octubre y noviembre de 2026 rig
 Si llegas más tarde, puedes comprar uno de dos pases más cortos. El **After 3 Passport** vale los fines de semana y festivos desde las 15:00 y a los adultos les cuesta de 7.900 a 9.900 yenes; el **After 5 Passport** vale de lunes a viernes, salvo festivos, desde las 17:00 y cuesta 6.000 o 6.600 yenes. Para visitantes con discapacidad y un acompañante hay un 1-Day Passport propio, de 7.900 a 9.900 yenes para adultos. La página de entradas del resort no incluye ningún pase anual. Si vas varios días, compras un pase para cada día.
 
 Solo se vende por internet, en la web y en la app, porque las taquillas de la entrada están cerradas. Quien se aloja en un hotel Disney puede comprar también en el hotel. La venta abre cada día a las 14:00, hora de Japón, para el día que cae dos meses después. En la España peninsular son las 6 de la mañana en invierno y las 7 en verano. Cada pedido admite hasta diez entradas, y si cancelas tú no hay reembolso. Para volver a entrar el mismo día, avisas a un empleado en la salida al irte y luego vuelves a pasar con la misma entrada.
+
+> [!PARKY]
+> Como el parque se elige al comprar, primero repartimos los dos entre tus días de viaje en el [planificador de viajes](/japon#planner), y si hay un sábado, se lo damos a DisneySea: allí el día de la semana apenas cambia nada, y en Tokyo Disneyland el sábado hay bastante más gente. Luego ponemos el despertador a las 6 en invierno, una hora a la que solo madrugo para el rope drop, y compramos cada día en cuanto sale a la venta.
 
 ## Cómo llegar
 

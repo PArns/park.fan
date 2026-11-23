@@ -280,6 +280,9 @@ Nel 2026 il weekend in cui tutte e tre le regioni avevano insieme le vacanze aut
 più affollato dell’anno. Nel 2027 sarà il weekend del 23 e 24 ottobre. Nell’estate del 2027 la
 regione Noord ha la prima settimana tutta per sé, dal 10 al 16 luglio.
 
+> [!PARKY] Prima settimana
+> Se dev’essere per forza nelle vacanze estive, nel 2027 andiamo tra il 10 e il 16 luglio, quando in vacanza c’è solo la regione Noord. Nel 2026 le prime due settimane di vacanza sono state le più tranquille di tutta l’estate, con attese alle attrazioni di punta brevi come a maggio e giugno dopo le vacanze di maggio, e code corte in piene vacanze non me le lascio scappare. Le due settimane prima le saltiamo: nel 2026 sono state più affollate di qualsiasi settimana delle vacanze estive.
+
 ## Halloween Fright Nights
 
 > [!NOTE]
@@ -405,6 +408,9 @@ e [El Rio Grande](ref:walibi-holland/el-rio-grande) e [Crazy River](ref:walibi-h
 in una giornata calda stanno bene nel pomeriggio, quando tanto sei già fradicio di sudore.
 [Space Shot](ref:walibi-holland/space-shot) ed [Eat My Dust](ref:walibi-holland/eat-my-dust) li
 infili negli spazi vuoti.
+
+> [!PARKY]
+> Se arriviamo solo alle 14, facciamo il giro al contrario: prima Condor, poi Xpress, che a quell’ora ha la coda dimezzata, Goliath dopo le 16 e YOY THRILL nell’ultima ora. Solo la coda di Untamed non torna più corta come alle 10, ed è il prezzo per aver dormito di più. L’ordine lo prepariamo prima di partire nel [pianificatore della giornata](/trip-planner).
 
 In una giornata Bassa o Normale il Fast Lane non ti serve. In una giornata Alta, in una Fright Night
 e per YOY THRILL può valerne la pena.

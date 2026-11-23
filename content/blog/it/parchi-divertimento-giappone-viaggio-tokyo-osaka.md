@@ -118,6 +118,9 @@ Tra Tokyo, Nagoya e Osaka prendi il Tokaido Shinkansen. Secondo l’orario il No
 
 Oltre al pullman, a Fuji-Q arrivi con il Fuji Excursion, un treno espresso che parte da Shinjuku alle 7:30 e ferma alla stazione di Fujikyu-Highland alle 9:26. L’ingresso del parco è subito fuori dai tornelli. L’ultimo Fuji Excursion di ritorno parte da lì alle 17:44, quindi se resti fino alla chiusura prendi il pullman delle 20:23.
 
+> [!PARKY]
+> D’inverno, dal lunedì al venerdì, andiamo a Fuji-Q con il Fuji Excursion delle 7:30 da Shinjuku. Alle 9:26 scendiamo proprio davanti all’ingresso, e tanto prima delle 10:00 di solito il parco non apre. Il pullman delle 6:45 lo lasciamo partire: da dicembre al 5 febbraio Fuji-Q non vende l’ingresso anticipato, e senza un vantaggio al cancello nemmeno io mi alzo così presto. Se il parco chiude alle 17:00, facciamo ancora in tempo per l’ultimo treno di ritorno delle 17:44.
+
 Per proseguire verso ovest da Fuji-Q non serve ripassare da Tokyo. I pullman arrivano alla stazione di Mishima in poco meno di un’ora e mezza, e lì ferma il Kodama per Nagoya. Un pullman diretto collega il lago Kawaguchi con la stazione dei pullman di Meitetsu a Nagoya, in circa quattro ore e mezza. Per Osaka c’è il pullman notturno Fujiyama Liner, che parte da Fuji-Q alle 21:01 e arriva a Kyoto alle 5:57 e a Umeda alle 6:53. Si prenota da due mesi prima, e arrivi a Osaka prima della colazione, anche se pure prima di aver dormito abbastanza.
 
 Durante la Golden Week, Obon, la Silver Week e intorno a Capodanno tutti i posti del Nozomi sono prenotati, nel 2026-2027 dal 25 dicembre al 5 gennaio. Nell’inverno 2026-2027 si aggiungono i fine settimana lunghi dal 9 all’11 gennaio e dal 20 al 22 marzo. Senza prenotazione viaggi in piedi nel corridoio o sulla piattaforma tra le carrozze. Hikari e Kodama mantengono carrozze senza prenotazione anche in quei giorni.
@@ -135,6 +138,9 @@ Ogni data va in vendita due mesi prima alle 14:00 ora del Giappone, e i giorni p
 ### Universal Studios Japan
 
 USJ vende ogni Studio Pass per una data fissa: l’1 Day, il 2 Day per due giorni interi, l’1.5 Day con il primo giorno dalle 15:00 e il secondo dall’apertura, e il Twilight Pass dalle 15:00. Se esci dal parco, con lo Studio Pass non rientri. USJ non accetta biglietti comprati su siti di rivendita o di aste.
+
+> [!PARKY] Calza a pennello
+> Se nel giorno di cambio hotel arriviamo a Osaka solo nel pomeriggio, per USJ prendiamo l’1.5 Day Studio Pass: il primo giorno entriamo dalle 15:00, il secondo dall’apertura. Dei cinque parchi, USJ è quello dove arrivare presto rende di più, e per il rope drop mi alzo presto volentieri. Con lo Studio Pass non si può uscire e rientrare, quindi la prima sera restiamo fino alla chiusura.
 
 ### Fuji-Q Highland
 

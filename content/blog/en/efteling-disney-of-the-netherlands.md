@@ -537,6 +537,9 @@ Then cut across Anderrijk to [Danse Macabre](ref:efteling/danse-macabre) and
 barely moves from midday into the afternoon and only shortens towards
 evening, so you can save that one.
 
+> [!PARKY]
+> We join the Danse Macabre queue while we’re still in Ruigrijk, digitally in the free Efteling app, and ride Joris en de Draak until the phone buzzes. Queuing without standing in a queue is my favourite kind. The rest of the day we plan ride by ride in the [day planner](/trip-planner) before we set off.
+
 **At midday, go to the Fairytale Forest**, when the queues at the rides are at
 their longest. You don’t queue for anything in there. Give it an hour, not twenty minutes.
 
@@ -639,6 +642,9 @@ of the year. If you want to see the winter season in peace, take a weekday in
 November or the second half of January, not the week between Christmas and New
 Year. Check the park’s maintenance list first: in 2026 Droomvlucht is closed from 9
 November to 4 December, Joris en de Draak from 30 November to 18 December.
+
+> [!PARKY] January wins
+> Of the two quieter stretches we take the second half of January, on a weekday: in 2026 Droomvlucht is closed for maintenance until 4 December and Joris en de Draak until the 18th, and in January neither of them is. For Aquanura in the dark I’ll pull a beanie over my Ferris wheel. Whether the outdoor coasters run is then down to the weather alone.
 
 My pictures here were all taken on a single winter evening.
 

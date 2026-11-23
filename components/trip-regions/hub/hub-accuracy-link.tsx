@@ -5,7 +5,7 @@ import { FaqLink } from '@/components/faq/faq-link';
 import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
 import { TRIP_ACCURACY_ID } from '@/lib/trip-regions/paths';
 
-/** The accuracy line's link to its question in chapter 04, counted as `trip_accuracy_opened`. */
+/** The accuracy line's link to its question in the questions chapter, counted as `trip_accuracy_opened`. */
 export function HubAccuracyLink({ region, children }: { region: string; children: ReactNode }) {
   return (
     <FaqLink

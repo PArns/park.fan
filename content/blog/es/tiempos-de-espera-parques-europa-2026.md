@@ -149,6 +149,9 @@ En el Parc Astérix medimos hasta las 21:00 en las tardes de verano, y en la úl
 
 El Parque de Atracciones de Madrid, en la Casa de Campo, no abre hasta el mediodía, y allí la primera hora es la más tranquila; la cola más larga llega al caer la tarde. Si te quedas durmiendo en Blackpool Pleasure Beach, no te pierdes nada, porque allí la espera en las grandes atracciones se mantiene casi igual todo el día.
 
+> [!PARKY]
+> El rope drop es sagrado para mí, pero no lo voy a desperdiciar: en Thorpe Park no vamos primero a Hyperia, porque allí la cola mantiene casi la misma longitud todo el día. En PortAventura dejamos Uncharted para la noche, ya que su primera hora es la más larga del día, y en el [planificador del día](/trip-planner) la ponemos directamente al final.
+
 ## Lo que cambió la lluvia
 
 En los días de lluvia, la gente hizo menos cola que en los días secos del mismo mes en los doce parques de nuestra [comparativa sobre la lluvia](/blog/parque-de-atracciones-con-lluvia), y en Movie Park Germany casi un tercio menos. Allí cuenta como día de lluvia el que deja al menos dos milímetros. Una previsión de lluvia para el sábado es, por tanto, más bien un motivo para ir, sobre todo a Movie Park, mientras no anuncien tormenta.

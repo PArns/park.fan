@@ -31,11 +31,10 @@ coverImage:
   caption: 'Sechs Wochen im Jahr heißt der Park Horrorwood Studios, und so steht es dann auch in Leuchtschrift am Eingang.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park Wartezeiten & Halloween 2026, ohne Batman'
+  title: 'Movie Park: Wann ist am wenigsten los? Beste Tage und Preise'
   description: >-
-    Movie Park mit gemessenen Wartezeiten: der Wochentag, bei dem Ratgeber
-    irren, Herbst-Fahrplan, Halloween bis 8.11. und wie du den Kassenaufschlag
-    sparst.
+    Im Movie Park stehst du freitags am kürzesten an, und sonntags ist weniger
+    los als samstags. Hollywood Christmas läuft vom 27. November bis 5. Januar.
   keywords:
     - Movie Park Germany
     - Movie Park Wartezeiten
@@ -540,6 +539,9 @@ Für den Pass selbst gilt:
 - **Es gibt ein Tageskontingent.** Jeder Besuch muss vorher angemeldet werden,
   und die nächste Buchung geht erst am Tag nach deinem Besuch. Spontan hinfahren
   geht mit Pass also schlechter als mit Tagesticket.
+
+> [!PARKY] Gold statt Silber
+> Fahren wir 2027 mehr als zweimal mit dem Auto hin, nehmen wir Gold statt Silber: Gold kostet 20 € mehr, die Parkkarte für Silber allein schon 25 €, und ohne Karte wären es 9 € pro Besuch. Dazu gibt es mit Gold dreimal freien Eintritt im Bobbejaanland, so rechne ich gern. Sperrtage hat Gold außerdem keine.
 
 **Anreise.** Die Adresse ist **Warner-Allee 1, 46244 Bottrop**. Mit dem Auto
 über die A31 und dort über die Ausfahrt 39 Bottrop-Feldhausen, auch wenn das Navi

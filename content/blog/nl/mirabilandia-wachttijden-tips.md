@@ -220,6 +220,9 @@ Uitgesloten zijn Desmo Race, Blu River en The Walking Dead. De Flash Pass geldt 
 
 Waar de wachttijd rond een kwartier ligt, bespaart de pas niet veel. Het meest levert hij op bij Rio Bravo, iSpeed en Autosplash. Het pakket “VIP” combineert entree, het all-inclusivemenu en een Regular Flash Pass.
 
+> [!PARKY] Regular is genoeg
+> Als we een Flash Pass nemen, dan de Regular, en die kopen we uiterlijk de dag ervoor online: op de dag van aankoop geldt een online gekochte pas niet, en in het park kost hij vanaf € 29,90 in plaats van vanaf € 24,90. Eén rit per attractie is genoeg bij Rio Bravo, iSpeed en Autosplash, waar hij het meest oplevert, en nat worden we met voorrang net zo goed. Bij Desmo Race geldt hij sowieso niet, daar staan we vroeg in de middag gewoon in de rij.
+
 ## Tickets en seizoenskaart
 
 Het dagticket voor volwassenen (boven 140 centimeter) begint online bij € 27,90, hoe eerder je boekt hoe goedkoper. Volgens het park bespaar je tot € 20 als je minstens tien dagen van tevoren koopt (actie tot 25 oktober). Aan de kassa kost het ticket € 49,90. De gereduceerde kaart voor kinderen van 100 tot 140 centimeter en voor senioren boven 60 kost online vanaf € 27,90 en aan de kassa € 42,90. Kinderen onder 100 centimeter betalen niets. Het avondticket vanaf 17 uur kost € 22,90. Het ticket met open datum kost € 49,90 (gereduceerd € 42,90) en geldt tot het einde van het seizoen.

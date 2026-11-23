@@ -30,11 +30,10 @@ coverImage:
   caption: 'For six weeks a year this park is called Horrorwood Studios, and that’s what the illuminated lettering at the entrance says too.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park Wait Times & Halloween 2026, minus Batman'
+  title: 'Movie Park Germany: when is it least busy? Best days, tips'
   description: >-
-    Measured wait times at Movie Park: the weekday the tip sheets get wrong, the
-    autumn timetable, Halloween until 8 November and how to dodge the gate
-    price.
+    At Movie Park the queues are shortest on Fridays, and Sunday is quieter than
+    Saturday. Hollywood Christmas runs from 27 November to 5 January.
   keywords:
     - Movie Park Germany
     - Movie Park wait times
@@ -532,6 +531,9 @@ For the pass itself:
 - **There’s a daily quota.** Every visit has to be registered beforehand, and
   the next booking is only possible the day after your visit. So going on a whim
   works worse with a pass than with a day ticket.
+
+> [!PARKY] Gold over Silver
+> If we’re driving there more than twice in 2027, we get Gold rather than Silver: Gold costs €20 more, but the parking season ticket for Silver costs €25 on its own, and without it you pay €9 a visit. On top of that, Gold comes with three free entries at Bobbejaanland, which is my kind of maths. And Gold has no blackout dates.
 
 **Getting there.** The address is **Warner-Allee 1, 46244 Bottrop**. By car via
 the A31, and there via exit 39 Bottrop-Feldhausen, even if your satnav suggests

@@ -353,6 +353,9 @@ Wartezeit in den Islands of Adventure im September, im Epic Universe im August u
 Studios im Mai. Unter den Wochentagen ist in den Studios und den Islands of Adventure der Samstag am
 vollsten. Im Epic Universe unterscheiden sich die Wochentage kaum.
 
+> [!PARKY]
+> Fällt ein Samstag in unsere Reise, bekommt ihn das Epic Universe: In den Studios und in den Islands of Adventure ist der Samstag der vollste Tag, im Epic Universe unterscheiden sich die Wochentage kaum. Dem Park ist der Samstag also fast egal, und mir dann auch. Welcher der beiden anderen auf welchen Tag unter der Woche kommt, sortieren wir im [Reiseplaner](/orlando#planner).
+
 Im Herbst sind die Studios an den Abenden der Halloween Horror Nights für normale Gäste früher zu. Alle
 Termine, Preise und Häuser stehen in unserem Überblick [Halloween in den
 USA](/blog/halloween-usa-freizeitparks-2026). Die Feiertagssaison läuft vom 14. November bis zum 3.
@@ -405,6 +408,9 @@ Kinder zwischen der Mindestgröße und 1,22 Metern brauchen eine Begleitperson. 
 höhere Grenze: Stardust Racers und Revenge of the Mummy ab 1,22 Metern, VelociCoaster ab 1,30 Metern,
 Doctor Doom's Fearfall ab 1,33 Metern und der Hulk ab 1,38 Metern. Bei den meisten dieser Bahnen steht
 vor dem Einstieg ein Testsitz, in dem du ausprobieren kannst, ob du hineinpasst.
+
+> [!PARKY]
+> Mit einem Kind ab 1,02 Metern laufen wir im Epic Universe zur Öffnung alle zusammen los: Mine-Cart Madness und das Battle at the Ministry, die beiden starken Tipps für den frühen Start, nehmen es schon mit, bis 1,22 Meter mit Begleitung. So steht der Nachwuchs noch vor dem zweiten Kaffee im Zaubereiministerium. Mario Kart, Curse of the Werewolf und Hiccup's Wing Gliders gelten ab derselben Größe, die setzen wir im [Tagesplaner](/trip-planner) gleich dahinter.
 
 Seuss Landing in den Islands of Adventure ist der Bereich für die Kleinsten. Laut Universal gilt dort
 nur an zwei Bahnen eine Mindestgröße, an beiden 0,92 Meter. In den Studios gehören Minion Land und DreamWorks Land

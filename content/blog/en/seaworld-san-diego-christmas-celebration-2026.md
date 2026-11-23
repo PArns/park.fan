@@ -55,6 +55,9 @@ Clyde and Seamore return to Sea Lion Stadium with their Christmas Special, along
 
 On Holiday Plaza, a 30-foot (9-meter) Christmas tree lights up every evening. The SkyTower turns into the 320-foot (98-meter) Tree of Lights, and the palm trees are lit like candy canes. You'll find Santa at Santa's Cottage on the SkyTower Lawn; two of his reindeer stand by Rentals, and Rudolph is in the Holly Jolly Marketplace. The fireworks show A Christmas Wish happens only twice, on Saturday, December 12, and on New Year's Eve.
 
+> [!PARKY] The 12th it is
+> If our Southern California trip falls in December, SeaWorld San Diego gets Saturday, December 12: that's one of only two nights with the fireworks show A Christmas Wish, the other being New Year's Eve. By the time it starts, I'm hoping Baby Shark is out of my head. We fit the other parks around that day in the [trip planner](/california#planner).
+
 ## Hours in November
 
 Friday, November 13, is the Christmas Celebration Pass Member Preview for annual pass holders. The park is open from 10 am to 9 pm that day. From Saturday, November 14, the Christmas Celebration runs during regular park hours, local time:

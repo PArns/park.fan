@@ -29,9 +29,10 @@ coverImage:
   caption: 'Picknicktisch über dem Strand am Santa Cruz Beach Boardwalk in Kalifornien, hinten der Giant Dipper.'
   credit: 'Polina Lavor / Unsplash'
 seo:
-  title: 'Essen mitbringen: Movie Park, Europa-Park, Phantasialand'
+  title: 'Darf man Essen mitnehmen? Europa-Park, Movie Park & Co.'
   description: >-
-    Movie Park, Europa-Park, Phantasialand, Heide Park: Essen und Getränke darfst du mitbringen, Alkohol nicht überall. Was 15 Parks erlauben.
+    Im Europa-Park, Movie Park, Phantasialand und Heide Park darfst du Essen und
+    Getränke mitnehmen. Alkohol verbieten Phantasialand und Movie Park.
   keywords:
     - Freizeitpark Essen mitbringen erlaubt
     - Freizeitpark Getränke mitbringen
@@ -121,6 +122,9 @@ Essen, Trinkflaschen, Kühlboxen und Glas kommen auf der Liste nicht vor.
 
 Im Restaurant Uhrwerk in Rookburgh kostet der Hähnchen-Burger The Navigator mit Pommes frites 26,00 €, eine Coca-Cola mit 0,2 Litern 3,30 €. Den Kinderburger für 14,00 € gibt es dort nur zusammen mit einem Gericht für Erwachsene. In Rutmor's Taverne kostet das Vesperbrett für eine Person 21,50 €.
 
+> [!PARKY]
+> Fürs Phantasialand schneiden wir Brot und Obst schon zu Hause: Messer und Scheren stehen auf der Liste der verbotenen Gegenstände, das kleine Obstmesser fürs Picknick also auch, und ein Apfel geht zur Not am Stück. Zu viert kämen wir im Uhrwerk mit zwei Navigator-Burgern mit Pommes und zwei Kinderburgern auf 80 €, und da steht noch keine Cola auf dem Tisch.
+
 Neben dem Gästeservice am Kaiserplatz in Berlin liegt ein Stillraum, und die Mitarbeiter helfen beim Aufwärmen von Babynahrung.
 
 ### Heide Park
@@ -199,6 +203,9 @@ nutzen kannst, an der Waldstube und an der Katara Plaza. Der Park nennt sie auch
 Das Parkreglement liegt am Eingang aus und steht auf der Website als Download.
 
 Getränke bekommst du in Mehrwegbechern mit 1,50 € Pfand. Becher, Flaschen und Dosen gibst du an Pfandautomaten zurück, die an vier Stellen im Park stehen.
+
+> [!PARKY]
+> Im Toverland nehmen wir das Mittagessen in einer Dose mit und wärmen es in einer der beiden kostenlosen Mikrowellen auf, an der Waldstube oder an der Katara Plaza. Warm und zwischen zwei Achterbahnen schmeckt mir das fast so gut wie ein Churro. Bis mittags liegt die Dose im Schließfach in Port Laguna oder im Land van Toos, das für 2 € beliebig oft aufgeht.
 
 ### Walibi Holland
 

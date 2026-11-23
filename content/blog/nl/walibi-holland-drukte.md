@@ -266,6 +266,9 @@ In 2026 was het weekend waarin alle drie de regio's tegelijk herfstvakantie hadd
 het jaar. In 2027 is dat het weekend van 23 en 24 oktober. In de zomer van 2027 heeft Noord de
 eerste week, van 10 tot en met 16 juli, alleen.
 
+> [!PARKY] De eerste week
+> Moet het in de zomervakantie, dan gaan we in 2027 van 10 tot en met 16 juli, als alleen Noord vakantie heeft. In 2026 waren de eerste twee vakantieweken de rustigste van de hele zomer, met wachttijden bij de headliners zo kort als in mei en juni na de meivakantie, en korte rijen midden in de vakantie laat ik niet liggen. De twee weken daarvoor slaan we over: die waren in 2026 drukker dan elke week in de zomervakantie.
+
 ## Halloween Fright Nights
 
 > [!NOTE]
@@ -387,6 +390,9 @@ Xpress is de enige baan die je bewust niet in de ochtend doet. ’s Middags is d
 passen op een warme dag in de middag, als je toch al nat van het zweet bent.
 [Space Shot](ref:walibi-holland/space-shot) en [Eat My Dust](ref:walibi-holland/eat-my-dust)
 schuiven ertussen.
+
+> [!PARKY]
+> Komen we pas om 14 uur binnen, dan doen we de ronde achterstevoren: eerst Condor, dan Xpress, waar de rij nu nog maar half zo lang is, Goliath na 16 uur en YOY THRILL in het laatste uur. Alleen Untamed wordt niet meer zo kort als om 10 uur, dat is de prijs van uitslapen. De volgorde zetten we vooraf in de [dagplanner](/trip-planner).
 
 Een Fast Lane heb je op een Lage of Normale dag niet nodig. Op een Hoge dag, op een Fright Night en
 voor YOY THRILL kan hij lonen.

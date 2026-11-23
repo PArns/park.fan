@@ -21,6 +21,15 @@ import { PARK_STATS_SEGMENTS } from '../lib/parks/stats-segments.ts';
 import { PARK_KIDS_SEGMENTS } from '../lib/parks/kids-segments.ts';
 import { BEST_TIME_SEGMENTS } from '../lib/best-time/segments.ts';
 import { LIVE_TRIP_REGIONS, tripRegionSegment } from '../lib/trip-regions/registry.ts';
+import {
+  FORECAST_WINDOW,
+  NO_STORE,
+  PARKY_TIP_NONE_WINDOW,
+  PARKY_TIP_TODAY_WINDOW,
+  CALENDAR_TODAY_WINDOW,
+  PARKY_TIP_WINDOW,
+  tagPurgedCacheHeaders,
+} from '../lib/api/cdn-cache-headers.ts';
 
 const PARK = 'parks/europe/germany/rust/europa-park';
 
@@ -145,5 +154,123 @@ for (const region of LIVE_TRIP_REGIONS) {
   }
   console.log(`  ✓ a best-time path under ${region.slug}'s hub is not a month`);
 }
+
+// The relays the backend rings by tag: under `next start` the rule decides, on Vercel the handler,
+// so the rule must send exactly the handler's windows, and Cloudflare must get the short one. Where
+// a handler sends more than one window, which a path rule cannot tell apart, the rule carries the
+// shortest and must never outlast any of them: the calendar's for a range holding the park's today,
+// the tip's for a 204.
+const TAG = 'park-calendar:europe/germany/rust/europa-park';
+const RUNG_KEYS = ['Cache-Control', 'CDN-Cache-Control', 'Vercel-CDN-Cache-Control'];
+const RUNG_ROUTES = {
+  calendar: {
+    window: FORECAST_WINDOW,
+    rule: CALENDAR_TODAY_WINDOW,
+    sent: [FORECAST_WINDOW, CALENDAR_TODAY_WINDOW],
+  },
+  'best-days': { window: FORECAST_WINDOW, rule: FORECAST_WINDOW, sent: [FORECAST_WINDOW] },
+  'parky-tip': {
+    window: PARKY_TIP_WINDOW,
+    rule: PARKY_TIP_NONE_WINDOW,
+    sent: [PARKY_TIP_WINDOW, PARKY_TIP_TODAY_WINDOW, PARKY_TIP_NONE_WINDOW],
+  },
+};
+const DIRECTIVES = ['max-age', 's-maxage', 'stale-while-revalidate'];
+const seconds = (value, directive) =>
+  Number(new RegExp(`\\b${directive}=(\\d+)`).exec(value)?.[1] ?? 0);
+for (const [route, { window, rule, sent }] of Object.entries(RUNG_ROUTES)) {
+  const path = `/api/${PARK}/${route}`;
+  const handler = tagPurgedCacheHeaders(window, [TAG]);
+  const ruled = tagPurgedCacheHeaders(rule, [TAG]);
+  for (const key of RUNG_KEYS) {
+    const { value } = headerFor(path, key.toLowerCase());
+    assert.equal(
+      value,
+      ruled[key],
+      `${path}: ${key} is "${value}", the handler sends "${ruled[key]}"`
+    );
+    for (const handled of sent) {
+      const sentValue = tagPurgedCacheHeaders(handled, [TAG])[key];
+      for (const directive of DIRECTIVES) {
+        assert.ok(
+          seconds(value, directive) <= seconds(sentValue, directive),
+          `${path}: the rule's ${key} ${directive} outlasts the handler's "${sentValue}"`
+        );
+      }
+    }
+    passed++;
+  }
+  assert.match(
+    handler['CDN-Cache-Control'],
+    /\bs-maxage=3600\b/,
+    `${route}: Cloudflare keeps an hour`
+  );
+  assert.match(
+    handler['Vercel-CDN-Cache-Control'],
+    /\bs-maxage=86400\b/,
+    `${route}: Vercel keeps a day`
+  );
+  assert.equal(handler['Vercel-Cache-Tag'], TAG);
+  passed += 3;
+  console.log(
+    `  ✓ /api/…/${route}: ${rule === window ? 'rule and handler agree' : 'the rule is the shortest window the handler sends'}, Vercel until the ring, Cloudflare an hour`
+  );
+}
+
+// Today's tip says how busy the day has been so far, which moves during the day and no ring
+// announces: Vercel and Cloudflare together keep it an hour at most, and the browser no longer than
+// Cloudflare.
+const todayTip = tagPurgedCacheHeaders(PARKY_TIP_TODAY_WINDOW, [TAG]);
+const longest = (value) => seconds(value, 's-maxage') + seconds(value, 'stale-while-revalidate');
+assert.ok(
+  longest(todayTip['Vercel-CDN-Cache-Control']) + longest(todayTip['CDN-Cache-Control']) <= 3600,
+  'parky-tip today: Vercel and Cloudflare together keep it longer than an hour'
+);
+assert.ok(
+  seconds(todayTip['Cache-Control'], 'max-age') +
+    seconds(todayTip['Cache-Control'], 'stale-while-revalidate') <=
+    longest(todayTip['CDN-Cache-Control']),
+  'parky-tip today: the browser keeps it longer than Cloudflare'
+);
+assert.equal(todayTip['Vercel-Cache-Tag'], TAG);
+passed += 3;
+console.log('  ✓ /api/…/parky-tip for today: an hour at most at Vercel and Cloudflare together');
+
+// A calendar range holding the park's today carries its level so far, which moves without a ring:
+// an hour at most at Vercel and Cloudflare together, and nothing in the browser's HTTP cache, as
+// for any other range.
+const todayCalendar = tagPurgedCacheHeaders(CALENDAR_TODAY_WINDOW, [TAG]);
+assert.ok(
+  longest(todayCalendar['Vercel-CDN-Cache-Control']) +
+    longest(todayCalendar['CDN-Cache-Control']) <=
+    3600,
+  'calendar today: Vercel and Cloudflare together keep it longer than an hour'
+);
+assert.equal(seconds(todayCalendar['Cache-Control'], 'max-age'), 0);
+assert.equal(todayCalendar['Vercel-Cache-Tag'], TAG);
+passed += 3;
+console.log('  ✓ /api/…/calendar holding today: an hour at most at Vercel and Cloudflare together');
+
+// A tip relay's 204 is kept minutes everywhere, not until the ring: what the API has nothing to say
+// about now (a spent budget, a failed call) it may have in an hour.
+for (const key of RUNG_KEYS) {
+  const value = tagPurgedCacheHeaders(PARKY_TIP_NONE_WINDOW, [TAG])[key];
+  assert.ok(seconds(value, 's-maxage') > 0, `parky-tip 204: ${key} "${value}" keeps nothing`);
+  for (const directive of DIRECTIVES) {
+    assert.ok(
+      seconds(value, directive) <= 600,
+      `parky-tip 204: ${key} keeps ${directive} longer than minutes`
+    );
+  }
+  passed++;
+}
+console.log('  ✓ /api/…/parky-tip 204: minutes in every cache');
+
+// An error under a rung route's rule must not take any of the rule's windows, Vercel's included.
+for (const key of RUNG_KEYS) {
+  assert.match(NO_STORE[key] ?? '', /\bno-store\b/, `NO_STORE sends no ${key}`);
+  passed++;
+}
+console.log("  ✓ NO_STORE overrides every header a rung route's rule sets");
 
 console.log(`\n${passed} passed`);

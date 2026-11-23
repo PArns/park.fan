@@ -7,7 +7,7 @@ import { formatParkDay } from '@/lib/utils/park-day';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { DAY_SIGNAL_CLASS, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { sentenceCase } from '@/lib/utils/sentence-case';
-import { cleanBreakName } from '@/lib/trip-regions/best-time';
+import { cleanBreakName } from '@/lib/trip-regions/break-runs';
 import { formatDateRange } from '@/lib/trip-regions/hub-data';
 import { stormSignal, type MonthEvent, type StormCode } from '@/lib/trip-regions/date-facts';
 import type { ParkCodeEntry } from '@/lib/trip-regions/plan-week';

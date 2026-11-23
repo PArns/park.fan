@@ -53,6 +53,9 @@ An der Oscar's Wacky Taxi Stage steht der 1-2-3 Christmas Tree, gut neun Meter (
 
 Den Weihnachtsmann triffst du in Santa's Furry Workshop neben dem Sesame Street Theater. Anstellen musst du dich dort in diesem Jahr nicht mehr. Du meldest dich am Tinsel Tent vor der Werkstatt an, bekommst eine SMS, wenn ihr an der Reihe seid, und hast dann 20 Minuten, um hinzukommen. Briefe an den Weihnachtsmann schreiben Kinder bei Letters to Santa in Mr. Hooper's Gift Shop. Heiligabend ist der letzte Tag mit Santa, die virtuelle Warteschlange schließt dann um 14 Uhr. Vom 26. Dezember bis zum 3. Januar sitzt in der Werkstatt Santa Cookie Monster.
 
+> [!PARKY]
+> Am Tinsel Tent melden wir uns gleich nach der Ankunft für den Weihnachtsmann an und wärmen uns dann in der Winter Warm-Up Lounge in Elmo's Pizza Kitchen bei heißer Schokolade auf. Eine Warteschlange, in der ich sitzen und heiße Schokolade trinken darf, ist ganz nach meinem Geschmack. Kommt die SMS, haben wir 20 Minuten bis zur Werkstatt neben dem Sesame Street Theater. An Heiligabend melden wir uns vor 14 Uhr an, dann schließt die virtuelle Warteschlange.
+
 ## Öffnungstage und Öffnungszeiten
 
 Geöffnet ist in der Regel freitags von 16 bis 20 Uhr, samstags von 11 bis 19 Uhr und sonntags von 13 bis 18 Uhr Ortszeit. Montags bis donnerstags bleibt er bis zum 17. Dezember zu, auch an Thanksgiving am 26. November. Abweichend gilt:

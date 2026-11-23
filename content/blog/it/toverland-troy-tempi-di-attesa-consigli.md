@@ -382,6 +382,9 @@ mercoledì e nei fine settimana dal 28 novembre al 16 dicembre e dal 6 al 17 gen
 gratuita paghi solo le corse, con gettoni da 2 € l’uno, e Troy ne costa tre. I
 normali biglietti giornalieri restano in vendita.
 
+> [!PARKY] Fatti un regalo
+> In uno dei giorni d’inverno gratuiti prenotiamo prima senza pagare e spendiamo quasi tutti i gettoni su Troy: tre da 2 € l’uno, quindi 6 € a giro. Intanto conto quante volte attraversiamo la stazione a tutta velocità. Un giro lo teniamo per la fine: se il parco chiude dopo il tramonto, facciamo Troy al buio, cosa che fuori dall’inverno capita solo nelle serate di Halloween.
+
 ## Quando andarci
 
 **Per mese** da aprile a luglio i valori stanno vicini, e sopra spiccano

@@ -140,6 +140,9 @@ Het is een flying theatre. Je zit in een gondel die voor een grote projectiekoep
 
 Het Flying Cinema hoort bij Plopsaland Plaza, met 25 miljoen euro de grootste investering in de geschiedenis van het park. Op de Plaza komen verder een grand café, een bowlingbaan, speelautomaten en een nieuw station voor de Plopsa Express. Op zomeravonden blijft de Plaza na sluitingstijd van het park vrij toegankelijk, en voor het Flying Cinema koop je dan een apart ticket. Volgens de eerste aankondiging draaien er 's avonds andere films dan overdag. Met de Plaza wil Plopsa naar twee miljoen bezoekers per jaar.
 
+> [!PARKY]
+> Willen we in de zomer alleen het Flying Cinema in, dan komen we 's avonds na sluitingstijd: de Plaza is dan vrij toegankelijk, en we betalen alleen het aparte ticket voor het Flying Cinema, geen entree voor het park. Venetië en Parijs in ongeveer vijf minuten, en niemand vraagt naar mijn paspoort. Kennen we de vlucht van overdag al, dan is de avond toch de moeite waard, want volgens de eerste aankondiging draaien er dan andere films.
+
 ### De Sprookjesbibliotheek in de Efteling
 
 In het Sprookjesbos van de [Efteling](ref:efteling) komt het 32e sprookje, de Sprookjesbibliotheek. Die staat op de plek waar tot maart 2026 de Chinese Nachtegaal stond. Je gaat een negen meter hoog gebouw binnen vol boeken met verhalen die een sprookjesverzamelaar op zijn reizen heeft bijeengebracht, en daar horen zeven ijverige dwergen bij. Het geraamte van het gebouw staat volgens het park al. Op de pagina “Nieuw in de Efteling” staat “Nieuw vanaf 2027”.

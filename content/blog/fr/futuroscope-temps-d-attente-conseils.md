@@ -219,6 +219,9 @@ pendant les vacances scolaires.
 Pour ne venir que le soir, on prend un billet Soirée (entrée dès 17 h) ou un billet Nocturne (dès
 20 h). Les deux comprennent le spectacle du soir et les attractions ouvertes en soirée.
 
+> [!PARKY]
+> Si on ne vient que le soir, on prend le billet Soirée et on paie le parking au tarif à partir de 14 h, 8 euros au lieu de 13. La Clé des Songes est comprise dans les deux billets du soir et a lieu aussi sous la pluie, et pour des images d'eau avec de la pyrotechnie, je veille volontiers tard. Avant, on fait les attractions ouvertes en soirée.
+
 ## Combien de temps on attend ici
 
 Jusqu'à début octobre 2026, nous avons mesuré sur 228 jours. Le Futuroscope compte beaucoup de
@@ -291,6 +294,9 @@ Cela explique que nos mesures de novembre et de décembre soient maigres.
 ```
 
 Qui est flexible choisit un jeudi ou un vendredi hors des vacances scolaires françaises.
+
+> [!PARKY] Va pour dimanche
+> Jusqu'au 18 décembre, le parc n'ouvre que le week-end, alors on y va le dimanche : le samedi est ici de loin le jour le plus chargé de la semaine, et le dimanche a, avec le jeudi et le vendredi, les attentes les plus courtes. Le samedi, on le passe à se réjouir d'avance, et ça se fait sans aucune file. Ensuite, le parc ouvre tous les jours jusqu'au 3 janvier.
 
 ### Futuroween 2026
 

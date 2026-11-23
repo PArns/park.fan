@@ -472,6 +472,9 @@ Rapidus queue, and there's a tube slide, La Glissade d'Obélix, a parade and a
 Christmas market. The coasters "generally" run, the park says, the water rides
 don't. An undated Christmas ticket costs 57 euros.
 
+> [!PARKY] Smart pick
+> The 57-euro Christmas ticket has no fixed date, and we make the most of that: we only pick the day once the weather forecast is in. In sub-zero temperatures the park closes some other rides as well as the water rides, and on a day like that even I'd just be doing pirouettes on the Patinoire Viking. The skates there are free.
+
 Between 9 November and 18 December 2026 the park is closed, and again from 4
 January until the season starts in spring. Since 2007 it's stayed open until
 after the autumn holidays; before that it closed in September. It opened in
@@ -533,6 +536,9 @@ Lutèce from 2020, with 149 rooms and four stars. For one night with one day's
 admission the park quotes from 99, 102 and 111 euros per person, based on two
 adults and two children in high season. The park is less than ten minutes' walk
 away, parking is free, and you get in half an hour early.
+
+> [!PARKY]
+> On a Paris trip we add a night at one of the Parc Astérix hotels in the [trip planner](/paris#planner). Hotel guests get into the Toutatis and Égypte areas half an hour before everyone else, which has me fidgeting before breakfast is over, and they park for free instead of paying 25 euros a day.
 
 You can book tables in the app at three restaurants: Le Relais Gaulois
 (self-service, 28.90 euros, Astérix and Obélix come round the tables at lunch),

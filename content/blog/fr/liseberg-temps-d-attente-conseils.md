@@ -396,6 +396,9 @@ Lisebergbanan. Le parc n’a pas encore publié les tarifs d’entrée pour Jul 
 Le Pays des Lapins a ouvert en 2026 pendant 42 jours supplémentaires en hiver,
 chaque week-end et pendant les vacances scolaires.
 
+> [!PARKY] Vive l’été
+> Toutes les grandes attractions le même jour, c’est seulement en été : Valkyria ne roule pas pendant Halloween, Helix et la Lisebergbanan ne faisaient pas partie de Jul en 2025, et AtmosFear ne fonctionne de toute façon qu’en été. Je ferme les yeux pendant la montée, mais la chute libre de 90 mètres, je ne la rate pas. Pour le marché de Noël, on revient volontiers, Balder et Valkyria tournaient aussi en 2025.
+
 ## Billets et tarifs
 
 Liseberg vend l’entrée et le bracelet d’attractions séparément. L’**Åkpass**

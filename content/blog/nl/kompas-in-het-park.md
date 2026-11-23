@@ -150,6 +150,9 @@ verandert geen kompas iets aan. De pijl wijst bovendien naar het ene punt dat we
 per attractie hebben opgeslagen. Waar bij die attractie de ingang van de rij
 ligt, staat niet in onze gegevens.
 
+> [!PARKY]
+> Wijst de pijl in het Phantasialand naar een muur, dan tikken we de attractie aan, zetten haar vast en volgen het pad in plaats van de rechte lijn. Zolang de afstand in de balk kleiner wordt, zitten we goed, ook als de pijl even naar achteren wijst, want door rotsen en gevels kom zelfs ik niet heen. Welke attractie daarna aan de beurt is, staat bij ons vooraf in de [dagplanner](/trip-planner).
+
 Hoe betrouwbaar de pijlen op dat moment zijn, lees je op het kompas zelf af.
 
 - Is je locatie meer dan 40 meter onnauwkeurig, dan staat er boven de cirkel

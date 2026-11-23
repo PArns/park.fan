@@ -68,6 +68,9 @@ At Christmas, families who've seen Santa in "Santa's List – Naughty or Nice" c
 
 The Diamond pass covers both parks, Dollywood's Splash Country included, and comes with free parking and four Bring-A-Friend-Free tickets. Gold and Diamond holders can use TimeSaver, a separate lane, at selected rides during the first hour of every operating day. [NightFlight Expedition](ref:dollywood/nightflight-expedition), which opened in August 2026, and [Big Bear Mountain](ref:dollywood/big-bear-mountain) are among them. Silver has blackout dates for adults and seniors, though the child's Silver pass has none. The Summer Fun Pass is good for unlimited visits from April 19 to September 10, 2027.
 
+> [!PARKY] Go Gold now
+> If we're heading to Smoky Mountain Christmas after December 13 and coming back in 2027, we get the 2027 pass in Gold right away: Silver only works this year until December 13, Gold through January 3. A 2027 pass that already works under the 2026 Christmas tree strikes me as pretty generous. Next year it gets us onto NightFlight Expedition and Big Bear Mountain through TimeSaver in the first hour.
+
 Children born in 2022 or 2023 get in free all season with the Pre-K Imagination Season Pass.
 
 These prices apply only if you're renewing a 2026 pass by November 1, and tax comes on top.

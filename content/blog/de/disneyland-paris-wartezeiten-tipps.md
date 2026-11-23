@@ -346,6 +346,9 @@ Indiana Jones sind morgens kurz nach der Öffnung dagegen deutlich kürzer als
 mittags. Fang also dort an und heb dir Peter Pan für den Abend auf. Alle acht Bahnen der Stundentabelle haben
 ihre längste Warteschlange zwischen 12 und 14 Uhr.
 
+> [!PARKY] Hier ja
+> Bleiben wir nicht bis zur letzten Stunde, bekommt Peter Pan unseren Premier Access One: Bei ihm spart der Pass mehr Zeit als bei Hyperspace Mountain, und am 25. September kostete er nur einen Euro mehr. Für den Flug nach Nimmerland ist mir der Euro nicht zu schade. Kaufen können wir ihn erst im Park in der App, und Hyperspace Mountain fahren wir sowieso morgens kurz nach der Öffnung.
+
 Und wenn du zwei Parks buchst, dreh die übliche Reihenfolge um und fang in
 Adventure World an, wo unsere Rope-Drop-Auswertung für Ratatouille und den Tower
 of Terror die größte Ersparnis des frühen Starts ausweist. Frozen Ever After ist abends am kürzesten und hat eine Single-Rider-Warteschlange.

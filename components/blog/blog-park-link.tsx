@@ -15,6 +15,7 @@ import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { isNotOperating } from '@/lib/blog/live-display';
 import { useLiveBlogPark } from '@/lib/blog/use-blog-live';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
+import { STANDALONE_CARD_ROWS_CLASS } from '@/components/parks/card-rows';
 
 /** Compact sizing so the live badges sit nicely inside running prose. */
 const INLINE_BADGE = 'h-[18px] gap-0.5 px-1.5 py-0 text-[10px] font-semibold no-underline';
@@ -108,16 +109,11 @@ export function BlogParkLink({
         align="start"
         className="w-[420px] border-none bg-transparent p-0 shadow-none backdrop-blur-none"
       >
-        {/*
-          ParkCard uses `row-span-3` with `subgrid`, so its three sections inherit row tracks from
-          this parent: auto / 1fr / auto, with no pinned height. `minmax(220px, 1fr)` keeps the card
-          at full height when there is no background image to open the middle row.
-        */}
         <BlogParkCardLive
           park={park}
           backgroundImage={backgroundImage}
           objectPosition={objectPosition}
-          className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
+          className={STANDALONE_CARD_ROWS_CLASS}
         />
       </HoverCardContent>
     </HoverCard>

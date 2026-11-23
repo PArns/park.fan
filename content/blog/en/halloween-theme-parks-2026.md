@@ -392,6 +392,9 @@ again. All of it comes with a regular ticket, and there’s no maze. On **31
 October** the park stays open until 11 p.m., with fireworks, and it’s the one
 day of the year when adults may come in costume too.
 
+> [!PARKY] Treat yourself
+> We save the costume for Paris: at Movie Park only children up to 1.40 m may dress up, while at Disneyland Park on 31 October adults may too. I’ll just go as a speech bubble, nobody there will bat an eye. That evening the park stays open until 11 p.m., with fireworks.
+
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 
 ### Alton Towers

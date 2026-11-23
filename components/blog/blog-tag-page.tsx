@@ -42,7 +42,7 @@ export async function buildTagMetadata(
   if (!canonicalTag) return {};
   const t = await getTranslations({ locale, namespace: 'blog' });
   const ogImageUrl = getOgImageUrl([locale, 'blog', 'tag', tag]);
-  const fullTitle = `${pagedTitle(`#${canonicalTag}`, page, t('pagination.pageLabel', { page }))} | ${t('title')} · park.fan`;
+  const fullTitle = pagedTitle(`#${canonicalTag}`, page, t('pagination.pageLabel', { page }));
   const description = t('tag.description', { tag: canonicalTag });
   const tagAlternates = buildTagAlternates(locale as Locale, tag, page);
   const url = `${SITE_URL}/${locale}${pagedPath(tagPath(tag), page)}`;

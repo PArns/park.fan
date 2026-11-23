@@ -102,7 +102,7 @@ export async function generateMetadata({ params }: FancastPageProps): Promise<Me
   const t = await getTranslations({ locale, namespace: 'fancast' });
   const ogImageUrl = getOgImageUrl([locale, 'fancast']);
 
-  const fullTitle = `${t('title')} | park.fan`;
+  const fullTitle = t('title');
 
   return {
     title: { absolute: fullTitle },

@@ -348,6 +348,9 @@ medio. Furius Baco, en PortAventura Park, tiene desde primera hora de la tarde u
 mitad que por la mañana. A Hyperia, en Thorpe Park, no la salva ninguna hora: de 10 a 17 h la espera
 es casi igual.
 
+> [!PARKY]
+> En Disneyland Paris, Premier Access One solo se vende el mismo día, y ni siquiera entonces lo compramos con el cruasán del desayuno: por la mañana montamos sin él en las grandes, y hasta mediodía no vemos cuál nos falta todavía. Si un día de mucha gente el cupo ya se ha agotado a esa hora, dejamos esa atracción para última hora de la noche, cuando las colas vuelven a acortarse.
+
 A Mammut y Blue Tornado, en Gardaland, mejor súbete por la tarde; sus colas son más largas hacia
 las 11. En el Parc Astérix, Pégase Express y Tonnerre 2 Zeus compensan por la noche. En Walibi
 Belgium, Vampire y Loup-Garou le dan la vuelta al día, con la cola más larga a la apertura y corta a

@@ -111,6 +111,9 @@ The single rider entrance is worth it in three cases: you are alone in the park,
 split, or you badly want one particular ride and the standard wait is too long for you. In the second
 case you split up, ride separately and meet at the exit.
 
+> [!PARKY]
+> With three of us on a ride that has two seats per row, such as WODAN, blue fire or Taron, we only half split up: two stay in the standard queue and sit together, and the third takes the single rider entrance. I’m happy to take the single seat, since I float off it next to strangers just the same. At the exit we’re three again.
+
 It isn’t worth it in these cases:
 
 - **You are riding with a child who needs a companion.** For Eurosat at Europa-Park the park’s page

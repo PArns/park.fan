@@ -107,6 +107,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `isNotOperating` _function_: True when a park/attraction status string means "not currently operating".
 - `waitTimeBadgeClass` _function_: Severity-coloured badge class for a wait time in minutes, on the same `waitTimeCrowdTier` thresholds and palette as `WaitTimeValue` and CrowdLevelBadge.
+- `inlinePerformanceSlot` _function_: What a blog ride reference shows for a ride that starts at set times: the next start (`HH:MM`), `pending` while the park's clock is not read yet, or null when it shows its status or wait as usual.
 
 ### [`live-overlay.ts`](../../lib/blog/live-overlay.ts)
 
@@ -207,9 +208,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`remark-callouts.ts`](../../lib/blog/remark-callouts.ts)
 
+- `parseParkyStamp` _function_: The verdict on a `[!PARKY]` marker line (`[!PARKY] Lohnt sich` followed by the tip) and how many characters of `value` that line takes, or null when the line holds none.
 - `remarkCallouts` _function_: Remark plugin that turns a blockquote starting with `[!NOTE]`, `[!CORRECTION]`, `[!QUOTE]` and the other markers into a callout tagged with `data-callout`.
 - `CALLOUT_TYPES` _const_: GitHub-style alert callouts (`> [!NOTE]`). remark-gfm leaves them as plain blockquotes; this plugin strips the `[!TYPE]` marker and tags the blockquote `data-callout="note"` for the renderer in blog-content.tsx.
 - `CALLOUT_MARKER_RE` _const_: A callout's `[!TYPE]` marker at the start of a blockquote; the admin editor reads the same one.
+- `PARKY_STAMP_MAX_CHARS` _const_: Longest verdict a Parky stamp carries. The stamp is one line in capitals; past this it would push out of a phone-wide card, so a longer marker line stays the tip's first sentence instead.
 - Types: `CalloutType`
 
 ### [`remark-table-themes.ts`](../../lib/blog/remark-table-themes.ts)

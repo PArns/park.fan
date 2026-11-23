@@ -280,6 +280,9 @@ En 2026, el fin de semana en que las tres regiones coincidieron en vacaciones de
 más gente del año. En 2027 será el fin de semana del 23 y el 24 de octubre. En el verano de 2027,
 Noord tendrá la primera semana, del 10 al 16 de julio, para ella sola.
 
+> [!PARKY] La primera semana
+> Si tiene que ser en vacaciones de verano, vamos en 2027 entre el 10 y el 16 de julio, cuando solo Noord está de vacaciones. En 2026, las dos primeras semanas de vacaciones fueron las más tranquilas de todo el verano, con esperas en las atracciones principales tan cortas como en mayo y junio después de las vacaciones de mayo, y colas cortas en plenas vacaciones no las dejo escapar. Las dos semanas anteriores nos las saltamos: en 2026 hubo en ellas más gente que en cualquier semana de las vacaciones de verano.
+
 ## Halloween Fright Nights
 
 > [!NOTE]
@@ -406,6 +409,9 @@ largo del día, y [El Rio Grande](ref:walibi-holland/el-rio-grande) y
 [Crazy River](ref:walibi-holland/crazy-river) encajan por la tarde en un día de calor, cuando de
 todos modos ya estás empapado de sudor. [Space Shot](ref:walibi-holland/space-shot) y
 [Eat My Dust](ref:walibi-holland/eat-my-dust) van entremedias.
+
+> [!PARKY]
+> Si no llegamos hasta las 14 h, hacemos la ronda al revés: primero Condor, luego Xpress, que a esa hora ya tiene la mitad de cola, Goliath después de las 16 h y YOY THRILL en la última hora. Solo la cola de Untamed ya no vuelve a ser tan corta como a las 10, y ese es el precio de dormir hasta tarde. El orden lo dejamos listo antes de ir en el [planificador del día](/trip-planner).
 
 En un día de afluencia Baja o Normal no necesitas Fast Lane. En un día de afluencia Alta, en una
 Fright Night y para YOY THRILL puede compensar.

@@ -70,6 +70,9 @@ Una scheda dà i minuti: l’attesa di picco nei tuoi giorni e quanto è più br
 
 Il piano ha tre viste: giorni, settimana e mese. Puoi fissare un giorno o scambiarlo con un altro, e prima di scambiarlo vedi quanti minuti ti costa. Singoli giorni o l’intero viaggio li passi al pianificatore della giornata, in un file di calendario in ora di Orlando o in un link a esattamente questo piano.
 
+> [!PARKY]
+> Se sulla scheda c’è scritto che l’ordine cambia poco, nel [pianificatore di viaggio](/orlando#planner) fissiamo prima il giorno che ci sta più a cuore, per esempio il Magic Kingdom per un compleanno, e scambiamo gli altri come ci fa comodo. Per meno di tre minuti ad attrazione non mi metto nemmeno a brontolare. Se l’ordine fa risparmiare di più, fissiamo solo quel giorno e lasciamo il resto dove l’ha messo il pianificatore.
+
 ## Se le date sono ancora aperte
 
 Sotto il calendario delle date, «Ancora senza date? Trova il periodo migliore» porta alla ricerca. Lì scegli una durata da 3 a 21 giorni e un periodo: i prossimi 12 mesi, un anno, una primavera, un’estate o un autunno, oppure date tue. Tornano i tre periodi migliori, ognuno con la sua attesa di picco e quanto sta sotto la media dell’intero periodo. Con «Solo nelle mie vacanze scolastiche» restano solo i periodi che cadono interamente nelle vacanze della tua regione, e vedi fin dove arrivano le nostre date delle vacanze. «Pianifica il viaggio in queste date» trasforma un periodo in un piano.

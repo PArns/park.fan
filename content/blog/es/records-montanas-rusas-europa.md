@@ -24,7 +24,7 @@ coverImage:
   caption: 'Cuando abrió en 2002, ninguna montaña rusa de acero de Europa subía más alto que esta rampa.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Las montañas rusas más rápidas, altas y largas de Europa'
+  title: '¿Cuál es la montaña rusa más alta y más rápida de Europa?'
   description: >-
     Red Force va a 180 km/h y mide 112 metros, Big One es la más larga y The Smiler tiene 14 inversiones. Silver Star y Kärnan, las más rápidas de Alemania.
   keywords:
@@ -238,6 +238,9 @@ Wildfire, en Kolmården, es la montaña rusa más rápida y más alta de Suecia.
 - Taron, Phantasialand: desde 1,30 m con un adulto, desde 1,40 m sin acompañante
 - Colossos, Heide Park: desde 1,40 m
 - Expedition GeForce, Plopsaland Deutschland: desde 1,40 m
+
+> [!PARKY]
+> Con 1,20 metros empieza la caza de récords: un niño ya puede subir a Wodan con un adulto, la número tres de madera de Europa en velocidad y altura. Con 1,30 metros y ocho años se suma Voltron Nevera, la montaña rusa con más inversiones de Alemania, y las rayitas del marco de la puerta se revisan mucho más a menudo. Desde 1,40 metros esperan en Salou tres de las cuatro montañas rusas más rápidas de Europa.
 
 ## Preguntas frecuentes
 

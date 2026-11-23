@@ -28,9 +28,10 @@ coverImage:
   caption: 'Taron in het basaltdorp Klugheim, voor mij de mooiste plek van het park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand tips: Quick Pass, rustige dagen, wachttijden'
+  title: 'Phantasialand tips: wanneer loont de Quick Pass?'
   description: >-
-    Phantasialand-wachttijden klein houden: de juiste dag, de Quick Pass, nu ook online, en Wintertraum, van iemand die er al ruim dertig jaar komt.
+    Op een rustige dag heb je in Phantasialand geen Quick Pass nodig. Op een
+    drukke loont hij voor Taron (€ 12) en F.L.Y., alleen in de Ultimate (€ 80).
   keywords:
     - Phantasialand wachttijden
     - Phantasialand wachttijden vermijden
@@ -230,6 +231,9 @@ drie prijsstappen: **35 €, 59 € en 78 €**, dus meer dan het dubbele voor d
 parkdag. De shop adverteert met tickets vanaf **44 €**. Spontaan kan ook, maar
 alleen online en alleen tot 14 uur op de bezoekdag zelf, tegen de dan geldende
 dagprijs en alleen als de dag niet is uitverkocht.
+
+> [!PARKY] Trakteer jezelf
+> We boeken zodra de datum vaststaat. Pakken we voor oktober of november de prijsstap van 35 € in plaats van die van 59 €, dan houden we 24 € over, en dat zijn, ik heb het twee keer nagerekend, precies twee Quick Passes voor Taron. Die kopen we op de ochtend van de bezoekdag.
 
 Jaarkaarten zijn er niet meer. Het Phantasialand haalde zijn Club-Karte in de
 pandemie uit de verkoop en bracht hem nooit terug; de laatste liepen in de zomer

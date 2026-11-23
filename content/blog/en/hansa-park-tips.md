@@ -25,10 +25,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: Opening Hours, Prices and Coasters'
+  title: 'Hansa-Park opening hours 2027 and the season pass price'
   description: >-
-    Hansa-Park 2026: open 26 March to 25 October without one closed day. The
-    2027 season starts 25 March. Plus prices, parking and all eight coasters.
+    Hansa-Park plans its 2027 season from 25 March to 24 October. Bought before
+    opening day, the season pass costs €120, then €140.
   keywords:
     - Hansa-Park
     - Hansa-Park tips
@@ -385,6 +385,9 @@ car park all through 2027; buy it by 24 March and parking is €1 a day.
 
 **Included in the ticket.** Every ride, show and hands-on attraction that's running. A few extras,
 such as the gold panning, cost separately.
+
+> [!PARKY] Get in early
+> If we're coming three times or more in 2027, we buy the season pass by 24 March: it's €120 instead of €140 then, and as adults we park for €1 a day instead of €7. Whatever's left over goes to Elins Vafflejern. Three day tickets for ages 12 and up already came to €159 in 2026.
 
 ## What comes in 2027
 

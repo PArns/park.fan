@@ -329,6 +329,9 @@ Op woensdag adverteert het park momenteel met € 36 in plaats van € 56 voor h
 ticket. Zonder kinderen of met kleuters lonen volgens
 de metingen weekdagen in september en oktober en in februari en maart.
 
+> [!PARKY] Woensdag dus
+> Maandag tot en met vrijdag ontlopen elkaar nauwelijks, dus nemen we de woensdag: dan adverteert het park momenteel met € 36 in plaats van € 56, en € 20 korting heb ik nog nooit afgeslagen. In maart 2026 was het zelfs de enige doordeweekse dag waarop het park überhaupt open was.
+
 In de herfst loopt de **Halloween Celebration** van 3 oktober tot en met 8
 november, en het park is dan dagelijks open, behalve op 10 oktober. Je ziet de
 Pumpkin King (een vogelverschrikker die Pumpkin Island
@@ -419,6 +422,9 @@ korting op de Express Pass Classic of Unlimited. Kinderen van 85 tot 99
 centimeter en senioren vanaf 70 betalen ongeveer de helft. Alle drie de kaarten
 bevatten 25 procent korting op tickets voor vrienden en familie (hooguit twee
 tickets per jaar) en de voorpremière van het Flying Cinema.
+
+> [!PARKY] Jaarkaart halen
+> Met ongedateerde tickets van € 56 heeft de Plopsaland Belgium Pass van € 150 zich bij het derde bezoek terugverdiend, met woensdagtickets van € 36 bij het vijfde. Met de kaart kunnen we vanaf 19 december op geselecteerde dagen ook al in het Flying Cinema, en met een bij als piloot heb ik nog nooit boven Europa gevlogen. Met een dagticket kan dat pas vanaf 13 maart.
 
 ## Praktisch in het park
 

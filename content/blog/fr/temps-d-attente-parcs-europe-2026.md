@@ -149,6 +149,9 @@ Au Parc Astérix, nous avons mesuré jusqu’à 21 h les soirs d’été, et c�
 
 Le Parque de Atracciones de Madrid, dans la Casa de Campo, n’ouvre qu’à midi, et la première heure y est la plus calme, alors que c’est en début de soirée que tu attends le plus. Si tu fais la grasse matinée avant Blackpool Pleasure Beach, tu ne rates rien, car l’attente aux grandes attractions y reste presque la même toute la journée.
 
+> [!PARKY]
+> Le rope drop, c’est sacré pour moi, mais je ne le gaspille pas : à Thorpe Park, on ne file pas d’abord à Hyperia, dont la file garde presque la même longueur toute la journée. À PortAventura, on garde Uncharted pour le soir, puisque sa première heure est la plus longue de la journée, et dans le [planificateur de journée](/trip-planner), on la met directement à la fin.
+
 ## Ce que la pluie a changé
 
 Les jours de pluie, les visiteurs ont attendu moins longtemps que les jours secs du même mois dans les douze parcs de notre [comparaison par temps de pluie](/blog/parc-d-attractions-sous-la-pluie), et au Movie Park Germany, de près d’un tiers. Un jour de pluie y est un jour avec au moins deux millimètres de précipitations. Une averse annoncée pour samedi est donc plutôt une raison d’y aller, surtout au Movie Park, tant qu’aucun orage n’est prévu.

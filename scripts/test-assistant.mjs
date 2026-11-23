@@ -26,9 +26,16 @@ import {
 import { readAssistantAction } from '@/lib/assistant/actions.ts';
 import { localeSwitchPath } from '@/lib/assistant/switch-locale.ts';
 import { reopenAfterSwitch, takeReopen } from '@/lib/assistant/open.ts';
+import { takeParkyAsk } from '@/lib/assistant/ask.ts';
 import { localizedPath } from '@/lib/i18n/localized-path.ts';
 import { splitWaits } from '@/lib/assistant/wait-chips.ts';
-import { isParkyDayTip, isServableTipRequest } from '@/lib/assistant/parky-tip.ts';
+import {
+  isParkyDayTip,
+  isServableTipRequest,
+  mayKeepNoTip,
+  tipAgreesWithLevel,
+  tipVerdictFor,
+} from '@/lib/assistant/parky-tip.ts';
 import {
   ASLEEP_AFTER_MS,
   BORED_AFTER_MS,
@@ -666,6 +673,23 @@ check(localeSwitchPath('//evil.example/de', 'en', null), null, 'never a path off
   check(takeReopen(), false, 'once');
   reopenAfterSwitch();
   check(takeReopen(Date.now() + 60_000), false, 'a switch that never landed opens nothing later');
+  // A tapped day tip hands its day and sentence to the chat with the question, once.
+  const dayTip = {
+    park: 'europe/germany/bruehl/phantasialand',
+    date: '2026-11-18',
+    text: 'Ruhig!',
+  };
+  store.set('parkfan:assistant-ask', 'Wie holen wir das Beste raus?');
+  store.set('parkfan:assistant-ask-day-tip', JSON.stringify(dayTip));
+  check(takeParkyAsk(), { question: 'Wie holen wir das Beste raus?', dayTip }, 'ask: tip with day');
+  check(takeParkyAsk(), null, 'ask: once');
+  store.set('parkfan:assistant-ask', 'Und?');
+  store.set('parkfan:assistant-ask-day-tip', '{"park":1}');
+  check(
+    takeParkyAsk(),
+    { question: 'Und?' },
+    'ask: a broken day tip costs the tip, not the question'
+  );
   delete globalThis.window;
 }
 
@@ -2202,17 +2226,134 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
 // Parky's day tip: what the relay lets into the CDN's cache key, and what it shows.
 {
   const now = Date.parse('2026-11-16T12:00:00Z');
-  check(isServableTipRequest('2026-11-16', 'de', now), true, 'tip: today');
-  check(isServableTipRequest('2026-11-15', 'en', now), true, 'tip: yesterday, a park west of UTC');
-  check(isServableTipRequest('2026-11-14', 'en', now), false, 'tip: two days ago');
-  check(isServableTipRequest('2027-02-16', 'nl', now), true, 'tip: the horizon');
-  check(isServableTipRequest('2027-02-17', 'nl', now), false, 'tip: past the horizon');
-  check(isServableTipRequest('2026-02-30', 'de', now), false, 'tip: no such day');
-  check(isServableTipRequest('2026-11-16', 'pt', now), false, 'tip: not a site language');
-  check(isServableTipRequest(null, 'de', now), false, 'tip: no date');
+  const today = '2026-11-16';
+  check(isServableTipRequest(today, today, 'de', now), true, 'tip: today');
+  check(
+    isServableTipRequest('2026-11-15', '2026-11-15', 'en', now),
+    true,
+    'tip: yesterday by UTC, today at a park west of UTC'
+  );
+  check(
+    isServableTipRequest('2026-11-15', today, 'en', now),
+    false,
+    "tip: before the park's today"
+  );
+  check(isServableTipRequest('2026-11-14', '2026-11-14', 'en', now), false, 'tip: two days ago');
+  check(isServableTipRequest('2027-02-16', today, 'nl', now), true, 'tip: the horizon');
+  check(isServableTipRequest('2027-02-17', today, 'nl', now), false, 'tip: past the horizon');
+  check(isServableTipRequest('2026-02-30', today, 'de', now), false, 'tip: no such day');
+  check(isServableTipRequest(today, '2026-11-19', 'de', now), false, 'tip: a today far from UTC');
+  check(isServableTipRequest(today, null, 'de', now), false, 'tip: no today');
+  check(isServableTipRequest(today, today, 'pt', now), false, 'tip: not a site language');
+  check(isServableTipRequest(null, today, 'de', now), false, 'tip: no date');
   check(isParkyDayTip({ verdict: 'good', text: 'Hin da!' }), true, 'tip: a tip');
   check(isParkyDayTip({ verdict: 'great', text: 'Hin da!' }), false, 'tip: unknown verdict');
   check(isParkyDayTip({ verdict: 'bad', text: '  ' }), false, 'tip: empty text');
+  check(
+    isParkyDayTip({ verdict: 'good', crowdLevel: 'very_low', text: 'Hin da!' }),
+    true,
+    'tip: with the level it was written for'
+  );
+  check(
+    isParkyDayTip({ verdict: 'good', crowdLevel: 'high', text: 'Hin da!' }),
+    false,
+    'tip: a level that disagrees with its own verdict'
+  );
+  check(
+    isParkyDayTip({ verdict: 'meh', crowdLevel: 'closed', text: 'Hm.' }),
+    false,
+    'tip: a level with no verdict'
+  );
+  // Without the level it was written for, a tip is held to its verdict.
+  check(
+    tipAgreesWithLevel({ verdict: 'bad' }, 'very_low'),
+    false,
+    'tip: "lieber nicht" over a quiet day'
+  );
+  check(tipAgreesWithLevel({ verdict: 'good' }, 'high'), false, 'tip: "hin da" over a busy day');
+  check(
+    tipAgreesWithLevel({ verdict: 'good' }, 'low'),
+    true,
+    'tip: low and very low share a verdict'
+  );
+  check(tipAgreesWithLevel({ verdict: 'meh' }, 'moderate'), true, 'tip: moderate is meh');
+  check(tipAgreesWithLevel({ verdict: 'bad' }, 'extreme'), true, 'tip: extreme is bad');
+  check(
+    tipAgreesWithLevel({ verdict: 'bad' }, 'unknown'),
+    true,
+    'tip: an unrated day contradicts nothing'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'good' }, null),
+    true,
+    'tip: no panel, nothing to contradict'
+  );
+  // With it, the level itself.
+  check(
+    tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, 'extreme'),
+    false,
+    'tip: a sentence for "hoch" over "extrem"'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'good', crowdLevel: 'low' }, 'very_low'),
+    false,
+    'tip: a sentence for "niedrig" over "sehr niedrig"'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'extreme' }, 'extreme'),
+    true,
+    'tip: written for the level the panel shows'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, 'unknown'),
+    true,
+    'tip: with its level, an unrated panel still contradicts nothing'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, null),
+    true,
+    'tip: with its level, no panel'
+  );
+  // Today's tip names the level so far it was written from; the dialog shows its own beside it.
+  const todayTip = { verdict: 'bad', crowdLevel: 'high', todayCrowdLevel: 'low' };
+  check(
+    tipAgreesWithLevel(todayTip, 'high', 'low'),
+    true,
+    'tip: today, the same level so far as „Heute bisher"'
+  );
+  check(
+    tipAgreesWithLevel(todayTip, 'high', 'very_high'),
+    false,
+    'tip: today, „bisher ruhig" beside „Heute bisher: sehr hoch"'
+  );
+  check(
+    tipAgreesWithLevel(todayTip, 'extreme', 'low'),
+    false,
+    'tip: today, the same level so far does not excuse another forecast'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, 'high', 'low'),
+    true,
+    'tip: today, a tip without a level so far contradicts no „Heute bisher"'
+  );
+  check(
+    tipAgreesWithLevel(todayTip, 'high', null),
+    true,
+    'tip: today, a dialog without a level so far has nothing to contradict'
+  );
+  check(tipAgreesWithLevel(todayTip, 'high'), true, 'tip: no level so far passed at all');
+  check(mayKeepNoTip('private, max-age=300'), true, 'tip: the API lets its 204 be kept');
+  check(mayKeepNoTip('public, max-age=300, s-maxage=300'), true, 'tip: the shared 204 too');
+  check(
+    mayKeepNoTip('private, no-store'),
+    false,
+    "tip: a today that is not the park's keeps nothing"
+  );
+  check(mayKeepNoTip('No-Store'), false, 'tip: in any case');
+  check(mayKeepNoTip(null), true, 'tip: a 204 without a header takes the relay window');
+  check(tipVerdictFor('very_high'), 'bad', 'tip: very high is bad');
+  check(tipVerdictFor('closed'), null, 'tip: a closed day gets no tip');
+  check(tipVerdictFor('unknown'), null, 'tip: an unrated day gets no tip');
 }
 // Parky's stamp on a ride's live wait: only on a ride that usually queues, the walk-on first, then
 // half the usual or less.

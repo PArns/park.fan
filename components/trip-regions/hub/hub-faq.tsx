@@ -2,6 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import { HelpCircle } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
+import { SectionMark } from '@/components/analytics/section-mark';
+import { SectionSeenTracker } from '@/components/analytics/section-seen-tracker';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { FaqList } from '@/components/marketing/editorial-ui';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
@@ -85,7 +87,7 @@ interface Item {
 const keyed = (key: string, item: Item | null): Item | null => item && { ...item, key };
 
 /**
- * Chapter 04's questions, answered from the data the page shows. The hub asks ten: the region's
+ * The questions chapter, answered from the data the page shows. The hub asks ten: the region's
  * data questions first (the quietest and busiest days per resort, the events of the window, a park
  * on a party night, a park on weekends, the drive between the resorts, the hotels' early slots,
  * the region's questions with a fixed answer, then the weekdays, the breaks and the hours where
@@ -100,7 +102,6 @@ const keyed = (key: string, item: Item | null): Item | null => item && { ...item
  * same array; without a question there is no chapter and no `FAQPage`.
  */
 export async function HubFaq({
-  index,
   region,
   calendar,
   summaries,
@@ -108,8 +109,6 @@ export async function HubFaq({
   accuracy,
   locale,
 }: {
-  /** The chapter's number: 04 after the best-time chapter, 03 where a region has none. */
-  index: string;
   region: TripRegion;
   calendar: TripCalendar | null;
   summaries: ResortMonthSummary[];
@@ -496,11 +495,10 @@ export async function HubFaq({
   const answered = items.map((item) => ({ ...item, answer: oneFullStop(item.answer) }));
   return (
     <section className="scroll-mt-24" id="faq">
-      <ChapterHeading
-        index={index}
-        icon={HelpCircle}
-        title={ownWords(t, 'title') ?? shared('title')}
-      />
+      {/* The chapter streams in after the page's tracker may have looked, so it brings its own. */}
+      <SectionMark section="hub_faq" />
+      <SectionSeenTracker />
+      <ChapterHeading icon={HelpCircle} title={ownWords(t, 'title') ?? shared('title')} />
       <FaqList items={answered} />
       <p className="mt-6 text-sm">
         {shared.rich('links', {

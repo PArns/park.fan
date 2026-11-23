@@ -29,7 +29,7 @@ coverImage:
   caption: 'Symbolica à l’Efteling. L’abonnement Classic y est bloqué 68 jours en 2027.'
   credit: 'park.fan'
 seo:
-  title: 'Pass annuels 2026 : Toverland 160 €, aucun au Phantasialand'
+  title: 'Pass annuels comparés : Europa-Park, Efteling, Toverland'
   description: >-
     À l’Efteling, à Europa-Park et à Toverland, l’abonnement annuel le moins
     cher est amorti en quatre à six visites. Phantasialand n’en a plus depuis
@@ -215,6 +215,9 @@ un parent a un abonnement annuel. Si l’enfant dépasse sa classe de taille, le
 mois restant.
 
 Si tu achètes l’abonnement un jour de visite en payant à l’année, le parc rembourse l’entrée de ce jour. La liste des partenaires de mars 2026 compte entre autres Walibi Holland à 20 % sauf pendant les Halloween Fright Nights, Attractiepark Hellendoorn à 35 %, les parcs Plopsa à 40 % pour les visiteurs dès 1 m, Bobbejaanland à 20 % et Freizeit-Land Geiselwind à 40 %.
+
+> [!PARKY] Achat sur place
+> Pour le Magic Member, on prend un billet journée normal pour la première visite et on ne décide qu’une fois dans le parc : si on paie l’abonnement pour toute l’année le jour même, le Toverland rembourse l’entrée de ce jour. La première journée devient alors un essai gratuit, si on se lance. Acheté au guichet, l’abonnement court ensuite un an à partir de ce jour.
 
 ### Les conditions
 

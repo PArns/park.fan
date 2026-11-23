@@ -25,11 +25,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: openingstijden, prijzen en achtbanen'
+  title: 'Hansa-Park openingstijden 2027 en prijs van de seizoenkaart'
   description: >-
-    Hansa-Park 2026: open van 26 maart tot en met 25 oktober, zonder
-    sluitingsdag. Seizoen 2027 vanaf 25 maart. Plus prijzen, parkeren en acht
-    achtbanen.
+    Hansa-Park plant het seizoen 2027 van 25 maart tot 24 oktober. Voor de
+    seizoensstart kost de seizoenkaart € 120, daarna € 140.
   keywords:
     - Hansa-Park
     - Hansa-Park tips
@@ -394,6 +393,9 @@ parkeert in 2027 gratis op de grote parkeerplaats; bij aankoop tot 24 maart beta
 
 **Inbegrepen bij het ticket.** Alle attracties, shows en doe-attracties die in bedrijf zijn. Losse
 onderdelen zoals het goudwassen kosten extra.
+
+> [!PARKY] Vroeg kopen loont
+> Gaan we in 2027 drie keer of vaker, dan halen we de seizoenkaart uiterlijk 24 maart: dan kost hij € 120 in plaats van € 140, en als volwassenen parkeren we voor € 1 per dag in plaats van € 7. Wat we overhouden, breng ik naar Elins Vafflejern. Drie dagtickets vanaf 12 jaar kostten in 2026 samen al € 159.
 
 ## Wat er in 2027 komt
 

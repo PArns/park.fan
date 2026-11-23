@@ -28,7 +28,7 @@ coverImage:
   caption: 'Symbolica in de Efteling. Het Classic-abonnement is daar in 2027 op 68 dagen geblokkeerd.'
   credit: 'park.fan'
 seo:
-  title: 'Jaarkaarten 2026: Toverland € 160, Phantasialand geen meer'
+  title: 'Jaarkaarten vergeleken: Efteling, Toverland, Europa-Park'
   description: >-
     Bij de Efteling, Europa-Park en Toverland loont de goedkoopste jaarkaart na
     vier tot zes bezoeken. Phantasialand heeft sinds 2022 geen jaarkaart meer.
@@ -213,6 +213,9 @@ Haunted Experiences kosten extra. Voor een kind onder 90 cm is er een gratis kaa
 jaarkaart heeft. Groeit het kind uit zijn lengteklasse, dan wordt voor elke resterende maand bijbetaald.
 
 Koop je het abonnement op een bezoekdag en betaal je per jaar, dan betaalt het park de entree van die dag terug. Op de partnerlijst van maart 2026 staan onder meer Walibi Holland met 20% behalve tijdens de Halloween Fright Nights, Attractiepark Hellendoorn met 35%, de Plopsa-parken met 40% voor bezoekers vanaf 1 m, Bobbejaanland met 20% en Freizeit-Land Geiselwind met 40%.
+
+> [!PARKY] In het park kopen
+> Voor Magic Member nemen we bij het eerste bezoek een gewoon dagticket en beslissen we pas in het park: betalen we het abonnement nog dezelfde dag voor het hele jaar, dan betaalt Toverland de entree van die dag terug. Zo is de eerste dag een gratis proefrit, als we toehappen. Aan de balie gekocht loopt het abonnement dan een jaar vanaf die dag.
 
 ### De voorwaarden
 

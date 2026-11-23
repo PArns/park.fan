@@ -55,6 +55,9 @@ Clyde y Seamore repiten su Christmas Special en el Sea Lion Stadium, con leones 
 
 En la Holiday Plaza se enciende cada noche el árbol de Navidad de unos nueve metros (30 pies). El SkyTower se convierte en el Tree of Lights, de unos 98 metros (320 pies), y las palmeras se iluminan como bastones de caramelo. A Papá Noel lo encuentras en Santa's Cottage, en el SkyTower Lawn; dos de sus renos están junto a Rentals y Rudolph, en el Holly Jolly Marketplace. Los fuegos artificiales A Christmas Wish solo se lanzan dos veces: el sábado 12 de diciembre y en Nochevieja.
 
+> [!PARKY] El 12 de diciembre
+> Si nuestro viaje al sur de California cae en diciembre, SeaWorld San Diego se queda con el sábado 12 de diciembre: solo esa noche y en Nochevieja hay fuegos artificiales A Christmas Wish. Para cuando empiecen, espero haberme sacado ya Baby Shark de la cabeza. Los demás parques los colocamos alrededor de ese día en el [planificador de viajes](/california#planner).
+
 ## Horarios en noviembre
 
 El viernes 13 de noviembre es la Christmas Celebration Pass Member Preview para quienes tienen pase anual. Ese día el parque abre de 10:00 a 21:00. Desde el sábado 14 de noviembre, la Christmas Celebration sigue el horario normal del parque, en hora local:

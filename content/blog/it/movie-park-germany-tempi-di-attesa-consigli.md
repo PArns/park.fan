@@ -30,10 +30,10 @@ coverImage:
   caption: 'Sei settimane all’anno questo parco si chiama Horrorwood Studios, ed è anche quello che dice allora la scritta luminosa all’ingresso.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park: tempi di attesa e Halloween 2026, senza Batman'
+  title: 'Movie Park: quando c’è meno gente? Giorni migliori e prezzi'
   description: >-
-    Movie Park con attese misurate: il giorno in cui i consigli sbagliano, gli
-    orari d’autunno, Halloween fino all’8/11 e come evitare il rincaro in cassa.
+    Al Movie Park le code sono più corte il venerdì, e la domenica c’è meno
+    gente del sabato. Hollywood Christmas dura dal 27 novembre al 5 gennaio.
   keywords:
     - Movie Park Germany
     - Movie Park tempi di attesa
@@ -545,6 +545,9 @@ Per l’abbonamento stesso:
   prenotazione successiva si può fare solo il giorno dopo la tua visita. Andarci
   d’impulso funziona quindi peggio con l’abbonamento che con il biglietto
   giornaliero.
+
+> [!PARKY] Meglio Gold
+> Se nel 2027 andiamo in macchina più di due volte, prendiamo Gold invece di Silber: Gold costa 20 € in più, ma la tessera per il parcheggio di Silber da sola costa 25 €, e senza tessera sono 9 € a visita. In più Gold dà tre ingressi gratuiti a Bobbejaanland, conti così mi piacciono. E Gold non ha giorni di blocco.
 
 **Come arrivare.** L’indirizzo è **Warner-Allee 1, 46244 Bottrop**. In auto per
 la A31, e lì all’uscita 39 Bottrop-Feldhausen, anche se il navigatore ne propone

@@ -212,6 +212,9 @@ Macher des Cirque du Soleil gestaltet hatten.
 Wer nur den Abend will, kauft ein Soirée-Ticket (Einlass ab 17 Uhr) oder ein Nocturne-Ticket
 (ab 20 Uhr). Beide enthalten die Abendshow und die Attraktionen, die abends offen sind.
 
+> [!PARKY]
+> Kommen wir nur für den Abend, nehmen wir das Soirée-Ticket und zahlen fürs Parken den Tarif ab 14 Uhr, 8 statt 13 Euro. La Clé des Songes steckt in beiden Abendtickets und läuft auch bei Regen, und für Wasserbilder mit Pyrotechnik bleibe ich gern lange wach. Vorher fahren wir die Attraktionen, die abends offen haben.
+
 ## Wie lange man hier ansteht
 
 Bis Anfang Oktober 2026 haben wir an 228 Tagen gemessen. Das Futuroscope hat viele Programmpunkte
@@ -278,6 +281,9 @@ Die Saison 2026 läuft nach dem Kalender der Carte Saison vom 7. Februar 2026 bi
 ```
 
 Wer flexibel ist, wählt einen Donnerstag oder Freitag außerhalb der französischen Schulferien.
+
+> [!PARKY] Sonntag nehmen
+> Bis zum 18. Dezember hat der Park nur an Wochenenden offen, also fahren wir am Sonntag: Der Samstag ist hier mit deutlichem Abstand der vollste Tag der Woche, der Sonntag hat mit Donnerstag und Freitag die kürzesten Wartezeiten. Den Samstag verbringen wir mit Vorfreude, die gibt es ganz ohne Warteschlange. Danach hat der Park bis zum 3. Januar jeden Tag offen.
 
 ### Futuroween 2026
 

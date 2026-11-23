@@ -1,7 +1,8 @@
 /**
  * The patterns the critic found in the guides of 2026-10-13 (1 to 20 in the twelve open ones, 22 to
- * 38 in the 27 older ones), in the thank-you post of 2026-10-19 (40 to 47) and in the four
- * multi-park guides of 2026-11-14 (115 to 123), the date-line regex and the sentence splitter they
+ * 38 in the 27 older ones), in the thank-you post of 2026-10-19 (40 to 47), in the four
+ * multi-park guides of 2026-11-14 (115 to 123) and in the Six Flags México guide and the new titles
+ * of 2026-11-18 (125 to 132), the date-line regex and the sentence splitter they
  * share with `scripts/check-prose.mjs` (docs/writing/2-20-check-patterns.md §2.20). The wordlists
  * that script reads on every surface (`WATCH`, `TAILS`, `PRODUCT_SUBJECT`) live here too, so their
  * cases run in `pnpm test:prose-rules`.
@@ -479,6 +480,8 @@ const CATALOG = {
   // Since PAR-987 the ranking connectors too: `Nach X kommen`, `Danach kommt`, `Knapp dahinter liegt`.
   de: /^(?:Dazu kommt|Dazu kommen|Hinzu kommt|Hinzu kommen|Und es gibt|Außerdem gibt es|Außerdem kommt|Außerdem kommen|Und dann gibt es|Danach (?:kommt|kommen|folgt|folgen)|(?:Knapp |Dicht )?[Dd]ahinter (?:liegt|liegen|folgt|folgen|kommt|kommen)|Nach \p{Lu}[^,.]{0,40}?\s(?:kommt|kommen|folgt|folgen))(?!\p{L})/u,
   en: /^(?:There(?:['’]s| is| are) also|Then there(?:['’]s| is| are)|And there(?:['’]s| is| are)|Also there|(?:Just |Close )?[Bb]ehind (?:it|them|that) (?:is|are|comes?)|After (?:it|that|them) (?:comes?|is|are))\b/iu,
+  // `Además hubo tres Zonas de Espanto …`, `y después viene el domingo`, `seguido del lunes`.
+  es: /^(?:Además (?:hay|hubo|está|están)|También (?:hay|hubo)|Y (?:después|luego|detrás) vienen?|(?:Justo )?[Dd]etrás (?:vienen?|está|están|queda|quedan)|Le siguen?|Después (?:viene|vienen))(?!\p{L})/u,
 };
 
 const ATTRIBUTION_OPENER = {
@@ -561,9 +564,10 @@ const COUNT_WORD = {
 const CAVEAT_CLOSE = {
   de: /(?:zu wenige?s? (?:für|um|Messtage|Daten|Tage|Werte)|reicht (?:nur |gerade )?für eine (?:grobe|erste)|zu dünn|nicht belastbar|keine belastbare|kaum aussagekräftig|mehr als eine Tendenz|nur eine (?:Tendenz|grobe)|eine grobe Richtung)/i,
   en: /(?:too few to|too little to|too thin|not enough to (?:say|tell|conclude)|enough for (?:only )?a rough|a rough (?:direction|idea|indication)|only a rough|not reliable|hardly (?:conclusive|reliable)|more than a trend)/i,
+  es: /(?:(?:muy|demasiado) pocos días|no (?:alcanza|basta)n? para|todavía no (?:lo |la )?(?:ha|hemos) medido|en suficientes días|una tendencia aproximada)/i,
 };
 const MEASURED_DAYS =
-  /\b\d+\s+(?:Messtage\w*|Tage\w*|Tagen|Messungen|Wochen|Beobachtungstage|days|weeks|measurement days|observations)\b/i;
+  /(?<!\p{L})\d+\s+(?:Messtage\p{L}*|Tage\p{L}*|Tagen|Messungen|Wochen|Beobachtungstage|days|weeks|measurement days|observations|días|semanas|mediciones)(?!\p{L})/iu;
 
 const ATTRIBUTION = {
   de: /(?:nach Parkangabe|nach Angaben des (?:Parks|Betreibers)|laut (?:dem )?(?:Park|Betreiber)|laut Parkangabe|der Park (?:nennt|gibt|sagt))/i,
@@ -1355,10 +1359,14 @@ const RECORD_TRIPLE = {
 const NAME_HISTORY = {
   de: /(?<!\p{L})(?:hieß (?:sie|er|es) bis|bis (?:(?:1[89]|20)\d\d|zum Jahr \d{4}) hieß|benannt (?:ist|wurde) (?:\p{L}+ ){0,6}?nach|hieß früher)(?!\p{L})/iu,
   en: /(?<!\p{L})(?:until (?:1[89]|20)\d\d it was called|(?:is|was) named after)(?!\p{L})/iu,
+  // `hasta 2018 SkyScreamer`, `antes Roller Skater`, `primero como Tony Hawk's Big Spin y luego como Pandemonium`.
+  es: /(?<!\p{L})hasta (?:1[89]|20)\d\d se llamaba|, hasta (?:1[89]|20)\d\d \p{Lu}|, antes \p{Lu}|(?<!\p{L})primero como [^.]{1,40}? y luego como/u,
 };
 const SINCE = {
   de: /(?<!\p{L})(?:ist|hält|fährt|steht|läuft|gilt) (?:\p{L}+ ){0,2}?seit (?:\d|dem |Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)/iu,
   en: /(?<!\p{L})has (?:held|been (?:running|open|operating)|run|stood) (?:[^.]{0,50}? )?since(?!\p{L})/iu,
+  // `funciona desde el 14 de abril de 2000`, five times in the coaster chapter of one guide.
+  es: /(?<!\p{L})(?:funciona|opera|está) desde (?:el )?\d|desde el \d{1,2} de \p{L}+ de \d{4} (?:funciona|opera)(?!\p{L})/iu,
 };
 /** `Goudurix, ebenfalls im Parc Astérix,`: the same hinge as an apposition, a month is not one. */
 const NOT_TIME = `(?!${TIME_WORD.source.replace(/^\^/, '')})`;
@@ -1379,6 +1387,8 @@ const SAME_PARK = {
 const CALLS_IT_SUPERLATIVE = {
   de: /(?<!\p{L})nennt (?:sie|ihn|es)\s(?:[^.]{0,40}\s)?(?:die|den|das) (?:höchste|längste|schnellste|steilste|größte|erste|einzige)n?(?!\p{L})/iu,
   en: /(?<!\p{L})calls (?:it|her|them) (?:the )?(?:[^.]{0,30}\s)?(?:tallest|longest|fastest|steepest|biggest|largest|first|only|most)(?!\p{L})/iu,
+  // `según Six Flags la única de acero y madera en México`, `Six Flags dice que es la única …`.
+  es: /(?<!\p{L})(?:según \p{Lu}[\p{L}'’-]*(?: \p{Lu}[\p{L}'’-]*)?,? (?:es )?|(?:dice|asegura) que es )(?:el|la|los|las) (?:únic\p{L}*|más \p{L}+|primer\p{L}*)/u,
 };
 const SUPERLATIVE_LOW = {
   de: /(?<!\p{L})am (?:günstigsten|wenigsten|billigsten|leersten|kürzesten|niedrigsten|ruhigsten)(?!\p{L})/iu,
@@ -1834,6 +1844,12 @@ const SPEC_ATTRIBUTION = {
     String.raw`(?<!\p{L})(?:[Bb]y (?:${SOURCE_NAME}['’]s?|the park['’]s|the operator['’]s|its own|their own) (?:count|figures?|reckoning|numbers)|(?:${SOURCE_NAME}|the park|the operator) (?:gives|puts (?:it|them) at|quotes) (?:[^.,]{0,30}\s)?\d)`,
     'gu'
   ),
+  // `Six Flags da 23 metros de caída`, `Six Flags le da más de 60 metros`, `la RCDB da 35 km/h`:
+  // only the verb `dar`, because `según` also names the one source a guide has.
+  es: new RegExp(
+    String.raw`(?<!\p{L})(?:${SOURCE_NAME}|[Ll]a RCDB|[Ee]l parque|[Ee]l fabricante) (?:le |les )?dan? (?:\d|más de|alrededor de|unos?|casi)`,
+    'gu'
+  ),
 };
 const CLAIM_WORD =
   /(?<!\p{L})(?:\p{L}{3,}ste[nmrs]?|erste[nmrs]?|einzige[nmrs]?|\p{L}{3,}est|first|only|soll(?:en)?|geplant|wird|werden|will|plans?|planned|announced|angekündigt)(?!\p{L})/iu;
@@ -2038,6 +2054,98 @@ const PARK_LINK_OPENER =
  * carry before the warning fires. `ctx` is `{ bs, locale, fields, raw }`: the blocks of the post,
  * its language, the frontmatter's plain-text fields as `[name, value]` pairs, and the file itself.
  */
+/* ------------------------------------------------------- the critic reads of 2026-11-18 */
+
+/**
+ * `[Batman The Ride](ref:…) ist ein Suspended Looping Coaster von Vekoma`, eight paragraphs of the
+ * Six Flags México guide in a row: the opener of a ride entry as a spec sheet, name, type and maker.
+ * The ref link is the paragraph's subject, then a copula and an article; the maker can be any one
+ * the reader can look up, so the list is wider than `MANUFACTURER`.
+ */
+const MAKER = String.raw`(?:Intamin|Mack(?: Rides)?|Maurer|Vekoma|Gerstlauer|Bolliger (?:&|und|and|y|et|e|en) Mabillard|B&M|Great Coasters International|GCI|Rocky Mountain Construction|RMC|Zierer|Schwarzkopf|Zamperla|Premier Rides|Custom Coasters International|Gravity Group|Hafema|Huss|S&S(?: Worldwide)?|Arrow Dynamics|Golden Horse|Pinfari|Preston (?:&|and) Barbieri|Beijing Shibaolai|D\.H\. Morgan|Chance(?: Morgan)?|Sally(?: Corp| Dark Rides)?|Funtime|Mondial|Moser|KMG|Reverchon|Dynamic Attractions|Oceaneering|ETF|Simworx|Alterface)`;
+const TYPE_MAKER_OPENER = new RegExp(
+  String.raw`^(?:\p{L}+ )?\[[^\]]+\]\(ref:[^)]+\)\s+(?:ist|war|is|was|es|fue|est|était|è|era|was)\s+(?:ein|eine|a|an|un|una|uno|une|een)\s[^.]{0,70}?(?<!\p{L})(?:von|by|de|di|van|du|della|del|dei|des|d['’])\s*${MAKER}(?!\p{L})`,
+  'u'
+);
+
+/**
+ * `die park.fan in Six Flags México gemessen hat`, `hat park.fan noch nicht an genug Tagen
+ * gemessen`: under Patrick's byline the site measures in the third person, where 51 German posts
+ * write `wir … gemessen`. The past only: `deren Wartezeiten park.fan misst` says which parks the
+ * site covers. A post about park.fan itself (`category: park-fan`) speaks for the site.
+ */
+const SITE_MEASURED = {
+  de: /park\.fan\s(?:\p{L}+\s){0,6}?(?:gemessen|gezählt|ausgewertet)(?!\p{L})/u,
+  en: /park\.fan\s(?:has |had )?(?:\p{L}+ ){0,3}?(?:measured|counted)(?!\p{L})/u,
+  nl: /park\.fan\s(?:\p{L}+\s){0,6}?(?:gemeten|geteld)(?!\p{L})/u,
+  fr: /park\.fan\s(?:\p{L}+\s){0,4}?(?:mesuré|compté)(?!\p{L})/u,
+  es: /park\.fan\s(?:\p{L}+\s){0,5}?(?:medido|contado)(?!\p{L})/u,
+  it: /park\.fan\s(?:\p{L}+\s){0,5}?(?:misurato|contato)(?!\p{L})/u,
+};
+
+const LEADING_ARTICLE = /^(?:the|der|die|das|el|la|le|les|il|lo|de|het|los|las)\s+/i;
+/** A sentence that names ten rides is a list (§3.3 rule 23); the exception names what it is not. */
+const RIDE_ROLL_MIN = 10;
+
+/**
+ * `- **Silver** für 1.700 Pesos: …`, three items in a row: `**Begriff**: Erklärung` at the head of
+ * every bullet, the chat-window layout §4.2 bans. Every item of the list, three at least, so a list
+ * that bolds one name stays.
+ */
+const BOLD_TERM_ITEM = /^\s*(?:[-*+]|\d+\.)\s+\*\*[^*\n]+\*\*[^:\n]{0,40}:/;
+const LIST_ITEM = /^\s*(?:[-*+]|\d+\.)\s/;
+
+/**
+ * `Phantasialand: ¿cuándo compensa el Quick Pass? Consejos`: a search word hung behind the
+ * question of a `seo.title`.
+ */
+const TITLE_TRAILING_WORD = /\?\s+\p{L}+\s*$/u;
+
+/**
+ * `Hansa-Park Öffnungszeiten 2027: Saison, Preise, Achterbahnen`: three items after the colon of a
+ * `seo.title`, two of them words that fit every park (§1.7). One filler word is ordinary; between
+ * 37 and 57 titles per language have a triple.
+ */
+const TITLE_FILLER = {
+  de: /^(?:Preise|Tipps|Saison|Tage|beste Tage|Achterbahnen|Rutschen|Infos|Tickets|Tricks|Highlights|Attraktionen|mehr)$/iu,
+  en: /^(?:prices|tips|season|days|best days|coasters|roller coasters|slides|info|tickets|tricks|highlights|rides|more)$/iu,
+  nl: /^(?:prijzen|tips|seizoen|dagen|beste dagen|achtbanen|glijbanen|info|tickets|attracties|meer)$/iu,
+  fr: /^(?:prix|tarifs|conseils|saison|jours|meilleurs jours|coasters|montagnes russes|toboggans|infos|billets|astuces|attractions)$/iu,
+  es: /^(?:precios|consejos|temporada|días|mejores días|montañas rusas|toboganes|info|entradas|boletos|trucos|atracciones)$/iu,
+  it: /^(?:prezzi|consigli|stagione|giorni|giorni migliori|montagne russe|coaster|scivoli|info|biglietti|trucchi|attrazioni)$/iu,
+};
+const TITLE_LIST_JOIN = /,\s*|\s+(?:und|and|en|et|y|e)\s+/u;
+
+/**
+ * `Was 15 Parks erlauben.`, `Ce que permettent 15 parcs.`: a question word opening a short sentence
+ * of the excerpt or the description that ends on a full stop, the table of contents in the snippet
+ * (§5.4). A main clause after a comma (`Which way you're facing, it doesn't.`) answers itself.
+ */
+const SNIPPET_QUESTION = {
+  de: /^(?:Was|Wie|Wo|Welche\p{L}*|Wann|Wer)\s/u,
+  en: /^(?:What|How|Where|Which|When|Who)\s/u,
+  nl: /^(?:Wat|Hoe|Waar|Welke|Wanneer)\s/u,
+  fr: /^(?:Ce que|Ce qu['’]|Comment|Où|Quel\p{L}*|Quand)\s?/u,
+  es: /^(?:Lo que|Qué|Cómo|Dónde|Cuál\p{L}*|Cuándo)\s/u,
+  it: /^(?:Cosa|Che cosa|Come|Dove|Qual\p{L}*|Quando)\s/u,
+};
+const ANSWERED_AFTER_COMMA =
+  /,\s+(?:it|that|this|es|das|dat|het|ce|c['’]|eso|esto|ciò|questo)\s|,\s+(?:steht|staat|ist|is|est|es|è)\s/iu;
+const SNIPPET_QUESTION_MAX_WORDS = 10;
+
+/**
+ * The excerpt is printed under the title, directly above the intro. `Ausdrücklich erlaubt ist
+ * eigenes Essen im Heide Park, …` stood in both, word for word. Content words of four letters and
+ * more, at least four on each side; a news post opens on its lead by design (§5.0).
+ */
+const ECHO_MIN_JACCARD = 0.6;
+const contentWords = (s) => new Set(s.toLowerCase().match(/[\p{L}\d]{4,}/gu) ?? []);
+function echoShare(a, b) {
+  const A = contentWords(a);
+  const B = contentWords(b);
+  return A.size < 4 || B.size < 4 ? 0 : jaccard(A, B);
+}
+
 export const SLOP_RULES = [
   {
     id: 'origin-refrain',
@@ -2161,7 +2269,7 @@ export const SLOP_RULES = [
   {
     id: 'catalog-connector-series',
     section: '§2.20 #8',
-    locales: ['de', 'en'],
+    locales: ['de', 'en', 'es'],
     min: 6,
     run({ bs, locale }) {
       return paragraphs(bs).flatMap((b) =>
@@ -2265,7 +2373,7 @@ export const SLOP_RULES = [
   {
     id: 'data-caveat-close',
     section: '§2.20 #14',
-    locales: ['de', 'en'],
+    locales: ['de', 'en', 'es'],
     min: 1,
     run({ bs, locale }) {
       return paragraphs(bs)
@@ -3477,7 +3585,7 @@ export const SLOP_RULES = [
     section: '§2.20 #70',
     // `Bis 2004 hieß sie Wild Wild West`, `benannt ist sie nach einem Mond des Saturn`: the name's
     // history for ride after ride. German and English.
-    locales: ['de', 'en'],
+    locales: ['de', 'en', 'es'],
     min: 3,
     run({ bs, locale }) {
       return paragraphs(bs).flatMap((b) =>
@@ -3490,7 +3598,7 @@ export const SLOP_RULES = [
     section: '§2.20 #71',
     // `has held all three Dutch records since 2002`, `has been running since August 2018`: four
     // and three per 1,000 words, so a history post with four in 3,000 words stays quiet.
-    locales: ['de', 'en'],
+    locales: ['de', 'en', 'es'],
     min: 1,
     run({ bs, locale }) {
       const text = paragraphs(bs).map((b) => b.text);
@@ -3521,7 +3629,7 @@ export const SLOP_RULES = [
     section: '§2.20 #73',
     // `Europa-Park calls it the launch coaster with the most inversions in the world`: the park's
     // superlative quoted, twice a post. German and English.
-    locales: ['de', 'en'],
+    locales: ['de', 'en', 'es'],
     min: 2,
     run({ bs, locale }) {
       return paragraphs(bs).flatMap((b) =>
@@ -4510,8 +4618,9 @@ export const SLOP_RULES = [
     // is stated, not attributed (§1.2). Six formulas and two per 1,000 words, counted in sentences
     // without a superlative or a plan; a news post is held to §5.0 instead. The four other
     // languages say `selon`, `según`, `secondo`, `volgens` for the plain `laut` as well, so a count
-    // there cannot tell the formula from the one source a guide names, and they stay with the critic.
-    locales: ['de', 'en'],
+    // there cannot tell the formula from the one source a guide names. Spanish is counted on its
+    // other formula only, `Six Flags da 23 metros`; Dutch, French and Italian stay with the critic.
+    locales: ['de', 'en', 'es'],
     min: MIN_SPEC_ATTRIBUTIONS,
     run({ bs, locale, raw }) {
       if (isNews(raw)) return [];
@@ -4629,6 +4738,153 @@ export const SLOP_RULES = [
       return [...raw.matchAll(/^```cta-widget\n[\s\S]*?^text:\s*(.+)$/gm)]
         .map((m) => m[1])
         .filter((text) => [...runs(text)].some((r) => inSnippet.has(r)));
+    },
+  },
+  {
+    id: 'type-maker-opener',
+    section: '§2.20 #125',
+    // `[Batman The Ride](ref:…) ist ein Suspended Looping Coaster von Vekoma`, `[The Joker](ref:…)
+    // ist ein Spinning Coaster von Gerstlauer`: eight ride paragraphs of one guide opened on name,
+    // type and maker. Four per post; the critic left three in the revised guide.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 4,
+    run({ bs }) {
+      return paragraphs(bs)
+        .map((b) => splitSentences(b.raw)[0] ?? '')
+        .filter((s) => TYPE_MAKER_OPENER.test(s));
+    },
+  },
+  {
+    id: 'site-as-measurer',
+    section: '§2.20 #126',
+    // `die park.fan in Six Flags México gemessen hat`: the site as the one who measured, under a
+    // byline that says `wir` elsewhere. One per post; a post about park.fan is exempt.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale, raw }) {
+      if (/^category:\s*['"]?park-fan\b/m.test(raw)) return [];
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => SITE_MEASURED[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'ride-name-roll',
+    section: '§2.20 #127',
+    // `Der Flash Pass gilt an Superman El Último Escape, Batman The Ride, … und Justice League`:
+    // twelve rides in one sentence where two exceptions carry the fact (§3.3 rule 23). Ten rides
+    // linked in the post, named in one sentence of running text; the sources line
+    // (`SOURCES_LINE`) is a list by design.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, raw }) {
+      const names = new Set();
+      for (const m of raw.matchAll(/\[([^\]]+)\]\(ref:[^/)\s]+\/[^)\s]+\)/g)) {
+        const label = plain(m[1]).replace(LEADING_ARTICLE, '').toLowerCase();
+        if (label.length >= 3) names.add(label);
+      }
+      if (names.size < RIDE_ROLL_MIN) return [];
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => {
+          if (SOURCES_LINE.test(s)) return false;
+          const low = s.toLowerCase();
+          return [...names].filter((n) => low.includes(n)).length >= RIDE_ROLL_MIN;
+        })
+      );
+    },
+  },
+  {
+    id: 'bold-term-list',
+    section: '§2.20 #128',
+    // `- **Silver** für 1.700 Pesos: …`, `- **Gold** …`, `- **Prestige** …`: every item of a list
+    // opens on a bold term and a colon (§4.2). One list per post.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs }) {
+      return bs
+        .filter((b) => b.kind === 'list')
+        .map((b) => b.src.filter((l) => LIST_ITEM.test(l)))
+        .filter((items) => items.length >= 3 && items.every((l) => BOLD_TERM_ITEM.test(l)))
+        .map((items) => items[0].trim());
+    },
+  },
+  {
+    id: 'title-trailing-word',
+    section: '§2.20 #129',
+    // `Phantasialand: ¿cuándo compensa el Quick Pass? Consejos`, `Toverland afluencia: ¿cuándo hay
+    // poca gente? Calendario`: one search word hung behind the question of the `seo.title`.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ fields }) {
+      return fields
+        .filter(([name, , nested]) => name === 'title' && nested)
+        .map(([, value]) => value)
+        .filter((v) => TITLE_TRAILING_WORD.test(v));
+    },
+  },
+  {
+    id: 'title-filler-triple',
+    section: '§2.20 #130',
+    // `Movie Park: Wann ist am wenigsten los? Tage, Preise, Tipps`, `Kings Dominion Hops & Harvest
+    // 2026: Dates, Prices, Rides`: a `seo.title` ending on three items, two of them words that fit
+    // every park.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ fields, locale }) {
+      return fields
+        .filter(([name, , nested]) => name === 'title' && nested)
+        .map(([, value]) => value)
+        .filter((v) => {
+          const tail = v.split(/[:?]\s+/).at(-1) ?? '';
+          const items = tail
+            .split(TITLE_LIST_JOIN)
+            .map((x) => x.trim())
+            .filter(Boolean);
+          return (
+            v.split(/[:?]\s+/).length > 1 &&
+            items.length === 3 &&
+            items.filter((x) => TITLE_FILLER[locale].test(x)).length >= 2
+          );
+        });
+    },
+  },
+  {
+    id: 'snippet-question-fragment',
+    section: '§2.20 #131',
+    // `Was 15 Parks erlauben.`, `What the silent holiday law bans.`: the snippet names a topic
+    // instead of the finding (§5.4). Ten words at most, one per post.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ fields, locale }) {
+      return fields
+        .filter(([name]) => name === 'excerpt' || name === 'description')
+        .flatMap(([, value]) => splitSentences(value))
+        .filter(
+          (s) =>
+            SNIPPET_QUESTION[locale].test(s) &&
+            /\.$/.test(s.trim()) &&
+            wordCount(s) <= SNIPPET_QUESTION_MAX_WORDS &&
+            !ANSWERED_AFTER_COMMA.test(s)
+        );
+    },
+  },
+  {
+    id: 'excerpt-intro-echo',
+    section: '§2.20 #132',
+    // `Si estás en la entrada a las diez, te subes a las montañas rusas grandes casi sin esperar.`
+    // right under an excerpt that said the same: the banner prints the excerpt over the intro. A
+    // sentence of the first two paragraphs that shares 60 percent of its content words with one of
+    // the excerpt. News opens on its lead by design.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, fields, raw }) {
+      if (isNews(raw)) return [];
+      const excerpt = fields.find(([name]) => name === 'excerpt')?.[1] ?? '';
+      const intro = paragraphs(bs)
+        .slice(0, 2)
+        .flatMap((b) => splitSentences(b.text));
+      const lead = splitSentences(excerpt);
+      return intro.filter((s) => lead.some((e) => echoShare(e, s) >= ECHO_MIN_JACCARD));
     },
   },
 ];

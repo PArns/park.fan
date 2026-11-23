@@ -114,6 +114,9 @@ L’entrée Single Rider vaut le coup dans trois cas : tu es seul dans le parc,
 séparer, ou tu veux absolument faire une attraction précise et l’attente normale est trop longue.
 Dans le deuxième cas, vous vous répartissez, montez chacun de votre côté et vous retrouvez à la sortie.
 
+> [!PARKY]
+> À trois sur une attraction à deux places par rangée, comme WODAN, blue fire ou Taron, on ne se sépare qu’à moitié : deux restent dans la file normale et s’assoient côte à côte, le troisième prend l’entrée Single Rider. La place seule, je la prends volontiers, à côté d’inconnus je décolle de mon siège tout pareil. À la sortie, on est de nouveau trois.
+
 Elle ne vaut pas le coup dans ces cas :
 
 - **Tu voyages avec un enfant qui a besoin d’être accompagné.** Pour Eurosat, à l’Europa-Park, la

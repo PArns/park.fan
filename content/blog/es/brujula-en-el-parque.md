@@ -148,6 +148,9 @@ contraria, y eso no lo arregla ninguna brújula. Además, la flecha apunta al
 único punto que tenemos de cada atracción en nuestros datos. Dónde queda la
 entrada de la cola no está en ellos.
 
+> [!PARKY]
+> Si en el Phantasialand la flecha apunta a un muro, tocamos la atracción para fijarla y seguimos el camino en vez de la línea recta. Mientras la distancia de la barra vaya bajando, vamos bien, aunque la flecha apunte un rato hacia atrás, porque ni yo atravieso rocas y fachadas. Qué atracción toca después lo tenemos ya en el [planificador del día](/trip-planner).
+
 Para lo demás, en la propia brújula ves hasta qué punto puedes fiarte de ella.
 
 - Si tu ubicación tiene un margen de más de 40 metros, encima del círculo pone,

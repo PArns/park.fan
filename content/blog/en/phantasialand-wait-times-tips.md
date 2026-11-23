@@ -27,9 +27,10 @@ coverImage:
   caption: 'Taron in the basalt village of Klugheim, for me the most beautiful spot in the park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand tips: Quick Pass, quiet days, wait times'
+  title: 'Phantasialand tips: when is the Quick Pass worth it?'
   description: >-
-    Keep Phantasialand wait times down: the right day, the Quick Pass, now sold online too, and Wintertraum, from a regular of more than thirty years.
+    On a quiet day you don’t need a Quick Pass at Phantasialand. On a busy one,
+    buy it for Taron (€12) and F.L.Y., which only comes in the €80 Ultimate.
   keywords:
     - Phantasialand wait times
     - avoid Phantasialand wait times
@@ -227,6 +228,9 @@ calendar in the online shop shows three price tiers for October and November
 The shop advertises tickets from **€44**. You can still go on a whim, but only
 online and only until 2 p.m. on the day itself, at that day’s price and only if
 the day hasn’t sold out.
+
+> [!PARKY] Treat yourself
+> We book as soon as the date’s set. If we catch the €35 tier for October or November instead of the €59 one, that leaves €24, which is, and I checked twice, exactly two Quick Passes for Taron. We buy those on the morning of the visit.
 
 There are no more annual passes. Phantasialand took its Club-Karte off sale
 during the pandemic and never brought it back; the last ones expired in summer 2022. That makes it the exception among

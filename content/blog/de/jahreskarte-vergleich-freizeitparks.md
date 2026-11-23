@@ -28,7 +28,7 @@ coverImage:
   caption: 'Symbolica im Efteling. Die Classic-Karte ist dort 2027 an 68 Tagen gesperrt.'
   credit: 'park.fan'
 seo:
-  title: 'Jahreskarten 2026: Toverland 160 €, Phantasialand keine mehr'
+  title: 'Jahreskarte: Europa-Park, Toverland, Efteling im Vergleich'
   description: >-
     Die günstigste Jahreskarte lohnt sich im Efteling, im Europa-Park und im
     Toverland ab vier bis sechs Besuchen. Das Phantasialand hat seit 2022 keine mehr.
@@ -213,6 +213,9 @@ Experiences kosten extra. Für ein Kind unter 90 cm gibt es eine kostenlose Kart
 Jahreskarte hat. Wächst das Kind aus der Größenklasse, wird für jeden Restmonat nachgezahlt.
 
 Kaufst du die Karte an einem Besuchstag und zahlst für das ganze Jahr, erstattet der Park den Eintritt dieses Tages. Auf der Partnerliste vom März 2026 stehen unter anderem Walibi Holland mit 20 % außer an den Halloween Fright Nights, der Attractiepark Hellendoorn mit 35 %, die Plopsa-Parks mit 40 % für Besucher ab 1 m, das Bobbejaanland mit 20 % und das Freizeit-Land Geiselwind mit 40 %.
+
+> [!PARKY] Im Park kaufen
+> Beim Magic Member nehmen wir für den ersten Besuch ein normales Tagesticket und entscheiden erst im Park: Zahlen wir die Karte noch am selben Tag fürs ganze Jahr, erstattet das Toverland den Eintritt. So ist der erste Tag eine Probefahrt, die nichts kostet, wenn wir zuschlagen. Am Schalter gekauft, gilt die Karte dann ein Jahr ab diesem Tag.
 
 ### Die Bedingungen
 

@@ -10,12 +10,12 @@ the same pages from the same code.
 
 ## A region is config, messages and a scene
 
-| Part     | Where                                                           | What                                                                                                                                                                                   |
-| -------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Config   | `lib/trip-regions/registry.ts`, `lib/trip-regions/regions/*.ts` | `TRIP_REGIONS`: slug, `live`, URL segment per locale, zone, centre, photo, scene, best-time pages, hub (hero photos, the FAQ's parks and questions), hotels, ticket step, storm season |
-| Messages | `tripRegions.<slug>` in `messages/*.json`                       | the region's own words: `nav`, `hub`, `bestTime`, `planner`                                                                                                                            |
-| Scene    | `components/assistant/parky/<slug>-scene.tsx`                   | the Parky picture of the region's card in the header band and of its planner tile on a park's pages, built on `HolidayParky` (`holiday-parky.tsx`)                                     |
-| API      | `/v1/trip-regions/<slug>` and its routes                        | parks, groups, hotel areas, travel, calendar, plan, tickets: everything the code does not hold                                                                                         |
+| Part     | Where                                                           | What                                                                                                                                                                                              |
+| -------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Config   | `lib/trip-regions/registry.ts`, `lib/trip-regions/regions/*.ts` | `TRIP_REGIONS`: slug, `live`, URL segment per locale, zone, centre, photo, scene, best-time pages, hub (the head's Parky scene, the FAQ's parks and questions), hotels, ticket step, storm season |
+| Messages | `tripRegions.<slug>` in `messages/*.json`                       | the region's own words: `nav`, `hub`, `bestTime`, `planner`                                                                                                                                       |
+| Scene    | `components/assistant/parky/<slug>-scene.tsx`                   | the Parky picture of the region's card in the header band and of its planner tile on a park's pages, built on `HolidayParky` (`holiday-parky.tsx`)                                                |
+| API      | `/v1/trip-regions/<slug>` and its routes                        | parks, groups, hotel areas, travel, calendar, plan, tickets: everything the code does not hold                                                                                                    |
 
 Nothing outside `lib/trip-regions/registry.ts` and `lib/trip-regions/regions/` names a region. The
 rest of the code reads the registry: `LIVE_TRIP_REGIONS` for what a reader may see,
@@ -70,13 +70,15 @@ browser asks through the relay, `/api/trip-regions/<slug>/…` (`tripRegionRelay
 the registry's slugs. Query keys and the planner's stored choices carry the region
 (`parkfan_<slug>_view`, `parkfan_<slug>_tickets_asked`, so Orlando's browsers keep theirs).
 
-Every server read of `/v1/trip-regions/…`, the relay's included, carries this deploy's commit as
-`v` (`tripRegionApiUrl`, the first 12 characters of `VERCEL_GIT_COMMIT_SHA`, `dev` elsewhere).
-Cloudflare keeps the region route a day and two hours stale, the API cannot purge it, and a deploy
-here purges only `park.fan`'s cache, so without `v` a deploy that needs a field the API just added
-could read the old copy for 26 hours. The API ships
-first and takes `v` on every trip-region route without reading it, so each deploy asks one fresh
-edge copy per URL; the Data Cache's tags and windows stay as they were.
+Every server read of `/v1/trip-regions/…`, the relay's included, carries the version of the routes
+this frontend reads as `v` (`TRIP_API_VERSION` in `lib/trip-regions/api.ts`). Cloudflare keeps the
+region route a day and two hours stale and the API cannot purge it, so a pull request that starts
+reading a field the API has just added raises the version, and that deploy asks one fresh edge copy
+per URL. Every other deploy keeps the edge copies and the Data Cache entries it finds: `v` used to
+be the deploy's commit, which emptied both several times a day. `pnpm test:trip-regions` holds the
+hash of `lib/trip-regions/types.ts` (`TRIP_API_TYPES_HASH`) and fails when the answers' types change
+without it, so that question is asked every time. The API ships first and takes `v` on every
+trip-region route without reading it; the Data Cache's tags and windows stay as they were.
 
 The planner band's park count and its longest trip are the API's: `GET /v1/trip-regions` (the
 list of regions, a day in the Data Cache under `trip-regions`; `parkCount`, `maxTripDays`), else
@@ -117,9 +119,9 @@ renders a missing `tripRegions.*` key as nothing).
 | Block        | Region keys (`tripRegions.<slug>.…`)                                                                                                                                                                     | Shared words (`tripHub`)                                                                                                                                                                                                                         | Region config or data                                                        | Without the region's words                                                                                 |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | Head         | `hub.title`, `hub.monthTitle` (the H1's search term), `hub.lead`, `hub.leadMonth`, `hub.glance.zone` („Ortszeit Orlando“), `hub.meta*` (`metaTitle` takes `{years}`, `tripRegionYears`), `hub.dataset.*` | `question` (hub and months alike), `plan`, `toCalendar`, `glance.*`                                                                                                                                                                              | `hub.heroPhotos` (none: the gradient head)                                   | title, meta and dataset are required (`pnpm test:trip-regions`); no lead, no line; no zone, the date alone |
-| 01 Calendar  | `hub.calendar.caption`, `hub.lanes.break`, `.unnamedBreak`, `.none`, `hub.monthIndexLabel`, `hub.sheet.kicker`, `hub.sheet.early.<kind>`, `hub.sheet.travelTransfer`                                     | `calendar.*`, `legend.*`, `parksIndex.*`, `sheet.*` (`travel` by the leg's mode), `accuracy.line` (hub only, with `/accuracy`)                                                                                                                   | `timezone`, the API's groups, parks and legs, `hub.defaultArea`              | no school-holiday lane, no early slot, the plain travel line; the caption falls back to the list's label   |
+| 01 Calendar  | `hub.calendar.caption`, `hub.lanes.break`, `.unnamedBreak`, `hub.monthIndexLabel`, `hub.sheet.kicker`, `hub.sheet.early.<kind>`, `hub.sheet.travelTransfer`                                              | `calendar.*`, `legend.*`, `parksIndex.*`, `sheet.*` (`travel` by the leg's mode), `accuracy.line` (hub only, with `/accuracy`)                                                                                                                   | `timezone`, the API's groups, parks and legs, `hub.defaultArea`              | no school-break line, no early slot, the plain travel line; the caption falls back to the list's label     |
 | 02 Planner   | `planner.*` ([the planner](orlando-planner.md))                                                                                                                                                          | `planner.title`                                                                                                                                                                                                                                  | hotels, tickets, fireworks, blocks, storm season                             | the planner's own rules                                                                                    |
-| 03 Best time | `hub.when.title`, `.titleNoYear`, `.pageLink`, `.pageLinkNoYear`, `.kicker`                                                                                                                              | `when.*`                                                                                                                                                                                                                                         | `bestTime` pages, `/when`                                                    | no chapter (and no band button) without best-time pages or their title                                     |
+| 03 Best time | `hub.when.title`, `.pageLink`, `.kicker`                                                                                                                                                                 | `when.*`                                                                                                                                                                                                                                         | `bestTime` pages, `/when`                                                    | no chapter (and no band button) without best-time pages or their title                                     |
 | 04 Questions | `hub.faq.title`, `hub.faq.quietest.{q,qMonth,resort,day,dayAlone}`, and per data question its `q` and `a` (`party`, `epic`, `distance`, `early`), per fixed question its `q` and `a`                     | `faq.*`: the title's fallback, `quietestOnly`, the data questions every region gets (`events`, `weekdays`, `parks`, `breaks`, `hours`, `closures`, each `q` and `qMonth`), the four on the figure (the hub only), `lastYearNote`, the links line | `hub.faq`: `partyPark`, `weekendPark`, `distance`, `earlySlots`, `questions` | a question without its data, its config or its words is left out; no question, no chapter and no `FAQPage` |
 | Band         | `hub.next.title`                                                                                                                                                                                         | `nextTitle` with the region's `nav.name` as its fallback, `plan`                                                                                                                                                                                 | `bestTime` pages (the second button)                                         | the shared title                                                                                           |
 
@@ -157,13 +159,22 @@ Italian. The API's `name` is English and only a search matches it. The browser a
 
 ## The planner tile on a park's pages
 
-`TripPlannerTile` (`components/trip-regions/trip-planner-tile.tsx`) is the region's planner on the
-page of each of its parks and on that park's crowd calendar: the region's scene, „Reiseplaner",
-„Mehrere Tage in Orlando", one line with the region's park count, „Magic Kingdom einplanen" into
-the planner with the park chosen (on a calendar month page that month as the dates to search) and
-the hub by its name (`nav.calendar`, "Orlando Crowd Calendar") to the bare hub. The whole card is the plan link, which carries a state
-and so is `nofollow` (`plannerLinkRel`); the hub's link stands above that cover and is the followed
-one, with the hub's name as its anchor, so a region's strongest park pages pass the hub a link.
+`TripPlannerTile` (`components/trip-regions/trip-planner-tile.tsx`) is the region's crowd calendar
+and planner on the page of each of its parks and on that park's crowd calendar. It leads with the
+question a reader of one park's waits brings to the hub, which day is quietest: the region's scene,
+its name („Orlando"), „Wann ist es in Walt Disney World am ruhigsten?" (`tripHub.tile.question`
+with the park's resort, `resort` on `TripRegionLinkPark`; a day-trip park gets the hub's own
+„Welcher Park an welchem Tag?"), one line on what the calendar marks with the region's park count,
+the hub as the one primary action, named by the park's resort where it has one („Universal Orlando
+Crowd Calendar", `tripHub.tile.calendarResort`; else `nav.calendar`, "Orlando Crowd Calendar"), so
+a resort's park pages hand the hub the resort's own query, which Google split between the hub and a
+month page in November 2026 („universal orlando crowd calendar"), and under
+it „Magic Kingdom einplanen" into the planner with the park chosen (on a calendar month page that
+month as the dates to search) as a plain link. The whole card is the hub's link, the followed one,
+with the hub's name as its anchor, so a region's strongest park pages pass the hub a link; the plan
+link stands above that cover, carries a state and so is `nofollow` (`plannerLinkRel`). Before
+November 2026 the planner led („Mehrere Tage in Orlando", the plan as the pill): 609 views in a
+week, 4 clicks, 2 to each link.
 A view is `section_seen` with `trip_tile`, once when the tile's top comes on screen; a click is
 `internal_link_clicked` with the block `trip_tile` and the park as entity, and `trip_tile_clicked`
 with the region and which link (`plan`, `calendar`), since both links lead to the hub's page and the
@@ -174,12 +185,15 @@ first event counts them as one place ([analytics](../development/analytics.md)).
 | park page           | right above „Heute im Park", under the title card (`phone="row"`) | the owner's call, so more readers pass it; measured for two weeks with `section_seen` and `trip_tile_clicked` from November 2026 |
 | park crowd calendar | right under the header card, before „Beste Reisezeit"             | a reader of a crowd calendar is choosing days, which is the planner's job for a whole trip                                       |
 
-On the park page a phone gets the compact row (`phone="row"`): the kicker, the heading, the plan
-pill and the hub's link beside a 96 px cut of the scene, 135 px tall against the banner's 436, and
-the line under the heading only from `sm`. With the banner, „Heute im Park" on Tokyo DisneySea would
-start at 934 px, below a 390 × 844 screen; with the row it starts at 651 (482 without the tile). On
+On the park page a phone gets the compact row (`phone="row"`): the kicker, the heading, the hub's
+pill and the plan link beside a 96 px cut of the scene, 163 px tall against the banner's 436 (the
+question takes two lines where „Mehrere Tage in Orlando" took one, 135 px), and the line under the
+heading only from `sm`. With the banner, „Heute im Park" on Tokyo DisneySea would start at 934 px,
+below a 390 × 844 screen; with the row it starts at 651 (482 without the tile). On
 Magic Kingdom the title card and the Lightning Lane prices already fill the first screen, so
-„Heute im Park" moves from 918 to 1068 either way. At 1440 the tile adds its 240 px and 16 px of
+„Heute im Park" moves from 918 to 1068 either way. The question added 28 to 31 px (`next dev`,
+19 November 2026): „Hoy en el parque" on Tokyo DisneySea 697 → 728, still on the first screen,
+„Heute im Park" on Magic Kingdom 1106 → 1134. At 1440 the tile adds its 240 px and 16 px of
 gap: Tokyo DisneySea 432 → 688, still on a 900 px screen, Magic Kingdom 794 → 1050, below it.
 Measured on a production build with network and CPU throttling, three loads each, the tile changes
 neither the LCP element (the `<h1>` on Magic Kingdom, the background photo on Tokyo DisneySea) nor
@@ -221,7 +235,7 @@ built on `HolidayParky`, and its entry's `scene` loads it.
 1. Write its entry in `lib/trip-regions/regions/<slug>.ts` with `live: false`, register it in
    `registry.ts`, and start with its segments, zone and centre.
 2. Fill in what the region has: `bestTime` (the region's page `region` first, then its resorts),
-   `hub` (hero photos, the FAQ's parks and fixed questions), `hotels`, `parkNameSuffixes`,
+   `hub` (`scene`, the Parky picture that heads the hub and closes it, the FAQ's parks and fixed questions), `hotels`, `parkNameSuffixes`,
    `parkShortNames` (where a park's derived two letters say little: Southern California's USH, DCA,
    SFMM), `resortWords`, `stormSeason`, `blockResorts`, `fireworks`, and a `tickets` step where it
    sells tickets the step should ask for. A ticket catalog is the admin's (`/admin/tickets?region=`).

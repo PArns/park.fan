@@ -9,9 +9,9 @@ import {
   buildOpenGraphMetadata,
   fitWithin,
   MAX_DESCRIPTION_LENGTH,
-  MAX_TITLE_LENGTH,
   oneFullStop,
   buildAlternates,
+  fitTitle,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getListFormat } from '@/lib/utils/intl-format';
@@ -131,8 +131,7 @@ export async function generateMetadata({
   const monthLabel = month ? formatHubMonth(month.year, month.month, locale) : null;
   const found = verdict(config, region, bestDays, locale);
   const title = monthLabel
-    ? fitWithin(
-        MAX_TITLE_LENGTH,
+    ? fitTitle(
         t('metaTitleMonth', { month: monthLabel }),
         t('metaTitleMonthShort', { month: monthLabel })
       )
@@ -192,18 +191,21 @@ export default async function TripRegionRoute({ params }: TripRegionRouteProps) 
     getTranslations('tripHub'),
     getRegionTranslations(slug, 'hub'),
   ]);
-  const [region, calendar, bestDays] = await Promise.all([
-    getTripRegion(slug).then((r) => withGroupNames(r, t('dayTripsGroup'))),
+  const regionRead = getTripRegion(slug);
+  // The best-time page's own query for the region's page, so the teaser shows its figures. Asked
+  // as soon as the region is known and read only inside the teaser's `<Suspense>`: a cold `/when`
+  // takes seconds to build, and the page streams up to the teaser meanwhile.
+  const when = catchNonFatal(
+    regionRead.then((r) =>
+      getTripRegionWhen(slug, bestTimeWhenQuery(r, REGION_BEST_TIME_PAGE, bestTimeRange(todayIso)))
+    )
+  );
+  const [read, calendar, bestDays] = await Promise.all([
+    regionRead,
     catchNonFatal(getTripRegionCalendar(slug, window)),
     catchNonFatal(getTripRegionBestDays(slug, window)),
   ]);
-  // The best-time page's own query for the region's page, so the teaser shows its figures.
-  const when = await catchNonFatal(
-    getTripRegionWhen(
-      slug,
-      bestTimeWhenQuery(region, REGION_BEST_TIME_PAGE, bestTimeRange(todayIso))
-    )
-  );
+  const region = withGroupNames(read, t('dayTripsGroup'));
 
   const tNav = await getTranslations('navigation');
   const monthLabel = month ? formatHubMonth(month.year, month.month, locale) : null;

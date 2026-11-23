@@ -68,6 +68,9 @@ Zu Weihnachten backen Familien bei Mrs. Claus' Cookies Plätzchen mit Mrs. Claus
 
 Die Diamond-Karte gilt in beiden Parks, also auch in Dollywood's Splash Country, und bringt kostenloses Parken und vier Freikarten für Begleiter (Bring-A-Friend-Free). Mit Gold und Diamond kommst du in der ersten Betriebsstunde jedes Tages über den TimeSaver, eine eigene Spur, an ausgewählte Bahnen. Dazu gehören [NightFlight Expedition](ref:dollywood/nightflight-expedition), eröffnet im August 2026, und [Big Bear Mountain](ref:dollywood/big-bear-mountain). Die Silver-Karte hat für Erwachsene und Senioren Sperrtage, die Kinderkarte in Silver keine. Der Summer Fun Pass gilt unbegrenzt vom 19. April bis zum 10. September 2027.
 
+> [!PARKY] Gold schon jetzt
+> Fahren wir nach dem 13. Dezember zu Smoky Mountain Christmas und 2027 wieder hin, nehmen wir die Saisonkarte für 2027 gleich in Gold: Silver gilt in diesem Jahr nur bis zum 13. Dezember, Gold bis zum 3. Januar. Dass eine Karte für 2027 schon unter dem Weihnachtsbaum von 2026 gilt, finde ich ziemlich großzügig. Im nächsten Jahr kommen wir damit in der ersten Betriebsstunde über den TimeSaver an NightFlight Expedition und Big Bear Mountain.
+
 Kinder mit Geburtsjahr 2022 oder 2023 kommen mit dem Pre-K Imagination Season Pass die ganze Saison kostenlos in den Park.
 
 Die folgenden Preise gelten nur für die Verlängerung einer Saisonkarte 2026 bis zum 1. November. Hinzu kommt die Steuer.

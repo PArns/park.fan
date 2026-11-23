@@ -51,6 +51,9 @@ Se llama LEGO Santa's Holiday Light Spectacular. Empieza el sábado 5 de diciemb
 
 Arranca cuando oscurece. LEGOLAND aún no ha anunciado la hora de inicio ni el mejor sitio para verlo, y hasta las fechas del espectáculo están sujetas a cambios. Esas noches el parque cierra a las 19:00, como cualquier día del evento, así que los drones tienen que despegar y aterrizar entre que oscurece y la hora de cierre.
 
+> [!PARKY]
+> Si una de esas noches cae dentro de tu viaje a Orlando, en el [planificador de viajes](/orlando#planner) LEGOLAND se queda justo con ese día: el 5 o el 12 de diciembre, o uno entre el 19 y el 30. Entonces nos quedamos hasta el cierre a las 19:00, porque los drones no despegan hasta que oscurece, y con fuegos artificiales de drones nadie tiene que taparse los oídos. La entrada la compramos antes en línea, desde 69 dólares en vez de 129 en taquilla.
+
 ## Días del evento y horarios
 
 En noviembre y hasta mediados de diciembre, Christmas Bricktacular solo se celebra los fines de semana y el viernes después de Acción de Gracias. Desde el 18 de diciembre hay evento todos los días hasta el final:

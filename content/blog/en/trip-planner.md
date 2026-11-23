@@ -179,6 +179,9 @@ What the optimiser doesn’t touch: your lunch break, any ride you’ve already
 ticked off, and any block whose time has already begun. Press the button at two
 o’clock and the block you’re queueing in at two o’clock stays where it is.
 
+> [!PARKY]
+> Before we press “Optimise the day” in the [day planner](/trip-planner), we drag the lunch break to wherever we actually want to eat: the wizard puts it at 12:30, and the optimiser leaves it where it is. My stomach doesn’t move as easily as a block. If “Adjustments” later suggests a shorter break to fit one more ride in, we decide for ourselves which we’d rather have.
+
 And because one press can turn three blocks into eleven, the result comes with
 an undo. It goes back one step only.
 

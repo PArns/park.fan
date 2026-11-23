@@ -9,13 +9,12 @@
 
 import assert from 'node:assert/strict';
 import { aheadForWeather } from '../lib/trip-regions/plan-when.ts';
+import { breakRuns, cleanBreakName } from '../lib/trip-regions/break-runs.ts';
 import {
   bestAndWorstWeeks,
   bestTimeParks,
   bestTimeRange,
   bestTimeYear,
-  breakRuns,
-  cleanBreakName,
   europeanBreaks,
   holidayWeek,
   monthBreakDays,

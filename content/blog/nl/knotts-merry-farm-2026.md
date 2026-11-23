@@ -44,6 +44,9 @@ Een vocaal kwartet zingt kerstklassiekers, en een rij Follies-danseressen gooit 
 
 Over de naam is Six Flags het zelf niet eens: het persbericht van 4 november noemt de show “Snoopy's Christmas Follies”, de eventgids van het park “Snoopy's Merry Christmas Follies”. Snoopy stond tijdens de Merry Farm ook in eerdere winters al op het ijs, bijvoorbeeld in “Snoopy's Night Before Christmas”.
 
+> [!PARKY]
+> ’s Ochtends kijken we eerst in de Six Flags-app hoe laat de ijsshow die dag speelt, want aan het programma van gisteren hebben we niets. Voor een beagle op schaatsen schuif ik best een achtbaan op. De attracties zetten we daarna in de [dagplanner](/trip-planner) rond de voorstelling.
+
 ## Lichtjes, shows en de kerstman
 
 Tussen slingers en grote sneeuwvlokken hangen duizenden lichtjes. Het Holiday Lighting Moment is er elke avond in het hele park. De lichtjes op de Main Street en de Schoolhouse Road in Ghost Town dansen bij Snow and Glow op kerstmuziek terwijl het sneeuwt. In het Calico Park gaat de kerstboom aan tijdens de “'Tis the Season Tree Lighting Ceremony”.

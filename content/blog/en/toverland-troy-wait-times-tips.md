@@ -369,6 +369,9 @@ allows. For the anniversary, admission is free on Wednesdays and weekends from
 28 November to 16 December and from 6 to 17 January: book a free reservation and you pay per ride, in
 strips of 2 € each, with Troy costing three. Regular day tickets are sold alongside.
 
+> [!PARKY] Treat yourself
+> On one of the free winter days we book our free reservation ahead and spend most of the strips on Troy: three at 2 € each, so 6 € a ride. I’ll keep count of how often we thunder through the station building. We save one ride for the end: if the park closes after sunset, we ride Troy in the dark, which otherwise only happens on Halloween nights.
+
 ## When to go
 
 **By month**, April through July sit close together, and what stands out above

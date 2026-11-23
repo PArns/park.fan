@@ -264,7 +264,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
     <footer className="bg-card border-t" role="contentinfo" {...linkBlockAttributes('footer')}>
       <div className="container mx-auto px-4 pt-8 pb-6 sm:py-12">
         <div className="grid gap-8 md:grid-cols-6">
-          <div className="@container space-y-3 sm:space-y-4 md:col-span-2">
+          <div className="space-y-3 sm:space-y-4 md:col-span-2">
             <Link
               href="/"
               /* Both halves are ink-tight artwork, so the whole gap is in the class. */
@@ -330,42 +330,15 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
             </ul>
             <PreferredSourceButton />
             <InstallAppButton />
-            {/* Where the column is narrower than 20rem the links stack and the bullets go: a
-                wrapping row puts a „•" at the end or start of a line. The developer portal and a
-                link off the site, resources rather than the site's navigation, so a list and not
-                a `<nav>`. */}
-            <ul
-              className="text-muted-foreground flex flex-col items-start gap-1.5 text-sm max-sm:gap-0 @min-[20rem]:flex-row @min-[20rem]:flex-wrap @min-[20rem]:items-center @min-[20rem]:gap-1.5"
-              aria-label={t('sections.resources')}
-            >
-              <li>
-                <Link
-                  href={DEVELOPERS_PATH}
-                  prefetch={false}
-                  className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-                >
-                  {t('api')}
-                </Link>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span
-                  aria-hidden="true"
-                  className="text-muted-foreground/60 hidden @min-[20rem]:inline"
-                >
-                  •
-                </span>
-                <a
-                  href="https://github.com/PArns"
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                  className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-                >
-                  GitHub
-                  <span className="sr-only"> ({t('opensInNewTab')})</span>
-                  <ExternalLink className="h-3 w-3" aria-hidden="true" />
-                </a>
-              </li>
-            </ul>
+            <p className="text-muted-foreground text-sm">
+              <Link
+                href={DEVELOPERS_PATH}
+                prefetch={false}
+                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
+              >
+                {t('developerPortal')}
+              </Link>
+            </p>
           </div>
 
           {/* Popular parks: one column per country, each under the same rule the link columns

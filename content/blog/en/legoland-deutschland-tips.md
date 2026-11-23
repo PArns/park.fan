@@ -331,6 +331,9 @@ According to the park, the **Tempel X-pedition**, **LEGO NINJAGO The Ride**, the
 are under cover. According to Wikipedia Atlantis has over 2,000 fish, and its glass tunnel is eight
 metres long. There's also a **Regen Rallye**, a puzzle round for wet days.
 
+> [!PARKY] Go anyway
+> Rain in the forecast doesn't keep us at home: on rainy days the waits here were 17 percent shorter. When a shower comes, we head into the LEGO Studios or onto LEGO NINJAGO The Ride, and I hold the umbrella and grin at every shorter queue. Once it stops, we're the first ones back out.
+
 Between 24 December 2025 and 5 October 2026, at Legoland
 Deutschland at least two millimetres of rain fell on 18 percent of opening days. The park itself recommends an
 umbrella, a rain poncho, waterproof shoes and a change of clothes.
@@ -381,6 +384,9 @@ million.
 to 23 and 26 to 30 December, and 2 to 10 January 2027. There's an ice rink, curling lanes and
 shows every half hour, and at many rides it says “open depending on weather”. An early-bird ticket
 costs €22 instead of €36 until 15 November.
+
+> [!PARKY] Annual pass first
+> If we're going to Legoland twice in 2027 anyway, we buy the annual pass, from €99, before the first WinterWonder day on 28 November: with it, WinterWonder entry is free, and without it a ticket costs €36. If a ride marked “open depending on weather” then stays shut, it only bugs me half as much, because we're back in summer. Add two summer days at the minimum online price of €39 and the pass has paid for itself.
 
 Legoland has also announced the world's first LEGO Harry Potter Land and the first accommodation with
 that theme. The park doesn't give an opening year.

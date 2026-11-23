@@ -96,6 +96,9 @@ Im Black-Friday-Vorverkauf kostet ein Tagesticket ab 71,99 Dollar statt regulär
 
 Ein Zwei-Park-Ticket für Busch Gardens und SeaWorld Orlando kostet ab 93,99 Dollar, wenn beide Besuche innerhalb von sechs Monaten nach dem Kauf liegen. In SeaWorld Orlando kehrt zur [Christmas Celebration die Orca-Show Miracles zurück](/news/seaworld-orlando-christmas-celebration-2026).
 
+> [!PARKY]
+> Steht SeaWorld Orlando sowieso auf unserer Liste, nehmen wir das Zwei-Park-Ticket ab 93,99 Dollar, nur 22 Dollar mehr als das günstigste Tagesticket hier im Black-Friday-Vorverkauf. Für den Aufpreis einen zweiten Park, da hüpfe ich, aber gekauft wird erst, wenn beide Parktage in die sechs Monate nach dem Kauf passen. Im [Reiseplaner](/orlando#planner) verteilen wir die beiden dann auf zwei Tage.
+
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
 Quellen:

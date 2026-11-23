@@ -183,6 +183,9 @@ from 10:00 to 20:00, then until 31 January from 11:00 to 18:00 Monday to Friday
 and from 10:00 to 19:00 at weekends. The outdoor coasters run as long as the
 weather allows.
 
+> [!PARKY] Treat yourself
+> From 21 December to 3 January we get the Efteling evening ticket for €33: from 16:00 to closing at 20:00 that’s four hours, and in December it’s dark from half past four. Droomvlucht, Symbolica and Danse Macabre don’t care about the weather, and neither do I under my umbrella. The only day without the ticket is New Year’s Eve, when the park closes at 18:00.
+
 On the evening of 31 December the Efteling holds Oud & Nieuw from 19:00 to 01:00,
 with fireworks. The €62 tickets have sold out, the discounted ones for
 season-pass holders too, and there are no rooms left for that night

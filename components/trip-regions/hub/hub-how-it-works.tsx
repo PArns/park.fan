@@ -5,11 +5,11 @@ import { hubShot } from '@/lib/trip-regions/hub-media';
 import type { TripHubShots } from '@/lib/trip-regions/registry';
 import { HubLandingOnly } from './hub-trip-state';
 
-/** The planner's four steps as chapter 01 names them, in the order of `TripHub.howItWorks`. */
+/** The planner's four steps as the planner chapter names them, in the order of `TripHub.howItWorks`. */
 export const HUB_STEPS = ['dates', 'questions', 'plan', 'edit'] as const;
 
 /**
- * Chapter 01 of the landing page: how the trip planner plans a trip, in four steps with a
+ * The planner chapter of the landing page: how the trip planner plans a trip, in four steps with a
  * screenshot each (the region's `hub.howItWorks`, in the page's language), then Parky's offer to
  * plan it with him in the chat, whose button opens him. Server HTML: every step, image and alt is in the served page;
  * swiped sideways on a phone, four columns from `md`. Hidden, not removed, while the hub shows a

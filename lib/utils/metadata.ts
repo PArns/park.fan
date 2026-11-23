@@ -2,10 +2,66 @@ import type { Metadata } from 'next';
 import { locales, localeToOpenGraphLocale, SITE_URL, type Locale } from '@/i18n/config';
 
 /**
- * Google truncates the SERP title around 60 characters, and a keyword past that disappears behind
- * an ellipsis. Templates fit typical names; a long name pushes them over on its own.
+ * Google cuts a result's title by its width, the 600 px of a desktop result's column in 20 px Arial,
+ * not by a count of characters, and a keyword past the cut disappears behind an ellipsis. Lower
+ * case is narrow and Title Case and digits are wide, so „Phantasialand: Wartezeiten LIVE &
+ * Auslastung heute“ fits where an English title of the same length may not. {@link titleWidth}
+ * estimates the width, {@link fitTitle} picks by it.
  */
-export const MAX_TITLE_LENGTH = 60;
+export const MAX_TITLE_WIDTH_PX = 600;
+
+/** Arial's advance widths in thousandths of an em, grouped, for the characters titles use. */
+const ARIAL_WIDTH_GROUPS: ReadonlyArray<readonly [number, string]> = [
+  [191, "'"],
+  [222, 'ijl’‘'],
+  [260, '|'],
+  [278, ' !,./:;I[]\\ft·'],
+  [333, '()-r“”„'],
+  [355, '"'],
+  [389, '*'],
+  [500, 'Jcksvxyz'],
+  [556, '0123456789abdeghnopqu?#$L–«»_'],
+  [584, '+<=>~'],
+  [611, 'FTZß'],
+  [667, 'ABEKPSVXY&'],
+  [722, 'CDHNRUw'],
+  [778, 'GOQ'],
+  [833, 'Mm'],
+  [889, '%'],
+  [944, 'W'],
+  [1000, '—…'],
+  [1015, '@'],
+];
+const ARIAL_WIDTHS = new Map(
+  ARIAL_WIDTH_GROUPS.flatMap(([width, chars]) => [...chars].map((ch) => [ch, width] as const))
+);
+
+/**
+ * The estimated width of a title in px on Google's desktop result page (20 px Arial). Accents add
+ * nothing to their letter; a character Arial's table here does not list counts as a digit, a CJK or
+ * other full-width one as a full em.
+ */
+export function titleWidth(text: string): number {
+  let units = 0;
+  for (const ch of text.normalize('NFD')) {
+    if (/\p{M}/u.test(ch)) continue;
+    units += ARIAL_WIDTHS.get(ch) ?? ((ch.codePointAt(0) ?? 0) >= 0x2e80 ? 1000 : 556);
+  }
+  return (units / 1000) * 20;
+}
+
+/**
+ * The first title candidate whose estimated width fits {@link MAX_TITLE_WIDTH_PX}, else the
+ * narrowest; never truncates mid-word. Pass candidates richest-first.
+ */
+export function fitTitle(...candidates: string[]): string {
+  const usable = candidates.filter((c) => c && c.trim().length > 0);
+  if (usable.length === 0) return '';
+  return (
+    usable.find((c) => titleWidth(c) <= MAX_TITLE_WIDTH_PX) ??
+    usable.reduce((narrowest, c) => (titleWidth(c) < titleWidth(narrowest) ? c : narrowest))
+  );
+}
 /** Google's snippet length, past which the description is cut. */
 export const MAX_DESCRIPTION_LENGTH = 160;
 

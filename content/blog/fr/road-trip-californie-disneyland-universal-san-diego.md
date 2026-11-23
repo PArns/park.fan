@@ -114,6 +114,9 @@ En dehors de l’été et des semaines de vacances, Elmo ne travaille que le wee
 
 SeaWorld San Diego fête tous les jours la [Christmas Celebration](/news/seaworld-san-diego-christmas-celebration-2026) du 13 novembre 2026 au 3 janvier 2027, comprise dans l’entrée. Howl-O-Scream, avec son propre billet, a eu lieu en 2026 du 11 septembre au 31 octobre, et pour 2027 SeaWorld indique certains soirs du 10 septembre au 31 octobre.
 
+> [!PARKY] Le bon moment
+> Pour les programmes de Noël, on vient entre le 30 novembre et le 18 décembre : ils tournent alors déjà tous à Disneyland, à Universal, chez Knott’s et à SeaWorld, et les écoles de Los Angeles n’ont aucun jour de congé. Un feu d’artifice à la fermeture, je ne le rate jamais. Pour LEGOLAND, ce sera donc le 5 ou le 12 décembre, deux soirs de feu d’artifice pendant la Christmas Bricktacular.
+
 ![Des lettres blanches qui forment SeaWorld San Diego sur un auvent jaune, sous un ciel gris. | SeaWorld a vu le jour au bord de Mission Bay, en 1964.](/media/seaworld-san-diego/sign.jpg)
 
 ## Où dormir
@@ -162,6 +165,9 @@ Sans voiture de location, tu rejoins Universal, Disneyland et LEGOLAND en train 
 ### Aéroports
 
 Disney cite six aéroports pour le Disneyland Resort, du plus proche au plus éloigné : John Wayne (SNA) à Santa Ana, Long Beach (LGB), Los Angeles International (LAX), Ontario (ONT), Hollywood Burbank (BUR) et San Diego (SAN). Depuis la gare de l’aéroport de Burbank, le Pacific Surfliner va sans changement jusqu’à Anaheim, et la navette gratuite LOT D de l’aéroport t’amène à la gare. San Diego International se trouve à un peu moins de cinq kilomètres au nord-ouest du centre de San Diego et convient à la partie sud du voyage : en arrivant à Los Angeles et en repartant de San Diego, tu évites de retraverser toute la région en voiture.
+
+> [!PARKY] Déménager une fois
+> On atterrit à Los Angeles, on loge sur Harbor Boulevard pour Disneyland, Knott’s, Universal et Magic Mountain, puis on déménage dans le Gaslamp Quarter pour les trois parcs du sud. De là, SeaWorld est à 13 minutes au lieu de 111, et plus de quatre heures de voiture pour une journée à Sesame Place, ce serait trop d’autoroute pour trop peu d’Elmo. On rentre en avion depuis San Diego, et dans le [planificateur de voyage](/californie#planner) on prépare les deux parties séparément.
 
 ## Billets
 

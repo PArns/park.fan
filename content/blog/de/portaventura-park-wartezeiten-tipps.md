@@ -237,6 +237,9 @@ Kinder dürfen ab 12 Jahren ohne Erwachsenen in die Parks.
 
 Für Halloween gibt es den Code SUSTO26 mit bis zu 30 Prozent Rabatt auf Tickets für Besuche vom 19. September bis zum 15. November, der bis zum 15. November eingelöst werden muss. Der Code ESCAPEPAW gibt 40 Prozent auf Wochentagsbesuche, wenn du bis zum 14. Oktober kaufst und bis zum 4. Dezember kommst.
 
+> [!PARKY] Zwei Tage nehmen
+> Schlafen wir nicht in einem Hotel des Resorts, kaufen wir für den Park gleich zwei Tage: online 43 € statt 37 €, der zweite Tag kostet also 6 €. Für weniger als eine einzige Fahrt mit Express ONE bekommen wir einen ganzen Parktag, da hebe ich vor Freude kurz ab. Im Resort-Hotel ist er sowieso dabei, dort bringt schon eine Nacht zwei Tage Parkzugang.
+
 ### Jahreskarten
 
 Die vier Jahreskarten gelten 365 Tage ab Kauf. Junioren sind Kinder von 4 bis 10 Jahren, Senioren sind ab 60, Kinder von 0 bis 3 Jahren sind frei.
@@ -293,6 +296,9 @@ Essen und Getränke darfst du nicht in den Park mitnehmen. Vor dem Eingang liegt
 Mit Bedienung essen kannst du im Iron Horse im Far West (Burger, Rippchen, Steaks), im Raco de Mar in Mediterrània (Salate und Reisgerichte), in der Vinosfera mit Tapas und im Hacienda El Charro in México. Als Selbstbedienung gibt es unter anderem Bora Bora in Polynesia, La Cantina in México, Marco Polo in China (Buffet) und Sichuan. In Ferrari Land bietet die Trattoria Maranello Salate, Pizza, Pasta, Fleisch und Fisch am Tisch. Schneller geht es bei Pit Lane mit Selbstbedienung, dazu gibt es Paddock, Finish Line, Ice Cream Box und Stop & Go.
 
 Schließfächer gibt es in drei Größen: klein 8 €, mittel 11 € und groß 15 €. Dazu kommen Schließfächer an den Bahnen, 2 Euro für einen Rucksack, an vier Stellen: zwischen Shambhala und Dragon Khan, am Eingang von Furius Baco, neben Tutuki Splash und am Zugang von Silver River Flume. Sie sind nach dem Öffnen frei für den nächsten Gast, ein erneutes Öffnen kostet wieder.
+
+> [!PARKY]
+> Den Rucksack schließen wir zwischen Shambhala und Dragon Khan ein und fahren beide, bevor wir das Fach wieder öffnen, dann zahlen wir die 2 Euro nur einmal. Bei 134 km/h will ich sowieso nichts auf dem Schoß haben. Im [Tagesplaner](/trip-planner) legen wir die beiden dafür direkt hintereinander.
 
 Ein Einzelkinderwagen kostet 12 Euro Miete plus 12 Euro Pfand, ein Doppelwagen 18 Euro plus 12 Euro Pfand, ein Rollstuhl 12 Euro plus 10 Euro. Gäste mit anerkannter Behinderung ab 33 Prozent und nachgewiesener eingeschränkter Mobilität bekommen einen Ausweis für den „Exclusive Access“ an Bahnen und Shows, mit bis zu vier Begleitpersonen an den Fahrgeschäften.
 

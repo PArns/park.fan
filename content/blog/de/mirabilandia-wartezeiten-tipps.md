@@ -220,6 +220,9 @@ Ausgeschlossen sind Desmo Race, Blu River und The Walking Dead. Der Flash Pass g
 
 Wo die Wartezeit im Bereich einer Viertelstunde liegt, spart der Pass nicht viel. Am meisten bringt er an Rio Bravo, iSpeed und Autosplash. Das Paket „VIP“ kombiniert Eintritt, das All-Inclusive-Menü und einen Regular Flash Pass.
 
+> [!PARKY] Regular reicht
+> Wenn Flash Pass, dann der Regular, und den kaufen wir spätestens am Vortag online: Am Kauftag gilt ein online gekaufter Pass nicht, und im Park kostet er ab 29,90 statt ab 24,90 Euro. Eine Fahrt je Bahn genügt uns an Rio Bravo, iSpeed und Autosplash, wo er am meisten bringt, und nass werden wir auch mit Vorrang. Bei Desmo Race gilt er sowieso nicht, da stehen wir früh am Nachmittag ganz normal an.
+
 ## Tickets und Saisonkarte
 
 Das Tagesticket für Erwachsene (über 140 Zentimeter) beginnt online bei 27,90 Euro, je früher du buchst. Nach Angabe des Parks sparst du bis zu 20 Euro, wenn du mindestens zehn Tage vorher kaufst (Aktion bis 25. Oktober). An der Kasse kostet das Ticket 49,90 Euro. Die ermäßigte Karte für Kinder von 100 bis 140 Zentimetern und für Senioren über 60 kostet online ab 27,90 und an der Kasse 42,90 Euro. Kinder unter 100 Zentimetern zahlen nichts. Das Abendticket ab 17 Uhr kostet 22,90 Euro. Das Ticket mit offenem Datum kostet 49,90 Euro (ermäßigt 42,90) und gilt bis zum Saisonende.

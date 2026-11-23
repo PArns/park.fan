@@ -101,7 +101,7 @@ export function PlanCheckRow({
 
 /**
  * A few short choices side by side, one pressed: the planner's segmented control, as the Dates
- * step's „Ich kenne meine Reisedaten | Beste Reisedaten finden“ draws it, 44 px tall on a phone.
+ * step's „Ich kenne meine Daten | Daten finden“ draws it, 44 px tall on a phone.
  */
 export function PlanSegmented<T extends string>({
   label,
@@ -114,7 +114,8 @@ export function PlanSegmented<T extends string>({
   /** What the group chooses, for a screen reader. */
   label: string;
   value: T;
-  options: ReadonlyArray<{ value: T; label: ReactNode }>;
+  /** `describedBy` names the line that says why an option is `disabled`. */
+  options: ReadonlyArray<{ value: T; label: ReactNode; disabled?: boolean; describedBy?: string }>;
   onChange: (value: T) => void;
   disabled?: boolean;
   className?: string;
@@ -132,7 +133,8 @@ export function PlanSegmented<T extends string>({
           type="button"
           role="radio"
           aria-checked={value === option.value}
-          disabled={disabled}
+          aria-describedby={option.describedBy}
+          disabled={disabled || option.disabled}
           onClick={() => onChange(option.value)}
           className={cn(
             'min-h-11 truncate rounded-lg px-2 text-sm font-medium transition disabled:opacity-50 lg:min-h-9',

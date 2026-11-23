@@ -84,6 +84,9 @@ Das reguläre Tagesticket verkauft Toverland an den Pay-per-Ride-Tagen weiter, m
 
 Ein Erwachsenen-Tagesticket kostet mittwochs so viel wie 18,5 Streifen, also gut sechs Fahrten auf den großen Bahnen. Am Wochenende entspricht es 21,5 Streifen, gut sieben großen Fahrten. Ab der siebten großen Fahrt an einem Mittwoch und ab der achten am Wochenende ist das Tagesticket billiger. Der Mengenrabatt beginnt bei 25 Streifen, also bei 47,50 €, und da wäre das Tagesticket schon billiger gewesen.
 
+> [!PARKY] Tagesticket vorab
+> Wollen wir die großen Bahnen öfter fahren, kaufen wir das Tagesticket mindestens sieben Tage vorher: Mit den vollen 7 € Rabatt ist es für Erwachsene schon eine große Fahrt früher billiger als Streifen, mittwochs ab der sechsten, am Wochenende ab der siebten. Troy, Fēnix und Booster Bike je zweimal sind schon sechs, und zweimal ist bei mir eher die Untergrenze. Reicht uns eine Runde auf jeder Bahn, bleiben wir bei Pay per Ride.
+
 In einer Gruppe lassen sich Tagesticket und Pay per Ride mischen. Begleitest du ein Kind, das eine Bahn wegen der Mindestgröße nur mit einem Erwachsenen fahren darf, brauchst du selbst ein Tagesticket oder Streifen. Geburtstags- und Rückkehrtickets sowie die Tickets aus der Frühjahrsaktion „2. Besuch gratis“ bleiben All-in-Tagestickets.
 
 Magic Member mit gültigem Abo fahren auch an Pay-per-Ride-Tagen unbegrenzt und ohne Aufpreis, sie brauchen weder Reservierung noch Streifen. Das Parken ist im Abo nicht enthalten. Das Parkabo kostet 50 € im Jahr oder 4,50 € im Monat.

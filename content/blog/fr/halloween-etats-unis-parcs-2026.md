@@ -265,6 +265,9 @@ Nos temps d’attente portent sur toute la journée, nous ne mesurons pas les so
 
 À Orlando, Universal Studios Florida et SeaWorld Orlando sont à sept kilomètres l’un de l’autre à vol d’oiseau, et le Magic Kingdom à 13 kilomètres d’Universal. Entre une soirée à Halloween Horror Nights et une autre à Howl-O-Scream, il reste de la place pour une journée dans un parc Disney, où la décoration d’Halloween est en place même sans billet de soirée. Busch Gardens Tampa se trouve à un peu plus de 100 kilomètres à vol d’oiseau, plus à l’ouest.
 
+> [!PARKY]
+> Dans le [planificateur de voyage](/orlando#planner), on ne met pas Universal Studios Florida sur un jour de Horror Nights, car ces soirs-là le fonctionnement de jour s’y arrête dès 17 h. En journée, chez nous, ce sont les guirlandes de citrouilles plutôt que les tronçonneuses, au-dessus de Main Street au Magic Kingdom, et quand les portes de l’événement ouvrent à 18 h 30, on est à Universal.
+
 Dans l’agglomération de Los Angeles, Knott's Berry Farm et Disney California Adventure sont à huit kilomètres l’un de l’autre, Universal Studios Hollywood à 46 kilomètres de Knott's, et Six Flags Magic Mountain encore 39 kilomètres plus au nord. Knott's Scary Farm et Fright Fest à Magic Mountain ont lieu en même temps les vendredis et samedis d’octobre, et les deux restent alors ouverts jusqu’à minuit ou plus tard.
 
 ## Questions fréquentes

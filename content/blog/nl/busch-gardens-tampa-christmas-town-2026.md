@@ -96,6 +96,9 @@ In de Black Friday-voorverkoop kost een dagticket vanaf 71,99 dollar in plaats v
 
 Een ticket voor Busch Gardens en SeaWorld Orlando samen kost vanaf 93,99 dollar, als beide bezoeken binnen zes maanden na aankoop vallen. In SeaWorld Orlando keert voor de [Christmas Celebration de orkashow Miracles terug](/news/seaworld-orlando-christmas-celebration-2026).
 
+> [!PARKY]
+> Staat SeaWorld Orlando toch al op ons lijstje, dan nemen we het ticket voor beide parken vanaf 93,99 dollar, maar 22 dollar meer dan het goedkoopste dagticket hier in de Black Friday-voorverkoop. Een tweede park voor dat verschil, daar maak ik een sprongetje voor, maar we kopen pas als beide parkdagen binnen de zes maanden na aankoop vallen. In de [reisplanner](/orlando#planner) verdelen we de twee daarna over twee dagen.
+
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
 Bronnen:

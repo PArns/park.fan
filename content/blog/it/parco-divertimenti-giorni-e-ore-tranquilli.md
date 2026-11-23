@@ -374,6 +374,9 @@ sempre vacanze. Non posso dimostrarlo.
 Verso le dodici aspetti più a lungo, e fino a sera presto l’attesa resta lunga.
 È più corta nell’ultima ora.
 
+> [!PARKY]
+> Per il Disneyland Park vuol dire che prenotiamo il viaggio quando ci fa comodo: le vacanze qui pesano solo per circa il 3 per cento, e anche il giorno della settimana cambia poco. Le code corte ce le prendiamo con l’orologio e restiamo fino all’ultima ora, anche se a quel punto sbadiglio già. Quale parco in quale giorno, lo decidiamo nel [pianificatore di viaggio](/paris#planner).
+
 Il parco ha aperto il 12 aprile 1992 come Euro Disneyland e si chiama Disneyland
 Park da marzo 2002.
 

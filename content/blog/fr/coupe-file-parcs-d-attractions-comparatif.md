@@ -351,6 +351,9 @@ pour les heures entre les deux. Furius Baco, au PortAventura Park, a dès le dé
 d’après-midi une file presque moitié moins longue que le matin. Sur Hyperia, à Thorpe Park, aucune heure ne
 t’aidera : de 10 h à 17 h, l’attente y reste presque la même.
 
+> [!PARKY]
+> À Disneyland Paris, Premier Access One ne se vend de toute façon que le jour même, et même là, on ne le prend pas dès le croissant : le matin, on fait les grandes attractions sans, et ce n’est que vers midi qu’on voit laquelle il nous manque encore. Si le contingent est déjà épuisé à cette heure-là un jour d’affluence, on garde l’attraction pour la fin de soirée, quand les files raccourcissent à nouveau.
+
 Mammut et Blue Tornado se font de préférence l’après-midi à Gardaland, leurs files sont les plus
 longues vers 11 h. Pour Pégase Express et Tonnerre 2 Zeus au Parc Astérix, mieux vaut le soir. À
 Walibi Belgium, Vampire et Loup-Garou prennent la journée à l’envers, avec une file plus longue à

@@ -8,8 +8,10 @@ import {
 } from '@/lib/utils/park-day';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
-import { isSeasonEvent } from '@/lib/parks/park-season-days';
+import { isSeasonEvent, type SeasonEventKind } from '@/lib/parks/park-season-days';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
+import { breakRuns } from './break-runs';
 import { shownWait, shownWaitOn } from './plan-week';
 import { TRIP_CALENDAR_ID } from './paths';
 import { PARK_NAME_SUFFIXES, requireTripRegion } from './registry';
@@ -21,6 +23,7 @@ import type {
   TripCrowdLevel,
   TripLeg,
   TripParkDay,
+  TripDayWeather,
   TripRegion,
   TripRegionGroup,
   TripRegionPark,
@@ -232,15 +235,9 @@ export function rankGroupParks(
     .map(({ park, day: d }) => ({ park, day: d }));
 }
 
-/**
- * A park's quietest day among some days, the star on its tile: the lowest figure the tile prints
- * (`shownWait`), a tie to the lower `headlinerWait`, then to the longer day for the day guest, then
- * to the earlier date. The API rounds `headlinerWait` to 5 min, so a tie on it alone is common; a
- * park with an open day always gets its one star, and the star never sits on a higher printed
- * figure than another day's. Never a last-year day, which is never offered as a pick.
- */
-export function quietestDay(days: readonly TripCalendarDay[], slug: string): string | null {
-  const [first] = days
+/** A park's rankable days among some days, quietest first, by {@link quietestDay}'s order. */
+function rankedDays(days: readonly TripCalendarDay[], slug: string) {
+  return days
     .flatMap((d) => {
       const park = d.parks[slug];
       return isRankable(park) && park.basis !== 'last_year' ? [{ date: d.date, park }] : [];
@@ -252,7 +249,105 @@ export function quietestDay(days: readonly TripCalendarDay[], slug: string): str
         dayGuestMinutes(b.park) - dayGuestMinutes(a.park) ||
         a.date.localeCompare(b.date)
     );
-  return first?.date ?? null;
+}
+
+/**
+ * A park's quietest day among some days, the star on its tile: the lowest figure the tile prints
+ * (`shownWait`), a tie to the lower `headlinerWait`, then to the longer day for the day guest, then
+ * to the earlier date. The API rounds `headlinerWait` to 5 min, so a tie on it alone is common; a
+ * park with an open day always gets its one star, and the star never sits on a higher printed
+ * figure than another day's. Never a last-year day, which is never offered as a pick.
+ */
+export function quietestDay(days: readonly TripCalendarDay[], slug: string): string | null {
+  return rankedDays(days, slug)[0]?.date ?? null;
+}
+
+/** A park's day of a week in the hub: the one the visitor picked, or else its suggested day. */
+export interface HubWeekMark {
+  date: string;
+  picked: boolean;
+}
+
+/**
+ * The other parks of a week with a pick, spread over the free days: as many parks as there are
+ * free days each get a day of their own, and among those spreads the one whose days lie the least
+ * above each park's quietest free day, in printed minutes (a tie to the park's own order of its
+ * days). A park left over, with more parks than free days, gets its quietest free day all the same.
+ * Exact, by the days left free as a bit mask: seven days are 128 masks, whatever the park count.
+ */
+function spreadParks(free: readonly TripCalendarDay[], slugs: readonly string[]) {
+  const options = slugs.map((slug) => {
+    const ranked = rankedDays(free, slug);
+    const best = ranked.length > 0 ? shownWait(ranked[0].park)! : 0;
+    return ranked.map((entry, rank) => ({
+      day: free.findIndex((d) => d.date === entry.date),
+      cost: (shownWait(entry.park)! - best) * 100 + rank,
+    }));
+  });
+  const masks = 1 << free.length;
+  // From park `i` on with the days in `mask` taken: the most parks placed, then the least cost.
+  const memo = new Map<number, { placed: number; cost: number; day: number }>();
+  const solve = (i: number, mask: number): { placed: number; cost: number; day: number } => {
+    if (i === slugs.length) return { placed: 0, cost: 0, day: -1 };
+    const key = i * masks + mask;
+    const known = memo.get(key);
+    if (known) return known;
+    const skip = solve(i + 1, mask);
+    let best = { placed: skip.placed, cost: skip.cost, day: -1 };
+    for (const { day, cost } of options[i]) {
+      if (mask & (1 << day)) continue;
+      const rest = solve(i + 1, mask | (1 << day));
+      const placed = rest.placed + 1;
+      const total = rest.cost + cost;
+      if (placed > best.placed || (placed === best.placed && total < best.cost)) {
+        best = { placed, cost: total, day };
+      }
+    }
+    memo.set(key, best);
+    return best;
+  };
+  const days = new Map<string, string>();
+  let mask = 0;
+  slugs.forEach((slug, i) => {
+    const { day } = solve(i, mask);
+    if (day < 0) return;
+    days.set(slug, free[day].date);
+    mask |= 1 << day;
+  });
+  return days;
+}
+
+/**
+ * Each park's mark for each week around the visitor's picks (`picks`, date → park), by its slug.
+ * A week without a pick: every park's quietest day ({@link quietestDay}), the stars as they were.
+ * A week with one: the parks picked keep their day, and the others are spread over the dates no
+ * park is picked on, one park a day where the days suffice ({@link spreadParks}), so a day planned
+ * for one park moves the others to days of their own. A park in `skip` (ticked off as visited)
+ * claims no day and keeps its quietest free one. `null` for a week without either.
+ */
+export function weekMarks(
+  days: readonly TripCalendarDay[],
+  weeks: readonly HubWeek[],
+  slugs: readonly string[],
+  picks: Readonly<Record<string, string>>,
+  skip: ReadonlySet<string> = new Set()
+): Map<string, (HubWeekMark | null)[]> {
+  const marks = new Map<string, (HubWeekMark | null)[]>(slugs.map((slug) => [slug, []]));
+  for (const week of weeks) {
+    const own = days.slice(week.start, week.start + week.length);
+    const free = own.filter((d) => !picks[d.date]);
+    const planned = free.length < own.length;
+    const open = slugs.filter(
+      (slug) => !skip.has(slug) && !own.some((d) => picks[d.date] === slug)
+    );
+    const spread = planned ? spreadParks(free, open) : new Map<string, string>();
+    for (const slug of slugs) {
+      const picked = own.find((d) => picks[d.date] === slug);
+      const date = picked?.date ?? spread.get(slug) ?? quietestDay(free, slug);
+      marks.get(slug)!.push(date ? { date, picked: Boolean(picked) } : null);
+    }
+  }
+  return marks;
 }
 
 /** A resort's pick on a day, as the hub names it. */
@@ -409,44 +504,41 @@ export function factDays(calendar: TripCalendar): FactDays {
   return { days: calendar.days.filter((d) => dayBasis(d) === 'last_year'), lastYear: true };
 }
 
-/**
- * The seasons a tile draws quietly, bare and faded: one that runs on more than half of the
- * window's days, where an icon on every tile would drown the crowd colours, or one only
- * `expected`. The park calendar's rule for its month (`seasonDaysOfMonth`), over the hub's window.
- */
-export function quietSeasons(calendar: TripCalendar): Set<string> {
-  const runs = new Map<string, number>();
-  for (const day of calendar.days) {
-    for (const id of new Set(Object.values(day.parks).flatMap((p) => p.seasons ?? []))) {
-      runs.set(id, (runs.get(id) ?? 0) + 1);
-    }
-  }
-  return new Set(
-    calendar.seasons
-      .filter((s) => s.status === 'expected' || (runs.get(s.id) ?? 0) > calendar.days.length / 2)
-      .map((s) => s.id)
-  );
+/** Where one park runs an event: its days in the window and the season's own bounds. */
+export interface EventLaneRun {
+  /** The window's days it runs on at this park, sorted. */
+  dates: string[];
+  /** The season's first and last day, which can lie outside the window. */
+  from: string;
+  to: string;
+  /** The season's own list of days where it names them (party nights), else `null`: every day of its range. */
+  listed: readonly string[] | null;
 }
 
-/** One lane under the matrix: a season or a run of school-break days. */
+/** One event of the window: a season, or a run of school-break days. */
 export interface EventLane {
   id: string;
   /** `party` for a separately ticketed evening, `festival` for a season inside the day, `break`. */
   kind: 'party' | 'festival' | 'break';
+  /** The season's kind, for its icon; `null` for a school break. */
+  seasonKind: SeasonEventKind | null;
   /** The season's own name, or the break's; `null` when the API sends none. */
   name: string | null;
   /** The parks it runs at, in the region's order; none for a school break. */
   parkSlugs: string[];
   /** `expected` is last year's pattern: drawn dashed, never counted as a date. */
   status: 'confirmed' | 'announced' | 'expected' | 'none';
-  /** The window's days it runs on, sorted. */
+  /** The window's days it runs on at any of its parks, sorted. */
   dates: string[];
+  /** Each park's own days, since one name can run on different days at two parks. */
+  byPark: Record<string, EventLaneRun>;
 }
 
 /**
- * The lanes under the matrix: each curated season that runs on a day of the window (party nights,
- * festivals, Universal's holidays as `expected`), one lane per name even where several parks run
- * it, then the school breaks as runs of days. A cancelled season stays out.
+ * The window's events: each curated season that runs on a day of the window (party nights,
+ * festivals, Universal's holidays as `expected`), one per name even where several parks run it,
+ * then the school breaks as the planner's runs (`breakRuns`: consecutive days, an unnamed weekend
+ * joining the break it borders, a run without any name left out). A cancelled season stays out.
  */
 export function eventLanes(calendar: TripCalendar, parkOrder: readonly string[] = []): EventLane[] {
   const lanes = new Map<string, EventLane>();
@@ -467,18 +559,30 @@ export function eventLanes(calendar: TripCalendar, parkOrder: readonly string[] 
     const kind = season.separateTicket ? 'party' : 'festival';
     const key = `${kind}:${season.name ?? season.id}`;
     const lane = lanes.get(key);
+    const run: EventLaneRun = {
+      dates,
+      from: season.startDate,
+      to: season.endDate,
+      listed: season.dates && season.dates.length > 0 ? season.dates : null,
+    };
     if (lane) {
       lane.dates = [...new Set([...lane.dates, ...dates])].sort();
       if (!lane.parkSlugs.includes(season.parkSlug)) lane.parkSlugs.push(season.parkSlug);
       if (lane.status === 'expected' && season.status !== 'expected') lane.status = season.status;
+      const known = lane.byPark[season.parkSlug];
+      lane.byPark[season.parkSlug] = known
+        ? { ...known, dates: [...new Set([...known.dates, ...dates])].sort() }
+        : run;
     } else {
       lanes.set(key, {
         id: season.id,
         kind,
+        seasonKind: season.kind,
         name: season.name ?? null,
         parkSlugs: [season.parkSlug],
         status: season.status,
         dates,
+        byPark: { [season.parkSlug]: run },
       });
     }
   }
@@ -489,21 +593,102 @@ export function eventLanes(calendar: TripCalendar, parkOrder: readonly string[] 
   const seasons = [...lanes.values()]
     .map((lane) => ({ ...lane, parkSlugs: [...lane.parkSlugs].sort((a, b) => rank(a) - rank(b)) }))
     .sort((a, b) => rank(a.parkSlugs[0]) - rank(b.parkSlugs[0]) || (a.kind === 'party' ? -1 : 1));
-  const breaks = new Map<string, string[]>();
-  for (const day of calendar.days) {
-    if (!day.isSchoolVacation) continue;
-    const name = day.holidays?.[day.holidays.length - 1] ?? '';
-    breaks.set(name, [...(breaks.get(name) ?? []), day.date]);
-  }
-  const breakLanes: EventLane[] = [...breaks].map(([name, dates]) => ({
-    id: `break:${name}`,
+  const breakDays = calendar.days
+    .filter((day) => day.isSchoolVacation)
+    .map((day) => ({ date: day.date, name: day.holidays?.[0] ?? '' }));
+  const breakLanes: EventLane[] = breakRuns(breakDays).map((run) => ({
+    id: `break:${run.from}`,
     kind: 'break',
-    name: name || null,
+    seasonKind: null,
+    name: run.name,
     parkSlugs: [],
     status: 'none',
-    dates,
+    dates: calendar.days.map((d) => d.date).filter((date) => date >= run.from && date <= run.to),
+    byPark: {},
   }));
   return [...seasons, ...breakLanes];
+}
+
+/** One day of a week under a park's tiles: whether its event's bar is drawn there, and its ends. */
+export interface WeekTrackCell {
+  /** The bar starts on this day: round on the left. Flat where the event ran the day before. */
+  start: boolean;
+  /** The bar ends on this day: round on the right. Flat where it runs on the next day too. */
+  end: boolean;
+}
+
+/** An event drawn as a bar under one park's tiles in one week of the calendar. */
+export interface WeekTrack {
+  lane: EventLane;
+  /** The week's days it runs on at the park. */
+  dates: string[];
+  /** One per day of the week, `null` where it does not run. */
+  cells: (WeekTrackCell | null)[];
+  /** Its first day, where it starts inside the week; a festival's "from", never a party's. */
+  startsOn: string | null;
+  /** Its last day, where it ends inside the week. */
+  endsOn: string | null;
+}
+
+/** What one park's week says about its events, under its tiles. */
+export interface ParkWeekEvents {
+  /** Party nights and festivals on some of the week's days, each a bar on the days' columns. */
+  tracks: WeekTrack[];
+  /** Festivals on every day the park opens that week: one quiet line, no bar. */
+  allWeek: EventLane[];
+}
+
+/**
+ * A park's events in one week of the calendar, for the bars under its tiles. A party is always a
+ * bar, even every night of the week, since it is the one that sends the day guests out early; a
+ * festival on every day the park opens is a line of its name instead, because a full bar under
+ * every week of a two-month season said nothing about any day. A school break has no park and
+ * stays out.
+ */
+export function parkWeekEvents(
+  lanes: readonly EventLane[],
+  days: readonly TripCalendarDay[],
+  week: HubWeek,
+  slug: string
+): ParkWeekEvents {
+  const weekDays = days.slice(week.start, week.start + week.length);
+  const open = weekDays.filter((d) => d.parks[slug]?.status !== 'CLOSED').map((d) => d.date);
+  const tracks: WeekTrack[] = [];
+  const allWeek: EventLane[] = [];
+  for (const lane of lanes) {
+    const run = lane.byPark[slug];
+    if (!run) continue;
+    const on = new Set(run.dates.filter((date) => date >= week.from && date <= week.to));
+    if (on.size === 0) continue;
+    if (lane.kind === 'festival' && open.length > 0 && open.every((date) => on.has(date))) {
+      allWeek.push(lane);
+      continue;
+    }
+    // Past the window's edge only the season itself knows whether it ran.
+    const runsOn = (date: string) =>
+      on.has(date) ||
+      (date < days[0].date || date > days[days.length - 1].date
+        ? run.listed
+          ? run.listed.includes(date)
+          : run.from <= date && date <= run.to
+        : run.dates.includes(date));
+    const cells = weekDays.map((d): WeekTrackCell | null =>
+      on.has(d.date)
+        ? { start: !runsOn(addDays(d.date, -1)), end: !runsOn(addDays(d.date, 1)) }
+        : null
+    );
+    const dates = [...on].sort();
+    const ranged = lane.kind === 'festival' && run.listed === null;
+    tracks.push({
+      lane,
+      dates,
+      cells,
+      startsOn: ranged && run.from >= week.from && run.from <= week.to ? run.from : null,
+      endsOn: ranged && run.to >= week.from && run.to <= week.to ? run.to : null,
+    });
+  }
+  tracks.sort((a, b) => Number(a.lane.kind !== 'party') - Number(b.lane.kind !== 'party'));
+  return { tracks, allWeek };
 }
 
 /**
@@ -516,6 +701,34 @@ export function findLeg<L extends { from: string; to: string }>(
   b: string
 ): L | null {
   return legs.find((l) => (l.from === a && l.to === b) || (l.from === b && l.to === a)) ?? null;
+}
+
+/**
+ * The way from a hotel area to a park that the hub's day sheet prints for one day; none while the
+ * park is closed, because nobody goes there that day.
+ */
+export function sheetLeg(
+  region: Pick<TripRegion, 'travel'>,
+  area: string,
+  slug: string,
+  parkDay: TripParkDay | undefined
+): TripLeg | null {
+  return parkDay?.status === 'CLOSED' ? null : findLeg(region.travel.legs, `hotel:${area}`, slug);
+}
+
+/**
+ * Whether the hub's day sheet prints a drive for any park on the day. The drive times' source
+ * credit stands under the list only then: a day of closed parks, or of walks only, has no drive
+ * time to credit.
+ */
+export function sheetShowsDrive(
+  day: TripCalendarDay,
+  region: Pick<TripRegion, 'travel' | 'parks'>,
+  area: string
+): boolean {
+  return region.parks.some(
+    (park) => sheetLeg(region, area, park.slug, day.parks[park.slug])?.mode === 'drive'
+  );
 }
 
 /** The door-to-door minutes of a drive: to the car park, then the curated rest of the way. */
@@ -684,21 +897,66 @@ export function parkGeo(
   return parks === 'parks' && continent && country && city ? { continent, country, city } : null;
 }
 
+/** No park ticked off as visited: the default of the picks that skip them. */
+const NOT_VISITED: ReadonlySet<string> = new Set();
+
 /**
  * The best park per group the first answer names: every group with a headliner park, by the API's
  * pick, or by its one park with a figure where it has nothing to choose between (Universal Studios
- * Hollywood). A group without a headliner (SeaWorld Orlando, the day trips) stays out.
+ * Hollywood). A group without a headliner (SeaWorld Orlando, the day trips) stays out. A park the
+ * visitor has ticked off (`visited`) gives way to the group's next headliner in the day sheet's
+ * order (`rankGroupParks`); a group whose headliners are all ticked off stays out.
  */
-export function glanceLines(day: TripCalendarDay, region: TripRegion): ShortestLine[] {
+export function glanceLines(
+  day: TripCalendarDay,
+  region: TripRegion,
+  visited: ReadonlySet<string> = NOT_VISITED
+): ShortestLine[] {
   const picks = new Map(shortestLines(day, region).map((line) => [line.group.key, line]));
   return headlinerGroups(region).flatMap((group): ShortestLine[] => {
     const pick = picks.get(group.key);
-    if (pick) return [pick];
-    const open = group.parks.filter((p) => isRankable(day.parks[p.slug]));
+    if (pick && !visited.has(pick.park.slug)) return [pick];
+    if (pick) {
+      const left = group.parks.filter((p) => p.headliner && !visited.has(p.slug));
+      const next = rankGroupParks(day, left, group.key).find((r) => isRankable(r.day));
+      return next && isRankable(next.day) ? [{ group, park: next.park, day: next.day }] : [];
+    }
+    const open = group.parks.filter((p) => isRankable(day.parks[p.slug]) && !visited.has(p.slug));
     const only = open.length === 1 ? open[0] : undefined;
     const onlyDay = only ? day.parks[only.slug] : undefined;
     return only && isRankable(onlyDay) ? [{ group, park: only, day: onlyDay }] : [];
   });
+}
+
+/**
+ * The one park of a day across the region: among the resorts' own picks (`glanceLines`), the
+ * headliner park that is quietest against its own normal day (the API's crowd level), then a full
+ * day over an early close, then the shorter wait, then the longer day. Minutes alone would hand
+ * the day to whichever park is always quiet (SeaWorld at 20 min, LEGOLAND at 10), which is no tip
+ * for somebody choosing between Disney and Universal; a non-headliner and a last-year figure never
+ * win. A park ticked off as visited (`visited`) is passed over for one not seen yet. `null` when
+ * no resort has a pick left.
+ */
+export function dayPick(
+  day: TripCalendarDay,
+  region: TripRegion,
+  visited: ReadonlySet<string> = NOT_VISITED
+): ShortestLine | null {
+  const levelRank = (line: ShortestLine) => {
+    const level = tintLevel(line.day.crowdLevel);
+    return level ? CROWD_LEVEL_ORDER.indexOf(level) : CROWD_LEVEL_ORDER.length;
+  };
+  const candidates = glanceLines(day, region, visited).filter(
+    (line) => line.park.headliner && line.day.basis !== 'last_year'
+  );
+  candidates.sort(
+    (a, b) =>
+      levelRank(a) - levelRank(b) ||
+      Number(closesEarly(a.day)) - Number(closesEarly(b.day)) ||
+      shownWait(a.day)! - shownWait(b.day)! ||
+      dayGuestMinutes(b.day) - dayGuestMinutes(a.day)
+  );
+  return candidates[0] ?? null;
 }
 
 /** A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for. */
@@ -709,31 +967,145 @@ export function parkCalendarHref(park: TripRegionPark, locale: string): string {
     : park.path;
 }
 
-/** The calendar trimmed to a window of its days, with the seasons that run in it. */
-export function sliceCalendar(calendar: TripCalendar, days: TripCalendarDay[]): TripCalendar {
+/** The fields of `object` named in `keys` that it carries, so an absent one stays absent. */
+function picked<T extends object, K extends keyof T>(object: T, keys: readonly K[]): Pick<T, K> {
+  const out = {} as Pick<T, K>;
+  for (const key of keys) if (object[key] !== undefined) out[key] = object[key];
+  return out;
+}
+
+/**
+ * What the hub's tiles and day sheet read of a park's day. An allow-list, so a field the API adds
+ * stays on the server.
+ */
+const HUB_PARK_DAY_FIELDS = [
+  'status',
+  'hoursPublished',
+  'opensAt',
+  'closesAt',
+  'early',
+  'evening',
+  'crowdLevel',
+  'headlinerWait',
+  'basis',
+  'forecastWait',
+  'seasons',
+  'closedBy',
+  'closesEarly',
+  'dayGuestCloseAt',
+] as const satisfies readonly (keyof TripParkDay)[];
+
+/** What the hub's resort rows draw of a day's weather (`DayWeather`). */
+const HUB_WEATHER_FIELDS = [
+  'basis',
+  'icon',
+  'tempMin',
+  'tempMax',
+  'tempMaxP25',
+  'tempMaxP75',
+] as const satisfies readonly (keyof TripDayWeather)[];
+
+/** What an average over past years draws of those: no cell shows its icon or its low. */
+const HUB_NORMAL_FIELDS = [
+  'basis',
+  'tempMax',
+  'tempMaxP25',
+  'tempMaxP75',
+] as const satisfies readonly (keyof TripDayWeather)[];
+
+/**
+ * Whether a group's parks show their weather each on its own: day trips of several parks, which lie
+ * apart (Knott's, Six Flags Magic Mountain inland, SeaWorld San Diego). A resort is one place, and
+ * so is a day trip of one park: their heading carries one weather for all.
+ */
+export function splitsWeather(group: RegionGroup): boolean {
+  return group.kind === 'day_trip' && group.parks.length > 1;
+}
+
+/**
+ * The parks whose weather the hub's calendar draws: a resort's first, which stands for the resort's
+ * place, and every park of the day trips, which lie apart (Knott's in Buena Park, SeaWorld in San
+ * Diego, Six Flags Magic Mountain inland). `sliceCalendar` keeps the weather of these alone.
+ */
+export function weatherParks(region: TripRegion): ReadonlySet<string> {
+  return new Set(
+    regionGroups(region).flatMap((group) =>
+      splitsWeather(group) ? group.parks.map((p) => p.slug) : [group.parks[0].slug]
+    )
+  );
+}
+
+/** What the hub's calendar reads of a day besides its parks. */
+const HUB_DAY_FIELDS = [
+  'date',
+  'isHoliday',
+  'isSchoolVacation',
+  'holidays',
+  'best',
+  'bestWhy',
+] as const satisfies readonly (keyof TripCalendarDay)[];
+
+/**
+ * The calendar trimmed to a window of its days, with the seasons that run in it, each day as far
+ * as the hub's client part draws it: everything it passes is in the page's RSC payload, a park's
+ * day per tile (docs/rules/the-page-render-is-the-bigger-half-of-the-api-budget-and-it.md).
+ */
+export function sliceCalendar(
+  calendar: TripCalendar,
+  days: TripCalendarDay[],
+  weatherParks: ReadonlySet<string> = new Set()
+): TripCalendar {
   const from = days[0]?.date ?? calendar.meta.from;
   const to = days[days.length - 1]?.date ?? calendar.meta.to;
   return {
     ...calendar,
     meta: { ...calendar.meta, from, to },
-    days,
+    days: days.map((day) => ({
+      ...picked(day, HUB_DAY_FIELDS),
+      parks: Object.fromEntries(
+        Object.entries(day.parks).map(([slug, park]) => [
+          slug,
+          {
+            ...picked(park, HUB_PARK_DAY_FIELDS),
+            ...(park.weather &&
+              weatherParks.has(slug) && {
+                weather: picked(
+                  park.weather,
+                  park.weather.basis === 'climate_normal' ? HUB_NORMAL_FIELDS : HUB_WEATHER_FIELDS
+                ),
+              }),
+          },
+        ])
+      ),
+    })),
     seasons: calendar.seasons.filter((s) => s.endDate >= from && s.startDate <= to),
   };
 }
 
+/** What the day sheet reads of a leg: where it goes, how long, by what, and the transfer. */
+const HUB_LEG_FIELDS = [
+  'from',
+  'to',
+  'minutes',
+  'mode',
+  'via',
+  'transferMinutes',
+] as const satisfies readonly (keyof TripLeg)[];
+
 /**
- * The region as the hub's client part needs it: the parks, groups and hotel areas, and only the
- * legs from a hotel area to a park, which the day sheet's travel line reads. The park-to-park legs
- * are the planner's, and most of the matrix's weight.
+ * The region as the hub's client part needs it, an allow-list: the parks, groups, hotel areas and
+ * storm season, and only the legs from a hotel area to a park, which the day sheet's travel line
+ * reads. The park-to-park legs, the tickets, venues and hotels are the planner's, which gets the
+ * region whole.
  */
 export function slimRegion(region: TripRegion): TripRegion {
   return {
-    ...region,
+    ...picked(region, ['slug', 'name', 'timezone', 'groups', 'parks', 'hotelAreas', 'weather']),
     travel: {
       ...region.travel,
-      legs: region.travel.legs.filter(
-        (l) => l.from.startsWith('hotel:') || l.to.startsWith('hotel:')
-      ),
+      legs: region.travel.legs
+        .filter((l) => l.from.startsWith('hotel:') || l.to.startsWith('hotel:'))
+        .map((l) => picked(l, HUB_LEG_FIELDS)),
     },
   };
 }

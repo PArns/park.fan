@@ -338,6 +338,9 @@ Furius Baco at PortAventura Park has a queue nearly half as long from early afte
 morning. No time of day helps on Hyperia at Thorpe Park, where the wait is almost the same from
 10am to 5pm.
 
+> [!PARKY]
+> At Disneyland Paris, Premier Access One is only sold on the day anyway, and even then we don't buy it with our morning croissant: we ride the big ones without it first, and only around midday do we see which one we're still missing. If the allocation has sold out by then on a busy day, we save that ride for the late evening, when the queues get shorter again.
+
 Mammut and Blue Tornado at Gardaland have their shortest queues in the afternoon and their
 longest around 11am. For Pégase Express and Tonnerre 2 Zeus at Parc Astérix the evening pays off. At
 Walibi Belgium, Vampire and Loup-Garou turn the day around, with their queues longest at opening

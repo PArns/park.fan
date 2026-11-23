@@ -164,6 +164,9 @@ Bis zur Zeitumstellung geht die Sonne in Brühl erst nach Parkschluss unter. Ab 
 Oktober, ist sie schon gegen 17:20 Uhr weg, und kurz vor 18 Uhr ist es dunkel. In der letzten
 halben Stunde vor Parkschluss gehen in Klugheim die Lichter an, während Taron noch fährt.
 
+> [!PARKY]
+> Werktags heben wir uns Taron für den Nachmittag auf: Ab 14 Uhr ist die Warteschlange nur noch etwa zwei Drittel so lang wie am Vormittag. Ab dem 25. Oktober fahren wir die letzte Runde in der halben Stunde vor Parkschluss, wenn in Klugheim die Lichter angehen, und zwischen den Basaltfelsen im Dunkeln bekomme ich Gänsehaut bis unter den Hut. Den Rest des Tages planen wir im [Tagesplaner](/trip-planner) Bahn für Bahn.
+
 ## Wie lange die leeren Tage noch dauern
 
 Die Halloween-Abende in den Nachbarparks enden zwischen dem 1. November bei Walibi Holland und dem 15. November im Bobbejaanland. Das Phantasialand beendet seine Sommersaison am 13. November und

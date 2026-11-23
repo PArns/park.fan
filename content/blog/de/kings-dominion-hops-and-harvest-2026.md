@@ -81,6 +81,9 @@ Geöffnet ist an allen sieben Tagen von 11 bis 19 Uhr. Was ein Tagesticket onlin
 
 Dazu kommen eine Bearbeitungsgebühr von bis zu 9,99 Dollar und Steuern. An der Kasse kostet derselbe Tag 90 Dollar. Das Fest ist im normalen Tagesticket enthalten. Kinder bis zwei Jahre kommen ohne Ticket in den Park. Parken kostet online 39 Dollar, ein Platz auf dem Preferred Parking 49 Dollar. Der Wasserpark Soak City hat im November geschlossen.
 
+> [!PARKY] Sonntag nehmen
+> Für Hops & Harvest nehmen wir einen Sonntag: Online kostet der Tag dann 45 Dollar statt 55 am Samstag, und die Musiker spielen an allen sieben Tagen zu denselben Zeiten. Die zehn Dollar Unterschied lege ich schon mal in Cinnamon Donut Holes an. Passt uns nur der Freitag nach Thanksgiving, sind es 49 Dollar, und Truthahnkeulen gibt es an dem Tag auch.
+
 ```best-days-widget slug=kings-dominion
 
 ```

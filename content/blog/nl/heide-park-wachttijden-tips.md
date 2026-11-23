@@ -361,6 +361,9 @@ voor het warmste uur, ook al heeft de wildwaterbaan dan juist zijn langste rij. 
 dat, want dan sluiten de waterbanen met de schemering. **Scream** en de
 **Big Loop** zijn de vullers tussen twee grote banen.
 
+> [!PARKY]
+> Op een lange najaarsdag gaat het plan anders: de attracties draaien pas vanaf 12 uur, en de waterbanen sluiten vanaf ongeveer 17 uur, dus worden we vóór vijven nat. Op de Halloweendagen gaan vanaf ongeveer 16 uur de drie mazes open, waarvoor we de tijdslots vooraf online boeken, en tussen twee mazes klamp ik me vast aan een Duitse oliebol. Wat ertussen past, zetten we in de [dagplanner](/trip-planner).
+
 ## Praktisch: route, tickets, openingstijden
 
 **Route.** Heide Park 1, 29614 Soltau, aan de **A7** tussen Hamburg en
@@ -392,6 +395,9 @@ binnen, maar hebben een ticket van € 0 uit de onlineshop nodig.
 **Eten.** Onze parkpagina telt 21 horecazaken, van de
 Schmalzkuchen-Schmiede met Duitse oliebollen op het terras van Colossos tot het
 Wirtshaus des Admirals, een buffetrestaurant in de Bucht der Piraten. Pizza haal je bij Pizza Scream en Flammkuchen bij de Flammkuchen Factory, allebei in Transsilvanië, en Thüringer braadworst van de lavagrill bij de Heide Park Grill aan de ingang. Frau Mümmels Kiosk in Peppa Pig Land verkoopt bowls, en veel restaurants hebben plantaardige alternatieven.
+
+> [!PARKY]
+> De jaarkaart kopen we pas vlak voor ons eerste bezoek in 2027: hij is twaalf maanden geldig vanaf de aankoop, en tot eind maart rijdt er in Soltau niets. In december gekocht verliest hij maanden waarin ik alleen maar van Colossos kan dromen. Komen we ook op zaterdag, dan moet het de Silber Pass worden, want de Bronze Pass gold in 2026 op de meeste zaterdagen van april tot en met oktober niet.
 
 ## Veelgestelde vragen over Heide Park
 

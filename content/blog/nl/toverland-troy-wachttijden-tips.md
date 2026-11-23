@@ -373,6 +373,9 @@ het weer het toelaat. Voor het jubileum is de entree op woensdagen en in de week
 28 november tot en met 16 december en van 6 tot en met 17 januari gratis: wie vooraf gratis reserveert,
 betaalt per rit, met strippen van 2 € per stuk, en Troy kost er drie. Gewone dagtickets zijn er gewoon naast.
 
+> [!PARKY] Gun het jezelf
+> Op een van de gratis winterdagen reserveren we vooraf kosteloos en zetten we de meeste strippen in op Troy: drie van 2 €, dus 6 € per rit. Ik tel ondertussen hoe vaak we door het stationsgebouw denderen. Eén rit bewaren we voor het eind: sluit het park pas na zonsondergang, dan rijden we Troy in het donker, en dat kan buiten de winter alleen op de halloweenavonden.
+
 ## Wanneer je moet gaan
 
 **Per maand** liggen april tot en met juli dicht bij elkaar, en daarboven steken

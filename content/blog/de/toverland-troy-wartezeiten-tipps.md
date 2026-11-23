@@ -387,6 +387,9 @@ und vom 6. bis 17. Januar der Eintritt frei: Wer vorher kostenlos
 reserviert, zahlt nur pro Fahrt, mit Streifen zu je 2 €, und Troy kostet drei
 davon. Normale Tagestickets gibt es parallel.
 
+> [!PARKY] Gönn dir
+> An einem freien Wintertag reservieren wir vorher kostenlos und stecken die meisten Streifen in Troy, drei zu je 2 €, also 6 € pro Runde. Ich zähle dabei mit, wie oft wir durch das Stationsgebäude donnern. Die letzte Fahrt heben wir uns auf: Schließt der Park erst nach Sonnenuntergang, fahren wir Troy im Dunkeln, und das gibt es sonst nur an den Halloween-Abenden.
+
 ## Wann du hinfahren solltest
 
 **Nach Monat** liegen April bis Juli eng beieinander, und darüber heraus ragen

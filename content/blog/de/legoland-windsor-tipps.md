@@ -178,6 +178,9 @@ An Pirate Falls, Hydra's Challenge, The Dragon und Laser Raiders ist die Wartesc
 
 Ein Ablauf für Kinder ab sieben: Zuerst The Dragon und Hydra's Challenge, beide sollten vor halb zwölf gefahren sein. Dann Laser Raiders, spätestens bis gegen halb zwölf. An Pirate Falls bleibt die Warteschlange am längsten kurz, die Bahn lässt sich bis etwa 13 Uhr aufschieben. Im Oktober ist das für nasse Kleidung die wärmere Zeit. Danach folgen Flight of the Sky Lion, Coastguard HQ und die übrigen Bahnen.
 
+> [!PARKY]
+> Bei LEGOLAND at Christmas sind Pirate Falls und Hydra's Challenge in der Winterpause, also bleiben von den vier Bahnen, an denen sich ein früher Start lohnt, The Dragon und die Laser Raiders. Zu denen laufen wir zur Öffnung, und Wasserbahnen fallen im Dezember damit aus, was mir bei britischem Winterwetter ganz recht ist. Im [Tagesplaner](/trip-planner) legen wir die beiden an den Anfang.
+
 ## Die drei Fastrack-Pakete und ihre Bahnen
 
 **Fastrack** heißt das kostenpflichtige Angebot, das an vielen Bahnen einen eigenen Eingang mit kürzerer Wartezeit bietet. Der Park verkauft drei Pakete: Bronze mit drei Fahrten, Silver mit sechs und Gold ganztägig. Jedes Paket gilt für eine Person, wird nur alle drei Minuten gescannt und enthält keinen Parkeintritt. Fastrack ist nicht erstattungsfähig und nicht übertragbar.

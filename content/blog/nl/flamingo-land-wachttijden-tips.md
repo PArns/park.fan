@@ -237,6 +237,9 @@ Op de Christmas Experience Days draait het programma om de kerstboom op het Mudd
 
 In december rijden er geen achtbanen, en fans van Mumbo Jumbo moeten het doen met stoomtrein, monorail en spookhuis. Op de kerstpagina staan de Daktari Express, de Gallopers, de Helitoys, de Jungle Carousel, de Zoo Monorail, Mischief Mansion en de Muddy Duck Tractors, met de opmerking dat de lijst kan veranderen. Bij de meeste daarvan rijd je mee met kinderen onder 1,07 meter.
 
+> [!PARKY]
+> Voor de lichtjes in de kerstboom gaan we op een dag vóór kerstavond: 5, 6, 12 of 13 december, of tussen 19 en 23 december. Achtbanen rijden er niet, maar als de lichtjes aangaan, kom ik toch even los van de grond. Om 16.30 uur staan we voor de show met Peter Rabbit op het Muddy Duck Square, en na het aangaan om 16.45 uur hebben we tot 17.30 uur nog drie kwartier in het park.
+
 In december zijn het Muddy Duck Cafe en de Spud Stop open van 10.00 tot 17.30 uur, en er zijn donuts en Crumble Heaven. The Coach House is open op vrijdag van 16.00 tot 21.00 uur, op zaterdag van 12.00 tot 21.00 uur en op zondag van 12.00 tot 18.00 uur, en verkoopt nu voor het eerst fish & chips om mee te nemen. De Street Food Kitchen is open van 18.00 tot 23.00 uur. The Club, alleen voor gasten van het resort, is open op vrijdag en zaterdag van 16.00 tot 23.00 uur.
 
 Overnachten kan met kerst in cottages en lodges, van vrijdag tot zondag. In de Lifestyle Lodge, de Mulberry Lodge, The Gatehouse en het Riverside Cottage komt Santa persoonlijk langs. In het pakket zitten de dierentuin, de kleine kinderattracties op de Muddy Duck Farm, de Splash Zone op zaterdag en zondag en de Christmas Passport met de “PolarCoaster Express”.
@@ -271,6 +274,9 @@ Stel dat je op een zaterdag in het hoogseizoen om 10.00 uur bij de ingang staat 
 - als laatste de dierentuin, met Lion Coast en de pinguïns om 15.00 uur
 
 Op zaterdag en zondag is Pirates of Zanzibar ook om 15.00 uur, doordeweeks alleen om 11.00 uur. Peter Rabbit ontmoet kinderen om 11.40 en om 13.45 uur op het Plaza Square. De dierentuin zou ik aan het eind doen, omdat die op sommige dagen langer open is dan de attracties.
+
+> [!PARKY]
+> Als we voor Velocity terug naar Flamingo 1 gaan, pakken we de elektrische auto’s meteen mee: op zaterdag en zondag lopen die vol, en vóór het middaguur zijn we daar toch al. Alleen sturen mag pas vanaf 1,30 meter, zo groot ben ik niet, dus jij rijdt en ik zit naast je. De volgorde voor je eigen dag zetten we samen in de [dagplanner](/trip-planner).
 
 Alcohol mag je niet mee het park in, die wordt bij de ingang ingenomen, en ook messen, wapens en vuurwerk zijn verboden. Bij de ingang kunnen tassen gecontroleerd worden en kunnen speurhonden staan. Over eigen eten staat niets in het parkreglement.
 

@@ -186,6 +186,9 @@ Euro”. Jarigen
 tot hun 11e verjaardag komen gratis binnen als ze vooraf online hebben
 gereserveerd.
 
+> [!PARKY]
+> Een kopie van het identiteitsbewijs of de geboorteakte stoppen we meteen in de luiertas: zonder bewijs van leeftijd betaalt je kleintje in Phantasialand het kindertarief voor 4 tot 11, en dat noemt de ticketpagina niet eens. Dat uitgerekend de jongste bezoeker papieren nodig heeft, vind ik eigenlijk best schattig. Met het bewijs komen kinderen van 0 tot 3 zonder geboekt ticket binnen.
+
 Naast de gastenservice is er een rust- en borstvoedingsruimte met
 verschoonruimtes. Het personeel warmt potjes babyvoeding op. In het winterpark
 Wintertraum zit de gastenservice aan het Kaiserplatz, met een eigen

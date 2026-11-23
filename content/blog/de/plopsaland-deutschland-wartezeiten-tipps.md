@@ -26,7 +26,7 @@ parkLinks:
 rideLinks:
   - plopsaland-deutschland/*
 seo:
-  title: 'Plopsaland Deutschland 2026: Wartezeiten, Preise, beste Tage'
+  title: 'Plopsaland Deutschland (Holiday Park): Tipps und beste Tage'
   description: >-
     Im früheren Holiday Park in Haßloch stehst du an den meisten Bahnen nur
     wenige Minuten an. Am wenigsten los ist freitags, außer an den
@@ -120,6 +120,9 @@ In unseren Messungen wartet man an ihr länger als an jeder anderen Bahn im Park
 eine Minute und 30 Sekunden Fahrt) und die
 einzige, die im Trockenen steht: Sie gehört zur Halle Holiday Indoor, die 2018 auf
 5.000 Quadratmetern eröffnet wurde.
+
+> [!PARKY]
+> Im März und im November schauen wir vor der Abfahrt auf die Temperatur in Haßloch. Unter acht Grad stehen GeForce und Sky Scream still, und auf die drei Hügel der GeForce, die uns aus dem Sitz heben, verzichte ich ungern. Von den vier Achterbahnen fahren dann nur 100% Wolf, die schon ab fünf Grad startet, und Tabalugas Achterbahn in der Halle. Zeigt die Vorhersage so wenig, nehmen wir lieber einen wärmeren Tag.
 
 ## Wasserbahnen und Türme
 

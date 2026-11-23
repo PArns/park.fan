@@ -215,6 +215,9 @@ Après Fright Fest, le parc ouvre sans programme du 5 au 8 novembre et les 14 et
 
 Jersey Devil Coaster, El Toro, Runaway Train, Tango et le Bugs Bunny National Park ne fonctionnent pas pendant l’événement. Lesquelles des autres attractions fonctionnent, Six Flags le décide chaque soir de Holiday selon la météo et la température.
 
+> [!PARKY]
+> Pour Holiday in the Park, on n’achète le billet qu’une fois connue la prévision météo de notre journée : le temps décide en partie des attractions qui tournent, et Six Flags ne rembourse rien, pas de bon pour un autre jour en cas de pluie non plus. El Toro et le Jersey Devil Coaster sont de toute façon à l’arrêt pendant tout l’événement, et j’en ronchonne déjà un peu. Avec le Gold Pass, pas besoin de billet du tout, Holiday in the Park y est compris.
+
 ```best-days-widget slug=six-flags-great-adventure
 
 ```
@@ -253,6 +256,9 @@ Imaginons que tu sois à l’entrée à l’ouverture, un jour d’été, que Ni
 - Pour finir, le Shoreline Pier, les soirs d’été avec les Boardwalk Nights.
 
 Sur El Toro, THE JOKER, le Jersey Devil Coaster et THE FLASH, aucun objet libre n’entre dans la file, donc ni sac ni sac à dos. La Fast Lane et les billets passent par le téléphone, et pour que cela marche aussi dans la file, le parc a installé avant la saison 2026 plus de 600 nouveaux points d’accès Wi-Fi. On paie uniquement sans espèces, par carte, Apple Pay ou Google Pay. Si tu as du liquide sur toi, des bornes le convertissent en carte. Le Guest Relations répond aux questions par chat en direct tous les jours de 8 h à 2 h du matin, heure de la côte Est.
+
+> [!PARKY]
+> Ce jour-là, le sac à dos reste dans la voiture ou à l’hôtel : El Toro, THE FLASH, le Jersey Devil Coaster et THE JOKER sont tous sur notre liste, et aucun ne laisse entrer un sac dans la file. Mon chapeau en grande roue ne compte pas, j’espère. L’ordre de ta journée, on le refait ensuite dans le [planificateur de journée](/trip-planner).
 
 ## Billets
 

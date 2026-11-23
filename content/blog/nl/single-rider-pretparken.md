@@ -113,6 +113,9 @@ De single-rideringang loont in drie gevallen: je bent alleen in het park, je gez
 splitsen, of je wilt één bepaalde baan per se rijden en de gewone wachttijd is je te lang. In het
 tweede geval splitsen jullie op, rijden apart en komen elkaar bij de uitgang tegen.
 
+> [!PARKY]
+> Met z’n drieën bij een baan met twee plaatsen per rij, zoals WODAN, blue fire of Taron, splitsen we maar half op: twee blijven in de gewone rij en zitten naast elkaar, de derde neemt de single-rideringang. Die losse plek neem ik graag, naast vreemden kom ik net zo goed los van mijn stoel. Bij de uitgang zijn we weer met z’n drieën.
+
 Het loont niet in deze gevallen:
 
 - **Je gaat met een kind dat begeleiding nodig heeft.** Bij Eurosat in het Europa-Park noemt de pagina

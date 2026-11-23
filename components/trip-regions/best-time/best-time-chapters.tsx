@@ -28,8 +28,6 @@ import {
 } from '@/lib/trip-regions/plan-when';
 import {
   bestAndWorstWeeks,
-  breakRuns,
-  cleanBreakName,
   europeanBreaks,
   lastYearFrom,
   monthBreakDays,
@@ -40,6 +38,7 @@ import {
   type BestTimeMonthRow,
   type CountryBreaks,
 } from '@/lib/trip-regions/best-time';
+import { breakRuns, cleanBreakName } from '@/lib/trip-regions/break-runs';
 import type {
   TripMonth,
   TripSchoolBreakRegion,
@@ -197,7 +196,7 @@ export async function WindowCards({
 }
 
 /**
- * Chapter 01: a bar per week over a real `<table>`. The bars are a picture of the table, hidden
+ * The year chapter: a bar per week over a real `<table>`. The bars are a picture of the table, hidden
  * from assistive technology; the table, with its caption, is what a crawler and a screen reader
  * read, folded under the bars.
  */
@@ -366,7 +365,7 @@ function LastYearFrom({ text }: { text: string }) {
   return <p className="text-muted-foreground mb-3 max-w-3xl text-sm">{text}</p>;
 }
 
-/** Chapter 02: a row per month, each with its facts and a fold with the dates. */
+/** The months chapter: a row per month, each with its facts and a fold with the dates. */
 export async function MonthRows({
   regionSlug,
   weather,
@@ -592,7 +591,7 @@ export async function MonthRows({
   );
 }
 
-/** Chapter 03: the three quietest and busiest whole weeks, each with one line on why. */
+/** The weeks chapter: the three quietest and busiest whole weeks, each with one line on why. */
 export async function BestWorstWeeks({
   regionSlug,
   when,
@@ -666,7 +665,7 @@ export async function BestWorstWeeks({
 }
 
 /**
- * Chapter 04: each school-holiday region the API knows, with every break a trip of `days` fits
+ * The school-holidays chapter: each school-holiday region the API knows, with every break a trip of `days` fits
  * into, linked to the planner's When mode inside that break. The locale's own country opens.
  */
 export async function SchoolHolidayLinks({

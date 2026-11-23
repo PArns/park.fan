@@ -86,6 +86,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `CalendarHashRedirect` _component_: Forwards an old `#calendar` / `#calendar-YYYY-MM` deep link to the calendar PAGE before the park page hydrates.
 
+### [`calendar-icon-sprite.tsx`](../../components/parks/calendar-icon-sprite.tsx)
+
+- `CalendarIconSprite` _component_: Each calendar icon once, as a `<symbol>`, for the tiles below it to `<use>`: a hub's thirty days or a park's month carries one copy of each path instead of one per tile.
+- `CalendarIcon` _component_: A calendar icon: a `<use>` of its symbol inside `CalendarIconSprite`, else the lucide icon itself, with the same attributes either way, so the two draw the same pixels.
+- `CalendarSeasonIcon` _component_: `CalendarIcon` for a season kind, in its colour: decoration beside a name the reader has.
+- Types: `CalendarIconName`
+
+### [`calendar-tile-marks.ts`](../../components/parks/calendar-tile-marks.ts)
+
+- `TILE_BEST_RING` _const_: The quietest day of a week, beside the star.
+- `TILE_PICKED_RING` _const_: A day the visitor picked (the hub's tick): the same ring, a pixel stronger.
+
 ### [`card-photo.tsx`](../../components/parks/card-photo.tsx)
 
 - `CardPhotoFrame` _component_: The card photo, cropped to the strip between the card's two glass panels and mirrored above and below it, so each panel blurs a continuation of exactly what is seen and the seam has nothing to show.
@@ -93,6 +105,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`card-pointer-fx.tsx`](../../components/parks/card-pointer-fx.tsx)
 
 - `CardPointerFx` _component_: Pointer depth on the cards: the photo drifts against the pointer while the glass panels stay put, and a soft highlight follows the pointer across the whole card.
+
+### [`card-rows.ts`](../../components/parks/card-rows.ts)
+
+- `STANDALONE_CARD_ROWS_CLASS` _const_: The row template for one `ParkCard` or `AttractionCard` on its own wrapper: a blog widget, a post's reference cards, a hover card, a demo.
 
 ### [`city-summary-section.tsx`](../../components/parks/city-summary-section.tsx)
 
@@ -384,7 +400,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-calendar-legend.tsx`](../../components/parks/park-calendar-legend.tsx)
 
-- `ParkCalendarLegend` _component_: What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is one strip of butted chips because it is a ruler; the signal keys are independent facts and keep their gaps.
+- `ParkCalendarLegend` _component_: What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is drawn as the tiles draw a tier (on a phone one ramp with its ends named); the signal keys are independent facts and keep their gaps.
 - Types: `CalendarLegendKey`
 
 ### [`park-calendar-month-index-chip.tsx`](../../components/parks/park-calendar-month-index-chip.tsx)
@@ -502,11 +518,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-links-flyout.tsx`](../../components/parks/park-links-flyout.tsx)
 
-- `ParkLinksFlyout` _component_: „Mehr ›" beside the planner in the park's title card: the park's outbound links (website, tickets, Wikipedia, socials) slide out to its right when the pointer reaches the button, on focus or on a tap, so the row holds one call to action …
+- `ParkLinksFlyout` _component_: „Mehr ›" beside the planner in the park's title card: the park's outbound links (website, tickets, Wikipedia, socials) slide out to its right when the pointer reaches the button, on keyboard focus or on a tap, so the row holds one call to …
 
 ### [`park-live-link.tsx`](../../components/parks/park-live-link.tsx)
 
 - `ParkLiveLink` _component_: The link from a park's sub-page (statistics, crowd calendar) to the park page, worded "&lt;park&gt;: Wartezeiten live".
+- `ParkCalendarLink` _component_: The park page's link to its crowd calendar, worded "&lt;park&gt;: Andrangskalender & Auslastung der nächsten Tage" (`parks.calendarLink`): Google showed the park page for "&lt;park&gt; auslastung", which it answers for today, and the calendar for the …
 
 ### [`park-location-line.tsx`](../../components/parks/park-location-line.tsx)
 
@@ -645,6 +662,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`performance-badge.tsx`](../../components/parks/performance-badge.tsx)
 
 - `PerformanceBadge` _component_: „Feste Vorstellungen": stands where the status badge would on a ride that shows today's performance times instead of a wait. The feed reads such a ride CLOSED between two performances, and a red badge over a countdown would contradict it.
+- `PERFORMANCE_BADGE_CLASS` _const_: The badge colours of a ride that starts at set times: sky, the colour of a timetable rather than of a state. Shared with the blog's inline ride chip, which shows the next start in them.
 
 ### [`performance-countdown.tsx`](../../components/parks/performance-countdown.tsx)
 
@@ -764,6 +782,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `SeasonKindIcon` _component_: A season kind's icon in its colour. With a `label` it is an image of that name; without one it is decoration beside a name the reader already has.
 - `knownSeasonKind` _function_: The kind a season is drawn and named as: its own, or `special_event` for a kind the API added after this build, which then reads as an event rather than as a missing translation.
+- `seasonIconClass` _function_: The classes of a season kind's icon: its size and its colour, then the caller's.
 - `SEASON_KIND_ICON` _const_: The icon and colour of every season kind, in one place for every surface that draws a season. A maintenance window wears the works icon, since it is the same fact about a ride.
 - `SEASON_ICON_QUIET_CLASS` _const_: A quiet season icon: bare, in the colour of the text around it, faded.
 
@@ -783,6 +802,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`show-card.tsx`](../../components/parks/show-card.tsx)
 
 - `ShowCard` _component_: Card linking to a show: name, seasonal badge, today's showtimes while it runs or its status badge when it does not, with a notification bell and a favorite star in the corner.
+
+### [`signal-bar.tsx`](../../components/parks/signal-bar.tsx)
+
+- `SignalBar` _component_: A day's signals as one bar, a segment each (school break, public holiday, a region's storm season, …), so a day shows all of them at once in the colours `DAY_SIGNAL_CLASS` and `STORM_SIGNAL_CLASS` give.
+- Types: `SignalSegment`
 
 ### [`single-rider-badge.tsx`](../../components/parks/single-rider-badge.tsx)
 

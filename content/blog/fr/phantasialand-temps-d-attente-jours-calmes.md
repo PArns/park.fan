@@ -171,6 +171,9 @@ partir du dimanche 25 octobre, il disparaît dès 17 h 20 environ, et il fait nu
 Dans la dernière demi-heure avant la fermeture, les lumières s’allument à Klugheim pendant que
 Taron roule encore.
 
+> [!PARKY]
+> En semaine, on garde Taron pour l’après-midi : à partir de 14 h, la file ne fait plus qu’environ les deux tiers de celle du matin. Dès le 25 octobre, on fait le dernier tour dans la demi-heure avant la fermeture, quand les lumières s’allument à Klugheim, et entre les rochers de basalte, dans le noir, j’ai la chair de poule jusque sous mon chapeau. Le reste de la journée, on le planifie attraction par attraction dans le [planificateur de journée](/trip-planner).
+
 ## Combien de temps les jours creux vont durer
 
 Les soirées d’Halloween des parcs voisins se terminent entre le 1er novembre chez Walibi Holland et

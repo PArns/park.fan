@@ -418,6 +418,9 @@ Unsere Wartezeiten gelten für den ganzen Tag, die Event-Abende messen wir nicht
 In Orlando liegen Universal Studios Florida und SeaWorld Orlando sieben Kilometer Luftlinie
 auseinander, das Magic Kingdom 13 Kilometer von Universal. Zwischen zwei Abenden bei den Halloween Horror Nights und Howl-O-Scream passt ein Tag in einem der Disney-Parks, wo die Halloween-Dekoration auch ohne Party-Ticket hängt. Busch Gardens Tampa liegt gut 100 Kilometer Luftlinie weiter westlich.
 
+> [!PARKY]
+> Universal Studios Florida legen wir im [Reiseplaner](/orlando#planner) nicht auf einen Tag mit Horror Nights, denn an diesen Abenden endet der Tagesbetrieb dort schon um 17 Uhr. Tagsüber gibt es bei uns Kürbiskränze statt Kettensägen, im Magic Kingdom über der Main Street, und wenn um 18:30 Uhr die Tore zum Event aufgehen, stehen wir in Universal.
+
 Im Großraum Los Angeles liegen Knott's Berry Farm und Disney California Adventure acht Kilometer
 auseinander, Universal Studios Hollywood 46 Kilometer von Knott's, und Six Flags Magic Mountain
 noch einmal 39 Kilometer weiter nördlich. Knott's Scary Farm und Fright Fest in Magic Mountain

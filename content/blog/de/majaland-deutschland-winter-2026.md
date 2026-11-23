@@ -84,6 +84,9 @@ Expedition GeForce, Sky Scream und die übrigen großen Bahnen aus unserem [Guid
 
 Vom 4. Dezember an sitzt der Weihnachtsmann an jedem Öffnungstag im Indoor Theater. Kinder können ihm ihren Wunschzettel geben, und jedes Kind bekommt eine Schokolade der Schokoladenmanufaktur Wawi. Am Samstag, 5. Dezember, läuft am Platz der Fontänen zum zweiten Mal der Plopsa Nikolauslauf, mit Strecken für Kinder und Erwachsene. Die Anmeldung schaltet der Park in Kürze frei. Vom 4. bis 10. Februar 2027 feiert Plopsa Indoor Fasching mit Kinderdisco. Wer im Winter Geburtstag hat, kann das Paket „Majas Geburtstagszauber“ buchen, ein Besuch von Maja ist im Preis enthalten.
 
+> [!PARKY] Freitag im Advent
+> Für den Weihnachtsmann nehmen wir einen Freitag ab dem 4. Dezember, also den 4., 11. oder 18.: Er sitzt dann schon im Indoor Theater, und die Karte mit festem Datum kostet online 16 € statt 27 oder 29 € am Wochenende. Den Wunschzettel stecken wir vorher ein, auf meinem steht nur ein Ersatzriesenrad für den Hut. Majas Show um 13 oder 16 Uhr läuft im selben Theater und ist im Eintritt enthalten.
+
 ## Was sich gegenüber dem letzten Winter ändert
 
 Im Winter 2025/26 hieß derselbe Teil des Parks noch Majaland Pfalz. Damals war vom 7. November bis zum 22. März offen, diesmal ist schon am 14. März Schluss, und die günstigste Karte kostete 20 € statt jetzt 16 €. Den Namen Holiday Park hatte der Park schon Ende Juni 2025 abgelegt. Die Maja-Show und der erste Winterbetrieb der Schlümpfe Abenteuer waren damals die Neuheiten.

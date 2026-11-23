@@ -204,6 +204,31 @@ export function seasonsInMonth(days: SeasonDays): SeasonOnDay[] {
   return [...new Map(Object.values(days).flatMap((list) => list.map((s) => [s.id, s]))).values()];
 }
 
+/** A quiet season of a month with the first and last date it runs on in that month. */
+export interface QuietSeasonRun {
+  season: SeasonOnDay;
+  from: string;
+  to: string;
+}
+
+/**
+ * The month's quiet seasons (`quiet`: most of the month, or only expected), each once with its
+ * first and last date in the month, in the order they first appear. The tiles keep their icon; the
+ * grid names them once above, instead of a line on every tile that repeats the same name.
+ */
+export function quietSeasonRuns(days: SeasonDays): QuietSeasonRun[] {
+  const runs = new Map<string, QuietSeasonRun>();
+  for (const date of Object.keys(days).sort()) {
+    for (const season of days[date]) {
+      if (!season.quiet) continue;
+      const run = runs.get(season.id);
+      if (run) run.to = date;
+      else runs.set(season.id, { season, from: date, to: date });
+    }
+  }
+  return [...runs.values()];
+}
+
 /** The kinds a month's days show, in `SEASON_EVENT_KINDS` order: what its legend keys. */
 export function seasonKindsIn(days: SeasonDays): SeasonEventKind[] {
   return seasonMarks(seasonsInMonth(days)).map((mark) => mark.kind);

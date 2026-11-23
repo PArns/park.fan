@@ -462,6 +462,9 @@ Glissade d’Obélix, una parata e un mercatino di Natale. Le montagne russe
 funzionano «in genere», dice il parco, quelle acquatiche no. Un biglietto di
 Natale senza data costa 57 euro.
 
+> [!PARKY] Ottima scelta
+> Il biglietto di Natale da 57 euro non ha data, e ne approfittiamo: il giorno lo scegliamo solo quando ci sono le previsioni del tempo. Col gelo, dice il parco, oltre alle attrazioni acquatiche chiudono anche alcune altre, e in un giorno così perfino io mi limiterei a fare piroette sulla Patinoire Viking. Lì i pattini sono gratis.
+
 Dal 9 novembre al 18 dicembre 2026 il parco è chiuso, e di nuovo dal 4 gennaio
 fino all’inizio della stagione in primavera. Dal 2007 resta aperto fino a dopo le
 vacanze d’autunno; prima chiudeva a settembre. D’inverno è stato aperto dal 2007
@@ -524,6 +527,9 @@ condizionata; La Cité Suspendue, del 2018, con 150 camere; e Les Quais de Lutè
 del 2020, con 149 camere e quattro stelle. Per una notte con un giorno di
 ingresso il parco indica da 99, 102 e 111 euro a persona, calcolati per due adulti
 e due bambini in alta stagione. Gli hotel sono a meno di dieci minuti a piedi dal parco, il parcheggio è gratis ed entri mezz’ora prima.
+
+> [!PARKY]
+> Per un viaggio a Parigi aggiungiamo nel [pianificatore di viaggio](/paris#planner) una notte in uno degli hotel del Parc Astérix. Gli ospiti degli hotel entrano mezz’ora prima degli altri nelle aree di Toutatis ed Égypte, cosa che mi mette in agitazione già a colazione, e parcheggiano gratis invece di pagare 25 euro al giorno.
 
 Nell’app si può prenotare un tavolo in tre ristoranti: Le Relais Gaulois
 (self-service, 28,90 euro, a pranzo Astérix e Obélix passano tra i tavoli), Les

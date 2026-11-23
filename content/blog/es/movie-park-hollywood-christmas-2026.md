@@ -80,6 +80,9 @@ Los pases de temporada 2027 ya son válidos, y Platin, Gold y Silber incluyen Ho
 
 La Santa Experience se paga aparte: 5 € los adultos y 3 € los niños de 4 a 11 años. Abre de 13:00 a 16:30, y los viernes a partir de las 15:00. Cada asiento del tren necesita su entrada; los menores de cuatro viajan gratis en el regazo. Los menores de ocho solo entran con un adulto. El tobogán de hielo también tiene suplemento, pero el parque todavía no ha publicado el precio.
 
+> [!PARKY]
+> Como la entrada online cuesta lo mismo los 21 días, no elegimos un viernes: el resto de días del evento entramos a las 12:00 en vez de a las 14:00, y dos horas más por el mismo dinero no se las discute ni S.A.D., la claqueta gruñona. Con niños cuenta el doble, porque la Santa Experience abre entonces a las 13:00 y no a las 15:00.
+
 ## Pista de hielo, espectáculos y luces
 
 Las más de un millón de luces cuelgan en cuatro zonas: Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza y Wild West Christmas. El año pasado fueron algo más de 800.000. Se mantienen del año pasado la pista de hielo cubierta de 360 metros cuadrados, el curling bávaro, el mapping y la comida americana.

@@ -180,6 +180,9 @@ De marzo en Europa-Park tenemos catorce días medidos, todos de la primavera de 
 
 Para las Pre-Opening Weeks eso dice poco, porque en 2026 no hubo nada comparable. En las dos primeras semanas de marzo de 2027 solo Hamburgo tiene vacaciones de Pascua; los demás estados federados no las empiezan hasta el 22 de marzo.
 
+> [!PARKY]
+> Para las Pre-Opening Weeks elegimos un día del 13 al 19 de marzo, menos el 16 y el 17, cuando el parque está cerrado. Qué atracciones siguen de descanso no lo dice el parque, así que además del gorro me llevo un poco de paciencia. A cambio, desde el 13 los niños de Hamburgo ya están otra vez en clase y ningún estado federado tiene vacaciones de Pascua.
+
 ### Flying Cinema en Plopsaland Belgium
 
 En De Panne abre el **13 de marzo de 2027** el Flying Cinema, una nave con pantalla en cúpula bajo la que flotan las góndolas, construida por Mack Rides. Hay preestrenos desde el 19 de diciembre de 2026, pero solo para quienes tienen el abono anual de Plopsa y para los clientes de los hoteles y chalets del parque. Con una entrada de día no entras hasta el 13 de marzo. Qué día empieza, por lo demás, la temporada 2027 de [Plopsaland Belgium](ref:plopsaland-belgium), el parque aún no lo ha publicado; en su horario figuran los días hasta el 3 de enero.

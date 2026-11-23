@@ -180,6 +180,9 @@ For March at Europa-Park we have fourteen measured days from spring 2026. March 
 
 That tells you little about the Pre-Opening Weeks, because nothing like them existed in 2026. In the first two weeks of March 2027 only Hamburg has Easter holidays; every other German state starts on 22 March.
 
+> [!PARKY]
+> For the Pre-Opening Weeks we pick a day from 13 to 19 March, just not the 16th or 17th, when the park is closed. The park won’t say which rides are still resting, so along with the woolly hat I’m packing some patience. In return, from the 13th Hamburg’s kids are back at school, and no German state has Easter holidays.
+
 ### Flying Cinema at Plopsaland Belgium
 
 In De Panne the Flying Cinema opens on **13 March 2027**: a hall with a dome screen and gondolas floating beneath it, built by Mack Rides. Previews start as early as 19 December 2026, but only for Plopsa annual pass holders and guests of the park’s hotels and chalets. With a day ticket you won’t get in before 13 March. [Plopsaland Belgium](ref:plopsaland-belgium) hasn’t published when the rest of its 2027 season begins, and its schedule only lists days up to 3 January.

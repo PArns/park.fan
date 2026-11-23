@@ -351,6 +351,9 @@ Islands of Adventure in september, in Epic Universe in augustus en september en 
 de dagen van de week is zaterdag in de Studios en Islands of Adventure het drukst. In Epic Universe
 verschillen de weekdagen nauwelijks.
 
+> [!PARKY]
+> Valt er een zaterdag in onze reis, dan krijgt Epic Universe die: in de Studios en Islands of Adventure is zaterdag de drukste dag, in Epic Universe verschillen de weekdagen nauwelijks. Dat park maakt de dag dus weinig uit, en mij dan ook niet. Welke van de andere twee op welke doordeweekse dag komt, puzzelen we uit in de [reisplanner](/orlando#planner).
+
 In de herfst gaan de Studios op de avonden van de Halloween Horror Nights voor gewone gasten eerder dicht.
 Alle data, prijzen en huizen staan in ons overzicht [Halloween in de VS](/blog/halloween-vs-pretparken-2026).
 Het feestseizoen loopt van 14 november tot 3 januari, meer daarover in [Kerst en oud en nieuw in Orlando en
@@ -401,6 +404,9 @@ Kinderen tussen de minimale lengte en 1,22 meter hebben een begeleider nodig. De
 hogere grens: Stardust Racers en Revenge of the Mummy vanaf 1,22 meter, VelociCoaster vanaf 1,30 meter,
 Doctor Doom's Fearfall vanaf 1,33 meter en de Hulk vanaf 1,38 meter. Bij de meeste van deze attracties
 staat voor de instap een proefstoel waarin je kunt uitproberen of je erin past.
+
+> [!PARKY]
+> Met een kind vanaf 1,02 meter gaan we in Epic Universe bij de opening met z'n allen op pad: in Mine-Cart Madness en Battle at the Ministry, de twee sterke tips voor een vroege start, mag het al mee, tot 1,22 meter met een begeleider. Zo staat de kleine al in het Ministerie van Toverkunst voordat de ouders hun tweede koffie op hebben. Mario Kart, Curse of the Werewolf en Hiccup's Wing Gliders gelden vanaf dezelfde lengte, die zetten we in de [dagplanner](/trip-planner) er direct achter.
 
 Seuss Landing in Islands of Adventure is het gebied voor de kleinsten. Volgens Universal geldt daar maar
 bij twee attracties een minimale lengte, bij allebei 0,92 meter. In de Studios zijn Minion Land en

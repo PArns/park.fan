@@ -84,6 +84,9 @@ Op de pay-per-ride-dagen blijft Toverland het gewone dagticket verkopen, met onb
 
 Een dagticket voor een volwassene kost op woensdag evenveel als 18,5 strippen, ruim zes ritten in de grote attracties. In het weekend komt het neer op 21,5 strippen, ruim zeven grote ritten. Vanaf de zevende grote rit op een woensdag en de achtste in het weekend is het dagticket goedkoper. De staffelkorting begint bij 25 strippen, dus bij 47,50 euro, en dan was het dagticket al goedkoper geweest.
 
+> [!PARKY] Dagticket vooraf
+> Willen we de grote attracties vaker doen, dan kopen we het dagticket minstens zeven dagen van tevoren: met de volle 7 euro korting is het voor volwassenen al één grote rit eerder goedkoper dan strippen, op woensdag vanaf de zesde, in het weekend vanaf de zevende. Troy, Fēnix en Booster Bike elk twee keer zijn er al zes, en twee keer is voor mij eerder het minimum. Is één rit in elk genoeg, dan blijven we bij pay per ride.
+
 In een groep mogen dagtickets en pay per ride door elkaar. Begeleid je een kind dat vanwege de minimale lengte alleen met een volwassene in een attractie mag, dan heb je zelf een dagticket of strippen nodig. Verjaardagstickets, terugkomtickets en de tickets uit de voorjaarsactie “2e bezoek gratis” blijven all-in dagtickets.
 
 Magic Members met een geldig abonnement rijden ook op pay-per-ride-dagen onbeperkt zonder bijbetaling, en hebben geen reservering of strippen nodig. Parkeren zit niet in het abonnement. Een parkeerabonnement kost 50 euro per jaar of 4,50 euro per maand.

@@ -110,6 +110,9 @@ Filotomatix, der Pass des Parc Astérix, gilt für eine Person und einen Tag und
 
 An einem Wochentag außerhalb der französischen Ferien würde ich mir beide sparen und mit der Reihenfolge aus unseren Guides zum [Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps) und zum [Parc Astérix](/blog/parc-asterix-wartezeiten-tipps) auskommen. In unserem [Vergleich der Fast Passes](/blog/fast-pass-freizeitpark-vergleich) stehen Premier Access und Filotomatix neben den Pässen der anderen großen Parks in Europa.
 
+> [!PARKY] Wecker stellen
+> Toutatis gibt es bei Filotomatix nur im Illimité, für Gäste der Parkhotels aber beim Early Entry, 30 Minuten vor der offiziellen Öffnung. Bleiben wir zwei Tage, gehen wir am zweiten Morgen also zuerst dorthin, und das Frühstück aus dem Hotelpaket darf so lange warten. An Tagen mit Nocturnes von Peur sur le Parc und an Sondertagen fällt der frühe Einlass aus, und das Wetter muss auch mitspielen.
+
 ## Abends: Nachtshows und Disney Village
 
 Beide Disney-Parks haben jeden Abend eine Nachtshow. Im Disneyland Park läuft Disney Tales of Magic am Schloss, mit Drohnen, Projektionen, Fontänen und Feuerwerk. In Disney Adventure World bringt Disney Cascade of Lights seit dem 29. März 2026 mehr als 380 Drohnen über den neuen See und auf sein Wasser. Für beide Shows verkauft Disney reservierte Plätze gegen Aufpreis, zuschauen kannst du auch ohne.
@@ -187,6 +190,9 @@ Weil die Zonen im Februar und April je eine Woche auseinanderliegen, hat 2027 ir
 ### Feiertage und Brückentage
 
 Im Mai 2027 fallen der 1. und der 8. Mai auf einen Samstag, einen Brückentag gibt es deshalb nur nach Christi Himmelfahrt. Die ist am Donnerstag, dem 6. Mai, und den Freitag danach haben die Schulen in ganz Frankreich frei. Pfingstmontag ist der 17. Mai.
+
+> [!PARKY]
+> Für eine Reise zu allen drei Parks außerhalb der französischen Ferien nehmen wir 2027 den Mai oder Juni: Vom 3. April bis zum 2. Mai hat immer irgendeine Zone frei, ab dem 3. Juli alle, und im Februar schläft der Parc Astérix noch. Wir meiden nur Christi Himmelfahrt am 6. Mai mit dem schulfreien Freitag danach und den Pfingstmontag am 17. Mai. Mit diesen Daten verteilt der [Reiseplaner](/paris#planner) die drei Parks auf die Tage.
 
 ### Events bei Disney
 

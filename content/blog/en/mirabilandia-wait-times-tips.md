@@ -220,6 +220,9 @@ Desmo Race, Blu River and The Walking Dead are excluded. The Flash Pass is valid
 
 Where the wait is around a quarter of an hour, the pass doesn't save much. It does the most at Rio Bravo, iSpeed and Autosplash. The "VIP" package combines admission, the all-inclusive meal plan and a Regular Flash Pass.
 
+> [!PARKY] Regular will do
+> If we get a Flash Pass at all, it's the Regular, bought online the day before at the latest: a pass bought online isn't valid on the day of purchase, and in the park it costs from 29.90 euros instead of from 24.90. One ride per attraction is plenty at Rio Bravo, iSpeed and Autosplash, where it does the most, and we get soaked with priority all the same. It isn't valid on Desmo Race anyway, so we queue there the normal way in the early afternoon.
+
 ## Tickets and season pass
 
 The adult day ticket (over 140 centimetres) starts at 27.90 euros online, and the earlier you book, the cheaper. According to the park you save up to 20 euros if you buy at least ten days ahead (offer until 25 October). At the ticket office the ticket costs 49.90 euros. The reduced ticket for children from 100 to 140 centimetres and for seniors over 60 costs from 27.90 euros online and 42.90 euros at the ticket office. Children under 100 centimetres pay nothing. The evening ticket from 5 pm costs 22.90 euros. The open-date ticket costs 49.90 euros (reduced 42.90) and is valid until the end of the season.

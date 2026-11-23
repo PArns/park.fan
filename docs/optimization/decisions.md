@@ -572,3 +572,183 @@ write ISR entries nobody reads back, and there is no way to put those alone on `
 `force-dynamic`, drop its `generateStaticParams`, add it to `scripts/test-edge-windows.mjs` (both
 already have a window: the tag archive the `:section(blog|news)` rule, the city the
 `parks/:continent?/:country?/:city?` hub rule) and correct the rule's list of ISR routes.
+
+---
+
+## 2026-11-17 — ACCEPTED: the calendar relays end at Vercel by tag, and Cloudflare keeps them an hour
+
+**Lever:** invocations and bytes of `/api/parks/<geo>/{calendar,best-days,parky-tip}`.
+**Files:** `lib/api/cdn-cache-headers.ts` (`TagPurgedWindow`, `FORECAST_WINDOW`,
+`PARKY_TIP_WINDOW`), `app/api/parks/[...path]/route.ts`, `next.config.ts`,
+`lib/api/integrated-calendar.ts` (`parkCalendarCacheTag`); in the API the forecast ring.
+
+The calendar relay stood a day plus a stale day at both edges with no tag, best-days an hour plus a
+stale day, the tip six hours. After the forecast warmup they moved apart, and a page showed two
+levels for one day. Now Vercel keeps each until the backend rings `park-calendar:<geo>` or
+`best-days:<slug>` (`Vercel-Cache-Tag`, `Vercel-CDN-Cache-Control`, a day and a stale day without a
+ring), and Cloudflare, which no tag reaches, keeps an hour and ten stale minutes.
+
+**Estimated, not measured:** a ring ends on the order of 2,000 to 4,000 entries at Vercel and the
+Data Cache for about 200 parks, twice a day and once more 16 minutes later; only an entry asked
+for again is refilled, one function call and one Redis read at the API each. Against before, the
+calendar relay refills up to two or three times a day instead of once, the best-days relay two or
+three times instead of up to 24. The hour at Cloudflare costs up to 24 hits at Vercel a day per hot
+URL instead of one: about 29,000 edge requests and at most 1 GB uncompressed a day for three hot
+URLs per park in two Cloudflare tiers. The breakdown is in
+[one park-day on several surfaces](../architecture/caching-strategy.md#one-park-day-on-several-surfaces).
+
+**Cost shift:** function calls move from expiry to the ring; Cloudflare hit rate on these three
+routes falls, at no CPU.
+
+**Open:** measure invocations of the three routes before and after in Observability; purge the same
+tags at Cloudflare once the deploy purge is proven (PAR-1125), and the Cloudflare hour can go back
+to a day; a month URL's summary still stands in the page's seven-day HTML.
+
+---
+
+## 2026-11-17 — ACCEPTED: Parky's tip relay keeps „nothing to say" five minutes, not until the ring
+
+**Lever:** invocations of `/api/parks/<geo>/parky-tip` answered 204.
+**Files:** `lib/api/cdn-cache-headers.ts` (`PARKY_TIP_NONE_WINDOW`, `PARKY_TIP_NONE_SECONDS`),
+`app/api/parks/[...path]/route.ts`, `next.config.ts`, `lib/hooks/use-parky-day-tip.ts`; in the API
+`TIP_NONE_CACHE_CONTROL`.
+
+A 204 took the tip's windows: a day at Vercel until the ring, an hour at Cloudflare and in the
+browser. The 204s left are a spent budget and a failed or refused call, which pass within the day,
+so a dialog stayed empty for hours after a tip could be written again. The dialog asks no closed or
+unrated day, so these are rare.
+
+**Estimated, not measured:** at most one function call and one API read (a Redis `MGET`, no model
+call) per 204 URL, Vercel region and five minutes while it is asked. The tip's `next.config.ts`
+rule carries the same five minutes, since a rule cannot tell a 204 from a 200; that only binds
+under `next start`, where a tip is then asked every five minutes.
+
+**Cost shift:** none on a 200.
+
+**Open:** count the relay's 204s in Observability after a day with a spent budget.
+
+---
+
+## 2026-11-17 — ACCEPTED: Parky's tip for today stands half an hour at Vercel and at Cloudflare, not until the ring
+
+**Lever:** invocations of `/api/parks/<geo>/parky-tip` for the park's today.
+**Files:** `lib/api/cdn-cache-headers.ts` (`PARKY_TIP_TODAY_WINDOW`),
+`app/api/parks/[...path]/route.ts`, `scripts/test-edge-windows.mjs`; in the API `soFarToday` in
+`parky-tip-prompt.ts`.
+
+The tip for today says how busy the day has been so far, and that level moves during the day
+without a ring. With `PARKY_TIP_WINDOW` a „bisher ruhig" written in the morning stood at Vercel
+until the evening ring, and Cloudflare and the browser refilled from that copy every hour. The
+relay now sends half an hour at Vercel, at Cloudflare and in the browser when `date` is the
+request's `today` (reasoning in [cdn caching](../architecture/cdn-caching.md#routes-the-backend-rings)).
+
+**Estimated, not measured:** at most 48 function calls a day per today URL (park and language) and
+Vercel region while it is asked, each a Redis read at the API; a model call only where the level so
+far moved since, once per park and language. The API keeps that level out of the tips of the days
+around today, which before were written again in six languages with every move of it.
+
+**Cost shift:** none for the other days' tips.
+
+**Open:** count the relay's 200s for `date` equal to `today` in Observability against the other
+days' over a week.
+
+---
+
+## 2026-11-17 — ACCEPTED: a calendar range holding the park's today stands half an hour at Vercel and at Cloudflare, not until the ring
+
+**Lever:** invocations of `/api/parks/<geo>/calendar` for the current month and the today panel's
+single day.
+**Files:** `lib/api/cdn-cache-headers.ts` (`CALENDAR_TODAY_WINDOW`), `app/api/parks/[...path]/route.ts`,
+`next.config.ts`, `scripts/test-edge-windows.mjs`.
+
+Since the calendar relay is kept at Vercel until the ring, „Heute bisher" in the grid, the day
+dialog and the today panel stood from one ring to the next (15:00 or 20:00 UTC), while the level so
+far moved, and Parky's tip for today, half an hour fresh, was hidden beside it as a mismatch. A
+range that holds a day the API marks `isToday` now gets half an hour at Vercel and at Cloudflare.
+
+**Estimated, not measured:** at most 48 function calls a day per such URL and Vercel region while it
+is asked, each a Redis read at the API (its current month is warm two hours after a warmup and then
+rebuilt by reads every 15 minutes, about 0.6 to 0.8 s cold in production). Two URLs per park are
+affected: the current month and today's single day. Every other month keeps `FORECAST_WINDOW`.
+
+**Cost shift:** none for months that do not hold today. Under `next start` every calendar range
+takes the half hour, since the rule cannot see the days.
+
+**Open:** count the relay's calls for current months in Observability against the week before.
+
+---
+
+## 2026-11-19 — ACCEPTED: the trip hub streams its `/when`, and its calendar writes each tile's classes and icons once
+
+**Lever:** time to first byte of the region hubs and their month pages, and bytes per invocation.
+**Files:** `app/[locale]/trip-regions/[region]/[[...date]]/page.tsx`,
+`components/trip-regions/hub/` (`trip-region-hub-page.tsx`, `hub-when.tsx`, `hub-when-teaser.tsx`,
+`hub-calendar.tsx`), `components/parks/calendar-day-tile.tsx`,
+`components/parks/calendar-icon-sprite.tsx`, `components/parks/park-calendar-grid.tsx`,
+`app/globals.css` (`calendar-tile-*`), `lib/trip-regions/hub-data.ts` (`slimRegion`,
+`sliceCalendar`).
+
+`/en/orlando` was 1.95 MB of HTML in production, and its first byte waited for `/when` after the
+region, the calendar and the best days: 6.7 s cold after a deploy against 0.18 s warm. The API
+builds Orlando's teaser shape (ten days, seven parks) in 10.7 s p50, 15 s p90, 48 s at most, and
+every deploy asks with a new `v`, so each starts cold. Three changes:
+
+- **`/when` streams.** The route asks it as soon as the region is known, and only the best-time
+  teaser awaits it, in its own `<Suspense>`; the fallback is the teaser without an answer, holding
+  the cards' place per breakpoint. No timer: the answer stays in the served HTML, a cold one just
+  arrives later in the stream. The chapter's year comes from today (`bestTimeYear`), as on the
+  best-time pages, so `when.titleNoYear` and `when.pageLinkNoYear` went from all six languages.
+- **A tile's shared classes are one class per density** in `app/globals.css`, in
+  `@layer components` so the tint, the marks and a caller's classes, all utilities, still win; the
+  tile is a `<div>`, not a `Card` whose defaults it overrode on every tile. The star and the season
+  icons are `<use>`s of one `CalendarIconSprite` around the hub calendar and the park calendar's
+  grid; outside one, `CalendarIcon` draws the lucide icon inline.
+- **The hub calendar's props are allow-lists:** `slimRegion` drops the tickets, venues, hotels and
+  every leg field the day sheet does not read (its region in the RSC payload 66.5 → 15.5 kB raw),
+  `sliceCalendar` keeps the day fields the tiles and the sheet read.
+
+Measured against `pnpm build && pnpm start`, one build each, the same Data Cache entries (one `v`
+for both), 19 Nov 2026:
+
+| Page                                 | HTML raw               | gzip                  |
+| ------------------------------------ | ---------------------- | --------------------- |
+| `/en/orlando`                        | 1,932 → 1,450 kB −25 % | 139.6 → 131.2 kB −6 % |
+| `/fr/paris`                          | 837 → 722 kB −14 %     | 102.3 → 99.4 kB −3 %  |
+| `/en/orlando/2026/12`                | 1,889 → 1,419 kB −25 % | 135.5 → 126.1 kB −7 % |
+| Magic Kingdom's `wait-time-calendar` | 872 → 873 kB           | 111.9 → 112.3 kB      |
+
+Inside `/en/orlando`: the `#calendar` section 1,139 → 707 kB, its class attributes 623 → 386 kB,
+inline SVG on the page 334 → 140 kB, the RSC payload 554 → 501 kB; brotli q4 of the whole page
+107.5 → 104.1 kB. The park calendar's served HTML does not change: its grid is `ssr: false`, so the
+tiles there are lighter in the DOM, not on the wire. Screenshots of the calendar chapter, the
+best-time chapter and the park calendar's grid, phone (390 × 844) and desktop, light and dark,
+are byte-identical before and after. With JS off on a cold render, the best-time chapter's fallback
+is within 10 px of the resolved chapter on a phone and from `sm` to `md`, and equal from `lg`.
+
+**Cold TTFB not reproduced locally:** with a new `v` and an empty Data Cache, `/en/orlando` took
+1.51 s before and 1.86 s after, both dominated by the first request's route load and the other cold
+reads; the API answered the teaser's `/when` from its own cache in 0.4 s here. What changed is
+which reads the first byte waits for; re-measure the first request after the next deploy.
+
+**Cost shift:** none on the wire. A cold `/when` now holds the stream open instead of the first
+byte, so the function's wall time is the same; the client never asks the relay for the served
+answer.
+
+**Open:** the week classes (`HUB_WEEK_CELL`, `HUB_WEEK_ITEM`) are 44 kB of the calendar's
+remaining class bytes; the planner chapter's region (68 kB of the payload) is the planner's.
+
+## 2026-11-19 — ACCEPTED: trip-region reads send the routes' version as `v`, not the deploy's commit
+
+**Lever:** Cloudflare hits on `/v1/trip-regions/…` and Data Cache hits on the hubs after a deploy.
+**Files:** `lib/trip-regions/api.ts` (`TRIP_API_VERSION`, `TRIP_API_TYPES_HASH`),
+`scripts/test-trip-regions.mjs`.
+
+Every trip-region read carried the first 12 characters of `VERCEL_GIT_COMMIT_SHA` as `v`, so each
+production deploy (three on 19 November) started with an empty Cloudflare copy of every region
+route and an empty Data Cache entry for every hub read, and the first request to each of the ~380
+trip URLs waited on cold API answers. `v` existed for one case: a deploy that reads a field the API
+has just added must not read a 26-hour-old edge copy. That case now raises `TRIP_API_VERSION` in the
+same pull request, and `pnpm test:trip-regions` fails when `lib/trip-regions/types.ts` changes
+without `TRIP_API_TYPES_HASH`, so the question cannot be skipped. Not measured yet: the check is the
+API's `trip_planner_ops` answer-cache hit rate and the hubs' cold time to first byte over the next
+deploys, against the 14–22 % best-days hit rate of 19 November.

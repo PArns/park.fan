@@ -65,6 +65,9 @@ Contrairement à 2025, Hello Kitty et Kuromi, de Sanrio, se promènent aussi dan
 
 Le feu d’artifice démarre à 20 h sur une musique de BTS. Resorts World Sentosa l’appelle BTS THE CITY ARIRANG Fireworks, sans préciser l’endroit exact dans le parc. En 2025, il était tiré au-dessus du Lake Hollywood. Le lundi 21 décembre, seuls les visiteurs munis d’un billet pour la soirée BTS le voient. Seul le 2-Park Pass with Festive Perks donne droit à une place réservée pour le regarder. Avec un billet classique, à toi de trouver ton coin.
 
+> [!PARKY]
+> Pour le feu d’artifice, on choisit un soir entre le 16 et le 25 décembre, sauf le 21 : le parc est alors ouvert jusqu’à 21 h, et quand le feu démarre à 20 h, il nous reste encore une heure avant la fermeture. Pour un feu d’artifice sur du BTS, j’apprends même les paroles en vitesse. Avant, à 19 h 30, on se poste devant la façade de Revenge of the Mummy, où passe Lightscape.
+
 ## BTS dans le parc
 
 Le 21 décembre, Universal Studios Singapore ferme dès 19 h, et BTS THE CITY ARIRANG Night Out s’y tient de 20 h à 1 h du matin. L’entrée coûte 58 dollars de Singapour par personne.

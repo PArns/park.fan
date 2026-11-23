@@ -384,6 +384,9 @@ voor de entree van Jul 2026 heeft het park nog niet gepubliceerd. Kaninlandet
 is in 2026 op 42 extra dagen in de winter open, elk weekend en in de
 schoolvakanties.
 
+> [!PARKY] Ga in de zomer
+> Alle grote attracties op één dag lukt alleen in de zomer: met Halloween rijdt Valkyria niet, met Jul deden Helix en de Lisebergbanan in 2025 niet mee, en AtmosFear draait sowieso alleen in de zomer. Op weg naar boven doe ik mijn ogen dicht, maar de vrije val van 90 meter laat ik niet schieten. Voor de kerstmarkt komen we graag nog een keer terug, Balder en Valkyria reden in 2025 toen ook.
+
 ## Tickets en prijzen
 
 Liseberg verkoopt de entree en het ritbandje apart. De **Åkpass** omvat alle

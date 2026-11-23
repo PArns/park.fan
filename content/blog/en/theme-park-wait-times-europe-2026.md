@@ -149,6 +149,9 @@ On summer evenings we measured Parc Astérix until 9 pm, and in the last hour th
 
 Parque de Atracciones de Madrid in the Casa de Campo doesn't open until midday, and there the first hour is the quietest, while you'll queue longest in the early evening. If you have a lie-in before Blackpool Pleasure Beach, you miss nothing, because the wait for the big rides there stays almost the same all day.
 
+> [!PARKY]
+> Rope drop is sacred to me, but I won't waste it: at Thorpe Park we don't head to Hyperia first, because its queue stays almost the same length all day. At PortAventura we save Uncharted for the evening, since its first hour is the longest of the day, and we put it straight at the end in the [day planner](/trip-planner).
+
 ## What the rain did
 
 On rainy days people queued less at all twelve parks in our [rain comparison](/blog/theme-parks-in-the-rain) than on dry days in the same month, and at Movie Park Germany by almost a third. A rainy day there means at least two millimetres of rain. So a forecast of rain for Saturday is more a reason to go than to stay at home, especially to Movie Park, as long as no thunderstorm is on the way.

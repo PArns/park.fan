@@ -88,6 +88,9 @@ Die Sommersaison 2027 beginnt am 20. März, Tickets dafür gibt es ab dem 10. 
 
 Online kaufst du das Ticket noch am Besuchstag bis 14 Uhr. Für jeden Preis gibt es pro Tag ein Kontingent, und die Preise können jeden Tag steigen. Die Wochentage im Wintertraum ab Mitte November kosten 35 bis 39 €. Tickets gibt es bisher bis zum 23. Dezember.
 
+> [!PARKY]
+> Den Wochentag im Wintertraum buchen wir, sobald er feststeht: Jeder Preis hat pro Tag ein Kontingent, und ist das zu 35 € weg, kostet derselbe Tag mehr. Spontan bin ich gern am Churro-Stand, beim Ticket lieber nicht. Online kaufen geht zwar noch am Besuchstag bis 14 Uhr, aber dann zahlen wir, was der Tag inzwischen kostet.
+
 Für die Parkplätze P1 und P2 gibt es keine Reservierung. Vom Bahnhof Brühl und von Brühl Mitte fährt ein Shuttlebus zum Park, der hin und zurück 6 € kostet, und Kinder bis 1 m fahren darin umsonst. Das Verbundticket gilt im Shuttle nicht.
 
 ### Heide Park

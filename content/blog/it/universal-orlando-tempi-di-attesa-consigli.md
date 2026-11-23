@@ -382,6 +382,9 @@ all’Epic Universe ad agosto e a settembre e agli Studios a maggio. Fra i
 giorni della settimana, agli Studios e alle Islands of Adventure il più affollato
 è il sabato. All’Epic Universe i giorni della settimana differiscono appena.
 
+> [!PARKY]
+> Se nel viaggio cade un sabato, lo diamo all’Epic Universe: agli Studios e alle Islands of Adventure il sabato è il giorno più affollato, all’Epic Universe i giorni della settimana differiscono appena. A quel parco il giorno importa poco, e a quel punto anche a me. Quale degli altri due va in quale giorno dal lunedì al venerdì lo decidiamo nel [pianificatore di viaggio](/orlando#planner).
+
 In autunno gli Studios, nelle sere delle Halloween Horror Nights, chiudono prima
 per gli ospiti normali. Tutte le date, i prezzi e le case sono nella nostra
 panoramica su [Halloween negli Stati
@@ -438,6 +441,9 @@ accompagnatore. Le attrazioni grandi hanno un limite più alto: Stardust Racers 
 Revenge of the Mummy da 122 centimetri, VelociCoaster da 130, Doctor Doom's
 Fearfall da 133 e l’Hulk da 138. Per la maggior parte di queste, prima
 dell’imbarco c’è un sedile di prova in cui puoi vedere se ci stai.
+
+> [!PARKY]
+> Con un bambino da 102 centimetri in su, all’Epic Universe partiamo tutti insieme all’apertura: su Mine-Cart Madness e il Battle at the Ministry, i due «consigli forti» per chi arriva presto, può già salire, con un accompagnatore fino a 122 centimetri. Così il piccolo è al Ministero della Magia prima che i grandi abbiano finito il secondo caffè. Mario Kart, Curse of the Werewolf e Hiccup's Wing Gliders hanno la stessa altezza minima, quindi nel [pianificatore della giornata](/trip-planner) li mettiamo subito dopo.
 
 Seuss Landing alle Islands of Adventure è l’area per i più piccoli. Secondo
 Universal, lì solo due attrazioni hanno un’altezza minima, tutte e due di 92

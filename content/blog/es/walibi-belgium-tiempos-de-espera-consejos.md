@@ -364,6 +364,9 @@ noviembre, e Ibilaw abarca ambas. Las vacaciones de Navidad empiezan el 21 de
 diciembre de 2026 en las dos comunidades y terminan el 1 de enero en Valonia y
 Bruselas y el 3 de enero de 2027 en Flandes, en pleno Walibi Winter.
 
+> [!PARKY]
+> Para Walibi Winter elegimos un día antes del 21 de diciembre: a partir de ahí las dos comunidades están de vacaciones de Navidad, y en Wavre lo lleno que está lo deciden las vacaciones escolares. Loup-Garou solo funciona hasta el 3 de enero, y prefiero decirle adiós sin el gentío de las vacaciones. Qué días abre el parque está en su página.
+
 ## Cómo ordenar el día
 
 Al abrir, directo a **Kondaa**, porque en nuestras mediciones, desde finales de diciembre de

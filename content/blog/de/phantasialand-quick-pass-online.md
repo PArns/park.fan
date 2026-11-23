@@ -57,6 +57,9 @@ seo:
     - Phantasialand Wintertraum 2026/27
 ---
 
+> [!UPDATE] 2026-11-18
+> Taron hat jetzt zwei Quick Pässe für je 12 €, Daylight bis 16 Uhr und After Dark ab 17 Uhr. Im Ultimate sind beide Fahrten drin. Neu im Shop ist außerdem Chiapas, im Winter für 5 €.
+
 Den Quick Pass fürs [Phantasialand](ref:phantasialand) kannst du jetzt im [Online-Shop des Parks](https://shop.phantasialand.de/de/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online) kaufen. Nach dem Bezahlen kommt er als PDF per E-Mail, und am Quick-Pass-Eingang der Bahn zeigst du den QR-Code daraus auf dem Handy. Bisher gab es ihn nur am Gästeservice am Kaiserplatz in der Themenwelt Berlin, und dort hast du dich erst einmal angestellt, um später an einer Bahn weniger anzustehen.
 
 Verkauft wird online ab 11 Uhr. Im Wintertraum öffnet dann auch der Park. Du gehst durchs Tor, bestellst den Pass in Ruhe auf dem Handy, während du schon Richtung Taron oder Black Mamba läufst. Vor elf meldet der Shop nur, dass der Verkauf noch nicht begonnen hat.
@@ -95,11 +98,14 @@ Für Colorado Adventure verlangt der Shop 7 €, auf der Infoseite des Parks ste
 
 Der Quick Pass Ultimate kostet 80 €. Mit ihm kommst du einmal durch jeden Quick-Pass-Eingang und einmal schneller auf [F.L.Y.](ref:phantasialand/fly), für die es keinen Einzelpass gibt. Bei Taron gilt der Ultimate laut Shop für „Daylight & After Dark“, also tagsüber wie abends.
 
+> [!PARKY] Gönn dir
+> Die acht Einzelpässe aus der Tabelle kosten zusammen 58 €, der Ultimate 22 € mehr, und dafür fliegen wir einmal schneller auf F.L.Y. und fahren Taron auch bei Tag. Bei Talocan sitzen wir mit Pass garantiert auf der vorderen Seite, und bei Taron frag ich am Einstieg einfach nett nach einem Platz. Wollen wir sowieso fast alles mit Pass fahren, nehmen wir den Ultimate.
+
 ## Was du außerdem brauchst
 
-Der Quick Pass kostet extra und gilt nur zusammen mit einem gültigen Tagesticket. Tagestickets verkauft der Park nur online, eine Tageskasse hat er nicht, und für den Besuchstag selbst kaufst du bis 14 Uhr. Wer um halb drei ohne Ticket am Tor steht, hat ein größeres Problem als die Warteschlange an Black Mamba.
+Der Quick Pass kostet extra und gilt nur zusammen mit einem gültigen Tagesticket. Tagestickets verkauft der Park nur online, eine Tageskasse hat er nicht, und für den Besuchstag selbst kaufst du im Wintertraum bis 16 Uhr, sonst bis 14 Uhr. Wer um halb fünf ohne Ticket am Tor steht, hat ein größeres Problem als die Warteschlange an Black Mamba.
 
-Einen Platz im Zug suchst du dir auch mit Pass nicht aus, und die Mindestgröße gilt mit Pass genauso, für Taron 1,30 m.
+Die Plätze teilen die Mitarbeitenden zu, bei Taron hilft es aber, sie am Einstieg nett nach einem bestimmten Platz zu fragen, und bei Talocan bringt dich der Quick Pass garantiert auf die vordere Seite. Die Mindestgröße gilt mit Pass genauso, für Taron 1,30 m.
 
 ## Wenn der Eingang pausiert oder die Bahn steht
 
@@ -110,6 +116,9 @@ Mit dem Quick Pass stehst du kürzer an, aber nicht gar nicht, und der Quick-Pas
 Der Wintertraum läuft seit dem 14. November und bis einschließlich 24. Januar 2027, täglich von 11 bis 20 Uhr, mit fünf Schließtagen an Weihnachten, Neujahr und Mitte Januar.
 
 Der Einzelpass für Taron After Dark gilt ab 17 Uhr, im Wintertraum ist es da längst dunkel. An Silvester schließt der Park schon um 18 Uhr, der Pass für Taron After Dark lohnt sich dann nur, wenn du um fünf schon an der Bahn stehst.
+
+> [!PARKY] Lohnt sich
+> Den Pass für Taron After Dark holen wir schon um elf, weil das Kontingent begrenzt ist, und fahren ihn erst, wenn es dunkel ist. Bis dahin schonen wir den Akku, als hinge der ganze Abend an diesem QR-Code. Zwischen fünf und dem Parkschluss um acht haben wir drei Stunden dafür.
 
 ```best-days-widget slug=phantasialand
 
@@ -122,3 +131,7 @@ Am Gästeservice war die Menge begrenzt. Im Wintertraum waren die Pässe dort am
 An einem grünen Tag im Kalender brauchst du den Quick Pass nach meiner Erfahrung nicht, wenn du zur Öffnung am Tor stehst. An einem tiefroten Ferien-Samstag würde ich die 10 € für Black Mamba ausgeben, bevor ich mich mittags in ihre Warteschlange stelle. Ohne Pass fahre ich in der Reihenfolge aus den [Phantasialand-Tipps](/blog/phantasialand-tipps).
 
 Quellen: [Quick Pass im Online-Shop des Phantasialand](https://shop.phantasialand.de/de/quick-pass), [Nutzungsbedingungen zum Quick Pass](https://www.phantasialand.de/de/quick-pass/), [Informationen und Anreise, Abschnitt Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Preise und Tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Öffnungszeiten](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
+
+> [!CORRECTION] 18. November 2026: In der ersten Fassung stand, dass du dir auch mit Quick Pass keinen Platz im Zug aussuchst. Die Plätze teilen zwar die Mitarbeitenden zu, bei Taron hilft es aber, sie am Einstieg nett nach einem bestimmten Platz zu fragen, und bei Talocan bringt dich der Quick Pass garantiert auf die vordere Seite.
+
+> [!CORRECTION] 21. November 2026: In der ersten Fassung stand, dass du Tagestickets für den Besuchstag bis 14 Uhr kaufst. Im Wintertraum geht das bis 16 Uhr, sonst bis 14 Uhr.

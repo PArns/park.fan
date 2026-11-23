@@ -124,6 +124,17 @@ export function isLegacyKey(key: Pick<DataApiKey, 'permissions'>): boolean {
   return key.permissions === null;
 }
 
+/**
+ * The key waits on its developer's dashboard to be picked up. Only a key held by a developer
+ * account has a pickup: one the owner issued by hand was shown in clear the moment it was made,
+ * so its empty `revealedAt` means nothing.
+ */
+export function awaitsPickup(
+  key: Pick<DataApiKey, 'ownerUserId' | 'revealedAt' | 'revokedAt'>
+): boolean {
+  return !key.revokedAt && Boolean(key.ownerUserId) && key.revealedAt === null;
+}
+
 /** The most a key may be allowed per hour; the backend's `MAX_REQUESTS_PER_HOUR`. */
 export const MAX_REQUESTS_PER_HOUR = 1_000_000;
 

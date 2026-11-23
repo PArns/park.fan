@@ -2,7 +2,7 @@
 title: "Phantasialand's Wintertraum runs until 24 January"
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
-updatedAt: '2026-11-16'
+updatedAt: '2026-11-21'
 author: patrick
 mode: published
 featured: false
@@ -175,6 +175,9 @@ We measured last year's Wintertraum from 26 December 2025 to 25 January 2026. Du
 
 This winter the North Rhine-Westphalia Christmas holidays run from 23 December 2026 to 6 January 2027, and I'd plan the days between Christmas and New Year like a day in August. Those January weekdays are when I'd go, and on many of them the park charges €29, the lowest price in the calendar.
 
+> [!PARKY] That's our day
+> After the holidays we go on a Thursday or Friday in January, because from Monday to Wednesday one of the theatre shows has its day off. Last January there wasn't much going on during the week, so at least we don't freeze in the queue for long. And on those days the ticket calendar often asks just €29.
+
 On the opening weekend the park was busy on Saturday, 14 November, and almost empty on the drizzly Sunday. That's only one Sunday, but with the Wuze Town hall and the theatres I wouldn't call off a drizzly day. I expect Totensonntag on 22 November to be busy, because it falls on the second Wintertraum weekend and all seven shows are squeezed into two evening hours.
 
 ```best-days-widget slug=phantasialand
@@ -195,11 +198,11 @@ On the opening weekend the park was busy on Saturday, 14 November, and almost em
 
 With a Quick Pass you skip the queue once at one ride, through a separate entrance. Until now you first had to queue for it at Guest Service on the Kaiserplatz, one queue to save another. Now you can also buy it in the online shop from 11 am, which during Wintertraum is opening time, at your own pace on your phone, and show the QR code at the Quick Pass entrance.
 
-- Taron After Dark, from 5 pm: €12 (online, it's the only single pass for Taron)
+- Taron Daylight until 4 pm and Taron After Dark from 5 pm: two different passes, €12 each, neither valid between 4 and 5 pm
 - Black Mamba: €10
 - Winja's Fear, Winja's Force, Colorado Adventure: €7 each
 - Maus au Chocolat, Mystery Castle, Talocan: €5 each
-- Chiapas: €10, only at Guest Service, according to the info page
+- Chiapas: €5 in winter
 - Quick Pass Ultimate: €80, once at every Quick Pass entrance and once at F.L.Y., which has no single pass
 
 Every Quick Pass is only valid on the day you book it, and the park sells a limited number per day. Booking step by step, from the basket that holds the passes for ten minutes to the PDF with the QR code, is in our [news item on the Quick Pass going online](/news/phantasialand-quick-pass-online).
@@ -218,30 +221,22 @@ At 6:50 pm head to Berlin, get your last mulled wine from a stall and be on the 
 
 ## Tickets and prices
 
-Phantasialand sells tickets only in its online shop. There's no ticket office at the gate, and every ticket is for a fixed date. On the day of your visit you can still buy one until 2 pm, at that day's price and as long as the day isn't sold out. Tickets can't be changed or cancelled.
+Phantasialand sells tickets only in its online shop. There's no ticket office at the gate, and every ticket is for a fixed date. During Wintertraum you can still buy one on the day of your visit until 4 pm, at that day's price and as long as the day isn't sold out. Tickets can't be changed or cancelled.
 
-The price depends on the day and can go up at any time, because each price tier has a limited allocation per day. Until Monday, 16 November, the park is running an opening discount with tickets from €30, otherwise up to €78.
+The price depends on the day and can go up at any time, because each price tier has a limited allocation per day. Since 21 November the park has been running the [Black Deal](/news/phantasialand-black-deal-wintertraum): every open day in December and January costs €29 from Monday to Friday and €33 at weekends and in the Christmas holidays. The park gives no end date for the offer, and without it a ticket costs up to €78.
 
-Adult prices (age 12 and up) in the ticket calendar, as of 15 November 2026:
+Adult prices (age 12 and up) in the ticket calendar, as of 21 November 2026:
 
-| Day                         | Adult day ticket |
-| --------------------------- | ---------------- |
-| Monday to Friday, 16–20 Nov | €36              |
-| Saturday, 21 November       | €42              |
-| Sunday, 22 November         | €38              |
-| Monday, 23 November         | €29              |
-| Saturday, 28 November       | €42              |
-| Wednesday, 2 December       | €30              |
-| Saturday, 5 December        | €39              |
-| Saturday, 12 December       | sold out         |
-| Monday, 14 December         | €30              |
-| Saturday, 26 December       | €39              |
-| Sunday, 27 December         | €42              |
-| Thursday, 31 December       | €37              |
-| Wednesday, 6 January        | €29              |
-| Saturday, 9 January         | €38              |
-| Monday, 11 January          | €29              |
-| Sunday, 24 January          | €35              |
+| Days                                           | Adult day ticket |
+| ---------------------------------------------- | ---------------- |
+| November, Monday to Friday from 23 Nov         | €35 to €42       |
+| November, Saturday and Sunday                  | €39 to €69       |
+| December up to 22 Dec, Monday to Friday        | €29              |
+| December, Saturday and Sunday                  | €33              |
+| Christmas holidays, 23 Dec and 26 Dec to 5 Jan | €33              |
+| January from 6 Jan, Monday to Friday           | €29              |
+| January, Saturday and Sunday                   | €33              |
+| Saturday, 12 December                          | sold out         |
 
 Children aged 4 to 11 pay a lower price of their own, which also changes by day. They and guests aged 60 and over need proof of age at the gate.
 
@@ -276,6 +271,9 @@ For a proper meal somewhere warm I go to Rutmor's Taverne in Klugheim for the Ei
 The park has three themed hotels right next to it: Ling Bao in China Town, Matamba in Deep in Africa and Charles Lindbergh in Rookburgh, which won "Europe's best themed hotel" at the Parkscout|plus Award 2025.
 
 For a short winter break there's up to 45 % off for early bookings. Breakfast and parking at the hotel are included, and you walk straight into the park through the hotel gardens or a gate of your own. After MAGIC SYMPHONY that's the shortest way to bed, while everyone else heads for P1 and P2. Guests at Matamba and Ling Bao get faster access once per person per night to one of these rides: Chiapas, Maus au Chocolat, Talocan, Winja's Fear & Force or Colorado Adventure, but only with a valid park ticket. Charles Lindbergh guests get faster access to F.L.Y. as Explorers, and the hotel also has an Explorer package with a night's stay, a three-course dinner, breakfast and two park days. The new pool and spa area at Ling Bao is for its own guests only.
+
+> [!PARKY]
+> If we're staying at Matamba or Ling Bao, we spend the hotel's faster access on Colorado Adventure or the Winja's: a Quick Pass there otherwise costs €7, while at Maus au Chocolat, Talocan and, in winter, Chiapas it's only €5. Two nights get us both that way, and I don't have to choose. We still need a valid park ticket for it.
 
 The New Year's Eve packages with an overnight stay are fully booked.
 
@@ -318,7 +316,7 @@ River Quest, Wakobato and Wözl's Wassertreter. Everything else runs; Black Mamb
 
 ### How much does Phantasialand Wintertraum cost?
 
-An adult day ticket costs between €29 on weekdays in January and €42 on some weekend days such as 27 December, depending on the date. Tickets are sold online only, until 2 pm on the day. Children up to three get in free.
+In the Black Deal, an adult day ticket for December and January costs €29 from Monday to Friday and €33 at weekends and in the Christmas holidays. In November it's €35 to €69, depending on the day. Tickets are sold online only, and during Wintertraum you can buy one on the day until 4 pm. Children up to three get in free.
 
 ### When is Wintertraum quietest?
 
@@ -326,7 +324,7 @@ Monday to Friday in January, once the NRW Christmas holidays end on 6 January 20
 
 ### Is there a Quick Pass during Wintertraum?
 
-Yes, in the online shop from 11 am, when the park opens, on your phone and without queuing, or at Guest Service on the Kaiserplatz. Each pass is only valid on the day you book it. In the shop, Taron After Dark from 5 pm costs €12, Colorado Adventure €7 and the Ultimate with F.L.Y. €80. Chiapas is only sold at Guest Service.
+Yes, in the online shop from 11 am, when the park opens, on your phone and without queuing, or at Guest Service on the Kaiserplatz. Each pass is only valid on the day you book it. In the shop, Taron Daylight until 4 pm and Taron After Dark from 5 pm cost €12 each, Colorado Adventure €7, Chiapas €5 in winter and the Ultimate with F.L.Y. €80.
 
 — Patrick
 

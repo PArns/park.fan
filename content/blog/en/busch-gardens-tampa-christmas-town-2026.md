@@ -96,6 +96,9 @@ In the Black Friday presale a day ticket starts at $71.99 instead of the regular
 
 A two-park ticket for Busch Gardens and SeaWorld Orlando starts at $93.99, as long as both visits fall within six months of purchase. At SeaWorld Orlando, the [orca show Miracles returns for the Christmas Celebration](/news/seaworld-orlando-christmas-celebration-2026).
 
+> [!PARKY]
+> If SeaWorld Orlando is on our list anyway, we take the two-park ticket from $93.99, just $22 more than the cheapest day ticket here in the Black Friday presale. A second park for the difference has me hopping, but we only buy once both park days fit into the six months after purchase. Then we put the two on separate days in the [trip planner](/orlando#planner).
+
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
 Sources:

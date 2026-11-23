@@ -60,6 +60,9 @@ Gold and Diamond get you 50 percent off a regular one-day ticket at seven other 
 
 A one-day ticket starts at $24.99 online if you buy it for a fixed date at least 24 hours ahead, and costs $49.99 at the gate. Two consecutive days start at $34.99 online. If you'd come twice and pay at the gate, the Silver pass already costs less. Guests 15 and under need to be with someone 21 or older to get in.
 
+> [!PARKY] Silver's enough
+> If we're coming for Christmas at Kentucky Kingdom and again in spring for Midnight Showdown, we take the Silver pass: it's good for both starting now, and it gets us free parking on operating days instead of $15 a car. At the first clatter of hooves I'll already be galloping in my seat. We'd only go Gold or Diamond with Dollywood or Silver Dollar City on the list as well, since that's where they get you 50 percent off a regular one-day ticket.
+
 ## Christmas in the park
 
 Christmas at Kentucky Kingdom runs on select days from November 21 to January 2 and is included with a day ticket. Until November 20, a Christmas ticket costs $24.99 online for everyone age four and up. The park puts up more than 1.5 million lights and over 300 Christmas trees. At the Blizzard Bluff snow hill you ride a tube 175 feet (about 53 meters) down real snow, in one of six lanes. The water rides and a few other attractions stay closed over the winter.

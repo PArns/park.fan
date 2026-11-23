@@ -1,16 +1,20 @@
 'use client';
 
-import { useId, useMemo, useState } from 'react';
+import { useCallback, useId, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { cn } from '@/lib/utils';
-import { addDays, formatParkDay } from '@/lib/utils/park-day';
+import { CalendarCheck } from 'lucide-react';
+import { addDays, formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
+import { Button } from '@/components/ui/button';
 import {
   MAX_DAYS_AHEAD,
   MAX_TRIP_DAYS,
   MIN_FIND_DAYS,
+  effectiveParks,
   setFindMode,
+  setTripDates,
   type PlanSearchRange,
 } from '@/lib/trip-regions/plan';
+import { defaultSearchRange, quietWeek, quietWeekWindow } from '@/lib/trip-regions/trip-dates';
 import {
   holidayRegionsFor,
   whenPeriodOf,
@@ -20,25 +24,20 @@ import {
 import { usePlanContext, useTripEvents } from './plan-context';
 import {
   PLAN_FIELD,
-  PLAN_FOCUS,
   PlanCheckRow,
   PlanChip,
+  PlanSegmented,
   PlanSelect,
   PlanStepper,
 } from './plan-controls';
 import { PlanDates } from './plan-dates';
-import { useSchoolBreaks } from './use-trip-plan';
-
-/** The search the When mode opens on: the next twelve months. */
-export function defaultSearchRange(today: string): PlanSearchRange {
-  return { from: today, to: addDays(today, MAX_DAYS_AHEAD) };
-}
+import { useSchoolBreaks, useTripCalendar } from './use-trip-plan';
 
 /**
- * Step 1, the dates: the range calendar, and under it one quiet way to the other question, "No
- * dates yet? Find the best time" (a period, a trip length, and if wanted only the school holidays
- * of a region), with its way back. The choice is the `when` of the URL, so a link from Parky's
- * `find_trip_dates` opens on the search.
+ * Step 1, the dates, its two answers side by side as equals: „Ich kenne meine Daten“, the range
+ * calendar with the quietest week ahead offered over it (`QuietWeekCard`), or „Daten finden“, the
+ * search (a period, a trip length, and if wanted only the school holidays of a region). The choice
+ * is the `when` of the URL, so a link from Parky's `find_trip_dates` opens on the search.
  */
 export function PlanDatesStep({
   defaultMonth,
@@ -50,51 +49,112 @@ export function PlanDatesStep({
   monthChips?: boolean;
   onPending?: (pending: boolean) => void;
 }) {
-  const t = useTranslations('tripPlanner.find');
-  const tSetup = useTranslations('tripPlanner.setup');
+  const t = useTranslations('tripPlanner.wizard.dates');
   const tTickets = useTranslations('tripPlanner.tickets');
   const { state, update, today, live } = usePlanContext();
   const track = useTripEvents();
+  const [pending, setPending] = useState(false);
   const find = state.when !== null;
   // `/when` searches a ticket's start; a first day fixed at purchase leaves nothing to search.
   const fixed = state.tickets.some((ticket) => ticket.start !== null);
   const fixedId = useId();
-  const choose = (next: boolean) => {
-    if (!today) return;
-    track('trip_find_toggled', { to: next ? 'find' : 'known' });
-    update((s) => setFindMode(s, next, defaultSearchRange(today)));
+  const choose = (mode: 'known' | 'find') => {
+    if (!today || (mode === 'find') === find) return;
+    track('trip_find_toggled', { to: mode });
+    update((s) => setFindMode(s, mode === 'find', defaultSearchRange(today)));
   };
-  const switchLink = (
-    <div className="flex flex-col gap-1">
-      <button
-        type="button"
-        onClick={() => choose(!find)}
-        disabled={!live || !today || (!find && fixed)}
-        aria-describedby={!find && fixed ? fixedId : undefined}
-        data-plan-find-switch={find ? 'known' : 'find'}
-        className={cn(
-          'text-primary-ink min-h-11 self-start rounded-md px-1 text-left text-sm font-medium underline-offset-4 hover:underline disabled:opacity-50 disabled:hover:no-underline',
-          PLAN_FOCUS
-        )}
-      >
-        {find ? t('modeKnown') : tSetup('findLink')}
-      </button>
+  const pend = useCallback(
+    (next: boolean) => {
+      setPending(next);
+      onPending?.(next);
+    },
+    [onPending]
+  );
+
+  return (
+    <div className="flex flex-col gap-3">
+      <PlanSegmented
+        label={t('mode')}
+        value={find ? 'find' : 'known'}
+        disabled={!live || !today}
+        onChange={choose}
+        options={[
+          { value: 'known', label: t('known') },
+          {
+            value: 'find',
+            label: t('find'),
+            disabled: !find && fixed,
+            describedBy: !find && fixed ? fixedId : undefined,
+          },
+        ]}
+      />
       {fixed && !find && (
         <p id={fixedId} className="text-muted-foreground text-xs">
           {tTickets('find.fixed')}
         </p>
       )}
-    </div>
-  );
-
-  return (
-    <div className="flex flex-col gap-3">
       {find ? (
         <PlanFind />
       ) : (
-        <PlanDates defaultMonth={defaultMonth} monthChips={monthChips} onPending={onPending} />
+        <>
+          {!fixed && !pending && !(state.from && state.to) && <QuietWeekCard />}
+          <PlanDates defaultMonth={defaultMonth} monthChips={monthChips} onPending={pend} />
+        </>
       )}
-      {switchLink}
+    </div>
+  );
+}
+
+/**
+ * The quietest week ahead for the parks of the trip (`quietWeek`, from the region calendar's next
+ * eight weeks), one press from being the trip's dates. Never chosen for the visitor: the address
+ * changes only on the press. Its box is held while the calendar loads, so the grid under it does
+ * not move; with no week to offer it leaves.
+ */
+function QuietWeekCard() {
+  const t = useTranslations('tripPlanner.wizard.dates');
+  const { state, update, today, locale, live, headliners } = usePlanContext();
+  const track = useTripEvents();
+  const span = useMemo(() => (today ? quietWeekWindow(today) : null), [today]);
+  const calendar = useTripCalendar(span?.from ?? null, span?.to ?? null);
+  const parks = useMemo(
+    () => effectiveParks(state, headliners).map((p) => p.slug),
+    [state, headliners]
+  );
+  const week = useMemo(
+    () => (calendar.data && span ? quietWeek(calendar.data.days, parks, span.from) : null),
+    [calendar.data, parks, span]
+  );
+  if (!week && !calendar.isPending) return null;
+  return (
+    <div
+      className="border-border/60 flex min-h-14 items-center gap-3 rounded-xl border px-3 py-2"
+      data-plan-quiet-week=""
+      aria-busy={!week}
+    >
+      <CalendarCheck className="text-muted-foreground size-4 shrink-0" aria-hidden="true" />
+      <p className="min-w-0 flex-1 text-sm">
+        {week &&
+          t('quiet', {
+            range: formatParkDayRange(locale, week.from, week.to, {
+              day: 'numeric',
+              month: 'short',
+            }),
+          })}
+      </p>
+      {week && (
+        <Button
+          variant="outline"
+          size="sm"
+          disabled={!live}
+          onClick={() => {
+            track('trip_quiet_week_taken');
+            update((s) => setTripDates(s, week.from, week.to));
+          }}
+        >
+          {t('quietTake')}
+        </Button>
+      )}
     </div>
   );
 }

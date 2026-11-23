@@ -114,10 +114,6 @@ export const ORLANDO: TripRegionConfig = {
     })),
   hub: {
     // The Tree of Life at Animal Kingdom, then VelociCoaster at Islands of Adventure.
-    heroPhotos: [
-      '/media/disney-animal-kingdom/kunst-des-wartens-cover.jpg',
-      '/media/universal-islands-of-adventure/welcome-cover.jpg',
-    ],
     // The middle of Walt Disney World.
     defaultArea: 'disney',
     faq: {
@@ -139,6 +135,7 @@ export const ORLANDO: TripRegionConfig = {
       { group: 'day-trips' },
     ],
     scene: 'reiseplaner/parky-orlando-tag',
+    eveningScene: 'reiseplaner/parky-orlando-abend',
   },
   bestTime: [
     {

@@ -368,6 +368,9 @@ conseil tombe, car les attractions aquatiques ferment à la tombée de la nuit.
 **Scream** et le **Big Loop** sont les bouche-trous entre deux grandes
 attractions.
 
+> [!PARKY]
+> Lors d’une longue journée d’automne, le plan change : les attractions ne tournent qu’à partir de midi, et les attractions aquatiques ferment vers 17 h, donc on se mouille avant cinq heures. Les jours d’Halloween, les trois mazes ouvrent vers 16 h, avec des créneaux qu’on réserve en ligne à l’avance, et entre deux, je me cramponne à un beignet. Le reste, on le cale dans le [planificateur de journée](/trip-planner).
+
 ## Pratique : accès, billets, horaires
 
 **Accès.** Heide Park 1, 29614 Soltau, sur l’**A7** entre Hambourg et Hanovre,
@@ -398,6 +401,9 @@ enfants de moins de 90 cm entrent gratuitement, mais ont besoin d’un billet à
 
 **Restauration.** Notre page parc recense 21 points de restauration, de la Schmalzkuchen-Schmiede, stand de beignets sur la
 terrasse de Colossos, jusqu’au Wirtshaus des Admirals, un restaurant-buffet dans la Bucht der Piraten. On trouve des pizzas chez Pizza Scream et des tartes flambées à la Flammkuchen Factory, tous deux en Transylvanie, et des saucisses de Thuringe grillées sur pierre de lave au Heide Park Grill, à l’entrée. Frau Mümmels Kiosk, dans le Peppa Pig Land, vend des bowls, et beaucoup de restaurants proposent des plats végétaux.
+
+> [!PARKY]
+> Le pass annuel, on ne l’achète que juste avant notre première visite de 2027 : il vaut douze mois à partir de l’achat, et rien ne tourne à Soltau avant fin mars. Acheté en décembre, il perdrait des mois entiers pendant lesquels je ne pourrais que rêver de Colossos. Si on vient aussi le samedi, ce sera le Silber Pass, car en 2026 le Bronze Pass n’était pas valable la plupart des samedis d’avril à octobre.
 
 ## Questions fréquentes sur le Heide Park
 

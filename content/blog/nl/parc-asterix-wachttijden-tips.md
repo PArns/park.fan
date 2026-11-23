@@ -477,6 +477,9 @@ Glissade d’Obélix, een optocht en een kerstmarkt. De achtbanen rijden volgens
 het park “meestal”, de waterattracties niet. Een kerstticket zonder vaste datum
 kost 57 euro.
 
+> [!PARKY] Slimme keuze
+> Het kerstticket van 57 euro heeft geen vaste datum, en daar maken we gebruik van: de dag kiezen we pas als de weersverwachting er is. Bij vorst zijn volgens het park naast de waterattracties ook sommige andere attracties dicht, en op zo’n dag draai zelfs ik alleen nog pirouettes op de Patinoire Viking. De schaatsen zijn daar gratis.
+
 Tussen 9 november en 18 december 2026 is het park dicht, en weer vanaf 4 januari
 tot de start van het seizoen in het voorjaar. Sinds 2007 blijft het open tot na
 de herfstvakantie; daarvoor sloot het in september. In de winter was het open
@@ -541,6 +544,9 @@ met 149 kamers en vier sterren. Voor een nacht met een dag toegang noemt het par
 vanaf 99, 102 en 111 euro per persoon, gerekend voor twee volwassenen en twee
 kinderen in het hoogseizoen. Je loopt in minder dan tien minuten het park in,
 parkeren is gratis en je mag een half uur eerder naar binnen.
+
+> [!PARKY]
+> Bij een reis naar Parijs zetten we in de [reisplanner](/paris#planner) een nacht in een van de hotels bij het Parc Astérix. Hotelgasten mogen een half uur eerder dan de rest de gebieden Toutatis en Égypte in, daar zit ik bij het ontbijt al te wiebelen van, en ze parkeren gratis in plaats van voor 25 euro per dag.
 
 In de app kun je bij drie restaurants een tafel reserveren: Le Relais Gaulois
 (zelfbediening, 28,90 euro, ’s middags komen Astérix en Obélix langs de

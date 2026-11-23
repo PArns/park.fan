@@ -404,6 +404,9 @@ Dr. Facilier. È tutto compreso nel biglietto normale, e di maze non ce ne sono.
 Il **31 ottobre** il parco resta aperto fino alle 23, con fuochi d’artificio, ed
 è l’unico giorno dell’anno in cui anche gli adulti possono entrare in costume.
 
+> [!PARKY] Fatti un regalo
+> Il costume lo teniamo per Parigi: al Movie Park possono travestirsi solo i bambini fino a 1,40 m, al Disneyland Park il 31 ottobre anche gli adulti. Io ci vado vestito da nuvoletta dei fumetti, e nessuno ci farà caso. Quella sera il parco resta aperto fino alle 23, con i fuochi d’artificio.
+
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 
 ### Alton Towers

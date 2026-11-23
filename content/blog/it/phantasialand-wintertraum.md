@@ -2,7 +2,7 @@
 title: 'Il Wintertraum del Phantasialand dura fino al 24 gennaio'
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
-updatedAt: '2026-11-16'
+updatedAt: '2026-11-21'
 author: patrick
 mode: published
 featured: false
@@ -174,6 +174,9 @@ L’ultimo Wintertraum l’abbiamo misurato dal 26 dicembre 2025 al 25 gennaio 2
 
 Quest’inverno le vacanze di Natale della Renania Settentrionale-Vestfalia vanno dal 23 dicembre 2026 al 6 gennaio 2027, e i giorni fra Natale e Capodanno li organizzerei come una giornata d’agosto. Per i giorni dal lunedì al venerdì dopo le vacanze il parco chiede spesso solo 29 €, il prezzo più basso del calendario.
 
+> [!PARKY] È il nostro giorno
+> Dopo le vacanze scegliamo un giovedì o un venerdì di gennaio, perché dal lunedì al mercoledì uno degli spettacoli in teatro ha il suo giorno di riposo. Lo scorso gennaio in settimana c’era poca gente, così almeno in coda non ci congeliamo a lungo. E per quei giorni il calendario dei biglietti chiede spesso solo 29 €.
+
 Nel fine settimana d’apertura sabato 14 novembre c’era molta gente, la domenica, sotto una pioggerellina, pochissima. È una domenica sola, ma con un tempo così le Winja’s girano al coperto e i tre spettacoli in teatro hanno un tetto sopra, perciò un giorno del genere non lo annullerei. Il Totensonntag del 22 novembre invece me lo aspetto pieno: cade nel secondo fine settimana del Wintertraum, e tutti e sette gli spettacoli si concentrano in due ore di sera.
 
 ```best-days-widget slug=phantasialand
@@ -194,11 +197,11 @@ Nel fine settimana d’apertura sabato 14 novembre c’era molta gente, la domen
 
 Con il Quick Pass passi una volta da un ingresso separato, saltando la coda di un’attrazione. Finora per averlo ti mettevi prima in coda al servizio ospiti sulla Kaiserplatz, cioè facevi una coda per risparmiartene un’altra. Adesso lo compri anche nel negozio online, dalle 11, quindi dall’apertura del parco, con calma sul telefono, e all’ingresso Quick Pass mostri il codice QR.
 
-- Taron After Dark, dalle 17: 12 € (online è l’unico modo di comprare un pass per Taron da solo)
+- Taron Daylight fino alle 16 e Taron After Dark dalle 17: due pass diversi, 12 € ciascuno, tra le 16 e le 17 non vale nessuno dei due
 - Black Mamba: 10 €
 - Winja’s Fear, Winja’s Force, Colorado Adventure: 7 € ciascuno
 - Maus au Chocolat, Mystery Castle, Talocan: 5 € ciascuno
-- Chiapas: 10 €, solo al servizio ospiti, secondo la pagina informativa
+- Chiapas: 5 € in inverno
 - Quick Pass Ultimate: 80 €, un passaggio a ogni ingresso Quick Pass e uno a F.L.Y., per cui un pass singolo non esiste
 
 Ogni Quick Pass vale soltanto nel giorno in cui lo prenoti, e il parco ne vende un numero limitato al giorno. La prenotazione passo per passo, dal carrello che tiene i pass per dieci minuti fino al PDF con il codice QR, la spieghiamo nella nostra [notizia sul Quick Pass online](/news/phantasialand-quick-pass-online).
@@ -217,30 +220,22 @@ Alle 18:50 ti sposti verso Berlin, prendi l’ultimo vin brulé alla bancarella 
 
 ## Biglietti e prezzi
 
-I biglietti si vendono solo online, nel negozio del Phantasialand: all’ingresso non c’è una cassa, e ogni biglietto vale per un giorno preciso. Il giorno stesso della visita lo puoi ancora comprare fino alle 14, al prezzo in vigore in quel momento e finché la giornata non è esaurita. Un biglietto non si può spostare né annullare.
+I biglietti si vendono solo online, nel negozio del Phantasialand: all’ingresso non c’è una cassa, e ogni biglietto vale per un giorno preciso. Durante il Wintertraum lo puoi ancora comprare il giorno stesso della visita fino alle 16, al prezzo in vigore in quel momento e finché la giornata non è esaurita. Un biglietto non si può spostare né annullare.
 
-Il prezzo dipende dal giorno e può salire in qualsiasi momento, perché ogni fascia di prezzo ha un contingente limitato per giornata. Fino a lunedì 16 novembre il parco pubblicizza uno sconto di apertura con biglietti da 30 €, altrimenti si arriva fino a 78 €.
+Il prezzo dipende dal giorno e può salire in qualsiasi momento, perché ogni fascia di prezzo ha un contingente limitato per giornata. Dal 21 novembre c’è il [Black Deal](/news/phantasialand-black-deal-wintertraum): a dicembre e gennaio ogni giorno di apertura costa 29 € dal lunedì al venerdì e 33 € nel fine settimana e nelle vacanze di Natale. Fino a quando dura l’offerta il parco non lo dice, e senza si arriva fino a 78 €.
 
-Prezzi per adulti dai 12 anni nel calendario dei biglietti, aggiornati al 15 novembre 2026:
+Prezzi per adulti dai 12 anni nel calendario dei biglietti, aggiornati al 21 novembre 2026:
 
-| Giorno                              | Biglietto giornaliero adulti |
-| ----------------------------------- | ---------------------------- |
-| da lunedì a venerdì, 16–20 novembre | 36 €                         |
-| sabato 21 novembre                  | 42 €                         |
-| domenica 22 novembre                | 38 €                         |
-| lunedì 23 novembre                  | 29 €                         |
-| sabato 28 novembre                  | 42 €                         |
-| mercoledì 2 dicembre                | 30 €                         |
-| sabato 5 dicembre                   | 39 €                         |
-| sabato 12 dicembre                  | esaurito                     |
-| lunedì 14 dicembre                  | 30 €                         |
-| sabato 26 dicembre                  | 39 €                         |
-| domenica 27 dicembre                | 42 €                         |
-| giovedì 31 dicembre                 | 37 €                         |
-| mercoledì 6 gennaio                 | 29 €                         |
-| sabato 9 gennaio                    | 38 €                         |
-| lunedì 11 gennaio                   | 29 €                         |
-| domenica 24 gennaio                 | 35 €                         |
+| Giorni                                               | Biglietto giornaliero adulti |
+| ---------------------------------------------------- | ---------------------------- |
+| novembre, da lunedì a venerdì dal 23                 | da 35 a 42 €                 |
+| novembre, sabato e domenica                          | da 39 a 69 €                 |
+| dicembre fino al 22, da lunedì a venerdì             | 29 €                         |
+| dicembre, sabato e domenica                          | 33 €                         |
+| vacanze di Natale, 23 e dal 26 dicembre al 5 gennaio | 33 €                         |
+| gennaio dal 6, da lunedì a venerdì                   | 29 €                         |
+| gennaio, sabato e domenica                           | 33 €                         |
+| sabato 12 dicembre                                   | esaurito                     |
 
 I bambini dai 4 agli 11 anni pagano un prezzo giornaliero a parte, più basso. Loro e gli ospiti dai 60 anni in su all’ingresso devono dimostrare l’età.
 
@@ -275,6 +270,9 @@ Per un pasto vero al caldo il mio posto preferito è la Rutmor’s Taverne a Klu
 Il parco ha tre hotel a tema proprio accanto al parco: il Ling Bao in China Town, il Matamba in Deep in Africa e il Charles Lindbergh in Rookburgh, che al Parkscout|plus Award 2025 ha ricevuto il titolo di «miglior hotel a tema d’Europa».
 
 Per le vacanze brevi d’inverno il parco pubblicizza sconti fino al 45 % su chi prenota presto. La colazione e il parcheggio all’hotel sono compresi nel prezzo, e attraverso i giardini dell’hotel o da un cancello riservato entri direttamente nel parco. Dopo MAGIC SYMPHONY è la strada più corta per il letto, mentre tutti gli altri si incamminano verso P1 e P2. Chi dorme al Matamba e al Ling Bao ha diritto, a persona e per notte, a un accesso rapido a una di queste attrazioni: Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force o Colorado Adventure, ma solo con un biglietto del parco valido. Gli ospiti del Charles Lindbergh hanno l’accesso rapido a F.L.Y. come Explorer, e lì esiste anche un pacchetto Explorer con pernottamento, cena di tre portate, colazione e due giorni di parco. La nuova zona piscina e benessere del Ling Bao è riservata ai suoi ospiti.
+
+> [!PARKY]
+> Se dormiamo al Matamba o al Ling Bao, l’accesso rapido dell’hotel lo usiamo su Colorado Adventure o sulle Winja’s: lì il Quick Pass costa altrimenti 7 €, mentre su Maus au Chocolat, Talocan e, d’inverno, Chiapas costa solo 5 €. Con due notti le facciamo così tutte e due, e non devo scegliere. Un biglietto del parco valido ci serve comunque.
 
 I pacchetti di San Silvestro con pernottamento sono tutti esauriti.
 
@@ -317,7 +315,7 @@ River Quest, Wakobato e Wözl’s Wassertreter. Taron, F.L.Y., Black Mamba, Chia
 
 ### Quanto costa il Wintertraum del Phantasialand?
 
-Un biglietto giornaliero per adulti costa, a seconda del giorno, fra i 29 € di molti giorni dal lunedì al venerdì a gennaio e i 42 € di alcuni giorni del fine settimana come il 27 dicembre. I biglietti si comprano solo online, il giorno della visita fino alle 14. I bambini fino a tre anni entrano gratis.
+Col Black Deal un biglietto giornaliero per adulti costa a dicembre e gennaio 29 € dal lunedì al venerdì e 33 € nel fine settimana e nelle vacanze di Natale, a novembre da 35 a 69 € a seconda del giorno. I biglietti si comprano solo online, e durante il Wintertraum il giorno della visita fino alle 16. I bambini fino a tre anni entrano gratis.
 
 ### Quando c’è meno gente al Wintertraum?
 
@@ -325,7 +323,7 @@ Dal lunedì al venerdì di gennaio, dopo le vacanze di Natale. L’inverno scors
 
 ### C’è un Quick Pass durante il Wintertraum?
 
-Sì, nel negozio online dalle 11, cioè dall’apertura del parco, sul telefono e senza coda, oppure al servizio ospiti sulla Kaiserplatz. Ogni pass vale solo nel giorno della prenotazione. Nel negozio Taron After Dark dalle 17 costa 12 €, Colorado Adventure 7 € e l’Ultimate con F.L.Y. 80 €. Chiapas si compra solo al servizio ospiti.
+Sì, nel negozio online dalle 11, cioè dall’apertura del parco, sul telefono e senza coda, oppure al servizio ospiti sulla Kaiserplatz. Ogni pass vale solo nel giorno della prenotazione. Nel negozio Taron Daylight fino alle 16 e Taron After Dark dalle 17 costano 12 € ciascuno, Colorado Adventure 7 €, Chiapas in inverno 5 € e l’Ultimate con F.L.Y. 80 €.
 
 — Patrick
 

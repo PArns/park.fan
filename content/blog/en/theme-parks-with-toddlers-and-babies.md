@@ -180,6 +180,9 @@ price for ages 4 to 11 applies. The ticket page doesn't give that price, only
 "Tickets from €44". Birthday children up to their 11th birthday get in free if
 they've booked ahead online.
 
+> [!PARKY]
+> A copy of the ID or birth certificate goes straight into the changing bag: without proof of age, your little one pays the child price for ages 4 to 11 at Phantasialand, and the ticket page doesn't even say what that is. I find it rather sweet that the youngest guest of all is the one who needs papers. With the proof, children from 0 to 3 get in without a booked ticket.
+
 Next to guest services there's a quiet and nursing room with changing rooms.
 Staff will warm up jars of baby food. In the winter park Wintertraum, guest
 services is at Kaiserplatz, with its own nursing corner, changing table and

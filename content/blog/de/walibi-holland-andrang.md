@@ -276,6 +276,9 @@ Herbst- und Frühjahrsferien sind Empfehlungen, von denen eine Schule abweichen 
 des Jahres. 2027 ist das das Wochenende am 23. und 24. Oktober. Im Sommer 2027 hat Noord die erste
 Woche, vom 10. bis zum 16. Juli, für sich allein.
 
+> [!PARKY] Erste Ferienwoche
+> Geht es bei uns nur in den Sommerferien, fahren wir 2027 zwischen dem 10. und dem 16. Juli, wenn nur Noord frei hat. 2026 waren die ersten beiden Ferienwochen die leersten des ganzen Sommers, mit Wartezeiten an den Headlinern wie im Mai und Juni nach den Maiferien, und Ferien ohne Gedränge lasse ich mir nicht entgehen. Die zwei Wochen davor meiden wir: Die waren 2026 voller als jede Woche der Sommerferien.
+
 ## Halloween Fright Nights
 
 > [!NOTE]
@@ -401,6 +404,9 @@ Warteschlange halb so lang. Bei [Speed of Sound](ref:walibi-holland/speed-of-sou
 [Crazy River](ref:walibi-holland/crazy-river) passen an einem warmen Tag in den Nachmittag, wenn du
 ohnehin schon durchgeschwitzt bist. [Space Shot](ref:walibi-holland/space-shot) und
 [Eat My Dust](ref:walibi-holland/eat-my-dust) schiebst du dazwischen.
+
+> [!PARKY]
+> Kommen wir erst um 14 Uhr, fahren wir die Runde rückwärts: Condor zuerst, dann Xpress, deren Warteschlange jetzt nur noch halb so lang ist, Goliath nach 16 Uhr und YOY THRILL in der letzten Stunde. Nur Untamed wird nicht mehr so kurz wie um 10 Uhr, das ist der Preis fürs Ausschlafen. Die Reihenfolge stecken wir vorher im [Tagesplaner](/trip-planner) ab.
 
 Eine Fast Lane brauchst du an einem Tag auf Niedrig oder Normal nicht. An einem Tag auf Hoch, an
 einer Fright Night und für YOY THRILL kann sie sich lohnen.

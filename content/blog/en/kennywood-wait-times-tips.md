@@ -298,6 +298,9 @@ Say you're at the gate at opening on a summer Saturday and you haven't got a Spe
 
 For a Holiday Lights evening on a weekend I'd arrive at 3 p.m., ride Jack Rabbit first while it's still light, and then catch the early performance of Finding Christmas. After the tree lighting, A Broadway Christmas fits in between two runs of Holiday Reflections at the Lagoon.
 
+> [!PARKY]
+> On an ordinary Friday this evening doesn't work: Holiday Lights only opens at 5 p.m., and there's no 4:30 p.m. Finding Christmas. On a weekday we pick a day from 19 December instead and ride Jack Rabbit while it's still light, and on the double dip I lift off twice. From then on the park is open every day from 3 to 9 p.m., except 24 and 25 December.
+
 You can bring bags of up to 15 inches (38 cm) per side into the park, plus diaper bags and medical bags. Outside food and drink aren't allowed, apart from a sealed bottle of water and food for special dietary needs. There's a weapons check at the entrance. The park is cashless, so you pay by card, Apple Pay or Google Pay, and free machines turn cash into a card.
 
 ## Tickets

@@ -27,9 +27,10 @@ coverImage:
   caption: 'Taron im Basaltdorf Klugheim, für mich der schönste Fleck im Park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand Tipps: Quick Pass, leere Tage, Wartezeiten'
+  title: 'Phantasialand Tipps: Wann lohnt sich der Quick Pass?'
   description: >-
-    Phantasialand-Wartezeiten kleinhalten: der richtige Tag, der Quick Pass, jetzt auch online, und der Wintertraum, vom Stammgast seit über dreißig Jahren.
+    An ruhigen Tagen brauchst du im Phantasialand keinen Quick Pass. An vollen
+    lohnt er sich für Taron (12 €) und F.L.Y., nur im Ultimate für 80 €.
   keywords:
     - Phantasialand Wartezeiten
     - Phantasialand Wartezeiten vermeiden
@@ -234,6 +235,9 @@ Preisstufen: **35 €, 59 € und 78 €**, also mehr als das Doppelte für dens
 Parktag. Der Shop wirbt mit Tickets ab **44 €**. Spontan geht auch, aber nur
 online und nur bis 14 Uhr am Besuchstag, zum dann gültigen Tagespreis und nur,
 solange der Tag nicht ausverkauft ist.
+
+> [!PARKY] Gönn dir
+> Wir buchen, sobald das Datum steht. Erwischen wir für Oktober oder November die Stufe für 35 € statt der für 59 €, bleiben 24 € übrig, und das sind, ich hab’s zweimal nachgerechnet, genau zwei Quick Pässe für Taron. Die kaufen wir dann am Morgen des Besuchstags.
 
 Jahreskarten gibt es keine mehr. Das Phantasialand hat seine Club-Karte in
 der Pandemie aus dem Verkauf genommen und nie zurückgebracht, die letzten liefen

@@ -33,7 +33,7 @@ stores nothing of it.
 ## Permissions
 
 A data key (`pfk_…`) carries permissions, grouped as live, parks, rides, stats, forecasts,
-planner and travel (`API_PERMISSION_GROUPS`, 19 in all). Without a key a caller reads
+planner and travel (`API_PERMISSION_GROUPS`, 20 in all). Without a key a caller reads
 `live.waits`, a park's `/wait-times`, and nothing else (`KEYLESS_PERMISSIONS`). Weather, opening
 hours, seasons, ride heights, minimum height and URLs, the directory and search all need a key.
 
@@ -41,6 +41,11 @@ hours, seasons, ride heights, minimum height and URLs, the directory and search 
 picker read the same list. The ids must match the API's `src/api-keys/permissions.ts`, which
 also serves the catalog at `/v1/api-keys/permissions`. The park and ride detail drop the fields a
 key has no permission for instead of refusing the whole answer.
+
+`stats.typical-waits` opens no route, only `typicalWaits` and `isHeadliner` in the park and ride
+detail, for a project that plans future days and needs nothing else from the history. The API lets
+`stats.history` read it too (`IMPLIED_PERMISSIONS` in its `permissions.ts`), so the admin grants
+one of the two; a key never needs both.
 
 A key from before permissions has `permissions: null` and reads everything
 (`LEGACY_KEY_PERMISSIONS`); the admin marks it and gives it a list on the next edit. The site's

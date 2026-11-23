@@ -358,6 +358,9 @@ all over Europe and that somewhere there are always holidays. I can't prove it.
 You queue longest around twelve o'clock, and the wait stays long into the early
 evening. It's shortest in the last hour.
 
+> [!PARKY]
+> For Disneyland Park that means we book the trip whenever it suits us: the holidays only add about 3% here, and the day of the week hardly matters either. We get our short queues from the clock instead and stay until the last hour, even if I'm yawning by then. Which park goes on which day we sort out in the [trip planner](/paris#planner).
+
 The park opened on 12 April 1992 as Euro Disneyland and has been called
 Disneyland Park since March 2002.
 

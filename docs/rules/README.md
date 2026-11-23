@@ -74,7 +74,7 @@ _Open when you work on layout, a component, a breakpoint, the header, a card, an
 - [The header is 48 px](the-header-is-48-px.md) — `h-12` + `-mt-12` on three heroes; button scale; `@container` breakpoints; `BrandLockup`; `pnpm check:header-reach`
 - [three.js animations](threejs-animations.md) — research the reference first, check every camera and both themes: `node scripts/render-coaster-elements.mjs`
 - [The quietest weekday is the park's quiet end](the-quietest-weekday-is-the-parks-quiet-end.md) — `tierBuckets` on `avgCrowdScore`, `formatWeekdayList`; `pnpm test:park-stats-derive`
-- [Blog spotlight cards](blog-spotlight-cards.md) — the subgrid row template sits on the card's own wrapper, never on one that also holds the heading
+- [Blog spotlight cards](blog-spotlight-cards.md) — a card on its own takes `STANDALONE_CARD_ROWS_CLASS` on its own wrapper, never on one that also holds the heading
 - [A blog card is a row on phones](a-blog-card-is-a-row-on-phones.md) — `BlogPostRow` / `data-park-card-row` below `sm`; `HERO_FLOW_INTO_PULL` < the hero's `pb-48`
 - [Map tiles are CARTO, never OSM's own tile server](map-tiles-are-carto-not-osms-own-tile-server.md) — `cartoTileUrl()` (`lib/utils/carto-tile-url.ts`), credit OSM and CARTO
 - [A keyboard shortcut waits for an unfocused page](a-keyboard-shortcut-waits-for-an-unfocused-page.md) — `nothingFocused()`, never Space, once per page; Escape belongs to focus
@@ -103,8 +103,9 @@ _Open when you write a post, a news item or UI copy, or add an image._
 - [One photo can index two rides (`alsoRides`)](one-photo-can-index-two-rides-alsorides.md) — one file, the second slug in `alsoRides`, validated against the park
 - [Card photos are two layers](card-photos-are-two-layers.md) — frame against the strip between the panels (`CardPhotoFrame`); `pnpm check:card-framing`
 - [A news correction is shown, never silent](a-news-correction-is-shown-never-silent.md) — news only: a dated `> [!CORRECTION]` at the end, label `blog.correction`
-- [A news update opens the post](a-news-update-opens-the-post.md) — `> [!UPDATE] YYYY-MM-DD` at the top, `blog.updateOn`, `NewsUpdateBadge`; no signature
+- [A news update opens the post](a-news-update-opens-the-post.md) — `> [!UPDATE] YYYY-MM-DD` at the top, `blog.updateOn`, `NewsUpdateBadge`; a follow-up on the same subject stays in it, a new subject is a new post; no signature
 - [`updatedAt` is for new content](updated-at-is-for-new-content.md) — new dates, parks, figures or a corrected fact; never a wording pass; `lastTouched`
+- [A Parky box hands the reader one move](a-parky-box-hands-the-reader-one-move.md) — one per guide where a chapter ends in a decision, at most two a post; facts from the post; stamp ≤ 18 characters, no `!`; planner links; news only while the reader can act; `pnpm test:blog-parky`
 - [A quote names its source, and a legal claim names its side](a-quote-names-its-source.md) — `> [!QUOTE]` with a source line (`BlogQuote`); legal claims attributed
 - [„Werktags" is Monday to Saturday](werktags-is-monday-to-saturday.md) — „Mo–Fr" / „lun–ven" in labels (`formatWeekdayList`); `pnpm check:prose` (`werktag-meaning`)
 - [A ride's figure comes from the RCDB](a-ride-figure-comes-from-the-rcdb.md) — height, length, drop, speed; where the park differs, both stand with their owners

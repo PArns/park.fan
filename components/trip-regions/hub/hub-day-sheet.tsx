@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
-import { CalendarPlus, ChevronDown } from 'lucide-react';
+import { CalendarPlus, ChevronDown, Sparkles } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
@@ -17,21 +17,25 @@ import { plannerUi } from '@/lib/planner/ui-store';
 import {
   closesEarly,
   dayGuestClose,
-  findLeg,
   formatHubDate,
   isRankable,
   legMinutes,
   parkGeo,
   rankGroupParks,
   regionGroups,
+  sheetLeg,
+  sheetShowsDrive,
   shortestLines,
   shortParkName,
   tintLevel,
+  splitsWeather,
 } from '@/lib/trip-regions/hub-data';
 import { shownWait } from '@/lib/trip-regions/plan-week';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
-import { cleanBreakName } from '@/lib/trip-regions/best-time';
+import { cleanBreakName } from '@/lib/trip-regions/break-runs';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
+import { addDays } from '@/lib/utils/park-day';
+import { MAX_DAYS_AHEAD } from '@/lib/trip-regions/plan-query';
 import type {
   TripCalendar,
   TripCalendarDay,
@@ -42,6 +46,7 @@ import type {
 } from '@/lib/trip-regions/types';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import { PlanSelect } from '../planner/plan-controls';
+import { DayWeather } from '@/components/common/day-weather';
 
 /** How many big rides a park lists for its day. */
 const BIG_RIDES = 5;
@@ -51,7 +56,9 @@ const BIG_RIDES = 5;
  * each with its hours, the hotel guests' early slot, the evening event and when the day guests
  * leave, the seasons, the drive from the chosen hotel area and, on request, its five big rides.
  * The same figure as the square, and no hourly curve: the day planner owns that. A bottom sheet on
- * a phone, a side panel on a desktop; Radix returns focus to the square that opened it.
+ * a phone, a side panel on a desktop; Radix returns focus to the square that opened it. Its one
+ * primary action, „Reise ab diesem Tag planen“, starts the trip planner with the day as the
+ * arrival (`onPlanTrip`); each park's „Im Tagesplaner öffnen“ stays the quieter outline button.
  */
 export function HubDaySheet({
   day,
@@ -61,6 +68,7 @@ export function HubDaySheet({
   todayIso,
   returnFocus,
   onClose,
+  onPlanTrip,
 }: {
   day: TripCalendarDay | null;
   /** The control that opened the sheet; focus goes back to it when the sheet closes. */
@@ -70,15 +78,23 @@ export function HubDaySheet({
   locale: string;
   todayIso: string;
   onClose: () => void;
+  /** Starts the trip planner with this day as the arrival; without it the sheet offers no trip. */
+  onPlanTrip?: (date: string) => void;
 }) {
   const t = useTranslations('tripHub.sheet');
   const tRegion = useTranslations('tripRegion.hub.sheet');
+  const tParks = useTranslations('tripPlanner.parks');
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   // Drive times start from the region's usual hotel area until the reader picks one.
   const [area, setArea] = useState(requireTripRegion(region.slug).hub.defaultArea ?? '');
   const groups = regionGroups(region);
   const lines = day ? shortestLines(day, region) : [];
   const areaName = region.hotelAreas.find((a) => a.key === area)?.name ?? '';
+  // The planner's date grid offers no arrival before today or past its last day.
+  const arrival =
+    onPlanTrip && day && day.date >= todayIso && day.date < addDays(todayIso, MAX_DAYS_AHEAD)
+      ? day.date
+      : null;
 
   return (
     <Sheet open={day !== null} onOpenChange={(open) => !open && onClose()}>
@@ -115,6 +131,16 @@ export function HubDaySheet({
                   ].join(' · ')}
                 </p>
               )}
+              {arrival && (
+                <Button
+                  type="button"
+                  onClick={() => onPlanTrip?.(arrival)}
+                  className="mt-3 h-11 w-full"
+                >
+                  <Sparkles aria-hidden />
+                  {t('planTrip')}
+                </Button>
+              )}
               <label className="mt-3 flex items-center gap-2 text-sm">
                 <span className="text-muted-foreground shrink-0">{t('stayingAt')}</span>
                 <PlanSelect
@@ -134,12 +160,22 @@ export function HubDaySheet({
             <div className="space-y-5 p-4">
               {groups.map((group) => (
                 <section key={group.key} aria-labelledby={`sheet-${group.key}`}>
-                  <h3
-                    id={`sheet-${group.key}`}
-                    className="text-muted-foreground mb-2 text-xs font-semibold tracking-wider uppercase"
-                  >
-                    {group.name}
-                  </h3>
+                  <div className="mb-2 flex items-baseline justify-between gap-3">
+                    <h3
+                      id={`sheet-${group.key}`}
+                      className="text-muted-foreground text-xs font-semibold tracking-wider uppercase"
+                    >
+                      {group.name}
+                    </h3>
+                    {!splitsWeather(group) && (
+                      <DayWeather
+                        weather={
+                          group.parks.map((p) => day.parks[p.slug]?.weather).find(Boolean) ?? null
+                        }
+                        className="shrink-0 text-xs"
+                      />
+                    )}
+                  </div>
                   <ol className="space-y-2">
                     {rankGroupParks(day, group.parks, group.key).map(
                       ({ park, day: parkDay }, index) => (
@@ -159,6 +195,7 @@ export function HubDaySheet({
                           area={area}
                           areaName={areaName}
                           locale={locale}
+                          weather={splitsWeather(group) ? parkDay?.weather : undefined}
                           plannable={
                             day.date >= todayIso &&
                             parkDay?.status === 'OPERATING' &&
@@ -171,8 +208,10 @@ export function HubDaySheet({
                   </ol>
                 </section>
               ))}
-              {region.travel.attribution && (
-                <p className="text-muted-foreground text-xs">{region.travel.attribution}</p>
+              {region.travel.attribution && sheetShowsDrive(day, region, area) && (
+                <p className="text-muted-foreground text-xs">
+                  {tParks('driveSource', { source: region.travel.attribution })}
+                </p>
               )}
             </div>
           </div>
@@ -194,6 +233,7 @@ function SheetPark({
   area,
   areaName,
   locale,
+  weather,
   plannable,
   onPlan,
 }: {
@@ -208,6 +248,8 @@ function SheetPark({
   area: string;
   areaName: string;
   locale: string;
+  /** A day trip's own weather, where its group shows none for all (`splitsWeather`). */
+  weather?: TripParkDay['weather'];
   plannable: boolean;
   onPlan: () => void;
 }) {
@@ -226,7 +268,7 @@ function SheetPark({
   const closure = parkDay?.closedBy
     ? calendar.seasons.find((s) => s.id === parkDay.closedBy)
     : undefined;
-  const leg = findLeg(region.travel.legs, `hotel:${area}`, park.slug);
+  const leg = sheetLeg(region, area, park.slug, parkDay);
   const level = tintLevel(parkDay?.crowdLevel);
 
   const status =
@@ -268,7 +310,10 @@ function SheetPark({
               <span className="text-muted-foreground text-xs">{t('noForecast')}</span>
             ) : null}
           </div>
-          <p className="text-muted-foreground mt-0.5 text-sm tabular-nums">{status}</p>
+          <p className="text-muted-foreground mt-0.5 flex flex-wrap items-center gap-x-2 text-sm tabular-nums">
+            {status}
+            <DayWeather weather={weather} className="text-xs" />
+          </p>
           {ahead && dayGuestClose(ahead.day) && (
             <p className="mt-0.5 text-sm">
               {t('ahead', {
@@ -313,7 +358,7 @@ function SheetPark({
                   {s.status === 'expected' ? ` · ${tLanes('expected')}` : ''}
                 </li>
               ))}
-            {leg && parkDay?.status !== 'CLOSED' && (
+            {leg && (
               <li className="text-muted-foreground">
                 {leg.transferMinutes && tRegion.has('travelTransfer')
                   ? tRegion('travelTransfer', {

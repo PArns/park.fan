@@ -387,6 +387,9 @@ entrada es gratuita los miércoles y fines de semana del 28 de noviembre al 16
 de diciembre y del 6 al 17 de enero: con una reserva gratuita pagas solo por viaje, con tiques de 2 €
 cada uno, y Troy cuesta tres. Las entradas de día normales se siguen vendiendo.
 
+> [!PARKY] Date un capricho
+> En uno de los días de invierno gratis reservamos antes sin pagar y gastamos casi todos los tiques en Troy: tres de 2 € cada uno, o sea, 6 € por vuelta. Yo voy contando cuántas veces cruzamos la estación como un rayo. Una vuelta la guardamos para el final: si el parque cierra después de la puesta de sol, montamos en Troy a oscuras, algo que fuera del invierno solo pasa en las noches de Halloween.
+
 ## Cuándo ir
 
 **Por meses**, de abril a julio todo queda muy junto, y por encima destacan

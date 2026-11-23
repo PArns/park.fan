@@ -28,9 +28,10 @@ coverImage:
   caption: 'Taron en el pueblo de basalto de Klugheim, para mí, el rincón más bonito del parque.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand: Quick Pass, días tranquilos y esperas'
+  title: 'Consejos para Phantasialand: ¿cuándo compensa el Quick Pass?'
   description: >-
-    Menos espera en Phantasialand: el día correcto, el Quick Pass, que ya se vende online, y el Wintertraum, de alguien que lleva más de treinta años yendo.
+    Un día tranquilo no necesitas Quick Pass en Phantasialand. Un día lleno
+    compensa para Taron (12 €) y F.L.Y., que solo entra en el Ultimate de 80 €.
   keywords:
     - tiempos de espera Phantasialand
     - evitar tiempos de espera Phantasialand
@@ -239,6 +240,9 @@ para octubre y noviembre de 2026: **35 €, 59 € y 78 €**, es decir, más de
 por el mismo día de parque. La tienda anuncia entradas desde **44 €**. También se
 puede ir sobre la marcha, pero solo online y solo hasta las 14 h del mismo día, al
 precio que tenga ese día y siempre que no se haya agotado.
+
+> [!PARKY] Date el gusto
+> Reservamos en cuanto está la fecha. Si para octubre o noviembre pillamos el tramo de 35 € en vez del de 59 €, nos sobran 24 €, que son, lo he contado dos veces, justo dos Quick Pass para Taron. Esos los compramos la misma mañana de la visita.
 
 Ya no hay abonos anuales. El Phantasialand retiró su Club-Karte de la venta
 durante la pandemia y nunca la recuperó; las últimas caducaron en el verano de 2022. Entre los

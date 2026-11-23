@@ -79,6 +79,9 @@ export function buildAttractionPayload(
       statistics: detail.statistics ? buildFavoriteStats(detail.statistics) : undefined,
       bestVisitTimes: detail.bestVisitTimes ?? null,
       attractionKind: detail.attractionKind ?? null,
+      performanceSchedules: detail.performanceSchedules,
+      worksPeriod: detail.worksPeriod,
+      worksPeriods: detail.worksPeriods,
     };
   }
 

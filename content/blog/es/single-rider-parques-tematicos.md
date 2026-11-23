@@ -112,6 +112,9 @@ La entrada single rider compensa en tres casos: vas solo al parque, tu grupo pue
 quieres sí o sí una atracción concreta y la espera normal se te hace demasiado larga. En el segundo
 caso os repartís, cada uno monta por su lado y os encontráis en la salida.
 
+> [!PARKY]
+> Si vamos tres a una atracción con dos plazas por fila, como WODAN, blue fire o Taron, nos separamos solo a medias: dos se quedan en la cola normal y se sientan juntos, y el tercero entra por single rider. La plaza suelta me la quedo yo encantado, que al lado de desconocidos también me despego del asiento. En la salida volvemos a ser tres.
+
 No compensa en estos casos:
 
 - **Vas con un niño que necesita acompañante.** En Eurosat, en el Europa-Park, la web del parque

@@ -53,6 +53,9 @@ Junto al Oscar's Wacky Taxi Stage se alza el 1-2-3 Christmas Tree, de algo más 
 
 A Papá Noel lo encuentras en Santa's Furry Workshop, al lado del Sesame Street Theater. Este año ya no hace falta hacer cola allí. Te apuntas en la Tinsel Tent, delante del taller, recibes un SMS cuando os toca y tienes 20 minutos para llegar. Las cartas a Papá Noel las escriben los niños en Letters to Santa, en Mr. Hooper's Gift Shop. Nochebuena es el último día con Papá Noel, y ese día la cola virtual cierra a las 14:00. Del 26 de diciembre al 3 de enero, en el taller se sienta Santa Cookie Monster.
 
+> [!PARKY]
+> En la Tinsel Tent nos apuntamos para ver a Papá Noel nada más llegar, y luego entramos en calor con un chocolate caliente en la Winter Warm-Up Lounge de Elmo's Pizza Kitchen. Una cola en la que puedo sentarme con un chocolate caliente es justo mi tipo de cola. Cuando llega el SMS, tenemos 20 minutos para llegar al taller, al lado del Sesame Street Theater. En Nochebuena nos apuntamos antes de las 14:00, que es cuando cierra la cola virtual.
+
 ## Días y horarios de apertura
 
 El parque abre normalmente los viernes de 16:00 a 20:00, los sábados de 11:00 a 19:00 y los domingos de 13:00 a 18:00, hora local. De lunes a jueves permanece cerrado hasta el 17 de diciembre, también el día de Acción de Gracias, el 26 de noviembre. Hay estas excepciones:

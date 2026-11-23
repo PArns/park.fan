@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: GlossaryPageProps): Promise<M
   const t = await getTranslations({ locale, namespace: 'glossary' });
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
   const url = `${SITE_URL}/${locale}/${segment}`;
-  const title = `${t('termTitleSuffix')} | park.fan`;
+  const title = t('termTitleSuffix');
   const terms = await getGlossaryTerms(locale as Locale);
   const termCount = Math.floor(terms.length / 10) * 10;
   // The on-page intro (`overviewDescription`) runs ~200 chars and is worth keeping that long for

@@ -51,6 +51,9 @@ LEGO Santa's Holiday Light Spectacular heißt die Show. Sie startet am Samstag, 
 
 Los geht es, wenn es dunkel wird. Startzeit und besten Platz zum Zuschauen hat LEGOLAND noch nicht genannt, und auch die Showtermine stehen unter Vorbehalt. An Showabenden schließt der Park wie an jedem Eventtag um 19 Uhr, die Show muss also zwischen Einbruch der Dunkelheit und Parkschluss passen.
 
+> [!PARKY]
+> Fällt einer dieser Abende in deine Orlando-Reise, bekommt LEGOLAND im [Reiseplaner](/orlando#planner) genau diesen Tag: den 5. oder 12. Dezember oder einen zwischen dem 19. und dem 30. Wir bleiben dann bis zum Parkschluss um 19 Uhr, denn die Drohnen starten erst bei Dunkelheit, und bei einem Feuerwerk aus Drohnen muss sich niemand die Ohren zuhalten. Das Ticket kaufen wir vorher online, ab 69 statt 129 Dollar an der Kasse.
+
 ## Eventtage und Öffnungszeiten
 
 Christmas Bricktacular läuft im November und bis Mitte Dezember nur an Wochenenden, dazu am Freitag nach Thanksgiving, und ab dem 18. Dezember täglich bis zum Schluss:

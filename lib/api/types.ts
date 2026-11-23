@@ -1113,6 +1113,12 @@ export interface AttractionResponse {
    * attraction. Null or absent means nobody has judged it, never „it is a ride"; render nothing.
    */
   attractionKind?: AttractionKind | null;
+  /** The ride's performance start times, as on {@link ParkAttraction.performanceSchedules}. */
+  performanceSchedules?: PerformanceSchedule[];
+  /** The curated works window that matters today, as on {@link ParkAttraction.worksPeriod}. */
+  worksPeriod?: WorksPeriod | null;
+  /** Every curated works window, as on {@link ParkAttraction.worksPeriods}. */
+  worksPeriods?: WorksPeriod[];
   /**
    * Indoor, outdoor or outdoor with a roofed queue (see {@link IndoorOutdoor}). Curated and
    * day-stable, so it rides the server render, not the poll. Null or absent means unchecked,
@@ -1871,6 +1877,21 @@ export interface WeatherSummary {
   humidity?: number;
   /** Apparent („feels like") temperature, when available (today). */
   apparentTemp?: number;
+  /**
+   * `climate_normal` past the forecast's reach: the date's average over `normalPeriod`, never this
+   * day's forecast. Absent on older payloads, read as a forecast.
+   */
+  basis?: 'forecast' | 'climate_normal';
+  /** The years a `climate_normal` averages, `2015-2024`. */
+  normalPeriod?: string;
+  /** A `climate_normal` only: the range half of such days' highs fell in (25th–75th percentile). */
+  tempMaxP25?: number;
+  tempMaxP75?: number;
+  /** The same for the lows. */
+  tempMinP25?: number;
+  tempMinP75?: number;
+  /** A `climate_normal` only: the chance of a day with at least 1 mm of rain, in percent. */
+  wetDayPercent?: number;
 }
 
 /** A named event or holiday on a calendar day. */
@@ -2246,8 +2267,12 @@ export interface PlanDaySlot {
   source?: PlanDayTier | null;
 }
 
-/** Which composer drew a composed ride's curve (API PAR-834). Diagnostic; nothing branches on it. */
-export type PlanDayComposer = 'h5' | 'h5_tft' | 'peak_scaled';
+/**
+ * Which composer drew a composed ride's curve (API PAR-834): `h5_season` is the H5 profile scaled
+ * by a running park season's level, the one the calendar shows for the day. Diagnostic; nothing
+ * branches on it.
+ */
+export type PlanDayComposer = 'h5' | 'h5_tft' | 'h5_season' | 'peak_scaled';
 
 /** One ride's planned day: an expected wait per open hour, with its uncertainty. */
 export interface PlanDayRide {
@@ -2357,6 +2382,11 @@ export interface PlanDayContext {
    * missing value must not read as „no rain expected".
    */
   weather?: WeatherSummary | null;
+  /**
+   * Past the forecast's reach, the date's average over past years (`basis: 'climate_normal'`) with
+   * its range; it moves no bar. Absent while `weather` is set and from an API before PAR-1411.
+   */
+  climateNormal?: WeatherSummary;
   isHoliday: boolean;
   isBridgeDay: boolean;
   isSchoolVacation: boolean;

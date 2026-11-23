@@ -1,56 +1,54 @@
 import { getTranslations } from 'next-intl/server';
-import { Link } from '@/i18n/navigation';
-import { formatClockTime } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
-import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import {
-  closesEarly,
-  dayGuestClose,
   formatHubDate,
   glanceLines,
   headlinerGroups,
-  parkCalendarHref,
   shortGroupName,
   shortParkName,
   type ResortMonthSummary,
 } from '@/lib/trip-regions/hub-data';
-import { shownWait } from '@/lib/trip-regions/plan-week';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 import { ownWords } from '@/lib/trip-regions/region-words';
-import { requireTripRegion } from '@/lib/trip-regions/registry';
 import type { TripCalendarDay, TripRegion } from '@/lib/trip-regions/types';
+import { HubDayTip } from './hub-day-tip';
+import { GLANCE_ROW } from './hub-glance-styles';
 
 /** The glass the answer stands on, over the hero photo, in both themes. */
 const GLANCE_BOX =
   'bg-background/70 border-border/60 max-w-2xl rounded-xl border p-3 backdrop-blur-md sm:p-4';
 
-/** One row of the answer: its label over the parks on a phone, beside them from `sm`. */
-const ROW = 'grid gap-x-4 gap-y-0.5 sm:grid-cols-[minmax(0,11rem)_1fr]';
-
 /**
- * The hub's first answer, under its two buttons: the best park of each group with a headliner on
- * one day, by its date in the region's time and never as "today", because a cached copy outlives
- * midnight there; then the quietest days of the window, a date said once where the resorts share
- * it. Minutes only, no crowd badge: the badge compares a park with its own normal day, and beside
- * "best park" it read as a contradiction.
+ * The hub's first answer, under its two buttons: the rows about one day (`HubDayTip`: the day's
+ * tip, the parks to tick off, each resort's best park), by its date in the region's time and never
+ * as "today", because a cached copy outlives midnight there; then the quietest days of the window,
+ * a date said once where the resorts share it. The level is said in words beside the tip, which
+ * was picked on it, and nowhere else: a badge "high" beside each resort's best park read as a
+ * contradiction. The day and the region are the calendar's own objects, so the page's payload
+ * carries them once.
  */
 export async function HubGlance({
   day,
   region,
   summaries,
   windowTo,
+  todayIso,
   locale,
 }: {
+  /** The day the answer is about, as the calendar's client part gets it (`sliceCalendar`). */
   day: TripCalendarDay | null;
+  /** The region as the calendar's client part gets it (`slimRegion`), the same object. */
   region: TripRegion;
   summaries: ResortMonthSummary[];
   /** The window's last day, for "quietest to …". */
   windowTo: string;
+  /** The region's today, which decides how long a tick of a visited park counts. */
+  todayIso: string;
   locale: string;
 }) {
   const t = await getTranslations('tripHub.glance');
   const tRegion = await getRegionTranslations(region.slug, 'hub.glance');
-  const { timezone } = requireTripRegion(region.slug);
   const lines = day ? glanceLines(day, region) : [];
   const zone = ownWords(tRegion, 'zone');
   const named = new Set(headlinerGroups(region).map((g) => g.key));
@@ -76,50 +74,9 @@ export async function HubGlance({
       data-trip-glance=""
       {...linkBlockAttributes('trip_answer')}
     >
-      <div className={ROW}>
-        <dt className="text-muted-foreground pt-0.5 text-sm">
-          {t.rich('best', {
-            date: formatHubDate(day.date, locale),
-            time: (chunks) => <time dateTime={day.date}>{chunks}</time>,
-          })}
-          {zone ? `, ${zone}` : ''}
-        </dt>
-        <dd className="flex flex-wrap gap-x-3 gap-y-0.5">
-          {lines.map(({ group, park, day: parkDay, earlyElsewhere }) => (
-            <span key={group.key}>
-              <Link
-                href={parkCalendarHref(park, locale)}
-                prefetch={false}
-                className="text-foreground font-semibold underline-offset-4 hover:underline"
-                aria-label={`${shortGroupName(group.name)}: ${shortParkName(park.name)}`}
-                {...linkEntityAttributes(park.id)}
-              >
-                {shortParkName(park.name)}
-              </Link>{' '}
-              {minutes(shownWait(parkDay)!)}
-              {closesEarly(parkDay) && dayGuestClose(parkDay) && (
-                <span className="text-muted-foreground text-sm">
-                  {' '}
-                  {t('closesEarly', {
-                    time: formatClockTime(dayGuestClose(parkDay)!, locale, timezone),
-                  })}
-                </span>
-              )}
-              {earlyElsewhere && dayGuestClose(earlyElsewhere.day) && (
-                <span className="text-muted-foreground text-sm">
-                  {' '}
-                  {t('earlyElsewhere', {
-                    park: shortParkName(earlyElsewhere.park.name),
-                    time: formatClockTime(dayGuestClose(earlyElsewhere.day)!, locale, timezone),
-                  })}
-                </span>
-              )}
-            </span>
-          ))}
-        </dd>
-      </div>
+      <HubDayTip day={day} region={region} todayIso={todayIso} zone={zone} locale={locale} />
       {dates.length > 0 && (
-        <div className={ROW}>
+        <div className={GLANCE_ROW}>
           <dt className="text-muted-foreground pt-0.5 text-sm">
             {t('quietestTo', { date: formatHubDate(windowTo, locale, 'dayMonth') })}
           </dt>

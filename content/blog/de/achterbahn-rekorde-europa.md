@@ -239,6 +239,9 @@ Wildfire in Kolmården ist die schnellste und höchste Achterbahn Schwedens. Die
 - Colossos, Heide Park: ab 1,40 m
 - Expedition GeForce, Plopsaland Deutschland: ab 1,40 m
 
+> [!PARKY]
+> Mit 1,20 Metern beginnt die Rekordjagd: Dann darf ein Kind mit einem Erwachsenen auf Wodan, bei Tempo und Höhe Europas Nummer drei aus Holz. Mit 1,30 Metern und acht Jahren kommt Voltron Nevera dazu, die Bahn mit den meisten Inversionen in Deutschland, und am Türrahmen wird ab dann deutlich öfter nachgemessen. Ab 1,40 Metern warten in Salou drei der vier schnellsten Achterbahnen Europas.
+
 ## Häufige Fragen
 
 ### Welche ist die schnellste Achterbahn Europas?

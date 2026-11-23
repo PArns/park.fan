@@ -151,6 +151,9 @@ daran ändert kein Kompass etwas. Der Pfeil zeigt außerdem auf den einen Punkt,
 den wir für eine Bahn gespeichert haben. Wo dort der Eingang zur Warteschlange
 ist, haben wir nicht erfasst.
 
+> [!PARKY]
+> Zeigt der Pfeil im Phantasialand auf eine Mauer, tippen wir die Bahn an, fixieren sie und gehen den Weg statt der Luftlinie. Solange die Entfernung in der Leiste kleiner wird, sind wir richtig, auch wenn der Pfeil gerade nach hinten zeigt, denn durch Felsen und Fassaden komme selbst ich nicht. Welche Bahn als Nächstes dran ist, steht bei uns vorher im [Tagesplaner](/trip-planner).
+
 Für den Rest steht am Kompass selbst, wie sehr du ihm gerade trauen kannst.
 
 - Ist dein Standort auf mehr als 40 Meter ungenau, steht über dem Kreis zum

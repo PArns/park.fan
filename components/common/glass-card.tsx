@@ -22,6 +22,13 @@ export const TILE_GLASS =
   'bg-background/75 backdrop-blur-2xl dark:bg-[oklch(0.13_0.02_241_/_0.75)]';
 
 /**
+ * {@link TILE_GLASS} from `lg` only, for a card whose phone layout is cards of its own: the trip
+ * hub's calendar, whose 44 px day tiles have no width to spare for a frame around them.
+ */
+export const TILE_GLASS_LG =
+  'lg:bg-background/75 lg:backdrop-blur-2xl lg:dark:bg-[oklch(0.13_0.02_241_/_0.75)]';
+
+/**
  * A secondary button on a title card's glass: „Mehr", the ride's RCDB link and its figures. Quiet
  * beside the filled call to action, but a button and not a chip.
  */

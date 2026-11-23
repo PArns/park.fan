@@ -1,5 +1,4 @@
 import { getApiBaseUrl, getServerApiHeaders } from './client';
-import { parkCacheTag } from './park-live-projection';
 import { withSeedTimeout } from './seed-timeout';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import { parkCalendarMonthRange, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
@@ -64,6 +63,32 @@ export async function getIntegratedCalendar(
 }
 
 /**
+ * Cache tag for ONE park's calendar: the `/calendar` relay's copy at Vercel's edge, a month page's
+ * summary and Parky's day tip relay. The backend rings it after every forecast warmup, together with
+ * {@link bestDaysCacheTag}, and after a schedule correction, so the grid, the summary, best-days and
+ * the tip take the new forecast at the same moment. Not `parkCacheTag`, which also drops the park's
+ * structure fetch every park page reads and goes out every 15 minutes while the park is open.
+ * Hand-written twin of `parkCalendarCacheTag` in the API (`park-status-transitions.ts`).
+ */
+export function parkCalendarCacheTag(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): string {
+  return `park-calendar:${continent}/${country}/${city}/${parkSlug}`;
+}
+
+/**
+ * Cache tag for a park's best-days snapshot, server read and relay, which the backend rings after
+ * every forecast warmup. The slug alone, as the API sends it: two parks that share one are rung
+ * together, which costs a refetch and nothing else.
+ */
+export function bestDaysCacheTag(parkSlug: string): string {
+  return `best-days:${parkSlug}`;
+}
+
+/**
  * Data-cache window for the SSR best-days snapshot. Only the fallback cadence: the backend fires
  * `revalidateTag('best-days:<slug>')` after every forecast warmup, and `analyzeBestDays` re-filters
  * against a fresh „today" on every render.
@@ -105,7 +130,7 @@ async function fetchBestDays(
   const response = await fetch(bestDaysUrl(continent, country, city, parkSlug), {
     ...(fresh
       ? { cache: 'no-store' as const }
-      : { next: { revalidate: BEST_DAYS_REVALIDATE, tags: [`best-days:${parkSlug}`] } }),
+      : { next: { revalidate: BEST_DAYS_REVALIDATE, tags: [bestDaysCacheTag(parkSlug)] } }),
     headers: {
       'Content-Type': 'application/json',
       ...getServerApiHeaders(),
@@ -186,10 +211,10 @@ export async function getBestDaysCalendarSeed(
 }
 
 /**
- * How long a month page's server-rendered summary may be reused: a day, since what it says (open
- * days, quietest and busiest days, usual hours) does not change within one. The entry also carries
- * the park's own tag, so the forecast warmup and schedule sync clear it at once when they rewrite
- * a month. See docs/architecture/api-budget.md.
+ * How long a month page's server-rendered summary may be reused when no ring comes: a day. The entry
+ * carries {@link parkCalendarCacheTag}, which the forecast warmup and the schedule sync ring when
+ * they rewrite a month, so the summary moves with the grid and best-days rather than at the end of
+ * this window. See docs/architecture/caching-strategy.md#one-park-day-on-several-surfaces.
  */
 export const CALENDAR_MONTH_REVALIDATE = 24 * 60 * 60;
 
@@ -218,7 +243,7 @@ async function fetchCalendarMonth(
   const response = await fetch(url, {
     next: {
       revalidate: CALENDAR_MONTH_REVALIDATE,
-      tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
+      tags: ['parks', parkCalendarCacheTag(continent, country, city, parkSlug)],
     },
     headers: {
       'Content-Type': 'application/json',

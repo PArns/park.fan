@@ -1,10 +1,18 @@
 'use client';
 
+import { WeatherKey } from '@/components/common/day-weather';
 import type { CSSProperties, ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { cn } from '@/lib/utils';
-import { CROWD_LEVEL_ORDER, CROWD_SCALE_CLASS } from '@/lib/utils/crowd-level-styles';
+import { Star } from 'lucide-react';
+import { TILE_BEST_RING } from '@/components/parks/calendar-tile-marks';
+import {
+  CROWD_LEVEL_ORDER,
+  CROWD_SCALE_CLASS,
+  CROWD_TEXT_CLASS,
+  CROWD_TILE_CLASS,
+} from '@/lib/utils/crowd-level-styles';
 import { DAY_SIGNAL_CLASS, type DaySignal } from '@/lib/utils/day-signal-styles';
 import { DaySignalKey } from '@/components/parks/day-signal-key';
 import { WORKS_TONE_CLASS, WorksIcon } from '@/components/parks/works-period-list';
@@ -28,8 +36,8 @@ export interface CalendarLegendKey {
 }
 
 /**
- * What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is one
- * strip of butted chips because it is a ruler; the signal keys are independent facts and keep
+ * What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is drawn
+ * as the tiles draw a tier (on a phone one ramp with its ends named); the signal keys are independent facts and keep
  * their gaps. All six tiers are named even when a month shows four, so any colour the API sends can
  * be looked up; `showCrowd` drops the scale where the view shows no crowd colour at all. The works
  * icon is keyed only for a park that has a curated window, since on every other park the grid never
@@ -37,7 +45,10 @@ export interface CalendarLegendKey {
  * know no bridge days, key only theirs. `extraSignals` keys what a caller draws beyond the holidays,
  * such as a region's storm season or the Week view's blocks, after them in the same row.
  * `seasonKinds` keys the season icons the shown month draws, and only those: a month without a
- * season has no season key.
+ * season has no season key. `showClimateKey` keys the weather's two tokens (`WeatherKey`): past the
+ * forecast's reach a tile shows the date's average over past years, never a forecast. `showBestKey`
+ * keys the star with its ring, each week's quietest day, drawn as a tile draws it; `showLocalTimes`
+ * says once that the hours are the park's.
  */
 export function ParkCalendarLegend({
   showCrowd = true,
@@ -46,6 +57,9 @@ export function ParkCalendarLegend({
   signalsLabel = true,
   extraSignals = [],
   seasonKinds = [],
+  showClimateKey = false,
+  showBestKey = false,
+  showLocalTimes = false,
   className,
 }: {
   showCrowd?: boolean;
@@ -57,6 +71,12 @@ export function ParkCalendarLegend({
   extraSignals?: readonly CalendarLegendKey[];
   /** The season kinds the shown month's tiles carry (`seasonKindsIn`). */
   seasonKinds?: readonly SeasonEventKind[];
+  /** Whether the grid's days can show an average over past years (`DayWeather`). */
+  showClimateKey?: boolean;
+  /** Whether the grid stars each week's quietest day. */
+  showBestKey?: boolean;
+  /** Whether the grid prints opening hours, all in the park's time. */
+  showLocalTimes?: boolean;
   className?: string;
 }) {
   const tGroups = useTranslations('parks.calendarLegendGroups');
@@ -65,6 +85,7 @@ export function ParkCalendarLegend({
   const tHolidays = useTranslations('parks.holidayContext');
   const tLegend = useTranslations('attractions.historyLegend');
   const tKind = useTranslations('parks.seasons.kind');
+  const tMarks = useTranslations('parks.calendarMarks');
 
   return (
     <div className={cn('flex flex-wrap items-center gap-x-5 gap-y-2', className)}>
@@ -89,13 +110,16 @@ export function ParkCalendarLegend({
             </div>
           </div>
 
-          <div className="hidden min-w-0 overflow-hidden rounded-md sm:flex">
+          {/* From `sm` the six tiers as the tiles draw them, tint, rim and ink, so a key reads
+            like the tile it explains. */}
+          <div className="hidden min-w-0 flex-wrap gap-1 sm:flex">
             {CROWD_LEVEL_ORDER.map((level) => (
               <span
                 key={level}
                 className={cn(
-                  'truncate px-2.5 py-1 text-[10.5px] font-bold tracking-wide uppercase',
-                  CROWD_SCALE_CLASS[level]
+                  'truncate rounded-md border px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase',
+                  CROWD_TILE_CLASS[level],
+                  CROWD_TEXT_CLASS[level]
                 )}
               >
                 {tCrowd(level)}
@@ -154,6 +178,30 @@ export function ParkCalendarLegend({
             </span>
           ))}
         </div>
+      )}
+
+      {showBestKey && (
+        <span className="flex items-center gap-1.5 text-[11px] whitespace-nowrap">
+          <span
+            aria-hidden
+            className={cn(
+              'inline-flex h-5 items-center gap-0.5 rounded-md border px-1.5 text-[9.5px] font-bold tracking-wider uppercase',
+              CROWD_TILE_CLASS.low,
+              CROWD_TEXT_CLASS.low,
+              TILE_BEST_RING
+            )}
+          >
+            <Star className="text-primary size-2.5 fill-current" />
+            {tCrowd('low')}
+          </span>
+          {tMarks('quietestOfWeek')}
+        </span>
+      )}
+
+      {showClimateKey && <WeatherKey />}
+
+      {showLocalTimes && (
+        <span className="text-muted-foreground text-[11px]">{tMarks('localTimes')}</span>
       )}
     </div>
   );

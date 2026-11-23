@@ -80,6 +80,9 @@ Die Saisonpässe 2027 gelten schon jetzt, und Platin, Gold und Silber schließen
 
 Extra zahlst du für die Santa Experience: 5 € für Erwachsene, 3 € für Kinder von 4 bis 11 Jahren. Sie hat von 13 bis 16:30 Uhr geöffnet, freitags erst ab 15 Uhr. Jeder Sitzplatz im Zug braucht ein Ticket, Kinder unter vier fahren auf dem Schoß ohne. Kinder unter acht kommen nur mit einem Erwachsenen hinein. Auch die Eisrutsche kostet einen Aufpreis, den Betrag hat der Park aber noch nicht bekannt gegeben.
 
+> [!PARKY]
+> Weil die Karte online an allen 21 Tagen dasselbe kostet, nehmen wir keinen Freitag: An den übrigen Eventtagen sind wir ab 12 statt ab 14 Uhr drin, und an zwei Stunden mehr fürs gleiche Geld hätte selbst die mürrische Filmklappe S.A.D. nichts auszusetzen. Mit Kindern zählt das doppelt, denn die Santa Experience öffnet dann schon um 13 statt um 15 Uhr.
+
 ## Eisbahn, Shows und Lichter
 
 Die mehr als eine Million Lichter hängen in den vier Bereichen Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza und Wild West Christmas, im Vorjahr waren es über 800.000. Aus dem Vorjahr bleiben die überdachte Eisfläche mit 360 Quadratmetern, das Eisstockschießen, die Mapping Show und das amerikanische Essen.

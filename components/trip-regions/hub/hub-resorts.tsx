@@ -36,20 +36,18 @@ export function calendarParks(
 }
 
 /**
- * Chapter 03, the resorts: one card per API group in the order the region lists them
+ * The resorts chapter: one card per API group in the order the region lists them
  * (`hub.resorts`; a group it does not list follows), with its photo (a group without one opens on
  * a tinted panel with its name, never on a picture another card shows), the region's two sentences, each park as a link to its crowd calendar („<park> Andrang-Kalender“,
  * the query that page ranks for) and one sentence on where to stay. Server HTML, open in both of
  * the hub's states. A card whose words are missing keeps its name and links.
  */
 export async function HubResorts({
-  index,
   region,
   hub,
   bestDays,
   locale,
 }: {
-  index: string;
   region: TripRegion;
   hub: TripHub;
   bestDays: TripBestDays | null;
@@ -80,7 +78,7 @@ export async function HubResorts({
 
   return (
     <section id="resorts" className="scroll-mt-24">
-      <ChapterHeading index={index} icon={MapPinned} title={title} />
+      <ChapterHeading icon={MapPinned} title={title} />
       <ul
         className={cn(
           'grid gap-4 sm:grid-cols-2',

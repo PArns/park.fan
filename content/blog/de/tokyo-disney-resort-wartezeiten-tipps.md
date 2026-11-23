@@ -280,6 +280,9 @@ Ein Beispiel für DisneySea an einem gewöhnlichen Herbsttag mit Öffnung um neu
 
 In Tokyo Disneyland gilt dasselbe Muster: morgens Big Thunder Mountain und Splash Mountain, Enchanted Tale of Beauty and the Beast mit Premier Access oder am Abend.
 
+> [!PARKY] Abend statt Pass
+> In Tokyo Disneyland sparen wir uns Premier Access für Enchanted Tale of Beauty and the Beast: Mit 2.500 Yen ist er dort teurer als an jeder anderen Bahn im Park. Das Resort schickt die Gäste ohnehin lieber abends hin, weil die Warteschlange dann meist kürzer ist als am Morgen, und so bekommen die Schöne und das Biest in unserem [Tagesplaner](/trip-planner) den letzten Tanz. Vorher schauen wir im Kalender des Resorts nach, ob der Park an unserem Tag bis 21 Uhr offen hat oder schon um 18:30 Uhr schließt.
+
 ## Tickets und Preise
 
 Das Ticket heißt **1-Day Passport**. Der Preis richtet sich nach dem Datum, an jedem Tag kosten beide Parks gleich viel. Stand 3. Oktober 2026, für Termine von Oktober 2026 bis Februar 2027:
@@ -296,6 +299,9 @@ Kinder bis drei Jahre kommen kostenlos hinein. Im Oktober und November 2026 gilt
 Wer erst später kommt, kauft einen von zwei kürzeren Pässen. Der **After 3 Passport** gilt an Wochenenden und Feiertagen ab 15 Uhr und kostet für Erwachsene 7.900 bis 9.900 Yen, der **After 5 Passport** gilt von Montag bis Freitag außer an Feiertagen ab 17 Uhr und kostet 6.000 oder 6.600 Yen. Für Gäste mit Behinderung und eine Begleitperson gibt es einen eigenen 1-Day Passport, für Erwachsene zwischen 7.900 und 9.900 Yen. Einen Jahrespass führt die Ticketseite des Resorts nicht auf. Wer an mehreren Tagen kommt, kauft für jeden Tag einen eigenen Pass.
 
 Verkauft wird nur noch online, auf der Website und in der App, die Kassen am Eingang sind geschlossen. Gäste eines Disney-Hotels können auch im Hotel kaufen. Der Verkauf beginnt jeden Tag um 14 Uhr japanischer Zeit für den Tag zwei Monate später. In Deutschland ist das im Winter 6 Uhr morgens, im Sommer 7 Uhr. Pro Bestellung gehen bis zu zehn Tickets, eine Erstattung bei eigener Absage gibt es nicht. Zum Wiedereinlass am selben Tag sagt man beim Verlassen am Ausgang einem Mitarbeiter Bescheid und kommt später mit demselben Ticket wieder hinein.
+
+> [!PARKY]
+> Weil der Park schon beim Kauf feststeht, verteilen wir die beiden zuerst im [Reiseplaner](/japan#planner) auf deine Reisetage, und einen Samstag bekommt DisneySea: Dort macht der Wochentag kaum einen Unterschied, in Tokyo Disneyland ist der Samstag spürbar voller. Dann stellen wir den Wecker, im Winter auf 6 Uhr, so früh stehe ich sonst nur für Rope Drop auf, und kaufen jeden Tag, sobald er in den Verkauf geht.
 
 ## Anreise
 

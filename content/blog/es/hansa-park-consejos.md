@@ -25,11 +25,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: horarios, precios y montañas rusas'
+  title: 'Horarios de Hansa-Park 2027 y precio del pase de temporada'
   description: >-
-    Hansa-Park 2026: abierto del 26 de marzo al 25 de octubre, sin un día de
-    cierre. Temporada 2027 desde el 25 de marzo. Precios, parking y montañas
-    rusas.
+    Hansa-Park prevé la temporada 2027 del 25 de marzo al 24 de octubre. Antes
+    de la apertura, el pase de temporada cuesta 120 €; después, 140 €.
   keywords:
     - Hansa-Park
     - Hansa-Park consejos
@@ -408,6 +407,9 @@ octubre de 2026 aparcan gratis en el aparcamiento grande durante todo 2027; si l
 
 **Incluido en la entrada.** Todas las atracciones, espectáculos y actividades participativas que
 estén en servicio. Algunas ofertas sueltas, como el lavado de oro, se pagan aparte.
+
+> [!PARKY] Cómpralo pronto
+> Si vamos tres veces o más en 2027, compramos el pase de temporada hasta el 24 de marzo: entonces cuesta 120 € en lugar de 140 €, y como adultos aparcamos por 1 € al día en vez de 7 €. Lo que sobre me lo gasto en Elins Vafflejern. Tres entradas a partir de 12 años ya sumaban 159 € en 2026.
 
 ## Qué llega en 2027
 

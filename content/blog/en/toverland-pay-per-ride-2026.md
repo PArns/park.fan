@@ -84,6 +84,9 @@ Toverland keeps selling its regular day ticket on Pay per Ride days, with unlimi
 
 An adult day ticket on a Wednesday costs as much as 18.5 strips, a little over six rides on the big attractions. At weekends it's 21.5 strips, a little over seven big rides. From the seventh big ride on a Wednesday, and the eighth at a weekend, the day ticket is cheaper. The bulk discount starts at 25 strips, which is €47.50, and by then the day ticket would already have been cheaper.
 
+> [!PARKY] Day ticket ahead
+> If we're riding the big ones more than a few times, we buy the day ticket at least seven days ahead: with the full €7 off, it beats strips one big ride sooner for adults, from the sixth on a Wednesday and the seventh at a weekend. Troy, Fēnix and Booster Bike twice each already makes six, and twice is more of a minimum for me. If one go on each will do, we stick with Pay per Ride.
+
 In a group, day tickets and Pay per Ride can be mixed. If you go with a child who's only allowed on a ride with an adult because of the height limit, you'll need a day ticket or strips yourself. Birthday and return tickets, and tickets from the spring offer "2. Besuch gratis" (second visit free), stay all-in day tickets.
 
 Magic Members with a valid pass ride as much as they like on Pay per Ride days at no extra cost and need neither a reservation nor strips. Parking isn't part of the pass. A parking pass costs €50 a year or €4.50 a month.

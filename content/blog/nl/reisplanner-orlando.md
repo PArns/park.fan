@@ -70,6 +70,9 @@ Een kaart geeft de minuten: de piekwachttijd op jouw dagen en hoeveel korter die
 
 Het plan heeft drie weergaven: dagen, week en maand. Een dag kun je vastzetten of ruilen met een andere, en voordat je ruilt, zie je hoeveel minuten je dat kost. Losse dagen of de hele reis zet je in de dagplanner, je bewaart ze als agendabestand in Orlando-tijd of je stuurt een link naar precies dit plan door.
 
+> [!PARKY]
+> Staat er op de kaart dat de volgorde weinig uitmaakt, dan zetten we in de [reisplanner](/orlando#planner) eerst de dag vast die voor ons het belangrijkst is, bijvoorbeeld Magic Kingdom op een verjaardag, en ruilen we de rest zoals het ons uitkomt. Voor minder dan drie minuten per rit begin ik niet eens te mopperen. Levert de volgorde meer op, dan zetten we alleen die ene dag vast en laten we de rest staan waar de planner hem neerzette.
+
 ## Als je reisdata nog openliggen
 
 Onder de kalender met reisdata brengt “Nog geen data? Zoek de beste reistijd” je naar de zoekfunctie. Daar kies je een reisduur van 3 tot 21 dagen en een periode: de komende twaalf maanden, een jaar, een voorjaar, zomer of najaar, of eigen data. Je krijgt de drie beste periodes terug, elk met de piekwachttijd en hoeveel die onder het gemiddelde van de hele periode ligt. Met “Alleen in mijn schoolvakantie” blijven alleen periodes over die helemaal in de vakanties van jouw regio vallen, en je ziet erbij hoe ver onze vakantiedata reiken. “Reis met deze data plannen” maakt van een periode een plan.

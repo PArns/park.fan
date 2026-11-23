@@ -135,6 +135,9 @@ Op de 25 avonden van Mickey's Very Merry Christmas Party moet iedereen zonder fe
 
 De uren die een feestavond je afneemt, mis je voor attracties, en daarom telt een dag in de kalender en de reisplanner naar de uren die je als dagbezoeker hebt. Een feestdag weegt daardoor tot anderhalf keer zo zwaar als een volle dag met dezelfde piekwachttijd. Op de meeste feestavonden in november en december 2026 krijgt zo Animal Kingdom de ring, ook als Magic Kingdom die dag een iets kortere piekwachttijd heeft. Animal Kingdom sluit bijna elke dag om 18 uur, dus voor dat park is het een gewone dag.
 
+> [!PARKY]
+> Valt er een feestavond in je reis, dan is dat bij ons een Animal Kingdom-dag. Om 18 uur Magic Kingdom uit moeten terwijl de feestgasten mogen blijven, vind ik veel te zuur. Magic Kingdom krijgt een dag zonder feest, waarop het meestal tot 21 uur of later open is, en die zoeken we uit in de [reisplanner](/orlando#planner).
+
 Disney After Hours kost ook extra, maar begint pas na de gewone sluiting, van januari tot augustus 2027 op geselecteerde avonden in Magic Kingdom, EPCOT en Hollywood Studios. Omdat geen dagbezoeker daarvoor eerder weg hoeft, telt zo’n avond in de kalender niet tegen het park.
 
 Bij Universal is de avond in de herfst kort. Op de avonden van Halloween Horror Nights moesten dagbezoekers in 2026 om 17 uur Universal Studios uit, op 49 avonden tussen 28 augustus en 1 november. Het halloweenfeest in Magic Kingdom liep in 2026 op 38 avonden van 7 augustus tot 31 oktober. Voor 2027 liggen beide reeksen nog niet vast, en tot de parken de avonden publiceren, staat er in de kalender geen vroege sluiting.
@@ -237,6 +240,9 @@ Met **Park Hopper** ga je op dezelfde dag naar een tweede park, op elk moment na
 ### Universal Orlando
 
 Bij Universal koop je één tot vijf dagen, en de periode begint op de gekozen datum: twee dagen binnen vier, drie binnen vijf en vijf binnen zeven. Met de tickets vanaf drie dagen kom je in Epic Universe. Met één of twee dagen heb je daarvoor een apart Epic Universe-ticket nodig, of het pakket van één dag Studios of Islands of Adventure plus één dag Epic Universe. De prijzen van de tickets en van de Express Pass vind je in onze [Universal-gids](/blog/universal-orlando-wachttijden-tips). Met **Park-to-Park** wissel je op dezelfde dag tussen de parken en rijd je met de Hogwarts Express.
+
+> [!PARKY] Drie dagen, graag
+> Staat Epic Universe op ons lijstje, dan nemen we bij Universal meteen drie dagen, want pas vanaf drie zit het in het ticket. Een los ticket voor het park waar we het langst in de rij staan, daar zou ik dubbel van mopperen. Zo krijgen de Studios, Islands of Adventure en Epic Universe elk een eigen dag, alle drie binnen vijf dagen.
 
 ### SeaWorld, Busch Gardens en LEGOLAND
 

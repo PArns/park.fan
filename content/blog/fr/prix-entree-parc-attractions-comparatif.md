@@ -85,6 +85,9 @@ La saison d’été 2027 commence le 20 mars, avec des billets en vente à parti
 
 En ligne, tu peux encore acheter ton billet le jour même jusqu’à 14 h. Chaque tarif a un quota par jour, et les prix peuvent monter d’un jour à l’autre. En semaine, pendant Wintertraum à partir de mi-novembre, la journée coûte de 35 à 39 €. Pour l’instant, les billets sont en vente jusqu’au 23 décembre.
 
+> [!PARKY]
+> Notre jour de semaine pendant Wintertraum, on le réserve dès qu’il est fixé : chaque tarif a un quota par jour, et une fois les billets à 35 € partis, le même jour coûte plus cher. Spontané, je le suis volontiers devant le stand de churros, pour les billets beaucoup moins. On peut encore acheter en ligne le jour même jusqu’à 14 h, mais on paie alors ce que la journée coûte entre-temps.
+
 Les parkings P1 et P2 ne se réservent pas. Une navette relie la gare de Brühl et l’arrêt Brühl Mitte au parc pour 6 € aller-retour, et les enfants jusqu’à 1 m y voyagent gratuitement. Le billet du réseau de transport régional n’est pas valable dans la navette.
 
 ### Heide Park

@@ -335,6 +335,9 @@ Towers kost **64 pond**, de Merlin Essential Pass voor meer dan twintig Britse a
 Voor ouders met peuters is er een eigen ticket vanaf 29 pond, dat niet geldt in het weekend en in de
 schoolvakanties. Het waterpark kost apart, vanaf 23 pond.
 
+> [!PARKY] Tweede dag loont
+> Voor twaalf pond meer nemen we de tweede dag erbij, parkeren kost online telkens 13 pond. Dan hebben we twee ochtenden voor Spinball Whizzer, Rita, TH13TEEN en Nemesis Reborn, de vier attracties waar een vroege start het meest oplevert, en bij de gedachte aan twee keer rope drop kom ik al even los van mijn stoel. Oblivion, The Smiler en Wicker Man verdelen we in de [dagplanner](/trip-planner) over de twee middagen.
+
 ### Parkeren
 
 Het standaardparkeerterrein kost online **13 pond**, op de dag zelf 15 pond; vandaar loop je 15 tot

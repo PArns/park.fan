@@ -86,6 +86,9 @@ Expedition GeForce, Sky Scream and the other big rides from our [guide to Plopsa
 
 From 4 December, Father Christmas sits in the Indoor Theater on every opening day. Children can hand him their wish lists, and every child gets a chocolate from the Wawi chocolate factory. On Saturday, 5 December, the second Plopsa Nikolauslauf, a St Nicholas run with courses for children and adults, starts at the Platz der Fontänen. Registration will open shortly. From 4 to 10 February 2027, Plopsa Indoor celebrates carnival with a kids' disco. If your child's birthday falls in winter, you can book the "Majas Geburtstagszauber" package, and a visit from Maya is included in the price.
 
+> [!PARKY] An Advent Friday
+> For Father Christmas we pick a Friday from 4 December, so the 4th, 11th or 18th: he's in the Indoor Theater by then, and a dated ticket costs €16 online instead of €27 or €29 at the weekend. We pack the wish list beforehand, and all mine asks for is a spare Ferris wheel for my hat. Maya's show at 1 or 4 p.m. is on in the same venue and included in the ticket.
+
 ## What's different from last winter
 
 In winter 2025/26 the same part of the park was called Majaland Pfalz. It was open from 7 November to 22 March then, while this season ends on 14 March, and the cheapest ticket was €20 against €16 now. The park had already dropped the name Holiday Park at the end of June 2025. The Maya show and the first winter run of The Smurfs' Adventure were that season's new additions.
