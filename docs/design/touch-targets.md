@@ -31,7 +31,7 @@ the blog tag cloud) are still open.
 
 A tap target that is not a `<Button>` reaches 44 px through a **centred pseudo-element**, never
 through `min-h-11`/`min-w-11` on the element. `min-h-11` is right only where the element's own box
-may be 44 px (a link in the footer's stack, `footerLinkClass`; a full-width CTA). Everywhere else a
+may be 44 px (a full-width CTA). Everywhere else a
 parent positions the box, and growing it moves what it holds. The shared class string is
 `PHONE_HIT_AREA` (`lib/utils/touch-target.ts`): `relative`, then a `max-sm:after:` box of
 44 × max(100 %, 44) px centred on the element. It must not go on an `absolute` or `fixed` element,
@@ -63,9 +63,11 @@ right-2` in a toast; its grown box went 53 px inward over the headline's last 16
 takes the tap. A ride card's corner holds up to three 30 px circles (bell, ridden, star) 3 px apart
 (`GLASS_CIRCLE_ROW`), each with a 33 × 40 px target (`GLASS_CIRCLE_HIT_AREA` in
 `components/common/glass-circle.tsx`), the circle plus the gap, so the targets tile the row. That
-row is the one place below the 44 px floor, a product decision (PAR-719): three controls share the
+row is one of two places below the 44 px floor, a product decision (PAR-719): three controls share the
 first line of a 360 px row with the ride's name and wait, and the name is what the row is for. The
-targets still clear WCAG 2.5.8's 24 px.
+footer's link columns are the other: below `sm` each link keeps its desk height of 28 px
+(`footerLinkClass` in `components/layout/footer.tsx`), because an opened group of nine links at
+44 px read as a list of gaps. The rows stack without a gap, so those targets meet too. Both still clear WCAG 2.5.8's 24 px.
 
 The same split is written out, with its reason, in `components/common/breadcrumb-nav.tsx` (a
 `min-h-11` grew the crumb row ~24 px after paint: 0.0227 CLS), `components/planner/planner-block.tsx`
