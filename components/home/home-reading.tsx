@@ -1,5 +1,3 @@
-import { getTranslations } from 'next-intl/server';
-import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { listArticlesByRecency, listNewsByDate } from '@/lib/blog/listing';
 import { getMostReadSeed } from '@/lib/blog/most-read';
@@ -20,6 +18,9 @@ const NEWS = 6;
  * the stop is in the first HTML without a `<Suspense>`, and it changes with every deploy that
  * brings a post, which is the homepage's freshest content. Renders nothing where the locale
  * publishes no posts.
+ *
+ * The stop has no heading of its own: the board's two group labels are its `<h2>`s, and a title
+ * over them would say news and guides a second time. No search finds the homepage with those words.
  */
 export async function HomeReading({ locale }: { locale: Locale }) {
   const byKey = new Map(listArticlesByRecency(locale).map((post) => [post.translationKey, post]));
@@ -29,15 +30,12 @@ export async function HomeReading({ locale }: { locale: Locale }) {
   const news = listNewsByDate(locale).slice(0, NEWS);
   if (articles.length === 0 && news.length === 0) return null;
 
-  const t = await getTranslations('homeStory.reading');
-
   return (
     <HomeStop
       stacked
       block="posts"
       // The first stop sits right under the hero, which already ends in room of its own.
       className="[&>div]:pt-8 sm:[&>div]:pt-12"
-      heading={<ChapterHeading variant="stop" title={t('title')} hint={t('lead')} id="neu" />}
     >
       <Reveal>
         <NewsBoard locale={locale} news={news} articles={articles} />

@@ -11,18 +11,22 @@ import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 /**
  * The homepage's stop for the trip regions, right under the news: the planner band's tiles, each
  * its hub's planner, with its scene once the stop nears the screen (`RegionSceneInView`, so the
- * first load pays nothing for it), and under each the hub's own lead (`tripRegions.<slug>.hub.lead`),
- * which keeps what the region is about in the homepage's text. The regions are the band's
- * (`getPlannerMenu`, which the layout has already asked for).
+ * first load pays nothing for it), and under each the region's teaser
+ * (`tripRegions.<slug>.home.teaser`), its parks in one line. What every hub offers, a crowd calendar and a planner, is said
+ * once, in the stop's lead (`homeStory.trips`); the hubs' own leads say it again for each region.
+ * The regions are the band's (`getPlannerMenu`, which the layout has already asked for).
  */
 export async function TripRegionsHomeStop({ locale }: { locale: Locale }) {
-  const [t, { regions }] = await Promise.all([
+  const [tNav, t, { regions }] = await Promise.all([
     getTranslations('navigation'),
+    getTranslations('homeStory.trips'),
     getPlannerMenu(locale),
   ]);
   if (regions.length === 0) return null;
-  const leads = await Promise.all(
-    regions.map(async (region) => (await getRegionTranslations(region.id, 'hub', locale))('lead'))
+  const teasers = await Promise.all(
+    regions.map(async (region) =>
+      (await getRegionTranslations(region.id, 'home', locale))('teaser')
+    )
   );
   return (
     <HomeStop
@@ -33,9 +37,9 @@ export async function TripRegionsHomeStop({ locale }: { locale: Locale }) {
         <ChapterHeading
           variant="stop"
           icon={CalendarPlus}
-          kicker={t('tripPlanner')}
-          title={t('planTrip')}
-          hint={t('tripPlannerHint')}
+          kicker={tNav('tripPlanner')}
+          title={t('title')}
+          hint={t('lead')}
         />
       }
     >
@@ -47,7 +51,7 @@ export async function TripRegionsHomeStop({ locale }: { locale: Locale }) {
               height="h-44 md:h-56"
               art={<RegionSceneInView regionId={region.id} />}
             />
-            <p className="text-muted-foreground mt-2.5 text-sm text-pretty">{leads[index]}</p>
+            <p className="text-muted-foreground mt-2.5 text-sm text-pretty">{teasers[index]}</p>
           </li>
         ))}
       </ul>

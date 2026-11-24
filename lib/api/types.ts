@@ -789,6 +789,12 @@ export interface ParkAttraction {
   maximumHeight?: number | null;
   /** Whether riders may get wet. Null/absent = unknown, not „dry". */
   mayGetWet?: boolean | null;
+  /**
+   * The ride gets its riders wet and the park feels below 15 °C now (PAR-1420): still the ride it
+   * is, a headliner included, but no tip, so no walk-on stamp and no compass needle. Absent
+   * otherwise; `null` from the live poll once it no longer holds.
+   */
+  tooColdToGetWet?: boolean | null;
   /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
   rcdbId?: number | null;
   /**
@@ -1124,6 +1130,12 @@ export interface AttractionResponse {
   maximumHeight?: number | null;
   /** Whether riders may get wet. Null/absent = unknown, not „dry". */
   mayGetWet?: boolean | null;
+  /**
+   * The ride gets its riders wet and the park feels below 15 °C now (PAR-1420): still the ride it
+   * is, a headliner included, but no tip, so no walk-on stamp and no compass needle. Absent
+   * otherwise; `null` from the live poll once it no longer holds.
+   */
+  tooColdToGetWet?: boolean | null;
   /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
   rcdbId?: number | null;
   /**

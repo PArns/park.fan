@@ -26,8 +26,12 @@ come the popular parks and the questions. A visitor who has starred something fi
 The trip regions follow the news (and the compass, in a park), because planning is what most
 visitors come for: one stop with a tile per live region, the scene the planner band draws, loaded
 once the stop nears the screen and looping as in the band while the tile shows below the header
-(`RegionSceneInView`), and under each tile its hub's lead
-(`tripRegions.<slug>.hub.lead`). Its clicks count as `trip_home`, its place as `home_trips`.
+(`RegionSceneInView`), and under each tile the region's teaser (`tripRegions.<slug>.home.teaser`),
+its parks in one line. What every hub offers, a crowd calendar for all its parks and a planner
+for the trip days, is said once, in the stop's lead (`homeStory.trips`); under the tiles it was
+said four times, once per hub's lead. The title, „Freizeitpark-Urlaub planen",
+names the trip, where „Reise planen" over „Welcher Park an welchem Tag" named only the button. Its
+clicks count as `trip_home`, its place as `home_trips`.
 A whole trip, then a single day: the [day planner with Parky](#the-day-planner-with-parky) comes
 right after it.
 
@@ -69,8 +73,10 @@ layouts:
 flushTop`), so each gap is the room under the stop above.
 - **Only the tour is numbered.** A number must not skip
   ([the rule](../rules/a-chapter-opens-the-same-way-everywhere.md)), and the favourites show for few
-  visitors; the other stops open with their kicker. The news board has none: it is the first stop
-  under the hero, and its title already says news and guides.
+  visitors; the other stops open with their kicker. The news board has no heading at all: its two
+  group labels („News", „Beliebteste Guides") are the stop's `<h2>`s. A title and lead over them
+  („Freizeitpark-News und Guides") said the same a second time and took 165 px under the hero on a 1440 px window, 198 px on a phone, and
+  in the 90 days to 2026-11-22 no search that found the homepage had „news" or „guides" in it.
 
 ## What people search for
 
@@ -81,7 +87,8 @@ auslastung", „andrang kalender", „prognose", „wie voll ist … heute" („
 impressions, position 4.7), „wartezeiten" (2,039, 7.7), „freizeitpark auslastung" and „wartezeiten
 app". The page answers in those words:
 
-- every stop's `<h2>` is worded as people search: „Freizeitpark-News und Guides", „Deinen Parktag
+- every stop's `<h2>` is worded as people search: „Freizeitpark-Urlaub planen",
+  „Deinen Parktag
   Bahn für Bahn planen" („parktag planen"; the planner page itself had one such query in 90 days, „freizeitpark
   planung", at position 1), the tour's
   „Wartezeiten live, für jede Bahn", „Der Andrang-Kalender: wie voll es wird, Tag für Tag",

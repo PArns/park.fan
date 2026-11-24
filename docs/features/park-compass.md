@@ -27,7 +27,9 @@ Suspense streaming and the compass is geolocation-driven client state.
 ## Where it appears, and when
 
 The homepage slot renders for `in_park` answers with at least one in-season headliner
-(`splitInParkRides`, the filter the list uses) and for the `?sim=compass` demo. The module is loaded
+(`splitInParkRides`, the filter the list uses) and for the `?sim=compass` demo. A headliner the API
+marks `tooColdToGetWet` (it gets its riders wet while the park feels below 15 °C, PAR-1420) counts
+as none: nobody crosses the park for it, so it stands among the other rides. The module is loaded
 the moment that is known, so nobody else downloads it.
 
 **It is never inserted under a reader who has scrolled.** The compass is some 1,300 px on a phone

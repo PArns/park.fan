@@ -50,6 +50,8 @@ export interface LiveAttractionSnapshot {
   notRunToday?: ParkAttraction['notRunToday'];
   /** Volatile the same way `outage` is, and on the wire as `null` for the same reason. */
   weatherClosure?: ParkAttraction['weatherClosure'];
+  /** Follows the temperature, so volatile the same way, and `null` on the wire for that reason. */
+  tooColdToGetWet?: ParkAttraction['tooColdToGetWet'];
   queues?: ParkAttraction['queues'];
   statistics?: ParkAttraction['statistics'];
   bestVisitTimes?: ParkAttraction['bestVisitTimes'];
@@ -133,6 +135,7 @@ export function leanParkForLivePoll(
       // The same rule, so a ride that has run since the render loses its „noch nicht" line.
       notRunToday: a.notRunToday ?? null,
       weatherClosure: a.weatherClosure ?? null,
+      tooColdToGetWet: a.tooColdToGetWet ?? null,
       queues: a.queues,
       statistics: a.statistics,
       bestVisitTimes: a.bestVisitTimes,

@@ -140,6 +140,8 @@ test('a live region has its own words in every locale', () => {
       for (const key of ['name', 'area', 'calendar', 'calendarHint']) {
         assert.equal(typeof own.nav?.[key], 'string', `${locale} ${region.slug}.nav.${key}`);
       }
+      // The line under the region's tile on the homepage, which has no fallback either.
+      assert.equal(typeof own.home?.teaser, 'string', `${locale} ${region.slug}.home.teaser`);
       // The head, the metadata and the dataset have no fallback; every other block of the hub draws
       // nothing without its words (docs/features/trip-regions.md#for-every-hub).
       for (const key of [

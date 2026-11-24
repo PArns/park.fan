@@ -92,9 +92,10 @@ export function splitInParkRides(rides: AttractionWithDistance[] | undefined) {
   const inSeasonRides = (rides || []).filter((a) => a.isCurrentlyInSeason !== false);
 
   // Every headliner, nearest first. Closed ones stay, their status written out: a headliner is worth
-  // pointing out even when the park, or just that ride, is not running.
+  // pointing out even when the park, or just that ride, is not running. One that gets its riders
+  // wet in the cold is not: nobody crosses the park for it, so it joins the other rides.
   const headliners = inSeasonRides
-    .filter((a) => a.isHeadliner)
+    .filter((a) => a.isHeadliner && !a.tooColdToGetWet)
     .sort((a, b) => a.distance - b.distance);
   const headlinerIds = new Set(headliners.map((h) => h.id));
 

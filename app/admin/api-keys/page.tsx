@@ -89,7 +89,8 @@ import {
   PermissionsField,
   useKeyExpiry,
 } from './_components/key-fields';
-import { KeyRequestsPanel, useKeyRequests } from './_components/key-requests-panel';
+import { KeyRequestsPanel } from './_components/key-requests-panel';
+import { useKeyRequests } from '../_lib/use-key-requests';
 import { useToast } from '../_ui/toast';
 
 const USAGE_OPTIONS = (Object.keys(DATA_API_KEY_USAGE_LABELS) as DataApiKeyUsage[]).map(

@@ -132,8 +132,10 @@ function getBestSlot(attraction: ParkAttraction | FavoriteAttraction): BestVisit
   );
 }
 
+/** The ride's rope-drop tip, none for a ride too cold to get wet right now (`tooColdToGetWet`). */
 function getRopeDrop(attraction: ParkAttraction | FavoriteAttraction): RopeDropInfo | null {
   if (!('ropeDrop' in attraction) || !attraction.ropeDrop) return null;
+  if ('tooColdToGetWet' in attraction && attraction.tooColdToGetWet) return null;
   return attraction.ropeDrop;
 }
 

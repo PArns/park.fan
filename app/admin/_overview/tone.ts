@@ -6,6 +6,7 @@ import {
   Contrast,
   HeartPulse,
   ImageIcon,
+  KeyRound,
   ListChecks,
   OctagonAlert,
   Server,
@@ -59,13 +60,16 @@ export const TONE_META: Record<
 };
 
 /** Each area's icon and the colour of its tile in the table. */
-export const AREA_META: Record<HealthAreaId | 'contributions', { icon: LucideIcon; tile: string }> =
-  {
-    server: { icon: Server, tile: 'bg-indigo-400/12 text-indigo-300 ring-indigo-400/25' },
-    feeds: { icon: Timer, tile: 'bg-sky-400/12 text-sky-300 ring-sky-400/25' },
-    queues: { icon: ListChecks, tile: 'bg-violet-400/12 text-violet-300 ring-violet-400/25' },
-    models: { icon: Brain, tile: 'bg-pink-400/12 text-pink-300 ring-pink-400/25' },
-    statistic: { icon: BarChart3, tile: 'bg-teal-400/12 text-teal-300 ring-teal-400/25' },
-    quality: { icon: HeartPulse, tile: 'bg-orange-400/12 text-orange-300 ring-orange-400/25' },
-    contributions: { icon: ImageIcon, tile: 'bg-lime-400/12 text-lime-300 ring-lime-400/25' },
-  };
+export const AREA_META: Record<
+  HealthAreaId | 'contributions' | 'keyRequests',
+  { icon: LucideIcon; tile: string }
+> = {
+  server: { icon: Server, tile: 'bg-indigo-400/12 text-indigo-300 ring-indigo-400/25' },
+  feeds: { icon: Timer, tile: 'bg-sky-400/12 text-sky-300 ring-sky-400/25' },
+  queues: { icon: ListChecks, tile: 'bg-violet-400/12 text-violet-300 ring-violet-400/25' },
+  models: { icon: Brain, tile: 'bg-pink-400/12 text-pink-300 ring-pink-400/25' },
+  statistic: { icon: BarChart3, tile: 'bg-teal-400/12 text-teal-300 ring-teal-400/25' },
+  quality: { icon: HeartPulse, tile: 'bg-orange-400/12 text-orange-300 ring-orange-400/25' },
+  contributions: { icon: ImageIcon, tile: 'bg-lime-400/12 text-lime-300 ring-lime-400/25' },
+  keyRequests: { icon: KeyRound, tile: 'bg-amber-400/12 text-amber-300 ring-amber-400/25' },
+};

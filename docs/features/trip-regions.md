@@ -93,12 +93,12 @@ hub does; it never answers 500.
 
 ## Messages
 
-| Namespace              | What                                                                                      |
-| ---------------------- | ----------------------------------------------------------------------------------------- |
-| `tripHub`              | the hub's words every region shares: the calendar, the key, the day sheet, the band       |
-| `tripBestTime`         | the best-time pages' shared chapters                                                      |
-| `tripPlanner`          | the planner's shared words                                                                |
-| `tripRegions.<slug>.*` | the region's own: titles, intro, FAQ, method, its hotels, ticket entries, school holidays |
+| Namespace              | What                                                                                                                                |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `tripHub`              | the hub's words every region shares: the calendar, the key, the day sheet, the band                                                 |
+| `tripBestTime`         | the best-time pages' shared chapters                                                                                                |
+| `tripPlanner`          | the planner's shared words                                                                                                          |
+| `tripRegions.<slug>.*` | the region's own: titles, intro, FAQ, method, its hotels, ticket entries, school holidays, the homepage tile's line (`home.teaser`) |
 
 A Server Component reads a region's words with `getRegionTranslations(slug, part)`. A Client
 Component cannot name a region, so it reads them under the alias `tripRegion`
@@ -142,7 +142,7 @@ and a region with a typhoon season instead of hurricanes says so on its best-tim
 
 All from the registry: the header's planner band and its phone sheet (a row per region under
 „Planen"), the footer's „Reiseplaner" (the first live region), the homepage's region stop (a tile per live
-region), `TripPlannerTile` on a park's page and crowd
+region, the region's `home.teaser` under it: its parks in one line), `TripPlannerTile` on a park's page and crowd
 calendar and `TripPlannerBand` under a post, on a city or country listing and on `/search` (the
 regions whose `parks[]` hold the page's parks), the search palette and `/search`
 (`matchTripRegion` over every live region), the OG cards (`<locale>/<slug>`,

@@ -6,6 +6,18 @@
  */
 export const WALK_ON_WAIT_MINUTES = 13;
 
+/** The longest posted wait that counts as a walk-on and takes the walk-on colour. */
+export const WALK_ON_MAX_MINUTES = 5;
+
+/**
+ * Whether a posted wait is a walk-on: at or under `limit` ({@link WALK_ON_MAX_MINUTES} unless a
+ * surface draws its own line, as Parky does), or the posted 13 ({@link WALK_ON_WAIT_MINUTES}),
+ * the park's own sign for one, which sits above any limit.
+ */
+export function isWalkOnWait(minutes: number, limit: number = WALK_ON_MAX_MINUTES): boolean {
+  return minutes <= limit || minutes === WALK_ON_WAIT_MINUTES;
+}
+
 /** The plain five-minute grid, without the walk-on exception. */
 function snapWaitTo5(n: number): number {
   return Math.floor((n + 2.5) / 5) * 5;

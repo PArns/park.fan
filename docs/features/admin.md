@@ -127,8 +127,9 @@ A situation report, read top to bottom:
 
 Everything about the state of things is **one pure derivation**, `deriveAdminHealth`
 (`lib/admin/health.ts`, `pnpm test:admin-health`), fed by `useAdminHealth` (`_lib/use-admin-health.ts`)
-from `system-health`, `queue-status`, `data-quality` (14 days), `ml-overview` and the contributions
-summary. The hook reads them under the keys their own pages use (`adminKeys`, `ADMIN_PATHS` in
+from `system-health`, `queue-status`, `data-quality` (14 days), `ml-overview`, the contributions
+summary and, for the owner, the developers' API key requests (`useKeyRequests`, `_lib/use-key-requests.ts`,
+the query the API keys page reads too, so a request decided there leaves the overview at once). The hook reads them under the keys their own pages use (`adminKeys`, `ADMIN_PATHS` in
 `_lib/api.ts`), so answering a data-quality card clears the count in the sidebar and on the overview
 too. On the overview host and queues poll every minute while the tab is in front; elsewhere the
 sidebar's reads refresh on focus.
@@ -137,7 +138,10 @@ sidebar's reads refresh on focus.
   wait-time row for 60 minutes, no weather ahead, a queue failure no later run has made up for, a
   failed model, a statistic that falls behind.
 - **Waiting work (`warn`)** is a decision or a chore: a silenced park, a job that keeps failing, rides
-  retired without a season, a late model, drift, a model decision that is ready, photos to moderate.
+  retired without a season, a late model, drift, a model decision that is ready, photos to moderate,
+  an API key request nobody has decided (one card, „2 API-Key-Anfragen warten“, the projects and the
+  oldest request's time, „Entscheiden“ to `/admin/api-keys`, whose sidebar entry carries the count;
+  the owner's alone, since only the owner may read the requests).
   Amber host readings colour the row and the card but raise no problem.
 - **A source that does not answer** keeps its row („keine Antwort“) and raises a card whose button
   asks it again in place; a 403 leaves its area out.
