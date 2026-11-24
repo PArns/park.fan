@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
-import { ArrowRight, Star, TrendingDown } from 'lucide-react';
+import { ArrowRight, TrendingDown } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
@@ -10,6 +10,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { FavoriteStar } from '@/components/common/favorite-star';
 import { HeroParkActions } from '@/components/home/hero-park-actions';
 import { HomeLocationRow } from '@/components/home/home-location-row';
 import { HeroBrowseHeader } from '@/components/search/hero-browse-header';
@@ -38,11 +39,13 @@ import {
   waitTimeCrowdTier,
 } from '@/lib/utils/crowd-level-styles';
 import { formatDistance } from '@/lib/utils/distance-utils';
+import { isWalkOnWait } from '@/lib/utils/wait-time';
 import { formatBreakCountdown, type ParkBreak } from '@/lib/utils/park-break';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { convertApiUrlToFrontendUrl, searchResultHref } from '@/lib/utils/url-utils';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import type { NearbyShortWait } from '@/types/nearby';
+import type { FavoriteType } from '@/lib/utils/favorites';
 import type { Locale } from '@/i18n/config';
 
 /**
@@ -71,6 +74,12 @@ const TITLE_CLASS = 'flex h-6 min-w-0 items-center gap-1.5 text-[15px] font-bold
 const SUBTITLE_CLASS = 'text-muted-foreground h-5 truncate text-[13px] leading-5';
 const FIGURE_CLASS = 'mt-3 flex h-10 items-baseline gap-1.5';
 const NUMBER_CLASS = 'text-4xl leading-10 font-black tracking-tighter tabular-nums';
+/**
+ * A walk-on's figure: the word in place of the number, sized to the figure's width (at most
+ * `text-3xl`) so the longest, the French „Sans attente", fits five cards in a 1024 px row.
+ */
+const WALK_ON_CLASS =
+  'block truncate text-[length:clamp(1.25rem,15cqi,1.875rem)] leading-10 font-black tracking-tight';
 const FOOT_CLASS = 'mt-2 flex h-7 min-w-0 flex-col justify-end';
 
 /** A shut park's figure: when it opens, on up to two lines, so nothing in it is cut. */
@@ -85,7 +94,7 @@ function RailCard({
   coverSlug,
   badge,
   title,
-  headliner = false,
+  favorite,
   subtitle,
   figure,
   foot,
@@ -100,13 +109,13 @@ function RailCard({
   coverSlug: string;
   badge?: ReactNode;
   title: string;
-  headliner?: boolean;
+  /** What the star before the title stars `entity` as; without it the card has no star. */
+  favorite?: FavoriteType;
   subtitle: string;
   figure: ReactNode;
   foot: ReactNode;
   className?: string;
 }) {
-  const t = useTranslations('nearby');
   return (
     <Link
       href={href as '/parks'}
@@ -135,15 +144,7 @@ function RailCard({
       </span>
       <span className={BODY_CLASS}>
         <span className={TITLE_CLASS}>
-          {headliner && (
-            <>
-              <Star
-                aria-hidden="true"
-                className="size-3.5 shrink-0 fill-amber-500 text-amber-500"
-              />
-              <span className="sr-only">{t('headlinerBadge')}: </span>
-            </>
-          )}
+          {favorite && <FavoriteStar type={favorite} id={entity} size="md" className="shrink-0" />}
           <span className="truncate">{title}</span>
         </span>
         <span className={SUBTITLE_CLASS}>{subtitle}</span>
@@ -179,13 +180,15 @@ function RailCardSkeleton() {
 
 /**
  * A ride whose queue is well below its usual length: how much shorter it is, the wait as the
- * card's biggest figure and a bar of the wait against the usual one, in the wait's crowd colour.
+ * card's biggest figure („Walk-on" in its place for a walk-on, {@link isWalkOnWait}) and a bar of
+ * the wait against the usual one, in the wait's crowd colour.
  */
 function ShortWaitCard({ ride }: { ride: NearbyShortWait }) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
   const unit = tCommon('min');
   const tier = waitTimeCrowdTier(ride.waitTime);
+  const walkOn = isWalkOnWait(ride.waitTime);
   const saved = ride.typicalWait - ride.waitTime;
   const share = ride.typicalWait > 0 ? Math.min(100, (ride.waitTime / ride.typicalWait) * 100) : 0;
 
@@ -206,13 +209,22 @@ function ShortWaitCard({ ride }: { ride: NearbyShortWait }) {
         )
       }
       title={stripNewPrefix(ride.name)}
-      headliner={ride.isHeadliner}
+      favorite="attraction"
       subtitle={`${stripNewPrefix(ride.park.name)} · ${formatDistance(ride.park.distance)}`}
       figure={
-        <>
-          <span className={NUMBER_CLASS}>{ride.waitTime}</span>
-          <span className="text-muted-foreground text-sm font-semibold">{unit}</span>
-        </>
+        walkOn ? (
+          // The minutes stay at the foot, in „jetzt".
+          <span className="@container min-w-0 flex-1">
+            <span className={cn(WALK_ON_CLASS, CROWD_TEXT_CLASS[tier])}>
+              {t('shortWaits.walkOn')}
+            </span>
+          </span>
+        ) : (
+          <>
+            <span className={NUMBER_CLASS}>{ride.waitTime}</span>
+            <span className="text-muted-foreground text-sm font-semibold">{unit}</span>
+          </>
+        )
       }
       foot={
         <>
@@ -226,7 +238,11 @@ function ShortWaitCard({ ride }: { ride: NearbyShortWait }) {
             />
           </span>
           <span className="text-muted-foreground mt-1.5 flex justify-between gap-2 text-[11px] leading-4 tabular-nums">
-            <span aria-hidden="true" className={cn('font-semibold', CROWD_TEXT_CLASS[tier])}>
+            {/* Read out only for a walk-on: otherwise the figure above already says the minutes. */}
+            <span
+              aria-hidden={walkOn ? undefined : true}
+              className={cn('font-semibold', CROWD_TEXT_CLASS[tier])}
+            >
               {t('shortWaits.now', { minutes: ride.waitTime, unit })}
             </span>
             <span>{t('shortWaits.usually', { minutes: ride.typicalWait, unit })}</span>
@@ -295,6 +311,8 @@ function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
       imagePosition={item.imagePosition}
       coverSlug={item.slug}
       title={stripNewPrefix(item.name)}
+      // The rail holds parks and, in a park, its rides; both can be starred.
+      favorite={item.type === 'park' || item.type === 'attraction' ? item.type : undefined}
       subtitle={[place, distance].filter(Boolean).join(' · ')}
       figure={
         wait != null ? (

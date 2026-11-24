@@ -1893,6 +1893,7 @@
       "title": "Korte wachtrijen bij jou in de buurt",
       "usually": "anders {minutes} {unit}",
       "now": "nu {minutes} {unit}",
+      "walkOn": "Walk-on",
       "shorter": "{minutes} {unit} korter"
     }
   },

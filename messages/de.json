@@ -1893,6 +1893,7 @@
       "title": "Kurze Anstellzeiten in deiner Nähe",
       "usually": "sonst {minutes} {unit}",
       "now": "jetzt {minutes} {unit}",
+      "walkOn": "Walk-on",
       "shorter": "{minutes} {unit} kürzer"
     }
   },

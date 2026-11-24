@@ -1893,6 +1893,7 @@
       "title": "Colas cortas cerca de ti",
       "usually": "normalmente {minutes} {unit}",
       "now": "ahora {minutes} {unit}",
+      "walkOn": "Sin cola",
       "shorter": "{minutes} {unit} menos"
     }
   },

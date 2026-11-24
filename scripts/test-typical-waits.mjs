@@ -27,7 +27,7 @@
 
 import { quietestWeekdays } from '../lib/utils/typical-waits.ts';
 import { ropeDropDisplayWaits } from '../lib/utils/rope-drop.ts';
-import { roundAverageWaitTo5, roundWaitTo5 } from '../lib/utils/wait-time.ts';
+import { isWalkOnWait, roundAverageWaitTo5, roundWaitTo5 } from '../lib/utils/wait-time.ts';
 import { waitTimeCrowdTier } from '../lib/utils/crowd-level-styles.ts';
 
 const testCases = [];
@@ -324,6 +324,14 @@ test('an average under 2.5 is 0', () => roundAverageWaitTo5(2), 0);
 test('a posted 13 is coloured like a 5', () => waitTimeCrowdTier(13), 'very_low');
 test('a 12 stays an ordinary short wait', () => waitTimeCrowdTier(12), 'low');
 test('a 15 stays an ordinary short wait', () => waitTimeCrowdTier(15), 'low');
+
+// --- what reads „Walk-on" -----------------------------------------------------------------------
+
+test('a 5 is a walk-on', () => isWalkOnWait(5), true);
+test("a 10 is not, at the colour's line", () => isWalkOnWait(10), false);
+test('a posted 13 is a walk-on', () => isWalkOnWait(13), true);
+test('a 12 is not', () => isWalkOnWait(12), false);
+test('a 10 is one by a wider line, as Parky draws it', () => isWalkOnWait(10, 10), true);
 
 let passed = 0;
 let failed = 0;

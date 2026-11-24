@@ -1893,6 +1893,7 @@
       "title": "Files courtes près de vous",
       "usually": "d’habitude {minutes} {unit}",
       "now": "maintenant {minutes} {unit}",
+      "walkOn": "Sans attente",
       "shorter": "{minutes} {unit} de moins"
     }
   },

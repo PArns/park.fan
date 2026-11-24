@@ -174,7 +174,14 @@ that scrolls sideways with the next card in view. What it shows, in order:
 - **A short-wait card** shows the ride's own photo, „35 Min kürzer" (usual minus now) on it on a
   blurred badge, since the badge's fill is translucent and the photo busy, the wait as the biggest
   figure and a bar of the wait against the usual one; the bar and „jetzt" take the wait's crowd
-  colour (`waitTimeCrowdTier`). The API picks the rides and says nothing when there are
+  colour (`waitTimeCrowdTier`). A walk-on (`isWalkOnWait`: 5 minutes or less, or the posted 13)
+  says „Walk-on" in that colour in place of the number, sized to the card (`15cqi`, at most
+  `text-3xl`): at 1024 px five cards leave 148 px, and the French „Sans attente" took 189 px at
+  `text-3xl`; „jetzt 0 Min" at the foot keeps the minutes, and a screen reader reads
+  them there.
+- **Every card can be starred**: `FavoriteStar` before the title, filled while the ride or park is
+  a favourite, the same star as on the park and ride cards. It took the place of the amber star
+  that marked a headliner, since a filled star now means a favourite. The API picks the rides and says nothing when there are
   none, which is every evening and the whole off-season (contract in the API's
   [discovery](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/discovery.md#shortwaits)).
 - **A park card** shows the park's average wait while it is open with one badge under it, the crowd

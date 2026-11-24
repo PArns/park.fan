@@ -1893,6 +1893,7 @@
       "title": "Code brevi vicino a te",
       "usually": "di solito {minutes} {unit}",
       "now": "ora {minutes} {unit}",
+      "walkOn": "Zero coda",
       "shorter": "{minutes} {unit} in meno"
     }
   },
