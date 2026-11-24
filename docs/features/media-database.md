@@ -228,15 +228,20 @@ and Cloudflare challenges non-browser clients on `park.fan/api/*` (403, `cf-miti
 It reads `https://media.park.fan`, an R2 bucket (`media-park-fan`, EU jurisdiction) filled by
 `pnpm publish:media` (`scripts/publish-media-r2.mjs`):
 
-- **Which photos:** exactly the card photos, chosen by `getParkBackground` and `getRideImage` as in
-  `getCardImageMap()`, so the app and the cards cannot disagree. `license: unknown` is left out.
+- **Which photos:** the card photos, chosen by `getParkBackground` and `getRideImage` as in
+  `getCardImageMap()`, so the app and the cards cannot disagree, plus every photo with the `hero`
+  role (`getHeroImages()`), the pool the app's Start hero picks from as the homepage does.
+  `license: unknown` is left out.
 - **Files:** `<id>/<version>-<w>.webp` at 400, 828, 1200 and 1600 px, never upscaled, quality 78,
   plus the photo's own width when it is below 1600 px (a 1024 px photo ships at 400, 828 and 1024),
   `Cache-Control: public, max-age=31536000, immutable`. `version` changes with the pixels or the
   focal point, so a key never changes and the script uploads only missing keys.
 - **`index.json`** (`max-age=300`), written last so it never names a missing file:
   `{schema, generatedAt, base, pattern, parks: {<geo path>: id}, rides: {<geo path>/<ride>: id},
-images: {id: {v, w, h, widths, focus, credit, attribution}}}`. Parks are keyed by the API's geo
+images: {id: {v, w, h, widths, focus, credit, attribution, roles, bannerFocus?, title?}}}`.
+  `roles` are the sidecar's (`hero`, `park-background`, `ride-card`), `bannerFocus` the focal point
+  for a narrow full-bleed head where the sidecar has one, `title` the sidecar's own title (not
+  translated) where it has one; a title the manifest made up from the file name is left out. Parks are keyed by the API's geo
   path, because `disneyland-park` and `universal-islands-of-adventure` each exist twice, and the photo
   is looked up by that path too. `credit` is
   `getCreditLine()`, `attribution` is `needsAttribution()`; the app shows the line on the photo when

@@ -14,12 +14,17 @@
 //
 // Run `pnpm generate:media` first; the manifest is generated and gitignored.
 import { mkdir, writeFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
+import { basename, dirname, extname, join } from 'node:path';
 import { AwsClient } from 'aws4fetch';
 import sharp from 'sharp';
 
 import { getCreditLine, needsAttribution } from '../lib/media/credit.ts';
-import { MEDIA_IMAGES, getParkBackground, getRideImage } from '../lib/media/index.ts';
+import {
+  MEDIA_IMAGES,
+  getHeroImages,
+  getParkBackground,
+  getRideImage,
+} from '../lib/media/index.ts';
 import { MEDIA_PARK_PATH_BY_SLUG } from '../lib/media/manifest-parks.ts';
 import { imageParkKey, parkGeoPath } from '../lib/media/park-path.mjs';
 import { buildNewsExport } from './news-export.mjs';
@@ -56,6 +61,11 @@ for (const image of MEDIA_IMAGES) {
   }
 }
 
+// Every hero photo ships too: the app's Start hero picks from the same pool as the website's.
+for (const image of getHeroImages()) {
+  if (image.credit.license !== 'unknown') chosen.set(image.id, image);
+}
+
 // News covers and inline photos join `chosen`, so they ship like the card photos.
 const news = buildNewsExport(chosen);
 
@@ -73,6 +83,10 @@ for (const image of chosen.values()) {
     focus: image.focus ?? null,
     credit: getCreditLine(image),
     attribution: needsAttribution(image),
+    roles: image.roles,
+    ...(image.bannerFocus ? { bannerFocus: image.bannerFocus } : {}),
+    // The manifest falls back to the file name; only a sidecar's own title is a caption.
+    ...(image.title !== basename(image.src, extname(image.src)) ? { title: image.title } : {}),
   };
   for (const w of widths) {
     files.push({ key: `${image.id}/${image.version}-${w}.webp`, image, width: w });
