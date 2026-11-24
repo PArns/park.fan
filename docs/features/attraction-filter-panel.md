@@ -1,60 +1,64 @@
 # The park page's attraction filter panel
 
-The band above the attractions grid on a park page: search, rider height, the "today" and "traits"
-pills, the off-season toggle and the sort. Open this page before changing any of these controls or
-how they compose.
+The bar above the attractions grid on a park page: the search, a „Filter" button whose dialog holds
+the rider height, the "today" and "traits" pills, the off-season toggle and the sort, and the
+wait-time alerts at its end. Open this page before changing any of these controls or how they
+compose.
 
 | Piece                                         | File                                                  |
 | --------------------------------------------- | ----------------------------------------------------- |
-| The panel (box, phone row, bottom sheet)      | `components/parks/attraction-filter-panel.tsx`        |
+| The bar and its dialog                        | `components/parks/attraction-filter-panel.tsx`        |
 | The height slider                             | `components/parks/rider-height-filter.tsx`            |
 | Height rules, pure (`pnpm test:rider-height`) | `lib/utils/rider-height.ts`                           |
 | All filter state and composition              | `lib/hooks/use-attraction-filter.ts`                  |
 | A pill                                        | `components/parks/filter-toggle.tsx` (`FilterToggle`) |
 | Where it is mounted, memoised                 | `components/parks/tabs-with-hash.tsx`                 |
 
-Each pill press sends `attraction_filter_used` with the filter's name (`trackAttractionFilterUsed`),
-not under `?sim=`.
+Each pill press sends `attraction_filter_used` with the filter's name, and the „Filter" button sends
+`attraction_filters_opened` when it opens the dialog, both with the park as entity and neither under
+`?sim=` ([analytics](../development/analytics.md#filters-and-the-rain-plan)).
 
 ## Layout
 
-The panel takes `TILE_GLASS`, the material of the entry-tile row above it: another band of the same
-stack over the same photograph. It opens with `ChapterHeading` **inside** the box (as `h3`, no number),
-so the heading's closing rule is the line the controls hang under.
+One bar on every width. It takes `TILE_GLASS`, the material of the entry-tile row above it, and is
+`p-1.5` around a 36 px row: 50 px with its border, the height of the land headings below it. From the
+left:
 
-Two bands, so the panel does not depend on how long a translated label is:
+1. **The search field**, 260 px from `sm` up and the rest of the row below it.
+2. **„Filter"**, an outline button with the number of set filters (search excluded) as a badge. It
+   keeps `h-9` on a phone and its 44 px reach through `PHONE_HIT_AREA`.
+3. **One chip per set filter**: the lit `FilterToggle` of that filter with an ×, and pressing it turns
+   the filter off. The wet chip goes straight to off through `onClearWet`; cycling would turn „Nur
+   mit Nässe" into „Ohne Nässe". From `sm` up the chips sit in the row and wrap inside their own box;
+   below `sm` they take a line of their own under the row (`order-last basis-full`).
+4. **At the right end**, the list's „Stand" (`LiveDataFreshness`, `placement="bar"`, from `sm` up)
+   and the `actions` slot, which `TabsWithHash` fills with the wait-time alerts
+   (`RideAlertsEntryButton`, `variant="bar"`, the bell alone below `sm`).
 
-1. **The controls that carry a value**: search and, when the park publishes rider limits, the height
-   slider, divided by a hairline (`CellDivider`, `HAIRLINE_FILL`) where they sit side by side. They
-   sit left in their own widths (`@min-[768px]/page:w-[220px]` …), not stretched: a 1200 px search box
-   is not a better search box.
-2. **The pills**, a wrapping row of two captioned groups: **today** (open now, the off-season toggle)
-   and **traits** (wet, fast pass, single rider, covered), then the sort (by land or by shortest wait).
-
-Every control has a caption row (`h-6`) over it, so all controls start and end on one line and say what
-they are. Widths follow the page's container (`@min-[768px]/page`, `@min-[1024px]/page`), not the
-viewport. Dividers use `HAIRLINE_FILL`, not the `--border` token: in the dark theme that token is white
-at 10 %, so an opacity modifier on it composited to nothing and the hairlines were invisible.
-
-### On a phone it is one row and a sheet
-
-Below `sm` the box holds one row: the search field and a **„Filter"** button carrying the number of set
-filters (search excluded). Heading, slider, pills and sort are `max-sm:hidden` in the box and render
-again in a bottom sheet (`components/ui/sheet.tsx`, `side="bottom"`) the button opens. The box is
-`max-sm:p-1.5` around a 36 px row, 50 px with its border, the height of the land headings below it; the
-button keeps `h-9` and its 44 px reach through `PHONE_HIT_AREA`. Open on a 390 × 664 phone, the full
-panel was 515 px and pushed the first ride 3.9 screens down.
+The controls are not on the page because almost nobody uses them: 88 `attraction_filter_used` on
+8,749 park page views from 26 October to 24 November 2026, one in a hundred, and 42 typed ride
+searches. Before the bar, the controls stood on the page as a 330 px panel on a desk, between the
+entry tiles and the first ride.
 
 - **CSS decides, not JavaScript.** The server cannot know the width and both branches of `TabsWithHash`
-  render the same markup, so phone row and full panel are one tree with `max-sm:`/`sm:` classes, never a
-  `matchMedia` branch.
-- **One set of controls.** Slider, pills and sort are render functions inside the panel
-  (`renderHeight`, `renderPills`, `renderSort`), called once for the box and once for the sheet over the
-  state in `useAttractionFilter`.
-- **Set filters are chips under the row**, phone only: each is the lit `FilterToggle` of its filter
-  with an ×, and pressing it turns that filter off. The wet chip goes straight to off through
-  `onClearWet`; cycling would turn „Nur mit Nässe" into „Ohne Nässe".
+  render the same markup, so the phone row and the desk row are one tree with `max-sm:`/`sm:`
+  classes, never a `matchMedia` branch.
 - A park with no rider limits, no pills and a single ride gets no button; the row is the search alone.
+
+### The dialog
+
+A centred `Dialog` on every width, opening with `DialogHero` (the `SlidersHorizontal` glyph, the title
+and the hint), the band the calendar's day dialog and the planner wizard open with. Under it a section
+per kind of control, each with a captioned glyph and divided by the `--border` hairline: rider height
+(`RiderHeightFilter` with `icon`), today, traits, order. Only the body scrolls (`max-h-[92svh]`), so
+the title and the foot hold still on a short phone.
+
+The filters apply as they are pressed, so the foot has no „apply": its button only closes, and it
+carries the number of rides the grid lists (`shownAttractionCount`, „33 Attraktionen anzeigen"), so a
+press shows what it did without closing the dialog. Beside it, „Alle zurücksetzen" runs
+`resetFilters` from `useAttractionFilter`: every filter back to how the page opened, the search
+excepted, since the query stands in the field in front of the visitor. Below `sm` it is the glyph
+alone, because both labels side by side are wider than the dialog.
 
 ## The pills
 
@@ -120,18 +124,18 @@ for that ride, shut or dry; filtering the hits once made every exact search for 
 off-season rides answer "no attractions found". A rider height is a statement about the person
 queuing: a 105 cm child does not grow because a parent typed "Taron". So the height holds, and the
 empty state names it and offers to clear it. The search also looks through the park's rides that
-closed for good (`ClosedRideMatches`), which the grid never lists. While a search runs, the pills go
-`invisible` (not unmounted, so nothing moves under the field) and the sort dims, because the search
-ranks by match.
+closed for good (`ClosedRideMatches`), which the grid never lists. While a search runs, the bar's
+chips for the pills go `invisible` (not unmounted, so nothing moves under the field), and the dialog
+dims the pills and the sort, because the search reaches past the pills and ranks by match.
 
 ## Its height is the ride list's top edge
 
-Every row inside has a fixed height (`h-6` captions, `h-9` controls from the input scale in
-`components/ui/button.tsx`, `h-5`/`h-4` for the track and its scale), and nothing appears or disappears
-as a visitor types or drags. Only two things change the box, and both are the same on either side of
-hydration: whether the park publishes rider limits and which pills it has, and the container width.
-That is why the pre-mount branch of `TabsWithHash` renders this same component instead of a spacer
+The row has a fixed height (`h-9` controls from the input scale in `components/ui/button.tsx`), and
+nothing appears or disappears as a visitor types. Only the chips change the box, and on first paint
+both sides of hydration agree on them: a page opened with `?height=` starts with the height chip, any
+other with none. That is why the pre-mount branch of `TabsWithHash` renders this same component
+instead of a spacer
 ([a streamed section owes the page its height](../rules/a-streamed-section-owes-the-page-its-height.md)):
-a placeholder would have to restate both, and be wrong about one. Its controls are live between paint
-and mount, and what they set survives into the mounted tree because the state lives in
-`useAttractionFilter`, above that branch.
+a placeholder would have to restate it, and the closed dialog renders nothing in either branch. Its
+controls are live between paint and mount, and what they set survives into the mounted tree because
+the state lives in `useAttractionFilter`, above that branch.

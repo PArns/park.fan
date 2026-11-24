@@ -86,6 +86,7 @@ export async function GET(request: NextRequest) {
           ? {
               crowdLevel: park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel,
               averageWaitTime: park.analytics?.statistics?.avgWaitTime,
+              updatedAt: park.analytics?.statistics?.updatedAt,
               operatingAttractions: park.analytics?.statistics?.operatingAttractions,
               totalAttractions: park.analytics?.statistics?.totalAttractions,
             }

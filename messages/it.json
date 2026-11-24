@@ -805,7 +805,6 @@
     "filterSection": {
       "title": "Restringi le attrazioni",
       "hint": "Mostra solo ciò che corrisponde alla tua scelta",
-      "searchLabel": "Ricerca",
       "todayLabel": "Oggi",
       "traitsLabel": "Caratteristiche",
       "openNow": "Aperto",
@@ -822,6 +821,8 @@
       "resetCovered": "Azzera il filtro al coperto",
       "openFilters": "Filtri",
       "activeCount": "{count, plural, one {# attivo} other {# attivi}}",
+      "resetAll": "Azzera tutto",
+      "showResults": "{count, plural, =0 {Nessun risultato} =1 {Mostra # attrazione} other {Mostra # attrazioni}}",
       "sortLabel": "Ordine",
       "sortLand": "Per area",
       "sortWait": "Attesa più breve",

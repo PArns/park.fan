@@ -1154,7 +1154,6 @@
     "filterSection": {
       "title": "Attraktionen eingrenzen",
       "hint": "Zeigt nur, was zu deiner Auswahl passt",
-      "searchLabel": "Suche",
       "todayLabel": "Heute",
       "traitsLabel": "Eigenschaften",
       "openNow": "Geöffnet",
@@ -1171,6 +1170,8 @@
       "resetCovered": "Überdacht-Filter zurücksetzen",
       "openFilters": "Filter",
       "activeCount": "{count} aktiv",
+      "resetAll": "Alle zurücksetzen",
+      "showResults": "{count, plural, =0 {Keine Treffer} =1 {# Attraktion anzeigen} other {# Attraktionen anzeigen}}",
       "sortLabel": "Reihenfolge",
       "sortLand": "Nach Bereich",
       "sortWait": "Kürzeste Wartezeit",

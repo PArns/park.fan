@@ -14,12 +14,12 @@ interface RideAlertsEntryButtonProps {
   parkName: string;
   attractions: RideAlertDialogAttraction[];
   /**
-   * `link` is the text link in `ParkTodayPanel`. `heading` is the button at the end of the
-   * attraction list's headliner heading (`LandSection`'s `action`), for a visitor who arrived
-   * from search and has not met the bell on a ride card; it carries what an alert does as its
-   * `title`. Both open the same dialog, so there is one way to set an alert.
+   * `link` is the text link in `ParkTodayPanel`. `bar` is the button at the end of the attraction
+   * list's filter bar (`AttractionFilterPanel`'s `actions`), for a visitor who arrived from search
+   * and has not met the bell on a ride card; it carries what an alert does as its `title`. Both
+   * open the same dialog, so there is one way to set an alert.
    */
-  variant?: 'link' | 'heading';
+  variant?: 'link' | 'bar';
   /** `hasReadableWaitTimes(park)` — see `RideAlertDialog`. */
   reopenAvailable: boolean;
 }
@@ -28,7 +28,7 @@ interface RideAlertsEntryButtonProps {
  * The central "manage wait-time alerts" entry point for this park, in two places: beside
  * `allAttractionsLink` in `ParkTodayPanel`'s headliner column rather than in the panel's own
  * tightly-measured header strip (see that file's own comment on why nothing new goes there), and
- * at the end of the attraction list's headliner heading.
+ * at the end of the attraction list's filter bar.
  */
 export function RideAlertsEntryButton({
   parkName,
@@ -59,16 +59,15 @@ export function RideAlertsEntryButton({
 
   return (
     <>
-      {variant === 'heading' ? (
+      {variant === 'bar' ? (
         <Button
           type="button"
           variant="outline"
-          size="sm"
           title={t('nudge')}
-          // `max-sm:h-8` takes the button off the scale's 44 px phone tier to fit the heading's
-          // 50 px phone line, where only the bell and the count are shown; `PHONE_HIT_AREA` keeps
-          // the reach at 44.
-          className={cn('bg-transparent max-sm:h-8 dark:bg-transparent', PHONE_HIT_AREA)}
+          // `max-sm:h-9` takes the button off the scale's 44 px phone tier to stand level with the
+          // bar's search field, where only the bell and the count are shown; `PHONE_HIT_AREA`
+          // keeps the reach at 44.
+          className={cn('shrink-0 bg-transparent max-sm:h-9 dark:bg-transparent', PHONE_HIT_AREA)}
           onClick={() => setOpen(true)}
         >
           {count > 0 ? (

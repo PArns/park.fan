@@ -76,7 +76,7 @@ dialog reads the park's ride list from `RideAlertParkProvider` (`live-park-data.
 with every poll ([a subscription lives in the leaf that shows
 it](../rules/a-subscription-lives-in-the-leaf-that-shows-it.md)). `RideAlertsEntryButton` opens the
 same dialog without a preselected ride, as a link in `ParkTodayPanel` and as a button at the end of
-the attraction list's headliner heading (`tabs-with-hash.tsx`).
+the attraction list's filter bar (`AttractionFilterPanel`'s `actions`, from `tabs-with-hash.tsx`).
 
 `RideAlertDialog` asks the server on every open (`fetchRideAlertsRemote`) and lists this park's
 alerts above the add form; a failed read is an error state, never "no alerts", or the form would

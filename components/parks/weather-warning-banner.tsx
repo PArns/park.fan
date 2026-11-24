@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   AlertTriangle,
@@ -18,28 +18,30 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { TitleRowToggle } from '@/components/parks/title-row-toggle';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { warningsInOpeningHours } from '@/lib/utils/warnings-in-opening-hours';
-import type { ParkWithAttractions, WeatherNowcast, WeatherWarning } from '@/lib/api/types';
+import type { ParkWithAttractions, WeatherWarning } from '@/lib/api/types';
 
 interface WeatherWarningBannerProps {
-  /** Live mode (park page): poll warnings via the shared nowcast query. */
-  continent?: string;
-  country?: string;
-  city?: string;
-  parkSlug?: string;
-  initialData?: WeatherNowcast | null;
-  /** Disable the polling query (e.g. on the /ui showcase). */
-  enabled?: boolean;
-  /** Static mode: render these warnings instead of querying (showcase/SSR). */
-  warnings?: WeatherWarning[];
-  /** The park's hours. Given, a warning that touches none of them is left out; see
-   *  `warningsInOpeningHours`. */
-  openingHours?: Pick<ParkWithAttractions, 'schedule' | 'nextSchedule'>;
+  /** The warnings to show; the park page takes them from {@link useParkWeatherWarnings}. */
+  warnings: WeatherWarning[];
   /** IANA timezone for formatting validity times (defaults to the viewer's). */
   timezone?: string;
+  /** Id of the list, for the toggle that opens it (`aria-controls`). */
+  id?: string;
+  /**
+   * The level of each warning's headline: 2 where the list opens the card, 3 under the card's own
+   * „Heute im Park" heading, so the outline never skips a level.
+   */
+  headingLevel?: 2 | 3;
+  /**
+   * Whether the cards open with their text shown: the list a press in the title row opened, where
+   * a second press for the text would be one too many.
+   */
+  openDetails?: boolean;
   className?: string;
 }
 
@@ -137,56 +139,141 @@ const SOURCE_LABEL: Record<string, string> = {
   meteogate: 'MeteoAlarm',
 };
 
+/** Severest first, the earlier of two equal ones first. */
+const bySeverity = (a: WeatherWarning, b: WeatherWarning): number =>
+  SEVERITY_RANK[severityKey(b.severity)] - SEVERITY_RANK[severityKey(a.severity)] ||
+  (a.onset ?? '').localeCompare(b.onset ?? '');
+
+/**
+ * Whether a warning is at the lowest awareness level, said in the park header's title row rather
+ * than as a strip across the card. Only an explicit „Minor": a warning without a severity keeps
+ * the strip, since nobody said it was harmless.
+ */
+export const isMinorWarning = (warning: WeatherWarning): boolean =>
+  (warning.severity ?? '').toLowerCase() === 'minor';
+
+/** A warning's texts in the page's language; DWD writes German, with an English copy. */
+function localizedWarning(warning: WeatherWarning, locale: string) {
+  const isDe = locale.startsWith('de');
+  const event = isDe ? warning.event : warning.eventEn || warning.event;
+  return {
+    event,
+    headline: (isDe ? warning.headline : warning.headlineEn || warning.headline) || event,
+    description: isDe ? warning.description : warning.descriptionEn || warning.description,
+    instruction: isDe ? warning.instruction : warning.instructionEn || warning.instruction,
+  };
+}
+
+interface ParkWeatherWarnings {
+  /** Moderate and up, severest first: the strip across the top of the card. */
+  major: WeatherWarning[];
+  /** Minor, earliest first: a line in the title row. */
+  minor: WeatherWarning[];
+}
+
+const NO_WARNINGS: ParkWeatherWarnings = { major: [], minor: [] };
+
+/**
+ * The park's official warnings (DWD, MeteoAlarm) that touch its opening hours, off the shared
+ * nowcast query, split by {@link isMinorWarning}. Empty until mounted: the warnings are live, and
+ * their validity is worded against `Date.now()`, so the server and the first client render agree on
+ * none.
+ */
+export function useParkWeatherWarnings({
+  continent,
+  country,
+  city,
+  parkSlug,
+  openingHours,
+}: {
+  continent: string;
+  country: string;
+  city: string;
+  parkSlug: string;
+  /** Given, a warning that touches none of the park's hours is left out (`warningsInOpeningHours`). */
+  openingHours?: Pick<ParkWithAttractions, 'schedule' | 'nextSchedule'>;
+}): ParkWeatherWarnings {
+  const mounted = useMounted();
+  const { data } = useWeatherNowcast({ continent, country, city, parkSlug, initialData: null });
+  const all = data?.warnings;
+
+  return useMemo(() => {
+    if (!mounted || !all?.length) return NO_WARNINGS;
+    const inHours = openingHours ? warningsInOpeningHours(all, openingHours) : all;
+    if (inHours.length === 0) return NO_WARNINGS;
+    const sorted = [...inHours].sort(bySeverity);
+    return {
+      major: sorted.filter((w) => !isMinorWarning(w)),
+      minor: sorted.filter(isMinorWarning),
+    };
+  }, [mounted, all, openingHours]);
+}
+
+/**
+ * The minor warnings as one line in the park header's title row: the first one's headline, and how
+ * many more there are. A press opens them under the row as a {@link WeatherWarningBanner}.
+ */
+export function MinorWarningToggle({
+  warnings,
+  expanded,
+  onToggle,
+  controls,
+  className,
+}: {
+  /** At least one; see {@link useParkWeatherWarnings}. */
+  warnings: WeatherWarning[];
+  expanded: boolean;
+  onToggle: () => void;
+  /** Id of the list the toggle opens. */
+  controls: string;
+  className?: string;
+}) {
+  const locale = useLocale();
+  const { event, headline } = localizedWarning(warnings[0], locale);
+  const more = warnings.length - 1;
+
+  return (
+    <TitleRowToggle
+      icon={EVENT_ICONS[eventIconKey(event)]}
+      tone={SEVERITY_STYLES.minor}
+      label={more > 0 ? `${headline} +${more}` : headline}
+      title={headline}
+      expanded={expanded}
+      onToggle={onToggle}
+      controls={controls}
+      className={className}
+    />
+  );
+}
+
 /**
  * Official weather warnings for a park (DWD, MeteoAlarm), severest first, one expandable card
- * each. Polls the shared nowcast query, or shows the `warnings` it is given; client only.
+ * each. Renders nothing until mounted, since the validity is worded against `Date.now()`.
  */
 export function WeatherWarningBanner({
-  continent = '',
-  country = '',
-  city = '',
-  parkSlug = '',
-  initialData = null,
-  enabled,
-  warnings: warningsProp,
-  openingHours,
+  warnings,
   timezone,
+  id,
+  headingLevel = 2,
+  openDetails = false,
   className,
 }: WeatherWarningBannerProps) {
   const locale = useLocale();
-
-  // Warnings are client-only (live query, or relative-time formatting via
-  // Date.now()). Render nothing until mounted so the server and the first client
-  // render agree (both empty) — otherwise the banner appearing only on the
-  // client is a hydration mismatch.
   const mounted = useMounted();
-
-  // Always call the hook (rules of hooks); gate it so static/showcase use skips
-  // the network. React Query dedupes this with the nowcast banner's query.
-  const { data } = useWeatherNowcast({
-    continent,
-    country,
-    city,
-    parkSlug,
-    initialData,
-    enabled: enabled ?? warningsProp === undefined,
-  });
-
-  const all = warningsProp ?? data?.warnings ?? initialData?.warnings ?? [];
-  const warnings = openingHours ? warningsInOpeningHours(all, openingHours) : all;
-  if (!mounted || warnings.length === 0) return null;
-
-  const tz = timezone ?? data?.park.timezone;
-  const sorted = [...warnings].sort(
-    (a, b) =>
-      SEVERITY_RANK[severityKey(b.severity)] - SEVERITY_RANK[severityKey(a.severity)] ||
-      (a.onset ?? '').localeCompare(b.onset ?? '')
-  );
+  const sorted = useMemo(() => [...warnings].sort(bySeverity), [warnings]);
+  if (!mounted || sorted.length === 0) return null;
 
   return (
-    <div className={cn('space-y-2', className)}>
+    <div id={id} className={cn('space-y-2', className)}>
       {sorted.map((w) => (
-        <WarningCard key={w.alertId} warning={w} locale={locale} timezone={tz} />
+        <WarningCard
+          key={w.alertId}
+          warning={w}
+          locale={locale}
+          timezone={timezone}
+          headingLevel={headingLevel}
+          openDetails={openDetails}
+        />
       ))}
     </div>
   );
@@ -196,19 +283,20 @@ function WarningCard({
   warning,
   locale,
   timezone,
+  headingLevel,
+  openDetails,
 }: {
   warning: WeatherWarning;
   locale: string;
   timezone?: string;
+  headingLevel: 2 | 3;
+  openDetails: boolean;
 }) {
   const t = useTranslations('parks.weatherWarnings');
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(openDetails);
 
-  const isDe = locale.startsWith('de');
-  const event = isDe ? warning.event : warning.eventEn || warning.event;
-  const headline = (isDe ? warning.headline : warning.headlineEn || warning.headline) || event;
-  const description = isDe ? warning.description : warning.descriptionEn || warning.description;
-  const instruction = isDe ? warning.instruction : warning.instructionEn || warning.instruction;
+  const { event, headline, description, instruction } = localizedWarning(warning, locale);
+  const Heading = headingLevel === 2 ? 'h2' : 'h3';
 
   const sev = severityKey(warning.severity);
   const styles = SEVERITY_STYLES[sev];
@@ -248,7 +336,7 @@ function WarningCard({
               className={cn('h-3.5 w-3.5 shrink-0', styles.iconColor)}
               aria-hidden="true"
             />
-            <h3 className="text-sm font-semibold">{headline}</h3>
+            <Heading className="text-sm font-semibold">{headline}</Heading>
             <span
               className={cn(
                 'rounded-full px-2 py-0.5 text-[11px] font-medium tracking-wide uppercase',

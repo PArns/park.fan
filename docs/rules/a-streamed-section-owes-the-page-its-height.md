@@ -42,7 +42,10 @@ client-only branch, a late query, a web font.
   `NowcastAlertToggle` (from `useNowcastAlert`) says it as one line in the today panel's fixed 45 px
   title row, and `NowcastAlertBanner` opens only on a press, which is not a layout shift
   (`hadRecentInput`). The toggle is `-my-[3px]` against its own padding and border so it never
-  grows that row.
+  grows that row. The official warnings at the lowest level, DWD's and MeteoAlarm's „Minor", take
+  the same way (`useParkWeatherWarnings`, `MinorWarningToggle`): one line in that row, the cards
+  under it on a press. Both toggles are one `TitleRowToggle`. Only moderate warnings and up still
+  come in as a strip across the top of the card.
 - **The geometry may not depend on data; the content may.** The header's "Auslastung heute" metric
   rendered only once it had a value, and every input deciding that lands after paint, so the band
   moved 340 → 419 px at 2 s. It is unconditional now, with a badge, a loading pill or an em dash in

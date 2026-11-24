@@ -16,7 +16,11 @@ import { useSeasonLabel } from './season-headline';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { ParkHolidayBand } from './park-holiday-row';
-import { WeatherWarningBanner } from './weather-warning-banner';
+import {
+  MinorWarningToggle,
+  useParkWeatherWarnings,
+  WeatherWarningBanner,
+} from './weather-warning-banner';
 import { NowcastAlertBanner, NowcastAlertToggle, useNowcastAlert } from './weather-nowcast-banner';
 import { NowcastCoveredRides, coveredRowsOf } from './nowcast-covered-rides';
 import { ParkTimeRange } from '@/components/common/park-time';
@@ -26,6 +30,7 @@ import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { LocalTime } from '@/components/ui/local-time';
 import { Progress } from '@/components/ui/progress';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
+import { parkPayloadHeadline, useParkHeadline } from '@/lib/hooks/use-park-headline';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
@@ -49,6 +54,14 @@ import type { ParkWithAttractions } from '@/lib/api/types';
 /** Rows the headliner and show columns ever show. The show column runs one short of the
  *  headliner column: its first row is the boxed "next up", which is taller than a plain row, so
  *  four show rows and six headliner rows come out at about the same height. */
+/**
+ * An official warning inside the card, squared off and full-bleed: across the top, or opened under
+ * the title row. `rounded-none` must also reach the banner's two absolutely positioned overlay
+ * layers, which carry their own `rounded-xl` and would show the panel through the corners.
+ */
+const WARNING_STRIP =
+  'space-y-0 rounded-none border-x-0 border-t-0 shadow-none [&_.rounded-xl]:rounded-none [&>div]:rounded-none';
+
 const HEADLINER_ROWS = 6;
 const SHOW_ROWS = 4;
 /** Below `sm` the headliner column is full width and stacked under everything else, so each row
@@ -137,6 +150,23 @@ export function ParkTodayPanel({
   if (alertOpen && !nowcastAlert) setAlertOpen(false);
   const alertBannerId = useId();
 
+  // The official warnings: moderate and up as a strip across the top of the card, minor ones as a
+  // line in the title row that opens them under it. A minor warning (frost overnight, a little
+  // black ice) is not worth a box above everything else on every page of the park.
+  const weatherWarnings = useParkWeatherWarnings({
+    continent,
+    country,
+    city,
+    parkSlug,
+    openingHours: initialData,
+  });
+  const minorWarnings = weatherWarnings.minor;
+  const [minorOpen, setMinorOpen] = useState(false);
+  if (minorOpen && minorWarnings.length === 0) setMinorOpen(false);
+  const minorWarningsId = useId();
+  /** Either warning in the title row takes the row over below `sm`. */
+  const rowAlert = nowcastAlert !== null || minorWarnings.length > 0;
+
   // Not `sched.livePark`: that is the raw `LiveParkSnapshot` projection, with no `isHeadliner` and
   // no `shows`. Seeded with `initialData`, the merge lays the snapshot over the full park, on the
   // same query key as <LiveParkData>, so it adds no request.
@@ -153,10 +183,14 @@ export function ParkTodayPanel({
   // they aggregate to a wall of zeros. See docs/rules/parks-we-cannot-read.md.
   const stats = waitsReadable ? park.analytics?.statistics : undefined;
   const occupancy = waitsReadable ? park.analytics?.occupancy : undefined;
+  // The Ø and the level as the newest reading on the page has them, so the panel says what the
+  // favourites band above it says.
+  const headline = useParkHeadline(park.id, parkPayloadHeadline(park));
   // `null` on a park whose feed has gone silent (see `hasReadableWaitTimes`, which cannot tell).
   const peakWait = stats?.peakWaitToday ?? 0;
-  const avgWait = stats?.avgWaitTime ?? 0;
-  const currentCrowd = stats?.crowdLevel ?? park.currentLoad?.crowdLevel ?? null;
+  const avgWait = stats ? (headline.avgWaitTime ?? 0) : 0;
+  const currentCrowd =
+    (stats ? headline.crowdLevel : undefined) ?? park.currentLoad?.crowdLevel ?? null;
   const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
   // A measured peak hour happened. An estimated one is a forecast for today, and the API sends it
   // for a day the park does not open as well.
@@ -396,17 +430,11 @@ export function ParkTodayPanel({
     // fragment, so the bands are direct children of that card and its `overflow-hidden` clips their
     // hairlines.
     <>
-      {/* The official severe-weather warning, the top strip. `rounded-none` must also reach the
-          banner's two absolutely positioned overlay layers, which carry their own `rounded-xl` and
-          would show the panel through the corners. */}
+      {/* The official warnings from moderate up, the top strip. */}
       <WeatherWarningBanner
-        continent={continent}
-        country={country}
-        city={city}
-        parkSlug={parkSlug}
-        initialData={null}
-        openingHours={initialData}
-        className="space-y-0 rounded-none border-x-0 border-t-0 shadow-none [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
+        warnings={weatherWarnings.major}
+        timezone={timezone}
+        className={WARNING_STRIP}
       />
 
       {/* Below `sm` the row is one line high and wraps only so a clock that does not fit beside the
@@ -424,7 +452,7 @@ export function ParkTodayPanel({
         <div
           className={cn(
             'flex shrink-0 items-center gap-2',
-            nowcastAlert && 'sr-only sm:not-sr-only sm:flex'
+            rowAlert && 'sr-only sm:not-sr-only sm:flex'
           )}
         >
           {/* A static dot, on purpose: an `animate-pulse` inside a card with `backdrop-filter`
@@ -494,6 +522,14 @@ export function ParkTodayPanel({
             controls={alertBannerId}
           />
         )}
+        {minorWarnings.length > 0 && (
+          <MinorWarningToggle
+            warnings={minorWarnings}
+            expanded={minorOpen}
+            onToggle={() => setMinorOpen((o) => !o)}
+            controls={minorWarningsId}
+          />
+        )}
         {/* Guarded on `currentTime`, not on the formatted string, which is an em dash before the
             clock mounts. The same guard covers the refetch spinner: this page is `force-dynamic`,
             and rendering it before mount would be a hydration mismatch. Below `sm` the clock gives
@@ -502,7 +538,7 @@ export function ParkTodayPanel({
           <span
             className={cn(
               'text-muted-foreground ml-auto flex shrink-0 items-center gap-2 text-xs tabular-nums',
-              nowcastAlert && 'hidden sm:flex'
+              rowAlert && 'hidden sm:flex'
             )}
           >
             {isFetching && (
@@ -530,6 +566,17 @@ export function ParkTodayPanel({
             <NowcastCoveredRides park={park} statsTarget={{ continent, country, city, parkSlug }} />
           )}
         </NowcastAlertBanner>
+      )}
+
+      {minorOpen && (
+        <WeatherWarningBanner
+          id={minorWarningsId}
+          warnings={minorWarnings}
+          timezone={timezone}
+          headingLevel={3}
+          openDetails
+          className={WARNING_STRIP}
+        />
       )}
 
       {/* -mr-px -mb-px + the wrapper's overflow-hidden clip the trailing hairlines, so the rules
@@ -746,9 +793,7 @@ export function ParkTodayPanel({
                   stats && avgWait > 0 ? (
                     <span className="text-muted-foreground text-xs whitespace-nowrap">
                       Ø{' '}
-                      <strong className="text-foreground font-bold tabular-nums">
-                        {stats.avgWaitTime}
-                      </strong>{' '}
+                      <strong className="text-foreground font-bold tabular-nums">{avgWait}</strong>{' '}
                       {tCommon('minutes')}
                     </span>
                   ) : null

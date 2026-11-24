@@ -224,12 +224,12 @@ export const TabsWithHash = memo(function TabsWithHash({
   const alertAttractions = useRideAlertParkAttractions();
   const waitsReadable = hasReadableWaitTimes(park);
   // Not for a park with no readable wait times, where an alert could never fire. Memoised so the
-  // headliner `LandSection` keeps its memo through a tab tap, which re-renders this component.
-  const headlinerAlertsAction = useMemo(
+  // filter bar keeps its memo through a tab tap, which re-renders this component.
+  const alertsAction = useMemo(
     () =>
       waitsReadable && alertAttractions && alertAttractions.length > 0 ? (
         <RideAlertsEntryButton
-          variant="heading"
+          variant="bar"
           parkName={park.name}
           attractions={alertAttractions as RideAlertDialogAttraction[]}
           reopenAvailable
@@ -255,6 +255,8 @@ export const TabsWithHash = memo(function TabsWithHash({
     isSearching,
     filteredAttractionsByLand,
     hasSearchResults,
+    shownAttractionCount,
+    resetFilters,
     flatAttractionsByWait,
     sortMode,
     setSortMode,
@@ -403,20 +405,16 @@ export const TabsWithHash = memo(function TabsWithHash({
     />
   );
 
-  // The REAL filter panel, not a spacer shaped like it.
-  //
-  // It used to be an `h-9` div, and that only worked while the row was one control tall: the
-  // panel has a height row whose size depends on whether the park publishes any rider limits,
-  // which is one more number to keep in sync than a comment can hold. Every prop it needs is
-  // derived from the park payload, so it renders identically on both sides of hydration and the
-  // ride list below cannot move. Its controls are live for the frame between paint and mount,
-  // and what they set survives into the mounted tree — the state lives in `useAttractionFilter`,
-  // above this branch.
+  // The REAL filter bar, not a spacer shaped like it: a page opened with `?height=` starts with a
+  // chip under the bar, one more height to keep in sync than a comment can hold. Every prop it
+  // needs is derived from the park payload, so it renders identically on both sides of hydration
+  // and the ride list below cannot move. Its controls are live for the frame between paint and
+  // mount, and what they set survives into the mounted tree — the state lives in
+  // `useAttractionFilter`, above this branch.
   //
   // No chapter heading above it, and that is deliberate: the tile in the row already says
   // „Attraktionen 40" and is the selected one of six. A band repeating the word 100 px under it
-  // is the same chapter opened twice. What is left of that band is the controls it carried, and
-  // they are one object now: search, rider height and the off-season toggle over one list.
+  // is the same chapter opened twice. The heading lives in the filter dialog.
   // Stable handlers, so `MemoAttractionFilterPanel` bails out of a render that changed nothing it
   // shows — a tile tap, a live poll. Every setter here is a `useState` setter and never changes.
   const toggleOffSeasonAttractions = useCallback(
@@ -443,10 +441,10 @@ export const TabsWithHash = memo(function TabsWithHash({
   const rideSearchFocus = useMemo(() => searchFieldFocusProps(rideSearch), [rideSearch]);
   useSettledQueryEvents(rideSearch, searchQuery, hasSearchResults || closedRideMatches.length > 0);
 
-  // "As of 14:35" for the rides: in the filter panel's heading, and on a phone a warning line of
-  // its own between the filters and the rides. Each carries its own subscription to the live
+  // "As of 14:35" for the rides: at the right end of the filter bar, and on a phone a warning line
+  // of its own between the filters and the rides. Each carries its own subscription to the live
   // query, so a poll re-renders that row and not the grid.
-  const freshness = (placement: 'heading' | 'phone') => (
+  const freshness = (placement: 'bar' | 'phone') => (
     <LiveDataFreshness
       park={park}
       todayIso={todayIso}
@@ -494,7 +492,10 @@ export const TabsWithHash = memo(function TabsWithHash({
       onToggleOnlyCovered={toggleOnlyCovered}
       sortMode={sortMode}
       onSortChange={setSortMode}
-      status={freshness('heading')}
+      shownCount={shownAttractionCount}
+      onResetFilters={resetFilters}
+      status={freshness('bar')}
+      actions={alertsAction}
     />
   );
 
@@ -559,7 +560,6 @@ export const TabsWithHash = memo(function TabsWithHash({
           todayIso={todayIso}
           parkName={park.name}
           standouts={standouts}
-          action={headlinerAlertsAction}
         />
       )}
 

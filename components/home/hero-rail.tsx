@@ -32,6 +32,7 @@ import {
   useHeroBrowseParks,
   type NearbySearchItem,
 } from '@/lib/hooks/use-hero-browse-parks';
+import { useRowHeadline } from '@/lib/hooks/use-park-headline';
 import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
 import {
   CROWD_DOT_CLASS,
@@ -289,7 +290,8 @@ function BreakFigure({ parkBreak }: { parkBreak: ParkBreak }) {
  * the day and time or its status. A popular park whose live data has not come yet leads to its
  * waits.
  */
-function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
+function BrowseCard({ item: row, href }: { item: NearbySearchItem; href: string }) {
+  const item = useRowHeadline(row);
   const t = useTranslations('nearby');
   const locale = useLocale();
   const tCommon = useTranslations('common');
