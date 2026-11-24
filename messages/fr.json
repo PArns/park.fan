@@ -805,7 +805,6 @@
     "filterSection": {
       "title": "Affiner les attractions",
       "hint": "N'affiche que ce qui correspond à votre choix",
-      "searchLabel": "Recherche",
       "todayLabel": "Aujourd'hui",
       "traitsLabel": "Caractéristiques",
       "openNow": "Ouvert",
@@ -822,6 +821,8 @@
       "resetCovered": "Réinitialiser le filtre à l’abri",
       "openFilters": "Filtres",
       "activeCount": "{count, plural, one {# actif} other {# actifs}}",
+      "resetAll": "Tout effacer",
+      "showResults": "{count, plural, =0 {Aucun résultat} =1 {Voir # attraction} other {Voir # attractions}}",
       "sortLabel": "Ordre",
       "sortLand": "Par zone",
       "sortWait": "Attente la plus courte",

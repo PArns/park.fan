@@ -1,6 +1,6 @@
 'use client';
 
-import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import type { ParkAttraction, ParkShow, ParkStatus } from '@/lib/api/types';
 import { isInSeason } from '@/lib/utils/season';
@@ -475,6 +475,26 @@ export function useAttractionFilter({
   );
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
+  /** The rides the grid lists, the number on the filter dialog's button. */
+  const shownAttractionCount = useMemo(
+    () => Object.values(filteredAttractionsByLand).reduce((n, list) => n + list.length, 0),
+    [filteredAttractionsByLand]
+  );
+
+  /**
+   * Every filter back to how the page opened, the search excepted: the query is in the field in
+   * front of the visitor, the rest is behind a button.
+   */
+  const resetFilters = useCallback(() => {
+    setRiderHeight(null);
+    setShowOffSeasonAttractions(false);
+    setOnlyOpen(false);
+    setWetMode(null);
+    setOnlyFastPass(false);
+    setOnlySingleRider(false);
+    setOnlyCovered(false);
+    setSortMode('land');
+  }, []);
 
   // The closed rides, searched with the grid's own options and its deferred term. None of the
   // pills or the rider height apply: they narrow the rides you can board today, and none of these
@@ -525,6 +545,8 @@ export function useAttractionFilter({
     isSearching,
     filteredAttractionsByLand,
     hasSearchResults,
+    shownAttractionCount,
+    resetFilters,
     flatAttractionsByWait,
     sortMode,
     setSortMode,

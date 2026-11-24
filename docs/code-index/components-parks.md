@@ -27,7 +27,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`attraction-filter-panel.tsx`](../../components/parks/attraction-filter-panel.tsx)
 
-- `AttractionFilterPanel` _component_: The attractions tab's filter panel: search, rider height, and the pills.
+- `AttractionFilterPanel` _component_: The attractions tab's filter bar: the search, a „Filter" button, and one chip per filter that is set.
 
 ### [`attraction-history-day.tsx`](../../components/parks/attraction-history-day.tsx)
 
@@ -255,7 +255,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`live-data-freshness.tsx`](../../components/parks/live-data-freshness.tsx)
 
-- `LiveDataFreshness` _component_: "As of 14:35" for the ride list, and a warning with a retry button when that is no longer current: in the filter panel's heading from `sm` up, as a line of its own on a phone only when there is a warning (see …
+- `LiveDataFreshness` _component_: "As of 14:35" for the ride list, and a warning with a retry button when that is no longer current: at the right end of the filter bar from `sm` up, as a line of its own on a phone only when there is a warning (see …
 
 ### [`live-nearby-parks.tsx`](../../components/parks/live-nearby-parks.tsx)
 
@@ -833,6 +833,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `TabsWithHash` _component_: Memoized: `LiveParkData` re-renders on every 5-min poll's `isFetching` flip, but all props here are shallow-stable when the underlying park data hasn't changed (`park`/`landNames`/ `attractionsByLand` come through `useMemo` in the parent), …
 
+### [`title-row-toggle.tsx`](../../components/parks/title-row-toggle.tsx)
+
+- `TitleRowToggle` _component_: A weather warning as one line in the park header's „Heute im Park" row, where the weather reading otherwise sits; a press opens the full warning under the row.
+- Types: `TitleRowToggleTone`
+
 ### [`today-wait-range.tsx`](../../components/parks/today-wait-range.tsx)
 
 - `TodayWaitRange` _component_: "Today min X min · max Y min" line under a live wait value — shared by the attraction live panel and the wait-time info card so the coloring and separator stay identical. Renders nothing when neither bound is known.
@@ -912,7 +917,7 @@ Static demo fixtures for the weather card showcase on the /ui style guide.
 
 ### [`weather-nowcast-banner.tsx`](../../components/parks/weather-nowcast-banner.tsx)
 
-- `NowcastAlertToggle` _component_: The warning as one line, in the park header's title row where the weather reading otherwise sits; a press opens the full `NowcastAlertBanner` under the row.
+- `NowcastAlertToggle` _component_: The rain warning as one line in the park header's title row (`TitleRowToggle`); a press opens the full `NowcastAlertBanner` under the row.
 - `NowcastAlertBanner` _component_: The full warning: heading, sentence, update countdown and the precipitation timeline — and, under them, whatever the host adds as `children` (the park page's covered rides).
 - `WeatherNowcastBanner` _component_: The banner on its own, for surfaces that show it outright (the /ui showcase, the guide page).
 - `useNowcastAlert` _hook_: The nowcast warning due right now, or `null`: the query, the clock, the pick and the wording, without the box. The park header's one-line toggle and the full banner both read it, so they cannot pick or word a warning differently.
@@ -931,7 +936,10 @@ Client on purpose: the demo windows are Date.now()-relative — evaluated in the
 
 ### [`weather-warning-banner.tsx`](../../components/parks/weather-warning-banner.tsx)
 
-- `WeatherWarningBanner` _component_: Official weather warnings for a park (DWD, MeteoAlarm), severest first, one expandable card each. Polls the shared nowcast query, or shows the `warnings` it is given; client only.
+- `MinorWarningToggle` _component_: The minor warnings as one line in the park header's title row: the first one's headline, and how many more there are. A press opens them under the row as a `WeatherWarningBanner`.
+- `WeatherWarningBanner` _component_: Official weather warnings for a park (DWD, MeteoAlarm), severest first, one expandable card each. Renders nothing until mounted, since the validity is worded against `Date.now()`.
+- `useParkWeatherWarnings` _hook_: The park's official warnings (DWD, MeteoAlarm) that touch its opening hours, off the shared nowcast query, split by `isMinorWarning`.
+- `isMinorWarning` _function_: Whether a warning is at the lowest awareness level, said in the park header's title row rather than as a strip across the card. Only an explicit „Minor": a warning without a severity keeps the strip, since nobody said it was harmless.
 
 ### [`weekday-forecast-hover.tsx`](../../components/parks/weekday-forecast-hover.tsx)
 

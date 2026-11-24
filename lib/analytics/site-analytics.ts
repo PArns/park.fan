@@ -432,6 +432,8 @@ export interface SiteEventMap {
   planner_shared_adopted: NoProps;
   /** Push for the plan switched on and accepted by the API. */
   planner_push_on: NoProps;
+  /** The park page's filter dialog opened from its „Filter" button; the park as entity. */
+  attraction_filters_opened: NoProps;
   attraction_filter_used: {
     filter:
       | 'open'

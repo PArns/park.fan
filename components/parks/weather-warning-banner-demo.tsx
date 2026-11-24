@@ -73,7 +73,7 @@ const DEMO_WARNINGS: WeatherWarning[] = [
 export function WeatherWarningBannerDemo() {
   return (
     <div className="min-h-[394px]">
-      <WeatherWarningBanner warnings={DEMO_WARNINGS} enabled={false} timezone="Europe/Berlin" />
+      <WeatherWarningBanner warnings={DEMO_WARNINGS} timezone="Europe/Berlin" headingLevel={3} />
     </div>
   );
 }

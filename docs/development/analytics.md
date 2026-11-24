@@ -142,6 +142,7 @@ the rule is on the call site, and `trackSiteEvent` says it too.
 | `planner_shared_opened`      | a shared plan's link opened and its answer arrived                                                                                                                  | `outcome` (ready, empty, missing, failed)                                                                                                                                                    |                       |
 | `planner_shared_adopted`     | a shared plan taken over into this browser                                                                                                                          | none                                                                                                                                                                                         |                       |
 | `planner_push_on`            | push for the plan switched on and accepted by the API                                                                                                               | none                                                                                                                                                                                         |                       |
+| `attraction_filters_opened`  | the park page's „Filter" button opens its dialog                                                                                                                    | none                                                                                                                                                                                         | the park              |
 | `attraction_filter_used`     | a park page filter switched **on**; the height slider on its first value                                                                                            | `filter`                                                                                                                                                                                     | the park              |
 | `covered_ride_opened`        | a ride opened from „Überdacht in der Nähe" in the rain banner                                                                                                       | none                                                                                                                                                                                         |                       |
 | `compass_viewed`             | once per page view, the first time the compass is on screen                                                                                                         | none                                                                                                                                                                                         |                       |
@@ -281,9 +282,11 @@ move. The wizard's steps, what goes in and out of a plan, the fit assistant, sha
 
 `filter` is the closed union `AttractionFilterName`: open, off_season, wet, fast_pass,
 single_rider, covered, height, sort_wait. The wet pill has three states and counts once, on the
-press that leaves „off"; the phone's chips only turn a filter off and count nothing. The park's UUID
-is the entity, handed down from `TabsWithHash` to the panel and, through `ParkHeightFilterContext`,
-to the second height slider in the „Mit Kindern" block. `pnpm test:umami-events` pins the funnel
+press that leaves „off"; the bar's chips only turn a filter off and count nothing. The pills sit in
+a dialog behind the bar's „Filter" button, which sends `attraction_filters_opened` on each opening,
+so against `attraction_filter_used` it says how many of those who look set something. The park's
+UUID is the entity, handed down from `TabsWithHash` to the panel and, through
+`ParkHeightFilterContext`, to the second height slider in the „Mit Kindern" block. `pnpm test:umami-events` pins the funnel
 and the simulated-visit skip.
 
 ### The in-park compass

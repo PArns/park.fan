@@ -2,15 +2,9 @@
 
 import { useMemo, type ReactNode } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import {
-  AlertTriangle,
-  ChevronDown,
-  CloudHail,
-  CloudLightning,
-  CloudRain,
-  Wind,
-} from 'lucide-react';
+import { AlertTriangle, CloudHail, CloudLightning, CloudRain, Wind } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { TitleRowToggle } from '@/components/parks/title-row-toggle';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { NowcastUpdateCountdown } from '@/components/parks/nowcast-update-countdown';
@@ -328,10 +322,8 @@ export function useNowcastAlert({
 }
 
 /**
- * The warning as one line, in the park header's title row where the weather reading otherwise sits;
- * a press opens the full {@link NowcastAlertBanner} under the row. `-my-[3px]` hands back the
- * pill's 6 px of padding and border, so it is exactly as tall as the row's own content and cannot
- * move the card when the nowcast lands.
+ * The rain warning as one line in the park header's title row ({@link TitleRowToggle}); a press
+ * opens the full {@link NowcastAlertBanner} under the row.
  */
 export function NowcastAlertToggle({
   alert,
@@ -348,33 +340,17 @@ export function NowcastAlertToggle({
   className?: string;
 }) {
   const styles = BANNER_STYLES[alert.kind];
-  const Icon = styles.icon;
   return (
-    <button
-      type="button"
-      onClick={onToggle}
-      aria-expanded={expanded}
-      aria-controls={controls}
+    <TitleRowToggle
+      icon={styles.icon}
+      tone={styles}
+      label={alert.body}
       title={alert.body}
-      className={cn(
-        'relative -my-[3px] flex max-w-full min-w-0 cursor-pointer items-center gap-1.5 rounded-full border py-0.5 pr-1.5 pl-2 text-sm font-medium transition-colors',
-        styles.border,
-        styles.bg,
-        styles.text,
-        'focus-visible:ring-primary hover:brightness-110 focus-visible:ring-2 focus-visible:outline-none',
-        className
-      )}
-    >
-      <Icon className={cn('h-4 w-4 shrink-0', styles.iconColor)} aria-hidden="true" />
-      <span className="min-w-0 truncate">{alert.body}</span>
-      <ChevronDown
-        className={cn(
-          'h-3.5 w-3.5 shrink-0 opacity-70 transition-transform',
-          expanded && 'rotate-180'
-        )}
-        aria-hidden="true"
-      />
-    </button>
+      expanded={expanded}
+      onToggle={onToggle}
+      controls={controls}
+      className={className}
+    />
   );
 }
 
