@@ -41,16 +41,18 @@ export const RopeDropHeadliners = memo(function RopeDropHeadliners({
 }: RopeDropHeadlinersProps) {
   const t = useTranslations('parks.ropeDropSection');
 
+  // A ride too cold to get wet is no pick, morning or evening. The flag comes with the live poll,
+  // while `headliners` is the render's, so the list follows the temperature through the day.
   const items = headliners
     .map((h) => {
       const attraction = attractions.find((a) => a.id === h.attractionId);
-      if (!attraction) return null;
+      if (!attraction || attraction.tooColdToGetWet) return null;
       return { ...h, href: attractionHref(attraction, parkPath) };
     })
     .filter((item): item is RopeDropHeadliner & { href: string } => item !== null);
 
   const eveningItems = attractions
-    .filter((a) => a.ropeDrop && isEveningBetter(a.ropeDrop))
+    .filter((a) => a.ropeDrop && !a.tooColdToGetWet && isEveningBetter(a.ropeDrop))
     .map((a) => ({
       id: a.id,
       name: a.name,

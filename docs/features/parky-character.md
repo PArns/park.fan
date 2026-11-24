@@ -145,7 +145,10 @@ over the stamp's edge there, so the card draws no still Parky beside the text.
     the park feels below 15 °C (`tooColdToGetWet`, PAR-1420). Its queue is short because nobody
     wants to sit wet in the cold, so it gets no stamp on the park page or the ride page
     (`standoutRides`, `RideNowPanel`), no walk-on line (`liveMoment`) and no hop for a drop
-    (`liveChange`). It stays a headliner; in the chat Parky names it with the reason. The poll
+    (`liveChange`). The park page also leaves it out of the rope-drop strip, morning and evening
+    picks (`RopeDropHeadliners`), and off the cards' rope-drop badge (`getRopeDrop` in
+    `attraction-card.tsx`): `ropeDropHeadliners` is the render's, up to a day old, so the page reads
+    the key itself. It stays a headliner; in the chat Parky names it with the reason. The poll
     sends the key as `null` once it warms up (`leanParkForLivePoll`), so the mark clears.
   - **On the park page's ride cards, only what stands out in the park**: „Walk-on!“ where the live
     wait is a walk-on as his line counts one (`isWalkOn`: 10 minutes or less, or Disney's posted 13) and the ride's `baseline` is at
