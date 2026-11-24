@@ -217,9 +217,11 @@
       "link": "Zo werkt de dagplanner"
     },
     "reading": {
-      "title": "Pretparknieuws en gidsen",
-      "lead": "Wie bouwt, wie sluit, wie is uitverkocht, en de gidsen die de afgelopen maand het meest gelezen zijn",
       "popularGuides": "Meest gelezen gidsen"
+    },
+    "trips": {
+      "title": "Een pretparkvakantie plannen",
+      "lead": "Een drukte-kalender voor elk park in de regio en een planner die je dagen indeelt, passend bij tickets en hotel"
     },
     "tour": {
       "live": {
@@ -4677,6 +4679,9 @@
         "calendar": "Orlando drukte-kalender",
         "calendarHint": "Welk park op welke dag, en een planner voor je hele reis"
       },
+      "home": {
+        "teaser": "Disney, Universal, SeaWorld, LEGOLAND en Busch Gardens, met de waterparken"
+      },
       "hub": {
         "title": "Orlando drukte-kalender",
         "monthTitle": "Orlando drukte-kalender {month}",
@@ -5049,6 +5054,9 @@
         "calendar": "Disneyland Californië drukte-kalender",
         "calendarHint": "Welk van de acht parken op welke dag het rustigst is, en een planner voor je reis"
       },
+      "home": {
+        "teaser": "Disneyland, Universal Studios Hollywood, Knott’s, Magic Mountain en San Diego"
+      },
       "hub": {
         "title": "Disneyland Californië drukte-kalender",
         "monthTitle": "Disneyland Californië drukte-kalender {month}",
@@ -5328,6 +5336,9 @@
         "area": "Tokio tot Osaka",
         "calendar": "Tokyo Disney & USJ drukte-kalender",
         "calendarHint": "Vijf parken dag voor dag, en een planner voor een reis langs meerdere steden"
+      },
+      "home": {
+        "teaser": "Tokyo Disney Resort, Fuji-Q Highland, LEGOLAND en Universal Studios Japan"
       },
       "hub": {
         "title": "Tokyo Disney & USJ drukte-kalender",
@@ -5654,6 +5665,9 @@
         "area": "Frankrijk",
         "calendar": "Drukte-kalender Disneyland Paris & Parc Astérix",
         "calendarHint": "Welk van de drie parken op welke dag, en waar je daarvoor overnacht"
+      },
+      "home": {
+        "teaser": "Disneyland Paris met zijn twee parken, en Parc Astérix op een uur rijden"
       },
       "hub": {
         "title": "Drukte-kalender Disneyland Paris & Parc Astérix",

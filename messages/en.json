@@ -217,9 +217,11 @@
       "link": "How the day planner works"
     },
     "reading": {
-      "title": "Theme park news and guides",
-      "lead": "Who’s building, who’s closing, who’s sold out, and the guides read most over the past month",
       "popularGuides": "Most read guides"
+    },
+    "trips": {
+      "title": "Plan a theme park trip",
+      "lead": "A crowd calendar for every park in the region, and a planner that fits them into your days around tickets and hotel"
     },
     "tour": {
       "live": {
@@ -4677,6 +4679,9 @@
         "calendar": "Orlando Crowd Calendar",
         "calendarHint": "Which park on which day, and a planner for your whole trip"
       },
+      "home": {
+        "teaser": "Disney, Universal, SeaWorld, LEGOLAND and Busch Gardens, water parks included"
+      },
       "hub": {
         "title": "Orlando Crowd Calendar",
         "monthTitle": "Orlando Crowd Calendar {month}",
@@ -5049,6 +5054,9 @@
         "calendar": "Disneyland & Universal Hollywood Crowd Calendar",
         "calendarHint": "Which of the eight parks is quietest on which day, and a planner for your trip"
       },
+      "home": {
+        "teaser": "Disneyland, Universal Studios Hollywood, Knott’s, Magic Mountain and San Diego"
+      },
       "hub": {
         "title": "Disneyland & Universal Hollywood Crowd Calendar",
         "monthTitle": "Disneyland & Universal Hollywood Crowd Calendar, {month}",
@@ -5328,6 +5336,9 @@
         "area": "Tokyo to Osaka",
         "calendar": "Tokyo Disney & USJ Crowd Calendar",
         "calendarHint": "Five parks day by day, and a planner for a trip across several cities"
+      },
+      "home": {
+        "teaser": "Tokyo Disney Resort, Fuji-Q Highland, LEGOLAND and Universal Studios Japan"
       },
       "hub": {
         "title": "Tokyo Disney & USJ Crowd Calendar",
@@ -5654,6 +5665,9 @@
         "area": "France",
         "calendar": "Disneyland Paris & Parc Astérix Crowd Calendar",
         "calendarHint": "Which of the three parks on which day, and where to stay for it"
+      },
+      "home": {
+        "teaser": "Disneyland Paris with both its parks, and Parc Astérix an hour’s drive away"
       },
       "hub": {
         "title": "Disneyland Paris & Parc Astérix Crowd Calendar",

@@ -45,8 +45,11 @@ export function HomeStop({
   block,
   className,
 }: {
-  /** The stop's `ChapterHeading variant="stop"`. */
-  heading: ReactNode;
+  /**
+   * The stop's `ChapterHeading variant="stop"`. A stacked stop whose content opens with headings of
+   * its own (the news board) leaves it out.
+   */
+  heading?: ReactNode;
   /**
    * More under the heading, in its column from a 1024 px page, where a tall content column would
    * leave that column empty; after the content below that. The heading no longer stays in view.
@@ -75,9 +78,11 @@ export function HomeStop({
       <section className={cn('px-4', className)} {...(block ? linkBlockAttributes(block) : {})}>
         {divider && <div aria-hidden="true" className={STOP_DIVIDER_CLASS} />}
         <div className={cn('container mx-auto', room)}>
-          <Reveal containsGlass className="mb-8 max-w-3xl sm:mb-10">
-            {heading}
-          </Reveal>
+          {heading && (
+            <Reveal containsGlass className="mb-8 max-w-3xl sm:mb-10">
+              {heading}
+            </Reveal>
+          )}
           {children}
         </div>
       </section>
