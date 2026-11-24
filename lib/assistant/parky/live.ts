@@ -21,7 +21,7 @@ export type LiveChange = 'down' | 'drop';
 export const LIVE_LIMITS = { walkOn: 10, queue: 60, drop: 20 } as const;
 
 /**
- * Whether a live standby wait is a walk-on: at or under `limit`, or Disney's posted 13
+ * Whether a live standby wait is a walk-on: at or under `limit`, or a posted 13
  * ({@link WALK_ON_WAIT_MINUTES}), the park's own sign for one, which sits above the limit.
  */
 export function isWalkOn(wait: number, limit: number = LIVE_LIMITS.walkOn): boolean {
