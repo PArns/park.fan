@@ -34,7 +34,7 @@ rideLinks:
 coverImage:
   src: /media/europa-park/madame-freudenreich-curiosites.jpg
   alt: 'Un dinosaure avec une écharpe tricotée, devant lui l’inscription « Brontosaurus EVA ».'
-  caption: 'Brontosaurus Eva habite Madame Freudenreich Curiosités, et cet hiver, la série animée tirée de l’attraction passe au Dino-Kino de l’Arène espagnole.'
+  caption: 'Brontosaurus Eva et son écharpe, dans Madame Freudenreich Curiosités.'
   credit: 'Patrick Arns'
 seo:
   title: 'Europa-Park en hiver 2026/27 : horaires et prix'
@@ -65,43 +65,43 @@ L’[Europa-Park](ref:europa-park?bare) ouvre son hiver le samedi 28 novembre et
 
 ## Les horaires
 
-La saison d’hiver dure jusqu’au samedi 9 janvier 2027. Le parc ouvre tous les jours à 11 h et ferme au plus tôt à 19 h. Les 24 et 25 décembre, il reste fermé. Si tu dors dans l’un des hôtels, tu entres avant l’ouverture normale et tu as droit à un jour en plus, le dimanche 10 janvier, où seuls les clients des hôtels et les invités passent l’entrée.
+La saison d’hiver dure jusqu’au samedi 9 janvier 2027. Le parc ouvre tous les jours à 11 h et ferme au plus tôt à 19 h. Les 24 et 25 décembre, il reste fermé. Notre [tour d’horizon de l’hiver 2026/27](/blog/parcs-attractions-hiver-2026) réunit les parcs ouverts ces deux jours-là. Si tu dors dans l’un des hôtels, tu entres avant l’ouverture normale et tu as droit à un jour en plus, le dimanche 10 janvier, où seuls les clients des hôtels et les invités passent l’entrée.
 
 ## Les nouveautés
 
 Le Winterland existe depuis l’hiver 2025. Il occupe le terrain de Traumatica, et on y entre par le quartier croate. Sa halle couverte, la WinterWunderWelt, a maintenant la place pour une disco pour enfants, une scène avec des spectacles, quelques boutiques et un espace de jeu où les adultes ont aussi le droit d’entrer.
 
-Pour l’aventure d’hiver DINO MATES, le parc a rempli l’Arène espagnole de châteaux gonflables en forme de dinosaures et de briques de construction XXL. Les parents ont droit à un salon où personne n’est obligé de sauter. Au Dino-Kino, les épisodes de « DINO MATES – Ferien bei Madame Freudenreich » passent toute la journée sur grand écran, la série animée que MACK Magic a tirée de l’attraction [Madame Freudenreich Curiosités](ref:europa-park/madame-freudenreich-curiosites) avec Edel Kids et KiKA.
+Pour l’aventure d’hiver DINO MATES, le parc a rempli l’Arène espagnole de châteaux gonflables en forme de dinosaures et de briques de construction XXL. Les parents ont droit à un salon où personne n’est obligé de sauter. Au Dino-Kino, les épisodes de la série animée « DINO MATES – Ferien bei Madame Freudenreich » passent toute la journée sur grand écran. MACK Magic l’a tirée de l’attraction [Madame Freudenreich Curiosités](ref:europa-park/madame-freudenreich-curiosites) avec Edel Kids et KiKA.
 
-Le nouveau spectacle sur glace s’appelle « Surpr´Ice presents Christmas Spirit ». Il dure 30 minutes et se joue à la patinoire du quartier grec dès le 25 novembre, quand HALLOWinter occupe encore le parc. Le parc n’a pas encore publié les horaires du spectacle sur glace et du cirque.
+Le nouveau spectacle sur glace s’appelle « Surpr´Ice presents Christmas Spirit ». Il dure 30 minutes et se joue à la patinoire du quartier grec dès le 25 novembre, quand HALLOWinter occupe encore le parc.
 
 ## Spectacles et lumières
 
 Sous le chapiteau du Winterland, « Monte Carlo Circus Festival meets Europa-Park » dure une heure, avec Wolf Fisher pour le présenter et les Flying Martini au trapèze volant.
 
-Dans le quartier croate, plus de 60 œuvres de l’exposition [« James Rizzi meets Rollercoasters »](/news/europa-park-exposition-james-rizzi) restent accrochées jusqu’au 9 janvier. Au même endroit, dès 17 h, un mapping 3D de trois minutes sur Nikola Tesla est projeté toutes les cinq minutes sur la façade de la gare de [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac). Dans le quartier français, l’[Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster) a droit à son propre mapping, « Miraculeux », toutes les demi-heures à partir de 17 h. S’y ajoutent « Everglow », le spectacle d’eau et de feu sur le lac Europa, les lumières de Magic Forest dans le parc historique du château et sur la pelouse du quartier autrichien, et « Season of Light », le spectacle de chant et de danse du Globe Theater. Le marché de Noël s’installe autour de la fontaine Europa et dans le parc historique du château Balthasar.
+Dans le quartier croate, plus de 60 œuvres de l’exposition [« James Rizzi meets Rollercoasters »](/news/europa-park-exposition-james-rizzi) restent accrochées jusqu’au 9 janvier. Au même endroit, dès 17 h, un mapping 3D de trois minutes sur Nikola Tesla est projeté toutes les cinq minutes sur la façade de la gare de [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac). Dans le quartier français, l’[Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster) a droit à son propre mapping, « Miraculeux », toutes les demi-heures à partir de 17 h. Sur le lac Europa, le parc présente « Everglow », un spectacle d’eau et de feu, au Globe Theater on chante et on danse dans « Season of Light », et Magic Forest illumine le parc historique du château et la pelouse du quartier autrichien. Le marché de Noël s’installe autour de la fontaine Europa et dans le parc historique du château Balthasar.
 
 ## Ce que coûte l’hiver
 
-En ligne, le billet journée adulte, dès 12 ans, coûte 67 € jusqu’au 22 décembre et 76 € à partir du 23. Les enfants de 4 à 11 ans et les seniors dès 60 ans paient de 56,50 à 65 € selon le jour, les plus petits entrent gratuitement. Aux caisses, chaque billet journée coûte 10 € de plus. Le billet du soir vaut à partir de 16 h et coûte 41,50 € pour un adulte jusqu’au 22 décembre, puis 47 €, sans supplément aux caisses. Les deux mappings ne commencent qu’à 17 h, le billet du soir suffit donc pour les voir. Moi, je viendrais avant le 23 décembre, tant que la journée coûte 67 € et pas encore 76 €.
+En ligne, le billet journée adulte, dès 12 ans, coûte 67 € jusqu’au 22 décembre et 76 € à partir du 23. Les enfants de 4 à 11 ans et les seniors dès 60 ans paient de 56,50 à 65 € selon le jour, les plus petits entrent gratuitement. Aux caisses, chaque billet journée coûte 10 € de plus. Le billet du soir vaut à partir de 16 h et coûte 41,50 € pour un adulte jusqu’au 22 décembre, puis 47 €, sans supplément aux caisses. Les deux mappings ne commencent qu’à 17 h, le billet du soir suffit donc pour les voir. Moi, je viendrais avant le 23 décembre et je dépenserais la différence au marché de Noël.
 
-Le parking visiteurs coûte 10 € par jour et ouvre à 9 h en hiver, les clients des hôtels se garent gratuitement devant leur hôtel. Si tu préfères passer la soirée assis, réserve le dîner-spectacle « The Grand Club » à l’Europa-Park Teatro, dès 152 € par personne : quatre plats, début à 19 h 30 et entrée au parc dès 17 h. Notre [tour d’horizon de l’hiver 2026/27](/blog/parcs-attractions-hiver-2026) rassemble les parcs ouverts à Noël et au Nouvel An.
+Le parking visiteurs coûte 10 € par jour et ouvre à 9 h en hiver, les clients des hôtels se garent gratuitement devant leur hôtel. Si tu préfères passer la soirée assis, réserve le dîner-spectacle « The Grand Club » à l’Europa-Park Teatro, dès 152 € par personne : quatre plats, début à 19 h 30 et entrée au parc dès 17 h.
 
 ## Ce qui roule et ce qui s’arrête
 
-En hiver aussi, [Silver Star](ref:europa-park/silver-star), [blue fire Megacoaster](ref:europa-park/blue-fire-megacoaster), [Wodan – Timburcoaster](ref:europa-park/wodan-timburcoaster), Voltron Nevera, Eurosat, [ARTHUR](ref:europa-park/arthur) et même le grand huit aquatique [Poseidon](ref:europa-park/water-rollercoaster-poseidon) tournent. [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), [Fjord-Rafting](ref:europa-park/fjord-rafting) et la [Tiroler Wildwasserbahn](ref:europa-park/tirol-log-flume) font une pause. Près du Fjord-Rafting, le parc installe le village d’hiver nordique avec une grande patinoire, où tu ne finiras mouillé qu’en tombant. Par verglas, neige, tempête ou grand froid, le parc peut fermer des attractions et des spectacles au dernier moment, alors regarde le matin sur la [page du parc](ref:europa-park) ce qui tourne.
+En hiver aussi, [Silver Star](ref:europa-park/silver-star), [blue fire Megacoaster](ref:europa-park/blue-fire-megacoaster), [Wodan – Timburcoaster](ref:europa-park/wodan-timburcoaster), Voltron Nevera, Eurosat, [ARTHUR](ref:europa-park/arthur) et même le grand huit aquatique [Poseidon](ref:europa-park/water-rollercoaster-poseidon) tournent. [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), [Fjord-Rafting](ref:europa-park/fjord-rafting) et la [Tiroler Wildwasserbahn](ref:europa-park/tirol-log-flume) font une pause. Près du Fjord-Rafting, le parc installe le village d’hiver nordique avec une grande patinoire, où tu ne finiras mouillé qu’en tombant. Par verglas, neige, tempête ou grand froid, le parc arrête aussi ces attractions et ces spectacles au dernier moment. Ce qui tourne le jour de ta visite, tu le vois le matin sur la [page du parc](ref:europa-park).
 
-L’énergie récupérée au freinage de la grande roue Bellevue, dans le quartier portugais, sert à éclairer et à chauffer ses 42 nacelles chauffables. Tes doigts gelés ont donc une adresse pour se réchauffer, dans une roue de 55 mètres de haut.
+Les 42 nacelles de la grande roue Bellevue, dans le quartier portugais, sont chauffées et éclairées avec l’énergie que la roue récupère en freinant. À 55 mètres de haut, tu peux enlever tes gants.
 
 ```ride-waits-widget rides=europa-park/silver-star|Silver Star;europa-park/blue-fire-megacoaster|blue fire Megacoaster;europa-park/wodan-timburcoaster|Wodan – Timburcoaster;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/eurosat-cancan-coaster|Eurosat – CanCan Coaster;europa-park/arthur|ARTHUR;europa-park/water-rollercoaster-poseidon|Poseidon;europa-park/euro-mir|Euro-Mir columns=peak,days
 
 ```
 
-[Euro-Mir](ref:europa-park/euro-mir) roule cet hiver pour la dernière fois. Le 9 janvier, dernier jour ouvert aux visiteurs à la journée, le parc lui dit au revoir avec un [événement](/news/europa-park-adieu-euro-mir), puis elle sera démontée. D’ici 2028, un quartier sur le thème de l’espace doit prendre sa place, avec un nouveau grand huit familial de MACK Rides. Je ne garderais pas mon dernier tour pour ce samedi-là, qui tombe déjà dans la catégorie de prix la plus chère.
+[Euro-Mir](ref:europa-park/euro-mir) roule cet hiver pour la dernière fois. Le 9 janvier, dernier jour ouvert aux visiteurs à la journée, le parc lui dit au revoir avec un [événement](/news/europa-park-adieu-euro-mir), puis elle sera démontée. D’ici 2028, un quartier sur le thème de l’espace doit prendre sa place, avec un nouveau grand huit familial de MACK Rides. Mon dernier tour, je le ferais avant le 23 décembre, et je laisserais le samedi des adieux à ceux qui viennent pour l’événement.
 
 ## Quand il y a moins de monde
 
-En hiver, le parc n’ouvre qu’à 11 h. Par quelle attraction commencer, notre [guide de l’Europa-Park](/blog/europa-park-temps-d-attente-conseils) te le dit, et le [calendrier d’affluence](ref:europa-park?calendar) montre à quel point chaque jour sera chargé.
+Le [calendrier d’affluence](ref:europa-park?calendar) montre pour chaque jour jusqu’au 9 janvier le monde attendu, et notre [guide de l’Europa-Park](/blog/europa-park-temps-d-attente-conseils) te dit par quelle attraction commencer à 11 h.
 
 ```best-days-widget slug=europa-park
 
