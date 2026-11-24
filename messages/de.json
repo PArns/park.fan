@@ -1813,6 +1813,7 @@
     "goToParkPage": "Zur Park-Seite",
     "nearestOpenBadge": "Nächster offen",
     "opens": "Öffnet",
+    "opensTodayAt": "Öffnet {when} <clock>({time} Uhr)</clock>",
     "opensOn": "Öffnet am",
     "opensIn": "Öffnet in",
     "closesIn": "Schließt in",

@@ -1,10 +1,14 @@
 import { getLocale, getTranslations } from 'next-intl/server';
-import { Leaf, Snowflake, Sprout } from 'lucide-react';
 import { ParkyBreakScene } from '@/components/assistant/parky/break-scene';
 import { cn } from '@/lib/utils';
-import { getRelativeTimeFormat } from '@/lib/utils/intl-format';
-import { formatParkDay, weeksUntil } from '@/lib/utils/park-day';
-import { parkBreakOf, type ParkBreakFields, type ParkBreakScene } from '@/lib/utils/park-break';
+import { formatParkDay } from '@/lib/utils/park-day';
+import { formatBreakCountdown, parkBreakOf, type ParkBreakFields } from '@/lib/utils/park-break';
+import {
+  PARK_BREAK_BORDER_CLASS,
+  PARK_BREAK_ICON,
+  PARK_BREAK_KICKER_CLASS,
+  PARK_BREAK_PILL_CLASS,
+} from '@/components/parks/park-break-style';
 
 /** The reopening as the headline writes it: weekday, day, month and year. */
 const REOPENING_DAY: Intl.DateTimeFormatOptions = {
@@ -12,13 +16,6 @@ const REOPENING_DAY: Intl.DateTimeFormatOptions = {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
-};
-
-/** The kicker's icon, after the picture beside it. */
-const SCENE_ICON: Record<ParkBreakScene, typeof Snowflake> = {
-  winter: Snowflake,
-  autumn: Leaf,
-  spring: Sprout,
 };
 
 interface ParkBreakPanelProps {
@@ -40,8 +37,9 @@ interface ParkBreakPanelProps {
  * `NoLiveWaitTimesNotice` sits, because it answers the question the empty live panel raises.
  *
  * A server component with no client code: the break is decided on the server from the park's own
- * day, so the panel is in the first HTML at its full height and never moves the page, and its
- * strings live in their own namespace that never reaches the browser (`parks` does).
+ * day, so the panel is in the first HTML at its full height and never moves the page. Its strings
+ * live in their own namespace, which reaches the browser on the homepage only, where the hero's
+ * park cards draw a break too (`HeroRail`).
  *
  * Below `sm` the picture is a framed banner over the text; from `sm` it reaches the panel's top,
  * right and bottom edge and fades into the glass to its left, like the guide in a title card
@@ -60,19 +58,17 @@ export async function ParkBreakPanel({
   const [t, locale] = await Promise.all([getTranslations('parkBreak'), getLocale()]);
   const { reopensOn, daysUntil, winter, scene } = parkBreak;
   const day = formatParkDay(locale, reopensOn, REOPENING_DAY);
-  const countdown = getRelativeTimeFormat(locale, { numeric: 'always' }).format(
-    weeksUntil(daysUntil),
-    'week'
-  );
+  const countdown = formatBreakCountdown(locale, daysUntil);
   const date = (chunks: React.ReactNode) => <time dateTime={reopensOn}>{chunks}</time>;
-  const Icon = SCENE_ICON[scene];
+  const Icon = PARK_BREAK_ICON[scene];
 
   return (
     <section
       role="note"
       data-nosnippet
       className={cn(
-        'relative overflow-hidden rounded-xl border border-yellow-500/50 shadow-sm dark:border-yellow-300/35',
+        'relative overflow-hidden rounded-xl border shadow-sm',
+        PARK_BREAK_BORDER_CLASS,
         className
       )}
     >
@@ -90,7 +86,7 @@ export async function ParkBreakPanel({
           className="aspect-[2/1] w-full rounded-lg shadow-sm ring-1 ring-white/70 sm:aspect-auto sm:min-h-44 sm:w-80 sm:shrink-0 sm:rounded-none sm:[mask-image:linear-gradient(to_right,transparent,black_35%)] sm:shadow-none sm:ring-0 lg:min-h-52 lg:w-[26rem] dark:ring-white/10"
         />
         <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 px-2 pb-2 sm:py-6 sm:pr-0 sm:pl-6">
-          <p className="flex items-center gap-1.5 text-xs font-bold tracking-[0.08em] text-amber-800 uppercase dark:text-yellow-300">
+          <p className={PARK_BREAK_KICKER_CLASS}>
             <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
             {t(winter ? 'label.winter' : 'label.season')}
           </p>
@@ -99,9 +95,7 @@ export async function ParkBreakPanel({
             {t.rich(scope === 'park' ? 'reopensPark' : 'reopensRide', { day, date })}
           </p>
           <p>
-            <span className="inline-flex items-center rounded-full bg-yellow-300/70 px-2.5 py-0.5 text-xs font-semibold text-amber-950 ring-1 ring-yellow-600/30 dark:bg-yellow-400/20 dark:text-yellow-100 dark:ring-yellow-300/30">
-              {countdown}
-            </span>
+            <span className={PARK_BREAK_PILL_CLASS}>{countdown}</span>
           </p>
           <p className="text-foreground/80 text-sm leading-relaxed">
             {scope === 'park' ? t('park') : t('ride', { ride: rideName ?? '' })}{' '}

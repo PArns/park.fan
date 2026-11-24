@@ -358,6 +358,8 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 ### [`park-break.ts`](../../lib/utils/park-break.ts)
 
 - `parkBreakOf` _function_: Whether the park is in a break on `todayIso`, and until when: shut today by the schedule, the next opening known and at least `OFFSEASON_MIN_DAYS` away.
+- `parkBreakUntil` _function_: The break of a park shut on `todayIso` that opens again on `reopensOn`, both park-local days, or `null` when that is under `OFFSEASON_MIN_DAYS` away or unknown.
+- `formatBreakCountdown` _function_: How long a break has left, in whole weeks rounded up („in 18 Wochen"): the park page's panel and the hero's park cards say it alike.
 - `WINTER_BREAK_MIN_DAYS` _const_: How many days of a closure have to fall in the park's winter before it is the winter break.
 - Types: `ParkBreakScene`, `ParkBreak`, `ParkBreakFields`
 

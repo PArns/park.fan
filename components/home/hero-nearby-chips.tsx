@@ -5,11 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useHeroStatusLabels } from '@/lib/hooks/use-hero-status-labels';
-import {
-  useBrowseHeading,
-  useHeroBrowseParks,
-  type NearbySearchItem,
-} from '@/lib/hooks/use-hero-browse-parks';
+import { useHeroBrowseParks, type NearbySearchItem } from '@/lib/hooks/use-hero-browse-parks';
 import { nearbyShortWaits } from '@/lib/home/hero-browse';
 import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
 import { CROWD_DOT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
@@ -29,11 +25,12 @@ const ROW_CLASS =
   '-mx-4 -my-1 flex snap-x scroll-px-4 gap-2 overflow-x-auto px-4 py-1 [mask-image:linear-gradient(to_right,#000_calc(100%-1.5rem),transparent)] [scrollbar-width:none] md:mx-0 md:scroll-px-0 md:px-0 [&::-webkit-scrollbar]:hidden';
 
 /**
- * A chip on the photo: its own glass, since the foot scrim is thin this high up. 28 px on a phone,
- * where the gap it floats in is narrower, 32 px from `md`.
+ * A chip on the photo: its own glass and a fine border, since the foot scrim is thin this high up
+ * and a chip's edge would otherwise run into the photo. 28 px on a phone, where the gap it floats in
+ * is narrower, 32 px from `md`.
  */
 const CHIP_CLASS =
-  'border-border/60 bg-background/70 flex h-7 shrink-0 items-center gap-1.5 rounded-full border px-2.5 text-xs leading-none shadow-sm backdrop-blur-md md:h-8 md:px-3 md:text-[13px]';
+  'border-foreground/25 bg-background/70 flex h-7 shrink-0 items-center gap-1.5 rounded-full border px-2.5 text-xs leading-none shadow-sm backdrop-blur-md md:h-8 md:px-3 md:text-[13px]';
 
 /**
  * A park as a chip: a dot in its crowd colour, its name and, while it is open, its average wait;
@@ -55,7 +52,7 @@ function ParkChip({ item, href }: { item: NearbySearchItem; href: string }) {
       title={!open ? item.statusLabel : undefined}
       className={cn(
         CHIP_CLASS,
-        'hover:border-foreground/25 hover:bg-background/90 transition-colors'
+        'hover:border-foreground/45 hover:bg-background/90 transition-colors'
       )}
     >
       <span
@@ -84,6 +81,8 @@ function ParkChip({ item, href }: { item: NearbySearchItem; href: string }) {
  * The nearest parks as a row of chips under the hero's search field, each with its average wait
  * while it is open: the same list and order as the search's pre-query list (`useHeroBrowseParks`,
  * open parks first, then by distance), so it costs no request of its own. In a park it is that park.
+ * Its `<nav>` has a name of its own: the list's heading („Beliebte Parks" without a position) is
+ * already the name of the popular parks' `<nav>` further down the page.
  *
  * Only while the card rail under it shows rides (the short waits, or the rides of the park the
  * visitor stands in): when the rail shows parks itself, the chips would repeat its cards. That is
@@ -96,7 +95,7 @@ export function HeroNearbyChips() {
   const mounted = useMounted();
   const browse = useHeroBrowseParks();
   const { data: nearby } = useHomeNearbyParks();
-  const heading = useBrowseHeading(browse);
+  const tNearby = useTranslations('nearby');
   const withStatusLabels = useHeroStatusLabels();
   // The rail's own test (`HeroRail`): until mount it is a skeleton, after it short waits or rows.
   const pending = !mounted || browse.isPending;
@@ -117,7 +116,7 @@ export function HeroNearbyChips() {
     // `h-0`: the row's room is the gap under the field, which every state of the hero has.
     <div className="relative h-0">
       <nav
-        aria-label={heading}
+        aria-label={tNearby('nearbyParks')}
         {...linkBlockAttributes('nearby')}
         className={cn(
           'absolute inset-x-0 top-2 transition-[opacity,visibility] duration-300 md:top-3 starting:opacity-0',

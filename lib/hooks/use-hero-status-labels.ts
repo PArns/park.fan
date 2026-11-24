@@ -2,7 +2,10 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
+import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { formatClockTime } from '@/lib/utils/intl-format';
+import { parkBreakUntil } from '@/lib/utils/park-break';
+import { parkDayOf } from '@/lib/utils/park-day';
 import {
   formatParkOpening,
   formatParkOpeningCountdown,
@@ -31,6 +34,8 @@ export function useParkOpeningLabel(): (opening: ParkOpening, timeZone: string) 
  * on the minute clock) in place of „Geschlossen", and how far off it is („morgen, 10:00 Uhr",
  * „Samstag, 10:00 Uhr") for a row wide enough to show it. A day-away countdown carries the clock
  * time, since „morgen" alone doesn't say when to set off. A park with no opening ahead keeps „Geschlossen".
+ * A park opening later today also gets the clock time (`opensTodayAt`), and one whose next opening
+ * is a week or more away its break (`parkBreak`), for the card rail.
  * The hero's own hook, not the browse hook's: `parks` ships with the homepage, and the palette,
  * which every page carries, would pull the whole namespace into the chrome.
  */
@@ -39,6 +44,10 @@ export function useHeroStatusLabels(): (items: NearbySearchItem[]) => NearbySear
   const openingLabel = useParkOpeningLabel();
   const nowMs = useMinuteNow();
   const locale = useLocale();
+  // The nearby answer carries no coordinates, and its parks lie around the visitor, so the
+  // visitor's latitude decides a winter break for them; without a position every break is the
+  // season's („Saisonpause"), which a winter break also is.
+  const latitude = useGeolocation().position?.lat ?? null;
   const countdownStrings: ParkOpeningCountdownStrings = {
     inDays: (count) => tParks('opensInDays', { count }),
     inHours: (time) => tParks('opensInHours', { time }),
@@ -61,15 +70,22 @@ export function useHeroStatusLabels(): (items: NearbySearchItem[]) => NearbySear
         item.timezone,
         locale
       );
+      const time = formatClockTime(opening.at, locale, item.timezone);
+      const parkBreak = opening.today
+        ? null
+        : parkBreakUntil(
+            parkDayOf(nowMs, item.timezone),
+            parkDayOf(new Date(opening.at), item.timezone),
+            latitude
+          );
       return {
         ...item,
         statusLabel: openingLabel(opening, item.timezone),
         statusCountdown: opening.today
           ? countdown
-          : tParks('opensCountdownAt', {
-              when: countdown,
-              time: formatClockTime(opening.at, locale, item.timezone),
-            }),
+          : tParks('opensCountdownAt', { when: countdown, time }),
+        opensTodayAt: opening.today ? time : undefined,
+        parkBreak: parkBreak ?? undefined,
       };
     });
 }

@@ -144,7 +144,8 @@ the next opening as the tooltip.
   repeat its cards, so they fade out (`invisible opacity-0`, kept mounted).
 - **The search list's parks, in its order**: `useHeroBrowseParks`, open parks first, then by
   distance, so the chips cost no request of their own. In a park it is that park alone. The row's
-  `<nav>` is named like the list (`useBrowseHeading`).
+  `<nav>` is always „Parks in deiner Nähe" (`nearby.nearbyParks`), not the list's heading: without a
+  position that would be „Beliebte Parks", the name of the popular parks' `<nav>` further down.
 - **It takes no room.** Whether the rail shows rides is decided by the nearby answer, after load, so
   the row floats (`h-0`, absolute) in the gap under the field, over the empty top of the rail's
   44 px heading row, and fades in and out without moving anything. 8 px under the field and 10 px
@@ -153,6 +154,7 @@ the next opening as the tooltip.
   1280 px; under it the row has the rail's width. Where five do not fit (a phone, a tablet, long
   names of shut parks) it scrolls sideways, to the screen's edges on a phone like the rail, and its
   right edge fades.
+- **Glass and a fine border** (`border-foreground/25`), so a chip's edge does not run into the photo.
 - **The crowd level is in the text too** (`sr-only`), for a reader who cannot tell the dots apart.
   Clicks count with block `nearby`, like the rail's.
 
@@ -169,14 +171,25 @@ that scrolls sideways with the next card in view. What it shows, in order:
 | Inside a park                         | „Du bist in …"                       | the park's rides with their waits                         |
 | No position and no GeoIP answer       | „Beliebte Parks"                     | the reader's language's most viewed parks                 |
 
-- **A short-wait card** shows the ride's own photo, „35 Min kürzer" (usual minus now) on it, the
-  wait as the biggest figure and a bar of the wait against the usual one; the bar and „jetzt" take the
-  wait's crowd colour (`waitTimeCrowdTier`). The API picks the rides and says nothing when there are
+- **A short-wait card** shows the ride's own photo, „35 Min kürzer" (usual minus now) on it on a
+  blurred badge, since the badge's fill is translucent and the photo busy, the wait as the biggest
+  figure and a bar of the wait against the usual one; the bar and „jetzt" take the wait's crowd
+  colour (`waitTimeCrowdTier`). The API picks the rides and says nothing when there are
   none, which is every evening and the whole off-season (contract in the API's
   [discovery](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/discovery.md#shortwaits)).
 - **A park card** shows the park's average wait while it is open with one badge under it, the crowd
-  level (its average already says it is open); shut, its status as the figure („Öffnet am 6.
-  November"). A popular park carries no live data, so its figure leads to its waits.
+  level (its average already says it is open). Shut, the figure says when it opens, on up to two
+  lines (`SHUT_FIGURE_CLASS`):
+  - later today, in green with the clock time: „Öffnet in 5:27 Stunden (08:00 Uhr)"
+    (`nearby.opensTodayAt`, the time in `opensTodayAt` from `useHeroStatusLabels`);
+  - in a break, a week or more away, as the park page's panel says it: „Winterpause" or
+    „Saisonpause" with its icon, „Öffnet wieder am 25. März", the weeks left as a yellow pill at the
+    foot and the panel's yellow edge ([break panel](park-break-panel.md#on-the-homepages-park-cards));
+  - otherwise the day and time („Öffnet Samstag, 10:00 Uhr"), or the status („Geschlossen") where no
+    opening is known, which is also where the park page shows no break.
+
+  A popular park carries no live data, so its figure leads to its waits.
+
 - **Photos**: a ride gets only its own, never the park's (`withRideCardImage`); without one it gets
   the brand cover (`BlogCoverFallback`). `withNearbyCardImages` attaches them to the short waits and
   the in-park rides, `/api/parks/popular` to the popular parks.
