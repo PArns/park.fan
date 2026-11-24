@@ -116,6 +116,41 @@
   }
 }
 
+/*
+ * A picture fading into the glass beside it over the given share of its box: from its left edge
+ * (`photo-fade-left-36%`) or towards its foot (`photo-fade-foot-28%`). The stops follow a
+ * smoothstep curve instead of a straight line: a linear ramp starts and ends abruptly, and the eye
+ * reads both ends as an edge.
+ */
+@utility photo-fade-mask {
+  mask-image: linear-gradient(
+    var(--photo-fade-towards),
+    transparent,
+    rgb(0 0 0 / 0.03) calc(var(--photo-fade) * 0.1),
+    rgb(0 0 0 / 0.1) calc(var(--photo-fade) * 0.2),
+    rgb(0 0 0 / 0.22) calc(var(--photo-fade) * 0.3),
+    rgb(0 0 0 / 0.35) calc(var(--photo-fade) * 0.4),
+    rgb(0 0 0 / 0.5) calc(var(--photo-fade) * 0.5),
+    rgb(0 0 0 / 0.65) calc(var(--photo-fade) * 0.6),
+    rgb(0 0 0 / 0.78) calc(var(--photo-fade) * 0.7),
+    rgb(0 0 0 / 0.9) calc(var(--photo-fade) * 0.8),
+    rgb(0 0 0 / 0.97) calc(var(--photo-fade) * 0.9),
+    black var(--photo-fade)
+  );
+}
+
+@utility photo-fade-left-* {
+  --photo-fade: --value(percentage);
+  --photo-fade-towards: to right;
+  @apply photo-fade-mask;
+}
+
+@utility photo-fade-foot-* {
+  --photo-fade: --value(percentage);
+  --photo-fade-towards: to top;
+  @apply photo-fade-mask;
+}
+
 @utility container {
   width: 100%;
 

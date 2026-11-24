@@ -87,7 +87,7 @@ export async function ParkBreakPanel({
       <div className="relative flex flex-col gap-3 p-3 sm:flex-row-reverse sm:items-stretch sm:gap-0 sm:p-0">
         <ParkyBreakScene
           scene={scene}
-          className="aspect-[2/1] w-full rounded-lg shadow-sm ring-1 ring-white/70 sm:aspect-auto sm:min-h-44 sm:w-80 sm:shrink-0 sm:rounded-none sm:[mask-image:linear-gradient(to_right,transparent,black_35%)] sm:shadow-none sm:ring-0 lg:min-h-52 lg:w-[26rem] dark:ring-white/10"
+          className="sm:photo-fade-left-45% aspect-[2/1] w-full rounded-lg shadow-sm ring-1 ring-white/70 sm:aspect-auto sm:min-h-44 sm:w-80 sm:shrink-0 sm:rounded-none sm:shadow-none sm:ring-0 lg:min-h-52 lg:w-[26rem] dark:ring-white/10"
         />
         <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 px-2 pb-2 sm:py-6 sm:pr-0 sm:pl-6">
           <p className="flex items-center gap-1.5 text-xs font-bold tracking-[0.08em] text-amber-800 uppercase dark:text-yellow-300">

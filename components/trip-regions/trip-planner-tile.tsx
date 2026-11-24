@@ -46,8 +46,7 @@ type TilePhoneLayout = 'banner' | 'row';
  * larger from `xl`, where the card is wide enough to leave the text a column of its own. The box is
  * the scene's reservation, so the lazy scene moves nothing when it arrives.
  */
-const SCENE_BOX =
-  'relative shrink-0 sm:w-80 sm:[mask-image:linear-gradient(to_right,transparent,black_38%)] lg:w-[26rem] xl:w-[30rem]';
+const SCENE_BOX = 'relative shrink-0 sm:w-80 sm:photo-fade-left-45% lg:w-[26rem] xl:w-[30rem]';
 
 /**
  * The phone's half of each layout: a 2 : 1 banner that fades out at its foot, or a 96 px cut at
@@ -57,8 +56,7 @@ const SCENE_BOX =
 const PHONE = {
   banner: {
     card: 'flex-col sm:flex-row-reverse',
-    scene:
-      'aspect-[2/1] w-full [mask-image:linear-gradient(to_bottom,black_72%,transparent)] sm:aspect-auto',
+    scene: 'aspect-[2/1] w-full photo-fade-foot-28% sm:aspect-auto',
     text: 'gap-1.5 px-4 pb-5',
     heading: 'text-2xl',
     line: '',
@@ -68,7 +66,7 @@ const PHONE = {
   },
   row: {
     card: 'flex-row-reverse',
-    scene: 'w-24 [mask-image:linear-gradient(to_right,transparent,black_30%)]',
+    scene: 'w-24 photo-fade-left-30%',
     text: 'gap-1 py-3 pl-4',
     heading: 'text-lg',
     line: 'max-sm:hidden',
