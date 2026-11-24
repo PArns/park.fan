@@ -69,3 +69,31 @@ export function parseWidgetRideRef(raw: string): { parkKey: string; rideSlug: st
   if (parts.length !== 2) return null;
   return { parkKey: parts[0], rideSlug: parts[1] };
 }
+
+/**
+ * A widget fence's attributes: `key=value` pairs on the fence line (unquoted values keep their
+ * spaces up to the next ` key=`), then `key: value` lines inside the fence.
+ */
+export function parseWidgetAttrs(line: string | undefined, body: string): Record<string, string> {
+  const out: Record<string, string> = {};
+  const consume = (input: string) => {
+    // Unquoted values run until the next ` key=` token or end of line, so a
+    // bare `heading=A few moments from the trip` keeps its spaces instead of
+    // collapsing to just "A". Quoted values win when present.
+    const re =
+      /([a-zA-Z][a-zA-Z0-9_-]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|(.+?))(?=\s+[a-zA-Z][a-zA-Z0-9_-]*\s*=|\s*$)/g;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(input)) !== null) {
+      out[m[1]] = (m[2] ?? m[3] ?? m[4] ?? '').trim();
+    }
+  };
+  if (line) consume(line);
+  // Also accept attrs as `key: value` lines inside the fence.
+  for (const ln of body.split(/\r?\n/)) {
+    const m = ln.match(/^\s*([a-zA-Z][a-zA-Z0-9_-]*)\s*[:=]\s*(.+?)\s*$/);
+    if (m) {
+      out[m[1]] = m[2].replace(/^['"]|['"]$/g, '');
+    }
+  }
+  return out;
+}

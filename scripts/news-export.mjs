@@ -3,6 +3,7 @@
 // site's own loaders. A cover or inline photo the card export does not hold yet is added to
 // `chosen`, so it is uploaded like any other photo.
 import { SITE_URL, locales } from '../i18n/config.ts';
+import { resolveAuthor } from '../lib/blog/authors.ts';
 import { BLOG_POSTS_META } from '../lib/blog/manifest.ts';
 import { getParkSlugsOfPost, getNewsParkRef } from '../lib/blog/backlinks.ts';
 import { parseRefKey } from '../lib/blog/derive.mjs';
@@ -46,6 +47,29 @@ function parksOf(translationKey) {
   return { parks: [...new Set(paths.filter(Boolean))], parkSlugs: slugs };
 }
 
+/** The byline as the article header shows it: short name, role and the avatar's absolute URL. */
+function authorOf(key, locale) {
+  const a = resolveAuthor(key, locale);
+  return {
+    name: a.shortName ?? a.name,
+    role: a.role ?? null,
+    avatar: a.avatar ? `${SITE_URL}${a.avatar}` : null,
+  };
+}
+
+/** The rides a post lists in `rideLinks`, as `<park geo path>/<ride slug>` where the park is known. */
+function ridesOf(rideLinks) {
+  const out = [];
+  for (const raw of Array.isArray(rideLinks) ? rideLinks : []) {
+    const { kind, key, geoPath } = parseRefKey(raw);
+    if (kind !== 'ride') continue;
+    const [parkSlug, rideSlug] = key.split('/');
+    const path = parkPath(parkSlug, geoPath);
+    if (path) out.push(`${path}/${rideSlug}`);
+  }
+  return out;
+}
+
 /**
  * @param {Map<string, import('../lib/media/types.ts').MediaImage>} chosen photos to upload; grows
  * @returns {{ files: { key: string; json: unknown }[]; stats: Record<string, { posts: number; skipped: Record<string, number> }> }}
@@ -81,6 +105,11 @@ export function buildNewsExport(chosen) {
         const item = getListItemByLocaleSlug(slug, locale);
         return item ? `${site}${postPath(item)}` : null;
       },
+      parkPath(ref) {
+        const { kind, key, geoPath } = parseRefKey(ref.trim());
+        return kind === 'park' ? parkPath(key, geoPath) : null;
+      },
+      postPage: site,
       image(src) {
         const image = photo(src);
         return image
@@ -108,12 +137,19 @@ export function buildNewsExport(chosen) {
       posts.push(meta);
       const { blocks, skipped: left } = markdownToBlocks(
         BLOG_POST_BODIES[`${post.loadedLocale}/${post.slug}`] ?? '',
-        ctx
+        { ...ctx, postPage: meta.url }
       );
       for (const name of left) skipped[name] = (skipped[name] ?? 0) + 1;
       files.push({
         key: `news/${locale}/${post.slug}.json`,
-        json: { schema: 1, locale, ...meta, blocks },
+        json: {
+          schema: 1,
+          locale,
+          ...meta,
+          author: authorOf(fm.author, locale),
+          rides: ridesOf(fm.rideLinks),
+          blocks,
+        },
       });
     }
     lists.push({ key: `news/${locale}.json`, json: { schema: 1, generatedAt, locale, posts } });

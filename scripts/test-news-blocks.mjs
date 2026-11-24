@@ -16,6 +16,12 @@ const ctx = {
       : null,
   postUrl: (slug) => (slug === 'known' ? 'https://park.fan/de/news/known' : null),
   image: (src) => (src === '/media/a/b.jpg' ? { id: 'a/b', credit: '© Foto' } : null),
+  parkPath: (ref) =>
+    ({
+      'europa-park': 'europe/germany/rust/europa-park',
+      '/parks/europe/netherlands/kaatsheuvel/efteling': 'europe/netherlands/kaatsheuvel/efteling',
+    })[ref] ?? null,
+  postPage: 'https://park.fan/de/news/post',
 };
 
 const md = `
@@ -33,6 +39,18 @@ Siehe [Beitrag](/news/known), [fehlt](/blog/missing) und [Planer](/orlando#plann
 2. Dann
 
 \`\`\`best-days-widget slug=europa-park
+
+\`\`\`
+
+\`\`\`ride-waits-widget rides=/parks/europe/netherlands/kaatsheuvel/efteling/baron|Baron 1898|Stahl;nowhere/x top=5
+
+\`\`\`
+
+\`\`\`stats-widget slug=unknown-park show=months
+
+\`\`\`
+
+\`\`\`stats-widget
 
 \`\`\`
 
@@ -78,6 +96,9 @@ assert.deepEqual(types, [
   'heading',
   'list',
   'list',
+  'widget',
+  'widget',
+  'widget',
   'link',
   'quote',
   'callout',
@@ -95,48 +116,82 @@ assert.equal(
   blocks[1].text,
   'Siehe [Beitrag](https://park.fan/de/news/known), fehlt und [Planer](https://park.fan/de/orlando#planner).'
 );
-assert.deepEqual(blocks[2], { type: 'heading', level: 2, text: 'Zeiten neu' });
+assert.deepEqual(blocks[2], { type: 'heading', level: 2, text: 'Zeiten neu', id: 'zeiten-neu' });
+assert.deepEqual(blocks[5], {
+  type: 'widget',
+  widget: 'best-days',
+  park: 'europe/germany/rust/europa-park',
+  parkSlug: 'europa-park',
+  params: {},
+  url: 'https://park.fan/de/news/post',
+});
+assert.deepEqual(blocks[6], {
+  type: 'widget',
+  widget: 'ride-waits',
+  park: null,
+  parkSlug: null,
+  rides: [
+    {
+      park: 'europe/netherlands/kaatsheuvel/efteling',
+      parkSlug: 'efteling',
+      ride: 'baron',
+      label: 'Baron 1898',
+    },
+    { park: null, parkSlug: 'nowhere', ride: 'x', label: null },
+  ],
+  params: { top: '5' },
+  url: 'https://park.fan/de/news/post',
+});
 assert.deepEqual(blocks[3], { type: 'list', ordered: false, items: ['Eins weiter', 'Zwei'] });
 assert.deepEqual(blocks[4], { type: 'list', ordered: true, items: ['Erst', 'Dann'] });
-assert.deepEqual(blocks[5], {
+assert.deepEqual(blocks[8], {
   type: 'link',
   text: 'Plane deine Reise',
   url: 'https://park.fan/de/orlando#planner',
 });
-assert.deepEqual(skipped, ['best-days-widget']);
-assert.deepEqual(blocks[6], {
+assert.deepEqual(skipped, ['stats-widget']);
+assert.deepEqual(blocks[7], {
+  type: 'widget',
+  widget: 'stats',
+  park: null,
+  parkSlug: 'unknown-park',
+  params: { show: 'months' },
+  url: 'https://park.fan/de/news/post',
+});
+assert.deepEqual(blocks[9], {
   type: 'quote',
   text: 'Die Worte.',
   source: 'Sprecher, [Quelle](https://example.org)',
 });
-assert.deepEqual(blocks[7], {
+assert.deepEqual(blocks[10], {
   type: 'callout',
   kind: 'parky',
   text: 'Ein Tipp.',
   date: null,
   label: 'Lohnt sich',
 });
-assert.deepEqual(blocks[8], {
+assert.deepEqual(blocks[11], {
   type: 'callout',
   kind: 'update',
   text: 'Neuer Stand.',
   date: '2026-10-22',
   label: null,
 });
-assert.deepEqual(blocks[9], { type: 'quote', text: 'Einfach zitiert.', source: null });
-assert.deepEqual(blocks[10], {
+assert.deepEqual(blocks[12], { type: 'quote', text: 'Einfach zitiert.', source: null });
+assert.deepEqual(blocks[13], {
   type: 'table',
   header: ['Tag', 'Zeit'],
   rows: [['Mo', '**9** Uhr']],
 });
-assert.deepEqual(blocks[11], {
+assert.deepEqual(blocks[14], {
   type: 'image',
   imageId: 'a/b',
   alt: 'Alt',
   caption: 'Bildunterschrift',
   credit: '© Foto',
 });
-assert.equal(blocks[12].url, 'https://park.fan/de/parks/europe/germany/rust/europa-park');
+assert.equal(blocks[15].url, 'https://park.fan/de/parks/europe/germany/rust/europa-park');
+assert.equal(blocks[15].park, 'europe/germany/rust/europa-park');
 
 const post = (slug, category, date, time, isFallback = false) => ({
   slug,

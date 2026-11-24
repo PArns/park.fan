@@ -156,9 +156,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `selectNews` _function_: News only (the `/news` listing), own-locale posts, newest first, capped.
 - `inlineText` _function_: Inline markdown reduced to bold, italic and absolute links. Anything else is dropped.
-- `markdownToBlocks` _function_: A post body as blocks. Widgets that draw live park data (`best-days-widget`, `hourly-profile-widget`, `ride-waits-widget`, `stats-widget`) are skipped, a `cta-widget` becomes a `link` block, and a lone `[Park](ref:slug?full)` paragraph …
+- `markdownToBlocks` _function_: A post body as blocks. Widgets that draw live park data (`best-days-widget`, `hourly-profile-widget`, `ride-waits-widget`, `stats-widget`) become `widget` blocks the app fills from its own API calls, a `cta-widget` becomes a `link` block, …
 - `NEWS_EXPORT_CAP` _const_: At most this many news posts per locale in `news/<locale>.json`.
-- Types: `NewsBlock`, `BlockContext`
+- Types: `NewsBlock`, `NewsWidgetBlock`, `BlockContext`
 
 ### [`news-park.ts`](../../lib/blog/news-park.ts)
 
@@ -261,4 +261,5 @@ Deliberately NOT anchored to ^…$ — remark may merge adjacent raw-HTML lines 
 - `parkGeoPath` _function_: Derive the API geo-path segments from a ResolvedPark.href, which has the shape `/parks/{continent}/{country}/{city}/{park}`. Returns null when the href doesn't have all four segments (e.g. geo data was unavailable).
 - `parseWidgetParkRef` _function_: Parses the park a widget fence names, bare (`efteling`) or in the full-path form `ref:` takes (`/parks/europe/france/paris/disneyland-park`), through `parseRefKey`.
 - `parseWidgetRideRef` _function_: Split a `rides=` entry's reference into the park it names and the ride, accepting the same two park forms as `parseWidgetParkRef`: `efteling/joris-en-de-draak` or `/parks/europe/france/paris/disneyland-park/peter-pans-flight`.
+- `parseWidgetAttrs` _function_: A widget fence's attributes: `key=value` pairs on the fence line (unquoted values keep their spaces up to the next ` key=`), then `key: value` lines inside the fence.
 - Types: `ParkGeoPath`, `WidgetParkRef`

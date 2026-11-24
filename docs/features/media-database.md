@@ -265,8 +265,11 @@ readingMinutes}`. `url` is the absolute `https://park.fan/<locale>/news/<slug>`;
   nobody photographed and no post linked by its full path has no known path and is then missing
   from `parks` only; `cover` is an id in `images` of `index.json` or `null` (the post has no photo:
   draw the fallback), `coverAlt` its alt text in that locale.
-- **`news/<locale>/<slug>.json`:** `Post` plus `schema`, `locale` and `blocks`, in reading order:
-  - `{type: 'heading', level, text}`
+- **`news/<locale>/<slug>.json`:** `Post` plus `schema`, `locale`, `author`, `rides` and `blocks`.
+  `author` is the byline, `{name, role, avatar}`: the short name, the role in that locale or `null`,
+  the avatar's absolute URL or `null`. `rides` are the post's `rideLinks` as
+  `<park geo path>/<ride slug>`, where the park's path is known. `blocks`, in reading order:
+  - `{type: 'heading', level, text, id}`, `id` the anchor the web gives the heading (`#id`)
   - `{type: 'paragraph', text}`
   - `{type: 'list', ordered, items: [text]}`
   - `{type: 'quote', text, source}`, `source` is the attribution line or `null`
@@ -276,12 +279,22 @@ readingMinutes}`. `url` is the absolute `https://park.fan/<locale>/news/<slug>`;
   - `{type: 'table', header: [text], rows: [[text]]}`
   - `{type: 'image', imageId, alt, caption, credit}`, `credit` only when the photo needs an
     attribution; the news posts carry none inline today
-  - `{type: 'link', text, url}`, a block of its own: a call to action or a park card
+  - `{type: 'link', text, url, park?}`, a block of its own: a call to action, or a park card, which
+    carries the park's geo path in `park` when it is known
+  - `{type: 'widget', widget, park, parkSlug, rides?, params, url}`, a widget that draws live park
+    data: `widget` is `best-days`, `hourly-profile`, `ride-waits` or `stats`; `park` the park's geo
+    path or `null` when no path is known, `parkSlug` its slug for the app to find in its own park
+    list (`null` for a `ride-waits` that names rides); `rides` only for `ride-waits` with `rides=`,
+    each `{park, parkSlug, ride, label}`; `params` the fence's other attributes as written (`top`,
+    `columns`, `highlight`, `show`, `from`, `to`); `url` the post on the web, for an app that cannot
+    draw the widget
   - A `text` holds only `**bold**`, `*italic*` and `[label](https://…)` with absolute URLs; a
     park, ride or post reference becomes its web page, or plain text when its path is unknown.
 - **Widgets:** `best-days-widget`, `hourly-profile-widget`, `ride-waits-widget` and `stats-widget`
-  draw live park data and are left out; `cta-widget` becomes a `link` block; a paragraph that is
-  only `[Park](ref:slug?full)` becomes a `link` block to the park page.
+  become `widget` blocks, which the app fills from its own API calls; one naming no park and no ride
+  is left out. `cta-widget` becomes a `link` block; a paragraph that is only
+  `[Park](ref:slug?full)` becomes a `link` block to the park page. Fence attributes are read by
+  `parseWidgetAttrs`, the parser the web's own widgets use.
 - **Photos:** a cover or inline photo not among the card photos is exported with the same widths
   and added to `images`; `license: unknown` is left out, so the post gets `cover: null`.
 

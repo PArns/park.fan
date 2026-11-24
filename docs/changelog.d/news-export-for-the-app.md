@@ -4,6 +4,9 @@ Die App kann `park.fan/api/*` nicht lesen, weil Cloudflare dort Skripte abfängt
 `media.park.fan` schreibt deshalb pro Sprache `news/<locale>.json` mit den neuesten hundert News
 und je Beitrag `news/<locale>/<slug>.json` mit dem Text als fertige Blöcke, also Überschriften,
 Absätzen, Listen, Zitaten, Tabellen und Hinweisen, die die App ohne Markdown-Renderer zeichnet.
-Titelfotos, die noch nicht im Foto-Export waren, kommen mit. Live-Widgets wie die besten Tage
-fehlen in den Blöcken, ein Aufruf zum Handeln wird ein Link. Der Workflow läuft jetzt auch, wenn
+Titelfotos, die noch nicht im Foto-Export waren, kommen mit. Die Live-Widgets (beste Tage,
+Wartezeiten der Bahnen, Stundenprofil, Statistik) werden Blöcke mit Park, Bahnen und Parametern,
+die die App mit ihren eigenen Live-Daten füllt; ein Aufruf zum Handeln wird ein Link. Jeder
+Beitrag nennt dazu Autor mit Avatar, die Bahnen aus `rideLinks` und für jede Überschrift den
+Anker, den sie auf der Website hat. Der Workflow läuft jetzt auch, wenn
 sich etwas unter `content/blog/` ändert.

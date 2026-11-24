@@ -70,7 +70,7 @@ import { BlogHourlyProfileWidget } from './blog-hourly-profile-widget';
 import { BlogGlossaryWidget } from './blog-glossary-widget';
 import { BlogCtaWidget } from './blog-cta-widget';
 import { BlogGallery } from './blog-gallery';
-import { parseWidgetParkRef, parseWidgetRideRef } from '@/lib/blog/widget-park';
+import { parseWidgetAttrs, parseWidgetParkRef, parseWidgetRideRef } from '@/lib/blog/widget-park';
 import { listFolderImages, resolveGallery } from '@/lib/blog/gallery';
 import type { BlogImage } from '@/lib/blog/types';
 import { postPath } from '@/lib/blog/paths';
@@ -302,30 +302,6 @@ function renderGlossaryString(
   return <GlossarySegments segments={segments} locale={locale} segment={segment} />;
 }
 
-function parseAttrs(line: string | undefined, body: string): Record<string, string> {
-  const out: Record<string, string> = {};
-  const consume = (input: string) => {
-    // Unquoted values run until the next ` key=` token or end of line, so a
-    // bare `heading=A few moments from the trip` keeps its spaces instead of
-    // collapsing to just "A". Quoted values win when present.
-    const re =
-      /([a-zA-Z][a-zA-Z0-9_-]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|(.+?))(?=\s+[a-zA-Z][a-zA-Z0-9_-]*\s*=|\s*$)/g;
-    let m: RegExpExecArray | null;
-    while ((m = re.exec(input)) !== null) {
-      out[m[1]] = (m[2] ?? m[3] ?? m[4] ?? '').trim();
-    }
-  };
-  if (line) consume(line);
-  // Also accept attrs as `key: value` lines inside the fence.
-  for (const ln of body.split(/\r?\n/)) {
-    const m = ln.match(/^\s*([a-zA-Z][a-zA-Z0-9_-]*)\s*[:=]\s*(.+?)\s*$/);
-    if (m) {
-      out[m[1]] = m[2].replace(/^['"]|['"]$/g, '');
-    }
-  }
-  return out;
-}
-
 function segmentize(markdown: string): Segment[] {
   const segments: Segment[] = [];
   let lastIndex = 0;
@@ -339,7 +315,7 @@ function segmentize(markdown: string): Segment[] {
     segments.push({
       type: 'widget',
       body: body ?? '',
-      widget: { name, attrs: parseAttrs(attrLine, body ?? '') },
+      widget: { name, attrs: parseWidgetAttrs(attrLine, body ?? '') },
     });
     lastIndex = start + match[0].length;
   }

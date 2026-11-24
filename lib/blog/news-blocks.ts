@@ -1,5 +1,7 @@
+import GithubSlugger from 'github-slugger';
 import { isNewsCategory } from './paths';
 import { newestPublishedFirst } from './published-at';
+import { parseWidgetAttrs, parseWidgetParkRef, parseWidgetRideRef } from './widget-park';
 
 /**
  * The news export for the native app (`scripts/publish-media-r2.mjs`,
@@ -12,7 +14,7 @@ import { newestPublishedFirst } from './published-at';
 export const NEWS_EXPORT_CAP = 100;
 
 export type NewsBlock =
-  | { type: 'heading'; level: number; text: string }
+  | { type: 'heading'; level: number; text: string; id: string }
   | { type: 'paragraph'; text: string }
   | { type: 'image'; imageId: string; alt: string; caption: string | null; credit: string | null }
   | { type: 'list'; ordered: boolean; items: string[] }
@@ -25,7 +27,24 @@ export type NewsBlock =
       label: string | null;
     }
   | { type: 'table'; header: string[]; rows: string[][] }
-  | { type: 'link'; text: string; url: string };
+  | { type: 'link'; text: string; url: string; park?: string }
+  | NewsWidgetBlock;
+
+/** A widget fence that draws live park data, for the app to draw from its own API calls. */
+export interface NewsWidgetBlock {
+  type: 'widget';
+  widget: 'best-days' | 'hourly-profile' | 'ride-waits' | 'stats';
+  /** The park's API geo path, or null when the fence names rides only or no path is known. */
+  park: string | null;
+  /** The park's slug, for the app to find in its own park list when `park` is null. */
+  parkSlug: string | null;
+  /** `ride-waits` with `rides=`: each ride's park (geo path or null, slug), ride slug and label. */
+  rides?: { park: string | null; parkSlug: string; ride: string; label: string | null }[];
+  /** The fence's other attributes as written (`top`, `columns`, `highlight`, `show`, `from`, `to`). */
+  params: Record<string, string>;
+  /** The post on the web, for an app that cannot draw this widget. */
+  url: string;
+}
 
 /** What {@link markdownToBlocks} cannot know by itself. Every resolver returns null for "leave it out". */
 export interface BlockContext {
@@ -37,6 +56,10 @@ export interface BlockContext {
   postUrl(slug: string): string | null;
   /** The exported photo behind a `/media/…` path; null when it is not exported. */
   image(src: string): { id: string; credit: string | null } | null;
+  /** A park as a widget fence or `ref:` names it (bare slug or `/parks/…`) → its API geo path. */
+  parkPath(ref: string): string | null;
+  /** The post's own page, absolute. */
+  postPage: string;
 }
 
 /** News only (the `/news` listing), own-locale posts, newest first, capped. */
@@ -52,21 +75,48 @@ export function selectNews<
     .slice(0, cap);
 }
 
-const WIDGET_FENCES = new Set([
-  'best-days-widget',
-  'hourly-profile-widget',
-  'ride-waits-widget',
-  'stats-widget',
-]);
+const WIDGET_FENCES: Record<string, NewsWidgetBlock['widget']> = {
+  'best-days-widget': 'best-days',
+  'hourly-profile-widget': 'hourly-profile',
+  'ride-waits-widget': 'ride-waits',
+  'stats-widget': 'stats',
+};
 
-/** `key: value` / `key=value` lines of a widget fence. */
-function fenceAttrs(lines: string[]): Record<string, string> {
-  const out: Record<string, string> = {};
-  for (const line of lines) {
-    const m = /^\s*([a-zA-Z][\w-]*)\s*[:=]\s*(.+?)\s*$/.exec(line);
-    if (m) out[m[1]] = m[2].replace(/^['"]|['"]$/g, '');
+/** A live-data widget fence as a block; null when it names no park or ride the app can find. */
+function widgetBlock(
+  widget: NewsWidgetBlock['widget'],
+  attrs: Record<string, string>,
+  ctx: BlockContext
+): NewsWidgetBlock | null {
+  const { slug, park: parkAttr, rides: ridesAttr, ...params } = attrs;
+  const parkRef = parkAttr ?? slug;
+  const parkSlug = parkRef ? (parseWidgetParkRef(parkRef)?.slug ?? null) : null;
+  const rides: NonNullable<NewsWidgetBlock['rides']> = [];
+  if (widget === 'ride-waits' && !parkRef && ridesAttr) {
+    for (const entry of ridesAttr.split(';')) {
+      const [ref, label] = entry.split('|');
+      const ride = parseWidgetRideRef(ref ?? '');
+      const rideParkSlug = ride ? parseWidgetParkRef(ride.parkKey)?.slug : null;
+      if (ride && rideParkSlug) {
+        rides.push({
+          park: ctx.parkPath(ride.parkKey),
+          parkSlug: rideParkSlug,
+          ride: ride.rideSlug,
+          label: label?.trim() || null,
+        });
+      }
+    }
   }
-  return out;
+  if (!parkSlug && rides.length === 0) return null;
+  return {
+    type: 'widget',
+    widget,
+    park: parkRef ? ctx.parkPath(parkRef) : null,
+    parkSlug,
+    ...(rides.length ? { rides } : {}),
+    params,
+    url: ctx.postPage,
+  };
 }
 
 /** A link target as the app can open it: absolute, or null for what the web resolves itself. */
@@ -141,9 +191,10 @@ function calloutBlock(lines: string[], ctx: BlockContext): NewsBlock | null {
 
 /**
  * A post body as blocks. Widgets that draw live park data (`best-days-widget`,
- * `hourly-profile-widget`, `ride-waits-widget`, `stats-widget`) are skipped, a `cta-widget`
- * becomes a `link` block, and a lone `[Park](ref:slug?full)` paragraph (the park card) a `link`
- * block to the park page. `skipped` names the fences left out.
+ * `hourly-profile-widget`, `ride-waits-widget`, `stats-widget`) become `widget` blocks the app
+ * fills from its own API calls, a `cta-widget` becomes a `link` block, and a lone
+ * `[Park](ref:slug?full)` paragraph (the park card) a `link` block to the park page carrying the
+ * park's geo path. `skipped` names the fences left out.
  */
 export function markdownToBlocks(
   markdown: string,
@@ -152,6 +203,8 @@ export function markdownToBlocks(
   const lines = markdown.replace(/\r\n?/g, '\n').split('\n');
   const blocks: NewsBlock[] = [];
   const skipped: string[] = [];
+  // The same slugs rehype-slug gives the headings on the web, so `#id` lands on the section.
+  const slugger = new GithubSlugger();
   let paragraph: string[] = [];
 
   const flush = () => {
@@ -176,7 +229,8 @@ export function markdownToBlocks(
     const card = /^\[([^\]]+)]\((ref:[^)\s]+\?[^)\s]*\bfull\b[^)\s]*)\)$/.exec(raw);
     if (card) {
       const url = ctx.refUrl(card[2]);
-      if (url) blocks.push({ type: 'link', text: card[1], url });
+      const park = ctx.parkPath(card[2].replace(/^ref:/, '').split('?')[0]);
+      if (url) blocks.push({ type: 'link', text: card[1], url, ...(park ? { park } : {}) });
       return;
     }
     const text = inlineText(raw, ctx);
@@ -191,12 +245,16 @@ export function markdownToBlocks(
       const body: string[] = [];
       while (++i < lines.length && !lines[i].startsWith(fence[1])) body.push(lines[i]);
       const name = fence[2];
+      const attrs = parseWidgetAttrs(fence[3], body.join('\n'));
       if (name === 'cta-widget') {
-        const a = fenceAttrs(body);
-        const url = a.href ? resolveHref(a.href, ctx) : null;
-        if (url && a.label) blocks.push({ type: 'link', text: a.label, url });
+        const url = attrs.href ? resolveHref(attrs.href, ctx) : null;
+        if (url && attrs.label) blocks.push({ type: 'link', text: attrs.label, url });
+      } else if (Object.hasOwn(WIDGET_FENCES, name)) {
+        const block = widgetBlock(WIDGET_FENCES[name], attrs, ctx);
+        if (block) blocks.push(block);
+        else skipped.push(name);
       } else {
-        skipped.push(WIDGET_FENCES.has(name) ? name : `code:${name}`);
+        skipped.push(`code:${name}`);
       }
       continue;
     }
@@ -207,7 +265,8 @@ export function markdownToBlocks(
     const heading = /^(#{1,6})\s+(.*?)\s*#*$/.exec(line);
     if (heading) {
       flush();
-      blocks.push({ type: 'heading', level: heading[1].length, text: plain(heading[2], ctx) });
+      const text = plain(heading[2], ctx);
+      blocks.push({ type: 'heading', level: heading[1].length, text, id: slugger.slug(text) });
       continue;
     }
     if (/^\s{0,3}([-*_])(\s*\1){2,}\s*$/.test(line)) {
