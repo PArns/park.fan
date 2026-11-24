@@ -2,7 +2,7 @@
 title: 'L’Europa-Park ouvre son hiver anniversaire le 28 novembre'
 translationKey: europa-park-wintersaison-2026
 date: '2026-11-24'
-time: '12:00'
+time: '08:05'
 author: patrick
 mode: published
 featured: false

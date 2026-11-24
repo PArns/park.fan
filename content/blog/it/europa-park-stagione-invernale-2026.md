@@ -2,7 +2,7 @@
 title: 'L’Europa-Park apre il 28 novembre l’inverno dei 25 anni'
 translationKey: europa-park-wintersaison-2026
 date: '2026-11-24'
-time: '12:00'
+time: '08:05'
 author: patrick
 mode: published
 featured: false
