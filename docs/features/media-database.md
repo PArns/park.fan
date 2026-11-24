@@ -231,6 +231,7 @@ It reads `https://media.park.fan`, an R2 bucket (`media-park-fan`, EU jurisdicti
 - **Which photos:** exactly the card photos, chosen by `getParkBackground` and `getRideImage` as in
   `getCardImageMap()`, so the app and the cards cannot disagree. `license: unknown` is left out.
 - **Files:** `<id>/<version>-<w>.webp` at 400, 828, 1200 and 1600 px, never upscaled, quality 78,
+  plus the photo's own width when it is below 1600 px (a 1024 px photo ships at 400, 828 and 1024),
   `Cache-Control: public, max-age=31536000, immutable`. `version` changes with the pixels or the
   focal point, so a key never changes and the script uploads only missing keys.
 - **`index.json`** (`max-age=300`), written last so it never names a missing file:

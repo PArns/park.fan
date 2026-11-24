@@ -2,7 +2,8 @@
 // app (PAR-1080). The photo per park and per ride is the one the website's cards show: this
 // script asks the same resolvers `getCardImageMap()` uses (`getParkBackground`, `getRideImage`).
 //
-// Every photo is encoded as WebP at WIDTHS (never upscaled) under `<id>/<version>-<w>.webp`.
+// Every photo is encoded as WebP at WIDTHS (never upscaled), plus its own width when that is
+// below the top step, under `<id>/<version>-<w>.webp`.
 // `version` changes only with the pixels or the focal point, so a key is immutable and an
 // existing key is never uploaded twice. `index.json` maps parks and rides to their photo and
 // carries focal point and credit; it is the only object that changes in place.
@@ -57,7 +58,8 @@ const images = {};
 const files = []; // { key, body, contentType, cacheControl }
 for (const image of chosen.values()) {
   const widths = WIDTHS.filter((w) => w <= image.width);
-  if (widths.length === 0) widths.push(image.width);
+  // A photo narrower than the top step also ships at its own width: 1024 px is sharper than 828.
+  if (image.width < WIDTHS.at(-1) && !widths.includes(image.width)) widths.push(image.width);
   images[image.id] = {
     v: image.version,
     w: image.width,
