@@ -61,7 +61,7 @@ seo:
     - Euro-Mir letzte Fahrt
 ---
 
-Der [Europa-Park](ref:europa-park?bare) öffnet am Samstag, dem 28. November, seinen Winter und feiert 25 Jahre Wintersaison. Im Winterland ist die Indoorhalle WinterWunderWelt größer geworden, und im Eisstadion läuft eine neue Eisshow. In der Spanischen Arena haben die DINO MATES, die Dinos aus der Zeichentrickserie zur Bahn Madame Freudenreich Curiosités, einen eigenen Spielbereich bekommen. Angekündigt hat das die MACK Gruppe in ihrem Factsheet zum Winter.
+Der [Europa-Park](ref:europa-park?bare) öffnet am Samstag, dem 28. November, seinen Winter und feiert 25 Jahre Wintersaison. Im Winterland ist die Indoorhalle WinterWunderWelt größer geworden, und im Eisstadion läuft eine neue Eisshow. In der Spanischen Arena haben die DINO MATES einen eigenen Spielbereich bekommen. Angekündigt hat das die MACK Gruppe in ihrem Factsheet zum Winter.
 
 ## Wann der Park offen hat
 
@@ -85,7 +85,7 @@ Im Themenbereich Kroatien hängen bis zum 9. Januar über 60 Arbeiten der Ausste
 
 Das Tagesticket für Erwachsene ab zwölf Jahren kostet online bis zum 22. Dezember 67 € und vom 23. Dezember an 76 €. Kinder von vier bis elf und Senioren ab 60 zahlen je nach Tag 56,50 bis 65 €, jüngere Kinder nichts. An der Tageskasse kommen auf jedes Tagesticket 10 € dazu. Das Abendticket gilt ab 16 Uhr und kostet für Erwachsene 41,50 € bis zum 22. Dezember und 47 € danach, an der Tageskasse ohne Aufpreis. Die beiden Mapping-Shows beginnen erst um 17 Uhr, für sie reicht das Abendticket also.
 
-Ich würde vor dem 23. Dezember kommen, weil dann jedes Ticket in der günstigeren Preiskategorie liegt. Der Besucherparkplatz kostet 10 € am Tag und öffnet im Winter um 9 Uhr, Hotelgäste parken an ihrer Unterkunft umsonst. Wer den Abend lieber sitzend verbringt, bucht die Dinner-Show „The Grand Club“ im Europa-Park Teatro ab 152 € pro Person, mit vier Gängen, Beginn um 19:30 Uhr und Parkeintritt ab 17 Uhr. Unsere [Übersicht zum Winter 2026/27](/blog/winter-freizeitparks-2026) sammelt die Parks, die über Weihnachten und Silvester offen haben.
+Ich würde vor dem 23. Dezember kommen. Der Besucherparkplatz kostet 10 € am Tag und öffnet im Winter um 9 Uhr, Hotelgäste parken an ihrer Unterkunft umsonst. Wer den Abend lieber sitzend verbringt, bucht die Dinner-Show „The Grand Club“ im Europa-Park Teatro ab 152 € pro Person, mit vier Gängen, Beginn um 19:30 Uhr und Parkeintritt ab 17 Uhr. Unsere [Übersicht zum Winter 2026/27](/blog/winter-freizeitparks-2026) sammelt die Parks, die über Weihnachten und Silvester offen haben.
 
 ## Was fährt und was nicht
 

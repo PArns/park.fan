@@ -61,7 +61,7 @@ seo:
     - Euro-Mir last ride
 ---
 
-[Europa-Park](ref:europa-park?bare) starts its winter on Saturday 28 November and celebrates 25 years of winter seasons. In Winterland, the indoor hall called WinterWunderWelt has grown, and there's a new show in the ice stadium. The DINO MATES now have a play area of their own in the Spanish Arena. They're the dinosaurs from the cartoon series based on the ride Madame Freudenreich Curiosités. The MACK Group announced all of this in its winter factsheet.
+[Europa-Park](ref:europa-park?bare) starts its winter on Saturday 28 November and celebrates 25 years of winter seasons. In Winterland, the indoor hall called WinterWunderWelt has grown, and there's a new show in the ice stadium. The DINO MATES now have a play area of their own in the Spanish Arena. The MACK Group announced all of this in its winter factsheet.
 
 ## When the park is open
 
@@ -85,7 +85,7 @@ More than 60 works from the [James Rizzi meets Rollercoasters](/news/europa-park
 
 An adult day ticket (age 12 and up) costs €67 online until 22 December and €76 from 23 December. Children aged four to eleven and seniors from 60 pay €56.50 to €65 depending on the day, and younger children go free. At the ticket booth every day ticket costs €10 more. The evening ticket is valid from 4pm and costs adults €41.50 until 22 December and €47 after that, with no surcharge at the booth. Both mapping shows start at 5pm, so the evening ticket covers them.
 
-I'd go before 23 December, when every ticket is still in the cheaper price band. The visitor car park costs €10 a day and opens at 9am in winter, and hotel guests park free at their hotel. If you'd rather spend the evening sitting down, book "The Grand Club", the dinner show in the Europa-Park Teatro: four courses from €152 per person, starting at 7:30pm, with park entry from 5pm. For Christmas and New Year's Eve, our [overview of winter 2026/27](/blog/winter-theme-parks-2026) rounds up the parks that stay open.
+I'd go before 23 December. The visitor car park costs €10 a day and opens at 9am in winter, and hotel guests park free at their hotel. If you'd rather spend the evening sitting down, book "The Grand Club", the dinner show in the Europa-Park Teatro: four courses from €152 per person, starting at 7:30pm, with park entry from 5pm. For Christmas and New Year's Eve, our [overview of winter 2026/27](/blog/winter-theme-parks-2026) rounds up the parks that stay open.
 
 ## What runs and what doesn't
 
