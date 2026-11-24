@@ -1765,9 +1765,11 @@
       "noticePark": "Tiempos de espera actuales de las demás atracciones: <link>{park}</link>",
       "waitsTitle": "Tiempos de espera antes del cierre"
     },
-    "riddenMark": "Marcar como montada",
-    "riddenUnmark": "Quitar la marca de montada",
-    "riddenProgress": "{count, plural, one {# atracción montada} other {# atracciones montadas}} de {total}",
+    "ridden": {
+      "mark": "Marcar como montada",
+      "unmark": "Quitar la marca de montada",
+      "progress": "{count, plural, one {# atracción montada} other {# atracciones montadas}} de {total}"
+    },
     "tabTitleWait": "{minutes} min · {title}",
     "performance": {
       "badge": "Sesiones a horas fijas",
@@ -3275,10 +3277,12 @@
   "planner": {
     "title": "Planificador del día",
     "open": "Abrir el planificador",
-    "addRide": "Al plan",
+    "rideButton": {
+      "add": "Al plan",
+      "addAgain": "Otra vez",
+      "plannedTimes": "{count}× en el plan"
+    },
     "inPlan": "En el plan",
-    "addAgain": "Otra vez",
-    "plannedTimes": "{count}× en el plan",
     "removeRide": "Quitar del plan",
     "empty": {
       "title": "Todavía no hay nada planificado",

@@ -24,7 +24,7 @@ interface RiddenToggleProps {
  * card's link, so the press does not navigate.
  */
 export function RiddenToggle({ id }: RiddenToggleProps) {
-  const t = useTranslations('attractions');
+  const t = useTranslations('attractions.ridden');
   const ridden = useSyncExternalStore(
     subscribeToRidden,
     () => getRiddenSnapshot().has(id),
@@ -50,9 +50,9 @@ export function RiddenToggle({ id }: RiddenToggleProps) {
         // A near miss on a phone would open the ride's page.
         GLASS_CIRCLE_HIT_AREA
       )}
-      aria-label={ridden ? t('riddenUnmark') : t('riddenMark')}
+      aria-label={ridden ? t('unmark') : t('mark')}
       aria-pressed={ridden}
-      title={ridden ? t('riddenUnmark') : t('riddenMark')}
+      title={ridden ? t('unmark') : t('mark')}
     >
       <Check
         className={cn(

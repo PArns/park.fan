@@ -1765,9 +1765,11 @@
       "noticePark": "Temps d’attente actuels des autres attractions : <link>{park}</link>",
       "waitsTitle": "Temps d’attente avant la fermeture"
     },
-    "riddenMark": "Marquer comme faite",
-    "riddenUnmark": "Retirer la marque « faite »",
-    "riddenProgress": "{count, plural, one {# attraction faite} other {# attractions faites}} sur {total}",
+    "ridden": {
+      "mark": "Marquer comme faite",
+      "unmark": "Retirer la marque « faite »",
+      "progress": "{count, plural, one {# attraction faite} other {# attractions faites}} sur {total}"
+    },
     "tabTitleWait": "{minutes} min · {title}",
     "performance": {
       "badge": "Séances à heure fixe",
@@ -3275,10 +3277,12 @@
   "planner": {
     "title": "Planificateur de journée",
     "open": "Ouvrir le planificateur",
-    "addRide": "Au planning",
+    "rideButton": {
+      "add": "Au planning",
+      "addAgain": "Encore une fois",
+      "plannedTimes": "{count}× au programme"
+    },
     "inPlan": "Dans le planning",
-    "addAgain": "Encore une fois",
-    "plannedTimes": "{count}× au programme",
     "removeRide": "Retirer du planning",
     "empty": {
       "title": "Rien de prévu pour l’instant",

@@ -1765,9 +1765,11 @@
       "noticePark": "Actuele wachttijden van de andere attracties: <link>{park}</link>",
       "waitsTitle": "Wachttijden voor de sluiting"
     },
-    "riddenMark": "Markeren als gereden",
-    "riddenUnmark": "Markering “gereden” weghalen",
-    "riddenProgress": "{count} van {total} attracties gereden",
+    "ridden": {
+      "mark": "Markeren als gereden",
+      "unmark": "Markering “gereden” weghalen",
+      "progress": "{count} van {total} attracties gereden"
+    },
     "tabTitleWait": "{minutes} min · {title}",
     "performance": {
       "badge": "Vaste voorstellingen",
@@ -3275,10 +3277,12 @@
   "planner": {
     "title": "Dagplanner",
     "open": "Planner openen",
-    "addRide": "In het plan",
+    "rideButton": {
+      "add": "In het plan",
+      "addAgain": "Nogmaals",
+      "plannedTimes": "{count}× in plan"
+    },
     "inPlan": "In het plan",
-    "addAgain": "Nogmaals",
-    "plannedTimes": "{count}× in plan",
     "removeRide": "Uit het plan halen",
     "empty": {
       "title": "Nog niets gepland",

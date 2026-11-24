@@ -23,7 +23,7 @@ interface RiddenCounterProps {
  * longer lists are not counted.
  */
 export function RiddenCounter({ rideIds }: RiddenCounterProps) {
-  const t = useTranslations('attractions');
+  const t = useTranslations('attractions.ridden');
   const count = useSyncExternalStore(
     subscribeToRidden,
     () => {
@@ -46,9 +46,7 @@ export function RiddenCounter({ rideIds }: RiddenCounterProps) {
           <span className="sm:hidden" aria-hidden="true">
             {count}/{rideIds.length}
           </span>
-          <span className="max-sm:sr-only">
-            {t('riddenProgress', { count, total: rideIds.length })}
-          </span>
+          <span className="max-sm:sr-only">{t('progress', { count, total: rideIds.length })}</span>
         </>
       )}
     </p>
