@@ -28,6 +28,7 @@ export const API_PERMISSIONS = [
   'travel.regions',
   'travel.tickets',
   'travel.school-breaks',
+  'assistant.chat',
 ] as const;
 
 /** One permission a key can carry. */
@@ -42,6 +43,7 @@ export const API_PERMISSION_GROUP_IDS = [
   'forecasts',
   'planner',
   'travel',
+  'assistant',
 ] as const;
 
 /** One group of permissions. */
@@ -56,6 +58,7 @@ export const API_PERMISSION_GROUPS: Record<ApiPermissionGroupId, readonly ApiPer
   forecasts: ['forecasts.crowd', 'forecasts.waits'],
   planner: ['planner.day', 'planner.trip'],
   travel: ['travel.regions', 'travel.tickets', 'travel.school-breaks'],
+  assistant: ['assistant.chat'],
 };
 
 /** `/v1/parks/{continent}/{country}/{city}/{park}`, shortened to keep the route lists readable. */
@@ -118,13 +121,29 @@ export const PERMISSION_ROUTES: Record<ApiPermission, readonly string[]> = {
   'travel.regions': ['/v1/trip-regions', '/v1/trip-regions/{region}'],
   'travel.tickets': ['/v1/trip-regions/{region}/tickets'],
   'travel.school-breaks': ['/v1/trip-regions/{region}/school-breaks'],
+  'assistant.chat': ['POST /v1/assistant/session'],
 };
 
 /** What a caller without a key may read. */
 export const KEYLESS_PERMISSIONS: readonly ApiPermission[] = ['live.waits'];
 
-/** What a key issued before permissions existed reads: everything. */
-export const LEGACY_KEY_PERMISSIONS: readonly ApiPermission[] = API_PERMISSIONS;
+/** Permissions for park.fan's own apps: the admin grants them, no developer can ask for one. */
+export const INTERNAL_PERMISSIONS: readonly ApiPermission[] = ['assistant.chat'];
+
+/** The permissions of a group a developer may ask for. */
+export function requestablePermissions(group: ApiPermissionGroupId): ApiPermission[] {
+  return API_PERMISSION_GROUPS[group].filter((p) => !INTERNAL_PERMISSIONS.includes(p));
+}
+
+/** The groups that hold at least one permission a developer may ask for. */
+export const REQUESTABLE_GROUP_IDS = API_PERMISSION_GROUP_IDS.filter(
+  (group) => requestablePermissions(group).length > 0
+);
+
+/** What a key issued before permissions existed reads: everything it could open then. */
+export const LEGACY_KEY_PERMISSIONS: readonly ApiPermission[] = API_PERMISSIONS.filter(
+  (permission) => !INTERNAL_PERMISSIONS.includes(permission)
+);
 
 /** The API's base URL, which every route above is relative to. */
 export const API_BASE_URL = 'https://api.park.fan';

@@ -6,6 +6,10 @@ import {
   API_PERMISSIONS,
   API_PERMISSION_GROUPS,
   API_PERMISSION_GROUP_IDS,
+  INTERNAL_PERMISSIONS,
+  LEGACY_KEY_PERMISSIONS,
+  REQUESTABLE_GROUP_IDS,
+  requestablePermissions,
   KEYLESS_PERMISSIONS,
   PERMISSION_ROUTES,
   permissionGroup,
@@ -92,6 +96,17 @@ const testCases = [
     expected: { sameSet: true, noRepeat: true, prefixed: true, routed: true },
   },
   {
+    name: "park.fan's own permission is no request option and no legacy key reads it",
+    actual: () => ({
+      requestable:
+        API_PERMISSION_GROUP_IDS.flatMap(requestablePermissions).includes('assistant.chat'),
+      groups: REQUESTABLE_GROUP_IDS.includes('assistant'),
+      legacy: LEGACY_KEY_PERMISSIONS.includes('assistant.chat'),
+      internal: [...INTERNAL_PERMISSIONS],
+    }),
+    expected: { requestable: false, groups: false, legacy: false, internal: ['assistant.chat'] },
+  },
+  {
     name: 'without a key only the wait times are open',
     actual: () => [...KEYLESS_PERMISSIONS],
     expected: ['live.waits'],
@@ -146,7 +161,8 @@ const testCases = [
     name: 'a key from before permissions reads everything, and the dialogs know whether to send them',
     actual: () => ({
       legacy: isLegacyKey({ permissions: null }),
-      legacyReads: effectivePermissions({ permissions: null }).length === API_PERMISSIONS.length,
+      legacyReads:
+        effectivePermissions({ permissions: null }).length === LEGACY_KEY_PERMISSIONS.length,
       own: effectivePermissions({ permissions: ['planner.trip', 'live.weather'] }),
       oldApi: apiStoresPermissions([{ name: 'a' }]),
       newApi: apiStoresPermissions([{ permissions: null }]),

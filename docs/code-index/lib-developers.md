@@ -51,6 +51,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`permissions.ts`](../../lib/developers/permissions.ts)
 
+- `requestablePermissions` _function_: The permissions of a group a developer may ask for.
 - `isApiPermission` _function_: The value is a permission this module knows.
 - `sortPermissions` _function_: `permissions` in the catalog's order, unknown values and repeats dropped.
 - `permissionGroup` _function_: The group a permission belongs to.
@@ -61,7 +62,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `PARK_ROUTE` _const_: `/v1/parks/{continent}/{country}/{city}/{park}`, shortened to keep the route lists readable.
 - `PERMISSION_ROUTES` _const_: The routes each permission opens, as the portal lists them; `{…}/{park}` is `PARK_ROUTE`.
 - `KEYLESS_PERMISSIONS` _const_: What a caller without a key may read.
-- `LEGACY_KEY_PERMISSIONS` _const_: What a key issued before permissions existed reads: everything.
+- `INTERNAL_PERMISSIONS` _const_: Permissions for park.fan's own apps: the admin grants them, no developer can ask for one.
+- `REQUESTABLE_GROUP_IDS` _const_: The groups that hold at least one permission a developer may ask for.
+- `LEGACY_KEY_PERMISSIONS` _const_: What a key issued before permissions existed reads: everything it could open then.
 - `API_BASE_URL` _const_: The API's base URL, which every route above is relative to.
 - `API_REFERENCE_URL` _const_: The interactive reference (Swagger UI) and the OpenAPI document behind it.
 - `API_OPENAPI_URL` _const_

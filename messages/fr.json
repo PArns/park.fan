@@ -2808,7 +2808,8 @@
         "stats": "Statistiques",
         "forecasts": "Prévisions",
         "planner": "Planificateur",
-        "travel": "Données de voyage"
+        "travel": "Données de voyage",
+        "assistant": "Parky"
       },
       "items": {
         "live": {
@@ -2903,6 +2904,12 @@
           "school-breaks": {
             "title": "Vacances scolaires",
             "description": "Les vacances scolaires des pays d’où viennent les visiteurs."
+          }
+        },
+        "assistant": {
+          "chat": {
+            "title": "Chat Parky",
+            "description": "Une session de chat Parky dans l’appli de park.fan, sans la vérification du navigateur. Seule l’appli de park.fan la détient, elle ne se demande pas."
           }
         }
       }

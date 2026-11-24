@@ -11,9 +11,9 @@ import { FormStep } from '@/components/common/form-step';
 import { DATA_TERMS_ANCHOR } from '@/lib/agents/licensing';
 import { cn } from '@/lib/utils';
 import {
-  API_PERMISSION_GROUPS,
-  API_PERMISSION_GROUP_IDS,
   KEYLESS_PERMISSIONS,
+  REQUESTABLE_GROUP_IDS,
+  requestablePermissions,
   sortPermissions,
   type ApiPermission,
 } from '@/lib/developers/permissions';
@@ -396,11 +396,11 @@ export function KeyRequestForm({ onFiled }: { onFiled: () => void }) {
           <FormStep n={3} title={t('needs')}>
             <div className="space-y-5">
               <p className="text-muted-foreground text-xs">{t('permissionsHint')}</p>
-              {API_PERMISSION_GROUP_IDS.map((group) => (
+              {REQUESTABLE_GROUP_IDS.map((group) => (
                 <fieldset key={group} className="space-y-2">
                   <legend className="text-sm font-semibold">{tPerm(`groups.${group}`)}</legend>
                   <div className="grid gap-2 sm:grid-cols-2">
-                    {API_PERMISSION_GROUPS[group].map((permission) => {
+                    {requestablePermissions(group).map((permission) => {
                       const keyless = KEYLESS_PERMISSIONS.includes(permission);
                       return (
                         <CheckRow

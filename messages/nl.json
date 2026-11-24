@@ -2808,7 +2808,8 @@
         "stats": "Statistieken",
         "forecasts": "Voorspellingen",
         "planner": "Planner",
-        "travel": "Reisdata"
+        "travel": "Reisdata",
+        "assistant": "Parky"
       },
       "items": {
         "live": {
@@ -2903,6 +2904,12 @@
           "school-breaks": {
             "title": "Schoolvakanties",
             "description": "De schoolvakanties van de landen waar bezoekers vandaan komen."
+          }
+        },
+        "assistant": {
+          "chat": {
+            "title": "Parky-chat",
+            "description": "Een Parky-chatsessie in de eigen app van park.fan, zonder de browsercontrole. Alleen de eigen app van park.fan heeft hem, hij is niet aan te vragen."
           }
         }
       }

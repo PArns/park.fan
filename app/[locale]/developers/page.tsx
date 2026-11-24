@@ -19,6 +19,7 @@ import {
   LockKeyhole,
   Map,
   Plane,
+  Bot,
   Route,
   Search,
   ShieldCheck,
@@ -38,8 +39,6 @@ import {
   API_KEY_HEADER,
   API_KEY_VERIFY_URL,
   API_OPENAPI_URL,
-  API_PERMISSION_GROUPS,
-  API_PERMISSION_GROUP_IDS,
   API_PERMISSIONS_URL,
   API_REFERENCE_URL,
   DEFAULT_KEY_REQUESTS_PER_HOUR,
@@ -47,6 +46,8 @@ import {
   KEYLESS_LIMITS,
   PARK_ROUTE,
   PERMISSION_ROUTES,
+  REQUESTABLE_GROUP_IDS,
+  requestablePermissions,
   apiKeyCurlExample,
   type ApiPermissionGroupId,
 } from '@/lib/developers/permissions';
@@ -86,6 +87,7 @@ const GROUP_ICONS: Record<ApiPermissionGroupId, LucideIcon> = {
   forecasts: CalendarClock,
   planner: Route,
   travel: Plane,
+  assistant: Bot,
 };
 
 /** The four steps from account to key. */
@@ -287,10 +289,10 @@ export default async function DevelopersPage({ params }: DevelopersPageProps) {
         >
           <P>{t('permissionsChapter.lead')}</P>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {API_PERMISSION_GROUP_IDS.map((group) => (
+            {REQUESTABLE_GROUP_IDS.map((group) => (
               <InfoCard key={group} icon={GROUP_ICONS[group]} title={tPerm(`groups.${group}`)}>
                 <ul className="space-y-3">
-                  {API_PERMISSION_GROUPS[group].map((permission) => (
+                  {requestablePermissions(group).map((permission) => (
                     <li key={permission} className="space-y-1">
                       <p className="flex flex-wrap items-center gap-2 text-sm font-medium">
                         {tPerm(`items.${permission}.title`)}

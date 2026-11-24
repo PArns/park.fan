@@ -2808,7 +2808,8 @@
         "stats": "Statistics",
         "forecasts": "Forecasts",
         "planner": "Planner",
-        "travel": "Travel data"
+        "travel": "Travel data",
+        "assistant": "Parky"
       },
       "items": {
         "live": {
@@ -2903,6 +2904,12 @@
           "school-breaks": {
             "title": "School holidays",
             "description": "The school holidays of the countries visitors come from."
+          }
+        },
+        "assistant": {
+          "chat": {
+            "title": "Parky chat",
+            "description": "A Parky chat session in park.fan's own app, without the browser check. Only park.fan's own app holds it; it cannot be requested."
           }
         }
       }
