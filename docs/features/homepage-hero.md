@@ -1,7 +1,8 @@
 # Homepage hero
 
 The homepage hero: the rotating park photo over the full width, the question and the search on its
-lower part, and on the photo a row of cards that answers the question. Open this when changing the
+lower part, and on the photo a row of cards that answers the question, with the nearest parks as
+chips above it while it shows rides. Open this when changing the
 hero's text, its search field, its card rail, its photo or its motion. Entry point:
 `app/[locale]/page.tsx`. Everything under the hero is [the homepage](homepage.md).
 
@@ -16,6 +17,7 @@ hero's text, its search field, its card rail, its photo or its motion. Entry poi
 │  ┌──────────────────────────────────────────┐                               │
 │  │ 🔍 Europa-Park, Taron, Efteling …        │   list opens under it on focus │
 │  └──────────────────────────────────────────┘                               │
+│  (● Efteling Ø 15 Min.) (● Phantasialand Geschlossen) (● …)  ← over rides   │
 │  KURZE ANSTELLZEITEN IN DEINER NÄHE                         Alle anzeigen → │
 │ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐  ← on the photo,     │
 │ │ photo  │ │        │ │        │ │        │ │        │    which fades out   │
@@ -78,6 +80,7 @@ a phone (three lines at 390 px in German), 60 px from 640 px and 68 px from 1280
 | Value                           | Server seed                      | Client overlay                    |
 | ------------------------------- | -------------------------------- | --------------------------------- |
 | Open-parks badge + intro counts | `HeroStats` → `getGlobalStats()` | `useGlobalStats` (open count)     |
+| The park chips                  | —                                | `useHeroBrowseParks`, client only |
 | The card rail                   | —                                | `useHomeNearbyParks`, client only |
 | Popular parks for the rail      | —                                | `/api/parks/popular`, client only |
 
@@ -128,6 +131,30 @@ here. Below `lg` the row is not there.
   `h-28`, room for the hat and the Zs above his drawing.
 - **The row reserves its height from `lg`** whether or not Parky comes (the rollout gate decides in
   the browser), so his arrival moves nothing. For a browser outside the rollout it stays empty.
+
+## The park chips
+
+`HeroNearbyChips` (`components/home/hero-nearby-chips.tsx`) stands under the search field while the
+card rail shows rides: the five parks nearest the visitor as chips, each with a dot in its crowd
+colour, its name and, while it is open, its average wait („Ø 15 Min."); shut, „Geschlossen", with
+the next opening as the tooltip.
+
+- **Only over a rail of rides**: the short waits, or the rides of the park the visitor stands in.
+  When the rail shows parks itself („Parks in deiner Nähe", „Beliebte Parks"), the chips would
+  repeat its cards, so they fade out (`invisible opacity-0`, kept mounted).
+- **The search list's parks, in its order**: `useHeroBrowseParks`, open parks first, then by
+  distance, so the chips cost no request of their own. In a park it is that park alone. The row's
+  `<nav>` is named like the list (`useBrowseHeading`).
+- **It takes no room.** Whether the rail shows rides is decided by the nearby answer, after load, so
+  the row floats (`h-0`, absolute) in the gap under the field, over the empty top of the rail's
+  44 px heading row, and fades in and out without moving anything. 8 px under the field and 10 px
+  over the rail's heading on a phone (28 px chips), 15 px and 10 px from `md` (32 px chips).
+- **Under the text column, not in it**: the column is `max-w-5xl`, too narrow for five chips at
+  1280 px; under it the row has the rail's width. Where five do not fit (a phone, a tablet, long
+  names of shut parks) it scrolls sideways, to the screen's edges on a phone like the rail, and its
+  right edge fades.
+- **The crowd level is in the text too** (`sr-only`), for a reader who cannot tell the dots apart.
+  Clicks count with block `nearby`, like the rail's.
 
 ## The card rail
 

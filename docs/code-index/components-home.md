@@ -54,6 +54,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `HeroEntranceGate` _component_: Closes the hero's entrance window once it has played.
 - `HERO_ITEM_IN_MS` _const_: Duration of `hero-item-in` in globals.css. Kept here so the two cannot drift apart.
 
+### [`hero-nearby-chips.tsx`](../../components/home/hero-nearby-chips.tsx)
+
+- `HeroNearbyChips` _component_: The nearest parks as a row of chips under the hero's search field, each with its average wait while it is open: the same list and order as the search's pre-query list (`useHeroBrowseParks`, open parks first, then by distance), so it costs …
+
 ### [`hero-park-actions.tsx`](../../components/home/hero-park-actions.tsx)
 
 - `HeroParkActions` _component_: The part of the homepage hero for somebody standing in a park, or right next to one: two things to press and two to read.

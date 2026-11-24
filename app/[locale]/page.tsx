@@ -22,6 +22,7 @@ import { HeroRotationProvider } from '@/components/layout/hero-rotation-context'
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
 import { HeroStats } from '@/components/home/hero-stats';
+import { HeroNearbyChips } from '@/components/home/hero-nearby-chips';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
 import { HeroRail, HeroRailParkActions } from '@/components/home/hero-rail';
 import { ParkCompassSlot } from '@/components/home/park-compass-slot';
@@ -187,6 +188,9 @@ export default async function HomePage({ params }: HomePageProps) {
                       className="mt-6 max-w-2xl"
                     />
                   </HeroTextPanel>
+                  {/* Under the column, not in it: the rail's width, so five chips fit beside each
+                    other on a desktop. It takes no room and shows only over a rail of rides. */}
+                  <HeroNearbyChips />
                 </div>
 
                 {/* Hero image attribution: the current image's park / city / country. */}

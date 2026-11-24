@@ -1,7 +1,22 @@
 import { HERO_RAIL_CARDS } from '@/lib/home/hero-search';
 import type { PopularPark, ScheduleSummary } from '@/lib/api/types';
-import type { ParkWithDistance } from '@/types/nearby';
+import type {
+  NearbyParksData,
+  NearbyResponse,
+  NearbyShortWait,
+  ParkWithDistance,
+} from '@/types/nearby';
 import type { NearbySearchExtras } from '@/lib/hooks/use-hero-browse-parks';
+
+/**
+ * The rides the hero's card rail shows as short waits: the nearby answer's `shortWaits` that have a
+ * page. None outside a `nearby_parks` answer, and none from an API or a cached answer older than
+ * the field.
+ */
+export function nearbyShortWaits(nearby: NearbyResponse | undefined): NearbyShortWait[] {
+  if (nearby?.type !== 'nearby_parks') return [];
+  return ((nearby.data as NearbyParksData).shortWaits ?? []).filter((ride) => ride.url);
+}
 
 /**
  * Nearby parks the hero's card rail needs before popular parks fill it up: the nearby answer can

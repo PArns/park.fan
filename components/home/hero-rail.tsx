@@ -19,6 +19,7 @@ import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useHeroPark } from '@/lib/hooks/use-hero-park';
 import { useHeroStatusLabels } from '@/lib/hooks/use-hero-status-labels';
 import { HERO_RAIL_CARDS } from '@/lib/home/hero-search';
+import { nearbyShortWaits } from '@/lib/home/hero-browse';
 import {
   heroBrowseRows,
   useHeroBrowseParks,
@@ -33,7 +34,7 @@ import {
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { convertApiUrlToFrontendUrl, searchResultHref } from '@/lib/utils/url-utils';
 import { cn, stripNewPrefix } from '@/lib/utils';
-import type { NearbyParksData, NearbyShortWait } from '@/types/nearby';
+import type { NearbyShortWait } from '@/types/nearby';
 import type { Locale } from '@/i18n/config';
 
 /**
@@ -313,10 +314,7 @@ export function HeroRail({ className }: { className?: string }) {
   const { data: nearby } = useHomeNearbyParks();
   const withStatusLabels = useHeroStatusLabels();
 
-  const shortWaits =
-    nearby?.type === 'nearby_parks'
-      ? ((nearby.data as NearbyParksData).shortWaits ?? []).filter((ride) => ride.url)
-      : [];
+  const shortWaits = nearbyShortWaits(nearby);
   const pending = !mounted || browse.isPending;
   const showShortWaits = !pending && shortWaits.length > 0;
 
