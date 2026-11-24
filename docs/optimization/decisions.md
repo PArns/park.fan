@@ -752,3 +752,53 @@ same pull request, and `pnpm test:trip-regions` fails when `lib/trip-regions/typ
 without `TRIP_API_TYPES_HASH`, so the question cannot be skipped. Not measured yet: the check is the
 API's `trip_planner_ops` answer-cache hit rate and the hubs' cold time to first byte over the next
 deploys, against the 14–22 % best-days hit rate of 19 November.
+
+---
+
+## 2026-11-24 — ACCEPTED: the ride page stops shipping `planner`, the calendar stops shipping `attractions`
+
+**Lever:** bytes per invocation. **Files:** `components/planner/add-to-planner-button.tsx`,
+`components/planner/planner-fit-assistant-lazy.tsx`, `components/parks/ridden-counter.tsx`,
+`components/parks/ridden-toggle.tsx`, `lib/i18n/route-namespaces.mjs`, `messages/*.json`.
+
+`AddToPlannerButton` read all of `planner` (19.2 KB of German JSON) for six strings, so every ride
+page shipped it. Its own strings now come from `planner.rideButton`, `planner.fit` and
+`planner.optimize`; the fit dialog it opens when a day has no room for the ride sits behind a new
+lazy boundary and fetches `planner` together with its code. `RiddenCounter` and `RiddenToggle` read
+all of `attractions` (11.2 KB) for three strings, which put the namespace on the calendar,
+`average-wait-times` and `with-kids` routes; they now read `attractions.ridden`.
+
+Measured on a local production build of `6ed7367f` against this branch, 60 URLs per route from the
+sitemaps in all six locales, brotli quality 5 per response:
+
+| Route          | before  | after   |      Δ | messages in the payload (raw) |
+| -------------- | ------- | ------- | -----: | ----------------------------- |
+| Ride           | 59.7 KB | 54.6 KB | −8.7 % | 53.7 → 37.5 KB                |
+| Calendar month | 76.1 KB | 73.0 KB | −4.0 % | 59.9 → 50.0 KB                |
+| Park           | 82.3 KB | 82.3 KB |      0 | 68.0 KB                       |
+
+CPU per render did not move outside the noise of the machine (ride 42–55 ms, calendar 64–78 ms
+across passes). **Open:** the calendar and the park page still ship all of `parks` (31.4 KB). The
+calendar's six components read about 5.7 KB of it, through some 50 top-level keys the park page
+shares, so narrowing it means moving those keys into subtrees in six locales, or teaching the
+generator to ship only the keys a component reads.
+
+---
+
+## 2026-11-24 — REJECTED: the park seed, the park JSON per ride render and the ride 404 lookup
+
+**Lever:** bytes and CPU per invocation. Each was measured before anything was built:
+
+- **The park page's seed** (`LiveParkData`'s `initialData`, `leanParkForParkShell`) is 14.7 KB
+  brotli of a 104.9 KB Europa-Park page. What could go without a visible change is about 1.2 KB
+  (ride coordinates 0.9 KB, `queues[].lastUpdated` 0.3 KB); the restaurants (3.6 KB) draw the
+  restaurants tab. The JSON-LD sits in the HTML and again in the RSC payload, and the second copy
+  costs 2.2 KB brotli on Europa-Park; React renders it into both, and no route leaves React for it.
+- **The park JSON every ride render reads** from the Data Cache: `JSON.parse` plus
+  `structuredClone` take 0.6 ms for Phantasialand (88 KB) and 1.5 ms for Europa-Park (176 KB),
+  against about 42 ms for the render. A leaner payload would need its own endpoint in the API.
+- **The lookup on a ride 404.** Next stores only a 200 in the Data Cache
+  (`next/dist/server/lib/patch-fetch.js`), so the detail call for a slug the park payload missed
+  goes to the API on every render (a 404 render costs 56 ms and 270 ms of wall time against 42 ms
+  for a ride page). But the 404 carries the ride route's `CDN-Cache-Control` of a day, so it runs
+  once per CDN miss, about 800 a day by the October count: seconds of CPU a day.
