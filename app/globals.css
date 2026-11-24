@@ -116,6 +116,27 @@
   }
 }
 
+/*
+ * A photo fading into the glass to its left. The stops follow a smoothstep curve instead of a
+ * straight line: a linear ramp starts and ends abruptly, and the eye reads both ends as an edge.
+ */
+@utility photo-fade-left {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    rgb(0 0 0 / 0.03) 3.6%,
+    rgb(0 0 0 / 0.1) 7.2%,
+    rgb(0 0 0 / 0.22) 10.8%,
+    rgb(0 0 0 / 0.35) 14.4%,
+    rgb(0 0 0 / 0.5) 18%,
+    rgb(0 0 0 / 0.65) 21.6%,
+    rgb(0 0 0 / 0.78) 25.2%,
+    rgb(0 0 0 / 0.9) 28.8%,
+    rgb(0 0 0 / 0.97) 32.4%,
+    black 36%
+  );
+}
+
 @utility container {
   width: 100%;
 

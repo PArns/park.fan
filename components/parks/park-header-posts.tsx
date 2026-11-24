@@ -19,8 +19,7 @@ import { cn } from '@/lib/utils';
  * The window's photo behind its text. From `lg`, beside the card's text, it fades into the glass
  * towards the left instead of meeting it at an edge; below `lg` it fills the row under the text.
  */
-const WINDOW_PHOTO_BOX =
-  'absolute inset-0 -z-10 overflow-hidden lg:[mask-image:linear-gradient(to_right,transparent,black_22%)]';
+const WINDOW_PHOTO_BOX = 'absolute inset-0 -z-10 overflow-hidden lg:photo-fade-left';
 
 /** What „the window" of a title card shows: the post it leads to, else a photo. */
 export interface TitleCardWindow {
@@ -55,9 +54,11 @@ export function TitleCardWindowSplit({
   children: React.ReactNode;
 }) {
   if (!pane?.guide && !pane?.photo) return <>{children}</>;
+  // The window's column takes the gutter beside the text as well, so its photo has begun to fade
+  // in there; its own text keeps its place by a padding that much wider (`lg:pl-24`).
   return (
-    <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,40%)]">
-      <div className="min-w-0 lg:pr-8">{children}</div>
+    <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(20rem,calc(40%_+_2rem))]">
+      <div className="min-w-0">{children}</div>
       <div
         className={cn(
           'border-foreground/10 -mx-6 mt-6 -mb-6 overflow-hidden border-t lg:-mt-6 lg:-mr-6 lg:ml-0 lg:flex lg:rounded-tr-xl lg:border-t-0',
@@ -102,7 +103,7 @@ async function ParkHeaderWindow({ guide, photo, label }: TitleCardWindow) {
         </div>
       )}
       {guide && (
-        <div className="py-5 pr-12 pl-6 lg:p-6 lg:pt-24 lg:pl-16">
+        <div className="py-5 pr-12 pl-6 lg:p-6 lg:pt-24 lg:pl-24">
           <span className="block text-xs font-medium tracking-wider text-white/70 uppercase">
             {label ?? t('label')}
           </span>
