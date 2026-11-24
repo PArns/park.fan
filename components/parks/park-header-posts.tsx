@@ -19,7 +19,7 @@ import { cn } from '@/lib/utils';
  * The window's photo behind its text. From `lg`, beside the card's text, it fades into the glass
  * towards the left instead of meeting it at an edge; below `lg` it fills the row under the text.
  */
-const WINDOW_PHOTO_BOX = 'absolute inset-0 -z-10 overflow-hidden lg:photo-fade-left';
+const WINDOW_PHOTO_BOX = 'absolute inset-0 -z-10 overflow-hidden lg:photo-fade-left-36%';
 
 /** What „the window" of a title card shows: the post it leads to, else a photo. */
 export interface TitleCardWindow {
