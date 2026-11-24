@@ -39,7 +39,7 @@ coverImage:
 seo:
   title: 'Europa-Park en hiver 2026/27 : horaires et prix'
   description: >-
-    Europa-Park en hiver : du 28/11/2026 au 9/1/2027, tous les jours dès 11 h, billet dès 67 €. Nouveau : WinterWunderWelt agrandie, spectacle sur glace.
+    Europa-Park en hiver : du 28/11/2026 au 9/1/2027, chaque jour dès 11 h, billet dès 67 €. Nouveau : WinterWunderWelt agrandie, show sur glace, espace dino.
   keywords:
     - Europa-Park hiver 2026
     - Europa-Park saison d’hiver 2026/27
@@ -61,11 +61,11 @@ seo:
     - Euro-Mir dernier tour
 ---
 
-L’[Europa-Park](ref:europa-park?bare) ouvre son hiver le samedi 28 novembre et fête les 25 ans de sa saison d’hiver. Au Winterland, la halle couverte WinterWunderWelt a grandi, et un nouveau spectacle sur glace s’installe à la patinoire. Dans l’Arène espagnole, les DINO MATES, les dinosaures de la série animée tirée de l’attraction Madame Freudenreich Curiosités, ont reçu leur propre espace de jeu. Le groupe MACK a présenté tout cela dans sa fiche d’information sur l’hiver.
+L’[Europa-Park](ref:europa-park?bare) ouvre son hiver le samedi 28 novembre et fête les 25 ans de sa saison d’hiver. Au Winterland, la halle couverte WinterWunderWelt a grandi, et un nouveau spectacle sur glace s’installe à la patinoire. Dans l’Arène espagnole, les DINO MATES ont reçu leur propre espace de jeu. Le groupe MACK a présenté tout cela dans sa fiche d’information sur l’hiver.
 
 ## Les horaires
 
-La saison d’hiver dure jusqu’au samedi 9 janvier 2027. Le parc ouvre tous les jours à 11 h et ferme au plus tôt à 19 h, sauf le 24 et le 25 décembre, où il reste fermé. Si tu dors dans l’un des hôtels, tu entres avant l’ouverture normale et tu as droit à un jour de plus, le dimanche 10 janvier. Ce jour-là, seuls les clients des hôtels et les invités passent l’entrée, les caisses restent fermées.
+La saison d’hiver dure jusqu’au samedi 9 janvier 2027. Le parc ouvre tous les jours à 11 h et ferme au plus tôt à 19 h. Les 24 et 25 décembre, il reste fermé. Si tu dors dans l’un des hôtels, tu entres avant l’ouverture normale et tu as droit à un jour de plus, le dimanche 10 janvier. Ce jour-là, seuls les clients des hôtels et les invités passent l’entrée, les caisses restent fermées.
 
 ## Les nouveautés
 
@@ -73,7 +73,7 @@ Le Winterland existe depuis l’hiver 2025. Il occupe le terrain de Traumatica, 
 
 Pour l’aventure d’hiver DINO MATES, le parc a rempli l’Arène espagnole de châteaux gonflables en forme de dinosaures et de briques de construction XXL. Les parents ont droit à un salon où personne n’est obligé de sauter. Au Dino-Kino, les épisodes de « DINO MATES – Ferien bei Madame Freudenreich » passent toute la journée sur grand écran. MACK Magic a produit cette série animée, tirée de l’attraction [Madame Freudenreich Curiosités](ref:europa-park/madame-freudenreich-curiosites), avec Edel Kids et KiKA.
 
-Le nouveau spectacle sur glace s’appelle « Surpr´Ice presents Christmas Spirit ». Il dure 30 minutes et se joue à la patinoire du quartier grec dès le 25 novembre, trois jours avant le début de l’hiver. Le parc n’a encore publié les horaires ni du spectacle sur glace, ni du cirque.
+Le nouveau spectacle sur glace s’appelle « Surpr´Ice presents Christmas Spirit ». Il dure 30 minutes et se joue à la patinoire du quartier grec dès le 25 novembre, trois jours avant le début de l’hiver. Le parc n’a pas encore publié les horaires du spectacle sur glace et du cirque.
 
 ## Spectacles et lumières
 
@@ -85,7 +85,7 @@ Dans le quartier croate, plus de 60 œuvres de l’exposition [« James Rizzi m
 
 En ligne, le billet journée adulte, dès 12 ans, coûte 67 € jusqu’au 22 décembre et 76 € à partir du 23. Les enfants de 4 à 11 ans et les seniors dès 60 ans paient de 56,50 à 65 € selon le jour, les plus petits entrent gratuitement. Aux caisses, chaque billet journée coûte 10 € de plus. Le billet du soir vaut à partir de 16 h et coûte 41,50 € pour un adulte jusqu’au 22 décembre, puis 47 €, sans supplément aux caisses. Les deux mappings ne commencent qu’à 17 h, le billet du soir suffit donc pour les voir.
 
-Moi, je viendrais avant le 23 décembre, quand tous les billets sont encore dans la catégorie la moins chère. Le parking visiteurs coûte 10 € par jour et ouvre à 9 h en hiver, les clients des hôtels se garent gratuitement devant leur hôtel. Si tu préfères passer la soirée assis, réserve le dîner-spectacle « The Grand Club » à l’Europa-Park Teatro, dès 152 € par personne : quatre plats, début à 19 h 30 et entrée au parc dès 17 h. Notre [tour d’horizon de l’hiver 2026/27](/blog/parcs-attractions-hiver-2026) rassemble les parcs ouverts à Noël et au Nouvel An.
+Moi, je viendrais avant le 23 décembre. Le parking visiteurs coûte 10 € par jour et ouvre à 9 h en hiver, les clients des hôtels se garent gratuitement devant leur hôtel. Si tu préfères passer la soirée assis, réserve le dîner-spectacle « The Grand Club » à l’Europa-Park Teatro, dès 152 € par personne : quatre plats, début à 19 h 30 et entrée au parc dès 17 h. Notre [tour d’horizon de l’hiver 2026/27](/blog/parcs-attractions-hiver-2026) rassemble les parcs ouverts à Noël et au Nouvel An.
 
 ## Ce qui roule et ce qui s’arrête
 
@@ -109,6 +109,6 @@ L’affluence attendue pour chaque jour se trouve dans le [calendrier d’afflue
 
 ## Rulantica en hiver
 
-Le parc aquatique [Rulantica](ref:rulantica) fête pour la première fois [Vinterglanz](/news/rulantica-vinterglanz-2026), du 28 novembre au 10 janvier, avec un spectacle du soir au bassin à vagues. Le 28 novembre, il a aussi sept ans. Contrairement à l’Europa-Park, Rulantica ouvre le 10 janvier également aux visiteurs qui ne dorment pas sur place, et il ferme lui aussi le 24 et le 25 décembre.
+Le parc aquatique [Rulantica](ref:rulantica) fête pour la première fois [Vinterglanz](/news/rulantica-vinterglanz-2026), du 28 novembre au 10 janvier, avec un spectacle du soir au bassin à vagues. Le 28 novembre, il fête aussi ses sept ans. Contrairement à l’Europa-Park, Rulantica ouvre le 10 janvier également aux visiteurs qui ne dorment pas sur place, et il ferme lui aussi le 24 et le 25 décembre.
 
 Sources : [Fiche d’information hiver 2026/27 (groupe MACK)](https://mack.group/de/presse-medien/pressemitteilungen/factsheet-winter-2026/27-europa-park), [Horaires et saisons](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons), [Winterzauber à l’Europa-Park](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/winterzauber-im-europa-park), [Billets](https://www.europapark.de/de/tickets), [Accès à l’Europa-Park](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park), [DINO MATES – Ferien bei Madame Freudenreich](https://www.europapark.de/de/freizeitpark/dino-mates-ferien-bei-madame-freudenreich), [Surpr´Ice presents Christmas Spirit](https://www.europapark.de/de/freizeitpark/shows/surprice-presents-christmas-spirit), [Monte Carlo Circus Festival meets Europa-Park](https://www.europapark.de/de/freizeitpark/shows/monte-carlo-circus-festival-meets-europa-park), [Season of Light](https://www.europapark.de/de/freizeitpark/shows/season-light), [Voltron Mapping Show](https://www.europapark.de/de/freizeitpark/shows/voltron-mapping-show), [Miraculeux Mapping Show](https://www.europapark.de/de/freizeitpark/shows/miraculeux-mapping-show), [Everglow](https://www.europapark.de/de/freizeitpark/shows/everglow), [James Rizzi meets Rollercoasters](https://www.europapark.de/de/freizeitpark/attraktionen/james-rizzi-meets-rollercoasters), [Goodbye Euro-Mir](https://www.europapark.de/de/freizeitpark/goodbye-euro-mir), [Euro-Mir](https://www.europapark.de/de/freizeitpark/attraktionen/euro-mir), [Fjord-Rafting](https://www.europapark.de/de/freizeitpark/attraktionen/fjord-rafting), [Atlantica SuperSplash](https://www.europapark.de/de/freizeitpark/attraktionen/atlantica-supersplash), [Tiroler Wildwasserbahn](https://www.europapark.de/de/freizeitpark/attraktionen/tiroler-wildwasserbahn), [Grand huit aquatique Poseidon](https://www.europapark.de/de/freizeitpark/attraktionen/wasserachterbahn-poseidon), [Silver Star](https://www.europapark.de/de/freizeitpark/attraktionen/silver-star), [blue fire Megacoaster](https://www.europapark.de/de/freizeitpark/attraktionen/blue-fire-megacoaster), [Wodan – Timburcoaster](https://www.europapark.de/de/freizeitpark/attraktionen/wodan-timburcoaster), [Voltron Nevera](https://www.europapark.de/de/freizeitpark/attraktionen/voltron-nevera-powered-rimac), [Eurosat – CanCan Coaster](https://www.europapark.de/de/freizeitpark/attraktionen/eurosat-cancan-coaster), [ARTHUR](https://www.europapark.de/de/freizeitpark/attraktionen/arthur), [Dîner-spectacle « The Grand Club »](https://www.europapark.de/de/events/europa-park-dinner-show-event), [Saison d’hiver 2026/2027 au resort](https://www.europapark.de/de/uebernachten/angebote-events/wintersaison-20262027), [Vinterglanz à Rulantica (groupe MACK)](https://mack.group/de/presse-medien/pressemitteilungen/wasserwelt-rulantica-erstmals-mit-nordisch-weihnachtlicher-winterzeit-vinterglanz).
