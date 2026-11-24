@@ -155,7 +155,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_lib/use-admin-health.ts`](../../app/admin/_lib/use-admin-health.ts)
 
-- `useAdminHealth` _hook_: The admin's situation for the overview and the sidebar's dots: reads the five monitoring answers under the keys their own pages use (so answering a data-quality card clears its count here too) and folds them with `deriveAdminHealth`.
+- `useAdminHealth` _hook_: The admin's situation for the overview and the sidebar's dots: reads the five monitoring answers, and for the owner the open API key requests, under the keys their own pages use (so answering a data-quality card clears its count here too) …
 - Types: `AdminHealthData`
 
 ### [`_lib/use-fuzzy-hits.ts`](../../app/admin/_lib/use-fuzzy-hits.ts)
@@ -166,6 +166,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useHeroPhoto` _hook_: The rotating admin photo, picked after mount because the choice depends on the clock, on which server and browser would disagree. It reads `@/lib/media/hero`, the client-safe slice of the media database.
 - Types: `HeroPhoto`
+
+### [`_lib/use-key-requests.ts`](../../app/admin/_lib/use-key-requests.ts)
+
+- `useKeyRequests` _hook_: The developers' key requests from the API, under the one query key the API keys page and the overview share, so a request decided on the page leaves the overview's card too.
 
 ### [`_lib/use-local-preference.ts`](../../app/admin/_lib/use-local-preference.ts)
 
@@ -396,7 +400,6 @@ Route `/admin/analytics` (page).
 ### [`api-keys/_components/key-requests-panel.tsx`](../../app/admin/api-keys/_components/key-requests-panel.tsx)
 
 - `KeyRequestsPanel` _component_: The key requests developers filed on their dashboard, open ones first. Each is approved into a key, with the permissions, allowance, parks and end date the owner sets, or declined with a note the developer reads.
-- `useKeyRequests` _hook_: The developers' key requests from the API. An API that answers them stores permissions too, so the page reads its success as that, also while no key exists yet to show the field.
 
 ### [`api-keys/page.tsx`](../../app/admin/api-keys/page.tsx)
 
