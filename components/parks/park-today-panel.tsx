@@ -26,6 +26,7 @@ import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { LocalTime } from '@/components/ui/local-time';
 import { Progress } from '@/components/ui/progress';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
+import { parkPayloadHeadline, useParkHeadline } from '@/lib/hooks/use-park-headline';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
@@ -153,10 +154,14 @@ export function ParkTodayPanel({
   // they aggregate to a wall of zeros. See docs/rules/parks-we-cannot-read.md.
   const stats = waitsReadable ? park.analytics?.statistics : undefined;
   const occupancy = waitsReadable ? park.analytics?.occupancy : undefined;
+  // The Ø and the level as the newest reading on the page has them, so the panel says what the
+  // favourites band above it says.
+  const headline = useParkHeadline(park.id, parkPayloadHeadline(park));
   // `null` on a park whose feed has gone silent (see `hasReadableWaitTimes`, which cannot tell).
   const peakWait = stats?.peakWaitToday ?? 0;
-  const avgWait = stats?.avgWaitTime ?? 0;
-  const currentCrowd = stats?.crowdLevel ?? park.currentLoad?.crowdLevel ?? null;
+  const avgWait = stats ? (headline.avgWaitTime ?? 0) : 0;
+  const currentCrowd =
+    (stats ? headline.crowdLevel : undefined) ?? park.currentLoad?.crowdLevel ?? null;
   const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
   // A measured peak hour happened. An estimated one is a forecast for today, and the API sends it
   // for a day the park does not open as well.
@@ -746,9 +751,7 @@ export function ParkTodayPanel({
                   stats && avgWait > 0 ? (
                     <span className="text-muted-foreground text-xs whitespace-nowrap">
                       Ø{' '}
-                      <strong className="text-foreground font-bold tabular-nums">
-                        {stats.avgWaitTime}
-                      </strong>{' '}
+                      <strong className="text-foreground font-bold tabular-nums">{avgWait}</strong>{' '}
                       {tCommon('minutes')}
                     </span>
                   ) : null

@@ -31,6 +31,8 @@ export interface ResolvedPark {
   status?: ParkStatus;
   crowdLevel?: CrowdLevel;
   avgWaitTime?: number;
+  /** When the API read `crowdLevel` and `avgWaitTime` (ISO 8601). */
+  headlineUpdatedAt?: string;
   operatingAttractions?: number;
   totalAttractions?: number;
   hasOperatingSchedule?: boolean;
@@ -106,6 +108,7 @@ const buildIndex = cache(async (): Promise<IndexedGeo> => {
             status: park.status,
             crowdLevel: park.currentLoad?.crowdLevel ?? park.analytics?.statistics?.crowdLevel,
             avgWaitTime: park.analytics?.statistics?.avgWaitTime ?? undefined,
+            headlineUpdatedAt: park.analytics?.statistics?.updatedAt,
             operatingAttractions: park.analytics?.statistics?.operatingAttractions,
             totalAttractions: park.analytics?.statistics?.totalAttractions,
             // ParkCard reads these to show "Opens tomorrow 09:00" instead of a bare "Closed".

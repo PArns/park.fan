@@ -33,6 +33,8 @@ export interface FavoritePark {
     avgWaitTime?: number;
     crowdLevel?: CrowdLevel;
     occupancy?: number;
+    /** When the API took the reading behind `avgWaitTime` and `crowdLevel` (ISO 8601). */
+    updatedAt?: string;
   };
   url: string;
   timezone: string;

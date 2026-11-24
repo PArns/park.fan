@@ -130,6 +130,15 @@ Which two days of a park's calendar are being compared, across a change of month
 - `PARK_BRANDS` _const_: Every brand with a page, for the sitemap, the content-change crawl and the park page's link.
 - Types: `ParkBrand`, `BrandCountry`
 
+### [`park-headline.ts`](../../lib/parks/park-headline.ts)
+
+- `recordParkHeadline` _function_: Keeps a park's reading when it is newer than the one held. An older or equal one changes nothing and wakes nobody, so every card of a park can offer its own on every render.
+- `heldParkHeadline` _function_: The newest reading held for a park, or `undefined`. The object keeps its identity until a newer reading replaces it, as `useSyncExternalStore` requires.
+- `subscribeParkHeadlines` _function_: Subscribes to new readings; returns the unsubscribe. Shaped for `useSyncExternalStore`.
+- `newerParkHeadline` _function_: The newer of a surface's own reading and the one held. A held reading beats an own one without a time: the held one was read at a known moment by an answer on this page, the own one is from an answer that does not say.
+- `resetParkHeadlines` _function_: Forgets every reading. For tests.
+- Types: `ParkHeadline`
+
 ### [`park-season-days.ts`](../../lib/parks/park-season-days.ts)
 
 - `formatSeasonRange` _function_: A season's bounds as one localized range, „20. Nov. – 18. Jan. 2027": the year once when both ends share it, on both ends when they do not. Falls back to the raw dates when either does not parse.

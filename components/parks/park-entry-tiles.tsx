@@ -32,6 +32,7 @@ import { parkDayOf } from '@/lib/utils/park-day';
 import { daysBetween } from '@/lib/planner/park-time';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
+import { parkPayloadHeadline, useParkHeadline } from '@/lib/hooks/use-park-headline';
 import { getDateTimeFormat, formatTime } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
@@ -144,6 +145,7 @@ export function useParkTileItems({
   }, [bestDaysCalendar, parkToday, park.timezone, locale, t]);
 
   const stats = park.analytics?.statistics;
+  const headline = useParkHeadline(park.id, parkPayloadHeadline(park));
   const lands = useMemo(
     () => new Set((park.attractions ?? []).map((a) => a.land).filter(Boolean)).size,
     [park.attractions]
@@ -237,7 +239,7 @@ export function useParkTileItems({
             <span className="block">
               {t.rich('tileAttractions', {
                 open: stats.operatingAttractions,
-                avg: stats.avgWaitTime,
+                avg: headline.avgWaitTime ?? stats.avgWaitTime,
                 b: bold,
               })}
             </span>

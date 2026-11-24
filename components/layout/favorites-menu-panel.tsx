@@ -25,6 +25,7 @@ import { useFavoriteCounts } from '@/lib/hooks/use-favorite-counts';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
+import { useParkHeadline } from '@/lib/hooks/use-park-headline';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { parkDayOf } from '@/lib/utils/park-day';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
@@ -706,12 +707,11 @@ function ParkEntry({
   const href = convertApiUrlToFrontendUrl(park.url);
   const title = stripNewPrefix(park.name);
   const operating = park.status === 'OPERATING';
+  const headline = useParkHeadline(park.id, { status: park.status, ...park.analytics });
   // Ø and crowd only for a park that is actually running: a closed one aggregates over an empty
   // set and reports the same thing a park with no wait-time source reports.
   const wait =
-    operating && park.analytics?.avgWaitTime != null
-      ? roundWaitTo5(park.analytics.avgWaitTime)
-      : null;
+    operating && headline.avgWaitTime != null ? roundWaitTo5(headline.avgWaitTime) : null;
   const badge = (
     <ParkStatusBadge status={park.status as ParkStatus} className="px-1.5 py-0 text-[10px]" />
   );
@@ -747,7 +747,7 @@ function ParkEntry({
       subtitle={[park.city, country].filter(Boolean).join(' · ')}
       image={park.backgroundImage}
       imagePosition={park.backgroundPosition}
-      crowd={operating ? park.analytics?.crowdLevel : null}
+      crowd={operating ? headline.crowdLevel : null}
       badge={badge}
       schedule={
         <ScheduleLine

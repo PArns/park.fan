@@ -15,6 +15,7 @@ import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl, getParkUrlFromAttractionUrl } from '@/lib/utils/url-utils';
 import type { AttractionWithDistance, NearbyAttractionsData, NearbyParkInfo } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
+import { useParkHeadline } from '@/lib/hooks/use-park-headline';
 
 // All headliners are shown (no cap). The "nearest" list below shows the next non-headliner rides so
 // the user always sees more than just the marquee attractions.
@@ -210,12 +211,21 @@ export function InParkView({
 }) {
   const t = useTranslations('nearby');
   const tStatus = useTranslations('parks.status');
+  const headline = useParkHeadline(data?.park?.id, {
+    status: data?.park?.status,
+    ...data?.park?.analytics,
+  });
 
   if (!data || !data.park) {
     return null;
   }
 
   const park = data.park;
+  const analytics = park.analytics && {
+    ...park.analytics,
+    avgWaitTime: headline.avgWaitTime ?? undefined,
+    crowdLevel: headline.crowdLevel ?? undefined,
+  };
   const { headliners, attractions } = splitInParkRides(data.rides);
 
   // `park.status` is the raw API enum (OPERATING, CLOSED, …); show its translated label, and drop
@@ -291,13 +301,13 @@ export function InParkView({
                   </div>
                   <p className="text-muted-foreground text-sm">{youAreHere}</p>
                 </div>
-                {park.analytics?.crowdLevel &&
+                {analytics?.crowdLevel &&
                   (park.status === 'OPERATING' || park.status === 'UNKNOWN') && (
-                    <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
+                    <CrowdLevelBadge level={analytics.crowdLevel as CrowdLevel} />
                   )}
               </article>
 
-              {park.analytics && <ParkAnalyticsRow analytics={park.analytics} className="mt-4" />}
+              {analytics && <ParkAnalyticsRow analytics={analytics} className="mt-4" />}
             </Link>
           ) : (
             <>
@@ -306,13 +316,13 @@ export function InParkView({
                   <h3 className="text-lg font-semibold">{stripNewPrefix(park.name)}</h3>
                   <p className="text-muted-foreground text-sm">{youAreHere}</p>
                 </div>
-                {park.analytics?.crowdLevel &&
+                {analytics?.crowdLevel &&
                   (park.status === 'OPERATING' || park.status === 'UNKNOWN') && (
-                    <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
+                    <CrowdLevelBadge level={analytics.crowdLevel as CrowdLevel} />
                   )}
               </article>
 
-              {park.analytics && <ParkAnalyticsRow analytics={park.analytics} />}
+              {analytics && <ParkAnalyticsRow analytics={analytics} />}
             </>
           )}
 
