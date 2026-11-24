@@ -36,6 +36,8 @@ export interface NearbySearchExtras {
   distanceM?: number;
   /** Live park-wide average wait in minutes. */
   avgWaitTime?: number;
+  /** When the API read `avgWaitTime` and `load` (ISO 8601), see `useParkHeadline`. */
+  headlineUpdatedAt?: string;
   /**
    * A shut park's schedule entries, today's and the next operating day's, which its pill reads the
    * next opening from (`nextParkOpening`).
@@ -105,6 +107,7 @@ const popularRow = (park: PopularPark, live: LiveParkFields | undefined): Nearby
   status: live?.status,
   load: live?.crowdLevel,
   avgWaitTime: live?.averageWaitTime,
+  headlineUpdatedAt: live?.updatedAt,
   ...(live?.status && live.timezone
     ? shutParkSchedules({ ...live, status: live.status, timezone: live.timezone })
     : {}),
@@ -198,6 +201,7 @@ export function useHeroBrowseParks(): HeroBrowseParks {
             imageUrl: inParkData.park.backgroundImage ?? undefined,
             imagePosition: inParkData.park.backgroundPosition,
             avgWaitTime: inParkData.park.analytics?.avgWaitTime,
+            headlineUpdatedAt: inParkData.park.analytics?.updatedAt,
             ...shutParkSchedules(inParkData.park),
             browseItem: 'nearby_park' as const,
           },
@@ -251,6 +255,7 @@ export function useHeroBrowseParks(): HeroBrowseParks {
             imageUrl: park.backgroundImage ?? undefined,
             imagePosition: park.backgroundPosition,
             avgWaitTime: park.analytics?.avgWaitTime,
+            headlineUpdatedAt: park.analytics?.updatedAt,
             ...shutParkSchedules(park),
             browseItem: 'nearby_park' as const,
           })),
@@ -294,6 +299,7 @@ export function useFavoriteParkRows(): NearbySearchItem[] {
         imageUrl: park.backgroundImage ?? undefined,
         imagePosition: park.backgroundPosition,
         avgWaitTime: park.analytics?.avgWaitTime,
+        headlineUpdatedAt: park.analytics?.updatedAt,
         ...shutParkSchedules(park),
         browseItem: 'favorite_park' as const,
       })),

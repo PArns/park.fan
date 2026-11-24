@@ -37,6 +37,7 @@ export function overlayPark(park: ResolvedPark, live: LiveParkFields | undefined
     status: live.status ?? park.status,
     crowdLevel: live.crowdLevel ?? park.crowdLevel,
     avgWaitTime: live.averageWaitTime ?? park.avgWaitTime,
+    headlineUpdatedAt: live.updatedAt ?? park.headlineUpdatedAt,
     operatingAttractions: live.operatingAttractions ?? park.operatingAttractions,
     totalAttractions: live.totalAttractions ?? park.totalAttractions,
     timezone: live.timezone ?? park.timezone,

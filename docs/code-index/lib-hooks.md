@@ -202,6 +202,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `useParkComparisonStats` _hook_: A park comparison table's rows, from each park's `/stats` aggregate, which is small enough per park to fetch client-side (see docs/architecture/api-budget.md).
 - Types: `ComparisonPark`, `ComparisonRow`
 
+### [`use-park-headline.ts`](../../lib/hooks/use-park-headline.ts)
+
+- `useParkHeadline` _hook_: A park's Ø wait and crowd level as the newest reading on the page has them: the surface offers its own (`lib/parks/park-headline.ts`) and shows whichever is newer.
+- `useRowHeadline` _hook_: A park row with its Ø wait and crowd level from the newest reading on the page, so the hero, its chips and the palette say what the favourites and the park's own page say.
+- `parkPayloadHeadline` _function_: The headline as a park payload (the park page's poll) states it: `statistics` for the figures, `occupancy.updatedAt` for when they were read.
+
 ### [`use-park-historical-stats.ts`](../../lib/hooks/use-park-historical-stats.ts)
 
 - `useParkHistoricalStats` _hook_: Client-side fetch for a park's two-year historical crowd and wait-time aggregate, from the CDN-cached `/api/parks/.../stats` route, so the park page render needs no dynamic hole for it.

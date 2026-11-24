@@ -14,6 +14,7 @@ import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
 import { useRowReveal } from '@/lib/hooks/use-menu-reveal';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
+import { useParkHeadline } from '@/lib/hooks/use-park-headline';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
@@ -407,10 +408,9 @@ function target(continent: string, country: { slug: string; code: string }) {
  */
 function NearbyRow({ park, minuteLabel }: { park: ParkWithDistance; minuteLabel: string }) {
   const operating = park.status === 'OPERATING';
+  const headline = useParkHeadline(park.id, { status: park.status, ...park.analytics });
   const wait =
-    operating && park.analytics?.avgWaitTime != null
-      ? roundWaitTo5(park.analytics.avgWaitTime)
-      : null;
+    operating && headline.avgWaitTime != null ? roundWaitTo5(headline.avgWaitTime) : null;
 
   return (
     <li>
