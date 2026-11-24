@@ -178,12 +178,13 @@ that scrolls sideways with the next card in view. What it shows, in order:
   says „Walk-on" in that colour in place of the number, sized to the card (`15cqi`, at most
   `text-3xl`): at 1024 px five cards leave 148 px, and the French „Sans attente" took 189 px at
   `text-3xl`; „jetzt 0 Min" at the foot keeps the minutes, and a screen reader reads
-  them there.
+  them there. The API picks the rides and says nothing when there are none, which is every evening
+  and the whole off-season; below 15 °C felt at the park it leaves out a ride that gets its riders
+  wet, whose queue is short only because of the cold (PAR-1420; contract in the API's
+  [discovery](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/discovery.md#shortwaits)).
 - **Every card can be starred**: `FavoriteStar` before the title, filled while the ride or park is
   a favourite, the same star as on the park and ride cards. It took the place of the amber star
-  that marked a headliner, since a filled star now means a favourite. The API picks the rides and says nothing when there are
-  none, which is every evening and the whole off-season (contract in the API's
-  [discovery](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/discovery.md#shortwaits)).
+  that marked a headliner, since a filled star now means a favourite.
 - **A park card** shows the park's average wait while it is open with one badge under it, the crowd
   level (its average already says it is open). Shut, the figure says when it opens, on up to two
   lines (`SHUT_FIGURE_CLASS`):

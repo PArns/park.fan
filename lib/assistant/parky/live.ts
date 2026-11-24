@@ -78,6 +78,8 @@ export function standoutRides(
   const standouts = new Map<string, RideStampVerdict>();
   for (const ride of rides) {
     if (getLiveAttractionStatus(ride, parkStatus) !== 'OPERATING') continue;
+    // Short only because nobody wants to get wet in the cold: no tip to stamp.
+    if (ride.tooColdToGetWet) continue;
     const wait = getStandbyWait(ride);
     const verdict = wait === null ? null : rideStampVerdict(wait, ride.baseline ?? null);
     if (verdict) standouts.set(ride.id, verdict);
@@ -199,6 +201,8 @@ interface Ride {
   open: boolean;
   down: boolean;
   wait: number | null;
+  /** Gets its riders wet in the cold (`tooColdToGetWet`): no walk-on to cheer about. */
+  cold: boolean;
 }
 
 function ridesOf(park: LiveParkSnapshot): Ride[] {
@@ -209,6 +213,7 @@ function ridesOf(park: LiveParkSnapshot): Ride[] {
       open: status === 'OPERATING',
       down: status === 'DOWN',
       wait: getStandbyWait(ride as ParkAttraction),
+      cold: ride.tooColdToGetWet === true,
     };
   });
 }
@@ -251,8 +256,8 @@ export function liveMoment(
   if (park.status !== 'OPERATING') return null;
   const limits = preview ? PREVIEW_LIMITS : LIVE_LIMITS;
   const rides = ridesOf(park);
-  const walkOn = openHeadliners(rides, headliners).find((ride) =>
-    isWalkOn(ride.wait!, limits.walkOn)
+  const walkOn = openHeadliners(rides, headliners).find(
+    (ride) => !ride.cold && isWalkOn(ride.wait!, limits.walkOn)
   );
   if (walkOn) {
     return { kind: 'walkOn', ride: walkOn.name, wait: walkOn.wait! };
@@ -286,7 +291,8 @@ export function liveChange(
   if (down) return { kind: 'down', ride: down.name };
   const drop = now.find((ride) => {
     const was = earlier.get(ride.name)?.wait;
-    if (!ride.open || ride.wait === null || was == null) return false;
+    // A wet ride emptying in the cold is no tip either.
+    if (!ride.open || ride.cold || ride.wait === null || was == null) return false;
     return was - ride.wait >= LIVE_LIMITS.drop && ride.wait <= was / 2;
   });
   if (drop) return { kind: 'drop', ride: drop.name, wait: drop.wait! };

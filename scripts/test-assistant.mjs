@@ -1261,6 +1261,27 @@ check(topCoaster([]), null, 'no ranking, no ride');
     'only the posted 13 sits above the limit, not 12'
   );
   check(
+    liveMoment(
+      park([
+        { ...ride('Black Mamba', 'OPERATING', 5), tooColdToGetWet: true },
+        ride('Taron', 'OPERATING', 10),
+      ]),
+      ['Black Mamba', 'Taron'],
+      false
+    ),
+    { kind: 'walkOn', ride: 'Taron', wait: 10 },
+    'a headliner too cold to get wet is no walk-on, the next one is'
+  );
+  check(
+    liveChange(
+      park([{ ...ride('Taron', 'OPERATING', 60), tooColdToGetWet: true }]),
+      park([{ ...ride('Taron', 'OPERATING', 20), tooColdToGetWet: true }]),
+      heads
+    ),
+    null,
+    'a wet headliner emptying in the cold is no drop worth a hop'
+  );
+  check(
     liveMoment(park([ride('Taron', 'OPERATING', 75), ride('Maus', 'OPERATING', 61)]), heads, false),
     { kind: 'queue', ride: 'Taron', wait: 75 },
     'the longest queue over an hour'
@@ -2397,6 +2418,11 @@ check(isWalkOn(13), true, "walk-on: Disney's posted 13");
     standoutRides([ride('k', 5, 10), ride('n', 5, null)], 'OPERATING').size,
     0,
     'standouts: short anyway or no baseline'
+  );
+  check(
+    standoutRides([...busy, { ...ride('wet', 5, 40), tooColdToGetWet: true }], 'OPERATING').size,
+    0,
+    'standouts: a wet ride in the cold gets no stamp'
   );
   check(
     standoutRides([ride('d', 5, 40, 'DOWN')], 'OPERATING').size,
