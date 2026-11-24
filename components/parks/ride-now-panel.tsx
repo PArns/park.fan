@@ -132,8 +132,12 @@ export function RideNowPanel({
     : null;
 
   // Against the typical this hour the panel prints under the wait, so the stamp never disagrees
-  // with the two figures beside it.
-  const stamp = wait !== null ? rideStampVerdict(wait, typicalHour?.typical ?? null) : null;
+  // with the two figures beside it. None for a ride that is short only because it is too cold to
+  // get wet.
+  const stamp =
+    wait !== null && !attraction.tooColdToGetWet
+      ? rideStampVerdict(wait, typicalHour?.typical ?? null)
+      : null;
 
   /** The next few recommended slots — the ones still ahead of the reader. */
   const slots = useMemo(() => {

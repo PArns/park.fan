@@ -24,7 +24,6 @@ import {
   formatPermissions,
 } from '@/lib/admin/developer-labels';
 import {
-  KEY_REQUESTS_PATH,
   KEY_REQUESTS_QUERY_KEY,
   KEY_REQUEST_STATUS_LABELS,
   approvalDraft,
@@ -35,7 +34,8 @@ import {
 } from '@/lib/admin/key-requests';
 import { KEY_REQUEST_LIMITS, type KeyRequestRecord } from '@/lib/developers/key-request';
 import type { ApiPermission } from '@/lib/developers/permissions';
-import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
+import { adminFetch, useInvalidateAdmin } from '../../_lib/api';
+import { useKeyRequests } from '../../_lib/use-key-requests';
 import { useSession } from '../../_app/session';
 import { formatAgo } from '../../_lib/format';
 import { Field, Select, TextArea, TextInput, useFieldId } from '../../_ui/controls';
@@ -64,19 +64,6 @@ const STATUS_TONES: Record<KeyRequestRecord['status'], ChipTone> = {
   rejected: 'danger',
   withdrawn: 'muted',
 };
-
-/**
- * The developers' key requests from the API. An API that answers them stores permissions too, so
- * the page reads its success as that, also while no key exists yet to show the field.
- */
-export function useKeyRequests() {
-  return useAdminQuery<{ items: KeyRequestRecord[] }>(
-    KEY_REQUESTS_QUERY_KEY,
-    KEY_REQUESTS_PATH,
-    // An API without the requests answers 404, which retrying does not change.
-    { retry: (count, error) => error.status !== 404 && count < 2 }
-  );
-}
 
 /**
  * The key requests developers filed on their dashboard, open ones first. Each is approved into a

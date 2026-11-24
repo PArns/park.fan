@@ -8,6 +8,7 @@ import type {
 import type { MlOverview } from '@/lib/api/admin-ml-overview';
 import type { SubmissionSummary } from '@/lib/contribute/types';
 import { getNumberFormat } from '@/lib/utils/intl-format';
+import type { KeyRequestRecord } from '@/lib/developers/key-request';
 
 /**
  * The admin's situation in one derivation: the monitoring answers (host, feeds, queues, models,
@@ -118,7 +119,7 @@ export interface HealthArea {
 export interface HealthProblem {
   id: string;
   tone: 'warn' | 'bad';
-  area: HealthAreaId | 'contributions';
+  area: HealthAreaId | 'contributions' | 'keyRequests';
   /** What is wrong or waiting, in one line. */
   title: string;
   /** The question it asks, or the evidence in words. */
@@ -158,6 +159,8 @@ export interface HealthSources {
   quality: Reading<DataQualityReport>;
   ml: Reading<MlOverview>;
   contributions: Reading<SubmissionSummary>;
+  /** The developers' key requests; the owner's alone, `forbidden` for every other role. */
+  keyRequests: Reading<{ items: readonly KeyRequestRecord[] }>;
   /** Epoch ms, from the shared minute clock. */
   now: number;
 }
@@ -217,7 +220,9 @@ const AREA_META: Record<HealthAreaId, { label: string; href: string }> = {
 
 /** The name of the part a problem comes from, for the line under its title. */
 export function problemSourceLabel(area: HealthProblem['area']): string {
-  return area === 'contributions' ? 'Einsendungen' : AREA_META[area].label;
+  if (area === 'contributions') return 'Einsendungen';
+  if (area === 'keyRequests') return 'API-Keys';
+  return AREA_META[area].label;
 }
 
 /** An area that has nothing to show yet, or whose source failed. */
@@ -667,6 +672,33 @@ function contributionProblems(summary: SubmissionSummary): HealthProblem[] {
   ];
 }
 
+/** The requests nobody has decided yet, the oldest first. */
+function pendingKeyRequests(items: readonly KeyRequestRecord[]): KeyRequestRecord[] {
+  return items
+    .filter((request) => request.status === 'pending')
+    .sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
+}
+
+function keyRequestProblems(items: readonly KeyRequestRecord[]): HealthProblem[] {
+  const pending = pendingKeyRequests(items);
+  if (pending.length === 0) return [];
+  return [
+    {
+      id: 'key-requests:pending',
+      tone: 'warn',
+      area: 'keyRequests',
+      title:
+        pending.length === 1
+          ? 'Eine API-Key-Anfrage wartet'
+          : `${count(pending.length)} API-Key-Anfragen warten`,
+      detail: nameList(pending.map((request) => request.projectName)),
+      since: pending[0].createdAt,
+      href: '/admin/api-keys',
+      action: 'Entscheiden',
+    },
+  ];
+}
+
 const PROBLEM_RANK = { bad: 0, warn: 1 } as const;
 
 /**
@@ -675,7 +707,7 @@ const PROBLEM_RANK = { bad: 0, warn: 1 } as const;
  * Faults sort before waiting work, otherwise the order is the areas'.
  */
 export function deriveAdminHealth(sources: HealthSources): AdminHealth {
-  const { system, queues, quality, ml, contributions, now } = sources;
+  const { system, queues, quality, ml, contributions, keyRequests, now } = sources;
   const areas: HealthArea[] = [];
   const problems: HealthProblem[] = [];
 
@@ -737,6 +769,7 @@ export function deriveAdminHealth(sources: HealthSources): AdminHealth {
   }
 
   if (contributions.state === 'ok') problems.push(...contributionProblems(contributions.data));
+  if (keyRequests.state === 'ok') problems.push(...keyRequestProblems(keyRequests.data.items));
 
   // A stable sort: faults first, the areas' order within each.
   problems.sort((a, b) => PROBLEM_RANK[a.tone] - PROBLEM_RANK[b.tone]);
@@ -781,6 +814,10 @@ function navSignals(
       tone: 'warn',
       count: sources.contributions.data.pending.length,
     };
+  }
+  if (sources.keyRequests.state === 'ok') {
+    const pending = pendingKeyRequests(sources.keyRequests.data.items).length;
+    if (pending > 0) signals['/admin/api-keys'] = { tone: 'warn', count: pending };
   }
   return signals;
 }

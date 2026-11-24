@@ -95,6 +95,12 @@ const IDLE_SEED = {
 };
 const IDLE_OPENED = { ...SEED, attractions: [SEED.attractions[0], SEED.attractions[1]] };
 
+/** Black Mamba marked too cold to get wet, the way the API sends it below 15 °C felt. */
+const COLD_SEED = {
+  ...SEED,
+  attractions: [SEED.attractions[0], { ...SEED.attractions[1], tooColdToGetWet: true }],
+};
+
 const testCases = [
   {
     name: 'a ride that has not run yet today keeps its line while it stays shut',
@@ -106,6 +112,18 @@ const testCases = [
     // The field travels on the same rule as `outage`, and fails the same way if it is sent as
     // undefined: the line „Heute noch nicht in Betrieb" would stand under a GEÖFFNET badge.
     actual: () => ride(merged(IDLE_SEED, IDLE_OPENED), 'a2').notRunToday ?? null,
+    expected: null,
+  },
+  {
+    name: 'a wet ride marked too cold keeps the mark while the cold lasts',
+    actual: () => ride(merged(COLD_SEED, COLD_SEED), 'a2').tooColdToGetWet ?? null,
+    expected: true,
+  },
+  {
+    name: 'and loses it on the first poll after it warms up, through JSON',
+    // Same rule as `outage`: an omitted key would keep the compass and the stamps quiet about a
+    // ride that is a tip again.
+    actual: () => ride(merged(COLD_SEED, IDLE_OPENED), 'a2').tooColdToGetWet ?? null,
     expected: null,
   },
   {

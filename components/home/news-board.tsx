@@ -65,7 +65,10 @@ function Cover({ post, className }: { post: BlogListItem; className: string }) {
   );
 }
 
-/** A group of rows under its label (an `<h3>`) and the link to all of them. */
+/**
+ * A group of rows under its label and the link to all of them. The label is the group's `<h2>`: the
+ * homepage's stop has no heading over the board.
+ */
 function BoardGroup({
   icon: Icon,
   label,
@@ -87,7 +90,7 @@ function BoardGroup({
   return (
     <div className={className}>
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-3 pt-3 pb-1">
-        <h3 className="text-muted-foreground inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase">
+        <h2 className="text-muted-foreground inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase">
           {live && (
             <span aria-hidden="true" className="relative flex size-2">
               <span className="bg-status-operating absolute inline-flex size-full rounded-full opacity-60 motion-safe:animate-ping" />
@@ -96,7 +99,7 @@ function BoardGroup({
           )}
           <Icon className="size-4" aria-hidden="true" />
           {label}
-        </h3>
+        </h2>
         <Link
           href={href as '/'}
           prefetch={false}

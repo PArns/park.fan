@@ -189,7 +189,7 @@ Het Single-Day Ticket van SeaWorld geldt op de datum die erop staat, het Any Day
 
 ### LEGOLAND California
 
-Naast het dagticket verkoopt LEGOLAND ook meerdaagse tickets. Hoeveel tijd je voor de tweede dag hebt, staat volgens de voorwaarden pas op het ticket dat je koopt, en je dagen in San Diego leg je daarom pas daarna vast.
+Naast het dagticket verkoopt LEGOLAND ook meerdaagse tickets. Hoeveel tijd je voor de tweede dag hebt, staat volgens de voorwaarden pas op het ticket dat je koopt, en de dagen in San Diego plan je daarom pas daarna.
 
 ### Passen voor meerdere parken
 

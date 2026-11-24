@@ -32,6 +32,11 @@ export interface AttractionWithDistance {
   url: string;
   /** true = top/marquee attraction of the park (derived from historical wait times). */
   isHeadliner?: boolean;
+  /**
+   * Gets its riders wet while the park feels below 15 °C (PAR-1420): still a headliner, but the
+   * compass leaves it out.
+   */
+  tooColdToGetWet?: boolean;
   /** The ride's own card photo, attached by `withNearbyCardImages`; never the park's. */
   backgroundImage?: string | null;
   /** Focal point as a CSS `object-position`. */

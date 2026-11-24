@@ -12,6 +12,7 @@ import {
   levelAbove,
   levelBelow,
   minutesAgoLabel,
+  problemSourceLabel,
   worstTone,
   CPU_TEMP_C,
   FEED_STALE_MINUTES,
@@ -140,6 +141,7 @@ function sources(overrides = {}) {
     quality: ok(quiet),
     ml: ok(ml()),
     contributions: ok({ pending: [] }),
+    keyRequests: ok({ items: [] }),
     now: NOW,
     ...overrides,
   };
@@ -213,6 +215,45 @@ test('an open queue failure is a fault, sorts first and colours the overview bad
   assert.deepEqual(health.signals['/admin'], { tone: 'bad', count: 2 });
   assert.deepEqual(health.signals['/admin/queues'], { tone: 'bad' });
   assert.deepEqual(health.signals['/admin/contributions'], { tone: 'warn', count: 1 });
+});
+
+test('open API key requests wait for the owner, the oldest giving the time', () => {
+  const request = (id, status, createdAt, projectName) => ({ id, status, createdAt, projectName });
+  const health = deriveAdminHealth(
+    sources({
+      keyRequests: ok({
+        items: [
+          request('r1', 'pending', '2026-11-02T08:00:00Z', 'Queue Buddy'),
+          request('r2', 'approved', '2026-10-30T08:00:00Z', 'Old App'),
+          request('r3', 'pending', '2026-11-01T08:00:00Z', 'Coaster Stats'),
+        ],
+      }),
+    })
+  );
+  const card = health.problems.find((p) => p.id === 'key-requests:pending');
+  assert.equal(card.title, '2 API-Key-Anfragen warten');
+  assert.equal(card.detail, 'Coaster Stats, Queue Buddy');
+  assert.equal(card.since, '2026-11-01T08:00:00Z');
+  assert.equal(card.href, '/admin/api-keys');
+  assert.equal(problemSourceLabel(card.area), 'API-Keys');
+  assert.deepEqual(health.signals['/admin/api-keys'], { tone: 'warn', count: 2 });
+  assert.deepEqual(health.signals['/admin'], { tone: 'warn', count: 1 });
+});
+
+test('no card and no count without an open request, or for a role that cannot read them', () => {
+  const decided = deriveAdminHealth(
+    sources({
+      keyRequests: ok({
+        items: [
+          { id: 'r', status: 'rejected', createdAt: '2026-11-01T08:00:00Z', projectName: 'X' },
+        ],
+      }),
+    })
+  );
+  assert.equal(decided.problems.length, 0);
+  assert.equal(decided.signals['/admin/api-keys'], undefined);
+  const editor = deriveAdminHealth(sources({ keyRequests: { state: 'forbidden' } }));
+  assert.equal(editor.problems.length, 0);
 });
 
 test('a stale feed and a stopped weather import are faults with their own button', () => {

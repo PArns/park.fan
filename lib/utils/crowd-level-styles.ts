@@ -1,5 +1,5 @@
 import type { CrowdLevel } from '@/lib/api/types';
-import { WALK_ON_WAIT_MINUTES } from '@/lib/utils/wait-time';
+import { isWalkOnWait } from '@/lib/utils/wait-time';
 
 /**
  * Single source for mapping the six coloured crowd levels onto the `--crowd-*` palette; pick the
@@ -143,11 +143,11 @@ export const CROWD_CHIP_CLASS: Record<ColoredCrowdLevel, string> = {
 
 /**
  * Wait-time (minutes) → crowd tier, shared by `WaitTimeValue` and the inline blog wait badges so a
- * wait gets the same colour everywhere. A posted 13 ({@link WALK_ON_WAIT_MINUTES}) is the park
- * saying „walk straight on", so it takes the walk-on colour of a 5 and not the 15's.
+ * wait gets the same colour everywhere. A walk-on ({@link isWalkOnWait}) takes the walk-on colour,
+ * so a posted 13, the park saying „walk straight on", is coloured like a 5 and not like a 15.
  */
 export function waitTimeCrowdTier(minutes: number): ColoredCrowdLevel {
-  if (minutes <= 5 || minutes === WALK_ON_WAIT_MINUTES) return 'very_low';
+  if (isWalkOnWait(minutes)) return 'very_low';
   if (minutes <= 15) return 'low';
   if (minutes <= 30) return 'moderate';
   if (minutes <= 40) return 'high';

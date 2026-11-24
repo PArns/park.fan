@@ -20,6 +20,7 @@ import {
   useAdminQuery,
   type AdminApiError,
 } from './api';
+import { useKeyRequests } from './use-key-requests';
 
 /** Host, feeds and queues move by the minute; the detectors and the models by the hour. */
 const FAST_STALE_MS = 60_000;
@@ -47,7 +48,7 @@ function readingOf<T>(query: UseQueryResult<T, AdminApiError>): Reading<T> {
 
 /**
  * The admin's situation for the overview and the sidebar's dots: reads the five monitoring
- * answers under the keys their own pages use (so answering a data-quality card clears its count
+ * answers, and for the owner the open API key requests, under the keys their own pages use (so answering a data-quality card clears its count
  * here too) and folds them with `deriveAdminHealth`. `live` polls host and queues every minute
  * while the tab is in front; without it they refresh on focus. `retry` asks one area's source
  * again.
@@ -59,6 +60,7 @@ export function useAdminHealth({ live = false }: { live?: boolean } = {}): {
   retry: (area: HealthAreaId) => void;
 } {
   const canModerate = useCan('author');
+  const isOwner = useCan('owner');
   const now = useMinuteNow();
   const poll = live ? FAST_STALE_MS : false;
 
@@ -89,6 +91,8 @@ export function useAdminHealth({ live = false }: { live?: boolean } = {}): {
     { enabled: canModerate, staleTime: SLOW_STALE_MS }
   );
 
+  const keyRequests = useKeyRequests({ enabled: isOwner, staleTime: SLOW_STALE_MS });
+
   const health = useMemo(
     () =>
       deriveAdminHealth({
@@ -97,6 +101,7 @@ export function useAdminHealth({ live = false }: { live?: boolean } = {}): {
         quality: readingOf(quality),
         ml: readingOf(ml),
         contributions: canModerate ? readingOf(contributions) : { state: 'forbidden' },
+        keyRequests: isOwner ? readingOf(keyRequests) : { state: 'forbidden' },
         now: now ?? 0,
       }),
     // The query objects are new on every render; what the derivation reads is this.
@@ -112,7 +117,10 @@ export function useAdminHealth({ live = false }: { live?: boolean } = {}): {
       ml.error,
       contributions.data,
       contributions.error,
+      keyRequests.data,
+      keyRequests.error,
       canModerate,
+      isOwner,
       now,
     ]
   );

@@ -217,9 +217,11 @@
       "link": "Cómo funciona el planificador"
     },
     "reading": {
-      "title": "Noticias y guías de parques temáticos",
-      "lead": "Quién construye, quién cierra, quién ha agotado las entradas, y las guías más leídas del último mes",
       "popularGuides": "Guías más leídas"
+    },
+    "trips": {
+      "title": "Planificar unas vacaciones de parques",
+      "lead": "Un calendario de afluencia para cada parque de la región y un planificador que organiza tus días según entradas y hotel"
     },
     "tour": {
       "live": {
@@ -1891,6 +1893,7 @@
       "title": "Colas cortas cerca de ti",
       "usually": "normalmente {minutes} {unit}",
       "now": "ahora {minutes} {unit}",
+      "walkOn": "Sin cola",
       "shorter": "{minutes} {unit} menos"
     }
   },
@@ -4677,6 +4680,9 @@
         "calendar": "Calendario de afluencia de Orlando",
         "calendarHint": "Qué parque qué día, y un planificador para todo el viaje"
       },
+      "home": {
+        "teaser": "Disney, Universal, SeaWorld, LEGOLAND y Busch Gardens, parques acuáticos incluidos"
+      },
       "hub": {
         "title": "Calendario de afluencia de Orlando",
         "monthTitle": "Calendario de afluencia de Orlando {month}",
@@ -5049,6 +5055,9 @@
         "calendar": "Calendario de afluencia de Disneyland California",
         "calendarHint": "Cuál de los ocho parques tiene menos gente cada día, y un planificador para tu viaje"
       },
+      "home": {
+        "teaser": "Disneyland, Universal Studios Hollywood, Knott’s, Magic Mountain y San Diego"
+      },
       "hub": {
         "title": "Calendario de afluencia de Disneyland California",
         "monthTitle": "Calendario de afluencia de Disneyland California, {month}",
@@ -5328,6 +5337,9 @@
         "area": "De Tokio a Osaka",
         "calendar": "Calendario de afluencia de Tokyo Disney y USJ",
         "calendarHint": "Cinco parques día a día, y un planificador para un viaje por varias ciudades"
+      },
+      "home": {
+        "teaser": "Tokyo Disney Resort, Fuji-Q Highland, LEGOLAND y Universal Studios Japan"
       },
       "hub": {
         "title": "Calendario de afluencia de Tokyo Disney y USJ",
@@ -5654,6 +5666,9 @@
         "area": "Francia",
         "calendar": "Calendario de afluencia de Disneyland Paris y Parc Astérix",
         "calendarHint": "Qué parque de los tres qué día, y dónde dormir para cada uno"
+      },
+      "home": {
+        "teaser": "Disneyland Paris con sus dos parques, y el Parc Astérix a una hora en coche"
       },
       "hub": {
         "title": "Calendario de afluencia de Disneyland Paris y Parc Astérix",
