@@ -2,7 +2,7 @@
 title: 'Europa-Park begint op 28 november aan zijn jubileumwinter'
 translationKey: europa-park-wintersaison-2026
 date: '2026-11-24'
-time: '08:05'
+time: '08:37'
 author: patrick
 mode: published
 featured: false
