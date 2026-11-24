@@ -189,7 +189,7 @@ La Single-Day Ticket de SeaWorld vale para la fecha impresa, la Any Day Ticket p
 
 ### LEGOLAND California
 
-Además de la entrada de 1 día, LEGOLAND vende entradas de varios días. Según sus condiciones, el plazo para el segundo día figura solo en la entrada que compras, así que tus días en San Diego los fijas después.
+Además de la entrada de 1 día, LEGOLAND vende entradas de varios días. Según sus condiciones, el plazo para el segundo día figura solo en la entrada que compras, así que los días en San Diego los planificas después.
 
 ### Pases para varios parques
 

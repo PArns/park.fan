@@ -189,7 +189,7 @@ SeaWorld's Single-Day Ticket is good on the date printed on it, the Any Day Tick
 
 ### LEGOLAND California
 
-Besides the 1-day ticket, LEGOLAND sells multi-day tickets, and its terms say the time you have for the second day is stated on the ticket you buy, so you only learn it at checkout.
+Besides the 1-day ticket, LEGOLAND sells multi-day tickets, and its terms say the time you have for the second day is stated on the ticket you buy, so you only learn it at checkout and plan the San Diego days after that.
 
 ### Multi-park passes
 
