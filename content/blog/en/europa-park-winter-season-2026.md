@@ -34,7 +34,7 @@ rideLinks:
 coverImage:
   src: /media/europa-park/madame-freudenreich-curiosites.jpg
   alt: 'A dinosaur in a knitted scarf, with a sign reading "Brontosaurus EVA" in front of it.'
-  caption: 'Brontosaurus Eva sits in Madame Freudenreich Curiosités, and the cartoon series based on the ride is on this winter in the dino cinema in the Spanish Arena.'
+  caption: 'Brontosaurus Eva, in her scarf, in Madame Freudenreich Curiosités.'
   credit: 'Patrick Arns'
 seo:
   title: 'When is Europa-Park open in winter 2026/27?'
@@ -65,43 +65,43 @@ seo:
 
 ## When the park is open
 
-The winter season runs until Saturday 9 January 2027. The park opens at 11am every day and closes at 7pm at the earliest. It's shut on Christmas Eve and Christmas Day. If you're staying at one of the resort hotels, you get in before the regular opening and get an extra day on Sunday 10 January, when only hotel guests and invited guests are let in.
+The winter season runs until Saturday 9 January 2027. The park opens at 11am every day and closes at 7pm at the earliest. It's shut on Christmas Eve and Christmas Day, and our [overview of winter 2026/27](/blog/winter-theme-parks-2026) rounds up the parks that are open on those two days. If you're staying at one of the resort hotels, you get in before the regular opening and get an extra day on Sunday 10 January, when only hotel guests and invited guests are let in.
 
 ## What's new
 
 Winterland opened in winter 2025 on the Traumatica site, and you reach it through the Croatia area. The WinterWunderWelt hall now has space for a kids' disco, a stage with shows, a few shops and a play area that lets adults in too.
 
-For the DINO MATES Winter Adventure, the park has filled the Spanish Arena with dino bouncy castles and oversized building blocks. Parents get a lounge where bouncing is optional. The dino cinema shows episodes of "DINO MATES – Ferien bei Madame Freudenreich" on a big screen all day, the cartoon series MACK Magic made with Edel Kids and KiKA for the ride [Madame Freudenreich Curiosités](ref:europa-park/madame-freudenreich-curiosites).
+For the DINO MATES Winter Adventure, the park has filled the Spanish Arena with dino bouncy castles and oversized building blocks. Parents get a lounge where bouncing is optional. Episodes of the cartoon series "DINO MATES – Ferien bei Madame Freudenreich" play on a big screen in the dino cinema all day. MACK Magic made it with Edel Kids and KiKA for the ride [Madame Freudenreich Curiosités](ref:europa-park/madame-freudenreich-curiosites).
 
-The new ice show is called "Surpr´Ice presents Christmas Spirit". It lasts 30 minutes and plays in the ice stadium in the Greek area, starting on 25 November, while HALLOWinter is still on in the park. The park hasn't published the times for the ice show or the circus yet.
+The new ice show is called "Surpr´Ice presents Christmas Spirit". It lasts 30 minutes and plays in the ice stadium in the Greek area, starting on 25 November, while HALLOWinter is still on in the park.
 
 ## Shows and lights
 
 In the circus tent in Winterland, "Monte Carlo Circus Festival meets Europa-Park" runs for an hour, with Wolf Fisher as host and the Flying Martini on the flying trapeze.
 
-More than 60 works from the [James Rizzi meets Rollercoasters](/news/europa-park-james-rizzi-exhibition) exhibition hang in the Croatia area until 9 January. From 5pm, a three-minute 3D mapping about Nikola Tesla plays every five minutes on the front of the [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) station in the same area. Over in the French area, [Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster) gets a mapping show of its own, "Miraculeux", every half hour from 5pm. Add to that "Everglow", with water and fire on the Europa-See, the Magic Forest lights in Balthasar Castle Park and on the meadow in the Austrian area, and "Season of Light", the winter's song-and-dance show in the Globe Theater. The Christmas market goes up around the Europa fountain and in Balthasar Castle Park.
+More than 60 works from the [James Rizzi meets Rollercoasters](/news/europa-park-james-rizzi-exhibition) exhibition hang in the Croatia area until 9 January. From 5pm, a three-minute 3D mapping about Nikola Tesla plays every five minutes on the front of the [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) station in the same area. [Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster) in the French area gets a mapping show of its own, "Miraculeux", every half hour from 5pm. On the Europa-See the park puts on "Everglow", a show with water and fire, the Globe Theater has singing and dancing in "Season of Light", and the Magic Forest lights up Balthasar Castle Park and the meadow in the Austrian area. The Christmas market goes up around the Europa fountain and in Balthasar Castle Park.
 
 ## What winter costs
 
-An adult day ticket (age 12 and up) costs €67 online until 22 December and €76 from 23 December. Children aged four to eleven and seniors from 60 pay €56.50 to €65 depending on the day, and younger children go free. At the ticket booth every day ticket costs €10 more. The evening ticket is valid from 4pm and costs adults €41.50 until 22 December and €47 after that, with no surcharge at the booth. Both mapping shows start at 5pm, so the evening ticket covers them. I'd go before 23 December, while a day still costs €67 rather than €76.
+An adult day ticket (age 12 and up) costs €67 online until 22 December and €76 from 23 December. Children aged four to eleven and seniors from 60 pay €56.50 to €65 depending on the day, and younger children go free. At the ticket booth every day ticket costs €10 more. The evening ticket is valid from 4pm and costs adults €41.50 until 22 December and €47 after that, with no surcharge at the booth. Both mapping shows start at 5pm, so the evening ticket covers them. I'd go before 23 December and spend the difference at the Christmas market.
 
-The visitor car park costs €10 a day and opens at 9am in winter, and hotel guests park free at their hotel. If you'd rather spend the evening sitting down, book "The Grand Club", the dinner show in the Europa-Park Teatro: four courses from €152 per person, starting at 7:30pm, with park entry from 5pm. For Christmas and New Year's Eve, our [overview of winter 2026/27](/blog/winter-theme-parks-2026) rounds up the parks that stay open.
+The visitor car park costs €10 a day and opens at 9am in winter, and hotel guests park free at their hotel. If you'd rather spend the evening sitting down, book "The Grand Club", the dinner show in the Europa-Park Teatro: four courses from €152 per person, starting at 7:30pm, with park entry from 5pm.
 
 ## What runs and what doesn't
 
-[Silver Star](ref:europa-park/silver-star), [blue fire Megacoaster](ref:europa-park/blue-fire-megacoaster), [Wodan – Timburcoaster](ref:europa-park/wodan-timburcoaster), Voltron Nevera, Eurosat and [ARTHUR](ref:europa-park/arthur) all keep running in winter, and so does even the [Poseidon water coaster](ref:europa-park/water-rollercoaster-poseidon). [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), [Fjord-Rafting](ref:europa-park/fjord-rafting) and the [Tiroler Wildwasserbahn](ref:europa-park/tirol-log-flume) take a break. At Fjord-Rafting the park builds its Nordic winter village with a big ice rink, so the only way to get wet there is to fall over. Ice, snow, storms or severe cold can make the park close rides and shows at short notice, so check the [park page](ref:europa-park) in the morning to see what's running.
+[Silver Star](ref:europa-park/silver-star), [blue fire Megacoaster](ref:europa-park/blue-fire-megacoaster), [Wodan – Timburcoaster](ref:europa-park/wodan-timburcoaster), Voltron Nevera, Eurosat and [ARTHUR](ref:europa-park/arthur) all keep running in winter, and so does even the [Poseidon water coaster](ref:europa-park/water-rollercoaster-poseidon). [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), [Fjord-Rafting](ref:europa-park/fjord-rafting) and the [Tiroler Wildwasserbahn](ref:europa-park/tirol-log-flume) take a break. At Fjord-Rafting the park builds its Nordic winter village with a big ice rink, so the only way to get wet there is to fall over. In ice, snow, storms or severe cold the park shuts these rides and shows too, at short notice. The [park page](ref:europa-park) has what's running on the morning of your visit.
 
-The Bellevue Ferris wheel in the Portuguese area recovers energy when it brakes, and the park uses it to light and heat its 42 gondolas. Cold fingers in winter can thaw out 55 metres up.
+The Bellevue Ferris wheel in the Portuguese area recovers energy when it brakes, and the park uses it to light and heat its 42 gondolas. You can take your gloves off 55 metres up.
 
 ```ride-waits-widget rides=europa-park/silver-star|Silver Star;europa-park/blue-fire-megacoaster|blue fire Megacoaster;europa-park/wodan-timburcoaster|Wodan – Timburcoaster;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/eurosat-cancan-coaster|Eurosat – CanCan Coaster;europa-park/arthur|ARTHUR;europa-park/water-rollercoaster-poseidon|Poseidon;europa-park/euro-mir|Euro-Mir columns=peak,days
 
 ```
 
-This is the last winter for [Euro-Mir](ref:europa-park/euro-mir). On 9 January, the last day for day visitors, the park says goodbye to it with an [event](/news/europa-park-euro-mir-farewell), and then it comes down. By 2028 a space-themed area with a new family coaster from MACK Rides is due to take its place. I wouldn't save my last ride for that Saturday, though: it already falls in the higher price band.
+This is the last winter for [Euro-Mir](ref:europa-park/euro-mir). On 9 January, the last day for day visitors, the park says goodbye to it with an [event](/news/europa-park-euro-mir-farewell), and then it comes down. By 2028 a space-themed area with a new family coaster from MACK Rides is due to take its place. I'd take my last ride before 23 December and leave the farewell Saturday to the people coming for the event.
 
 ## When it's less busy
 
-In winter the gates open at 11am. Our [Europa-Park guide](/blog/europa-park-wait-times-tips) says which ride to start with, and the [crowd calendar](ref:europa-park?calendar) has the expected crowds for each day.
+In the [crowd calendar](ref:europa-park?calendar) you can see how busy each day until 9 January is expected to be, and our [Europa-Park guide](/blog/europa-park-wait-times-tips) has the ride to head for at 11am.
 
 ```best-days-widget slug=europa-park
 
