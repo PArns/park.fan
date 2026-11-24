@@ -1439,6 +1439,8 @@ export interface ParkReference {
       closedAttractions: number;
       totalAttractions: number;
       crowdLevel?: CrowdLevel;
+      /** When the API took the reading behind `avgWaitTime` and `crowdLevel` (ISO 8601). */
+      updatedAt?: string;
     };
   };
   timezone?: string;
@@ -1706,6 +1708,8 @@ export interface LiveParkFields {
   status?: ParkStatus;
   crowdLevel?: CrowdLevel;
   averageWaitTime?: number;
+  /** When the API took the reading behind `averageWaitTime` and `crowdLevel` (ISO 8601). */
+  updatedAt?: string;
   operatingAttractions?: number;
   totalAttractions?: number;
   timezone?: string;
@@ -2200,6 +2204,8 @@ export interface NearbyParkItem {
     avgWaitTime?: number;
     crowdLevel?: string;
     occupancy?: number;
+    /** When the API took the reading behind `avgWaitTime` and `crowdLevel` (ISO 8601). */
+    updatedAt?: string;
   };
   url: string | null;
   timezone: string;

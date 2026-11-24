@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { LiveCrowdLevelBadge } from '@/components/parks/live-crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { GlassCircle } from '@/components/common/glass-circle';
@@ -49,11 +49,15 @@ interface ParkCardProps {
   status?: ParkStatus;
   crowdLevel?: CrowdLevel;
   averageWaitTime?: number;
+  /** When the API read `crowdLevel` (ISO 8601), for a caller that passes it directly. */
+  headlineUpdatedAt?: string;
   /** Analytics object — alternative to averageWaitTime + crowdLevel as direct props. */
   analytics?: {
     avgWaitTime?: number;
     crowdLevel?: string;
     occupancy?: number;
+    /** When the API read `crowdLevel` (ISO 8601). */
+    updatedAt?: string;
   };
   operatingAttractions?: number;
   totalAttractions?: number;
@@ -106,6 +110,7 @@ export function ParkCard({
   status,
   crowdLevel,
   averageWaitTime: _averageWaitTime,
+  headlineUpdatedAt,
   analytics,
   operatingAttractions,
   totalAttractions,
@@ -167,7 +172,13 @@ export function ParkCard({
   const badges = (
     <>
       {status && <ParkStatusBadge status={status} />}
-      {isOpen && effectiveCrowdLevel && <CrowdLevelBadge level={effectiveCrowdLevel} />}
+      {isOpen && (
+        <LiveCrowdLevelBadge
+          parkId={effectiveParkId}
+          crowdLevel={effectiveCrowdLevel}
+          updatedAt={headlineUpdatedAt ?? analytics?.updatedAt}
+        />
+      )}
     </>
   );
   const showNearestOpen = highlightAsNearestOpen && isOpen;

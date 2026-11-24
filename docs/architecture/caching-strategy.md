@@ -227,6 +227,18 @@ query only when both asked the same question; `sameLocationBasis` (`lib/nearby/n
 compares them, in both directions. A reload inside the window still sends nothing, and
 `placeholderData` still paints the previous result. `pnpm test:nearby-cache`.
 
+### One park, one reading on a page
+
+A park's Ø wait and crowd level arrive in several queries: favourites, nearby, the park page's
+live poll, the region lists. Each is fetched at its own moment and cached upstream for its own
+time, so the favourites band once read 20 min beside a nearby card at Ø 25 min. Every answer says
+when the API took the reading (`analytics.updatedAt`; `analytics.occupancy.updatedAt` in the park
+payload; `updatedAt` in `/api/parks/live`). `lib/parks/park-headline.ts` holds the newest reading
+per park, and a surface reads the pair through `useParkHeadline`, which offers its own reading and
+shows the newer one. The order is the reading's time, never the request's: a later request can
+return an older reading. The server render and hydration show the surface's own.
+`pnpm test:park-headline`.
+
 ### Offline: nothing is stored, by decision
 
 A cold start without network shows the browser's error page on a park or ride page. Decided in

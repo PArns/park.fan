@@ -13,6 +13,7 @@ import { CROWD_OUTLINE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-
 import { SEARCH_SECONDARY_TEXT_CLASS } from '@/components/search/hero-search-classes';
 import type { SearchResultItem } from '@/lib/api/types';
 import type { NearbySearchExtras } from '@/lib/hooks/use-hero-browse-parks';
+import { useRowHeadline } from '@/lib/hooks/use-park-headline';
 
 /**
  * A row's pills that lead with an icon. The command list draws every icon in a row at 16 or 20 px;
@@ -120,7 +121,12 @@ export function SearchResultThumb({
  * `CommandItem` (`SearchResultRow`); its module is free of cmdk, so the hero's phone list can take
  * the thumbnail and the place from it. The row's container sets `flex items-center gap-2.5 sm:gap-4`.
  */
-export function SearchResultRowBody({ result }: { result: SearchResultItem & NearbySearchExtras }) {
+export function SearchResultRowBody({
+  result: row,
+}: {
+  result: SearchResultItem & NearbySearchExtras;
+}) {
+  const result = useRowHeadline(row);
   const tSearch = useTranslations('search');
   const tGeo = useTranslations('geo');
 

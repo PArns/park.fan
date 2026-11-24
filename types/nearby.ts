@@ -64,6 +64,8 @@ export interface NearbyParkInfo {
     avgWaitTime?: number;
     crowdLevel?: string;
     operatingAttractions?: number;
+    /** When the API took the reading behind `avgWaitTime` and `crowdLevel` (ISO 8601). */
+    updatedAt?: string;
   };
   timezone: string;
   hasOperatingSchedule: boolean;
@@ -112,6 +114,8 @@ export interface ParkWithDistance {
     avgWaitTime?: number;
     crowdLevel?: string;
     occupancy?: number;
+    /** When the API took the reading behind `avgWaitTime` and `crowdLevel` (ISO 8601). */
+    updatedAt?: string;
   };
   url: string;
   timezone: string;

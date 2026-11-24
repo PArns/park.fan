@@ -6,6 +6,7 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useHeroStatusLabels } from '@/lib/hooks/use-hero-status-labels';
 import { useHeroBrowseParks, type NearbySearchItem } from '@/lib/hooks/use-hero-browse-parks';
+import { useRowHeadline } from '@/lib/hooks/use-park-headline';
 import { nearbyShortWaits } from '@/lib/home/hero-browse';
 import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
 import { CROWD_DOT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
@@ -37,7 +38,8 @@ const CHIP_CLASS =
  * shut, its status, with the next opening as the tooltip. The crowd level is in the text too, for
  * a reader who cannot tell the dots apart.
  */
-function ParkChip({ item, href }: { item: NearbySearchItem; href: string }) {
+function ParkChip({ item: row, href }: { item: NearbySearchItem; href: string }) {
+  const item = useRowHeadline(row);
   const tSearch = useTranslations('search');
   const tStatus = useTranslations('parks.status');
   const tCrowd = useTranslations('parks.crowdLevels');

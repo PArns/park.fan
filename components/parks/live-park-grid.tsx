@@ -82,6 +82,7 @@ export function LiveParkGrid({ regions, parks, className }: LiveParkGridProps) {
             status={live?.status}
             crowdLevel={live?.crowdLevel}
             averageWaitTime={live?.averageWaitTime}
+            headlineUpdatedAt={live?.updatedAt}
             operatingAttractions={live?.operatingAttractions}
             totalAttractions={live?.totalAttractions}
             timezone={live?.timezone}

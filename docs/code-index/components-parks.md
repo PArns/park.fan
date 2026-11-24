@@ -249,6 +249,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `LiveCountryCards` _component_: Continent-page country grid. The card structure (name, link, total parks, city count) is prerendered/edge-cached; the live open-park count is layered on the client via the shared `useGeoLiveStats` batch call, so the continent shell need …
 - Types: `StaticCountryCard`
 
+### [`live-crowd-level-badge.tsx`](../../components/parks/live-crowd-level-badge.tsx)
+
+- `LiveCrowdLevelBadge` _component_: An open park's crowd badge as the newest reading on the page has it (`useParkHeadline`), so a card agrees with the favourites and the park's own page. A client leaf, since `ParkCard` also renders on the server.
+
 ### [`live-data-freshness.tsx`](../../components/parks/live-data-freshness.tsx)
 
 - `LiveDataFreshness` _component_: "As of 14:35" for the ride list, and a warning with a retry button when that is no longer current: in the filter panel's heading from `sm` up, as a line of its own on a phone only when there is a warning (see …

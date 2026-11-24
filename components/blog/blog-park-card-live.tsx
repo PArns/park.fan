@@ -44,6 +44,7 @@ export function BlogParkCardLive({
         status={live.status}
         crowdLevel={live.crowdLevel}
         averageWaitTime={live.avgWaitTime}
+        headlineUpdatedAt={live.headlineUpdatedAt}
         operatingAttractions={live.operatingAttractions}
         totalAttractions={live.totalAttractions}
         timezone={live.timezone}
