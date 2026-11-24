@@ -1,8 +1,8 @@
-import { memo, type ReactNode } from 'react';
+import { memo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Crown, LayoutGrid } from 'lucide-react';
 import { AttractionCard } from './attraction-card';
-import { HAIRLINE_FILL, TILE_GLASS } from '@/components/common/glass-card';
+import { TILE_GLASS } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import { searchResultData } from '@/lib/analytics/search-session';
@@ -32,12 +32,6 @@ interface LandSectionProps {
   parkName: string;
   /** The headliners' section: the crown the cards carry, in their amber, for the grid icon. */
   headliner?: boolean;
-  /**
-   * A control at the end of the heading, behind a hairline. It has to fit the heading's line,
-   * 32 px high on both sides of `sm`, so the heading keeps its height whether it is there or not.
-   * Memoise it at the call site, or every render of the parent re-renders the whole land.
-   */
-  action?: ReactNode;
   /**
    * The park's rides whose wait stands out right now (`standoutRides`), worked out over the whole
    * park by the caller: a walk-on among them carries Parky's stamp. Keep it referentially stable.
@@ -69,7 +63,6 @@ export const LandSection = memo(function LandSection({
   todayIso,
   parkName,
   headliner = false,
-  action,
   bare = false,
   searchable = false,
   standouts,
@@ -117,15 +110,6 @@ export const LandSection = memo(function LandSection({
                 : t('operatingCount', { count: operatingCount, total: attractions.length })}
             </p>
           </div>
-          {action && (
-            <>
-              <div
-                aria-hidden="true"
-                className={cn(HAIRLINE_FILL, 'h-8 w-px shrink-0 max-sm:h-6')}
-              />
-              {action}
-            </>
-          )}
         </div>
       )}
 

@@ -869,6 +869,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Push für den Plan an',
     when: 'Die Benachrichtigungen für den Plan sind eingeschaltet und von der API angenommen.',
   },
+  attraction_filters_opened: {
+    label: 'Filter geöffnet',
+    when: 'Der Filter-Dialog der Parkseite wird über den Button „Filter“ geöffnet.',
+  },
   attraction_filter_used: {
     label: 'Filter benutzt',
     when: 'Ein Filter der Parkseite wird eingeschaltet; der Größen-Regler beim ersten Wert.',

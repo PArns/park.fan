@@ -2,7 +2,7 @@
 
 import { useId } from 'react';
 import { useTranslations } from 'next-intl';
-import { X } from 'lucide-react';
+import { X, type LucideIcon } from 'lucide-react';
 import { RiderHeight } from '@/components/common/unit-display';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatRiderHeight } from '@/lib/utils/temperature';
@@ -18,6 +18,8 @@ interface RiderHeightFilterProps {
   /** Attractions this height may ride / attractions the park has. */
   rideableCount: number;
   totalCount: number;
+  /** A glyph before the caption, where the slider stands among sections whose captions carry one. */
+  icon?: LucideIcon;
   className?: string;
 }
 
@@ -41,6 +43,7 @@ export function RiderHeightFilter({
   onChange,
   rideableCount,
   totalCount,
+  icon: Icon,
   className,
 }: RiderHeightFilterProps) {
   const t = useTranslations('parks.heightFilter');
@@ -78,8 +81,9 @@ export function RiderHeightFilter({
       <div className="relative z-10 flex h-6 items-center gap-2 max-sm:h-11">
         <label
           htmlFor={inputId}
-          className="text-muted-foreground cursor-pointer text-xs font-medium"
+          className="text-muted-foreground flex cursor-pointer items-center gap-1.5 text-xs font-medium"
         >
+          {Icon && <Icon className="h-3.5 w-3.5" aria-hidden="true" />}
           {t('label')}
         </label>
         <span

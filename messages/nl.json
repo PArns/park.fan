@@ -805,7 +805,6 @@
     "filterSection": {
       "title": "Attracties verfijnen",
       "hint": "Toont alleen wat bij je keuze past",
-      "searchLabel": "Zoeken",
       "todayLabel": "Vandaag",
       "traitsLabel": "Kenmerken",
       "openNow": "Open",
@@ -822,6 +821,8 @@
       "resetCovered": "Overdekt-filter wissen",
       "openFilters": "Filters",
       "activeCount": "{count} actief",
+      "resetAll": "Alles wissen",
+      "showResults": "{count, plural, =0 {Geen resultaten} =1 {# attractie tonen} other {# attracties tonen}}",
       "sortLabel": "Volgorde",
       "sortLand": "Per gebied",
       "sortWait": "Kortste wachttijd",

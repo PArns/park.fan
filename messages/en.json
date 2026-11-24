@@ -805,7 +805,6 @@
     "filterSection": {
       "title": "Narrow down the attractions",
       "hint": "Shows only what matches your choices",
-      "searchLabel": "Search",
       "todayLabel": "Today",
       "traitsLabel": "Traits",
       "openNow": "Open",
@@ -822,6 +821,8 @@
       "resetCovered": "Clear the covered filter",
       "openFilters": "Filters",
       "activeCount": "{count} active",
+      "resetAll": "Clear all",
+      "showResults": "{count, plural, =0 {No matches} =1 {Show # attraction} other {Show # attractions}}",
       "sortLabel": "Order",
       "sortLand": "By area",
       "sortWait": "Shortest wait",
