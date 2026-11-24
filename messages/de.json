@@ -221,7 +221,7 @@
     },
     "trips": {
       "title": "Freizeitpark-Urlaub planen",
-      "lead": "Ein Andrang-Kalender für alle Parks der Region und ein Planer, der sie passend zu Tickets und Hotel auf deine Tage legt"
+      "lead": "Ein Andrang-Kalender für alle Parks der Region und ein Planer, der deine Parktage passend zu Tickets und Hotel einteilt"
     },
     "tour": {
       "live": {
@@ -632,7 +632,7 @@
     "regionGuide": "Reiseführer {region}",
     "lastYearFrom": "Ab dem {date} zeigen wir Messwerte aus dem Vorjahr, jeweils vom selben Wochentag.",
     "howItWorks": {
-      "title": "So plant der Reiseplaner deine Tage {inRegion}",
+      "title": "So plant der Reiseplaner deine Reisetage {inRegion}",
       "planTitle": "Deine Reise",
       "steps": {
         "dates": {
@@ -3804,7 +3804,7 @@
       "moreChosen": "{count, plural, =1 {1 gewählt} other {# gewählt}}",
       "closed": "An deinen Tagen geschlossen",
       "closedSeason": "An deinen Tagen geschlossen ({season})",
-      "noHours": "Für deine Tage noch keine Öffnungszeiten",
+      "noHours": "Für deine Reisetage noch keine Öffnungszeiten",
       "driveSource": "Fahrzeiten ohne Verkehr, {source}",
       "days": "{count, plural, =1 {1 Tag} other {# Tage}}",
       "budgetFits": "{parks, plural, =1 {1 Park} other {# Parks}}, {days, plural, =1 {1 freier Tag} other {# freie Tage}}: passt",
@@ -4255,7 +4255,7 @@
     },
     "tickets": {
       "title": "Tickets",
-      "lead": "Mit deinen Tickets hält sich der Plan an ihre Tage und Parks",
+      "lead": "Mit deinen Tickets hält sich der Plan an die Tage und Parks, für die sie gelten",
       "add": "Ticket hinzufügen",
       "addLabel": "{resort}-Ticket hinzufügen",
       "addAnother": "Noch ein {resort}-Ticket hinzufügen",
@@ -4689,7 +4689,7 @@
         "metaTitleMonth": "Orlando im {month}: Andrang bei Disney & Universal",
         "metaTitleMonthShort": "Orlando Andrang-Kalender {month}",
         "metaDescription": "Welcher Park in Orlando an welchem Tag, mit Epic Universe. Am ruhigsten in den nächsten 30 Tagen: {verdict}.",
-        "metaDescriptionPlain": "Welcher Park an welchem Tag in Walt Disney World, bei Universal mit Epic Universe und in SeaWorld, und ein Planer, der deine Parks auf deine Tage legt.",
+        "metaDescriptionPlain": "Welcher Park an welchem Tag in Walt Disney World, bei Universal mit Epic Universe und in SeaWorld, und ein Planer, der deine Parks auf die Reisetage verteilt.",
         "metaDescriptionMonth": "Die ruhigsten Tage in Orlando im {month}: {verdict}. Jeder Park Tag für Tag, mit Epic Universe.",
         "metaDescriptionMonthPlain": "Orlando im {month}, Tag für Tag: wo du in Disney World, bei Universal mit Epic Universe, in SeaWorld und bei den Tagesausflügen am kürzesten anstehst.",
         "lead": "Ein Kalender für alle 16 Parks rund um Orlando und ein Planer für deine Reisetage",
