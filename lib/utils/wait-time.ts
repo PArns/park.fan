@@ -1,6 +1,7 @@
 /**
- * Disney's walk-on: 13 minutes, the one posted wait that stays off the five-minute grid. It is the
- * park's signal for „walk straight on", and rounding it to 15 makes it an ordinary short queue.
+ * The posted walk-on: 13 minutes, the one posted wait that stays off the five-minute grid. Disney
+ * posts it, and so does Efteling (Danse Macabre). It is the park's signal for „walk straight on",
+ * and rounding it to 15 makes it an ordinary short queue.
  * The API keeps it the same way (`WALK_ON_WAIT_MINUTES` in `src/common/utils/wait-time.utils.ts`).
  */
 export const WALK_ON_WAIT_MINUTES = 13;
@@ -11,7 +12,7 @@ function snapWaitTo5(n: number): number {
 }
 
 /**
- * Rounds a wait time for display to five-minute steps, except Disney's 13
+ * Rounds a wait time for display to five-minute steps, except the posted walk-on 13
  * ({@link WALK_ON_WAIT_MINUTES}). Parks post multiples of five; percentiles and averages on top
  * are what produce 51 or 47. The API rounds the same way (`roundToNearest5Minutes`), and this
  * repeats it so a surface is right whatever build or payload answers.

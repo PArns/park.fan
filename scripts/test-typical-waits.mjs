@@ -28,6 +28,7 @@
 import { quietestWeekdays } from '../lib/utils/typical-waits.ts';
 import { ropeDropDisplayWaits } from '../lib/utils/rope-drop.ts';
 import { roundAverageWaitTo5, roundWaitTo5 } from '../lib/utils/wait-time.ts';
+import { waitTimeCrowdTier } from '../lib/utils/crowd-level-styles.ts';
 
 const testCases = [];
 const test = (name, actual, expected) => testCases.push({ name, actual, expected });
@@ -317,6 +318,12 @@ test(
 );
 test('an average of 12.4 goes to 10', () => roundAverageWaitTo5(12.4), 10);
 test('an average under 2.5 is 0', () => roundAverageWaitTo5(2), 0);
+
+// --- the walk-on keeps its colour -------------------------------------------------------------
+
+test('a posted 13 is coloured like a 5', () => waitTimeCrowdTier(13), 'very_low');
+test('a 12 stays an ordinary short wait', () => waitTimeCrowdTier(12), 'low');
+test('a 15 stays an ordinary short wait', () => waitTimeCrowdTier(15), 'low');
 
 let passed = 0;
 let failed = 0;
