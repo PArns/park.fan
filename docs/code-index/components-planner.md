@@ -90,6 +90,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlannerEntryRow` _component_: One planned ride, in a fixed 56 px row, so the list does not shift under a dragging finger when data arrives.
 
+### [`planner-fit-assistant-lazy.tsx`](../../components/planner/planner-fit-assistant-lazy.tsx)
+
+- `PlannerFitAssistantLazy` _component_: The lazy boundary around the fit assistant that `AddToPlannerButton` opens when a day has no room for the ride, so the whole `planner` namespace stays out of every ride page's payload for a dialog few visitors see.
+
 ### [`planner-fit-assistant.tsx`](../../components/planner/planner-fit-assistant.tsx)
 
 - `PlannerFitAssistant` _component_: What to give up, asked as a walk-through rather than as a footnote: measured levers (skipped where the day has no free block), the whole list with what falls out marked and a pin per row, and the result with what is left out by name.

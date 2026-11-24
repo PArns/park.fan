@@ -1765,9 +1765,11 @@
       "noticePark": "Aktuelle Wartezeiten der anderen Attraktionen: <link>{park}</link>",
       "waitsTitle": "Wartezeiten vor der Schließung"
     },
-    "riddenMark": "Als gefahren markieren",
-    "riddenUnmark": "Markierung „gefahren“ entfernen",
-    "riddenProgress": "{count} von {total} Bahnen gefahren",
+    "ridden": {
+      "mark": "Als gefahren markieren",
+      "unmark": "Markierung „gefahren“ entfernen",
+      "progress": "{count} von {total} Bahnen gefahren"
+    },
     "tabTitleWait": "{minutes} Min. · {title}",
     "performance": {
       "badge": "Feste Vorstellungen",
@@ -3275,10 +3277,12 @@
   "planner": {
     "title": "Tagesplaner",
     "open": "Planer öffnen",
-    "addRide": "In den Plan",
+    "rideButton": {
+      "add": "In den Plan",
+      "addAgain": "Nochmal",
+      "plannedTimes": "{count}× im Plan"
+    },
     "inPlan": "Im Plan",
-    "addAgain": "Nochmal",
-    "plannedTimes": "{count}× im Plan",
     "removeRide": "Aus dem Plan nehmen",
     "empty": {
       "title": "Noch nichts geplant",

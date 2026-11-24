@@ -106,17 +106,20 @@ nothing for most visitors; the graph walk stops at them, and they fetch their na
 per-locale chunk (`lib/i18n/message-chunks/<locale>.ts`, generated in `prebuild`) through
 `useLazyMessages`:
 
-| Boundary                                      | Fetches                                                                             | Why it is lazy                                                        |
-| --------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `components/parks/favorites-section.tsx`      | `parks`, `attractions`, `nearby`, `parkCard`, the `pushAlerts` bell and dialog keys | renders cards only once the visitor has favorites (cookie, client)    |
-| `components/planner/planner-launcher.tsx`     | `planner`, `parks.weather`                                                          | mounted in the layout, but has content only once something is planned |
-| `components/planner/plan-day-button-lazy.tsx` | `planner`                                                                           | lives in the calendar's day dialog                                    |
+| Boundary                                            | Fetches                                                                             | Why it is lazy                                                        |
+| --------------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `components/parks/favorites-section.tsx`            | `parks`, `attractions`, `nearby`, `parkCard`, the `pushAlerts` bell and dialog keys | renders cards only once the visitor has favorites (cookie, client)    |
+| `components/planner/planner-launcher.tsx`           | `planner`, `parks.weather`                                                          | mounted in the layout, but has content only once something is planned |
+| `components/planner/plan-day-button-lazy.tsx`       | `planner`                                                                           | lives in the calendar's day dialog                                    |
+| `components/planner/planner-fit-assistant-lazy.tsx` | `planner`                                                                           | the dialog the ride page's plan button opens when the day is full     |
 
 **A boundary file never calls `useTranslations` itself.** The generator counts a boundary's own
 calls and stops only at its imports, so a read in the boundary file puts the namespace back into
 the layout set of every page. That is why the planner boundaries are pairs, `planner-launcher.tsx` /
-`planner-launcher-button.tsx` and `plan-day-button-lazy.tsx` / `plan-day-button.tsx`: everything
-that reads `planner` sits behind the boundary file's import.
+`planner-launcher-button.tsx`, `plan-day-button-lazy.tsx` / `plan-day-button.tsx` and
+`planner-fit-assistant-lazy.tsx` / `planner-fit-assistant.tsx`: everything that reads all of
+`planner` sits behind the boundary file's import. The ride page's `AddToPlannerButton` stays eager
+and reads only `planner.rideButton`, `planner.fit` and `planner.optimize`.
 
 A namespace still reachable another way stays eager, and where a route already ships it (the cards
 on the homepage and park pages) `useLazyMessages` resolves without a request. Favorites `parks` +

@@ -73,6 +73,9 @@ browser swaps in the current ranking row for row without moving anything.
 - It cannot fail the build: a ranking that does not arrive within eight seconds is written empty and
   renders as the newest posts. `pnpm typecheck` and `pnpm test:unit` run it with
   `--offline --if-missing` and never ask the API.
+- It sends `getServerApiHeaders()`: `/v1/page-views/top` answers 401 without the key headers, and
+  a 401 is written empty like a timeout, silently. Until 24 November 2026 every production build
+  did exactly that; the build log says `most-read seed …: HTTP 401, written empty`.
 - A post page ships only its own kind (`mostReadSeedOf`), about 1.5 KB. The header column is not
   seeded: its band ships on some 35,000 pages, and its links would change the header's link graph
   everywhere ([the header menu rule](../rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md)).

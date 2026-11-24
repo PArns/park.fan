@@ -23,8 +23,10 @@ import { rememberParkId, rememberRideId } from '@/lib/planner/entity-ids';
 import type { WorksPeriod } from '@/lib/api/types';
 import { worksNotPlannableLabel, worksPeriodOn, worksRunningLabel } from '@/lib/utils/works-period';
 import { WORKS_TONE_CLASS, WorksIcon } from '@/components/parks/works-period-list';
+import { loadMessageChunk } from '@/lib/i18n/message-chunk-loader';
+import type { Locale } from '@/i18n/config';
 
-type FitAssistant = typeof import('./planner-fit-assistant').PlannerFitAssistant;
+type FitAssistant = typeof import('./planner-fit-assistant-lazy').PlannerFitAssistantLazy;
 
 interface AddToPlannerButtonProps {
   parkSlug: string;
@@ -74,7 +76,9 @@ export function AddToPlannerButton({
   worksPeriods,
   className,
 }: AddToPlannerButtonProps) {
-  const t = useTranslations('planner');
+  const tButton = useTranslations('planner.rideButton');
+  const tFit = useTranslations('planner.fit');
+  const tOptimize = useTranslations('planner.optimize');
   const tWorks = useTranslations('parks.worksPeriod');
   const locale = useLocale();
   const queryClient = useQueryClient();
@@ -152,7 +156,7 @@ export function AddToPlannerButton({
       });
       if (!conflict) return null;
       // The payload only for the list's photos, through the flyout's own query and cache.
-      const [day, { PlannerFitAssistant }] = await Promise.all([
+      const [day, { PlannerFitAssistantLazy }] = await Promise.all([
         queryClient
           .fetchQuery(
             planDayQuery({
@@ -164,14 +168,17 @@ export function AddToPlannerButton({
             })
           )
           .catch(() => null),
-        import('./planner-fit-assistant'),
+        import('./planner-fit-assistant-lazy'),
+        // The ride page does not ship `planner`; fetched with the dialog's code so it opens
+        // with its words rather than a blank frame.
+        loadMessageChunk(locale as Locale),
       ]);
       return {
         question: conflict.question,
         initial: { choice: fitChoiceAll(), answer: conflict.answer },
         choice: requestedRideChoice(attractionSlug),
         day,
-        Assistant: PlannerFitAssistant,
+        Assistant: PlannerFitAssistantLazy,
       };
     } catch {
       return null;
@@ -226,8 +233,8 @@ export function AddToPlannerButton({
       date: filingDate,
       before: question.entries.map((entry) => ({ ...entry })),
       text: [
-        t('fit.applied', { count: answer.fitted.length }),
-        ...(left > 0 ? [t('fit.leftOut', { count: left })] : []),
+        tFit('applied', { count: answer.fitted.length }),
+        ...(left > 0 ? [tFit('leftOut', { count: left })] : []),
       ].join(' · '),
       alert: left > 0,
     });
@@ -279,7 +286,9 @@ export function AddToPlannerButton({
       type="button"
       onClick={() => void handleAdd()}
       aria-label={
-        planned ? `${t('plannedTimes', { count: plannedCount })} — ${t('addAgain')}` : t('addRide')
+        planned
+          ? `${tButton('plannedTimes', { count: plannedCount })} — ${tButton('addAgain')}`
+          : tButton('add')
       }
       // The ride page's call to action, drawn like the park page's planner button: filled, full
       // width on a phone. Planned, it turns the crowd scale's green.
@@ -296,7 +305,7 @@ export function AddToPlannerButton({
       ) : (
         <CalendarPlus className="size-4" aria-hidden="true" />
       )}
-      <span>{planned ? t('addAgain') : t('addRide')}</span>
+      <span>{planned ? tButton('addAgain') : tButton('add')}</span>
     </button>
   );
 
@@ -322,7 +331,7 @@ export function AddToPlannerButton({
             onClick={undo}
             className="text-primary shrink-0 font-medium underline-offset-2 hover:underline"
           >
-            {t('optimize.undo')}
+            {tOptimize('undo')}
           </button>
         </span>
       )}

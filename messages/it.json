@@ -1765,9 +1765,11 @@
       "noticePark": "Tempi di attesa attuali delle altre attrazioni: <link>{park}</link>",
       "waitsTitle": "Tempi di attesa prima della chiusura"
     },
-    "riddenMark": "Segna come provata",
-    "riddenUnmark": "Rimuovi il segno di provata",
-    "riddenProgress": "{count, plural, one {# attrazione provata} other {# attrazioni provate}} su {total}",
+    "ridden": {
+      "mark": "Segna come provata",
+      "unmark": "Rimuovi il segno di provata",
+      "progress": "{count, plural, one {# attrazione provata} other {# attrazioni provate}} su {total}"
+    },
     "tabTitleWait": "{minutes} min · {title}",
     "performance": {
       "badge": "Spettacoli a orari fissi",
@@ -3275,10 +3277,12 @@
   "planner": {
     "title": "Pianificatore della giornata",
     "open": "Apri il pianificatore",
-    "addRide": "Nel piano",
+    "rideButton": {
+      "add": "Nel piano",
+      "addAgain": "Di nuovo",
+      "plannedTimes": "{count}× nel piano"
+    },
     "inPlan": "Nel piano",
-    "addAgain": "Di nuovo",
-    "plannedTimes": "{count}× nel piano",
     "removeRide": "Togli dal piano",
     "empty": {
       "title": "Ancora niente in programma",

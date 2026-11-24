@@ -1765,9 +1765,11 @@
       "noticePark": "Current wait times for the other attractions: <link>{park}</link>",
       "waitsTitle": "Wait times before it closed"
     },
-    "riddenMark": "Mark as ridden",
-    "riddenUnmark": "Remove ridden mark",
-    "riddenProgress": "{count} of {total} rides ridden",
+    "ridden": {
+      "mark": "Mark as ridden",
+      "unmark": "Remove ridden mark",
+      "progress": "{count} of {total} rides ridden"
+    },
     "tabTitleWait": "{minutes} min · {title}",
     "performance": {
       "badge": "Set showtimes",
@@ -3275,10 +3277,12 @@
   "planner": {
     "title": "Day planner",
     "open": "Open planner",
-    "addRide": "Add to plan",
+    "rideButton": {
+      "add": "Add to plan",
+      "addAgain": "Ride again",
+      "plannedTimes": "{count}× in plan"
+    },
     "inPlan": "In the plan",
-    "addAgain": "Ride again",
-    "plannedTimes": "{count}× in plan",
     "removeRide": "Remove from plan",
     "empty": {
       "title": "Nothing planned yet",

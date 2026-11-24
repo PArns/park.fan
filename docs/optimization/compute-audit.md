@@ -125,3 +125,27 @@ The request records show about **40,200 function executions** in the 24 hours to
 16:00 UTC; billing counts **76,849 invocations** for the day to 26 October 07:00 UTC. The average
 of 74 ms per invocation and the per-route shares above are only as good as that split. Open work:
 PAR-1122.
+
+## Re-measured 2026-11-24
+
+On `6ed7367f`, about 720 commits after the audit above: a local production build on a four-core
+Linux runner (slower per core than the Mac above, so compare routes with each other, not with the
+October milliseconds), Data Cache warm, 60 URLs per route from the sitemaps in all six locales.
+
+| route          | CPU per render | response raw | brotli (quality 5) |
+| -------------- | -------------: | -----------: | -----------------: |
+| ride page      |       42–46 ms |       403 KB |            59.7 KB |
+| calendar month |       64–69 ms |       720 KB |            76.1 KB |
+| park page      |       67–75 ms |       815 KB |            82.3 KB |
+
+The billing agrees that a render has not grown heavier: over the 14 days to 23 November, Active
+CPU rose 18 % and invocations 20 % against the 17 days before, so the bill grows with the number of
+requests. A profile of 120 ride renders splits as before: Next's renderer 35 %, Node internals
+(sockets, `JSON.parse`) 13 %, the garbage collector 8 %, and no function of ours above 2 %.
+
+**The header's share.** The same build rendered once with the `<Header>` and once without it: the
+header is 132 KB of every response (117 KB of HTML, the rest its props in the RSC payload), about
+a third of a ride page raw and a fifth after compression, and 10–15 % of the ride page's CPU; on
+the park page and the calendar the difference stayed inside the noise. The panels stay in the HTML
+for the link graph ([the header rule](../rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md)),
+so this number belongs to that decision. The levers measured that day are in [decisions.md](decisions.md#2026-11-24--accepted-the-ride-page-stops-shipping-planner-the-calendar-stops-shipping-attractions).
