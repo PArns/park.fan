@@ -241,11 +241,49 @@ images: {id: {v, w, h, widths, focus, credit, attribution}}}`. Parks are keyed b
   is looked up by that path too. `credit` is
   `getCreditLine()`, `attribution` is `needsAttribution()`; the app shows the line on the photo when
   it is true, as the cards do. Files are scaled, never cropped, so the app applies `focus` itself.
-- **When:** `.github/workflows/publish-media.yml` on every push to `main` touching `public/media/**`,
-  and by hand (`workflow_dispatch`). Secrets: `R2_ENDPOINT`
+- **When:** `.github/workflows/publish-media.yml` on every push to `main` touching `public/media/**`
+  or `content/blog/**`, and by hand (`workflow_dispatch`). Secrets: `R2_ENDPOINT`
   (`https://<account>.eu.r2.cloudflarestorage.com`), `R2_BUCKET`, `R2_ACCESS_KEY_ID`,
   `R2_SECRET_ACCESS_KEY`. Locally, `pnpm publish:media --out <dir>` writes the same files to a folder
   without credentials.
+
+### News for the app
+
+The same script writes the news posts as JSON (`scripts/news-export.mjs`, blocks in
+`lib/blog/news-blocks.ts`), because the app cannot call `park.fan/api/*` either. Both files have
+`Cache-Control: public, max-age=300` and are written before `index.json`.
+
+- **Which posts:** the `/news` listing: `isNewsCategory()` (`news` and `news/…`), `listPosts()` so
+  drafts, hidden and scheduled posts stay out, only posts the locale has itself (no English
+  fallback), newest first by date and time, at most 100 per locale.
+- **`news/<locale>.json`:** `{schema: 1, generatedAt, locale, posts: [Post]}`, with `Post` =
+  `{slug, url, title, teaser, publishedAt, updatedAt?, category, parks, parkSlugs, cover, coverAlt,
+readingMinutes}`. `url` is the absolute `https://park.fan/<locale>/news/<slug>`; `publishedAt`
+  and `updatedAt` carry Berlin's offset; `teaser` is the frontmatter `excerpt`; `parks` are the API
+  geo paths of the parks the post is about, the keys of `parks` in `index.json`, the park of the
+  news label first (`getNewsParkRef`); `parkSlugs` are the same parks as slugs, because a park
+  nobody photographed and no post linked by its full path has no known path and is then missing
+  from `parks` only; `cover` is an id in `images` of `index.json` or `null` (the post has no photo:
+  draw the fallback), `coverAlt` its alt text in that locale.
+- **`news/<locale>/<slug>.json`:** `Post` plus `schema`, `locale` and `blocks`, in reading order:
+  - `{type: 'heading', level, text}`
+  - `{type: 'paragraph', text}`
+  - `{type: 'list', ordered, items: [text]}`
+  - `{type: 'quote', text, source}`, `source` is the attribution line or `null`
+  - `{type: 'callout', kind, text, date, label}`, `kind` is `parky`, `update`, `correction`,
+    `note`, `tip`, `important`, `warning` or `caution`; `date` is the `YYYY-MM-DD` of an `update`,
+    `label` Parky's verdict; paragraphs are separated by a blank line
+  - `{type: 'table', header: [text], rows: [[text]]}`
+  - `{type: 'image', imageId, alt, caption, credit}`, `credit` only when the photo needs an
+    attribution; the news posts carry none inline today
+  - `{type: 'link', text, url}`, a block of its own: a call to action or a park card
+  - A `text` holds only `**bold**`, `*italic*` and `[label](https://…)` with absolute URLs; a
+    park, ride or post reference becomes its web page, or plain text when its path is unknown.
+- **Widgets:** `best-days-widget`, `hourly-profile-widget`, `ride-waits-widget` and `stats-widget`
+  draw live park data and are left out; `cta-widget` becomes a `link` block; a paragraph that is
+  only `[Park](ref:slug?full)` becomes a `link` block to the park page.
+- **Photos:** a cover or inline photo not among the card photos is exported with the same widths
+  and added to `images`; `license: unknown` is left out, so the post gets `cover: null`.
 
 ## Related
 

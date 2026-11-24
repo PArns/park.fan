@@ -184,6 +184,7 @@
     "test:outage-estimate": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-outage-estimate.mjs",
     "test:crop-box": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-crop-box.mjs",
     "test:media": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media.mjs",
+    "test:news-blocks": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-blocks.mjs",
     "test:media-park-path": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-park-path.mjs",
     "test:photo-backlog": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-photo-backlog.mjs",
     "test:capture-location": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-capture-location.mjs",

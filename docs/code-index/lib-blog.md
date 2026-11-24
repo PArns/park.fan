@@ -152,6 +152,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `CHECK_INTERVAL_MS` _const_: How long one answer counts. The same ten minutes the browser may keep `/api/blog-latest` for (`max-age=600`): asking sooner would only be answered from the HTTP cache.
 - Types: `LatestPostKind`, `LatestPost`, `LatestPostsLabels`, `LatestPostsPayload`, `SeenRecord`
 
+### [`news-blocks.ts`](../../lib/blog/news-blocks.ts)
+
+- `selectNews` _function_: News only (the `/news` listing), own-locale posts, newest first, capped.
+- `inlineText` _function_: Inline markdown reduced to bold, italic and absolute links. Anything else is dropped.
+- `markdownToBlocks` _function_: A post body as blocks. Widgets that draw live park data (`best-days-widget`, `hourly-profile-widget`, `ride-waits-widget`, `stats-widget`) are skipped, a `cta-widget` becomes a `link` block, and a lone `[Park](ref:slug?full)` paragraph …
+- `NEWS_EXPORT_CAP` _const_: At most this many news posts per locale in `news/<locale>.json`.
+- Types: `NewsBlock`, `BlockContext`
+
 ### [`news-park.ts`](../../lib/blog/news-park.ts)
 
 - `resolveNewsPark` _function_: Resolve a news post's park (`getNewsParkRef`) to a name and a park page.

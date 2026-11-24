@@ -6,7 +6,8 @@
 // below the top step, under `<id>/<version>-<w>.webp`.
 // `version` changes only with the pixels or the focal point, so a key is immutable and an
 // existing key is never uploaded twice. `index.json` maps parks and rides to their photo and
-// carries focal point and credit; it is the only object that changes in place.
+// carries focal point and credit. It and the news JSON (`news/<locale>.json`, `news/<locale>/<slug>.json`,
+// scripts/news-export.mjs) are the objects that change in place.
 //
 //   pnpm publish:media                    upload (needs R2_ENDPOINT, R2_BUCKET, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY)
 //   pnpm publish:media --out <dir>        write the same files to a folder instead, no credentials
@@ -21,6 +22,7 @@ import { getCreditLine, needsAttribution } from '../lib/media/credit.ts';
 import { MEDIA_IMAGES, getParkBackground, getRideImage } from '../lib/media/index.ts';
 import { MEDIA_PARK_PATH_BY_SLUG } from '../lib/media/manifest-parks.ts';
 import { imageParkKey, parkGeoPath } from '../lib/media/park-path.mjs';
+import { buildNewsExport } from './news-export.mjs';
 
 const WIDTHS = [400, 828, 1200, 1600];
 const QUALITY = 78;
@@ -54,6 +56,9 @@ for (const image of MEDIA_IMAGES) {
   }
 }
 
+// News covers and inline photos join `chosen`, so they ship like the card photos.
+const news = buildNewsExport(chosen);
+
 const images = {};
 const files = []; // { key, body, contentType, cacheControl }
 for (const image of chosen.values()) {
@@ -84,6 +89,8 @@ const index = {
   images,
 };
 
+const newsBody = (file) => JSON.stringify(file.json);
+
 async function encode({ image, width }) {
   return sharp(join('public', image.src))
     .rotate()
@@ -98,8 +105,14 @@ if (outDir) {
     await mkdir(dirname(target), { recursive: true });
     await writeFile(target, await encode(file));
   }
+  for (const file of news.files) {
+    const target = join(outDir, file.key);
+    await mkdir(dirname(target), { recursive: true });
+    await writeFile(target, newsBody(file));
+  }
   await writeFile(join(outDir, 'index.json'), JSON.stringify(index));
   console.log(`✅ ${chosen.size} photos, ${files.length} files, index.json → ${outDir}`);
+  console.log(`news: ${news.files.length} files`, JSON.stringify(news.stats));
   process.exit(0);
 }
 
@@ -135,6 +148,8 @@ for (const file of files) {
   await put(file.key, await encode(file), 'image/webp', IMMUTABLE);
   uploaded++;
 }
+// Mutable like the index, so the app is at most five minutes behind a post.
+for (const file of news.files) await put(file.key, newsBody(file), 'application/json', INDEX_CACHE);
 // Last, so the index never names a file that is not there yet.
 await put('index.json', JSON.stringify(index), 'application/json', INDEX_CACHE);
 console.log(
