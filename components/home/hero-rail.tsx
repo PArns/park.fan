@@ -13,12 +13,19 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { HeroParkActions } from '@/components/home/hero-park-actions';
 import { HomeLocationRow } from '@/components/home/home-location-row';
 import { HeroBrowseHeader } from '@/components/search/hero-browse-header';
+import {
+  PARK_BREAK_BORDER_CLASS,
+  PARK_BREAK_ICON,
+  PARK_BREAK_KICKER_CLASS,
+  PARK_BREAK_PILL_CLASS,
+} from '@/components/parks/park-break-style';
 import { searchResultPlace } from '@/components/search/search-result-row-body';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useHeroPark } from '@/lib/hooks/use-hero-park';
 import { useHeroStatusLabels } from '@/lib/hooks/use-hero-status-labels';
 import { HERO_RAIL_CARDS } from '@/lib/home/hero-search';
+import { nearbyShortWaits } from '@/lib/home/hero-browse';
 import {
   heroBrowseRows,
   useHeroBrowseParks,
@@ -31,9 +38,11 @@ import {
   waitTimeCrowdTier,
 } from '@/lib/utils/crowd-level-styles';
 import { formatDistance } from '@/lib/utils/distance-utils';
+import { formatBreakCountdown, type ParkBreak } from '@/lib/utils/park-break';
+import { formatParkDay } from '@/lib/utils/park-day';
 import { convertApiUrlToFrontendUrl, searchResultHref } from '@/lib/utils/url-utils';
 import { cn, stripNewPrefix } from '@/lib/utils';
-import type { NearbyParksData, NearbyShortWait } from '@/types/nearby';
+import type { NearbyShortWait } from '@/types/nearby';
 import type { Locale } from '@/i18n/config';
 
 /**
@@ -64,6 +73,9 @@ const FIGURE_CLASS = 'mt-3 flex h-10 items-baseline gap-1.5';
 const NUMBER_CLASS = 'text-4xl leading-10 font-black tracking-tighter tabular-nums';
 const FOOT_CLASS = 'mt-2 flex h-7 min-w-0 flex-col justify-end';
 
+/** A shut park's figure: when it opens, on up to two lines, so nothing in it is cut. */
+const SHUT_FIGURE_CLASS = 'line-clamp-2 self-center text-sm leading-5 font-semibold';
+
 /** The card's frame: its photo (the brand cover without one) with a badge on it, and its lines. */
 function RailCard({
   href,
@@ -77,6 +89,7 @@ function RailCard({
   subtitle,
   figure,
   foot,
+  className,
 }: {
   href: string;
   /** The park's or ride's UUID, which a counted click names. */
@@ -91,6 +104,7 @@ function RailCard({
   subtitle: string;
   figure: ReactNode;
   foot: ReactNode;
+  className?: string;
 }) {
   const t = useTranslations('nearby');
   return (
@@ -100,7 +114,8 @@ function RailCard({
       {...linkEntityAttributes(entity)}
       className={cn(
         CARD_CLASS,
-        'hover:border-foreground/25 transition-[border-color,translate] duration-200 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0'
+        'hover:border-foreground/25 transition-[border-color,translate] duration-200 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0',
+        className
       )}
     >
       <span className={PHOTO_CLASS}>
@@ -183,7 +198,8 @@ function ShortWaitCard({ ride }: { ride: NearbyShortWait }) {
       coverSlug={ride.slug}
       badge={
         saved > 0 && (
-          <Badge className="badge-trend-down absolute top-3 left-3">
+          // Blurred, since its fill is translucent and the ride's photo behind it is busy.
+          <Badge className="badge-trend-down absolute top-3 left-3 backdrop-blur-md">
             <TrendingDown aria-hidden="true" />
             {t('shortWaits.shorter', { minutes: saved, unit })}
           </Badge>
@@ -221,13 +237,45 @@ function ShortWaitCard({ ride }: { ride: NearbyShortWait }) {
   );
 }
 
+/** The reopening as a park card writes it: day and month, the year being the coming one. */
+const BREAK_REOPENING_DAY: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
+
+/**
+ * A park in a break as the park page's panel says it (`ParkBreakPanel`), in the card's figure:
+ * „Winterpause" or „Saisonpause" with the scene's icon, and the day it opens again.
+ */
+function BreakFigure({ parkBreak }: { parkBreak: ParkBreak }) {
+  const tBreak = useTranslations('parkBreak');
+  const locale = useLocale();
+  const Icon = PARK_BREAK_ICON[parkBreak.scene];
+  const day = formatParkDay(locale, parkBreak.reopensOn, BREAK_REOPENING_DAY);
+  return (
+    <span className="flex min-w-0 flex-col gap-0.5 self-center">
+      <span className={cn(PARK_BREAK_KICKER_CLASS, 'leading-4')}>
+        <Icon className="size-3.5 shrink-0" aria-hidden="true" />
+        {tBreak(parkBreak.winter ? 'label.winter' : 'label.season')}
+      </span>
+      <span className="truncate text-sm leading-5 font-semibold">
+        {tBreak.rich('reopensPark', {
+          day,
+          date: (chunks) => <time dateTime={parkBreak.reopensOn}>{chunks}</time>,
+        })}
+      </span>
+    </span>
+  );
+}
+
 /**
  * A park near the visitor, a ride of the park they stand in or a popular park: while it is open its
- * wait (a park's average) as the figure and its crowd level (a ride: its status) at the foot; shut,
- * its status as the figure. A popular park whose live data has not come yet leads to its waits.
+ * wait (a park's average) as the figure and its crowd level (a ride: its status) at the foot. Shut,
+ * it says when it opens: later today in green with the clock time, in a break (a week or more away)
+ * as the park page's panel does, with the yellow edge and how many weeks are left at the foot, else
+ * the day and time or its status. A popular park whose live data has not come yet leads to its
+ * waits.
  */
 function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
   const t = useTranslations('nearby');
+  const locale = useLocale();
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
   const tStatus = useTranslations('parks.status');
@@ -257,12 +305,24 @@ function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
             <span className={NUMBER_CLASS}>{wait}</span>
             <span className="text-muted-foreground text-sm font-semibold">{tCommon('min')}</span>
           </>
+        ) : item.opensTodayAt && item.statusCountdown ? (
+          // Opening later today: when, and at what time, in green, since it is the one shut park
+          // worth setting off for now.
+          <span className={cn(SHUT_FIGURE_CLASS, 'text-status-operating')}>
+            {t.rich('opensTodayAt', {
+              when: item.statusCountdown,
+              time: item.opensTodayAt,
+              clock: (chunks) => <span className="whitespace-nowrap">{chunks}</span>,
+            })}
+          </span>
+        ) : item.parkBreak ? (
+          <BreakFigure parkBreak={item.parkBreak} />
         ) : item.status ? (
-          // Shut or down: how far off the next opening is („Öffnet morgen, 10:00 Uhr", „Öffnet in 2:33 Stunden"),
-          // which says more at a glance than its date.
+          // Shut or down: how far off the next opening is („Öffnet morgen, 10:00 Uhr"), which says
+          // more at a glance than its date.
           <span
             title={item.statusCountdown ? item.statusLabel : undefined}
-            className="text-muted-foreground self-center truncate text-base font-semibold"
+            className={cn(SHUT_FIGURE_CLASS, 'text-muted-foreground')}
           >
             {item.statusCountdown
               ? `${t('opens')} ${item.statusCountdown}`
@@ -277,8 +337,8 @@ function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
       }
       foot={
         // One badge, so it never runs out of the card: an open park's crowd level (its average wait
-        // above already says it is open), else the status.
-        open && (
+        // above already says it is open), else the status; in a break, how long it has left.
+        open ? (
           <span className="flex min-w-0 items-center overflow-hidden">
             {item.type === 'park' && item.load && item.load !== 'unknown' ? (
               <CrowdLevelBadge level={item.load} />
@@ -286,8 +346,17 @@ function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
               <ParkStatusBadge status="OPERATING" />
             )}
           </span>
+        ) : (
+          item.parkBreak && (
+            <span className="flex">
+              <span className={PARK_BREAK_PILL_CLASS}>
+                {formatBreakCountdown(locale, item.parkBreak.daysUntil)}
+              </span>
+            </span>
+          )
         )
       }
+      className={!open && item.parkBreak ? PARK_BREAK_BORDER_CLASS : undefined}
     />
   );
 }
@@ -313,10 +382,7 @@ export function HeroRail({ className }: { className?: string }) {
   const { data: nearby } = useHomeNearbyParks();
   const withStatusLabels = useHeroStatusLabels();
 
-  const shortWaits =
-    nearby?.type === 'nearby_parks'
-      ? ((nearby.data as NearbyParksData).shortWaits ?? []).filter((ride) => ride.url)
-      : [];
+  const shortWaits = nearbyShortWaits(nearby);
   const pending = !mounted || browse.isPending;
   const showShortWaits = !pending && shortWaits.length > 0;
 

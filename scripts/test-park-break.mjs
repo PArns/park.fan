@@ -8,7 +8,12 @@
  * Run: `pnpm test:park-break`
  */
 import assert from 'node:assert/strict';
-import { WINTER_BREAK_MIN_DAYS, parkBreakOf } from '../lib/utils/park-break.ts';
+import {
+  WINTER_BREAK_MIN_DAYS,
+  formatBreakCountdown,
+  parkBreakOf,
+  parkBreakUntil,
+} from '../lib/utils/park-break.ts';
 import { OFFSEASON_MIN_DAYS } from '../lib/utils/schedule-utils.ts';
 
 let passed = 0;
@@ -181,6 +186,22 @@ test('a `date` on the next schedule wins over the opening instant', () => {
     parkBreakOf(park(null, '2026-11-13', { nextSchedule }), '2026-11-13')?.reopensOn,
     '2027-03-26'
   );
+});
+
+// The homepage's park cards, which know the reopening day from the nearby answer
+
+test('parkBreakUntil answers as parkBreakOf for the same park and day', () => {
+  assert.deepEqual(
+    parkBreakUntil('2026-11-13', '2027-03-25', 54.07),
+    parkBreakOf(park('2027-03-25'), '2026-11-13')
+  );
+  assert.equal(parkBreakUntil('2026-11-24', '2026-11-28', 54.07), null);
+  assert.equal(parkBreakUntil('2026-11-24', null, 54.07), null);
+});
+
+test('the countdown rounds up to whole weeks, as the panel and the cards say it', () => {
+  assert.equal(formatBreakCountdown('de', 121), 'in 18 Wochen');
+  assert.equal(formatBreakCountdown('en', 7), 'in 1 week');
 });
 
 console.log(`\n${passed} passed`);

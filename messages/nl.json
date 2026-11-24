@@ -1813,6 +1813,7 @@
     "goToParkPage": "Naar parkpagina",
     "nearestOpenBadge": "Dichtstbij open",
     "opens": "Opent",
+    "opensTodayAt": "Opent {when} <clock>({time} uur)</clock>",
     "opensOn": "Opent op",
     "opensIn": "Opent over",
     "closesIn": "Sluit over",

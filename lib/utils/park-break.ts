@@ -1,5 +1,6 @@
 import type { NextScheduleItem, ScheduleItem } from '@/lib/api/types';
-import { addDays, daysBetween, parkDayOf } from '@/lib/utils/park-day';
+import { getRelativeTimeFormat } from '@/lib/utils/intl-format';
+import { addDays, daysBetween, parkDayOf, weeksUntil } from '@/lib/utils/park-day';
 import { OFFSEASON_MIN_DAYS } from '@/lib/utils/schedule-utils';
 
 /** How many days of a closure have to fall in the park's winter before it is the winter break. */
@@ -65,13 +66,26 @@ export function parkBreakOf(
   if (!park || !todayIso || park.hasOperatingSchedule === false) return null;
   const today = park.schedule?.find((day) => day.date === todayIso);
   if (today?.scheduleType === 'OPERATING') return null;
-  const reopensOn = nextOpeningDay(park.nextSchedule, park.timezone);
+  return parkBreakUntil(todayIso, nextOpeningDay(park.nextSchedule, park.timezone), park.latitude);
+}
+
+/**
+ * The break of a park shut on `todayIso` that opens again on `reopensOn`, both park-local days, or
+ * `null` when that is under {@link OFFSEASON_MIN_DAYS} away or unknown. {@link parkBreakOf} for a
+ * caller that already knows the park is shut today and when it opens next, as the hero's park
+ * cards do from the nearby answer.
+ */
+export function parkBreakUntil(
+  todayIso: string,
+  reopensOn: string | null,
+  latitude: number | null
+): ParkBreak | null {
   if (!reopensOn) return null;
   const daysUntil = daysBetween(todayIso, reopensOn);
   if (daysUntil < OFFSEASON_MIN_DAYS) return null;
 
-  const winter = isWinterBreak(todayIso, reopensOn, park.latitude);
-  const season = seasonOn(todayIso, park.latitude);
+  const winter = isWinterBreak(todayIso, reopensOn, latitude);
+  const season = seasonOn(todayIso, latitude);
   return {
     reopensOn,
     daysUntil,
@@ -79,6 +93,14 @@ export function parkBreakOf(
     // A winter break shows the snow until spring; any other break shows the season it falls in.
     scene: season === 'spring' || season === 'summer' ? 'spring' : winter ? 'winter' : season,
   };
+}
+
+/**
+ * How long a break has left, in whole weeks rounded up („in 18 Wochen"): the park page's panel and
+ * the hero's park cards say it alike.
+ */
+export function formatBreakCountdown(locale: string, daysUntil: number): string {
+  return getRelativeTimeFormat(locale, { numeric: 'always' }).format(weeksUntil(daysUntil), 'week');
 }
 
 /** Whether enough of the days from today to the reopening fall in the park's winter. */

@@ -14,6 +14,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-browse.ts`](../../lib/home/hero-browse.ts)
 
+- `nearbyShortWaits` _function_: The rides the hero's card rail shows as short waits: the nearby answer's `shortWaits` that have a page. None outside a `nearby_parks` answer, and none from an API or a cached answer older than the field.
 - `parkUrlOfRide` _function_: The park's own API URL out of one of its rides' (`…/parks/<continent>/<country>/<city>/<park>/…`): the in-park answer sends none for the park, and a row without one leads nowhere.
 - `shutParkSchedules` _function_: A shut park's schedule entries and its zone, for the status pill; nothing for an open park.
 - `sortOpenFirst` _function_: Open parks first, then by distance.

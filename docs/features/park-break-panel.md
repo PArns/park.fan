@@ -65,12 +65,27 @@ right and bottom edge and fades into the yellow glass to its left through a `mas
 guide in a title card (`WINDOW_EDGE_MASK`). It fills its box with `xMaxYMid slice`, so a box taller
 than 2 : 1 loses the Ferris wheel on the left first, where the fade is anyway.
 
+## On the homepage's park cards
+
+When the hero's card rail shows parks and one of them is in a break, its card says so the same way
+(`BreakFigure` in `components/home/hero-rail.tsx`): the label with the scene's icon and „Öffnet
+wieder am 25. März" in the figure, the countdown pill at the foot and the panel's yellow edge. The
+icon, the label's, the pill's and the edge's classes are one place for both
+(`components/parks/park-break-style.ts`).
+
+The card knows only today's schedule type and the next opening from the nearby answer, so it asks
+`parkBreakUntil(todayIso, reopensOn, latitude)`, which `parkBreakOf` calls too, through
+`useHeroStatusLabels`. The answer carries no coordinates: its parks lie around the visitor, so the
+visitor's latitude stands in for theirs, and without a position every break is „Saisonpause".
+
 ## Why it is server-only
 
 Both pages are `force-dynamic` and compute the park's day on the server, so the panel is in the
 first HTML at its full height and never shifts the page. It has no client code, and its strings are
 the top-level `parkBreak` namespace rather than under `parks`: the park route sends all of `parks`
 to the browser ([translations are routed](../rules/translations-are-routed-not-bundled.md)).
+`parkBreak` reaches the browser on the homepage only, for the park cards.
 
-The countdown is `Intl.RelativeTimeFormat` over `weeksUntil` (`lib/utils/park-day.ts`), the same
-rounding „Heute im Park" uses, so the two never name different week counts for one date.
+The countdown is `formatBreakCountdown` (`lib/utils/park-break.ts`), `Intl.RelativeTimeFormat` over
+`weeksUntil` (`lib/utils/park-day.ts`), the same rounding „Heute im Park" uses, so the panel, the
+cards and „Heute im Park" never name different week counts for one date.

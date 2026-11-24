@@ -376,6 +376,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkBreakPanel` _component_: The yellow glass panel for a park in a break: the day it opens again, how many weeks that is away, and Parky asleep in a picture of the season, in his sled in winter, in the leaves in autumn, among the tulips in spring.
 
+### [`park-break-style.ts`](../../components/parks/park-break-style.ts)
+
+- `PARK_BREAK_ICON` _const_: The break's icon, after the scene Parky sleeps in: the park page's panel (`ParkBreakPanel`) and the hero's park cards draw a break with the same one.
+- `PARK_BREAK_KICKER_CLASS` _const_: „Winterpause" or „Saisonpause" with its icon: amber caps on the panel's yellow glass.
+- `PARK_BREAK_PILL_CLASS` _const_: How long until it opens again („in 18 Wochen"), as a yellow pill.
+- `PARK_BREAK_BORDER_CLASS` _const_: The panel's yellow edge, for a card that shows a break.
+
 ### [`park-calendar-comparison.tsx`](../../components/parks/park-calendar-comparison.tsx)
 
 - `ParkCalendarComparison` _component_: Two calendar days side by side, with the verdict on top. The arithmetic lives in `lib/parks/day-comparison.ts`; this file turns its keys and numbers into ICU messages.

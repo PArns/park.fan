@@ -16,6 +16,7 @@ import {
   sortOpenFirst,
 } from '@/lib/home/hero-browse';
 import type { SearchBrowseItem } from '@/lib/analytics/site-analytics';
+import type { ParkBreak } from '@/lib/utils/park-break';
 import type {
   PopularPark,
   ParkStatus,
@@ -46,6 +47,10 @@ export interface NearbySearchExtras {
   statusLabel?: string;
   /** How far off the opening in `statusLabel` is, „in 2 Tagen", for a pill with room for it. */
   statusCountdown?: string;
+  /** A park that opens later today: the clock time it opens at, „11:00", in its own zone. */
+  opensTodayAt?: string;
+  /** A park in a break, its next opening a week or more away (`parkBreakUntil`). */
+  parkBreak?: ParkBreak;
 }
 
 /** A row of the pre-query list: a search result with its live extras and what kind of row it is. */
