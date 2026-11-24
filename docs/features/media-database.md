@@ -256,7 +256,8 @@ images: {id: {v, w, h, widths, focus, credit, attribution, roles, bannerFocus?, 
 
 The same script writes the news posts as JSON (`scripts/news-export.mjs`, blocks in
 `lib/blog/news-blocks.ts`), because the app cannot call `park.fan/api/*` either. Both files have
-`Cache-Control: public, max-age=300` and are written before `index.json`.
+`Cache-Control: public, max-age=300` and are written before `index.json`; the avatar files are
+written before them.
 
 - **Which posts:** the `/news` listing: `isNewsCategory()` (`news` and `news/…`), `listPosts()` so
   drafts, hidden and scheduled posts stay out, only posts the locale has itself (no English
@@ -271,8 +272,10 @@ readingMinutes}`. `url` is the absolute `https://park.fan/<locale>/news/<slug>`;
   from `parks` only; `cover` is an id in `images` of `index.json` or `null` (the post has no photo:
   draw the fallback), `coverAlt` its alt text in that locale.
 - **`news/<locale>/<slug>.json`:** `Post` plus `schema`, `locale`, `author`, `rides` and `blocks`.
-  `author` is the byline, `{name, role, avatar}`: the short name, the role in that locale or `null`,
-  the avatar's absolute URL or `null`. `rides` are the post's `rideLinks` as
+  `author` is the byline, `{name, role, avatar, avatarSmall}`: the short name, the role in that
+  locale or `null`, and the avatar as absolute `https://media.park.fan/authors/<name>-<hash>-<w>.webp`
+  URLs (192 px and 96 px squares) or `null`. The app loads them from the bucket, never from the
+  website; the hash is that of the source file, so a key is immutable and uploaded once. `rides` are the post's `rideLinks` as
   `<park geo path>/<ride slug>`, where the park's path is known. `blocks`, in reading order:
   - `{type: 'heading', level, text, id}`, `id` the anchor the web gives the heading (`#id`)
   - `{type: 'paragraph', text}`

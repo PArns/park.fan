@@ -3,7 +3,8 @@
 // script asks the same resolvers `getCardImageMap()` uses (`getParkBackground`, `getRideImage`).
 //
 // Every photo is encoded as WebP at WIDTHS (never upscaled), plus its own width when that is
-// below the top step, under `<id>/<version>-<w>.webp`.
+// below the top step, under `<id>/<version>-<w>.webp`. Author avatars are square WebPs under
+// `authors/<name>-<hash>-<w>.webp`.
 // `version` changes only with the pixels or the focal point, so a key is immutable and an
 // existing key is never uploaded twice. `index.json` maps parks and rides to their photo and
 // carries focal point and credit. It and the news JSON (`news/<locale>.json`, `news/<locale>/<slug>.json`,
@@ -27,7 +28,7 @@ import {
 } from '../lib/media/index.ts';
 import { MEDIA_PARK_PATH_BY_SLUG } from '../lib/media/manifest-parks.ts';
 import { imageParkKey, parkGeoPath } from '../lib/media/park-path.mjs';
-import { buildNewsExport } from './news-export.mjs';
+import { MEDIA_BASE, buildNewsExport } from './news-export.mjs';
 
 const WIDTHS = [400, 828, 1200, 1600];
 const QUALITY = 78;
@@ -67,7 +68,8 @@ for (const image of getHeroImages()) {
 }
 
 // News covers and inline photos join `chosen`, so they ship like the card photos.
-const news = buildNewsExport(chosen);
+const avatars = new Map();
+const news = buildNewsExport(chosen, avatars);
 
 const images = {};
 const files = []; // { key, body, contentType, cacheControl }
@@ -92,11 +94,14 @@ for (const image of chosen.values()) {
     files.push({ key: `${image.id}/${image.version}-${w}.webp`, image, width: w });
   }
 }
+// Author avatars: small squares, uploaded like the photos so the app never asks the website.
+for (const [key, { src, width }] of avatars)
+  files.push({ key, image: { src }, width, square: true });
 
 const index = {
   schema: 1,
   generatedAt: new Date().toISOString(),
-  base: 'https://media.park.fan',
+  base: MEDIA_BASE,
   pattern: '{id}/{v}-{width}.webp',
   parks,
   rides,
@@ -105,10 +110,10 @@ const index = {
 
 const newsBody = (file) => JSON.stringify(file.json);
 
-async function encode({ image, width }) {
+async function encode({ image, width, square }) {
   return sharp(join('public', image.src))
     .rotate()
-    .resize({ width, withoutEnlargement: true })
+    .resize(square ? { width, height: width, fit: 'cover' } : { width, withoutEnlargement: true })
     .webp({ quality: QUALITY, effort: 5 })
     .toBuffer();
 }

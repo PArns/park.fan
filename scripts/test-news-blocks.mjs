@@ -7,6 +7,7 @@
 import assert from 'node:assert/strict';
 
 import { markdownToBlocks, selectNews } from '../lib/blog/news-blocks.ts';
+import { MEDIA_BASE, buildNewsExport } from './news-export.mjs';
 
 const ctx = {
   site: 'https://park.fan/de',
@@ -209,5 +210,20 @@ const picked = selectNews(
   2
 ).map((p) => p.slug);
 assert.deepEqual(picked, ['late', 'sub']);
+
+// Every byline's avatar is a file of the bucket, and every such file is queued for upload.
+const avatars = new Map();
+const { files } = buildNewsExport(new Map(), avatars);
+const bylines = files.filter((f) => f.json.author).map((f) => f.json.author);
+assert.ok(bylines.length > 0 && avatars.size > 0);
+for (const { avatar, avatarSmall } of bylines.filter((b) => b.avatar)) {
+  for (const [url, width] of [
+    [avatar, 192],
+    [avatarSmall, 96],
+  ]) {
+    assert.match(url, new RegExp(`^${MEDIA_BASE}/authors/[a-z0-9-]+-[0-9a-f]{8}-${width}\\.webp$`));
+    assert.equal(avatars.get(url.slice(MEDIA_BASE.length + 1))?.width, width);
+  }
+}
 
 console.log('✓ news blocks');

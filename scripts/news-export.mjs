@@ -2,6 +2,10 @@
 // `news/<locale>.json` and one body per post `news/<locale>/<slug>.json`, both built from the
 // site's own loaders. A cover or inline photo the card export does not hold yet is added to
 // `chosen`, so it is uploaded like any other photo.
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { basename, extname, join } from 'node:path';
+
 import { SITE_URL, locales } from '../i18n/config.ts';
 import { resolveAuthor } from '../lib/blog/authors.ts';
 import { BLOG_POSTS_META } from '../lib/blog/manifest.ts';
@@ -16,6 +20,11 @@ import { getCreditLine, needsAttribution } from '../lib/media/credit.ts';
 import { getMediaImageForPath } from '../lib/media/index.ts';
 import { MEDIA_PARK_PATH_BY_SLUG } from '../lib/media/manifest-parks.ts';
 import { getMediaAlt } from '../lib/media/text.ts';
+
+/** The bucket's public host; the avatar URLs and the photo index both start here. */
+export const MEDIA_BASE = 'https://media.park.fan';
+/** The two edge lengths an author avatar ships at, small first. */
+export const AVATAR_SIZES = [96, 192];
 
 // A park without photos is not in the media catalog, but any post that links it by its full path
 // pins its `continent/country/city`. A slug two parks share is pinned by the post's own path only.
@@ -47,14 +56,31 @@ function parksOf(translationKey) {
   return { parks: [...new Set(paths.filter(Boolean))], parkSlugs: slugs };
 }
 
-/** The byline as the article header shows it: short name, role and the avatar's absolute URL. */
-function authorOf(key, locale) {
+/**
+ * The byline as the article header shows it: short name, role and the avatar's URLs in the bucket.
+ * The avatar files are registered in `avatars` (key → source file under `public/`, edge length);
+ * the key carries a hash of the source, so it is immutable.
+ */
+function authorOf(key, locale, avatars) {
   const a = resolveAuthor(key, locale);
-  return {
-    name: a.shortName ?? a.name,
-    role: a.role ?? null,
-    avatar: a.avatar ? `${SITE_URL}${a.avatar}` : null,
-  };
+  let avatar = null;
+  let avatarSmall = null;
+  if (a.avatar) {
+    const src = a.avatar.split('?')[0];
+    const hash = createHash('sha1')
+      .update(readFileSync(join('public', src)))
+      .digest('hex')
+      .slice(0, 8);
+    const slug = basename(src, extname(src));
+    const [small, large] = AVATAR_SIZES.map((w) => {
+      const file = `authors/${slug}-${hash}-${w}.webp`;
+      avatars.set(file, { src, width: w });
+      return `${MEDIA_BASE}/${file}`;
+    });
+    avatarSmall = small;
+    avatar = large;
+  }
+  return { name: a.shortName ?? a.name, role: a.role ?? null, avatar, avatarSmall };
 }
 
 /** The rides a post lists in `rideLinks`, as `<park geo path>/<ride slug>` where the park is known. */
@@ -72,9 +98,10 @@ function ridesOf(rideLinks) {
 
 /**
  * @param {Map<string, import('../lib/media/types.ts').MediaImage>} chosen photos to upload; grows
+ * @param {Map<string, { src: string; width: number }>} avatars author avatar files to upload, by key; grows
  * @returns {{ files: { key: string; json: unknown }[]; stats: Record<string, { posts: number; skipped: Record<string, number> }> }}
  */
-export function buildNewsExport(chosen) {
+export function buildNewsExport(chosen, avatars) {
   const generatedAt = new Date().toISOString();
   const files = [];
   const lists = [];
@@ -146,7 +173,7 @@ export function buildNewsExport(chosen) {
           schema: 1,
           locale,
           ...meta,
-          author: authorOf(fm.author, locale),
+          author: authorOf(fm.author, locale, avatars),
           rides: ridesOf(fm.rideLinks),
           blocks,
         },
