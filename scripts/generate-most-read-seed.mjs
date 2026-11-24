@@ -17,7 +17,7 @@
 
 import { existsSync, writeFileSync } from 'node:fs';
 import { locales } from '../i18n/config.ts';
-import { API_ORIGIN } from '../lib/api/client.ts';
+import { API_ORIGIN, getServerApiHeaders } from '../lib/api/client.ts';
 import { MOST_READ_ASK_FOR, MOST_READ_DAYS } from '../lib/blog/most-read-config.ts';
 import {
   VIEWED_PARKS_ASK_FOR,
@@ -37,7 +37,11 @@ if (args.has('--if-missing') && existsSync(OUT)) process.exit(0);
 async function getJson(path, params, timeout) {
   const url = new URL(path, API_ORIGIN);
   url.search = new URLSearchParams(params).toString();
-  const response = await fetch(url, { signal: AbortSignal.timeout(timeout) });
+  // `/v1/page-views/top` answers 401 without the server's key headers.
+  const response = await fetch(url, {
+    headers: getServerApiHeaders(),
+    signal: AbortSignal.timeout(timeout),
+  });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   return response.json();
 }
