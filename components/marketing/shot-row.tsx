@@ -13,6 +13,7 @@ export function ShotRow({
   alt,
   reverse = false,
   drift = false,
+  size,
 }: {
   /** The text column. */
   children: ReactNode;
@@ -21,12 +22,14 @@ export function ShotRow({
   reverse?: boolean;
   /** The phone glides a little against the page while it scrolls past (`.pk-shot-drift`). */
   drift?: boolean;
+  /** A whole-screen capture's own size, passed to {@link PhoneShot}. */
+  size?: { width: number; height: number };
 }) {
   return (
     <div className="grid items-center gap-14 md:grid-cols-2 md:gap-12">
       <div className={cn('space-y-6', reverse && 'md:order-2')}>{children}</div>
       <div className={cn(drift && 'pk-shot-drift')}>
-        <PhoneShot src={src} alt={alt} tilt={reverse ? 'left' : 'right'} />
+        <PhoneShot src={src} alt={alt} tilt={reverse ? 'left' : 'right'} size={size} />
       </div>
     </div>
   );

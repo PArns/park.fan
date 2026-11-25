@@ -2516,9 +2516,89 @@
     "title": "Imprint - park.fan",
     "description": "Legal information and imprint for park.fan"
   },
-  "appSupport": {
-    "title": "park.fan for iPhone - Help",
-    "description": "What the park.fan app for iPhone does, what it needs and how to reach us."
+  "appPage": {
+    "metaTitle": "park.fan for iPhone: wait times, crowd calendar and day planner",
+    "metaDescription": "The park.fan app shows you live wait times and the quiet days in a calendar, and plans your park day with you. In the park, it sits on your Lock Screen. Free, no account, for iOS 26.",
+    "title": "park.fan for iPhone",
+    "headline": "Wait times, crowds and your plan in one app",
+    "lead": "At home it shows you the days when parks are quiet, and in the park the rides where the queue is short right now",
+    "status": "In beta on TestFlight, coming soon to the App Store",
+    "requirement": "For iPhone with iOS 26 or later, iPhone Duo included",
+    "storeAction": "Get it on the App Store",
+    "betaAction": "Join the TestFlight beta",
+    "plan": {
+      "kicker": "Before you go",
+      "title": "Crowd calendar and day planner",
+      "calendarTitle": "A calendar for the quiet days",
+      "calendarBody": "In the calendar you see the expected crowd and the headliners' peak wait for every day, months ahead, with public holidays, school holidays and bridge days marked. Tap a day for its opening hours, the hour-by-hour curve and the weather.",
+      "plannerTitle": "The day planner sorts by wait",
+      "plannerBody": "Pick a park, a day, rides and shows, and park.fan puts them in the order with the shortest expected waits, walking times included. Tell it how tall your smallest kid is or whether you'd rather stay dry, and it flags what doesn't fit. On the day, your iPhone tells you when to set off for the next ride."
+    },
+    "park": {
+      "kicker": "In the park",
+      "title": "Wait times, compass and \"Take me there\"",
+      "body": "Open the app in a park and it greets you with what matters right now: today's best times, the rides around you, the next show and your plan.",
+      "waitsTitle": "Live wait times",
+      "waitsBody": "Every attraction with its wait, breakdowns and closures. An arrow shows whether the queue is growing, and \"Shorter now than later\" lists the rides where you'd queue much less than usual right now.",
+      "compassTitle": "The compass",
+      "compassBody": "Direction and distance to the headliners and the rides in your plan, and to the restaurants if you like. It needs your location while the app is open.",
+      "guideTitle": "\"Take me there\"",
+      "guideBody": "Tap a target and the arrow walks you to its entrance, with meters and walking minutes. The park map shows every attraction, show and restaurant."
+    },
+    "lock": {
+      "kicker": "Lock Screen and notifications",
+      "title": "Your park day on the Lock Screen",
+      "body": "In the park the app puts your day on the Lock Screen and in the Dynamic Island: the waits of your favorite rides, the next stop in your plan and the next show. It starts by itself when you open the app in a park, and you can switch it off in Settings.",
+      "notifications": "Notifications only come when you switch them on, one kind at a time. A wait alert fires when a ride drops below the wait you chose or runs again, and you can turn it off right from the notification. The other kinds: rain on the way, changes to your plan, your plan in the morning, news and guides."
+    },
+    "parky": {
+      "kicker": "Parky",
+      "title": "Parky, your park buddy in the chat",
+      "body": "Ask him for the best day or the shortest queue, or let him rearrange your plan. Before your first message leaves the iPhone, the app tells you what is sent and to whom, and asks you. You can report any answer, and \"New chat\" deletes the old one. The answers are written by Anthropic's language model Claude."
+    },
+    "more": {
+      "kicker": "Also in the app",
+      "title": "Favorites, news and six languages",
+      "favoritesTitle": "Favorites",
+      "favoritesBody": "Star parks, rides, shows and restaurants, and tick off the rides you've done.",
+      "newsTitle": "News, guides and weather",
+      "newsBody": "park.fan's posts open in the app, and the weather comes with a rain alert and official warnings.",
+      "languagesTitle": "Six languages, light and dark",
+      "languagesBody": "English, German, Dutch, French, Spanish and Italian. The app follows your iPhone's appearance and is built for iPhone Duo too."
+    },
+    "privacy": "The app needs no account, shows no ads and doesn't track you. Your favorites and plans stay on your iPhone, and park.fan only gets what a feature you switch on needs. The details are in the <link>privacy policy</link>.",
+    "help": {
+      "kicker": "Help",
+      "title": "Help and contact",
+      "needsTitle": "What you need",
+      "needs": [
+        "an iPhone with iOS 26 or later, iPhone Duo included",
+        "an internet connection for the live data; what was loaded last stays visible offline",
+        "the app speaks English, German, Dutch, French, Spanish and Italian"
+      ],
+      "faqTitle": "Common questions",
+      "faq": {
+        "compassQ": "Why don't I see the compass?",
+        "compassA": "The compass, \"Take me there\" and the park day on the Lock Screen appear when you're in an open park and have allowed the app to use your location. Check this in your iPhone's settings under Privacy & Security → Location Services → park.fan.",
+        "pushQ": "Why don't notifications arrive?",
+        "pushA": "Check in your iPhone's settings under Notifications → park.fan that they're allowed, and in the app under Settings → Notifications which kinds are on. A wait alert only fires once the ride's wait drops below your value.",
+        "accuracyQ": "How accurate are the wait times?",
+        "accuracyA": "Live waits are the ones the parks post. Forecasts and the calendar are estimates built from measured waits and can be off. Where the figures come from is explained in <link>How park.fan works</link>.",
+        "deleteQ": "How do I delete my data?",
+        "deleteA": "Favorites and plans live on your iPhone and go with the app. What the app sends, how long it's kept and how to delete it is in the <link>privacy policy</link>."
+      },
+      "contactTitle": "Contact",
+      "contact": "For questions, bugs or wishes, write to <email></email>. Our address and phone number are in the <link>imprint</link>.",
+      "emailDisplay": "hello[at]park.fan",
+      "independent": "park.fan is independent and not affiliated with the parks or their operators. Names and marks belong to their owners."
+    },
+    "next": {
+      "title": "park.fan in your browser",
+      "body": "The calendar, the day planner and Parky are on park.fan too, without the app and without an account",
+      "calendar": "Find quiet days",
+      "planner": "Plan a day",
+      "parky": "Chat with Parky"
+    }
   },
   "datenschutz": {
     "title": "Privacy Policy - park.fan",

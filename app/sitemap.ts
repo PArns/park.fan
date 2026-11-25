@@ -78,6 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
   const fancastAlternates = buildAlternates(() => '/fancast');
   const parkyAlternates = buildAlternates(() => '/parky');
+  const appAlternates = buildAlternates(() => '/app');
   const contributeAlternates = buildAlternates(() => '/contribute');
   const developersAlternates = buildAlternates(() => DEVELOPERS_PATH);
 
@@ -104,6 +105,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       {
         url: `${BASE_URL}/${locale}/parky`,
         alternates: parkyAlternates,
+      },
+      {
+        url: `${BASE_URL}/${locale}/app`,
+        alternates: appAlternates,
       },
       {
         url: `${BASE_URL}/${locale}/contribute`,

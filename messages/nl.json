@@ -2516,9 +2516,89 @@
     "title": "Colofon - park.fan",
     "description": "Juridische informatie en colofon voor park.fan"
   },
-  "appSupport": {
-    "title": "park.fan voor iPhone - Hulp",
-    "description": "Wat de park.fan-app voor iPhone doet, wat je nodig hebt en hoe je ons bereikt."
+  "appPage": {
+    "metaTitle": "park.fan voor iPhone: wachttijden, druktekalender en dagplanner",
+    "metaDescription": "De app van park.fan toont je de wachttijden live en de rustige dagen in de kalender, en plant je parkdag met je mee. In het park staat hij op je toegangsscherm. Gratis, zonder account, voor iOS 26.",
+    "title": "park.fan voor iPhone",
+    "headline": "Wachttijden, drukte en je planning in één app",
+    "lead": "Thuis zie je de dagen waarop het rustig is, en in het park de attracties waar de rij nu kort is",
+    "status": "In bèta via TestFlight, binnenkort in de App Store",
+    "requirement": "Voor iPhone met iOS 26 of nieuwer, ook voor de iPhone Duo",
+    "storeAction": "Download in de App Store",
+    "betaAction": "Doe mee met de TestFlight-bèta",
+    "plan": {
+      "kicker": "Voor je bezoek",
+      "title": "Druktekalender en dagplanner",
+      "calendarTitle": "Een kalender voor de rustige dagen",
+      "calendarBody": "In de kalender zie je voor elke dag, maanden vooruit, de verwachte drukte en de piekwachttijd van de toppers, met feestdagen, schoolvakanties en brugdagen erbij. Tik op een dag voor de openingstijden, het verloop per uur en het weer.",
+      "plannerTitle": "De dagplanner sorteert op wachttijd",
+      "plannerBody": "Je kiest park, dag, attracties en shows, en park.fan zet ze in de volgorde met de kortste verwachte wachttijden, de looptijden meegerekend. Vertel hoe lang je kleinste kind is of dat jullie droog willen blijven; wat niet past, wordt gemarkeerd. Op de parkdag zegt je iPhone wanneer je naar de volgende attractie moet vertrekken."
+    },
+    "park": {
+      "kicker": "In het park",
+      "title": "Wachttijden, kompas en “Breng me erheen”",
+      "body": "Open je de app in het park, dan begroet hij je met wat nu telt: de beste tijden van vandaag, de attracties om je heen, de volgende show en je planning.",
+      "waitsTitle": "Wachttijden live",
+      "waitsBody": "Elke attractie met haar wachttijd, storingen en sluitingen. Een pijl toont of de rij groeit, en onder “Nu korter dan straks” staan de attracties waar je nu veel korter wacht dan normaal.",
+      "compassTitle": "Het kompas",
+      "compassBody": "Richting en afstand tot de toppers en de attracties in je planning, en als je wilt tot de restaurants. Daarvoor heeft de app je locatie nodig zolang hij open is.",
+      "guideTitle": "“Breng me erheen”",
+      "guideBody": "Tik op een doel en de pijl brengt je naar de ingang, met meters en loopminuten. De parkkaart toont alle attracties, shows en restaurants."
+    },
+    "lock": {
+      "kicker": "Toegangsscherm en meldingen",
+      "title": "Je parkdag op het toegangsscherm",
+      "body": "In het park zet de app je dag op het toegangsscherm en in het Dynamic Island: de wachttijden van je favoriete attracties, het volgende punt van je planning en de volgende show. Dat begint vanzelf als je de app in het park opent, en je zet het uit in de instellingen.",
+      "notifications": "Meldingen komen alleen als je ze aanzet, elke soort apart. Het wachttijdalarm gaat af zodra een attractie onder je gewenste wachttijd zakt of weer rijdt, en je zet het meteen in de melding uit. De andere soorten: regen op komst, wijzigingen in je planning, je planning 's ochtends, nieuws en gidsen."
+    },
+    "parky": {
+      "kicker": "Parky",
+      "title": "Parky, je parkmaatje in de chat",
+      "body": "Vraag hem naar de beste dag of de kortste rij, of laat hem je planning omgooien. Voordat je eerste bericht je iPhone verlaat, vertelt de app wat er wordt verstuurd en naar wie, en vraagt je toestemming. Elk antwoord kun je melden, en “Nieuwe chat” wist de oude. De antwoorden schrijft het taalmodel Claude van Anthropic."
+    },
+    "more": {
+      "kicker": "Verder",
+      "title": "Favorieten, nieuws en zes talen",
+      "favoritesTitle": "Favorieten",
+      "favoritesBody": "Parken, attracties, shows en restaurants bewaar je met een ster, attracties die je gedaan hebt vink je af.",
+      "newsTitle": "Nieuws, gidsen en weer",
+      "newsBody": "De berichten van park.fan lees je in de app, en het weer komt met een regenmelding en officiële waarschuwingen.",
+      "languagesTitle": "Zes talen, licht en donker",
+      "languagesBody": "Nederlands, Duits, Engels, Frans, Spaans en Italiaans. De app volgt de weergave van je iPhone en is ook gebouwd voor de iPhone Duo."
+    },
+    "privacy": "De app heeft geen account nodig, toont geen reclame en volgt je niet. Favorieten en planningen blijven op je iPhone, en naar park.fan gaat alleen wat een functie nodig heeft die je zelf aanzet. Wat dat precies is, lees je in de <link>privacyverklaring</link>.",
+    "help": {
+      "kicker": "Hulp",
+      "title": "Hulp en contact",
+      "needsTitle": "Wat je nodig hebt",
+      "needs": [
+        "een iPhone met iOS 26 of nieuwer, ook de iPhone Duo",
+        "een internetverbinding voor de live gegevens; wat het laatst is geladen, blijft ook offline zichtbaar",
+        "de app spreekt Nederlands, Duits, Engels, Frans, Spaans en Italiaans"
+      ],
+      "faqTitle": "Veelgestelde vragen",
+      "faq": {
+        "compassQ": "Waarom zie ik geen kompas?",
+        "compassA": "Het kompas, “Breng me erheen” en de parkdag op het toegangsscherm verschijnen als je in een geopend park bent en de app je locatie hebt toegestaan. Dat controleer je in de instellingen van je iPhone onder Privacy en beveiliging → Locatievoorzieningen → park.fan.",
+        "pushQ": "Waarom krijg ik geen melding?",
+        "pushA": "Kijk in de instellingen van je iPhone onder Berichtgeving → park.fan of meldingen zijn toegestaan, en in de app onder Instellingen → Meldingen welke soorten aan staan. Een wachttijdalarm gaat pas af als de wachttijd van de attractie onder jouw waarde zakt.",
+        "accuracyQ": "Hoe nauwkeurig zijn de wachttijden?",
+        "accuracyA": "De live wachttijden zijn die van de parken zelf. Voorspellingen en de kalender zijn schattingen op basis van gemeten wachttijden en kunnen ernaast zitten. Waar de cijfers vandaan komen, lees je in <link>Zo werkt park.fan</link>.",
+        "deleteQ": "Hoe wis ik mijn gegevens?",
+        "deleteA": "Favorieten en planningen staan op je iPhone en verdwijnen met de app. Wat de app verstuurt, hoe lang het bewaard blijft en hoe je het wist, staat in de <link>privacyverklaring</link>."
+      },
+      "contactTitle": "Contact",
+      "contact": "Mail ons met vragen, fouten of wensen op <email></email>. Adres en telefoonnummer staan in het <link>colofon</link>.",
+      "emailDisplay": "hello[at]park.fan",
+      "independent": "park.fan is onafhankelijk en heeft geen band met de parken of hun exploitanten. Namen en merken zijn van hun eigenaars."
+    },
+    "next": {
+      "title": "park.fan in je browser",
+      "body": "De kalender, de dagplanner en Parky staan ook op park.fan, zonder app en zonder account",
+      "calendar": "Rustige dagen vinden",
+      "planner": "Dag plannen",
+      "parky": "Chatten met Parky"
+    }
   },
   "datenschutz": {
     "title": "Privacybeleid - park.fan",

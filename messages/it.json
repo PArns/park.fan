@@ -2516,9 +2516,89 @@
     "title": "Note legali - park.fan",
     "description": "Informazioni legali e note legali per park.fan"
   },
-  "appSupport": {
-    "title": "park.fan per iPhone - Aiuto",
-    "description": "Cosa fa l'app park.fan per iPhone, cosa serve e come contattarci."
+  "appPage": {
+    "metaTitle": "park.fan per iPhone: tempi di attesa, calendario dell’affluenza e pianificatore",
+    "metaDescription": "L’app di park.fan ti mostra i tempi di attesa dal vivo e i giorni tranquilli nel calendario, e organizza con te la giornata al parco. Nel parco compare sulla schermata di blocco. Gratis, senza account, per iOS 26.",
+    "title": "park.fan per iPhone",
+    "headline": "Tempi di attesa, affluenza e il tuo piano in un’unica app",
+    "lead": "A casa ti mostra i giorni con poca gente, e nel parco le attrazioni dove la coda adesso è corta",
+    "status": "In beta su TestFlight, presto sull’App Store",
+    "requirement": "Per iPhone con iOS 26 o successivo, anche per iPhone Duo",
+    "storeAction": "Scarica dall’App Store",
+    "betaAction": "Prova la beta su TestFlight",
+    "plan": {
+      "kicker": "Prima della visita",
+      "title": "Calendario dell’affluenza e pianificatore",
+      "calendarTitle": "Un calendario per i giorni tranquilli",
+      "calendarBody": "Nel calendario vedi per ogni giorno, con mesi di anticipo, l’affluenza prevista e l’attesa massima delle attrazioni principali, con festivi, vacanze scolastiche e ponti. Tocca un giorno per gli orari, l’andamento ora per ora e il meteo.",
+      "plannerTitle": "Il pianificatore ordina per attesa",
+      "plannerBody": "Scegli parco, giorno, attrazioni e spettacoli, e park.fan li mette nell’ordine con le attese previste più brevi, tragitti a piedi compresi. Digli quanto è alto il tuo bimbo più piccolo o se preferite restare asciutti: ciò che non va bene viene segnalato. Il giorno del parco, l’iPhone ti dice quando partire per l’attrazione successiva."
+    },
+    "park": {
+      "kicker": "Nel parco",
+      "title": "Tempi di attesa, bussola e «Portami lì»",
+      "body": "Apri l’app nel parco e ti accoglie con quello che conta adesso: i momenti migliori di oggi, le attrazioni intorno a te, il prossimo spettacolo e il tuo piano.",
+      "waitsTitle": "Tempi di attesa dal vivo",
+      "waitsBody": "Ogni attrazione con la sua attesa, i guasti e le chiusure. Una freccia indica se la coda cresce, e in «Ora più breve che dopo» trovi le attrazioni dove adesso aspetti molto meno del solito.",
+      "compassTitle": "La bussola",
+      "compassBody": "Direzione e distanza verso le attrazioni principali e quelle del tuo piano, e se vuoi verso i ristoranti. Per farlo l’app usa la tua posizione finché è aperta.",
+      "guideTitle": "«Portami lì»",
+      "guideBody": "Tocca una meta e la freccia ti guida fino all’ingresso, con metri e minuti a piedi. La mappa del parco mostra tutte le attrazioni, gli spettacoli e i ristoranti."
+    },
+    "lock": {
+      "kicker": "Schermata di blocco e notifiche",
+      "title": "La tua giornata al parco sulla schermata di blocco",
+      "body": "Nel parco l’app porta la tua giornata sulla schermata di blocco e nella Dynamic Island: le attese delle tue attrazioni preferite, la prossima tappa del piano e il prossimo spettacolo. Parte da sola quando apri l’app nel parco, e puoi disattivarla nelle impostazioni.",
+      "notifications": "Le notifiche arrivano solo se le attivi, un tipo alla volta. L’allarme attesa scatta quando un’attrazione scende sotto l’attesa che hai scelto o torna in funzione, e lo spegni direttamente dalla notifica. Gli altri tipi: pioggia in arrivo, modifiche al piano, il piano del mattino, notizie e guide."
+    },
+    "parky": {
+      "kicker": "Parky",
+      "title": "Parky, il tuo amico dei parchi in chat",
+      "body": "Chiedigli il giorno migliore o la coda più corta, oppure fagli riorganizzare il piano. Prima che il tuo primo messaggio lasci l’iPhone, l’app ti dice cosa viene inviato e a chi, e ti chiede il permesso. Ogni risposta si può segnalare, e «Nuova chat» cancella quella vecchia. Le risposte le scrive il modello linguistico Claude di Anthropic."
+    },
+    "more": {
+      "kicker": "Inoltre",
+      "title": "Preferiti, notizie e sei lingue",
+      "favoritesTitle": "Preferiti",
+      "favoritesBody": "Metti una stella a parchi, attrazioni, spettacoli e ristoranti, e spunta le attrazioni che hai già fatto.",
+      "newsTitle": "Notizie, guide e meteo",
+      "newsBody": "Gli articoli di park.fan si leggono nell’app, e il meteo arriva con l’avviso di pioggia e le allerte ufficiali.",
+      "languagesTitle": "Sei lingue, chiaro e scuro",
+      "languagesBody": "Italiano, tedesco, inglese, olandese, francese e spagnolo. L’app segue l’aspetto del tuo iPhone ed è fatta anche per iPhone Duo."
+    },
+    "privacy": "L’app non chiede un account, non mostra pubblicità e non ti traccia. Preferiti e piani restano sul tuo iPhone, e a park.fan arriva solo ciò che serve a una funzione che attivi tu. I dettagli sono nell’<link>informativa sulla privacy</link>.",
+    "help": {
+      "kicker": "Aiuto",
+      "title": "Aiuto e contatti",
+      "needsTitle": "Cosa ti serve",
+      "needs": [
+        "un iPhone con iOS 26 o successivo, anche iPhone Duo",
+        "una connessione internet per i dati dal vivo; quello che è stato caricato per ultimo resta visibile anche offline",
+        "l’app parla italiano, tedesco, inglese, olandese, francese e spagnolo"
+      ],
+      "faqTitle": "Domande frequenti",
+      "faq": {
+        "compassQ": "Perché non vedo la bussola?",
+        "compassA": "La bussola, «Portami lì» e la giornata sulla schermata di blocco compaiono quando sei in un parco aperto e hai permesso all’app di usare la tua posizione. Lo controlli nelle impostazioni dell’iPhone, in Privacy e sicurezza → Localizzazione → park.fan.",
+        "pushQ": "Perché non arrivano le notifiche?",
+        "pushA": "Controlla nelle impostazioni dell’iPhone, in Notifiche → park.fan, che siano consentite, e nell’app, in Impostazioni → Notifiche, quali tipi sono attivi. Un allarme attesa scatta solo quando l’attesa dell’attrazione scende sotto il tuo valore.",
+        "accuracyQ": "Quanto sono precisi i tempi di attesa?",
+        "accuracyA": "Le attese dal vivo sono quelle indicate dai parchi. Le previsioni e il calendario sono stime ricavate dalle attese misurate e possono sbagliare. Da dove arrivano i numeri lo spiega <link>Come funziona park.fan</link>.",
+        "deleteQ": "Come cancello i miei dati?",
+        "deleteA": "Preferiti e piani sono sul tuo iPhone e se ne vanno con l’app. Cosa invia l’app, per quanto tempo viene conservato e come cancellarlo è scritto nell’<link>informativa sulla privacy</link>."
+      },
+      "contactTitle": "Contatti",
+      "contact": "Per domande, errori o richieste scrivici a <email></email>. Indirizzo e telefono sono nelle <link>note legali</link>.",
+      "emailDisplay": "hello[at]park.fan",
+      "independent": "park.fan è indipendente e non ha legami con i parchi né con i loro gestori. Nomi e marchi appartengono ai rispettivi proprietari."
+    },
+    "next": {
+      "title": "park.fan nel browser",
+      "body": "Il calendario, il pianificatore e Parky ci sono anche su park.fan, senza app e senza account",
+      "calendar": "Trova i giorni tranquilli",
+      "planner": "Pianifica una giornata",
+      "parky": "Scrivi a Parky"
+    }
   },
   "datenschutz": {
     "title": "Informativa sulla privacy - park.fan",

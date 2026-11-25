@@ -13,11 +13,17 @@ export function PhoneShot({
   alt,
   tilt = 'left',
   priority = false,
+  size,
 }: {
   src: string;
   alt: string;
   tilt?: 'left' | 'right';
   priority?: boolean;
+  /**
+   * A capture of the whole screen at its own size, status bar and island included (the iPhone
+   * app's, `public/media/app/`), so no bar is drawn over it. Without it: the site's screenshots.
+   */
+  size?: { width: number; height: number };
 }) {
   return (
     <figure
@@ -33,17 +39,19 @@ export function PhoneShot({
       <div className="relative overflow-hidden rounded-[2.6rem] border-[7px] border-neutral-900 bg-neutral-900 shadow-2xl ring-1 ring-white/15">
         {/* The status bar with its island, 62 of the screen's 402 px, which the screenshots leave
           out (`STATUS_BAR`), so the page's header starts below it as on the phone. */}
-        <div
-          aria-hidden="true"
-          className="flex aspect-[402/62] items-center justify-center bg-black"
-        >
-          <span className="h-[58%] w-[31%] rounded-full bg-neutral-900" />
-        </div>
+        {!size && (
+          <div
+            aria-hidden="true"
+            className="flex aspect-[402/62] items-center justify-center bg-black"
+          >
+            <span className="h-[58%] w-[31%] rounded-full bg-neutral-900" />
+          </div>
+        )}
         <Image
           src={src}
           alt={alt}
-          width={SHOT.width}
-          height={SHOT.height}
+          width={(size ?? SHOT).width}
+          height={(size ?? SHOT).height}
           sizes="(max-width: 768px) 78vw, 280px"
           priority={priority}
           className="block h-auto w-full"
