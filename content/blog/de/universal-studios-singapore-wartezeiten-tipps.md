@@ -7,8 +7,8 @@ mode: published
 featured: false
 excerpt: >-
   Zur Öffnung fährst du in Universal Studios Singapore zuerst Battlestar Galactica, dort stehst du
-  später am längsten an. Jurassic Park Rapids Adventure ist vom 1. Dezember bis zum 30. Juni 2027
-  zu.
+  später am längsten an. Jurassic Park Rapids Adventure ist von Dezember bis
+  Ende Juni 2027 zu.
 tags:
   - universal-studios-singapore
   - sentosa
