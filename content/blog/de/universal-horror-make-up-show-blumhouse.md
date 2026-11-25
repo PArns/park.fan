@@ -2,7 +2,7 @@
 title: 'Blumhouse zieht in die Horror Make-Up Show in Orlando ein'
 translationKey: universal-horror-make-up-show-blumhouse
 date: '2026-11-25'
-time: '12:00'
+time: '08:06'
 author: patrick
 mode: published
 featured: false

@@ -2,12 +2,12 @@
 title: 'Blumhouse s’installe dans la Horror Make-Up Show d’Orlando'
 translationKey: universal-horror-make-up-show-blumhouse
 date: '2026-11-25'
-time: '12:00'
+time: '08:06'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dès le 11 décembre, la Horror Make-Up Show revient à Universal Studios Florida, désormais avec des films Blumhouse comme « M3GAN ». Le hall prend le style de Blumhouse, et des gags de l’ancien spectacle font leur retour.
+  Dès le 11 décembre, la Horror Make-Up Show revient à Universal Studios Florida, désormais avec des films Blumhouse comme « M3GAN ». Des gags de l’ancien spectacle font leur retour.
 tags:
   - actualites
   - universal-orlando
@@ -44,7 +44,7 @@ Universal a refait tout le hall d’entrée, avec un nouveau plan et le style du
 
 Toute la musique est nouvelle, et la bande-son du hall est signée par l’équipe qui a déjà composé celle de Celestial Park à [Epic Universe](ref:universal-epic-universe?bare).
 
-Dans la salle, la scène ressemble désormais à un laboratoire. Le spectacle fait alterner des vidéos tournées en coulisses et des effets spéciaux réalisés à la main sous les yeux du public. Tu y vois comment est né le masque du Grabber de « The Black Phone » et avec quelles techniques travaillaient déjà les grands maquilleurs du cinéma d’horreur. Le spectacle décortique aussi la fabrication des frayeurs des Halloween Horror Nights.
+Dans la salle, la scène ressemble désormais à un laboratoire. Le spectacle fait alterner des vidéos tournées en coulisses et des effets spéciaux réalisés à la main sous les yeux du public. Tu y vois comment est né le masque du Grabber de « The Black Phone » et comment travaillaient des maquilleuses comme Milicent Patrick, à qui le spectacle rend un hommage particulier. Le spectacle décortique aussi la fabrication des frayeurs des Halloween Horror Nights.
 
 > [!QUOTE]
 > Nous rendons hommage à Milicent Patrick, une maquilleuse pionnière des années 1950 qui a travaillé sur « Creature from the Black Lagoon ». […] Dans un milieu aussi dominé par les hommes, on s’est simplement dit : quelle belle histoire que la sienne.
@@ -57,27 +57,27 @@ Dans la salle, la scène ressemble désormais à un laboratoire. Le spectacle fa
 
 La salle se trouve dans la zone Hollywood, dans une réplique du Hollywood Pantages Theatre. Pour la nouvelle version, Universal n’a pas encore donné de durée. L’ancienne durait environ 25 minutes.
 
-## L’ancien spectacle depuis 1990
+## L’ancien spectacle, de 1990 à 2026
 
 L’ancien spectacle tournait depuis juin 1990, l’année d’ouverture du parc. Jusqu’en 1997, il s’appelait « The Phantom of the Opera Horror Make-Up Show », puis pendant un temps « The Gory, Gruesome and Grotesque Horror Make-Up Show ». Depuis le 12 mai 2026, il est fermé pour travaux.
 
-Dans la dernière version, deux personnages tenaient la scène : l’animateur Alex Ross et le maquilleur, Mark ou Marty James selon l’acteur du jour. Ils mêlaient scènes écrites, improvisation et démonstrations, et le public mettait la main à la pâte. À la fin de chaque représentation, Eddie, un loup-garou, se réveillait et pourchassait le maquilleur d’un bout à l’autre de la scène. Sur son blog, Universal met lui-même le mot « animatronique » entre guillemets, et qui se cachait sous la fourrure, on te laisse le deviner.
+Dans la dernière version, deux personnages tenaient la scène : l’animateur Alex Ross et le maquilleur, Mark ou Marty James selon l’acteur du jour. Une partie était écrite, une partie improvisée, et entre deux, ils faisaient des démonstrations d’effets et allaient chercher des spectateurs dans le public. À la fin de chaque représentation, Eddie, un loup-garou, se réveillait et pourchassait le maquilleur d’un bout à l’autre de la scène. Sur son blog, Universal met lui-même le mot « animatronique » entre guillemets, et qui se cachait sous la fourrure, on te laisse le deviner.
 
-## Ce qui reste et ce qui est nouveau
+## Ce qui reste de l’ancien spectacle
 
 La structure et le ton comique restent, et des gags que les habitués connaissent de l’ancien spectacle font leur retour. Universal n’a pas annoncé si Eddie apparaît encore dans le nouveau final.
 
-D’après Matt Flood, l’équipe a visionné des centaines d’heures de films, sur plus de cent ans de cinéma, pour faire son choix. Comme travail de bureau, on a vu pire. Flood est Senior Show Director chez Universal et a lui-même joué dans le spectacle pendant dix ans.
+Matt Flood, Senior Show Director chez Universal, a lui-même joué dans le spectacle pendant dix ans. D’après lui, l’équipe a visionné des centaines d’heures de films, sur plus de cent ans de cinéma, pour faire son choix, et comme travail de bureau, on a vu pire.
 
 ## Noël au resort
 
-Le spectacle démarre en pleine saison de Noël à Universal Orlando, qui dure du 14 novembre 2026 au 3 janvier 2027. À Universal Studios Florida, la parade Universal's Holiday Parade featuring Macy's défile chaque soir dans les rues, et à [Islands of Adventure](ref:universal-islands-of-adventure?bare), Seuss Landing fête Grinchmas. Les deux sont compris dans le billet d’entrée normal.
+Le 11 décembre tombe en pleine saison de Noël à Universal Orlando, qui dure du 14 novembre 2026 au 3 janvier 2027. À Universal Studios Florida, la parade Universal's Holiday Parade featuring Macy's défile chaque soir dans les rues, et à [Islands of Adventure](ref:universal-islands-of-adventure?bare), Seuss Landing fête Grinchmas. Les deux sont compris dans le billet d’entrée normal.
 
 ```best-days-widget slug=universal-studios-florida
 
 ```
 
-La Horror Make-Up Show commence à heures fixes, et à Universal Studios Florida, le mieux est de la placer aux heures où tu attends le plus longtemps aux attractions. En décembre, la climatisation de la salle fait moins envie qu’en août, mais on y est toujours aussi bien assis.
+Le spectacle suit un horaire fixe, alors cherche dans le profil horaire ci-dessous l’heure où les files d’attente aux attractions sont les plus longues, et prends la représentation qui tombe dans cette heure-là. En décembre, la climatisation de la salle fait moins envie qu’en août, mais on y est toujours aussi bien assis.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
