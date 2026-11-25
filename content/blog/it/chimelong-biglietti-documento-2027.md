@@ -2,7 +2,7 @@
 title: 'Dal 4 gennaio i biglietti Chimelong solo con il documento'
 translationKey: chimelong-tickets-ausweis-2027
 date: '2026-11-25'
-time: '17:45'
+time: '18:43'
 author: patrick
 mode: published
 featured: false
@@ -44,7 +44,7 @@ seo:
     - Chimelong Zhuhai
 ---
 
-Dal 4 gennaio 2027 i biglietti per tutti i parchi e i teatri di Chimelong si comprano solo a nome di chi entra, con il suo documento d’identità. Chi arriva dall’estero usa il passaporto. Se un bambino entra gratis, con il biglietto bambini o con quello ragazzi lo deciderà soltanto l’età, e l’altezza non conterà più. Il Chimelong Resort ha annunciato le nuove regole il 25 novembre con un comunicato. Stando alle sue parole, vuole così mettere ordine nella vendita e negli ingressi e contrastare, insieme alle autorità, i traffici illegali. Il 4 gennaio non è ancora del tutto sicuro. Un eventuale cambio di data Chimelong lo comunicherà a parte.
+Dal 4 gennaio 2027 i biglietti per tutti i parchi e i teatri di Chimelong si comprano solo a nome di chi entra, con il suo documento d’identità. Chi arriva dall’estero usa il passaporto. Se un bambino entra gratis, con il biglietto bambini o con quello ragazzi lo deciderà soltanto l’età, e l’altezza non conterà più. Il Chimelong Resort ha annunciato le nuove regole il 25 novembre con un comunicato. Stando alle sue parole, vuole così mettere ordine nella vendita e negli ingressi e contrastare, insieme alle autorità, i traffici illegali. Chimelong può ancora spostare il 4 gennaio e in quel caso lo comunicherà a parte.
 
 ## Un biglietto per documento
 
@@ -70,11 +70,11 @@ A [Chimelong Paradise](ref:chimelong-paradise) il biglietto giornaliero per gli 
 | Chimelong Safari Park nei giorni feriali                                     |          210 yuan |          240 yuan |
 | Chimelong Safari Park nei fine settimana, nei festivi e nelle vacanze estive |          245 yuan |          280 yuan |
 
-A pagare di più sono i bambini piccoli dai tre anni in su e i ragazzi sotto 1,5 metri. Un bambino di quattro anni alto meno di un metro finora entrava gratis, mentre da gennaio gli serve un biglietto bambini. Un tredicenne sotto 1,5 metri pagava la tariffa bambini e d’ora in poi paga quella ragazzi. Per i bambini alti non cambia niente: una bambina di undici anni alta 1,55 metri continua a pagare la tariffa bambini, che già oggi le spettava per l’età. Della tessera studentesca che i ragazzi finora dovevano mostrare, il nuovo comunicato non dice nulla.
+A pagare di più sono i bambini piccoli dai tre anni in su e i ragazzi sotto 1,5 metri. Un bambino di quattro anni alto meno di un metro finora entrava gratis, mentre da gennaio gli serve un biglietto bambini. Per un tredicenne sotto 1,5 metri Chimelong Paradise costa 25 yuan in più, perché passa dalla tariffa bambini a quella ragazzi. Per una bambina di undici anni alta 1,55 metri non cambia niente, visto che la tariffa bambini le spettava già per l’età. Della tessera studentesca che i ragazzi finora dovevano mostrare, il nuovo comunicato non dice nulla.
 
 ## Teatri, piscine e buffet
 
-I teatri, per esempio il Chimelong International Circus a Guangzhou, non regalano biglietti a nessuno, nemmeno ai bambini sotto i tre anni. Lì il biglietto bambini vale fino agli undici anni, e dai dodici ai 17 si paga la tariffa ragazzi. Da gennaio dipendono dall’età anche i prezzi per i bambini ai buffet degli hotel, nella visita guidata VIP dei parchi, in alcune piscine degli hotel, nelle piscine di palline e nelle aree giochi per i più piccoli, e sugli yacht.
+I teatri, per esempio il Chimelong International Circus a Guangzhou, seguono le stesse fasce d’età, ma non regalano biglietti. Lì anche un bambino sotto i tre anni ha bisogno del biglietto bambini. Da gennaio dipendono dall’età anche i prezzi per i bambini ai buffet degli hotel, nella visita guidata VIP dei parchi, in alcune piscine degli hotel, nelle piscine di palline e nelle aree giochi per i più piccoli, e sugli yacht.
 
 ## Chi compra prima del 4 gennaio
 
@@ -82,11 +82,11 @@ Per biglietti, pacchetti e abbonamenti annuali comprati entro il 3 gennaio 2027 
 
 ## Gli abbonamenti annuali per ora non si trovano
 
-Dal 19 novembre Chimelong non vende più abbonamenti annuali. Le nuove tessere dovrebbero arrivare in vendita dopo il 26 dicembre. Lo sconto sulla tessera nuova spetta a chi ha la vecchia in scadenza durante la pausa, e a chi in quel periodo avrebbe comunque diritto allo sconto sul rinnovo. Le tessere attuali restano valide. Si prenota come prima. Chimelong non ha ancora reso noto quali saranno prezzi e vantaggi delle nuove tessere.
+Dal 19 novembre Chimelong non vende più abbonamenti annuali. Le nuove tessere dovrebbero arrivare in vendita dopo il 26 dicembre. Se la tua tessera scade durante la pausa, o in quel periodo avresti comunque diritto allo sconto sul rinnovo, avrai uno sconto su quella nuova. Le tessere attuali restano valide, e con quelle si prenota come prima. Chimelong non ha ancora reso noto quali saranno prezzi e vantaggi delle nuove tessere.
 
 ## Quali parchi sono coinvolti
 
-A Guangzhou la regola vale a Chimelong Paradise, al Chimelong Safari Park, al [Chimelong Water Park](ref:chimelong-water-park) e al [Chimelong Birds Park](ref:chimelong-birds-park). Al Water Park il biglietto standard costa 139 yuan, bambini e ragazzi pagano 99, e dalle 17 c’è per tutti un biglietto serale da 99 yuan. A Hengqin (Zhuhai) si trovano [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) e [Chimelong Spaceship](ref:chimelong-spaceship). La terza sede del resort è Qingyuan.
+A Guangzhou la regola vale a Chimelong Paradise, al Chimelong Safari Park, al [Chimelong Water Park](ref:chimelong-water-park) e al [Chimelong Birds Park](ref:chimelong-birds-park). Al Water Park bambini e ragazzi pagano lo stesso prezzo, 99 yuan contro i 139 degli adulti, quindi lì il nuovo confine tra gli undici e i dodici anni non conta. Dalle 17 il biglietto serale costa 99 yuan per tutti. A Hengqin (Zhuhai) la regola riguarda [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) e [Chimelong Spaceship](ref:chimelong-spaceship). Vale anche nella terza sede del resort, a Qingyuan.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 

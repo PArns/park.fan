@@ -2,7 +2,7 @@
 title: 'Chimelong-Tickets gibt es ab 4. Januar nur noch mit Ausweis'
 translationKey: chimelong-tickets-ausweis-2027
 date: '2026-11-25'
-time: '17:45'
+time: '18:43'
 author: patrick
 mode: published
 featured: false
@@ -44,11 +44,11 @@ seo:
     - Chimelong Zhuhai
 ---
 
-Ab dem 4. Januar 2027 kaufst du Tickets für alle Parks und Theater von Chimelong nur noch auf deinen eigenen Ausweis, als Besucher aus dem Ausland auf deinen Reisepass. Ob ein Kind frei, zum Kinder- oder zum Jugendpreis hineinkommt, entscheidet dann allein sein Alter, die Körpergröße zählt nicht mehr. Das Chimelong Resort hat die neuen Regeln am 25. November in einer Mitteilung angekündigt. Nach eigenen Worten will das Resort damit Verkauf und Einlass ordnen und zusammen mit den Behörden gegen illegale Geschäfte vorgehen. Ganz fest ist der 4. Januar nicht. Eine Verschiebung will Chimelong eigens bekannt geben.
+Ab dem 4. Januar 2027 kaufst du Tickets für alle Parks und Theater von Chimelong nur noch auf deinen eigenen Ausweis, als Besucher aus dem Ausland auf deinen Reisepass. Ob ein Kind frei, zum Kinder- oder zum Jugendpreis hineinkommt, entscheidet dann allein sein Alter. Die Körpergröße zählt nicht mehr. Das Chimelong Resort hat die neuen Regeln am 25. November in einer Mitteilung angekündigt. Nach eigenen Worten will das Resort damit Verkauf und Einlass ordnen und zusammen mit den Behörden gegen illegale Geschäfte vorgehen. Chimelong kann den 4. Januar noch verschieben und will das dann eigens bekannt geben.
 
 ## Ein Ticket pro Ausweis
 
-Beim Kauf gibst du für jedes Ticket die Ausweisdaten der Person an, die damit durchs Drehkreuz geht. Nach dem Absenden lassen sich die Daten nicht mehr ändern. Am Eingang des Parks oder Theaters zeigst du das Original des Ausweises, den du beim Kauf angegeben hast. Für denselben Park am selben Tag gibt es pro Ausweis nur ein Ticket, für ein Theater genauso.
+Beim Kauf gibst du für jedes Ticket die Ausweisdaten der Person an, die damit durchs Drehkreuz geht. Nach dem Absenden lassen sich die Daten nicht mehr ändern. Am Eingang des Parks oder Theaters zeigst du das Original des Ausweises, den du beim Kauf angegeben hast. Für denselben Park am selben Tag gibt es pro Ausweis nur ein Ticket. Bei einem Theater ist es genauso.
 
 Am Drehkreuz scannen Besucher aus China schon seit dem 24. November 2020 ihren Personalausweis. Auch das Standardticket wird heute bereits mit dem Ausweis geprüft, der beim Kauf angegeben wurde.
 
@@ -70,11 +70,11 @@ In [Chimelong Paradise](ref:chimelong-paradise) kostet das Tagesticket für Erwa
 | Chimelong Safari Park unter der Woche                                    |     210 Yuan |     240 Yuan |
 | Chimelong Safari Park an Wochenenden, Feiertagen und in den Sommerferien |     245 Yuan |     280 Yuan |
 
-Teurer wird es für kleine Kinder ab drei und für Jugendliche unter 1,5 Metern. Ein vierjähriges Kind unter einem Meter kam bisher frei hinein und braucht ab Januar ein Kinderticket. Ein 13-Jähriger, der kleiner als 1,5 Meter ist, zahlte bisher den Kinderpreis und zahlt künftig den Jugendpreis. Für große Kinder ändert sich nichts: Eine Elfjährige mit 1,55 Metern zahlt weiter den Kinderpreis, den sie schon bisher wegen ihres Alters bekam. Vom Schülerausweis, den Jugendliche bisher vorzeigen mussten, steht in der neuen Mitteilung nichts.
+Teurer wird es für kleine Kinder ab drei und für Jugendliche unter 1,5 Metern. Ein vierjähriges Kind unter einem Meter kam bisher frei hinein und braucht ab Januar ein Kinderticket. Für einen 13-Jährigen unter 1,5 Metern wird Chimelong Paradise 25 Yuan teurer, weil er vom Kinder- in den Jugendpreis rutscht. Für eine Elfjährige mit 1,55 Metern ändert sich nichts. Den Kinderpreis bekam sie schon bisher wegen ihres Alters. Vom Schülerausweis, den Jugendliche bisher vorzeigen mussten, steht in der neuen Mitteilung nichts.
 
 ## Theater, Pools und Buffets
 
-Die Theater, etwa der Chimelong International Circus in Guangzhou, vergeben keine Freikarten, auch nicht für Kinder unter drei Jahren. Bis elf Jahre gilt dort das Kinderticket, und Zwölf- bis 17-Jährige zahlen den Jugendpreis. Nach dem Alter richten sich ab Januar auch die Preise für Kinder an den Buffets der Hotels, bei der VIP-Führung in den Parks, in einigen Hotelpools, in den Bällebädern und Kinderspielbereichen und auf den Yachten.
+Die Theater, etwa der Chimelong International Circus in Guangzhou, haben dieselben Altersstufen, geben aber keine Freikarten aus. Auch ein Kind unter drei braucht dort ein Kinderticket. Nach dem Alter richten sich ab Januar auch die Preise für Kinder an den Buffets der Hotels, bei der VIP-Führung in den Parks, in einigen Hotelpools, in den Bällebädern und Kinderspielbereichen und auf den Yachten.
 
 ## Wer vor dem 4. Januar kauft
 
@@ -82,11 +82,11 @@ Für Tickets, Pakete und Jahreskarten, die du bis zum 3. Januar 2027 kaufst, gil
 
 ## Jahreskarten sind gerade nicht zu haben
 
-Seit dem 19. November verkauft Chimelong keine Jahreskarten mehr. Neue Karten sollen nach dem 26. Dezember in den Verkauf gehen. Einen Rabatt auf die neue Karte bekommt, wessen alte in der Pause abläuft, und auch, wer in dieser Zeit ohnehin Anspruch auf den Verlängerungsrabatt hätte. Bestehende Karten gelten weiter. Reserviert wird wie bisher. Preise und Leistungen der neuen Karten hat Chimelong noch nicht bekannt gegeben.
+Seit dem 19. November verkauft Chimelong keine Jahreskarten mehr. Neue Karten sollen nach dem 26. Dezember in den Verkauf gehen. Läuft deine Karte in der Pause ab oder hättest du in dieser Zeit ohnehin Anspruch auf den Verlängerungsrabatt, bekommst du einen Rabatt auf die neue. Bestehende Karten gelten weiter, und reserviert wird mit ihnen wie bisher. Preise und Leistungen der neuen Karten hat Chimelong noch nicht bekannt gegeben.
 
 ## Welche Parks betroffen sind
 
-In Guangzhou gilt die Regel in Chimelong Paradise, im Chimelong Safari Park, im [Chimelong Water Park](ref:chimelong-water-park) und im [Chimelong Birds Park](ref:chimelong-birds-park). Im Water Park kostet das Standardticket 139 Yuan, Kinder und Jugendliche zahlen 99, und ab 17 Uhr gibt es für alle ein Abendticket zu 99 Yuan. In Hengqin in Zhuhai stehen [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) und [Chimelong Spaceship](ref:chimelong-spaceship). Der dritte Standort des Resorts ist Qingyuan.
+In Guangzhou gilt die Regel in Chimelong Paradise, im Chimelong Safari Park, im [Chimelong Water Park](ref:chimelong-water-park) und im [Chimelong Birds Park](ref:chimelong-birds-park). Im Water Park zahlen Kinder und Jugendliche gleich viel, 99 statt 139 Yuan für Erwachsene, dort spielt die neue Grenze zwischen elf und zwölf also keine Rolle. Ab 17 Uhr kostet das Abendticket für alle 99 Yuan. In Hengqin in Zhuhai betrifft die Regel [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) und [Chimelong Spaceship](ref:chimelong-spaceship). Auch am dritten Standort des Resorts in Qingyuan gilt die neue Regel.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 
