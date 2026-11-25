@@ -40,7 +40,7 @@ L’11 dicembre 2026, dopo sette mesi di chiusura, agli [Universal Studios Flori
 
 ## Cosa vedi nella lobby e in sala
 
-La lobby Universal l’ha ricostruita da zero, con una pianta diversa e l’estetica dello studio horror Blumhouse. Nelle vetrine sono esposti oggetti di scena da circa cent’anni di cinema dell’orrore, e tra una vetrina e l’altra ci sono angoli per le foto. Si va dai classici degli Universal Monsters a «The Thing» e «Nosferatu» di Focus Features, fino ai film Blumhouse «Five Nights at Freddy's», «The Black Phone» e «M3GAN». Il blog di Universal ci aggiunge anche «The Purge». Nella lobby trova posto pure un omaggio alle Halloween Horror Nights, l’evento di Halloween del resort.
+La lobby Universal l’ha ricostruita da zero, con una pianta diversa e l’estetica dello studio horror Blumhouse. Nelle vetrine sono esposti oggetti di scena da circa cent’anni di cinema dell’orrore, e tra una vetrina e l’altra ci sono angoli per le foto. Si va dai classici degli Universal Monsters a «The Thing» e «Nosferatu», fino ai film Blumhouse «Five Nights at Freddy's», «The Black Phone» e «M3GAN». Il blog di Universal ci aggiunge anche «The Purge». Nella lobby trova posto pure un omaggio alle Halloween Horror Nights, l’evento di Halloween del resort.
 
 Tutta la musica è nuova: la colonna sonora della lobby, quella che accompagna l’ingresso in sala, il tema dello show e le musiche di ogni video. L’ha composta la stessa squadra che ha scritto le musiche di Celestial Park nell’[Epic Universe](ref:universal-epic-universe?bare).
 
@@ -61,7 +61,7 @@ Il teatro si trova nell’area Hollywood, dentro una copia del Hollywood Pantage
 
 ## Cosa cambia rispetto a prima
 
-Lo show originale andava in scena dal giugno 1990, poche settimane dopo l’apertura del parco. Fino al 1997 si chiamava «The Phantom of the Opera Horror Make-Up Show», poi «The Gory, Gruesome and Grotesque Horror Make-Up Show». Dal 12 maggio 2026 è chiuso per i lavori.
+Lo show originale andava in scena dal giugno 1990, l’anno in cui aprì il parco. Fino al 1997 si chiamava «The Phantom of the Opera Horror Make-Up Show», poi per un periodo «The Gory, Gruesome and Grotesque Horror Make-Up Show». Dal 12 maggio 2026 è chiuso per i lavori.
 
 Negli ultimi anni sul palco c’erano due personaggi: il presentatore Alex Ross e il truccatore, Mark o Marty James a seconda di chi era di turno. I due mescolavano scene scritte, improvvisazione e dimostrazioni, e il pubblico partecipava. Alla fine di ogni replica si risvegliava Eddie, un lupo mannaro, e inseguiva il truccatore da un capo all’altro del palco. Nel suo blog Universal scrive «animatronico» tra virgolette, e cosa ci fosse dentro la pelliccia lo lascia immaginare a te.
 
@@ -69,7 +69,7 @@ Negli ultimi anni sul palco c’erano due personaggi: il presentatore Alex Ross 
 
 Struttura e tono comico restano, e tornano anche alcune gag che chi conosceva il vecchio show riconoscerà. Il finale invece è nuovo, e se Eddie ci sarà ancora Universal non l’ha comunicato.
 
-Matt Flood, Senior Show Director di Universal e responsabile della nuova versione, su quel palco ci è stato lui stesso per dieci anni. Per scegliere cosa mostrare, racconta, la squadra ha guardato centinaia di ore di film da più di cent’anni di cinema, e come lavoro d’ufficio c’è di peggio.
+Matt Flood, Senior Show Director di Universal, su quel palco ci è stato lui stesso per dieci anni. Per scegliere cosa mostrare, racconta, la squadra ha guardato centinaia di ore di film da più di cent’anni di cinema, e come lavoro d’ufficio c’è di peggio.
 
 ## Natale nel resort
 

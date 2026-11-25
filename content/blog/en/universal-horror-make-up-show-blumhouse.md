@@ -40,7 +40,7 @@ The reworked Universal Horror Make-Up Show featuring Blumhouse opens at [Univers
 
 ## The lobby and the theatre
 
-Universal has rebuilt the lobby from scratch, with a new floor plan and the look of Blumhouse, the horror studio. Display cases hold props from roughly a hundred years of horror films, with photo spots in between. You'll find the classic Universal Monsters films, "The Thing" and "Nosferatu" from Focus Features, and the Blumhouse films "Five Nights at Freddy's", "The Black Phone" and "M3GAN". Universal's blog adds "The Purge" to that list. There's also a corner of the lobby that pays tribute to Halloween Horror Nights, the resort's Halloween event.
+Universal has rebuilt the lobby from scratch, with a new floor plan and the look of Blumhouse, the horror studio. Display cases hold props from roughly a hundred years of horror films, with photo spots in between. You'll find the classic Universal Monsters films, "The Thing" and "Nosferatu", and the Blumhouse films "Five Nights at Freddy's", "The Black Phone" and "M3GAN". Universal's blog adds "The Purge" to that list. There's also a corner of the lobby that pays tribute to Halloween Horror Nights, the resort's Halloween event.
 
 All of the music is new: the lobby soundtrack, the music as you walk in, the show's theme and the score under every video. It was written by the same team that scored Celestial Park at [Epic Universe](ref:universal-epic-universe?bare).
 
@@ -59,7 +59,7 @@ The theatre is in the Hollywood area, inside a replica of the Hollywood Pantages
 
 ## What's different
 
-The old show opened in June 1990, a few weeks after the park did. Until 1997 it was called "The Phantom of the Opera Horror Make-Up Show", and after that "The Gory, Gruesome and Grotesque Horror Make-Up Show". It's been closed for the rebuild since 12 May 2026.
+The old show opened in June 1990, the year the park opened. Until 1997 it was called "The Phantom of the Opera Horror Make-Up Show", and for some years after that "The Gory, Gruesome and Grotesque Horror Make-Up Show". It's been closed for the rebuild since 12 May 2026.
 
 In its last years the show had two characters on stage: Alex Ross, the host, and the make-up artist, Mark or Marty James depending on who was playing him that day. They mixed scripted scenes with improv and demonstrations, and the audience joined in. At the end of every show Eddie, a werewolf, came to life and chased the make-up artist across the stage. Universal's own blog puts "animatronic" in quotation marks, so you can guess for yourself what was inside the fur.
 
@@ -67,7 +67,7 @@ In its last years the show had two characters on stage: Alex Ross, the host, and
 
 The structure and the comic tone stay, and some gags that regulars know from the old show are coming back. The finale is new. Universal hasn't announced whether Eddie still turns up in it.
 
-Matt Flood, a senior show director at Universal who's in charge of the new version, spent ten years on stage in the show himself. He says the team went through hundreds of hours of film from more than a hundred years to pick what made it in. As desk jobs go, there are worse ones.
+Matt Flood, a senior show director at Universal, spent ten years on stage in the show himself. He says the team went through hundreds of hours of film from more than a hundred years to pick what made it in. As desk jobs go, there are worse ones.
 
 ## Christmas at the resort
 

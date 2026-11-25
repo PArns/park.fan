@@ -40,7 +40,7 @@ seo:
 
 ## Le hall et la salle
 
-Universal a refait tout le hall d’entrée, avec un nouveau plan et le style du studio d’horreur Blumhouse. Des vitrines y exposent des accessoires tirés d’une centaine d’années de films d’horreur, et entre elles, des coins sont prévus pour les photos. On y croise les classiques des Universal Monsters, « The Thing » et « Nosferatu » de Focus Features, et les films Blumhouse « Five Nights at Freddy's », « The Black Phone » et « M3GAN ». Le blog d’Universal ajoute « The Purge » à la liste. Le hall garde aussi une place pour un hommage aux Halloween Horror Nights, l’événement d’Halloween du resort.
+Universal a refait tout le hall d’entrée, avec un nouveau plan et le style du studio d’horreur Blumhouse. Des vitrines y exposent des accessoires tirés d’une centaine d’années de films d’horreur, et entre elles, des coins sont prévus pour les photos. On y croise les classiques des Universal Monsters, « The Thing » et « Nosferatu », et les films Blumhouse « Five Nights at Freddy's », « The Black Phone » et « M3GAN ». Le blog d’Universal ajoute « The Purge » à la liste. Le hall garde aussi une place pour un hommage aux Halloween Horror Nights, l’événement d’Halloween du resort.
 
 Toute la musique est neuve : la bande-son du hall, celle qui accompagne l’entrée en salle, le thème du spectacle et la musique de chaque vidéo. Elle vient de l’équipe qui a déjà composé celle de Celestial Park à [Epic Universe](ref:universal-epic-universe?bare).
 
@@ -61,7 +61,7 @@ La salle se trouve dans la zone Hollywood, dans une réplique du Hollywood Panta
 
 ## Ce qui change
 
-L’ancien spectacle tournait depuis juin 1990, quelques semaines après l’ouverture du parc. Jusqu’en 1997, il s’appelait « The Phantom of the Opera Horror Make-Up Show », ensuite « The Gory, Gruesome and Grotesque Horror Make-Up Show ». Depuis le 12 mai 2026, il est fermé pour travaux.
+L’ancien spectacle tournait depuis juin 1990, l’année d’ouverture du parc. Jusqu’en 1997, il s’appelait « The Phantom of the Opera Horror Make-Up Show », puis pendant un temps « The Gory, Gruesome and Grotesque Horror Make-Up Show ». Depuis le 12 mai 2026, il est fermé pour travaux.
 
 Dans la dernière version, deux personnages tenaient la scène : l’animateur Alex Ross et le maquilleur, Mark ou Marty James selon l’acteur du jour. Ils mêlaient scènes écrites, improvisation et démonstrations, et le public mettait la main à la pâte. À la fin de chaque représentation, Eddie, un loup-garou, se réveillait et pourchassait le maquilleur d’un bout à l’autre de la scène. Sur son blog, Universal met lui-même le mot « animatronique » entre guillemets, et qui se cachait sous la fourrure, on te laisse le deviner.
 
@@ -69,7 +69,7 @@ Dans la dernière version, deux personnages tenaient la scène : l’animateur 
 
 La structure et le ton comique restent, et des gags que les habitués connaissent de l’ancien spectacle font leur retour. Le final, lui, est nouveau. Universal n’a pas annoncé si Eddie y apparaît encore.
 
-Matt Flood, Senior Show Director chez Universal et responsable de la nouvelle version, a lui-même joué dans le spectacle pendant dix ans. D’après lui, l’équipe a visionné des centaines d’heures de films, sur plus de cent ans de cinéma, pour faire son choix. Comme travail de bureau, on a vu pire.
+Matt Flood, Senior Show Director chez Universal, a lui-même joué dans le spectacle pendant dix ans. D’après lui, l’équipe a visionné des centaines d’heures de films, sur plus de cent ans de cinéma, pour faire son choix. Comme travail de bureau, on a vu pire.
 
 ## Noël au resort
 

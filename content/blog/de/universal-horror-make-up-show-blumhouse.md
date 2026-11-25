@@ -40,7 +40,7 @@ seo:
 
 ## Was du in Lobby und Theater siehst
 
-Die Lobby hat Universal komplett umgebaut, mit neuem Grundriss und im Look des Horrorstudios Blumhouse. In Vitrinen stehen Requisiten aus rund hundert Jahren Horrorfilm, dazwischen gibt es Stellen für Fotos. Zu sehen sind die klassischen Filme der Universal Monsters, „The Thing“ und „Nosferatu“ von Focus Features, dazu die Blumhouse-Filme „Five Nights at Freddy's“, „The Black Phone“ und „M3GAN“. Im Universal-Blog kommt noch „The Purge“ dazu. Eine Hommage an die Halloween Horror Nights, das Halloween-Event des Resorts, hat in der Lobby ebenfalls ihren Platz.
+Die Lobby hat Universal komplett umgebaut, mit neuem Grundriss und im Look des Horrorstudios Blumhouse. In Vitrinen stehen Requisiten aus rund hundert Jahren Horrorfilm, dazwischen gibt es Stellen für Fotos. Zu sehen sind die klassischen Filme der Universal Monsters, „The Thing“ und „Nosferatu“, dazu die Blumhouse-Filme „Five Nights at Freddy's“, „The Black Phone“ und „M3GAN“. Im Universal-Blog kommt noch „The Purge“ dazu. Eine Hommage an die Halloween Horror Nights, das Halloween-Event des Resorts, hat in der Lobby ebenfalls ihren Platz.
 
 Die Musik ist durchgehend neu: der Soundtrack der Lobby, die Musik zum Einlass, das Thema der Show und die Musik in allen Videos. Geschrieben hat sie dasselbe Team, das auch Celestial Park im [Epic Universe](ref:universal-epic-universe?bare) vertont hat.
 
@@ -61,7 +61,7 @@ Das Theater steht im Themenbereich Hollywood, in einem Nachbau des Hollywood Pan
 
 ## Was anders ist als bisher
 
-Die alte Show lief seit Juni 1990, wenige Wochen nach der Eröffnung des Parks. Bis 1997 hieß sie „The Phantom of the Opera Horror Make-Up Show“, danach „The Gory, Gruesome and Grotesque Horror Make-Up Show“. Seit dem 12. Mai 2026 ist sie für den Umbau geschlossen.
+Die alte Show lief seit Juni 1990, dem Eröffnungsjahr des Parks. Bis 1997 hieß sie „The Phantom of the Opera Horror Make-Up Show“, danach eine Zeit lang „The Gory, Gruesome and Grotesque Horror Make-Up Show“. Seit dem 12. Mai 2026 ist sie für den Umbau geschlossen.
 
 Auf der Bühne standen zuletzt zwei Figuren, der Moderator Alex Ross und der Maskenbildner Mark oder Marty James, je nachdem, wer gerade spielte. Die beiden mischten geschriebene Szenen mit Improvisation und Vorführungen, und das Publikum machte mit. Am Ende jeder Vorstellung erwachte Eddie, ein Werwolf, und jagte den Maskenbildner über die Bühne. Universal setzt das Wort „animatronisch“ in seinem Blog selbst in Anführungszeichen, und was im Fell steckte, darfst du dir ausmalen.
 
@@ -69,7 +69,7 @@ Auf der Bühne standen zuletzt zwei Figuren, der Moderator Alex Ross und der Mas
 
 Aufbau und komischer Ton bleiben, und Gags, die Stammgäste aus der alten Show kennen, kommen zurück. Das Finale ist neu. Ob Eddie darin noch auftritt, hat Universal nicht bekannt gegeben.
 
-Matt Flood, Senior Show Director bei Universal und für die neue Fassung zuständig, stand selbst zehn Jahre lang in der Show auf der Bühne. Für die Auswahl hat das Team nach seinen Worten Hunderte Stunden Film aus über hundert Jahren gesichtet. Für einen Bürojob klingt das nicht schlecht.
+Matt Flood, Senior Show Director bei Universal, stand selbst zehn Jahre lang in der Show auf der Bühne. Für die Auswahl hat das Team nach seinen Worten Hunderte Stunden Film aus über hundert Jahren gesichtet. Für einen Bürojob klingt das nicht schlecht.
 
 ## Weihnachten im Resort
 

@@ -40,7 +40,7 @@ seo:
 
 ## Qué hay en el vestíbulo y en el teatro
 
-Universal ha rehecho el vestíbulo entero, con otra distribución y una decoración al estilo de Blumhouse, el estudio de cine de terror. Las vitrinas guardan objetos de atrezo de unos cien años de películas de miedo, y entre ellas quedan rincones para hacerse fotos. Están los clásicos de los Universal Monsters, «The Thing» y «Nosferatu» de Focus Features y, de Blumhouse, «Five Nights at Freddy's», «The Black Phone» y «M3GAN». El blog de Universal suma además «The Purge». En el vestíbulo también hay sitio para un homenaje a Halloween Horror Nights, el evento de Halloween del resort.
+Universal ha rehecho el vestíbulo entero, con otra distribución y una decoración al estilo de Blumhouse, el estudio de cine de terror. Las vitrinas guardan objetos de atrezo de unos cien años de películas de miedo, y entre ellas quedan rincones para hacerse fotos. Están los clásicos de los Universal Monsters, «The Thing» y «Nosferatu» y, de Blumhouse, «Five Nights at Freddy's», «The Black Phone» y «M3GAN». El blog de Universal suma además «The Purge». En el vestíbulo también hay sitio para un homenaje a Halloween Horror Nights, el evento de Halloween del resort.
 
 Toda la música es nueva: la banda sonora del vestíbulo, la que suena mientras entra el público, el tema del espectáculo y la de cada vídeo. La ha compuesto el mismo equipo que puso música a Celestial Park en [Epic Universe](ref:universal-epic-universe?bare).
 
@@ -61,7 +61,7 @@ El teatro está en la zona de Hollywood, dentro de una réplica del Hollywood Pa
 
 ## Qué cambia respecto al de antes
 
-El espectáculo antiguo se representaba desde junio de 1990, pocas semanas después de la apertura del parque. Hasta 1997 se llamó «The Phantom of the Opera Horror Make-Up Show» y después «The Gory, Gruesome and Grotesque Horror Make-Up Show». Desde el 12 de mayo de 2026 está cerrado por la reforma.
+El espectáculo antiguo se representaba desde junio de 1990, el año en que abrió el parque. Hasta 1997 se llamó «The Phantom of the Opera Horror Make-Up Show» y después, durante un tiempo, «The Gory, Gruesome and Grotesque Horror Make-Up Show». Desde el 12 de mayo de 2026 está cerrado por la reforma.
 
 En la última etapa salían a escena dos personajes: el presentador Alex Ross y el maquillador, que era Mark o Marty James según quién actuara ese día. Entre los dos mezclaban escenas con guion, improvisación y demostraciones, y el público participaba. Al final de cada función despertaba Eddie, un hombre lobo, y perseguía al maquillador por el escenario. En su blog, Universal escribe la palabra «animatrónico» entre comillas, así que lo que había dentro del pelaje lo dejamos a tu imaginación.
 
@@ -69,7 +69,7 @@ En la última etapa salían a escena dos personajes: el presentador Alex Ross y 
 
 Se mantienen la estructura y el tono de comedia, y vuelven gags que los habituales recordarán del espectáculo anterior. El final es nuevo. Si Eddie sigue apareciendo en él, Universal no lo ha anunciado.
 
-Matt Flood, Senior Show Director de Universal y responsable de la versión nueva, pasó él mismo diez años actuando en el espectáculo. Según cuenta, el equipo revisó cientos de horas de cine de más de cien años para elegir el material. Hay trabajos de oficina bastante peores.
+Matt Flood, Senior Show Director de Universal, pasó él mismo diez años actuando en el espectáculo. Según cuenta, el equipo revisó cientos de horas de cine de más de cien años para elegir el material. Hay trabajos de oficina bastante peores.
 
 ## La Navidad en el resort
 

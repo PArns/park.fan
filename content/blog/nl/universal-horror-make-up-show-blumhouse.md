@@ -40,7 +40,7 @@ seo:
 
 ## Wat je in de lobby en de zaal ziet
 
-De lobby is helemaal verbouwd, met een nieuwe indeling en in de stijl van horrorstudio Blumhouse. In vitrines staan rekwisieten uit zo'n honderd jaar horrorfilm, en daartussen zijn plekken om foto's te maken. Je ziet de klassieke films van de Universal Monsters, “The Thing” en “Nosferatu” van Focus Features, en de Blumhouse-films “Five Nights at Freddy's”, “The Black Phone” en “M3GAN”. Op de blog van Universal komt daar nog “The Purge” bij. Ook Halloween Horror Nights, het halloweenevenement van het resort, krijgt in de lobby een eerbetoon.
+De lobby is helemaal verbouwd, met een nieuwe indeling en in de stijl van horrorstudio Blumhouse. In vitrines staan rekwisieten uit zo'n honderd jaar horrorfilm, en daartussen zijn plekken om foto's te maken. Je ziet de klassieke films van de Universal Monsters, “The Thing” en “Nosferatu”, en de Blumhouse-films “Five Nights at Freddy's”, “The Black Phone” en “M3GAN”. Op de blog van Universal komt daar nog “The Purge” bij. Ook Halloween Horror Nights, het halloweenevenement van het resort, krijgt in de lobby een eerbetoon.
 
 Alle muziek is nieuw: de soundtrack in de lobby, de muziek terwijl je naar binnen gaat, het thema van de show en de muziek onder alle video's. Ze komt van hetzelfde team dat ook Celestial Park in [Epic Universe](ref:universal-epic-universe?bare) van muziek heeft voorzien.
 
@@ -61,7 +61,7 @@ Het theater staat in het themagebied Hollywood, in een nagebouwd Hollywood Panta
 
 ## Wat er anders is dan vroeger
 
-De oude show speelde sinds juni 1990, een paar weken nadat het park openging. Tot 1997 heette hij “The Phantom of the Opera Horror Make-Up Show”, daarna “The Gory, Gruesome and Grotesque Horror Make-Up Show”. Sinds 12 mei 2026 is hij dicht voor de verbouwing.
+De oude show speelde sinds juni 1990, het jaar waarin het park openging. Tot 1997 heette hij “The Phantom of the Opera Horror Make-Up Show”, daarna een tijd lang “The Gory, Gruesome and Grotesque Horror Make-Up Show”. Sinds 12 mei 2026 is hij dicht voor de verbouwing.
 
 De laatste jaren stonden er twee personages op het podium: presentator Alex Ross en grimeur Mark of Marty James, afhankelijk van wie er speelde. Samen mengden ze uitgeschreven scènes met improvisatie en demonstraties, en het publiek deed mee. Aan het eind van elke voorstelling kwam Eddie tot leven, een weerwolf, en joeg hij de grimeur over het podium. Universal zet het woord “animatronic” op zijn eigen blog tussen aanhalingstekens. Wat er in die vacht zat, laten we aan je eigen fantasie over.
 
@@ -69,7 +69,7 @@ De laatste jaren stonden er twee personages op het podium: presentator Alex Ross
 
 De opbouw en de komische toon blijven, en grappen die vaste bezoekers nog uit de oude show kennen, komen terug. De finale is nieuw. Of Eddie daarin nog opduikt, heeft Universal niet bekendgemaakt.
 
-Matt Flood, Senior Show Director bij Universal en verantwoordelijk voor de nieuwe versie, stond zelf tien jaar lang in de show op het podium. Het team heeft volgens hem voor de selectie honderden uren film uit meer dan honderd jaar bekeken. Er bestaan saaiere kantoorbanen.
+Matt Flood, Senior Show Director bij Universal, stond zelf tien jaar lang in de show op het podium. Het team heeft volgens hem voor de selectie honderden uren film uit meer dan honderd jaar bekeken. Er bestaan saaiere kantoorbanen.
 
 ## Kerst in het resort
 
