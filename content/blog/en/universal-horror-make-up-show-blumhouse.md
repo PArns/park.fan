@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  The Horror Make-Up Show at Universal Studios Florida is back from 11 December, now with Blumhouse films such as "M3GAN". The lobby now has the Blumhouse look, and gags from the old show are coming back.
+  The Horror Make-Up Show at Universal Studios Florida is back from 11 December, now with Blumhouse films such as "M3GAN". Gags from the old show are coming back too.
 tags:
   - news
   - universal-orlando
@@ -44,7 +44,7 @@ Universal has rebuilt the lobby from scratch, with a new floor plan and the look
 
 All of the music is new, and the lobby soundtrack comes from the same team that scored Celestial Park at [Epic Universe](ref:universal-epic-universe?bare).
 
-Inside the theatre, the stage now looks like a lab. The show mixes behind-the-scenes videos with special effects done by hand on stage. You'll see how the Grabber's mask from "The Black Phone" was made and which techniques horror's great make-up artists relied on. The show also takes apart how the scares at Halloween Horror Nights are built.
+Inside the theatre, the stage now looks like a lab. The show mixes behind-the-scenes videos with special effects done by hand on stage. You'll see how the Grabber's mask from "The Black Phone" was made and how make-up artists such as Milicent Patrick, whom the show honours, worked. The show also takes apart how the scares at Halloween Horror Nights are built.
 
 > [!QUOTE]
 > We’re [honoring] Milicent Patrick, a groundbreaking female makeup artist from the 1950s who worked on ‘Creature from the Black Lagoon,’ […] In a very male-dominated industry, we just thought, ‘What a cool story she has.’
@@ -55,17 +55,17 @@ Inside the theatre, the stage now looks like a lab. The show mixes behind-the-sc
 
 The theatre is in the Hollywood area, inside a replica of the Hollywood Pantages Theatre. Universal hasn't given a running time for the new version yet. The old one ran for about 25 minutes.
 
-## The old show since 1990
+## The old show, 1990 to 2026
 
-The old show opened in June 1990, the year the park opened. Until 1997 it was called "The Phantom of the Opera Horror Make-Up Show", and for some years after that "The Gory, Gruesome and Grotesque Horror Make-Up Show". It's been closed for the rebuild since 12 May 2026.
+The old show opened in June 1990, the park's first year. Until 1997 it was called "The Phantom of the Opera Horror Make-Up Show", and for some years after that "The Gory, Gruesome and Grotesque Horror Make-Up Show". It's been closed for the rebuild since 12 May 2026.
 
-In its last years the show had two characters on stage: Alex Ross, the host, and the make-up artist, Mark or Marty James depending on who was playing him that day. They mixed scripted scenes with improv and demonstrations, and the audience joined in. At the end of every show Eddie, a werewolf, came to life and chased the make-up artist across the stage. Universal's own blog puts "animatronic" in quotation marks, so you can guess for yourself what was inside the fur.
+In its last years the show had two characters on stage: Alex Ross, the host, and the make-up artist, Mark or Marty James depending on who was playing him that day. Part of it was scripted, part improvised, and in between they demonstrated effects and pulled people from the audience into the act. At the end of every show Eddie, a werewolf, came to life and chased the make-up artist across the stage. Universal's own blog puts "animatronic" in quotation marks, so you can guess for yourself what was inside the fur.
 
-## Familiar gags and a new finale
+## What stays from the old show
 
 The structure and the comic tone stay, and some gags that regulars know from the old show are coming back. Universal hasn't announced whether Eddie still turns up in the new finale.
 
-Matt Flood says the team went through hundreds of hours of film from more than a hundred years to pick what made it in. As desk jobs go, there are worse ones. Flood, a senior show director at Universal, spent ten years on stage in the show himself.
+Matt Flood, a senior show director at Universal, spent ten years on stage in the show himself. He says the team went through hundreds of hours of film from more than a hundred years to pick what made it in, and as desk jobs go, there are worse ones.
 
 ## Christmas at the resort
 
@@ -75,7 +75,7 @@ The show opens in the middle of Universal Orlando's holiday season, which runs f
 
 ```
 
-The Horror Make-Up Show runs at fixed times, so at Universal Studios Florida it fits best into the hours when the ride queues are longest. Air conditioning in the theatre counts for less in December than in August, but you still get a seat.
+The show runs to a fixed schedule, so find the hour with the longest ride queues in the hourly profile below and take the performance that falls inside it. Air conditioning in the theatre counts for less in December than in August, but you still get a seat.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 

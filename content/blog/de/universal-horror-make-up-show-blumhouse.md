@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Ab dem 11. Dezember siehst du in Universal Studios Florida wieder die Horror Make-Up Show, neu mit Blumhouse-Filmen wie „M3GAN“. Die Lobby trägt jetzt den Look von Blumhouse, und Gags aus der alten Show kommen zurück.
+  Ab dem 11. Dezember läuft in Universal Studios Florida wieder die Horror Make-Up Show, neu mit Blumhouse-Filmen wie „M3GAN“. Gags aus der alten Show kommen zurück.
 tags:
   - news
   - universal-orlando
@@ -44,7 +44,7 @@ Die Lobby hat Universal komplett umgebaut, mit neuem Grundriss und im Look des H
 
 Die gesamte Musik ist neu, und den Soundtrack der Lobby hat dasselbe Team komponiert, das auch Celestial Park im [Epic Universe](ref:universal-epic-universe?bare) vertont hat.
 
-Im Theater steht jetzt eine Bühne, die wie ein Labor aussieht. Die Show mischt Videos von hinter den Kulissen mit Spezialeffekten, die auf der Bühne von Hand vorgeführt werden. Du siehst, wie die Maske des Grabbers aus „The Black Phone“ entstanden ist und mit welchen Techniken schon die großen Maskenbildner des Horrorfilms gearbeitet haben. Auch die Schreckmomente der Halloween Horror Nights nimmt die Show auseinander.
+Im Theater steht jetzt eine Bühne, die wie ein Labor aussieht. Die Show mischt Videos von hinter den Kulissen mit Spezialeffekten, die auf der Bühne von Hand vorgeführt werden. Du siehst, wie die Maske des Grabbers aus „The Black Phone“ entstanden ist und wie Maskenbildnerinnen wie Milicent Patrick gearbeitet haben, die die Show eigens ehrt. Auch die Schreckmomente der Halloween Horror Nights nimmt die Show auseinander.
 
 > [!QUOTE]
 > Wir ehren Milicent Patrick, eine bahnbrechende Maskenbildnerin aus den 1950er Jahren, die an „Creature from the Black Lagoon“ gearbeitet hat. […] In einer so stark von Männern geprägten Branche dachten wir einfach: Was für eine tolle Geschichte sie hat.
@@ -57,27 +57,27 @@ Im Theater steht jetzt eine Bühne, die wie ein Labor aussieht. Die Show mischt 
 
 Das Theater steht im Themenbereich Hollywood, in einem Nachbau des Hollywood Pantages Theatre. Für die neue Fassung hat Universal noch keine Spieldauer genannt, die alte dauerte rund 25 Minuten.
 
-## Die alte Show seit 1990
+## Die alte Show von 1990 bis 2026
 
 Die alte Show lief seit Juni 1990, dem Eröffnungsjahr des Parks. Bis 1997 hieß sie „The Phantom of the Opera Horror Make-Up Show“, danach eine Zeit lang „The Gory, Gruesome and Grotesque Horror Make-Up Show“. Seit dem 12. Mai 2026 ist sie für den Umbau geschlossen.
 
-Auf der Bühne standen zuletzt zwei Figuren, der Moderator Alex Ross und der Maskenbildner Mark oder Marty James, je nachdem, wer gerade spielte. Die beiden mischten geschriebene Szenen mit Improvisation und Vorführungen, und das Publikum machte mit. Am Ende jeder Vorstellung erwachte Eddie, ein Werwolf, und jagte den Maskenbildner über die Bühne. Universal setzt das Wort „animatronisch“ in seinem Blog selbst in Anführungszeichen, und was im Fell steckte, darfst du dir ausmalen.
+Auf der Bühne standen zuletzt zwei Figuren, der Moderator Alex Ross und der Maskenbildner Mark oder Marty James, je nachdem, wer gerade spielte. Ein Teil war geschrieben, ein Teil improvisiert, und zwischendurch führten die beiden Effekte vor und holten Leute aus dem Publikum dazu. Am Ende jeder Vorstellung erwachte Eddie, ein Werwolf, und jagte den Maskenbildner über die Bühne. Universal setzt das Wort „animatronisch“ in seinem Blog selbst in Anführungszeichen, und was im Fell steckte, darfst du dir ausmalen.
 
-## Bekannte Gags und ein neues Finale
+## Was von der alten Show bleibt
 
 Aufbau und komischer Ton bleiben, und Gags, die Stammgäste aus der alten Show kennen, kommen zurück. Ob Eddie im neuen Finale noch auftritt, hat Universal nicht bekannt gegeben.
 
-Für die Auswahl hat das Team nach den Worten von Matt Flood Hunderte Stunden Film aus über hundert Jahren gesichtet. Für einen Bürojob klingt das nicht schlecht. Flood ist Senior Show Director bei Universal und stand selbst zehn Jahre lang in der Show auf der Bühne.
+Matt Flood, Senior Show Director bei Universal, stand selbst zehn Jahre lang in der Show auf der Bühne. Nach seinen Worten hat das Team für die Auswahl Hunderte Stunden Film aus über hundert Jahren gesichtet, und für einen Bürojob klingt das nicht schlecht.
 
 ## Weihnachten im Resort
 
-Die Show startet mitten in der Weihnachtszeit von Universal Orlando, die vom 14. November 2026 bis zum 3. Januar 2027 läuft. In Universal Studios Florida zieht jeden Abend Universal's Holiday Parade featuring Macy's durch die Straßen, in [Islands of Adventure](ref:universal-islands-of-adventure?bare) feiert Seuss Landing Grinchmas. Beides ist im normalen Parkticket enthalten.
+Der 11. Dezember liegt mitten in der Weihnachtszeit von Universal Orlando, die vom 14. November 2026 bis zum 3. Januar 2027 läuft. In Universal Studios Florida zieht jeden Abend Universal's Holiday Parade featuring Macy's durch die Straßen, in [Islands of Adventure](ref:universal-islands-of-adventure?bare) feiert Seuss Landing Grinchmas. Beides ist im normalen Parkticket enthalten.
 
 ```best-days-widget slug=universal-studios-florida
 
 ```
 
-Die Horror Make-Up Show beginnt zu festen Zeiten, und in Universal Studios Florida passt sie am besten in die Stunden, in denen du an den Bahnen am längsten anstehst. Die Klimaanlage im Saal ist im Dezember weniger wert als im August, aber sitzen darfst du trotzdem.
+Die Show spielt nach festem Zeitplan, also such dir im Stundenprofil darunter die Stunde mit den längsten Warteschlangen an den Bahnen und nimm die Vorstellung, die in diese Stunde fällt. Die Klimaanlage im Saal ist im Dezember weniger wert als im August, aber sitzen darfst du trotzdem.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
