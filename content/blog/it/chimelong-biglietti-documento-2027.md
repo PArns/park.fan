@@ -60,7 +60,7 @@ Chi non viene dalla Cina continentale, da Hong Kong, da Macao o da Taiwan compra
 
 Finora un bambino entrava gratis se aveva meno di tre anni o se era alto meno di 1,0 metri. Il biglietto bambini valeva dai tre agli undici anni oppure per chiunque misurasse tra 1,0 e 1,5 metri. Il biglietto ragazzi spettava a chi aveva tra i dodici e i 17 anni, superava 1,5 metri e mostrava la tessera studentesca.
 
-Dalla mezzanotte del 4 gennaio l’asta per misurare i bambini alla cassa va in pensione, e conta l’età nel giorno della visita. Sotto i tre anni si entra gratis nei parchi, dai tre agli undici anni vale il biglietto bambini e dai dodici ai 17 quello ragazzi. Quando un bambino entra gratis, l’adulto che lo accompagna mostra all’ingresso l’originale del documento del bambino, cioè il suo passaporto per le famiglie che arrivano dall’estero.
+Per tutto quello che compri dal 4 gennaio, l’asta per misurare i bambini alla cassa va in pensione. Da lì conta l’età nel giorno della visita. Sotto i tre anni si entra gratis nei parchi, dai tre agli undici anni vale il biglietto bambini e dai dodici ai 17 quello ragazzi. Quando un bambino entra gratis, l’adulto che lo accompagna mostra all’ingresso l’originale del documento del bambino, cioè il suo passaporto per le famiglie che arrivano dall’estero.
 
 A [Chimelong Paradise](ref:chimelong-paradise) il biglietto giornaliero costa 250 yuan, 175 per i bambini e 200 per i ragazzi. Un bambino di quattro anni alto meno di un metro finora lì entrava gratis, mentre da gennaio gli serve un biglietto bambini da 175 yuan. Un tredicenne sotto 1,5 metri pagava la tariffa bambini e d’ora in poi ne paga 200 invece di 175. Al [Chimelong Safari Park](ref:chimelong-safari-park) lo stesso tredicenne spende 240 yuan invece di 210 in un giorno feriale, e 280 invece di 245 nei fine settimana, nei festivi e durante le vacanze estive. Lì il biglietto bambini per il piccolo di quattro anni costa 210 yuan, e 245 in quei giorni.
 
@@ -76,7 +76,7 @@ Conta il giorno in cui compri. La visita può venire dopo. Per biglietti, pacche
 
 ## Gli abbonamenti annuali per ora non si trovano
 
-Dal 19 novembre Chimelong non vende più abbonamenti annuali. Le nuove tessere dovrebbero arrivare in vendita dopo il 26 dicembre. Chi ha una tessera che scade durante la pausa, o chi ha diritto allo sconto sul rinnovo, avrà uno sconto quando compra quella nuova. Le tessere attuali restano valide e si prenota come prima. Per gli abbonamenti annuali conta la regola che Chimelong ha pubblicato al momento dell’acquisto. Chimelong non ha ancora reso noto quale varrà per le nuove tessere, né quali saranno prezzi e vantaggi.
+Dal 19 novembre Chimelong non vende più abbonamenti annuali. Le nuove tessere dovrebbero arrivare in vendita dopo il 26 dicembre. Chi ha una tessera che scade durante la pausa, o chi ha diritto allo sconto sul rinnovo, avrà uno sconto quando compra quella nuova. Le tessere attuali restano valide e si prenota come prima. Chimelong non ha ancora reso noto quali saranno prezzi e vantaggi delle nuove tessere.
 
 ## Quali parchi sono coinvolti
 

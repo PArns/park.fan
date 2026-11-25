@@ -58,7 +58,7 @@ Si tu n’es pas originaire de Chine continentale, de Hong Kong, de Macao ou de 
 
 Jusqu’ici, un enfant entrait gratuitement s’il avait moins de trois ans ou mesurait moins de 1,0 mètre. Le billet enfant concernait les 3 à 11 ans, ou tous ceux qui mesuraient entre 1,0 et 1,5 mètre. Le billet jeune revenait aux 12 à 17 ans de plus de 1,5 mètre, sur présentation d’une carte d’élève.
 
-Le 4 janvier à minuit, la toise de la billetterie part à la retraite : seul compte l’âge le jour de la visite. Les moins de trois ans entrent gratuitement dans les parcs, les 3 à 11 ans paient le tarif enfant et les 12 à 17 ans le tarif jeune. Quand un enfant entre gratuitement, l’adulte qui l’accompagne présente à l’entrée l’original de la pièce d’identité de l’enfant, donc son passeport pour une famille venue de l’étranger.
+Pour tout ce que tu achètes à partir du 4 janvier, la toise de la billetterie part à la retraite. Seul compte alors l’âge le jour de la visite. Les moins de trois ans entrent gratuitement dans les parcs, les 3 à 11 ans paient le tarif enfant et les 12 à 17 ans le tarif jeune. Quand un enfant entre gratuitement, l’adulte qui l’accompagne présente à l’entrée l’original de la pièce d’identité de l’enfant, donc son passeport pour une famille venue de l’étranger.
 
 À [Chimelong Paradise](ref:chimelong-paradise), la journée coûte 250 yuans, 175 pour un enfant et 200 pour un jeune. Un enfant de quatre ans qui mesure moins d’un mètre y entrait gratuitement et aura besoin dès janvier d’un billet enfant à 175 yuans. Un ado de 13 ans de moins de 1,5 mètre payait le tarif enfant et paiera désormais 200 yuans au lieu de 175. Au [Chimelong Safari Park](ref:chimelong-safari-park), ce même ado paie 240 yuans au lieu de 210 un jour de semaine, et 280 au lieu de 245 le week-end, les jours fériés et pendant les vacances d’été. Le billet enfant du petit de quatre ans y coûte 210 yuans, et 245 ces jours-là.
 
@@ -74,7 +74,7 @@ La date d’achat compte. La visite peut avoir lieu plus tard. Les billets, forf
 
 ## Pas d’abonnement annuel pour le moment
 
-Depuis le 19 novembre, Chimelong ne vend plus d’abonnements annuels. Les nouveaux doivent arriver en vente après le 26 décembre. Si ton abonnement expire pendant la pause ou si tu remplis les conditions de la remise de renouvellement, tu obtiens une réduction en achetant le nouveau. Les abonnements en cours restent valables, et la réservation se fait comme avant. Pour un abonnement annuel, c’est la règle publiée par Chimelong au moment de l’achat qui compte. Chimelong n’a pas encore annoncé laquelle vaudra pour les nouveaux, pas plus que leurs prix et leur contenu.
+Depuis le 19 novembre, Chimelong ne vend plus d’abonnements annuels. Les nouveaux doivent arriver en vente après le 26 décembre. Si ton abonnement expire pendant la pause ou si tu remplis les conditions de la remise de renouvellement, tu obtiens une réduction en achetant le nouveau. Les abonnements en cours restent valables, et la réservation se fait comme avant. Chimelong n’a pas encore annoncé le prix ni le contenu des nouveaux abonnements.
 
 ## Les parcs concernés
 

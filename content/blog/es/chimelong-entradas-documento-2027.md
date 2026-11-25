@@ -60,7 +60,7 @@ Quien no sea de China continental, Hong Kong, Macao o Taiwán compra con un pasa
 
 Hasta ahora, un niño entraba gratis en el parque si tenía menos de tres años o medía menos de 1 metro. La entrada infantil era para niños de tres a once años o para cualquiera que midiera entre 1 y 1,5 metros. La juvenil la conseguían los chicos de doce a 17 años que pasaran de 1,5 metros y enseñaran el carné de estudiante.
 
-A partir de las 0 h del 4 de enero, la vara de medir de la taquilla se jubila y lo que cuenta es la edad el día de la visita. Los menores de tres años entran gratis en los parques, de tres a once años toca entrada infantil y de doce a 17, juvenil. Cuando un niño entra gratis, el adulto que lo acompaña enseña en la puerta el original del documento del niño; si la familia viene del extranjero, su pasaporte.
+Para todo lo que compres a partir del 4 de enero, la vara de medir de la taquilla se jubila. Entonces cuenta la edad el día de la visita. Los menores de tres años entran gratis en los parques, de tres a once años toca entrada infantil y de doce a 17, juvenil. Cuando un niño entra gratis, el adulto que lo acompaña enseña en la puerta el original del documento del niño; si la familia viene del extranjero, su pasaporte.
 
 En [Chimelong Paradise](ref:chimelong-paradise), la entrada de un día cuesta 250 yuanes, 175 la infantil y 200 la juvenil. Un niño de cuatro años que no llega al metro entraba allí gratis y desde enero necesita una entrada infantil de 175 yuanes. Un chico de 13 años que mide menos de 1,5 metros pagaba hasta ahora el precio infantil y pasa a pagar 200 yuanes en lugar de 175. En el [Chimelong Safari Park](ref:chimelong-safari-park), ese mismo chico de 13 años paga 240 yuanes en vez de 210 un día entre semana, y 280 en vez de 245 los fines de semana, los festivos y en las vacaciones de verano. La entrada infantil del niño de cuatro años cuesta allí 210 yuanes, y 245 esos días especiales.
 
@@ -76,7 +76,7 @@ Cuenta el día de la compra. La visita puede ser más tarde. Las entradas, los p
 
 ## Ahora mismo no hay pases anuales
 
-Desde el 19 de noviembre, Chimelong no vende pases anuales. Los nuevos deberían salir a la venta después del 26 de diciembre. Si tu pase caduca durante la pausa o cumples las condiciones del descuento por renovación, tendrás un descuento al comprar el nuevo. Los pases que ya existen siguen valiendo y se reserva igual que hasta ahora. En los pases anuales vale la norma que Chimelong tenía publicada en el momento de la compra. Chimelong todavía no ha dado a conocer cuál será la de los pases nuevos, ni sus precios y ventajas.
+Desde el 19 de noviembre, Chimelong no vende pases anuales. Los nuevos deberían salir a la venta después del 26 de diciembre. Si tu pase caduca durante la pausa o cumples las condiciones del descuento por renovación, tendrás un descuento al comprar el nuevo. Los pases que ya existen siguen valiendo y se reserva igual que hasta ahora. Chimelong todavía no ha dado a conocer los precios ni las ventajas de los pases nuevos.
 
 ## A qué parques afecta
 

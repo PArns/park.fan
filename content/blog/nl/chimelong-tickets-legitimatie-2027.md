@@ -60,7 +60,7 @@ Kom je niet uit het Chinese vasteland, Hongkong, Macau of Taiwan, dan koop je me
 
 Tot nu toe mocht een kind gratis het park in als het jonger was dan drie jaar of kleiner dan 1,0 meter. Het kinderticket gold voor kinderen van drie tot en met elf jaar of voor iedereen tussen 1,0 en 1,5 meter. Het jongerenticket was voor twaalf- tot en met zeventienjarigen die langer waren dan 1,5 meter en een scholierenkaart konden laten zien.
 
-Vanaf 4 januari om 0.00 uur kan de meetlat bij de kassa de kast in, want dan telt de leeftijd op de dag van je bezoek. Kinderen onder de drie mogen gratis de parken in, van drie tot en met elf jaar geldt het kinderticket en van twaalf tot en met zeventien het jongerenticket. Gaat een kind gratis mee naar binnen, dan laat de volwassene die het begeleidt bij de ingang het originele identiteitsbewijs van het kind zien. Voor gezinnen uit het buitenland is dat het paspoort van het kind.
+Voor alles wat je vanaf 4 januari koopt, kan de meetlat bij de kassa de kast in. Dan telt de leeftijd op de dag van je bezoek. Kinderen onder de drie mogen gratis de parken in, van drie tot en met elf jaar geldt het kinderticket en van twaalf tot en met zeventien het jongerenticket. Gaat een kind gratis mee naar binnen, dan laat de volwassene die het begeleidt bij de ingang het originele identiteitsbewijs van het kind zien. Voor gezinnen uit het buitenland is dat het paspoort van het kind.
 
 In [Chimelong Paradise](ref:chimelong-paradise) kost een dagticket 250 yuan, voor kinderen 175 en voor jongeren 200 yuan. Een kind van vier dat kleiner is dan een meter kwam daar tot nu toe gratis binnen en heeft vanaf januari een kinderticket van 175 yuan nodig. Een dertienjarige onder de 1,5 meter betaalde tot nu toe de kinderprijs en betaalt straks 200 in plaats van 175 yuan. In het [Chimelong Safari Park](ref:chimelong-safari-park) betaalt diezelfde dertienjarige doordeweeks 240 in plaats van 210 yuan, en in het weekend, op feestdagen en in de zomervakantie 280 in plaats van 245 yuan. Het kinderticket voor de vierjarige kost daar 210 yuan, op die bijzondere dagen 245.
 
@@ -76,7 +76,7 @@ Wat telt, is de dag waarop je koopt. Je bezoek mag later vallen. Voor tickets, a
 
 ## Jaarkaarten zijn er even niet
 
-Sinds 19 november verkoopt Chimelong geen jaarkaarten meer. De nieuwe kaarten moeten na 26 december in de verkoop gaan. Verloopt je kaart in die pauze of voldoe je aan de voorwaarden voor de verlengingskorting, dan krijg je korting als je de nieuwe kaart koopt. Bestaande kaarten blijven geldig, en reserveren gaat zoals altijd. Voor jaarkaarten telt de regel die Chimelong bij je aankoop had gepubliceerd. Welke dat bij de nieuwe kaarten wordt, heeft Chimelong nog niet bekendgemaakt, net zomin als hun prijzen en voordelen.
+Sinds 19 november verkoopt Chimelong geen jaarkaarten meer. De nieuwe kaarten moeten na 26 december in de verkoop gaan. Verloopt je kaart in die pauze of voldoe je aan de voorwaarden voor de verlengingskorting, dan krijg je korting als je de nieuwe kaart koopt. Bestaande kaarten blijven geldig, en reserveren gaat zoals altijd. De prijzen en voordelen van de nieuwe kaarten heeft Chimelong nog niet bekendgemaakt.
 
 ## Om welke parken het gaat
 
