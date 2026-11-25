@@ -26,6 +26,7 @@ import {
   type ConversationMessage,
 } from '../../_lib/assistant';
 import { DeleteChatButton } from '../../_lib/delete-chat';
+import { SourceChip } from '../../_components/source-chip';
 
 /**
  * One chat as it happened. Every text is rendered as plain text: what a visitor typed and what
@@ -67,7 +68,16 @@ export default function AssistantConversationPage({ params }: { params: Promise<
             </div>
           }
         />
-        <PanelBody className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+        <PanelBody className="grid grid-cols-2 gap-3 sm:grid-cols-6">
+          <Meta
+            label="Quelle"
+            value={
+              <span className="inline-flex items-center gap-2">
+                <SourceChip source={data.source} />
+                {data.apiKeyName ?? (data.apiKeyId && 'gelöschter Key')}
+              </span>
+            }
+          />
           <Meta label="Sprache" value={data.locale} />
           <Meta label="Seite" value={data.startPath} />
           <Meta label="Nachrichten" value={formatCount(data.messageCount)} />

@@ -12,6 +12,8 @@ const SITE_ORIGIN = 'https://park.fan';
 /** Parky's settings as `GET assistant/settings` returns them; the key only masked. */
 export interface AssistantSettings {
   enabled: boolean;
+  /** False when Parky is off in park.fan's app alone; absent from an API older than the switch. */
+  appEnabled?: boolean;
   rolloutPercent: number;
   dailyTokenBudget: number;
   apiKeyMasked?: string;
@@ -36,6 +38,10 @@ export interface ConversationRow {
   promptVersion: number | null;
   createdAt: string;
   firstQuestion?: string;
+  /** `web` or `app`; absent from an API older than the column, which `chatSource` reads as web. */
+  source?: string;
+  /** The data key whose session started an app chat. */
+  apiKeyId?: string;
 }
 
 /** A tool Parky called while writing an answer. */
@@ -150,6 +156,8 @@ export interface Page<T> {
 
 /** One chat with everything stored about it. */
 export interface ConversationDetail extends ConversationRow {
+  /** The data key's name; absent for a website chat and once the key is deleted. */
+  apiKeyName?: string;
   messages: ConversationMessage[];
   feedback: FeedbackEntry[];
 }

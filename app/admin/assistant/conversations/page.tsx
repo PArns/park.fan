@@ -25,6 +25,7 @@ import {
   type Page,
 } from '../_lib/assistant';
 import { DeleteChatButton } from '../_lib/delete-chat';
+import { SourceChip } from '../_components/source-chip';
 
 type RatingFilter = 'all' | 'down' | 'up';
 
@@ -34,9 +35,18 @@ const RATING_OPTIONS = [
   { value: 'up', label: '👍' },
 ] as const;
 
+type SourceFilter = 'all' | 'web' | 'app';
+
+const SOURCE_OPTIONS = [
+  { value: 'all', label: 'Alle' },
+  { value: 'web', label: 'Website' },
+  { value: 'app', label: 'App' },
+] as const;
+
 /** Every stored chat, newest first, with the 👎 ones a click away. */
 export default function AssistantConversationsPage() {
   const [rating, setRating] = useState<RatingFilter>('all');
+  const [source, setSource] = useState<SourceFilter>('all');
   const [search, setSearch] = useState('');
   const [version, setVersion] = useState('');
   const [page, setPage] = useState(1);
@@ -45,6 +55,7 @@ export default function AssistantConversationsPage() {
 
   const params = new URLSearchParams({ page: String(page) });
   if (rating !== 'all') params.set('rating', rating === 'down' ? '-1' : '1');
+  if (source !== 'all') params.set('source', source);
   if (q.length >= 2) params.set('q', q);
   if (/^[1-9]\d*$/.test(promptVersion)) params.set('promptVersion', promptVersion);
   const path = `${ASSISTANT_API}/conversations?${params}`;
@@ -66,6 +77,15 @@ export default function AssistantConversationsPage() {
             value={rating}
             onChange={(value) => {
               setRating(value);
+              setPage(1);
+            }}
+          />
+          <Segmented
+            label="Quelle"
+            options={SOURCE_OPTIONS}
+            value={source}
+            onChange={(value) => {
+              setSource(value);
               setPage(1);
             }}
           />
@@ -111,6 +131,7 @@ export default function AssistantConversationsPage() {
                     {formatDateTime(chat.createdAt)}
                   </span>
                   <Chip>{chat.locale}</Chip>
+                  <SourceChip source={chat.source} />
                   {chat.promptVersion != null && (
                     <Chip className="tabular-nums">v{chat.promptVersion}</Chip>
                   )}
