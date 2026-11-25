@@ -267,6 +267,14 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `PARKY_ELEMENT_EVENTS` _const_: The events behind `/admin/assistant`'s element table, each by `element` and `kind`.
 - Types: `ParkyElementRow`
 
+### [`parky-tokens.ts`](../../lib/admin/parky-tokens.ts)
+
+- `chatSource` _function_: A chat's source as stored; a chat from an API older than the column is the website's.
+- `tokenSeries` _function_: Every UTC day of the window, oldest first, with the tokens each source spent on it: a day without a chat is a zero, so the chart's line runs through the whole window.
+- `CHAT_SOURCE_LABEL` _const_: The admin's word for a `ChatSource`.
+- `TOKEN_WINDOWS` _const_: The windows the token page offers, in days; the API takes 1 to 90.
+- Types: `ChatSource`, `TokenUsage`, `TokenStats`
+
 ### [`provenance.ts`](../../lib/admin/provenance.ts)
 
 - `isHttpUrl` _function_: Whether a text is an absolute `http:` or `https:` address, the API's check on a source link.

@@ -42,6 +42,9 @@ function SettingsForm({ settings }: { settings: AssistantSettings }) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
   const [enabled, setEnabled] = useState(settings.enabled);
+  // An API older than the switch neither sends it nor takes it: the PUT refuses a field it does not know.
+  const appSwitch = settings.appEnabled !== undefined;
+  const [appEnabled, setAppEnabled] = useState(settings.appEnabled ?? true);
   const [rollout, setRollout] = useState<number | null>(settings.rolloutPercent);
   const [budget, setBudget] = useState<number | null>(settings.dailyTokenBudget);
   const [apiKey, setApiKey] = useState('');
@@ -166,6 +169,19 @@ function SettingsForm({ settings }: { settings: AssistantSettings }) {
         />
         <PanelBody className="space-y-4">
           <Switch checked={enabled} onCheckedChange={setEnabled} label="Parky ist an" />
+          <div className="space-y-1">
+            <Switch
+              checked={appEnabled}
+              onCheckedChange={setAppEnabled}
+              disabled={!appSwitch}
+              label="Parky in der App"
+            />
+            <p className="text-muted-foreground text-xs">
+              {appSwitch
+                ? 'Aus stoppt Parky nur in der App von park.fan: Sie blendet ihn aus, und die API lehnt ihre Sitzungen und Fragen ab, auch laufende. Die Website bleibt, wie sie ist.'
+                : 'Die API kennt diesen Schalter noch nicht. Er kommt mit ihrem nächsten Deploy.'}
+            </p>
+          </div>
           <Field
             label="Anteil der Besucher (%)"
             htmlFor="assistant-rollout"
@@ -199,7 +215,12 @@ function SettingsForm({ settings }: { settings: AssistantSettings }) {
             disabled={!rolloutValid || !budgetValid || busy !== null}
             onClick={() =>
               save(
-                { enabled, rolloutPercent: rollout, dailyTokenBudget: budget },
+                {
+                  enabled,
+                  rolloutPercent: rollout,
+                  dailyTokenBudget: budget,
+                  ...(appSwitch && { appEnabled }),
+                },
                 'save',
                 'Einstellungen gespeichert'
               )

@@ -17,6 +17,7 @@ itself, with its prompt, tools, limits and the stored key, runs on api.park.fan 
 | Widget                                 | `components/assistant/`, mounted in `app/[locale]/layout.tsx` |
 | Admin: settings, chats, feedback, cost | `/admin/assistant`, through the admin proxy                   |
 | Admin: Parky's knowledge base          | `/admin/assistant/knowledge[/topic]`, editor writes           |
+| Admin: tokens by day, source and key   | `/admin/assistant/tokens` (`lib/admin/parky-tokens.ts`)       |
 
 The chat goes to the API directly, not through a relay route, so a streamed answer never holds a
 Vercel function open. The config goes through a route because Cloudflare caches it, and a cached
@@ -62,6 +63,16 @@ budget is spent. The switch only decides who is shown the widget: admins and tes
 it is off, and removing the key stops every chat. The strings
 (`assistant` namespace, a lazy boundary) are fetched only for a browser inside the rollout, the
 window's code on the first press.
+
+**Website or app.** The API stores with each chat whether its session was a browser's (`web`) or
+was opened with a data key, as park.fan's app does (`app`). The admin shows it as a chip in the
+chat list, filters by it, names the key in the chat, and `/admin/assistant/tokens` sums tokens and
+cost per day and source, per data key, and lists the visitors and chats that spent most. The
+settings' switch „Parky in der App" (`appEnabled`) turns Parky off in the app alone; the config
+relay passes `enabled` and `rolloutPercent` only, so the website does not see it. The two repos
+deploy on their own: a chat without `source` reads as website (`chatSource`), the switch is
+disabled and left out of the save while the API does not send `appEnabled`, and the token page
+says so when the API answers 404.
 
 ## The challenge
 

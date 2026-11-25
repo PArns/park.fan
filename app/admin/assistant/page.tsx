@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { BookOpen, Bot, KeyRound, MessageSquareHeart, MessagesSquare } from 'lucide-react';
+import { BookOpen, Bot, Coins, KeyRound, MessageSquareHeart, MessagesSquare } from 'lucide-react';
 import { adminKeys, useAdminQuery } from '../_lib/api';
 import {
   AdminPage,
@@ -24,6 +24,7 @@ import { ParkyElementsPanel } from './_components/parky-elements-panel';
 
 const LINKS = [
   { href: '/admin/assistant/conversations', label: 'Chats', icon: MessagesSquare },
+  { href: '/admin/assistant/tokens', label: 'Tokens', icon: Coins },
   { href: '/admin/assistant/feedback', label: 'Feedback', icon: MessageSquareHeart },
   { href: '/admin/assistant/knowledge', label: 'Wissen', icon: BookOpen },
   { href: '/admin/assistant/settings', label: 'Einstellungen', icon: KeyRound },
@@ -60,9 +61,14 @@ export default function AssistantOverviewPage() {
           hint={`Chat-Assistent auf park.fan · ${settings.data?.model ?? '…'}`}
           action={
             settings.data && (
-              <Chip tone={settings.data.enabled ? 'success' : 'muted'}>
-                {settings.data.enabled ? `an · ${settings.data.rolloutPercent} %` : 'aus'}
-              </Chip>
+              <span className="flex items-center gap-2">
+                {settings.data.enabled && settings.data.appEnabled === false && (
+                  <Chip tone="warning">in der App aus</Chip>
+                )}
+                <Chip tone={settings.data.enabled ? 'success' : 'muted'}>
+                  {settings.data.enabled ? `an · ${settings.data.rolloutPercent} %` : 'aus'}
+                </Chip>
+              </span>
             )
           }
         />

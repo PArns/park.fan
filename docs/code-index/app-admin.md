@@ -411,6 +411,10 @@ Route `/admin/api-keys` (page).
 
 - `ParkyElementsPanel` _component_: Parky's elements on the site over 30 days: per element and kind, how often the pressable part was on screen for a visitor Parky shows for, how often it was pressed, and the share; then which links in his answers were followed.
 
+### [`assistant/_components/source-chip.tsx`](../../app/admin/assistant/_components/source-chip.tsx)
+
+- `SourceChip` _component_: Where a chat came from, as a chip: the app stands out, the website is the quiet default.
+
 ### [`assistant/_lib/assistant.ts`](../../app/admin/assistant/_lib/assistant.ts)
 
 - `sitePageUrl` _function_: Where a page a chat or a feedback names opens on the site, or null for anything but a path of slugs. The API stores only those; checked again because the path is glued to the origin, where `@host` or `//host` would lead off the site.
@@ -468,6 +472,12 @@ Route `/admin/assistant` (page).
 Route `/admin/assistant/settings` (page).
 
 - `default (AssistantSettingsPage)` _component_: Parky's switches and the Claude key. The key is write-only: the API hands back a masked form and nothing else, so the field below always starts empty.
+
+### [`assistant/tokens/page.tsx`](../../app/admin/assistant/tokens/page.tsx)
+
+Route `/admin/assistant/tokens` (page).
+
+- `default (AssistantTokensPage)` _component_: Who spends Parky's tokens: per UTC day and source the chats, tokens by kind and cost, then the data keys, visitors and single chats that spent most. An API without the statistic answers 404, and the page says so.
 
 ### [`attractions/[id]/page.tsx`](../../app/admin/attractions/%5Bid%5D/page.tsx)
 

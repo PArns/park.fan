@@ -7,6 +7,7 @@ import {
   Camera,
   CalendarDays,
   CalendarRange,
+  Coins,
   Copy,
   Flame,
   GitCompare,
@@ -345,6 +346,14 @@ const NAV_GROUPS: NavGroup[] = [
             keywords: ['verläufe', 'fragen', 'antworten', 'daumen', 'bewertung'],
           },
           {
+            href: '/admin/assistant/tokens',
+            label: 'Tokens',
+            icon: Coins,
+            description:
+              'Tokens und Kosten je Tag, Website oder App, und wer am meisten verbraucht',
+            keywords: ['kosten', 'verbrauch', 'statistik', 'app', 'website', 'quelle', 'api-key'],
+          },
+          {
             href: '/admin/assistant/feedback',
             label: 'Feedback',
             icon: MessageSquareHeart,
@@ -362,7 +371,7 @@ const NAV_GROUPS: NavGroup[] = [
             href: '/admin/assistant/settings',
             label: 'Einstellungen',
             icon: KeyRound,
-            description: 'Claude-Key, an/aus, Rollout-Anteil, Tagesbudget',
+            description: 'Claude-Key, an/aus, Parky in der App, Rollout-Anteil, Tagesbudget',
             minRole: 'owner',
             keywords: ['key', 'schlüssel', 'anthropic', 'rollout', 'flag', 'budget'],
           },
