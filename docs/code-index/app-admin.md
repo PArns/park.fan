@@ -798,6 +798,12 @@ Route `/admin` (error).
 
 - `default (AdminError)` _component_: What a crash in the admin looks like: what happened, the way out, and a retry of the one page rather than the session. `reset()` re-renders the segment, which is enough for a transient payload; the link is for when it is not.
 
+### [`facilities/page.tsx`](../../app/admin/facilities/page.tsx)
+
+Route `/admin/facilities` (page).
+
+- `default (FacilitiesPage)` _component_: Toilets and drinking water from OpenStreetMap: the import for every park, the review of what came in, and the approval without which no point reaches a visitor.
+
 ### [`go/page.tsx`](../../app/admin/go/page.tsx)
 
 Route `/admin/go` (page).

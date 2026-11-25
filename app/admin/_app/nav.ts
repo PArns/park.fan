@@ -33,6 +33,7 @@ import {
   Server,
   Snowflake,
   Ticket,
+  Toilet,
   TrendingUp,
   UserRound,
   Users,
@@ -109,6 +110,14 @@ const NAV_GROUPS: NavGroup[] = [
         icon: HeartPulse,
         description: 'Verstummte Feeds, gescheiterte Jobs, kaputte Verweise',
         keywords: ['monitoring', 'silenced', 'fehler', 'audit', 'glossar'],
+      },
+      {
+        href: '/admin/facilities',
+        label: 'Toiletten und Wasser',
+        icon: Toilet,
+        description: 'Toiletten und Trinkwasser aus OpenStreetMap einlesen, prüfen, freigeben',
+        minRole: 'editor',
+        keywords: ['osm', 'openstreetmap', 'wc', 'trinkwasser', 'einrichtungen', 'karte', 'umriss'],
       },
       {
         href: '/admin/duplicates',

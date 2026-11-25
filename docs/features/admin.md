@@ -84,7 +84,7 @@ inset's margin and border); a page that fills the viewport subtracts it, as the 
 | Group        | Entries                                                                                          |
 | ------------ | ------------------------------------------------------------------------------------------------ |
 | (top)        | Übersicht                                                                                        |
-| Kuratieren   | Parks, Datenqualität, Duplikate, Stilllegungen, Änderungen                                       |
+| Kuratieren   | Parks, Datenqualität, Toiletten und Wasser, Duplikate, Stilllegungen, Änderungen                 |
 | Reiseplaner  | Saisons, Tickets                                                                                 |
 | Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                                              |
 | Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Reiseplaner, Beliebtheit), Parky (3)               |
@@ -812,6 +812,36 @@ page and the API uses it from the next notification on, with no environment vari
   (`isApnsBackendMissing`) and keeps the help text. The two repos deploy apart.
 
 `pnpm test:admin-apns` covers the file name, the refused files, the upload's body and the 404.
+
+## Toiletten und Wasser: `/admin/facilities`
+
+Where an editor reads the parks' toilets and drinking water from OpenStreetMap, looks at what came
+in and approves it; without the approval no point reaches a visitor. The API's side, the ODbL
+duties and the owner's steps after a deploy are `docs/frontend/facilities.md` in `v4.api.park.fan`.
+
+- **The import is a job, never a request.** „Alle Parks importieren“ queues one bulk run
+  (`POST /v1/admin/facilities/import-all`) that takes the parks one after the other with a pause, so
+  all parks take one to several hours. It visits only parks whose last run did not go through, so
+  pressing it again resumes; „Alle neu einlesen“ sends `all: true`. While a run is queued or active
+  the page reads the list every ten seconds and shows the tally; idle, it does not poll.
+- **One state per park** (`facilityState` in `lib/admin/facilities.ts`): Zu prüfen, Freigegeben,
+  Kein Umriss, Fehlgeschlagen, Nicht eingelesen. What a visitor gets wins: an approved park whose
+  later run failed stays „Freigegeben“ and carries a red chip beside it. The filter shows each
+  state's number and opens on „Zu prüfen“.
+- **A park opens in place**: its outline and points as an SVG (`facilityPlot`, north up, longitude
+  shortened by the latitude's cosine), no map tiles. A point outside the outline has an amber ring
+  and an „außerhalb“ chip, a hidden one is faded. Each point links to its element on
+  openstreetmap.org, where a wrong point is corrected; „Ausblenden“ is for one that is right there
+  and useless to a visitor.
+- **A park without an outline** says which outlines were found near it. The editor looks the right
+  one up on openstreetmap.org and enters it as `way/…` or `relation/…`; nothing is guessed.
+- **Sammelfreigabe** asks the API first (`approve-all` with `dryRun: true`), names the number in a
+  confirm, and only then approves. The rule is the API's: at least three visible points, all inside
+  the outline.
+- **An API without the routes** answers 404; the page then says the API is not ready.
+
+`pnpm test:admin-facilities` covers the states, the filter, the queue's line, the plot and the
+sidebar entry.
 
 ## The admin on a phone
 

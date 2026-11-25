@@ -81,6 +81,22 @@ The German names the admin shows for the permissions and for the answers of a ke
 - `REQUEST_LABELS` _const_: What a request's answers are called in the form, for the admin's view of it.
 - `REQUEST_TIER_LABELS` _const_: A request's tier, as the admin's chip shows it: the dashboard's own words.
 
+### [`facilities.ts`](../../lib/admin/facilities.ts)
+
+- `facilityState` _function_: A park's state for the list. What a visitor gets comes first: an approved or imported park keeps that state when a later run failed, and its row says so in its own line.
+- `facilityStateCounts` _function_: How many parks are in each state, for the filter's numbers.
+- `filterFacilityParks` _function_: The parks in one state (`all` for every state) whose name or country contains the search text.
+- `facilityQueueText` _function_: The status line of the import queue, or null when it is idle and the last run did not fail.
+- `facilityPlot` _function_: Lays a park's outline and points out for an SVG: north up, a degree of longitude shortened by the cosine of the latitude so the park keeps its shape, and a margin so a point on the edge is not cut.
+- `osmElementUrl` _function_: The page of an OSM element on openstreetmap.org, where a wrong point is corrected.
+- `isOutlineRef` _function_: True when `text` names an OSM outline the way the import takes it: `way/123` or `relation/123`.
+- `isFacilitiesBackendMissing` _function_: True when the API answering is older than these routes: it deploys apart from the site.
+- `FACILITIES_API` _const_: The admin proxy prefix of every facility endpoint.
+- `FACILITY_STATES` _const_: The states in the order the filter lists them.
+- `FACILITY_STATE_LABEL` _const_: The admin's word for a `FacilityState`.
+- `FACILITY_STATE_TONE` _const_: The chip colour of a `FacilityState`.
+- Types: `FacilityReviewStatus`, `FacilityRunOutcome`, `FacilityParkRow`, `FacilityBulkProgress`, `FacilityQueueState`, `FacilityList`, `FacilityPoint`, `FacilityReview`, `FacilityBulkApproval`, `FacilityState`, `FacilityPlot`
+
 ### [`github.ts`](../../lib/admin/github.ts)
 
 - `adminRepo` _function_: The repository and base branch every admin write targets, blog posts and media alike.
