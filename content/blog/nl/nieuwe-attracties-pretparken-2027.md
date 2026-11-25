@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Duitsland komt er in 2027 geen nieuwe achtbaan bij, de dichtstbijzijnde rijd je in Nigloland in de Champagne en in Djurs Sommerland. De hoogste nieuwe baan komt in New Jersey, 116 meter hoog.
+  Duitsland krijgt in 2027 geen nieuwe achtbaan, de dichtstbijzijnde nieuwe staan in de Champagne en in Denemarken. De hoogste nieuwe baan is Bakunawa in New Jersey, 116 meter hoog.
 tags:
   - pretpark
   - nieuwigheden
@@ -48,7 +48,7 @@ Parken in Europa en de VS hebben zelf zo'n 30 nieuwigheden voor 2027 bevestigd. 
 
 In Duitsland wordt het een rustig jaar. Geen van de grote parken heeft voor 2027 een nieuwe achtbaan aangekondigd, en in Europa-Park verdwijnt Euro-Mir. De grote projecten liggen in Frankrijk, Engeland en Denemarken, en in de VS wordt alleen al in zes parken van Six Flags gebouwd.
 
-Simbi Rush kwam er laat bij. Busch Gardens Tampa Bay presenteerde de waterachtbaan voor de zomer van 2027 op de vakbeurs IAAPA Expo in Orlando. De beurs liep van 17 tot en met 20 november 2026.
+Als laatste kwam Simbi Rush erbij, een waterachtbaan voor de zomer van 2027. Busch Gardens Tampa Bay presenteerde hem op 18 november 2026 op de vakbeurs IAAPA Expo in Orlando.
 
 ## Wat in de lijst komt
 
@@ -264,11 +264,11 @@ De baan is 683 meter lang, een rit duurt zes en een halve minuut. Hij staat op d
 
 ### Simbi Rush in Busch Gardens Tampa Bay
 
-[Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida bouwt voor de zomer van 2027 Simbi Rush, een waterachtbaan van Mack Rides met twee lanceringen en een topsnelheid van 64 km/u. Volgens Busch Gardens wordt het de eerste gelanceerde waterachtbaan van Noord-Amerika en de snelste van zijn soort ter wereld. Het park presenteerde de baan op 18 november 2026. Hoe hoog en hoe lang het parcours wordt en vanaf welke lengte kinderen mee mogen, heeft het park nog niet bekendgemaakt.
+Simbi Rush, de waterachtbaan van Mack Rides voor [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida, wordt twee keer gelanceerd en haalt tot 64 km/u. Hij moet in de zomer van 2027 opengaan. Volgens Busch Gardens wordt het de eerste gelanceerde waterachtbaan van Noord-Amerika en de snelste van zijn soort ter wereld. Hoogte en lengte van het parcours staan nog niet in het persbericht.
 
-De rit gaat door het themagebied Congo. De naam komt van Simbi, een beschermgeest van water en natuur uit Centraal-Afrika. In het verhaal van het park drijft de boot eerst kalm over een heilig meer, tot het water hem grijpt. Of dat de woede van de geest is of een streek van het meer, mogen de passagiers zelf uitmaken. Waar in Congo de baan precies komt, bijvoorbeeld op de plek van de in september 2025 gesloten waterbaan Stanley Falls, heeft Busch Gardens niet bekendgemaakt.
+De rit gaat door het themagebied Congo. De naam komt van Simbi, een beschermgeest van water en natuur uit Centraal-Afrika. In het verhaal van het park drijft de boot eerst kalm over een heilig meer, tot het water hem grijpt. Of dat de woede van de geest is of een streek van het meer, laat het park in het midden. In september 2025 sloot in het park na 52 jaar de waterbaan Stanley Falls. Waar Simbi Rush precies komt, heeft Busch Gardens niet bekendgemaakt.
 
-Busch Gardens noemt Simbi Rush een gezinsattractie. De baan hoort bij investeringen van 200 miljoen dollar die het park over vijf jaar heeft gepland. Als eersten rijden de houders van een jaarkaart 2027, nog voor de opening voor iedereen. Wat de jaarkaarten kosten en hoe je zonder auto vanuit Orlando in het park komt, staat in ons [bericht over Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
+Simbi Rush is bedoeld als gezinsattractie. Vanaf welke lengte kinderen mee mogen, staat nog niet vast. De baan hoort bij investeringen van 200 miljoen dollar die het park over vijf jaar heeft gepland. Als eersten rijden de houders van een jaarkaart 2027, nog voor de opening voor iedereen. De prijzen van de jaarkaarten en hoe je zonder auto van Orlando naar Tampa komt, staan in ons [bericht over Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
 
 ### Monstropolis in Disney's Hollywood Studios
 
@@ -380,7 +380,7 @@ Loup-Garou in Walibi Belgium rijdt op 3 januari 2027 voor het laatst in zijn hui
 
 ### Wanneer hebben de parken hun nieuwigheden voor 2027 aangekondigd?
 
-De Six Flags-parken hebben hun nieuwigheden voor 2027 tussen mei en september 2026 voorgesteld, Merlin de zijne in maart en september. Busch Gardens Tampa Bay presenteerde de waterachtbaan Simbi Rush op 18 november 2026 op de vakbeurs IAAPA Expo in Orlando.
+De Six Flags-parken hebben hun nieuwigheden voor 2027 tussen mei en september 2026 voorgesteld, Merlin de zijne in maart en september. Als laatste kwam Busch Gardens Tampa Bay, op 18 november 2026 op de IAAPA Expo in Orlando, met de waterachtbaan Simbi Rush.
 
 — Patrick
 
@@ -422,5 +422,4 @@ De Six Flags-parken hebben hun nieuwigheden voor 2027 tussen mei en september 20
 - Loup-Garou: [Persbericht van 1 juni 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
 - Fuji-Q Highland: [Nieuwe waterachtbaan (Fuji-Q Highland, 18 september 2026)](https://www.fujiq.jp/news/newattraction_news.html)
 - Energylandia: [Rokan (Energylandia)](https://energylandia.pl/secret/?elt_lang=en), [Volana (Energylandia)](https://energylandia.pl/atrakcje/volana/), [Rokan (RCDB)](https://rcdb.com/22709.htm)
-- IAAPA Expo 2026: [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
 - Wachttijden: eigen metingen van park.fan

@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  L’Allemagne n’aura pas de nouvelle montagne russe en 2027, et les plus proches t’attendent à Nigloland, en Champagne, et à Djurs Sommerland. La plus haute nouveauté se construit dans le New Jersey et mesure 116 mètres.
+  L’Allemagne n’aura pas de nouvelle montagne russe en 2027, et les plus proches se trouvent en Champagne et au Danemark. La plus haute est Bakunawa, dans le New Jersey, avec 116 mètres.
 tags:
   - parc-attractions
   - nouveautes
@@ -55,9 +55,9 @@ russe pour 2027, et Euro-Mir quitte Europa-Park. Les gros projets se trouvent en
 Angleterre et au Danemark. Aux États-Unis, six parcs du seul groupe Six Flags ont un chantier en
 cours.
 
-Simbi Rush est arrivée sur le tard. Busch Gardens Tampa Bay a présenté cette montagne russe
-aquatique pour l’été 2027 à l’IAAPA Expo, le salon professionnel du secteur à Orlando. Le salon
-s’est tenu du 17 au 20 novembre 2026.
+Simbi Rush est la dernière arrivée, une montagne russe aquatique prévue pour l’été 2027. Busch
+Gardens Tampa Bay l’a présentée le 18 novembre 2026 à l’IAAPA Expo, le salon professionnel du
+secteur à Orlando.
 
 ## Ce qui entre dans la liste
 
@@ -469,23 +469,24 @@ seuls à partir de 104 centimètres. Dans l’encadré du même communiqué, on 
 
 ### Simbi Rush à Busch Gardens Tampa Bay
 
-[Busch Gardens Tampa Bay](ref:busch-gardens-tampa), en Floride, construit pour l’été 2027 Simbi
-Rush, une montagne russe aquatique de Mack Rides avec deux lancements et une vitesse de pointe de
-64 km/h. Selon Busch Gardens, ce sera la première montagne russe aquatique lancée d’Amérique du Nord
-et la plus rapide de son genre au monde. Le parc l’a présentée le 18 novembre 2026. Hauteur,
-longueur du parcours et taille minimale pour les enfants, il ne les a pas encore publiées.
+Simbi Rush, la montagne russe aquatique de Mack Rides pour [Busch Gardens Tampa
+Bay](ref:busch-gardens-tampa) en Floride, est lancée deux fois et atteint 64 km/h. Elle doit ouvrir
+à l’été 2027. Selon Busch Gardens, ce sera la première montagne russe aquatique lancée d’Amérique du
+Nord et la plus rapide de son genre au monde. La hauteur et la longueur du parcours ne figurent pas
+encore dans le communiqué.
 
 Le parcours traverse la zone Congo. L’attraction tient son nom de Simbi, un esprit protecteur de
 l’eau et de la nature d’Afrique centrale. Dans l’histoire imaginée par le parc, le bateau glisse
 d’abord tranquillement sur un lac sacré, jusqu’à ce que l’eau s’en empare. Colère de l’esprit ou
-tour joué par le lac, c’est aux passagers de trancher. Busch Gardens n’a pas annoncé où exactement
-l’attraction sera construite dans la zone Congo, par exemple à la place de Stanley Falls,
-l’attraction aquatique fermée en septembre 2025.
+tour joué par le lac, le parc laisse la question ouverte. En septembre 2025, le parc a fermé
+l’attraction aquatique Stanley Falls après 52 ans. Busch Gardens n’a pas précisé où exactement Simbi
+Rush sera construite.
 
-Busch Gardens présente Simbi Rush comme une attraction familiale. Elle fait partie
-d’investissements de 200 millions de dollars que le parc a prévus sur cinq ans. Les détenteurs d’un
-pass annuel 2027 monteront les premiers, avant l’ouverture au public. Le prix des pass et le moyen
-de venir d’Orlando sans voiture se trouvent dans notre [article sur Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
+Simbi Rush est pensée comme une attraction familiale. La taille minimale pour les enfants n’est pas
+encore fixée. Elle fait partie d’investissements de 200 millions de dollars que le parc a prévus sur
+cinq ans. Les détenteurs d’un pass annuel 2027 monteront les premiers, avant l’ouverture au public.
+Les prix des pass et le trajet sans voiture d’Orlando à Tampa sont réunis dans notre [article sur
+Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
 
 ### Monstropolis à Disney's Hollywood Studios
 
@@ -668,8 +669,7 @@ transformation en 2028, Euro-Mir par une nouvelle montagne russe familiale la m�
 ### Quand les parcs ont-ils annoncé leurs nouveautés 2027 ?
 
 Les parcs Six Flags ont présenté leurs nouveautés 2027 entre mai et septembre 2026, Merlin les
-siennes en mars et en septembre. Busch Gardens Tampa Bay a dévoilé la montagne russe aquatique
-Simbi Rush le 18 novembre 2026 à l’IAAPA Expo, le salon professionnel du secteur à Orlando.
+siennes en mars et en septembre. Busch Gardens Tampa Bay a suivi en dernier, le 18 novembre 2026 à l’IAAPA Expo d’Orlando, avec la montagne russe aquatique Simbi Rush.
 
 — Patrick
 
@@ -711,5 +711,4 @@ Simbi Rush le 18 novembre 2026 à l’IAAPA Expo, le salon professionnel du sect
 - Loup-Garou : [communiqué du 1er juin 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
 - Fuji-Q Highland : [nouvelle montagne russe aquatique (Fuji-Q Highland, 18 septembre 2026)](https://www.fujiq.jp/news/newattraction_news.html)
 - Energylandia : [Rokan (Energylandia)](https://energylandia.pl/secret/?elt_lang=en), [Volana (Energylandia)](https://energylandia.pl/atrakcje/volana/), [Rokan (RCDB)](https://rcdb.com/22709.htm)
-- IAAPA Expo 2026 : [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
 - Temps d’attente : mesures de park.fan

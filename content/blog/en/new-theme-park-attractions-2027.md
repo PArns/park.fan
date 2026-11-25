@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  There's no new roller coaster in Germany in 2027, and the nearest ones are at Nigloland in Champagne and Djurs Sommerland. The tallest new ride is going up in New Jersey, at 382 feet (116 m).
+  Germany gets no new coaster in 2027, and the nearest new ones are in Champagne and Denmark. The tallest is Bakunawa, a 382-foot (116 m) spinning coaster at Six Flags Great Adventure in New Jersey.
 tags:
   - theme-park
   - new-attractions
@@ -52,8 +52,8 @@ Germany is having a quiet year. None of the big parks has announced a new coaste
 Europa-Park's Euro-Mir is going. The big projects are in France, England and Denmark, and in the
 USA Six Flags alone has six parks building something.
 
-Simbi Rush was a late addition. Busch Gardens Tampa Bay unveiled the water coaster for summer 2027
-at the IAAPA Expo trade show in Orlando, which ran from 17 to 20 November 2026.
+The newest entry came from the IAAPA Expo trade show in Orlando, where Busch Gardens Tampa Bay
+unveiled the water coaster Simbi Rush for summer 2027 on 18 November 2026.
 
 ## What makes the list
 
@@ -450,22 +450,21 @@ Thrill Zone near Fury 325. Children can ride from 35 inches (89 cm) with an adul
 
 ### Simbi Rush at Busch Gardens Tampa Bay
 
-[Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida is building Simbi Rush for summer
-2027, a Mack Rides water coaster with two launches and a top speed of 40 mph (64 km/h). Busch
-Gardens says it'll be North America's first launched water coaster and the fastest of its kind in
-the world. The park unveiled it on 18 November 2026. It hasn't published how tall or long the track
-will be, or how tall children need to be to ride.
+Simbi Rush, the Mack Rides water coaster for [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in
+Florida, launches twice and reaches 40 mph (64 km/h). It's due to open in summer 2027. Busch Gardens
+says it'll be North America's first launched water coaster and the fastest of its kind in the world.
+The press release doesn't give the height or length of the track yet.
 
 The ride takes you through the Congo area. It's named after Simbi, a guardian spirit of water and
 nature from Central Africa. In the park's story the boat drifts calmly across a sacred lake until
-the water grabs hold of it, and riders get to decide whether that's the spirit's wrath or a trick of
-the lake. Busch Gardens hasn't announced where exactly in Congo the ride is going, for instance
-whether it takes the spot of Stanley Falls, the water ride that closed in September 2025.
+the water grabs hold of it, and the park leaves it open whether that's the spirit's wrath or a trick
+of the lake. The park lost a ride in September 2025, when the water ride Stanley Falls closed after
+52 years. Busch Gardens hasn't named the exact spot for Simbi Rush.
 
-Busch Gardens calls Simbi Rush a family attraction. It's part of $200 million the park has planned
-to invest over five years. Holders of a 2027 annual pass ride first, before the public opening.
-What the passes cost and how to get there from Orlando without a car is in our
-[news post on Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
+It's meant as a family ride, though the minimum height isn't out yet, and it's one part of the $200
+million the park plans to invest over five years. 2027 annual pass holders ride first, before the
+public opening. Our [news post on Simbi Rush](/news/simbi-rush-busch-gardens-tampa) has the pass
+prices and how to get there from Orlando without a car.
 
 ### Monstropolis at Disney's Hollywood Studios
 
@@ -643,8 +642,7 @@ and Euro-Mir by a new family coaster the same year.
 ### When did the parks announce their 2027 additions?
 
 The Six Flags parks presented their 2027 additions between May and September 2026, and Merlin
-presented its own in March and September. Busch Gardens Tampa Bay unveiled the Simbi Rush water
-coaster on 18 November 2026 at the IAAPA Expo trade show in Orlando.
+presented its own in March and September. Busch Gardens Tampa Bay came last, on 18 November 2026 at the IAAPA Expo in Orlando, with the water coaster Simbi Rush.
 
 — Patrick
 
@@ -686,5 +684,4 @@ coaster on 18 November 2026 at the IAAPA Expo trade show in Orlando.
 - Loup-Garou: [Press release of 1 June 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
 - Fuji-Q Highland: [New water coaster (Fuji-Q Highland, 18 September 2026)](https://www.fujiq.jp/news/newattraction_news.html)
 - Energylandia: [Rokan (Energylandia)](https://energylandia.pl/secret/?elt_lang=en), [Volana (Energylandia)](https://energylandia.pl/atrakcje/volana/), [Rokan (RCDB)](https://rcdb.com/22709.htm)
-- IAAPA Expo 2026: [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
 - Wait times: park.fan's own measurements

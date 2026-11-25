@@ -7,9 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Deutschland gibt es 2027 keine neue Achterbahn, die nächstgelegenen fährst du in
-  Nigloland in der Champagne und in Djurs Sommerland. Die höchste neue Bahn entsteht in New Jersey, 116
-  Meter hoch.
+  Deutschland bekommt 2027 keine neue Achterbahn, die nächsten neuen stehen in der Champagne und in Dänemark. Die höchste neue Bahn ist Bakunawa in New Jersey, 116 Meter hoch.
 tags:
   - freizeitpark
   - neuheiten
@@ -56,8 +54,8 @@ In Deutschland ist es ein ruhiges Jahr. Keiner der großen Parks hat für 2027 e
 angekündigt, und die Euro-Mir im Europa-Park verschwindet. Die großen Projekte stehen in Frankreich,
 England und Dänemark, und in den USA bauen allein sechs Parks von Six Flags.
 
-Simbi Rush kam spät dazu. Busch Gardens Tampa Bay hat die Wasserachterbahn für den Sommer 2027 auf
-der Branchenmesse IAAPA Expo in Orlando vorgestellt. Die Messe lief vom 17. bis 20. November 2026.
+Als Letzte kam Simbi Rush dazu, eine Wasserachterbahn für den Sommer 2027. Busch Gardens Tampa Bay
+hat sie am 18. November 2026 auf der Branchenmesse IAAPA Expo in Orlando vorgestellt.
 
 ## Was in die Liste kommt
 
@@ -468,23 +466,23 @@ der Thrill Zone nahe Fury 325. Kinder dürfen ab 89 Zentimetern in Begleitung mi
 
 ### Simbi Rush in Busch Gardens Tampa Bay
 
-[Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida baut für den Sommer 2027 Simbi Rush,
-eine Wasserachterbahn von Mack Rides mit zwei Launches und bis zu 64 km/h. Laut Busch Gardens wird
-sie die erste Wasserachterbahn mit Launch in Nordamerika und die schnellste ihrer Art weltweit.
-Vorgestellt hat der Park die Bahn am 18. November 2026. Wie hoch und wie lang die Strecke wird und
-ab welcher Größe Kinder mitfahren dürfen, hat er noch nicht veröffentlicht.
+Simbi Rush, die Wasserachterbahn von Mack Rides für [Busch Gardens Tampa
+Bay](ref:busch-gardens-tampa) in Florida, startet zweimal per Launch und fährt bis zu 64 km/h.
+Eröffnen soll sie im Sommer 2027. Laut Busch Gardens wird sie die erste Wasserachterbahn mit Launch
+in Nordamerika und die schnellste ihrer Art weltweit. Höhe und Länge der Strecke nennt die
+Pressemitteilung noch nicht.
 
 Die Fahrt führt durch den Bereich Congo. Ihren Namen hat die Bahn von Simbi, einem Schutzgeist von
 Wasser und Natur aus Zentralafrika. In der Geschichte dazu treibt das Boot erst ruhig über einen
 heiligen See, bis das Wasser es packt. Ob das der Zorn des Geistes ist oder ein Trick des Sees,
-sollen die Fahrgäste selbst entscheiden. Wo genau im Bereich Congo die Bahn entsteht, etwa auf dem
-Platz der im September 2025 geschlossenen Wasserbahn Stanley Falls, hat Busch Gardens nicht bekannt
-gegeben.
+lässt der Park offen. Im September 2025 hat im Park die Wasserbahn Stanley Falls nach 52 Jahren
+geschlossen. Den genauen Bauplatz von Simbi Rush hat Busch Gardens nicht genannt.
 
-Busch Gardens nennt Simbi Rush eine Familienattraktion. Sie gehört zu Investitionen von
-200 Millionen Dollar, die der Park über fünf Jahre geplant hat. Als Erste fahren die Inhaber einer
-Jahreskarte 2027, noch vor der öffentlichen Eröffnung. Was die Jahreskarten kosten und wie du ohne
-Auto aus Orlando hinkommst, steht in unserem [Beitrag zu Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
+Gedacht ist Simbi Rush als Familienattraktion. Ab welcher Größe Kinder mitfahren dürfen, steht noch
+nicht fest. Sie gehört zu Investitionen von 200 Millionen Dollar, die der Park über fünf Jahre
+geplant hat. Als Erste fahren die Inhaber einer Jahreskarte 2027, noch vor der öffentlichen
+Eröffnung. Die Preise der Jahreskarten und den Weg ohne Auto aus Orlando nach Tampa haben wir im
+[Beitrag zu Simbi Rush](/news/simbi-rush-busch-gardens-tampa) zusammengestellt.
 
 ### Monstropolis in Disney's Hollywood Studios
 
@@ -665,8 +663,7 @@ Umbau 2028, die Euro-Mir durch eine neue Familienachterbahn im selben Jahr.
 ### Wann haben die Parks ihre Neuheiten für 2027 angekündigt?
 
 Die Six-Flags-Parks haben ihre Neuheiten für 2027 zwischen Mai und September 2026 vorgestellt,
-Merlin seine im März und September. Busch Gardens Tampa Bay hat die Wasserachterbahn Simbi Rush
-am 18. November 2026 auf der Branchenmesse IAAPA Expo in Orlando vorgestellt.
+Merlin seine im März und September. Als Letzter hat Busch Gardens Tampa Bay nachgelegt, am 18. November 2026 auf der IAAPA Expo in Orlando mit der Wasserachterbahn Simbi Rush.
 
 — Patrick
 
@@ -708,5 +705,4 @@ am 18. November 2026 auf der Branchenmesse IAAPA Expo in Orlando vorgestellt.
 - Loup-Garou: [Pressemitteilung vom 1. Juni 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
 - Fuji-Q Highland: [Neue Wasserachterbahn (Fuji-Q Highland, 18. September 2026)](https://www.fujiq.jp/news/newattraction_news.html)
 - Energylandia: [Rokan (Energylandia)](https://energylandia.pl/secret/?elt_lang=en), [Volana (Energylandia)](https://energylandia.pl/atrakcje/volana/), [Rokan (RCDB)](https://rcdb.com/22709.htm)
-- IAAPA Expo 2026: [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
 - Wartezeiten: eigene Messung von park.fan
