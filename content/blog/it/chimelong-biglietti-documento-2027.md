@@ -44,23 +44,23 @@ seo:
     - Chimelong Zhuhai
 ---
 
-Dal 4 gennaio 2027 i biglietti per tutti i parchi e i teatri di Chimelong si comprano solo a nome di chi entra, con il suo documento d’identità; chi arriva dall’estero usa il passaporto. Se un bambino entra gratis, con il biglietto bambini o con quello ragazzi lo deciderà soltanto l’età, e l’altezza non conterà più. Il Chimelong Resort ha annunciato le nuove regole il 25 novembre con un comunicato: vuole mettere ordine nella vendita e negli ingressi e contrastare, insieme alle autorità, i traffici illegali. Se la data d’inizio dovesse slittare, Chimelong lo farà sapere a parte.
+Dal 4 gennaio 2027 i biglietti per tutti i parchi e i teatri di Chimelong si comprano solo a nome di chi entra, con il suo documento d’identità. Chi arriva dall’estero usa il passaporto. Se un bambino entra gratis, con il biglietto bambini o con quello ragazzi lo deciderà soltanto l’età, e l’altezza non conterà più. Il Chimelong Resort ha annunciato le nuove regole il 25 novembre con un comunicato. Vuole così mettere ordine nella vendita e negli ingressi e contrastare, insieme alle autorità, i traffici illegali. Se la data d’inizio dovesse slittare, Chimelong lo farà sapere a parte.
 
-## Un documento, un biglietto
+## Un biglietto per documento
 
 Quando compri inserisci i dati del documento della persona che userà il biglietto, e ogni documento corrisponde a un solo visitatore. Una volta inviati, i dati non si possono più cambiare. All’ingresso del parco o del teatro mostri l’originale del documento che hai indicato all’acquisto. Con un documento si compra un solo biglietto per lo stesso parco nello stesso giorno, e per un teatro vale lo stesso.
 
-Il documento al tornello, a dire il vero, non è una novità assoluta. Dal 24 novembre 2020 i visitatori cinesi entrano passando allo scanner la carta d’identità, e già adesso anche il biglietto standard viene controllato con il documento indicato al momento dell’acquisto.
+Al tornello i visitatori cinesi passano la carta d’identità allo scanner dal 24 novembre 2020. Già adesso anche il biglietto standard viene controllato con il documento indicato al momento dell’acquisto.
 
 ## Cosa cambia per chi arriva dall’estero
 
-Chi non viene dalla Cina continentale, da Hong Kong, da Macao o da Taiwan compra con un passaporto valido oppure con la carta di residenza permanente cinese per stranieri. Se parti dall’Italia o dalla Svizzera ti serve quindi il passaporto: la carta d’identità non è nell’elenco. Se prenoti per la famiglia o per gli amici, raccogli prima tutti i numeri di passaporto e ricontrollali cifra per cifra, perché dopo l’invio non si corregge più niente. All’ingresso ognuno mostra il proprio passaporto, e una fotocopia non basta.
+Chi non viene dalla Cina continentale, da Hong Kong, da Macao o da Taiwan compra con un passaporto valido oppure con la carta di residenza permanente cinese per stranieri. Se parti dall’Italia o dalla Svizzera ti serve quindi il passaporto: la carta d’identità non è nell’elenco. Se prenoti per la famiglia o per gli amici, raccogli prima tutti i numeri di passaporto e ricontrollali cifra per cifra. All’ingresso ognuno mostra il proprio passaporto, e una fotocopia non basta.
 
 ## I bambini pagano in base all’età
 
 Finora un bambino entrava gratis se aveva meno di tre anni o se era alto meno di 1,0 metri. Il biglietto bambini valeva dai tre agli undici anni oppure per chiunque misurasse tra 1,0 e 1,5 metri. Il biglietto ragazzi spettava a chi aveva tra i dodici e i 17 anni, superava 1,5 metri e mostrava la tessera studentesca.
 
-Dalla mezzanotte del 4 gennaio l’asta per misurare i bambini alla cassa va in pensione, e conta l’età nel giorno della visita. Sotto i tre anni si entra gratis nei parchi, dai tre agli undici anni vale il biglietto bambini e dai dodici ai 17 quello ragazzi. Quando un bambino entra gratis, l’adulto che lo accompagna mostra all’ingresso l’originale del suo documento, e per le famiglie che arrivano dall’estero vuol dire il passaporto del bambino.
+Dalla mezzanotte del 4 gennaio l’asta per misurare i bambini alla cassa va in pensione, e conta l’età nel giorno della visita. Sotto i tre anni si entra gratis nei parchi, dai tre agli undici anni vale il biglietto bambini e dai dodici ai 17 quello ragazzi. Quando un bambino entra gratis, l’adulto che lo accompagna mostra all’ingresso l’originale del documento del bambino, cioè il suo passaporto per le famiglie che arrivano dall’estero.
 
 A [Chimelong Paradise](ref:chimelong-paradise) il biglietto giornaliero costa 250 yuan, 175 per i bambini e 200 per i ragazzi. Un bambino di quattro anni alto meno di un metro finora lì entrava gratis, mentre da gennaio gli serve un biglietto bambini da 175 yuan. Un tredicenne sotto 1,5 metri pagava la tariffa bambini e d’ora in poi ne paga 200 invece di 175. Al [Chimelong Safari Park](ref:chimelong-safari-park) lo stesso tredicenne spende 240 yuan invece di 210 in un giorno feriale, e 280 invece di 245 nei fine settimana, nei festivi e durante le vacanze estive. Lì il biglietto bambini per il piccolo di quattro anni costa 210 yuan, e 245 in quei giorni.
 
@@ -72,15 +72,15 @@ I teatri, per esempio il Chimelong International Circus a Guangzhou, non regalan
 
 ## Chi compra prima del 4 gennaio
 
-Conta il giorno in cui compri, mentre la visita può venire dopo. Per biglietti, pacchetti e abbonamenti annuali comprati prima del 4 gennaio 2027 resta la vecchia regola, con età o altezza. Quello che compri dal 4 gennaio in poi viene controllato solo in base all’età. Con un bambino di quattro anni sotto il metro io prenoterei quindi ancora a dicembre, sempre che il negozio online offra già il giorno della tua visita.
+Conta il giorno in cui compri. La visita può venire dopo. Per biglietti, pacchetti e abbonamenti annuali comprati prima del 4 gennaio 2027 resta la vecchia regola, con età o altezza. Quello che compri dal 4 gennaio in poi viene controllato solo in base all’età. Con un bambino di quattro anni sotto il metro io prenoterei quindi ancora a dicembre, sempre che il negozio online offra già il giorno della tua visita.
 
 ## Gli abbonamenti annuali per ora non si trovano
 
-Dal 19 novembre Chimelong non vende più abbonamenti annuali. Le nuove tessere dovrebbero arrivare in vendita dopo il 26 dicembre. Chi ha una tessera che scade durante la pausa, o chi ha diritto allo sconto sul rinnovo, avrà uno sconto quando compra quella nuova. Le tessere attuali restano valide e si prenota come prima. Per gli abbonamenti annuali conta la regola che Chimelong ha pubblicato al momento dell’acquisto. Per le nuove tessere non si sa ancora. Prezzi e vantaggi delle nuove tessere Chimelong non li ha ancora resi noti.
+Dal 19 novembre Chimelong non vende più abbonamenti annuali. Le nuove tessere dovrebbero arrivare in vendita dopo il 26 dicembre. Chi ha una tessera che scade durante la pausa, o chi ha diritto allo sconto sul rinnovo, avrà uno sconto quando compra quella nuova. Le tessere attuali restano valide e si prenota come prima. Per gli abbonamenti annuali conta la regola che Chimelong ha pubblicato al momento dell’acquisto. Chimelong non ha ancora reso noto quale varrà per le nuove tessere, né quali saranno prezzi e vantaggi.
 
 ## Quali parchi sono coinvolti
 
-Le regole valgono per tutto il resort. A Guangzhou ci sono Chimelong Paradise, il Chimelong Safari Park, il [Chimelong Water Park](ref:chimelong-water-park) e il [Chimelong Birds Park](ref:chimelong-birds-park). Al Water Park il biglietto standard costa 139 yuan, bambini e ragazzi pagano 99, e dalle 17 c’è per tutti un biglietto serale da 99 yuan. A Hengqin (Zhuhai) si trovano [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) e [Chimelong Spaceship](ref:chimelong-spaceship), e la terza sede del resort è Qingyuan. Siccome ogni biglietto viene venduto per un giorno di visita preciso, la data la fissi già quando compri.
+Le regole valgono per tutto il resort. A Guangzhou ci sono Chimelong Paradise, il Chimelong Safari Park, il [Chimelong Water Park](ref:chimelong-water-park) e il [Chimelong Birds Park](ref:chimelong-birds-park). Al Water Park il biglietto standard costa 139 yuan, bambini e ragazzi pagano 99, e dalle 17 c’è per tutti un biglietto serale da 99 yuan. A Hengqin (Zhuhai) si trovano [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) e [Chimelong Spaceship](ref:chimelong-spaceship), e la terza sede del resort è Qingyuan. Ogni biglietto vale per un giorno di visita preciso, che scegli già quando compri.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 

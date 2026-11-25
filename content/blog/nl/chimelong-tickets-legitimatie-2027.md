@@ -46,15 +46,15 @@ seo:
 
 Vanaf 4 januari 2027 koop je tickets voor alle parken en theaters van Chimelong alleen nog op je eigen identiteitsbewijs, en als je uit het buitenland komt op je paspoort. Of een kind gratis binnenkomt, een kinderticket nodig heeft of de jongerenprijs betaalt, hangt dan alleen nog van zijn leeftijd af. Hoe lang het is, doet er niet meer toe. Chimelong Resort maakte de nieuwe regels op 25 november bekend in een mededeling. Het resort wil zo de verkoop en de toegang op orde brengen en samen met de autoriteiten illegale handel aanpakken. Schuift de startdatum op, dan meldt Chimelong dat apart.
 
-## Eén identiteitsbewijs, één ticket
+## Eén ticket per identiteitsbewijs
 
 Bij het kopen vul je de gegevens in van het identiteitsbewijs van degene die het ticket gaat gebruiken, en elk document hoort bij precies één bezoeker. Zodra je de bestelling hebt verzonden, kun je die gegevens niet meer wijzigen. Bij de ingang van het park of theater laat je het originele document zien dat je bij de aankoop hebt opgegeven. Per identiteitsbewijs krijg je voor hetzelfde park op dezelfde dag maar één ticket, en voor een theater werkt het net zo.
 
-Helemaal nieuw is dat legitimeren bij het tourniquet niet. Bezoekers uit China scannen al sinds 24 november 2020 hun identiteitskaart om binnen te komen, en ook het standaardticket wordt nu al gecontroleerd aan de hand van het identiteitsbewijs dat bij de aankoop is ingevuld.
+Bij het tourniquet scannen bezoekers uit China al sinds 24 november 2020 hun identiteitskaart. Ook het standaardticket wordt nu al gecontroleerd aan de hand van het identiteitsbewijs dat bij de aankoop is ingevuld.
 
 ## Wat dit betekent als je uit het buitenland komt
 
-Kom je niet uit het Chinese vasteland, Hongkong, Macau of Taiwan, dan koop je met een geldig paspoort of met de Chinese verblijfskaart voor buitenlanders met permanent verblijf. Uit Nederland en België heb je dus je paspoort nodig, want de identiteitskaart staat niet op de lijst. Boek je voor familie of vrienden, verzamel dan vooraf alle paspoortnummers en let op dat je geen cijfers omdraait, want na het verzenden valt er niets meer te verbeteren. Bij de ingang laat iedereen zijn eigen paspoort zien. Een kopie is niet genoeg.
+Kom je niet uit het Chinese vasteland, Hongkong, Macau of Taiwan, dan koop je met een geldig paspoort of met de Chinese verblijfskaart voor buitenlanders met permanent verblijf. Uit Nederland en België heb je dus je paspoort nodig, want de identiteitskaart staat niet op de lijst. Boek je voor familie of vrienden, verzamel dan vooraf alle paspoortnummers en controleer elk nummer op omgedraaide cijfers. Bij de ingang laat iedereen zijn eigen paspoort zien. Een kopie is niet genoeg.
 
 ## Kinderen betalen naar leeftijd
 
@@ -76,11 +76,11 @@ Wat telt, is de dag waarop je koopt. Je bezoek mag later vallen. Voor tickets, a
 
 ## Jaarkaarten zijn er even niet
 
-Sinds 19 november verkoopt Chimelong geen jaarkaarten meer. De nieuwe kaarten moeten na 26 december in de verkoop gaan. Verloopt je kaart in die pauze of voldoe je aan de voorwaarden voor de verlengingskorting, dan krijg je korting als je de nieuwe kaart koopt. Bestaande kaarten blijven geldig, en reserveren gaat zoals altijd. Voor jaarkaarten telt de regel die Chimelong bij je aankoop had gepubliceerd. Welke dat bij de nieuwe kaarten wordt, staat nog niet vast. Prijzen en voordelen van de nieuwe kaarten heeft Chimelong nog niet bekendgemaakt.
+Sinds 19 november verkoopt Chimelong geen jaarkaarten meer. De nieuwe kaarten moeten na 26 december in de verkoop gaan. Verloopt je kaart in die pauze of voldoe je aan de voorwaarden voor de verlengingskorting, dan krijg je korting als je de nieuwe kaart koopt. Bestaande kaarten blijven geldig, en reserveren gaat zoals altijd. Voor jaarkaarten telt de regel die Chimelong bij je aankoop had gepubliceerd. Welke dat bij de nieuwe kaarten wordt, heeft Chimelong nog niet bekendgemaakt, net zomin als hun prijzen en voordelen.
 
 ## Om welke parken het gaat
 
-De regels gelden voor het hele resort. In Guangzhou zijn dat Chimelong Paradise, het Chimelong Safari Park, het [Chimelong Water Park](ref:chimelong-water-park) en het [Chimelong Birds Park](ref:chimelong-birds-park). In het Water Park kost een standaardticket 139 yuan, kinderen en jongeren betalen 99, en vanaf 17.00 uur is er voor iedereen een avondticket van 99 yuan. In Hengqin in Zhuhai liggen [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) en [Chimelong Spaceship](ref:chimelong-spaceship), en de derde vestiging van het resort ligt in Qingyuan. Omdat elk ticket voor een vaste bezoekdag wordt verkocht, leg je die dag al bij het kopen vast.
+De regels gelden voor het hele resort. In Guangzhou zijn dat Chimelong Paradise, het Chimelong Safari Park, het [Chimelong Water Park](ref:chimelong-water-park) en het [Chimelong Birds Park](ref:chimelong-birds-park). In het Water Park kost een standaardticket 139 yuan, kinderen en jongeren betalen 99, en vanaf 17.00 uur is er voor iedereen een avondticket van 99 yuan. In Hengqin in Zhuhai liggen [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) en [Chimelong Spaceship](ref:chimelong-spaceship), en de derde vestiging van het resort ligt in Qingyuan. Elk ticket geldt voor een vaste bezoekdag, die je al bij het kopen kiest.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 

@@ -44,17 +44,17 @@ seo:
     - Chimelong Zhuhai
 ---
 
-Desde el 4 de enero de 2027, las entradas de todos los parques y teatros de Chimelong se compran solo a tu nombre y con tu propio documento, y si vienes del extranjero, con tu pasaporte. Si un niño entra gratis, con entrada infantil o con entrada juvenil lo decide entonces únicamente su edad; la estatura deja de contar. El Chimelong Resort anunció las nuevas normas el 25 de noviembre en un comunicado. Con ellas quiere poner orden en la venta y en el acceso, y perseguir junto con las autoridades el negocio ilegal. Si la fecha de inicio se retrasa, Chimelong lo avisará aparte.
+Desde el 4 de enero de 2027, las entradas de todos los parques y teatros de Chimelong se compran solo con tu propio documento, y si vienes del extranjero, con tu pasaporte. Si un niño entra gratis, con entrada infantil o con entrada juvenil lo decide entonces únicamente su edad; la estatura deja de contar. El Chimelong Resort anunció las nuevas normas el 25 de noviembre en un comunicado. Con ellas quiere poner orden en la venta y en el acceso, y perseguir junto con las autoridades el negocio ilegal. Si la fecha de inicio se retrasa, Chimelong lo avisará aparte.
 
-## Un documento, una entrada
+## Una entrada por documento
 
 Al comprar indicas los datos del documento de la persona que va a usar la entrada, y cada documento vale para un solo visitante. Una vez enviados, esos datos ya no se pueden cambiar. En la puerta del parque o del teatro enseñas el original del documento que diste en la compra. Con un mismo documento solo hay una entrada para el mismo parque y el mismo día, y con los teatros pasa igual.
 
-Lo del documento en el torniquete no es del todo nuevo. Desde el 24 de noviembre de 2020, los visitantes de China escanean su documento de identidad para entrar, y la entrada estándar ya se comprueba hoy con el documento que se indicó al comprarla.
+En el torniquete, los visitantes de China escanean su documento de identidad desde el 24 de noviembre de 2020. También la entrada estándar se comprueba ya hoy con el documento que se indicó al comprarla.
 
 ## Qué cambia si viajas desde fuera
 
-Quien no sea de China continental, Hong Kong, Macao o Taiwán compra con un pasaporte válido o con la tarjeta china de residencia permanente para extranjeros. El DNI no está en la lista, así que hace falta el pasaporte. Si reservas para la familia o los amigos, reúne antes todos los números de pasaporte y revísalos cifra por cifra, porque una vez enviados no hay forma de corregirlos. En la entrada, cada uno enseña su propio pasaporte. Con una copia no basta.
+Quien no sea de China continental, Hong Kong, Macao o Taiwán compra con un pasaporte válido o con la tarjeta china de residencia permanente para extranjeros. El DNI no está en la lista, así que hace falta el pasaporte. Si reservas para la familia o los amigos, reúne antes todos los números de pasaporte y revísalos cifra por cifra. En la entrada, cada uno enseña su propio pasaporte. Con una copia no basta.
 
 ## Los niños pagan según su edad
 
@@ -72,15 +72,15 @@ Los teatros, como el Chimelong International Circus de Guangzhou, no dan entrada
 
 ## Si compras antes del 4 de enero
 
-Lo que cuenta es el día de la compra, no el de la visita, que puede ser más tarde. Las entradas, los paquetes y los pases anuales que compres antes del 4 de enero de 2027 siguen con la norma antigua de edad o estatura. Lo que compres a partir del 4 de enero se comprueba solo por la edad. Con un niño de cuatro años que no llegue al metro, yo reservaría todavía en diciembre, siempre que la tienda en línea ya ofrezca el día de tu visita.
+Cuenta el día de la compra. La visita puede ser más tarde. Las entradas, los paquetes y los pases anuales que compres antes del 4 de enero de 2027 siguen con la norma antigua de edad o estatura. Lo que compres a partir del 4 de enero se comprueba solo por la edad. Con un niño de cuatro años que no llegue al metro, yo reservaría todavía en diciembre, siempre que la tienda en línea ya ofrezca el día de tu visita.
 
 ## Ahora mismo no hay pases anuales
 
-Desde el 19 de noviembre, Chimelong no vende pases anuales. Los nuevos deberían salir a la venta después del 26 de diciembre. Si tu pase caduca durante la pausa o cumples las condiciones del descuento por renovación, tendrás un descuento al comprar el nuevo. Los pases que ya existen siguen valiendo y se reserva igual que hasta ahora. En los pases anuales vale la norma que Chimelong tenía publicada en el momento de la compra. Cuál será la de los pases nuevos todavía no se sabe. Precios y ventajas de los nuevos pases, Chimelong todavía no los ha dado a conocer.
+Desde el 19 de noviembre, Chimelong no vende pases anuales. Los nuevos deberían salir a la venta después del 26 de diciembre. Si tu pase caduca durante la pausa o cumples las condiciones del descuento por renovación, tendrás un descuento al comprar el nuevo. Los pases que ya existen siguen valiendo y se reserva igual que hasta ahora. En los pases anuales vale la norma que Chimelong tenía publicada en el momento de la compra. Chimelong todavía no ha dado a conocer cuál será la de los pases nuevos, ni sus precios y ventajas.
 
-## Qué parques entran
+## A qué parques afecta
 
-Entra todo el resort. En Guangzhou son Chimelong Paradise, el Chimelong Safari Park, el [Chimelong Water Park](ref:chimelong-water-park) y el [Chimelong Birds Park](ref:chimelong-birds-park). En el Water Park, la entrada estándar cuesta 139 yuanes, niños y jóvenes pagan 99, y desde las 17 h hay para todos una entrada de tarde por 99 yuanes. En Hengqin (Zhuhai) están [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) y [Chimelong Spaceship](ref:chimelong-spaceship); la tercera sede del resort está en Qingyuan. Como cada entrada se vende para un día de visita concreto, la fecha la eliges ya al comprar.
+Afecta a todo el resort. En Guangzhou son Chimelong Paradise, el Chimelong Safari Park, el [Chimelong Water Park](ref:chimelong-water-park) y el [Chimelong Birds Park](ref:chimelong-birds-park). En el Water Park, la entrada estándar cuesta 139 yuanes, niños y jóvenes pagan 99, y desde las 17 h hay para todos una entrada de tarde por 99 yuanes. En Hengqin (Zhuhai) están [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) y [Chimelong Spaceship](ref:chimelong-spaceship); la tercera sede del resort está en Qingyuan. Cada entrada vale para un día de visita concreto, que eliges ya al comprar.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 
