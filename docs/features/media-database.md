@@ -262,6 +262,10 @@ written before them.
 - **Which posts:** the `/news` listing: `isNewsCategory()` (`news` and `news/…`), `listPosts()` so
   drafts, hidden and scheduled posts stay out, only posts the locale has itself (no English
   fallback), newest first by date and time, at most 100 per locale.
+- **Guides:** every other post (the `/blog` listing, `selectGuides()`) is written by the same code
+  to `guides/<locale>.json` and `guides/<locale>/<slug>.json`, with the same fields and block
+  types as the news files below. Two things differ: `url` is
+  `https://park.fan/<locale>/blog/<slug>`, and the list is not capped.
 - **`news/<locale>.json`:** `{schema: 1, generatedAt, locale, posts: [Post]}`, with `Post` =
   `{slug, url, title, teaser, publishedAt, updatedAt?, category, parks, parkSlugs, cover, coverAlt,
 readingMinutes}`. `url` is the absolute `https://park.fan/<locale>/news/<slug>`; `publishedAt`

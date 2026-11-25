@@ -4,7 +4,7 @@ import { newestPublishedFirst } from './published-at';
 import { parseWidgetAttrs, parseWidgetParkRef, parseWidgetRideRef } from './widget-park';
 
 /**
- * The news export for the native app (`scripts/publish-media-r2.mjs`,
+ * The news and guides export for the native app (`scripts/publish-media-r2.mjs`,
  * docs/features/media-database.md#export-for-the-native-app): which posts count and a post body as
  * plain blocks, so the app renders it without a markdown engine. Pure and import-light on purpose;
  * the script injects everything that needs the manifests ({@link BlockContext}).
@@ -62,17 +62,29 @@ export interface BlockContext {
   postPage: string;
 }
 
-/** News only (the `/news` listing), own-locale posts, newest first, capped. */
-export function selectNews<
-  T extends {
-    isFallback: boolean;
-    frontmatter: { category?: string; date: string; time?: string };
-  },
->(posts: readonly T[], cap = NEWS_EXPORT_CAP): T[] {
+interface Selectable {
+  isFallback: boolean;
+  frontmatter: { category?: string; date: string; time?: string };
+}
+
+function select<T extends Selectable>(posts: readonly T[], news: boolean, cap: number): T[] {
   return posts
-    .filter((p) => !p.isFallback && isNewsCategory(p.frontmatter.category))
+    .filter((p) => !p.isFallback && isNewsCategory(p.frontmatter.category) === news)
     .sort((a, b) => newestPublishedFirst(a.frontmatter, b.frontmatter))
     .slice(0, cap);
+}
+
+/** News only (the `/news` listing), own-locale posts, newest first, capped. */
+export function selectNews<T extends Selectable>(posts: readonly T[], cap = NEWS_EXPORT_CAP): T[] {
+  return select(posts, true, cap);
+}
+
+/**
+ * The guides (the `/blog` listing: every post that is not news), own-locale posts, newest first.
+ * Not capped, because a guide stays worth reading where a news post ages out.
+ */
+export function selectGuides<T extends Selectable>(posts: readonly T[]): T[] {
+  return select(posts, false, Infinity);
 }
 
 const WIDGET_FENCES: Record<string, NewsWidgetBlock['widget']> = {
