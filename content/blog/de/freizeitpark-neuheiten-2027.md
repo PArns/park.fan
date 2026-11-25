@@ -2,15 +2,14 @@
 title: 'Freizeitpark-Neuheiten 2027: was Parks und Hersteller bestätigt haben'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-11-11'
+updatedAt: '2026-11-25'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Neue Achterbahnen, Themenbereiche und Shows für 2027 in Deutschland, Benelux,
-  dem übrigen Europa, den USA und Japan, jede mit Hersteller, technischen Daten, Termin
-  und Link zur Quelle von Park oder Hersteller. Dazu die Bahnen, die gehen, und
-  was bisher nur Gerücht ist.
+  Eine neue Achterbahn gibt es 2027 in Deutschland nicht, die nächsten fährst du in Nigloland in
+  der Champagne und in Djurs Sommerland. Die höchste neue Bahn entsteht in New Jersey, 116
+  Meter hoch.
 tags:
   - freizeitpark
   - neuheiten
@@ -43,9 +42,10 @@ seo:
     - Flying Cinema Plopsaland Belgium
     - Euro-Mir Abschied
     - Loup-Garou Walibi Belgium Umbau
+    - Simbi Rush Busch Gardens Tampa
 ---
 
-Parks in Europa und den USA haben gut zwei Dutzend Neuheiten für 2027 selbst
+Parks in Europa und den USA haben fast 30 Neuheiten für 2027 selbst
 bestätigt, darunter eine Spinning-Achterbahn in New Jersey, die laut Six Flags die höchste der Welt
 wird, und ein Märchen im Efteling, das in einer Bibliothek spielt. Ein festes Datum für eine neue
 Attraktion hat bisher nur Plopsaland Belgium genannt, das Flying Cinema öffnet am Samstag, dem 13.
@@ -56,7 +56,8 @@ In Deutschland ist es ein ruhiges Jahr. Keiner der großen Parks hat für 2027 e
 angekündigt, und die Euro-Mir im Europa-Park verschwindet. Die großen Projekte stehen in Frankreich,
 England und Dänemark, und in den USA bauen allein sechs Parks von Six Flags.
 
-Die nächste große Gelegenheit für Ankündigungen ist die Branchenmesse IAAPA Expo, die vom 17. bis 20. November 2026 in Orlando läuft.
+Auf der Branchenmesse IAAPA Expo, deren Ausstellung vom 17. bis 20. November 2026 in Orlando lief,
+hat Busch Gardens Tampa Bay noch eine Wasserachterbahn für den Sommer 2027 vorgestellt.
 
 ## Was in die Liste kommt
 
@@ -95,6 +96,7 @@ in Meter, Kilometer pro Stunde und Zentimeter umgerechnet und gerundet.
 | [Kentucky Kingdom](ref:kentucky-kingdom?bare)                         | Midnight Showdown                     | Indoor-Holzachterbahn, Gravity Group | Frühjahr 2027            |
 | [Six Flags Great America](ref:six-flags-great-america?bare)           | Camp Timber Trail                     | Familienbereich mit Sky Hawk         | 2027                     |
 | [Carowinds](ref:carowinds?bare)                                       | Rip Roarin' Falls                     | Super Flume, WhiteWater              | 2027                     |
+| [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?bare)               | Simbi Rush                            | Wasserachterbahn, Mack Rides         | Sommer 2027              |
 | [Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare)      | Monstropolis, erster Teil             | Show, Restaurants, Shop              | Teile 2027               |
 | [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) | Tropical Americas                     | Themenbereich, zwei Ride-Throughs    | 2027                     |
 | [Knott's Soak City](ref:knotts-soak-city?bare)                        | Coral Craze und Kelp Kraze            | zwei Rutschen                        | 2027                     |
@@ -464,6 +466,27 @@ Gelände von Rip Roarin' Rapids, einer Wildwasserbahn, die 2019 geschlossen hat,
 der Thrill Zone nahe Fury 325. Kinder dürfen ab 89 Zentimetern in Begleitung mitfahren und allein ab
 104 Zentimetern. Im Infokasten derselben Pressemitteilung steht ein Zoll mehr.
 
+### Simbi Rush in Busch Gardens Tampa Bay
+
+[Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida baut für den Sommer 2027 Simbi Rush,
+eine Wasserachterbahn von Mack Rides mit zwei Launches und bis zu 64 km/h. Laut Busch Gardens wird
+sie die erste Wasserachterbahn mit Launch in Nordamerika und die schnellste ihrer Art weltweit.
+Vorgestellt hat der Park die Bahn am 18. November 2026 auf der IAAPA Expo in Orlando. Wie hoch und
+wie lang die Strecke wird und ab welcher Größe Kinder mitfahren dürfen, hat er noch nicht
+veröffentlicht.
+
+Die Fahrt führt durch den Bereich Congo. Ihren Namen hat die Bahn von Simbi, einem Schutzgeist von
+Wasser und Natur aus Zentralafrika, und in der Geschichte dazu treibt das Boot erst ruhig über einen
+heiligen See, bis das Wasser es packt. Ob das der Zorn des Geistes ist oder ein Trick des Sees,
+sollen die Fahrgäste selbst entscheiden, nass werden sie so oder so. Wo genau im Bereich Congo die
+Bahn entsteht, hat Busch Gardens nicht bekannt gegeben, also auch nicht, ob auf dem Platz der
+früheren Baumstammrutsche Stanley Falls.
+
+Der Park plant Simbi Rush als Familienattraktion, und sie gehört zu einem Plan, für den er in fünf
+Jahren 200 Millionen Dollar ausgeben will. Als Erste fahren die Inhaber einer Jahreskarte 2027,
+noch vor der öffentlichen Eröffnung. Was die Jahreskarten kosten und wie du ohne Auto aus Orlando
+hinkommst, steht in unserem [Beitrag zu Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
+
 ### Monstropolis in Disney's Hollywood Studios
 
 In [Disney's Hollywood Studios](ref:disneys-hollywood-studios) öffnet 2027 ein Teil des
@@ -528,7 +551,7 @@ am kürzesten ist. Die Neuheit selbst ist in diesen Werten noch nicht enthalten.
 
 ```
 
-```park-comparison-widget slugs=six-flags-great-adventure,six-flags-magic-mountain,universal-studios-florida,six-flags-fiesta-texas,silver-dollar-city,kentucky-kingdom,six-flags-great-america,carowinds,disneys-hollywood-studios show=quietest
+```park-comparison-widget slugs=six-flags-great-adventure,six-flags-magic-mountain,universal-studios-florida,six-flags-fiesta-texas,silver-dollar-city,kentucky-kingdom,six-flags-great-america,carowinds,busch-gardens-tampa,disneys-hollywood-studios show=quietest
 
 ```
 
@@ -612,8 +635,6 @@ angekündigt haben:
 - Eine neue Achterbahn im Cedar Point steht bisher nur in einem einzelnen Beitrag auf X.
 - Die Wasserattraktion in Canada's Wonderland war für 2026 angekündigt. Im Februar 2026 hat der
   Park sie zurückgestellt und seitdem kein neues Jahr genannt.
-- Für den Ersatz von Stanley Falls in Busch Gardens Tampa gibt es einen Bauantrag und eine
-  Markenanmeldung, aber vom Park weder Namen noch Jahr.
 - Der Cars-Bereich Piston Peak und der Bereich zu den Disney-Schurken im Magic Kingdom haben kein
   Jahr, ebenso der Bereich zum „König der Löwen“ in Paris, Pokémon in Orlando und neue
   Attraktionen in Epic Universe.
@@ -642,11 +663,12 @@ Der Loup-Garou in Walibi Belgium fährt am 3. Januar 2027 zum letzten Mal in sei
 die Euro-Mir im Europa-Park am 9. Januar 2027. Beide werden ersetzt, der Loup-Garou durch einen
 Umbau 2028, die Euro-Mir durch eine neue Familienachterbahn im selben Jahr.
 
-### Wann werden die nächsten Neuheiten angekündigt?
+### Wann haben die Parks ihre Neuheiten für 2027 angekündigt?
 
-Die nächste Gelegenheit ist die Branchenmesse IAAPA Expo in Orlando, die Ausstellung läuft vom 17.
-bis 20. November 2026. Die Six-Flags-Parks haben ihre Neuheiten für 2027 zwischen Mai und September
-2026 vorgestellt, Merlin seine im März und September.
+Die Six-Flags-Parks haben ihre Neuheiten für 2027 zwischen Mai und September 2026 vorgestellt,
+Merlin seine im März und September. Busch Gardens Tampa Bay hat die Wasserachterbahn Simbi Rush
+am 18. November 2026 auf der Branchenmesse IAAPA Expo in Orlando vorgestellt, deren Ausstellung
+vom 17. bis 20. November lief.
 
 — Patrick
 
@@ -677,6 +699,7 @@ bis 20. November 2026. Die Six-Flags-Parks haben ihre Neuheiten für 2027 zwisch
 - Midnight Showdown: [Pressemitteilung vom 5. November 2026 (Kentucky Kingdom)](https://www.kentuckykingdom.com/media-room/and-theyre-off/), [Midnight Showdown (Kentucky Kingdom)](https://www.kentuckykingdom.com/explore-the-park/attractions/kentucky-kingdom/midnight-showdown/)
 - Camp Timber Trail: [Pressemitteilung vom 6. August 2026](https://www.prnewswire.com/news-releases/six-flags-great-america-announces-camp-timber-trail-an-all-new-family-adventure-for-2027-302844445.html)
 - Rip Roarin' Falls: [Pressemitteilung vom 8. Juni 2026](https://www.prnewswire.com/news-releases/carowinds-announces-100-foot-super-flume-ride-set-to-break-three-world-records-302794334.html), [New in 2027 (Carowinds)](https://www.sixflags.com/carowinds/new-in-2027)
+- Simbi Rush: [Pressemitteilung (Busch Gardens Tampa Bay)](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html), [Simbi Rush (Busch Gardens Tampa Bay)](https://buschgardens.com/tampa/roller-coasters/simbi-rush/), [Simbi Rush (RCDB)](https://rcdb.com/24715.htm)
 - Monstropolis: [Disney Parks Blog vom 16. August 2026](https://disneyparksblog.com/wdw/monsters-inc-land-monstropolis-walt-disney-world/), Grand Avenue: [Disney Parks Blog vom 24. Januar 2025](https://disneyparksblog.com/wdw/monsters-inc-the-muppets-hollywood-studios/), Achterbahn: [Disney Parks Blog vom 8. März 2025](https://disneyparksblog.com/wdw/sxsw-2025-monsters-coaster-hollywood-studios/)
 - Tropical Americas: [Disney Parks Blog vom 30. April 2026](https://disneyparksblog.com/wdw/discover-the-newest-land-at-disneys-animal-kingdom-updates-from-tropical-americas/), [Expansions (Disney Experiences)](https://disneyexperiences.com/expansions/)
 - Knott's Soak City: [New in 2027 (Knott's)](https://www.sixflags.com/knotts/new-in-2027)

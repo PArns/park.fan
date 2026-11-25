@@ -2,16 +2,12 @@
 title: 'Novedades de los parques temáticos en 2027: lo que han confirmado parques y fabricantes'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-11-11'
+updatedAt: '2026-11-25'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Nuevas montañas rusas, zonas temáticas y espectáculos para 2027 en Alemania,
-  el Benelux, el resto de Europa, Estados Unidos y Japón, cada novedad con su
-  fabricante, sus datos técnicos, su fecha y el enlace a la fuente del parque o
-  del fabricante. Además, las atracciones que se van y lo que de momento es solo
-  un rumor.
+  En Alemania no habrá ninguna montaña rusa nueva en 2027, y las más cercanas las tienes en Nigloland, en la Champaña, y en Djurs Sommerland. La atracción nueva más alta se construye en Nueva Jersey y medirá 116 metros.
 tags:
   - parque-atracciones
   - novedades
@@ -44,10 +40,10 @@ seo:
     - Flying Cinema Plopsaland Belgium
     - despedida Euro-Mir
     - Loup-Garou Walibi Belgium reforma
+    - Simbi Rush Busch Gardens Tampa
 ---
 
-Parques de Europa y Estados Unidos han confirmado ellos mismos algo más de
-dos docenas de novedades para 2027. Entre ellas hay una montaña rusa giratoria en Nueva Jersey que,
+Parques de Europa y Estados Unidos han confirmado ellos mismos casi 30 novedades para 2027. Entre ellas hay una montaña rusa giratoria en Nueva Jersey que,
 según Six Flags, será la más alta del mundo, y un cuento del Efteling ambientado en una biblioteca.
 La única fecha fija para una atracción nueva la ha dado Plopsaland Belgium, cuyo Flying Cinema abre
 el sábado 13 de marzo de 2027. Los demás ponen el año, algunos una estación, y más de la mitad no dice
@@ -57,7 +53,7 @@ Para Alemania será un año tranquilo. Ninguno de los grandes parques ha anuncia
 nueva para 2027, y la Euro-Mir del Europa-Park desaparece. Los proyectos grandes están en Francia,
 Inglaterra y Dinamarca. En Estados Unidos, solo de Six Flags hay seis parques en obras.
 
-La próxima gran ocasión para anuncios es la IAAPA Expo, la feria del sector que se celebra en Orlando del 17 al 20 de noviembre de 2026.
+En la IAAPA Expo, la feria del sector cuya exposición se celebró en Orlando del 17 al 20 de noviembre de 2026, Busch Gardens Tampa Bay presentó además una montaña rusa acuática para el verano de 2027.
 
 ## Qué entra en la lista
 
@@ -97,6 +93,7 @@ pulgadas los he pasado a metros, kilómetros por hora y centímetros, y he redon
 | [Kentucky Kingdom](ref:kentucky-kingdom?bare)                         | Midnight Showdown               | Montaña rusa de madera bajo techo, Gravity Group | Primavera de 2027               |
 | [Six Flags Great America](ref:six-flags-great-america?bare)           | Camp Timber Trail               | Zona familiar con Sky Hawk                       | 2027                            |
 | [Carowinds](ref:carowinds?bare)                                       | Rip Roarin' Falls               | Super Flume, WhiteWater                          | 2027                            |
+| [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?bare)               | Simbi Rush                      | Montaña rusa acuática, Mack Rides                | Verano de 2027                  |
 | [Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare)      | Monstropolis, primera parte     | Espectáculo, restaurantes, tienda                | Partes en 2027                  |
 | [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) | Tropical Americas               | Zona temática, dos atracciones con vehículo      | 2027                            |
 | [Knott's Soak City](ref:knotts-soak-city?bare)                        | Coral Craze y Kelp Kraze        | Dos toboganes                                    | 2027                            |
@@ -453,6 +450,27 @@ Rip Roarin' Rapids, unos rápidos que cerraron en 2019, y la entrada está en la
 Fury 325. Los niños pueden subir acompañados desde 89 centímetros y solos desde 104. En el recuadro
 de datos de esa misma nota de prensa figura una pulgada más.
 
+### Simbi Rush en Busch Gardens Tampa Bay
+
+[Busch Gardens Tampa Bay](ref:busch-gardens-tampa), en Florida, construye para el verano de 2027
+Simbi Rush, una montaña rusa acuática de Mack Rides con dos lanzamientos y hasta 64 km/h. Según
+Busch Gardens, será la primera montaña rusa acuática lanzada de Norteamérica y la más rápida de su
+tipo en el mundo. El parque la presentó el 18 de noviembre de 2026 en la IAAPA Expo de Orlando.
+La altura, la longitud del recorrido y la estatura mínima para los niños aún no las ha
+publicado.
+
+El recorrido atraviesa la zona Congo. El nombre viene de Simbi, un espíritu protector del agua y de
+la naturaleza de África central. En la historia que cuenta el parque, la barca cruza primero
+tranquila un lago sagrado hasta que el agua la atrapa. Si es la ira del espíritu o una jugarreta
+del lago lo deciden los pasajeros, que acaban mojados con cualquiera de las dos respuestas. Busch
+Gardens no ha anunciado en qué punto exacto de Congo se construye, así que tampoco si ocupa el
+lugar de la antigua atracción de troncos Stanley Falls.
+
+El parque plantea Simbi Rush como atracción familiar, y forma parte de un plan para invertir
+200 millones de dólares en cinco años. Los primeros en subir serán quienes tengan el pase anual
+2027, antes de la apertura al público. Lo que cuestan los pases y cómo llegar desde Orlando sin
+coche está en nuestra [noticia sobre Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
+
 ### Monstropolis en Disney's Hollywood Studios
 
 En [Disney's Hollywood Studios](ref:disneys-hollywood-studios) abre en 2027 una parte de
@@ -518,7 +536,7 @@ novedad todavía no entra en esas cifras.
 
 ```
 
-```park-comparison-widget slugs=six-flags-great-adventure,six-flags-magic-mountain,universal-studios-florida,six-flags-fiesta-texas,silver-dollar-city,kentucky-kingdom,six-flags-great-america,carowinds,disneys-hollywood-studios show=quietest
+```park-comparison-widget slugs=six-flags-great-adventure,six-flags-magic-mountain,universal-studios-florida,six-flags-fiesta-texas,silver-dollar-city,kentucky-kingdom,six-flags-great-america,carowinds,busch-gardens-tampa,disneys-hollywood-studios show=quietest
 
 ```
 
@@ -604,8 +622,6 @@ anunciado ellos mismos para 2027:
 - Una montaña rusa nueva en Cedar Point solo aparece, de momento, en una publicación suelta en X.
 - La atracción acuática de Canada's Wonderland estaba anunciada para 2026. En febrero de 2026 el
   parque la aplazó y desde entonces no ha dado un año nuevo.
-- Para lo que sustituirá a Stanley Falls en Busch Gardens Tampa hay una solicitud de licencia y un
-  registro de marca, pero el parque no ha dado ni nombre ni año.
 - No tienen año Piston Peak, la zona de «Cars», ni la de los villanos de Disney en el Magic Kingdom,
   como tampoco la zona de «El rey león» en París, Pokémon en Orlando y las atracciones nuevas de
   Epic Universe.
@@ -634,11 +650,12 @@ El Loup-Garou de Walibi Belgium funciona por última vez en su forma actual el 3
 la Euro-Mir del Europa-Park, el 9 de enero de 2027. Las dos tendrán sustituta, el Loup-Garou con una
 reforma en 2028 y la Euro-Mir con una montaña rusa familiar nueva ese mismo año.
 
-### ¿Cuándo se anunciarán las próximas novedades?
+### ¿Cuándo anunciaron los parques sus novedades para 2027?
 
-La próxima ocasión es la IAAPA Expo, la feria del sector en Orlando, cuya exposición está abierta del 17 al
-20 de noviembre de 2026. Los parques de Six Flags presentaron sus novedades para 2027 entre mayo y
-septiembre de 2026, y Merlin las suyas en marzo y en septiembre.
+Los parques de Six Flags presentaron sus novedades para 2027 entre mayo y septiembre de 2026, y
+Merlin las suyas en marzo y en septiembre. Busch Gardens Tampa Bay presentó la montaña rusa
+acuática Simbi Rush el 18 de noviembre de 2026 en la IAAPA Expo, la feria del sector en Orlando,
+cuya exposición se celebró del 17 al 20 de noviembre.
 
 — Patrick
 
@@ -669,6 +686,7 @@ septiembre de 2026, y Merlin las suyas en marzo y en septiembre.
 - Midnight Showdown: [Nota de prensa del 5 de noviembre de 2026 (Kentucky Kingdom)](https://www.kentuckykingdom.com/media-room/and-theyre-off/), [Midnight Showdown (Kentucky Kingdom)](https://www.kentuckykingdom.com/explore-the-park/attractions/kentucky-kingdom/midnight-showdown/)
 - Camp Timber Trail: [Nota de prensa del 6 de agosto de 2026](https://www.prnewswire.com/news-releases/six-flags-great-america-announces-camp-timber-trail-an-all-new-family-adventure-for-2027-302844445.html)
 - Rip Roarin' Falls: [Nota de prensa del 8 de junio de 2026](https://www.prnewswire.com/news-releases/carowinds-announces-100-foot-super-flume-ride-set-to-break-three-world-records-302794334.html), [New in 2027 (Carowinds)](https://www.sixflags.com/carowinds/new-in-2027)
+- Simbi Rush: [Nota de prensa (Busch Gardens Tampa Bay)](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html), [Simbi Rush (Busch Gardens Tampa Bay)](https://buschgardens.com/tampa/roller-coasters/simbi-rush/), [Simbi Rush (RCDB)](https://rcdb.com/24715.htm)
 - Monstropolis: [Disney Parks Blog, 16 de agosto de 2026](https://disneyparksblog.com/wdw/monsters-inc-land-monstropolis-walt-disney-world/), Grand Avenue: [Disney Parks Blog, 24 de enero de 2025](https://disneyparksblog.com/wdw/monsters-inc-the-muppets-hollywood-studios/), montaña rusa: [Disney Parks Blog, 8 de marzo de 2025](https://disneyparksblog.com/wdw/sxsw-2025-monsters-coaster-hollywood-studios/)
 - Tropical Americas: [Disney Parks Blog, 30 de abril de 2026](https://disneyparksblog.com/wdw/discover-the-newest-land-at-disneys-animal-kingdom-updates-from-tropical-americas/), [Expansions (Disney Experiences)](https://disneyexperiences.com/expansions/)
 - Knott's Soak City: [New in 2027 (Knott's)](https://www.sixflags.com/knotts/new-in-2027)

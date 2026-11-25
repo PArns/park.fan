@@ -2,15 +2,12 @@
 title: 'Nieuwe attracties 2027: wat pretparken en fabrikanten hebben bevestigd'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-11-11'
+updatedAt: '2026-11-25'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Nieuwe achtbanen, themagebieden en shows voor 2027 in Duitsland, de Benelux,
-  de rest van Europa, de VS en Japan, telkens met fabrikant, technische gegevens, datum
-  en een link naar wat het park of de fabrikant zelf publiceerde. Plus de banen
-  die verdwijnen en wat voorlopig alleen een gerucht is.
+  In Duitsland komt er in 2027 geen nieuwe achtbaan bij, de dichtstbijzijnde rijd je in Nigloland in de Champagne en in Djurs Sommerland. De hoogste nieuwe baan komt in New Jersey, 116 meter hoog.
 tags:
   - pretpark
   - nieuwigheden
@@ -44,13 +41,14 @@ seo:
     - Supersonic 1887 Nigloland
     - afscheid Euro-Mir
     - Loup-Garou Walibi Belgium ombouw
+    - Simbi Rush Busch Gardens Tampa
 ---
 
-Parken in Europa en de VS hebben zelf ruim twee dozijn nieuwigheden voor 2027 bevestigd. Daaronder zijn een spinning coaster in New Jersey die volgens Six Flags de hoogste ter wereld wordt, en een sprookje in de Efteling dat zich in een bibliotheek afspeelt. Alleen Plopsaland Belgium heeft al een vaste datum genoemd, het Flying Cinema opent op zaterdag 13 maart 2027. De andere parken houden het bij een jaartal, sommige met een jaargetijde erbij, en meer dan de helft noemt geen fabrikant.
+Parken in Europa en de VS hebben zelf bijna 30 nieuwigheden voor 2027 bevestigd. Daaronder zijn een spinning coaster in New Jersey die volgens Six Flags de hoogste ter wereld wordt, en een sprookje in de Efteling dat zich in een bibliotheek afspeelt. Alleen Plopsaland Belgium heeft al een vaste datum genoemd, het Flying Cinema opent op zaterdag 13 maart 2027. De andere parken houden het bij een jaartal, sommige met een jaargetijde erbij, en meer dan de helft noemt geen fabrikant.
 
 In Duitsland wordt het een rustig jaar. Geen van de grote parken heeft voor 2027 een nieuwe achtbaan aangekondigd, en in Europa-Park verdwijnt Euro-Mir. De grote projecten liggen in Frankrijk, Engeland en Denemarken, en in de VS wordt alleen al in zes parken van Six Flags gebouwd.
 
-De volgende grote kans op aankondigingen is de vakbeurs IAAPA Expo, van 17 tot en met 20 november 2026 in Orlando.
+Op de vakbeurs IAAPA Expo, waar de beursvloer van 17 tot en met 20 november 2026 in Orlando open was, presenteerde Busch Gardens Tampa Bay nog een waterachtbaan voor de zomer van 2027.
 
 ## Wat in de lijst komt
 
@@ -86,6 +84,7 @@ Tijdstip, fabrikant en cijfers staan er zoals park of fabrikant ze geeft. Waar a
 | [Kentucky Kingdom](ref:kentucky-kingdom?bare)                         | Midnight Showdown                  | indoor houten achtbaan, Gravity Group | voorjaar 2027               |
 | [Six Flags Great America](ref:six-flags-great-america?bare)           | Camp Timber Trail                  | familiegebied met Sky Hawk            | 2027                        |
 | [Carowinds](ref:carowinds?bare)                                       | Rip Roarin' Falls                  | super flume, WhiteWater               | 2027                        |
+| [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?bare)               | Simbi Rush                         | waterachtbaan, Mack Rides             | zomer 2027                  |
 | [Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare)      | Monstropolis, eerste deel          | show, restaurants, winkel             | delen in 2027               |
 | [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) | Tropical Americas                  | themagebied, twee ride-throughs       | 2027                        |
 | [Knott's Soak City](ref:knotts-soak-city?bare)                        | Coral Craze en Kelp Kraze          | twee glijbanen                        | 2027                        |
@@ -263,6 +262,14 @@ Vier bestaande attracties krijgen een nieuw thema en een nieuwe naam. Sprocket R
 
 De baan is 683 meter lang, een rit duurt zes en een halve minuut. Hij staat op de plek van Rip Roarin' Rapids, een wildwaterbaan die in 2019 dichtging, en de ingang ligt in de Thrill Zone bij Fury 325. Kinderen mogen vanaf 89 centimeter mee onder begeleiding en vanaf 104 centimeter alleen. In het infokader van hetzelfde persbericht staat een inch meer.
 
+### Simbi Rush in Busch Gardens Tampa Bay
+
+[Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida bouwt voor de zomer van 2027 Simbi Rush, een waterachtbaan van Mack Rides met twee lanceringen en een topsnelheid van 64 km/u. Volgens Busch Gardens wordt het de eerste gelanceerde waterachtbaan van Noord-Amerika en de snelste van zijn soort ter wereld. Het park presenteerde de baan op 18 november 2026 op de IAAPA Expo in Orlando. Hoe hoog en hoe lang het parcours wordt en vanaf welke lengte kinderen mee mogen, heeft het park nog niet bekendgemaakt.
+
+De rit gaat door het themagebied Congo. De naam komt van Simbi, een beschermgeest van water en natuur uit Centraal-Afrika. In het verhaal van het park drijft de boot eerst kalm over een heilig meer, tot het water hem grijpt. Of dat de woede van de geest is of een streek van het meer, mogen de passagiers zelf uitmaken, nat worden ze hoe dan ook. Waar in Congo de baan precies komt, heeft Busch Gardens niet bekendgemaakt, dus ook niet of hij op de plek van de vroegere boomstammenbaan Stanley Falls komt.
+
+Het park ziet Simbi Rush als gezinsattractie, en ze hoort bij een plan om in vijf jaar 200 miljoen dollar uit te geven. Als eersten rijden de houders van een jaarkaart 2027, nog voor de opening voor iedereen. Wat de jaarkaarten kosten en hoe je zonder auto vanuit Orlando in het park komt, staat in ons [bericht over Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
+
 ### Monstropolis in Disney's Hollywood Studios
 
 In [Disney's Hollywood Studios](ref:disneys-hollywood-studios) opent in 2027 een deel van het themagebied Monstropolis, rond “Monsters en Co.”. De achtbaan met de deuren hoort daar nog niet bij, volgens Disney wordt er nog aan gebouwd. Een jaar voor de baan noemt Disney niet. Bekend is alleen dat het de eerste suspended coaster in een Disney-park wordt en als eerste een verticale lift krijgt.
@@ -297,7 +304,7 @@ In de twee tabellen staan de parken met een nieuwe achtbaan of een nieuw themage
 
 ```
 
-```park-comparison-widget slugs=six-flags-great-adventure,six-flags-magic-mountain,universal-studios-florida,six-flags-fiesta-texas,silver-dollar-city,kentucky-kingdom,six-flags-great-america,carowinds,disneys-hollywood-studios show=quietest
+```park-comparison-widget slugs=six-flags-great-adventure,six-flags-magic-mountain,universal-studios-florida,six-flags-fiesta-texas,silver-dollar-city,kentucky-kingdom,six-flags-great-america,carowinds,busch-gardens-tampa,disneys-hollywood-studios show=quietest
 
 ```
 
@@ -351,7 +358,6 @@ Niet in de lijst staan projecten die park, exploitant of fabrikant niet zelf voo
 - Voor Legoland Windsor, Alton Towers en Thorpe Park liggen er bouwaanvragen en planningsdocumenten, maar geen aankondiging van de parken.
 - Een nieuwe achtbaan in Cedar Point staat tot nu toe alleen in één bericht op X.
 - De waterattractie in Canada's Wonderland was voor 2026 aangekondigd. In februari 2026 heeft het park haar uitgesteld, en sindsdien is er geen nieuw jaar genoemd.
-- Voor de opvolger van Stanley Falls in Busch Gardens Tampa zijn er een bouwaanvraag en een merkregistratie, maar van het park zelf geen naam en geen jaar.
 - Het Cars-gebied Piston Peak en het gebied rond de Disney-schurken in Magic Kingdom hebben geen jaar, net als het gebied rond “De Leeuwenkoning” in Parijs, Pokémon in Orlando en nieuwe attracties in Epic Universe.
 
 ## Veelgestelde vragen
@@ -372,9 +378,9 @@ Het Flying Cinema in Plopsaland Belgium, op 13 maart 2027. Wie een jaarabonnemen
 
 Loup-Garou in Walibi Belgium rijdt op 3 januari 2027 voor het laatst in zijn huidige vorm, Euro-Mir in Europa-Park op 9 januari 2027. Ze worden allebei vervangen, Loup-Garou door een ombouw in 2028 en Euro-Mir door een nieuwe familieachtbaan in hetzelfde jaar.
 
-### Wanneer worden de volgende nieuwigheden aangekondigd?
+### Wanneer hebben de parken hun nieuwigheden voor 2027 aangekondigd?
 
-De volgende gelegenheid is de vakbeurs IAAPA Expo in Orlando, waar de beursvloer van 17 tot en met 20 november 2026 open is. De Six Flags-parken hebben hun nieuwigheden voor 2027 tussen mei en september 2026 voorgesteld, Merlin de zijne in maart en september.
+De Six Flags-parken hebben hun nieuwigheden voor 2027 tussen mei en september 2026 voorgesteld, Merlin de zijne in maart en september. Busch Gardens Tampa Bay presenteerde de waterachtbaan Simbi Rush op 18 november 2026 op de vakbeurs IAAPA Expo in Orlando, waar de beursvloer van 17 tot en met 20 november open was.
 
 — Patrick
 
@@ -405,6 +411,7 @@ De volgende gelegenheid is de vakbeurs IAAPA Expo in Orlando, waar de beursvloer
 - Midnight Showdown: [Persbericht van 5 november 2026 (Kentucky Kingdom)](https://www.kentuckykingdom.com/media-room/and-theyre-off/), [Midnight Showdown (Kentucky Kingdom)](https://www.kentuckykingdom.com/explore-the-park/attractions/kentucky-kingdom/midnight-showdown/)
 - Camp Timber Trail: [Persbericht van 6 augustus 2026](https://www.prnewswire.com/news-releases/six-flags-great-america-announces-camp-timber-trail-an-all-new-family-adventure-for-2027-302844445.html)
 - Rip Roarin' Falls: [Persbericht van 8 juni 2026](https://www.prnewswire.com/news-releases/carowinds-announces-100-foot-super-flume-ride-set-to-break-three-world-records-302794334.html), [New in 2027 (Carowinds)](https://www.sixflags.com/carowinds/new-in-2027)
+- Simbi Rush: [Persbericht (Busch Gardens Tampa Bay)](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html), [Simbi Rush (Busch Gardens Tampa Bay)](https://buschgardens.com/tampa/roller-coasters/simbi-rush/), [Simbi Rush (RCDB)](https://rcdb.com/24715.htm)
 - Monstropolis: [Disney Parks Blog van 16 augustus 2026](https://disneyparksblog.com/wdw/monsters-inc-land-monstropolis-walt-disney-world/), Grand Avenue: [Disney Parks Blog van 24 januari 2025](https://disneyparksblog.com/wdw/monsters-inc-the-muppets-hollywood-studios/), achtbaan: [Disney Parks Blog van 8 maart 2025](https://disneyparksblog.com/wdw/sxsw-2025-monsters-coaster-hollywood-studios/)
 - Tropical Americas: [Disney Parks Blog van 30 april 2026](https://disneyparksblog.com/wdw/discover-the-newest-land-at-disneys-animal-kingdom-updates-from-tropical-americas/), [Expansions (Disney Experiences)](https://disneyexperiences.com/expansions/)
 - Knott's Soak City: [New in 2027 (Knott's)](https://www.sixflags.com/knotts/new-in-2027)
