@@ -55,9 +55,9 @@ Im Theater steht jetzt eine Bühne, die wie ein Labor aussieht. Die Show mischt 
 
 ## Wo im Park
 
-Angekündigt hatte Universal die neue Fassung schon am 5. November, in der Mitteilung zur [neuen Indoor-Achterbahn im Epic Universe](/news/dark-universe-achterbahn-epic-universe). Ein Datum gab es damals noch nicht, nur „später in diesem Jahr“.
-
 Das Theater steht im Themenbereich Hollywood, in einem Nachbau des Hollywood Pantages Theatre. Für die neue Fassung hat Universal noch keine Spieldauer genannt, die alte dauerte rund 25 Minuten.
+
+Angekündigt hatte Universal die neue Fassung schon am 5. November, in der Mitteilung zur [neuen Indoor-Achterbahn im Epic Universe](/news/dark-universe-achterbahn-epic-universe). Ein Datum gab es damals noch nicht, nur „später in diesem Jahr“.
 
 ## Die alte Show seit 1990
 
@@ -65,7 +65,7 @@ Die alte Show lief seit Juni 1990, dem Eröffnungsjahr des Parks. Bis 1997 hieß
 
 Auf der Bühne standen zuletzt zwei Figuren, der Moderator Alex Ross und der Maskenbildner Mark oder Marty James, je nachdem, wer gerade spielte. Die beiden mischten geschriebene Szenen mit Improvisation und Vorführungen, und das Publikum machte mit. Am Ende jeder Vorstellung erwachte Eddie, ein Werwolf, und jagte den Maskenbildner über die Bühne. Universal setzt das Wort „animatronisch“ in seinem Blog selbst in Anführungszeichen, und was im Fell steckte, darfst du dir ausmalen.
 
-## Was bleibt und was neu ist
+## Bekannte Gags und ein neues Finale
 
 Aufbau und komischer Ton bleiben, und Gags, die Stammgäste aus der alten Show kennen, kommen zurück. Das Finale ist neu. Ob Eddie darin noch auftritt, hat Universal nicht bekannt gegeben.
 

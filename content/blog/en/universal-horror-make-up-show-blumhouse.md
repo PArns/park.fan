@@ -53,9 +53,9 @@ Inside the theatre, the stage now looks like a lab. The show mixes behind-the-sc
 
 ## Where in the park
 
-Universal first mentioned the new version on 5 November, in its announcement of the [new indoor coaster at Epic Universe](/news/dark-universe-coaster-epic-universe). Back then there was no date, only "later this year".
-
 The theatre is in the Hollywood area, inside a replica of the Hollywood Pantages Theatre. Universal hasn't given a running time for the new version yet. The old one ran for about 25 minutes.
+
+Universal first mentioned the new version on 5 November, in its announcement of the [new indoor coaster at Epic Universe](/news/dark-universe-coaster-epic-universe). Back then there was no date, only "later this year".
 
 ## The old show since 1990
 
@@ -63,7 +63,7 @@ The old show opened in June 1990, the year the park opened. Until 1997 it was ca
 
 In its last years the show had two characters on stage: Alex Ross, the host, and the make-up artist, Mark or Marty James depending on who was playing him that day. They mixed scripted scenes with improv and demonstrations, and the audience joined in. At the end of every show Eddie, a werewolf, came to life and chased the make-up artist across the stage. Universal's own blog puts "animatronic" in quotation marks, so you can guess for yourself what was inside the fur.
 
-## What stays and what's new
+## Familiar gags and a new finale
 
 The structure and the comic tone stay, and some gags that regulars know from the old show are coming back. The finale is new. Universal hasn't announced whether Eddie still turns up in it.
 
