@@ -308,7 +308,8 @@
     "disclaimer": "park.fan ist ein privates Hobbyprojekt. Alle Angaben ohne Gewähr. Die angezeigten Wartezeiten und Statusinformationen werden automatisiert bereitgestellt und können von der tatsächlichen Situation vor Ort abweichen.",
     "dataSources": "Datenquellen",
     "weatherSource": "Wetter",
-    "tripPlanner": "Reiseplaner"
+    "tripPlanner": "Reiseplaner",
+    "app": "App für iPhone"
   },
   "explore": {
     "title": "Freizeitpark Wartezeiten in {location}",
@@ -2514,6 +2515,10 @@
   "impressum": {
     "title": "Impressum – park.fan",
     "description": "Rechtliche Informationen und Impressum für park.fan"
+  },
+  "appSupport": {
+    "title": "park.fan für iPhone – Hilfe",
+    "description": "Was die park.fan App für iPhone kann, was sie braucht und wie du uns erreichst."
   },
   "datenschutz": {
     "title": "Datenschutzerklärung – park.fan",

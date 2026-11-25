@@ -17,6 +17,7 @@ import {
   Rss,
   Scale,
   Shield,
+  Smartphone,
   Star,
   type LucideIcon,
 } from 'lucide-react';
@@ -291,6 +292,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
         */
         { key: 'favorites', href: '/favorites', label: t('favorites'), Icon: Star },
         { key: 'alerts', href: '/alerts', label: t('alerts'), Icon: Bell },
+        { key: 'app', href: '/app', label: t('app'), Icon: Smartphone },
       ],
     },
     {

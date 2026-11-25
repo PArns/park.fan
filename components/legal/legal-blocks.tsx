@@ -1,9 +1,12 @@
 import type { ReactNode } from 'react';
 
-/** A chapter heading on the legal pages, with the rule beneath it. */
-export function LegalH2({ children }: { children: ReactNode }) {
+/** A chapter heading on the legal pages, with the rule beneath it; `id` makes it a link target that clears the sticky header. */
+export function LegalH2({ children, id }: { children: ReactNode; id?: string }) {
   return (
-    <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold first:mt-0">
+    <h2
+      id={id}
+      className="border-border mt-12 mb-6 scroll-mt-20 border-b pb-3 text-3xl font-bold first:mt-0"
+    >
       {children}
     </h2>
   );

@@ -8,11 +8,14 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 20. November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 25. November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
-        <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+        <p>
+          Verantwortlich für die Datenverarbeitung auf dieser Website und in der App park.fan für
+          iPhone (Abschnitt 6) ist:
+        </p>
         <address className="not-italic">
           <strong>Patrick Arns</strong>
           <br />
@@ -548,7 +551,196 @@ export function DatenschutzDE() {
           <LegalLink href="https://privacycenter.instagram.com/policy" />.
         </p>
 
-        <LegalH2>6. Ihre Rechte</LegalH2>
+        <LegalH2 id="app">6. Die park.fan App für iPhone</LegalH2>
+        <p>
+          Diese Erklärung gilt auch für die App park.fan für iPhone. Die App holt ihre Daten von
+          denselben Servern wie die Website; was in der App anders ist, steht in diesem Abschnitt.
+          Die App braucht kein Konto, zeigt keine Werbung und setzt keine Cookies. Sie enthält keine
+          Statistik, kein Analyse-, Absturz- oder Werbe-Werkzeug eines Anbieters und kein Tracking.
+          Die Zählung aus Abschnitt 4 findet in der App nicht statt.
+        </p>
+
+        <LegalH3>Was auf Ihrem iPhone bleibt</LegalH3>
+        <p>
+          Ihre Favoriten, Ihre Tagespläne, abgehakte Fahrgeschäfte, Ihre Einstellungen und die
+          Antworten der Einführung beim ersten Start (Lieblingsparks, wie Sie am liebsten fahren,
+          Temperatureinheit) speichert die App auf Ihrem iPhone, dazu eine zufällige Kennung der
+          Installation und zwischengespeicherte Antworten und Fotos. Was davon an unsere Server
+          geht, steht in den folgenden Absätzen. „Cache leeren“ in den Einstellungen löscht die
+          zwischengespeicherten Daten, das Löschen der App alles. Für diese Speicherung braucht es
+          keine Einwilligung, weil sie für die von Ihnen gewünschten Funktionen unbedingt
+          erforderlich ist (§ 25 Abs. 2 Nr. 2 TDDDG).
+        </p>
+
+        <LegalH3>Anfragen an unsere Server</LegalH3>
+        <p>
+          Parkdaten, Wartezeiten, Prognosen und Wetter lädt die App von unserem API-Server
+          api.park.fan, Fotos, Neuigkeiten und Ratgeber von media.park.fan, einem Speicher bei
+          Cloudflare in der EU. Beide Wege laufen über Cloudflare (Abschnitt 2), das dabei Ihre
+          IP-Adresse und die technischen Daten der Anfrage verarbeitet. Die App weist sich mit einem
+          Schlüssel aus, der in jeder Installation derselbe ist und nichts über Sie sagt. Für die
+          Protokolle gilt, was in Abschnitt 2 zum API-Server steht: Die Anwendung schreibt keine
+          IP-Adressen hinein. Die übrigen Server-Protokolle löschen wir nach 14 Tagen. Damit der
+          Server die Wartezeiten Ihrer Favoriten liefern kann, sendet die App deren Kennungen; was
+          Sie in die Suche tippen, sendet sie, um Treffer zu finden. Beides wird nur für die Antwort
+          verwendet. Dauert eine Suche ungewöhnlich lange, schreibt der Server den Suchtext ohne
+          IP-Adresse oder Kennung in ein Diagnoseprotokoll, das er nach 7 Tagen löscht.
+        </p>
+        <p>
+          Toiletten und Trinkwasserstellen in einem Park stammen aus OpenStreetMap (©
+          OpenStreetMap-Mitwirkende, Lizenz ODbL). Die App fragt sie bei unserem API-Server für den
+          jeweiligen Park ab und sendet dabei nur, um welchen Park es geht. Personenbezogene Daten
+          enthalten sie nicht.
+        </p>
+
+        <LegalH3>Standort in der App</LegalH3>
+        <p>
+          Erlauben Sie der App den Standort, liest sie ihn nur, solange sie geöffnet ist, nie im
+          Hintergrund. Die genaue Position bleibt auf dem iPhone: Kompass, Entfernungen, Gehzeiten
+          und „Bring mich hin“ berechnet die App selbst. An api.park.fan sendet sie nur eine auf
+          drei Nachkommastellen gerundete Position, also auf etwa 100 Meter, um Parks in Ihrer Nähe
+          zu finden und zu erkennen, ob Sie in einem Park stehen. Sie sendet sie erneut, wenn sich
+          die gerundete Position ändert oder die App die Live-Daten auffrischt. Der Server verwendet
+          sie nur für die Antwort, speichert sie nicht und schwärzt Koordinaten in seinen
+          Protokollen. Ohne Ihre Erlaubnis sendet die App keinen Standort.
+        </p>
+        <p>
+          Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie widerrufen sie in
+          den Einstellungen Ihres iPhones unter Datenschutz &amp; Sicherheit → Ortungsdienste →
+          park.fan.
+        </p>
+
+        <LegalH3>Mitteilungen in der App</LegalH3>
+        <p>
+          Mitteilungen sind aus, bis Sie sie wählen: in der Einführung beim ersten Start, an der
+          Glocke eines Fahrgeschäfts, eines Plans oder der News oder in den Einstellungen der App.
+          Erst wenn Sie mindestens eine Art wählen und iOS die Erlaubnis geben, meldet sich die App
+          bei api.park.fan an. Dort speichern wir dann die zufällige Kennung der Installation, das
+          Geräte-Token, das Apple dem iPhone für park.fan zuteilt, die gewählten Arten, ob Ihr
+          iPhone über Apples Test- oder Produktionsumgebung erreicht wird, Ihre Sprache, Ihre
+          Zeitzone (für die Ruhezeiten), bei News nur zu Lieblingsparks deren Pfade, die Kennung
+          eines gespeicherten Plans (siehe unten) und Ihre Wartezeit-Alarme mit ihren Schwellen.
+        </p>
+        <p>
+          Zugestellt werden die Mitteilungen über den Apple Push Notification Service der Apple
+          Inc., One Apple Park Way, Cupertino, CA 95014, USA. Apple erhält dafür das Geräte-Token,
+          den Zeitpunkt und den Inhalt der Mitteilung. Dabei können Daten in die USA übermittelt
+          werden. Hat eine Mitteilung ein Foto, lädt Ihr iPhone es von media.park.fan. Die
+          Erinnerung „Jetzt los“ zum nächsten Punkt Ihres Plans plant das iPhone selbst; für sie
+          wird nichts gesendet.
+        </p>
+        <p>
+          Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können jede Art in
+          den Einstellungen der App abwählen oder Mitteilungen in den Einstellungen Ihres iPhones
+          ausschalten. Schalten Sie alle Mitteilungen aus oder entziehen Sie der App die Erlaubnis
+          in den Einstellungen Ihres iPhones, löscht die App beim nächsten Öffnen die Anmeldung mit
+          allen Alarmen von unserem Server. Welche Arten Sie gewählt hatten, bleibt nur auf Ihrem
+          iPhone, damit die Auswahl beim Wiedereinschalten noch da ist. Meldet Apple bei einer
+          Zustellung, dass das Token nicht mehr gilt, etwa weil Sie die App gelöscht haben, löschen
+          wir die Anmeldung mit allen Alarmen.
+        </p>
+
+        <LegalH3>Parktag auf dem Sperrbildschirm</LegalH3>
+        <p>
+          Stehen Sie in einem geöffneten Park, zeigt die App die Wartezeiten Ihrer Fahrgeschäfte,
+          den nächsten Punkt Ihres Plans und die nächste Show auf dem Sperrbildschirm und in der
+          Dynamic Island. Diese Anzeige entsteht allein auf Ihrem iPhone aus Daten, die die App
+          ohnehin geladen hat; für sie wird nichts an uns gesendet. Während sie läuft, kann iOS die
+          App gelegentlich im Hintergrund wecken. Die App lädt dann die Wartezeiten dieses Parks
+          neu, ohne Ihren Standort. Ausschalten können Sie die Anzeige in den Einstellungen der App
+          („Parktag auf dem Sperrbildschirm“) oder in den Einstellungen Ihres iPhones.
+        </p>
+
+        <LegalH3>Tagesplaner in der App</LegalH3>
+        <p>
+          Ihre Pläne liegen auf dem iPhone. Tippen Sie auf „Tag optimieren“, sendet die App das
+          Datum, die Einträge des Tages und, wenn Sie sie angegeben haben, die Körpergröße des
+          kleinsten Mitfahrers und ob Sie trocken bleiben oder früher in den Park wollen, an
+          api.park.fan. Der Server berechnet daraus die Reihenfolge und speichert den Plan nicht.
+        </p>
+        <p>
+          Schalten Sie für einen Plan Mitteilungen ein, gilt, was unter „Tagesplaner“ in Abschnitt 3
+          steht: Der Server speichert die beobachteten Tage unter einer zufälligen Kennung, ohne
+          Angaben zu Ihrer Person. Einen Plan, den nur die App hält, löscht er 7 Tage nach seinem
+          letzten geplanten Tag. Schalten Sie die Mitteilungen zum Plan aus, löscht die App die
+          Kopie auf dem Server.
+        </p>
+
+        <LegalH3 id="parky-app">Parky in der App</LegalH3>
+        <p>
+          Für Parky gilt der Abschnitt „Parky, der KI-Chat“ oben mit diesen Unterschieden. Vor der
+          ersten Nachricht zeigt die App, was gesendet wird und an wen, und fragt Sie; ohne
+          „Einverstanden“ verlässt keine Nachricht das iPhone. Statt Cloudflare Turnstile öffnet die
+          App die Sitzung mit dem Schlüssel der App. Mit jeder Nachricht sendet sie Ihren Text und
+          Parkys Begrüßung, die Seite, von der Sie den Chat öffnen, Ihre Sprache und Zeitzone, die
+          Kennung des Chats, Ihre nächsten geplanten Tage (höchstens 8) mit Programmpunkten und
+          Angaben zur Gruppe, die Kennungen Ihrer Favoriten und ob Mitteilungen auf dem iPhone an
+          sind. Ihren Standort sendet sie nur, wenn Sie ihn im Chat teilen, auf etwa 100 Meter
+          gerundet; der Server rundet ihn auf etwa einen Kilometer und speichert ihn nicht. Unser
+          Server gibt die Anfrage an Anthropic weiter, wie oben beschrieben. Eine Kopie des Chats
+          liegt bis zu zwei Stunden auf Ihrem iPhone.
+        </p>
+        <p>
+          „Neuer Chat“ und das Ausschalten von „Chat mit Parky“ in den Einstellungen der App löschen
+          den Chat auf dem iPhone und, solange die Sitzung läuft (zwei Stunden), auch auf unserem
+          Server; sonst löscht ihn der Server nach 7 Tagen. Mit dem Ausschalten widerrufen Sie Ihr
+          Einverständnis; danach sendet die App nichts mehr an Parky.
+        </p>
+        <p>
+          Mit „Antwort melden“ können Sie uns eine Antwort mit einem Grund und, wenn Sie wollen,
+          einer Anmerkung melden. Die Meldung wird beim Chat gespeichert und mit ihm gelöscht,
+          spätestens nach 7 Tagen. Einen Chat mit einer gemeldeten Antwort löscht „Neuer Chat“ nicht
+          vorher, damit wir die Meldung prüfen können. Bitten Sie Parky, uns etwas auszurichten,
+          gilt für diese Rückmeldung, was oben zu Rückmeldungen über Parky steht. Die
+          Rechtsgrundlagen sind dieselben wie oben.
+        </p>
+
+        <LegalH3>Links aus der App</LegalH3>
+        <p>
+          Seiten von park.fan und unserer Datenquellen öffnet die App in einem Safari-Fenster
+          innerhalb der App. Für park.fan gilt dort der Teil dieser Erklärung zur Website, auch die
+          Statistik (Abschnitt 4), für die anderen Seiten die Erklärung ihres Anbieters.
+        </p>
+
+        <LegalH3>App Store, TestFlight und Apple</LegalH3>
+        <p>
+          Die App laden Sie über Apples App Store oder, für Tests, über TestFlight. Was Apple dabei
+          verarbeitet, verantwortet Apple selbst:{' '}
+          <LegalLink href="https://www.apple.com/legal/privacy/" />. Haben Sie in den Einstellungen
+          Ihres iPhones erlaubt, Analysedaten mit App-Entwicklern zu teilen, stellt Apple uns
+          Absturzberichte und zusammengefasste Zahlen bereit, etwa zu Installationen; einer Person
+          können wir sie nicht zuordnen. Nehmen Sie an einem Test über TestFlight teil, sehen wir
+          die E-Mail-Adresse, mit der wir Sie eingeladen haben, und was Sie über TestFlight als
+          Feedback senden, mit Screenshot und Absturzbericht.
+        </p>
+
+        <LegalH3>Alles löschen</LegalH3>
+        <LegalList>
+          <li>
+            <strong>Auf dem iPhone:</strong> Löschen Sie die App, sind Favoriten, Pläne,
+            Einstellungen und die Kopie des Chats entfernt.
+          </li>
+          <li>
+            <strong>Chat:</strong> „Neuer Chat“ oder „Chat mit Parky“ ausschalten, wie oben
+            beschrieben; sonst nach 7 Tagen.
+          </li>
+          <li>
+            <strong>Gespeicherter Plan:</strong> Mitteilungen zum Plan ausschalten; sonst 7 Tage
+            nach dem letzten geplanten Tag.
+          </li>
+          <li>
+            <strong>Standort:</strong> wird nicht gespeichert; die Erlaubnis widerrufen Sie in den
+            Einstellungen Ihres iPhones.
+          </li>
+          <li>
+            <strong>Mitteilungen:</strong> wie oben unter „Mitteilungen in der App“.
+          </li>
+          <li>
+            <strong>Alles Übrige:</strong> eine E-Mail an die Adresse in Abschnitt 1 genügt.
+          </li>
+        </LegalList>
+
+        <LegalH2>7. Ihre Rechte</LegalH2>
         <p>Sie haben gegenüber uns das Recht auf</p>
         <LegalList>
           <li>Auskunft über die zu Ihnen gespeicherten Daten (Art. 15 DSGVO),</li>
@@ -584,7 +776,7 @@ export function DatenschutzDE() {
           <LegalLink href="https://www.ldi.nrw.de" />.
         </p>
 
-        <LegalH2>7. Speicherdauer und Sicherheit</LegalH2>
+        <LegalH2>8. Speicherdauer und Sicherheit</LegalH2>
         <p>
           Wo oben keine eigene Frist genannt ist, löschen wir personenbezogene Daten, sobald der
           Zweck entfällt und keine gesetzliche Aufbewahrungspflicht entgegensteht. Alle Verbindungen

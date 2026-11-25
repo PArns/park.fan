@@ -28,6 +28,22 @@ Route `/[locale]/alerts` (page).
 - `generateStaticParams` _function_
 - `generateMetadata` _function_
 
+### [`app/content/de.tsx`](../../app/%5Blocale%5D/app/content/de.tsx)
+
+- `AppSupportDE` _component_: The app's support page in German, shown on the `de` locale.
+
+### [`app/content/en.tsx`](../../app/%5Blocale%5D/app/content/en.tsx)
+
+- `AppSupportEN` _component_: The app's support page in English, shown on every locale except `de`.
+
+### [`app/page.tsx`](../../app/%5Blocale%5D/app/page.tsx)
+
+Route `/[locale]/app` (page).
+
+- `default (AppSupportPage)` _component_: The support page for the iPhone app, the App Store's support URL.
+- `generateStaticParams` _function_
+- `generateMetadata` _function_
+
 ### [`best-time-to-visit/_best-times-data.tsx`](../../app/%5Blocale%5D/best-time-to-visit/_best-times-data.tsx)
 
 - `BestTimesData` _component_: Relative busyness by weekday and by month across the catalogue, live from `/v1/analytics/best-times`. A "warming up" panel stands in while the aggregate is unreachable or not yet displayable, so the section never renders empty.
