@@ -52,8 +52,8 @@ Germany is having a quiet year. None of the big parks has announced a new coaste
 Europa-Park's Euro-Mir is going. The big projects are in France, England and Denmark, and in the
 USA Six Flags alone has six parks building something.
 
-The newest entry came from the IAAPA Expo trade show in Orlando, where Busch Gardens Tampa Bay
-unveiled the water coaster Simbi Rush for summer 2027 on 18 November 2026.
+Busch Gardens Tampa Bay took its time and only unveiled Simbi Rush, a twice-launched water coaster
+for summer 2027, at the IAAPA Expo in Orlando on 18 November 2026.
 
 ## What makes the list
 
@@ -450,16 +450,15 @@ Thrill Zone near Fury 325. Children can ride from 35 inches (89 cm) with an adul
 
 ### Simbi Rush at Busch Gardens Tampa Bay
 
-Simbi Rush, the Mack Rides water coaster for [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in
-Florida, launches twice and reaches 40 mph (64 km/h). It's due to open in summer 2027. Busch Gardens
-says it'll be North America's first launched water coaster and the fastest of its kind in the world.
-The press release doesn't give the height or length of the track yet.
+Simbi Rush is a Mack Rides water coaster for [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in
+Florida, due to open in summer 2027. So far the park has given two ride stats, two launches and a
+top speed of 40 mph (64 km/h), but not the height or length. Busch Gardens says it'll be North
+America's first launched water coaster and the fastest of its kind in the world.
 
 The ride takes you through the Congo area. It's named after Simbi, a guardian spirit of water and
-nature from Central Africa. In the park's story the boat drifts calmly across a sacred lake until
-the water grabs hold of it, and the park leaves it open whether that's the spirit's wrath or a trick
-of the lake. The park lost a ride in September 2025, when the water ride Stanley Falls closed after
-52 years. Busch Gardens hasn't named the exact spot for Simbi Rush.
+nature from Central Africa, and in the park's story the boat drifts calmly across a sacred lake
+until the water grabs hold of it. Busch Gardens hasn't announced whether Simbi Rush goes where the
+water ride Stanley Falls ran for 52 years until September 2025.
 
 It's meant as a family ride, though the minimum height isn't out yet, and it's one part of the $200
 million the park plans to invest over five years. 2027 annual pass holders ride first, before the
@@ -642,7 +641,7 @@ and Euro-Mir by a new family coaster the same year.
 ### When did the parks announce their 2027 additions?
 
 The Six Flags parks presented their 2027 additions between May and September 2026, and Merlin
-presented its own in March and September. Busch Gardens Tampa Bay came last, on 18 November 2026 at the IAAPA Expo in Orlando, with the water coaster Simbi Rush.
+presented its own in March and September. Busch Gardens Tampa Bay followed in November, with Simbi Rush at the IAAPA Expo in Orlando on 18 November 2026.
 
 — Patrick
 

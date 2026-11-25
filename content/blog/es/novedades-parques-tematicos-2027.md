@@ -53,8 +53,9 @@ Para Alemania será un año tranquilo. Ninguno de los grandes parques ha anuncia
 nueva para 2027, y la Euro-Mir del Europa-Park desaparece. Los proyectos grandes están en Francia,
 Inglaterra y Dinamarca. En Estados Unidos, solo de Six Flags hay seis parques en obras.
 
-La última en sumarse fue Simbi Rush, una montaña rusa acuática para el verano de 2027. Busch Gardens
-Tampa Bay la presentó el 18 de noviembre de 2026 en la IAAPA Expo, la feria del sector en Orlando.
+Busch Gardens Tampa Bay no presentó Simbi Rush, una montaña rusa acuática con dos lanzamientos para
+el verano de 2027, hasta el 18 de noviembre de 2026, en la IAAPA Expo, la feria del sector en
+Orlando.
 
 ## Qué entra en la lista
 
@@ -453,17 +454,17 @@ de datos de esa misma nota de prensa figura una pulgada más.
 
 ### Simbi Rush en Busch Gardens Tampa Bay
 
-Simbi Rush, la montaña rusa acuática de Mack Rides para [Busch Gardens Tampa
-Bay](ref:busch-gardens-tampa), en Florida, se lanza dos veces y llega a 64 km/h. Debe abrir en
-verano de 2027. Según Busch Gardens, será la primera montaña rusa acuática lanzada de Norteamérica y
-la más rápida de su tipo en el mundo. La altura y la longitud del recorrido aún no aparecen en la
-nota de prensa.
+Simbi Rush es una montaña rusa acuática de Mack Rides para [Busch Gardens Tampa
+Bay](ref:busch-gardens-tampa), en Florida, y debe abrir en verano de 2027. De sus datos técnicos,
+Busch Gardens ha dado hasta ahora dos lanzamientos y hasta 64 km/h, pero todavía no la altura y la
+longitud del recorrido. Según Busch Gardens, será la primera montaña rusa acuática lanzada de
+Norteamérica y la más rápida de su tipo en el mundo.
 
 El recorrido atraviesa la zona Congo. El nombre viene de Simbi, un espíritu protector del agua y de
 la naturaleza de África central. En la historia que cuenta el parque, la barca cruza primero
-tranquila un lago sagrado hasta que el agua la atrapa. Si es la ira del espíritu o una jugarreta del
-lago, el parque lo deja abierto. En septiembre de 2025 el parque cerró tras 52 años la atracción
-acuática Stanley Falls. Busch Gardens no ha precisado en qué lugar exacto se construye Simbi Rush.
+tranquila un lago sagrado hasta que el agua la atrapa. Busch Gardens aún no ha anunciado si Simbi
+Rush ocupará el lugar de Stanley Falls, la atracción acuática que funcionó 52 años, hasta septiembre
+de 2025.
 
 Simbi Rush está pensada como atracción familiar. La estatura mínima para los niños aún no está
 fijada. Forma parte de una inversión de 200 millones de dólares que el parque ha previsto para cinco
@@ -653,7 +654,7 @@ reforma en 2028 y la Euro-Mir con una montaña rusa familiar nueva ese mismo añ
 ### ¿Cuándo anunciaron los parques sus novedades para 2027?
 
 Los parques de Six Flags presentaron sus novedades para 2027 entre mayo y septiembre de 2026, y
-Merlin las suyas en marzo y en septiembre. Busch Gardens Tampa Bay fue el último, el 18 de noviembre de 2026 en la IAAPA Expo de Orlando, con la montaña rusa acuática Simbi Rush.
+Merlin las suyas en marzo y en septiembre. Busch Gardens Tampa Bay no llegó hasta noviembre y presentó Simbi Rush el 18 de noviembre de 2026 en la IAAPA Expo de Orlando.
 
 — Patrick
 

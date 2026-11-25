@@ -48,7 +48,7 @@ Parken in Europa en de VS hebben zelf zo'n 30 nieuwigheden voor 2027 bevestigd. 
 
 In Duitsland wordt het een rustig jaar. Geen van de grote parken heeft voor 2027 een nieuwe achtbaan aangekondigd, en in Europa-Park verdwijnt Euro-Mir. De grote projecten liggen in Frankrijk, Engeland en Denemarken, en in de VS wordt alleen al in zes parken van Six Flags gebouwd.
 
-Als laatste kwam Simbi Rush erbij, een waterachtbaan voor de zomer van 2027. Busch Gardens Tampa Bay presenteerde hem op 18 november 2026 op de vakbeurs IAAPA Expo in Orlando.
+Busch Gardens Tampa Bay presenteerde Simbi Rush, een waterachtbaan met twee lanceringen voor de zomer van 2027, pas op 18 november 2026 op de vakbeurs IAAPA Expo in Orlando.
 
 ## Wat in de lijst komt
 
@@ -264,9 +264,9 @@ De baan is 683 meter lang, een rit duurt zes en een halve minuut. Hij staat op d
 
 ### Simbi Rush in Busch Gardens Tampa Bay
 
-Simbi Rush, de waterachtbaan van Mack Rides voor [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida, wordt twee keer gelanceerd en haalt tot 64 km/u. Hij moet in de zomer van 2027 opengaan. Volgens Busch Gardens wordt het de eerste gelanceerde waterachtbaan van Noord-Amerika en de snelste van zijn soort ter wereld. Hoogte en lengte van het parcours staan nog niet in het persbericht.
+Simbi Rush is een waterachtbaan van Mack Rides voor [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida en moet in de zomer van 2027 opengaan. Van de rijgegevens heeft Busch Gardens tot nu toe twee lanceringen en een topsnelheid van 64 km/u genoemd, hoogte en lengte van het parcours nog niet. Volgens Busch Gardens wordt het de eerste gelanceerde waterachtbaan van Noord-Amerika en de snelste van zijn soort ter wereld.
 
-De rit gaat door het themagebied Congo. De naam komt van Simbi, een beschermgeest van water en natuur uit Centraal-Afrika. In het verhaal van het park drijft de boot eerst kalm over een heilig meer, tot het water hem grijpt. Of dat de woede van de geest is of een streek van het meer, laat het park in het midden. In september 2025 sloot in het park na 52 jaar de waterbaan Stanley Falls. Waar Simbi Rush precies komt, heeft Busch Gardens niet bekendgemaakt.
+De rit gaat door het themagebied Congo. De naam komt van Simbi, een beschermgeest van water en natuur uit Centraal-Afrika. In het verhaal van het park drijft de boot eerst kalm over een heilig meer, tot het water hem grijpt. Of Simbi Rush op de plek komt waar de waterbaan Stanley Falls 52 jaar lang reed, tot september 2025, heeft Busch Gardens nog niet bekendgemaakt.
 
 Simbi Rush is bedoeld als gezinsattractie. Vanaf welke lengte kinderen mee mogen, staat nog niet vast. De baan hoort bij investeringen van 200 miljoen dollar die het park over vijf jaar heeft gepland. Als eersten rijden de houders van een jaarkaart 2027, nog voor de opening voor iedereen. De prijzen van de jaarkaarten en hoe je zonder auto van Orlando naar Tampa komt, staan in ons [bericht over Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
 
@@ -380,7 +380,7 @@ Loup-Garou in Walibi Belgium rijdt op 3 januari 2027 voor het laatst in zijn hui
 
 ### Wanneer hebben de parken hun nieuwigheden voor 2027 aangekondigd?
 
-De Six Flags-parken hebben hun nieuwigheden voor 2027 tussen mei en september 2026 voorgesteld, Merlin de zijne in maart en september. Als laatste kwam Busch Gardens Tampa Bay, op 18 november 2026 op de IAAPA Expo in Orlando, met de waterachtbaan Simbi Rush.
+De Six Flags-parken hebben hun nieuwigheden voor 2027 tussen mei en september 2026 voorgesteld, Merlin de zijne in maart en september. Busch Gardens Tampa Bay volgde pas in november en presenteerde Simbi Rush op 18 november 2026 op de IAAPA Expo in Orlando.
 
 — Patrick
 

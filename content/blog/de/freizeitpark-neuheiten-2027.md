@@ -54,8 +54,8 @@ In Deutschland ist es ein ruhiges Jahr. Keiner der großen Parks hat für 2027 e
 angekündigt, und die Euro-Mir im Europa-Park verschwindet. Die großen Projekte stehen in Frankreich,
 England und Dänemark, und in den USA bauen allein sechs Parks von Six Flags.
 
-Als Letzte kam Simbi Rush dazu, eine Wasserachterbahn für den Sommer 2027. Busch Gardens Tampa Bay
-hat sie am 18. November 2026 auf der Branchenmesse IAAPA Expo in Orlando vorgestellt.
+Busch Gardens Tampa Bay hat Simbi Rush, eine Wasserachterbahn mit zwei Launches für den Sommer 2027,
+erst am 18. November 2026 auf der Branchenmesse IAAPA Expo in Orlando vorgestellt.
 
 ## Was in die Liste kommt
 
@@ -466,17 +466,16 @@ der Thrill Zone nahe Fury 325. Kinder dürfen ab 89 Zentimetern in Begleitung mi
 
 ### Simbi Rush in Busch Gardens Tampa Bay
 
-Simbi Rush, die Wasserachterbahn von Mack Rides für [Busch Gardens Tampa
-Bay](ref:busch-gardens-tampa) in Florida, startet zweimal per Launch und fährt bis zu 64 km/h.
-Eröffnen soll sie im Sommer 2027. Laut Busch Gardens wird sie die erste Wasserachterbahn mit Launch
-in Nordamerika und die schnellste ihrer Art weltweit. Höhe und Länge der Strecke nennt die
-Pressemitteilung noch nicht.
+Simbi Rush ist eine Wasserachterbahn von Mack Rides für [Busch Gardens Tampa
+Bay](ref:busch-gardens-tampa) in Florida und soll im Sommer 2027 eröffnen. Von den Fahrdaten nennt
+Busch Gardens bisher zwei Launches und bis zu 64 km/h, Höhe und Länge der Strecke noch nicht. Laut
+Busch Gardens wird sie die erste Wasserachterbahn mit Launch in Nordamerika und die schnellste ihrer
+Art weltweit.
 
 Die Fahrt führt durch den Bereich Congo. Ihren Namen hat die Bahn von Simbi, einem Schutzgeist von
 Wasser und Natur aus Zentralafrika. In der Geschichte dazu treibt das Boot erst ruhig über einen
-heiligen See, bis das Wasser es packt. Ob das der Zorn des Geistes ist oder ein Trick des Sees,
-lässt der Park offen. Im September 2025 hat im Park die Wasserbahn Stanley Falls nach 52 Jahren
-geschlossen. Den genauen Bauplatz von Simbi Rush hat Busch Gardens nicht genannt.
+heiligen See, bis das Wasser es packt. Ob Simbi Rush dort entsteht, wo bis September 2025 nach 52
+Jahren die Wasserbahn Stanley Falls fuhr, hat Busch Gardens noch nicht bekannt gegeben.
 
 Gedacht ist Simbi Rush als Familienattraktion. Ab welcher Größe Kinder mitfahren dürfen, steht noch
 nicht fest. Sie gehört zu Investitionen von 200 Millionen Dollar, die der Park über fünf Jahre
@@ -663,7 +662,7 @@ Umbau 2028, die Euro-Mir durch eine neue Familienachterbahn im selben Jahr.
 ### Wann haben die Parks ihre Neuheiten für 2027 angekündigt?
 
 Die Six-Flags-Parks haben ihre Neuheiten für 2027 zwischen Mai und September 2026 vorgestellt,
-Merlin seine im März und September. Als Letzter hat Busch Gardens Tampa Bay nachgelegt, am 18. November 2026 auf der IAAPA Expo in Orlando mit der Wasserachterbahn Simbi Rush.
+Merlin seine im März und September. Busch Gardens Tampa Bay folgte erst im November und hat Simbi Rush am 18. November 2026 auf der IAAPA Expo in Orlando vorgestellt.
 
 — Patrick
 
