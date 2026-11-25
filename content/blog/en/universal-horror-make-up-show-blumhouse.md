@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  The Horror Make-Up Show at Universal Studios Florida is back from 11 December, now with Blumhouse films such as "M3GAN". The lobby, the music and the finale are new, and the comic tone stays.
+  The Horror Make-Up Show at Universal Studios Florida is back from 11 December, now with Blumhouse films such as "M3GAN". The lobby now has the Blumhouse look, and gags from the old show are coming back.
 tags:
   - news
   - universal-orlando
@@ -36,15 +36,15 @@ seo:
     - Universal Studios Florida wait times
 ---
 
-The reworked Universal Horror Make-Up Show featuring Blumhouse opens at [Universal Studios Florida](ref:universal-studios-florida) in Orlando on 11 December 2026. Universal Orlando announced the date on 24 November in a press release and on its own blog.
+The reworked Universal Horror Make-Up Show featuring Blumhouse opens at [Universal Studios Florida](ref:universal-studios-florida) in Orlando on 11 December 2026. Universal Orlando announced the date on 24 November in a press release and on its own blog. Universal first mentioned the new version on 5 November, in passing, in its announcement of the [new indoor coaster at Epic Universe](/news/dark-universe-coaster-epic-universe), with "later this year" where a date would go.
 
 ## The lobby and the theatre
 
-Universal has rebuilt the lobby from scratch, with a new floor plan and the look of Blumhouse, the horror studio. Display cases hold props from roughly a hundred years of horror films, with photo spots in between. The props come from the classic Universal Monsters films, "The Thing" and "Nosferatu". The Blumhouse films are "Five Nights at Freddy's", "The Black Phone", "M3GAN" and "The Purge". The lobby also pays tribute to Halloween Horror Nights, the resort's Halloween event.
+Universal has rebuilt the lobby from scratch, with a new floor plan and the look of Blumhouse, the horror studio. Display cases hold props from roughly a hundred years of horror films, with photo spots in between. The props come from the classic Universal Monsters films, "The Thing" and "Nosferatu". The Blumhouse films are "Five Nights at Freddy's", "The Black Phone", "M3GAN" and "The Purge". Universal has also worked references to Halloween Horror Nights, the resort's Halloween event, into the lobby.
 
-All of the music is new: the lobby soundtrack, the music as you walk in, the show's theme and the score under every video. The lobby soundtrack comes from the same team that scored Celestial Park at [Epic Universe](ref:universal-epic-universe?bare).
+All of the music is new, and the lobby soundtrack comes from the same team that scored Celestial Park at [Epic Universe](ref:universal-epic-universe?bare).
 
-Inside the theatre, the stage now looks like a lab. The show mixes behind-the-scenes videos with special effects done by hand on stage. You'll see how the Grabber's mask from "The Black Phone" was made, which techniques horror's great make-up artists used, and how the scares at Halloween Horror Nights are put together.
+Inside the theatre, the stage now looks like a lab. The show mixes behind-the-scenes videos with special effects done by hand on stage. You'll see how the Grabber's mask from "The Black Phone" was made and which techniques horror's great make-up artists relied on. The show also takes apart how the scares at Halloween Horror Nights are built.
 
 > [!QUOTE]
 > We’re [honoring] Milicent Patrick, a groundbreaking female makeup artist from the 1950s who worked on ‘Creature from the Black Lagoon,’ […] In a very male-dominated industry, we just thought, ‘What a cool story she has.’
@@ -55,8 +55,6 @@ Inside the theatre, the stage now looks like a lab. The show mixes behind-the-sc
 
 The theatre is in the Hollywood area, inside a replica of the Hollywood Pantages Theatre. Universal hasn't given a running time for the new version yet. The old one ran for about 25 minutes.
 
-Universal first mentioned the new version on 5 November, in its announcement of the [new indoor coaster at Epic Universe](/news/dark-universe-coaster-epic-universe). Back then there was no date, only "later this year".
-
 ## The old show since 1990
 
 The old show opened in June 1990, the year the park opened. Until 1997 it was called "The Phantom of the Opera Horror Make-Up Show", and for some years after that "The Gory, Gruesome and Grotesque Horror Make-Up Show". It's been closed for the rebuild since 12 May 2026.
@@ -65,7 +63,7 @@ In its last years the show had two characters on stage: Alex Ross, the host, and
 
 ## Familiar gags and a new finale
 
-The structure and the comic tone stay, and some gags that regulars know from the old show are coming back. The finale is new. Universal hasn't announced whether Eddie still turns up in it.
+The structure and the comic tone stay, and some gags that regulars know from the old show are coming back. Universal hasn't announced whether Eddie still turns up in the new finale.
 
 Matt Flood says the team went through hundreds of hours of film from more than a hundred years to pick what made it in. As desk jobs go, there are worse ones. Flood, a senior show director at Universal, spent ten years on stage in the show himself.
 
@@ -77,7 +75,7 @@ The show opens in the middle of Universal Orlando's holiday season, which runs f
 
 ```
 
-A show with fixed start times is best saved for the hours when the ride queues are longest. Air conditioning in the theatre counts for less in December than in August, but you still get a seat.
+The Horror Make-Up Show runs at fixed times, so at Universal Studios Florida it fits best into the hours when the ride queues are longest. Air conditioning in the theatre counts for less in December than in August, but you still get a seat.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
