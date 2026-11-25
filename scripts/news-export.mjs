@@ -1,7 +1,8 @@
-// The news half of the native app's export (see publish-media-r2.mjs): per locale the list
-// `news/<locale>.json` and one body per post `news/<locale>/<slug>.json`, both built from the
-// site's own loaders. A cover or inline photo the card export does not hold yet is added to
-// `chosen`, so it is uploaded like any other photo.
+// The news and guides half of the native app's export (see publish-media-r2.mjs): per locale the
+// list `news/<locale>.json` and one body per post `news/<locale>/<slug>.json`, and the same two
+// shapes under `guides/` for every post that is not news. Both are built from the site's own
+// loaders. A cover or inline photo the card export does not hold yet is added to `chosen`, so it
+// is uploaded like any other photo.
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { basename, extname, join } from 'node:path';
@@ -13,7 +14,7 @@ import { getParkSlugsOfPost, getNewsParkRef } from '../lib/blog/backlinks.ts';
 import { parseRefKey } from '../lib/blog/derive.mjs';
 import { getListItemByLocaleSlug, listPosts } from '../lib/blog/listing.ts';
 import { BLOG_POST_BODIES } from '../lib/blog/manifest-bodies.ts';
-import { markdownToBlocks, selectNews } from '../lib/blog/news-blocks.ts';
+import { markdownToBlocks, selectGuides, selectNews } from '../lib/blog/news-blocks.ts';
 import { postPath } from '../lib/blog/paths.ts';
 import { withZoneOffset } from '../lib/blog/published-at.ts';
 import { getCreditLine, needsAttribution } from '../lib/media/credit.ts';
@@ -99,7 +100,7 @@ function ridesOf(rideLinks) {
 /**
  * @param {Map<string, import('../lib/media/types.ts').MediaImage>} chosen photos to upload; grows
  * @param {Map<string, { src: string; width: number }>} avatars author avatar files to upload, by key; grows
- * @returns {{ files: { key: string; json: unknown }[]; stats: Record<string, { posts: number; skipped: Record<string, number> }> }}
+ * @returns {{ files: { key: string; json: unknown }[]; stats: Record<'news' | 'guides', Record<string, { posts: number; skipped: Record<string, number> }>> }}
  */
 export function buildNewsExport(chosen, avatars) {
   const generatedAt = new Date().toISOString();
@@ -117,8 +118,6 @@ export function buildNewsExport(chosen, avatars) {
 
   for (const locale of locales) {
     const site = `${SITE_URL}/${locale}`;
-    const posts = [];
-    const skipped = {};
     const ctx = {
       site,
       refUrl(href) {
@@ -145,42 +144,51 @@ export function buildNewsExport(chosen, avatars) {
       },
     };
 
-    for (const post of selectNews(listPosts(locale))) {
-      const fm = post.frontmatter;
-      const cover = photo(fm.coverImage?.src);
-      const meta = {
-        slug: post.slug,
-        url: `${site}${postPath(post)}`,
-        title: fm.title,
-        teaser: fm.excerpt.replace(/\s+/g, ' ').trim(),
-        publishedAt: withZoneOffset(fm.date, fm.time),
-        ...(fm.updatedAt ? { updatedAt: withZoneOffset(fm.updatedAt) } : {}),
-        category: fm.category,
-        ...parksOf(post.translationKey),
-        cover: cover?.id ?? null,
-        coverAlt: cover ? (fm.coverImage?.alt ?? getMediaAlt(cover.id, locale)) : null,
-        readingMinutes: post.readingTimeMinutes,
-      };
-      posts.push(meta);
-      const { blocks, skipped: left } = markdownToBlocks(
-        BLOG_POST_BODIES[`${post.loadedLocale}/${post.slug}`] ?? '',
-        { ...ctx, postPage: meta.url }
-      );
-      for (const name of left) skipped[name] = (skipped[name] ?? 0) + 1;
-      files.push({
-        key: `news/${locale}/${post.slug}.json`,
-        json: {
-          schema: 1,
-          locale,
-          ...meta,
-          author: authorOf(fm.author, locale, avatars),
-          rides: ridesOf(fm.rideLinks),
-          blocks,
-        },
-      });
+    const all = listPosts(locale);
+    // Both kinds go through the same serializer; only the folder and the selection differ.
+    for (const [dir, select] of [
+      ['news', selectNews],
+      ['guides', selectGuides],
+    ]) {
+      const posts = [];
+      const skipped = {};
+      for (const post of select(all)) {
+        const fm = post.frontmatter;
+        const cover = photo(fm.coverImage?.src);
+        const meta = {
+          slug: post.slug,
+          url: `${site}${postPath(post)}`,
+          title: fm.title,
+          teaser: fm.excerpt.replace(/\s+/g, ' ').trim(),
+          publishedAt: withZoneOffset(fm.date, fm.time),
+          ...(fm.updatedAt ? { updatedAt: withZoneOffset(fm.updatedAt) } : {}),
+          category: fm.category,
+          ...parksOf(post.translationKey),
+          cover: cover?.id ?? null,
+          coverAlt: cover ? (fm.coverImage?.alt ?? getMediaAlt(cover.id, locale)) : null,
+          readingMinutes: post.readingTimeMinutes,
+        };
+        posts.push(meta);
+        const { blocks, skipped: left } = markdownToBlocks(
+          BLOG_POST_BODIES[`${post.loadedLocale}/${post.slug}`] ?? '',
+          { ...ctx, postPage: meta.url }
+        );
+        for (const name of left) skipped[name] = (skipped[name] ?? 0) + 1;
+        files.push({
+          key: `${dir}/${locale}/${post.slug}.json`,
+          json: {
+            schema: 1,
+            locale,
+            ...meta,
+            author: authorOf(fm.author, locale, avatars),
+            rides: ridesOf(fm.rideLinks),
+            blocks,
+          },
+        });
+      }
+      lists.push({ key: `${dir}/${locale}.json`, json: { schema: 1, generatedAt, locale, posts } });
+      (stats[dir] ??= {})[locale] = { posts: posts.length, skipped };
     }
-    lists.push({ key: `news/${locale}.json`, json: { schema: 1, generatedAt, locale, posts } });
-    stats[locale] = { posts: posts.length, skipped };
   }
   // The lists last: a list never names a body that is not there yet.
   return { files: [...files, ...lists], stats };

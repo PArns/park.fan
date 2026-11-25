@@ -155,6 +155,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`news-blocks.ts`](../../lib/blog/news-blocks.ts)
 
 - `selectNews` _function_: News only (the `/news` listing), own-locale posts, newest first, capped.
+- `selectGuides` _function_: The guides (the `/blog` listing: every post that is not news), own-locale posts, newest first. Not capped, because a guide stays worth reading where a news post ages out.
 - `inlineText` _function_: Inline markdown reduced to bold, italic and absolute links. Anything else is dropped.
 - `markdownToBlocks` _function_: A post body as blocks. Widgets that draw live park data (`best-days-widget`, `hourly-profile-widget`, `ride-waits-widget`, `stats-widget`) become `widget` blocks the app fills from its own API calls, a `cta-widget` becomes a `link` block, …
 - `NEWS_EXPORT_CAP` _const_: At most this many news posts per locale in `news/<locale>.json`.

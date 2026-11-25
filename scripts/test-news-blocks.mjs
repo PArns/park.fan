@@ -6,7 +6,7 @@
  */
 import assert from 'node:assert/strict';
 
-import { markdownToBlocks, selectNews } from '../lib/blog/news-blocks.ts';
+import { markdownToBlocks, selectGuides, selectNews } from '../lib/blog/news-blocks.ts';
 import { MEDIA_BASE, buildNewsExport } from './news-export.mjs';
 
 const ctx = {
@@ -210,6 +210,15 @@ const picked = selectNews(
   2
 ).map((p) => p.slug);
 assert.deepEqual(picked, ['late', 'sub']);
+assert.deepEqual(
+  selectGuides([
+    post('news', 'news', '2026-11-05', '10:00'),
+    post('older', 'park-fan', '2026-10-01'),
+    post('fallback', 'guides', '2026-11-03', undefined, true),
+    post('guide', 'guides/orlando', '2026-11-01'),
+  ]).map((p) => p.slug),
+  ['guide', 'older']
+);
 
 // Every byline's avatar is a file of the bucket, and every such file is queued for upload.
 const avatars = new Map();
@@ -225,5 +234,33 @@ for (const { avatar, avatarSmall } of bylines.filter((b) => b.avatar)) {
     assert.equal(avatars.get(url.slice(MEDIA_BASE.length + 1))?.width, width);
   }
 }
+
+// The guides are the news shapes under another folder: same keys, same types, a `/blog/` URL.
+const json = (key) => files.find((f) => f.key === key)?.json;
+const shape = (value) =>
+  Object.fromEntries(
+    Object.entries(value)
+      .filter(([key]) => key !== 'updatedAt')
+      .map(([key, v]) => [key, Array.isArray(v) ? 'array' : v === null ? 'null' : typeof v])
+  );
+const newsList = json('news/de.json');
+const guidesList = json('guides/de.json');
+assert.deepEqual(Object.keys(guidesList), Object.keys(newsList));
+assert.ok(guidesList.posts.length > 0);
+// A post with a cover on both sides, so `cover` and `coverAlt` compare as strings.
+const newsPost = newsList.posts.find((p) => p.cover);
+const guide = guidesList.posts.find((p) => p.cover);
+assert.deepEqual(shape(guide), shape(newsPost));
+assert.equal(guide.url, `https://park.fan/de/blog/${guide.slug}`);
+assert.ok(guidesList.posts.every((p) => !p.category.startsWith('news')));
+const newsBody = json(`news/de/${newsPost.slug}.json`);
+const guideBody = json(`guides/de/${guide.slug}.json`);
+assert.deepEqual(shape(guideBody), shape(newsBody));
+assert.deepEqual(shape(guideBody.author), shape(newsBody.author));
+assert.ok(guideBody.blocks.length > 0);
+// A guide body holds no block type the news reader does not know.
+const known = new Set(types);
+for (const file of files.filter((f) => f.key.startsWith('guides/')))
+  for (const b of file.json.blocks ?? []) assert.ok(known.has(b.type), `${file.key}: ${b.type}`);
 
 console.log('✓ news blocks');
