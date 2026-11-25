@@ -42,7 +42,7 @@ seo:
 
 Die Lobby hat Universal komplett umgebaut, mit neuem Grundriss und im Look des Horrorstudios Blumhouse. In Vitrinen stehen Requisiten aus rund hundert Jahren Horrorfilm, dazwischen gibt es Stellen für Fotos. Zu sehen sind die klassischen Filme der Universal Monsters, „The Thing“ und „Nosferatu“, dazu die Blumhouse-Filme „Five Nights at Freddy's“, „The Black Phone“ und „M3GAN“. Im Universal-Blog kommt noch „The Purge“ dazu. Eine Hommage an die Halloween Horror Nights, das Halloween-Event des Resorts, hat in der Lobby ebenfalls ihren Platz.
 
-Die Musik ist durchgehend neu: der Soundtrack der Lobby, die Musik zum Einlass, das Thema der Show und die Musik in allen Videos. Geschrieben hat sie dasselbe Team, das auch Celestial Park im [Epic Universe](ref:universal-epic-universe?bare) vertont hat.
+Die Musik ist durchgehend neu: der Soundtrack der Lobby, die Musik zum Einlass, das Thema der Show und die Musik in allen Videos. Den Soundtrack der Lobby hat dasselbe Team komponiert, das auch Celestial Park im [Epic Universe](ref:universal-epic-universe?bare) vertont hat.
 
 Im Theater steht jetzt eine Bühne, die wie ein Labor aussieht. Die Show mischt Videos von hinter den Kulissen mit Spezialeffekten, die auf der Bühne von Hand vorgeführt werden, und mit Witzen und Überraschungen. Du erfährst, wie die Maske des Grabbers aus „The Black Phone“ entstanden ist, mit welchen Techniken die großen Maskenbildner des Horrorfilms gearbeitet haben und wie die Schreckmomente der Halloween Horror Nights gebaut werden.
 

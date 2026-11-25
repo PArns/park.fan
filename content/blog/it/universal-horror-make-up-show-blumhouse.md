@@ -42,7 +42,7 @@ L’11 dicembre 2026, dopo sette mesi di chiusura, agli [Universal Studios Flori
 
 La lobby Universal l’ha ricostruita da zero, con una pianta diversa e l’estetica dello studio horror Blumhouse. Nelle vetrine sono esposti oggetti di scena da circa cent’anni di cinema dell’orrore, e tra una vetrina e l’altra ci sono angoli per le foto. Si va dai classici degli Universal Monsters a «The Thing» e «Nosferatu», fino ai film Blumhouse «Five Nights at Freddy's», «The Black Phone» e «M3GAN». Il blog di Universal ci aggiunge anche «The Purge». Nella lobby trova posto pure un omaggio alle Halloween Horror Nights, l’evento di Halloween del resort.
 
-Tutta la musica è nuova: la colonna sonora della lobby, quella che accompagna l’ingresso in sala, il tema dello show e le musiche di ogni video. L’ha composta la stessa squadra che ha scritto le musiche di Celestial Park nell’[Epic Universe](ref:universal-epic-universe?bare).
+Tutta la musica è nuova: la colonna sonora della lobby, quella che accompagna l’ingresso in sala, il tema dello show e le musiche di ogni video. La colonna sonora della lobby l’ha composta la stessa squadra che ha scritto le musiche di Celestial Park nell’[Epic Universe](ref:universal-epic-universe?bare).
 
 In sala adesso c’è un palco che sembra un laboratorio. Lo show alterna video girati dietro le quinte, effetti speciali preparati a mano davanti al pubblico, battute e sorprese. Scopri come è nata la maschera del Grabber di «The Black Phone», con quali tecniche lavoravano i grandi truccatori del cinema horror e come si costruiscono gli spaventi delle Halloween Horror Nights.
 

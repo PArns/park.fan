@@ -42,7 +42,7 @@ The reworked Universal Horror Make-Up Show featuring Blumhouse opens at [Univers
 
 Universal has rebuilt the lobby from scratch, with a new floor plan and the look of Blumhouse, the horror studio. Display cases hold props from roughly a hundred years of horror films, with photo spots in between. You'll find the classic Universal Monsters films, "The Thing" and "Nosferatu", and the Blumhouse films "Five Nights at Freddy's", "The Black Phone" and "M3GAN". Universal's blog adds "The Purge" to that list. There's also a corner of the lobby that pays tribute to Halloween Horror Nights, the resort's Halloween event.
 
-All of the music is new: the lobby soundtrack, the music as you walk in, the show's theme and the score under every video. It was written by the same team that scored Celestial Park at [Epic Universe](ref:universal-epic-universe?bare).
+All of the music is new: the lobby soundtrack, the music as you walk in, the show's theme and the score under every video. The lobby soundtrack comes from the same team that scored Celestial Park at [Epic Universe](ref:universal-epic-universe?bare).
 
 Inside the theatre, the stage now looks like a lab. The show mixes behind-the-scenes videos with special effects done by hand on stage, plus jokes and a few surprises. You'll see how the Grabber's mask from "The Black Phone" was made, which techniques horror's great make-up artists used, and how the scares at Halloween Horror Nights are put together.
 

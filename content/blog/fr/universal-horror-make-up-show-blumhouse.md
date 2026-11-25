@@ -42,7 +42,7 @@ seo:
 
 Universal a refait tout le hall d’entrée, avec un nouveau plan et le style du studio d’horreur Blumhouse. Des vitrines y exposent des accessoires tirés d’une centaine d’années de films d’horreur, et entre elles, des coins sont prévus pour les photos. On y croise les classiques des Universal Monsters, « The Thing » et « Nosferatu », et les films Blumhouse « Five Nights at Freddy's », « The Black Phone » et « M3GAN ». Le blog d’Universal ajoute « The Purge » à la liste. Le hall garde aussi une place pour un hommage aux Halloween Horror Nights, l’événement d’Halloween du resort.
 
-Toute la musique est neuve : la bande-son du hall, celle qui accompagne l’entrée en salle, le thème du spectacle et la musique de chaque vidéo. Elle vient de l’équipe qui a déjà composé celle de Celestial Park à [Epic Universe](ref:universal-epic-universe?bare).
+Toute la musique est neuve : la bande-son du hall, celle qui accompagne l’entrée en salle, le thème du spectacle et la musique de chaque vidéo. La bande-son du hall vient de l’équipe qui a déjà composé celle de Celestial Park à [Epic Universe](ref:universal-epic-universe?bare).
 
 Dans la salle, la scène ressemble désormais à un laboratoire. Le spectacle fait alterner des vidéos tournées en coulisses, des effets spéciaux réalisés à la main sous les yeux du public, des blagues et des surprises. Tu y apprends comment est né le masque du Grabber de « The Black Phone », avec quelles techniques travaillaient les grands maquilleurs du cinéma d’horreur et comment on construit les frayeurs des Halloween Horror Nights.
 

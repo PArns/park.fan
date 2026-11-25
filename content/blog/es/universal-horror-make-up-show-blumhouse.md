@@ -42,7 +42,7 @@ seo:
 
 Universal ha rehecho el vestíbulo entero, con otra distribución y una decoración al estilo de Blumhouse, el estudio de cine de terror. Las vitrinas guardan objetos de atrezo de unos cien años de películas de miedo, y entre ellas quedan rincones para hacerse fotos. Están los clásicos de los Universal Monsters, «The Thing» y «Nosferatu» y, de Blumhouse, «Five Nights at Freddy's», «The Black Phone» y «M3GAN». El blog de Universal suma además «The Purge». En el vestíbulo también hay sitio para un homenaje a Halloween Horror Nights, el evento de Halloween del resort.
 
-Toda la música es nueva: la banda sonora del vestíbulo, la que suena mientras entra el público, el tema del espectáculo y la de cada vídeo. La ha compuesto el mismo equipo que puso música a Celestial Park en [Epic Universe](ref:universal-epic-universe?bare).
+Toda la música es nueva: la banda sonora del vestíbulo, la que suena mientras entra el público, el tema del espectáculo y la de cada vídeo. La banda sonora del vestíbulo la ha compuesto el mismo equipo que puso música a Celestial Park en [Epic Universe](ref:universal-epic-universe?bare).
 
 En el teatro, el escenario parece ahora un laboratorio. El espectáculo alterna vídeos de entre bastidores con efectos especiales hechos a mano delante del público, chistes y alguna sorpresa. Se cuenta cómo nació la máscara del Grabber de «The Black Phone», con qué técnicas trabajaban los grandes maquilladores del cine de terror y cómo se preparan los sustos de Halloween Horror Nights.
 

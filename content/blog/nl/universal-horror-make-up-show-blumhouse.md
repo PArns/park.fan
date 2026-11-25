@@ -42,7 +42,7 @@ seo:
 
 De lobby is helemaal verbouwd, met een nieuwe indeling en in de stijl van horrorstudio Blumhouse. In vitrines staan rekwisieten uit zo'n honderd jaar horrorfilm, en daartussen zijn plekken om foto's te maken. Je ziet de klassieke films van de Universal Monsters, “The Thing” en “Nosferatu”, en de Blumhouse-films “Five Nights at Freddy's”, “The Black Phone” en “M3GAN”. Op de blog van Universal komt daar nog “The Purge” bij. Ook Halloween Horror Nights, het halloweenevenement van het resort, krijgt in de lobby een eerbetoon.
 
-Alle muziek is nieuw: de soundtrack in de lobby, de muziek terwijl je naar binnen gaat, het thema van de show en de muziek onder alle video's. Ze komt van hetzelfde team dat ook Celestial Park in [Epic Universe](ref:universal-epic-universe?bare) van muziek heeft voorzien.
+Alle muziek is nieuw: de soundtrack in de lobby, de muziek terwijl je naar binnen gaat, het thema van de show en de muziek onder alle video's. De soundtrack in de lobby komt van hetzelfde team dat ook Celestial Park in [Epic Universe](ref:universal-epic-universe?bare) van muziek heeft voorzien.
 
 In de zaal staat nu een podium dat eruitziet als een laboratorium. De show wisselt video's van achter de schermen af met special effects die op het podium met de hand worden voorgedaan, en met grappen en verrassingen. Je hoort hoe het masker van de Grabber uit “The Black Phone” is gemaakt, met welke technieken de grote grimeurs van de horrorfilm werkten en hoe de schrikmomenten van Halloween Horror Nights in elkaar worden gezet.
 
