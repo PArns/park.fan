@@ -64,7 +64,7 @@ From midnight on 4 January the measuring stick at the ticket office is retired, 
 
 At [Chimelong Paradise](ref:chimelong-paradise) a day ticket costs 250 yuan, 175 for children and 200 for youths. A four-year-old under a metre used to get in free there and from January needs a child ticket for 175 yuan. A 13-year-old shorter than 1.5 metres used to pay the child price and will now pay 200 yuan instead of 175. At [Chimelong Safari Park](ref:chimelong-safari-park) the same 13-year-old pays 240 yuan instead of 210 on a weekday, and 280 instead of 245 at weekends, on public holidays and in the summer holidays. The four-year-old's child ticket costs 210 yuan there, or 245 on those busier days.
 
-So it gets dearer for small children from three upwards and for short teenagers. Tall children see no change: an eleven-year-old girl at 1.55 metres still pays the child price, which she already got because of her age. For the youth ticket, age is now enough, and the new rule doesn't ask for a student ID.
+So it gets dearer for small children from three upwards and for short teenagers. Tall children see no change: an eleven-year-old girl at 1.55 metres still pays the child price, which she already got because of her age. For the youth ticket, the notice now mentions only age and says nothing about a student ID.
 
 ## Theatres, pools and buffets
 
@@ -76,11 +76,11 @@ What counts is the day you buy, and the visit can come later. Tickets, packages 
 
 ## No annual passes on sale right now
 
-Chimelong stopped selling annual passes on 19 November. New passes are due to go on sale after 26 December, and anyone whose pass runs out during the pause, or who meets the conditions for the renewal discount, gets a discount on the new one. Existing passes stay valid, and reservations work as before. If you buy a new pass before 4 January, the old rule still applies to children. Chimelong hasn't announced prices or benefits for the new passes yet.
+Chimelong stopped selling annual passes on 19 November. New passes are due to go on sale after 26 December, and anyone whose pass runs out during the pause, or who meets the conditions for the renewal discount, gets a discount on the new one. Existing passes stay valid, and reservations work as before. For annual passes, what counts is the rule Chimelong had published when you bought. Which rule that will be for the new passes isn't settled yet. Chimelong hasn't announced prices or benefits for the new passes yet.
 
 ## Which parks it covers
 
-The rules apply across the whole resort. In Guangzhou that's Chimelong Paradise, Chimelong Safari Park, [Chimelong Water Park](ref:chimelong-water-park) and [Chimelong Birds Park](ref:chimelong-birds-park). At the Water Park the standard ticket costs 139 yuan, children and youths pay 99, and from 5pm there's an evening ticket for 99 yuan for everyone. On Hengqin island near Zhuhai you'll find [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) and [Chimelong Spaceship](ref:chimelong-spaceship), and the resort's third site is Qingyuan. Since every ticket is tied to one park and one day, you choose your visit day when you buy.
+The rules apply across the whole resort. In Guangzhou that's Chimelong Paradise, Chimelong Safari Park, [Chimelong Water Park](ref:chimelong-water-park) and [Chimelong Birds Park](ref:chimelong-birds-park). At the Water Park the standard ticket costs 139 yuan, children and youths pay 99, and from 5pm there's an evening ticket for 99 yuan for everyone. In Hengqin, in Zhuhai, you'll find [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) and [Chimelong Spaceship](ref:chimelong-spaceship), and the resort's third site is Qingyuan. Since every ticket is sold for a fixed visit day, you pick the day when you buy.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 

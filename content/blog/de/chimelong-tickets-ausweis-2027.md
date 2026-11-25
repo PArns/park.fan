@@ -64,7 +64,7 @@ Ab dem 4. Januar um 0 Uhr hat die Messlatte an der Ticketkasse ausgedient, es z�
 
 In [Chimelong Paradise](ref:chimelong-paradise) kostet das Tagesticket 250 Yuan, für Kinder 175 und für Jugendliche 200 Yuan. Ein vierjähriges Kind unter einem Meter kam dort bisher frei hinein und braucht ab Januar ein Kinderticket für 175 Yuan. Ein 13-Jähriger, der kleiner als 1,5 Meter ist, zahlte bisher den Kinderpreis und zahlt künftig 200 statt 175 Yuan. Im [Chimelong Safari Park](ref:chimelong-safari-park) zahlt derselbe 13-Jährige an einem Tag unter der Woche 240 statt 210 Yuan, an Wochenenden, Feiertagen und in den Sommerferien 280 statt 245 Yuan. Das Kinderticket für den Vierjährigen kostet dort 210 Yuan, an diesen besonderen Tagen 245.
 
-Teurer wird es also für kleine Kinder ab drei und für kleine Jugendliche. Für große Kinder ändert sich nichts: Eine Elfjährige mit 1,55 Metern zahlt weiter den Kinderpreis, den sie schon bisher wegen ihres Alters bekam. Für das Jugendticket reicht künftig das Alter, einen Schülerausweis verlangt die neue Regel nicht.
+Teurer wird es also für kleine Kinder ab drei und für kleine Jugendliche. Für große Kinder ändert sich nichts: Eine Elfjährige mit 1,55 Metern zahlt weiter den Kinderpreis, den sie schon bisher wegen ihres Alters bekam. Für das Jugendticket nennt die Mitteilung nur noch das Alter, einen Schülerausweis erwähnt sie nicht.
 
 ## Theater, Pools und Buffets
 
@@ -76,11 +76,11 @@ Es zählt der Tag, an dem du kaufst. Der Besuch kann später liegen. Für Ticket
 
 ## Jahreskarten sind gerade nicht zu haben
 
-Seit dem 19. November verkauft Chimelong keine Jahreskarten mehr. Neue Karten sollen nach dem 26. Dezember in den Verkauf gehen, und wessen Karte in der Pause abläuft oder wer die Bedingungen für den Verlängerungsrabatt erfüllt, bekommt beim Kauf der neuen Karte einen Rabatt. Bestehende Karten gelten weiter, reserviert wird wie bisher. Wer eine neue Karte vor dem 4. Januar kauft, für den gilt bei Kindern noch die alte Regel. Preise und Leistungen der neuen Karten hat Chimelong noch nicht bekannt gegeben.
+Seit dem 19. November verkauft Chimelong keine Jahreskarten mehr. Neue Karten sollen nach dem 26. Dezember in den Verkauf gehen, und wessen Karte in der Pause abläuft oder wer die Bedingungen für den Verlängerungsrabatt erfüllt, bekommt beim Kauf der neuen Karte einen Rabatt. Bestehende Karten gelten weiter, reserviert wird wie bisher. Für Jahreskarten zählt die Regel, die Chimelong beim Kauf veröffentlicht hat. Welche das bei den neuen Karten ist, steht noch nicht fest. Preise und Leistungen der neuen Karten hat Chimelong noch nicht bekannt gegeben.
 
 ## Welche Parks betroffen sind
 
-Betroffen ist das ganze Resort. In Guangzhou sind das Chimelong Paradise, der Chimelong Safari Park, der [Chimelong Water Park](ref:chimelong-water-park) und der [Chimelong Birds Park](ref:chimelong-birds-park). Im Water Park kostet das Standardticket 139 Yuan, Kinder und Jugendliche zahlen 99, und ab 17 Uhr gibt es für alle ein Abendticket zu 99 Yuan. Auf der Insel Hengqin bei Zhuhai stehen [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) und [Chimelong Spaceship](ref:chimelong-spaceship), der dritte Standort des Resorts ist Qingyuan. Weil jedes Ticket an einen Park und einen Tag gebunden ist, legst du den Besuchstag schon beim Kauf fest.
+Betroffen ist das ganze Resort. In Guangzhou sind das Chimelong Paradise, der Chimelong Safari Park, der [Chimelong Water Park](ref:chimelong-water-park) und der [Chimelong Birds Park](ref:chimelong-birds-park). Im Water Park kostet das Standardticket 139 Yuan, Kinder und Jugendliche zahlen 99, und ab 17 Uhr gibt es für alle ein Abendticket zu 99 Yuan. In Hengqin in Zhuhai stehen [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) und [Chimelong Spaceship](ref:chimelong-spaceship), der dritte Standort des Resorts ist Qingyuan. Weil jedes Ticket für einen festen Besuchstag verkauft wird, legst du den Tag schon beim Kauf fest.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 

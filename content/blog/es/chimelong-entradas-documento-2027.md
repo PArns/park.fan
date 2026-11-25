@@ -64,7 +64,7 @@ A partir de las 0 h del 4 de enero, la vara de medir de la taquilla se jubila y 
 
 En [Chimelong Paradise](ref:chimelong-paradise), la entrada de un día cuesta 250 yuanes, 175 la infantil y 200 la juvenil. Un niño de cuatro años que no llega al metro entraba allí gratis y desde enero necesita una entrada infantil de 175 yuanes. Un chico de 13 años que mide menos de 1,5 metros pagaba hasta ahora el precio infantil y pasa a pagar 200 yuanes en lugar de 175. En el [Chimelong Safari Park](ref:chimelong-safari-park), ese mismo chico de 13 años paga 240 yuanes en vez de 210 un día entre semana, y 280 en vez de 245 los fines de semana, los festivos y en las vacaciones de verano. La entrada infantil del niño de cuatro años cuesta allí 210 yuanes, y 245 esos días especiales.
 
-Sale más caro, por tanto, para los niños pequeños a partir de tres años y para los adolescentes bajitos. Para los niños altos no cambia nada: una niña de once años que mide 1,55 metros sigue pagando el precio infantil, que ya le tocaba por su edad. Para la entrada juvenil bastará con tener la edad; la nueva norma no pide carné de estudiante.
+Sale más caro, por tanto, para los niños pequeños a partir de tres años y para los adolescentes bajitos. Para los niños altos no cambia nada: una niña de once años que mide 1,55 metros sigue pagando el precio infantil, que ya le tocaba por su edad. Para la entrada juvenil, el comunicado ya solo habla de la edad y no menciona el carné de estudiante.
 
 ## Teatros, piscinas y bufés
 
@@ -76,11 +76,11 @@ Lo que cuenta es el día de la compra, no el de la visita, que puede ser más ta
 
 ## Ahora mismo no hay pases anuales
 
-Desde el 19 de noviembre, Chimelong no vende pases anuales. Los nuevos deberían salir a la venta después del 26 de diciembre. Si tu pase caduca durante la pausa o cumples las condiciones del descuento por renovación, tendrás un descuento al comprar el nuevo. Los pases que ya existen siguen valiendo y se reserva igual que hasta ahora. Quien compre un pase nuevo antes del 4 de enero mantiene para los niños la norma antigua. Precios y ventajas de los nuevos pases, Chimelong todavía no los ha dado a conocer.
+Desde el 19 de noviembre, Chimelong no vende pases anuales. Los nuevos deberían salir a la venta después del 26 de diciembre. Si tu pase caduca durante la pausa o cumples las condiciones del descuento por renovación, tendrás un descuento al comprar el nuevo. Los pases que ya existen siguen valiendo y se reserva igual que hasta ahora. En los pases anuales vale la norma que Chimelong tenía publicada en el momento de la compra. Cuál será la de los pases nuevos todavía no se sabe. Precios y ventajas de los nuevos pases, Chimelong todavía no los ha dado a conocer.
 
 ## Qué parques entran
 
-Entra todo el resort. En Guangzhou son Chimelong Paradise, el Chimelong Safari Park, el [Chimelong Water Park](ref:chimelong-water-park) y el [Chimelong Birds Park](ref:chimelong-birds-park). En el Water Park, la entrada estándar cuesta 139 yuanes, niños y jóvenes pagan 99, y desde las 17 h hay para todos una entrada de tarde por 99 yuanes. En la isla de Hengqin, cerca de Zhuhai, están [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) y [Chimelong Spaceship](ref:chimelong-spaceship); la tercera sede del resort está en Qingyuan. Como cada entrada va ligada a un parque y a un día, la fecha de la visita la eliges ya al comprar.
+Entra todo el resort. En Guangzhou son Chimelong Paradise, el Chimelong Safari Park, el [Chimelong Water Park](ref:chimelong-water-park) y el [Chimelong Birds Park](ref:chimelong-birds-park). En el Water Park, la entrada estándar cuesta 139 yuanes, niños y jóvenes pagan 99, y desde las 17 h hay para todos una entrada de tarde por 99 yuanes. En Hengqin (Zhuhai) están [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) y [Chimelong Spaceship](ref:chimelong-spaceship); la tercera sede del resort está en Qingyuan. Como cada entrada se vende para un día de visita concreto, la fecha la eliges ya al comprar.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 

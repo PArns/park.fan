@@ -64,7 +64,7 @@ Vanaf 4 januari om 0.00 uur kan de meetlat bij de kassa de kast in, want dan tel
 
 In [Chimelong Paradise](ref:chimelong-paradise) kost een dagticket 250 yuan, voor kinderen 175 en voor jongeren 200 yuan. Een kind van vier dat kleiner is dan een meter kwam daar tot nu toe gratis binnen en heeft vanaf januari een kinderticket van 175 yuan nodig. Een dertienjarige onder de 1,5 meter betaalde tot nu toe de kinderprijs en betaalt straks 200 in plaats van 175 yuan. In het [Chimelong Safari Park](ref:chimelong-safari-park) betaalt diezelfde dertienjarige doordeweeks 240 in plaats van 210 yuan, en in het weekend, op feestdagen en in de zomervakantie 280 in plaats van 245 yuan. Het kinderticket voor de vierjarige kost daar 210 yuan, op die bijzondere dagen 245.
 
-Duurder wordt het dus voor kleine kinderen vanaf drie en voor kleine tieners. Voor lange kinderen verandert er niets: een meisje van elf dat 1,55 meter meet, betaalt nog steeds de kinderprijs, die ze vanwege haar leeftijd al kreeg. Voor het jongerenticket is straks alleen de leeftijd genoeg, en een scholierenkaart vraagt de nieuwe regel niet.
+Duurder wordt het dus voor kleine kinderen vanaf drie en voor kleine tieners. Voor lange kinderen verandert er niets: een meisje van elf dat 1,55 meter meet, betaalt nog steeds de kinderprijs, die ze vanwege haar leeftijd al kreeg. Voor het jongerenticket noemt de mededeling alleen nog de leeftijd, en een scholierenkaart komt er niet in voor.
 
 ## Theaters, zwembaden en buffetten
 
@@ -76,11 +76,11 @@ Wat telt, is de dag waarop je koopt. Je bezoek mag later vallen. Voor tickets, a
 
 ## Jaarkaarten zijn er even niet
 
-Sinds 19 november verkoopt Chimelong geen jaarkaarten meer. De nieuwe kaarten moeten na 26 december in de verkoop gaan. Verloopt je kaart in die pauze of voldoe je aan de voorwaarden voor de verlengingskorting, dan krijg je korting als je de nieuwe kaart koopt. Bestaande kaarten blijven geldig, en reserveren gaat zoals altijd. Koop je een nieuwe kaart vóór 4 januari, dan geldt voor kinderen nog de oude regel. Prijzen en voordelen van de nieuwe kaarten heeft Chimelong nog niet bekendgemaakt.
+Sinds 19 november verkoopt Chimelong geen jaarkaarten meer. De nieuwe kaarten moeten na 26 december in de verkoop gaan. Verloopt je kaart in die pauze of voldoe je aan de voorwaarden voor de verlengingskorting, dan krijg je korting als je de nieuwe kaart koopt. Bestaande kaarten blijven geldig, en reserveren gaat zoals altijd. Voor jaarkaarten telt de regel die Chimelong bij je aankoop had gepubliceerd. Welke dat bij de nieuwe kaarten wordt, staat nog niet vast. Prijzen en voordelen van de nieuwe kaarten heeft Chimelong nog niet bekendgemaakt.
 
 ## Om welke parken het gaat
 
-De regels gelden voor het hele resort. In Guangzhou zijn dat Chimelong Paradise, het Chimelong Safari Park, het [Chimelong Water Park](ref:chimelong-water-park) en het [Chimelong Birds Park](ref:chimelong-birds-park). In het Water Park kost een standaardticket 139 yuan, kinderen en jongeren betalen 99, en vanaf 17.00 uur is er voor iedereen een avondticket van 99 yuan. Op het eiland Hengqin bij Zhuhai liggen [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) en [Chimelong Spaceship](ref:chimelong-spaceship), en de derde vestiging van het resort ligt in Qingyuan. Omdat elk ticket aan één park en één dag vastzit, leg je je bezoekdag al bij het kopen vast.
+De regels gelden voor het hele resort. In Guangzhou zijn dat Chimelong Paradise, het Chimelong Safari Park, het [Chimelong Water Park](ref:chimelong-water-park) en het [Chimelong Birds Park](ref:chimelong-birds-park). In het Water Park kost een standaardticket 139 yuan, kinderen en jongeren betalen 99, en vanaf 17.00 uur is er voor iedereen een avondticket van 99 yuan. In Hengqin in Zhuhai liggen [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) en [Chimelong Spaceship](ref:chimelong-spaceship), en de derde vestiging van het resort ligt in Qingyuan. Omdat elk ticket voor een vaste bezoekdag wordt verkocht, leg je die dag al bij het kopen vast.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 

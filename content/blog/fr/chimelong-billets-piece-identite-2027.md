@@ -62,7 +62,7 @@ Le 4 janvier à minuit, la toise de la billetterie part à la retraite : seul c
 
 À [Chimelong Paradise](ref:chimelong-paradise), la journée coûte 250 yuans, 175 pour un enfant et 200 pour un jeune. Un enfant de quatre ans qui mesure moins d’un mètre y entrait gratuitement et aura besoin dès janvier d’un billet enfant à 175 yuans. Un ado de 13 ans de moins de 1,5 mètre payait le tarif enfant et paiera désormais 200 yuans au lieu de 175. Au [Chimelong Safari Park](ref:chimelong-safari-park), ce même ado paie 240 yuans au lieu de 210 un jour de semaine, et 280 au lieu de 245 le week-end, les jours fériés et pendant les vacances d’été. Le billet enfant du petit de quatre ans y coûte 210 yuans, et 245 ces jours-là.
 
-La note grimpe donc pour les petits de trois ans et plus et pour les jeunes de petite taille. Pour les grands enfants, rien ne bouge : une fillette de 11 ans qui mesure 1,55 mètre garde le tarif enfant, qu’elle avait déjà grâce à son âge. Pour le billet jeune, l’âge suffira, la nouvelle règle ne demande pas de carte d’élève.
+La note grimpe donc pour les petits de trois ans et plus et pour les jeunes de petite taille. Pour les grands enfants, rien ne bouge : une fillette de 11 ans qui mesure 1,55 mètre garde le tarif enfant, qu’elle avait déjà grâce à son âge. Pour le billet jeune, le communiqué ne cite plus que l’âge et ne parle pas de carte d’élève.
 
 ## Théâtres, piscines et buffets
 
@@ -74,11 +74,11 @@ La date d’achat compte. La visite peut avoir lieu plus tard. Les billets, forf
 
 ## Pas d’abonnement annuel pour le moment
 
-Depuis le 19 novembre, Chimelong ne vend plus d’abonnements annuels, et les nouveaux doivent arriver en vente après le 26 décembre. Si ton abonnement expire pendant la pause ou si tu remplis les conditions de la remise de renouvellement, tu obtiens une réduction en achetant le nouveau. Les abonnements en cours restent valables, et la réservation se fait comme avant. Pour un nouvel abonnement acheté avant le 4 janvier, l’ancienne règle s’applique encore aux enfants. Chimelong n’a pas encore annoncé les prix ni le contenu des nouveaux abonnements.
+Depuis le 19 novembre, Chimelong ne vend plus d’abonnements annuels, et les nouveaux doivent arriver en vente après le 26 décembre. Si ton abonnement expire pendant la pause ou si tu remplis les conditions de la remise de renouvellement, tu obtiens une réduction en achetant le nouveau. Les abonnements en cours restent valables, et la réservation se fait comme avant. Pour un abonnement annuel, c’est la règle publiée par Chimelong au moment de l’achat qui compte. Laquelle vaudra pour les nouveaux, on ne le sait pas encore. Chimelong n’a pas encore annoncé les prix ni le contenu des nouveaux abonnements.
 
 ## Les parcs concernés
 
-Tout le resort est concerné. À Canton, cela fait Chimelong Paradise, le Chimelong Safari Park, le [Chimelong Water Park](ref:chimelong-water-park) et le [Chimelong Birds Park](ref:chimelong-birds-park). Au Water Park, le billet standard coûte 139 yuans, 99 pour les enfants et les jeunes, et dès 17 h tout le monde entre avec un billet du soir à 99 yuans. Sur l’île de Hengqin, près de Zhuhai, se trouvent [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) et [Chimelong Spaceship](ref:chimelong-spaceship), et le troisième site du resort est Qingyuan. Comme chaque billet est lié à un parc et à un jour, tu fixes ta date de visite dès l’achat.
+Tout le resort est concerné. À Canton, cela fait Chimelong Paradise, le Chimelong Safari Park, le [Chimelong Water Park](ref:chimelong-water-park) et le [Chimelong Birds Park](ref:chimelong-birds-park). Au Water Park, le billet standard coûte 139 yuans, 99 pour les enfants et les jeunes, et dès 17 h tout le monde entre avec un billet du soir à 99 yuans. À Hengqin (Zhuhai) se trouvent [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) et [Chimelong Spaceship](ref:chimelong-spaceship), et le troisième site du resort est Qingyuan. Comme chaque billet est vendu pour un jour de visite précis, tu fixes ta date dès l’achat.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 

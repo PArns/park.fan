@@ -64,7 +64,7 @@ Dalla mezzanotte del 4 gennaio l’asta per misurare i bambini alla cassa va in 
 
 A [Chimelong Paradise](ref:chimelong-paradise) il biglietto giornaliero costa 250 yuan, 175 per i bambini e 200 per i ragazzi. Un bambino di quattro anni alto meno di un metro finora lì entrava gratis, mentre da gennaio gli serve un biglietto bambini da 175 yuan. Un tredicenne sotto 1,5 metri pagava la tariffa bambini e d’ora in poi ne paga 200 invece di 175. Al [Chimelong Safari Park](ref:chimelong-safari-park) lo stesso tredicenne spende 240 yuan invece di 210 in un giorno feriale, e 280 invece di 245 nei fine settimana, nei festivi e durante le vacanze estive. Lì il biglietto bambini per il piccolo di quattro anni costa 210 yuan, e 245 in quei giorni.
 
-A pagare di più sono quindi i bambini piccoli dai tre anni in su e i ragazzi non ancora cresciuti. Per i bambini alti non cambia niente: una bambina di undici anni alta 1,55 metri continua a pagare la tariffa bambini, che già oggi le spettava per l’età. Per il biglietto ragazzi da ora in poi basta l’età, e la nuova regola non chiede più la tessera studentesca.
+A pagare di più sono quindi i bambini piccoli dai tre anni in su e i ragazzi non ancora cresciuti. Per i bambini alti non cambia niente: una bambina di undici anni alta 1,55 metri continua a pagare la tariffa bambini, che già oggi le spettava per l’età. Per il biglietto ragazzi il comunicato parla ormai solo dell’età. La tessera studentesca non la nomina.
 
 ## Teatri, piscine e buffet
 
@@ -76,11 +76,11 @@ Conta il giorno in cui compri, mentre la visita può venire dopo. Per biglietti,
 
 ## Gli abbonamenti annuali per ora non si trovano
 
-Dal 19 novembre Chimelong non vende più abbonamenti annuali. Le nuove tessere dovrebbero arrivare in vendita dopo il 26 dicembre. Chi ha una tessera che scade durante la pausa, o chi ha diritto allo sconto sul rinnovo, avrà uno sconto quando compra quella nuova. Le tessere attuali restano valide e si prenota come prima. Se compri una tessera nuova prima del 4 gennaio, per i bambini vale ancora la vecchia regola. Prezzi e vantaggi delle nuove tessere Chimelong non li ha ancora resi noti.
+Dal 19 novembre Chimelong non vende più abbonamenti annuali. Le nuove tessere dovrebbero arrivare in vendita dopo il 26 dicembre. Chi ha una tessera che scade durante la pausa, o chi ha diritto allo sconto sul rinnovo, avrà uno sconto quando compra quella nuova. Le tessere attuali restano valide e si prenota come prima. Per gli abbonamenti annuali conta la regola che Chimelong ha pubblicato al momento dell’acquisto. Per le nuove tessere non si sa ancora. Prezzi e vantaggi delle nuove tessere Chimelong non li ha ancora resi noti.
 
 ## Quali parchi sono coinvolti
 
-Le regole valgono per tutto il resort. A Guangzhou ci sono Chimelong Paradise, il Chimelong Safari Park, il [Chimelong Water Park](ref:chimelong-water-park) e il [Chimelong Birds Park](ref:chimelong-birds-park). Al Water Park il biglietto standard costa 139 yuan, bambini e ragazzi pagano 99, e dalle 17 c’è per tutti un biglietto serale da 99 yuan. Sull’isola di Hengqin, vicino a Zhuhai, si trovano [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) e [Chimelong Spaceship](ref:chimelong-spaceship), e la terza sede del resort è Qingyuan. Siccome ogni biglietto è legato a un parco e a un giorno, il giorno della visita lo fissi già quando compri.
+Le regole valgono per tutto il resort. A Guangzhou ci sono Chimelong Paradise, il Chimelong Safari Park, il [Chimelong Water Park](ref:chimelong-water-park) e il [Chimelong Birds Park](ref:chimelong-birds-park). Al Water Park il biglietto standard costa 139 yuan, bambini e ragazzi pagano 99, e dalle 17 c’è per tutti un biglietto serale da 99 yuan. A Hengqin (Zhuhai) si trovano [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) e [Chimelong Spaceship](ref:chimelong-spaceship), e la terza sede del resort è Qingyuan. Siccome ogni biglietto viene venduto per un giorno di visita preciso, la data la fissi già quando compri.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 
