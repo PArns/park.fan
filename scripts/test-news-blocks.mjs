@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 
 import { markdownToBlocks, selectGuides, selectNews } from '../lib/blog/news-blocks.ts';
 import { getPostSearchIndex } from '../lib/navigation/blog-menu.ts';
-import { MEDIA_BASE, buildNewsExport } from './news-export.mjs';
+import { MEDIA_BASE, buildNewsExport, termsBeyondTitle } from './news-export.mjs';
 
 const ctx = {
   site: 'https://park.fan/de',
@@ -265,12 +265,18 @@ for (const file of files.filter((f) => f.key.startsWith('guides/')))
   for (const b of file.json.blocks ?? []) assert.ok(known.has(b.type), `${file.key}: ${b.type}`);
 
 // The app searches what the website searches: `terms` and `categoryLabel` are the site search's
-// own entry for the post, in the lists and in the article files.
+// own entry for the post, in the lists and in the article files. `terms` leaves out what the title
+// says: a word the title holds whole, however it is cased, accented or hyphenated.
+assert.equal(
+  termsBeyondTitle('Hansa-Park hansa Tipps Fårup Parks Wartezeit', 'Tipps: Hansa-Park und Farup'),
+  'Parks Wartezeit'
+);
+assert.equal(termsBeyondTitle('Taron', 'Taron'), '');
 const searchEntries = new Map(getPostSearchIndex('de').map((entry) => [entry.path, entry]));
 for (const p of [...newsList.posts, ...guidesList.posts, newsBody, guideBody]) {
   const entry = searchEntries.get(new URL(p.url).pathname.slice('/de'.length));
   assert.ok(entry, p.url);
-  assert.equal(p.terms, entry.terms);
+  assert.equal(p.terms ?? '', termsBeyondTitle(entry.terms ?? '', p.title));
   assert.equal(p.categoryLabel, entry.category);
 }
 assert.ok(guidesList.posts.some((p) => p.terms) && newsList.posts.some((p) => p.terms));

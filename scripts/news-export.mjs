@@ -22,6 +22,7 @@ import { getMediaImageForPath } from '../lib/media/index.ts';
 import { MEDIA_PARK_PATH_BY_SLUG } from '../lib/media/manifest-parks.ts';
 import { getMediaAlt } from '../lib/media/text.ts';
 import { getPostSearchIndex } from '../lib/navigation/blog-menu.ts';
+import { queryWords } from '../lib/navigation/post-search.ts';
 
 /** The bucket's public host; the avatar URLs and the photo index both start here. */
 export const MEDIA_BASE = 'https://media.park.fan';
@@ -83,6 +84,19 @@ function authorOf(key, locale, avatars) {
     avatar = large;
   }
   return { name: a.shortName ?? a.name, role: a.role ?? null, avatar, avatarSmall };
+}
+
+/**
+ * A post's search terms without the words its title already holds as whole words. The title counts
+ * twice as much as the terms, so the same posts match in the same order, and the list stays an
+ * index. Words are compared as the search splits and folds them (`queryWords`).
+ */
+export function termsBeyondTitle(terms, title) {
+  const inTitle = new Set(queryWords(title));
+  return terms
+    .split(' ')
+    .filter((term) => !queryWords(term).every((word) => inTitle.has(word)))
+    .join(' ');
 }
 
 /** The rides a post lists in `rideLinks`, as `<park geo path>/<ride slug>` where the park is known. */
@@ -159,6 +173,7 @@ export function buildNewsExport(chosen, avatars) {
         const fm = post.frontmatter;
         const cover = photo(fm.coverImage?.src);
         const found = search.get(postPath(post));
+        const terms = termsBeyondTitle(found?.terms ?? '', fm.title);
         const meta = {
           slug: post.slug,
           url: `${site}${postPath(post)}`,
@@ -168,7 +183,7 @@ export function buildNewsExport(chosen, avatars) {
           ...(fm.updatedAt ? { updatedAt: withZoneOffset(fm.updatedAt) } : {}),
           category: fm.category,
           ...(found?.category ? { categoryLabel: found.category } : {}),
-          ...(found?.terms ? { terms: found.terms } : {}),
+          ...(terms ? { terms } : {}),
           ...parksOf(post.translationKey),
           cover: cover?.id ?? null,
           coverAlt: cover ? (fm.coverImage?.alt ?? getMediaAlt(cover.id, locale)) : null,

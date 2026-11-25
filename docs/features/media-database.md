@@ -273,7 +273,8 @@ parkSlugs, cover, coverAlt, readingMinutes}`. `url` is the absolute
   `teaser` is the frontmatter `excerpt`; `categoryLabel` and `terms` are the post's entry in the
   site search (`getPostSearchIndex`, `lib/navigation/blog-menu.ts`): the category's label in that
   locale and the words of the SEO keywords and tags, each once, so the app's search matches what
-  the website's does. Both are additive and `schema` stays 1; `parks` are the API
+  the website's does. `terms` leaves out the words the title already holds (`termsBeyondTitle`):
+  the title outweighs them, so the matches and their order stay the same. Both are additive and `schema` stays 1; `parks` are the API
   geo paths of the parks the post is about, the keys of `parks` in `index.json`, the park of the
   news label first (`getNewsParkRef`); `parkSlugs` are the same parks as slugs, because a park
   nobody photographed and no post linked by its full path has no known path and is then missing

@@ -9,6 +9,9 @@ beide: „Jahreskarte“ fand dort einen Guide statt sechs, „single rider“ e
 neun Guides der Kategorien `park-fan`, `new-attractions` und `behind-the-scenes` waren über ihre
 Kategorie nicht zu finden.
 
-`schema` bleibt 1, die Felder kommen nur hinzu. `guides/de.json` wächst von 67.592 auf 86.126 Bytes
-(gzip 16.110 auf 21.338), `news/de.json` von 65.273 auf 84.919 (gzip 17.012 auf 22.156). Der
-Workflow `publish-media` läuft jetzt auch bei einer Änderung an `lib/navigation/blog-menu.ts`.
+`terms` lässt die Wörter weg, die schon als ganzes Wort im Titel stehen (`termsBeyondTitle`): Der
+Titel zählt doppelt so viel wie die Suchwörter, die Treffer und ihre Reihenfolge bleiben dieselben,
+und die Liste bleibt ein Index. `schema` bleibt 1, die Felder kommen nur hinzu. `guides/de.json`
+wächst von 67.592 auf 83.960 Bytes (gzip 16.110 auf 20.744), `news/de.json` von 65.273 auf 81.640
+(gzip 17.012 auf 21.493). Der Workflow `publish-media` läuft jetzt auch bei einer Änderung an
+`lib/navigation/blog-menu.ts`.
