@@ -267,9 +267,13 @@ written before them.
   types as the news files below. Two things differ: `url` is
   `https://park.fan/<locale>/blog/<slug>`, and the list is not capped.
 - **`news/<locale>.json`:** `{schema: 1, generatedAt, locale, posts: [Post]}`, with `Post` =
-  `{slug, url, title, teaser, publishedAt, updatedAt?, category, parks, parkSlugs, cover, coverAlt,
-readingMinutes}`. `url` is the absolute `https://park.fan/<locale>/news/<slug>`; `publishedAt`
-  and `updatedAt` carry Berlin's offset; `teaser` is the frontmatter `excerpt`; `parks` are the API
+  `{slug, url, title, teaser, publishedAt, updatedAt?, category, categoryLabel?, terms?, parks,
+parkSlugs, cover, coverAlt, readingMinutes}`. `url` is the absolute
+  `https://park.fan/<locale>/news/<slug>`; `publishedAt` and `updatedAt` carry Berlin's offset;
+  `teaser` is the frontmatter `excerpt`; `categoryLabel` and `terms` are the post's entry in the
+  site search (`getPostSearchIndex`, `lib/navigation/blog-menu.ts`): the category's label in that
+  locale and the words of the SEO keywords and tags, each once, so the app's search matches what
+  the website's does. Both are additive and `schema` stays 1; `parks` are the API
   geo paths of the parks the post is about, the keys of `parks` in `index.json`, the park of the
   news label first (`getNewsParkRef`); `parkSlugs` are the same parks as slugs, because a park
   nobody photographed and no post linked by its full path has no known path and is then missing

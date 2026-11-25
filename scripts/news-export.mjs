@@ -21,6 +21,7 @@ import { getCreditLine, needsAttribution } from '../lib/media/credit.ts';
 import { getMediaImageForPath } from '../lib/media/index.ts';
 import { MEDIA_PARK_PATH_BY_SLUG } from '../lib/media/manifest-parks.ts';
 import { getMediaAlt } from '../lib/media/text.ts';
+import { getPostSearchIndex } from '../lib/navigation/blog-menu.ts';
 
 /** The bucket's public host; the avatar URLs and the photo index both start here. */
 export const MEDIA_BASE = 'https://media.park.fan';
@@ -145,6 +146,8 @@ export function buildNewsExport(chosen, avatars) {
     };
 
     const all = listPosts(locale);
+    // The website's own search entries by post path, so the app matches the same words and label.
+    const search = new Map(getPostSearchIndex(locale).map((entry) => [entry.path, entry]));
     // Both kinds go through the same serializer; only the folder and the selection differ.
     for (const [dir, select] of [
       ['news', selectNews],
@@ -155,6 +158,7 @@ export function buildNewsExport(chosen, avatars) {
       for (const post of select(all)) {
         const fm = post.frontmatter;
         const cover = photo(fm.coverImage?.src);
+        const found = search.get(postPath(post));
         const meta = {
           slug: post.slug,
           url: `${site}${postPath(post)}`,
@@ -163,6 +167,8 @@ export function buildNewsExport(chosen, avatars) {
           publishedAt: withZoneOffset(fm.date, fm.time),
           ...(fm.updatedAt ? { updatedAt: withZoneOffset(fm.updatedAt) } : {}),
           category: fm.category,
+          ...(found?.category ? { categoryLabel: found.category } : {}),
+          ...(found?.terms ? { terms: found.terms } : {}),
           ...parksOf(post.translationKey),
           cover: cover?.id ?? null,
           coverAlt: cover ? (fm.coverImage?.alt ?? getMediaAlt(cover.id, locale)) : null,
