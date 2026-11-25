@@ -61,12 +61,15 @@ const PAGES = [
   ['/de/so-funktioniert-park-fan', 'hub', true],
   ['/de/fancast', 'hub', true],
   ['/de/parky', 'hub', true],
+  // No action while the app is not in the store: APP_STORE_ID in app/[locale]/app/page.tsx.
+  ['/de/app', 'hub', false],
   ['/de/blog', 'hub', false],
   ['/en/best-time-to-visit', 'hub', true],
   ['/en/trip-planner', 'hub', true],
   ['/en/how-park-fan-works', 'hub', true],
   ['/en/fancast', 'hub', true],
   ['/en/parky', 'hub', true],
+  ['/en/app', 'hub', false],
   ['/en/blog', 'hub', false],
   // Every live trip region's hub, months and best-time pages are hubs.
   ...TRIP_REGION_PAGES.map((path) => [path, 'hub', true]),

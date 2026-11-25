@@ -4,11 +4,11 @@ Every landing page is one of three kinds, and the kind decides the head. A fourt
 the concept page ([landing pages](../product/landing-pages.md)) first. The homepage is none of these
 and keeps its own hero.
 
-| Kind               | Pages                                                                                                                      | Head                                                  |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| Hub                | best time to visit, trip planner, how park.fan works, Fancast, Parky, blog, the trip region hubs and their best-time pages | `LandingHero` (`data-landing-hero="hub"`)             |
-| Tool page          | contribute, developer portal, news index, compare, glossary index, changelog                                               | `LandingHero variant="compact"` (`="compact"`)        |
-| Park audience page | `/mit-kindern`, `/durchschnittliche-wartezeiten`, the persona pages after them                                             | the park chrome: `ParkTitleHeader` + `ParkHeaderCard` |
+| Kind               | Pages                                                                                                                                      | Head                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| Hub                | best time to visit, trip planner, how park.fan works, Fancast, Parky, the iPhone app, blog, the trip region hubs and their best-time pages | `LandingHero` (`data-landing-hero="hub"`)             |
+| Tool page          | contribute, developer portal, news index, compare, glossary index, changelog                                                               | `LandingHero variant="compact"` (`="compact"`)        |
+| Park audience page | `/mit-kindern`, `/durchschnittliche-wartezeiten`, the persona pages after them                                                             | the park chrome: `ParkTitleHeader` + `ParkHeaderCard` |
 
 The sequence is head, intro, chapters, FAQ, next step, in that order. Hubs run all five; the other
 two kinds run the parts that apply, without reordering them. A trip hub's intro is the key at the
@@ -17,7 +17,8 @@ and a paragraph before it was the text nobody read ([the Orlando hub](../feature
 
 - **One `<h1>`**, the one in the head, counted in the rendered DOM after hydration.
 - **One primary action on a hub**, in the hero's action slot (`data-landing-action`). The blog index
-  has none, because the list is the action. The same destination comes back as the first entry of
+  has none, because the list is the action, and neither has `/app` while the app is not in the
+  App Store. The same destination comes back as the first entry of
   `LandingNextSteps`. A second button beside it (a trip hub's „Zum Kalender“) carries no
   `data-landing-action`.
 - **Chapters open with `ChapterHeading`**, directly or through `SectionShell`

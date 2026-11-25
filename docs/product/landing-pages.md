@@ -22,7 +22,7 @@ product meets the need and no page addresses it) and
 ## 1. Three kinds of landing page
 
 **Hub** (a topic or audience across all parks: best time to visit, trip planner, how park.fan
-works, Fancast, Parky, blog index, the Orlando hub with its month pages, and Orlando's three
+works, Fancast, Parky, the iPhone app (`/app`), blog index, the Orlando hub with its month pages, and Orlando's three
 best-time pages), **tool page** (the page is a tool, a list or a form: contribute, news
 index, compare, glossary index, changelog) and **park audience page** (one audience × one park,
 under the park's URL: with kids, average wait times). The table of pages and heads is in the
@@ -79,6 +79,7 @@ once in its head (`LandingHero action`) and again as the first entry of `Landing
 | how park.fan works    | P4                                              | open a park                              |
 | Fancast               | P2                                              | a park's crowd calendar                  |
 | blog index            | readers                                         | none: the list is the action             |
+| iPhone app (`/app`)   | app users, App Store visitors                   | the App Store once listed; none in beta  |
 | with kids             | P1                                              | plan the day for this height             |
 | average wait times    | P2, P6                                          | the trip planner for this park           |
 | contribute            | photo contributors                              | upload photos                            |

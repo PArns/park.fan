@@ -2516,9 +2516,89 @@
     "title": "Impressum – park.fan",
     "description": "Rechtliche Informationen und Impressum für park.fan"
   },
-  "appSupport": {
-    "title": "park.fan für iPhone – Hilfe",
-    "description": "Was die park.fan App für iPhone kann, was sie braucht und wie du uns erreichst."
+  "appPage": {
+    "metaTitle": "park.fan für iPhone: Wartezeiten, Andrang-Kalender und Tagesplaner",
+    "metaDescription": "Die App von park.fan zeigt dir die Wartezeiten live, im Kalender die ruhigen Tage und plant deinen Parktag mit dir. Im Park steht er auf dem Sperrbildschirm. Kostenlos, ohne Konto, für iOS 26.",
+    "title": "park.fan für iPhone",
+    "headline": "Wartezeiten, Andrang und dein Plan in einer App",
+    "lead": "Zu Hause zeigt sie dir die Tage, an denen wenig los ist, und im Park die Bahnen, an denen du gerade kurz anstehst",
+    "status": "Im Beta-Test über TestFlight, bald im App Store",
+    "requirement": "Für iPhone mit iOS 26 oder neuer, auch für das iPhone Duo",
+    "storeAction": "Im App Store laden",
+    "betaAction": "Beta über TestFlight testen",
+    "plan": {
+      "kicker": "Vor dem Besuch",
+      "title": "Andrang-Kalender und Tagesplaner",
+      "calendarTitle": "Der Kalender für die ruhigen Tage",
+      "calendarBody": "Im Kalender siehst du für jeden Tag, Monate im Voraus, die erwartete Auslastung und die Spitzenwartezeit der Headliner; Feiertage, Schulferien und Brückentage stehen dabei. Ein Tipp auf einen Tag zeigt die Öffnungszeiten, den Verlauf über die Stunden und das Wetter.",
+      "plannerTitle": "Der Tagesplaner sortiert nach Wartezeit",
+      "plannerBody": "Du wählst Park, Tag, Bahnen und Shows, und park.fan bringt sie in die Reihenfolge mit den kürzesten erwarteten Wartezeiten, die Fußwege eingerechnet. Sag ihm, wie groß dein kleinstes Kind ist oder ob ihr trocken bleiben wollt; was nicht passt, wird markiert. Am Parktag sagt dir das iPhone, wann du zur nächsten Bahn losgehen solltest."
+    },
+    "park": {
+      "kicker": "Im Park",
+      "title": "Wartezeiten, Kompass und „Bring mich hin“",
+      "body": "Öffnest du die App im Park, begrüßt sie dich mit dem, was jetzt zählt: die besten Zeiten heute, die Bahnen um dich herum, die nächste Show und dein Plan.",
+      "waitsTitle": "Wartezeiten live",
+      "waitsBody": "Jede Attraktion mit ihrer Wartezeit, mit Störungen und Schließungen. Ein Pfeil zeigt, ob die Warteschlange wächst, und unter „Jetzt kürzer als später“ stehen die Bahnen, an denen du gerade deutlich weniger anstehst als sonst.",
+      "compassTitle": "Der Kompass",
+      "compassBody": "Richtung und Entfernung zu den Top-Attraktionen und zu den Bahnen deines Plans, auf Wunsch auch zu den Restaurants. Dafür braucht die App deinen Standort, solange sie offen ist.",
+      "guideTitle": "„Bring mich hin“",
+      "guideBody": "Ziel antippen, und der Pfeil führt dich mit Metern und Gehminuten bis zum Eingang. Die Parkkarte zeigt dazu alle Attraktionen, Shows und Restaurants."
+    },
+    "lock": {
+      "kicker": "Sperrbildschirm und Mitteilungen",
+      "title": "Dein Parktag auf dem Sperrbildschirm",
+      "body": "Im Park legt die App deinen Tag auf den Sperrbildschirm und in die Dynamic Island: die Wartezeiten deiner Lieblingsbahnen, den nächsten Punkt deines Plans und die nächste Show. Die Anzeige startet von selbst, wenn du die App im Park öffnest, und lässt sich in den Einstellungen abschalten.",
+      "notifications": "Mitteilungen kommen nur, wenn du sie einschaltest, jede Art für sich. Der Wartezeit-Alarm meldet sich, sobald eine Bahn unter deine Wunschzeit fällt oder wieder fährt, und abschalten kannst du ihn direkt in der Mitteilung. Weitere Arten: Regen im Anmarsch, Änderungen an deinem Plan, dein Plan am Morgen, News und Guides."
+    },
+    "parky": {
+      "kicker": "Parky",
+      "title": "Parky, dein Park-Buddy im Chat",
+      "body": "Frag ihn nach dem besten Tag oder der kürzesten Warteschlange, oder lass ihn deinen Plan umstellen. Bevor deine erste Nachricht das iPhone verlässt, sagt dir die App, was gesendet wird und an wen, und fragt dich. Jede Antwort kannst du melden, und „Neuer Chat“ löscht den alten. Die Antworten schreibt das Sprachmodell Claude von Anthropic."
+    },
+    "more": {
+      "kicker": "Außerdem",
+      "title": "Favoriten, News und sechs Sprachen",
+      "favoritesTitle": "Favoriten",
+      "favoritesBody": "Parks, Attraktionen, Shows und Restaurants merkst du dir mit einem Stern, gefahrene Bahnen hakst du ab.",
+      "newsTitle": "News, Guides und Wetter",
+      "newsBody": "Die Beiträge von park.fan liest du in der App, das Wetter kommt mit Regenhinweis und amtlichen Warnungen.",
+      "languagesTitle": "Sechs Sprachen, hell und dunkel",
+      "languagesBody": "Deutsch, Englisch, Niederländisch, Französisch, Spanisch und Italienisch. Die App folgt dem Erscheinungsbild deines iPhones und ist auch für das iPhone Duo gebaut."
+    },
+    "privacy": "Die App braucht kein Konto, zeigt keine Werbung und trackt dich nicht. Favoriten und Pläne liegen auf deinem iPhone, und an park.fan geht nur, was eine Funktion braucht, die du einschaltest. Was das im Einzelnen ist, steht in der <link>Datenschutzerklärung</link>.",
+    "help": {
+      "kicker": "Hilfe",
+      "title": "Hilfe und Kontakt",
+      "needsTitle": "Was du brauchst",
+      "needs": [
+        "ein iPhone mit iOS 26 oder neuer, auch das iPhone Duo",
+        "eine Internetverbindung für die Live-Daten; zuletzt Geladenes bleibt auch ohne Netz zu sehen",
+        "die App spricht Deutsch, Englisch, Niederländisch, Französisch, Spanisch und Italienisch"
+      ],
+      "faqTitle": "Häufige Fragen",
+      "faq": {
+        "compassQ": "Warum sehe ich keinen Kompass?",
+        "compassA": "Kompass, „Bring mich hin“ und der Parktag auf dem Sperrbildschirm erscheinen, wenn du in einem geöffneten Park stehst und der App deinen Standort erlaubt hast. Das prüfst du in den Einstellungen deines iPhones unter Datenschutz & Sicherheit → Ortungsdienste → park.fan.",
+        "pushQ": "Warum kommt keine Mitteilung?",
+        "pushA": "Sieh in den Einstellungen deines iPhones unter Mitteilungen → park.fan nach, ob sie erlaubt sind, und in der App unter Einstellungen → Mitteilungen, welche Arten an sind. Ein Wartezeit-Alarm meldet sich erst, wenn die Wartezeit der Bahn unter deinen Wert fällt.",
+        "accuracyQ": "Wie genau sind die Wartezeiten?",
+        "accuracyA": "Die Live-Wartezeiten sind die, die die Parks angeben. Prognosen und der Kalender sind Schätzungen aus gemessenen Wartezeiten und können danebenliegen. Woher die Zahlen kommen, erklärt <link>So funktioniert park.fan</link>.",
+        "deleteQ": "Wie lösche ich meine Daten?",
+        "deleteA": "Favoriten und Pläne liegen auf deinem iPhone und sind mit der App gelöscht. Was die App sendet, wie lange es bleibt und wie du es löschst, steht in der <link>Datenschutzerklärung</link>."
+      },
+      "contactTitle": "Kontakt",
+      "contact": "Schreib uns bei Fragen, Fehlern oder Wünschen an <email></email>. Anschrift und Telefon stehen im <link>Impressum</link>.",
+      "emailDisplay": "hello[ät]park.fan",
+      "independent": "park.fan ist ein unabhängiges Angebot und steht in keiner Verbindung zu den Parks oder ihren Betreibern. Namen und Marken gehören ihren Inhabern."
+    },
+    "next": {
+      "title": "park.fan im Browser",
+      "body": "Kalender, Tagesplaner und Parky gibt es auch auf park.fan, ohne App und ohne Konto",
+      "calendar": "Ruhige Tage finden",
+      "planner": "Tag planen",
+      "parky": "Mit Parky schreiben"
+    }
   },
   "datenschutz": {
     "title": "Datenschutzerklärung – park.fan",
