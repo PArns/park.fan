@@ -44,17 +44,17 @@ seo:
     - Chimelong Zhuhai
 ---
 
-Vanaf 4 januari 2027 koop je tickets voor alle parken en theaters van Chimelong alleen nog op je eigen identiteitsbewijs, en als je uit het buitenland komt op je paspoort. Of een kind gratis binnenkomt, een kinderticket nodig heeft of de jongerenprijs betaalt, hangt dan alleen nog van zijn leeftijd af. Hoe lang het is, doet er niet meer toe. Chimelong Resort maakte de nieuwe regels op 25 november bekend in een mededeling. Het resort wil zo de verkoop en de toegang op orde brengen en samen met de autoriteiten illegale handel aanpakken. Schuift de startdatum op, dan meldt Chimelong dat apart.
+Vanaf 4 januari 2027 koop je tickets voor alle parken en theaters van Chimelong alleen nog op je eigen identiteitsbewijs, en als je uit het buitenland komt op je paspoort. Of een kind gratis binnenkomt, een kinderticket nodig heeft of de jongerenprijs betaalt, hangt dan alleen nog van zijn leeftijd af. Hoe lang het is, doet er niet meer toe. Chimelong Resort maakte de nieuwe regels op 25 november bekend in een mededeling. Volgens het resort zelf moet dat de verkoop en de toegang op orde brengen en helpen om samen met de autoriteiten illegale handel aan te pakken. Helemaal vast staat 4 januari nog niet. Schuift de datum op, dan maakt Chimelong dat apart bekend.
 
 ## Eén ticket per identiteitsbewijs
 
-Bij het kopen vul je de gegevens in van het identiteitsbewijs van degene die het ticket gaat gebruiken, en elk document hoort bij precies één bezoeker. Zodra je de bestelling hebt verzonden, kun je die gegevens niet meer wijzigen. Bij de ingang van het park of theater laat je het originele document zien dat je bij de aankoop hebt opgegeven. Per identiteitsbewijs krijg je voor hetzelfde park op dezelfde dag maar één ticket, en voor een theater werkt het net zo.
+Bij het kopen vul je voor elk ticket de gegevens in van het identiteitsbewijs van degene die er straks mee door het tourniquet loopt. Zodra je de bestelling hebt verzonden, kun je die gegevens niet meer wijzigen. Bij de ingang van het park of theater laat je het originele document zien dat je bij de aankoop hebt opgegeven. Per identiteitsbewijs krijg je voor hetzelfde park op dezelfde dag maar één ticket. Voor een theater werkt het net zo.
 
 Bij het tourniquet scannen bezoekers uit China al sinds 24 november 2020 hun identiteitskaart. Ook het standaardticket wordt nu al gecontroleerd aan de hand van het identiteitsbewijs dat bij de aankoop is ingevuld.
 
 ## Wat dit betekent als je uit het buitenland komt
 
-Kom je niet uit het Chinese vasteland, Hongkong, Macau of Taiwan, dan koop je met een geldig paspoort of met de Chinese verblijfskaart voor buitenlanders met permanent verblijf. Uit Nederland en België heb je dus je paspoort nodig, want de identiteitskaart staat niet op de lijst. Boek je voor familie of vrienden, verzamel dan vooraf alle paspoortnummers en controleer elk nummer op omgedraaide cijfers. Bij de ingang laat iedereen zijn eigen paspoort zien. Een kopie is niet genoeg.
+Kom je niet uit het Chinese vasteland, Hongkong, Macau of Taiwan, dan koop je met een geldig paspoort of met de Chinese verblijfskaart voor buitenlanders met permanent verblijf. Uit Nederland en België heb je dus je paspoort nodig. De identiteitskaart staat niet op de lijst. Boek je voor familie of vrienden, verzamel dan vooraf alle paspoortnummers en controleer elk nummer op omgedraaide cijfers. Bij de ingang heeft iedereen dan zijn eigen paspoort in het origineel nodig, ook als jij alle tickets hebt betaald. Met een foto van een paspoort op je telefoon komt de rest van het gezin niet door het tourniquet.
 
 ## Kinderen betalen naar leeftijd
 
@@ -62,9 +62,15 @@ Tot nu toe mocht een kind gratis het park in als het jonger was dan drie jaar of
 
 Voor alles wat je vanaf 4 januari koopt, kan de meetlat bij de kassa de kast in. Dan telt de leeftijd op de dag van je bezoek. Kinderen onder de drie mogen gratis de parken in, van drie tot en met elf jaar geldt het kinderticket en van twaalf tot en met zeventien het jongerenticket. Gaat een kind gratis mee naar binnen, dan laat de volwassene die het begeleidt bij de ingang het originele identiteitsbewijs van het kind zien. Voor gezinnen uit het buitenland is dat het paspoort van het kind.
 
-In [Chimelong Paradise](ref:chimelong-paradise) kost een dagticket 250 yuan, voor kinderen 175 en voor jongeren 200 yuan. Een kind van vier dat kleiner is dan een meter kwam daar tot nu toe gratis binnen en heeft vanaf januari een kinderticket van 175 yuan nodig. Een dertienjarige onder de 1,5 meter betaalde tot nu toe de kinderprijs en betaalt straks 200 in plaats van 175 yuan. In het [Chimelong Safari Park](ref:chimelong-safari-park) betaalt diezelfde dertienjarige doordeweeks 240 in plaats van 210 yuan, en in het weekend, op feestdagen en in de zomervakantie 280 in plaats van 245 yuan. Het kinderticket voor de vierjarige kost daar 210 yuan, op die bijzondere dagen 245.
+Een dagticket voor volwassenen kost in [Chimelong Paradise](ref:chimelong-paradise) 250 yuan. Kinderen en jongeren betalen daar en in het [Chimelong Safari Park](ref:chimelong-safari-park) deze prijzen:
 
-Duurder wordt het dus voor kleine kinderen vanaf drie en voor kleine tieners. Voor lange kinderen verandert er niets: een meisje van elf dat 1,55 meter meet, betaalt nog steeds de kinderprijs, die ze vanwege haar leeftijd al kreeg. Voor het jongerenticket noemt de mededeling alleen nog de leeftijd, en een scholierenkaart komt er niet in voor.
+| Park en dag                                                                | Kinderticket | Jongerenticket |
+| -------------------------------------------------------------------------- | -----------: | -------------: |
+| Chimelong Paradise                                                         |     175 yuan |       200 yuan |
+| Chimelong Safari Park doordeweeks                                          |     210 yuan |       240 yuan |
+| Chimelong Safari Park in het weekend, op feestdagen en in de zomervakantie |     245 yuan |       280 yuan |
+
+Duurder wordt het voor kleine kinderen vanaf drie en voor jongeren onder de 1,5 meter. Een kind van vier dat kleiner is dan een meter kwam tot nu toe gratis binnen en heeft vanaf januari een kinderticket nodig. Een dertienjarige onder de 1,5 meter betaalde tot nu toe de kinderprijs en betaalt straks de jongerenprijs. Voor lange kinderen verandert er niets: een meisje van elf dat 1,55 meter meet, betaalt nog steeds de kinderprijs, die ze vanwege haar leeftijd al kreeg. Over de scholierenkaart die jongeren tot nu toe moesten laten zien, staat in de nieuwe mededeling niets.
 
 ## Theaters, zwembaden en buffetten
 
@@ -72,15 +78,15 @@ De theaters, zoals het Chimelong International Circus in Guangzhou, geven geen v
 
 ## Als je vóór 4 januari koopt
 
-Wat telt, is de dag waarop je koopt. Je bezoek mag later vallen. Voor tickets, arrangementen en jaarkaarten die je vóór 4 januari 2027 koopt, geldt de oude regel met leeftijd of lengte. Wat je vanaf 4 januari koopt, wordt alleen nog op leeftijd gecontroleerd. Met een vierjarige onder de meter zou ik daarom nog in december boeken, als de ticketshop jouw bezoekdag al aanbiedt.
+Voor tickets, arrangementen en jaarkaarten die je uiterlijk op 3 januari 2027 koopt, geldt de oude regel met leeftijd of lengte, ook als je bezoek pas daarna valt. Met een vierjarige onder de meter zou ik daarom nog in december boeken. Omdat elk ticket op een vaste bezoekdag staat, lukt dat alleen als de ticketshop jouw dag al aanbiedt.
 
 ## Jaarkaarten zijn er even niet
 
-Sinds 19 november verkoopt Chimelong geen jaarkaarten meer. De nieuwe kaarten moeten na 26 december in de verkoop gaan. Verloopt je kaart in die pauze of voldoe je aan de voorwaarden voor de verlengingskorting, dan krijg je korting als je de nieuwe kaart koopt. Bestaande kaarten blijven geldig, en reserveren gaat zoals altijd. De prijzen en voordelen van de nieuwe kaarten heeft Chimelong nog niet bekendgemaakt.
+Sinds 19 november verkoopt Chimelong geen jaarkaarten meer. De nieuwe kaarten moeten na 26 december in de verkoop gaan. Korting op de nieuwe kaart krijg je als je oude kaart in die pauze verloopt, of als je in die tijd sowieso recht zou hebben op de verlengingskorting. Bestaande kaarten blijven geldig. Reserveren gaat zoals altijd. De prijzen en voordelen van de nieuwe kaarten heeft Chimelong nog niet bekendgemaakt.
 
 ## Om welke parken het gaat
 
-De regels gelden voor het hele resort. In Guangzhou zijn dat Chimelong Paradise, het Chimelong Safari Park, het [Chimelong Water Park](ref:chimelong-water-park) en het [Chimelong Birds Park](ref:chimelong-birds-park). In het Water Park kost een standaardticket 139 yuan, kinderen en jongeren betalen 99, en vanaf 17.00 uur is er voor iedereen een avondticket van 99 yuan. In Hengqin in Zhuhai liggen [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) en [Chimelong Spaceship](ref:chimelong-spaceship), en de derde vestiging van het resort ligt in Qingyuan. Elk ticket geldt voor een vaste bezoekdag, die je al bij het kopen kiest.
+In Guangzhou gelden de regels in Chimelong Paradise, het Chimelong Safari Park, het [Chimelong Water Park](ref:chimelong-water-park) en het [Chimelong Birds Park](ref:chimelong-birds-park). In het Water Park kost een standaardticket 139 yuan, kinderen en jongeren betalen 99, en vanaf 17.00 uur is er voor iedereen een avondticket van 99 yuan. In Hengqin in Zhuhai liggen [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) en [Chimelong Spaceship](ref:chimelong-spaceship). De derde vestiging van het resort ligt in Qingyuan.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 

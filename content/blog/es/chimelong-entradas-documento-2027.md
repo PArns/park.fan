@@ -44,17 +44,17 @@ seo:
     - Chimelong Zhuhai
 ---
 
-Desde el 4 de enero de 2027, las entradas de todos los parques y teatros de Chimelong se compran solo con tu propio documento, y si vienes del extranjero, con tu pasaporte. Si un niño entra gratis, con entrada infantil o con entrada juvenil lo decide entonces únicamente su edad; la estatura deja de contar. El Chimelong Resort anunció las nuevas normas el 25 de noviembre en un comunicado. Con ellas quiere poner orden en la venta y en el acceso, y perseguir junto con las autoridades el negocio ilegal. Si la fecha de inicio se retrasa, Chimelong lo avisará aparte.
+Desde el 4 de enero de 2027, las entradas de todos los parques y teatros de Chimelong se compran solo con tu propio documento, y si vienes del extranjero, con tu pasaporte. Si un niño entra gratis, con entrada infantil o con entrada juvenil lo decide entonces únicamente su edad; la estatura deja de contar. El Chimelong Resort anunció las nuevas normas el 25 de noviembre en un comunicado. Según sus propias palabras, con ellas quiere poner orden en la venta y en el acceso, y perseguir junto con las autoridades el negocio ilegal. El 4 de enero aún no es del todo definitivo. Si la fecha cambia, Chimelong lo anunciará por separado.
 
 ## Una entrada por documento
 
-Al comprar indicas los datos del documento de la persona que va a usar la entrada, y cada documento vale para un solo visitante. Una vez enviados, esos datos ya no se pueden cambiar. En la puerta del parque o del teatro enseñas el original del documento que diste en la compra. Con un mismo documento solo hay una entrada para el mismo parque y el mismo día, y con los teatros pasa igual.
+Al comprar indicas, para cada entrada, los datos del documento de la persona que pasará con ella por el torniquete. Una vez enviados, esos datos ya no se pueden cambiar. En la puerta del parque o del teatro enseñas el original del documento que diste en la compra. Con un mismo documento solo hay una entrada para el mismo parque y el mismo día. Con los teatros pasa igual.
 
 En el torniquete, los visitantes de China escanean su documento de identidad desde el 24 de noviembre de 2020. También la entrada estándar se comprueba ya hoy con el documento que se indicó al comprarla.
 
 ## Qué cambia si viajas desde fuera
 
-Quien no sea de China continental, Hong Kong, Macao o Taiwán compra con un pasaporte válido o con la tarjeta china de residencia permanente para extranjeros. El DNI no está en la lista, así que hace falta el pasaporte. Si reservas para la familia o los amigos, reúne antes todos los números de pasaporte y revísalos cifra por cifra. En la entrada, cada uno enseña su propio pasaporte. Con una copia no basta.
+Quien no sea de China continental, Hong Kong, Macao o Taiwán compra con un pasaporte válido o con la tarjeta china de residencia permanente para extranjeros. El DNI no está en la lista, así que hace falta el pasaporte. Si reservas para la familia o los amigos, reúne antes todos los números de pasaporte y revísalos cifra por cifra. En la entrada, cada uno necesitará después su propio pasaporte original, aunque hayas pagado tú todas las entradas. Con la foto de un pasaporte en el móvil, el resto de la familia no pasa el torniquete.
 
 ## Los niños pagan según su edad
 
@@ -62,9 +62,15 @@ Hasta ahora, un niño entraba gratis en el parque si tenía menos de tres años 
 
 Para todo lo que compres a partir del 4 de enero, la vara de medir de la taquilla se jubila. Entonces cuenta la edad el día de la visita. Los menores de tres años entran gratis en los parques, de tres a once años toca entrada infantil y de doce a 17, juvenil. Cuando un niño entra gratis, el adulto que lo acompaña enseña en la puerta el original del documento del niño; si la familia viene del extranjero, su pasaporte.
 
-En [Chimelong Paradise](ref:chimelong-paradise), la entrada de un día cuesta 250 yuanes, 175 la infantil y 200 la juvenil. Un niño de cuatro años que no llega al metro entraba allí gratis y desde enero necesita una entrada infantil de 175 yuanes. Un chico de 13 años que mide menos de 1,5 metros pagaba hasta ahora el precio infantil y pasa a pagar 200 yuanes en lugar de 175. En el [Chimelong Safari Park](ref:chimelong-safari-park), ese mismo chico de 13 años paga 240 yuanes en vez de 210 un día entre semana, y 280 en vez de 245 los fines de semana, los festivos y en las vacaciones de verano. La entrada infantil del niño de cuatro años cuesta allí 210 yuanes, y 245 esos días especiales.
+En [Chimelong Paradise](ref:chimelong-paradise), la entrada de un día para adultos cuesta 250 yuanes. Niños y jóvenes pagan allí y en el [Chimelong Safari Park](ref:chimelong-safari-park) estos precios:
 
-Sale más caro, por tanto, para los niños pequeños a partir de tres años y para los adolescentes bajitos. Para los niños altos no cambia nada: una niña de once años que mide 1,55 metros sigue pagando el precio infantil, que ya le tocaba por su edad. Para la entrada juvenil, el comunicado ya solo habla de la edad y no menciona el carné de estudiante.
+| Parque y día                                                              | Entrada infantil | Entrada juvenil |
+| ------------------------------------------------------------------------- | ---------------: | --------------: |
+| Chimelong Paradise                                                        |       175 yuanes |      200 yuanes |
+| Chimelong Safari Park entre semana                                        |       210 yuanes |      240 yuanes |
+| Chimelong Safari Park en fines de semana, festivos y vacaciones de verano |       245 yuanes |      280 yuanes |
+
+Sale más caro para los niños pequeños a partir de tres años y para los jóvenes que no llegan a 1,5 metros. Un niño de cuatro años que no llega al metro entraba gratis y desde enero necesita una entrada infantil. Un chico de 13 años que mide menos de 1,5 metros pagaba hasta ahora el precio infantil y pasa a pagar el juvenil. Para los niños altos no cambia nada: una niña de once años que mide 1,55 metros sigue pagando el precio infantil, que ya le tocaba por su edad. Del carné de estudiante que los jóvenes tenían que enseñar hasta ahora, el nuevo comunicado no dice nada.
 
 ## Teatros, piscinas y bufés
 
@@ -72,15 +78,15 @@ Los teatros, como el Chimelong International Circus de Guangzhou, no dan entrada
 
 ## Si compras antes del 4 de enero
 
-Cuenta el día de la compra. La visita puede ser más tarde. Las entradas, los paquetes y los pases anuales que compres antes del 4 de enero de 2027 siguen con la norma antigua de edad o estatura. Lo que compres a partir del 4 de enero se comprueba solo por la edad. Con un niño de cuatro años que no llegue al metro, yo reservaría todavía en diciembre, siempre que la tienda en línea ya ofrezca el día de tu visita.
+Las entradas, los paquetes y los pases anuales que compres hasta el 3 de enero de 2027 siguen con la norma antigua de edad o estatura, aunque la visita sea después. Con un niño de cuatro años que no llegue al metro, yo reservaría todavía en diciembre. Como cada entrada se emite para un día de visita fijo, eso solo funciona si la tienda en línea ya ofrece tu día.
 
 ## Ahora mismo no hay pases anuales
 
-Desde el 19 de noviembre, Chimelong no vende pases anuales. Los nuevos deberían salir a la venta después del 26 de diciembre. Si tu pase caduca durante la pausa o cumples las condiciones del descuento por renovación, tendrás un descuento al comprar el nuevo. Los pases que ya existen siguen valiendo y se reserva igual que hasta ahora. Chimelong todavía no ha dado a conocer los precios ni las ventajas de los pases nuevos.
+Desde el 19 de noviembre, Chimelong no vende pases anuales. Los nuevos deberían salir a la venta después del 26 de diciembre. Tendrá descuento en el pase nuevo quien vea caducar el suyo durante la pausa, y también quien en ese tiempo tuviera derecho de todas formas al descuento por renovación. Los pases que ya existen siguen valiendo. Se reserva igual que hasta ahora. Chimelong todavía no ha dado a conocer los precios ni las ventajas de los pases nuevos.
 
 ## A qué parques afecta
 
-Afecta a todo el resort. En Guangzhou son Chimelong Paradise, el Chimelong Safari Park, el [Chimelong Water Park](ref:chimelong-water-park) y el [Chimelong Birds Park](ref:chimelong-birds-park). En el Water Park, la entrada estándar cuesta 139 yuanes, niños y jóvenes pagan 99, y desde las 17 h hay para todos una entrada de tarde por 99 yuanes. En Hengqin (Zhuhai) están [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) y [Chimelong Spaceship](ref:chimelong-spaceship); la tercera sede del resort está en Qingyuan. Cada entrada vale para un día de visita concreto, que eliges ya al comprar.
+En Guangzhou, la norma se aplica en Chimelong Paradise, el Chimelong Safari Park, el [Chimelong Water Park](ref:chimelong-water-park) y el [Chimelong Birds Park](ref:chimelong-birds-park). En el Water Park, la entrada estándar cuesta 139 yuanes, niños y jóvenes pagan 99, y desde las 17 h hay para todos una entrada de tarde por 99 yuanes. En Hengqin (Zhuhai) están [Chimelong Ocean Kingdom](ref:chimelong-ocean-kingdom) y [Chimelong Spaceship](ref:chimelong-spaceship). La tercera sede del resort está en Qingyuan.
 
 ```best-days-widget slug=chimelong-ocean-kingdom
 
