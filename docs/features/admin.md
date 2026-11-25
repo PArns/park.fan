@@ -81,15 +81,15 @@ inset's margin and border); a page that fills the viewport subtracts it, as the 
 
 **The sidebar is sorted by what a person does**, not by which API serves a page (`_app/nav.ts`):
 
-| Group        | Entries                                                                              |
-| ------------ | ------------------------------------------------------------------------------------ |
-| (top)        | Übersicht                                                                            |
-| Kuratieren   | Parks, Datenqualität, Duplikate, Stilllegungen, Änderungen                           |
-| Reiseplaner  | Saisons, Tickets                                                                     |
-| Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                                  |
-| Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Reiseplaner, Beliebtheit), Parky (3)   |
-| Betrieb      | System, Queues, ML-Zentrale (Modellvergleich), Kälte und Schnee, Parks live, Wartung |
-| Konto (foot) | Mein Konto, Konten, API-Keys: in the account menu at the sidebar's foot, and in `/`  |
+| Group        | Entries                                                                                          |
+| ------------ | ------------------------------------------------------------------------------------------------ |
+| (top)        | Übersicht                                                                                        |
+| Kuratieren   | Parks, Datenqualität, Duplikate, Stilllegungen, Änderungen                                       |
+| Reiseplaner  | Saisons, Tickets                                                                                 |
+| Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                                              |
+| Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Reiseplaner, Beliebtheit), Parky (3)               |
+| Betrieb      | System, Queues, ML-Zentrale (Modellvergleich), Kälte und Schnee, Parks live, Push (iOS), Wartung |
+| Konto (foot) | Mein Konto, Konten, API-Keys: in the account menu at the sidebar's foot, and in `/`              |
 
 Datenqualität sits with the editors because its cards ask curation questions (season or gone?).
 Saisons and Tickets are what the trip planner plans with, so they have a group of their own; the
@@ -788,6 +788,30 @@ amber from 75 % up and grey below, with a mark at the site's bar (90 %). The col
 pure in `lib/admin/weather-closure.ts` (`pnpm test:admin-weather-closure`). „Jetzt neu berechnen“
 (editor) queues `POST /v1/admin/weather-closure/rebuild`; the run takes a few minutes, so the page
 says to reload rather than polling.
+
+## Push (iOS): `/admin/push`
+
+Where the owner sets up push to the iOS app: Apple's key file `AuthKey_<KEYID>.p8` is dropped on the
+page and the API uses it from the next notification on, with no environment variable and no restart
+(`PUT /v1/admin/push/apns/key`; the API's side is `docs/frontend/push.md` in `v4.api.park.fan`).
+
+- **The key is write-only.** The page reads the file's text into a ref, never into state or the
+  DOM, sends it as JSON through the admin proxy (`{ content, filename, keyId?, teamId?, bundleId? }`)
+  and drops it before the answer arrives. The API answers with a fingerprint and never with the key.
+  A certificate (`.p12`, `.cer`) or a file over 4096 bytes is refused before it is read
+  (`apnsKeyFileProblem` in `lib/admin/apns.ts`).
+- **The ids need no typing.** The key id is in Apple's file name and the API reads it there; team id
+  and bundle id are prefilled with the app's own. The three fields are overrides.
+- **Status first.** Key id, team id, bundle id, fingerprint, who uploaded it and when, and Apple's
+  answer for production and sandbox as a chip (green, amber, red) with the API's German sentence.
+  "Erneut prüfen" asks Apple again; the check reaches no device.
+- **Testmitteilung senden** sits on each row of the device list (the 50 installs registered last,
+  with the last six characters of the token). The toast says what Apple answered and in which
+  environment.
+- **An API without the routes** answers 404; the page then says the API is not ready
+  (`isApnsBackendMissing`) and keeps the help text. The two repos deploy apart.
+
+`pnpm test:admin-apns` covers the file name, the refused files, the upload's body and the 404.
 
 ## The admin on a phone
 

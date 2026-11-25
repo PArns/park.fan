@@ -39,6 +39,19 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 - `DATA_API_KEYS_QUERY_KEY` _const_: The React Query key of the list.
 - Types: `RotationGraceHours`, `DataApiKeyUsage`, `DataApiKeyDay`, `DataApiKeyStats`, `DataApiKey`, `CreatedDataApiKey`, `KeyExpiryChoice`, `CreateDataApiKeyBody`
 
+### [`apns.ts`](../../lib/admin/apns.ts)
+
+- `apnsKeyIdFromFilename` _function_: The key id in Apple's file name `AuthKey_<KEYID>.p8`, also in a browser's `AuthKey_… (1).p8`.
+- `isAppleId` _function_: True for an Apple key id or team id: ten capitals or digits.
+- `apnsKeyFileProblem` _function_: Why a chosen file is not sent, in the admin's German, or null when it may be: only the obvious mix-ups, a certificate or a file far too large. Whether it is a key Apple accepts is the API's check.
+- `apnsUploadBody` _function_: The upload's body: the file's text and name, and each id only when it is set, so the API reads the key id off the file name and falls back to the app's own team and bundle id.
+- `isApnsBackendMissing` _function_: True when the API answering is older than these routes: it deploys apart from the site.
+- `APNS_API` _const_: The admin proxy prefix of every APNs endpoint.
+- `APNS_ENVIRONMENT_LABEL` _const_: The admin's word for an `ApnsEnvironment`.
+- `APNS_STATE_TONE` _const_: The chip colour of an `ApnsAnswerState`.
+- `APNS_KEY_FILE_MAX_BYTES` _const_: A `.p8` holds about 260 bytes; a larger file is not read into the browser at all.
+- Types: `ApnsEnvironment`, `ApnsAnswerState`, `ApnsCheck`, `ApnsStatus`, `ApnsDevice`, `ApnsTestResult`
+
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 
 - `textFromDrafts` _function_: `![alt | caption | …](path)` for one image, across every filled locale.

@@ -986,6 +986,12 @@ Route `/admin/popularity` (page).
 - `PopularityView` _component_: What is read and viewed, and in which language: the totals per kind, the split by language, the views per day and the most viewed pages of each kind with their own split, ranked over all languages or by one.
 - Types: `PostTitles`
 
+### [`push/page.tsx`](../../app/admin/push/page.tsx)
+
+Route `/admin/push` (page).
+
+- `default (PushPage)` _component_: Push to the iOS app: the owner uploads Apple's `.p8` key here and the API uses it at once. The key is write-only: the file is read into memory, sent, and dropped; the API hands back a fingerprint and nothing else.
+
 ### [`queues/page.tsx`](../../app/admin/queues/page.tsx)
 
 Route `/admin/queues` (page).

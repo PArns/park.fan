@@ -75,6 +75,7 @@
     "test:admin-parky-elements": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-parky-elements.mjs",
     "test:admin-site-analytics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-site-analytics.mjs",
     "test:admin-traffic-range": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-traffic-range.mjs",
+    "test:admin-apns": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-apns.mjs",
     "test:admin-nav": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-nav.mjs",
     "test:admin-works-periods": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-works-periods.mjs",
     "test:admin-seasons": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-seasons.mjs",

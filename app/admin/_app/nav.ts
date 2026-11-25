@@ -1,6 +1,7 @@
 import {
   Activity,
   Archive,
+  BellRing,
   BookOpen,
   Bot,
   Brain,
@@ -425,6 +426,14 @@ const NAV_GROUPS: NavGroup[] = [
         icon: Activity,
         description: 'Live-Zahlen aus den Parks: offene Bahnen, Ticker, Regionen',
         keywords: ['analytics', 'realtime', 'ticker', 'geo'],
+      },
+      {
+        href: '/admin/push',
+        label: 'Push (iOS)',
+        icon: BellRing,
+        description: 'APNs-Schlüssel hochladen, bei Apple prüfen, Testmitteilung senden',
+        minRole: 'owner',
+        keywords: ['apns', 'apple', 'p8', 'schlüssel', 'mitteilungen', 'notification', 'app'],
       },
       {
         href: '/admin/actions',
