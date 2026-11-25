@@ -7,8 +7,9 @@
 // `authors/<name>-<hash>-<w>.webp`.
 // `version` changes only with the pixels or the focal point, so a key is immutable and an
 // existing key is never uploaded twice. `index.json` maps parks and rides to their photo and
-// carries focal point and credit. It and the news JSON (`news/<locale>.json`, `news/<locale>/<slug>.json`,
-// scripts/news-export.mjs) are the objects that change in place.
+// carries focal point and credit. It and the news and guides JSON (`news/<locale>.json`,
+// `news/<locale>/<slug>.json`, the same under `guides/`, scripts/news-export.mjs) are the objects
+// that change in place.
 //
 //   pnpm publish:media                    upload (needs R2_ENDPOINT, R2_BUCKET, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY)
 //   pnpm publish:media --out <dir>        write the same files to a folder instead, no credentials
@@ -131,7 +132,7 @@ if (outDir) {
   }
   await writeFile(join(outDir, 'index.json'), JSON.stringify(index));
   console.log(`✅ ${chosen.size} photos, ${files.length} files, index.json → ${outDir}`);
-  console.log(`news: ${news.files.length} files`, JSON.stringify(news.stats));
+  console.log(`news and guides: ${news.files.length} files`, JSON.stringify(news.stats));
   process.exit(0);
 }
 

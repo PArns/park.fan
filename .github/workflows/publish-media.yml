@@ -1,6 +1,6 @@
 name: publish media to R2
 
-# Uploads the park and ride card photos, the news posts as JSON and the photo index to the R2 bucket behind media.park.fan,
+# Uploads the park and ride card photos, the news posts and guides as JSON and the photo index to the R2 bucket behind media.park.fan,
 # which the native app reads (PAR-1080, docs/features/media-database.md#export-for-the-native-app).
 # Media only ever reaches main through a pull request (the admin and the blog editor commit to
 # branches), so a push to main that touches public/media catches every change. Keys carry the
@@ -34,6 +34,9 @@ jobs:
       - run: corepack enable
 
       - run: pnpm install --frozen-lockfile
+
+      # The crops are not in git, and the manifest only knows a `…-16x9.jpg` cover whose file exists.
+      - run: pnpm generate:image-crops
 
       - run: pnpm generate:media
 
