@@ -129,13 +129,13 @@ Dans [Despicable Me Minion Mayhem](ref:universal-studios-singapore/despicable-me
 
 - Battlestar Galactica Human et Cylon : à partir de 125 cm
 - Revenge of the Mummy : à partir de 122 cm
-- Sesame Street Spaghetti Space Chase : à partir de 110 cm et jusqu’à 205 cm, accompagné entre 110 et 122 cm
-- Jurassic Park Rapids Adventure : à partir de 107 cm, accompagné entre 107 et 122 cm
-- Transformers : à partir de 102 cm, accompagné entre 102 et 122 cm
-- Puss In Boots' Giant Journey : à partir de 102 cm, accompagné entre 102 et 122 cm
-- Despicable Me Minion Mayhem : accompagné entre 102 et 122 cm
-- Canopy Flyer et Silly Swirly : à partir de 92 cm, accompagné entre 92 et 122 cm
-- Enchanted Airways : à partir de 92 cm et jusqu’à 205 cm, accompagné entre 92 et 122 cm
+- Sesame Street Spaghetti Space Chase : à partir de 110 cm et jusqu’à 205 cm, de 110 à 122 cm avec un accompagnateur
+- Jurassic Park Rapids Adventure : à partir de 107 cm, de 107 à 122 cm avec un accompagnateur
+- Transformers : à partir de 102 cm, de 102 à 122 cm avec un accompagnateur
+- Puss In Boots' Giant Journey : à partir de 102 cm, de 102 à 122 cm avec un accompagnateur
+- Despicable Me Minion Mayhem : de 102 à 122 cm avec un accompagnateur
+- Canopy Flyer et Silly Swirly : à partir de 92 cm, de 92 à 122 cm avec un accompagnateur
+- Enchanted Airways : à partir de 92 cm et jusqu’à 205 cm, de 92 à 122 cm avec un accompagnateur
 - Magic Potion Spin : sous 110 cm, avec un parent ou un tuteur légal
 - Treasure Hunters, Accelerator, Dino-Soarin', Buggie Boogie, Shrek 4-D Adventure et le spectacle de Spielberg à New York : accompagné sous 122 cm
 
@@ -245,7 +245,7 @@ Pour la Season of Joy, le 2-Park Pass with Festive Perks coûte 168 SGD pour les
 
 ### Rejoindre Sentosa
 
-Depuis la station de MRT HarbourFront, tu entres dans le centre commercial VivoCity, Lobby L, Level 3. De là, le Sentosa Express part de 7 h à minuit vers la Resorts World Station. Le trajet coûte 4 SGD et vaut en même temps entrée sur l’île. Tu paies avec EZ-Link, sans contact ou au guichet. Les enfants de moins de sept ans accompagnés d’un adulte voyagent gratuitement, et certaines réductions TransitLink ramènent le prix à 2 SGD.
+Depuis la station de MRT HarbourFront, tu entres dans le centre commercial VivoCity, Lobby L, Level 3. De là, le Sentosa Express part de 7 h à minuit vers la Resorts World Station. Le trajet coûte 4 SGD et fait aussi office d’entrée sur l’île. Tu paies avec EZ-Link, sans contact ou au guichet. Les enfants de moins de sept ans accompagnés d’un adulte voyagent gratuitement, et certaines réductions TransitLink ramènent le prix à 2 SGD.
 
 À pied, le Sentosa Boardwalk part de VivoCity, Lobby F, Level 1, sans droit d’entrée sur l’île. Une partie est fermée depuis le 22 mai 2025 pour le RWS Waterfront Development. Selon la Sentosa Development Corporation, il doit rouvrir en 2030, et d’ici là tu passes par un nouveau couloir couvert.
 
