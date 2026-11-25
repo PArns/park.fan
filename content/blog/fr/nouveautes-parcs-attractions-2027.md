@@ -44,7 +44,7 @@ seo:
     - Simbi Rush Busch Gardens Tampa
 ---
 
-Des parcs d’Europe et des États-Unis ont confirmé eux-mêmes près de 30 nouveautés pour 2027. Parmi elles, un spinning coaster dans le New Jersey, qui sera
+Des parcs d’Europe et des États-Unis ont confirmé eux-mêmes une trentaine de nouveautés pour 2027. Parmi elles, un spinning coaster dans le New Jersey, qui sera
 selon Six Flags le plus haut du monde, et un conte de l’Efteling qui se déroule dans une
 bibliothèque. Seul Plopsaland Belgium a déjà fixé une date pour une nouvelle attraction, le samedi
 13 mars 2027, jour d’ouverture de son Flying Cinema. Les autres s’en tiennent à l’année,
@@ -55,9 +55,9 @@ russe pour 2027, et Euro-Mir quitte Europa-Park. Les gros projets se trouvent en
 Angleterre et au Danemark. Aux États-Unis, six parcs du seul groupe Six Flags ont un chantier en
 cours.
 
-À l’IAAPA Expo, le salon professionnel du secteur dont l’exposition s’est tenue du 17 au 20 novembre
-2026 à Orlando, Busch Gardens Tampa Bay a encore présenté une montagne russe aquatique pour
-l’été 2027.
+Simbi Rush est arrivée sur le tard. Busch Gardens Tampa Bay a présenté cette montagne russe
+aquatique pour l’été 2027 à l’IAAPA Expo, le salon professionnel du secteur à Orlando. Le salon
+s’est tenu du 17 au 20 novembre 2026.
 
 ## Ce qui entre dans la liste
 
@@ -472,21 +472,20 @@ seuls à partir de 104 centimètres. Dans l’encadré du même communiqué, on 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa), en Floride, construit pour l’été 2027 Simbi
 Rush, une montagne russe aquatique de Mack Rides avec deux lancements et une vitesse de pointe de
 64 km/h. Selon Busch Gardens, ce sera la première montagne russe aquatique lancée d’Amérique du Nord
-et la plus rapide de son genre au monde. Le parc l’a présentée le 18 novembre 2026 à l’IAAPA Expo
-d’Orlando. Hauteur, longueur du parcours et taille minimale pour les enfants, il ne les a pas
-encore publiées.
+et la plus rapide de son genre au monde. Le parc l’a présentée le 18 novembre 2026. Hauteur,
+longueur du parcours et taille minimale pour les enfants, il ne les a pas encore publiées.
 
 Le parcours traverse la zone Congo. L’attraction tient son nom de Simbi, un esprit protecteur de
 l’eau et de la nature d’Afrique centrale. Dans l’histoire imaginée par le parc, le bateau glisse
 d’abord tranquillement sur un lac sacré, jusqu’à ce que l’eau s’en empare. Colère de l’esprit ou
-tour joué par le lac, c’est aux passagers de trancher, et ils finissent mouillés dans les deux cas.
-Busch Gardens n’a pas annoncé où exactement l’attraction sera construite dans la zone Congo, ni
-donc si elle prendra la place de l’ancienne rivière à rondins Stanley Falls.
+tour joué par le lac, c’est aux passagers de trancher. Busch Gardens n’a pas annoncé où exactement
+l’attraction sera construite dans la zone Congo, par exemple à la place de Stanley Falls,
+l’attraction aquatique fermée en septembre 2025.
 
-Le parc conçoit Simbi Rush comme une attraction familiale, et elle fait partie d’un plan de
-200 millions de dollars sur cinq ans. Les détenteurs d’un pass annuel 2027 monteront les premiers,
-avant l’ouverture au public. Le prix des pass et le moyen de venir d’Orlando sans voiture se
-trouvent dans notre [article sur Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
+Busch Gardens présente Simbi Rush comme une attraction familiale. Elle fait partie
+d’investissements de 200 millions de dollars que le parc a prévus sur cinq ans. Les détenteurs d’un
+pass annuel 2027 monteront les premiers, avant l’ouverture au public. Le prix des pass et le moyen
+de venir d’Orlando sans voiture se trouvent dans notre [article sur Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
 
 ### Monstropolis à Disney's Hollywood Studios
 
@@ -670,8 +669,7 @@ transformation en 2028, Euro-Mir par une nouvelle montagne russe familiale la m�
 
 Les parcs Six Flags ont présenté leurs nouveautés 2027 entre mai et septembre 2026, Merlin les
 siennes en mars et en septembre. Busch Gardens Tampa Bay a dévoilé la montagne russe aquatique
-Simbi Rush le 18 novembre 2026 à l’IAAPA Expo, le salon professionnel du secteur à Orlando, dont
-l’exposition s’est tenue du 17 au 20 novembre.
+Simbi Rush le 18 novembre 2026 à l’IAAPA Expo, le salon professionnel du secteur à Orlando.
 
 — Patrick
 
@@ -702,7 +700,7 @@ l’exposition s’est tenue du 17 au 20 novembre.
 - Midnight Showdown : [communiqué du 5 novembre 2026 (Kentucky Kingdom)](https://www.kentuckykingdom.com/media-room/and-theyre-off/), [Midnight Showdown (Kentucky Kingdom)](https://www.kentuckykingdom.com/explore-the-park/attractions/kentucky-kingdom/midnight-showdown/)
 - Camp Timber Trail : [communiqué du 6 août 2026](https://www.prnewswire.com/news-releases/six-flags-great-america-announces-camp-timber-trail-an-all-new-family-adventure-for-2027-302844445.html)
 - Rip Roarin' Falls : [communiqué du 8 juin 2026](https://www.prnewswire.com/news-releases/carowinds-announces-100-foot-super-flume-ride-set-to-break-three-world-records-302794334.html), [New in 2027 (Carowinds)](https://www.sixflags.com/carowinds/new-in-2027)
-- Simbi Rush : [communiqué de presse (Busch Gardens Tampa Bay)](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html), [Simbi Rush (Busch Gardens Tampa Bay)](https://buschgardens.com/tampa/roller-coasters/simbi-rush/), [Simbi Rush (RCDB)](https://rcdb.com/24715.htm)
+- Simbi Rush : [communiqué de presse (Busch Gardens Tampa Bay)](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html), [Simbi Rush (Busch Gardens Tampa Bay)](https://buschgardens.com/tampa/roller-coasters/simbi-rush/), [Simbi Rush (RCDB)](https://rcdb.com/24715.htm), Stanley Falls : [Fox 13](https://www.fox13news.com/news/busch-gardens-closing-stanley-falls-flume-after-52-years)
 - Monstropolis : [Disney Parks Blog du 16 août 2026](https://disneyparksblog.com/wdw/monsters-inc-land-monstropolis-walt-disney-world/), Grand Avenue : [Disney Parks Blog du 24 janvier 2025](https://disneyparksblog.com/wdw/monsters-inc-the-muppets-hollywood-studios/), montagne russe : [Disney Parks Blog du 8 mars 2025](https://disneyparksblog.com/wdw/sxsw-2025-monsters-coaster-hollywood-studios/)
 - Tropical Americas : [Disney Parks Blog du 30 avril 2026](https://disneyparksblog.com/wdw/discover-the-newest-land-at-disneys-animal-kingdom-updates-from-tropical-americas/), [Expansions (Disney Experiences)](https://disneyexperiences.com/expansions/)
 - Knott's Soak City : [New in 2027 (Knott's)](https://www.sixflags.com/knotts/new-in-2027)

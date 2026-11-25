@@ -43,7 +43,7 @@ seo:
     - Simbi Rush Busch Gardens Tampa
 ---
 
-Parks in Europe and the USA have confirmed almost 30 new attractions for
+Parks in Europe and the USA have confirmed around 30 new attractions for
 2027 themselves, among them a spinning coaster in New Jersey that Six Flags says will be the world's tallest, and an Efteling fairytale set inside a library. So far only Plopsaland Belgium has put a firm date on a new
 attraction, and its Flying Cinema opens on Saturday, 13 March 2027. Everyone else gives the year,
 a few give a season, and more than half don't say who's building the ride.
@@ -52,8 +52,8 @@ Germany is having a quiet year. None of the big parks has announced a new coaste
 Europa-Park's Euro-Mir is going. The big projects are in France, England and Denmark, and in the
 USA Six Flags alone has six parks building something.
 
-At the IAAPA Expo, the industry trade show whose exhibition ran in Orlando from 17 to 20 November
-2026, Busch Gardens Tampa Bay added a water coaster for summer 2027.
+Simbi Rush was a late addition. Busch Gardens Tampa Bay unveiled the water coaster for summer 2027
+at the IAAPA Expo trade show in Orlando, which ran from 17 to 20 November 2026.
 
 ## What makes the list
 
@@ -453,18 +453,17 @@ Thrill Zone near Fury 325. Children can ride from 35 inches (89 cm) with an adul
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida is building Simbi Rush for summer
 2027, a Mack Rides water coaster with two launches and a top speed of 40 mph (64 km/h). Busch
 Gardens says it'll be North America's first launched water coaster and the fastest of its kind in
-the world. The park unveiled it on 18 November 2026 at the IAAPA Expo in Orlando. It hasn't
-published how tall or long the track will be, or how tall children need to be to ride.
+the world. The park unveiled it on 18 November 2026. It hasn't published how tall or long the track
+will be, or how tall children need to be to ride.
 
 The ride takes you through the Congo area. It's named after Simbi, a guardian spirit of water and
-nature from Central Africa, and in the park's story the boat drifts calmly across a sacred lake
-until the water grabs hold of it. Riders get to decide whether that's the spirit's wrath or a trick
-of the lake, and they end up wet either way. Busch Gardens hasn't announced where exactly in Congo
-the ride is going, so it hasn't confirmed whether it takes the spot of the old Stanley Falls log
-flume either.
+nature from Central Africa. In the park's story the boat drifts calmly across a sacred lake until
+the water grabs hold of it, and riders get to decide whether that's the spirit's wrath or a trick of
+the lake. Busch Gardens hasn't announced where exactly in Congo the ride is going, for instance
+whether it takes the spot of Stanley Falls, the water ride that closed in September 2025.
 
-The park is planning Simbi Rush as a family attraction, and it's part of a plan to spend
-$200 million over five years. Holders of a 2027 annual pass ride first, before the public opening.
+Busch Gardens calls Simbi Rush a family attraction. It's part of $200 million the park has planned
+to invest over five years. Holders of a 2027 annual pass ride first, before the public opening.
 What the passes cost and how to get there from Orlando without a car is in our
 [news post on Simbi Rush](/news/simbi-rush-busch-gardens-tampa).
 
@@ -645,8 +644,7 @@ and Euro-Mir by a new family coaster the same year.
 
 The Six Flags parks presented their 2027 additions between May and September 2026, and Merlin
 presented its own in March and September. Busch Gardens Tampa Bay unveiled the Simbi Rush water
-coaster on 18 November 2026 at the IAAPA Expo trade show in Orlando, where the exhibition ran from
-17 to 20 November.
+coaster on 18 November 2026 at the IAAPA Expo trade show in Orlando.
 
 — Patrick
 
@@ -677,7 +675,7 @@ coaster on 18 November 2026 at the IAAPA Expo trade show in Orlando, where the e
 - Midnight Showdown: [Press release of 5 November 2026 (Kentucky Kingdom)](https://www.kentuckykingdom.com/media-room/and-theyre-off/), [Midnight Showdown (Kentucky Kingdom)](https://www.kentuckykingdom.com/explore-the-park/attractions/kentucky-kingdom/midnight-showdown/)
 - Camp Timber Trail: [Press release of 6 August 2026](https://www.prnewswire.com/news-releases/six-flags-great-america-announces-camp-timber-trail-an-all-new-family-adventure-for-2027-302844445.html)
 - Rip Roarin' Falls: [Press release of 8 June 2026](https://www.prnewswire.com/news-releases/carowinds-announces-100-foot-super-flume-ride-set-to-break-three-world-records-302794334.html), [New in 2027 (Carowinds)](https://www.sixflags.com/carowinds/new-in-2027)
-- Simbi Rush: [Press release (Busch Gardens Tampa Bay)](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html), [Simbi Rush (Busch Gardens Tampa Bay)](https://buschgardens.com/tampa/roller-coasters/simbi-rush/), [Simbi Rush (RCDB)](https://rcdb.com/24715.htm)
+- Simbi Rush: [Press release (Busch Gardens Tampa Bay)](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html), [Simbi Rush (Busch Gardens Tampa Bay)](https://buschgardens.com/tampa/roller-coasters/simbi-rush/), [Simbi Rush (RCDB)](https://rcdb.com/24715.htm), Stanley Falls: [Fox 13](https://www.fox13news.com/news/busch-gardens-closing-stanley-falls-flume-after-52-years)
 - Monstropolis: [Disney Parks Blog, 16 August 2026](https://disneyparksblog.com/wdw/monsters-inc-land-monstropolis-walt-disney-world/), Grand Avenue: [Disney Parks Blog, 24 January 2025](https://disneyparksblog.com/wdw/monsters-inc-the-muppets-hollywood-studios/), coaster: [Disney Parks Blog, 8 March 2025](https://disneyparksblog.com/wdw/sxsw-2025-monsters-coaster-hollywood-studios/)
 - Tropical Americas: [Disney Parks Blog, 30 April 2026](https://disneyparksblog.com/wdw/discover-the-newest-land-at-disneys-animal-kingdom-updates-from-tropical-americas/), [Expansions (Disney Experiences)](https://disneyexperiences.com/expansions/)
 - Knott's Soak City: [New in 2027 (Knott's)](https://www.sixflags.com/knotts/new-in-2027)
