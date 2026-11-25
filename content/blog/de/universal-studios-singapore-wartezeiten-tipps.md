@@ -52,7 +52,7 @@ seo:
 
 In unseren Messungen sind die Wartezeiten an [Battlestar Galactica: Human](ref:universal-studios-singapore/battlestar-galactica-human) und [Battlestar Galactica: Cylon](ref:universal-studios-singapore/battlestar-galactica-cylon) am längsten, zwei Achterbahnen, die als Duell gebaut sind. Resorts World Sentosa nennt sie die höchsten Duell-Achterbahnen der Welt. Bei den Überschlägen gewinnen die Zylonen fünf zu null, Human fährt die ganze Strecke aufrecht.
 
-Die jüngste Zone ist Illumination's Minion Land, eröffnet am 14. Februar 2025. Ich war selbst noch nicht in Singapur. Die Angaben zu Bahnen, Preisen und Terminen stammen von Resorts World Sentosa und aus der RCDB, die Wartezeiten aus unseren Messungen seit April 2026.
+Die jüngste Zone ist Illumination's Minion Land, eröffnet am 14. Februar 2025. Ich war selbst noch nicht in Singapur. Die Angaben zu Bahnen, Preisen und Terminen stammen von Resorts World Sentosa und aus der RCDB, Teile der Geschichte aus der englischen Wikipedia, die Wartezeiten aus unseren Messungen seit April 2026.
 
 ## Die Bahnen und Shows nach Zonen
 
@@ -60,7 +60,7 @@ Die jüngste Zone ist Illumination's Minion Land, eröffnet am 14. Februar 2025.
 
 ```
 
-Seit dem ersten Tag des Parks, dem 18. März 2010, fahren Battlestar Galactica, Revenge of the Mummy, Jurassic Park Rapids Adventure, Canopy Flyer und Enchanted Airways, und genauso lange läuft die Spielberg-Show in New York. WaterWorld hat noch kein Rückkehrdatum, und die Wildwasserbahn macht ab Dezember Pause. Neue Schließungen trägt Resorts World Sentosa auf seiner Seite Attraction Closure nach. In der offiziellen App des Parks stehen Showzeiten, die Termine für Treffen mit den Figuren und am Besuchstag die aktuelle Wartezeit jeder Bahn.
+Seit dem ersten Tag des Parks, dem 18. März 2010, fahren Battlestar Galactica, Revenge of the Mummy, Jurassic Park Rapids Adventure, Canopy Flyer und Enchanted Airways, und genauso lange läuft die Spielberg-Show in New York. WaterWorld hat noch kein Rückkehrdatum, und die Wildwasserbahn macht ab Dezember Pause. Neue Schließungen trägt Resorts World Sentosa auf seiner Seite Attraction Closure nach. Die Showzeiten von Trolls Hug Time Jubilee, Donkey Live und den anderen Shows und die Termine für Treffen mit den Figuren stehen nur in der App des Parks, in der du am Besuchstag auch die aktuellen Wartezeiten siehst.
 
 ### Hollywood
 
@@ -70,19 +70,19 @@ Im Theater läuft die Show Trolls Hug Time Jubilee, draußen auf der Straße sin
 
 ### New York
 
-In [Sesame Street Spaghetti Space Chase](ref:universal-studios-singapore/sesame-street-spaghetti-space-chase) hängen die Fahrzeuge unter der Schiene, und in der Halle begegnest du zwölf Figuren aus der Sesamstraße. Gebaut hat die Dark Ride Intamin nach einem Entwurf von Universal Creative, eröffnet hat sie am 1. März 2013. An ihrer Stelle war ursprünglich der Walkthrough Stage 28 geplant, der 2010 nicht fertig wurde und dann aufgegeben wurde.
+In [Sesame Street Spaghetti Space Chase](ref:universal-studios-singapore/sesame-street-spaghetti-space-chase) hängen die Fahrzeuge unter der Schiene, und in der Halle begegnest du zwölf Figuren aus der Sesamstraße. Gebaut hat die Dark Ride Intamin nach einem Entwurf von Universal Creative, eröffnet hat sie am 1. März 2013. An ihrer Stelle war ursprünglich der Walkthrough Stage 28 geplant, der dann aufgegeben wurde.
 
 ```glossary-widget slug=suspended-dark-ride
 
 ```
 
-Bei [Lights, Camera, Action! Hosted by Steven Spielberg](ref:universal-studios-singapore/lights-camera-action-hosted-by-steven-spielberg) sitzt das Publikum in einer Halle. Dort bricht als Show mit Spezialeffekten ein Hurrikan über New York herein.
+Bei [Lights, Camera, Action! Hosted by Steven Spielberg](ref:universal-studios-singapore/lights-camera-action-hosted-by-steven-spielberg) sitzt du in einer Halle, während Spezialeffekte rings um dich einen Hurrikan über New York hereinbrechen lassen.
 
 Das Kletterspiel Ready, Set, Rescue kostet extra. Karten dafür gibt es nur vor Ort und nur für denselben Tag.
 
 ### Sci-Fi City
 
-Battlestar Galactica: Human vs. Cylon hat Vekoma nach einem Entwurf von Peter Clerx gebaut, als Launch Coaster mit zwei Strecken. Sie ist 42,7 Meter hoch und erreicht 90 km/h. Nach anderthalb Minuten bist du wieder in der Station. Human fährt 982 Meter weit und bleibt dabei aufrecht. Cylon kommt auf 971 Meter und dreht sich fünfmal über Kopf, unter anderem durch eine Cobra Roll, einen Corkscrew, einen Looping und eine Zero-G Roll. Laut Parkplan liegt die Anlage teils über der Lagune.
+Battlestar Galactica: Human vs. Cylon hat Vekoma nach einem Entwurf von Peter Clerx gebaut, als Launch Coaster mit zwei Strecken. Sie ist 42,7 Meter hoch und erreicht 90 km/h. Nach anderthalb Minuten bist du wieder in der Station. Die Strecke von Human ist 982 Meter lang, die von Cylon 971, und Cylon packt seine fünf Überschläge in eine Cobra Roll, einen Corkscrew, einen Looping und eine Zero-G Roll. Laut Parkplan liegt die Anlage teils über der Lagune.
 
 Auf die Höhe kommen die Züge über einen Lifthill mit Linearmotoren. Ein Zug fasst 16 Fahrgäste in acht Wagen mit je zwei Plätzen. Die ersten Züge hatten Reihen mit vier Sitzen, die Zweisitzer kamen 2015.
 
@@ -90,17 +90,17 @@ Auf die Höhe kommen die Züge über einen Lifthill mit Linearmotoren. Ein Zug f
 
 ```
 
-In [TRANSFORMERS The Ride: The Ultimate 3D Battle](ref:universal-studios-singapore/transformers-the-ride-the-ultimate-3d-battle) bewegt ein Simulator dein Fahrzeug, während die Szenen in 3D um dich herum laufen, alles im Gebäude. Entworfen haben die Fahrt Universal Creative, Oceaneering International und Industrial Light & Magic. Die Weltpremiere der rund vier Minuten langen Fahrt war am 2. Dezember 2011 mit Michael Bay. Hollywood bekam dieselbe Bahn erst im Mai 2012, später folgten Florida und Peking.
+[TRANSFORMERS The Ride: The Ultimate 3D Battle](ref:universal-studios-singapore/transformers-the-ride-the-ultimate-3d-battle) ist eine Fahrt im Gebäude, bei der ein Simulator dein Fahrzeug bewegt, während die Szenen in 3D um dich herum laufen. Entworfen haben die Fahrt Universal Creative, Oceaneering International und Industrial Light & Magic. Die Weltpremiere der rund vier Minuten langen Fahrt war am 2. Dezember 2011 mit Michael Bay. Hollywood bekam dieselbe Bahn erst im Mai 2012, später folgten Florida und Peking.
 
-In den Tassen von [Accelerator](ref:universal-studios-singapore/accelerator) drehst du dich unter einem Dach. Die Band Bumble B-Boys spielt in Sci-Fi City zusammen mit Bumblebee die Show Bumble Beats.
+[Accelerator](ref:universal-studios-singapore/accelerator) dreht dich in Tassen unter einem Dach. Bei Bumble Beats steht Bumblebee selbst mit der Band Bumble B-Boys auf der Bühne.
 
 ### Ancient Egypt
 
 Resorts World Sentosa verlegt die Zone ins Ägypten der 1920er-Jahre, die englische Wikipedia in die 1930er, und der Mumie in der Halle von Revenge of the Mummy dürfte beides gleich sein.
 
-Die 671 Meter von [Revenge of the Mummy](ref:universal-studios-singapore/revenge-of-the-mummy) liegen ganz in der Halle, gebaut hat die Achterbahn Premier Rides. Sie ist 13,5 Meter hoch und 64 km/h schnell. Knapp zwei Minuten geht es ohne Überschlag, dafür mit Abschüssen durch Linearmotoren, einer Drehscheibe und einem Gefälle von 50 Grad. Ein Zug hat 16 Plätze, gebaut wurde die Bahn laut RCDB für 20 Millionen US-Dollar. Vom 4. Dezember 2026 bis zum 3. Januar 2027 läuft ab 19.30 Uhr jeden Abend die BTS-Projektion Lightscape auf der Fassade.
+Die 671 Meter von [Revenge of the Mummy](ref:universal-studios-singapore/revenge-of-the-mummy) liegen ganz in der Halle, gebaut hat die Achterbahn Premier Rides. Sie ist 13,5 Meter hoch und 64 km/h schnell. In knapp zwei Minuten bringt die Mumie Abschüsse durch Linearmotoren, eine Drehscheibe und ein Gefälle von 50 Grad unter, ohne dich ein einziges Mal auf den Kopf zu stellen. Ein Zug hat 16 Plätze, gebaut wurde die Bahn laut RCDB für 20 Millionen US-Dollar. Vom 4. Dezember 2026 bis zum 3. Januar 2027 läuft ab 19.30 Uhr jeden Abend die BTS-Projektion Lightscape auf der Fassade.
 
-Bei [Treasure Hunters](ref:universal-studios-singapore/treasure-hunters) fährst du in Oldtimern über eine Strecke im Freien.
+[Treasure Hunters](ref:universal-studios-singapore/treasure-hunters) setzt dich ans Steuer eines Oldtimers auf einer Strecke im Freien.
 
 ### The Lost World
 
@@ -112,7 +112,7 @@ The Lost World besteht aus den zwei Teilen Jurassic Park und WaterWorld. In den 
 
 Die Wagen von [Canopy Flyer](ref:universal-studios-singapore/canopy-flyer) hängen zu viert unter der Schiene und schwingen in den Kurven aus, die Familienachterbahn ist ein Swing Thing von Setpoint. Eine Kette zieht die Wagen nach oben.
 
-Auf [Dino-Soarin'](ref:universal-studios-singapore/dino-soarin) drehen sich Kinder sanft im Kreis. WaterWorld, die Stuntshow nach dem Film, ist auf der Seite der Zone als „Temporarily unavailable“ markiert. Zur Zone gehören Raptor Encounter, die Show mit Dr. Rodney und die Aquilops-Dame Dolores, die zwischen den Gästen herumläuft.
+[Dino-Soarin'](ref:universal-studios-singapore/dino-soarin) dreht kleine Kinder sanft im Kreis. WaterWorld, die Stuntshow nach dem Film, ist auf der Seite der Zone als „Temporarily unavailable“ markiert. Zur Zone gehören Raptor Encounter, die Show mit Dr. Rodney und die Aquilops-Dame Dolores, die zwischen den Gästen herumläuft.
 
 ### Far Far Away
 
@@ -126,7 +126,7 @@ Die zweite Achterbahn der Zone heißt [Enchanted Airways](ref:universal-studios-
 
 Minion Land steht auf dem früheren Gelände der Zone Madagascar. Laut Page Thompson von Universal Destinations & Experiences haben die Minions damit in jedem Universal-Park ihren eigenen Platz. Gebaut haben die Zone Universal Creative, Illumination und Resorts World Sentosa, sie teilt sich in Minion Marketplace, Gru's Neighborhood und Super Silly Fun Land.
 
-In [Despicable Me Minion Mayhem](ref:universal-studios-singapore/despicable-me-minion-mayhem) bewegt ein Simulator das Publikum, in der Halle, in der bis 2022 die Bootsfahrt Madagascar: A Crate Adventure fuhr. Auf [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie), einem Karussell mit Minion-Tanzparty unter einem Dach, fährst du nur in Singapur. [Silly Swirly](ref:universal-studios-singapore/silly-swirly) ist eine Drehfahrt im Freien. Dazu kommen zwei Spielbuden, die Shows Minion Dance Party und Minute of Minion Mayhem und Fotos mit Gru und Lucy.
+[Despicable Me Minion Mayhem](ref:universal-studios-singapore/despicable-me-minion-mayhem) hat die Bootsfahrt Madagascar: A Crate Adventure ersetzt, die bis 2022 fuhr, und bewegt das Publikum in einem Simulator. Auf [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie), einem Karussell mit Minion-Tanzparty unter einem Dach, fährst du nur in Singapur. [Silly Swirly](ref:universal-studios-singapore/silly-swirly) ist eine Drehfahrt im Freien. Dazu kommen zwei Spielbuden, die Shows Minion Dance Party und Minute of Minion Mayhem und Fotos mit Gru und Lucy.
 
 ### Mindestgrößen
 
@@ -152,7 +152,7 @@ In [Despicable Me Minion Mayhem](ref:universal-studios-singapore/despicable-me-m
 
 ```
 
-An Battlestar Galactica sparst du nach unseren Rope-Drop-Messungen am meisten Zeit, wenn du zur Öffnung um 10 Uhr dort bist, zuerst an Human, dann an Cylon. An dritter Stelle steht Jurassic Park Rapids Adventure. Welche der letzten Novembertage vor dem Super-Peak-Dezember voller werden, steht im [Wartezeiten-Kalender von Universal Studios Singapore](ref:universal-studios-singapore?calendar) für jeden Öffnungstag als Andrangsstufe.
+Wer um 10 Uhr am Eingang steht, spart an Battlestar Galactica am meisten Zeit, so zeigen es unsere Rope-Drop-Messungen. Nach den beiden Battlestar-Strecken kommt Jurassic Park Rapids Adventure. Für die letzten Novembertage vor dem Super-Peak-Dezember gibt der [Wartezeiten-Kalender von Universal Studios Singapore](ref:universal-studios-singapore?calendar) für jeden Öffnungstag eine Andrangsstufe an.
 
 ```glossary-widget slug=rope-drop
 
@@ -173,13 +173,13 @@ Von April bis November 2026 waren Juli und August in unseren Messungen die volls
 
 ```
 
-Die Wochentage lagen in unseren Messungen näher beieinander als die Monate.
+Such dir also zuerst den Monat aus: In unseren Messungen seit April ändert der Wochentag, den du wählst, weniger an den Wartezeiten.
 
 ```best-days-widget slug=universal-studios-singapore
 
 ```
 
-Das Tagesticket hat drei Preisstufen nach dem Andrang, den Resorts World Sentosa erwartet: Non Peak, Peak und Super Peak. Jeder Tag im Dezember 2026 kostet den Super-Peak-Preis. Die Tage vom 25. bis zum 28. November liegen auf Non Peak, mehrere Tage Anfang Januar 2027 auf Peak.
+Resorts World Sentosa staffelt den Preis des Tagestickets danach, wie voll es den Park erwartet, als Non Peak, Peak oder Super Peak. Jeder Tag im Dezember 2026 kostet den Super-Peak-Preis. Die Tage vom 25. bis zum 28. November liegen auf Non Peak, mehrere Tage Anfang Januar 2027 auf Peak.
 
 ### Öffnungszeiten bis Silvester
 
@@ -200,15 +200,15 @@ Für Januar 2027 hat der Park noch keine Öffnungszeiten veröffentlicht.
 
 ```
 
-Wegen schlechten Wetters schließt Universal Studios Singapore nicht, und das Ticket wird auch nicht erstattet. Bei Blitzgefahr stehen die Bahnen im Freien still, bis das Gewitter durch ist, also auch Battlestar Galactica und Canopy Flyer. In Hallen fahren Revenge of the Mummy, Transformers, Sesame Street Spaghetti Space Chase und Minion Mayhem. Shrek 4-D Adventure, die Spielberg-Show, Donkey Live und Trolls Hug Time Jubilee laufen ebenfalls drinnen. Accelerator und Buggie Boogie stehen unter einem Dach.
+Wegen schlechten Wetters schließt Universal Studios Singapore nicht, und das Ticket wird auch nicht erstattet. Bei Blitzgefahr stehen die Bahnen im Freien still, bis das Gewitter durch ist, also auch Battlestar Galactica und Canopy Flyer. Unter einem Dach fährst du dann weiter Revenge of the Mummy, Transformers, Sesame Street Spaghetti Space Chase, Minion Mayhem, Accelerator und Buggie Boogie und siehst Shrek 4-D Adventure, die Spielberg-Show, Donkey Live und Trolls Hug Time Jubilee.
 
 ### Weihnachten, BTS und die Events 2026/27
 
-Die Season of Joy feiert Resorts World Sentosa vom **27. November 2026 bis zum 3. Januar 2027**, im Park heißt das Programm A Universal Christmas. Den Hollywood Boulevard macht der Park zu den Dazzling Dessert Studios, mit einem zehn Meter hohen Weihnachtsbaum im Konfekt-Look. Der Weihnachtsmann und Mrs. Claus treffen Gäste zum Foto, Hello Kitty und Kuromi gibt es nur an der Superstar Boutique. In New York baut der Park The North Pole Jingle Jam auf. Die [neue Show Universal Jingle Jam](/news/universal-studios-singapore-a-universal-christmas-2026) bringt Poppy aus Trolls, Figuren aus der Sesamstraße und die Minions mit Schneefall auf eine Bühne.
+Die Season of Joy feiert Resorts World Sentosa vom **27. November 2026 bis zum 3. Januar 2027**, im Park heißt das Programm A Universal Christmas. Den Hollywood Boulevard macht der Park zu den Dazzling Dessert Studios, mit einem zehn Meter hohen Weihnachtsbaum im Konfekt-Look. Der Weihnachtsmann und Mrs. Claus treffen Gäste zum Foto, Hello Kitty und Kuromi gibt es nur an der Superstar Boutique. In New York baut der Park The North Pole Jingle Jam auf. Die [neue Show Universal Jingle Jam](/news/universal-studios-singapore-a-universal-christmas-2026) mit dem ähnlichen Namen ist etwas anderes und bringt Poppy aus Trolls, Figuren aus der Sesamstraße und die Minions mit Schneefall auf eine Bühne.
 
 Das Feuerwerk gibt es am 4., 5., 11. und 12. Dezember, vom 16. bis zum 20. Dezember, vom 22. bis zum 25. Dezember und am 1. und 2. Januar 2027. Am 21. Dezember fällt es für Tagesgäste aus. An diesem Abend läuft von 20 Uhr bis 1 Uhr nachts BTS THE CITY ARIRANG Night Out, mit ausgewählten Bahnen, DJ JAGI und Feuerwerk. Das Frühbucherticket kostet 58 Singapur-Dollar (SGD) und enthält den Eintritt. Vom 16. bis zum 22. Dezember kommst du mit einem normalen Tagesticket für Erwachsene außerdem kostenlos ins BTS Fan Village im Resorts World Convention Centre.
 
-Halloween Horror Nights 14 lief an 18 Abenden vom 25. September bis zum 1. November 2026, für 68 SGD an Non-Peak- und 78 SGD an Peak-Abenden. Tagsüber lief vom 1. September an Trick or Thrills. Zum chinesischen Neujahr 2027 kündigt Resorts World Sentosa die Celebration of Spring vom 21. Januar bis zum 11. April für das ganze Resort an. 2026 hatte der Park zum Neujahrsfest vom 7. Februar bis zum 3. März ein eigenes Programm, für 2027 ist noch keines angekündigt.
+Halloween Horror Nights 14 lief an 18 Abenden vom 25. September bis zum 1. November 2026, für 68 SGD an Non-Peak- und 78 SGD an Peak-Abenden. Tagsüber lief vom 1. September an Trick or Thrills. Zum chinesischen Neujahr 2027 kündigt Resorts World Sentosa die Celebration of Spring vom 21. Januar bis zum 11. April für das ganze Resort an. 2026 hatte der Park zum Neujahrsfest vom 7. Februar bis zum 3. März ein eigenes Programm. Für 2027 hat Resorts World Sentosa für den Park noch keines angekündigt.
 
 ## Universal Express und die VIP-Tour
 
@@ -218,17 +218,17 @@ Universal Express kostet ab 80 SGD. Damit überspringst du an jeder teilnehmende
 
 ```
 
-Jeder Express-Pass gilt nur für das gewählte Datum. Online kaufst du ihn erst, wenn ein Parkticket im Warenkorb liegt, vor Ort ebenso. Die Mindestgrößen gelten auch mit Express. Und während Jurassic Park Rapids Adventure ab dem 1. Dezember zu ist, kostet der Pass den vollen Preis.
+Jeder Express-Pass gilt nur für das gewählte Datum. Online kaufst du ihn erst, wenn ein Parkticket im Warenkorb liegt, vor Ort ebenso. Auch mit Express kommt niemand unter 125 cm in Battlestar Galactica. Und während Jurassic Park Rapids Adventure ab dem 1. Dezember zu ist, kostet der Pass den vollen Preis.
 
-Die VIP Experience ist eine Führung von etwa fünf Stunden auf Englisch oder Mandarin, mit VIP-Zugang zu mindestens acht Attraktionen. In der Gruppentour bekommst du einen Essensgutschein über 25 SGD. Zur privaten Tour gehören ein Mittagessen mit vier Gängen, ein eigenes Treffen mit Figuren und ein Fotopaket. Vor und nach der Führung hast du dabei Universal Express Unlimited an ausgewählten Bahnen. Bei ausgewählten Shows ist dein Platz reserviert, auf Essen und Einkäufe gibt es 10 Prozent Rabatt. Die Seite der VIP-Tour nennt für die private Tour bis zu zehn Teilnehmer, die FAQ des Parks bis zu zwölf in Gruppen von höchstens fünf. Kinder bis sieben Jahre müssen mit einem Erwachsenen ab 18 kommen.
+Die VIP Experience ist eine Führung von etwa fünf Stunden auf Englisch oder Mandarin, mit VIP-Zugang zu mindestens acht Attraktionen. In der Gruppentour bekommst du einen Essensgutschein über 25 SGD. Zur privaten Tour gehören ein Mittagessen mit vier Gängen, ein eigenes Treffen mit Figuren und ein Fotopaket. Dazu kommen Universal Express Unlimited an einigen Bahnen vor und nach der Führung, ein reservierter Platz bei einigen Shows und 10 Prozent Rabatt auf Essen und Einkäufe. Die Seite der VIP-Tour nennt für die private Tour bis zu zehn Teilnehmer, die FAQ des Parks bis zu zwölf in Gruppen von höchstens fünf. Kinder bis sieben Jahre müssen mit einem Erwachsenen ab 18 kommen.
 
 ## Ein Tag im Park
 
-Ich würde zur Öffnung mit Battlestar Galactica anfangen und danach in Sci-Fi City Transformers fahren, die Mumie liegt eine Zone weiter. Mit Express nimmst du für den Start die eigene Spur am Eingang.
+Ich würde zur Öffnung mit Battlestar Galactica anfangen und danach in Sci-Fi City Transformers fahren, die Mumie liegt eine Zone weiter. Mit Express kommst du über die eigene Spur am Eingang in den Park.
 
-Bis zum 30. November würde ich die Wildwasserbahn vor die Mumie ziehen, weil man dort zur Öffnung nach den beiden Battlestar-Strecken die meiste Zeit spart. In The Lost World nehme ich Canopy Flyer mit, dann geht es weiter nach Far Far Away zu Puss In Boots' Giant Journey und Enchanted Airways.
+Bis zum 30. November kommt die Wildwasserbahn vor die Mumie, weil man dort zur Öffnung nach den beiden Battlestar-Strecken die meiste Zeit spart. Canopy Flyer liegt in The Lost World auf dem Weg, und gleich dahinter warten in Far Far Away Puss In Boots' Giant Journey und Enchanted Airways.
 
-Die Shows und Bahnen in den Hallen würde ich mir für die Mittagszeit und für Gewitter aufheben, also Shrek 4-D Adventure, Minion Mayhem und auf dem Rückweg die beiden in New York. Unter 125 Zentimetern fällt Battlestar Galactica weg, unter 122 auch die Mumie. An einem Feuerwerksabend im Dezember würde ich den Tag am Lake Hollywood beenden. Eine Pause im Hotel am Nachmittag plane ich nur als Hotelgast ein, denn mit dem Tagesticket allein kommst du nach dem Verlassen nicht wieder hinein.
+Die Shows und Bahnen in den Hallen würde ich mir für die Mittagszeit und für Gewitter aufheben, also Shrek 4-D Adventure, Minion Mayhem und auf dem Rückweg die beiden in New York. An einem Feuerwerksabend im Dezember endet der Tag am Lake Hollywood. Eine Pause im Hotel am Nachmittag geht nur als Hotelgast, denn mit dem Tagesticket allein kommst du nach dem Verlassen nicht wieder hinein.
 
 ## Tickets, Anreise und Essen
 
@@ -240,11 +240,11 @@ Das One-Day Ticket gilt für ein festes Datum. Erwachsene sind 13 Jahre und ält
 - Peak: 83 SGD für Erwachsene, 69 SGD für Kinder
 - Super Peak: 89 SGD für Erwachsene, 69 SGD für Kinder
 
-Einen Seniorentarif hat das Tagesticket nicht. Es gilt für alle Attraktionen außer Veranstaltungen mit eigenem Ticket wie Halloween Horror Nights. Erstattet, getauscht oder übertragen wird es nicht. Am Eingang gibt es Tagestickets nur, solange welche da sind. Eine eigene Reservierung neben dem Ticket braucht es seit dem 1. April 2023 nicht mehr.
+Einen Seniorentarif hat das Tagesticket nicht. Studenten, die drei Tagestickets buchen, bekommen ein viertes gratis. Es gilt für alle Attraktionen außer Veranstaltungen mit eigenem Ticket wie Halloween Horror Nights. Erstattet, getauscht oder übertragen wird es nicht. Am Eingang gibt es Tagestickets nur, solange welche da sind. Eine eigene Reservierung neben dem Ticket braucht es seit dem 1. April 2023 nicht mehr.
 
 Statt einer Jahreskarte verkauft der Park einen Season Pass für 190 SGD für Erwachsene und 170 SGD für Kinder. Bis zum 3. Januar 2027 bekommst du sieben Monate zum Preis von sechs. Zum Pass gehören bevorzugter Einlass und 10 Prozent Rabatt im Park. Im Pass stecken vier Gutscheine zu je 5 SGD, zwei fürs Essen und zwei für Einkäufe. Außerdem können Inhaber vor Ort Express-Pässe aus einem eigenen Kontingent kaufen, solange es reicht.
 
-Zur Season of Joy kostet der 2-Park Pass with Festive Perks 168 SGD für Erwachsene und 148 SGD für Kinder. Er gilt auch für das Singapore Oceanarium und enthält einmal Universal Express an einer Bahn. Bei Trolls Hug Time Jubilee, Donkey Live und Shrek 4-D Adventure kommst du zuerst in den Saal, bei Universal Jingle Jam und beim Feuerwerk wartet ein reservierter Platz. Wer drei Tagestickets für Studenten bucht, bekommt ein viertes dazu.
+Zur Season of Joy kostet der 2-Park Pass with Festive Perks 168 SGD für Erwachsene und 148 SGD für Kinder. Er gilt auch für das Singapore Oceanarium und enthält einmal Universal Express an einer Bahn. Bei Trolls Hug Time Jubilee, Donkey Live und Shrek 4-D Adventure kommst du zuerst in den Saal, und bei Universal Jingle Jam und beim Feuerwerk bekommst du einen reservierten Platz.
 
 ### Anreise nach Sentosa
 
@@ -267,7 +267,7 @@ Mit dem Auto zahlst du an der Einfahrt nach Sentosa eine Gebühr, die von der Uh
 - von 13.31 bis 17 Uhr 6 SGD
 - ab 17.01 Uhr 2 SGD
 
-Wer zwischen 11.30 und 13.30 Uhr auf die Insel fährt, zahlt nur 2 SGD statt 6, ein kleiner Trost für alle, die den Rope Drop verschlafen haben. Motorräder dürfen nicht auf die Insel und parken in VivoCity. Hotelgäste fahren mit Buchung oder Zimmerkarte ohne Gebühr auf die Insel.
+Der günstige Mittagstarif ist ein kleiner Trost für alle, die den Rope Drop verschlafen haben. Motorräder dürfen nicht auf die Insel und parken in VivoCity. Hotelgäste fahren mit Buchung oder Zimmerkarte ohne Gebühr auf die Insel.
 
 Der Parkplatz für den Park ist der B1 East Car Park. Montag bis Donnerstag kostet die erste Stunde 6,50 SGD, Freitag bis Sonntag und an Feiertagen 9,70 SGD. Danach kostet jede halbe Stunde 1,10 SGD. Am Tag zahlst du höchstens 13,10 SGD von Montag bis Donnerstag und 16,30 SGD von Freitag bis Sonntag. Die ersten zehn Minuten sind frei, Valet Parking kostet 3 SGD.
 
@@ -289,13 +289,13 @@ Schließfächer stehen neben der VIP Reception, in The Lost World, in Ancient Eg
 
 ## Übernachten in Resorts World Sentosa
 
-Resorts World Sentosa zählt auf seinem Gelände acht Arten von Unterkünften: das Equarius Hotel, die Equarius Ocean Suites, die Equarius TreeTop Lofts, die Equarius Villas, The Laurus aus der Luxury Collection von Marriott, den Crockfords Tower, das Hotel Ora und das Hotel Michael. Die günstigsten Zimmer kosten im Equarius Hotel ab 454 SGD, im Hotel Ora ab 502 SGD, im Hotel Michael ab 849 SGD und im Crockfords Tower ab 1.017 SGD. Im Hotel Michael wird gerade renoviert, Pool und Fitnessraum sind geschlossen.
+Auf dem Gelände von Resorts World Sentosa liegen das Equarius Hotel, die Equarius Ocean Suites, die Equarius TreeTop Lofts, die Equarius Villas, The Laurus aus der Luxury Collection von Marriott, den Crockfords Tower, das Hotel Ora und das Hotel Michael. Die günstigsten Zimmer kosten im Equarius Hotel ab 454 SGD, im Hotel Ora ab 502 SGD, im Hotel Michael ab 849 SGD und im Crockfords Tower ab 1.017 SGD. Im Hotel Michael wird gerade renoviert, Pool und Fitnessraum sind geschlossen.
 
 Hotelgäste dürfen am selben Tag beliebig oft zurück in den Park, ins Oceanarium und in den Adventure Cove Waterpark. Dafür brauchen sie einen Stempel, ein gültiges Ticket und die Zimmerkarte. Ab zwei Nächten im Hotel Ora oder im Equarius Hotel verkauft Resorts World Sentosa Pakete mit zwei Tagestickets für Erwachsene ab 850 SGD. The Laurus bietet zur Season of Joy ein Paket ab zwei Nächten mit Universal Express und Eintritt für zwei Personen in den Park und ins Oceanarium.
 
 ## Geschichte von Universal Studios Singapore
 
-Am 16. Oktober 2006 stellten Genting International und Star Cruises ihr Angebot für ein Integrated Resort auf Sentosa vor. Geplant war ein Universal-Park mit 22 Attraktionen, darunter mindestens 16 Bahnen, die eigens für Singapur entworfen werden sollten. Am 8. Dezember 2006 gab die Regierung bekannt, dass das Konsortium die Ausschreibung für das zweite der beiden Resorts mit Casino gewonnen hatte. Der erste Spatenstich war am 16. April 2007. Nach Angaben des Betreibers kostete das ganze Resort 6,59 Milliarden SGD und war in weniger als drei Jahren gebaut.
+Am 16. Oktober 2006 stellten Genting International und Star Cruises ihr Angebot für ein Integrated Resort auf Sentosa vor. Geplant war ein Universal-Park mit 22 Attraktionen, darunter mindestens 16 Bahnen, die eigens für Singapur entworfen werden sollten. Am 8. Dezember 2006 gab die Regierung bekannt, dass das Konsortium die Ausschreibung für das zweite der beiden Resorts mit Casino gewonnen hatte. Der erste Spatenstich war am 16. April 2007. Das ganze Resort kostete 6,59 Milliarden SGD und war in weniger als drei Jahren gebaut, so der Betreiber.
 
 Vom 14. bis zum 21. Februar 2010 lud Resorts World Sentosa zum chinesischen Neujahr zu einer Vorschauwoche ein, jeden Abend von 17 bis 21 Uhr und für 10 SGD Eintritt. Keine einzige Bahn fuhr, und die Karten waren trotzdem nach zwei Tagen ausverkauft. Ab dem 13. März 2010 durften Mitarbeiter mit ihren Familien in den Park. Am 18. März 2010 öffnete er um 8.28 Uhr für alle. Zum Soft Opening liefen laut englischer Wikipedia 16 von inzwischen 24 Attraktionen, im Plan von 2006 waren es noch 22 gewesen. In den ersten neun Monaten kamen nach Angaben des Betreibers mehr als zwei Millionen Gäste. Die offizielle Eröffnung folgte am 28. Mai 2011. Am Vorabend lief eine Gala mit 1.600 Gästen, darunter Jet Li und Paula Abdul.
 
@@ -307,7 +307,7 @@ Vom 6. April bis zum 1. Juli 2020 war der Park wegen der Pandemie geschlossen. D
 
 Minion Land und Super Nintendo World hatte Genting am 3. April 2019 gemeinsam angekündigt. Super Nintendo World gehört zur zweiten Phase des Ausbaus RWS 2.0, und laut dem Jahresbericht 2025 von Genting Singapore läuft der Bau nach Plan. Ein Eröffnungsdatum hat Genting nicht genannt.
 
-Resorts World Sentosa gehört vollständig Genting Singapore, einem Unternehmen der Genting Group. Den Park betreibt Genting Singapore mit einer Lizenz von Universal Destinations & Experiences, einer Sparte von NBCUniversal und damit von Comcast. Laut dem Theme Index von TEA und AECOM kamen 2015 rund 4,2 Millionen Gäste und 2019 rund 4,5 Millionen. 2020 waren es wegen der Pandemie knapp 1,1 Millionen, 2022 wieder 2,1 Millionen. Für 2023 steht Universal Studios Singapore nicht mehr unter den 20 meistbesuchten Parks im asiatisch-pazifischen Raum.
+Resorts World Sentosa gehört vollständig Genting Singapore, einem Unternehmen der Genting Group. Den Park betreibt Genting Singapore mit einer Lizenz von Universal Destinations & Experiences, einer Sparte von NBCUniversal und damit von Comcast. 2015 kamen rund 4,2 Millionen Gäste und 2019 rund 4,5 Millionen, so der Theme Index von TEA und AECOM. 2020 waren es wegen der Pandemie knapp 1,1 Millionen, 2022 wieder 2,1 Millionen. Für 2023 steht Universal Studios Singapore nicht mehr unter den 20 meistbesuchten Parks im asiatisch-pazifischen Raum.
 
 ## Häufige Fragen zu Universal Studios Singapore
 
@@ -321,7 +321,7 @@ Der Park öffnet um 10 Uhr. Er schließt am 1. und 2. Dezember um 19 Uhr, vom 3.
 
 ### Was kostet Universal Express?
 
-Universal Express kostet ab 80 SGD und gilt an jeder teilnehmenden Bahn und Show einmal, Universal Express 3 kostet ab 60 SGD für drei Bahnen oder Shows. Beide gelten nur am gewählten Datum. Online kaufst du sie nur mit einem Parkticket im Warenkorb, vor Ort ebenso.
+Ab 80 SGD für eine Fahrt an jeder teilnehmenden Bahn und Show oder ab 60 SGD für Universal Express 3 mit dreien. Du kaufst den Pass zusammen mit einem Parkticket, für ein Datum.
 
 ### Wie groß muss man für Battlestar Galactica sein?
 
