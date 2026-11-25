@@ -38,6 +38,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/[...rest]': [],
   '/account': ['account', 'accountAuth'],
   '/alerts': ['pushAlerts.overview', 'pushAlerts.pushErrors'],
+  '/app': [],
   '/best-time-to-visit': ['nearby', 'parkCard'],
   '/blog': ['nearby', 'parkCard'],
   '/blog/[slug]': [

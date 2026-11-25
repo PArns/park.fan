@@ -308,7 +308,8 @@
     "disclaimer": "park.fan is a private hobby project. All information provided without warranty. The displayed wait times and status information are automatically provided and may differ from the actual situation on site.",
     "dataSources": "Data sources",
     "weatherSource": "Weather",
-    "tripPlanner": "Trip planner"
+    "tripPlanner": "Trip planner",
+    "app": "iPhone app"
   },
   "explore": {
     "title": "Theme Park Wait Times in {location}",
@@ -2514,6 +2515,10 @@
   "impressum": {
     "title": "Imprint - park.fan",
     "description": "Legal information and imprint for park.fan"
+  },
+  "appSupport": {
+    "title": "park.fan for iPhone - Help",
+    "description": "What the park.fan app for iPhone does, what it needs and how to reach us."
   },
   "datenschutz": {
     "title": "Privacy Policy - park.fan",

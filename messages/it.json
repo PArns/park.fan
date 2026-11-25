@@ -308,7 +308,8 @@
     "disclaimer": "park.fan è un progetto amatoriale privato. Tutte le informazioni sono fornite senza garanzia. I tempi di attesa e le informazioni sullo stato visualizzati sono forniti automaticamente e possono differire dalla situazione reale sul posto.",
     "dataSources": "Fonti dei dati",
     "weatherSource": "Meteo",
-    "tripPlanner": "Pianificatore di viaggio"
+    "tripPlanner": "Pianificatore di viaggio",
+    "app": "App per iPhone"
   },
   "explore": {
     "title": "Tempi di attesa dei Parchi a tema in {location}",
@@ -2514,6 +2515,10 @@
   "impressum": {
     "title": "Note legali - park.fan",
     "description": "Informazioni legali e note legali per park.fan"
+  },
+  "appSupport": {
+    "title": "park.fan per iPhone - Aiuto",
+    "description": "Cosa fa l'app park.fan per iPhone, cosa serve e come contattarci."
   },
   "datenschutz": {
     "title": "Informativa sulla privacy - park.fan",

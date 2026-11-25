@@ -9,11 +9,14 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 20 November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 25 November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
-        <p>The controller for data processing on this website is:</p>
+        <p>
+          The controller for data processing on this website and in the park.fan app for iPhone
+          (section 6) is:
+        </p>
         <address className="not-italic">
           <strong>Patrick Arns</strong>
           <br />
@@ -516,7 +519,188 @@ export function DatenschutzEN() {
           <LegalLink href="https://privacycenter.instagram.com/policy" />.
         </p>
 
-        <LegalH2>6. Your rights</LegalH2>
+        <LegalH2 id="app">6. The park.fan app for iPhone</LegalH2>
+        <p>
+          This policy also covers the park.fan app for iPhone. The app gets its data from the same
+          servers as the website; what is different in the app is set out in this section. The app
+          needs no account, shows no ads and sets no cookies. It contains no statistics, no
+          third-party analytics, crash-reporting or advertising tool and no tracking. The count
+          described in section 4 does not take place in the app.
+        </p>
+
+        <LegalH3>What stays on your iPhone</LegalH3>
+        <p>
+          Your favourites, your day plans, the rides you have ticked off, your settings and your
+          answers in the introduction on first launch (favourite parks, how you like to ride,
+          temperature unit) are stored by the app on your iPhone, together with a random ID of the
+          installation and cached answers and photos. What of this goes to our servers is set out in
+          the following paragraphs. "Clear cache" in the settings deletes the cached data; deleting
+          the app deletes everything. This storage needs no consent, because it is strictly
+          necessary for the features you asked for (Section 25(2) no. 2 TDDDG).
+        </p>
+
+        <LegalH3>Requests to our servers</LegalH3>
+        <p>
+          The app loads park data, wait times, forecasts and weather from our API server
+          api.park.fan, and photos, news and guides from media.park.fan, a storage service at
+          Cloudflare in the EU. Both go through Cloudflare (section 2), which processes your IP
+          address and the technical data of the request. The app identifies itself with a key that
+          is the same in every installation and says nothing about you. For the logs, what section 2
+          says about the API server applies: the application writes no IP addresses into them.{' '}
+          {'<<OWNER: how long the other server and container logs are kept>>'} So that the server
+          can return the wait times of your favourites, the app sends their IDs; what you type into
+          the search is sent to find matches. Both are used only for the answer. If a search takes
+          unusually long, the server writes the search text, without an IP address or any ID, into a
+          diagnostic log that it deletes after 7 days.
+        </p>
+        <p>
+          Toilets and drinking water in a park come from OpenStreetMap (© OpenStreetMap
+          contributors, ODbL licence). The app requests them from our API server for the park in
+          question and sends nothing but which park it is. They contain no personal data.
+        </p>
+
+        <LegalH3>Location in the app</LegalH3>
+        <p>
+          If you allow the app to use your location, it reads it only while it is open, never in the
+          background. Your precise position stays on the iPhone: the app works out the compass,
+          distances, walking times and "Take me there" itself. It sends api.park.fan only a position
+          rounded to three decimal places, about 100 metres, to find parks near you and to tell
+          whether you are in a park. It sends it again when the rounded position changes or the app
+          refreshes the live data. The server uses it only for the answer, does not store it and
+          redacts coordinates in its logs. Without your permission the app sends no location.
+        </p>
+        <p>
+          The legal basis is your consent (Art. 6(1)(a) GDPR). You withdraw it in your iPhone's
+          settings under Privacy &amp; Security → Location Services → park.fan.
+        </p>
+
+        <LegalH3>Notifications in the app</LegalH3>
+        <p>
+          Notifications are off until you choose them: in the introduction on first launch, with the
+          bell on a ride, a plan or the news, or in the app's settings. Only once you choose at
+          least one kind and give iOS permission does the app register with api.park.fan. We then
+          store the random ID of the installation, the device token Apple assigns to the iPhone for
+          park.fan, the kinds you chose, whether your iPhone is reached through Apple's test or
+          production environment, your language, your time zone (for quiet hours), the paths of your
+          favourite parks if you want news only about them, the ID of a stored plan (see below) and
+          your wait alerts with their thresholds.
+        </p>
+        <p>
+          Notifications are delivered through the Apple Push Notification service of Apple Inc., One
+          Apple Park Way, Cupertino, CA 95014, USA. For this, Apple receives the device token, the
+          time and the content of the notification. Data may be transferred to the USA in the
+          process. If a notification has a photo, your iPhone loads it from media.park.fan. The
+          reminder to set off for the next item in your plan is scheduled by the iPhone itself;
+          nothing is sent for it.
+        </p>
+        <p>
+          The legal basis is your consent (Art. 6(1)(a) GDPR). You can untick any kind in the app's
+          settings or switch notifications off in your iPhone's settings. With every kind off, the
+          server sends nothing more and a stored plan is deleted. The registration itself, with your
+          alerts, stays stored so that it is still there when you switch back on. If Apple reports
+          during a delivery that the token is no longer valid, for example because you deleted the
+          app, we delete the registration with all its alerts.{' '}
+          {
+            '<<OWNER: same as in de.tsx: the app never calls DELETE /v1/push/devices, so with every kind off the registration stays without a time limit. Once the app deletes it, shorten this to "If you switch all notifications off, we delete the registration with all its alerts.">>'
+          }
+        </p>
+
+        <LegalH3>Park day on the Lock Screen</LegalH3>
+        <p>
+          When you are in an open park, the app shows the wait times of your rides, the next item in
+          your plan and the next show on the Lock Screen and in the Dynamic Island. This is put
+          together on your iPhone alone from data the app has already loaded; nothing is sent to us
+          for it. While it runs, iOS may wake the app in the background now and then. The app then
+          reloads that park's wait times, without your location. You can switch it off in the app's
+          settings ("Park day on the Lock Screen") or in your iPhone's settings.
+        </p>
+
+        <LegalH3>Day planner in the app</LegalH3>
+        <p>
+          Your plans stay on the iPhone. If you tap "Optimize the day", the app sends api.park.fan
+          the date, the day's entries and, if you gave them, the height of the smallest rider and
+          whether you want to stay dry or enter the park early. The server works out the order from
+          this and does not store the plan.
+        </p>
+        <p>
+          If you switch on notifications for a plan, what section 3 says under "Day planner"
+          applies: the server stores the watched days under a random ID, with no details about you.
+          A plan that only the app holds is deleted 7 days after its last planned day. If you switch
+          the plan's notifications off, the app deletes the copy on the server.
+        </p>
+
+        <LegalH3 id="parky-app">Parky in the app</LegalH3>
+        <p>
+          For Parky, the section "Parky, the AI chat" above applies, with these differences. Before
+          your first message, the app shows what is sent and to whom, and asks you; without "Agree",
+          no message leaves the iPhone. Instead of Cloudflare Turnstile, the app opens the session
+          with the app's key. With each message it sends your text and Parky's greeting, the page
+          you opened the chat from, your language and time zone, the chat's ID, your next planned
+          days (at most 8) with their items and the details about your group, the IDs of your
+          favourites and whether notifications are on for the iPhone. It sends your location only if
+          you share it in the chat, rounded to about 100 metres; the server rounds it to about a
+          kilometre and does not store it. Our server passes the request on to Anthropic as
+          described above. A copy of the chat stays on your iPhone for up to two hours.
+        </p>
+        <p>
+          "New chat" and switching off "Chat with Parky" in the app's settings delete the chat on
+          the iPhone and, while the session runs (two hours), on our server too; otherwise the
+          server deletes it after 7 days. Switching it off withdraws your consent; after that the
+          app sends nothing more to Parky.
+        </p>
+        <p>
+          With "Report answer" you can report an answer to us with a reason and, if you like, a
+          note. The report is stored with the chat and deleted with it, after 7 days at the latest.
+          "New chat" does not delete a chat with a reported answer early, so that we can review the
+          report. If you ask Parky to pass something on to us, what is said above about feedback
+          through Parky applies. The legal bases are the same as above.
+        </p>
+
+        <LegalH3>Links from the app</LegalH3>
+        <p>
+          The app opens pages of park.fan and of our data sources in a Safari window inside the app.
+          For park.fan, the website part of this policy applies there, including the statistics
+          (section 4); for the other pages, their provider's policy.
+        </p>
+
+        <LegalH3>App Store, TestFlight and Apple</LegalH3>
+        <p>
+          You get the app from Apple's App Store or, for tests, through TestFlight. Apple is itself
+          responsible for what it processes in doing so:{' '}
+          <LegalLink href="https://www.apple.com/legal/privacy/" />. If you have allowed your iPhone
+          to share analytics with app developers, Apple gives us crash reports and aggregated
+          figures, for example on installations; we cannot link them to a person. If you take part
+          in a test through TestFlight, we see the email address we invited you with and what you
+          send as feedback through TestFlight, with screenshot and crash report.
+        </p>
+
+        <LegalH3>Deleting everything</LegalH3>
+        <LegalList>
+          <li>
+            <strong>On the iPhone:</strong> deleting the app removes favourites, plans, settings and
+            the copy of the chat.
+          </li>
+          <li>
+            <strong>Chat:</strong> "New chat" or switching off "Chat with Parky", as described
+            above; otherwise after 7 days.
+          </li>
+          <li>
+            <strong>Stored plan:</strong> switch the plan's notifications off; otherwise 7 days
+            after the last planned day.
+          </li>
+          <li>
+            <strong>Location:</strong> not stored; you withdraw the permission in your iPhone's
+            settings.
+          </li>
+          <li>
+            <strong>Notifications:</strong> as described above under "Notifications in the app".
+          </li>
+          <li>
+            <strong>Everything else:</strong> an email to the address in section 1 is enough.
+          </li>
+        </LegalList>
+
+        <LegalH2>7. Your rights</LegalH2>
         <p>You have the right to</p>
         <LegalList>
           <li>access the data stored about you (Art. 15 GDPR),</li>
@@ -551,7 +735,7 @@ export function DatenschutzEN() {
           <LegalLink href="https://www.ldi.nrw.de" />.
         </p>
 
-        <LegalH2>7. Storage period and security</LegalH2>
+        <LegalH2>8. Storage period and security</LegalH2>
         <p>
           Where no specific period is given above, we delete personal data as soon as the purpose no
           longer applies and no legal duty to retain it applies. All connections to park.fan and

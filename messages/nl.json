@@ -308,7 +308,8 @@
     "disclaimer": "park.fan is een privé-hobbyproject. Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse.",
     "dataSources": "Databronnen",
     "weatherSource": "Weer",
-    "tripPlanner": "Reisplanner"
+    "tripPlanner": "Reisplanner",
+    "app": "App voor iPhone"
   },
   "explore": {
     "title": "Attractiepark Wachttijden in {location}",
@@ -2514,6 +2515,10 @@
   "impressum": {
     "title": "Colofon - park.fan",
     "description": "Juridische informatie en colofon voor park.fan"
+  },
+  "appSupport": {
+    "title": "park.fan voor iPhone - Hulp",
+    "description": "Wat de park.fan-app voor iPhone doet, wat je nodig hebt en hoe je ons bereikt."
   },
   "datenschutz": {
     "title": "Privacybeleid - park.fan",
