@@ -546,12 +546,12 @@ export function DatenschutzEN() {
           Cloudflare in the EU. Both go through Cloudflare (section 2), which processes your IP
           address and the technical data of the request. The app identifies itself with a key that
           is the same in every installation and says nothing about you. For the logs, what section 2
-          says about the API server applies: the application writes no IP addresses into them.{' '}
-          {'<<OWNER: how long the other server and container logs are kept>>'} So that the server
-          can return the wait times of your favourites, the app sends their IDs; what you type into
-          the search is sent to find matches. Both are used only for the answer. If a search takes
-          unusually long, the server writes the search text, without an IP address or any ID, into a
-          diagnostic log that it deletes after 7 days.
+          says about the API server applies: the application writes no IP addresses into them. We
+          delete the other server logs after 14 days. So that the server can return the wait times
+          of your favourites, the app sends their IDs; what you type into the search is sent to find
+          matches. Both are used only for the answer. If a search takes unusually long, the server
+          writes the search text, without an IP address or any ID, into a diagnostic log that it
+          deletes after 7 days.
         </p>
         <p>
           Toilets and drinking water in a park come from OpenStreetMap (© OpenStreetMap
@@ -595,14 +595,13 @@ export function DatenschutzEN() {
         </p>
         <p>
           The legal basis is your consent (Art. 6(1)(a) GDPR). You can untick any kind in the app's
-          settings or switch notifications off in your iPhone's settings. With every kind off, the
-          server sends nothing more and a stored plan is deleted. The registration itself, with your
-          alerts, stays stored so that it is still there when you switch back on. If Apple reports
-          during a delivery that the token is no longer valid, for example because you deleted the
-          app, we delete the registration with all its alerts.{' '}
-          {
-            '<<OWNER: same as in de.tsx: the app never calls DELETE /v1/push/devices, so with every kind off the registration stays without a time limit. Once the app deletes it, shorten this to "If you switch all notifications off, we delete the registration with all its alerts.">>'
-          }
+          settings or switch notifications off in your iPhone's settings. If you switch all
+          notifications off, or withdraw the app's permission in your iPhone's settings, the app
+          deletes the registration with all its alerts from our server the next time it is opened.
+          Which kinds you had chosen stays on your iPhone only, so that the choice is still there
+          when you switch back on. If Apple reports during a delivery that the token is no longer
+          valid, for example because you deleted the app, we delete the registration with all its
+          alerts.
         </p>
 
         <LegalH3>Park day on the Lock Screen</LegalH3>

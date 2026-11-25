@@ -580,13 +580,11 @@ export function DatenschutzDE() {
           IP-Adresse und die technischen Daten der Anfrage verarbeitet. Die App weist sich mit einem
           Schlüssel aus, der in jeder Installation derselbe ist und nichts über Sie sagt. Für die
           Protokolle gilt, was in Abschnitt 2 zum API-Server steht: Die Anwendung schreibt keine
-          IP-Adressen hinein.{' '}
-          {'<<OWNER: wie lange die übrigen Server- und Container-Protokolle aufbewahrt werden>>'}{' '}
-          Damit der Server die Wartezeiten Ihrer Favoriten liefern kann, sendet die App deren
-          Kennungen; was Sie in die Suche tippen, sendet sie, um Treffer zu finden. Beides wird nur
-          für die Antwort verwendet. Dauert eine Suche ungewöhnlich lange, schreibt der Server den
-          Suchtext ohne IP-Adresse oder Kennung in ein Diagnoseprotokoll, das er nach 7 Tagen
-          löscht.
+          IP-Adressen hinein. Die übrigen Server-Protokolle löschen wir nach 14 Tagen. Damit der
+          Server die Wartezeiten Ihrer Favoriten liefern kann, sendet die App deren Kennungen; was
+          Sie in die Suche tippen, sendet sie, um Treffer zu finden. Beides wird nur für die Antwort
+          verwendet. Dauert eine Suche ungewöhnlich lange, schreibt der Server den Suchtext ohne
+          IP-Adresse oder Kennung in ein Diagnoseprotokoll, das er nach 7 Tagen löscht.
         </p>
         <p>
           Toiletten und Trinkwasserstellen in einem Park stammen aus OpenStreetMap (©
@@ -634,14 +632,12 @@ export function DatenschutzDE() {
         <p>
           Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können jede Art in
           den Einstellungen der App abwählen oder Mitteilungen in den Einstellungen Ihres iPhones
-          ausschalten. Sind alle Arten aus, sendet der Server nichts mehr, und ein gespeicherter
-          Plan wird gelöscht. Die Anmeldung selbst mit Ihren Alarmen bleibt gespeichert, damit sie
-          beim Wiedereinschalten noch da ist. Meldet Apple bei einer Zustellung, dass das Token
-          nicht mehr gilt, etwa weil Sie die App gelöscht haben, löschen wir die Anmeldung mit allen
-          Alarmen.{' '}
-          {
-            '<<OWNER: Die App ruft DELETE /v1/push/devices heute nie auf; mit allen Arten aus wird nichts zugestellt, also bleibt die Anmeldung ohne Frist liegen. Empfehlung: die App löscht die Anmeldung beim Ausschalten aller Arten, dann diesen Absatz auf „Schalten Sie alle Mitteilungen aus, löschen wir die Anmeldung mit allen Alarmen.“ kürzen.>>'
-          }
+          ausschalten. Schalten Sie alle Mitteilungen aus oder entziehen Sie der App die Erlaubnis
+          in den Einstellungen Ihres iPhones, löscht die App beim nächsten Öffnen die Anmeldung mit
+          allen Alarmen von unserem Server. Welche Arten Sie gewählt hatten, bleibt nur auf Ihrem
+          iPhone, damit die Auswahl beim Wiedereinschalten noch da ist. Meldet Apple bei einer
+          Zustellung, dass das Token nicht mehr gilt, etwa weil Sie die App gelöscht haben, löschen
+          wir die Anmeldung mit allen Alarmen.
         </p>
 
         <LegalH3>Parktag auf dem Sperrbildschirm</LegalH3>
