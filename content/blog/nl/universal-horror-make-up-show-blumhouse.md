@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Vanaf 11 december speelt in Universal Studios Florida weer de Horror Make-Up Show, nu met Blumhouse-films als “M3GAN”. Lobby, muziek en finale zijn nieuw, de komische toon blijft.
+  Vanaf 11 december speelt in Universal Studios Florida weer de Horror Make-Up Show, nu met Blumhouse-films als “M3GAN”. De lobby heeft nu de look van Blumhouse, en grappen uit de oude show komen terug.
 tags:
   - nieuws
   - universal-orlando
@@ -36,15 +36,15 @@ seo:
     - Universal Studios Florida wachttijden
 ---
 
-[Universal Studios Florida](ref:universal-studios-florida) in Orlando opent op 11 december 2026 de vernieuwde Universal Horror Make-Up Show featuring Blumhouse. Universal Orlando maakte de datum op 24 november bekend, in een persbericht en op de eigen blog.
+[Universal Studios Florida](ref:universal-studios-florida) in Orlando opent op 11 december 2026 de vernieuwde Universal Horror Make-Up Show featuring Blumhouse. Universal Orlando maakte de datum op 24 november bekend, in een persbericht en op de eigen blog. Universal noemde de nieuwe versie voor het eerst op 5 november, terloops in het bericht over de [nieuwe overdekte achtbaan in Epic Universe](/news/dark-universe-achtbaan-epic-universe), en toen nog met “later dit jaar” in plaats van een datum.
 
 ## Wat je in de lobby en de zaal ziet
 
-Universal heeft de lobby helemaal verbouwd, met een nieuwe indeling en in de stijl van horrorstudio Blumhouse. In vitrines staan rekwisieten uit zo'n honderd jaar horrorfilm, en daartussen zijn plekken om foto's te maken. De rekwisieten komen uit de klassieke films van de Universal Monsters, uit “The Thing” en uit “Nosferatu”. Blumhouse is er met “Five Nights at Freddy's”, “The Black Phone”, “M3GAN” en “The Purge”. Verder herinnert de lobby aan Halloween Horror Nights, het halloweenevenement van het resort.
+Universal heeft de lobby helemaal verbouwd, met een nieuwe indeling en in de stijl van horrorstudio Blumhouse. In vitrines staan rekwisieten uit zo'n honderd jaar horrorfilm, en daartussen zijn plekken om foto's te maken. De rekwisieten komen uit de klassieke films van de Universal Monsters, uit “The Thing” en uit “Nosferatu”. Blumhouse is er met “Five Nights at Freddy's”, “The Black Phone”, “M3GAN” en “The Purge”. Ook heeft Universal verwijzingen naar Halloween Horror Nights, het halloweenevenement van het resort, in de lobby verwerkt.
 
-Alle muziek is nieuw: de soundtrack in de lobby, de muziek terwijl je naar binnen gaat, het thema van de show en de muziek onder alle video's. De soundtrack in de lobby komt van hetzelfde team dat de muziek voor Celestial Park in [Epic Universe](ref:universal-epic-universe?bare) heeft geschreven.
+Alle muziek is nieuw, en de soundtrack in de lobby komt van hetzelfde team dat de muziek voor Celestial Park in [Epic Universe](ref:universal-epic-universe?bare) heeft geschreven.
 
-In de zaal staat nu een podium dat eruitziet als een laboratorium. De show wisselt video's van achter de schermen af met special effects die live op het podium met de hand worden gemaakt. Je hoort hoe het masker van de Grabber uit “The Black Phone” is gemaakt, met welke technieken de grote grimeurs van de horrorfilm werkten en hoe de schrikmomenten van Halloween Horror Nights in elkaar worden gezet.
+In de zaal staat nu een podium dat eruitziet als een laboratorium. De show wisselt video's van achter de schermen af met special effects die live op het podium met de hand worden gemaakt. Je ziet hoe het masker van de Grabber uit “The Black Phone” is gemaakt en met welke technieken de grote grimeurs van de horrorfilm al werkten. Ook de schrikmomenten van Halloween Horror Nights haalt de show uit elkaar.
 
 > [!QUOTE]
 > We eren Milicent Patrick, een grimeur uit de jaren vijftig die als vrouw pionierswerk deed en aan “Creature from the Black Lagoon” heeft gewerkt. […] In een vak dat zo door mannen werd gedomineerd, dachten we gewoon: wat een mooi verhaal heeft zij.
@@ -57,8 +57,6 @@ In de zaal staat nu een podium dat eruitziet als een laboratorium. De show wisse
 
 Het theater staat in het themagebied Hollywood, in een nagebouwd Hollywood Pantages Theatre. Voor de nieuwe versie heeft Universal nog geen speelduur genoemd. De oude duurde ongeveer 25 minuten.
 
-Universal had de nieuwe versie al op 5 november aangekondigd, in het bericht over de [nieuwe overdekte achtbaan in Epic Universe](/news/dark-universe-achtbaan-epic-universe). Een datum stond er toen nog niet bij, alleen “later dit jaar”.
-
 ## De oude show sinds 1990
 
 De oude show speelde sinds juni 1990, het jaar waarin het park openging. Tot 1997 heette hij “The Phantom of the Opera Horror Make-Up Show”, daarna een tijd lang “The Gory, Gruesome and Grotesque Horror Make-Up Show”. Sinds 12 mei 2026 is hij dicht voor de verbouwing.
@@ -67,7 +65,7 @@ De laatste jaren stonden er twee personages op het podium: presentator Alex Ross
 
 ## Wat blijft en wat nieuw is
 
-De opbouw en de komische toon blijven, en grappen die vaste bezoekers nog uit de oude show kennen, komen terug. De finale is nieuw. Of Eddie daarin nog opduikt, heeft Universal niet bekendgemaakt.
+De opbouw en de komische toon blijven, en grappen die vaste bezoekers nog uit de oude show kennen, komen terug. Of Eddie in de nieuwe finale nog opduikt, heeft Universal niet bekendgemaakt.
 
 Voor de selectie heeft het team volgens Matt Flood honderden uren film uit meer dan honderd jaar bekeken. Er bestaan saaiere kantoorbanen. Flood is Senior Show Director bij Universal en stond zelf tien jaar lang in de show op het podium.
 
@@ -79,7 +77,7 @@ De show begint midden in de kerstseizoen van Universal Orlando, die loopt van 14
 
 ```
 
-Een show met vaste aanvangstijden plan je het best in de uren waarin je bij de attracties het langst in de rij staat. De airco in de zaal is in december minder waard dan in augustus, maar je zit er in elk geval.
+De Horror Make-Up Show begint op vaste tijden, en in Universal Studios Florida past hij het best in de uren waarin je bij de attracties het langst in de rij staat. De airco in de zaal is in december minder waard dan in augustus, maar je zit er in elk geval.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 

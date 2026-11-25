@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dall’11 dicembre agli Universal Studios Florida torna l’Horror Make-Up Show, ora con film Blumhouse come «M3GAN». Lobby, musica e finale sono nuovi, il tono comico resta.
+  Dall’11 dicembre agli Universal Studios Florida torna l’Horror Make-Up Show, ora con film Blumhouse come «M3GAN». La lobby ha preso il look di Blumhouse, e rispuntano alcune gag del vecchio show.
 tags:
   - notizie
   - universal-orlando
@@ -36,15 +36,15 @@ seo:
     - tempi di attesa Universal Studios Florida
 ---
 
-L’11 dicembre 2026 agli [Universal Studios Florida](ref:universal-studios-florida) di Orlando riapre in una nuova versione lo Universal Horror Make-Up Show featuring Blumhouse. La data l’ha annunciata Universal Orlando il 24 novembre, con un comunicato stampa e un articolo sul proprio blog.
+L’11 dicembre 2026 agli [Universal Studios Florida](ref:universal-studios-florida) di Orlando riapre in una nuova versione lo Universal Horror Make-Up Show featuring Blumhouse. La data l’ha annunciata Universal Orlando il 24 novembre, con un comunicato stampa e un articolo sul proprio blog. Universal aveva citato la nuova versione per la prima volta il 5 novembre, di sfuggita, nel comunicato sulle [nuove montagne russe al coperto dell’Epic Universe](/news/dark-universe-montagne-russe-epic-universe), e al posto di una data c’era solo un «più avanti quest’anno».
 
 ## Cosa vedi nella lobby e in sala
 
-Universal ha ricostruito la lobby da zero, con una pianta diversa e l’estetica dello studio horror Blumhouse. Nelle vetrine sono esposti oggetti di scena da circa cent’anni di cinema dell’orrore, e tra una vetrina e l’altra ci sono angoli per le foto. Gli oggetti vengono dai classici degli Universal Monsters, da «The Thing» e da «Nosferatu». Per Blumhouse ci sono «Five Nights at Freddy's», «The Black Phone», «M3GAN» e «The Purge». La lobby rende anche omaggio alle Halloween Horror Nights, l’evento di Halloween del resort.
+Universal ha ricostruito la lobby da zero, con una pianta diversa e l’estetica dello studio horror Blumhouse. Nelle vetrine sono esposti oggetti di scena da circa cent’anni di cinema dell’orrore, e tra una vetrina e l’altra ci sono angoli per le foto. Gli oggetti vengono dai classici degli Universal Monsters, da «The Thing» e da «Nosferatu». Per Blumhouse ci sono «Five Nights at Freddy's», «The Black Phone», «M3GAN» e «The Purge». Nella lobby Universal ha inserito anche riferimenti alle Halloween Horror Nights, l’evento di Halloween del resort.
 
-Tutta la musica è nuova: la colonna sonora della lobby, quella che accompagna l’ingresso in sala, il tema dello show e le musiche di ogni video. La colonna sonora della lobby l’ha composta la stessa squadra che ha scritto le musiche di Celestial Park nell’[Epic Universe](ref:universal-epic-universe?bare).
+Tutta la musica è nuova, e la colonna sonora della lobby l’ha composta la stessa squadra che ha scritto le musiche di Celestial Park nell’[Epic Universe](ref:universal-epic-universe?bare).
 
-In sala adesso c’è un palco che sembra un laboratorio. Lo show alterna video girati dietro le quinte ed effetti speciali preparati a mano davanti al pubblico. Si scopre come è nata la maschera del Grabber di «The Black Phone», con quali tecniche lavoravano i grandi truccatori del cinema horror e come si costruiscono gli spaventi delle Halloween Horror Nights.
+In sala adesso c’è un palco che sembra un laboratorio. Lo show alterna video girati dietro le quinte ed effetti speciali preparati a mano davanti al pubblico. Scopri come è nata la maschera del Grabber di «The Black Phone» e con quali tecniche lavoravano già i grandi truccatori del cinema horror. Lo show smonta anche gli spaventi delle Halloween Horror Nights.
 
 > [!QUOTE]
 > Rendiamo omaggio a Milicent Patrick, una truccatrice pioniera degli anni Cinquanta che ha lavorato a «Creature from the Black Lagoon». […] In un settore così dominato dagli uomini abbiamo pensato semplicemente: che storia fantastica ha.
@@ -57,8 +57,6 @@ In sala adesso c’è un palco che sembra un laboratorio. Lo show alterna video 
 
 Il teatro si trova nell’area Hollywood, dentro una copia del Hollywood Pantages Theatre. Universal non ha ancora indicato quanto durerà la nuova versione. La vecchia durava circa 25 minuti.
 
-Universal aveva annunciato la nuova versione già il 5 novembre, nel comunicato sulle [nuove montagne russe al coperto dell’Epic Universe](/news/dark-universe-montagne-russe-epic-universe). Allora però non c’era una data, solo un generico «più avanti quest’anno».
-
 ## Il vecchio show dal 1990
 
 Il vecchio show andava in scena dal giugno 1990, l’anno in cui aprì il parco. Fino al 1997 si chiamava «The Phantom of the Opera Horror Make-Up Show», poi per un periodo «The Gory, Gruesome and Grotesque Horror Make-Up Show». Dal 12 maggio 2026 è chiuso per i lavori.
@@ -67,7 +65,7 @@ Negli ultimi anni sul palco c’erano due personaggi: il presentatore Alex Ross 
 
 ## Cosa resta e cosa è nuovo
 
-Struttura e tono comico restano, e tornano anche alcune gag che chi conosceva il vecchio show riconoscerà. Il finale invece è nuovo. Universal non ha comunicato se Eddie ci sarà ancora.
+Struttura e tono comico restano, e tornano anche alcune gag che chi conosceva il vecchio show riconoscerà. Universal non ha annunciato se Eddie comparirà ancora nel nuovo finale.
 
 Secondo Matt Flood, per scegliere cosa mostrare la squadra ha guardato centinaia di ore di film da più di cent’anni di cinema. Come lavoro d’ufficio, c’è di peggio. Flood è Senior Show Director di Universal e su quel palco ci è stato lui stesso per dieci anni.
 
@@ -79,7 +77,7 @@ Lo show riparte in piena stagione natalizia di Universal Orlando, che va dal 14 
 
 ```
 
-Uno spettacolo con orari fissi conviene metterlo nelle ore in cui alle attrazioni si fa più coda. A dicembre l’aria condizionata della sala convince meno che ad agosto, la poltrona invece funziona tutto l’anno.
+L’Horror Make-Up Show inizia a orari fissi, e agli Universal Studios Florida conviene metterlo nelle ore in cui alle attrazioni si fa più coda. A dicembre l’aria condizionata della sala convince meno che ad agosto, la poltrona invece funziona tutto l’anno.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 

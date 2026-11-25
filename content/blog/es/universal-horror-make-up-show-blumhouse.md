@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Desde el 11 de diciembre vuelve el Horror Make-Up Show a Universal Studios Florida, ahora con películas de Blumhouse como «M3GAN». El vestíbulo, la música y el final son nuevos, y el tono cómico se mantiene.
+  Desde el 11 de diciembre vuelve el Horror Make-Up Show a Universal Studios Florida, ahora con películas de Blumhouse como «M3GAN». El vestíbulo lleva el sello de Blumhouse, y regresan gags del espectáculo antiguo.
 tags:
   - news
   - universal-orlando
@@ -36,15 +36,15 @@ seo:
     - Universal Studios Florida tiempos de espera
 ---
 
-[Universal Studios Florida](ref:universal-studios-florida), en Orlando, reabre el 11 de diciembre de 2026 el Universal Horror Make-Up Show featuring Blumhouse en una versión renovada. Universal Orlando anunció la fecha el 24 de noviembre en una nota de prensa y en su propio blog.
+[Universal Studios Florida](ref:universal-studios-florida), en Orlando, reabre el 11 de diciembre de 2026 el Universal Horror Make-Up Show featuring Blumhouse en una versión renovada. Universal Orlando anunció la fecha el 24 de noviembre en una nota de prensa y en su propio blog. Universal mencionó la versión nueva por primera vez el 5 de noviembre, de pasada, en la nota sobre la [nueva montaña rusa cubierta de Epic Universe](/news/dark-universe-montana-rusa-epic-universe), y entonces solo hablaba de «más adelante este año» en lugar de dar una fecha.
 
 ## Qué hay en el vestíbulo y en el teatro
 
-Universal ha rehecho el vestíbulo entero, con otra distribución y una decoración al estilo de Blumhouse, el estudio de cine de terror. Las vitrinas guardan objetos de atrezo de unos cien años de películas de miedo, y entre ellas quedan rincones para hacerse fotos. El atrezo viene de los clásicos de los Universal Monsters, de «The Thing» y de «Nosferatu». Por parte de Blumhouse están «Five Nights at Freddy's», «The Black Phone», «M3GAN» y «The Purge». El vestíbulo también rinde homenaje a Halloween Horror Nights, el evento de Halloween del resort.
+Universal ha rehecho el vestíbulo entero, con otra distribución y una decoración al estilo de Blumhouse, el estudio de cine de terror. Las vitrinas guardan objetos de atrezo de unos cien años de películas de miedo, y entre ellas quedan rincones para hacerse fotos. El atrezo viene de los clásicos de los Universal Monsters, de «The Thing» y de «Nosferatu». Por parte de Blumhouse están «Five Nights at Freddy's», «The Black Phone», «M3GAN» y «The Purge». En el vestíbulo, Universal también ha incluido guiños a Halloween Horror Nights, el evento de Halloween del resort.
 
-Toda la música es nueva: la banda sonora del vestíbulo, la que suena mientras entra el público, el tema del espectáculo y la de cada vídeo. La banda sonora del vestíbulo la ha compuesto el mismo equipo que puso música a Celestial Park en [Epic Universe](ref:universal-epic-universe?bare).
+Toda la música es nueva, y la banda sonora del vestíbulo la ha compuesto el mismo equipo que puso música a Celestial Park en [Epic Universe](ref:universal-epic-universe?bare).
 
-En el teatro, el escenario parece ahora un laboratorio. El espectáculo alterna vídeos de entre bastidores con efectos especiales hechos a mano delante del público. Se cuenta cómo nació la máscara del Grabber de «The Black Phone», con qué técnicas trabajaban los grandes maquilladores del cine de terror y cómo se preparan los sustos de Halloween Horror Nights.
+En el teatro, el escenario parece ahora un laboratorio. El espectáculo alterna vídeos de entre bastidores con efectos especiales hechos a mano delante del público. Verás cómo nació la máscara del Grabber de «The Black Phone» y con qué técnicas trabajaban ya los grandes maquilladores del cine de terror. El espectáculo también desmonta los sustos de Halloween Horror Nights.
 
 > [!QUOTE]
 > Rendimos homenaje a Milicent Patrick, una maquilladora pionera de los años cincuenta que trabajó en «Creature from the Black Lagoon». […] En un sector tan dominado por los hombres, simplemente pensamos: «Qué historia tan buena tiene».
@@ -57,8 +57,6 @@ En el teatro, el escenario parece ahora un laboratorio. El espectáculo alterna 
 
 El teatro está en la zona de Hollywood, dentro de una réplica del Hollywood Pantages Theatre. Universal todavía no ha dado la duración de la versión nueva. La anterior duraba unos 25 minutos.
 
-Universal ya había anunciado la versión nueva el 5 de noviembre, en la nota sobre la [nueva montaña rusa cubierta de Epic Universe](/news/dark-universe-montana-rusa-epic-universe). Entonces no daba fecha y hablaba solo de «más adelante este año».
-
 ## El espectáculo antiguo desde 1990
 
 El espectáculo antiguo se representaba desde junio de 1990, el año en que abrió el parque. Hasta 1997 se llamó «The Phantom of the Opera Horror Make-Up Show» y después, durante un tiempo, «The Gory, Gruesome and Grotesque Horror Make-Up Show». Desde el 12 de mayo de 2026 está cerrado por la reforma.
@@ -67,7 +65,7 @@ En la última etapa salían a escena dos personajes: el presentador Alex Ross y 
 
 ## Qué se queda y qué es nuevo
 
-Se mantienen la estructura y el tono de comedia, y vuelven gags que los habituales recordarán del espectáculo anterior. El final es nuevo. Universal no ha anunciado si Eddie sigue apareciendo en él.
+Se mantienen la estructura y el tono de comedia, y vuelven gags que los habituales recordarán del espectáculo anterior. Universal no ha anunciado si Eddie sigue apareciendo en el final nuevo.
 
 Según Matt Flood, el equipo revisó cientos de horas de cine de más de cien años para elegir el material. Hay trabajos de oficina bastante peores. Flood es Senior Show Director de Universal y pasó él mismo diez años actuando en el espectáculo.
 
@@ -79,7 +77,7 @@ El espectáculo se estrena en plena temporada navideña de Universal Orlando, qu
 
 ```
 
-Te conviene poner un espectáculo con horarios fijos en las horas en que más esperas en las atracciones. En diciembre el aire acondicionado de la sala se agradece menos que en agosto, pero al menos estás sentado.
+El Horror Make-Up Show empieza a horas fijas, y en Universal Studios Florida encaja mejor en las horas en que más esperas en las atracciones. En diciembre el aire acondicionado de la sala se agradece menos que en agosto, pero al menos estás sentado.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
