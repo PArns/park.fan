@@ -57,7 +57,7 @@ La zone la plus récente, Illumination's Minion Land, a ouvert le 14 février 20
 
 ```
 
-Battlestar Galactica, Revenge of the Mummy, Jurassic Park Rapids Adventure, Canopy Flyer et Enchanted Airways tournent depuis le premier jour du parc, le 18 mars 2010, et le spectacle de Spielberg à New York se joue depuis aussi longtemps. WaterWorld n’a pas encore de date de retour, et la rivière rapide fait une pause à partir de décembre. Resorts World Sentosa ajoute chaque nouvelle fermeture sur sa page Attraction Closure. Les horaires de Trolls Hug Time Jubilee, de Donkey Live et des autres spectacles, ainsi que les créneaux pour rencontrer les personnages, ne figurent que dans l’appli du parc, qui affiche aussi les temps d’attente du jour.
+Battlestar Galactica, Revenge of the Mummy, Jurassic Park Rapids Adventure, Canopy Flyer et Enchanted Airways tournent depuis le premier jour du parc, le 18 mars 2010, et le spectacle de Spielberg à New York se joue depuis aussi longtemps. WaterWorld n’a pas encore de date de retour, et la rivière rapide fait une pause à partir de décembre. Les horaires de Trolls Hug Time Jubilee, de Donkey Live et des autres spectacles, ainsi que les créneaux pour rencontrer les personnages, ne figurent que dans l’appli du parc, qui affiche aussi les temps d’attente du jour.
 
 ### Hollywood
 
@@ -123,7 +123,7 @@ La deuxième montagne russe de la zone, [Enchanted Airways](ref:universal-studio
 
 Minion Land occupe l’ancien terrain de la zone Madagascar. Pour Page Thompson, d’Universal Destinations & Experiences, les Minions ont désormais leur propre espace dans chaque parc Universal. La zone a été construite par Universal Creative, Illumination et Resorts World Sentosa, et se partage entre Minion Marketplace, Gru's Neighborhood et Super Silly Fun Land.
 
-[Despicable Me Minion Mayhem](ref:universal-studios-singapore/despicable-me-minion-mayhem) a remplacé le parcours en bateau Madagascar: A Crate Adventure, ouvert jusqu’en 2022, et fait bouger le public dans un simulateur. [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie), un carrousel sous un toit avec une soirée dansante des Minions, n’existe qu’à Singapour. [Silly Swirly](ref:universal-studios-singapore/silly-swirly) tourne en plein air. Il y a aussi deux stands de jeux, les spectacles Minion Dance Party et Minute of Minion Mayhem, et des photos avec Gru et Lucy.
+[Despicable Me Minion Mayhem](ref:universal-studios-singapore/despicable-me-minion-mayhem) a remplacé le parcours en bateau Madagascar: A Crate Adventure, ouvert jusqu’en 2022, et fait bouger le public dans un simulateur. [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie), un carrousel sous un toit avec une soirée dansante des Minions, n’existe qu’à Singapour. [Silly Swirly](ref:universal-studios-singapore/silly-swirly) tourne en plein air. Entre les attractions, il y a deux stands de jeux, les spectacles Minion Dance Party et Minute of Minion Mayhem, et Gru et Lucy qui posent pour les photos.
 
 ### Tailles minimales
 
@@ -149,7 +149,7 @@ Minion Land occupe l’ancien terrain de la zone Madagascar. Pour Page Thompson,
 
 ```
 
-Être à l’entrée à 10 h te fait gagner le plus de temps à Battlestar Galactica, d’après nos mesures au rope drop. Après les deux voies de Battlestar vient Jurassic Park Rapids Adventure. Pour les derniers jours de novembre avant un mois de décembre en Super Peak, le [calendrier des temps d’attente d’Universal Studios Singapore](ref:universal-studios-singapore?calendar) donne un niveau d’affluence pour chaque jour d’ouverture.
+Être à l’entrée à 10 h te fait gagner le plus de temps à Battlestar Galactica, d’après nos mesures au rope drop. Le deuxième plus gros gain à l’ouverture se fait à Jurassic Park Rapids Adventure, tant qu’elle tourne, jusqu’au 30 novembre. Pour les derniers jours de novembre, avant que chaque jour de décembre passe au tarif Super Peak, le [calendrier des temps d’attente d’Universal Studios Singapore](ref:universal-studios-singapore?calendar) donne un niveau d’affluence pour chaque jour d’ouverture.
 
 ```glossary-widget slug=rope-drop
 
@@ -170,7 +170,7 @@ D’avril à novembre 2026, juillet et août ont été les mois les plus chargé
 
 ```
 
-Choisis donc d’abord le mois : dans nos mesures depuis avril, le jour de la semaine que tu prends change moins les temps d’attente.
+Dans nos mesures d’avril à novembre, les mois étaient plus éloignés les uns des autres que les jours de la semaine.
 
 ```best-days-widget slug=universal-studios-singapore
 
@@ -180,7 +180,7 @@ Resorts World Sentosa fixe le prix du billet d’une journée selon l’affluenc
 
 ### Horaires jusqu’au 31 décembre
 
-Le parc ouvre tous les jours à 10 h et ferme :
+Les horaires sont connus jusqu’au 31 décembre, ceux de janvier 2027 ne sont pas encore publiés. D’ici là, le parc ouvre tous les jours à 10 h et ferme :
 
 - les 25, 26, 29 et 30 novembre : à 20 h
 - les 27 et 28 novembre : à 19 h
@@ -188,8 +188,6 @@ Le parc ouvre tous les jours à 10 h et ferme :
 - du 3 au 13 décembre : à 20 h
 - du 14 au 20 décembre et du 22 au 31 décembre : à 21 h
 - le 21 décembre : à 18 h, parce que BTS THE CITY ARIRANG Night Out occupe le parc ce soir-là
-
-Pour janvier 2027, le parc n’a pas encore publié ses horaires.
 
 ### La météo à Sentosa
 
@@ -205,11 +203,11 @@ Resorts World Sentosa fête la Season of Joy du **27 novembre 2026 au 3 janvier 
 
 Le feu d’artifice est tiré les 4, 5, 11 et 12 décembre, du 16 au 20 décembre, du 22 au 25 décembre, puis les 1er et 2 janvier 2027. Le 21 décembre, les visiteurs à la journée n’y ont pas droit. Ce soir-là, BTS THE CITY ARIRANG Night Out se déroule de 20 h à 1 h du matin, avec une sélection d’attractions, DJ JAGI et un feu d’artifice. Le billet early bird coûte 58 dollars de Singapour (SGD), entrée comprise. Du 16 au 22 décembre, un billet d’une journée adulte normal donne en plus accès gratuitement au BTS Fan Village, au Resorts World Convention Centre.
 
-Halloween Horror Nights 14 a eu lieu 18 soirs, du 25 septembre au 1er novembre 2026, pour 68 SGD les soirs Non Peak et 78 SGD les soirs Peak. En journée, Trick or Thrills a commencé le 1er septembre. Pour le Nouvel An chinois 2027, Resorts World Sentosa annonce la Celebration of Spring du 21 janvier au 11 avril dans tout le complexe. En 2026, le parc avait eu son propre programme pour la fête, du 7 février au 3 mars. Pour 2027, Resorts World Sentosa n’en a encore annoncé aucun pour le parc.
+Halloween Horror Nights 14 a eu lieu 18 soirs, du 25 septembre au 1er novembre 2026, pour 68 SGD les soirs Non Peak et 78 SGD les soirs Peak. En journée, Trick or Thrills a commencé le 1er septembre. En 2026, le parc avait eu son propre programme pour le Nouvel An chinois, du 7 février au 3 mars, et pour 2027, Resorts World Sentosa n’en a encore annoncé aucun pour le parc. Pour tout le complexe, il annonce la Celebration of Spring du 21 janvier au 11 avril 2027.
 
 ## Universal Express et la visite VIP
 
-Universal Express coûte à partir de 80 SGD. Il te fait passer une fois devant la file normale à chaque attraction et spectacle participant. Pendant les deux premières heures après l’ouverture, tu entres aussi dans le parc par une file à part. Universal Express 3 coûte à partir de 60 SGD et vaut une fois pour trois attractions ou spectacles de ton choix, avec la même file réservée à l’entrée. La page Express ne donne aucune liste des attractions et spectacles participants.
+Universal Express coûte à partir de 80 SGD. Il te fait passer une fois devant la file normale à chaque attraction et spectacle participant, mais la page Express ne dit pas lesquels. Pendant les deux premières heures après l’ouverture, tu entres aussi dans le parc par une file à part. Universal Express 3 coûte à partir de 60 SGD et vaut une fois pour trois attractions ou spectacles de ton choix, avec la même file réservée à l’entrée.
 
 ```glossary-widget slug=express-pass
 
@@ -221,11 +219,11 @@ La VIP Experience est une visite guidée d’environ cinq heures, en anglais ou 
 
 ## Une journée dans le parc
 
-Je commencerais à l’ouverture par Battlestar Galactica, puis Transformers dans Sci-Fi City ; la momie se trouve dans la zone suivante. Avec Express, tu entres par la file réservée à l’entrée.
+Je commencerais à l’ouverture par Battlestar Galactica, puis Transformers dans Sci-Fi City ; la momie se trouve dans la zone suivante.
 
-Jusqu’au 30 novembre, la rivière rapide passe avant la momie, parce qu’après les deux voies de Battlestar, c’est là qu’on gagne le plus de temps à l’ouverture. Canopy Flyer se trouve sur le chemin dans The Lost World, et juste après, Far Far Away offre Puss In Boots' Giant Journey et Enchanted Airways.
+Jusqu’au 30 novembre, la rivière rapide passe avant la momie. À partir de décembre, elle est fermée et la momie remonte dans l’ordre. Canopy Flyer se trouve sur le chemin dans The Lost World, et juste après, Far Far Away offre Puss In Boots' Giant Journey et Enchanted Airways.
 
-Les spectacles et les attractions en salle, je les garderais pour midi et pour les orages : Shrek 4-D Adventure, Minion Mayhem et, sur le chemin du retour, les deux de New York. Un soir de feu d’artifice en décembre, la journée se termine au bord du Lake Hollywood. Une pause à l’hôtel l’après-midi n’est possible que si tu dors sur place, car avec le seul billet d’une journée, on ne rentre plus une fois sorti.
+Les spectacles et les attractions en salle, je les garderais pour midi et pour les orages : Shrek 4-D Adventure, Minion Mayhem et, sur le chemin du retour, les deux de New York. Un soir de feu d’artifice en décembre, la journée se termine au bord du Lake Hollywood. Avec un billet d’une journée, une fois sorti, ta journée au parc est finie. Pour revenir après une pause avec le tampon, ton billet et la carte de chambre, il faut dormir dans l’un des hôtels.
 
 ## Billets, accès et restauration
 
@@ -292,17 +290,17 @@ Les clients des hôtels peuvent retourner autant de fois qu’ils veulent, le m�
 
 ## Histoire d’Universal Studios Singapore
 
-Le 16 octobre 2006, Genting International et Star Cruises ont présenté leur projet d’Integrated Resort sur Sentosa. Il comprenait un parc Universal de 22 attractions, dont au moins 16 manèges conçus spécialement pour Singapour. Le 8 décembre 2006, le gouvernement a annoncé que le consortium avait remporté l’appel d’offres pour le second des deux complexes avec casino. La première pierre a été posée le 16 avril 2007. L’ensemble du complexe a coûté 6,59 milliards de SGD et a été construit en moins de trois ans, d’après l’exploitant.
+Le 16 octobre 2006, Genting International et Star Cruises ont présenté leur projet d’Integrated Resort sur Sentosa. Il comprenait un parc Universal de 22 attractions, dont au moins 16 manèges conçus spécialement pour Singapour. Le 8 décembre 2006, le gouvernement a annoncé que le consortium avait remporté l’appel d’offres pour le second des deux complexes avec casino. La première pierre a été posée le 16 avril 2007. L’exploitant chiffre l’ensemble du complexe à 6,59 milliards de SGD, construit en moins de trois ans.
 
-Du 14 au 21 février 2010, pour le Nouvel An chinois, Resorts World Sentosa a organisé une semaine d’avant-première, chaque soir de 17 h à 21 h, pour 10 SGD l’entrée. Pas une seule attraction ne tournait, et les billets sont pourtant partis en deux jours. À partir du 13 mars 2010, les employés ont pu venir avec leur famille. Le 18 mars 2010, à 8 h 28, le parc a ouvert à tout le monde. Pour ce soft opening, 16 des 24 attractions actuelles fonctionnaient selon Wikipédia en anglais, alors que le projet de 2006 en annonçait 22. Plus de deux millions de visiteurs sont venus au cours des neuf premiers mois, d’après l’exploitant. L’inauguration officielle a suivi le 28 mai 2011, précédée la veille d’un gala de 1 600 invités, parmi lesquels Jet Li et Paula Abdul.
+Du 14 au 21 février 2010, pour le Nouvel An chinois, Resorts World Sentosa a organisé une semaine d’avant-première, chaque soir de 17 h à 21 h, pour 10 SGD l’entrée. Pas une seule attraction ne tournait, et les billets sont pourtant partis en deux jours. À partir du 13 mars 2010, les employés ont pu venir avec leur famille. Le 18 mars 2010, à 8 h 28, le parc a ouvert à tout le monde. Wikipédia en anglais compte 16 attractions en service pour ce soft opening. Le projet de 2006 en avait promis 22, et il y en a 24 aujourd’hui. L’exploitant a compté plus de deux millions de visiteurs au cours des neuf premiers mois. L’inauguration officielle a suivi le 28 mai 2011, précédée la veille d’un gala de 1 600 invités, parmi lesquels Jet Li et Paula Abdul.
 
 Battlestar Galactica n’a presque pas roulé cette première année. Le 25 mars 2010, une semaine après le lancement, elle a fermé à cause d’un problème technique. En août 2010, Resorts World Sentosa en a donné la cause : des fissures de fatigue sur les fixations des montants de sièges des trains de Human, soumis à des charges et à des vibrations plus fortes que prévu. Elle a rouvert le 21 février 2011, puis fermé de nouveau le 21 juillet 2013. Après une inspection complète, elle est revenue le 27 mai 2015 avec de nouveaux wagons à deux places.
 
-À l’ouverture, le parc avait une zone Madagascar. Son parcours en bateau, Madagascar: A Crate Adventure, a officiellement démarré le 16 mai 2011. Les premières Halloween Horror Nights ont eu lieu le 21 octobre 2011. Jusqu’en 2015 sont arrivés Transformers, Sesame Street Spaghetti Space Chase et Puss In Boots' Giant Journey. Transformers a coûté 100 millions de dollars américains, selon Wikipédia en anglais. Le 24 janvier 2017, le parc a accueilli son 25 millionième visiteur, une visiteuse venue de Gyeongju, en Corée du Sud, d’après Resorts World Sentosa.
+À l’ouverture, le parc avait une zone Madagascar. Son parcours en bateau, Madagascar: A Crate Adventure, a officiellement démarré le 16 mai 2011. Les premières Halloween Horror Nights ont eu lieu le 21 octobre 2011. Jusqu’en 2015 sont arrivés Transformers, Sesame Street Spaghetti Space Chase et Puss In Boots' Giant Journey. Wikipédia en anglais chiffre le coût de Transformers à 100 millions de dollars américains. Le 24 janvier 2017, le parc a accueilli son 25 millionième visiteur, une visiteuse venue de Gyeongju, en Corée du Sud, d’après Resorts World Sentosa.
 
 Du 6 avril au 1er juillet 2020, le parc a été fermé à cause de la pandémie. Le spectacle Turntables, le mur d’escalade Amber Rock Climb et le Fairy Godmother's Juice Bar n’ont jamais rouvert. Le 27 mars 2022, la zone Madagascar a fermé. Son carrousel, King Julien's Beach Party-Go-Round, a suivi le 26 mai 2022 et il est revenu, redécoré, avec Minion Land sous le nom de Buggie Boogie. Le même jour, on posait la première pierre de Minion Land, alors prévu pour 2024.
 
-Genting avait annoncé Minion Land et Super Nintendo World ensemble, le 3 avril 2019. Super Nintendo World fait partie de la deuxième phase de l’extension RWS 2.0, et d’après le rapport annuel 2025 de Genting Singapore, le chantier avance comme prévu. Genting n’a pas donné de date d’ouverture.
+Genting avait annoncé Minion Land et Super Nintendo World ensemble, le 3 avril 2019. Super Nintendo World fait partie de la deuxième phase de l’extension RWS 2.0, et d’après le rapport annuel 2025 de Genting Singapore, le chantier avance comme prévu, sans date d’ouverture annoncée.
 
 Resorts World Sentosa appartient entièrement à Genting Singapore, une société du Genting Group. Genting Singapore exploite le parc sous licence d’Universal Destinations & Experiences, une division de NBCUniversal et donc de Comcast. Le parc a reçu environ 4,2 millions de visiteurs en 2015 et environ 4,5 millions en 2019, selon le Theme Index de la TEA et d’AECOM. En 2020, à cause de la pandémie, ils n’étaient plus qu’un peu moins de 1,1 million, puis de nouveau 2,1 millions en 2022. Pour 2023, Universal Studios Singapore ne figure plus parmi les 20 parcs les plus fréquentés de la région Asie-Pacifique.
 
