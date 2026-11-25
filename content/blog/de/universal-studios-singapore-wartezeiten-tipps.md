@@ -7,7 +7,8 @@ mode: published
 featured: false
 excerpt: >-
   Zur Öffnung fährst du in Universal Studios Singapore zuerst Battlestar Galactica, dort stehst du
-  später am längsten an. Jurassic Park Rapids Adventure ist bis zum 30. Juni 2027 zu.
+  später am längsten an. Jurassic Park Rapids Adventure ist vom 1. Dezember bis zum 30. Juni 2027
+  zu.
 tags:
   - universal-studios-singapore
   - sentosa
@@ -59,7 +60,7 @@ Die jüngste Zone ist Illumination's Minion Land, eröffnet am 14. Februar 2025.
 
 ```
 
-Laut Resorts World Sentosa können Bahnen, Shows und ganze Bereiche wegen Renovierung, Auslastung, Wetter oder Sonderveranstaltungen schließen, und jede Bahnseite verweist vor dem Besuch auf die Liste der vorübergehenden Schließungen. Die offizielle App des Parks zeigt Wartezeiten, Showzeiten und die Termine für Treffen mit den Figuren.
+Laut Resorts World Sentosa können Bahnen, Shows und ganze Bereiche wegen Renovierung, Auslastung, Wetter oder Sonderveranstaltungen schließen, und jede Bahnseite verweist vor dem Besuch auf die Liste der vorübergehenden Schließungen. In der offiziellen App des Parks stehen Showzeiten und die Termine für Treffen mit den Figuren.
 
 ### Hollywood
 
@@ -103,7 +104,7 @@ Bei [Treasure Hunters](ref:universal-studios-singapore/treasure-hunters) fährst
 
 ### The Lost World
 
-The Lost World besteht aus den zwei Teilen Jurassic Park und WaterWorld. [Jurassic Park Rapids Adventure](ref:universal-studios-singapore/jurassic-park-rapids-adventure) ist eine Wildwasserbahn von Hafema, entworfen von Universal Creative und mit dem Park eröffnet. In einem runden Boot sitzen neun Personen, drei mal drei. Neben der Bahn stehen Trockenkabinen, die Drying Pods, was einiges über die Fahrt verrät. Vom **1. Dezember 2026 bis zum 30. Juni 2027** ist die Bahn geschlossen; die englische Wikipedia nennt als Ende den 31. Juli 2027, maßgeblich ist die Seite von Resorts World Sentosa mit dem 30. Juni.
+The Lost World besteht aus den zwei Teilen Jurassic Park und WaterWorld. [Jurassic Park Rapids Adventure](ref:universal-studios-singapore/jurassic-park-rapids-adventure) ist eine Wildwasserbahn von Hafema, entworfen von Universal Creative und mit dem Park eröffnet. In einem runden Boot sitzen neun Personen, drei mal drei. Neben der Bahn stehen Trockenkabinen, die Drying Pods, und die stellt niemand neben eine Bahn, auf der man trocken bleibt. Vom **1. Dezember 2026 bis zum 30. Juni 2027** ist die Bahn geschlossen; die englische Wikipedia nennt als Ende den 31. Juli 2027, maßgeblich ist die Seite von Resorts World Sentosa mit dem 30. Juni.
 
 ```glossary-widget slug=river-rapids
 
@@ -115,7 +116,7 @@ The Lost World besteht aus den zwei Teilen Jurassic Park und WaterWorld. [Jurass
 
 ### Far Far Away
 
-[Puss In Boots' Giant Journey](ref:universal-studios-singapore/puss-in-boots-giant-journey) hat am 8. April 2015 zum fünften Geburtstag des Parks eröffnet. Die hängende Familienachterbahn stammt von Zamperla und ist laut RCDB 17,3 Meter hoch, 40 km/h schnell und 428 Meter lang, ohne Überschlag. Eine Spirale bringt die Wagen mit je neun Plätzen nach oben, 875 Gäste fahren pro Stunde. Resorts World Sentosa nennt sie die erste hängende Achterbahn weltweit zum Gestiefelten Kater, mit 23 animatronischen Figuren und rund zwei Minuten Fahrt. Mindestgröße 102 Zentimeter.
+[Puss In Boots' Giant Journey](ref:universal-studios-singapore/puss-in-boots-giant-journey) hat am 8. April 2015 zum fünften Geburtstag des Parks eröffnet. Die hängende Familienachterbahn stammt von Zamperla und ist laut RCDB 17,3 Meter hoch, 40 km/h schnell und 428 Meter lang, ohne Überschlag. Eine Spirale bringt die Wagen mit je neun Plätzen nach oben, 875 Gäste fahren pro Stunde. Zur Eröffnung kündigte Resorts World Sentosa sie als erste hängende Achterbahn zum Gestiefelten Kater weltweit an. Unterwegs stehen 23 animatronische Figuren, die Fahrt dauert rund zwei Minuten. Mindestgröße 102 Zentimeter.
 
 Die zweite Achterbahn der Zone heißt [Enchanted Airways](ref:universal-studios-singapore/enchanted-airways) und ist ein Junior Coaster von Vekoma, ebenfalls nach einem Entwurf von Peter Clerx und seit der Eröffnung des Parks in Betrieb. Die RCDB nennt 335 Meter Strecke und 16 Plätze pro Zug, Reifen schieben den Zug den Lifthill hinauf. Mitfahren darf man ab 92 Zentimetern und nur bis 205 Zentimeter, für Basketballspieler ist ausgerechnet die Kinderachterbahn tabu.
 
@@ -149,7 +150,7 @@ Die Grenzen gelten nach den Seiten der einzelnen Bahnen. Kinder unter der jeweil
 
 ```
 
-Beide Strecken von Battlestar Galactica stehen ganz oben, und die Tabelle gibt für jede Bahn an, an wie vielen Tagen wir sie gemessen haben.
+Beide Strecken von Battlestar Galactica stehen ganz oben. Die aktuelle Wartezeit jeder Bahn zeigt dir am Besuchstag auch die offizielle App des Parks.
 
 ```hourly-profile-widget slug=universal-studios-singapore top=8
 
@@ -207,7 +208,7 @@ Wegen schlechten Wetters schließt Universal Studios Singapore nicht, und das Ti
 
 ### Weihnachten, BTS und die Events 2026/27
 
-Die Season of Joy feiert Resorts World Sentosa vom **27. November 2026 bis zum 3. Januar 2027**, im Park heißt das Programm A Universal Christmas. Den Hollywood Boulevard macht der Park zu den Dazzling Dessert Studios mit einem zehn Meter hohen Weihnachtsbaum im Konfekt-Look, dort stehen auch der Weihnachtsmann und Mrs. Claus für Fotos bereit. Hello Kitty und Kuromi gibt es nur an der Superstar Boutique. In New York baut der Park The North Pole Jingle Jam auf, und die neue Show Universal Jingle Jam bringt Poppy aus Trolls, Figuren aus der Sesamstraße und die Minions mit Schneefall auf eine Bühne. Mehr dazu steht in unserer Meldung zu [A Universal Christmas 2026](/news/universal-studios-singapore-a-universal-christmas-2026).
+Die Season of Joy feiert Resorts World Sentosa vom **27. November 2026 bis zum 3. Januar 2027**, im Park heißt das Programm A Universal Christmas. Den Hollywood Boulevard macht der Park zu den Dazzling Dessert Studios mit einem zehn Meter hohen Weihnachtsbaum im Konfekt-Look. Der Weihnachtsmann und Mrs. Claus treffen Gäste zum Foto. Hello Kitty und Kuromi gibt es nur an der Superstar Boutique. In New York baut der Park The North Pole Jingle Jam auf, und die neue Show Universal Jingle Jam bringt Poppy aus Trolls, Figuren aus der Sesamstraße und die Minions mit Schneefall auf eine Bühne. Mehr dazu steht in unserer Meldung zu [A Universal Christmas 2026](/news/universal-studios-singapore-a-universal-christmas-2026).
 
 Das Feuerwerk gibt es am 4., 5., 11. und 12. Dezember, vom 16. bis zum 20. Dezember, vom 22. bis zum 25. Dezember und am 1. und 2. Januar 2027. Am 21. Dezember fällt es für Tagesgäste aus. An diesem Abend läuft von 20 Uhr bis 1 Uhr nachts BTS THE CITY ARIRANG Night Out, mit ausgewählten Bahnen, DJ JAGI und Feuerwerk; das Frühbucherticket kostet 58 Singapur-Dollar (SGD) und enthält den Eintritt. Vom 16. bis zum 22. Dezember kommst du mit einem normalen Tagesticket für Erwachsene außerdem kostenlos ins BTS Fan Village im Resorts World Convention Centre.
 
@@ -229,9 +230,9 @@ Die VIP Experience ist eine Führung von etwa fünf Stunden auf Englisch oder Ma
 
 Ich würde vor 10 Uhr am Eingang stehen und ohne Umweg nach Sci-Fi City gehen, zu den beiden Strecken von Battlestar Galactica. Mit Express nimmst du dafür die eigene Spur am Eingang. Transformers liegt in derselben Zone, und Revenge of the Mummy ist auf dem Parkplan die nächste Zone weiter. Bis zum 30. November würde ich die Wildwasserbahn vor die Mumie ziehen, weil sich nach den Battlestar-Strecken an ihr der frühe Weg am meisten lohnt.
 
-In The Lost World nehme ich Canopy Flyer mit, dann geht es weiter nach Far Far Away zu Puss In Boots' Giant Journey und Enchanted Airways. Für die Mittagshitze und für Gewitter würde ich mir die Hallen aufheben: Shrek 4-D Adventure in Far Far Away, Minion Mayhem in Minion Land, und auf dem Rückweg Sesame Street Spaghetti Space Chase und die Hurrikan-Show von Steven Spielberg in New York.
+In The Lost World nehme ich Canopy Flyer mit, dann geht es weiter nach Far Far Away zu Puss In Boots' Giant Journey und Enchanted Airways. Für die Mittagszeit und für Gewitter würde ich mir die Hallen aufheben: Shrek 4-D Adventure in Far Far Away, Minion Mayhem in Minion Land, und auf dem Rückweg Sesame Street Spaghetti Space Chase und die Hurrikan-Show von Steven Spielberg in New York.
 
-Mit Kindern unter 122 Zentimetern fällt die Mumie weg, unter 125 auch Battlestar Galactica. Ab 102 Zentimetern bleiben Transformers, Puss In Boots und Minion Mayhem, ab 92 Canopy Flyer, Enchanted Airways und Silly Swirly. An einem Feuerwerksabend im Dezember würde ich den Tag in Hollywood beenden, am Lake Hollywood, über dem das Feuerwerk hochgeht. Zwischendurch zum Hotel und zurück geht mit dem Tagesticket nicht, denn den Park zu verlassen und später wiederzukommen, erlaubt es nicht.
+Mit Kindern unter 122 Zentimetern fällt die Mumie weg, unter 125 auch Battlestar Galactica. Ab 102 Zentimetern bleiben Transformers, Puss In Boots und Minion Mayhem, ab 92 Canopy Flyer, Enchanted Airways und Silly Swirly. An einem Feuerwerksabend im Dezember würde ich den Tag in Hollywood beenden, am Lake Hollywood, über dem das Feuerwerk hochgeht. Eine Pause im Hotel am Nachmittag plane ich nur als Hotelgast ein, denn mit dem Tagesticket allein kommst du nach dem Verlassen nicht wieder hinein.
 
 ## Tickets, Anreise und Essen
 
