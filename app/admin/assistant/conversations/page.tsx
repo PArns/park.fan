@@ -43,10 +43,18 @@ const SOURCE_OPTIONS = [
   { value: 'app', label: 'App' },
 ] as const;
 
-/** Every stored chat, newest first, with the 👎 ones a click away. */
+type ReportedFilter = 'all' | 'reported';
+
+const REPORTED_OPTIONS = [
+  { value: 'all', label: 'Alle' },
+  { value: 'reported', label: 'Gemeldet' },
+] as const;
+
+/** Every stored chat, newest first, with the 👎 and the reported ones a click away. */
 export default function AssistantConversationsPage() {
   const [rating, setRating] = useState<RatingFilter>('all');
   const [source, setSource] = useState<SourceFilter>('all');
+  const [reported, setReported] = useState<ReportedFilter>('all');
   const [search, setSearch] = useState('');
   const [version, setVersion] = useState('');
   const [page, setPage] = useState(1);
@@ -56,11 +64,14 @@ export default function AssistantConversationsPage() {
   const params = new URLSearchParams({ page: String(page) });
   if (rating !== 'all') params.set('rating', rating === 'down' ? '-1' : '1');
   if (source !== 'all') params.set('source', source);
+  if (reported !== 'all') params.set('reported', 'true');
   if (q.length >= 2) params.set('q', q);
   if (/^[1-9]\d*$/.test(promptVersion)) params.set('promptVersion', promptVersion);
   const path = `${ASSISTANT_API}/conversations?${params}`;
   const { data, error, refetch } = useAdminQuery<Page<ConversationRow>>(adminKeys.raw(path), path);
   const pages = data ? Math.max(1, Math.ceil(data.total / data.pageSize)) : 1;
+  // An API older than the filter answers with every chat; none of them is shown as reported.
+  const chats = data?.items.filter((chat) => reported === 'all' || chat.reportedAt) ?? [];
 
   return (
     <AdminPage width="wide">
@@ -86,6 +97,15 @@ export default function AssistantConversationsPage() {
             value={source}
             onChange={(value) => {
               setSource(value);
+              setPage(1);
+            }}
+          />
+          <Segmented
+            label="Meldungen"
+            options={REPORTED_OPTIONS}
+            value={reported}
+            onChange={(value) => {
+              setReported(value);
               setPage(1);
             }}
           />
@@ -117,11 +137,11 @@ export default function AssistantConversationsPage() {
           <ErrorState message={error.message} onRetry={refetch} />
         ) : !data ? (
           <SkeletonRows />
-        ) : data.items.length === 0 ? (
+        ) : chats.length === 0 ? (
           <EmptyState title="Keine Chats in dieser Ansicht." />
         ) : (
           <ul className="divide-border/40 divide-y">
-            {data.items.map((chat) => (
+            {chats.map((chat) => (
               <li key={chat.id} className="hover:bg-muted/30 flex items-center gap-2 pr-2">
                 <Link
                   href={`/admin/assistant/conversations/${chat.id}`}
@@ -135,6 +155,7 @@ export default function AssistantConversationsPage() {
                   {chat.promptVersion != null && (
                     <Chip className="tabular-nums">v{chat.promptVersion}</Chip>
                   )}
+                  {chat.reportedAt && <Chip tone="danger">gemeldet</Chip>}
                   <span className="min-w-0 flex-1 truncate">{chat.firstQuestion ?? '–'}</span>
                   <span className="text-muted-foreground max-w-56 truncate text-xs">
                     {chat.startPath}

@@ -74,6 +74,12 @@ deploy on their own: a chat without `source` reads as website (`chatSource`), th
 disabled and left out of the save while the API does not send `appEnabled`, and the token page
 says so when the API answers 404.
 
+**Reported answers.** The app's „Antwort melden" stores a reason (`wrong`, `inappropriate`,
+`other`) and an optional note at the answer. The chat list marks such a chat with a chip „gemeldet"
+and has the filter „Gemeldet" (`?reported=true`); the chat itself shows the chip with the reason at
+the answer and the visitor's note below it, as plain text. A report lives as long as its chat, 7
+days at most. An API without the fields shows no chip, and the filter then lists nothing.
+
 ## The challenge
 
 Before the first question the window solves Cloudflare Turnstile with the action

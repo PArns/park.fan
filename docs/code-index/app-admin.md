@@ -417,6 +417,7 @@ Route `/admin/api-keys` (page).
 
 ### [`assistant/_lib/assistant.ts`](../../app/admin/assistant/_lib/assistant.ts)
 
+- `reportReasonLabel` _function_: The admin's word for a report's reason; a reason this build does not know reads as sent.
 - `sitePageUrl` _function_: Where a page a chat or a feedback names opens on the site, or null for anything but a path of slugs. The API stores only those; checked again because the path is glued to the origin, where `@host` or `//host` would lead off the site.
 - `formatUsd` _function_: A cost in US dollars, to a hundredth of a cent: one answer costs fractions of a cent.
 - `formatDateTime` _function_: A timestamp in the admin's own clock.
@@ -441,7 +442,7 @@ Route `/admin/assistant/conversations/[id]` (page).
 
 Route `/admin/assistant/conversations` (page).
 
-- `default (AssistantConversationsPage)` _component_: Every stored chat, newest first, with the 👎 ones a click away.
+- `default (AssistantConversationsPage)` _component_: Every stored chat, newest first, with the 👎 and the reported ones a click away.
 
 ### [`assistant/feedback/page.tsx`](../../app/admin/assistant/feedback/page.tsx)
 

@@ -21,6 +21,7 @@ import {
   formatCount,
   formatDateTime,
   formatUsd,
+  reportReasonLabel,
   sitePageUrl,
   type ConversationDetail,
   type ConversationMessage,
@@ -138,8 +139,22 @@ function Message({ message }: { message: ConversationMessage }) {
         )}
         {message.rating === -1 && <Chip tone="danger">👎</Chip>}
         {message.rating === 1 && <Chip tone="success">👍</Chip>}
+        {message.reportReason && (
+          <Chip tone="danger">gemeldet: {reportReasonLabel(message.reportReason)}</Chip>
+        )}
       </div>
       <p className="break-words whitespace-pre-wrap">{message.text || '–'}</p>
+      {message.reportReason && (
+        <div className="border-destructive/40 bg-destructive/5 mt-2 rounded-lg border p-2 text-xs">
+          <p className="text-muted-foreground">
+            Vom Besucher gemeldet
+            {message.reportedAt && ` am ${formatDateTime(message.reportedAt)}`}
+          </p>
+          {message.reportNote && (
+            <p className="mt-1 break-words whitespace-pre-wrap">{message.reportNote}</p>
+          )}
+        </div>
+      )}
       {message.toolCalls && message.toolCalls.length > 0 && (
         <details className="mt-2">
           <summary className="text-muted-foreground inline-flex cursor-pointer items-center gap-1 text-xs">

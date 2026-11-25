@@ -42,6 +42,8 @@ export interface ConversationRow {
   source?: string;
   /** The data key whose session started an app chat. */
   apiKeyId?: string;
+  /** When a visitor last reported one of its answers; absent for a chat nobody reported. */
+  reportedAt?: string;
 }
 
 /** A tool Parky called while writing an answer. */
@@ -65,6 +67,23 @@ export interface ConversationMessage {
   /** The prompt version an answer was written with; null on questions and older answers. */
   promptVersion: number | null;
   createdAt: string;
+  /** Why a visitor reported the answer; absent on one nobody reported and from an older API. */
+  reportReason?: string;
+  /** What the visitor wrote with the report, as typed. */
+  reportNote?: string;
+  reportedAt?: string;
+}
+
+/** The admin's words for the reasons a visitor can report an answer with. */
+const REPORT_REASON_LABEL: Record<string, string> = {
+  wrong: 'falsch',
+  inappropriate: 'unangemessen',
+  other: 'anderes',
+};
+
+/** The admin's word for a report's reason; a reason this build does not know reads as sent. */
+export function reportReasonLabel(reason: string): string {
+  return REPORT_REASON_LABEL[reason] ?? reason;
 }
 
 /**
