@@ -567,9 +567,11 @@ export function DatenschutzDE() {
         <p>
           Ihre Favoriten, Ihre Tagespläne, abgehakte Fahrgeschäfte, Ihre Einstellungen und die
           Antworten der Einführung beim ersten Start (Lieblingsparks, wie Sie am liebsten fahren,
-          Temperatureinheit) speichert die App auf Ihrem iPhone, dazu eine zufällige Kennung der
-          Installation und zwischengespeicherte Antworten und Fotos. Was davon an unsere Server
-          geht, steht in den folgenden Absätzen. „Cache leeren“ in den Einstellungen löscht die
+          Temperatureinheit) speichert die App auf Ihrem iPhone, dazu Ihre Auswahl der Mitteilungen,
+          eine zufällige Kennung der Installation, eine Zufallszahl, nach der die App entscheidet,
+          ob der Chat mit Parky für Sie schon freigeschaltet ist (sie verlässt das iPhone nicht),
+          und zwischengespeicherte Antworten und Fotos. Was davon an unsere Server geht, steht in
+          den folgenden Absätzen. „Cache leeren“ in den Einstellungen löscht die
           zwischengespeicherten Daten, das Löschen der App alles. Für diese Speicherung braucht es
           keine Einwilligung, weil sie für die von Ihnen gewünschten Funktionen unbedingt
           erforderlich ist (§ 25 Abs. 2 Nr. 2 TDDDG).
@@ -608,16 +610,16 @@ export function DatenschutzDE() {
           Protokollen. Ohne Ihre Erlaubnis sendet die App keinen Standort.
         </p>
         <p>
+          Rechtsgrundlage für den Standort ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie
+          widerrufen sie in den Einstellungen Ihres iPhones unter Datenschutz &amp; Sicherheit →
+          Ortungsdienste → park.fan.
+        </p>
+        <p>
           Ohne Standortfreigabe schätzt der Server für die Park-Vorschläge der Einführung und die
           Park-Zeile der Startseite Ihren ungefähren Ort aus Ihrer IP-Adresse, die er mit jeder
           Anfrage ohnehin erhält. Er verwendet die Schätzung nur für diese Antwort und speichert
           weder den Ort noch die IP-Adresse. Rechtsgrundlage ist unser berechtigtes Interesse, Ihnen
           passende Parks zu zeigen (Art. 6 Abs. 1 lit. f DSGVO).
-        </p>
-        <p>
-          Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie widerrufen sie in
-          den Einstellungen Ihres iPhones unter Datenschutz &amp; Sicherheit → Ortungsdienste →
-          park.fan.
         </p>
 
         <LegalH3>Mitteilungen in der App</LegalH3>

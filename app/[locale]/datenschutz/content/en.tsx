@@ -536,11 +536,13 @@ export function DatenschutzEN() {
         <p>
           Your favourites, your day plans, the rides you have ticked off, your settings and your
           answers in the introduction on first launch (favourite parks, how you like to ride,
-          temperature unit) are stored by the app on your iPhone, together with a random ID of the
-          installation and cached answers and photos. What of this goes to our servers is set out in
-          the following paragraphs. "Clear cache" in the settings deletes the cached data; deleting
-          the app deletes everything. This storage needs no consent, because it is strictly
-          necessary for the features you asked for (Section 25(2) no. 2 TDDDG).
+          temperature unit) are stored by the app on your iPhone, together with your choice of
+          notifications, a random ID of the installation, a random number by which the app decides
+          whether the chat with Parky is already switched on for you (it never leaves the iPhone),
+          and cached answers and photos. What of this goes to our servers is set out in the
+          following paragraphs. "Clear cache" in the settings deletes the cached data; deleting the
+          app deletes everything. This storage needs no consent, because it is strictly necessary
+          for the features you asked for (Section 25(2) no. 2 TDDDG).
         </p>
 
         <LegalH3>Requests to our servers</LegalH3>
@@ -574,15 +576,15 @@ export function DatenschutzEN() {
           redacts coordinates in its logs. Without your permission the app sends no location.
         </p>
         <p>
+          The legal basis for the location is your consent (Art. 6(1)(a) GDPR). You withdraw it in
+          your iPhone's settings under Privacy &amp; Security → Location Services → park.fan.
+        </p>
+        <p>
           Without location permission, the server estimates your approximate place from your IP
           address, which it receives with every request anyway, for the park suggestions of the
           welcome and the park row on the Start page. It uses the estimate only for that answer and
           stores neither the place nor the IP address. The legal basis is our legitimate interest in
           showing you fitting parks (Art. 6(1)(f) GDPR).
-        </p>
-        <p>
-          The legal basis is your consent (Art. 6(1)(a) GDPR). You withdraw it in your iPhone's
-          settings under Privacy &amp; Security → Location Services → park.fan.
         </p>
 
         <LegalH3>Notifications in the app</LegalH3>
