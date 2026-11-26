@@ -6,7 +6,8 @@ const SHOT = { width: 1206, height: 2436 };
 
 /**
  * One of the screenshots in a phone, with a soft glow of the brand colours behind it, tilted a
- * little from `md` up. `tilt` leans it the other way, for a row that runs the other way.
+ * little from `md` up. `tilt` leans it the other way, for a row that runs the other way; `none`
+ * stands it upright, for phones side by side.
  */
 export function PhoneShot({
   src,
@@ -17,7 +18,7 @@ export function PhoneShot({
 }: {
   src: string;
   alt: string;
-  tilt?: 'left' | 'right';
+  tilt?: 'left' | 'right' | 'none';
   priority?: boolean;
   /**
    * A capture of the whole screen at its own size, status bar and island included (the iPhone
@@ -29,7 +30,8 @@ export function PhoneShot({
     <figure
       className={cn(
         'relative mx-auto w-[min(17.5rem,78vw)] transition-transform duration-500 motion-reduce:transition-none',
-        tilt === 'left' ? 'md:-rotate-2 md:hover:rotate-0' : 'md:rotate-2 md:hover:rotate-0'
+        tilt === 'left' && 'md:-rotate-2 md:hover:rotate-0',
+        tilt === 'right' && 'md:rotate-2 md:hover:rotate-0'
       )}
     >
       <div

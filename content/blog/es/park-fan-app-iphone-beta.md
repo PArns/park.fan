@@ -17,11 +17,11 @@ category: news
 parkLinks: false
 rideLinks: false
 coverImage:
-  src: /media/phantasialand/background.jpg
-  alt: 'Un carrusel volador iluminado gira, con un árbol de luz a la izquierda.'
-  caption: 'Wintertraum, la temporada de invierno de Phantasialand.'
-  credit: 'Patrick Arns'
+  src: /media/app/en/key-visual.jpg
+  alt: 'Tres teléfonos con la app de park.fan: la página del parque con esperas y curvas del día, la pantalla de inicio en Phantasialand y la brújula con las atracciones a tu alrededor.'
+  credit: 'park.fan'
 seo:
+  ogImage: /api/og/es/blog/park-fan-app-iphone-beta/og.jpg
   title: 'App de park.fan para iPhone: beta pública en TestFlight'
   description: >-
     La app de park.fan para iPhone abre su beta pública en TestFlight: 50 plazas, iOS 26 o posterior, sin cuenta y sin publicidad.
@@ -41,11 +41,37 @@ Primero descarga la app TestFlight del App Store. Luego abre en el iPhone el [en
 
 ## Qué hace la app
 
-Antes de la visita, el calendario de afluencia te muestra para cada día, con meses de antelación, la afluencia prevista y la espera máxima de las atracciones estrella. El planificador del día ordena tus atracciones y espectáculos para que esperes lo menos posible, con los trayectos a pie incluidos.
+### Antes de la visita
 
-En el parque ves los tiempos de espera en directo, con averías y cierres. La brújula te indica la dirección y la distancia a las atracciones de tu plan, y «Llévame» te guía hasta la entrada en metros y minutos a pie. En la pantalla de bloqueo y en la Dynamic Island aparecen las esperas de tus atracciones favoritas y el siguiente punto de tu plan. Las notificaciones solo llegan si las activas, por ejemplo cuando una atracción baja de la espera que has elegido. Parky también responde a tus preguntas en la app.
+El calendario de afluencia te muestra para cada día, con meses de antelación, la afluencia prevista y la espera máxima de las atracciones estrella. El planificador del día ordena tus atracciones y espectáculos para que esperes lo menos posible, con los trayectos a pie incluidos.
 
-No necesitas cuenta, no ves publicidad y nadie te rastrea. Favoritos y planes se quedan en tu iPhone. La app habla los mismos seis idiomas que la web.
+![El planificador del día para el viernes 27 de noviembre en Phantasialand en cuadrícula: arriba diez atracciones con 240 minutos de espera y 25 minutos a pie, debajo F.L.Y., Winja’s Fear y Winja’s Force una tras otra con los recorridos entre ellas. | Tu día, planificado según las colas | center | small](/media/app/es/05-planner.webp)
+
+### En el parque
+
+Cuando abres la app en el parque, te recibe con las mejores horas de hoy, las atracciones a tu alrededor y tu plan.
+
+![La página de inicio de la app park.fan dentro de Phantasialand: sobre la foto del parque «Phantasialand te da la bienvenida» con el horario, debajo tarjetas para el parque, el mapa, lo siguiente y la brújula, y las mejores horas de hoy. | Esperas en directo, dentro del parque | center | small](/media/app/es/01-start.webp)
+
+Ves los tiempos de espera en directo, con averías y cierres, y de cada atracción cómo va su día.
+
+![La página del parque Phantasialand en la app de park.fan, pestaña «Atracciones»: las estrellas Crazy Bats y Black Mamba con 35 minutos de espera cada una, afluencia «alta», con su curva del día y la mejor hora de hoy. | Cada atracción con su día en curso | center | small](/media/app/es/02-park.webp)
+
+La brújula te indica la dirección y la distancia a las atracciones de tu plan, y «Llévame allí» te guía hasta la entrada en metros y minutos a pie. El mapa del parque muestra todas las atracciones, espectáculos y restaurantes, y en los parques aprobados también los aseos y el agua potable.
+
+![La brújula dentro de Phantasialand: las atracciones a tu alrededor como puntos con su espera en minutos, Black Mamba fijada, y debajo la distancia y el botón «Llévame allí». | Llévame allí | center | small](/media/app/es/06-compass.webp)
+
+### Pantalla de bloqueo y notificaciones
+
+En la pantalla de bloqueo y en la Dynamic Island aparecen las esperas de tus atracciones favoritas y el siguiente punto de tu plan. Las notificaciones solo llegan si las activas, por ejemplo cuando una atracción baja de la espera que has elegido.
+
+### Parky
+
+Parky también responde a tus preguntas en la app. Conoce tu plan, lo reorganiza si se lo pides y te indica el camino a la siguiente atracción. Antes de que tu primer mensaje salga del iPhone, la app te pregunta.
+
+![Parky te saluda en el chat: hoy toca Phantasialand y lleva tu plan. Debajo, tres preguntas para tocar. | Pregúntale a Parky | center | small](/media/app/es/07-parky.webp)
+
+No necesitas cuenta, no ves publicidad y nadie te rastrea. Favoritos y planes se quedan en tu iPhone. La app habla los mismos seis idiomas que la web. La [página de la app](/app) recorre todas sus pantallas una tras otra.
 
 ## Errores y sugerencias
 

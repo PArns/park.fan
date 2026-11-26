@@ -2558,19 +2558,65 @@
       "waitsBody": "Elke attractie met haar wachttijd, storingen en sluitingen. Een pijl toont of de rij groeit, en onder “Nu korter dan straks” staan de attracties waar je nu veel korter wacht dan normaal.",
       "compassTitle": "Het kompas",
       "compassBody": "Richting en afstand tot de toppers en de attracties in je planning, en als je wilt tot de restaurants. Daarvoor heeft de app je locatie nodig zolang hij open is.",
-      "guideTitle": "“Breng me erheen”",
-      "guideBody": "Tik op een doel en de pijl brengt je naar de ingang, met meters en loopminuten. De parkkaart toont alle attracties, shows en restaurants."
+      "mapTitle": "Parkkaart met toiletten en drinkwater",
+      "mapBody": "Alle attracties, shows en restaurants als punten met naam op de kaart. In vrijgegeven parken staan er toiletten en drinkwaterpunten uit OpenStreetMap bij."
     },
     "lock": {
       "kicker": "Toegangsscherm en meldingen",
       "title": "Je parkdag op het toegangsscherm",
       "body": "In het park zet de app je dag op het toegangsscherm en in het Dynamic Island: de wachttijden van je favoriete attracties, het volgende punt van je planning en de volgende show. Dat begint vanzelf als je de app in het park opent, en je zet het uit in de instellingen.",
-      "notifications": "Meldingen komen alleen als je ze aanzet, elke soort apart. Het wachttijdalarm gaat af zodra een attractie onder je gewenste wachttijd zakt of weer rijdt, en je zet het meteen in de melding uit. De andere soorten: regen op komst, wijzigingen in je planning, je planning 's ochtends, nieuws en gidsen."
+      "sketch": "Een schets, geen screenshot: waar je parkdag op iPhone en Apple Watch verschijnt",
+      "lockScreen": "Toegangsscherm",
+      "island": "Dynamic Island",
+      "watch": "Apple Watch",
+      "watchBody": "Op de Apple Watch staat dezelfde weergave in de Smart Stack.",
+      "alertsTitle": "Meldingen die je zelf kiest",
+      "alertsLead": "Elke soort zet je apart aan, zonder jouw toestemming komt er geen. Een wachttijdalarm zet je direct in de melding weer uit.",
+      "alerts": [
+        {
+          "title": "Wachttijdalarm",
+          "body": "Een attractie zakt onder je gewenste wachttijd"
+        },
+        {
+          "title": "Weer open",
+          "body": "Een attractie die stillag, rijdt weer"
+        },
+        {
+          "title": "Regen op komst",
+          "body": "Met de overdekte attracties die dan passen"
+        },
+        {
+          "title": "Plan gewijzigd",
+          "body": "Een attractie in je plan valt uit of schuift op"
+        },
+        {
+          "title": "Herinnering",
+          "body": "Je plan in de ochtend en wanneer je moet vertrekken"
+        },
+        {
+          "title": "Nieuws en gidsen",
+          "body": "Alleen als je ze erbij kiest"
+        }
+      ]
     },
     "parky": {
       "kicker": "Parky",
       "title": "Parky, je parkmaatje in de chat",
-      "body": "Vraag hem naar de beste dag of de kortste rij, of laat hem je planning omgooien. Voordat je eerste bericht je iPhone verlaat, vertelt de app wat er wordt verstuurd en naar wie, en vraagt je toestemming. Elk antwoord kun je melden, en “Nieuwe chat” wist de oude. De antwoorden schrijft het taalmodel Claude van Anthropic."
+      "consent": "Voordat je eerste bericht de iPhone verlaat, vertelt de app je wat er wordt verstuurd en naar wie, en vraagt je om toestemming. Elk antwoord kun je melden, en “Nieuwe chat” wist de oude. De antwoorden schrijft het taalmodel Claude van Anthropic.",
+      "points": [
+        {
+          "title": "Vragen",
+          "body": "Vraag hem naar de beste dag of de kortste rij, of laat hem je plan omgooien."
+        },
+        {
+          "title": "Parkdag-interview",
+          "body": "Parky vraagt je stap voor stap naar park, dag en wensen en bouwt daar je plan van."
+        },
+        {
+          "title": "Weg wijzen",
+          "body": "Vraag naar een attractie of het dichtstbijzijnde toilet, en de pijl wijst je de weg."
+        }
+      ]
     },
     "more": {
       "kicker": "Verder",
@@ -2580,7 +2626,9 @@
       "newsTitle": "Nieuws, gidsen en weer",
       "newsBody": "De berichten van park.fan lees je in de app, en het weer komt met een regenmelding en officiële waarschuwingen.",
       "languagesTitle": "Zes talen, licht en donker",
-      "languagesBody": "Nederlands, Duits, Engels, Frans, Spaans en Italiaans. De app volgt de weergave van je iPhone en is ook gebouwd voor de iPhone Duo."
+      "languagesBody": "Nederlands, Duits, Engels, Frans, Spaans en Italiaans. De app volgt de weergave van je iPhone en is ook gebouwd voor de iPhone Duo.",
+      "statsTitle": "Statistieken, seizoenen en events",
+      "statsBody": "Per park de rustige weekdagen en maanden, plus seizoenen en events zoals Halloween of het winterseizoen."
     },
     "privacy": "De app heeft geen account nodig, toont geen reclame en volgt je niet. Favorieten en planningen blijven op je iPhone, en naar park.fan gaat alleen wat een functie nodig heeft die je zelf aanzet. Wat dat precies is, lees je in de <link>privacyverklaring</link>.",
     "help": {
@@ -2602,12 +2650,17 @@
         "accuracyQ": "Hoe nauwkeurig zijn de wachttijden?",
         "accuracyA": "De live wachttijden zijn die van de parken zelf. Voorspellingen en de kalender zijn schattingen op basis van gemeten wachttijden en kunnen ernaast zitten. Waar de cijfers vandaan komen, lees je in <link>Zo werkt park.fan</link>.",
         "deleteQ": "Hoe wis ik mijn gegevens?",
-        "deleteA": "Favorieten en planningen staan op je iPhone en verdwijnen met de app. Wat de app verstuurt, hoe lang het bewaard blijft en hoe je het wist, staat in de <link>privacyverklaring</link>."
+        "deleteA": "Favorieten en planningen staan op je iPhone en verdwijnen met de app. Wat de app verstuurt, hoe lang het bewaard blijft en hoe je het wist, staat in de <link>privacyverklaring</link>.",
+        "costQ": "Wat kost de app?",
+        "costA": "Niets. De app is gratis, zonder abonnement en zonder aankopen in de app.",
+        "betaQ": "Hoe kom ik in de bèta?",
+        "betaA": "Download de app TestFlight uit de App Store, open op je iPhone de uitnodigingslink en tik op “Accepteer” en daarna op “Installeer”. Er zijn nu 50 plaatsen; zijn ze allemaal bezet, dan meldt TestFlight dat bij het openen van de link. Elke bètaversie loopt 90 dagen."
       },
       "contactTitle": "Contact",
       "contact": "Mail ons met vragen, fouten of wensen op <email></email>. Adres en telefoonnummer staan in het <link>colofon</link>.",
       "emailDisplay": "hello[at]park.fan",
-      "independent": "park.fan is onafhankelijk en heeft geen band met de parken of hun exploitanten. Namen en merken zijn van hun eigenaars."
+      "independent": "park.fan is onafhankelijk en heeft geen band met de parken of hun exploitanten. Namen en merken zijn van hun eigenaars.",
+      "faqKicker": "Vragen"
     },
     "next": {
       "title": "park.fan in je browser",
@@ -2615,6 +2668,38 @@
       "calendar": "Rustige dagen vinden",
       "planner": "Dag plannen",
       "parky": "Chatten met Parky"
+    },
+    "scenes": {
+      "park": {
+        "title": "Elke attractie met haar dagverloop",
+        "caption": "De wachttijd nu, de trend en het beste moment voor je volgende rit"
+      },
+      "ride": {
+        "title": "Is de wachtrij het nu waard?",
+        "caption": "Bandbreedte, piek en de gebruikelijke wachttijd op dit uur"
+      },
+      "compass": {
+        "title": "Breng me erheen",
+        "caption": "De pijl toont richting, meters en loopminuten naar de attractie"
+      }
+    },
+    "trust": {
+      "kicker": "Privacy",
+      "title": "Geen account, geen reclame, geen tracking",
+      "items": [
+        {
+          "title": "Geen account",
+          "body": "App openen en beginnen, zonder aanmelding en zonder e-mailadres."
+        },
+        {
+          "title": "Geen reclame",
+          "body": "Tussen jou en de wachttijden staat geen banner."
+        },
+        {
+          "title": "Geen tracking",
+          "body": "Geen analysetools en geen profiel van jou."
+        }
+      ]
     }
   },
   "datenschutz": {

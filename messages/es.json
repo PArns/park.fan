@@ -2552,25 +2552,71 @@
     },
     "park": {
       "kicker": "En el parque",
-      "title": "Tiempos de espera, brújula y «Llévame»",
+      "title": "Tiempos de espera, brújula y «Llévame allí»",
       "body": "Abre la app en el parque y te recibe con lo que cuenta ahora: los mejores momentos de hoy, las atracciones a tu alrededor, el próximo espectáculo y tu plan.",
       "waitsTitle": "Tiempos de espera en directo",
       "waitsBody": "Cada atracción con su espera, sus averías y cierres. Una flecha indica si la cola crece, y en «Ahora más corta que luego» aparecen las atracciones donde ahora esperas bastante menos de lo normal.",
       "compassTitle": "La brújula",
       "compassBody": "Dirección y distancia a las atracciones estrella y a las de tu plan, y si quieres también a los restaurantes. Para ello la app necesita tu ubicación mientras está abierta.",
-      "guideTitle": "«Llévame»",
-      "guideBody": "Toca un destino y la flecha te lleva hasta la entrada, con metros y minutos a pie. El mapa del parque muestra todas las atracciones, espectáculos y restaurantes."
+      "mapTitle": "Mapa del parque con aseos y agua potable",
+      "mapBody": "Todas las atracciones, espectáculos y restaurantes como puntos con nombre en el mapa. En los parques aprobados se añaden los aseos y las fuentes de agua potable de OpenStreetMap."
     },
     "lock": {
       "kicker": "Pantalla bloqueada y notificaciones",
       "title": "Tu día en el parque en la pantalla bloqueada",
       "body": "En el parque, la app lleva tu día a la pantalla bloqueada y a la Dynamic Island: las esperas de tus atracciones favoritas, el siguiente punto de tu plan y el próximo espectáculo. Empieza sola cuando abres la app en el parque, y puedes desactivarla en los ajustes.",
-      "notifications": "Las notificaciones solo llegan si las activas, cada tipo por separado. La alerta de espera salta cuando una atracción baja de la espera que elegiste o vuelve a funcionar, y la desactivas desde la propia notificación. Los demás tipos: lluvia en camino, cambios en tu plan, tu plan por la mañana, noticias y guías."
+      "sketch": "Un esbozo, no una captura: dónde aparece tu día en el parque en el iPhone y el Apple Watch",
+      "lockScreen": "Pantalla bloqueada",
+      "island": "Dynamic Island",
+      "watch": "Apple Watch",
+      "watchBody": "En el Apple Watch, la misma vista está en el Smart Stack.",
+      "alertsTitle": "Notificaciones que eliges tú",
+      "alertsLead": "Activas cada tipo por separado y ninguna llega sin tu permiso. Una alerta de espera se desactiva desde la propia notificación.",
+      "alerts": [
+        {
+          "title": "Alerta de espera",
+          "body": "Una atracción baja de la espera que elegiste"
+        },
+        {
+          "title": "De nuevo en marcha",
+          "body": "Una atracción parada vuelve a funcionar"
+        },
+        {
+          "title": "Lluvia en camino",
+          "body": "Con las atracciones cubiertas que encajan entonces"
+        },
+        {
+          "title": "Plan cambiado",
+          "body": "Una atracción de tu plan cierra o se desplaza"
+        },
+        {
+          "title": "Recordatorio",
+          "body": "Tu plan por la mañana y cuándo salir"
+        },
+        {
+          "title": "Noticias y guías",
+          "body": "Solo si las añades"
+        }
+      ]
     },
     "parky": {
       "kicker": "Parky",
       "title": "Parky, tu colega de parques en el chat",
-      "body": "Pregúntale por el mejor día o la cola más corta, o deja que reorganice tu plan. Antes de que tu primer mensaje salga del iPhone, la app te dice qué se envía y a quién, y te pide permiso. Puedes denunciar cualquier respuesta, y «Nuevo chat» borra el anterior. Las respuestas las escribe el modelo de lenguaje Claude de Anthropic."
+      "consent": "Antes de que tu primer mensaje salga del iPhone, la app te dice qué se envía y a quién, y te pregunta. Puedes denunciar cualquier respuesta, y «Nuevo chat» borra el anterior. Las respuestas las escribe el modelo de lenguaje Claude de Anthropic.",
+      "points": [
+        {
+          "title": "Preguntar",
+          "body": "Pregúntale por el mejor día o la cola más corta, o deja que reorganice tu plan."
+        },
+        {
+          "title": "Entrevista del día",
+          "body": "Parky te pregunta paso a paso por el parque, el día y tus deseos, y con eso arma tu plan."
+        },
+        {
+          "title": "Indicar el camino",
+          "body": "Pregunta por una atracción o el aseo más cercano, y la flecha te indica el camino."
+        }
+      ]
     },
     "more": {
       "kicker": "Además",
@@ -2580,7 +2626,9 @@
       "newsTitle": "Noticias, guías y tiempo",
       "newsBody": "Los artículos de park.fan se leen en la app, y el tiempo llega con aviso de lluvia y alertas oficiales.",
       "languagesTitle": "Seis idiomas, claro y oscuro",
-      "languagesBody": "Español, alemán, inglés, neerlandés, francés e italiano. La app sigue el aspecto de tu iPhone y también está hecha para el iPhone Duo."
+      "languagesBody": "Español, alemán, inglés, neerlandés, francés e italiano. La app sigue el aspecto de tu iPhone y también está hecha para el iPhone Duo.",
+      "statsTitle": "Estadísticas, temporadas y eventos",
+      "statsBody": "Para cada parque los días de la semana y los meses tranquilos, además de temporadas y eventos como Halloween o la temporada de invierno."
     },
     "privacy": "La app no necesita cuenta, no muestra publicidad y no te rastrea. Tus favoritos y planes se quedan en tu iPhone, y a park.fan solo llega lo que necesita una función que tú activas. El detalle está en la <link>política de privacidad</link>.",
     "help": {
@@ -2596,18 +2644,23 @@
       "faqTitle": "Preguntas frecuentes",
       "faq": {
         "compassQ": "¿Por qué no veo la brújula?",
-        "compassA": "La brújula, «Llévame» y el día en la pantalla bloqueada aparecen cuando estás en un parque abierto y has permitido a la app usar tu ubicación. Lo compruebas en los ajustes del iPhone, en Privacidad y seguridad → Localización → park.fan.",
+        "compassA": "La brújula, «Llévame allí» y el día en la pantalla bloqueada aparecen cuando estás en un parque abierto y has permitido a la app usar tu ubicación. Lo compruebas en los ajustes del iPhone, en Privacidad y seguridad → Localización → park.fan.",
         "pushQ": "¿Por qué no me llegan notificaciones?",
         "pushA": "Mira en los ajustes del iPhone, en Notificaciones → park.fan, si están permitidas, y en la app, en Ajustes → Notificaciones, qué tipos están activados. Una alerta de espera solo salta cuando la espera de la atracción baja de tu valor.",
         "accuracyQ": "¿Qué precisión tienen los tiempos de espera?",
         "accuracyA": "Las esperas en directo son las que publican los parques. Las previsiones y el calendario son estimaciones a partir de esperas medidas y pueden fallar. De dónde salen las cifras lo explica <link>Así funciona park.fan</link>.",
         "deleteQ": "¿Cómo borro mis datos?",
-        "deleteA": "Los favoritos y los planes están en tu iPhone y se borran con la app. Qué envía la app, cuánto tiempo se guarda y cómo borrarlo está en la <link>política de privacidad</link>."
+        "deleteA": "Los favoritos y los planes están en tu iPhone y se borran con la app. Qué envía la app, cuánto tiempo se guarda y cómo borrarlo está en la <link>política de privacidad</link>.",
+        "costQ": "¿Cuánto cuesta la app?",
+        "costA": "Nada. La app es gratuita, sin suscripción y sin compras dentro de la app.",
+        "betaQ": "¿Cómo entro en la beta?",
+        "betaA": "Descarga la app TestFlight del App Store, abre en el iPhone el enlace de invitación y toca «Aceptar» y luego «Instalar». Por ahora hay 50 plazas; si están todas ocupadas, TestFlight te lo dice al abrir el enlace. Cada versión beta dura 90 días."
       },
       "contactTitle": "Contacto",
       "contact": "Si tienes dudas, encuentras un fallo o echas algo en falta, escríbenos a <email></email>. La dirección y el teléfono están en el <link>aviso legal</link>.",
       "emailDisplay": "hello[at]park.fan",
-      "independent": "park.fan es independiente y no tiene relación con los parques ni con sus operadores. Los nombres y marcas pertenecen a sus propietarios."
+      "independent": "park.fan es independiente y no tiene relación con los parques ni con sus operadores. Los nombres y marcas pertenecen a sus propietarios.",
+      "faqKicker": "Preguntas"
     },
     "next": {
       "title": "park.fan en el navegador",
@@ -2615,6 +2668,38 @@
       "calendar": "Buscar días tranquilos",
       "planner": "Planificar un día",
       "parky": "Escribir a Parky"
+    },
+    "scenes": {
+      "park": {
+        "title": "Cada atracción con su día en curso",
+        "caption": "La espera ahora, la tendencia y la mejor hora para tu próxima vuelta"
+      },
+      "ride": {
+        "title": "¿Merece la pena la cola ahora?",
+        "caption": "El rango de hoy, el pico y la espera habitual a esta hora"
+      },
+      "compass": {
+        "title": "Llévame allí",
+        "caption": "La flecha te indica dirección, metros y minutos a pie hasta la atracción"
+      }
+    },
+    "trust": {
+      "kicker": "Privacidad",
+      "title": "Sin cuenta, sin anuncios, sin seguimiento",
+      "items": [
+        {
+          "title": "Sin cuenta",
+          "body": "Abres la app y empiezas, sin registro y sin correo electrónico."
+        },
+        {
+          "title": "Sin anuncios",
+          "body": "Ningún banner entre tú y los tiempos de espera."
+        },
+        {
+          "title": "Sin seguimiento",
+          "body": "Sin herramientas de análisis y sin un perfil tuyo."
+        }
+      ]
     }
   },
   "datenschutz": {

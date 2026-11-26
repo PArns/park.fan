@@ -1,0 +1,19 @@
+{
+  "title": "park.fan App: Key Visual (es)",
+  "focus": {
+    "x": 0.75,
+    "y": 0.6
+  },
+  "bannerFocus": {
+    "x": 0.75,
+    "y": 0.6
+  },
+  "alt": {
+    "es": "Tres teléfonos con la app de park.fan: la página del parque con esperas y curvas del día, la pantalla de inicio en Phantasialand y la brújula con las atracciones a tu alrededor."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "shotAt": "2026-11-26"
+}

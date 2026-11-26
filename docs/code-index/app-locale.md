@@ -32,7 +32,7 @@ Route `/[locale]/alerts` (page).
 
 Route `/[locale]/app` (page).
 
-- `default (AppPage)` _component_: The iPhone app's page and the App Store's support URL: what the app does, in chapters beside the app's real screens, and the help (requirements, questions, contact) at its foot.
+- `default (AppPage)` _component_: The iPhone app's page and the App Store's support URL: the app's real screens as a tour from the day before to the day in the park, its promises on privacy, and the help (requirements, questions, contact) at its foot.
 - `generateStaticParams` _function_: Six URLs, all prerendered: the page reads no request.
 - `generateMetadata` _function_
 

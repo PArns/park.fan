@@ -2558,19 +2558,65 @@
       "waitsBody": "Chaque attraction avec son attente, ses pannes et ses fermetures. Une flèche indique si la file s’allonge, et « Plus court maintenant que plus tard » liste les attractions où tu attends en ce moment bien moins que d’habitude.",
       "compassTitle": "La boussole",
       "compassBody": "La direction et la distance vers les grandes attractions et celles de ton programme, et si tu veux vers les restaurants. Pour cela, l’app a besoin de ta position tant qu’elle est ouverte.",
-      "guideTitle": "« Emmène-moi »",
-      "guideBody": "Touche une destination et la flèche te guide jusqu’à l’entrée, en mètres et en minutes de marche. Le plan du parc montre toutes les attractions, tous les spectacles et restaurants."
+      "mapTitle": "Le plan du parc, avec toilettes et eau potable",
+      "mapBody": "Toutes les attractions, tous les spectacles et restaurants en points nommés sur la carte. Dans les parcs validés s’y ajoutent les toilettes et les points d’eau potable d’OpenStreetMap."
     },
     "lock": {
       "kicker": "Écran verrouillé et notifications",
       "title": "Ta journée au parc sur l’écran verrouillé",
       "body": "Dans le parc, l’app affiche ta journée sur l’écran verrouillé et dans la Dynamic Island : l’attente de tes attractions préférées, la prochaine étape de ton programme et le prochain spectacle. Elle démarre d’elle-même quand tu ouvres l’app dans le parc, et tu peux la désactiver dans les réglages.",
-      "notifications": "Les notifications n’arrivent que si tu les actives, chaque type séparément. L’alerte d’attente se déclenche dès qu’une attraction passe sous l’attente que tu as choisie ou rouvre, et tu la coupes directement depuis la notification. Les autres types : la pluie qui arrive, les changements de ton programme, ton programme le matin, les actus et les guides."
+      "sketch": "Un croquis, pas une capture : où ta journée au parc apparaît sur l’iPhone et l’Apple Watch",
+      "lockScreen": "Écran verrouillé",
+      "island": "Dynamic Island",
+      "watch": "Apple Watch",
+      "watchBody": "Sur l’Apple Watch, le même affichage se trouve dans la Smart Stack.",
+      "alertsTitle": "Des notifications que tu choisis",
+      "alertsLead": "Tu actives chaque type séparément, aucune n’arrive sans ton accord. Une alerte d’attente se coupe directement depuis la notification.",
+      "alerts": [
+        {
+          "title": "Alerte d’attente",
+          "body": "Une attraction passe sous l’attente que tu as choisie"
+        },
+        {
+          "title": "De nouveau en service",
+          "body": "Une attraction à l’arrêt roule de nouveau"
+        },
+        {
+          "title": "Pluie en approche",
+          "body": "Avec les attractions couvertes qui conviennent alors"
+        },
+        {
+          "title": "Plan modifié",
+          "body": "Une attraction de ton plan ferme ou se décale"
+        },
+        {
+          "title": "Rappel",
+          "body": "Ton plan le matin et l’heure à laquelle partir"
+        },
+        {
+          "title": "Actus et guides",
+          "body": "Seulement si tu les ajoutes"
+        }
+      ]
     },
     "parky": {
       "kicker": "Parky",
       "title": "Parky, ton pote des parcs dans le chat",
-      "body": "Demande-lui le meilleur jour ou la file la plus courte, ou laisse-le réorganiser ton programme. Avant que ton premier message quitte l’iPhone, l’app te dit ce qui est envoyé et à qui, et te demande ton accord. Tu peux signaler chaque réponse, et « Nouveau chat » efface l’ancien. Les réponses sont rédigées par le modèle de langage Claude d’Anthropic."
+      "consent": "Avant que ton premier message ne quitte l’iPhone, l’app te dit ce qui est envoyé et à qui, et te demande ton accord. Tu peux signaler chaque réponse, et « Nouvelle discussion » efface l’ancienne. Les réponses sont écrites par le modèle de langage Claude d’Anthropic.",
+      "points": [
+        {
+          "title": "Demander",
+          "body": "Demande-lui le meilleur jour ou la file la plus courte, ou laisse-le réorganiser ton plan."
+        },
+        {
+          "title": "Interview de la journée",
+          "body": "Parky te pose ses questions pas à pas sur le parc, le jour et tes envies, et en tire ton plan."
+        },
+        {
+          "title": "Montrer le chemin",
+          "body": "Demande une attraction ou les toilettes les plus proches, et la flèche te montre le chemin."
+        }
+      ]
     },
     "more": {
       "kicker": "Et aussi",
@@ -2580,7 +2626,9 @@
       "newsTitle": "Actus, guides et météo",
       "newsBody": "Les articles de park.fan se lisent dans l’app, et la météo arrive avec une alerte pluie et les vigilances officielles.",
       "languagesTitle": "Six langues, clair et sombre",
-      "languagesBody": "Français, allemand, anglais, néerlandais, espagnol et italien. L’app suit l’apparence de ton iPhone et fonctionne aussi sur l’iPhone Duo."
+      "languagesBody": "Français, allemand, anglais, néerlandais, espagnol et italien. L’app suit l’apparence de ton iPhone et fonctionne aussi sur l’iPhone Duo.",
+      "statsTitle": "Statistiques, saisons et événements",
+      "statsBody": "Pour chaque parc les jours de semaine et les mois calmes, plus les saisons et événements comme Halloween ou la saison d’hiver."
     },
     "privacy": "L’app n’a pas besoin de compte, n’affiche pas de publicité et ne te piste pas. Tes favoris et tes programmes restent sur ton iPhone, et park.fan ne reçoit que ce dont a besoin une fonction que tu actives. Le détail figure dans la <link>politique de confidentialité</link>.",
     "help": {
@@ -2602,12 +2650,17 @@
         "accuracyQ": "Les temps d’attente sont-ils précis ?",
         "accuracyA": "Les attentes en direct sont celles qu’affichent les parcs. Les prévisions et le calendrier sont des estimations tirées des attentes mesurées et peuvent se tromper. D’où viennent les chiffres, c’est expliqué dans <link>Comment fonctionne park.fan</link>.",
         "deleteQ": "Comment supprimer mes données ?",
-        "deleteA": "Les favoris et les programmes sont sur ton iPhone et disparaissent avec l’app. Ce que l’app envoie, combien de temps c’est conservé et comment le supprimer figure dans la <link>politique de confidentialité</link>."
+        "deleteA": "Les favoris et les programmes sont sur ton iPhone et disparaissent avec l’app. Ce que l’app envoie, combien de temps c’est conservé et comment le supprimer figure dans la <link>politique de confidentialité</link>.",
+        "costQ": "Combien coûte l’app ?",
+        "costA": "Rien. L’app est gratuite, sans abonnement et sans achats intégrés.",
+        "betaQ": "Comment rejoindre la bêta ?",
+        "betaA": "Télécharge l’app TestFlight sur l’App Store, ouvre le lien d’invitation sur ton iPhone et touche « Accepter » puis « Installer ». Il y a 50 places pour l’instant ; quand elles sont toutes prises, TestFlight te le dit à l’ouverture du lien. Chaque version bêta dure 90 jours."
       },
       "contactTitle": "Contact",
       "contact": "Pour une question, un bug ou une idée, écris-nous à <email></email>. Notre adresse et notre téléphone sont dans les <link>mentions légales</link>.",
       "emailDisplay": "hello[at]park.fan",
-      "independent": "park.fan est indépendant et n’a aucun lien avec les parcs ni leurs exploitants. Les noms et marques appartiennent à leurs propriétaires."
+      "independent": "park.fan est indépendant et n’a aucun lien avec les parcs ni leurs exploitants. Les noms et marques appartiennent à leurs propriétaires.",
+      "faqKicker": "Questions"
     },
     "next": {
       "title": "park.fan dans ton navigateur",
@@ -2615,6 +2668,38 @@
       "calendar": "Trouver les jours calmes",
       "planner": "Planifier une journée",
       "parky": "Écrire à Parky"
+    },
+    "scenes": {
+      "park": {
+        "title": "Chaque attraction et sa journée",
+        "caption": "L'attente actuelle, la tendance et le meilleur moment pour y retourner"
+      },
+      "ride": {
+        "title": "La file vaut-elle le coup maintenant ?",
+        "caption": "L'écart du jour, le pic et l'attente habituelle à cette heure"
+      },
+      "compass": {
+        "title": "Guide-moi",
+        "caption": "La flèche indique la direction, les mètres et les minutes de marche"
+      }
+    },
+    "trust": {
+      "kicker": "Vie privée",
+      "title": "Sans compte, sans pub, sans pistage",
+      "items": [
+        {
+          "title": "Sans compte",
+          "body": "Tu ouvres l’app et c’est parti, sans inscription ni adresse e-mail."
+        },
+        {
+          "title": "Sans pub",
+          "body": "Aucune bannière entre toi et les temps d’attente."
+        },
+        {
+          "title": "Sans pistage",
+          "body": "Aucun outil d’analyse et aucun profil de toi."
+        }
+      ]
     }
   },
   "datenschutz": {

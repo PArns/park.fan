@@ -1,0 +1,19 @@
+{
+  "title": "park.fan App: Key Visual (nl)",
+  "focus": {
+    "x": 0.75,
+    "y": 0.6
+  },
+  "bannerFocus": {
+    "x": 0.75,
+    "y": 0.6
+  },
+  "alt": {
+    "nl": "Drie telefoons met de park.fan-app: de parkpagina met wachttijden en dagcurves, het startscherm in Phantasialand en het kompas met de attracties om je heen."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "shotAt": "2026-11-26"
+}

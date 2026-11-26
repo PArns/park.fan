@@ -28,7 +28,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`phone-shot.tsx`](../../components/marketing/phone-shot.tsx)
 
-- `PhoneShot` _component_: One of the screenshots in a phone, with a soft glow of the brand colours behind it, tilted a little from `md` up. `tilt` leans it the other way, for a row that runs the other way.
+- `PhoneShot` _component_: One of the screenshots in a phone, with a soft glow of the brand colours behind it, tilted a little from `md` up. `tilt` leans it the other way, for a row that runs the other way; `none` stands it upright, for phones side by side.
 
 ### [`scroll-reveal.tsx`](../../components/marketing/scroll-reveal.tsx)
 

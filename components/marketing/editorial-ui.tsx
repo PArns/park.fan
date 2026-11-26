@@ -745,7 +745,14 @@ export function TouchpointGrid({
 export function FaqList({
   items,
 }: {
-  items: ReadonlyArray<{ question: string; answer: string; id?: string; key?: string }>;
+  /** `answer` is the plain text for `FAQPage`; `rich`, where given, is what the page shows (links). */
+  items: ReadonlyArray<{
+    question: string;
+    answer: string;
+    rich?: React.ReactNode;
+    id?: string;
+    key?: string;
+  }>;
 }) {
   return (
     <>
@@ -755,7 +762,7 @@ export function FaqList({
         <FaqAccordion
           items={items.map((item) => ({
             question: item.question,
-            answer: item.answer,
+            answer: item.rich ?? item.answer,
             id: item.id,
             key: item.key,
           }))}

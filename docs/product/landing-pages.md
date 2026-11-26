@@ -79,7 +79,7 @@ once in its head (`LandingHero action`) and again as the first entry of `Landing
 | how park.fan works    | P4                                              | open a park                              |
 | Fancast               | P2                                              | a park's crowd calendar                  |
 | blog index            | readers                                         | none: the list is the action             |
-| iPhone app (`/app`)   | app users, App Store visitors                   | the App Store once listed; none in beta  |
+| iPhone app (`/app`)   | app users, App Store visitors                   | the TestFlight beta, then the App Store  |
 | with kids             | P1                                              | plan the day for this height             |
 | average wait times    | P2, P6                                          | the trip planner for this park           |
 | contribute            | photo contributors                              | upload photos                            |

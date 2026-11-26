@@ -47,7 +47,8 @@ const FIGURE_ALIGN: Record<BlogImageAlign, string> = {
 };
 
 const SIZE_OVERRIDE: Record<BlogImageSize, string> = {
-  small: 'sm:max-w-[200px]',
+  // On phones too: a phone screenshot at full width is a whole screen of scrolling.
+  small: 'max-w-[240px]',
   medium: 'sm:max-w-[440px]',
   large: 'sm:max-w-[640px]',
 };
@@ -86,11 +87,13 @@ export function BlogInlineImage({
           width={width ?? 0}
           height={height ?? 0}
           sizes={
-            align === 'left' || align === 'right'
-              ? '(max-width: 640px) 100vw, 400px'
-              : align === 'wide'
-                ? '(max-width: 1024px) 100vw, 1024px'
-                : '(max-width: 768px) 100vw, 768px'
+            size === 'small'
+              ? '240px'
+              : align === 'left' || align === 'right'
+                ? '(max-width: 640px) 100vw, 400px'
+                : align === 'wide'
+                  ? '(max-width: 1024px) 100vw, 1024px'
+                  : '(max-width: 768px) 100vw, 768px'
           }
           className="h-auto w-full"
         />
