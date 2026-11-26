@@ -638,11 +638,15 @@ export function DatenschutzEN() {
           your first message, the app shows what is sent and to whom, and asks you; without "Agree",
           no message leaves the iPhone. Instead of Cloudflare Turnstile, the app opens the session
           with the app's key. With each message it sends your text and Parky's greeting, the page
-          you opened the chat from, your language and time zone, the chat's ID, your next planned
-          days (at most 8) with their items and the details about your group, the IDs of your
-          favourites and whether notifications are on for the iPhone. It sends your location only if
-          you share it in the chat, rounded to about 100 metres; the server does not store it and
-          does not pass it on to Anthropic. Our server passes the request on to Anthropic as
+          you opened the chat from (and Parky's tip, if you ask from one), your language and time
+          zone, the chat's ID, your planned days (the next ones, at most 8, with their items and the
+          details about your group, later ones with park, date and number of items), the IDs of your
+          favourites, whether notifications are on for the iPhone and, during an interview with
+          Parky, which question it is at. The app sends your location only after you share it in the
+          chat, rounded to about 100 metres; from then on it sends it with each message for as long
+          as the chat is open. If you close the chat or start a new one, it sends it again only once
+          you share it again. The server does not store it and does not pass it on to Anthropic. Our
+          server passes the request on to Anthropic as
           described above. A copy of the chat stays on your iPhone for up to two hours.
         </p>
         <p>
