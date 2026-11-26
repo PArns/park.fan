@@ -348,7 +348,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-wait-in-tab-title.ts`](../../lib/hooks/use-wait-in-tab-title.ts)
 
-- `useWaitInTabTitle` _hook_: Puts a ride's live wait into the browser tab title while the page is open, so a tab left in the background still answers „how long now".
+- `useWaitInTabTitle` _hook_: Puts a ride's live wait into the browser tab title while the tab is in the background, so a tab left behind still answers „how long now".
 
 ### [`use-weather-hourly.ts`](../../lib/hooks/use-weather-hourly.ts)
 

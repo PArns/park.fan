@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`attraction-faq.ts`](../../lib/faq/attraction-faq.ts)
 
-- `buildAttractionFaqItems` _function_: Builds a ride page's FAQ: where the ride is, its typical and record waits when the API has them, and single rider or paid queue questions when the ride has one. Shared by the visible FAQ and its `FAQPage` JSON-LD, so the two cannot differ.
+- `buildAttractionFaqItems` _function_: Builds a ride page's FAQ: where the ride is, its typical and record waits when the API has them, how fast it goes when its top speed is on file, and single rider or paid queue questions when the ride has one.
 - Types: `AttractionFaqIconName`, `AttractionFaqItem`
 
 ### [`park-faq-terms.ts`](../../lib/faq/park-faq-terms.ts)
