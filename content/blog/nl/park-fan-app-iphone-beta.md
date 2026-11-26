@@ -17,10 +17,11 @@ category: news
 parkLinks: false
 rideLinks: false
 coverImage:
-  src: /media/app/cover.webp
-  alt: 'Drie iPhones met de park.fan-app: de parkpagina met wachttijden en dagcurves, het startscherm in Phantasialand en het kompas met de attracties om je heen.'
+  src: /media/app/en/key-visual.jpg
+  alt: 'Drie telefoons met de park.fan-app: de parkpagina met wachttijden en dagcurves, het startscherm in Phantasialand en het kompas met de attracties om je heen.'
   credit: 'park.fan'
 seo:
+  ogImage: /api/og/nl/blog/park-fan-app-iphone-beta/og.jpg
   title: 'park.fan-app voor iPhone: openbare bèta via TestFlight'
   description: >-
     De park.fan-app voor iPhone start als openbare bèta via TestFlight: 50 plaatsen, vanaf iOS 26, zonder account en zonder reclame.

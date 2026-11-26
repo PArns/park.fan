@@ -204,6 +204,34 @@ function ShotStrip({
   );
 }
 
+/**
+ * The hero's phones as the key visual has them (`public/media/app/<locale>/key-visual.jpg`, the
+ * share card's ground): the start screen in front, two more screens fanned out behind it. Drawn
+ * live rather than as the baked image, so the screens stay sharp and the hero's tint, which fades
+ * every hub photo into the page, does not wash them out. The two behind repeat the park chapter's
+ * screens, so they carry no alt of their own.
+ */
+function PhoneFan({ front, back }: { front: Shot; back: Shot[] }) {
+  const [left, right] = back;
+  return (
+    <div className="relative mx-auto w-[min(17.5rem,78vw)]">
+      {left && (
+        <div className="absolute top-10 -left-28 w-[74%] -rotate-[7deg] opacity-90">
+          <PhoneShot src={left.src} alt="" size={left.size} tilt="none" />
+        </div>
+      )}
+      {right && (
+        <div className="absolute top-10 -right-28 w-[74%] rotate-[7deg] opacity-90">
+          <PhoneShot src={right.src} alt="" size={right.size} tilt="none" />
+        </div>
+      )}
+      <div className="relative">
+        <PhoneShot src={front.src} alt={front.alt} size={front.size} tilt="none" priority />
+      </div>
+    </div>
+  );
+}
+
 /** A grey bar standing in for a line of text in {@link LiveSketch}. */
 function Bar({ className }: { className: string }) {
   return <span className={cn('block h-2 rounded-full bg-white/25', className)} />;
@@ -438,7 +466,10 @@ export default async function AppPage({ params }: AppPageProps) {
         }
         aside={
           heroShot && (
-            <PhoneShot src={heroShot.src} alt={heroShot.alt} size={heroShot.size} priority />
+            <PhoneFan
+              front={heroShot}
+              back={strip.map((item) => item.shot).filter((shot) => shot.scene !== '03-ride')}
+            />
           )
         }
         flowInto

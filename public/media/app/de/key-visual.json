@@ -1,0 +1,19 @@
+{
+  "title": "park.fan App: Key Visual (de)",
+  "focus": {
+    "x": 0.75,
+    "y": 0.6
+  },
+  "bannerFocus": {
+    "x": 0.75,
+    "y": 0.6
+  },
+  "alt": {
+    "de": "Drei Telefone mit der park.fan App: die Parkseite mit Wartezeiten und Tageskurven, die Startseite im Phantasialand und der Kompass mit den Bahnen ringsum."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "shotAt": "2026-11-26"
+}

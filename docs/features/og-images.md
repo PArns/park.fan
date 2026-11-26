@@ -46,6 +46,13 @@ an unknown continent renders an empty headline over "0 parks". **A new page that
 `{ namespace, key }` of its title, or `{ literal }` for an English-only page such as the changelog.
 Old segments stay (`howto` beside `how-park-fan-works`), because shared URLs keep being fetched.
 
+The app's card (`<locale>/app`) is the one generic card with a fixed picture: the key visual in the
+card's language (`public/media/app/<locale>/key-visual.jpg`, phones on the right, the top fifth kept
+free for the lockup) at full strength under a tint from the left, the headline narrowed to half the
+width and the pill naming the app instead of the search. The key visuals are made with
+`make_visuals.py` from the store kit's raw captures (the script lives beside the social images,
+outside the repo).
+
 An author profile's card (`blog/author/<key>`) takes the name and short bio from
 `content/blog/authors` (`getAuthor`), under the kicker "Blog · Author"; an unknown key gets the blog
 index's card. Before it had a branch of its own, the key was looked up as a post slug, and the card

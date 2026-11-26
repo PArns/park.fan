@@ -17,10 +17,11 @@ category: news
 parkLinks: false
 rideLinks: false
 coverImage:
-  src: /media/app/cover.webp
-  alt: 'Trois iPhone avec l’app park.fan : la page du parc avec les attentes et les courbes du jour, l’écran d’accueil à Phantasialand et la boussole avec les attractions autour de toi.'
+  src: /media/app/en/key-visual.jpg
+  alt: 'Trois téléphones avec l’app park.fan : la page du parc avec les attentes et les courbes du jour, l’écran d’accueil à Phantasialand et la boussole avec les attractions autour de toi.'
   credit: 'park.fan'
 seo:
+  ogImage: /api/og/fr/blog/park-fan-app-iphone-beta/og.jpg
   title: 'App park.fan pour iPhone : bêta publique sur TestFlight'
   description: >-
     L’app park.fan pour iPhone lance sa bêta publique sur TestFlight : 50 places, iOS 26 ou plus, sans compte et sans publicité.

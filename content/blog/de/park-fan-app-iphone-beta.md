@@ -17,10 +17,11 @@ category: news
 parkLinks: false
 rideLinks: false
 coverImage:
-  src: /media/app/cover.webp
-  alt: 'Drei iPhones mit der park.fan App: die Parkseite mit Wartezeiten und Tageskurven, die Startseite im Phantasialand und der Kompass mit den Bahnen ringsum.'
+  src: /media/app/en/key-visual.jpg
+  alt: 'Drei Telefone mit der park.fan App: die Parkseite mit Wartezeiten und Tageskurven, die Startseite im Phantasialand und der Kompass mit den Bahnen ringsum.'
   credit: 'park.fan'
 seo:
+  ogImage: /api/og/de/blog/park-fan-app-iphone-beta/og.jpg
   title: 'park.fan-App fürs iPhone: Beta über TestFlight'
   description: >-
     Die park.fan-App für iPhone startet als öffentliche Beta über TestFlight: 50 Plätze, ab iOS 26, ohne Konto und ohne Werbung.

@@ -195,6 +195,7 @@ export async function GET(
       'how-park-fan-works': { namespace: 'howto', key: 'title' },
       fancast: { namespace: 'fancast', key: 'title' },
       parky: { namespace: 'parkyPage', key: 'metaTitle' },
+      app: { namespace: 'appPage', key: 'headline' },
       'best-time-to-visit': { namespace: 'bestTime', key: 'title' },
       'trip-planner': { namespace: 'planner.page', key: 'title' },
       ...tripRegionCards(),
@@ -304,9 +305,13 @@ export async function GET(
         totalParks = (await loadGeo()).parkCount;
       }
 
-      // Use a random hero image for visuals if no specific one
+      // The app's card stands on its key visual in the card's language (phones on the right, the
+      // left free for the headline); every other generic page on a random hero photo.
       const pool = heroImageSrcs();
-      backgroundImagePath = pool[Math.floor(Math.random() * pool.length)];
+      backgroundImagePath =
+        secondSegment === 'app'
+          ? `/media/app/${locale}/key-visual.jpg`
+          : pool[Math.floor(Math.random() * pool.length)];
     } else if (['CONTINENT', 'COUNTRY', 'CITY'].includes(type)) {
       const { getRegionGeoSVG } = await import('@/lib/utils/geo-svg');
       // Resolve Name & Stats based on Type
@@ -390,6 +395,9 @@ export async function GET(
     // Parky's own page puts him on the card large, in place of the search badge, beside a title
     // narrowed to leave him room.
     const isParkyCard = type === 'GENERIC' && secondSegment === 'parky';
+    // The app's card shows its key visual nearly at full strength, the phones on the right beside a
+    // headline narrowed to the left, and names the app instead of the search pill.
+    const isAppCard = type === 'GENERIC' && secondSegment === 'app';
 
     // Background photo, inlined off the deployment's own disk rather than fetched over the public
     // internet on every render — see lib/og/background-photo.ts for the measurements. Falls back
@@ -542,7 +550,7 @@ export async function GET(
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  opacity: 0.4,
+                  opacity: isAppCard ? 1 : 0.4,
                 }}
               />
             )
@@ -556,8 +564,9 @@ export async function GET(
               left: 0,
               width: '100%',
               height: '100%',
-              background:
-                'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9))',
+              background: isAppCard
+                ? 'linear-gradient(to right, rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0) 60%)'
+                : 'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9))',
             }}
           />
 
@@ -750,7 +759,7 @@ export async function GET(
                       lineHeight: 1.1,
                       letterSpacing: '-0.02em',
                       textShadow: '0 4px 12px rgba(0,0,0,0.5)',
-                      maxWidth: isParkyCard ? '62%' : '90%',
+                      maxWidth: isParkyCard ? '62%' : isAppCard ? '50%' : '90%',
                       ...(isPlaceCard ? { textAlign: 'center', justifyContent: 'center' } : {}),
                     }}
                   >
@@ -811,7 +820,9 @@ export async function GET(
                           boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                         }}
                       >
-                        👉 {tHomepage('hero.searchPlaceholder') || 'Discover more'}
+                        {isAppCard
+                          ? tGeneric('title')
+                          : `👉 ${tHomepage('hero.searchPlaceholder') || 'Discover more'}`}
                       </div>
                     </div>
                   )}

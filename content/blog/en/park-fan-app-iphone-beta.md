@@ -17,10 +17,11 @@ category: news
 parkLinks: false
 rideLinks: false
 coverImage:
-  src: /media/app/cover.webp
-  alt: 'Three iPhones showing the park.fan app: the park page with waits and day curves, the start screen in Phantasialand and the compass with the rides around you.'
+  src: /media/app/en/key-visual.jpg
+  alt: 'Three phones showing the park.fan app: the park page with waits and day curves, the start screen in Phantasialand and the compass with the rides around you.'
   credit: 'park.fan'
 seo:
+  ogImage: /api/og/en/blog/park-fan-app-iphone-beta/og.jpg
   title: 'park.fan app for iPhone: public TestFlight beta'
   description: >-
     park.fan's iPhone app opens a public TestFlight beta: 50 places, iOS 26 or later, no account and no ads.

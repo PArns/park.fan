@@ -34,6 +34,7 @@ const SAMPLES = [
   { label: 'home', path: 'en' },
   { label: 'generic-search', path: 'en/search' },
   { label: 'generic-howto', path: 'en/how-park-fan-works' },
+  { label: 'generic-app', path: 'de/app' },
   { label: 'generic-impressum', path: 'de/impressum' },
   { label: 'generic-glossary-overview', path: 'en/glossary' },
   { label: 'continent', path: 'en/europe' },
