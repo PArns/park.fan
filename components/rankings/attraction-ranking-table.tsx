@@ -9,11 +9,19 @@ import type { RankedAttraction } from '@/lib/api/rankings';
 const VALUE_CELL = 'w-[5rem] py-2 pr-2 text-right tabular-nums';
 
 /**
- * A country's year ranking as a table: place, ride (with its park under it), the peak the order
- * follows, the typical wait and the measured days. A phone keeps place, ride and peak; the other
- * two columns would not fit beside a ride name. Server-rendered, every row in the first HTML.
+ * A country's year ranking as a table: place, ride (with its park under it and a bar for its peak
+ * against the list's longest), the peak the order follows, the typical wait and the measured days.
+ * A phone keeps place, ride and peak; the other two columns would not fit beside a ride name.
+ * Server-rendered, every row in the first HTML.
  */
-export async function AttractionRankingTable({ attractions }: { attractions: RankedAttraction[] }) {
+export async function AttractionRankingTable({
+  attractions,
+  longestPeak,
+}: {
+  attractions: RankedAttraction[];
+  /** The list's first peak, the bar's full width, so the bars keep their scale under the podium. */
+  longestPeak: number;
+}) {
   const t = await getTranslations('rankings');
   return (
     <CardFrame>
@@ -73,6 +81,12 @@ export async function AttractionRankingTable({ attractions }: { attractions: Ran
                   >
                     {a.parkName}
                   </Link>
+                  <span aria-hidden="true" className="bg-primary/10 mt-1 block h-1 rounded-full">
+                    <span
+                      className="bg-primary/70 block h-full rounded-full"
+                      style={{ width: `${Math.min(100, (a.avgWaitP90 / longestPeak) * 100)}%` }}
+                    />
+                  </span>
                 </td>
                 <td className={cn(VALUE_CELL, 'font-semibold')}>
                   {a.avgWaitP90}{' '}

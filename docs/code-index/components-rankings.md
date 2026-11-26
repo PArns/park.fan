@@ -7,4 +7,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`attraction-ranking-table.tsx`](../../components/rankings/attraction-ranking-table.tsx)
 
-- `AttractionRankingTable` _component_: A country's year ranking as a table: place, ride (with its park under it), the peak the order follows, the typical wait and the measured days. A phone keeps place, ride and peak; the other two columns would not fit beside a ride name.
+- `AttractionRankingTable` _component_: A country's year ranking as a table: place, ride (with its park under it and a bar for its peak against the list's longest), the peak the order follows, the typical wait and the measured days.
+
+### [`ranking-parks.tsx`](../../components/rankings/ranking-parks.tsx)
+
+- `RankingParks` _component_: The park tally as a row of cards under its own heading.
+- `tallyParks` _function_: The listed rides counted per park, most first, each with its best place: which parks the long queues come from, at a glance. Counts only the rides the page lists.
+
+### [`ranking-podium.tsx`](../../components/rankings/ranking-podium.tsx)
+
+- `RankingPodium` _component_: The first three places as cards with the ride's photo, its park and the two figures. The ride's own photo where the media database has one, else its park's; no photo, a tinted ground.

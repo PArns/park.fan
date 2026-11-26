@@ -6770,6 +6770,9 @@
     "minutes": "min.",
     "methodTitle": "Zo ontstaat de ranglijst",
     "method": "Een attractie komt in de ranglijst zodra haar wachttijd in {year} op minstens {minDays} dagen is gemeten. Voor elk uur dat haar park open was, nemen we de gebruikelijke wachttijd (de mediaan) en de piek (90 % van de metingen lag eronder). De volgorde volgt het jaargemiddelde van de piek. Dagen waarop het park dicht was, tellen niet mee.",
-    "countryLink": "Langste wachttijden {year}"
+    "countryLink": "Langste wachttijden {year}",
+    "parksTitle": "Waar de lange rijen staan: de parken van de {count} plaatsen",
+    "parkBest": "beste plaats {rank}",
+    "parkRides": "{count, plural, one {# attractie} other {# attracties}}"
   }
 }

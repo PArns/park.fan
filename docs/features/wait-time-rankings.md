@@ -20,12 +20,14 @@ day and data-cached for a day (`CACHE_TTL.stats`). A year before `FIRST_RANKING_
 the running year, or a country with no ranked ride answers 404. Below `RANKING_MIN_INDEXED_RIDES`
 (5) rides the page renders but is `noindex` and stays out of the sitemap.
 
-| Part    | Renders                                                                                                               |
-| ------- | --------------------------------------------------------------------------------------------------------------------- |
-| Header  | country crumbs, „Längste Wartezeiten 2026: Deutschland", how many rides and parks, how far a running year is measured |
-| Table   | `AttractionRankingTable`: place, ride with its park, peak (the order), typical, measured days; up to 50 rows          |
-| Method  | which rides enter (60 measured days), P50 and P90 per opening hour, closed days left out                              |
-| JSON-LD | `BreadcrumbList`, `ItemList` of the rides                                                                             |
+| Part    | Renders                                                                                                                                                |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Header  | country crumbs, „Längste Wartezeiten 2026: Deutschland", how many rides and parks, how far a running year is measured                                  |
+| Podium  | `RankingPodium`: places 1 to 3 as cards with the ride's photo (else its park's), peak and typical                                                      |
+| Table   | `AttractionRankingTable`: places 4 to 50 with the park under the ride and a bar for the peak against place 1; peak (the order), typical, measured days |
+| Parks   | `RankingParks`: the listed rides counted per park, most first, with each park's best place                                                             |
+| Method  | which rides enter (60 measured days), P50 and P90 per opening hour, closed days left out                                                               |
+| JSON-LD | `BreadcrumbList`, `ItemList` of the rides                                                                                                              |
 
 The year 2025 holds a few days of history and ranks nothing, which is why `FIRST_RANKING_YEAR` is 2026.
 

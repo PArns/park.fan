@@ -6770,6 +6770,9 @@
     "minutes": "min",
     "methodTitle": "Cómo se elabora la clasificación",
     "method": "Una atracción entra en la clasificación cuando su espera se ha medido al menos {minDays} días en {year}. Para cada hora en que su parque estuvo abierto tomamos la espera habitual (la mediana) y la punta (el 90 % de las mediciones quedó por debajo). El orden sigue la media anual de la punta. Los días en que el parque estuvo cerrado no cuentan.",
-    "countryLink": "Esperas más largas {year}"
+    "countryLink": "Esperas más largas {year}",
+    "parksTitle": "De dónde vienen las colas largas: los parques de los {count} puestos",
+    "parkBest": "mejor puesto: {rank}",
+    "parkRides": "{count, plural, one {# atracción} other {# atracciones}}"
   }
 }

@@ -6770,6 +6770,9 @@
     "minutes": "min",
     "methodTitle": "Comment le classement est établi",
     "method": "Une attraction entre au classement dès que son attente a été mesurée au moins {minDays} jours en {year}. Pour chaque heure d’ouverture de son parc, nous retenons l’attente habituelle (la médiane) et le pic (90 % des mesures étaient en dessous). L’ordre suit la moyenne annuelle du pic. Les jours où le parc était fermé ne comptent pas.",
-    "countryLink": "Attentes les plus longues {year}"
+    "countryLink": "Attentes les plus longues {year}",
+    "parksTitle": "D’où viennent les longues files : les parcs des {count} places",
+    "parkBest": "meilleure place : {rank}",
+    "parkRides": "{count, plural, one {# attraction} other {# attractions}}"
   }
 }

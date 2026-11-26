@@ -31,10 +31,15 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { GlassCard } from '@/components/common/glass-card';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { AttractionRankingTable } from '@/components/rankings/attraction-ranking-table';
+import { RankingPodium } from '@/components/rankings/ranking-podium';
+import { RankingParks } from '@/components/rankings/ranking-parks';
 
 interface RankingPageProps {
   params: Promise<{ locale: string; continent: string; country: string; year: string }>;
 }
+
+/** Places shown as photo cards above the table. */
+const PODIUM_PLACES = 3;
 
 /** Rides the meta description names, the head of the list. */
 const DESCRIPTION_RIDES = 3;
@@ -186,7 +191,16 @@ export default async function RankingPage({ params }: RankingPageProps) {
           }
         />
 
-        <AttractionRankingTable attractions={ranking.attractions} />
+        {/* The first three as photo cards, the rest as the table, on one scale. */}
+        <RankingPodium attractions={ranking.attractions.slice(0, PODIUM_PLACES)} />
+        {ranking.attractions.length > PODIUM_PLACES && (
+          <AttractionRankingTable
+            attractions={ranking.attractions.slice(PODIUM_PLACES)}
+            longestPeak={ranking.attractions[0].avgWaitP90}
+          />
+        )}
+
+        <RankingParks attractions={ranking.attractions} />
 
         <section className="mt-10 max-w-3xl">
           <ChapterHeading icon={Ruler} title={t('methodTitle')} className="mb-3" />

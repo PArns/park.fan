@@ -6770,6 +6770,9 @@
     "minutes": "min",
     "methodTitle": "How the ranking is made",
     "method": "A ride enters the ranking once its wait was measured on at least {minDays} days in {year}. For every hour its park was open we take the typical wait (the median) and the peak (90 % of readings were below it). Rides are ordered by the year's average peak. Days the park was closed do not count.",
-    "countryLink": "Longest wait times {year}"
+    "countryLink": "Longest wait times {year}",
+    "parksTitle": "Where the long queues are: the parks of the {count} places",
+    "parkBest": "best place {rank}",
+    "parkRides": "{count, plural, one {# ride} other {# rides}}"
   }
 }

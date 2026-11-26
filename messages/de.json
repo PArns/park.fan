@@ -6770,6 +6770,9 @@
     "minutes": "Min.",
     "methodTitle": "So entsteht die Rangliste",
     "method": "In die Rangliste kommt jede Attraktion, deren Wartezeit {year} an mindestens {minDays} Tagen gemessen wurde. Für jede Stunde, in der ihr Park geöffnet hatte, nehmen wir die typische Wartezeit (den Median) und die Spitze (90 % der Messwerte lagen darunter). Geordnet wird nach dem Jahresmittel der Spitze. Tage, an denen der Park geschlossen war, zählen nicht mit.",
-    "countryLink": "Längste Wartezeiten {year}"
+    "countryLink": "Längste Wartezeiten {year}",
+    "parksTitle": "Woher die langen Warteschlangen kommen: die Parks der {count} Plätze",
+    "parkBest": "bester Platz {rank}",
+    "parkRides": "{count, plural, one {# Bahn} other {# Bahnen}}"
   }
 }
