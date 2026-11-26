@@ -34,7 +34,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-26
-> Voor alle bezoekers gaat Raveleijn open op donderdag 3 december, met de persopening die middag. Dinsdag 1 december is alleen voor houders van een Premium-abonnement; voor hen organiseert de Efteling elk abonnementsjaar een eigen evenement. De nieuwe show en de Ravenring zijn er voor iedereen vanaf 3 december. Dat staat nu in de [Efteling-blog](https://www.efteling.com/nl/blog/nieuws/themagebied-raveleijn-opent-op-1-december-2026).
+> Raveleijn gaat met de nieuwe show en de Ravenring op donderdag 3 december voor alle bezoekers open, staat nu in de [Efteling-blog](https://www.efteling.com/nl/blog/nieuws/themagebied-raveleijn-opent-op-1-december-2026). Die middag is de persopening. Dinsdag 1 december is alleen voor houders van een Premium-abonnement, als het eigen evenement dat de Efteling elk abonnementsjaar voor hen organiseert. Voor alle anderen blijft het gebied na de start van Winter Efteling 17 dagen dicht, twee meer dan in de tekst hieronder.
 
 Op **1 december 2026** opent de [Efteling](ref:efteling) het themagebied
 Raveleijn weer, na bijna een jaar. Het gebied is volledig vernieuwd en krijgt een
