@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import {
   BellRing,
   CalendarDays,
+  Download,
   Compass,
   HelpCircle,
   MessageCircle,
@@ -22,6 +23,7 @@ import { versionedSrc } from '@/lib/media/focus';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { plannerPath } from '@/lib/planner/segments';
+import { buttonLinkProps } from '@/components/ui/button';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { FaqAccordion } from '@/components/faq/faq-accordion';
 import { LegalList } from '@/components/legal/legal-blocks';
@@ -53,7 +55,7 @@ const APP_STORE_ID: string | null = null;
  * beta is by invitation. Set while `APP_STORE_ID` is not, the hero's button leads to the beta (the
  * same flip in `scripts/check-landing-pages.mjs` applies).
  */
-const TESTFLIGHT_URL: string | null = null;
+const TESTFLIGHT_URL: string | null = 'https://testflight.apple.com/join/W3b54H4U';
 
 /** The photo behind the hero: the Wintertraum photo, which heads the app's calendar too. */
 const HERO_PARK_SLUG = 'phantasialand';
@@ -132,6 +134,30 @@ function Feature({ title, children }: { title: string; children: ReactNode }) {
 /** The chapter's lead paragraph, the size `ShotRow` text runs at on Parky's page. */
 function Body({ children }: { children: ReactNode }) {
   return <p className="text-foreground/85 text-lg leading-relaxed sm:text-xl">{children}</p>;
+}
+
+/**
+ * The way to the app, a size above `LandingAction`'s button: it is the page's whole purpose. It
+ * leaves for Apple's site, so it opens in a new tab.
+ */
+function GetAppButton({ href, label, hero }: { href: string; label: string; hero?: boolean }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener"
+      data-landing-action={hero ? '' : undefined}
+      {...buttonLinkProps({
+        size: 'lg',
+        withIcon: true,
+        className:
+          'shadow-primary/30 h-12 px-6 text-base font-semibold shadow-lg sm:h-14 sm:text-lg',
+      })}
+    >
+      <Download aria-hidden className="size-5" />
+      {label}
+    </a>
+  );
 }
 
 /** A `t.rich` tag that links its words to `href`. */
@@ -217,12 +243,13 @@ export default async function AppPage({ params }: AppPageProps) {
       />
       <LandingHero
         kicker={t('title')}
+        kickerBadge={APP_STORE_ID ? undefined : t('betaBadge')}
         title={t('headline')}
         tagline={t('lead')}
         imageSrc={photo ? versionedSrc(photo) : undefined}
         imageAlt={photo ? (getMediaAlt(photo.id, locale) ?? '') : undefined}
         scrollLabel={tLanding('scroll')}
-        action={action}
+        actionElement={action && <GetAppButton {...action} hero />}
         answer={
           <div className="flex items-center gap-4">
             {/* The big pin, the brand's mark, with its light and dark artwork. */}
@@ -355,6 +382,13 @@ export default async function AppPage({ params }: AppPageProps) {
                 ))}
               </LegalList>
             </div>
+            {action && (
+              <div className="space-y-3">
+                <h3 className="text-xl font-semibold">{t('help.getTitle')}</h3>
+                {!APP_STORE_ID && <P>{t('status')}</P>}
+                <GetAppButton {...action} />
+              </div>
+            )}
             <div className="space-y-3">
               <h3 className="text-xl font-semibold">{t('help.faqTitle')}</h3>
               <FaqAccordion items={faq} padding="flush" />

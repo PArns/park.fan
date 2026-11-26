@@ -2522,10 +2522,11 @@
     "title": "park.fan per iPhone",
     "headline": "Tempi di attesa, affluenza e il tuo piano in un’unica app",
     "lead": "A casa ti mostra i giorni con poca gente, e nel parco le attrazioni dove la coda adesso è corta",
-    "status": "In beta su TestFlight, presto sull’App Store",
+    "status": "Beta pubblica su TestFlight, per ora con 50 posti",
     "requirement": "Per iPhone con iOS 26 o successivo, anche per iPhone Duo",
     "storeAction": "Scarica dall’App Store",
     "betaAction": "Prova la beta su TestFlight",
+    "betaBadge": "Beta",
     "plan": {
       "kicker": "Prima della visita",
       "title": "Calendario dell’affluenza e pianificatore",
@@ -2576,6 +2577,7 @@
         "una connessione internet per i dati dal vivo; quello che è stato caricato per ultimo resta visibile anche offline",
         "l’app parla italiano, tedesco, inglese, olandese, francese e spagnolo"
       ],
+      "getTitle": "Scaricare l’app",
       "faqTitle": "Domande frequenti",
       "faq": {
         "compassQ": "Perché non vedo la bussola?",

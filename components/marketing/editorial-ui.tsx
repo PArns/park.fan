@@ -15,6 +15,7 @@ import { ArrowRight, ShieldCheck, type LucideIcon } from 'lucide-react';
 import { Reveal, ScrollCue } from './scroll-reveal';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { HeadKicker } from '@/components/common/head-kicker';
+import { Badge } from '@/components/ui/badge';
 import { GlassCard } from '@/components/common/glass-card';
 import { buttonLinkProps } from '@/components/ui/button';
 import { ParkPlannerLink } from '@/components/parks/park-planner-link';
@@ -67,6 +68,8 @@ export interface LandingAction {
 
 interface LandingHeroShared {
   kicker: string;
+  /** A short tag beside the kicker, for a product that is not final yet ("Beta"). */
+  kickerBadge?: string;
   title: string;
   /**
    * The visitor's question as the head's big line ("Welcher Park an welchem Tag?"). The `<h1>` then
@@ -150,8 +153,18 @@ const TITLE_CLASS = {
  * and clears it with `pt-32`; the compact head stays in flow below it.
  */
 export function LandingHero(props: LandingHeroProps) {
-  const { kicker, title, question, tagline, titleClassName, aside, answer, action, actionElement } =
-    props;
+  const {
+    kicker,
+    kickerBadge,
+    title,
+    question,
+    tagline,
+    titleClassName,
+    aside,
+    answer,
+    action,
+    actionElement,
+  } = props;
   const variant = props.variant ?? 'hub';
   const compact = variant === 'compact';
   const actionGap = compact ? 'mt-5' : props.short ? 'mt-6' : 'mt-8';
@@ -159,7 +172,16 @@ export function LandingHero(props: LandingHeroProps) {
   const text = (
     <>
       <Reveal>
-        {!question && <HeadKicker>{kicker}</HeadKicker>}
+        {!question && (
+          <HeadKicker>
+            {kicker}
+            {kickerBadge && (
+              <Badge variant="default" className="tracking-[0.1em]">
+                {kickerBadge}
+              </Badge>
+            )}
+          </HeadKicker>
+        )}
         <h1 className={cn('text-foreground', titleClassName ?? TITLE_CLASS[variant])}>
           {question ? (
             <>
