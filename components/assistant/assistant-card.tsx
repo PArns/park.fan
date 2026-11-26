@@ -56,6 +56,7 @@ import { MenuPostRow } from '@/components/layout/menu-post-row';
 import { GLOSSARY_CATEGORY_ICONS } from '@/components/glossary/glossary-category-icons';
 import type { GlossaryCategory } from '@/lib/glossary/types';
 import { usePostMetaLine } from '@/lib/hooks/use-post-meta-line';
+import { NavigateCard } from './assistant-navigate-card';
 
 /**
  * The park's geo path and the ride slug of a park.fan page path, `/parks/<c>/<c>/<c>/<park>[/<ride>]`:
@@ -583,6 +584,7 @@ const KNOWN_KINDS = new Set([
   'tiles',
   'shows',
   'restaurants',
+  'navigate',
   'posts',
   'glossary',
 ]);
@@ -600,6 +602,7 @@ export function AssistantCardView({ card }: { card: AssistantCard }) {
   if (card.kind === 'tiles') return <TilesCard card={card} />;
   if (card.kind === 'shows') return <ShowsCard card={card} />;
   if (card.kind === 'restaurants') return <RestaurantsCard card={card} />;
+  if (card.kind === 'navigate') return <NavigateCard card={card} frame={FRAME} />;
   if (card.kind === 'posts') return <PostsCard card={card} />;
   if (card.kind === 'glossary') return <GlossaryCard card={card} />;
   // An idea is drawn under the answer as its trip idea (`AssistantTripIdeaCard`), never here.

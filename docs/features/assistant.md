@@ -166,8 +166,8 @@ through the site's own paths:
 | `feedback_sent`        | nothing; the API stored the visitor's feedback                                       | Team        |
 
 A card (`components/assistant/assistant-card.tsx`) is a park or ride with `ParkStatusBadge` and
-`CrowdLevelBadge`, a park's rides, a few parks, its calendar, its day in tiles, its shows or its
-restaurants, all from live data; or one to three of park.fan's own posts, each as the guides
+`CrowdLevelBadge`, a park's rides, a few parks, its calendar, its day in tiles, its shows, its
+restaurants or the way to one place in it ([the way there](#actions-cards-and-the-position) below), all from live data; or one to three of park.fan's own posts, each as the guides
 menu's row (`MenuPostRow`: cover, category, title, teaser, date and reading time), or one to three
 glossary terms with their category's icon and short definition. The API reads the posts from
 `/api/assistant-posts` (with `slugs=a,b` for exact posts, and the row's cover, crop, category and
@@ -288,7 +288,24 @@ Parky's window closes after a page change or a planner action, so the result is 
 
 The position is never read without a press: the share card calls the site's own geolocation
 (`useGeolocation().refresh()`), so the same yes also brings the in-park markers and the compass on
-the park's page. It goes to the API once, with the next question, and Parky keeps it nowhere.
+the park's page. It goes to the API once, with the next question, and Parky keeps it nowhere. The
+API rounds it to about ten metres, enough for "the nearest toilet" inside a park, and hands the
+model distances only (api.park.fan's `docs/frontend/assistant-tools.md`, "The user's position").
+Parky asks for it before he needs it, saying what for, so a later question needs a new share.
+
+**The way there.** A `navigate` card (`NavigateCard`, `components/assistant/assistant-navigate-card.tsx`)
+carries one place's own position, never the visitor's, and a walking route in Google Maps. It reads
+nothing until „Weg zeigen": that press asks the browser for the position (`useGeolocation().refresh()`)
+and, on an iPhone, for the compass (`useCompassHeading`'s `enable`, which Safari allows only inside
+the tap). Then `useLivePosition` follows the visitor with high accuracy while the card is in the
+chat, and an arrow points at the target with the distance (`bearingBetween`, `calculateDistance`,
+`formatDistance`); with a compass it turns with the phone, without one north is up and the card
+says so. Under 15 m it says „Du bist da", and a fix coarser than 40 m is named with its radius. The
+position stays in the browser. „Route in Google Maps" always shows, also when location is refused.
+A toilet or drinking water from OpenStreetMap carries the ODbL credit under the card, linked to
+openstreetmap.org/copyright. `readAssistantAction` refuses a card whose route is not Google Maps'
+walking route to the card's own point, whose credit links anywhere else, or whose place is not one
+of ride, show, restaurant, toilets and drinking water (`pnpm test:assistant`).
 
 ## Reply chips
 

@@ -137,6 +137,21 @@ export type AssistantCard =
       }>;
     }
   | {
+      kind: 'navigate';
+      name: string;
+      place: NavigatePlace;
+      park: string;
+      /** The target's position, never the visitor's. */
+      latitude: number;
+      longitude: number;
+      /** Google Maps' walking route to the target. */
+      mapsUrl: string;
+      /** The ride's page; null for a place without one. */
+      url: string | null;
+      /** OpenStreetMap's credit, for a toilet or drinking water. */
+      credit?: { text: string; url: string };
+    }
+  | {
       kind: 'posts';
       /** One to three posts, as the guides menu lists them; `url` keeps the post's locale. */
       posts: Array<{
@@ -164,6 +179,21 @@ export type AssistantCard =
       /** One of the plan's ideas (`/plan/ideas`), as the planner applies it. */
       idea: PlanIdea;
     };
+
+/** What a navigate card leads to. */
+export type NavigatePlace = 'ride' | 'show' | 'restaurant' | 'toilets' | 'drinking_water';
+
+const NAVIGATE_PLACES = new Set<NavigatePlace>([
+  'ride',
+  'show',
+  'restaurant',
+  'toilets',
+  'drinking_water',
+]);
+
+/** The only route a navigate card may open, and the only credit it may link. */
+const MAPS_ROUTE = 'https://www.google.com/maps/dir/?api=1&destination=';
+const OSM_COPYRIGHT = 'https://www.openstreetmap.org/copyright';
 
 /** What Parky may ask the widget to do; mirrors the API's `ClientAction`. */
 export type AssistantAction =
@@ -600,6 +630,23 @@ function isPostsOrTerms(card: AssistantCard): boolean {
   return true;
 }
 
+/**
+ * A navigate card: a known place, a position on the globe, a Google Maps route to that very
+ * position and, if any, OpenStreetMap's credit; anything else refuses the card.
+ */
+function isNavigate(card: Extract<AssistantCard, { kind: 'navigate' }>): boolean {
+  const { latitude, longitude } = card;
+  if (!short(card.name) || !short(card.park) || !NAVIGATE_PLACES.has(card.place)) return false;
+  if (typeof latitude !== 'number' || typeof longitude !== 'number') return false;
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return false;
+  if (Math.abs(latitude) > 90 || Math.abs(longitude) > 180) return false;
+  if (card.mapsUrl !== `${MAPS_ROUTE}${latitude},${longitude}&travelmode=walking`) return false;
+  if (card.credit !== undefined) {
+    if (!short(card.credit?.text, 80) || card.credit.url !== OSM_COPYRIGHT) return false;
+  }
+  return true;
+}
+
 function isCard(card: AssistantCard | undefined): card is AssistantCard {
   if (!card) return false;
   // An idea card is rebuilt by `readIdeaCard`, never passed through.
@@ -620,6 +667,7 @@ function isCard(card: AssistantCard | undefined): card is AssistantCard {
   }
   if (!orNull(card.url, isSiteUrl)) return false;
   card.url = sitePath(card.url);
+  if (card.kind === 'navigate') return isNavigate(card);
   if (card.kind === 'calendar' || card.kind === 'tiles') {
     return short(card.park) && isDaysOrTiles(card);
   }

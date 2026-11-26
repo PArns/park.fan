@@ -9,7 +9,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 25 November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 26 November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -229,9 +229,13 @@ export function DatenschutzEN() {
           opened the chat with, which can name a planned park and day. These otherwise stay in your
           browser; Parky needs them to read your plans, reminders, favourites and ridden rides and
           to change them when you ask. It sends your location only if you share it in the chat
-          yourself. The server rounds it to about one kilometre, uses it for the answer and does not
-          store it. If you ask about nearby parks without sharing your location, the server
-          estimates your rough position from your IP address.
+          yourself, after Parky asked for it. The server rounds it to about ten metres, so that
+          Parky can find, say, the nearest toilet inside a park, uses it for that one answer only,
+          does not store it and does not pass it on to Anthropic; the language model gets distances
+          only. When Parky shows you the way to a place in a park, the card reads your location in
+          your browser only after you tap it, and sends it nowhere. If you ask about nearby parks
+          without sharing your location, the server estimates your rough position from your IP
+          address.
         </p>
         <p>
           To answer, our server passes your question, the latest messages of the chat, your plans
@@ -637,8 +641,8 @@ export function DatenschutzEN() {
           you opened the chat from, your language and time zone, the chat's ID, your next planned
           days (at most 8) with their items and the details about your group, the IDs of your
           favourites and whether notifications are on for the iPhone. It sends your location only if
-          you share it in the chat, rounded to about 100 metres; the server rounds it to about a
-          kilometre and does not store it. Our server passes the request on to Anthropic as
+          you share it in the chat, rounded to about 100 metres; the server does not store it and
+          does not pass it on to Anthropic. Our server passes the request on to Anthropic as
           described above. A copy of the chat stays on your iPhone for up to two hours.
         </p>
         <p>

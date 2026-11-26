@@ -8,7 +8,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 25. November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 26. November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -239,10 +239,13 @@ export function DatenschutzDE() {
           Chat eröffnet hat; sie kann einen geplanten Park und Tag nennen. Diese Angaben liegen
           sonst nur in Ihrem Browser; Parky braucht sie, um Ihre Pläne, Ihre Erinnerungen, Favoriten
           und gefahrenen Fahrgeschäfte zu lesen und auf Ihren Wunsch zu ändern. Ihren Standort
-          sendet er nur, wenn Sie ihn im Chat ausdrücklich teilen. Der Server rundet ihn auf etwa
-          einen Kilometer, nutzt ihn für die Antwort und speichert ihn nicht. Fragen Sie ohne
-          geteilten Standort nach Parks in der Nähe, schätzt der Server Ihre ungefähre Lage aus
-          Ihrer IP-Adresse.
+          sendet er nur, wenn Sie ihn im Chat ausdrücklich teilen, nachdem Parky danach gefragt hat.
+          Der Server rundet ihn auf etwa zehn Meter, damit Parky im Park zum Beispiel die nächste
+          Toilette findet, nutzt ihn nur für diese eine Antwort, speichert ihn nicht und gibt ihn
+          nicht an Anthropic weiter; das Sprachmodell erhält nur Entfernungen. Zeigt Parky Ihnen den
+          Weg zu einem Ort im Park, liest die Karte Ihren Standort erst nach einem Tippen in Ihrem
+          Browser und sendet ihn nicht. Fragen Sie ohne geteilten Standort nach Parks in der Nähe,
+          schätzt der Server Ihre ungefähre Lage aus Ihrer IP-Adresse.
         </p>
         <p>
           Für die Antwort übergibt unser Server Ihre Frage, die letzten Nachrichten des Chats, Ihre
@@ -676,7 +679,7 @@ export function DatenschutzDE() {
           Kennung des Chats, Ihre nächsten geplanten Tage (höchstens 8) mit Programmpunkten und
           Angaben zur Gruppe, die Kennungen Ihrer Favoriten und ob Mitteilungen auf dem iPhone an
           sind. Ihren Standort sendet sie nur, wenn Sie ihn im Chat teilen, auf etwa 100 Meter
-          gerundet; der Server rundet ihn auf etwa einen Kilometer und speichert ihn nicht. Unser
+          gerundet; der Server speichert ihn nicht und gibt ihn nicht an Anthropic weiter. Unser
           Server gibt die Anfrage an Anthropic weiter, wie oben beschrieben. Eine Kopie des Chats
           liegt bis zu zwei Stunden auf Ihrem iPhone.
         </p>
