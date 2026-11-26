@@ -34,7 +34,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-26
-> Raveleijn, son nouveau spectacle et le Ravenring ouvrent à tous les visiteurs le jeudi 3 décembre, indique désormais le [blog d’Efteling](https://www.efteling.com/en/blog/nieuws/themed-area-raveleijn-opens-on-1-december-2026). L’inauguration pour la presse a lieu l’après-midi. Le mardi 1er décembre est réservé aux abonnés Premium, pour l’événement qu’Efteling organise rien que pour eux chaque année. Pour tous les autres, le secteur reste donc fermé 17 jours après le début de Winter Efteling, deux de plus que dans le texte ci-dessous.
+> Raveleijn, son nouveau spectacle et le Ravenring ouvrent à tous les visiteurs le jeudi 3 décembre, indique désormais le [blog d’Efteling](https://www.efteling.com/en/blog/nieuws/themed-area-raveleijn-opens-on-1-december-2026). L’inauguration pour la presse a lieu l’après-midi. Le mardi 1er décembre, seuls les abonnés Premium entrent. Leur abonnement leur donne droit chaque année à un événement rien que pour eux, et cette fois, c’est Raveleijn avant tout le monde. Pour tous les autres, le secteur reste donc fermé pendant les 17 premiers jours de Winter Efteling, deux jours de plus qu’annoncé au départ.
 
 Le **1er décembre 2026**, [Efteling](ref:efteling) rouvre le secteur Raveleijn
 après presque un an de fermeture. Le secteur a été entièrement rénové et revient
