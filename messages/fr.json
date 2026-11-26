@@ -2517,15 +2517,16 @@
     "description": "Informations légales et mentions pour park.fan"
   },
   "appPage": {
-    "metaTitle": "park.fan pour iPhone : temps d’attente, calendrier d’affluence et planificateur",
-    "metaDescription": "L’app park.fan te montre les temps d’attente en direct et les jours calmes dans un calendrier, et prépare ta journée au parc avec toi. Dans le parc, elle s’affiche sur l’écran verrouillé. Gratuite, sans compte, pour iOS 26.",
+    "metaTitle": "App park.fan pour iPhone : temps d’attente et affluence",
+    "metaDescription": "L’app park.fan pour iPhone : temps d’attente en direct, jours calmes au calendrier d’affluence et planificateur. Gratuite, sans compte, iOS 26, en bêta.",
     "title": "park.fan pour iPhone",
-    "headline": "Temps d’attente, affluence et ton programme dans une seule app",
-    "lead": "Chez toi, elle te montre les jours où il y a peu de monde, et dans le parc les attractions où la file est courte en ce moment",
-    "status": "En bêta sur TestFlight, bientôt sur l’App Store",
+    "headline": "park.fan dans ta poche",
+    "lead": "Plus de loopings, moins d’attente. L’app connaît les jours calmes et te montre dans le parc où la file est courte en ce moment",
+    "status": "Bêta publique sur TestFlight, pour l’instant avec 50 places",
     "requirement": "Pour iPhone avec iOS 26 ou plus récent, iPhone Duo compris",
     "storeAction": "Télécharger sur l’App Store",
     "betaAction": "Rejoindre la bêta TestFlight",
+    "betaBadge": "Bêta",
     "plan": {
       "kicker": "Avant la visite",
       "title": "Calendrier d’affluence et planificateur de journée",
@@ -2576,6 +2577,7 @@
         "une connexion internet pour les données en direct ; ce qui a été chargé en dernier reste visible hors ligne",
         "l’app parle français, allemand, anglais, néerlandais, espagnol et italien"
       ],
+      "getTitle": "Obtenir l’app",
       "faqTitle": "Questions fréquentes",
       "faq": {
         "compassQ": "Pourquoi je ne vois pas la boussole ?",

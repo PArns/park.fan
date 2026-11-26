@@ -2517,15 +2517,16 @@
     "description": "Legal information and imprint for park.fan"
   },
   "appPage": {
-    "metaTitle": "park.fan for iPhone: wait times, crowd calendar and day planner",
-    "metaDescription": "The park.fan app shows you live wait times and the quiet days in a calendar, and plans your park day with you. In the park, it sits on your Lock Screen. Free, no account, for iOS 26.",
+    "metaTitle": "park.fan app for iPhone: wait times and crowd calendar",
+    "metaDescription": "The park.fan iPhone app: live wait times, quiet days in the crowd calendar and a day planner. Free, no account, iOS 26 or later, now in beta.",
     "title": "park.fan for iPhone",
-    "headline": "Wait times, crowds and your plan in one app",
-    "lead": "At home it shows you the days when parks are quiet, and in the park the rides where the queue is short right now",
-    "status": "In beta on TestFlight, coming soon to the App Store",
+    "headline": "park.fan in your pocket",
+    "lead": "More thrills, less waiting. The app knows the quiet days, and in the park it shows you where the queue is short right now",
+    "status": "Public beta on TestFlight, currently with 50 places",
     "requirement": "For iPhone with iOS 26 or later, iPhone Duo included",
     "storeAction": "Get it on the App Store",
     "betaAction": "Join the TestFlight beta",
+    "betaBadge": "Beta",
     "plan": {
       "kicker": "Before you go",
       "title": "Crowd calendar and day planner",
@@ -2576,6 +2577,7 @@
         "an internet connection for the live data; what was loaded last stays visible offline",
         "the app speaks English, German, Dutch, French, Spanish and Italian"
       ],
+      "getTitle": "Get the app",
       "faqTitle": "Common questions",
       "faq": {
         "compassQ": "Why don't I see the compass?",

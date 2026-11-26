@@ -2517,15 +2517,16 @@
     "description": "Juridische informatie en colofon voor park.fan"
   },
   "appPage": {
-    "metaTitle": "park.fan voor iPhone: wachttijden, druktekalender en dagplanner",
-    "metaDescription": "De app van park.fan toont je de wachttijden live en de rustige dagen in de kalender, en plant je parkdag met je mee. In het park staat hij op je toegangsscherm. Gratis, zonder account, voor iOS 26.",
+    "metaTitle": "park.fan-app voor iPhone: wachttijden en druktekalender",
+    "metaDescription": "De park.fan-app voor iPhone: live wachttijden, rustige dagen in de druktekalender en een dagplanner. Gratis, zonder account, vanaf iOS 26, nu in bèta.",
     "title": "park.fan voor iPhone",
-    "headline": "Wachttijden, drukte en je planning in één app",
-    "lead": "Thuis zie je de dagen waarop het rustig is, en in het park de attracties waar de rij nu kort is",
-    "status": "In bèta via TestFlight, binnenkort in de App Store",
+    "headline": "park.fan in je broekzak",
+    "lead": "Meer loopings, minder wachten. De app kent de rustige dagen en laat je in het park zien waar de rij nu kort is",
+    "status": "Openbare bèta via TestFlight, op dit moment met 50 plaatsen",
     "requirement": "Voor iPhone met iOS 26 of nieuwer, ook voor de iPhone Duo",
     "storeAction": "Download in de App Store",
     "betaAction": "Doe mee met de TestFlight-bèta",
+    "betaBadge": "Bèta",
     "plan": {
       "kicker": "Voor je bezoek",
       "title": "Druktekalender en dagplanner",
@@ -2576,6 +2577,7 @@
         "een internetverbinding voor de live gegevens; wat het laatst is geladen, blijft ook offline zichtbaar",
         "de app spreekt Nederlands, Duits, Engels, Frans, Spaans en Italiaans"
       ],
+      "getTitle": "De app downloaden",
       "faqTitle": "Veelgestelde vragen",
       "faq": {
         "compassQ": "Waarom zie ik geen kompas?",
