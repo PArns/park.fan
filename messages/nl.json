@@ -2671,16 +2671,16 @@
     },
     "scenes": {
       "park": {
-        "title": "Elke attractie met haar dagverloop",
-        "caption": "De wachttijd nu, de trend en het beste moment voor je volgende rit"
+        "title": "Elke attractie, elke rij, live",
+        "caption": "Elke vijf minuten vers. Aan de curve zie je of de rij groeit of krimpt."
       },
       "ride": {
-        "title": "Is de wachtrij het nu waard?",
-        "caption": "Bandbreedte, piek en de gebruikelijke wachttijd op dit uur"
+        "title": "Nu in de rij of eerst friet?",
+        "caption": "Ik ken de gewone wachttijd van elk uur. Is het nu korter? Lopen!"
       },
       "compass": {
-        "title": "Breng me erheen",
-        "caption": "De pijl toont richting, meters en loopminuten naar de attractie"
+        "title": "Gewoon de pijl achterna",
+        "caption": "Tik op „Breng me erheen” en volg de pijl. Werkt ook naar de wc, als ik er een ken."
       }
     },
     "trust": {

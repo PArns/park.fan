@@ -2671,16 +2671,16 @@
     },
     "scenes": {
       "park": {
-        "title": "Every ride with its day so far",
-        "caption": "The wait now, its trend and the best time for your next go"
+        "title": "Every ride. Every line. Live.",
+        "caption": "Fresh every five minutes. The curve tells you if a line is growing or shrinking."
       },
       "ride": {
-        "title": "Is the queue worth it right now?",
-        "caption": "Today's range, the peak and the usual wait at this hour"
+        "title": "Line up now, or after churros?",
+        "caption": "I know the usual wait for every hour of the day. Shorter today? Then go!"
       },
       "compass": {
-        "title": "Take me there",
-        "caption": "The arrow shows the direction, distance and walking minutes to the ride"
+        "title": "Just follow the arrow",
+        "caption": "Tap “Take me there” and follow the arrow. Works for restrooms too, where I know one."
       }
     },
     "trust": {
