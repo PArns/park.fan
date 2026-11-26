@@ -675,11 +675,15 @@ export function DatenschutzDE() {
           ersten Nachricht zeigt die App, was gesendet wird und an wen, und fragt Sie; ohne
           „Einverstanden“ verlässt keine Nachricht das iPhone. Statt Cloudflare Turnstile öffnet die
           App die Sitzung mit dem Schlüssel der App. Mit jeder Nachricht sendet sie Ihren Text und
-          Parkys Begrüßung, die Seite, von der Sie den Chat öffnen, Ihre Sprache und Zeitzone, die
-          Kennung des Chats, Ihre nächsten geplanten Tage (höchstens 8) mit Programmpunkten und
-          Angaben zur Gruppe, die Kennungen Ihrer Favoriten und ob Mitteilungen auf dem iPhone an
-          sind. Ihren Standort sendet sie nur, wenn Sie ihn im Chat teilen, auf etwa 100 Meter
-          gerundet; der Server speichert ihn nicht und gibt ihn nicht an Anthropic weiter. Unser
+          Parkys Begrüßung, die Seite, von der Sie den Chat öffnen (und Parkys Tipp, wenn Sie von dort
+          fragen), Ihre Sprache und Zeitzone, die Kennung des Chats, Ihre geplanten Tage (die
+          nächsten, höchstens 8, mit Programmpunkten und Angaben zur Gruppe, spätere mit Park, Datum
+          und Zahl der Punkte), die Kennungen Ihrer Favoriten, ob Mitteilungen auf dem iPhone an sind
+          und, während eines Interviews mit Parky, bei welcher Frage es steht. Ihren Standort sendet
+          die App erst, wenn Sie ihn im Chat teilen, auf etwa 100 Meter gerundet; danach sendet sie
+          ihn mit jeder Nachricht, solange der Chat geöffnet ist. Schließen Sie den Chat oder beginnen
+          Sie einen neuen, sendet sie ihn erst wieder, wenn Sie ihn erneut teilen. Der Server
+          speichert ihn nicht und gibt ihn nicht an Anthropic weiter. Unser
           Server gibt die Anfrage an Anthropic weiter, wie oben beschrieben. Eine Kopie des Chats
           liegt bis zu zwei Stunden auf Ihrem iPhone.
         </p>
