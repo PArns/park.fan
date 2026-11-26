@@ -608,6 +608,13 @@ export function DatenschutzDE() {
           Protokollen. Ohne Ihre Erlaubnis sendet die App keinen Standort.
         </p>
         <p>
+          Ohne Standortfreigabe schätzt der Server für die Park-Vorschläge der Einführung und die
+          Park-Zeile der Startseite Ihren ungefähren Ort aus Ihrer IP-Adresse, die er mit jeder
+          Anfrage ohnehin erhält. Er verwendet die Schätzung nur für diese Antwort und speichert
+          weder den Ort noch die IP-Adresse. Rechtsgrundlage ist unser berechtigtes Interesse, Ihnen
+          passende Parks zu zeigen (Art. 6 Abs. 1 lit. f DSGVO).
+        </p>
+        <p>
           Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie widerrufen sie in
           den Einstellungen Ihres iPhones unter Datenschutz &amp; Sicherheit → Ortungsdienste →
           park.fan.
