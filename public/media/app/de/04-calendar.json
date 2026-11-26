@@ -1,11 +1,11 @@
 {
   "title": "App-Screenshot: Kalender (de)",
   "alt": {
-    "de": "Der Andrang-Kalender des Phantasialands für Dezember 2026: jeder Tag mit der erwarteten Spitzenwartezeit, Montag bis Freitag grün, die Wochenenden und Ferientage gelb, darüber die kommenden ruhigen Tage."
+    "de": "Der Andrang-Kalender des Phantasialands für Dezember 2026: jeder Tag mit der erwarteten Spitzenwartezeit, Montag bis Freitag grün, Wochenenden und Ferientage gelb, darüber der Vergleich der Wochentage und die kommenden ruhigen Tage."
   },
   "credit": {
     "author": "park.fan",
     "license": "all-rights-reserved"
   },
-  "shotAt": "2026-11-25"
+  "shotAt": "2026-11-26"
 }

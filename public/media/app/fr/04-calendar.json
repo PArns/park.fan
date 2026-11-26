@@ -1,11 +1,11 @@
 {
   "title": "App-Screenshot: Kalender (fr)",
   "alt": {
-    "fr": "Le calendrier d’affluence de Phantasialand pour décembre 2026 : chaque jour avec l’attente maximale prévue, la semaine en vert, les week-ends et les jours de vacances en jaune, au-dessus les prochains jours calmes."
+    "fr": "Le calendrier d’affluence de Phantasialand pour décembre 2026 : chaque jour avec l’attente de pointe prévue, du lundi au vendredi en vert, week-ends et jours de vacances en jaune, avec au-dessus la comparaison des jours de la semaine et les prochains jours calmes."
   },
   "credit": {
     "author": "park.fan",
     "license": "all-rights-reserved"
   },
-  "shotAt": "2026-11-25"
+  "shotAt": "2026-11-26"
 }
