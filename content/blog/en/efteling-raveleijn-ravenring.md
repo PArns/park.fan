@@ -33,6 +33,9 @@ seo:
     - Efteling new for 2026
 ---
 
+> [!UPDATE] 2026-11-26
+> Raveleijn opens to all visitors on Thursday 3 December, with the press opening that afternoon. Tuesday 1 December is reserved for Premium annual pass holders, who get an event of their own every pass year. The new show and Ravenring are open to everyone from 3 December, as Efteling's [blog](https://www.efteling.com/en/blog/nieuws/themed-area-raveleijn-opens-on-1-december-2026) now says.
+
 On **1 December 2026**, [Efteling](ref:efteling) reopens its Raveleijn themed
 area after almost a year. The area has been completely renovated and comes back
 with a new park show, the **Ravenring** attraction, a new inn and a new shop.

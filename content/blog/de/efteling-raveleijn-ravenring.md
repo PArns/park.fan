@@ -33,6 +33,9 @@ seo:
     - Efteling Neuheiten 2026
 ---
 
+> [!UPDATE] 2026-11-26
+> Für alle Besucher öffnet Raveleijn am Donnerstag, dem 3. Dezember, mit der Presseeröffnung am Nachmittag. Am Dienstag, dem 1. Dezember, kommen nur Inhaber eines Premium-Abonnements hinein; für sie richtet das Efteling in jedem Abo-Jahr ein eigenes Event aus. Die neue Show und die Ravenring gibt es für alle ab dem 3. Dezember. So steht es inzwischen im [Efteling-Blog](https://www.efteling.com/nl/blog/nieuws/themagebied-raveleijn-opent-op-1-december-2026).
+
 Am **1. Dezember 2026** öffnet das [Efteling](ref:efteling) den Themenbereich
 Raveleijn wieder, nach fast einem Jahr Pause. Der Bereich ist komplett
 renoviert und bekommt eine neue Parkshow, die Attraktion **Ravenring**, eine
