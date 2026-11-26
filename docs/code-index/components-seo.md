@@ -33,6 +33,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `ParkStructuredData` _component_: `AmusementPark` JSON-LD for a park page (address, coordinates, opening hours, rides and restaurants) plus a `WebPage` node and the current wait times as `Observation` nodes.
 - `ItemListStructuredData` _component_: `ItemList` JSON-LD for listing pages (a continent lists countries; a country or city, parks).
 - `WebApplicationStructuredData` _component_: `WebApplication` for a page that is a tool rather than a document (the trip planner): it runs in the browser, is free and needs no account. No `aggregateRating`: there are no ratings to report.
+- `MobileApplicationStructuredData` _component_: `MobileApplication` for the iPhone app's page: free, iOS only, with its screens and the way to install it (the App Store, or the TestFlight beta before that).
 - `BreadcrumbStructuredData` _component_: `BreadcrumbList` JSON-LD from the page's breadcrumbs, optionally ending with the current page, with locale-prefixed absolute URLs. Renders nothing for an empty trail.
 - `AttractionStructuredData` _component_: `TouristAttraction` JSON-LD for a ride page: name, description, image, coordinates and its park as `containedInPlace`, linked by the same `@id`s the park page uses.
 - `ParkSubPageStructuredData` _component_: The `WebPage` node for a park sub-page (the wait-time calendar and its months), so the page declares its subject.

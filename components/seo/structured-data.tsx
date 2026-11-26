@@ -473,6 +473,52 @@ export function WebApplicationStructuredData({
 }
 
 /**
+ * `MobileApplication` for the iPhone app's page: free, iOS only, with its screens and the way to
+ * install it (the App Store, or the TestFlight beta before that). No `aggregateRating`: Google wants
+ * one for a rich result, and there are no ratings to report.
+ */
+export function MobileApplicationStructuredData({
+  name,
+  description,
+  path,
+  locale,
+  operatingSystem,
+  installUrl,
+  screenshots,
+}: {
+  name: string;
+  description: string;
+  /** Locale-prefixed path, e.g. `/de/app`. */
+  path: string;
+  locale: string;
+  operatingSystem: string;
+  installUrl?: string;
+  /** Site-relative image paths. */
+  screenshots: string[];
+}) {
+  const url = `${SITE_URL}${path}`;
+  const data = {
+    '@context': 'https://schema.org' as const,
+    '@type': 'MobileApplication' as const,
+    '@id': `${url}#app`,
+    name,
+    description,
+    url,
+    inLanguage: locale,
+    applicationCategory: 'TravelApplication',
+    operatingSystem,
+    ...(installUrl && { installUrl }),
+    ...(screenshots.length > 0 && { screenshot: screenshots.map((src) => `${SITE_URL}${src}`) }),
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer' as const, price: '0', priceCurrency: 'EUR' },
+    publisher: { '@type': 'Organization', '@id': ORGANIZATION_ID },
+    isPartOf: { '@id': websiteId(locale) },
+  };
+
+  return <JsonLd data={data as WithContext<Thing>} />;
+}
+
+/**
  * `BreadcrumbList` JSON-LD from the page's breadcrumbs, optionally ending with the current page,
  * with locale-prefixed absolute URLs. Renders nothing for an empty trail.
  */

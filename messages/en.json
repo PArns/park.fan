@@ -2558,19 +2558,65 @@
       "waitsBody": "Every attraction with its wait, breakdowns and closures. An arrow shows whether the queue is growing, and \"Shorter now than later\" lists the rides where you'd queue much less than usual right now.",
       "compassTitle": "The compass",
       "compassBody": "Direction and distance to the headliners and the rides in your plan, and to the restaurants if you like. It needs your location while the app is open.",
-      "guideTitle": "\"Take me there\"",
-      "guideBody": "Tap a target and the arrow walks you to its entrance, with meters and walking minutes. The park map shows every attraction, show and restaurant."
+      "mapTitle": "Park map with toilets and drinking water",
+      "mapBody": "Every attraction, show and restaurant as a labeled pin on the map. In approved parks it adds toilets and drinking water from OpenStreetMap."
     },
     "lock": {
       "kicker": "Lock Screen and notifications",
       "title": "Your park day on the Lock Screen",
       "body": "In the park the app puts your day on the Lock Screen and in the Dynamic Island: the waits of your favorite rides, the next stop in your plan and the next show. It starts by itself when you open the app in a park, and you can switch it off in Settings.",
-      "notifications": "Notifications only come when you switch them on, one kind at a time. A wait alert fires when a ride drops below the wait you chose or runs again, and you can turn it off right from the notification. The other kinds: rain on the way, changes to your plan, your plan in the morning, news and guides."
+      "sketch": "A sketch, not a screenshot: where your park day shows up on iPhone and Apple Watch",
+      "lockScreen": "Lock Screen",
+      "island": "Dynamic Island",
+      "watch": "Apple Watch",
+      "watchBody": "On Apple Watch the same view sits in the Smart Stack.",
+      "alertsTitle": "Notifications you choose",
+      "alertsLead": "You switch on each kind by itself, and none comes without your OK. A wait alert can be turned off right from the notification.",
+      "alerts": [
+        {
+          "title": "Wait alert",
+          "body": "A ride drops below the wait you chose"
+        },
+        {
+          "title": "Running again",
+          "body": "A ride that was down is back"
+        },
+        {
+          "title": "Rain on the way",
+          "body": "With the covered rides that suit it"
+        },
+        {
+          "title": "Plan changed",
+          "body": "A ride in your plan closes or moves"
+        },
+        {
+          "title": "Reminder",
+          "body": "Your plan in the morning and when to set off"
+        },
+        {
+          "title": "News and guides",
+          "body": "Only if you add them"
+        }
+      ]
     },
     "parky": {
       "kicker": "Parky",
       "title": "Parky, your park buddy in the chat",
-      "body": "Ask him for the best day or the shortest queue, or let him rearrange your plan. Before your first message leaves the iPhone, the app tells you what is sent and to whom, and asks you. You can report any answer, and \"New chat\" deletes the old one. The answers are written by Anthropic's language model Claude."
+      "consent": "Before your first message leaves the iPhone, the app tells you what is sent and to whom, and asks you. You can report any answer, and \"New chat\" deletes the old one. The answers are written by Anthropic's language model Claude.",
+      "points": [
+        {
+          "title": "Ask",
+          "body": "Ask him for the best day or the shortest queue, or let him rearrange your plan."
+        },
+        {
+          "title": "Park day interview",
+          "body": "Parky asks you step by step about the park, the day and what you want, and builds your plan from it."
+        },
+        {
+          "title": "Show me the way",
+          "body": "Ask for a ride or the nearest toilet, and the arrow shows you the way."
+        }
+      ]
     },
     "more": {
       "kicker": "Also in the app",
@@ -2580,7 +2626,9 @@
       "newsTitle": "News, guides and weather",
       "newsBody": "park.fan's posts open in the app, and the weather comes with a rain alert and official warnings.",
       "languagesTitle": "Six languages, light and dark",
-      "languagesBody": "English, German, Dutch, French, Spanish and Italian. The app follows your iPhone's appearance and is built for iPhone Duo too."
+      "languagesBody": "English, German, Dutch, French, Spanish and Italian. The app follows your iPhone's appearance and is built for iPhone Duo too.",
+      "statsTitle": "Statistics, seasons and events",
+      "statsBody": "For every park the quiet weekdays and months, plus seasons and events such as Halloween or the winter season."
     },
     "privacy": "The app needs no account, shows no ads and doesn't track you. Your favorites and plans stay on your iPhone, and park.fan only gets what a feature you switch on needs. The details are in the <link>privacy policy</link>.",
     "help": {
@@ -2602,12 +2650,17 @@
         "accuracyQ": "How accurate are the wait times?",
         "accuracyA": "Live waits are the ones the parks post. Forecasts and the calendar are estimates built from measured waits and can be off. Where the figures come from is explained in <link>How park.fan works</link>.",
         "deleteQ": "How do I delete my data?",
-        "deleteA": "Favorites and plans live on your iPhone and go with the app. What the app sends, how long it's kept and how to delete it is in the <link>privacy policy</link>."
+        "deleteA": "Favorites and plans live on your iPhone and go with the app. What the app sends, how long it's kept and how to delete it is in the <link>privacy policy</link>.",
+        "costQ": "What does the app cost?",
+        "costA": "Nothing. The app is free, with no subscription and no in-app purchases.",
+        "betaQ": "How do I join the beta?",
+        "betaA": "Get the TestFlight app from the App Store, open the invitation link on your iPhone and tap \"Accept\", then \"Install\". There are 50 places for now; when they are all taken, TestFlight tells you as you open the link. Each beta build runs for 90 days."
       },
       "contactTitle": "Contact",
       "contact": "For questions, bugs or wishes, write to <email></email>. Our address and phone number are in the <link>imprint</link>.",
       "emailDisplay": "hello[at]park.fan",
-      "independent": "park.fan is independent and not affiliated with the parks or their operators. Names and marks belong to their owners."
+      "independent": "park.fan is independent and not affiliated with the parks or their operators. Names and marks belong to their owners.",
+      "faqKicker": "Questions"
     },
     "next": {
       "title": "park.fan in your browser",
@@ -2615,6 +2668,38 @@
       "calendar": "Find quiet days",
       "planner": "Plan a day",
       "parky": "Chat with Parky"
+    },
+    "scenes": {
+      "park": {
+        "title": "Every ride with its day so far",
+        "caption": "The wait now, its trend and the best time for your next go"
+      },
+      "ride": {
+        "title": "Is the queue worth it right now?",
+        "caption": "Today's range, the peak and the usual wait at this hour"
+      },
+      "compass": {
+        "title": "Take me there",
+        "caption": "The arrow shows the direction, distance and walking minutes to the ride"
+      }
+    },
+    "trust": {
+      "kicker": "Privacy",
+      "title": "No account, no ads, no tracking",
+      "items": [
+        {
+          "title": "No account",
+          "body": "Open the app and go, no sign-up and no email address."
+        },
+        {
+          "title": "No ads",
+          "body": "No banner between you and the wait times."
+        },
+        {
+          "title": "No tracking",
+          "body": "No analytics tools and no profile of you."
+        }
+      ]
     }
   },
   "datenschutz": {

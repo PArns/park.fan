@@ -2558,19 +2558,65 @@
       "waitsBody": "Jede Attraktion mit ihrer Wartezeit, mit Störungen und Schließungen. Ein Pfeil zeigt, ob die Warteschlange wächst, und unter „Jetzt kürzer als später“ stehen die Bahnen, an denen du gerade deutlich weniger anstehst als sonst.",
       "compassTitle": "Der Kompass",
       "compassBody": "Richtung und Entfernung zu den Top-Attraktionen und zu den Bahnen deines Plans, auf Wunsch auch zu den Restaurants. Dafür braucht die App deinen Standort, solange sie offen ist.",
-      "guideTitle": "„Bring mich hin“",
-      "guideBody": "Ziel antippen, und der Pfeil führt dich mit Metern und Gehminuten bis zum Eingang. Die Parkkarte zeigt dazu alle Attraktionen, Shows und Restaurants."
+      "mapTitle": "Parkkarte mit Toiletten und Trinkwasser",
+      "mapBody": "Alle Attraktionen, Shows und Restaurants als beschriftete Punkte auf der Karte. In freigegebenen Parks stehen dazu Toiletten und Trinkwasserstellen aus OpenStreetMap."
     },
     "lock": {
       "kicker": "Sperrbildschirm und Mitteilungen",
       "title": "Dein Parktag auf dem Sperrbildschirm",
       "body": "Im Park legt die App deinen Tag auf den Sperrbildschirm und in die Dynamic Island: die Wartezeiten deiner Lieblingsbahnen, den nächsten Punkt deines Plans und die nächste Show. Die Anzeige startet von selbst, wenn du die App im Park öffnest, und lässt sich in den Einstellungen abschalten.",
-      "notifications": "Mitteilungen kommen nur, wenn du sie einschaltest, jede Art für sich. Der Wartezeit-Alarm meldet sich, sobald eine Bahn unter deine Wunschzeit fällt oder wieder fährt, und abschalten kannst du ihn direkt in der Mitteilung. Weitere Arten: Regen im Anmarsch, Änderungen an deinem Plan, dein Plan am Morgen, News und Guides."
+      "sketch": "Skizze, kein Screenshot: wo dein Parktag auf iPhone und Apple Watch auftaucht",
+      "lockScreen": "Sperrbildschirm",
+      "island": "Dynamic Island",
+      "watch": "Apple Watch",
+      "watchBody": "Auf der Apple Watch steht dieselbe Anzeige im Smart Stack.",
+      "alertsTitle": "Mitteilungen, die du selbst wählst",
+      "alertsLead": "Jede Art schaltest du einzeln ein, ohne deine Zustimmung kommt keine. Einen Wartezeit-Alarm stellst du direkt in der Mitteilung wieder ab.",
+      "alerts": [
+        {
+          "title": "Wartezeit-Alarm",
+          "body": "Eine Bahn fällt unter deine Wunschzeit"
+        },
+        {
+          "title": "Wieder in Betrieb",
+          "body": "Eine Bahn, die stand, fährt wieder"
+        },
+        {
+          "title": "Regen im Anmarsch",
+          "body": "Mit den überdachten Bahnen, die dann passen"
+        },
+        {
+          "title": "Plan geändert",
+          "body": "Eine Bahn deines Plans fällt aus oder rutscht"
+        },
+        {
+          "title": "Erinnerung",
+          "body": "Dein Plan am Morgen und wann du losgehen solltest"
+        },
+        {
+          "title": "News und Guides",
+          "body": "Nur, wenn du sie dazuwählst"
+        }
+      ]
     },
     "parky": {
       "kicker": "Parky",
       "title": "Parky, dein Park-Buddy im Chat",
-      "body": "Frag ihn nach dem besten Tag oder der kürzesten Warteschlange, oder lass ihn deinen Plan umstellen. Bevor deine erste Nachricht das iPhone verlässt, sagt dir die App, was gesendet wird und an wen, und fragt dich. Jede Antwort kannst du melden, und „Neuer Chat“ löscht den alten. Die Antworten schreibt das Sprachmodell Claude von Anthropic."
+      "consent": "Bevor deine erste Nachricht das iPhone verlässt, sagt dir die App, was gesendet wird und an wen, und fragt dich. Jede Antwort kannst du melden, und „Neuer Chat“ löscht den alten. Die Antworten schreibt das Sprachmodell Claude von Anthropic.",
+      "points": [
+        {
+          "title": "Fragen",
+          "body": "Frag ihn nach dem besten Tag oder der kürzesten Warteschlange, oder lass ihn deinen Plan umstellen."
+        },
+        {
+          "title": "Parktag-Interview",
+          "body": "Parky fragt dich Schritt für Schritt nach Park, Tag und Wünschen und baut daraus deinen Plan."
+        },
+        {
+          "title": "Weg zeigen",
+          "body": "Frag nach einer Bahn oder der nächsten Toilette, und der Pfeil zeigt dir den Weg."
+        }
+      ]
     },
     "more": {
       "kicker": "Außerdem",
@@ -2580,7 +2626,9 @@
       "newsTitle": "News, Guides und Wetter",
       "newsBody": "Die Beiträge von park.fan liest du in der App, das Wetter kommt mit Regenhinweis und amtlichen Warnungen.",
       "languagesTitle": "Sechs Sprachen, hell und dunkel",
-      "languagesBody": "Deutsch, Englisch, Niederländisch, Französisch, Spanisch und Italienisch. Die App folgt dem Erscheinungsbild deines iPhones und ist auch für das iPhone Duo gebaut."
+      "languagesBody": "Deutsch, Englisch, Niederländisch, Französisch, Spanisch und Italienisch. Die App folgt dem Erscheinungsbild deines iPhones und ist auch für das iPhone Duo gebaut.",
+      "statsTitle": "Statistik, Saisons und Events",
+      "statsBody": "Zu jedem Park die ruhigen Wochentage und Monate, dazu Saisons und Events wie Halloween oder der Winterbetrieb."
     },
     "privacy": "Die App braucht kein Konto, zeigt keine Werbung und trackt dich nicht. Favoriten und Pläne liegen auf deinem iPhone, und an park.fan geht nur, was eine Funktion braucht, die du einschaltest. Was das im Einzelnen ist, steht in der <link>Datenschutzerklärung</link>.",
     "help": {
@@ -2602,12 +2650,17 @@
         "accuracyQ": "Wie genau sind die Wartezeiten?",
         "accuracyA": "Die Live-Wartezeiten sind die, die die Parks angeben. Prognosen und der Kalender sind Schätzungen aus gemessenen Wartezeiten und können danebenliegen. Woher die Zahlen kommen, erklärt <link>So funktioniert park.fan</link>.",
         "deleteQ": "Wie lösche ich meine Daten?",
-        "deleteA": "Favoriten und Pläne liegen auf deinem iPhone und sind mit der App gelöscht. Was die App sendet, wie lange es bleibt und wie du es löschst, steht in der <link>Datenschutzerklärung</link>."
+        "deleteA": "Favoriten und Pläne liegen auf deinem iPhone und sind mit der App gelöscht. Was die App sendet, wie lange es bleibt und wie du es löschst, steht in der <link>Datenschutzerklärung</link>.",
+        "costQ": "Was kostet die App?",
+        "costA": "Nichts. Die App ist kostenlos, ohne Abo und ohne Käufe in der App.",
+        "betaQ": "Wie komme ich in die Beta?",
+        "betaA": "Lade die App TestFlight aus dem App Store, öffne auf dem iPhone den Einladungslink und tippe auf „Annehmen“ und „Installieren“. Zurzeit gibt es 50 Plätze; sind alle vergeben, sagt TestFlight dir das beim Öffnen des Links. Jede Beta-Version läuft 90 Tage."
       },
       "contactTitle": "Kontakt",
       "contact": "Schreib uns bei Fragen, Fehlern oder Wünschen an <email></email>. Anschrift und Telefon stehen im <link>Impressum</link>.",
       "emailDisplay": "hello[ät]park.fan",
-      "independent": "park.fan ist ein unabhängiges Angebot und steht in keiner Verbindung zu den Parks oder ihren Betreibern. Namen und Marken gehören ihren Inhabern."
+      "independent": "park.fan ist ein unabhängiges Angebot und steht in keiner Verbindung zu den Parks oder ihren Betreibern. Namen und Marken gehören ihren Inhabern.",
+      "faqKicker": "Fragen"
     },
     "next": {
       "title": "park.fan im Browser",
@@ -2615,6 +2668,38 @@
       "calendar": "Ruhige Tage finden",
       "planner": "Tag planen",
       "parky": "Mit Parky schreiben"
+    },
+    "scenes": {
+      "park": {
+        "title": "Jede Bahn mit ihrem Tagesverlauf",
+        "caption": "Wartezeit jetzt, Trend und die beste Zeit für die nächste Runde"
+      },
+      "ride": {
+        "title": "Lohnt sich das Anstehen jetzt?",
+        "caption": "Spanne, Spitze und die übliche Wartezeit zu dieser Stunde"
+      },
+      "compass": {
+        "title": "Bring mich hin",
+        "caption": "Der Pfeil zeigt dir Richtung, Meter und Gehminuten bis zur Bahn"
+      }
+    },
+    "trust": {
+      "kicker": "Datenschutz",
+      "title": "Kein Konto, keine Werbung, kein Tracking",
+      "items": [
+        {
+          "title": "Kein Konto",
+          "body": "App öffnen und loslegen, ohne Anmeldung und ohne E-Mail-Adresse."
+        },
+        {
+          "title": "Keine Werbung",
+          "body": "Zwischen dir und den Wartezeiten steht kein Banner."
+        },
+        {
+          "title": "Kein Tracking",
+          "body": "Keine Analyse-Werkzeuge und kein Profil von dir."
+        }
+      ]
     }
   },
   "datenschutz": {
