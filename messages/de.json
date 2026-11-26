@@ -2522,10 +2522,11 @@
     "title": "park.fan für iPhone",
     "headline": "Wartezeiten, Andrang und dein Plan in einer App",
     "lead": "Zu Hause zeigt sie dir die Tage, an denen wenig los ist, und im Park die Bahnen, an denen du gerade kurz anstehst",
-    "status": "Im Beta-Test über TestFlight, bald im App Store",
+    "status": "Öffentliche Beta über TestFlight, zurzeit mit 50 Plätzen",
     "requirement": "Für iPhone mit iOS 26 oder neuer, auch für das iPhone Duo",
     "storeAction": "Im App Store laden",
     "betaAction": "Beta über TestFlight testen",
+    "betaBadge": "Beta",
     "plan": {
       "kicker": "Vor dem Besuch",
       "title": "Andrang-Kalender und Tagesplaner",
@@ -2576,6 +2577,7 @@
         "eine Internetverbindung für die Live-Daten; zuletzt Geladenes bleibt auch ohne Netz zu sehen",
         "die App spricht Deutsch, Englisch, Niederländisch, Französisch, Spanisch und Italienisch"
       ],
+      "getTitle": "Die App holen",
       "faqTitle": "Häufige Fragen",
       "faq": {
         "compassQ": "Warum sehe ich keinen Kompass?",

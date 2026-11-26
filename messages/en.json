@@ -2522,10 +2522,11 @@
     "title": "park.fan for iPhone",
     "headline": "Wait times, crowds and your plan in one app",
     "lead": "At home it shows you the days when parks are quiet, and in the park the rides where the queue is short right now",
-    "status": "In beta on TestFlight, coming soon to the App Store",
+    "status": "Public beta on TestFlight, currently with 50 places",
     "requirement": "For iPhone with iOS 26 or later, iPhone Duo included",
     "storeAction": "Get it on the App Store",
     "betaAction": "Join the TestFlight beta",
+    "betaBadge": "Beta",
     "plan": {
       "kicker": "Before you go",
       "title": "Crowd calendar and day planner",
@@ -2576,6 +2577,7 @@
         "an internet connection for the live data; what was loaded last stays visible offline",
         "the app speaks English, German, Dutch, French, Spanish and Italian"
       ],
+      "getTitle": "Get the app",
       "faqTitle": "Common questions",
       "faq": {
         "compassQ": "Why don't I see the compass?",

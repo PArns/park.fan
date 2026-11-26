@@ -2522,10 +2522,11 @@
     "title": "park.fan voor iPhone",
     "headline": "Wachttijden, drukte en je planning in één app",
     "lead": "Thuis zie je de dagen waarop het rustig is, en in het park de attracties waar de rij nu kort is",
-    "status": "In bèta via TestFlight, binnenkort in de App Store",
+    "status": "Openbare bèta via TestFlight, op dit moment met 50 plaatsen",
     "requirement": "Voor iPhone met iOS 26 of nieuwer, ook voor de iPhone Duo",
     "storeAction": "Download in de App Store",
     "betaAction": "Doe mee met de TestFlight-bèta",
+    "betaBadge": "Bèta",
     "plan": {
       "kicker": "Voor je bezoek",
       "title": "Druktekalender en dagplanner",
@@ -2576,6 +2577,7 @@
         "een internetverbinding voor de live gegevens; wat het laatst is geladen, blijft ook offline zichtbaar",
         "de app spreekt Nederlands, Duits, Engels, Frans, Spaans en Italiaans"
       ],
+      "getTitle": "De app downloaden",
       "faqTitle": "Veelgestelde vragen",
       "faq": {
         "compassQ": "Waarom zie ik geen kompas?",
