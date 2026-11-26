@@ -1,12 +1,15 @@
 'use client';
 
-import { Bell, Camera, LineChart, Star } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { Bell, Camera, LineChart, Star, Trophy } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { rankingHubPath } from '@/lib/rankings/segments';
 import { Link } from '@/i18n/navigation';
 
 /**
  * The destinations the header carries without giving them a section: `/alerts`, `/favorites`,
- * `/contribute`, and on the phone `/fancast`. One definition for two hosts, the foot of the "more"
+ * `/contribute`, the rankings' hub, and on the phone `/fancast`. The hub's href is the reader's
+ * spelling of its segment (`rankingHubPath`), since an English path here would be a 308 on every
+ * page. One definition for two hosts, the foot of the "more"
  * panel and the foot of the burger sheet, so a new entry cannot land in only one; each entry's
  * `hosts` says where it appears. A footer row rather than a column, so an upload form does not rank
  * with the hubs. The sheet leaves out `/contribute` (nobody opens the phone menu for it) and
@@ -14,6 +17,7 @@ import { Link } from '@/i18n/navigation';
  * which the desktop band draws as `FancastCard`.
  */
 const LINKS = [
+  { href: null, Icon: Trophy, key: 'rankings', hosts: ['panel', 'sheet'] },
   { href: '/alerts', Icon: Bell, key: 'alerts', hosts: ['panel', 'sheet'] },
   { href: '/favorites', Icon: Star, key: 'favorites', hosts: ['panel'] },
   { href: '/fancast', Icon: LineChart, key: 'fancast', hosts: ['sheet'] },
@@ -28,6 +32,7 @@ type Variant = 'panel' | 'sheet';
  */
 export function MoreMenuLinks({ variant }: { variant: Variant }) {
   const t = useTranslations('navigation');
+  const locale = useLocale();
   /*
    * No `navigation.alerts` or `navigation.favorites` keys: `pushAlerts.menu.link` and
    * `favorites.link` are already in `LAYOUT_MESSAGE_NAMESPACES` and name these same URLs, so a
@@ -57,8 +62,8 @@ export function MoreMenuLinks({ variant }: { variant: Variant }) {
       {LINKS.filter((link) => (link.hosts as readonly Variant[]).includes(variant)).map(
         ({ href, Icon, key }) => (
           <Link
-            key={href}
-            href={href}
+            key={key}
+            href={href ?? rankingHubPath(locale)}
             prefetch={false}
             className={
               isSheet

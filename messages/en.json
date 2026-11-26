@@ -406,7 +406,9 @@
     "updatedOn": "Updated {date}",
     "nearby": "Near you",
     "preferences": "Settings",
-    "assistantOpen": "Chat with Parky"
+    "assistantOpen": "Chat with Parky",
+    "rankings": "Longest wait times",
+    "rankingsHint": "The rankings by country"
   },
   "tripHub": {
     "nextDays": "Next 30 days",
@@ -2202,7 +2204,9 @@
     "rankings": {
       "title": "Longest wait times {year}: {country} – ride ranking",
       "titleShort": "Longest wait times {year}: {country}",
-      "description": "Which rides had the longest waits in {year}, {country}: {top}. Typical peak per ride, measured on every opening day."
+      "description": "Which rides had the longest waits in {year}, {country}: {top}. Typical peak per ride, measured on every opening day.",
+      "hubTitle": "Longest wait times {year}: rankings for every country",
+      "hubDescription": "The rides with the longest waits of {year} in {count, plural, one {# country} other {# countries}}, one ranking per country by typical peak wait."
     }
   },
   "favorites": {
@@ -6773,6 +6777,15 @@
     "countryLink": "Longest wait times {year}",
     "parksTitle": "Where the long queues are: the parks of the {count} places",
     "parkBest": "best place {rank}",
-    "parkRides": "{count, plural, one {# ride} other {# rides}}"
+    "parkRides": "{count, plural, one {# ride} other {# rides}}",
+    "hubH1": "Longest wait times {year}: every country",
+    "hubLead": "For each country, the rides with the longest waits of {year}, ordered by their typical peak",
+    "hubTop": "No. 1: {ride} ({park}), {minutes} min",
+    "hubRides": "{count, plural, one {# ride} other {# rides}} ranked",
+    "moreTitle": "More rankings",
+    "moreCountries": "Other countries {year}",
+    "moreYears": "{country} in other years",
+    "hubLink": "All countries at a glance",
+    "statsLink": "How {park} compares across the country: {country} ranking {year}"
   }
 }

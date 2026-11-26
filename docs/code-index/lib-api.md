@@ -183,9 +183,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `getCountryAttractionRanking` _function_: A country's ranking of one year, data-cached like the park statistics (the API recomputes it once a day). One request per country and year serves the ranking page and every ride page of that country, which read their own place from it.
 - `getCurrentRankingSeed` _function_: The ranking of `currentRankingYear` for a page that quotes it, bounded by `RANKING_SEED_TIMEOUT_MS`. `null` on a timeout as on a missing ranking: the quote is optional, the page is not.
 - `findRankedAttraction` _function_: A ride's entry in its country's ranking, or `null` when it is not among the listed rides.
+- `getRankedCountries` _function_: Every country of the geo tree whose ranking of `year` lists at least `minRides` rides, in the tree's order.
+- `getRankedCountriesSeed` _function_: `getRankedCountries` for a page that only links the rankings, bounded like the quotes: on a cold cache the page renders without the links rather than wait for every country.
 - `RANKING_MIN_INDEXED_RIDES` _const_: Below this many ranked rides a ranking page stays out of the index and the sitemap: a "ranking" of two rides is a stub a searcher should not land on. It still renders for the links to it.
 - `RANKING_PAGE_LIMIT` _const_: Rides the ranking page lists; the ride pages read their place from the same request.
-- Types: `RankedAttraction`, `AttractionRanking`
+- Types: `RankedAttraction`, `AttractionRanking`, `RankedCountry`
 
 ### [`relay.ts`](../../lib/api/relay.ts)
 

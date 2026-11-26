@@ -173,9 +173,11 @@ name and a two-line hint on it) over a list of what the hub holds:
 ### The footer row
 
 `MoreMenuLinks` (`components/layout/more-menu-links.tsx`) is one definition for
-two hosts, each entry naming its `hosts`: in the band a row of pills — „Meine Alarme", „Meine
-Favoriten", „Fotos hochladen" — and at the foot of the phone sheet 44 px text links — „Meine
-Alarme" and „Fancast". `/contribute` is panel-only (nobody opens the phone menu for it; it stays on
+two hosts, each entry naming its `hosts`: in the band a row of pills — „Längste Wartezeiten",
+„Meine Alarme", „Meine Favoriten", „Fotos hochladen" — and at the foot of the phone sheet 44 px text
+links — „Längste Wartezeiten", „Meine Alarme" and „Fancast". The rankings hub's href is the
+reader's spelling of its segment (`rankingHubPath`), never the English one, which would be a 308 on
+every page. `/contribute` is panel-only (nobody opens the phone menu for it; it stays on
 every park and ride page's banner), `/favorites` too (the sheet's favorites panel already links it),
 `/fancast` sheet-only (the band has its card). The alerts label reads `pushAlerts.menu.link`, not a
 second identical `navigation.alerts`. The sheet row has a `gap-y` so two wrapped 44 px targets do

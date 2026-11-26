@@ -2,6 +2,7 @@ import { defaultLocale, isValidLocale, locales, type Locale } from '@/i18n/confi
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
 import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
+import { RANKING_SEGMENTS } from '@/lib/rankings/segments';
 
 /**
  * Where a path without a locale prefix goes, when the answer does not depend on the visitor.
@@ -29,6 +30,11 @@ const PARK_SUBPAGE_SEGMENT_LOCALE: ReadonlyMap<string, Locale> = new Map(
   ])
 );
 
+/** A rankings segment → the one locale that uses it. */
+const RANKING_SEGMENT_LOCALE: ReadonlyMap<string, Locale> = new Map(
+  locales.map((locale) => [RANKING_SEGMENTS[locale], locale] as const)
+);
+
 /**
  * The locale-prefixed path to send `pathname` to with a 308, or `null` to let next-intl negotiate.
  *
@@ -47,10 +53,17 @@ export function unprefixedPathRedirect(
   if (isValidLocale(lowerPrefix)) return `/${lowerPrefix}${pathname.slice(parts[1].length + 1)}`;
 
   // '', 'parks', continent, country, city, park, sub-page segment, …
+  // or the rankings: '', 'parks', segment (the hub) and '', 'parks', continent, country, segment, year.
   const segmentLocale =
-    parts[1] === 'parks' && parts.length >= 7
-      ? PARK_SUBPAGE_SEGMENT_LOCALE.get(parts[6])
-      : undefined;
+    parts[1] !== 'parks'
+      ? undefined
+      : parts.length >= 7
+        ? PARK_SUBPAGE_SEGMENT_LOCALE.get(parts[6])
+        : parts.length === 3
+          ? RANKING_SEGMENT_LOCALE.get(parts[2])
+          : parts.length === 6
+            ? RANKING_SEGMENT_LOCALE.get(parts[4])
+            : undefined;
   const locale = segmentLocale ?? (hasAcceptLanguage ? null : defaultLocale);
 
   return locale ? `/${locale}${pathname}` : null;

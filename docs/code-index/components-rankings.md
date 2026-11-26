@@ -9,6 +9,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AttractionRankingTable` _component_: A country's year ranking as a table: place, ride (with its park under it and a bar for its peak against the list's longest), the peak the order follows, the typical wait and the measured days.
 
+### [`more-rankings.tsx`](../../components/rankings/more-rankings.tsx)
+
+- `MoreRankings` _component_: The ranking page's way on: the hub, the other countries ranked for the same year and this country's other years.
+
 ### [`ranking-parks.tsx`](../../components/rankings/ranking-parks.tsx)
 
 - `RankingParks` _component_: The park tally as a row of cards under its own heading.

@@ -3,6 +3,7 @@ import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import { currentRankingYear } from '@/lib/rankings/year';
+import { getGeoStructure } from '@/lib/api/discovery';
 
 /** One ride's place in a country's year ranking, as `/v1/rankings/attractions` answers it. */
 export interface RankedAttraction {
@@ -114,4 +115,42 @@ export function findRankedAttraction(
       (a) => a.parkSlug === parkSlug && a.attractionSlug === attractionSlug
     ) ?? null
   );
+}
+
+/** A country that has a ranking in a year, with its ranking. */
+export interface RankedCountry {
+  continent: string;
+  country: string;
+  ranking: AttractionRanking;
+}
+
+/**
+ * Every country of the geo tree whose ranking of `year` lists at least `minRides` rides, in the
+ * tree's order. One data-cached request per country, the requests the ranking pages read, so the
+ * hub, the ranking pages' links to each other and the sitemap agree on which pages exist.
+ */
+export const getRankedCountries = cache(async function getRankedCountries(
+  year: number,
+  minRides = 1
+): Promise<RankedCountry[]> {
+  const geo = await getGeoStructure().catch(() => null);
+  if (!geo) return [];
+  const scopes = geo.continents.flatMap((continent) =>
+    continent.countries.map((country) => ({ continent: continent.slug, country: country.slug }))
+  );
+  const rankings = await Promise.all(
+    scopes.map((scope) => getCountryAttractionRanking(scope.continent, scope.country, year))
+  );
+  return scopes.flatMap((scope, i) => {
+    const ranking = rankings[i];
+    return ranking && ranking.attractions.length >= minRides ? [{ ...scope, ranking }] : [];
+  });
+});
+
+/**
+ * {@link getRankedCountries} for a page that only links the rankings, bounded like the quotes: on
+ * a cold cache the page renders without the links rather than wait for every country.
+ */
+export function getRankedCountriesSeed(year: number): Promise<RankedCountry[] | null> {
+  return withSeedTimeout(getRankedCountries(year), RANKING_SEED_TIMEOUT_MS);
 }

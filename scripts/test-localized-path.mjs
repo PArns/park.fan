@@ -45,6 +45,19 @@ test("a park's sub-page segment is respelled, its other segments are not", () =>
   );
 });
 
+test('the rankings segment is respelled at the hub and under a country, nowhere else', () => {
+  assert.equal(
+    localizedPath('/parks/europe/germany/longest-wait-times/2026', 'de'),
+    '/de/parks/europe/germany/laengste-wartezeiten/2026'
+  );
+  assert.equal(localizedPath('/parks/longest-wait-times', 'fr'), '/fr/parks/plus-longues-attentes');
+  assert.equal(
+    localizedPath('/parks/europe/germany/longest-wait-times', 'de'),
+    '/de/parks/europe/germany/longest-wait-times',
+    'a city slot is a city'
+  );
+});
+
 test('query and hash survive', () => {
   assert.equal(
     localizedPath('/compare?parks=europa-park,phantasialand', 'de'),
