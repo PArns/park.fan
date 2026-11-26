@@ -2110,7 +2110,8 @@
       "retiredLead": "{attraction} a {park} è chiuso definitivamente dal {date}.",
       "retiredWaits": "Prima, in un normale giorno in settimana l’attesa arrivava a {minutes} minuti.",
       "metaDescriptionFactsFirst": "{attraction} a {park}: {facts}. Tempi di attesa in diretta e previsioni.",
-      "factTypicalPeak": "picco di attesa abituale {minutes} min"
+      "factTypicalPeak": "picco di attesa abituale {minutes} min",
+      "factRank": "{rank}° nella classifica delle attese {year}, {country}"
     },
     "continent": {
       "titleTemplate": "Parchi a tema in {location}: Tempi di attesa, mappa e panoramica",
@@ -2197,6 +2198,11 @@
         "mobileQ": "park.fan funziona sugli smartphone?",
         "mobileA": "Sì. park.fan funziona nel browser di telefono, tablet e computer, senza installare un’app. Nel parco puoi vedere dove la coda è corta in quel momento. Se il sito riconosce che sei nel parco, le attrazioni più vicine salgono in cima."
       }
+    },
+    "rankings": {
+      "title": "Attese più lunghe {year}: {country}, classifica delle attrazioni",
+      "titleShort": "Attese più lunghe {year}: {country}",
+      "description": "Quali attrazioni hanno avuto le attese più lunghe nel {year}, {country}: {top}. Punta abituale per attrazione, misurata in ogni giorno di apertura."
     }
   },
   "favorites": {
@@ -3375,7 +3381,9 @@
         "typicalPeak": "Picco abituale",
         "record": "Record",
         "minHeight": "Altezza min."
-      }
+      },
+      "rank": "{rank}° posto per le attese più lunghe del {year}, {country}",
+      "rankLink": "Vedi la classifica"
     }
   },
   "planner": {
@@ -6747,5 +6755,21 @@
     "keyForecast": "Previsione",
     "normalSpan": "Media degli anni passati per questi {count} giorni, non una previsione",
     "rowLabel": "Meteo a {park}"
+  },
+  "rankings": {
+    "h1": "Attese più lunghe {year}: {country}",
+    "lead": "Classifica delle attrazioni per attesa di punta abituale nel {year}: {count, plural, one {# attrazione} other {# attrazioni}} in {parks, plural, one {# parco} other {# parchi}}",
+    "running": "L’anno è ancora in corso: misurato fino al {date}. La classifica viene ricalcolata ogni giorno.",
+    "complete": "Misurato dal 1° gennaio al 31 dicembre {year}.",
+    "colRank": "Posizione",
+    "colRide": "Attrazione",
+    "colPark": "Parco",
+    "colP90": "Punta",
+    "colP50": "Abituale",
+    "colDays": "Giorni misurati",
+    "minutes": "min",
+    "methodTitle": "Come nasce la classifica",
+    "method": "Un’attrazione entra in classifica quando la sua attesa è stata misurata in almeno {minDays} giorni nel {year}. Per ogni ora di apertura del suo parco prendiamo l’attesa abituale (la mediana) e la punta (il 90 % delle misure era sotto). L’ordine segue la media annua della punta. I giorni in cui il parco era chiuso non contano.",
+    "countryLink": "Attese più lunghe {year}"
   }
 }

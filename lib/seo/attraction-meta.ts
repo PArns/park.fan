@@ -10,6 +10,7 @@ import {
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { sentenceCase } from '@/lib/utils/sentence-case';
 import type { ParkAttraction } from '@/lib/api/types';
+import type { RideRank } from '@/lib/rankings/ride-rank';
 
 /** The subset of next-intl's `t` these builders need. */
 type Translate = (key: string, values?: Record<string, string | number>) => string;
@@ -29,12 +30,17 @@ export function buildAttractionFacts(
   attraction: ParkAttraction,
   t: Translate,
   /** The profile's first ride type in the reader's language (`resolveRideProfile`), if any. */
-  typeName?: string | null
+  typeName?: string | null,
+  /** The ride's place in its country's wait ranking, when it is high enough to quote. */
+  rank?: RideRank | null
 ): string[] {
   const facts: string[] = [];
   const profile = attraction.rideProfile;
 
   if (typeName) facts.push(typeName);
+  // Right after the type: no other ride in the country can say the same, and it changes once a day
+  // at most, so the snippet stays true between crawls.
+  if (rank) facts.push(t('factRank', { rank: rank.rank, year: rank.year, country: rank.country }));
   // Speed, height and ride time right after the type: they are what a ride is searched with
   // ("red force vitesse", "durata oblivion gardaland"). Metric, like the rider height below.
   const stats = profile?.stats;

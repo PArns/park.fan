@@ -20,6 +20,7 @@ import { PARK_CALENDAR_SEGMENTS } from '../lib/parks/calendar-segments.ts';
 import { PARK_STATS_SEGMENTS } from '../lib/parks/stats-segments.ts';
 import { PARK_KIDS_SEGMENTS } from '../lib/parks/kids-segments.ts';
 import { BEST_TIME_SEGMENTS } from '../lib/best-time/segments.ts';
+import { RANKING_SEGMENTS } from '../lib/rankings/segments.ts';
 import { LIVE_TRIP_REGIONS, tripRegionSegment } from '../lib/trip-regions/registry.ts';
 import {
   FORECAST_WINDOW,
@@ -74,6 +75,10 @@ const ROUTES = {
   'with-kids': {
     url: (l) => `/${l}/${PARK}/${PARK_KIDS_SEGMENTS[l]}`,
     rule: (source, l) => source.endsWith(`/:park/${PARK_KIDS_SEGMENTS[l]}`),
+  },
+  'longest-wait-times/[continent]/[country]/[year]': {
+    url: (l) => `/${l}/${RANKING_SEGMENTS[l]}/europe/germany/2026`,
+    rule: (source, l) => source.endsWith(`/${RANKING_SEGMENTS[l]}/:continent/:country/:year`),
   },
 };
 

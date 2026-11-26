@@ -23,6 +23,10 @@ import type { Locale } from '@/i18n/config';
 import type { Metadata } from 'next';
 import { RouteMessages } from '@/i18n/route-messages';
 import { TripPlannerBand } from '@/components/trip-regions/trip-planner-band';
+import { Link } from '@/i18n/navigation';
+import { Trophy } from 'lucide-react';
+import { getCurrentRankingSeed } from '@/lib/api/rankings';
+import { rankingPath } from '@/lib/rankings/segments';
 
 interface CountryPageProps {
   params: Promise<{ locale: string; continent: string; country: string }>;
@@ -88,11 +92,13 @@ export default async function CountryPage({ params }: CountryPageProps) {
   const t = await getTranslations('geo');
   const tCommon = await getTranslations('common');
   const tExplore = await getTranslations('explore');
+  const tRankings = await getTranslations('rankings');
 
-  const [response, summary] = await Promise.all([
+  const [response, summary, ranking] = await Promise.all([
     // Only the API's own 404 may end in `notFound()` — see the continent page.
     nullOnNotFound(getCitiesWithParks(continent, country)),
     catchNonFatal(getCountrySummary(continent, country)),
+    getCurrentRankingSeed(continent, country),
   ]);
 
   if (!response || !response.data || response.data.length === 0) {
@@ -159,6 +165,21 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
         {summary && (
           <CountrySummarySection summary={summary} countryName={countryName} locale={locale} />
+        )}
+
+        {/* The year ranking of the country's rides, linked only once it ranks a ride: a link to
+            a 404 costs crawl budget. */}
+        {ranking && ranking.attractions.length > 0 && (
+          <p className="mb-6">
+            <Link
+              href={rankingPath(locale, continent, country, ranking.meta.year)}
+              prefetch={false}
+              className="text-primary inline-flex items-center gap-1.5 text-sm font-medium hover:underline"
+            >
+              <Trophy className="h-4 w-4" aria-hidden="true" />
+              {tRankings('countryLink', { year: String(ranking.meta.year) })}
+            </Link>
+          </p>
         )}
 
         {/* The country's ranking guide, when one is configured and readable in this locale */}

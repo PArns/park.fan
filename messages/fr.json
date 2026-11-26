@@ -2110,7 +2110,8 @@
       "retiredLead": "{attraction} à {park} est fermé définitivement depuis le {date}.",
       "retiredWaits": "Avant, l’attente montait jusqu’à {minutes} minutes un jour de semaine ordinaire.",
       "metaDescriptionFactsFirst": "{attraction} à {park} : {facts}. Temps d’attente en direct et prévisions.",
-      "factTypicalPeak": "pic d’attente habituel {minutes} min"
+      "factTypicalPeak": "pic d’attente habituel {minutes} min",
+      "factRank": "{rank, selectordinal, one {#er} other {#e}} au classement des attentes {year}, {country}"
     },
     "continent": {
       "titleTemplate": "Parcs d’Attractions en {location} : Attente & Carte",
@@ -2197,6 +2198,11 @@
         "mobileQ": "Est-ce que park.fan fonctionne sur les smartphones ?",
         "mobileA": "Oui. park.fan s’ouvre dans le navigateur, sur téléphone, tablette ou ordinateur, sans application à installer. Dans le parc, tu y vois où la file est courte en ce moment. Si la page détecte que tu es sur place, les attractions les plus proches remontent en haut."
       }
+    },
+    "rankings": {
+      "title": "Attentes les plus longues {year} : {country}, classement des attractions",
+      "titleShort": "Attentes les plus longues {year} : {country}",
+      "description": "Les attractions aux attentes les plus longues en {year}, {country} : {top}. Pic habituel par attraction, mesuré chaque jour d’ouverture."
     }
   },
   "favorites": {
@@ -3375,7 +3381,9 @@
         "typicalPeak": "Pic habituel",
         "record": "Record",
         "minHeight": "Taille min."
-      }
+      },
+      "rank": "{rank, selectordinal, one {#er} other {#e}} des attentes les plus longues en {year}, {country}",
+      "rankLink": "Voir le classement"
     }
   },
   "planner": {
@@ -6747,5 +6755,21 @@
     "keyForecast": "Prévision",
     "normalSpan": "Moyenne des années passées pour ces {count} jours, pas une prévision",
     "rowLabel": "Météo à {park}"
+  },
+  "rankings": {
+    "h1": "Attentes les plus longues {year} : {country}",
+    "lead": "Classement des attractions selon leur pic d’attente habituel en {year} : {count, plural, one {# attraction} other {# attractions}} dans {parks, plural, one {# parc} other {# parcs}}",
+    "running": "L’année est en cours : mesures jusqu’au {date}. Le classement est recalculé chaque jour.",
+    "complete": "Mesures du 1er janvier au 31 décembre {year}.",
+    "colRank": "Rang",
+    "colRide": "Attraction",
+    "colPark": "Parc",
+    "colP90": "Pic",
+    "colP50": "Habituel",
+    "colDays": "Jours mesurés",
+    "minutes": "min",
+    "methodTitle": "Comment le classement est établi",
+    "method": "Une attraction entre au classement dès que son attente a été mesurée au moins {minDays} jours en {year}. Pour chaque heure d’ouverture de son parc, nous retenons l’attente habituelle (la médiane) et le pic (90 % des mesures étaient en dessous). L’ordre suit la moyenne annuelle du pic. Les jours où le parc était fermé ne comptent pas.",
+    "countryLink": "Attentes les plus longues {year}"
   }
 }

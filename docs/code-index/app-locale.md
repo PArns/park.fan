@@ -431,6 +431,14 @@ Route `/[locale]/login` (page).
 - `generateStaticParams` _function_
 - `generateMetadata` _function_
 
+### [`longest-wait-times/[continent]/[country]/[year]/page.tsx`](../../app/%5Blocale%5D/longest-wait-times/%5Bcontinent%5D/%5Bcountry%5D/%5Byear%5D/page.tsx)
+
+Route `/[locale]/longest-wait-times/[continent]/[country]/[year]` (page).
+
+- `default (RankingPage)` _component_
+- `generateMetadata` _function_
+- `dynamic` _const_: Rendered per request behind the edge cache, like the park sub-pages: the ranking is recomputed once a day and data-cached for a day (`CACHE_TTL.stats`), and the `CDN-Cache-Control` day in next.config.ts is the page's only cache.
+
 ### [`maintenance/page.tsx`](../../app/%5Blocale%5D/maintenance/page.tsx)
 
 Route `/[locale]/maintenance` (page).

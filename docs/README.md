@@ -54,6 +54,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [compare](features/compare.md) — /compare: the ?parks= parameter, ambiguous slugs, noindex, picker and table
 - [contribute](features/contribute.md) — Visitor photo contributions (/contribute): upload flow, Blob storage, moderation, hand-over into media
 - [developer-portal](features/developer-portal.md) — /developers and its dashboard: permissions of a data key, tiers, how the backlink must look, developer accounts, requests and their approval in /admin/api-keys
+- [wait-time-rankings](features/wait-time-rankings.md) — Year rankings of rides by wait per country: the page and its URLs, which year is quoted, the ride page's place, the sitemap, Parky's tool
 - [visitor-accounts](features/visitor-accounts.md) — /account: a visitor's own account, the sync of favorites, ridden rides and °C/°F, not linked yet
 - [crowd-calendar](features/crowd-calendar.md) — Crowd calendar route: month URLs and window, redirects, grid, day dialog, best-days chapter, #calendar forward
 - [glossary](features/glossary.md) — Glossary: files, URLs, adding a term and its checks, pages, SEO, ride-glossary link, 3-D player, blog use

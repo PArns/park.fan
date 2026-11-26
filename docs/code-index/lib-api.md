@@ -178,6 +178,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getPlanDay` _function_: One day of a park, ride by ride and hour by hour: the series the trip planner draws.
 
+### [`rankings.ts`](../../lib/api/rankings.ts)
+
+- `getCountryAttractionRanking` _function_: A country's ranking of one year, data-cached like the park statistics (the API recomputes it once a day). One request per country and year serves the ranking page and every ride page of that country, which read their own place from it.
+- `getCurrentRankingSeed` _function_: The ranking of `currentRankingYear` for a page that quotes it, bounded by `RANKING_SEED_TIMEOUT_MS`. `null` on a timeout as on a missing ranking: the quote is optional, the page is not.
+- `findRankedAttraction` _function_: A ride's entry in its country's ranking, or `null` when it is not among the listed rides.
+- `RANKING_MIN_INDEXED_RIDES` _const_: Below this many ranked rides a ranking page stays out of the index and the sitemap: a "ranking" of two rides is a stub a searcher should not land on. It still renders for the links to it.
+- `RANKING_PAGE_LIMIT` _const_: Rides the ranking page lists; the ride pages read their place from the same request.
+- Types: `RankedAttraction`, `AttractionRanking`
+
 ### [`relay.ts`](../../lib/api/relay.ts)
 
 - `relayToApi` _function_: Sends one request to the backend and hands its status and body back unchanged.

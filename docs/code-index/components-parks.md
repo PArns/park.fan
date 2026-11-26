@@ -601,6 +601,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkStatsAttractionsCard` _component_: Top-ten ranking as a table: typical and peak wait beside what the ride shows right now, the comparison the historical numbers exist for. A phone keeps only the peak column, since four numeric columns do not fit beside a ride name.
 - `useParkStatsAttractionsLabels` _hook_: The card's title and column labels from the messages, for the park page's stats section and the guide's frozen copy of the table alike, so the two cannot name a column differently.
+- `RANK_STYLES` _const_: The medal colours of places 1 to 3 in a ranked table; every other place takes the muted chip.
 
 ### [`park-stats-crowd-card.tsx`](../../components/parks/park-stats-crowd-card.tsx)
 

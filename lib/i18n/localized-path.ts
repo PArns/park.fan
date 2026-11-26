@@ -6,6 +6,7 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
+import { RANKING_SEGMENTS } from '@/lib/rankings/segments';
 import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 
 type SegmentFamily = Readonly<Record<string, string>>;
@@ -22,6 +23,7 @@ const TOP_LEVEL_FAMILIES: readonly SegmentFamily[] = [
   PLANNER_SEGMENTS,
   HOWTO_SEGMENTS,
   GLOSSARY_SEGMENTS,
+  RANKING_SEGMENTS,
   ...TRIP_REGION_FAMILIES,
 ];
 
