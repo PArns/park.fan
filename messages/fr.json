@@ -406,7 +406,9 @@
     "updatedOn": "Mis à jour le {date}",
     "nearby": "Près de chez vous",
     "preferences": "Préférences",
-    "assistantOpen": "Écrire à Parky"
+    "assistantOpen": "Écrire à Parky",
+    "rankings": "Attentes les plus longues",
+    "rankingsHint": "Les classements par pays"
   },
   "tripHub": {
     "nextDays": "30 prochains jours",
@@ -2202,7 +2204,9 @@
     "rankings": {
       "title": "Attentes les plus longues {year} : {country}, classement des attractions",
       "titleShort": "Attentes les plus longues {year} : {country}",
-      "description": "Les attractions aux attentes les plus longues en {year}, {country} : {top}. Pic habituel par attraction, mesuré chaque jour d’ouverture."
+      "description": "Les attractions aux attentes les plus longues en {year}, {country} : {top}. Pic habituel par attraction, mesuré chaque jour d’ouverture.",
+      "hubTitle": "Attentes les plus longues {year} : classements de tous les pays",
+      "hubDescription": "Les attractions aux attentes les plus longues en {year} dans {count, plural, one {# pays} other {# pays}}, un classement par pays selon le pic d’attente habituel."
     }
   },
   "favorites": {
@@ -6773,6 +6777,15 @@
     "countryLink": "Attentes les plus longues {year}",
     "parksTitle": "D’où viennent les longues files : les parcs des {count} places",
     "parkBest": "meilleure place : {rank}",
-    "parkRides": "{count, plural, one {# attraction} other {# attractions}}"
+    "parkRides": "{count, plural, one {# attraction} other {# attractions}}",
+    "hubH1": "Attentes les plus longues {year} : tous les pays",
+    "hubLead": "Pour chaque pays, les attractions aux attentes les plus longues en {year}, classées selon leur pic habituel",
+    "hubTop": "N° 1 : {ride} ({park}), {minutes} min",
+    "hubRides": "{count, plural, one {# attraction classée} other {# attractions classées}}",
+    "moreTitle": "Autres classements",
+    "moreCountries": "Autres pays {year}",
+    "moreYears": "{country} les autres années",
+    "hubLink": "Tous les pays d’un coup d’œil",
+    "statsLink": "Où se situe {park} dans son pays : classement {country} {year}"
   }
 }

@@ -8,10 +8,11 @@ import type { Locale } from '@/i18n/config';
 import { RouteMessages } from '@/i18n/route-messages';
 import {
   getCountryAttractionRanking,
+  getRankedCountriesSeed,
   RANKING_MIN_INDEXED_RIDES,
   type AttractionRanking,
 } from '@/lib/api/rankings';
-import { FIRST_RANKING_YEAR } from '@/lib/rankings/year';
+import { currentRankingYear, FIRST_RANKING_YEAR } from '@/lib/rankings/year';
 import { rankingPath } from '@/lib/rankings/segments';
 import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import { generateCountryBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
@@ -32,7 +33,8 @@ import { GlassCard } from '@/components/common/glass-card';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { AttractionRankingTable } from '@/components/rankings/attraction-ranking-table';
 import { RankingPodium } from '@/components/rankings/ranking-podium';
-import { RankingParks } from '@/components/rankings/ranking-parks';
+import { RankingParks, tallyParks } from '@/components/rankings/ranking-parks';
+import { MoreRankings } from '@/components/rankings/more-rankings';
 
 interface RankingPageProps {
   params: Promise<{ locale: string; continent: string; country: string; year: string }>;
@@ -121,6 +123,20 @@ export default async function RankingPage({ params }: RankingPageProps) {
   if (!loaded) notFound();
   const { year, ranking } = loaded;
 
+  // The way on: the other countries of this year and this country's other ranked years, from the
+  // data-cached requests their pages answer with, so no link leads to a 404.
+  const otherYears = Array.from(
+    { length: Math.max(0, currentRankingYear() - FIRST_RANKING_YEAR + 1) },
+    (_, i) => FIRST_RANKING_YEAR + i
+  ).filter((y) => y !== year);
+  const [rankedCountries, otherYearRankings] = await Promise.all([
+    getRankedCountriesSeed(year),
+    Promise.all(otherYears.map((y) => getCountryAttractionRanking(continent, country, y))),
+  ]);
+  const rankedYears = otherYears.filter(
+    (_, i) => (otherYearRankings[i]?.attractions.length ?? 0) > 0
+  );
+
   const t = await getTranslations('rankings');
   const tGeo = await getTranslations('geo');
   const tCommon = await getTranslations('common');
@@ -154,7 +170,7 @@ export default async function RankingPage({ params }: RankingPageProps) {
     : null;
 
   return (
-    <RouteMessages route="/longest-wait-times/[continent]/[country]/[year]">
+    <RouteMessages route="/parks/[continent]/[country]/longest-wait-times/[year]">
       <PageContainer>
         <BreadcrumbStructuredData
           breadcrumbs={breadcrumbs}
@@ -178,8 +194,9 @@ export default async function RankingPage({ params }: RankingPageProps) {
               <span className="block">
                 {t('lead', {
                   year: yearText,
+                  // What the page lists, not the whole ranking, which runs past the listed head.
                   count: ranking.attractions.length,
-                  parks: ranking.meta.parkCount,
+                  parks: tallyParks(ranking.attractions).length,
                 })}
               </span>
               <span className="mt-1 block">
@@ -210,6 +227,15 @@ export default async function RankingPage({ params }: RankingPageProps) {
             </p>
           </GlassCard>
         </section>
+
+        <MoreRankings
+          locale={locale}
+          continent={continent}
+          country={country}
+          year={year}
+          countries={rankedCountries ?? []}
+          years={rankedYears}
+        />
       </PageContainer>
     </RouteMessages>
   );

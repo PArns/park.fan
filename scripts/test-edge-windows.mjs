@@ -76,9 +76,13 @@ const ROUTES = {
     url: (l) => `/${l}/${PARK}/${PARK_KIDS_SEGMENTS[l]}`,
     rule: (source, l) => source.endsWith(`/:park/${PARK_KIDS_SEGMENTS[l]}`),
   },
-  'longest-wait-times/[continent]/[country]/[year]': {
-    url: (l) => `/${l}/${RANKING_SEGMENTS[l]}/europe/germany/2026`,
-    rule: (source, l) => source.endsWith(`/${RANKING_SEGMENTS[l]}/:continent/:country/:year`),
+  '[country]/longest-wait-times/[year]': {
+    url: (l) => `/${l}/parks/europe/germany/${RANKING_SEGMENTS[l]}/2026`,
+    rule: (source, l) => source.endsWith(`/:country/${RANKING_SEGMENTS[l]}/:year`),
+  },
+  'parks/longest-wait-times': {
+    url: (l) => `/${l}/parks/${RANKING_SEGMENTS[l]}`,
+    rule: (source, l) => source.endsWith(`/parks/${RANKING_SEGMENTS[l]}`),
   },
 };
 

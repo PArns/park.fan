@@ -431,14 +431,6 @@ Route `/[locale]/login` (page).
 - `generateStaticParams` _function_
 - `generateMetadata` _function_
 
-### [`longest-wait-times/[continent]/[country]/[year]/page.tsx`](../../app/%5Blocale%5D/longest-wait-times/%5Bcontinent%5D/%5Bcountry%5D/%5Byear%5D/page.tsx)
-
-Route `/[locale]/longest-wait-times/[continent]/[country]/[year]` (page).
-
-- `default (RankingPage)` _component_
-- `generateMetadata` _function_
-- `dynamic` _const_: Rendered per request behind the edge cache, like the park sub-pages: the ranking is recomputed once a day and data-cached for a day (`CACHE_TTL.stats`), and the `CDN-Cache-Control` day in next.config.ts is the page's only cache.
-
 ### [`maintenance/page.tsx`](../../app/%5Blocale%5D/maintenance/page.tsx)
 
 Route `/[locale]/maintenance` (page).
@@ -535,6 +527,14 @@ Route `/[locale]/parks/[continent]/[country]/[city]` (page).
 - `generateMetadata` _function_
 - `generateStaticParams` _function_: Only the cities that have a page, the ones with more than one park; a single-park city 308s to its park, and prerendering it would build a redirect. The URL still renders on demand (`dynamicParams`) and still 308s.
 
+### [`parks/[continent]/[country]/longest-wait-times/[year]/page.tsx`](../../app/%5Blocale%5D/parks/%5Bcontinent%5D/%5Bcountry%5D/longest-wait-times/%5Byear%5D/page.tsx)
+
+Route `/[locale]/parks/[continent]/[country]/longest-wait-times/[year]` (page).
+
+- `default (RankingPage)` _component_
+- `generateMetadata` _function_
+- `dynamic` _const_: Rendered per request behind the edge cache, like the park sub-pages: the ranking is recomputed once a day and data-cached for a day (`CACHE_TTL.stats`), and the `CDN-Cache-Control` day in next.config.ts is the page's only cache.
+
 ### [`parks/[continent]/[country]/page.tsx`](../../app/%5Blocale%5D/parks/%5Bcontinent%5D/%5Bcountry%5D/page.tsx)
 
 Route `/[locale]/parks/[continent]/[country]` (page).
@@ -550,6 +550,14 @@ Route `/[locale]/parks/[continent]` (page).
 - `default (ContinentPage)` _component_
 - `generateStaticParams` _function_
 - `generateMetadata` _function_
+
+### [`parks/longest-wait-times/page.tsx`](../../app/%5Blocale%5D/parks/longest-wait-times/page.tsx)
+
+Route `/[locale]/parks/longest-wait-times` (page).
+
+- `default (RankingHubPage)` _component_
+- `generateMetadata` _function_
+- `dynamic` _const_: Rendered per request behind the edge cache, like the country rankings it lists: each of them is data-cached for a day, and the `CDN-Cache-Control` day in next.config.ts is the page's own cache.
 
 ### [`parks/page.tsx`](../../app/%5Blocale%5D/parks/page.tsx)
 

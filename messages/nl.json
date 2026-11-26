@@ -406,7 +406,9 @@
     "updatedOn": "Bijgewerkt {date}",
     "nearby": "Bij jou in de buurt",
     "preferences": "Instellingen",
-    "assistantOpen": "Chat met Parky"
+    "assistantOpen": "Chat met Parky",
+    "rankings": "Langste wachttijden",
+    "rankingsHint": "De ranglijsten per land"
   },
   "tripHub": {
     "nextDays": "Komende 30 dagen",
@@ -2202,7 +2204,9 @@
     "rankings": {
       "title": "Langste wachttijden {year}: {country} – ranglijst van attracties",
       "titleShort": "Langste wachttijden {year}: {country}",
-      "description": "Welke attracties in {year} de langste wachttijden hadden, {country}: {top}. Gebruikelijke piek per attractie, gemeten op elke openingsdag."
+      "description": "Welke attracties in {year} de langste wachttijden hadden, {country}: {top}. Gebruikelijke piek per attractie, gemeten op elke openingsdag.",
+      "hubTitle": "Langste wachttijden {year}: ranglijsten van alle landen",
+      "hubDescription": "De attracties met de langste wachttijden van {year} in {count, plural, one {# land} other {# landen}}, per land een ranglijst op gebruikelijke piekwachttijd."
     }
   },
   "favorites": {
@@ -6773,6 +6777,15 @@
     "countryLink": "Langste wachttijden {year}",
     "parksTitle": "Waar de lange rijen staan: de parken van de {count} plaatsen",
     "parkBest": "beste plaats {rank}",
-    "parkRides": "{count, plural, one {# attractie} other {# attracties}}"
+    "parkRides": "{count, plural, one {# attractie} other {# attracties}}",
+    "hubH1": "Langste wachttijden {year}: alle landen",
+    "hubLead": "Per land de attracties met de langste wachttijden van {year}, gerangschikt op hun gebruikelijke piek",
+    "hubTop": "Nr. 1: {ride} ({park}), {minutes} min.",
+    "hubRides": "{count, plural, one {# attractie} other {# attracties}} in de ranglijst",
+    "moreTitle": "Meer ranglijsten",
+    "moreCountries": "Andere landen {year}",
+    "moreYears": "{country} in andere jaren",
+    "hubLink": "Alle landen op een rij",
+    "statsLink": "Hoe {park} het doet in het hele land: ranglijst {country} {year}"
   }
 }

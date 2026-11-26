@@ -98,7 +98,6 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/impressum': [],
   '/login': ['account', 'accountAuth'],
-  '/longest-wait-times/[continent]/[country]/[year]': ['parks'],
   '/maintenance': [],
   '/news': ['nearby', 'parkCard'],
   '/news/[slug]': [
@@ -206,6 +205,8 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'pushAlerts.showDialog',
     'share',
   ],
+  '/parks/[continent]/[country]/longest-wait-times/[year]': ['parks'],
+  '/parks/longest-wait-times': [],
   '/parks/six-flags': ['nearby', 'parkCard'],
   '/parks/universal': ['nearby', 'parkCard'],
   '/parky': [],

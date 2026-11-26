@@ -56,6 +56,9 @@ import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkStatsMethod } from '@/components/parks/park-stats-method';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkLiveLink } from '@/components/parks/park-live-link';
+import { Link } from '@/i18n/navigation';
+import { getCurrentRankingSeed } from '@/lib/api/rankings';
+import { rankingPath } from '@/lib/rankings/segments';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { eventSeasonsNearToday } from '@/lib/parks/park-season-days';
@@ -206,6 +209,10 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
   // about the hourly window cannot describe a table this page did not draw.
   const showHourly = hasReadableHourlyProfile(profile);
 
+  const [ranking, tRankings] = await Promise.all([
+    getCurrentRankingSeed(continent, country),
+    getTranslations('rankings'),
+  ]);
   const [seasons, t, tParks, tStats, tOverview, tDataset, tGeo, tCommon, tNav] = await Promise.all([
     getParkSeasons(continent, country, city, parkSlug),
     getTranslations('parks.statsPage'),
@@ -431,6 +438,24 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
           parkName={parkName}
           articleDe={park.nameArticleDe}
         />
+
+        {/* From this park's own ranking to its country's, linked only once that ranks a ride. */}
+        {ranking && ranking.attractions.length > 0 && (
+          <p className="mt-6">
+            <Link
+              href={rankingPath(locale, continent, country, ranking.meta.year)}
+              prefetch={false}
+              className="text-primary inline-flex text-sm font-medium underline-offset-4 hover:underline"
+            >
+              {tRankings('statsLink', {
+                park: parkName,
+                country: countryName,
+                year: String(ranking.meta.year),
+              })}
+              <span aria-hidden="true">&nbsp;→</span>
+            </Link>
+          </p>
+        )}
 
         {/* Where to go next. Three questions this page deliberately does not answer: what the
           queues are doing right now, what a particular date looks like, and what to ride in which

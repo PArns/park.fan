@@ -406,7 +406,9 @@
     "updatedOn": "Aktualisiert {date}",
     "nearby": "In deiner Nähe",
     "preferences": "Einstellungen",
-    "assistantOpen": "Mit Parky schreiben"
+    "assistantOpen": "Mit Parky schreiben",
+    "rankings": "Längste Wartezeiten",
+    "rankingsHint": "Die Ranglisten je Land"
   },
   "tripHub": {
     "nextDays": "Nächste 30 Tage",
@@ -2202,7 +2204,9 @@
     "rankings": {
       "title": "Längste Wartezeiten {year}: {country} – Rangliste der Attraktionen",
       "titleShort": "Längste Wartezeiten {year}: {country}",
-      "description": "Welche Attraktionen {year} die längsten Wartezeiten hatten, {country}: {top}. Typische Spitze je Bahn, gemessen an jedem Öffnungstag."
+      "description": "Welche Attraktionen {year} die längsten Wartezeiten hatten, {country}: {top}. Typische Spitze je Bahn, gemessen an jedem Öffnungstag.",
+      "hubTitle": "Längste Wartezeiten {year}: Ranglisten aller Länder",
+      "hubDescription": "Die Attraktionen mit den längsten Wartezeiten {year} in {count, plural, one {# Land} other {# Ländern}}, je Land eine Rangliste nach typischer Spitzenwartezeit."
     }
   },
   "favorites": {
@@ -6773,6 +6777,15 @@
     "countryLink": "Längste Wartezeiten {year}",
     "parksTitle": "Woher die langen Warteschlangen kommen: die Parks der {count} Plätze",
     "parkBest": "bester Platz {rank}",
-    "parkRides": "{count, plural, one {# Bahn} other {# Bahnen}}"
+    "parkRides": "{count, plural, one {# Bahn} other {# Bahnen}}",
+    "hubH1": "Längste Wartezeiten {year}: alle Länder",
+    "hubLead": "Für jedes Land die Attraktionen mit den längsten Wartezeiten {year}, geordnet nach ihrer typischen Spitze",
+    "hubTop": "Platz 1: {ride} ({park}), {minutes} Min.",
+    "hubRides": "{count, plural, one {# Attraktion} other {# Attraktionen}} in der Rangliste",
+    "moreTitle": "Weitere Ranglisten",
+    "moreCountries": "Andere Länder {year}",
+    "moreYears": "{country} in anderen Jahren",
+    "hubLink": "Alle Länder im Überblick",
+    "statsLink": "Wie {park} im Landesvergleich dasteht: Rangliste {country} {year}"
   }
 }

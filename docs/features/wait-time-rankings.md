@@ -8,12 +8,18 @@ the year. The order is the one the park's own wait-time record prints, across al
 
 ## The page
 
-`/<locale>/<segment>/<continent>/<country>/<year>`, segments in `RANKING_SEGMENTS`
-(`lib/rankings/segments.ts`): `longest-wait-times`, `laengste-wartezeiten`, `plus-longues-attentes`,
-`attese-piu-lunghe`, `langste-wachttijden`, `esperas-mas-largas`. The English slug is the route
-folder (`app/[locale]/longest-wait-times/[continent]/[country]/[year]`); `next.config.ts` rewrites
-the other five onto it, 308s a locale on another locale's segment to its own and a bare segment to
-its locale, and gives every segment a day's `CDN-Cache-Control` (`pnpm test:edge-windows`).
+`/<locale>/parks/<continent>/<country>/<segment>/<year>`, under the country page like a park's
+sub-pages sit under the park, segments in `RANKING_SEGMENTS` (`lib/rankings/segments.ts`):
+`longest-wait-times`, `laengste-wartezeiten`, `plus-longues-attentes`, `attese-piu-lunghe`,
+`langste-wachttijden`, `esperas-mas-largas`. The English slug is the route folder
+(`app/[locale]/parks/[continent]/[country]/longest-wait-times/[year]`); `next.config.ts` rewrites the
+other five onto it and gives every segment a day's `CDN-Cache-Control` (`pnpm test:edge-windows`).
+A city slugged like a segment would be shadowed, as at park level. `localizedPath` respells the
+segment in a link written in English, and `unprefixedPathRedirect` sends a path without a locale to
+the segment's own.
+
+The rankings first went live at `/<locale>/<segment>/<continent>/<country>/<year>` for about an hour
+on 2026-11-26 and moved under the country page; the old paths have no redirect.
 
 `force-dynamic` behind the edge window, like the park sub-pages: the ranking is recomputed once a
 day and data-cached for a day (`CACHE_TTL.stats`). A year before `FIRST_RANKING_YEAR` (2026), after
@@ -31,6 +37,19 @@ the running year, or a country with no ranked ride answers 404. Below `RANKING_M
 
 The year 2025 holds a few days of history and ranks nothing, which is why `FIRST_RANKING_YEAR` is 2026.
 
+## The hub
+
+`/<locale>/parks/<segment>` (`app/[locale]/parks/longest-wait-times`), under the parks hub: every
+country ranked for the quoted year as a card with its first place and how many rides it lists,
+longest lists first (`getRankedCountries`), with `BreadcrumbList` and `ItemList`. 404 while no
+country is ranked. The header's „Mehr" band and the phone sheet link it (`MoreMenuLinks`).
+
+## Links between the rankings
+
+Under each ranking, `MoreRankings` links the hub, the other countries of the same year and the
+country's other ranked years. The lists come from the data-cached requests the pages answer with,
+so no link is a 404; the countries wait at most 3 s (`getRankedCountriesSeed`).
+
 ## Which year the site quotes
 
 `currentRankingYear()` (`lib/rankings/year.ts`): the running year from March on, the previous one
@@ -42,11 +61,14 @@ same rule (`defaultRankingYear` in the API).
 
 - **The country page** links „Längste Wartezeiten 2026" under its header, once the ranking ranks a
   ride.
+- **A park's wait-time record** (`…/durchschnittliche-wartezeiten`) links its country's ranking
+  under the method.
+- **The header's „Mehr" band and the phone sheet** link the hub.
 - **A ride page** in the top `RIDE_RANK_SHOWN` (10) of its country names its place in the data card
   („Platz 1 der längsten Wartezeiten 2026, Deutschland", with a link) and in its meta description
   (`factRank`, right after the ride type). Both read `getRideRank` (`lib/rankings/ride-rank.ts`).
 - **The sitemap** lists every year from 2026 to the quoted one, per country, gated like the
-  `noindex`.
+  `noindex`, and the hub.
 - **Parky** answers „längste Wartezeiten in Deutschland" and „welchen Platz hat Taron" with
   `get_wait_ranking` and links the page.
 

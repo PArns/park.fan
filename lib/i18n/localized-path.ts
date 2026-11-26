@@ -23,7 +23,6 @@ const TOP_LEVEL_FAMILIES: readonly SegmentFamily[] = [
   PLANNER_SEGMENTS,
   HOWTO_SEGMENTS,
   GLOSSARY_SEGMENTS,
-  RANKING_SEGMENTS,
   ...TRIP_REGION_FAMILIES,
 ];
 
@@ -66,6 +65,13 @@ export function localizedPath(path: string, locale: string): string {
     parts[1] = respell(parts[1], TOP_LEVEL_FAMILIES, locale);
     if (parts[1] === 'parks' && parts.length >= 7) {
       parts[6] = respell(parts[6], PARK_SUBPAGE_FAMILIES, locale);
+    }
+    // The rankings: the hub `/parks/<segment>` and a country's `/parks/<c>/<country>/<segment>/<year>`.
+    if (parts[1] === 'parks' && parts.length === 3) {
+      parts[2] = respell(parts[2], [RANKING_SEGMENTS], locale);
+    }
+    if (parts[1] === 'parks' && parts.length === 6) {
+      parts[4] = respell(parts[4], [RANKING_SEGMENTS], locale);
     }
     // A region's best-time pages, `/<region segment>/<best-time segment>[/<resort>]`.
     if (TRIP_REGION_FAMILIES.some((f) => f[locale] === parts[1]) && parts.length >= 3) {

@@ -23,6 +23,24 @@ const testCases = [
     expected: `/fr${park}/calendrier-temps-attente/2026/5`,
   },
   {
+    name: 'a German country ranking goes to /de, whoever asks',
+    path: '/parks/europe/germany/laengste-wartezeiten/2026',
+    accept: true,
+    expected: '/de/parks/europe/germany/laengste-wartezeiten/2026',
+  },
+  {
+    name: 'the Dutch rankings hub goes to /nl',
+    path: '/parks/langste-wachttijden',
+    accept: true,
+    expected: '/nl/parks/langste-wachttijden',
+  },
+  {
+    name: 'a continent page is left to next-intl',
+    path: '/parks/europe',
+    accept: true,
+    expected: null,
+  },
+  {
     name: 'a German calendar hub goes to /de without Accept-Language too',
     path: `${park}/wartezeiten-kalender`,
     accept: false,

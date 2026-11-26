@@ -14,7 +14,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`segments.ts`](../../lib/rankings/segments.ts)
 
 - `rankingPath` _function_: Locale-relative path to a country's ranking of one year; `@/i18n/navigation`'s `Link` adds the locale.
-- `RANKING_SEGMENTS` _const_: Locale → localized first URL segment of the year rankings of rides by wait, `/de/laengste-wartezeiten/europe/germany/2026`. The words are the phrase a visitor types.
+- `rankingHubPath` _function_: Locale-relative path to the rankings' hub, every country that has one.
+- `RANKING_SEGMENTS` _const_: Locale → localized URL segment of the year rankings of rides by wait: a country's ranking under its country page, `/de/parks/europe/germany/laengste-wartezeiten/2026`, and the hub under the parks hub, `/de/parks/laengste-wartezeiten`.
 - `RANKING_CANONICAL_SEGMENT` _const_: The canonical route-folder segment (English), what the app router matches.
 
 ### [`year.ts`](../../lib/rankings/year.ts)

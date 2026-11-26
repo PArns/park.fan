@@ -587,24 +587,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       });
     }
-    // Year rankings of rides: a locale on another locale's segment goes to its own, and the bare
-    // segment to its locale, as with the guide above.
-    const rankingAll = Object.values(RANKING_SEGMENTS);
-    for (const [locale, correct] of Object.entries(RANKING_SEGMENTS)) {
-      for (const wrong of rankingAll) {
-        if (wrong === correct) continue;
-        rules.push({
-          source: `/${locale}/${wrong}/:path*`,
-          destination: `/${locale}/${correct}/:path*`,
-          permanent: true,
-        });
-      }
-      rules.push({
-        source: `/${correct}/:path*`,
-        destination: `/${locale}/${correct}/:path*`,
-        permanent: true,
-      });
-    }
     // Same for the planner: one page, six segments, and a visitor who lands on
     // the wrong one — a shared link, a guessed URL — is sent to theirs rather
     // than served a second copy at a URL that then competes with it.
@@ -760,14 +742,21 @@ const nextConfig: NextConfig = {
 
     rules.push(...tripRegionRewrites(LIVE_TRIP_REGIONS));
 
-    // Year rankings: localized segments served by the canonical route folder
-    // (app/[locale]/longest-wait-times). EN needs no rewrite.
+    // A country's year rankings (app/[locale]/parks/[continent]/[country]/longest-wait-times) and
+    // their hub (app/[locale]/parks/longest-wait-times), served from the English route folders. EN
+    // needs no rewrite. Keep in step with `lib/rankings/segments.ts`.
     for (const [locale, segment] of Object.entries(RANKING_SEGMENTS)) {
       if (segment === RANKING_CANONICAL_SEGMENT) continue;
-      rules.push({
-        source: `/${locale}/${segment}/:path*`,
-        destination: `/${locale}/${RANKING_CANONICAL_SEGMENT}/:path*`,
-      });
+      rules.push(
+        {
+          source: `/${locale}/parks/:continent/:country/${segment}/:year`,
+          destination: `/${locale}/parks/:continent/:country/${RANKING_CANONICAL_SEGMENT}/:year`,
+        },
+        {
+          source: `/${locale}/parks/${segment}`,
+          destination: `/${locale}/parks/${RANKING_CANONICAL_SEGMENT}`,
+        }
+      );
     }
 
     // "How park.fan works" guide: serve localized segments via the canonical
@@ -1411,13 +1400,16 @@ const nextConfig: NextConfig = {
           },
         ],
       })),
-      ...Object.entries(RANKING_SEGMENTS).map(([locale, segment]) => ({
-        // A country's YEAR RANKING of rides by wait. A day, like the wait-time record below: the
-        // ranking is recomputed once a day by the backend, the route renders per request, and
-        // this is its only cache.
-        source: `/${locale}/${segment}/:continent/:country/:year`,
-        headers: edgeCache(CONTENT_WINDOW),
-      })),
+      ...Object.entries(RANKING_SEGMENTS).flatMap(([locale, segment]) => [
+        // A country's YEAR RANKING of rides by wait, and the rankings' hub. A day, like the
+        // wait-time record below: the rankings are recomputed once a day by the backend, the
+        // routes render per request, and this is their only cache.
+        {
+          source: `/${locale}/parks/:continent/:country/${segment}/:year`,
+          headers: edgeCache(CONTENT_WINDOW),
+        },
+        { source: `/${locale}/parks/${segment}`, headers: edgeCache(CONTENT_WINDOW) },
+      ]),
       ...Object.entries(parkStatsHeaderSegments).map(([locale, segment]) => ({
         // A park's WAIT-TIME RECORD. A day, which is both the longest window on any park URL and
         // the least eventful: nothing on this page is live, the aggregate behind it is recomputed

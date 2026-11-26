@@ -406,7 +406,9 @@
     "updatedOn": "Actualizado el {date}",
     "nearby": "Cerca de ti",
     "preferences": "Ajustes",
-    "assistantOpen": "Escribir a Parky"
+    "assistantOpen": "Escribir a Parky",
+    "rankings": "Esperas más largas",
+    "rankingsHint": "Las clasificaciones por país"
   },
   "tripHub": {
     "nextDays": "Próximos 30 días",
@@ -2202,7 +2204,9 @@
     "rankings": {
       "title": "Esperas más largas {year}: {country}, clasificación de atracciones",
       "titleShort": "Esperas más largas {year}: {country}",
-      "description": "Qué atracciones tuvieron las esperas más largas en {year}, {country}: {top}. Punta habitual por atracción, medida cada día de apertura."
+      "description": "Qué atracciones tuvieron las esperas más largas en {year}, {country}: {top}. Punta habitual por atracción, medida cada día de apertura.",
+      "hubTitle": "Esperas más largas {year}: clasificaciones de todos los países",
+      "hubDescription": "Las atracciones con las esperas más largas de {year} en {count, plural, one {# país} other {# países}}, una clasificación por país según la espera punta habitual."
     }
   },
   "favorites": {
@@ -6773,6 +6777,15 @@
     "countryLink": "Esperas más largas {year}",
     "parksTitle": "De dónde vienen las colas largas: los parques de los {count} puestos",
     "parkBest": "mejor puesto: {rank}",
-    "parkRides": "{count, plural, one {# atracción} other {# atracciones}}"
+    "parkRides": "{count, plural, one {# atracción} other {# atracciones}}",
+    "hubH1": "Esperas más largas {year}: todos los países",
+    "hubLead": "Para cada país, las atracciones con las esperas más largas de {year}, ordenadas por su punta habitual",
+    "hubTop": "N.º 1: {ride} ({park}), {minutes} min",
+    "hubRides": "{count, plural, one {# atracción clasificada} other {# atracciones clasificadas}}",
+    "moreTitle": "Más clasificaciones",
+    "moreCountries": "Otros países {year}",
+    "moreYears": "{country} en otros años",
+    "hubLink": "Todos los países de un vistazo",
+    "statsLink": "Cómo queda {park} en su país: clasificación {country} {year}"
   }
 }
