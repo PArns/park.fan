@@ -384,6 +384,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 
 - `getAttractionDisplayStatus` _function_: Effective display status of an attraction: every attraction is CLOSED while the park is not operating; otherwise the STANDBY queue status beats the attraction's own field.
 - `getLiveAttractionStatus` _function_: The status a visitor is shown for one attraction, from the live payload.
+- `isAttractionOpenNow` _function_: Whether a ride counts as open now: strictly OPERATING, and UNKNOWN is not it, since a count or a filter promising "open" must not answer with rides nobody has heard from.
 - `getStandbyWait` _function_: STANDBY wait of an attraction in minutes, or null when it has no standby queue. Says nothing about whether the ride is open: pair it with `getAttractionDisplayStatus`.
 - `groupAttractionsByLand` _function_: Groups attractions by land (`fallbackName` when none), each land sorted by name.
 - `sortByShortestWait` _function_: The park's rides in one flat list, shortest standby wait first. A ride without a readable wait (shut, or no standby reading) goes after every ride that has one, in name order like the lands.

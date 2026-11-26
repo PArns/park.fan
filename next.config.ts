@@ -11,6 +11,7 @@ import {
 } from './lib/api/cdn-cache-headers';
 import { LICENSE_LINK_HEADER } from './lib/agents/licensing';
 import { HOWTO_CANONICAL_SEGMENT, HOWTO_SEGMENTS } from './lib/howto/segments';
+import { RANKING_CANONICAL_SEGMENT, RANKING_SEGMENTS } from './lib/rankings/segments';
 import { LIVE_TRIP_REGIONS } from './lib/trip-regions/registry';
 import {
   tripRegionHeaders,
@@ -586,6 +587,24 @@ const nextConfig: NextConfig = {
         permanent: true,
       });
     }
+    // Year rankings of rides: a locale on another locale's segment goes to its own, and the bare
+    // segment to its locale, as with the guide above.
+    const rankingAll = Object.values(RANKING_SEGMENTS);
+    for (const [locale, correct] of Object.entries(RANKING_SEGMENTS)) {
+      for (const wrong of rankingAll) {
+        if (wrong === correct) continue;
+        rules.push({
+          source: `/${locale}/${wrong}/:path*`,
+          destination: `/${locale}/${correct}/:path*`,
+          permanent: true,
+        });
+      }
+      rules.push({
+        source: `/${correct}/:path*`,
+        destination: `/${locale}/${correct}/:path*`,
+        permanent: true,
+      });
+    }
     // Same for the planner: one page, six segments, and a visitor who lands on
     // the wrong one — a shared link, a guessed URL — is sent to theirs rather
     // than served a second copy at a URL that then competes with it.
@@ -740,6 +759,16 @@ const nextConfig: NextConfig = {
     }
 
     rules.push(...tripRegionRewrites(LIVE_TRIP_REGIONS));
+
+    // Year rankings: localized segments served by the canonical route folder
+    // (app/[locale]/longest-wait-times). EN needs no rewrite.
+    for (const [locale, segment] of Object.entries(RANKING_SEGMENTS)) {
+      if (segment === RANKING_CANONICAL_SEGMENT) continue;
+      rules.push({
+        source: `/${locale}/${segment}/:path*`,
+        destination: `/${locale}/${RANKING_CANONICAL_SEGMENT}/:path*`,
+      });
+    }
 
     // "How park.fan works" guide: serve localized segments via the canonical
     // route folder (app/[locale]/how-park-fan-works). EN needs no rewrite.
@@ -1381,6 +1410,13 @@ const nextConfig: NextConfig = {
             value: 'public, s-maxage=86400, stale-while-revalidate=3600',
           },
         ],
+      })),
+      ...Object.entries(RANKING_SEGMENTS).map(([locale, segment]) => ({
+        // A country's YEAR RANKING of rides by wait. A day, like the wait-time record below: the
+        // ranking is recomputed once a day by the backend, the route renders per request, and
+        // this is its only cache.
+        source: `/${locale}/${segment}/:continent/:country/:year`,
+        headers: edgeCache(CONTENT_WINDOW),
       })),
       ...Object.entries(parkStatsHeaderSegments).map(([locale, segment]) => ({
         // A park's WAIT-TIME RECORD. A day, which is both the longest window on any park URL and

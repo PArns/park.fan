@@ -34,7 +34,11 @@ import { parkPayloadHeadline, useParkHeadline } from '@/lib/hooks/use-park-headl
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
-import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
+import {
+  getAttractionDisplayStatus,
+  getStandbyWait,
+  isAttractionOpenNow,
+} from '@/lib/utils/park-utils';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
@@ -183,6 +187,13 @@ export function ParkTodayPanel({
   // they aggregate to a wall of zeros. See docs/rules/parks-we-cannot-read.md.
   const stats = waitsReadable ? park.analytics?.statistics : undefined;
   const occupancy = waitsReadable ? park.analytics?.occupancy : undefined;
+  // Counted over the ride list below, not taken from `analytics.statistics`: the API's total leaves
+  // out rides the list shows, and the panel stood „29 von 35" next to „Alle 40 Attraktionen".
+  const attractionCount = park.attractions?.length ?? 0;
+  const openAttractionCount = useMemo(
+    () => (park.attractions ?? []).filter((a) => isAttractionOpenNow(a, park.status)).length,
+    [park.attractions, park.status]
+  );
   // The Ø and the level as the newest reading on the page has them, so the panel says what the
   // favourites band above it says.
   const headline = useParkHeadline(park.id, parkPayloadHeadline(park));
@@ -651,8 +662,8 @@ export function ParkTodayPanel({
                     and in a half-width cell the number stood in a column of its own. */}
                 <span>
                   {t.rich('attractionsOpenOf', {
-                    open: stats.operatingAttractions,
-                    total: stats.totalAttractions,
+                    open: openAttractionCount,
+                    total: attractionCount,
                     strong: (c) => <strong className="text-foreground font-semibold">{c}</strong>,
                   })}
                 </span>
@@ -857,7 +868,7 @@ export function ParkTodayPanel({
                   href={chapterHref('attractions')}
                   className={cn('text-primary text-left text-xs hover:underline', PHONE_HIT_AREA)}
                 >
-                  {t('allAttractionsLink', { count: park.attractions?.length ?? 0 })}
+                  {t('allAttractionsLink', { count: attractionCount })}
                 </a>
                 {rideAlertAttractions.length > 0 && (
                   <RideAlertsEntryButton

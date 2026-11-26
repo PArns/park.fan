@@ -2110,7 +2110,8 @@
       "retiredLead": "{attraction} {inPark} ist seit dem {date} dauerhaft geschlossen.",
       "retiredWaits": "Davor dauerte das Anstehen an normalen Wochentagen bis zu {minutes} Minuten.",
       "metaDescriptionFactsFirst": "{attraction} {inPark}: {facts}. Live-Wartezeiten und Prognosen.",
-      "factTypicalPeak": "Wartezeit-Spitze meist {minutes} Min."
+      "factTypicalPeak": "Wartezeit-Spitze meist {minutes} Min.",
+      "factRank": "Platz {rank} der Wartezeiten-Rangliste {year}, {country}"
     },
     "continent": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",
@@ -2172,6 +2173,11 @@
         "waitTimeQ": "Wie lange ist die Wartezeit für {attraction}?",
         "waitTimeA": "Die Wartezeiten für {attraction} variieren je nach Tag und Saison. Aktuelle Wartezeiten findest du auf park.fan.",
         "waitTimeTypicalA": "{shape, select, split {An einem normalen Wochentag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten, am Wochenende bei etwa {weekend} Minuten.} same {An einem normalen Tag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten, unter der Woche wie am Wochenende.} weekday {An einem normalen Wochentag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten.} other {An einem normalen Wochenendtag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekend} Minuten.}}{hasRecord, select, yes { Am längsten war die Wartezeit in {days, plural, =365 {den letzten 12 Monaten} other {den letzten # Tagen}} am {date}: {record} Minuten.} other {}}",
+        "speedQ": "Wie schnell ist {attraction}?",
+        "speedA": "{attraction} erreicht bis zu {speed}.",
+        "speedHeight": "Der höchste Punkt liegt bei {height}.",
+        "speedLength": "Die Strecke ist {length} lang.",
+        "speedDuration": "Eine Fahrt dauert {duration} Minuten.",
         "singleRiderQ": "Hat {attraction} eine Single Rider Warteschlange?",
         "singleRiderA": "Ja. Wer allein fährt, kann bei {attraction} über die Single-Rider-Warteschlange anstehen und füllt dann freie Plätze.",
         "singleRiderGuide": "Mehr dazu im Guide:",
@@ -2192,6 +2198,11 @@
         "mobileQ": "Funktioniert park.fan auch auf dem Smartphone?",
         "mobileA": "Ja. park.fan läuft im Browser, auf Handy, Tablet und Rechner, eine App musst du nicht installieren. Im Park kannst du damit nachsehen, wo die Warteschlange gerade kurz ist. Erkennt die Seite, dass du im Park stehst, rücken die nächstgelegenen Attraktionen nach oben."
       }
+    },
+    "rankings": {
+      "title": "Längste Wartezeiten {year}: {country} – Rangliste der Attraktionen",
+      "titleShort": "Längste Wartezeiten {year}: {country}",
+      "description": "Welche Attraktionen {year} die längsten Wartezeiten hatten, {country}: {top}. Typische Spitze je Bahn, gemessen an jedem Öffnungstag."
     }
   },
   "favorites": {
@@ -3370,7 +3381,9 @@
         "typicalPeak": "Typische Spitze",
         "record": "Rekord",
         "minHeight": "Mindestgröße"
-      }
+      },
+      "rank": "Platz {rank} der längsten Wartezeiten {year}, {country}",
+      "rankLink": "Zur Rangliste"
     }
   },
   "planner": {
@@ -6742,5 +6755,24 @@
     "keyForecast": "Vorhersage",
     "normalSpan": "Durchschnitt vergangener Jahre für diese {count} Tage, keine Vorhersage",
     "rowLabel": "Wetter in {park}"
+  },
+  "rankings": {
+    "h1": "Längste Wartezeiten {year}: {country}",
+    "lead": "Rangliste der Attraktionen nach ihrer typischen Spitzenwartezeit {year}: {count, plural, one {# Attraktion} other {# Attraktionen}} aus {parks, plural, one {# Park} other {# Parks}}",
+    "running": "Das Jahr läuft noch: gemessen bis {date}. Die Rangliste wird jeden Tag neu berechnet.",
+    "complete": "Gemessen vom 1. Januar bis 31. Dezember {year}.",
+    "colRank": "Platz",
+    "colRide": "Attraktion",
+    "colPark": "Park",
+    "colP90": "Spitze",
+    "colP50": "Typisch",
+    "colDays": "Messtage",
+    "minutes": "Min.",
+    "methodTitle": "So entsteht die Rangliste",
+    "method": "In die Rangliste kommt jede Attraktion, deren Wartezeit {year} an mindestens {minDays} Tagen gemessen wurde. Für jede Stunde, in der ihr Park geöffnet hatte, nehmen wir die typische Wartezeit (den Median) und die Spitze (90 % der Messwerte lagen darunter). Geordnet wird nach dem Jahresmittel der Spitze. Tage, an denen der Park geschlossen war, zählen nicht mit.",
+    "countryLink": "Längste Wartezeiten {year}",
+    "parksTitle": "Woher die langen Warteschlangen kommen: die Parks der {count} Plätze",
+    "parkBest": "bester Platz {rank}",
+    "parkRides": "{count, plural, one {# Bahn} other {# Bahnen}}"
   }
 }

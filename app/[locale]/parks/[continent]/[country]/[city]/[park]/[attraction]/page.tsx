@@ -72,6 +72,7 @@ import { RideNavTiles } from '@/components/parks/ride-nav-tiles';
 import { resolveRideProfile, rideProfileRenders } from '@/lib/glossary/ride-profile';
 import { buildRideSummary, rideSummaryRenders } from '@/lib/parks/ride-summary';
 import { RideDataCard } from '@/components/parks/ride-data-card';
+import { getRideRank, type RideRank } from '@/lib/rankings/ride-rank';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { AttractionHistorySections } from '@/components/parks/attraction-history-sections';
@@ -231,6 +232,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     articleDe: park?.nameArticleDe,
   });
   const typeTerm = await rideTypeTerm(attraction, locale as Locale);
+  const rideRank = await getRideRank(locale, continent, country, parkSlug, attractionSlug);
   const description = attractionDescription(
     attraction,
     attractionName,
@@ -238,7 +240,8 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     park?.nameArticleDe,
     locale as Locale,
     t,
-    typeTerm?.name
+    typeTerm?.name,
+    rideRank
   );
 
   return {
@@ -326,12 +329,13 @@ function attractionDescription(
   articleDe: string | null | undefined,
   locale: Locale,
   t: Parameters<typeof buildAttractionDescription>[3],
-  typeName: string | undefined
+  typeName: string | undefined,
+  rank: RideRank | null
 ): string {
   return buildAttractionDescription(
     attractionName,
     parkName,
-    buildAttractionFacts(attraction, t, typeName),
+    buildAttractionFacts(attraction, t, typeName, rank),
     t,
     { locale, articleDe }
   );
@@ -522,6 +526,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // The data card's content, from the same park payload as everything above: no request of its own.
   const typeTerm = await rideTypeTerm(attraction, locale as Locale);
   const rideSummary = buildRideSummary(attraction, typeTerm, locale);
+  const rideRank = await getRideRank(locale, continent, country, parkSlug, attractionSlug);
 
   const tFaqItems = await getTranslations('seo.faq.attraction');
   const tRideProfile = await getTranslations('attraction.rideProfile');
@@ -591,7 +596,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             park.nameArticleDe,
             locale as Locale,
             tSeo,
-            typeTerm?.name
+            typeTerm?.name,
+            rideRank
           )}
           ogImageUrl={ogImageUrl}
         />
@@ -838,6 +844,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 locale={locale}
                 summary={rideSummary}
                 typeTerm={typeTerm}
+                rank={rideRank}
               />
             )}
 

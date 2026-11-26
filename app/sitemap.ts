@@ -27,6 +27,9 @@ import {
 } from '@/lib/trip-regions/paths';
 import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import { DEVELOPERS_PATH } from '@/lib/developers/paths';
+import { getCountryAttractionRanking, RANKING_MIN_INDEXED_RIDES } from '@/lib/api/rankings';
+import { rankingPath } from '@/lib/rankings/segments';
+import { currentRankingYear, FIRST_RANKING_YEAR } from '@/lib/rankings/year';
 
 const BASE_URL = SITE_URL;
 
@@ -370,6 +373,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       });
     }
   }
+
+  // Each country's year rankings, from the first ranked year to the one the site links, gated on
+  // the count the page's own `noindex` uses, so the sitemap lists no stub and no 404. The probes are
+  // the data-cached requests the pages read. No `lastModified`: a running year's ranking moves every
+  // day in every country at once.
+  const rankingYears = Array.from(
+    { length: currentRankingYear() - FIRST_RANKING_YEAR + 1 },
+    (_, i) => FIRST_RANKING_YEAR + i
+  );
+  const rankingScopes = geo.continents.flatMap((continent) =>
+    continent.countries.flatMap((country) =>
+      rankingYears.map((year) => ({ continent: continent.slug, country: country.slug, year }))
+    )
+  );
+  const rankings = await Promise.all(
+    rankingScopes.map((scope) =>
+      getCountryAttractionRanking(scope.continent, scope.country, scope.year)
+    )
+  );
+  rankingScopes.forEach(({ continent, country, year }, i) => {
+    if ((rankings[i]?.attractions.length ?? 0) < RANKING_MIN_INDEXED_RIDES) return;
+    const alternates = buildAlternates((locale) => rankingPath(locale, continent, country, year));
+    for (const locale of locales) {
+      routes.push({
+        url: `${BASE_URL}/${locale}${rankingPath(locale, continent, country, year)}`,
+        alternates,
+      });
+    }
+  });
 
   // Attraction pages live in `/sitemap-attractions.xml`, without hreflang: with the alternate set
   // they would push this file past the sitemap size limits.

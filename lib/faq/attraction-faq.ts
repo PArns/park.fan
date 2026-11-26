@@ -3,12 +3,13 @@ import { parkArgs } from '@/lib/i18n/park-phrase';
 import type { Locale } from '@/i18n/config';
 import { stripNewPrefix } from '@/lib/utils';
 import { buildRideSummary } from '@/lib/parks/ride-summary';
+import { formatDuration, formatSpeed, formatTrackLength } from '@/lib/utils/temperature';
 
-export type AttractionFaqIconName = 'MapPin' | 'Clock' | 'Users' | 'Zap';
+export type AttractionFaqIconName = 'MapPin' | 'Clock' | 'Gauge' | 'Users' | 'Zap';
 
 export interface AttractionFaqItem {
   /** Which question this is, so the visible FAQ can add to one answer without matching its text. */
-  key: 'location' | 'waitTime' | 'singleRider' | 'paidQueue';
+  key: 'location' | 'waitTime' | 'speed' | 'singleRider' | 'paidQueue';
   iconName: AttractionFaqIconName;
   question: string;
   answer: string;
@@ -18,7 +19,8 @@ type T = (key: string, values?: Record<string, string | number | Date | undefine
 
 /**
  * Builds a ride page's FAQ: where the ride is, its typical and record waits when the API has them,
- * and single rider or paid queue questions when the ride has one. Shared by the visible FAQ and its
+ * how fast it goes when its top speed is on file, and single rider or paid queue questions when the
+ * ride has one. Shared by the visible FAQ and its
  * `FAQPage` JSON-LD, so the two cannot differ.
  */
 export function buildAttractionFaqItems(
@@ -73,6 +75,33 @@ export function buildAttractionFaqItems(
       iconName: 'Clock',
       question: t('waitTimeQ', { attraction: attractionName }),
       answer: t('waitTimeA', { attraction: attractionName }),
+    });
+  }
+
+  // „wie schnell ist taron" is how people search a coaster's figures, and a question in those words
+  // is what Google lifts into an answer box. Metric, like the meta description: JSON-LD has no
+  // visitor whose unit it could follow.
+  const measured = attraction.rideProfile?.stats;
+  if (measured?.topSpeedKmh != null) {
+    const details = [
+      measured.heightM != null
+        ? t('speedHeight', { height: formatTrackLength(measured.heightM, 'C') })
+        : null,
+      measured.lengthM != null
+        ? t('speedLength', { length: formatTrackLength(measured.lengthM, 'C') })
+        : null,
+      measured.durationSeconds != null
+        ? t('speedDuration', { duration: formatDuration(measured.durationSeconds) })
+        : null,
+    ].filter((sentence): sentence is string => sentence !== null);
+    items.push({
+      key: 'speed',
+      iconName: 'Gauge',
+      question: t('speedQ', { attraction: attractionName }),
+      answer: [
+        t('speedA', { attraction: attractionName, speed: formatSpeed(measured.topSpeedKmh, 'C') }),
+        ...details,
+      ].join(' '),
     });
   }
 

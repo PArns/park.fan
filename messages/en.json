@@ -2110,7 +2110,8 @@
       "retiredLead": "{attraction} at {park} has been closed permanently since {date}.",
       "retiredWaits": "Before that, a normal weekday queue peaked at {minutes} minutes.",
       "metaDescriptionFactsFirst": "{attraction} at {park}: {facts}. Live wait times and forecasts.",
-      "factTypicalPeak": "queues usually peak at {minutes} min"
+      "factTypicalPeak": "queues usually peak at {minutes} min",
+      "factRank": "rank {rank} for waits in {country}, {year}"
     },
     "continent": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
@@ -2172,6 +2173,11 @@
         "waitTimeQ": "How long is the wait for {attraction}?",
         "waitTimeA": "Wait times for {attraction} vary by day and season. Check live wait times on park.fan.",
         "waitTimeTypicalA": "{shape, select, split {On a typical weekday the queue for {attraction} peaks at about {weekday} minutes, at weekends at about {weekend} minutes.} same {On a typical day the queue for {attraction} peaks at about {weekday} minutes, on weekdays and at weekends alike.} weekday {On a typical weekday the queue for {attraction} peaks at about {weekday} minutes.} other {On a typical weekend day the queue for {attraction} peaks at about {weekend} minutes.}}{hasRecord, select, yes { The longest wait in {days, plural, =365 {the past 12 months} other {the past # days}} was {record} minutes, on {date}.} other {}}",
+        "speedQ": "How fast is {attraction}?",
+        "speedA": "{attraction} reaches up to {speed}.",
+        "speedHeight": "Its highest point is {height}.",
+        "speedLength": "The track is {length} long.",
+        "speedDuration": "A ride lasts {duration} minutes.",
         "singleRiderQ": "Does {attraction} have a Single Rider line?",
         "singleRiderA": "Yes. If you ride alone, you can use the single rider line at {attraction} and fill an empty seat.",
         "singleRiderGuide": "More in our guide:",
@@ -2192,6 +2198,11 @@
         "mobileQ": "Does park.fan work on smartphones?",
         "mobileA": "Yes. park.fan runs in the browser on a phone, a tablet or a computer, so there is no app to install. In the park you can use it to see where the queue is short right now. When the site can tell you are inside a park, the nearest rides move to the top."
       }
+    },
+    "rankings": {
+      "title": "Longest wait times {year}: {country} – ride ranking",
+      "titleShort": "Longest wait times {year}: {country}",
+      "description": "Which rides had the longest waits in {year}, {country}: {top}. Typical peak per ride, measured on every opening day."
     }
   },
   "favorites": {
@@ -3370,7 +3381,9 @@
         "typicalPeak": "Typical peak",
         "record": "Record",
         "minHeight": "Min. height"
-      }
+      },
+      "rank": "Rank {rank} for the longest waits of {year}, {country}",
+      "rankLink": "See the ranking"
     }
   },
   "planner": {
@@ -6742,5 +6755,24 @@
     "keyForecast": "Forecast",
     "normalSpan": "Average of past years for these {count} days, not a forecast",
     "rowLabel": "Weather in {park}"
+  },
+  "rankings": {
+    "h1": "Longest wait times {year}: {country}",
+    "lead": "Rides ranked by their typical peak wait in {year}: {count, plural, one {# ride} other {# rides}} from {parks, plural, one {# park} other {# parks}}",
+    "running": "The year is still running: measured up to {date}. The ranking is recalculated every day.",
+    "complete": "Measured from 1 January to 31 December {year}.",
+    "colRank": "Rank",
+    "colRide": "Ride",
+    "colPark": "Park",
+    "colP90": "Peak",
+    "colP50": "Typical",
+    "colDays": "Days measured",
+    "minutes": "min",
+    "methodTitle": "How the ranking is made",
+    "method": "A ride enters the ranking once its wait was measured on at least {minDays} days in {year}. For every hour its park was open we take the typical wait (the median) and the peak (90 % of readings were below it). Rides are ordered by the year's average peak. Days the park was closed do not count.",
+    "countryLink": "Longest wait times {year}",
+    "parksTitle": "Where the long queues are: the parks of the {count} places",
+    "parkBest": "best place {rank}",
+    "parkRides": "{count, plural, one {# ride} other {# rides}}"
   }
 }

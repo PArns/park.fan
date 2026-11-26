@@ -44,6 +44,15 @@ export function getLiveAttractionStatus(
 }
 
 /**
+ * Whether a ride counts as open now: strictly OPERATING, and UNKNOWN is not it, since a count or a
+ * filter promising "open" must not answer with rides nobody has heard from. The „open only" filter
+ * and the park panel's „n of m open" both count with it, so the two numbers on one page agree.
+ */
+export function isAttractionOpenNow(attraction: ParkAttraction, parkStatus?: ParkStatus): boolean {
+  return getLiveAttractionStatus(attraction, parkStatus) === 'OPERATING';
+}
+
+/**
  * STANDBY wait of an attraction in minutes, or null when it has no standby queue. Says nothing
  * about whether the ride is open: pair it with `getAttractionDisplayStatus`. Every surface reads
  * the wait here so there is one answer to „which queue do people mean".

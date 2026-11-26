@@ -98,6 +98,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/impressum': [],
   '/login': ['account', 'accountAuth'],
+  '/longest-wait-times/[continent]/[country]/[year]': ['parks'],
   '/maintenance': [],
   '/news': ['nearby', 'parkCard'],
   '/news/[slug]': [

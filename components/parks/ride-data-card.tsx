@@ -18,6 +18,8 @@ import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-pane
 import { RiderHeight, Speed, TrackLength } from '@/components/common/unit-display';
 import { getListFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
+import { Link as LocaleLink } from '@/i18n/navigation';
+import type { RideRank } from '@/lib/rankings/ride-rank';
 import type { RideSummary, RideSummaryMetric, RideSummaryType } from '@/lib/parks/ride-summary';
 
 /** A figure inside the running text: the fact carries the weight, the sentence around it the sense. */
@@ -37,6 +39,8 @@ interface RideDataCardProps {
   locale: string;
   summary: RideSummary;
   typeTerm: RideSummaryType | null;
+  /** The ride's place in its country's wait ranking, when it is high enough to quote. */
+  rank?: RideRank | null;
 }
 
 /**
@@ -49,6 +53,7 @@ export async function RideDataCard({
   locale,
   summary,
   typeTerm,
+  rank,
 }: RideDataCardProps) {
   const t = await getTranslations('attraction.dataCard');
   const tProfile = await getTranslations('attraction.rideProfile');
@@ -123,6 +128,21 @@ export async function RideDataCard({
               </span>
             ))}
           </p>
+          {rank && (
+            <p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+              <Trophy className="h-4 w-4 shrink-0 text-amber-400" aria-hidden="true" />
+              <span className="text-foreground font-medium">
+                {t('rank', { rank: rank.rank, year: rank.year, country: rank.country })}
+              </span>
+              <LocaleLink
+                href={rank.href}
+                prefetch={false}
+                className="text-primary hover:underline"
+              >
+                {t('rankLink')}
+              </LocaleLink>
+            </p>
+          )}
         </div>
         {metrics.length > 0 && (
           <div className={cn(PANEL_CELL, 'bg-primary/[0.04]')}>

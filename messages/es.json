@@ -2110,7 +2110,8 @@
       "retiredLead": "{attraction} en {park} está cerrado definitivamente desde el {date}.",
       "retiredWaits": "Antes, la espera llegaba a {minutes} minutos en un día normal entre semana.",
       "metaDescriptionFactsFirst": "{attraction} en {park}: {facts}. Tiempos de espera en directo y previsiones.",
-      "factTypicalPeak": "pico de espera habitual {minutes} min"
+      "factTypicalPeak": "pico de espera habitual {minutes} min",
+      "factRank": "puesto {rank} en la clasificación de esperas {year}, {country}"
     },
     "continent": {
       "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",
@@ -2172,6 +2173,11 @@
         "waitTimeQ": "¿Cuánto tiempo de espera hay para {attraction}?",
         "waitTimeA": "Depende del día y de la temporada. El tiempo de espera en vivo de {attraction} está en park.fan.",
         "waitTimeTypicalA": "{shape, select, split {Un día laborable normal, la espera de {attraction} llega a unos {weekday} minutos en su pico, y a unos {weekend} minutos el fin de semana.} same {Un día normal, la espera de {attraction} llega a unos {weekday} minutos en su pico, igual entre semana que el fin de semana.} weekday {Un día normal entre semana, la espera de {attraction} llega a unos {weekday} minutos en su pico.} other {Un fin de semana normal, la espera de {attraction} llega a unos {weekend} minutos en su pico.}}{hasRecord, select, yes { La espera más larga en {days, plural, =365 {los últimos 12 meses} other {los últimos # días}} fue de {record} minutos, el {date}.} other {}}",
+        "speedQ": "¿Qué velocidad alcanza {attraction}?",
+        "speedA": "{attraction} alcanza hasta {speed}.",
+        "speedHeight": "Su punto más alto está a {height}.",
+        "speedLength": "El recorrido mide {length}.",
+        "speedDuration": "Un viaje dura {duration} minutos.",
         "singleRiderQ": "¿Tiene {attraction} una fila Single Rider?",
         "singleRiderA": "Sí. En {attraction}, quien va solo puede usar la fila Single Rider y ocupa los asientos que quedan libres.",
         "singleRiderGuide": "Más en nuestra guía:",
@@ -2192,6 +2198,11 @@
         "mobileQ": "¿Funciona park.fan en teléfonos inteligentes?",
         "mobileA": "Sí. park.fan funciona en el navegador del móvil, de la tableta y del ordenador, sin instalar ninguna app. Dentro del parque puedes mirar dónde hay poca cola en ese momento. Si la página detecta que estás en el parque, las atracciones más cercanas suben al principio."
       }
+    },
+    "rankings": {
+      "title": "Esperas más largas {year}: {country}, clasificación de atracciones",
+      "titleShort": "Esperas más largas {year}: {country}",
+      "description": "Qué atracciones tuvieron las esperas más largas en {year}, {country}: {top}. Punta habitual por atracción, medida cada día de apertura."
     }
   },
   "favorites": {
@@ -3370,7 +3381,9 @@
         "typicalPeak": "Pico habitual",
         "record": "Récord",
         "minHeight": "Altura mín."
-      }
+      },
+      "rank": "Puesto {rank} en las esperas más largas de {year}, {country}",
+      "rankLink": "Ver la clasificación"
     }
   },
   "planner": {
@@ -6742,5 +6755,24 @@
     "keyForecast": "Pronóstico",
     "normalSpan": "Media de años anteriores para estos {count} días, no es un pronóstico",
     "rowLabel": "El tiempo en {park}"
+  },
+  "rankings": {
+    "h1": "Esperas más largas {year}: {country}",
+    "lead": "Clasificación de las atracciones según su espera punta habitual en {year}: {count, plural, one {# atracción} other {# atracciones}} en {parks, plural, one {# parque} other {# parques}}",
+    "running": "El año sigue en curso: medido hasta el {date}. La clasificación se recalcula cada día.",
+    "complete": "Medido del 1 de enero al 31 de diciembre de {year}.",
+    "colRank": "Puesto",
+    "colRide": "Atracción",
+    "colPark": "Parque",
+    "colP90": "Punta",
+    "colP50": "Habitual",
+    "colDays": "Días medidos",
+    "minutes": "min",
+    "methodTitle": "Cómo se elabora la clasificación",
+    "method": "Una atracción entra en la clasificación cuando su espera se ha medido al menos {minDays} días en {year}. Para cada hora en que su parque estuvo abierto tomamos la espera habitual (la mediana) y la punta (el 90 % de las mediciones quedó por debajo). El orden sigue la media anual de la punta. Los días en que el parque estuvo cerrado no cuentan.",
+    "countryLink": "Esperas más largas {year}",
+    "parksTitle": "De dónde vienen las colas largas: los parques de los {count} puestos",
+    "parkBest": "mejor puesto: {rank}",
+    "parkRides": "{count, plural, one {# atracción} other {# atracciones}}"
   }
 }

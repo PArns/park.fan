@@ -6,11 +6,7 @@ import type { ParkAttraction, ParkShow, ParkStatus } from '@/lib/api/types';
 import { isInSeason } from '@/lib/utils/season';
 import { sortShowsByNextStart } from '@/lib/utils/show-order';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
-import {
-  getLiveAttractionStatus,
-  getStandbyWait,
-  sortByShortestWait,
-} from '@/lib/utils/park-utils';
+import { isAttractionOpenNow, getStandbyWait, sortByShortestWait } from '@/lib/utils/park-utils';
 import { canRideAtHeight, riderHeightStops } from '@/lib/utils/rider-height';
 import { coveredOfferReady, isCovered } from '@/lib/utils/covered-rides';
 import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
@@ -57,15 +53,6 @@ interface UseAttractionFilterOptions {
 }
 
 const NO_CLOSED_RIDES: readonly ClosedRideSearchItem[] = [];
-
-/**
- * Whether a ride counts as open for the "open now" toggle.
- *
- * Strictly OPERATING, and UNKNOWN is not it: a filter promising "open" must not answer with rides
- * nobody has heard from.
- */
-const isOpenNow = (attraction: ParkAttraction, parkStatus?: ParkStatus): boolean =>
-  getLiveAttractionStatus(attraction, parkStatus) === 'OPERATING';
 
 /** Whether a ride is one you may get off wet. Absent/null is unknown, never "dry". */
 const mayGetWet = (attraction: ParkAttraction): boolean => attraction.mayGetWet === true;
@@ -208,7 +195,7 @@ export function useAttractionFilter({
           a.isHeadliner &&
           (deferredShowOffSeasonAttractions || isInSeason(a)) &&
           (deferredRiderHeight === null || canRideAtHeight(a, deferredRiderHeight)) &&
-          (!deferredOnlyOpen || isOpenNow(a, parkStatus)) &&
+          (!deferredOnlyOpen || isAttractionOpenNow(a, parkStatus)) &&
           matchesWet(a, deferredWetMode) &&
           (!deferredOnlyFastPass || hasFastPass(a)) &&
           (!deferredOnlySingleRider || hasSingleRider(a)) &&
@@ -298,7 +285,7 @@ export function useAttractionFilter({
     () =>
       Object.values(attractionsByLand)
         .flat()
-        .filter((a) => isOpenNow(a, parkStatus)).length,
+        .filter((a) => isAttractionOpenNow(a, parkStatus)).length,
     [attractionsByLand, parkStatus]
   );
   const wetAttractionCount = useMemo(
@@ -386,7 +373,7 @@ export function useAttractionFilter({
     for (const [land, attractions] of Object.entries(heightFilteredByLand)) {
       const filtered = attractions.filter(
         (a) =>
-          (!deferredOnlyOpen || isOpenNow(a, parkStatus)) &&
+          (!deferredOnlyOpen || isAttractionOpenNow(a, parkStatus)) &&
           matchesWet(a, deferredWetMode) &&
           (!deferredOnlyFastPass || hasFastPass(a)) &&
           (!deferredOnlySingleRider || hasSingleRider(a)) &&

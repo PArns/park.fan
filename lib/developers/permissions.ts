@@ -94,7 +94,13 @@ export const PERMISSION_ROUTES: Record<ApiPermission, readonly string[]> = {
   'rides.details': [`${PARK_ROUTE}/attractions`, `${PARK_ROUTE}/attractions/{ride}`],
   'rides.profiles': ['/v1/glossary/terms/counts', '/v1/glossary/terms/{term}/attractions'],
   'stats.live': [],
-  'stats.history': [`${PARK_ROUTE}/stats`, `${PARK_ROUTE}/stats/hourly`, `${PARK_ROUTE}/stats/day`],
+  'stats.history': [
+    `${PARK_ROUTE}/stats`,
+    `${PARK_ROUTE}/stats/hourly`,
+    `${PARK_ROUTE}/stats/day`,
+    '/v1/rankings/attractions/{continent}',
+    '/v1/rankings/attractions/{continent}/{country}',
+  ],
   'stats.typical-waits': [],
   'stats.platform': [
     '/v1/analytics/realtime',

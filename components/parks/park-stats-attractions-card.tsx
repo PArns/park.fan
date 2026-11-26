@@ -47,7 +47,8 @@ interface ParkStatsAttractionsCardProps {
   bare?: boolean;
 }
 
-const RANK_STYLES: Record<number, string> = {
+/** The medal colours of places 1 to 3 in a ranked table; every other place takes the muted chip. */
+export const RANK_STYLES: Record<number, string> = {
   1: 'bg-amber-400/20 text-amber-400 ring-1 ring-amber-400/30',
   2: 'bg-zinc-400/20 text-zinc-400 ring-1 ring-zinc-400/30',
   3: 'bg-orange-600/20 text-orange-500 ring-1 ring-orange-500/30',

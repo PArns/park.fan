@@ -2110,7 +2110,8 @@
       "retiredLead": "{attraction} in {park} is sinds {date} definitief gesloten.",
       "retiredWaits": "Daarvoor duurde het wachten op een gewone doordeweekse dag tot {minutes} minuten.",
       "metaDescriptionFactsFirst": "{attraction} in {park}: {facts}. Actuele wachttijden en prognoses.",
-      "factTypicalPeak": "wachtrij piekt meestal rond {minutes} min"
+      "factTypicalPeak": "wachtrij piekt meestal rond {minutes} min",
+      "factRank": "plaats {rank} in de wachttijdenranglijst {year}, {country}"
     },
     "continent": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
@@ -2172,6 +2173,11 @@
         "waitTimeQ": "Hoe lang is de wachttijd voor {attraction}?",
         "waitTimeA": "Dat hangt af van de dag en het seizoen. De live wachttijd van {attraction} staat op park.fan, elke vijf minuten bijgewerkt.",
         "waitTimeTypicalA": "{shape, select, split {Op een gewone doordeweekse dag piekt de wachtrij voor {attraction} rond {weekday} minuten, in het weekend rond {weekend} minuten.} same {Op een gewone dag piekt de wachtrij voor {attraction} rond {weekday} minuten, doordeweeks net als in het weekend.} weekday {Op een gewone doordeweekse dag piekt de wachtrij voor {attraction} rond {weekday} minuten.} other {Op een gewone weekenddag piekt de wachtrij voor {attraction} rond {weekend} minuten.}}{hasRecord, select, yes { De langste wachttijd in {days, plural, =365 {de afgelopen 12 maanden} other {de afgelopen # dagen}} was {record} minuten, op {date}.} other {}}",
+        "speedQ": "Hoe snel is {attraction}?",
+        "speedA": "{attraction} haalt tot {speed}.",
+        "speedHeight": "Het hoogste punt ligt op {height}.",
+        "speedLength": "De baan is {length} lang.",
+        "speedDuration": "Een rit duurt {duration} minuten.",
         "singleRiderQ": "Heeft {attraction} een Single Rider rij?",
         "singleRiderA": "Ja. Wie alleen komt, kan bij {attraction} via die rij de lege stoelen opvullen.",
         "singleRiderGuide": "Meer in onze gids:",
@@ -2192,6 +2198,11 @@
         "mobileQ": "Werkt park.fan ook op smartphones?",
         "mobileA": "Ja. park.fan werkt in de browser op telefoon, tablet en computer, een app hoef je niet te installeren. In het park kun je erop nakijken waar de rij op dat moment kort is. Merkt de site dat je in het park bent, dan schuiven de dichtstbijzijnde attracties naar boven."
       }
+    },
+    "rankings": {
+      "title": "Langste wachttijden {year}: {country} – ranglijst van attracties",
+      "titleShort": "Langste wachttijden {year}: {country}",
+      "description": "Welke attracties in {year} de langste wachttijden hadden, {country}: {top}. Gebruikelijke piek per attractie, gemeten op elke openingsdag."
     }
   },
   "favorites": {
@@ -3370,7 +3381,9 @@
         "typicalPeak": "Gewone piek",
         "record": "Record",
         "minHeight": "Min. lengte"
-      }
+      },
+      "rank": "Plaats {rank} bij de langste wachttijden van {year}, {country}",
+      "rankLink": "Naar de ranglijst"
     }
   },
   "planner": {
@@ -6742,5 +6755,24 @@
     "keyForecast": "Voorspelling",
     "normalSpan": "Gemiddelde van eerdere jaren voor deze {count} dagen, geen voorspelling",
     "rowLabel": "Weer in {park}"
+  },
+  "rankings": {
+    "h1": "Langste wachttijden {year}: {country}",
+    "lead": "Attracties gerangschikt op hun gebruikelijke piekwachttijd in {year}: {count, plural, one {# attractie} other {# attracties}} uit {parks, plural, one {# park} other {# parken}}",
+    "running": "Het jaar loopt nog: gemeten tot {date}. De ranglijst wordt elke dag opnieuw berekend.",
+    "complete": "Gemeten van 1 januari tot 31 december {year}.",
+    "colRank": "Plaats",
+    "colRide": "Attractie",
+    "colPark": "Park",
+    "colP90": "Piek",
+    "colP50": "Gebruikelijk",
+    "colDays": "Meetdagen",
+    "minutes": "min.",
+    "methodTitle": "Zo ontstaat de ranglijst",
+    "method": "Een attractie komt in de ranglijst zodra haar wachttijd in {year} op minstens {minDays} dagen is gemeten. Voor elk uur dat haar park open was, nemen we de gebruikelijke wachttijd (de mediaan) en de piek (90 % van de metingen lag eronder). De volgorde volgt het jaargemiddelde van de piek. Dagen waarop het park dicht was, tellen niet mee.",
+    "countryLink": "Langste wachttijden {year}",
+    "parksTitle": "Waar de lange rijen staan: de parken van de {count} plaatsen",
+    "parkBest": "beste plaats {rank}",
+    "parkRides": "{count, plural, one {# attractie} other {# attracties}}"
   }
 }

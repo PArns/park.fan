@@ -3,7 +3,7 @@ import { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 import type { Locale } from '@/i18n/config';
 import { getPathname } from '@/i18n/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { MapPin, Clock, Users, Zap, HelpCircle } from 'lucide-react';
+import { MapPin, Clock, Gauge, Users, Zap, HelpCircle } from 'lucide-react';
 import { ChapterPanel } from '@/components/common/chapter-panel';
 import { FaqAccordion } from '@/components/faq/faq-accordion';
 import { stripNewPrefix } from '@/lib/utils';
@@ -16,6 +16,7 @@ import type { LucideIcon } from 'lucide-react';
 const ICON_MAP: Record<AttractionFaqIconName, LucideIcon> = {
   MapPin,
   Clock,
+  Gauge,
   Users,
   Zap,
 };
