@@ -574,6 +574,13 @@ export function DatenschutzEN() {
           redacts coordinates in its logs. Without your permission the app sends no location.
         </p>
         <p>
+          Without location permission, the server estimates your approximate place from your IP
+          address, which it receives with every request anyway, for the park suggestions of the
+          welcome and the park row on the Start page. It uses the estimate only for that answer and
+          stores neither the place nor the IP address. The legal basis is our legitimate interest in
+          showing you fitting parks (Art. 6(1)(f) GDPR).
+        </p>
+        <p>
           The legal basis is your consent (Art. 6(1)(a) GDPR). You withdraw it in your iPhone's
           settings under Privacy &amp; Security → Location Services → park.fan.
         </p>
