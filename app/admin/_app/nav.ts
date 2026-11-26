@@ -31,6 +31,7 @@ import {
   Route,
   Search,
   Server,
+  Smartphone,
   Snowflake,
   Ticket,
   Toilet,
@@ -443,6 +444,14 @@ const NAV_GROUPS: NavGroup[] = [
         description: 'APNs-Schlüssel hochladen, bei Apple prüfen, Testmitteilung senden',
         minRole: 'owner',
         keywords: ['apns', 'apple', 'p8', 'schlüssel', 'mitteilungen', 'notification', 'app'],
+      },
+      {
+        href: '/admin/app-version',
+        label: 'App-Version',
+        icon: Smartphone,
+        description: 'Mindestversion für iOS (und Android, vorbereitet): ältere Apps starten nicht',
+        minRole: 'owner',
+        keywords: ['app', 'version', 'minimum', 'update', 'sperren', 'ios', 'android'],
       },
       {
         href: '/admin/actions',

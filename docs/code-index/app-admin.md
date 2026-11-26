@@ -407,6 +407,12 @@ Route `/admin/api-keys` (page).
 
 - `default (ApiKeysPage)` _component_: The data API keys: who may read what on api.park.fan, permission by permission. Owner only, because a key is a licensing decision rather than an editorial one; the backend enforces the same.
 
+### [`app-version/page.tsx`](../../app/admin/app-version/page.tsx)
+
+Route `/admin/app-version` (page).
+
+- `default (AppVersionPage)` _component_: The minimum app version per platform: an app below it shows a block screen instead of starting. The sample fields ask the API what an app of that version would meet.
+
 ### [`assistant/_components/parky-elements-panel.tsx`](../../app/admin/assistant/_components/parky-elements-panel.tsx)
 
 - `ParkyElementsPanel` _component_: Parky's elements on the site over 30 days: per element and kind, how often the pressable part was on screen for a visitor Parky shows for, how often it was pressed, and the share; then which links in his answers were followed.
