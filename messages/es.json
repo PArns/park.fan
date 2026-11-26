@@ -2517,11 +2517,11 @@
     "description": "Información legal y aviso para park.fan"
   },
   "appPage": {
-    "metaTitle": "park.fan para iPhone: tiempos de espera, calendario de afluencia y planificador",
-    "metaDescription": "La app de park.fan te muestra los tiempos de espera en directo y los días tranquilos en un calendario, y prepara contigo tu día en el parque. Dentro del parque aparece en la pantalla bloqueada. Gratis, sin cuenta, para iOS 26.",
+    "metaTitle": "App park.fan para iPhone: tiempos de espera y afluencia",
+    "metaDescription": "La app park.fan para iPhone: esperas en directo, días tranquilos en el calendario de afluencia y planificador. Gratis, sin cuenta, iOS 26, ya en beta.",
     "title": "park.fan para iPhone",
-    "headline": "Tiempos de espera, afluencia y tu plan en una sola app",
-    "lead": "En casa te enseña los días con poca gente, y en el parque las atracciones donde la cola es corta ahora mismo",
+    "headline": "park.fan en tu bolsillo",
+    "lead": "Más loopings, menos esperas. La app conoce los días tranquilos y en el parque te enseña dónde la cola es corta ahora mismo",
     "status": "Beta pública en TestFlight, de momento con 50 plazas",
     "requirement": "Para iPhone con iOS 26 o posterior, también el iPhone Duo",
     "storeAction": "Descargar en el App Store",

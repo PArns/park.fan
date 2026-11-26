@@ -2517,11 +2517,11 @@
     "description": "Legal information and imprint for park.fan"
   },
   "appPage": {
-    "metaTitle": "park.fan for iPhone: wait times, crowd calendar and day planner",
-    "metaDescription": "The park.fan app shows you live wait times and the quiet days in a calendar, and plans your park day with you. In the park, it sits on your Lock Screen. Free, no account, for iOS 26.",
+    "metaTitle": "park.fan app for iPhone: wait times and crowd calendar",
+    "metaDescription": "The park.fan iPhone app: live wait times, quiet days in the crowd calendar and a day planner. Free, no account, iOS 26 or later, now in beta.",
     "title": "park.fan for iPhone",
-    "headline": "Wait times, crowds and your plan in one app",
-    "lead": "At home it shows you the days when parks are quiet, and in the park the rides where the queue is short right now",
+    "headline": "park.fan in your pocket",
+    "lead": "More thrills, less waiting. The app knows the quiet days, and in the park it shows you where the queue is short right now",
     "status": "Public beta on TestFlight, currently with 50 places",
     "requirement": "For iPhone with iOS 26 or later, iPhone Duo included",
     "storeAction": "Get it on the App Store",

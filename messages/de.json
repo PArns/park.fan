@@ -2517,11 +2517,11 @@
     "description": "Rechtliche Informationen und Impressum für park.fan"
   },
   "appPage": {
-    "metaTitle": "park.fan für iPhone: Wartezeiten, Andrang-Kalender und Tagesplaner",
-    "metaDescription": "Die App von park.fan zeigt dir die Wartezeiten live, im Kalender die ruhigen Tage und plant deinen Parktag mit dir. Im Park steht er auf dem Sperrbildschirm. Kostenlos, ohne Konto, für iOS 26.",
+    "metaTitle": "park.fan-App für iPhone: Wartezeiten und Andrang-Kalender",
+    "metaDescription": "Die park.fan-App fürs iPhone: Wartezeiten live, ruhige Tage im Andrang-Kalender und ein Tagesplaner. Kostenlos, ohne Konto, ab iOS 26, jetzt als Beta.",
     "title": "park.fan für iPhone",
-    "headline": "Wartezeiten, Andrang und dein Plan in einer App",
-    "lead": "Zu Hause zeigt sie dir die Tage, an denen wenig los ist, und im Park die Bahnen, an denen du gerade kurz anstehst",
+    "headline": "park.fan in deiner Hosentasche",
+    "lead": "Mehr Loopings, weniger Stehen. Die App kennt die ruhigen Tage und zeigt dir im Park, wo die Warteschlange gerade kurz ist",
     "status": "Öffentliche Beta über TestFlight, zurzeit mit 50 Plätzen",
     "requirement": "Für iPhone mit iOS 26 oder neuer, auch für das iPhone Duo",
     "storeAction": "Im App Store laden",
