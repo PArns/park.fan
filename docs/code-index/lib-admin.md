@@ -52,6 +52,17 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 - `APNS_KEY_FILE_MAX_BYTES` _const_: A `.p8` holds about 260 bytes; a larger file is not read into the browser at all.
 - Types: `ApnsEnvironment`, `ApnsAnswerState`, `ApnsCheck`, `ApnsStatus`, `ApnsDevice`, `ApnsTestResult`
 
+### [`app-config.ts`](../../lib/admin/app-config.ts)
+
+- `raisesMinimum` _function_: True when saving `next` locks out apps that start today under `current`: a new minimum, a higher version, or on the same version a higher build.
+- `appConfigBody` _function_: The form's strings as the API's body; empty means null, an empty note is left out.
+- `isAppConfigBackendMissing` _function_: True when the API answering is older than these routes: it deploys apart from the site.
+- `APP_CONFIG_API` _const_: The admin proxy prefix of the app-config endpoints.
+- `APP_PLATFORMS` _const_: The platforms the API lists, with the admin's words; a third one is one more entry.
+- `APP_MESSAGE_LANGUAGES` _const_: The note languages of the block screen.
+- `APP_VERSION_PATTERN` _const_: `1`, `1.0` or `1.0.1`, the only forms the API accepts.
+- Types: `AppPlatform`, `PlatformConfig`, `AppConfigView`
+
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 
 - `textFromDrafts` _function_: `![alt | caption | …](path)` for one image, across every filled locale.
