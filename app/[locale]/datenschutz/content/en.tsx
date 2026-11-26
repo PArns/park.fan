@@ -653,8 +653,8 @@ export function DatenschutzEN() {
           chat, rounded to about 100 metres; from then on it sends it with each message for as long
           as the chat is open. If you close the chat or start a new one, it sends it again only once
           you share it again. The server does not store it and does not pass it on to Anthropic. Our
-          server passes the request on to Anthropic as
-          described above. A copy of the chat stays on your iPhone for up to two hours.
+          server passes the request on to Anthropic as described above. A copy of the chat stays on
+          your iPhone for up to two hours.
         </p>
         <p>
           "New chat" and switching off "Chat with Parky" in the app's settings delete the chat on
