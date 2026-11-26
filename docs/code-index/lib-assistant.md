@@ -10,7 +10,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `readReplies` _function_: Replies as text a person can tap: one line each, no link, no Markdown, at most four, each once. The chat renders them as plain text in any case.
 - `readAssistantAction` _function_: The action as the widget will carry it out, or null. Checked again here although the API built it: the stream is model-driven, and a page change or a planner write is the user's state.
 - `TRIP_CHANGE_KINDS` _const_: What a change to a trip was, as the API names it: the receipt's words and the statistic's.
-- Types: `AssistantPlannerPark`, `AssistantCard`, `AssistantAction`, `TripChangeKind`, `AssistantReceipt`, `AssistantReceiptState`, `AssistantActionChip`
+- Types: `AssistantPlannerPark`, `AssistantCard`, `NavigatePlace`, `AssistantAction`, `TripChangeKind`, `AssistantReceipt`, `AssistantReceiptState`, `AssistantActionChip`
 
 ### [`alert-writes.ts`](../../lib/assistant/alert-writes.ts)
 

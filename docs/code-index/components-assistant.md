@@ -37,6 +37,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AssistantMessageText` _component_: One answer of Parky as text. The answer is model output: raw HTML is dropped, only a handful of elements render, everything else is unwrapped to its text.
 
+### [`assistant-navigate-card.tsx`](../../components/assistant/assistant-navigate-card.tsx)
+
+- `NavigateCard` _component_: The way to one place inside a park, as Parky hands it over: an arrow from the visitor's own position and a walking route in Google Maps.
+
 ### [`assistant-panel.tsx`](../../components/assistant/assistant-panel.tsx)
 
 - `AssistantPanel` _component_: The window Parky opens in: the chat and, on its second tab, the feedback form. Mounted once the launcher was first pressed and kept, so a closed and reopened chat is where it was.

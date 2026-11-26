@@ -2212,6 +2212,40 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     undefined,
     'refuses a restaurant without a name'
   );
+  const route =
+    'https://www.google.com/maps/dir/?api=1&destination=50.7995,6.8828&travelmode=walking';
+  const navigate = {
+    kind: 'navigate',
+    name: 'toilets',
+    place: 'toilets',
+    park: 'Phantasialand',
+    latitude: 50.7995,
+    longitude: 6.8828,
+    mapsUrl: route,
+    url: null,
+    credit: {
+      text: '© OpenStreetMap contributors',
+      url: 'https://www.openstreetmap.org/copyright',
+    },
+  };
+  check(read(navigate)?.mapsUrl, route, 'a navigate card keeps its walking route');
+  check(
+    read({ ...navigate, mapsUrl: 'https://evil.example/?destination=50.7995,6.8828' }),
+    undefined,
+    'refuses a navigate card routing anywhere but Google Maps'
+  );
+  check(
+    read({ ...navigate, latitude: 51 }),
+    undefined,
+    'refuses a navigate card whose route leads somewhere else than its point'
+  );
+  check(
+    read({ ...navigate, credit: { text: 'x', url: 'https://evil.example' } }),
+    undefined,
+    'refuses a credit that links anywhere but OpenStreetMap'
+  );
+  check(read({ ...navigate, place: 'lockers' }), undefined, 'refuses a place it cannot name');
+
   check(
     [parkChapterUrl(parkUrl, 'shows'), parkChapterUrl(parkUrl, 'restaurants')],
     [`${parkUrl}#shows`, `${parkUrl}#restaurants`],
