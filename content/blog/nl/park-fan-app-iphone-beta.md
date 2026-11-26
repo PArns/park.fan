@@ -17,10 +17,9 @@ category: news
 parkLinks: false
 rideLinks: false
 coverImage:
-  src: /media/phantasialand/background.jpg
-  alt: 'Een verlichte zweefmolen draait, links een lichtboom.'
-  caption: 'Wintertraum, het winterseizoen van Phantasialand.'
-  credit: 'Patrick Arns'
+  src: /media/app/cover.webp
+  alt: 'Drie iPhones met de park.fan-app: de parkpagina met wachttijden en dagcurves, het startscherm in Phantasialand en het kompas met de attracties om je heen.'
+  credit: 'park.fan'
 seo:
   title: 'park.fan-app voor iPhone: openbare bèta via TestFlight'
   description: >-
@@ -41,11 +40,37 @@ Download eerst de app TestFlight uit de App Store. Open daarna op je iPhone de [
 
 ## Wat de app kan
 
-Voor je bezoek laat de drukte-kalender voor elke dag, maanden vooruit, de verwachte drukte en de piekwachttijd van de headliners zien. De dagplanner zet je attracties en shows in de volgorde met de kortste verwachte wachttijden, met de looptijd erbij.
+### Voor je bezoek
 
-In het park zie je de wachttijden live, met storingen en sluitingen. Het kompas wijst naar de attracties in je plan en zegt hoe ver ze zijn, en “Breng me erheen” leidt je in meters en loopminuten naar de ingang. Op je vergrendelscherm en in het Dynamic Island staan de wachttijden van je favoriete attracties en het volgende punt van je plan. Meldingen krijg je alleen als je ze aanzet, bijvoorbeeld zodra een attractie onder je gewenste wachttijd zakt. Parky beantwoordt je vragen ook in de app.
+De drukte-kalender laat voor elke dag, maanden vooruit, de verwachte drukte en de piekwachttijd van de headliners zien. De dagplanner zet je attracties en shows in de volgorde met de kortste verwachte wachttijden, met de looptijd erbij.
 
-Je hebt geen account nodig, je ziet geen reclame en niemand volgt je. Favorieten en plannen blijven op je iPhone. De app spreekt dezelfde zes talen als de website.
+![De dagplanner voor vrijdag 27 november in Phantasialand als raster: bovenaan tien attracties met 240 minuten wachttijd en 25 minuten lopen, daaronder F.L.Y., Winja’s Fear en Winja’s Force na elkaar met de looproutes ertussen. | Je parkdag, gepland rond de wachtrijen | center | small](/media/app/nl/05-planner.webp)
+
+### In het park
+
+Open je de app in het park, dan begroet ze je met de beste tijden van vandaag, de attracties om je heen en je plan.
+
+![De startpagina van de park.fan-app in Phantasialand: boven de foto van het park “Welkom in Phantasialand” met de openingstijden, daaronder tegels voor het park, de kaart, het volgende en het kompas, en de beste tijden van vandaag. | Wachttijden live, midden in het park | center | small](/media/app/nl/01-start.webp)
+
+Je ziet de wachttijden live, met storingen en sluitingen, en bij elke attractie het verloop van de dag.
+
+![De parkpagina van Phantasialand in de park.fan-app, tabblad “Attracties”: de toppers Crazy Bats en Black Mamba met elk 35 minuten wachttijd, drukte “hoog”, met hun dagcurve en de beste tijd van vandaag. | Elke attractie met haar dagverloop | center | small](/media/app/nl/02-park.webp)
+
+Het kompas wijst naar de attracties in je plan en zegt hoe ver ze zijn, en “Breng me erheen” leidt je in meters en loopminuten naar de ingang. De parkkaart toont alle attracties, shows en restaurants, in vrijgegeven parken ook toiletten en drinkwater.
+
+![Het kompas in Phantasialand: de attracties rond je positie als stippen met hun wachttijd in minuten, Black Mamba is vastgezet, daaronder de afstand en de knop “Breng me erheen”. | Breng me erheen | center | small](/media/app/nl/06-compass.webp)
+
+### Vergrendelscherm en meldingen
+
+Op je vergrendelscherm en in het Dynamic Island staan de wachttijden van je favoriete attracties en het volgende punt van je plan. Meldingen krijg je alleen als je ze aanzet, bijvoorbeeld zodra een attractie onder je gewenste wachttijd zakt.
+
+### Parky
+
+Parky beantwoordt je vragen ook in de app. Hij kent je plan, gooit het om als je dat vraagt en wijst je de weg naar de volgende attractie. Voordat je eerste bericht de iPhone verlaat, vraagt de app het je.
+
+![Parky begroet je in de chat: vandaag is het Phantasialand en hij heeft je planning bij zich. Daaronder drie vragen om aan te tikken. | Vraag het Parky | center | small](/media/app/nl/07-parky.webp)
+
+Je hebt geen account nodig, je ziet geen reclame en niemand volgt je. Favorieten en plannen blijven op je iPhone. De app spreekt dezelfde zes talen als de website. Alle schermen van de app op een rij zie je op de [app-pagina](/app).
 
 ## Fouten en wensen
 

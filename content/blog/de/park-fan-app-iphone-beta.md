@@ -17,10 +17,9 @@ category: news
 parkLinks: false
 rideLinks: false
 coverImage:
-  src: /media/phantasialand/background.jpg
-  alt: 'Ein beleuchtetes Kettenkarussell dreht sich, links ein Lichterbaum.'
-  caption: 'Wintertraum, der Winterbetrieb im Phantasialand.'
-  credit: 'Patrick Arns'
+  src: /media/app/cover.webp
+  alt: 'Drei iPhones mit der park.fan App: die Parkseite mit Wartezeiten und Tageskurven, die Startseite im Phantasialand und der Kompass mit den Bahnen ringsum.'
+  credit: 'park.fan'
 seo:
   title: 'park.fan-App fürs iPhone: Beta über TestFlight'
   description: >-
@@ -41,11 +40,37 @@ Lade dir zuerst die App TestFlight aus dem App Store. Öffne dann auf dem iPhone
 
 ## Was die App kann
 
-Vor dem Besuch zeigt dir der Andrang-Kalender für jeden Tag, Monate im Voraus, die erwartete Auslastung und die Spitzenwartezeit der Headliner. Der Tagesplaner bringt deine Bahnen und Shows in die Reihenfolge mit den kürzesten erwarteten Wartezeiten und rechnet die Fußwege ein.
+### Vor dem Besuch
 
-Im Park siehst du die Wartezeiten live, mit Störungen und Schließungen. Der Kompass zeigt Richtung und Entfernung zu den Bahnen deines Plans, und „Bring mich hin“ führt dich mit Metern und Gehminuten bis zum Eingang. Auf dem Sperrbildschirm und in der Dynamic Island stehen die Wartezeiten deiner Lieblingsbahnen und der nächste Punkt deines Plans. Mitteilungen kommen nur, wenn du sie einschaltest, zum Beispiel sobald eine Bahn unter deine Wunschzeit fällt. Parky beantwortet deine Fragen auch in der App.
+Der Andrang-Kalender zeigt dir für jeden Tag, Monate im Voraus, die erwartete Auslastung und die Spitzenwartezeit der Headliner. Der Tagesplaner bringt deine Bahnen und Shows in die Reihenfolge mit den kürzesten erwarteten Wartezeiten und rechnet die Fußwege ein.
 
-Du brauchst kein Konto, siehst keine Werbung, und niemand trackt dich. Favoriten und Pläne bleiben auf deinem iPhone. Die App spricht dieselben sechs Sprachen wie die Website.
+![Der Tagesplaner für Freitag, den 27. November im Phantasialand als Raster: oben zehn Bahnen mit 240 Minuten Wartezeit und 25 Minuten Fußweg, darunter F.L.Y., Winja’s Fear und Winja’s Force nacheinander mit den Wegen dazwischen. | Dein Parktag, nach Wartezeiten geplant | center | small](/media/app/de/05-planner.webp)
+
+### Im Park
+
+Öffnest du die App im Park, begrüßt sie dich mit den besten Zeiten für heute, den Bahnen um dich herum und deinem Plan.
+
+![Die Startseite der park.fan App im Phantasialand: über dem Foto des Parks „Willkommen im Phantasialand“ mit der Öffnungszeit, darunter Kacheln für Park, Karte, Nächstes und Kompass sowie die besten Zeiten für heute. | Wartezeiten live, mitten im Park | center | small](/media/app/de/01-start.webp)
+
+Die Wartezeiten siehst du live, mit Störungen und Schließungen, und zu jeder Bahn ihren Verlauf über den Tag.
+
+![Die Parkseite des Phantasialands in der park.fan App, Reiter „Attraktionen“: die Headliner Crazy Bats und Black Mamba mit je 35 Minuten Wartezeit, Andrang „hoch“, ihrer Tageskurve und der besten Zeit für heute. | Jede Bahn mit ihrem Tagesverlauf | center | small](/media/app/de/02-park.webp)
+
+Der Kompass zeigt Richtung und Entfernung zu den Bahnen deines Plans, und „Bring mich hin“ führt dich mit Metern und Gehminuten bis zum Eingang. Die Parkkarte zeigt alle Attraktionen, Shows und Restaurants, in freigegebenen Parks auch Toiletten und Trinkwasser.
+
+![Der Kompass im Phantasialand: die Bahnen rund um den Standort als Punkte mit ihrer Wartezeit in Minuten, Black Mamba ist fixiert, darunter die Entfernung und der Knopf „Bring mich hin“. | Bring mich hin | center | small](/media/app/de/06-compass.webp)
+
+### Sperrbildschirm und Mitteilungen
+
+Auf dem Sperrbildschirm und in der Dynamic Island stehen die Wartezeiten deiner Lieblingsbahnen und der nächste Punkt deines Plans. Mitteilungen kommen nur, wenn du sie einschaltest, zum Beispiel sobald eine Bahn unter deine Wunschzeit fällt.
+
+### Parky
+
+Parky beantwortet deine Fragen auch in der App. Er kennt deinen Plan, stellt ihn auf Wunsch um und zeigt dir den Weg zur nächsten Bahn. Bevor deine erste Nachricht das iPhone verlässt, fragt dich die App.
+
+![Parky begrüßt dich im Chat: Heute ist Phantasialand, und er hat deinen Plan dabei. Darunter drei Fragen zum Antippen. | Frag Parky | center | small](/media/app/de/07-parky.webp)
+
+Du brauchst kein Konto, siehst keine Werbung, und niemand trackt dich. Favoriten und Pläne bleiben auf deinem iPhone. Die App spricht dieselben sechs Sprachen wie die Website. Alle Bildschirme der App der Reihe nach zeigt die [App-Seite](/app).
 
 ## Fehler und Wünsche
 
