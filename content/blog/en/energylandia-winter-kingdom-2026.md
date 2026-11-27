@@ -55,17 +55,17 @@ The gates stay shut from 21 to 25 December, on New Year's Eve and on New Year's 
 
 ## What's on
 
-The light garden takes you along winding paths past 5 million lights and through light tunnels, by glowing sleighs, snowmen and oversized baubles. A Christmas tree almost 17 metres tall stands at the far end. It's lit for the first time on Saturday at 4pm, in a ceremony at the main entrance. The park says the lights are on all day, and you don't need an extra ticket for the garden.
+The path through the light garden goes past 5 million lights and through light tunnels. Along the way there are glowing sleighs and snowmen, the baubles are oversized, and at the end stands a Christmas tree almost 17 metres tall. It's lit for the first time on Saturday at 4pm, in a ceremony at the main entrance. The park says the lights are on all day, and you don't need an extra ticket for the garden.
 
-The ice rink has a small and a large surface. Everyone has to wear a helmet and protective gloves, and children aged three to seven must be accompanied on the ice. On opening Saturday, DJs from the Energy 2000 club run a skating disco there from 1pm to 3pm. Snow tubing has two hills, one for adults and one for kids, and on both you slide down on an inflatable tube.
+The ice rink has a small and a large surface. Everyone has to wear a helmet and protective gloves, and children aged three to seven must be accompanied on the ice. On opening Saturday, DJs from the Energy 2000 club run a skating disco there from 1pm to 3pm. For snow tubing there are two hills, one for adults and one for kids.
 
-New this year is Arctic Loop, a ride with rubber rings that turn slowly on the ground. The park says it's for ages two to 13 and heights from 100 to 200 centimetres, and children ride accompanied. There's also a reindeer enclosure where, according to Energylandia, the reindeer can talk. A gingerbread workshop is open from 12:30pm to 5:30pm, and a second one, for letters to Santa, is open all day. Santa himself sits at the Lancelot Shop from 12:30pm to 5:30pm and poses for photos.
+New this year is Arctic Loop, a ride with rubber rings that turn slowly on the ground. It's open to children aged two to 13 and between 100 and 200 centimetres tall, and only with an adult. There's also a reindeer enclosure where, according to Energylandia, the reindeer can talk. From 12:30pm to 5:30pm you can decorate gingerbread and have your photo taken with Santa at the Lancelot Shop. You write your letter to him in the second workshop, which is open all day, so it's still open after he's clocked off.
 
-At 11:20am Santa, the elves and the mascots welcome the first guests outside the gate. In Teatr Egypt, elves put on two shows of 15 minutes each. In "Następny przystanek: Święta!" (Next stop: Christmas) Santa's trip to Lapland looks like it's about to go wrong. "Fabryka Elfów" (The elf factory) is set in the gift factory. Elf René does magic five times a day in the Town Hall Theatre in "Elfastycznie!" (roughly: Elftastic). The day ends at 6:15pm with the "Santa Express" parade, led by Santa's train, in the Formuła area.
+At 11:20am Santa, the elves and the mascots welcome the first guests outside the gate. In Teatr Egypt, elves put on two shows of 15 minutes each. In "Następny przystanek: Święta!" (Next stop: Christmas) Santa's trip to Lapland looks like it's about to go wrong. In "Fabryka Elfów" (The elf factory) the elves have to get all the presents finished in time. Elf René does magic five times a day in the Town Hall Theatre in "Elfastycznie!" (roughly: Elftastic). The day ends at 6:15pm with the "Santa Express" parade, led by Santa's train, in the Formuła area.
 
 ## Which rides are running
 
-The park says more than 30 attractions are open, among them roller coasters, flat rides and part of Bajkolandia for small children. The park's blog post about last winter names [Hyperion](ref:energylandia/pepsi-hyperion) and [Zadra](ref:energylandia/zadra-made-in-malopolska). A coaster only runs when the track is dry, though, with no ice or snow on it. You'll see on the [park page](ref:energylandia) each morning whether Hyperion is running that day. After a night of frost it's worth checking twice.
+More than 30 attractions are open, among them roller coasters, flat rides and part of Bajkolandia for small children. The park's blog post about last winter names [Hyperion](ref:energylandia/pepsi-hyperion) and [Zadra](ref:energylandia/zadra-made-in-malopolska). A coaster only runs when the track is dry, though, with no ice or snow on it. You'll see on the [park page](ref:energylandia) each morning whether Hyperion is running that day. After a night of frost, check again just before you leave.
 
 ```hourly-profile-widget slug=energylandia top=6 from=2025-11-29 to=2026-02-08
 
@@ -73,11 +73,11 @@ The park says more than 30 attractions are open, among them roller coasters, fla
 
 ## What winter costs
 
-There are two price lists, one in euros and one in złoty, each with its own shop. In the euro shop at tickets.energylandia.pl, a day at Winter Kingdom costs €38, or €33 reduced. The reduced price is for children under 140 centimetres, seniors from 65 and people with disabilities. From 3pm there's an afternoon ticket for €21, or €19 reduced. You don't need to book a date: the ticket is valid on any opening day until 31 January. According to the FAQ it covers every attraction and show that's open that day, the ice rink included.
+Energylandia sells tickets in euros and in złoty, with separate price lists in two shops. In the euro shop at tickets.energylandia.pl, a day at Winter Kingdom costs €38, or €33 reduced. The reduced price is for children under 140 centimetres, seniors from 65 and people with disabilities. From 3pm there's an afternoon ticket for €21, or €19 reduced. You don't need to book a date: the ticket is valid on any opening day until 31 January. It covers every attraction and show that's open that day, the ice rink included.
 
-In the Polish shop at ticket.energylandia.pl, the winter ticket normally costs 149 zł, and during Black Weeks, until Sunday 29 November, only 99 zł. The offer is online only, with no more than ten tickets in all. These tickets only become valid on 4 December, though. For the opening weekend you pay the normal price. The afternoon ticket isn't part of the offer. We've collected the [Black Friday deals from other parks](/news/black-friday-theme-parks-2026) in a separate post.
+In the Polish shop at ticket.energylandia.pl, the winter ticket normally costs 149 zł, and during Black Weeks, until Sunday 29 November, only 99 zł. The offer is online only, with no more than ten tickets in all. These tickets only become valid on 4 December, though, so on the opening weekend you pay full price. The afternoon ticket isn't part of the offer. We've collected the [Black Friday deals from other parks](/news/black-friday-theme-parks-2026) in a separate post.
 
-Parking in front of the entrance costs 30 zł a day. For clothing, the park recommends layers, ski wear and ski goggles with an elastic strap, so think ski slope rather than Christmas market.
+Parking in front of the entrance costs 30 zł a day. For clothing, the park recommends layers, ski wear and even ski goggles with an elastic strap.
 
 ## By train from Kraków or Oświęcim
 
