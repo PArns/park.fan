@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Vanaf zaterdag is Energylandia weer het Winter Kingdom, tot eind januari op vaste dagen van 11.30 tot 18.30 uur. De goedkope Black Weeks-tickets gelden pas vanaf 4 december.
+  Vanaf zaterdag is Energylandia weer het Winter Kingdom, tot eind januari op bepaalde dagen van 11.30 tot 18.30 uur. De goedkope Black Weeks-tickets gelden pas vanaf 4 december.
 tags:
   - nieuws
   - energylandia
@@ -55,17 +55,17 @@ Van 21 tot en met 25 december, op oudejaarsdag en op nieuwjaarsdag blijft de poo
 
 ## Wat er te doen is
 
-In de lichtjestuin loop je over kronkelpaadjes langs 5 miljoen lampjes en door lichttunnels, langs lichtgevende sleeën, sneeuwpoppen en reusachtige kerstballen. Aan het eind staat een kerstboom van bijna 17 meter. Zaterdag om 16.00 uur gaan bij de hoofdingang voor het eerst zijn lichtjes aan, met een feestje erbij. Volgens het park branden de lampjes de hele dag, en voor de tuin heb je geen apart ticket nodig.
+In de lichtjestuin loop je over kronkelpaadjes langs 5 miljoen lampjes en door lichttunnels, langs lichtgevende sleeën, sneeuwpoppen en reusachtige kerstballen. Aan het eind staat een kerstboom van bijna 17 meter. Het feest waarop hij voor het eerst aangaat, begint zaterdag om 16.00 uur bij de hoofdingang. Volgens het park branden de lampjes de hele dag, en voor de tuin heb je geen apart ticket nodig.
 
 De ijsbaan heeft een kleine en een grote baan. Een helm en beschermende handschoenen zijn voor iedereen verplicht, en kinderen van drie tot zeven mogen alleen onder begeleiding het ijs op. Op de openingszaterdag draaien dj's van club Energy 2000 er van 13.00 tot 15.00 uur een schaatsdisco. Voor het snowtubing zijn er twee heuvels, een voor volwassenen en een voor kinderen, en op allebei glijd je op een opgeblazen band naar beneden.
 
-Nieuw is Arctic Loop, een draaimolen met rubberboten die langzaam over de grond ronddraaien. Het park noemt een leeftijd van twee tot 13 jaar en een lengte van 100 tot 200 centimeter, en kinderen gaan mee met een begeleider. Verder is er een rendierenweide, waar de rendieren volgens Energylandia kunnen praten. In een werkplaats die van 12.30 tot 17.30 uur open is, versier je peperkoek. In een tweede, die de hele dag open is, schrijf je een brief aan de Kerstman. Die zit zelf van 12.30 tot 17.30 uur bij de Lancelot Shop klaar voor een foto.
+Nieuw is Arctic Loop, een draaimolen met rubberboten die langzaam over de grond ronddraaien. Het park noemt een leeftijd van twee tot 13 jaar en een lengte van 100 tot 200 centimeter, en kinderen rijden onder begeleiding. Verder is er een rendierenweide, waar de rendieren volgens Energylandia kunnen praten. In een werkplaats die van 12.30 tot 17.30 uur open is, versier je peperkoek. In een tweede, die de hele dag open is, schrijf je een brief aan de Kerstman. Die zit zelf van 12.30 tot 17.30 uur bij de Lancelot Shop klaar voor een foto.
 
 Om 11.20 uur heten de Kerstman, de elfen en de mascottes de eerste bezoekers welkom voor de poort. In het Teatr Egypt spelen elfen twee shows van elk een kwartier. In “Następny przystanek: Święta!” (Volgende halte: Kerstmis) dreigt de reis van de Kerstman naar Lapland mis te lopen, en “Fabryka Elfów” (Elfenfabriek) speelt zich af in de cadeaufabriek. Elf René goochelt vijf keer per dag in het Town Hall Theatre in “Elfastycznie!” (zoiets als: Elfastisch). Om 18.15 uur sluit de parade “Santa Express” de dag af, met de trein van de Kerstman in het gebied Formuła.
 
 ## Welke attracties rijden
 
-Volgens het park zijn er meer dan 30 attracties open, waaronder achtbanen, draaimolens en een deel van Bajkolandia voor kleine kinderen. In zijn blog over de vorige winter noemt Energylandia [Hyperion](ref:energylandia/pepsi-hyperion) en [Zadra](ref:energylandia/zadra-made-in-malopolska) bij naam. Een achtbaan rijdt alleen als de baan droog is, zonder ijs en zonder sneeuw erop. Of Hyperion op jouw dag rijdt, zie je 's ochtends op de [parkpagina](ref:energylandia). Na een nacht met vorst loont dat kijkje dubbel.
+Volgens het park zijn er meer dan 30 attracties open, waaronder achtbanen, draaimolens en een deel van Bajkolandia voor kleine kinderen. In zijn blog over de vorige winter noemt Energylandia [Hyperion](ref:energylandia/pepsi-hyperion) en [Zadra](ref:energylandia/zadra-made-in-malopolska) bij naam. Een achtbaan rijdt alleen als de baan droog is, zonder ijs en zonder sneeuw erop. Of Hyperion op jouw dag rijdt, zie je 's ochtends op de [parkpagina](ref:energylandia). Na een nacht met vorst is dat kijkje zeker de moeite waard.
 
 ```hourly-profile-widget slug=energylandia top=6 from=2025-11-29 to=2026-02-08
 
@@ -77,7 +77,7 @@ Voor euro en złoty zijn er aparte prijslijsten, elk in een eigen webshop. In de
 
 In de Poolse shop op ticket.energylandia.pl kost het winterticket normaal 149 zł, en tijdens de Black Weeks tot en met zondag 29 november maar 99 zł. Die aanbieding is er alleen online, en je koopt er hooguit tien. Alleen gelden deze tickets pas vanaf 4 december, dus voor het openingsweekend betaal je de gewone prijs. Het middagticket valt niet onder de aanbieding. De [Black Friday-acties van andere parken](/news/black-friday-pretparken-2026) staan in een apart bericht.
 
-Parkeren voor de ingang kost 30 zł per dag. Qua kleding raadt het park laagjes aan, skikleding en een skibril met elastiek. Kleed je dus eerder voor de piste dan voor de kerstmarkt.
+Parkeren voor de ingang kost 30 zł per dag. Qua kleding raadt het park laagjes aan, skikleding en een skibril met elastiek, dus eerder iets voor de piste dan voor de kerstmarkt.
 
 ## Met de trein uit Krakau of Oświęcim
 

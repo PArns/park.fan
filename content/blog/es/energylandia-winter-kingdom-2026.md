@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Desde el sábado, Energylandia vuelve a ser Winter Kingdom: hasta finales de enero, en días sueltos, de 11:30 a 18:30. Las entradas baratas de las Black Weeks no valen hasta el 4 de diciembre.
+  Desde el sábado, Energylandia vuelve a ser Winter Kingdom: hasta finales de enero, en días concretos, de 11:30 a 18:30. Las entradas baratas de las Black Weeks no valen hasta el 4 de diciembre.
 tags:
   - news
   - energylandia
@@ -24,7 +24,7 @@ rideLinks:
 seo:
   title: 'Energylandia Winter Kingdom 2026/27: horarios y entradas'
   description: >-
-    Winter Kingdom en Energylandia: del 28/11/2026 al 31/1/2027, 28 días, de 11:30 a 18:30. Entrada de un día 38 €, desde las 15 h 21 €, con pista de hielo.
+    Winter Kingdom en Energylandia: del 28/11/2026 al 31/1/2027, 28 días, de 11:30 a 18:30. Entrada de un día 38 €, 21 € desde las 15:00, con pista de hielo.
   keywords:
     - Energylandia invierno
     - Winter Kingdom Energylandia
@@ -65,7 +65,7 @@ A las 11:20, Papá Noel, los elfos y las mascotas reciben a los primeros visitan
 
 ## Las atracciones abiertas
 
-Según el parque, abren más de 30 atracciones, entre ellas montañas rusas, carruseles y parte de Bajkolandia, la zona para los más pequeños. En su blog sobre el invierno pasado, Energylandia nombra [Hyperion](ref:energylandia/pepsi-hyperion) y [Zadra](ref:energylandia/zadra-made-in-malopolska). Pero una montaña rusa solo funciona con la vía seca, sin hielo ni nieve acumulada. Si Hyperion funciona el día que vas lo ves por la mañana en la [página del parque](ref:energylandia), y después de una noche de helada conviene mirarlo con más razón.
+Según el parque, abren más de 30 atracciones, entre ellas montañas rusas, carruseles y parte de Bajkolandia, la zona para los más pequeños. En su blog sobre el invierno pasado, Energylandia nombra [Hyperion](ref:energylandia/pepsi-hyperion) y [Zadra](ref:energylandia/zadra-made-in-malopolska). Pero una montaña rusa solo funciona con la vía seca, sin hielo ni nieve acumulada. Si Hyperion funciona el día que vas, lo ves por la mañana en la [página del parque](ref:energylandia), sobre todo después de una noche de helada.
 
 ```hourly-profile-widget slug=energylandia top=6 from=2025-11-29 to=2026-02-08
 
@@ -75,13 +75,13 @@ Según el parque, abren más de 30 atracciones, entre ellas montañas rusas, car
 
 Hay precios en euros y en złotys, cada uno en su propia tienda. En la tienda en euros, tickets.energylandia.pl, un día de Winter Kingdom cuesta 38 €, o 33 € con descuento. El descuento es para niños de menos de 140 centímetros, mayores de 65 años y personas con discapacidad. Desde las 15:00 hay una entrada de tarde por 21 €, o 19 € reducida. No hay que reservar: la entrada vale cualquier día de apertura hasta el 31 de enero. Según las preguntas frecuentes, incluye todas las atracciones y espectáculos abiertos ese día, así que también la pista de hielo.
 
-En la tienda polaca, ticket.energylandia.pl, la entrada de invierno cuesta 149 zł, pero en las Black Weeks, hasta el domingo 29 de noviembre, baja a 99 zł. La oferta solo está en línea y permite diez entradas como máximo en total. Eso sí, estas entradas no valen hasta el 4 de diciembre, así que el fin de semana de la inauguración se paga el precio normal. La entrada de tarde no entra en la oferta. Las [ofertas de Black Friday de los demás parques](/news/black-friday-parques-atracciones-2026) las hemos reunido en otro artículo.
+En la tienda polaca, ticket.energylandia.pl, la entrada de invierno cuesta 149 zł, pero en las Black Weeks, hasta el domingo 29 de noviembre, baja a 99 zł. La oferta solo se vende en línea, con un máximo de diez entradas en total. Eso sí, estas entradas no valen hasta el 4 de diciembre, así que el fin de semana de la inauguración se paga el precio normal. La entrada de tarde no entra en la oferta. Las [ofertas de Black Friday de los demás parques](/news/black-friday-parques-atracciones-2026) las hemos reunido en otro artículo.
 
 El aparcamiento delante de la entrada cuesta 30 zł al día. Para vestirse, el parque recomienda ir por capas, con ropa de esquí y unas gafas de esquí con goma: más pista que mercado navideño.
 
 ## En tren desde Cracovia u Oświęcim
 
-Del 28 de noviembre al 12 de diciembre, un tren va para el Winter Kingdom hasta la estación Zator Park Rozrywki. Allí te recoge un trenecito, que por la tarde te lleva de vuelta:
+Del 28 de noviembre al 12 de diciembre, hay un tren especial para el Winter Kingdom hasta la estación Zator Park Rozrywki. Allí te recoge un trenecito, que por la tarde te lleva de vuelta:
 
 - desde Kraków Główny a las 9:18, trenecito a las 10:25, vuelta a la estación a las 18:20, tren a Cracovia a las 19:03
 - desde Oświęcim a las 10:27, trenecito a las 10:47, vuelta a la estación a las 18:45, tren a Oświęcim a las 19:27
