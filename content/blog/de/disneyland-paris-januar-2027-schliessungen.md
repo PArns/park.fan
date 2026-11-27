@@ -2,7 +2,7 @@
 title: 'Mickey and the Magician fällt ab dem 11. Januar aus'
 translationKey: disneyland-paris-januar-2027-schliessungen
 date: '2026-11-27'
-time: '09:08'
+time: '09:44'
 author: patrick
 mode: published
 featured: false

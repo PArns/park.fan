@@ -2,7 +2,7 @@
 title: 'Mickey and the Magician speelt vanaf 11 januari niet meer'
 translationKey: disneyland-paris-januar-2027-schliessungen
 date: '2026-11-27'
-time: '09:08'
+time: '09:44'
 author: patrick
 mode: published
 featured: false
