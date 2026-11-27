@@ -24,7 +24,7 @@ rideLinks:
 seo:
   title: 'Energylandia Winter Kingdom 2026/27: horarios y entradas'
   description: >-
-    Winter Kingdom en Energylandia: del 28/11/2026 al 31/1/2027, 28 días, de 11:30 a 18:30. Entrada de un día 38 €, desde las 15 h 21 €, pista de hielo incluida.
+    Winter Kingdom en Energylandia: del 28/11/2026 al 31/1/2027, 28 días, de 11:30 a 18:30. Entrada de un día 38 €, desde las 15 h 21 €, con pista de hielo.
   keywords:
     - Energylandia invierno
     - Winter Kingdom Energylandia
