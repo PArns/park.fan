@@ -41,6 +41,9 @@ seo:
     - Movie Park wait times
 ---
 
+> [!UPDATE] 2026-11-27
+> Hollywood Christmas is open from today, and the ticket shop has changed its prices. A day ticket online now depends on the day, from €24.90 to €41.90 over the first two weekends, against a regular €49.90 from age 12 and €44.90 for children. The 2027 season passes are 25 per cent off for Black November, at €134.90, €116.90 and €101.90. According to the shop, the Bronze pass isn't valid from 27 November to 5 January. Everything about the opening is in our [news on the first evening](/news/movie-park-hollywood-christmas-opens).
+
 [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen opens its winter event, Movie Park's Hollywood Christmas, on Friday 27 November. New this year are an ice slide from Ice-World, which you ride down on a tyre, and the 30th-anniversary parade in a winter version. The event runs on 21 days until 5 January 2027. Before that, the Halloween Horror Festival ends on 8 November. Between the last chainsaw and the first fairy light, the park is shut for 18 days, from 9 to 26 November.
 
 ## New this winter

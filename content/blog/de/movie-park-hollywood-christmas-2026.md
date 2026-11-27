@@ -41,6 +41,9 @@ seo:
     - Movie Park Wartezeiten
 ---
 
+> [!UPDATE] 2026-11-27
+> Hollywood Christmas läuft seit heute, und der Ticketshop hat die Preise geändert. Die Tageskarte kostet online je nach Tag, an den ersten beiden Wochenenden 24,90 € bis 41,90 €, regulär 49,90 € ab 12 Jahren und 44,90 € für Kinder. Die Saisonpässe 2027 gibt es im Black November für 25 Prozent weniger, also 134,90 €, 116,90 € und 101,90 €. Der Bronze-Pass gilt laut Shop vom 27. November bis 5. Januar nicht. Alles zum Start steht in unserer [News zum ersten Abend](/news/movie-park-hollywood-christmas-startet).
+
 Der [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen startet am Freitag, 27. November, sein Winterfest Movie Park's Hollywood Christmas. Neu sind eine Eisrutsche von Ice-World, auf der du auf Reifen hinunterrodelst, und die Parade zum 30. Parkjubiläum in einer Winterfassung. Das Fest läuft an 21 Tagen bis zum 5. Januar 2027. Vorher endet am 8. November das Halloween Horror Festival. Zwischen der letzten Kettensäge und dem ersten Lichterbaum hat der Park dann 18 Tage zu, vom 9. bis 26. November.
 
 ## Neu in diesem Winter

@@ -41,6 +41,9 @@ seo:
     - Movie Park wachttijden
 ---
 
+> [!UPDATE] 2026-11-27
+> Hollywood Christmas is vanaf vandaag open en de ticketshop heeft de prijzen aangepast. Een dagkaart kost online nu per dag iets anders, de eerste twee weekenden 24,90 tot 41,90 euro, normaal 49,90 euro vanaf 12 jaar en 44,90 euro voor kinderen. De seizoenspassen 2027 krijg je tijdens Black November met 25 procent korting, voor 134,90, 116,90 en 101,90 euro. Volgens de shop is de Bronze-pas van 27 november tot 5 januari niet geldig. Alles over de start staat in ons [nieuws over de eerste avond](/news/movie-park-hollywood-christmas-begint).
+
 Op vrijdag 27 november begint in [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen het winterfeest Movie Park's Hollywood Christmas. Nieuw zijn een ijsglijbaan van Ice-World, waar je op een band vanaf glijdt, en de parade voor het 30-jarig bestaan van het park in een winterversie. Het feest loopt 21 dagen, tot 5 januari 2027. Eerst sluit op 8 november nog het Halloween Horror Festival af. Tussen de laatste kettingzaag en de eerste verlichte kerstboom is het park dan 18 dagen dicht, van 9 tot en met 26 november.
 
 ## Nieuw deze winter
