@@ -2,7 +2,7 @@
 title: 'Adventureland bouwt familieglijbaan Twisted Tiki voor 2027'
 translationKey: adventureland-twisted-tiki-2027
 date: '2026-11-27'
-time: '08:15'
+time: '09:43'
 author: patrick
 mode: published
 featured: false
