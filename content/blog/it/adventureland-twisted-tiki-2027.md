@@ -41,7 +41,7 @@ Per l’estate 2027 [Adventureland](ref:adventureland-resort), ad Altoona in Iow
 
 Twisted Tiki lo realizza ProSlide, produttore di scivoli. Ogni gommone porta fino a tre persone, la partenza è a cinque piani d’altezza e il tubo, lungo circa 150 metri, è chiuso dall’inizio alla fine, quindi il cielo dell’Iowa non lo vedi. Il percorso compie due giri completi di 360 gradi, e nelle curve si accendono anelli colorati ed effetti di luce.
 
-Adventureland non ha ancora pubblicato un’altezza minima per Twisted Tiki. Per Hyperlight, Bermuda Quadrangle e gli scivoli di Gang Plank & Pirates’ Plummet servono 48 pollici, cioè 122 centimetri.
+Per salire su Hyperlight, Bermuda Quadrangle o gli scivoli di Gang Plank & Pirates’ Plummet bisogna essere alti almeno 48 pollici, cioè 122 centimetri. L’altezza richiesta per Twisted Tiki non compare ancora su nessuna pagina del parco.
 
 > [!QUOTE]
 > È il nostro primo scivolo in gommone per famiglie e offre ai visitatori un modo nuovo di vivere insieme il parco acquatico, con curve emozionanti, luci vivaci e tante sorprese lungo il percorso. Non vediamo l’ora di accogliere gli ospiti a bordo nell’estate 2027.
@@ -50,11 +50,11 @@ Adventureland non ha ancora pubblicato un’altezza minima per Twisted Tiki. Per
 >
 > Mike Lusky, general manager di Adventureland, nel [comunicato del 17 novembre 2026](https://adventurelandpark.com/press/all-new-twisted-tiki-water-slide/), tradotto dall’inglese
 
-Adventureland non ha ancora comunicato il giorno d’apertura. Il parco pubblicherà a breve il calendario del 2027 e gli eventi dell’anno.
+Il giorno d’apertura arriverà con il calendario del 2027, che il parco promette a breve insieme agli eventi dell’anno.
 
 ## Quanto costano adesso i Season Pass 2027
 
-Con il Black Friday risparmi online fino a 60 dollari sui Season Pass del 2027. Adventureland non ha indicato una data di fine: l’offerta vale solo «for a limited time». Ogni pass si può pagare in otto rate.
+Con il Black Friday risparmi online fino a 60 dollari sui Season Pass del 2027. L’offerta vale «for a limited time», e il parco non dice fino a quando. Ogni pass si può pagare in otto rate.
 
 | Pass     | Prezzo Black Friday | Prezzo pieno | Cosa include                                                                         |
 | -------- | ------------------- | ------------ | ------------------------------------------------------------------------------------ |
@@ -63,17 +63,17 @@ Con il Black Friday risparmi online fino a 60 dollari sui Season Pass del 2027. 
 | Gold     | da 159,99 $         | 219,99 $     | parcheggio gratis, due biglietti per amici, una ciambella al giorno ad Adventure Bay |
 | Platinum | da 199,99 $         | 259,99 $     | Neon Nights, ingresso anticipato ad Adventure Bay, altri dieci parchi                |
 
-Anche il biglietto giornaliero 2027 costa 69,99 dollari. Con la stessa cifra hai quindi un giorno oppure un’estate intera, solo che l’estate del Bronze non comprende i sabati. I bambini fino a tre anni entrano gratis. Biglietto e Season Pass includono Adventure Bay finché il parco acquatico è aperto, ma nei momenti di punta lì entra solo un numero limitato di persone. Chi ha avuto un Season Pass nel 2024, nel 2025 o nel 2026 risparmia fino a 80 dollari sul rinnovo. Con il Platinum, oltre ad Altoona, entri in altri dieci parchi, tra cui il Noah’s Ark Waterpark in Wisconsin.
+Anche il biglietto giornaliero 2027 costa 69,99 dollari. Con la stessa cifra hai quindi un giorno oppure un’estate intera, solo che l’estate del Bronze non comprende i sabati. I bambini fino a tre anni entrano gratis. Adventure Bay è compreso in biglietto e Season Pass in ogni giorno di apertura del parco acquatico, ma nei momenti di punta il parco lì fa entrare solo un numero limitato di persone. Chi ha avuto un Season Pass nel 2024, nel 2025 o nel 2026 risparmia fino a 80 dollari sul rinnovo. Tra i dieci parchi che il Platinum aggiunge ad Altoona c’è il Noah’s Ark Waterpark in Wisconsin.
 
 ## Cos’altro c’è ad Adventure Bay
 
-Nella piscina a onde Breaker Beach i bambini sotto i 48 pollici devono indossare il giubbotto di salvataggio. Sul fiume lento Caribbean Cruiser attraversi tutto il parco acquatico galleggiando e su Reef Racer sei persone fanno a gara una accanto all’altra. Gang Plank & Pirates’ Plummet sono gli scivoli più veloci di Adventure Bay. Per i bambini c’è Kokomo Kove con i secchi che si rovesciano, dove gli scivoli più piccoli sono accessibili da 36 pollici (91 centimetri) e gli altri da 40 pollici (102 centimetri), e poi la nave pirata Shipwreck Shores. In caso di temporale Adventure Bay chiude non appena viene rilevato un fulmine entro dieci miglia (16 chilometri).
+Nella piscina a onde Breaker Beach i bambini sotto i 48 pollici devono indossare il giubbotto di salvataggio, e su Reef Racer sei persone fanno a gara una accanto all’altra. Il fiume lento Caribbean Cruiser si snoda per tutta Adventure Bay. Gang Plank & Pirates’ Plummet sono gli scivoli più veloci di Adventure Bay. Per i bambini c’è Kokomo Kove con i secchi che si rovesciano, dove gli scivoli più piccoli sono accessibili da 36 pollici (91 centimetri) e gli altri da 40 pollici (102 centimetri), e poi la nave pirata Shipwreck Shores. In caso di temporale Adventure Bay chiude non appena viene rilevato un fulmine entro dieci miglia (16 chilometri).
 
-Anche le due novità prima di Twisted Tiki giocavano con la luce. Nel weekend del Memorial Day 2025 è arrivato Hyperlight, uno scivolo con colori che cambiano e suono surround. Nel 2026 sono seguite le Neon Nights: il venerdì e il sabato, dal 10 luglio al 15 agosto, la sera si illuminavano più di dieci attrazioni, con artisti itineranti e musica. Con Silver e Gold per il 2027 hai biglietti scontati per l’evento.
+Hyperlight, la novità del 2025, cambia anch’esso colore e aggiunge il suono surround; lo scivolo ha aperto nel weekend del Memorial Day. Nel 2026 sono arrivate le Neon Nights, il venerdì e il sabato dal 10 luglio al 15 agosto, con più di dieci attrazioni illuminate la sera e in mezzo artisti itineranti e musica. Per il 2027 Silver e Gold ti danno biglietti scontati per l’evento.
 
 ## Come arrivare ad Altoona
 
-Adventureland si trova a pochi minuti da Des Moines, proprio lungo l’Interstate 80, all’indirizzo 3200 Adventureland Drive. L’atmosfera caraibica del comunicato la raggiungi quindi da un’uscita autostradale nel Midwest. Il parcheggio costa 21 dollari al giorno, un posto nel Preferred Parking 26 dollari.
+Adventureland si trova a pochi minuti da Des Moines, proprio lungo l’Interstate 80, all’indirizzo 3200 Adventureland Drive. Al gommone tiki si arriva quindi da un’uscita autostradale nel Midwest. Il parcheggio costa 21 dollari al giorno, un posto nel Preferred Parking 26 dollari.
 
 ## Quando c’è meno gente nel parco divertimenti
 

@@ -41,7 +41,7 @@ seo:
 
 Twisted Tiki baut der Rutschenhersteller ProSlide. In einem Raft sitzen bis zu drei Personen, der Start liegt fünf Stockwerke hoch, und die Röhre ist rund 150 Meter lang und ganz geschlossen, vom Himmel über Iowa siehst du also nichts. Zweimal dreht sich die Strecke um 360 Grad, in den Kurven leuchten bunte Ringe und Lichteffekte.
 
-Eine Mindestgröße für Twisted Tiki hat Adventureland noch nicht veröffentlicht. Hyperlight, Bermuda Quadrangle und die Rutschen von Gang Plank & Pirates' Plummet verlangen 48 Zoll, das sind 122 Zentimeter.
+Auf Hyperlight, Bermuda Quadrangle und die Rutschen von Gang Plank & Pirates' Plummet darf nur, wer mindestens 48 Zoll misst, also 122 Zentimeter. Welche Größe Twisted Tiki verlangt, steht noch auf keiner Seite des Parks.
 
 > [!QUOTE]
 > Als unsere erste Familien-Raft-Rutsche gibt sie unseren Besuchern eine neue Art, den Wasserpark gemeinsam zu erleben, mit spannenden Drehungen, leuchtenden Lichtern und vielen Überraschungen unterwegs. Wir können es kaum erwarten, die Gäste im Sommer 2027 an Bord zu begrüßen.
@@ -50,11 +50,11 @@ Eine Mindestgröße für Twisted Tiki hat Adventureland noch nicht veröffentlic
 >
 > Mike Lusky, General Manager von Adventureland, in der [Mitteilung vom 17. November 2026](https://adventurelandpark.com/press/all-new-twisted-tiki-water-slide/), aus dem Englischen übersetzt
 
-Einen Eröffnungstag hat Adventureland noch nicht genannt. Den Kalender für 2027 und die Events des Jahres will der Park bald veröffentlichen.
+Den Eröffnungstag nennt Adventureland erst mit dem Kalender für 2027, der zusammen mit den Events des Jahres bald kommen soll.
 
 ## Was die Season Passes 2027 jetzt kosten
 
-Im Black-Friday-Sale sparst du online bis zu 60 Dollar auf die Season Passes für 2027. Ein Enddatum hat Adventureland nicht bekannt gegeben, der Sale läuft nur „for a limited time“. Jeden Pass kannst du in acht Raten zahlen.
+Im Black-Friday-Sale sparst du online bis zu 60 Dollar auf die Season Passes für 2027. Der Sale läuft „for a limited time“, ein Enddatum nennt der Park nicht. Jeden Pass kannst du in acht Raten zahlen.
 
 | Pass     | Black-Friday-Preis | Normalpreis | Enthalten                                                                   |
 | -------- | ------------------ | ----------- | --------------------------------------------------------------------------- |
@@ -63,17 +63,17 @@ Im Black-Friday-Sale sparst du online bis zu 60 Dollar auf die Season Passes fü
 | Gold     | ab 159,99 $        | 219,99 $    | Parken frei, zwei Freundestickets, ein Reifen pro Tag in Adventure Bay      |
 | Platinum | ab 199,99 $        | 259,99 $    | Neon Nights, früherer Einlass in Adventure Bay, zehn weitere Parks          |
 
-Ein Tagesticket für 2027 kostet ebenfalls 69,99 Dollar. Für dasselbe Geld bekommst du also einen Tag oder einen Sommer, nur hat der Sommer beim Bronze-Pass keine Samstage. Kinder bis drei Jahre kommen umsonst. Ticket und Season Pass schließen Adventure Bay ein, solange der Wasserpark geöffnet hat. Zu Spitzenzeiten lässt der Park dort nur eine begrenzte Zahl Gäste hinein. Wer 2024, 2025 oder 2026 einen Season Pass hatte, spart bei der Verlängerung bis zu 80 Dollar. Mit Platinum kommst du außer nach Altoona in zehn weitere Parks, darunter in den Noah's Ark Waterpark in Wisconsin.
+Ein Tagesticket für 2027 kostet ebenfalls 69,99 Dollar. Für dasselbe Geld bekommst du also einen Tag oder einen Sommer, nur hat der Sommer beim Bronze-Pass keine Samstage. Kinder bis drei Jahre kommen umsonst. Adventure Bay ist an jedem Tag, an dem der Wasserpark offen hat, in Ticket und Season Pass eingeschlossen, zu Spitzenzeiten lässt der Park dort aber nur eine begrenzte Zahl Gäste hinein. Wer 2024, 2025 oder 2026 einen Season Pass hatte, spart bei der Verlängerung bis zu 80 Dollar. Unter den zehn Parks, die Platinum zu Altoona dazugibt, ist der Noah's Ark Waterpark in Wisconsin.
 
 ## Was sonst in Adventure Bay steht
 
-Im Wellenbad Breaker Beach müssen Kinder unter 48 Zoll eine Schwimmweste tragen, auf dem Lazy River Caribbean Cruiser treibst du einmal durch den Wasserpark, und auf Reef Racer rutschen sechs Leute nebeneinander um die Wette. Gang Plank & Pirates' Plummet sind die schnellsten Rutschen von Adventure Bay. Für Kinder gibt es Kokomo Kove mit Kippeimern, dessen kleinste Rutschen ab 36 Zoll (91 Zentimeter) freigegeben sind, die übrigen ab 40 Zoll (102 Zentimeter), und das Piratenschiff Shipwreck Shores. Bei Gewitter schließt Adventure Bay, sobald im Umkreis von zehn Meilen (16 Kilometer) ein Blitz gemessen wird.
+Im Wellenbad Breaker Beach müssen Kinder unter 48 Zoll eine Schwimmweste tragen, auf Reef Racer rutschen sechs Leute nebeneinander um die Wette. Der Lazy River Caribbean Cruiser zieht sich durch ganz Adventure Bay. Gang Plank & Pirates' Plummet sind die schnellsten Rutschen von Adventure Bay. Für Kinder gibt es Kokomo Kove mit Kippeimern, dessen kleinste Rutschen ab 36 Zoll (91 Zentimeter) freigegeben sind, die übrigen ab 40 Zoll (102 Zentimeter), und das Piratenschiff Shipwreck Shores. Bei Gewitter schließt Adventure Bay, sobald im Umkreis von zehn Meilen (16 Kilometer) ein Blitz gemessen wird.
 
-Auch die zwei Neuheiten vor Twisted Tiki drehten sich ums Licht. Am Memorial-Day-Wochenende 2025 kam Hyperlight dazu, eine Rutsche mit wechselnden Farben und Surround-Sound. 2026 folgten die Neon Nights: Freitags und samstags vom 10. Juli bis zum 15. August leuchteten abends mehr als zehn Attraktionen, dazwischen liefen Walk-Acts, und es spielte Musik. Mit Silver und Gold bekommst du für 2027 ermäßigte Tickets dafür.
+Hyperlight, die Neuheit von 2025, wechselt ebenfalls die Farben und spielt Surround-Sound dazu; eröffnet hat die Rutsche am Memorial-Day-Wochenende. 2026 kamen die Neon Nights dazu, freitags und samstags vom 10. Juli bis zum 15. August, mit mehr als zehn beleuchteten Attraktionen am Abend und mit Walk-Acts und Musik dazwischen. Für 2027 bekommst du mit Silver und Gold ermäßigte Tickets dafür.
 
 ## Anfahrt nach Altoona
 
-Adventureland liegt wenige Minuten von Des Moines entfernt direkt an der Interstate 80, die Adresse ist 3200 Adventureland Drive. Das karibische Flair aus der Pressemitteilung erreichst du also über eine Autobahnausfahrt im Mittleren Westen. Parken kostet 21 Dollar am Tag, ein Platz auf dem Preferred Parking 26 Dollar.
+Adventureland liegt wenige Minuten von Des Moines entfernt direkt an der Interstate 80, die Adresse ist 3200 Adventureland Drive. Zum Tiki-Raft kommst du also über eine Autobahnausfahrt im Mittleren Westen. Parken kostet 21 Dollar am Tag, ein Platz auf dem Preferred Parking 26 Dollar.
 
 ## Wann im Freizeitpark weniger los ist
 
