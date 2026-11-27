@@ -2,7 +2,7 @@
 title: 'Le Pal rinnova nel 2027 la Rivière du Grand Nord'
 translationKey: le-pal-neuheiten-2027
 date: '2026-11-27'
-time: '08:00'
+time: '08:44'
 author: patrick
 mode: published
 featured: false
@@ -43,17 +43,17 @@ seo:
 
 ## Cosa cambia sulla Rivière du Grand Nord
 
-Il percorso con i tronchi sta nel cuore del parco divertimenti, vicino a [Fjord Explorer](ref:le-pal/fjord-explorer). Il tracciato e il giro restano quelli di oggi, cambiano solo le scenografie. Diventano nordiche e devono intonarsi al villaggio scandinavo di case colorate dove dal 2024 Fjord Explorer si trova in riva a un lago. I bambini possono salire da 1 metro, sotto 1,40 metri solo accompagnati.
+Il percorso con i tronchi sta nel cuore del parco divertimenti, vicino a [Fjord Explorer](ref:le-pal/fjord-explorer). Il tracciato e il giro restano quelli di oggi, cambiano solo le scenografie. Le nuove scenografie saranno nordiche e devono intonarsi al villaggio scandinavo di case colorate dove dal 2024 Fjord Explorer si trova in riva a un lago. I bambini possono salire da 1 metro, sotto 1,40 metri solo accompagnati.
 
-Fjord Explorer è un water coaster di Mack Rides alto 27 metri, che arriva a 79 km/h. Ogni barca porta otto persone lungo 497 metri di binario, poco meno di mezzo chilometro. Qui ai bambini servono 1,10 metri, dieci centimetri in più che sui tronchi, e sotto 1,30 metri salgono con un adulto.
+Fjord Explorer è un water coaster di Mack Rides alto 27 metri, che arriva a 79 km/h. Il binario è lungo 497 metri, e in ogni barca siedono otto persone. Ai bambini servono 1,10 metri, e sotto 1,30 metri salgono con un adulto.
 
 ## Una giostra con i veicoli del parco
 
-Sulla nuova giostra per famiglie, per cui Le Pal non ha ancora indicato un’altezza minima, ti siedi in riproduzioni di veicoli del parco, tra cui la barca a vela di Fjord Explorer, una mongolfiera dei [Ballons d’Orient](ref:le-pal/the-oriental-balloons) e l’aereo del Ravitailleur. Il Ravitailleur è il chiosco di hamburger accanto alla Descente du Colorado: sulla giostra il suo aereo gira per la prima volta in tondo, ma senza patatine a bordo.
+Sulla nuova giostra per famiglie, per cui Le Pal non ha ancora indicato un’altezza minima, ti siedi in riproduzioni di veicoli del parco, tra cui la barca a vela di Fjord Explorer, una mongolfiera dei [Ballons d’Orient](ref:le-pal/the-oriental-balloons) e un aereo. L’aereo è del Ravitailleur, il chiosco di hamburger accanto alla Descente du Colorado, e sulla giostra fa i suoi primi giri, mentre le patatine restano a terra.
 
 ## Un recinto per i panda rossi
 
-I panda rossi avranno un recinto nuovo e pieno di piante vicino al Delta des Éléphants, l’area degli elefanti aperta nel 2026. Passano molto tempo sugli alberi, quindi avranno più spazio per arrampicarsi e passerelle in alto. Tu lo attraversi e li vedi da vicino, spesso con il naso all’insù.
+I panda rossi avranno un recinto nuovo e pieno di piante vicino al Delta des Éléphants, l’area degli elefanti aperta nel 2026. Siccome i panda rossi passano molto tempo sugli alberi, nel nuovo recinto avranno più spazio per arrampicarsi, e delle passerelle salgono in alto. Attraversi il recinto e vedi gli animali da vicino, anche lassù sulle passerelle.
 
 ## Quando è aperto il parco nel 2027
 
@@ -64,7 +64,7 @@ La stagione 2027 comincia sabato 10 aprile e finisce domenica 3 ottobre, con que
 - dal 16 giugno al 1° settembre: tutti i giorni
 - dal 2 settembre al 3 ottobre: nei fine settimana, più mercoledì 8 e 15 settembre
 
-Si entra dalle 10, e a seconda del giorno si chiude alle 17:30 oppure non prima delle 18. Dopo il 3 ottobre e fino a fine ottobre apre solo lo zoo, in alcuni giorni e per chi dorme nei lodge, senza attrazioni. In inverno e a Natale il parco resta chiuso.
+Si entra dalle 10, e a seconda del giorno si chiude alle 17:30 oppure non prima delle 18. Dopo, fino a fine ottobre, apre solo lo zoo, in alcuni giorni e solo per chi dorme nei lodge. In inverno e a Natale il parco resta chiuso.
 
 ```best-days-widget slug=le-pal
 
@@ -95,7 +95,7 @@ In auto, dall’A79 prendi l’uscita 28 Thiel-sur-Acolin o la 27 Dompierre-sur-
 
 ## Il bilancio della stagione 2026
 
-Secondo i suoi conteggi, nel 2026 Le Pal ha avuto circa 720.000 visitatori: il 3 % in più dell’anno prima e la terza stagione migliore dall’apertura nel 1973. Ad aprile sono arrivati 92.000 visitatori, a giugno e luglio le ondate di caldo hanno tenuto basse le presenze. Nel 2026 il parco ha investito 9 milioni di euro, 2 dei quali nel Delta des Éléphants, dove gli elefanti hanno due ettari con un fiume tutto loro e due vasche per il bagno. Nei paraggi ora sta nascendo il recinto dei panda rossi. Nel sondaggio sui visitatori 2026 di Qualimétrie, Fjord Explorer è arrivato primo davanti a Yukon Quad. Le altre novità in Francia e in Europa sono nella [panoramica delle novità dei parchi divertimento 2027](/blog/novita-parchi-divertimento-2027).
+Secondo i suoi conteggi, nel 2026 Le Pal ha avuto circa 720.000 visitatori: il 3 % in più dell’anno prima e la terza stagione migliore dall’apertura nel 1973. Solo ad aprile sono arrivati 92.000 visitatori, poi a giugno e luglio le ondate di caldo hanno tenuto basse le presenze. Nel 2026 il parco ha investito 9 milioni di euro, 2 dei quali nel Delta des Éléphants, dove gli elefanti hanno due ettari con un fiume tutto loro e due vasche per il bagno. Nel sondaggio sui visitatori 2026 di Qualimétrie, Fjord Explorer è arrivato primo davanti a Yukon Quad. Le altre novità in Francia e in Europa sono nella [panoramica delle novità dei parchi divertimento 2027](/blog/novita-parchi-divertimento-2027).
 
 Fonti:
 [Comunicato Bilan de saison 2026 (PDF)](https://www.lepal.com/uploads/media/default/0001/21/10ded16e796dc5ff1c9038e487d5a64209cf3b15.pdf),

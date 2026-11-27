@@ -2,7 +2,7 @@
 title: 'Le Pal richt de Rivière du Grand Nord in 2027 opnieuw in'
 translationKey: le-pal-neuheiten-2027
 date: '2026-11-27'
-time: '08:00'
+time: '08:44'
 author: patrick
 mode: published
 featured: false
@@ -43,17 +43,17 @@ seo:
 
 ## Wat er verandert aan de Rivière du Grand Nord
 
-De boomstambaan ligt midden in het pretparkgedeelte, vlak bij [Fjord Explorer](ref:le-pal/fjord-explorer). Aan het parcours en de rit zelf verandert niets, alleen het decor is nieuw. Dat wordt noords en moet passen bij het Scandinavische dorp met kleurige huisjes waar Fjord Explorer sinds 2024 aan een meer staat. Kinderen mogen mee vanaf 1 meter, kleiner dan 1,40 meter alleen met begeleiding.
+De boomstambaan ligt midden in het pretparkgedeelte, vlak bij [Fjord Explorer](ref:le-pal/fjord-explorer). Aan het parcours en de rit zelf verandert niets, alleen het decor is nieuw. Het nieuwe decor wordt noords en moet passen bij het Scandinavische dorp met kleurige huisjes waar Fjord Explorer sinds 2024 aan een meer staat. Kinderen mogen mee vanaf 1 meter, kleiner dan 1,40 meter alleen met begeleiding.
 
-Fjord Explorer is een waterachtbaan van Mack Rides, 27 meter hoog en tot 79 km/u snel. Elke boot neemt acht mensen mee over een baan van 497 meter, net geen halve kilometer. Hier moet je kind 1,10 meter zijn, tien centimeter meer dan bij de boomstambaan, en wie kleiner is dan 1,30 meter gaat met een volwassene mee.
+Fjord Explorer is een waterachtbaan van Mack Rides, 27 meter hoog en tot 79 km/u snel. De baan is 497 meter lang, in een boot zitten acht mensen. Kinderen moeten hier 1,10 meter zijn en gaan onder 1,30 meter met een volwassene mee.
 
 ## Een carrousel met voertuigen uit het park
 
-Op de nieuwe familiecarrousel, waarvoor Le Pal nog geen minimumlengte heeft genoemd, zit je in nagebouwde voertuigen uit het park. Daar horen het zeilbootje van Fjord Explorer bij, een heteluchtballon van de [Ballons d'Orient](ref:le-pal/the-oriental-balloons) en het vliegtuig van de Ravitailleur. De Ravitailleur is een burgertent naast de Descente du Colorado, dus op de carrousel maakt dat vliegtuig voor het eerst rondjes, alleen zonder friet aan boord.
+Op de nieuwe familiecarrousel, waarvoor Le Pal nog geen minimumlengte heeft genoemd, zit je in nagebouwde voertuigen uit het park. Daar horen het zeilbootje van Fjord Explorer bij, een heteluchtballon van de [Ballons d'Orient](ref:le-pal/the-oriental-balloons) en een vliegtuig. Dat vliegtuig hoort bij de Ravitailleur, de burgertent naast de Descente du Colorado, en draait op de carrousel voor het eerst rondjes, terwijl de friet op de grond blijft.
 
 ## Een verblijf voor de rode panda's
 
-De rode panda's krijgen een nieuw, beplant verblijf bij het olifantenverblijf Delta des Éléphants, dat in 2026 openging. Rode panda's zitten graag hoog in de bomen. Daarom krijgen ze meer ruimte om te klimmen, en lopen er bruggen op hoogte door het verblijf. Jij loopt er dwars doorheen en ziet de dieren van dichtbij, vaak met je hoofd in je nek.
+De rode panda's krijgen een nieuw, beplant verblijf bij het olifantenverblijf Delta des Éléphants, dat in 2026 openging. Omdat rode panda's veel tijd in de bomen doorbrengen, krijgen ze in het nieuwe verblijf meer ruimte om te klimmen, en loopbruggen gaan de hoogte in. Je loopt dwars door het verblijf en ziet de dieren van dichtbij, ook boven op de loopbruggen.
 
 ## Wanneer het park in 2027 open is
 
@@ -64,7 +64,7 @@ Het seizoen 2027 loopt van zaterdag 10 april tot zondag 3 oktober, met deze open
 - 16 juni tot en met 1 september: elke dag
 - 2 september tot en met 3 oktober: in het weekend, plus woensdag 8 en 15 september
 
-De poort gaat om 10.00 uur open en sluit, afhankelijk van de dag, om 17.30 uur of op zijn vroegst om 18.00 uur. Na 3 oktober is tot eind oktober alleen het dierenpark nog op losse dagen open, voor gasten van de lodges en zonder attracties. In de winter en rond kerst blijft het park dicht.
+De poort gaat om 10.00 uur open en sluit, afhankelijk van de dag, om 17.30 uur of op zijn vroegst om 18.00 uur. Daarna is tot eind oktober alleen het dierenpark nog open, op losse dagen en alleen voor gasten van de lodges. In de winter en rond kerst blijft het park dicht.
 
 ```best-days-widget slug=le-pal
 
@@ -95,7 +95,7 @@ Met de auto neem je op de A79, afhankelijk van je rijrichting, afrit 28 Thiel-su
 
 ## Het seizoen 2026 in cijfers
 
-Volgens eigen telling kwamen er in 2026 zo'n 720.000 bezoekers naar Le Pal. Dat is 3 procent meer dan een jaar eerder en het op twee na beste seizoen sinds de opening in 1973. April trok 92.000 bezoekers, in juni en juli hielden de hittegolven de aantallen laag. In 2026 investeerde het park 9 miljoen euro, waarvan 2 miljoen in de Delta des Éléphants. De olifanten hebben daar twee hectare met een eigen rivier en twee badbassins, en in de buurt komt nu het pandaverblijf. In de bezoekersenquête 2026 van Qualimétrie kwam Fjord Explorer op de eerste plaats, voor Yukon Quad. Andere nieuwigheden in Frankrijk en Europa staan in ons [overzicht van de nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
+Volgens eigen telling kwamen er in 2026 zo'n 720.000 bezoekers naar Le Pal. Dat is 3 procent meer dan een jaar eerder en het op twee na beste seizoen sinds de opening in 1973. Alleen al in april kwamen er 92.000 bezoekers, in juni en juli hielden de hittegolven de aantallen daarna laag. In 2026 investeerde het park 9 miljoen euro, waarvan 2 miljoen in de Delta des Éléphants. De olifanten hebben daar twee hectare met een eigen rivier en twee badbassins. In de bezoekersenquête 2026 van Qualimétrie kwam Fjord Explorer op de eerste plaats, voor Yukon Quad. Andere nieuwigheden in Frankrijk en Europa staan in ons [overzicht van de nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 Bronnen:
 [Persbericht Bilan de saison 2026 (pdf)](https://www.lepal.com/uploads/media/default/0001/21/10ded16e796dc5ff1c9038e487d5a64209cf3b15.pdf),
