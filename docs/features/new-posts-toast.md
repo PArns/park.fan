@@ -102,6 +102,7 @@ from before `kind` existed still heads a news post as news, by its `/news/` path
   many as the window has room for (`fanFit`, `FAN_ROW`, `FAN_BOTTOM_GAP`, re-measured on resize), sliding
   out one after another once the card has landed (`FAN_DELAY_MS`, `FAN_STAGGER_MS`, `--fan-i`). Phones
   keep the single card and up to two sheets peeking behind it.
+- **A card opens on hover** from `sm` (see [Opening a card](#opening-a-card)).
 - A footer row links to the listing of the lead post's kind and says how many new posts are not on
   screen.
 - Auto-dismiss after 12 s (`AUTO_DISMISS_MS`); the bar along the bottom edge is the countdown (a Web
@@ -112,6 +113,32 @@ from before `kind` existed still heads a news post as news, by its `/news/` path
   in without travel.
 - Escape closes it. The close button is 24 px drawn and 44 px to a finger.
 - A coverless post shows [`BlogCoverFallback`](blog-cover-fallback.md).
+
+## Opening a card
+
+From `sm`, the card a mouse or pen rests on opens in place, the lead card and every fanned-out card
+alike: the whole title, the post's full `excerpt`, a meta line (reading time, the news post's park,
+the author's byline name) and "Beitrag lesen". Keyboard focus (`:focus-visible`) opens a card at once;
+a finger never does, since on a phone the tap opens the post. One card is open at a time
+(`openKey`).
+
+- **Intent, not contact.** A resting pointer opens a card after `OPEN_INTENT_MS` (110 ms), so a sweep
+  across the stack opens nothing; moving on to the next card switches after `SWITCH_INTENT_MS`.
+  Leaving the stack closes after `CLOSE_DELAY_MS`, so crossing the 8 px gap between two cards is not
+  a leave.
+- **The motion.** `PostPreview` opens through a grid row going from `0fr` to `1fr` (no height is
+  measured); excerpt and meta line rise in after it, 70 ms apart, out of a slight blur. The cover
+  zooms and a streak of light (`Sheen`) crosses it once. Every open card looks the same
+  (`openCard`): a fanned-out card's cover grows to the lead card's 112 × 70 px, the title shows in
+  full in the accent colour, and the card takes an accent border and glow; the other cards step back with `scale`, `brightness` and `saturate`, never `opacity`, since
+  page text under the toast must stay hidden. `prefers-reduced-motion` keeps only the fades.
+- **Room for it.** The lead card's preview does not count when `fanFit` measures it, or the fan would
+  fold away the moment the card opens. `PREVIEW_RESERVE` (112 px) is kept free under the last
+  fanned-out card for it to open into.
+- **The data.** The route sends `excerpt`, `readingMinutes`, `author` (`shortName`, else `name`, via
+  `resolveAuthor`) and, for news, `park` (via `resolveNewsPark`, the same park the `/news` label
+  shows), plus the label `readingTime`, taken raw from `blog.readingTime`. A payload cached from
+  before these fields existed lacks them; the card then has nothing to open into and stays closed.
 
 Analytics: `blog_toast_opened`, no properties, when the post link is followed.
 
