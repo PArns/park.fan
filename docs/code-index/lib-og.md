@@ -30,6 +30,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `OgParky` _component_: Parky for the share images, standing still at `size` pixels square, hat included: the same `ParkyStill` a post's "Parky says" card draws, so he is the drawing and never a copy of it.
 
+### [`ride-card.ts`](../../lib/og/ride-card.ts)
+
+- `getRideOgImage` _function_: The OG card a ride page points at: the ride's own card when the media database has a photo of the ride, else its park's card.
+
 ### [`satori-svg.ts`](../../lib/og/satori-svg.ts)
 
 - `oklchToHex` _function_: sRGB hex of an `oklch(L C H)` colour, L and C as plain numbers, H in degrees.

@@ -70,6 +70,11 @@ held the cards to a five-minute window. A place card fetches the park only for i
 the 159 KB geo document is fetched by the region, home and `/parks` cards, and by a place card
 only as a fallback for a missing city or country name.
 
+A ride page points at its own card only when the media database has a photo of the ride
+(`getRideOgImage` in `lib/og/ride-card.ts`); otherwise at its park's card, with the park's alt
+text, since a photo-less ride card was the park photo under the ride's name and one more URL per
+ride and locale for crawlers to render.
+
 ## Rendering and assets
 
 `next/og` (Satori) paints a PNG; `ogAsJpeg` re-encodes it with sharp (quality 80, quantisation

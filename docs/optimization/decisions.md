@@ -875,6 +875,8 @@ Also fixed: a source photo with a `.jpeg` extension looked for a `-16x9.jpeg` cr
 HTTP and failed with "Unsupported image type" (12 errors in the week). One photo was affected.
 
 **Check:** the `/api/og/[...path]` row in Observability → Functions over the next week, against
-9K invocations and 27 CPU-minutes per 12 hours. **Open:** about 43,000 ride cards
-(7,152 rides × 6 locales) remain, most of them the park photo with the ride's name. Pointing a ride
-without its own photo at the park's card would leave about 1,200; that is a product decision.
+9K invocations and 27 CPU-minutes per 12 hours. A ride page points at its own card only when the
+media database has a photo of the ride (`getRideOgImage` in `lib/og/ride-card.ts`, 108 rides on
+27 November); every other ride page points at its park's card. Before, each of about 43,000 ride
+URLs (7,152 rides × 6 locales) had a card of its own, most of them the park photo under the ride's
+name.
