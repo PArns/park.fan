@@ -2,7 +2,7 @@
 title: 'Mickey and the Magician speelt vanaf 11 januari niet meer'
 translationKey: disneyland-paris-januar-2027-schliessungen
 date: '2026-11-27'
-time: '08:00'
+time: '09:08'
 author: patrick
 mode: published
 featured: false
@@ -46,13 +46,13 @@ seo:
     - La Tanière du Dragon gesloten
 ---
 
-Vanaf 11 januari 2027 speelt Disneyland Paris de show Mickey and the Magician niet meer, omdat het Animagique Theater in [Disney Adventure World](ref:disney-adventure-world) grondig wordt gerenoveerd. In het [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) ernaast gaan op 4 januari [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) en [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) dicht. [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon), het piratenschip in Adventureland, is heel januari dicht. Disney zette dat op de pagina van de show en in de kalender met openingstijden. Wanneer Mickey weer gaat toveren, heeft Disney niet bekendgemaakt.
+Vanaf 11 januari 2027 speelt Disneyland Paris de show Mickey and the Magician niet meer, omdat het Animagique Theater in [Disney Adventure World](ref:disney-adventure-world) grondig wordt gerenoveerd. In het [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) ernaast gaan op 4 januari [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) en [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) dicht. [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon) in Adventureland is al heel januari dicht. Disney zette dat op de pagina van de show en in de kalender met openingstijden. Wanneer Mickey weer gaat toveren, heeft Disney niet bekendgemaakt.
 
 ## De laatste showdag is 10 januari
 
-In de show leert Mickey toveren van personages die het al kunnen: de Geest uit “Aladdin”, Lumière uit “Belle en het Beest” en Rafiki uit “De Leeuwenkoning”. Tussendoor wordt er gezongen en gedanst, en na ongeveer 30 minuten is het voorbij. Vanaf 11 januari doet Disney de lastigste truc zonder Mickey: een heel theater laten verdwijnen.
+In de show leert Mickey toveren van personages die het al kunnen: de Geest uit “Aladdin”, Lumière uit “Belle en het Beest” en Rafiki uit “De Leeuwenkoning”. Tussendoor wordt er gezongen en gedanst, en na ongeveer 30 minuten is het voorbij.
 
-Tot en met 10 januari kun je nog naar de show die in 2016 de Brass Ring Award van de branchevereniging IAAPA won. De voorstelling zit bij je ticket voor Disney Adventure World inbegrepen, maar het aantal plaatsen is beperkt. Wil je zeker binnenkomen, dan koop je gegarandeerde toegang met een eigen wachtrij. Dat kan op de website, in de app of op de dag zelf tot een uur voor aanvang bij de gastenservice. Een prijs geeft de pagina van de show daarvoor niet, alleen dat kinderen vanaf drie jaar evenveel betalen als volwassenen. Vijf minuten voor aanvang gaan de deuren dicht, daarna komt er niemand meer in. De tijden van de voorstellingen staan tot 30 dagen van tevoren in de app.
+In 2016 won de show de Brass Ring Award van de branchevereniging IAAPA. De voorstelling zit bij je ticket voor Disney Adventure World inbegrepen, maar het aantal plaatsen is beperkt. Wil je zeker binnenkomen, dan koop je gegarandeerde toegang met een eigen wachtrij. Dat kan op de website, in de app of op de dag zelf tot een uur voor aanvang bij de gastenservice. Een prijs geeft de pagina van de show daarvoor niet, alleen dat kinderen vanaf drie jaar evenveel betalen als volwassenen. Vijf minuten voor aanvang gaan de deuren dicht. De tijden van de voorstellingen staan tot 30 dagen van tevoren in de app.
 
 Een vervangende show voor het Animagique Theater noemt Disney niet, de showpagina verwijst naar de rest van het programma in beide parken. Voor Disney Adventure World staan in de rest van januari Minnie's Dream Factory, TOGETHER: a Pixar Musical Adventure en Goofy's Imaginary Orchestra in de kalender, plus de parade Disney Princess Cavalcade en 's avonds de show Disney Cascade of Lights.
 
@@ -83,7 +83,7 @@ In Disney Adventure World is in januari alleen [Crush's Coaster](ref:disney-adve
 
 ## Wat er in januari verder te zien is
 
-Disney Enchanted Christmas, het kerstseizoen met de kerstparade van Mickey, eindigt op 6 januari. Vanaf 7 januari rijdt in het Disneyland Park weer de dagparade Disney Stars on Parade, die rond kerst pauze had. 's Avonds speelt op Main Street, U.S.A. de show Disney Tales of Magic, ongeveer een half uur lang. In Discoveryland draait de 4D-film [Mickey's PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic) met Disney-personages.
+Op 6 januari eindigt het kerstseizoen Disney Enchanted Christmas, en daarmee ook de kerstparade van Mickey. Vanaf 7 januari rijdt in het Disneyland Park weer de dagparade Disney Stars on Parade, die rond kerst pauze had. 's Avonds speelt op Main Street, U.S.A. de show Disney Tales of Magic, ongeveer een half uur lang. In Discoveryland draait de 4D-film [Mickey's PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic).
 
 ## Openingstijden in januari 2027
 
@@ -99,13 +99,13 @@ Gasten van de Disney-hotels en Les Villages Nature Paris, en houders van de Disn
 
 ## Wanneer het in januari minder druk is
 
-Op 3 januari eindigt in alle drie de Franse vakantiezones de kerstvakantie, en uitgerekend op de eerste schooldag gaan Indiana Jones en La Tanière du Dragon dicht. De voorjaarsvakantie in de regio Parijs begint pas op 6 februari.
+Op 3 januari eindigt in alle drie de Franse vakantiezones de kerstvakantie, en uitgerekend op de eerste schooldag gaan Indiana Jones en La Tanière du Dragon dicht. Schoolkinderen in de regio Parijs hebben daarna tot en met 5 februari geen vakantie. Hun voorjaarsvakantie begint op 6 februari.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
 ```
 
-Zonder Indiana Jones blijven in het Disneyland Park in januari [Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain) en op de meeste dagen Star Wars Hyperspace Mountain over als grote achtbanen. De volgorde voor allebei en voor de andere attracties van een dag vind je in onze [gids over de wachttijden in Disneyland Paris](/blog/disneyland-paris-wachttijden-tips).
+Zonder Indiana Jones blijven in het Disneyland Park in januari [Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain) en behalve op 25 en 26 januari ook Star Wars Hyperspace Mountain over als grote achtbanen. De volgorde voor allebei en voor de andere attracties van een dag vind je in onze [gids over de wachttijden in Disneyland Paris](/blog/disneyland-paris-wachttijden-tips).
 
 Bronnen:
 [Mickey and the Magician op disneylandparis.com](https://www.disneylandparis.com/en-gb/entertainment/disney-adventure-world/mickey-and-the-magician-show),
