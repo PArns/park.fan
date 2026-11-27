@@ -73,7 +73,7 @@ En el Disneyland Park, estas atracciones cierran en enero:
 
 Disney todavía no ha publicado los horarios de febrero, así que tampoco se sabe si Indiana Jones, La Tanière du Dragon y Pirate Galleon vuelven a abrir el 1 de febrero. Al anunciar la [renovación de Indiana Jones](/news/indiana-jones-disneyland-paris-renovacion-2027), Disney solo habló de varios meses. Yo no contaría con Indiana Jones tampoco en las vacaciones de invierno de febrero.
 
-Quien más pierde en enero son las familias con niños pequeños, porque La Tanière du Dragon, Pirate Galleon y Thunder Mesa Riverboat Landing no piden altura mínima. En La Tanière du Dragon recorres una mazmorra oscura bajo el castillo de la Bella Durmiente, donde duerme encadenado un dragón vencido, hasta que deja de dormir. En la Pirate Galleon, los niños trepan por la cubierta y miran los cañones. En Thunder Mesa Riverboat Landing subes al barco de vapor de ruedas Molly Brown, que navega por los Rivers of the Far West junto a Big Thunder Mountain y vuelve a zarpar a partir del 23 de enero.
+Quien más pierde en enero son las familias con niños pequeños, porque La Tanière du Dragon, Pirate Galleon y Thunder Mesa Riverboat Landing no piden altura mínima. La Tanière du Dragon te lleva por una mazmorra oscura bajo el castillo de la Bella Durmiente, donde duerme encadenado un dragón vencido, hasta que deja de dormir. En la Pirate Galleon, los niños trepan por la cubierta y miran los cañones. En Thunder Mesa Riverboat Landing subes al barco de vapor de ruedas Molly Brown, que navega por los Rivers of the Far West junto a Big Thunder Mountain y vuelve a zarpar a partir del 23 de enero.
 
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days
 
