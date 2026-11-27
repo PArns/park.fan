@@ -2671,16 +2671,16 @@
     },
     "scenes": {
       "park": {
-        "title": "Elke attractie, elke rij, live",
-        "caption": "Elke vijf minuten vers. Aan de curve zie je of de rij groeit of krimpt."
+        "title": "Wachttijden om de vijf minuten",
+        "caption": "Onder elke attractie de curve van vandaag. Gaat hij omhoog, dan waren anderen sneller."
       },
       "ride": {
         "title": "Nu in de rij of eerst friet?",
-        "caption": "Ik ken de gewone wachttijd van elk uur. Is het nu korter? Lopen!"
+        "caption": "Ik ken de gewone wachttijd van elk uur. Is die vandaag korter, dan zeg ik het."
       },
       "compass": {
-        "title": "Gewoon de pijl achterna",
-        "caption": "Tik op „Breng me erheen” en volg de pijl. Werkt ook naar de wc, als ik er een ken."
+        "title": "Volg de pijl naar de attractie",
+        "caption": "Tik op “Breng me erheen” en volg de pijl. Ook naar de wc, als ik er een ken."
       }
     },
     "trust": {

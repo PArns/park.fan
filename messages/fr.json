@@ -2671,16 +2671,16 @@
     },
     "scenes": {
       "park": {
-        "title": "Chaque attraction, en direct",
-        "caption": "Mis à jour toutes les cinq minutes. La courbe te dit si la file grossit ou fond."
+        "title": "Attentes à jour toutes les 5 min",
+        "caption": "Sous chaque attraction, la courbe du jour. Si elle monte, d’autres t’ont devancé."
       },
       "ride": {
-        "title": "On y va maintenant ou après ?",
-        "caption": "Je connais l’attente habituelle à chaque heure. Moins aujourd’hui ? Fonce !"
+        "title": "On fait la file ou des churros ?",
+        "caption": "Je connais l’attente habituelle de chaque heure. Si elle est plus courte, fonce."
       },
       "compass": {
-        "title": "Suis la flèche, c’est tout",
-        "caption": "Touche « Guide-moi » et suis la flèche. Les toilettes aussi, quand j’en connais."
+        "title": "La flèche te mène à l’attraction",
+        "caption": "Touche « Guide-moi » et suis la flèche. Vers les toilettes aussi, quand j’en connais."
       }
     },
     "trust": {

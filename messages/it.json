@@ -2671,15 +2671,15 @@
     },
     "scenes": {
       "park": {
-        "title": "Tutte le code, in diretta",
-        "caption": "Aggiornato ogni cinque minuti. Dalla curva vedi se la coda cresce o cala."
+        "title": "Attese nuove ogni cinque minuti",
+        "caption": "Sotto ogni attrazione c’è la curva di oggi. Se sale, qualcuno è arrivato prima di te."
       },
       "ride": {
-        "title": "Ora o dopo i churros?",
-        "caption": "So l’attesa tipica di ogni ora. Oggi è più corta? Vai!"
+        "title": "Coda adesso o prima i churros?",
+        "caption": "So l’attesa tipica di ogni ora. Se oggi è più breve, te lo dico."
       },
       "compass": {
-        "title": "Segui la freccia e basta",
+        "title": "Con la freccia all’attrazione",
         "caption": "Tocca «Portami lì» e segui la freccia. Anche per il bagno, se ne conosco uno."
       }
     },

@@ -2671,15 +2671,15 @@
     },
     "scenes": {
       "park": {
-        "title": "Todas las colas, en directo",
-        "caption": "Se actualiza cada cinco minutos. La curva te dice si la cola crece o baja."
+        "title": "Esperas cada cinco minutos",
+        "caption": "Bajo cada atracción va la curva de hoy. Si sube, otros han llegado antes que tú."
       },
       "ride": {
-        "title": "¿Ahora o tras los churros?",
-        "caption": "Me sé la espera habitual de cada hora. ¿Hoy hay menos? ¡Corre!"
+        "title": "¿Hacer cola o churros primero?",
+        "caption": "Me sé la espera habitual de cada hora. Si hoy es más corta, te lo digo."
       },
       "compass": {
-        "title": "Sigue la flecha y listo",
+        "title": "Con la flecha, a la atracción",
         "caption": "Toca «Llévame allí» y sigue la flecha. También al baño, si conozco alguno."
       }
     },

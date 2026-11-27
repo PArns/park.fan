@@ -2671,16 +2671,16 @@
     },
     "scenes": {
       "park": {
-        "title": "Jede Bahn, jede Schlange, live",
-        "caption": "Alle fünf Minuten frisch. An der Kurve siehst du, ob die Schlange wächst oder schrumpft."
+        "title": "Wartezeiten im Fünf-Minuten-Takt",
+        "caption": "Unter jeder Bahn läuft die Kurve von heute. Geht sie hoch, waren andere schneller als du."
       },
       "ride": {
-        "title": "Jetzt anstellen oder später?",
-        "caption": "Ich kenn die übliche Wartezeit zu jeder Stunde. Ist’s heute weniger, lauf los!"
+        "title": "Anstehen oder erst Churros?",
+        "caption": "Ich kenn die übliche Wartezeit jeder Stunde. Ist sie heute kürzer, sag ich’s dir."
       },
       "compass": {
-        "title": "Einfach dem Pfeil nach",
-        "caption": "Tipp auf „Bring mich hin“ und lauf dem Pfeil nach. Meter und Gehminuten gibt’s dazu."
+        "title": "Dem Pfeil nach zur Bahn",
+        "caption": "Tipp auf „Bring mich hin“ und lauf dem Pfeil nach. Zur Toilette auch, wo ich eine kenne."
       }
     },
     "trust": {

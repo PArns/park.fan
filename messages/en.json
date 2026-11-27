@@ -2671,16 +2671,16 @@
     },
     "scenes": {
       "park": {
-        "title": "Every ride. Every line. Live.",
-        "caption": "Fresh every five minutes. The curve tells you if a line is growing or shrinking."
+        "title": "Wait times every five minutes",
+        "caption": "Under each ride runs today’s curve. If it’s climbing, other people got there before you."
       },
       "ride": {
-        "title": "Line up now, or after churros?",
-        "caption": "I know the usual wait for every hour of the day. Shorter today? Then go!"
+        "title": "Ride now, or churros first?",
+        "caption": "I know the usual wait for every hour. If today’s is shorter, I’ll tell you."
       },
       "compass": {
-        "title": "Just follow the arrow",
-        "caption": "Tap “Take me there” and follow the arrow. Works for restrooms too, where I know one."
+        "title": "Follow the arrow to the ride",
+        "caption": "Tap “Take me there” and follow the arrow. To the restroom too, where I know one."
       }
     },
     "trust": {
