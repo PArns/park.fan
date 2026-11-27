@@ -32,7 +32,7 @@ coverImage:
 seo:
   title: 'Disneyland Paris im Januar 2027: Schließungen und Shows'
   description: >-
-    Disneyland Paris im Januar 2027: Mickey and the Magician pausiert ab 11.1., Indiana Jones und La Tanière du Dragon sind ab 4.1. zu. Dazu die Öffnungszeiten.
+    Disneyland Paris im Januar 2027: Mickey and the Magician pausiert ab 11.1., Indiana Jones und La Tanière du Dragon schließen ab 4.1. Mit Öffnungszeiten.
   keywords:
     - Disneyland Paris Januar 2027
     - Disneyland Paris Schließungen
@@ -46,7 +46,7 @@ seo:
     - La Tanière du Dragon geschlossen
 ---
 
-Disneyland Paris spielt die Show Mickey and the Magician ab dem 11. Januar 2027 nicht mehr, weil das Animagique Theater in der [Disney Adventure World](ref:disney-adventure-world) eine große Renovierung bekommt. Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) nebenan sind ab dem 4. Januar [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) und [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) zu, das Piratenschiff [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon) schon den ganzen Januar. Die Pause der Show steht auf ihrer Seite bei Disney, die Schließungen stehen im Kalender der Öffnungszeiten. Wann Mickey wieder zaubert, hat Disney nicht bekannt gegeben.
+Disneyland Paris spielt die Show Mickey and the Magician ab dem 11. Januar 2027 nicht mehr, weil das Animagique Theater in der [Disney Adventure World](ref:disney-adventure-world) eine große Renovierung bekommt. Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) nebenan sind ab dem 4. Januar [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) und [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) zu, das Piratenschiff [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon) schon den ganzen Januar. So steht es auf der Showseite von Disney und im Kalender der Öffnungszeiten. Wann Mickey wieder zaubert, hat Disney nicht bekannt gegeben.
 
 ## Der letzte Showtag ist der 10. Januar
 
@@ -72,7 +72,7 @@ Im Kalender mit dem Filter „Closed Attractions“ stehen für den Disneyland P
 
 Weiter als bis zum 31. Januar reicht der Kalender noch nicht, für Februar stehen dort weder Öffnungszeiten noch Schließungen. Dass Indiana Jones, der Drache und das Piratenschiff am 1. Februar wieder öffnen, lässt sich daraus also nicht ablesen. Bei der [Renovierung von Indiana Jones](/news/indiana-jones-disneyland-paris-renovierung-2027) hat Disney ohnehin nur von mehreren Monaten gesprochen. Mit Indiana Jones würde ich deshalb auch in den Winterferien im Februar nicht rechnen.
 
-Am meisten trifft der Januar Familien mit kleinen Kindern, denn Drachenhöhle, Piratenschiff und Raddampfer haben keine Mindestgröße. In La Tanière du Dragon gehst du durch ein dunkles Verlies unter dem Dornröschenschloss, in dem ein besiegter Drache angekettet liegt und schläft, bis er es nicht mehr tut. Auf der Pirate Galleon klettern Kinder über das Deck und sehen sich die Kanonen an. Der Raddampfer Molly Brown fährt über die Rivers of the Far West an Big Thunder Mountain vorbei und legt ab dem 23. Januar wieder ab. Einen Grund für diese Schließungen nennt Disney nicht, eine Mitteilung dazu gibt es im Newsroom des Resorts nicht.
+Am meisten trifft der Januar Familien mit kleinen Kindern, denn Drachenhöhle, Piratenschiff und Raddampfer haben keine Mindestgröße. In La Tanière du Dragon gehst du durch ein dunkles Verlies unter dem Dornröschenschloss, in dem ein besiegter Drache angekettet liegt und schläft, bis er es nicht mehr tut. Auf der Pirate Galleon klettern Kinder über das Deck und sehen sich die Kanonen an. Der Raddampfer Molly Brown fährt über die Rivers of the Far West an Big Thunder Mountain vorbei und legt ab dem 23. Januar wieder ab.
 
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days
 
@@ -82,7 +82,7 @@ In der Disney Adventure World steht im Januar nur [Crush's Coaster](ref:disney-a
 
 ## Was im Januar sonst läuft
 
-Disney Enchanted Christmas, die Weihnachtssaison mit Mickeys Weihnachtsparade, endet am 6. Januar. Ab dem 7. Januar fährt im Disneyland Park wieder die Tagesparade Disney Stars on Parade, die über Weihnachten Pause hatte. Am Abend läuft auf dem Schloss und an den Fassaden der Main Street die Show Disney Tales of Magic, gut eine halbe Stunde lang, und in Discoveryland [Mickey's PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic), ein 4D-Film mit Disney-Figuren.
+Disney Enchanted Christmas, die Weihnachtssaison mit Mickeys Weihnachtsparade, endet am 6. Januar. Ab dem 7. Januar fährt im Disneyland Park wieder die Tagesparade Disney Stars on Parade, die über Weihnachten Pause hatte. Am Abend läuft auf dem Schloss und an den Fassaden der Main Street die Show Disney Tales of Magic, rund eine halbe Stunde lang, und in Discoveryland [Mickey's PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic), ein 4D-Film mit Disney-Figuren.
 
 ## Öffnungszeiten im Januar 2027
 
