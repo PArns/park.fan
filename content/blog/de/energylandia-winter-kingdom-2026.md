@@ -2,7 +2,7 @@
 title: 'Energylandia hat im Winter bis Ende Januar geöffnet'
 translationKey: energylandia-winter-kingdom-2026
 date: '2026-11-27'
-time: '08:00'
+time: '08:21'
 author: patrick
 mode: published
 featured: false
@@ -43,7 +43,7 @@ seo:
     - Energylandia Wartezeiten Winter
 ---
 
-[Energylandia](ref:energylandia) in Zator startet am Samstag, dem 28. November, ins Winter Kingdom. Bis zum 31. Januar 2027 ist der Park an 28 Tagen offen, jeweils von 11:30 bis 18:30 Uhr. Zum Programm gehören ein Lichtergarten, eine Eisbahn, Snowtubing, ein Weihnachtsmarkt, der Nikolaus und Shows mit Elfen. Achterbahnen fahren auch, solange das Wetter mitspielt.
+[Energylandia](ref:energylandia) in Zator startet am Samstag, dem 28. November, ins Winter Kingdom. Bis zum 31. Januar 2027 ist der Park an 28 Tagen offen, jeweils von 11:30 bis 18:30 Uhr. Zum Programm gehören ein Lichtergarten, eine Eisbahn, Snowtubing, ein Weihnachtsmarkt, der Nikolaus und Shows mit Elfen. Auch Achterbahnen fahren, allerdings nur auf trockener Strecke.
 
 ## An welchen Tagen der Park offen hat
 
@@ -55,17 +55,17 @@ Vom 21. bis 25. Dezember, an Silvester und an Neujahr bleibt das Tor zu. Im vori
 
 ## Was zum Programm gehört
 
-Der Weg durch den Lichtergarten führt an 5 Millionen Lichtern vorbei und durch Lichttunnel. Unterwegs stehen leuchtende Schlitten und Schneemänner, die Christbaumkugeln haben Übergröße, und am Ende steht ein knapp 17 Meter hoher Christbaum. Die Feier, bei der er zum ersten Mal angeknipst wird, beginnt am Samstag um 16 Uhr am Haupteingang. Die Lichter brennen nach Angaben des Parks den ganzen Tag. Ein Extraticket brauchst du für den Garten nicht.
+Der Weg durch den Lichtergarten führt an 5 Millionen Lichtern vorbei und durch Lichttunnel. Am Ende des Wegs steht ein knapp 17 Meter hoher Christbaum, davor leuchten Schlitten, Schneemänner und Christbaumkugeln in Übergröße. Die Feier, bei der er zum ersten Mal angeknipst wird, beginnt am Samstag um 16 Uhr am Haupteingang. Die Lichter brennen nach Angaben des Parks den ganzen Tag. Ein Extraticket brauchst du für den Garten nicht.
 
 Auf der Eisbahn gibt es eine kleine und eine große Fläche. Helm und Schutzhandschuhe sind für alle Pflicht, und Kinder von drei bis sieben Jahren dürfen nur mit Begleitung aufs Eis. Am Eröffnungssamstag legen dort von 13 bis 15 Uhr DJs aus dem Club Energy 2000 zur Disco auf Kufen auf. Fürs Snowtubing gibt es zwei Hügel, einen für Erwachsene und einen für Kinder.
 
 Neu im Programm ist Arctic Loop, ein Karussell mit Schlauchbooten, die sich langsam auf dem Boden drehen. Mitfahren dürfen Kinder von zwei bis 13 Jahren und von 100 bis 200 Zentimetern, und zwar nur mit Begleitung. Außerdem gibt es ein Rentiergehege, in dem die Rentiere laut Energylandia sprechen können. Von 12:30 bis 17:30 Uhr kannst du Lebkuchen verzieren und dich mit dem Nikolaus am Lancelot Shop fotografieren lassen. Den Brief an ihn schreibst du in der zweiten Werkstatt, die den ganzen Tag offen hat, also auch noch, wenn er schon Feierabend hat.
 
-Um 11:20 Uhr begrüßen Nikolaus, Elfen und die Maskottchen die ersten Gäste vor dem Tor. Im Teatr Egypt spielen Elfen zwei Shows von je 15 Minuten. In „Następny przystanek: Święta!“ (Nächster Halt: Weihnachten) droht die Reise des Nikolaus nach Lappland schiefzugehen, in „Fabryka Elfów“ (Elfenfabrik) müssen die Elfen alle Geschenke rechtzeitig fertig bekommen. Elf René zaubert im Town Hall Theatre fünfmal am Tag in „Elfastycznie!“ (ungefähr: Elfastisch). Den Abschluss macht um 18:15 Uhr die Parade „Santa Express“ mit dem Zug des Nikolaus im Bereich Formuła.
+Um 11:20 Uhr begrüßen Nikolaus, Elfen und die Maskottchen die ersten Gäste vor dem Tor. Im Teatr Egypt spielen Elfen zwei Shows von je 15 Minuten, „Następny przystanek: Święta!“ (Nächster Halt: Weihnachten) und „Fabryka Elfów“ (Elfenfabrik). Die eine erzählt von einer Lappland-Reise des Nikolaus, die schiefzugehen droht, die andere von Elfen, die alle Geschenke rechtzeitig fertig bekommen müssen. Elf René zaubert im Town Hall Theatre fünfmal am Tag in „Elfastycznie!“ (ungefähr: Elfastisch). Den Abschluss macht um 18:15 Uhr die Parade „Santa Express“ mit dem Zug des Nikolaus im Bereich Formuła.
 
 ## Welche Bahnen fahren
 
-Offen sind über 30 Attraktionen, darunter Achterbahnen, Karussells und ein Teil der Bajkolandia für kleine Kinder. Im Blog zum letzten Winter nennt Energylandia [Hyperion](ref:energylandia/pepsi-hyperion) und [Zadra](ref:energylandia/zadra-made-in-malopolska) namentlich. Eine Achterbahn fährt aber nur, wenn die Strecke trocken ist, ohne Eis und ohne liegenden Schnee. Ob Hyperion an deinem Tag fährt, siehst du morgens auf der [Parkseite](ref:energylandia). Nach einer Frostnacht schau kurz vor der Abfahrt noch einmal nach.
+Offen sind über 30 Attraktionen, von Achterbahnen bis zu einem Teil der Bajkolandia für kleine Kinder. Im Blog des Parks zum letzten Winter wirbt Energylandia mit Fahrten auf [Hyperion](ref:energylandia/pepsi-hyperion) und [Zadra](ref:energylandia/zadra-made-in-malopolska) in winterlicher Kulisse. Eine Achterbahn fährt aber nur, wenn die Strecke trocken ist, ohne Eis und ohne liegenden Schnee. Ob Hyperion an deinem Tag fährt, siehst du morgens auf der [Parkseite](ref:energylandia). Nach einer Frostnacht schau kurz vor der Abfahrt noch einmal nach.
 
 ```hourly-profile-widget slug=energylandia top=6 from=2025-11-29 to=2026-02-08
 
@@ -75,7 +75,7 @@ Offen sind über 30 Attraktionen, darunter Achterbahnen, Karussells und ein Teil
 
 Energylandia verkauft in Euro und in Złoty, mit getrennten Preislisten in zwei Shops. Im Euro-Shop auf tickets.energylandia.pl kostet ein Tag im Winter Kingdom 38 €, ermäßigt 33 €. Ermäßigt zahlen Kinder unter 140 Zentimetern, Senioren ab 65 und Menschen mit Behinderung. Ab 15 Uhr gibt es ein Nachmittagsticket für 21 € oder ermäßigt 19 €. Reservieren musst du nichts, das Ticket gilt an jedem Öffnungstag bis zum 31. Januar. Im Ticket sind alle Attraktionen und Shows enthalten, die an dem Tag offen sind, die Eisbahn also auch.
 
-Im polnischen Shop auf ticket.energylandia.pl kostet das Winter-Ticket regulär 149 zł, in den Black Weeks bis Sonntag, den 29. November, nur 99 zł. Das Angebot gibt es nur online und höchstens zehn Stück insgesamt. Diese Tickets gelten aber erst ab dem 4. Dezember, am Eröffnungswochenende zahlst du also den vollen Preis. Das Nachmittagsticket ist im Angebot nicht dabei. Die [Black-Friday-Angebote der anderen Parks](/news/black-friday-freizeitparks-2026) haben wir in einem eigenen Beitrag gesammelt.
+Im polnischen Shop auf ticket.energylandia.pl kostet das Winter-Ticket regulär 149 zł, in den Black Weeks bis Sonntag, den 29. November, nur 99 zł. Das Angebot gibt es nur online und höchstens zehn Stück insgesamt. Diese Tickets gelten aber erst ab dem 4. Dezember, am Eröffnungswochenende zahlst du also den vollen Preis. Das Nachmittagsticket ist im Angebot nicht dabei. Black-Friday-Tickets gibt es auch bei [anderen Parks](/news/black-friday-freizeitparks-2026).
 
 Der Parkplatz vor dem Eingang kostet 30 zł am Tag. Zum Anziehen empfiehlt der Park Zwiebellook, Skikleidung und sogar eine Skibrille mit Gummiband.
 
@@ -96,6 +96,6 @@ Die Parade um 18:15 Uhr siehst du auf dem Weg nach Krakau also höchstens von hi
 
 ## Wie es 2027 weitergeht
 
-Die Sommersaison 2027 beginnt am 3. April. Mit dem neuen Bereich Volana kommt in Energylandia auch der [Wing Coaster Rokan](/news/energylandia-rokan-wing-coaster) dazu, einen Termin hat der Park noch nicht genannt. [Tipps für einen Tag in Energylandia](/blog/energylandia-wartezeiten-tipps) und die Bahnen, die im Sommer dazukommen, haben wir in unserem Guide.
+Die Sommersaison 2027 beginnt am 3. April. Mit dem neuen Bereich Volana kommt in Energylandia auch der [Wing Coaster Rokan](/news/energylandia-rokan-wing-coaster) dazu, einen Termin hat der Park noch nicht genannt. Welche Bahnen im Sommer zusätzlich fahren, steht in unseren [Tipps für Energylandia](/blog/energylandia-wartezeiten-tipps).
 
 Quellen: [Winter Kingdom (Event)](https://energylandia.pl/wydarzenia/winter-kingdom/), [Winter Kingdom (Attraktionen)](https://energylandia.pl/atrakcje/winter-kingdom/), [Kalender](https://energylandia.pl/kalendarz/), [Energylandia im Winter (Blog des Parks, 2025)](https://energylandia.pl/blog/czy-w-zimie-da-sie-jezdzic-na-rollercoasterach/), [Ogród Świateł](https://energylandia.pl/atrakcje/winter-kingdom/ogrod-swiatel/), [Choinka](https://energylandia.pl/atrakcje/winter-kingdom/choinka/), [Lodowisko](https://energylandia.pl/atrakcje/winter-kingdom/lodowisko/), [Snowtubing](https://energylandia.pl/atrakcje/snowtubing/), [Arctic Loop](https://energylandia.pl/atrakcje/winter-kingdom/artic-loop/), [Zagroda Reniferów](https://energylandia.pl/atrakcje/winter-kingdom/zagroda-reniferow/), [Lebkuchen-Werkstatt](https://energylandia.pl/atrakcje/winter-kingdom/warsztaty-zdobienia-piernikow/), [Briefe an den Nikolaus](https://energylandia.pl/atrakcje/winter-kingdom/warsztaty-pisania-listow-do-sw-mikolaja/), [Spotkanie ze Św. Mikołajem](https://energylandia.pl/show/spotkanie-ze-sw-mikolajem/), [Welcome to Winter Kingdom](https://energylandia.pl/show/hello-winter/), [Następny przystanek: Święta!](https://energylandia.pl/show/nastepny-przystanek-swieta/), [Fabryka Elfów](https://energylandia.pl/show/fabryka-elfow/), [Elfastycznie!](https://energylandia.pl/show/elfastycznie/), [Santa Express](https://energylandia.pl/show/santa-express/), [Magiczne Rozświetlenie Choinki](https://energylandia.pl/show/magiczne-rozswietlenie-choinki/), [Disco Łyżwy](https://energylandia.pl/show/disco-lyzwy/), [Euro-Shop](https://tickets.energylandia.pl/en/), [Winter-Kingdom-Tickets](https://tickets.energylandia.pl/products/winter-kingdom/2-7), [Black Weeks](https://energylandia.pl/wydarzenia/black-weeks-bilety-taniej/), [FAQ](https://energylandia.pl/faq/), [Anreise](https://energylandia.pl/dojazd/), [Rokan](https://energylandia.pl/atrakcje/rokan/), [Saisonstart 2027](https://energylandia.pl/wydarzenia/wielkie-otwarcie-sezonu-2027/).

@@ -2,7 +2,7 @@
 title: 'Energylandia is in de winter open tot eind januari'
 translationKey: energylandia-winter-kingdom-2026
 date: '2026-11-27'
-time: '08:00'
+time: '08:21'
 author: patrick
 mode: published
 featured: false
@@ -43,7 +43,7 @@ seo:
     - Energylandia wachttijden winter
 ---
 
-Op zaterdag 28 november wordt [Energylandia](ref:energylandia) in Zator weer het Winter Kingdom. Tot en met 31 januari 2027 is het park op 28 dagen open, steeds van 11.30 tot 18.30 uur. Op het programma staan een lichtjestuin, een ijsbaan, snowtubing, een kerstmarkt, de Kerstman en shows met elfen. Ook de achtbanen rijden, zolang het weer meewerkt.
+Op zaterdag 28 november wordt [Energylandia](ref:energylandia) in Zator weer het Winter Kingdom. Tot en met 31 januari 2027 is het park op 28 dagen open, steeds van 11.30 tot 18.30 uur. Op het programma staan een lichtjestuin, een ijsbaan, snowtubing, een kerstmarkt, de Kerstman en shows met elfen. Ook achtbanen rijden, maar alleen als de baan droog is.
 
 ## Op welke dagen het park open is
 
@@ -55,17 +55,17 @@ Van 21 tot en met 25 december, op oudejaarsdag en op nieuwjaarsdag blijft de poo
 
 ## Wat er te doen is
 
-De route door de lichtjestuin loopt langs 5 miljoen lampjes en door lichttunnels. Onderweg staan lichtgevende sleeën en sneeuwpoppen, de kerstballen zijn reusachtig, en aan het eind staat een kerstboom van bijna 17 meter. Het feest waarop hij voor het eerst aangaat, begint zaterdag om 16.00 uur bij de hoofdingang. Volgens het park branden de lampjes de hele dag, en voor de tuin heb je geen apart ticket nodig.
+De route door de lichtjestuin loopt langs 5 miljoen lampjes en door lichttunnels. Aan het eind van de route staat een kerstboom van bijna 17 meter, met daarvoor lichtgevende sleeën, sneeuwpoppen en reusachtige kerstballen. Het feest waarop hij voor het eerst aangaat, begint zaterdag om 16.00 uur bij de hoofdingang. Volgens het park branden de lampjes de hele dag, en voor de tuin heb je geen apart ticket nodig.
 
 De ijsbaan heeft een kleine en een grote baan. Een helm en beschermende handschoenen zijn voor iedereen verplicht, en kinderen van drie tot zeven mogen alleen onder begeleiding het ijs op. Op de openingszaterdag draaien dj's van club Energy 2000 er van 13.00 tot 15.00 uur een schaatsdisco. Voor het snowtubing zijn er twee heuvels, een voor volwassenen en een voor kinderen.
 
 Nieuw is Arctic Loop, een draaimolen met rubberboten die langzaam over de grond ronddraaien. Meerijden mogen kinderen van twee tot 13 jaar en van 100 tot 200 centimeter lang, en alleen onder begeleiding. Verder is er een rendierenweide, waar de rendieren volgens Energylandia kunnen praten. Van 12.30 tot 17.30 uur kun je peperkoek versieren en bij de Lancelot Shop met de Kerstman op de foto. Je brief aan hem schrijf je in de tweede werkplaats, die de hele dag open is, dus ook nog als zijn dienst er al op zit.
 
-Om 11.20 uur heten de Kerstman, de elfen en de mascottes de eerste bezoekers welkom voor de poort. In het Teatr Egypt spelen elfen twee shows van elk een kwartier. In “Następny przystanek: Święta!” (Volgende halte: Kerstmis) dreigt de reis van de Kerstman naar Lapland mis te lopen, en in “Fabryka Elfów” (Elfenfabriek) moeten de elfen alle cadeaus op tijd af krijgen. Elf René goochelt vijf keer per dag in het Town Hall Theatre in “Elfastycznie!” (zoiets als: Elfastisch). Om 18.15 uur sluit de parade “Santa Express” de dag af, met de trein van de Kerstman in het gebied Formuła.
+Om 11.20 uur heten de Kerstman, de elfen en de mascottes de eerste bezoekers welkom voor de poort. In het Teatr Egypt spelen elfen twee shows van elk een kwartier: “Następny przystanek: Święta!” (Volgende halte: Kerstmis) en “Fabryka Elfów” (Elfenfabriek). De ene gaat over een reis van de Kerstman naar Lapland die mis dreigt te lopen, de andere over elfen die alle cadeaus op tijd af moeten krijgen. Elf René goochelt vijf keer per dag in het Town Hall Theatre in “Elfastycznie!” (zoiets als: Elfastisch). Om 18.15 uur sluit de parade “Santa Express” de dag af, met de trein van de Kerstman in het gebied Formuła.
 
 ## Welke attracties rijden
 
-Er zijn meer dan 30 attracties open, waaronder achtbanen, draaimolens en een deel van Bajkolandia voor kleine kinderen. In zijn blog over de vorige winter noemt Energylandia [Hyperion](ref:energylandia/pepsi-hyperion) en [Zadra](ref:energylandia/zadra-made-in-malopolska) bij naam. Een achtbaan rijdt alleen als de baan droog is, zonder ijs en zonder sneeuw erop. Of Hyperion op jouw dag rijdt, zie je 's ochtends op de [parkpagina](ref:energylandia). Na een nacht met vorst kijk je vlak voor vertrek nog een keer.
+Er zijn meer dan 30 attracties open, van achtbanen tot een deel van Bajkolandia voor kleine kinderen. In de blog over de vorige winter maakt het park reclame met ritten in [Hyperion](ref:energylandia/pepsi-hyperion) en [Zadra](ref:energylandia/zadra-made-in-malopolska) in een winters decor. Een achtbaan rijdt alleen als de baan droog is, zonder ijs en zonder sneeuw erop. Of Hyperion op jouw dag rijdt, zie je 's ochtends op de [parkpagina](ref:energylandia). Na een nacht met vorst kijk je vlak voor vertrek nog een keer.
 
 ```hourly-profile-widget slug=energylandia top=6 from=2025-11-29 to=2026-02-08
 
@@ -75,7 +75,7 @@ Er zijn meer dan 30 attracties open, waaronder achtbanen, draaimolens en een dee
 
 Energylandia verkoopt tickets in euro en in złoty, met aparte prijslijsten in twee webshops. In de euroshop op tickets.energylandia.pl kost een dag Winter Kingdom € 38, met korting € 33. Die korting krijgen kinderen onder 140 centimeter, 65-plussers en mensen met een beperking. Vanaf 15.00 uur is er een middagticket voor € 21, met korting € 19. Reserveren hoeft niet: het ticket geldt op elke openingsdag tot en met 31 januari. Bij het ticket zitten alle attracties en shows die die dag open zijn, de ijsbaan dus ook.
 
-In de Poolse shop op ticket.energylandia.pl kost het winterticket normaal 149 zł, en tijdens de Black Weeks tot en met zondag 29 november maar 99 zł. Die aanbieding is er alleen online, en je koopt er hooguit tien. Alleen gelden deze tickets pas vanaf 4 december, dus voor het openingsweekend betaal je de volle prijs. Het middagticket valt niet onder de aanbieding. De [Black Friday-acties van andere parken](/news/black-friday-pretparken-2026) staan in een apart bericht.
+In de Poolse shop op ticket.energylandia.pl kost het winterticket normaal 149 zł, en tijdens de Black Weeks tot en met zondag 29 november maar 99 zł. Die aanbieding is er alleen online, en je koopt er hooguit tien. Alleen gelden deze tickets pas vanaf 4 december, dus voor het openingsweekend betaal je de volle prijs. Het middagticket valt niet onder de aanbieding. Ook [andere parken](/news/black-friday-pretparken-2026) verkopen Black Friday-tickets.
 
 Parkeren voor de ingang kost 30 zł per dag. Qua kleding raadt het park laagjes aan, skikleding en zelfs een skibril met elastiek.
 
@@ -96,6 +96,6 @@ De parade van 18.15 uur zie je op weg naar Krakau dus hooguit van achteren.
 
 ## Hoe het in 2027 verdergaat
 
-Het zomerseizoen 2027 begint op 3 april. Met het nieuwe gebied Volana krijgt Energylandia ook de [wing coaster Rokan](/news/energylandia-rokan-wing-coaster), al heeft het park daar nog geen datum voor genoemd. [Tips voor een dag in Energylandia](/blog/energylandia-wachttijden-tips) en de attracties die er in de zomer bij komen, staan in onze gids.
+Het zomerseizoen 2027 begint op 3 april. Met het nieuwe gebied Volana krijgt Energylandia ook de [wing coaster Rokan](/news/energylandia-rokan-wing-coaster), al heeft het park daar nog geen datum voor genoemd. Welke attracties er in de zomer bij komen, lees je in onze [tips voor Energylandia](/blog/energylandia-wachttijden-tips).
 
 Bronnen: [Winter Kingdom (evenement)](https://energylandia.pl/wydarzenia/winter-kingdom/), [Winter Kingdom (attracties)](https://energylandia.pl/atrakcje/winter-kingdom/), [Kalender](https://energylandia.pl/kalendarz/), [Energylandia in de winter (blog van het park, 2025)](https://energylandia.pl/blog/czy-w-zimie-da-sie-jezdzic-na-rollercoasterach/), [Ogród Świateł](https://energylandia.pl/atrakcje/winter-kingdom/ogrod-swiatel/), [Choinka](https://energylandia.pl/atrakcje/winter-kingdom/choinka/), [Lodowisko](https://energylandia.pl/atrakcje/winter-kingdom/lodowisko/), [Snowtubing](https://energylandia.pl/atrakcje/snowtubing/), [Arctic Loop](https://energylandia.pl/atrakcje/winter-kingdom/artic-loop/), [Zagroda Reniferów](https://energylandia.pl/atrakcje/winter-kingdom/zagroda-reniferow/), [Peperkoekwerkplaats](https://energylandia.pl/atrakcje/winter-kingdom/warsztaty-zdobienia-piernikow/), [Brieven aan de Kerstman](https://energylandia.pl/atrakcje/winter-kingdom/warsztaty-pisania-listow-do-sw-mikolaja/), [Spotkanie ze Św. Mikołajem](https://energylandia.pl/show/spotkanie-ze-sw-mikolajem/), [Welcome to Winter Kingdom](https://energylandia.pl/show/hello-winter/), [Następny przystanek: Święta!](https://energylandia.pl/show/nastepny-przystanek-swieta/), [Fabryka Elfów](https://energylandia.pl/show/fabryka-elfow/), [Elfastycznie!](https://energylandia.pl/show/elfastycznie/), [Santa Express](https://energylandia.pl/show/santa-express/), [Magiczne Rozświetlenie Choinki](https://energylandia.pl/show/magiczne-rozswietlenie-choinki/), [Disco Łyżwy](https://energylandia.pl/show/disco-lyzwy/), [Euroshop](https://tickets.energylandia.pl/en/), [Winter Kingdom-tickets](https://tickets.energylandia.pl/products/winter-kingdom/2-7), [Black Weeks](https://energylandia.pl/wydarzenia/black-weeks-bilety-taniej/), [FAQ](https://energylandia.pl/faq/), [Bereikbaarheid](https://energylandia.pl/dojazd/), [Rokan](https://energylandia.pl/atrakcje/rokan/), [Seizoensstart 2027](https://energylandia.pl/wydarzenia/wielkie-otwarcie-sezonu-2027/).
