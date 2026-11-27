@@ -43,6 +43,9 @@ seo:
     - walibi horaire
 ---
 
+> [!UPDATE] 2026-11-27
+> De code FUNTIME kun je niet combineren met de Black Week-prijs. Dat staat nu op de [actiepagina](https://www.walibi.be/nl/tickets/pass) bij de Walibi-, Aqualibi- en Red&Blue-pass. Voor de Walibi PASS begint het jaar op 5 december, de eerste dag van Walibi Winter. De vijf passen met Aqualibi lopen een jaar vanaf de aankoopdatum. Walibi verkoopt in deze actie maximaal 18.000 jaarpassen.
+
 [Walibi Belgium](ref:walibi-belgium) in Waver verkoopt zijn jaarpassen tot en met zondag 29 november met tot 35 procent korting. De gewone Walibi PASS kost in de Black Week € 100,75 in plaats van € 155, en de drie Premium-passen Gold, Ruby en Diamond zijn 15 procent goedkoper. De actie loopt sinds vandaag in de webshop. Het park zelf blijft dicht tot Walibi Winter.
 
 Voor de shop heeft Walibi een wachtruimte gezet, en een melding daarin belooft dezelfde prijs op elke dag van de actie, dus is de rij vandaag lang, dan kun je het tabblad sluiten en het donderdag opnieuw proberen. Pas als je aan de beurt bent, kom je in de shop. Daarvoor moet je functionele cookies toestaan. Vanaf dan heb je tien minuten om te bestellen. Daarna sluit je weer achteraan aan.

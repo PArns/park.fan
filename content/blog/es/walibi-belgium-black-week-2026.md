@@ -44,6 +44,9 @@ seo:
     - walibi horaire
 ---
 
+> [!UPDATE] 2026-11-27
+> No puedes combinar el código FUNTIME con el precio de la Black Week. Walibi lo indica ahora en la [página de la promoción](https://www.walibi.be/nl/tickets/pass), junto a los pases Walibi, Aqualibi y Red&Blue. El pase Walibi vale un año a partir del 5 de diciembre, primer día de Walibi Winter. Los cinco pases que incluyen Aqualibi cuentan el año desde la fecha de compra. En toda la promoción, Walibi vende como máximo 18.000 pases anuales.
+
 [Walibi Belgium](ref:walibi-belgium), en Wavre, vende sus pases anuales con hasta un 35 % de descuento hasta el domingo 29 de noviembre. Durante la Black Week, el pase Walibi sencillo cuesta 100,75 € en lugar de 155 €, y los tres pases Premium (Gold, Ruby y Diamond) salen un 15 % más baratos. La promoción arrancó hoy en la tienda en línea, mientras el parque sigue cerrado hasta Walibi Winter.
 
 Walibi ha puesto una sala de espera virtual delante de la tienda, y un aviso en ella promete el mismo precio todos los días de la promoción, así que si hoy la cola es larga puedes cerrar la pestaña y volver a intentarlo el jueves. Pasas a la tienda cuando te toca. Para entrar, acepta las cookies funcionales. Una vez dentro, tienes diez minutos para hacer el pedido. Si se te acaban, vuelves al final de la cola.
