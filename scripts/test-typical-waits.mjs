@@ -310,7 +310,7 @@ test(
 
 // --- an average is not a walk-on --------------------------------------------------------------
 
-test('a posted 13 stays a walk-on', () => roundWaitTo5(13), 13);
+test('a posted 13 stays 13', () => roundWaitTo5(13), 13);
 test(
   'an average that lands on 13 goes to 15 like its neighbours',
   () => roundAverageWaitTo5(13),
@@ -319,9 +319,10 @@ test(
 test('an average of 12.4 goes to 10', () => roundAverageWaitTo5(12.4), 10);
 test('an average under 2.5 is 0', () => roundAverageWaitTo5(2), 0);
 
-// --- the walk-on keeps its colour -------------------------------------------------------------
+// --- a posted 13 is a short wait ----------------------------------------------------------------
 
-test('a posted 13 is coloured like a 5', () => waitTimeCrowdTier(13), 'very_low');
+test('a posted 13 is coloured like a 15', () => waitTimeCrowdTier(13), 'low');
+test('a 5 takes the walk-on colour', () => waitTimeCrowdTier(5), 'very_low');
 test('a 12 stays an ordinary short wait', () => waitTimeCrowdTier(12), 'low');
 test('a 15 stays an ordinary short wait', () => waitTimeCrowdTier(15), 'low');
 
@@ -329,7 +330,7 @@ test('a 15 stays an ordinary short wait', () => waitTimeCrowdTier(15), 'low');
 
 test('a 5 is a walk-on', () => isWalkOnWait(5), true);
 test("a 10 is not, at the colour's line", () => isWalkOnWait(10), false);
-test('a posted 13 is a walk-on', () => isWalkOnWait(13), true);
+test('a posted 13 is not a walk-on', () => isWalkOnWait(13), false);
 test('a 12 is not', () => isWalkOnWait(12), false);
 test('a 10 is one by a wider line, as Parky draws it', () => isWalkOnWait(10, 10), true);
 

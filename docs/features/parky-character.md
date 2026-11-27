@@ -151,7 +151,7 @@ over the stamp's edge there, so the card draws no still Parky beside the text.
     the key itself. It stays a headliner; in the chat Parky names it with the reason. The poll
     sends the key as `null` once it warms up (`leanParkForLivePoll`), so the mark clears.
   - **On the park page's ride cards, only what stands out in the park**: „Walk-on!“ where the live
-    wait is a walk-on as his line counts one (`isWalkOn`: 10 minutes or less, or Disney's posted 13) and the ride's `baseline` is at
+    wait is a walk-on as his line counts one (`isWalkOn`: 5 minutes or less) and the ride's `baseline` is at
     least 20. `standoutRides` decides it once for the whole park (`TabsWithHash`, through
     `LandSection`'s `standouts` to the card's `parkyStamp`): when more than `STANDOUT_MAX` (three)
     rides stand out at once, the park is simply empty, every crowd badge says so, and no card gets

@@ -600,14 +600,14 @@ Converts backend API URLs to frontend routes. Always go through these helpers wi
 
 ### [`wait-time.ts`](../../lib/utils/wait-time.ts)
 
-- `isWalkOnWait` _function_: Whether a posted wait is a walk-on: at or under `limit` (`WALK_ON_MAX_MINUTES` unless a surface draws its own line, as Parky does), or the posted 13 (`WALK_ON_WAIT_MINUTES`), the park's own sign for one, which sits above any limit.
+- `isWalkOnWait` _function_: Whether a posted wait is a walk-on: at or under `limit` (`WALK_ON_MAX_MINUTES` unless a surface passes its own). A posted 13 (`WALK_ON_WAIT_MINUTES`) is not one; it reads „13 Min".
 - `roundWaitTo5` _function_: Rounds a wait time for display to five-minute steps, except the posted walk-on 13 (`WALK_ON_WAIT_MINUTES`). Parks post multiples of five; percentiles and averages on top are what produce 51 or 47.
 - `typicalHourFigures` _function_: The two figures of the ride panel's „usually X, rarely over Y" line, both rounded for display, or null when there is nothing to say.
 - `roundAverageWaitTo5` _function_: The five-minute grid for a figure this app computes itself, such as a mean over many days. The walk-on 13 is a value a park posts; an average that happens to land on 13 is an ordinary short wait and goes to 15 like 12.8 does.
 - `roundWaitDeltaTo5` _function_: The same five-minute grid for a DIFFERENCE between two wait times. `roundWaitTo5` floors everything under 2.5 to zero, which is right for a queue and wrong for a delta: it would turn every falling trend into „stable".
 - `shortTermWaitTrend` _function_: The short-term movement of one queue, as a direction and the number that produced it, from the same arithmetic so arrow and figure cannot disagree.
-- `WALK_ON_WAIT_MINUTES` _const_: The posted walk-on: 13 minutes, the one posted wait that stays off the five-minute grid. Disney posts it, and so does Efteling (Danse Macabre).
-- `WALK_ON_MAX_MINUTES` _const_: The longest posted wait that counts as a walk-on and takes the walk-on colour.
+- `WALK_ON_WAIT_MINUTES` _const_: The posted 13 minutes, the one posted wait that stays off the five-minute grid. Disney posts it, and so does Efteling (Danse Macabre), as their signal for „walk straight on".
+- `WALK_ON_MAX_MINUTES` _const_: The longest posted wait that counts as a walk-on, reads „Walk-on" and takes the walk-on colour.
 
 ### [`warnings-in-opening-hours.ts`](../../lib/utils/warnings-in-opening-hours.ts)
 

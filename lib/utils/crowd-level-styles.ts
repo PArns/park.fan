@@ -143,8 +143,8 @@ export const CROWD_CHIP_CLASS: Record<ColoredCrowdLevel, string> = {
 
 /**
  * Wait-time (minutes) → crowd tier, shared by `WaitTimeValue` and the inline blog wait badges so a
- * wait gets the same colour everywhere. A walk-on ({@link isWalkOnWait}) takes the walk-on colour,
- * so a posted 13, the park saying „walk straight on", is coloured like a 5 and not like a 15.
+ * wait gets the same colour everywhere. A walk-on ({@link isWalkOnWait}, 5 minutes or less) takes the
+ * walk-on colour; a posted 13 is an ordinary short wait and coloured like a 15.
  */
 export function waitTimeCrowdTier(minutes: number): ColoredCrowdLevel {
   if (isWalkOnWait(minutes)) return 'very_low';
