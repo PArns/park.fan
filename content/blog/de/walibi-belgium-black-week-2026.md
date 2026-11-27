@@ -45,7 +45,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-27
-> Den Code FUNTIME kannst du nicht mit dem Black-Week-Preis kombinieren. Das steht jetzt auf der [Aktionsseite](https://www.walibi.be/nl/tickets/pass) beim Walibi-, Aqualibi- und Red&Blue-Pass. Der Walibi-Pass zählt sein Jahr ab dem 5. Dezember, dem ersten Tag von Walibi Winter, die fünf Pässe mit Aqualibi ab dem Kaufdatum. Insgesamt gibt Walibi in der Aktion höchstens 18.000 Jahreskarten ab.
+> Den Code FUNTIME kannst du nicht mit dem Black-Week-Preis kombinieren. Das steht jetzt auf der [Aktionsseite](https://www.walibi.be/nl/tickets/pass) beim Walibi-, Aqualibi- und Red&Blue-Pass. Beim Walibi-Pass beginnt das Jahr am 5. Dezember, dem ersten Tag von Walibi Winter. Die fünf Pässe mit Aqualibi gelten ein Jahr ab dem Kaufdatum. Walibi verkauft in der Aktion höchstens 18.000 Jahreskarten.
 
 [Walibi Belgium](ref:walibi-belgium) in Wavre verkauft seine Jahreskarten bis Sonntag, 29. November, um bis zu 35 Prozent billiger. Der einfache Walibi-Pass kostet in der Black Week 100,75 € statt 155 €, die drei Premium-Pässe Gold, Ruby und Diamond gibt es 15 Prozent günstiger. Die Aktion läuft seit heute im Webshop, während der Park selbst bis zum Walibi Winter geschlossen hat.
 
