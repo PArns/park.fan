@@ -67,7 +67,7 @@ Ein Tagesticket für 2027 kostet ebenfalls 69,99 Dollar. Für dasselbe Geld beko
 
 ## Was sonst in Adventure Bay steht
 
-Im Wellenbad Breaker Beach müssen Kinder unter 48 Zoll eine Schwimmweste tragen, auf dem Lazy River Caribbean Cruiser treibst du einmal durch den Wasserpark, und auf Reef Racer rutschen sechs Leute nebeneinander um die Wette. Gang Plank & Pirates' Plummet sind die schnellsten Rutschen von Adventure Bay. Für Kinder gibt es Kokomo Kove mit Kippeimern, dessen kleinste Rutschen ab 36 Zoll (91 Zentimeter) freigegeben sind, die übrigen ab 40 Zoll, und das Piratenschiff Shipwreck Shores. Bei Gewitter schließt Adventure Bay, sobald im Umkreis von zehn Meilen (16 Kilometer) ein Blitz gemessen wird.
+Im Wellenbad Breaker Beach müssen Kinder unter 48 Zoll eine Schwimmweste tragen, auf dem Lazy River Caribbean Cruiser treibst du einmal durch den Wasserpark, und auf Reef Racer rutschen sechs Leute nebeneinander um die Wette. Gang Plank & Pirates' Plummet sind die schnellsten Rutschen von Adventure Bay. Für Kinder gibt es Kokomo Kove mit Kippeimern, dessen kleinste Rutschen ab 36 Zoll (91 Zentimeter) freigegeben sind, die übrigen ab 40 Zoll (102 Zentimeter), und das Piratenschiff Shipwreck Shores. Bei Gewitter schließt Adventure Bay, sobald im Umkreis von zehn Meilen (16 Kilometer) ein Blitz gemessen wird.
 
 Auch die zwei Neuheiten vor Twisted Tiki drehten sich ums Licht. Am Memorial-Day-Wochenende 2025 kam Hyperlight dazu, eine Rutsche mit wechselnden Farben und Surround-Sound. 2026 folgten die Neon Nights: Freitags und samstags vom 10. Juli bis zum 15. August leuchteten abends mehr als zehn Attraktionen, dazwischen liefen Walk-Acts, und es spielte Musik. Mit Silver und Gold bekommst du für 2027 ermäßigte Tickets dafür.
 

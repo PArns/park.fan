@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Desde el verano de 2027 bajarás en Adventure Bay hasta con tres personas en un flotador por un tubo con dos espirales. El pase de temporada más barato cuesta 69,99 dólares en la oferta del Black Friday.
+  Desde el verano de 2027 bajarás en Adventure Bay en un flotador para hasta tres personas por un tubo con dos espirales. El pase de temporada más barato cuesta 69,99 dólares en la oferta del Black Friday.
 tags:
   - news
   - adventureland-resort
@@ -35,7 +35,7 @@ seo:
     - Adventureland Altoona
 ---
 
-[Adventureland](ref:adventureland-resort), en Altoona (Iowa), construye para el verano de 2027 el tobogán Twisted Tiki en su parque acuático Adventure Bay. Será el primero del parque en el que una familia baja junta en un mismo flotador. Adventureland lo anunció el 17 de noviembre y las obras ya han empezado. Es la primera ampliación de Adventure Bay desde 2012, y el parque acuático gana con ella casi un acre, unas 0,4 hectáreas.
+[Adventureland](ref:adventureland-resort), en Altoona (Iowa), construye para el verano de 2027 el tobogán Twisted Tiki en su parque acuático Adventure Bay. Por primera vez en el parque, una familia podrá bajar junta en un mismo flotador. Adventureland lo anunció el 17 de noviembre y las obras ya han empezado. Es la primera ampliación de Adventure Bay desde 2012, y el parque acuático gana con ella casi un acre, unas 0,4 hectáreas.
 
 ## Cinco pisos de altura dentro de un tubo cerrado
 
@@ -50,11 +50,11 @@ Adventureland aún no ha publicado la altura mínima para Twisted Tiki. Hyperlig
 >
 > Mike Lusky, director general de Adventureland, en el [comunicado del 17 de noviembre de 2026](https://adventurelandpark.com/press/all-new-twisted-tiki-water-slide/), traducido del inglés
 
-La fecha de apertura todavía no se conoce. El parque publicará pronto el calendario de 2027 y los eventos del año.
+Adventureland todavía no ha dado la fecha de apertura. El parque publicará pronto el calendario de 2027 y los eventos del año.
 
 ## Lo que cuestan ahora los Season Passes de 2027
 
-Con la oferta del Black Friday te ahorras en línea hasta 60 dólares en los Season Passes de 2027. Adventureland no ha dado a conocer hasta cuándo dura; solo se sabe que es «for a limited time». Todos los pases se pueden pagar en ocho plazos.
+Con la oferta del Black Friday te ahorras en línea hasta 60 dólares en los Season Passes de 2027. Adventureland no ha dado a conocer hasta cuándo dura; solo dice que es «for a limited time». Todos los pases se pueden pagar en ocho plazos.
 
 | Pase     | Precio Black Friday | Precio normal | Incluye                                                                               |
 | -------- | ------------------- | ------------- | ------------------------------------------------------------------------------------- |
@@ -63,11 +63,11 @@ Con la oferta del Black Friday te ahorras en línea hasta 60 dólares en los Sea
 | Gold     | desde 159,99 $      | 219,99 $      | aparcamiento gratis, dos entradas para amigos, un flotador al día en Adventure Bay    |
 | Platinum | desde 199,99 $      | 259,99 $      | Neon Nights, entrada anticipada en Adventure Bay, otros diez parques                  |
 
-La entrada de un día para 2027 también cuesta 69,99 dólares. Con el mismo dinero tienes, por tanto, un día o un verano entero, aunque el verano del pase Bronze no incluye los sábados. Los niños de hasta tres años entran gratis. La entrada y el Season Pass incluyen Adventure Bay mientras el parque acuático esté abierto, y en los días de más afluencia solo deja pasar a un número limitado de visitantes. Si tuviste un Season Pass en 2024, 2025 o 2026, al renovarlo te ahorras hasta 80 dólares. Con Platinum entras, además de en Altoona, en otros diez parques, entre ellos el Noah's Ark Waterpark de Wisconsin.
+La entrada de un día para 2027 también cuesta 69,99 dólares. Con el mismo dinero tienes, por tanto, un día o un verano entero, aunque el verano del pase Bronze no incluye los sábados. Los niños de hasta tres años entran gratis. La entrada y el Season Pass incluyen Adventure Bay mientras el parque acuático esté abierto. En los momentos de más afluencia, el parque solo deja pasar a un número limitado de visitantes. Si tuviste un Season Pass en 2024, 2025 o 2026, al renovarlo te ahorras hasta 80 dólares. Con Platinum entras, además de en Altoona, en otros diez parques, entre ellos el Noah's Ark Waterpark de Wisconsin.
 
 ## Qué más hay en Adventure Bay
 
-En la piscina de olas Breaker Beach, los niños de menos de 48 pulgadas tienen que llevar chaleco salvavidas. En el río lento Caribbean Cruiser recorres flotando todo el parque acuático, y en Reef Racer seis personas compiten una al lado de otra. Gang Plank & Pirates' Plummet son los toboganes más rápidos de Adventure Bay. Para los niños están Kokomo Kove, con cubos que se vuelcan, cuyos toboganes más pequeños admiten a partir de 36 pulgadas (91 centímetros) y los demás a partir de 40, y el barco pirata Shipwreck Shores. Si hay tormenta, Adventure Bay cierra en cuanto se detecta un rayo a menos de diez millas (16 kilómetros).
+En la piscina de olas Breaker Beach, los niños de menos de 48 pulgadas tienen que llevar chaleco salvavidas. En el río lento Caribbean Cruiser recorres flotando todo el parque acuático, y en Reef Racer seis personas compiten una al lado de otra. Gang Plank & Pirates' Plummet son los toboganes más rápidos de Adventure Bay. Para los niños están Kokomo Kove, con cubos que se vuelcan, y el barco pirata Shipwreck Shores. En Kokomo Kove, los toboganes más pequeños se pueden usar a partir de 36 pulgadas (91 centímetros), y los demás, a partir de 40 pulgadas (102 centímetros). Si hay tormenta, Adventure Bay cierra en cuanto se detecta un rayo a menos de diez millas (16 kilómetros).
 
 Las dos novedades anteriores a Twisted Tiki también giraban en torno a la luz. El fin de semana del Memorial Day de 2025 llegó Hyperlight, un tobogán con colores cambiantes y sonido envolvente. En 2026 vinieron las Neon Nights: los viernes y sábados, del 10 de julio al 15 de agosto, más de diez atracciones se iluminaban por la noche, con artistas itinerantes y música. Con Silver y Gold tienes entradas con descuento para ellas en 2027.
 

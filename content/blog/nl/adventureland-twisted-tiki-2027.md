@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Adventureland Iowa: nieuwe glijbaan 2027 in Adventure Bay'
   description: >-
-    Adventureland in Iowa bouwt voor de zomer van 2027 de raftglijbaan Twisted Tiki in Adventure Bay. Seizoenspas 2027 met Black Friday vanaf 69,99 dollar.
+    Adventureland in Iowa bouwt voor de zomer van 2027 de raftglijbaan Twisted Tiki in Adventure Bay. Met Black Friday kost de seizoenspas 2027 vanaf 69,99 $.
   keywords:
     - Adventureland Iowa
     - Adventure Bay
@@ -35,16 +35,16 @@ seo:
     - Adventureland Altoona
 ---
 
-[Adventureland](ref:adventureland-resort) in Altoona, Iowa, bouwt voor de zomer van 2027 een nieuwe glijbaan in waterpark Adventure Bay: Twisted Tiki. Het is de eerste glijbaan in het park waarop een gezin samen in één raft naar beneden gaat. Adventureland maakte hem op 17 november bekend, en de bouw is al begonnen. Adventure Bay is sinds 2012 niet meer uitgebreid. Het waterpark wordt er bijna een acre groter door, ongeveer 0,4 hectare.
+[Adventureland](ref:adventureland-resort) in Altoona, Iowa, bouwt voor de zomer van 2027 in waterpark Adventure Bay de glijbaan Twisted Tiki. Het is de eerste glijbaan in het park waarop een gezin samen in één raft naar beneden gaat. Adventureland maakte hem op 17 november bekend, en de bouw is al begonnen. Het is de eerste uitbreiding van Adventure Bay sinds 2012. Het waterpark wordt er bijna een acre groter door, ongeveer 0,4 hectare.
 
 ## Vijf verdiepingen in een dichte buis
 
 Twisted Tiki komt van glijbaanbouwer ProSlide. In een raft passen maximaal drie personen. Je start op vijf verdiepingen hoogte, en de buis is zo'n 150 meter lang en helemaal dicht, dus van de lucht boven Iowa zie je niets. De baan draait twee keer 360 graden rond, en in de bochten lichten gekleurde ringen en lichteffecten op.
 
-Een minimale lengte voor Twisted Tiki heeft Adventureland nog niet gepubliceerd. Voor Hyperlight, Bermuda Quadrangle en de glijbanen van Gang Plank & Pirates' Plummet moet je 48 inch zijn, dat is 122 centimeter.
+Een minimumlengte voor Twisted Tiki heeft Adventureland nog niet gepubliceerd. Voor Hyperlight, Bermuda Quadrangle en de glijbanen van Gang Plank & Pirates' Plummet moet je 48 inch zijn, dat is 122 centimeter.
 
 > [!QUOTE]
-> Als onze allereerste raftglijbaan voor gezinnen geeft ze onze bezoekers een nieuwe manier om het waterpark samen te beleven, met spannende draaien, felle lichten en onderweg veel verrassingen. We kunnen niet wachten om de gasten in de zomer van 2027 aan boord te verwelkomen.
+> Als onze allereerste raftglijbaan voor gezinnen geeft hij onze bezoekers een nieuwe manier om het waterpark samen te beleven, met spannende bochten, felle lichten en onderweg veel verrassingen. We kunnen niet wachten om de gasten in de zomer van 2027 aan boord te verwelkomen.
 >
 > [en] As our first-ever family raft slide, it gives our visitors a new way to experience the water park together, with thrilling twists, vibrant lights and plenty of surprises along the way. We can't wait to welcome guests aboard in summer 2027.
 >
@@ -67,11 +67,11 @@ Een dagticket voor 2027 kost ook 69,99 dollar. Voor hetzelfde geld heb je dus é
 
 ## Wat er verder in Adventure Bay staat
 
-In het golfslagbad Breaker Beach moeten kinderen onder de 48 inch een zwemvest dragen. Op de lazy river Caribbean Cruiser drijf je eenmaal rond door het waterpark, en op Reef Racer glijden zes mensen naast elkaar om het hardst. Gang Plank & Pirates' Plummet zijn de snelste glijbanen van Adventure Bay. Voor kinderen is er Kokomo Kove met kiepemmers: de kleinste glijbanen daar mogen ze vanaf 36 inch (91 centimeter) in, de rest vanaf 40 inch. Daarnaast is er het piratenschip Shipwreck Shores. Bij onweer gaat Adventure Bay dicht zodra er binnen tien mijl (16 kilometer) een bliksem wordt gemeten.
+In het golfslagbad Breaker Beach moeten kinderen onder de 48 inch een zwemvest dragen. Op de lazy river Caribbean Cruiser drijf je door het waterpark, en op Reef Racer glijden zes mensen naast elkaar om het hardst. Gang Plank & Pirates' Plummet zijn de snelste glijbanen van Adventure Bay. Voor kinderen is er Kokomo Kove met kiepemmers: de kleinste glijbanen daar mogen ze vanaf 36 inch (91 centimeter) in, de rest vanaf 40 inch (102 centimeter). Daarnaast is er het piratenschip Shipwreck Shores. Bij onweer gaat Adventure Bay dicht zodra er binnen tien mijl (16 kilometer) bliksem wordt gemeten.
 
-Ook de twee nieuwigheden vóór Twisted Tiki draaiden om licht. In het Memorial Day-weekend van 2025 kwam Hyperlight erbij, een glijbaan met wisselende kleuren en surround sound. In 2026 volgden de Neon Nights: op vrijdag en zaterdag van 10 juli tot 15 augustus lichtten 's avonds meer dan tien attracties op, liepen er walk-acts rond en speelde er muziek. Met Silver en Gold krijg je daar in 2027 tickets met korting voor.
+Ook de twee noviteiten vóór Twisted Tiki draaiden om licht. In het Memorial Day-weekend van 2025 kwam Hyperlight erbij, een glijbaan met wisselende kleuren en surround sound. In 2026 volgden de Neon Nights: op vrijdag en zaterdag van 10 juli tot 15 augustus lichtten 's avonds meer dan tien attracties op, liepen er artiesten rond en speelde er muziek. Met Silver en Gold krijg je daar in 2027 tickets met korting voor.
 
-## Naar Altoona
+## Route naar Altoona
 
 Adventureland ligt een paar minuten van Des Moines, direct aan de Interstate 80, op 3200 Adventureland Drive. Het Caribische sfeertje uit het persbericht bereik je dus via een afrit van de snelweg in het Midwesten. Parkeren kost 21 dollar per dag, een plek op Preferred Parking 26 dollar.
 

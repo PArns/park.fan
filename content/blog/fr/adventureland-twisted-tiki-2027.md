@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Adventureland Iowa : nouveau toboggan 2027 à Adventure Bay'
   description: >-
-    Adventureland, dans l’Iowa, ouvre à l’été 2027 le toboggan en bouée Twisted Tiki à Adventure Bay. Pass saison 2027 dès 69,99 $ au Black Friday.
+    Adventureland, dans l’Iowa, ouvre à l’été 2027 le toboggan en bouée Twisted Tiki à Adventure Bay. Au Black Friday, le pass saison 2027 coûte dès 69,99 $.
   keywords:
     - Adventureland Iowa
     - Adventure Bay
@@ -44,7 +44,7 @@ C’est le fabricant ProSlide qui construit Twisted Tiki. Jusqu’à trois perso
 Adventureland n’a pas encore publié de taille minimale pour Twisted Tiki. Hyperlight, Bermuda Quadrangle et les toboggans de Gang Plank & Pirates' Plummet demandent 48 pouces, soit 122 centimètres.
 
 > [!QUOTE]
-> Notre tout premier toboggan familial en bouée offre à nos visiteurs une nouvelle façon de vivre le parc aquatique ensemble, avec des virages palpitants, des lumières éclatantes et beaucoup de surprises en chemin. Nous avons hâte d’accueillir les visiteurs à bord à l’été 2027.
+> Notre tout premier toboggan familial en bouée offre à nos visiteurs une nouvelle façon de vivre le parc aquatique ensemble, avec des virages palpitants, des lumières éclatantes et beaucoup de surprises en chemin. Nous avons hâte d’accueillir nos invités à bord à l’été 2027.
 >
 > [en] As our first-ever family raft slide, it gives our visitors a new way to experience the water park together, with thrilling twists, vibrant lights and plenty of surprises along the way. We can't wait to welcome guests aboard in summer 2027.
 >
@@ -54,11 +54,11 @@ Adventureland n’a pas encore donné de date d’ouverture. Le parc publiera bi
 
 ## Ce que coûtent les Season Passes 2027
 
-Pendant le Black Friday, tu économises en ligne jusqu’à 60 dollars sur les Season Passes 2027. Adventureland n’a pas annoncé de date de fin, l’offre vaut seulement « for a limited time ». Chaque pass peut se payer en huit fois.
+Pendant le Black Friday, tu économises en ligne jusqu’à 60 dollars sur les Season Passes 2027. Adventureland n’a pas annoncé de date de fin : l’offre est valable seulement « for a limited time ». Chaque pass peut se payer en huit fois.
 
 | Pass     | Prix Black Friday | Prix normal | Inclus                                                                            |
 | -------- | ----------------- | ----------- | --------------------------------------------------------------------------------- |
-| Bronze   | 69,99 $           | 119,99 $    | l’été, du dimanche au vendredi, 5 % sur la restauration et les boutiques          |
+| Bronze   | 69,99 $           | 119,99 $    | l’été, du dimanche au vendredi, 5 % sur la restauration et les boutiques          |
 | Silver   | dès 129,99 $      | 169,99 $    | toute la saison avec l’Oktoberfest et le Phantom Fall Fest, parking à moitié prix |
 | Gold     | dès 159,99 $      | 219,99 $    | parking gratuit, deux billets pour des amis, une bouée par jour à Adventure Bay   |
 | Platinum | dès 199,99 $      | 259,99 $    | Neon Nights, entrée anticipée à Adventure Bay, dix autres parcs                   |
@@ -67,9 +67,9 @@ Un billet à la journée pour 2027 coûte lui aussi 69,99 dollars. Pour le même
 
 ## Les autres attractions d’Adventure Bay
 
-Dans la piscine à vagues Breaker Beach, les enfants de moins de 48 pouces doivent porter un gilet de sauvetage. Sur la rivière lente Caribbean Cruiser, tu te laisses porter sur un tour complet du parc aquatique, et sur Reef Racer, six personnes font la course côte à côte. Gang Plank & Pirates' Plummet sont les toboggans les plus rapides d’Adventure Bay. Pour les enfants, il y a Kokomo Kove et ses seaux basculants, dont les plus petits toboggans sont accessibles dès 36 pouces (91 centimètres) et les autres dès 40 pouces, ainsi que le bateau pirate Shipwreck Shores. En cas d’orage, Adventure Bay ferme dès qu’un éclair est détecté dans un rayon de dix miles (16 kilomètres).
+Dans la piscine à vagues Breaker Beach, les enfants de moins de 48 pouces doivent porter un gilet de sauvetage. Sur la rivière lente Caribbean Cruiser, tu te laisses porter à travers tout le parc aquatique, et sur Reef Racer, six personnes font la course côte à côte. Gang Plank & Pirates' Plummet sont les toboggans les plus rapides d’Adventure Bay. Pour les enfants, il y a Kokomo Kove et ses seaux basculants ; ses plus petits toboggans sont accessibles dès 36 pouces (91 centimètres), les autres dès 40 pouces (102 centimètres). Pour eux, il y a aussi le bateau pirate Shipwreck Shores. En cas d’orage, Adventure Bay ferme dès qu’un éclair est détecté dans un rayon de dix miles (16 kilomètres).
 
-Les deux nouveautés d’avant Twisted Tiki misaient déjà sur la lumière. Hyperlight est arrivé le week-end de Memorial Day 2025, un toboggan aux couleurs changeantes avec un son surround. En 2026 ont suivi les Neon Nights : les vendredis et samedis du 10 juillet au 15 août, plus de dix attractions s’illuminaient le soir, des artistes déambulaient entre elles et de la musique jouait. Les pass Silver et Gold te donnent des billets à prix réduit pour leur édition 2027.
+Les deux nouveautés d’avant Twisted Tiki misaient déjà sur la lumière. Hyperlight, un toboggan aux couleurs changeantes avec un son surround, est arrivé le week-end de Memorial Day 2025. En 2026 ont suivi les Neon Nights : les vendredis et samedis du 10 juillet au 15 août, plus de dix attractions s’illuminaient le soir, des artistes déambulaient entre elles et il y avait de la musique. Les pass Silver et Gold te donnent des billets à prix réduit pour leur édition 2027.
 
 ## Venir à Altoona
 

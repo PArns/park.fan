@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dall’estate 2027 ad Adventure Bay si scende in gommone, fino a tre persone, in un tubo con due spirali. Con il Black Friday l’abbonamento stagionale più economico costa 69,99 dollari.
+  Dall’estate 2027 ad Adventure Bay scendi lungo un tubo con due spirali, fino a tre nello stesso gommone. Con il Black Friday l’abbonamento stagionale più economico costa 69,99 dollari.
 tags:
   - notizie
   - adventureland-resort
@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Adventureland Iowa: nuovo scivolo 2027 ad Adventure Bay'
   description: >-
-    Per l’estate 2027 Adventureland, in Iowa, costruisce lo scivolo in gommone Twisted Tiki ad Adventure Bay. Abbonamento 2027 a 69,99 $ per il Black Friday.
+    Nell’estate 2027 Adventureland, in Iowa, apre ad Adventure Bay lo scivolo in gommone Twisted Tiki. Col Black Friday l’abbonamento 2027 costa da 69,99 $.
   keywords:
     - Adventureland Iowa
     - Adventure Bay
@@ -41,16 +41,16 @@ Per l’estate 2027 [Adventureland](ref:adventureland-resort), ad Altoona in Iow
 
 Twisted Tiki lo realizza ProSlide, produttore di scivoli. Ogni gommone porta fino a tre persone, la partenza è a cinque piani d’altezza e il tubo, lungo circa 150 metri, è chiuso dall’inizio alla fine, quindi il cielo dell’Iowa non lo vedi. Il percorso compie due giri completi di 360 gradi, e nelle curve si accendono anelli colorati ed effetti di luce.
 
-Un’altezza minima per Twisted Tiki Adventureland non l’ha ancora pubblicata. Per Hyperlight, Bermuda Quadrangle e gli scivoli di Gang Plank & Pirates’ Plummet servono 48 pollici, cioè 122 centimetri.
+Adventureland non ha ancora pubblicato un’altezza minima per Twisted Tiki. Per Hyperlight, Bermuda Quadrangle e gli scivoli di Gang Plank & Pirates’ Plummet servono 48 pollici, cioè 122 centimetri.
 
 > [!QUOTE]
-> Come nostro primo scivolo in gommone per famiglie, offre ai visitatori un modo nuovo di vivere insieme il parco acquatico, con curve emozionanti, luci vivaci e tante sorprese lungo il percorso. Non vediamo l’ora di accogliere gli ospiti a bordo nell’estate 2027.
+> È il nostro primo scivolo in gommone per famiglie e offre ai visitatori un modo nuovo di vivere insieme il parco acquatico, con curve emozionanti, luci vivaci e tante sorprese lungo il percorso. Non vediamo l’ora di accogliere gli ospiti a bordo nell’estate 2027.
 >
 > [en] As our first-ever family raft slide, it gives our visitors a new way to experience the water park together, with thrilling twists, vibrant lights and plenty of surprises along the way. We can't wait to welcome guests aboard in summer 2027.
 >
 > Mike Lusky, general manager di Adventureland, nel [comunicato del 17 novembre 2026](https://adventurelandpark.com/press/all-new-twisted-tiki-water-slide/), tradotto dall’inglese
 
-Il giorno d’apertura Adventureland non l’ha ancora comunicato. Il calendario del 2027 e gli eventi dell’anno il parco li pubblicherà a breve.
+Adventureland non ha ancora comunicato il giorno d’apertura. Il parco pubblicherà a breve il calendario del 2027 e gli eventi dell’anno.
 
 ## Quanto costano adesso i Season Pass 2027
 
@@ -67,13 +67,13 @@ Anche il biglietto giornaliero 2027 costa 69,99 dollari. Con la stessa cifra hai
 
 ## Cos’altro c’è ad Adventure Bay
 
-Nella piscina a onde Breaker Beach i bambini sotto i 48 pollici devono indossare il giubbotto di salvataggio, sul fiume lento Caribbean Cruiser attraversi tutto il parco acquatico galleggiando e su Reef Racer sei persone fanno a gara una accanto all’altra. Gang Plank & Pirates’ Plummet sono gli scivoli più veloci di Adventure Bay. Per i bambini c’è Kokomo Kove con i secchi che si rovesciano, dove gli scivoli più piccoli sono aperti da 36 pollici (91 centimetri) e gli altri da 40, e poi la nave pirata Shipwreck Shores. In caso di temporale Adventure Bay chiude non appena viene rilevato un fulmine entro dieci miglia (16 chilometri).
+Nella piscina a onde Breaker Beach i bambini sotto i 48 pollici devono indossare il giubbotto di salvataggio. Sul fiume lento Caribbean Cruiser attraversi tutto il parco acquatico galleggiando e su Reef Racer sei persone fanno a gara una accanto all’altra. Gang Plank & Pirates’ Plummet sono gli scivoli più veloci di Adventure Bay. Per i bambini c’è Kokomo Kove con i secchi che si rovesciano, dove gli scivoli più piccoli sono accessibili da 36 pollici (91 centimetri) e gli altri da 40 pollici (102 centimetri), e poi la nave pirata Shipwreck Shores. In caso di temporale Adventure Bay chiude non appena viene rilevato un fulmine entro dieci miglia (16 chilometri).
 
-Anche le due novità prima di Twisted Tiki giocavano con la luce. Nel weekend del Memorial Day 2025 è arrivato Hyperlight, uno scivolo con colori che cambiano e suono surround. Nel 2026 sono seguite le Neon Nights: il venerdì e il sabato, dal 10 luglio al 15 agosto, la sera si illuminavano più di dieci attrazioni, tra un’esibizione itinerante e l’altra e con la musica. Con Silver e Gold per il 2027 hai biglietti scontati per l’evento.
+Anche le due novità prima di Twisted Tiki giocavano con la luce. Nel weekend del Memorial Day 2025 è arrivato Hyperlight, uno scivolo con colori che cambiano e suono surround. Nel 2026 sono seguite le Neon Nights: il venerdì e il sabato, dal 10 luglio al 15 agosto, la sera si illuminavano più di dieci attrazioni, con artisti itineranti e musica. Con Silver e Gold per il 2027 hai biglietti scontati per l’evento.
 
 ## Come arrivare ad Altoona
 
-Adventureland si trova a pochi minuti da Des Moines, proprio sulla Interstate 80, all’indirizzo 3200 Adventureland Drive. L’atmosfera caraibica del comunicato la raggiungi quindi da un’uscita autostradale nel Midwest. Il parcheggio costa 21 dollari al giorno, un posto nel Preferred Parking 26 dollari.
+Adventureland si trova a pochi minuti da Des Moines, proprio lungo l’Interstate 80, all’indirizzo 3200 Adventureland Drive. L’atmosfera caraibica del comunicato la raggiungi quindi da un’uscita autostradale nel Midwest. Il parcheggio costa 21 dollari al giorno, un posto nel Preferred Parking 26 dollari.
 
 ## Quando c’è meno gente nel parco divertimenti
 
