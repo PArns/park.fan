@@ -43,21 +43,28 @@ seo:
 
 ## Qué cambia en la Rivière du Grand Nord
 
-La Rivière du Grand Nord es una atracción de troncos en pleno centro del parque de atracciones, cerca del Carrousel, L'Archipel y [Fjord Explorer](ref:le-pal/fjord-explorer). El recorrido y el viaje se quedan como están; lo único nuevo son los decorados. La atracción tendrá un entorno nórdico y quedará más unida a la zona escandinava, que abrió en 2024 con Fjord Explorer. Pueden subir niños desde 1 metro, y por debajo de 1,40 metros solo acompañados.
+La atracción de troncos está en pleno centro del parque de atracciones, cerca de [Fjord Explorer](ref:le-pal/fjord-explorer). El recorrido y el viaje se quedan como están; lo único nuevo son los decorados. Serán nórdicos y tendrán que encajar con el pueblo escandinavo de casas de colores donde Fjord Explorer está junto a un lago desde 2024. Pueden subir niños desde 1 metro, y por debajo de 1,40 metros solo acompañados.
 
-Fjord Explorer es una montaña rusa acuática de Mack Rides de 27 metros de altura y 497 metros de recorrido, que llega a 79 km/h. Cada barca tiene ocho plazas. Está en un pueblo escandinavo de casas de colores junto a un lago. La altura mínima es de 1,10 metros, y quien mida menos de 1,30 metros sube acompañado.
+Fjord Explorer es una montaña rusa acuática de Mack Rides, de 27 metros de altura, que alcanza los 79 km/h. Cada barca lleva a ocho personas por 497 metros de vía, casi medio kilómetro. Aquí los niños necesitan 1,10 metros, diez centímetros más que en los troncos, y por debajo de 1,30 metros suben con un adulto.
 
 ## Un carrusel con vehículos del propio parque
 
-En el nuevo carrusel familiar te sientas en réplicas de vehículos que ya están en el parque: el velero de Fjord Explorer, un globo aerostático de los [Ballons d'Orient](ref:le-pal/the-oriental-balloons) y el avión del Ravitailleur. El Ravitailleur es un puesto de hamburguesas junto a la Descente du Colorado, así que en el carrusel su avión dará vueltas por primera vez, aunque sin patatas fritas a bordo. Le Pal aún no ha publicado la altura a partir de la cual los niños podrán subir solos.
+En el nuevo carrusel familiar, para el que Le Pal aún no ha dado una altura mínima, te sientas en réplicas de vehículos que ya están en el parque: el velero de Fjord Explorer, un globo aerostático de los [Ballons d'Orient](ref:le-pal/the-oriental-balloons) y el avión del Ravitailleur. El Ravitailleur es un puesto de hamburguesas junto a la Descente du Colorado, así que en el carrusel su avión dará vueltas por primera vez, aunque sin patatas fritas a bordo.
 
 ## Un recinto para los pandas rojos
 
-Los pandas rojos tendrán un recinto nuevo y con vegetación cerca del espacio de los elefantes, el Delta des Éléphants, que abrió en 2026. Los pandas rojos viven en los árboles, y el recinto les dará más sitio para trepar. Los visitantes entran en él y ven a los animales de cerca, también cuando los pandas trepan por las pasarelas de arriba.
+Los pandas rojos tendrán un recinto nuevo y con vegetación cerca del espacio de los elefantes, el Delta des Éléphants, que abrió en 2026. Los pandas rojos pasan mucho tiempo en los árboles, así que tendrán más sitio para trepar y pasarelas en lo alto. Tú lo cruzas por dentro y los ves de cerca, a menudo mirando hacia arriba.
 
 ## Cuándo abre el parque en 2027
 
-La temporada 2027 empieza el sábado 10 de abril y termina el domingo 3 de octubre. Hasta el 25 de abril abre todos los días. En mayo y en la primera quincena de junio, Le Pal abre sobre todo los fines de semana, los festivos y los miércoles, y del 16 de junio al 1 de septiembre, a diario. En septiembre solo abre los fines de semana y los miércoles 8 y 15. El horario empieza a las 10:00 y, según el día, termina a las 17:30 o como pronto a las 18:00. Después del 3 de octubre y hasta finales de mes, solo el parque zoológico abre algunos días para los huéspedes de los lodges, sin atracciones. No hay apertura en invierno ni en Navidad.
+La temporada 2027 empieza el sábado 10 de abril y termina el domingo 3 de octubre, con este calendario:
+
+- del 10 al 25 de abril: todos los días
+- mayo y la primera quincena de junio: sobre todo miércoles, fines de semana y festivos
+- del 16 de junio al 1 de septiembre: todos los días
+- del 2 de septiembre al 3 de octubre: fines de semana, más los miércoles 8 y 15 de septiembre
+
+El horario empieza a las 10:00 y, según el día, termina a las 17:30 o como pronto a las 18:00. Después del 3 de octubre y hasta finales de mes, solo el parque zoológico abre algunos días para los huéspedes de los lodges, sin atracciones. No hay apertura en invierno ni en Navidad.
 
 ```best-days-widget slug=le-pal
 
@@ -76,7 +83,7 @@ Los niños de menos de 1 metro (medidos con zapatos) entran gratis. La tarifa in
 | Pase de temporada Zèbre (en línea)   | 109 €                | 89 €                 |
 | Pase de temporada Lion (en línea)    | 189 €                | 159 €                |
 
-La entrada de un día con fecha sube de precio cuanto más tarde la compras, y se vende hasta las 23:59 del día anterior. En taquilla, cada pase de temporada cuesta 10 € más. Si ya tenías un pase de 2026, al renovarlo te ahorras 10, 15 o 20 €, según el nivel. Zèbre y Lion incluyen el Rapid'Sensations, con el que te saltas la cola una vez en cada una de siete atracciones, entre ellas Fjord Explorer y la Rivière du Grand Nord. Por separado cuesta desde 19,50 €.
+La entrada de un día con fecha sube de precio cuanto más tarde la compras, y se vende hasta las 23:59 del día anterior. En taquilla, cada pase de temporada cuesta 10 € más. Si ya tenías un pase de 2026, al renovarlo te ahorras entre 10 y 20 €, según el pase que tengas. Zèbre y Lion incluyen el Rapid'Sensations, con el que te saltas la cola una vez en cada una de siete atracciones, entre ellas Fjord Explorer y la Rivière du Grand Nord. Por separado cuesta desde 19,50 €.
 
 ```ride-waits-widget park=le-pal top=8 columns=peak,days highlight=fjord-explorer
 
@@ -88,7 +95,7 @@ En coche, desde la A79 tomas, según el sentido, la salida 28 Thiel-sur-Acolin o
 
 ## Balance de la temporada 2026
 
-Según sus propias cifras, Le Pal recibió en 2026 unos 720.000 visitantes, un 3 % más que el año anterior y la tercera mejor temporada desde su apertura en 1973. Abril dejó 92.000 visitantes, y en junio y julio las olas de calor bajaron la afluencia. El parque invirtió 9 millones de euros en 2026, 2 millones de ellos en el Delta des Éléphants, donde los elefantes tienen dos hectáreas, un río y dos balsas para bañarse. En la encuesta de visitantes de 2026 de Qualimétrie, Fjord Explorer quedó en primer puesto, por delante de Yukon Quad. Las demás novedades de Francia y Europa están en el [resumen de novedades de los parques temáticos para 2027](/blog/novedades-parques-tematicos-2027).
+Según sus propias cifras, Le Pal recibió en 2026 unos 720.000 visitantes, un 3 % más que el año anterior y la tercera mejor temporada desde su apertura en 1973. En abril llegaron 92.000 visitantes, y en junio y julio las olas de calor frenaron la afluencia. El parque invirtió 9 millones de euros en 2026, 2 millones de ellos en el Delta des Éléphants, donde los elefantes tienen dos hectáreas con su propio río y dos balsas para bañarse. Cerca de allí se construye ahora el recinto de los pandas. En la encuesta de visitantes de 2026 de Qualimétrie, Fjord Explorer quedó en primer puesto, por delante de Yukon Quad. Las demás novedades de Francia y Europa están en el [resumen de novedades de los parques temáticos para 2027](/blog/novedades-parques-tematicos-2027).
 
 Fuentes:
 [Nota de prensa Bilan de saison 2026 (PDF)](https://www.lepal.com/uploads/media/default/0001/21/10ded16e796dc5ff1c9038e487d5a64209cf3b15.pdf),

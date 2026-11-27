@@ -43,21 +43,28 @@ seo:
 
 ## Ce qui change sur la Rivière du Grand Nord
 
-La Rivière du Grand Nord se trouve au centre du parc d’attractions, près du Carrousel, de L’Archipel et de [Fjord Explorer](ref:le-pal/fjord-explorer). Le parcours reste le même et la descente aussi : seuls les décors sont refaits. L’attraction prend un habillage nordique et se rattache davantage à la zone scandinave, ouverte en 2024 avec Fjord Explorer. Les enfants y montent dès 1 mètre, accompagnés en dessous de 1,40 mètre.
+La descente en bûches se trouve au centre du parc d’attractions, près de [Fjord Explorer](ref:le-pal/fjord-explorer). Le parcours reste le même et la descente aussi, seuls les décors sont refaits. Ils passent au style nordique et doivent s’accorder avec le village scandinave aux maisons colorées où Fjord Explorer longe un lac depuis 2024. Les enfants y montent dès 1 mètre, accompagnés en dessous de 1,40 mètre.
 
-Fjord Explorer, c’est un coaster aquatique de Mack Rides : 27 mètres de haut, 497 mètres de piste, jusqu’à 79 km/h et huit places par bateau. Il est installé dans un village scandinave aux maisons colorées, au bord d’un lac. Pour y monter, il faut mesurer 1,10 mètre, et en dessous de 1,30 mètre un adulte doit accompagner l’enfant.
+Fjord Explorer est un coaster aquatique de Mack Rides haut de 27 mètres, qui monte jusqu’à 79 km/h. Chaque bateau emmène huit personnes sur 497 mètres de piste, à peine moins d’un demi-kilomètre. Ici, l’enfant doit mesurer 1,10 mètre, dix centimètres de plus que pour la Rivière, et un adulte l’accompagne tant qu’il n’atteint pas 1,30 mètre.
 
 ## Un carrousel avec les véhicules du parc
 
-Le nouveau carrousel familial reprend des véhicules d’autres coins du parc : tu peux t’asseoir dans le bateau à voile de Fjord Explorer, dans une montgolfière des [Ballons d’Orient](ref:le-pal/the-oriental-balloons) ou dans l’avion du Ravitailleur. Le Ravitailleur, c’est le snack à burgers à côté de la Descente du Colorado. Son avion va donc voler en rond pour la première fois, mais sans menu burger à bord. Le Pal n’a pas encore publié la taille minimale pour monter seul.
+Le nouveau carrousel familial, pour lequel Le Pal n’a pas encore donné de taille minimale, reprend des véhicules d’autres coins du parc : tu peux t’asseoir dans le bateau à voile de Fjord Explorer, dans une montgolfière des [Ballons d’Orient](ref:le-pal/the-oriental-balloons) ou dans l’avion du Ravitailleur. Le Ravitailleur, c’est le snack à burgers à côté de la Descente du Colorado. Son avion va donc voler en rond pour la première fois, mais sans menu burger à bord.
 
 ## Un nouvel espace pour les pandas roux
 
-Les pandas roux s’installent dans un nouvel habitat végétalisé, près du Delta des Éléphants, ouvert en 2026. Le panda roux vit dans les arbres, et ce nouvel espace doit lui laisser plus de place pour grimper. Les visiteurs entrent à l’intérieur et voient les animaux de près, y compris quand ils passent au-dessus d’eux sur les passerelles.
+Les pandas roux s’installent dans un nouvel habitat végétalisé, près du Delta des Éléphants, ouvert en 2026. Le panda roux passe une bonne partie de sa vie dans les arbres, il aura donc plus de place pour grimper et des passerelles en hauteur. Tu traverses l’enclos et tu vois les animaux de près, souvent le nez en l’air.
 
 ## Quand le parc ouvre en 2027
 
-La saison 2027 commence le samedi 10 avril et se termine le dimanche 3 octobre. Jusqu’au 25 avril, le parc ouvre tous les jours. En mai et pendant la première moitié de juin, Le Pal ouvre surtout les week-ends, les jours fériés et les mercredis, puis tous les jours du 16 juin au 1er septembre. En septembre, il n’ouvre plus que le week-end, plus les mercredis 8 et 15 septembre. Les portes ouvrent à 10 h et ferment à 17 h 30 ou au plus tôt à 18 h, selon le jour. Après le 3 octobre et jusqu’à fin octobre, seul le parc animalier ouvre certains jours, pour les clients des Lodges et sans les attractions. Il n’y a pas d’ouverture en hiver ni à Noël.
+La saison 2027 commence le samedi 10 avril et se termine le dimanche 3 octobre, avec ce calendrier :
+
+- du 10 au 25 avril : tous les jours
+- en mai et pendant la première quinzaine de juin : surtout les mercredis, les week-ends et les jours fériés
+- du 16 juin au 1er septembre : tous les jours
+- du 2 septembre au 3 octobre : les week-ends, plus les mercredis 8 et 15 septembre
+
+Les portes ouvrent à 10 h et ferment à 17 h 30 ou au plus tôt à 18 h, selon le jour. Après le 3 octobre et jusqu’à fin octobre, seul le parc animalier ouvre certains jours, pour les clients des Lodges et sans les attractions. Il n’y a pas d’ouverture en hiver ni à Noël.
 
 ```best-days-widget slug=le-pal
 
@@ -76,7 +83,7 @@ Les enfants de moins de 1 mètre (mesurés avec leurs chaussures) entrent gratui
 | Pass Saison Zèbre (en ligne)         | 109 €                | 89 €                 |
 | Pass Saison Lion (en ligne)          | 189 €                | 159 €                |
 
-Le billet daté d’un jour augmente à mesure que la date approche, et tu peux l’acheter jusqu’à 23 h 59 la veille. En caisse, chaque Pass Saison coûte 10 € de plus. Si tu avais déjà un Pass Saison en 2026, tu économises 10, 15 ou 20 € en le renouvelant, selon la formule. Les pass Zèbre et Lion incluent le Rapid’Sensations, qui te fait passer une fois devant la file d’attente sur sept attractions, dont Fjord Explorer et la Rivière du Grand Nord. Vendu seul, il coûte à partir de 19,50 €.
+Le billet daté d’un jour augmente à mesure que la date approche, et tu peux l’acheter jusqu’à 23 h 59 la veille. En caisse, chaque Pass Saison coûte 10 € de plus. Si tu avais déjà un Pass Saison en 2026, le renouvellement te coûte de 10 à 20 € de moins, selon le pass que tu as. Les pass Zèbre et Lion incluent le Rapid’Sensations, qui te fait passer une fois devant la file d’attente sur sept attractions, dont Fjord Explorer et la Rivière du Grand Nord. Vendu seul, il coûte à partir de 19,50 €.
 
 ```ride-waits-widget park=le-pal top=8 columns=peak,days highlight=fjord-explorer
 
@@ -88,7 +95,7 @@ En voiture, tu quittes l’A79 à la sortie 28 Thiel-sur-Acolin ou à la sortie 
 
 ## Le bilan de la saison 2026
 
-D’après son propre décompte, Le Pal a accueilli environ 720 000 visiteurs en 2026. C’est 3 % de plus que l’année précédente, et la troisième meilleure saison depuis l’ouverture en 1973. Avril a attiré 92 000 visiteurs, tandis qu’en juin et juillet, les canicules ont fait baisser la fréquentation. Le parc a investi 9 millions d’euros en 2026, dont 2 millions dans le Delta des Éléphants, où les éléphants disposent de deux hectares, d’une rivière et de deux bassins. Dans l’enquête de satisfaction 2026 menée par Qualimétrie, Fjord Explorer arrive en tête, devant Yukon Quad. Les autres nouveautés en France et en Europe sont réunies dans notre [panorama des nouveautés 2027 dans les parcs](/blog/nouveautes-parcs-attractions-2027).
+D’après son propre décompte, Le Pal a accueilli environ 720 000 visiteurs en 2026. C’est 3 % de plus que l’année précédente, et la troisième meilleure saison depuis l’ouverture en 1973. En avril, 92 000 visiteurs sont venus, puis les canicules de juin et juillet ont freiné la fréquentation. Le parc a investi 9 millions d’euros en 2026, dont 2 millions dans le Delta des Éléphants, où les éléphants disposent de deux hectares avec leur propre rivière et deux bassins. C’est à proximité que s’installe maintenant l’espace des pandas roux. Dans l’enquête de satisfaction 2026 menée par Qualimétrie, Fjord Explorer arrive en tête, devant Yukon Quad. Les autres nouveautés en France et en Europe sont réunies dans notre [panorama des nouveautés 2027 dans les parcs](/blog/nouveautes-parcs-attractions-2027).
 
 Sources :
 [Communiqué Bilan de saison 2026 (PDF)](https://www.lepal.com/uploads/media/default/0001/21/10ded16e796dc5ff1c9038e487d5a64209cf3b15.pdf),
