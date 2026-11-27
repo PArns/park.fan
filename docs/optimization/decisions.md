@@ -802,3 +802,30 @@ generator to ship only the keys a component reads.
   goes to the API on every render (a 404 render costs 56 ms and 270 ms of wall time against 42 ms
   for a ride page). But the 404 carries the ride route's `CDN-Cache-Control` of a day, so it runs
   once per CDN miss, about 800 a day by the October count: seconds of CPU a day.
+
+---
+
+## 2026-11-27 — ACCEPTED: Cloudflare keeps 404 and 410 for 12 h; meta-webindexer is a fifth of the origin traffic
+
+**Lever:** invocations. **Where:** the Cloudflare dashboard ("Frontend cache", status code TTL),
+recorded in [CDN caching](../architecture/cdn-caching.md#cloudflare-rules).
+
+Cloudflare's request analytics, filtered to "served by origin" on `park.fan`, 30 days to
+27 November: 2.32M requests. By status, 99,810 were 308, 37,520 were 404, 32,200 were 307 and
+16,540 were 410. The 410 had no status code TTL and the 404 one hour, so each crawler pass reached
+Vercel again. Both now stay 12 h, like the 308 and 301. Every deploy purges Cloudflare; what can
+stay wrong for up to 12 h is a ride or park the API adds after its URL has once answered 404.
+
+By source network: Facebook (AS32934) 537,910, Microsoft 228,240, Amazon 175,430, Google 143,430,
+OVH 123,560. Almost all of the Facebook share carries `meta-webindexer/1.1`, the crawler behind
+Meta AI's search; `facebookexternalhit` (link previews) is 10,340. In the same 30 days park.fan's
+own statistic counts 24 visits from Facebook and none from Meta AI. Our robots.txt lists
+`meta-externalagent` with the training crawlers, but not `meta-webindexer`, which falls under the
+wildcard block. Whether to block it is open in PAR-1122.
+
+The path `/_next/image` is the largest single path (415,200), but it is billed under Image
+Optimization, not Active CPU or Fast Origin Transfer.
+
+The billing per day agrees that the bill follows the request count: from about 60k invocations on
+24 October to about 110k on 25 November, while Active CPU per invocation stayed between 55 and
+80 ms and Fast Origin Transfer between 49 and 70 kB.
