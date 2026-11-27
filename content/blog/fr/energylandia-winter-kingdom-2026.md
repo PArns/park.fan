@@ -24,7 +24,7 @@ rideLinks:
 seo:
   title: 'Energylandia Winter Kingdom 2026/27 : horaires et billets'
   description: >-
-    Winter Kingdom à Energylandia : 28 jours du 28 novembre au 31 janvier, de 11 h 30 à 18 h 30. Journée 38 €, 21 € dès 15 h, patinoire comprise.
+    Winter Kingdom à Energylandia : 28 jours du 28 novembre au 31 janvier, 11 h 30 à 18 h 30. Journée 38 €, 21 € dès 15 h, patinoire comprise.
   keywords:
     - Energylandia hiver
     - Winter Kingdom Energylandia

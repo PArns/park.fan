@@ -45,7 +45,7 @@ seo:
 
 El sábado 28 de noviembre arranca el Winter Kingdom en [Energylandia](ref:energylandia), en Zator. Hasta el 31 de enero de 2027 el parque abre 28 días, siempre de 11:30 a 18:30. Hay un jardín de luces, una pista de hielo, snowtubing, un mercado navideño, Papá Noel y espectáculos con elfos. Las montañas rusas también funcionan, mientras el tiempo lo permita.
 
-## Qué días abre el parque
+## Los días de apertura
 
 - en noviembre, el sábado 28 y el domingo 29
 - en diciembre, del 4 al 6 y del 11 al 13 (de viernes a domingo), el 19 y el 20, y del 26 al 30 (de sábado a miércoles)
@@ -61,9 +61,9 @@ La pista de hielo tiene una zona pequeña y otra grande. El casco y los guantes 
 
 La novedad de este año es Arctic Loop, un carrusel de flotadores que giran despacio sobre el suelo. El parque lo indica para edades de dos a 13 años y estaturas de 100 a 200 centímetros; los niños suben acompañados. También hay un recinto de renos que, según Energylandia, saben hablar. En un taller puedes decorar galletas de jengibre, de 12:30 a 17:30, y en otro, abierto todo el día, escribir cartas a Papá Noel. El propio Papá Noel se deja fotografiar en el Lancelot Shop de 12:30 a 17:30.
 
-A las 11:20, Papá Noel, los elfos y las mascotas reciben a los primeros visitantes delante de la puerta. En el Teatr Egypt, los elfos hacen dos espectáculos de 15 minutos cada uno. En «Następny przystanek: Święta!» (Próxima parada: ¡Navidad!), el viaje de Papá Noel a Laponia está a punto de torcerse, y «Fabryka Elfów» (La fábrica de los elfos) transcurre en la fábrica de regalos. El elfo René hace magia cinco veces al día en el Town Hall Theatre con «Elfastycznie!» (más o menos: ¡Elfástico!). El día se cierra a las 18:15 con el desfile «Santa Express» y el tren de Papá Noel, en la zona Formuła.
+A las 11:20, Papá Noel, los elfos y las mascotas reciben a los primeros visitantes delante de la puerta. En el Teatr Egypt, los elfos hacen dos espectáculos de 15 minutos cada uno. En «Następny przystanek: Święta!» (Próxima parada: Navidad), el viaje de Papá Noel a Laponia está a punto de torcerse, y «Fabryka Elfów» (La fábrica de los elfos) transcurre en la fábrica de regalos. El elfo René hace magia cinco veces al día en el Town Hall Theatre con «Elfastycznie!» (más o menos: Elfástico). El día se cierra a las 18:15 con el desfile «Santa Express» y el tren de Papá Noel, en la zona Formuła.
 
-## Qué atracciones funcionan
+## Las atracciones abiertas
 
 Según el parque, abren más de 30 atracciones, entre ellas montañas rusas, carruseles y parte de Bajkolandia, la zona para los más pequeños. En su blog sobre el invierno pasado, Energylandia nombra [Hyperion](ref:energylandia/pepsi-hyperion) y [Zadra](ref:energylandia/zadra-made-in-malopolska). Pero una montaña rusa solo funciona con la vía seca, sin hielo ni nieve acumulada. Si Hyperion funciona el día que vas lo ves por la mañana en la [página del parque](ref:energylandia), y después de una noche de helada conviene mirarlo con más razón.
 
@@ -94,7 +94,7 @@ Quien vuelva a Cracovia verá el desfile de las 18:15, como mucho, de espaldas.
 
 ```
 
-## Qué pasa en 2027
+## La temporada 2027
 
 La temporada de verano de 2027 empieza el 3 de abril. Con la nueva zona Volana llega a Energylandia también la [wing coaster Rokan](/news/energylandia-rokan-wing-coaster); el parque aún no ha dado fecha. Los [consejos para un día en Energylandia](/blog/energylandia-tiempos-de-espera-consejos) y las atracciones que se suman en verano están en nuestra guía.
 
