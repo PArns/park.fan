@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound, permanentRedirect, redirect } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { localeNames, SITE_URL } from '@/i18n/config';
@@ -193,12 +193,13 @@ export async function BlogPostPageBody({
 
   // Canonicalize: if a translation exists for this locale but the user landed
   // on a different-locale's slug, redirect to the canonical URL for the
-  // requested locale. This keeps URLs clean and SEO consistent.
+  // requested locale. Permanent, because the target follows from the URL alone,
+  // so the shared caches may keep the redirect.
   const index = getTranslationIndex();
   const localeMap = index.get(post.translationKey);
   const canonicalSlugForRequested = localeMap?.get(locale as Locale);
   if (canonicalSlugForRequested && canonicalSlugForRequested !== slug) {
-    redirect(`/${locale}${postPath({ ...post, slug: canonicalSlugForRequested })}`);
+    permanentRedirect(`/${locale}${postPath({ ...post, slug: canonicalSlugForRequested })}`);
   }
 
   const tBlog = await getTranslations({ locale, namespace: 'blog' });

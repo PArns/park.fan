@@ -29,7 +29,7 @@ http.host eq "park.fan"
 | Setting                        | Value                                                    |
 | ------------------------------ | -------------------------------------------------------- |
 | Edge TTL                       | Use cache-control header if present, bypass cache if not |
-| Status code TTL                | 308 → 12 h, 301 → 12 h, 404 → 1 h                        |
+| Status code TTL                | 308, 301, 404 and 410 → 12 h each                        |
 | Serve stale while revalidating | on                                                       |
 | Vary                           | Normalize values                                         |
 
