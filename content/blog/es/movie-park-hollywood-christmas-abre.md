@@ -2,7 +2,7 @@
 title: 'Hollywood Christmas empieza hoy en Movie Park'
 translationKey: movie-park-hollywood-christmas-startet
 date: '2026-11-27'
-time: '08:00'
+time: '11:10'
 author: patrick
 mode: published
 featured: false
@@ -43,7 +43,7 @@ seo:
     - Movie Park renovar pase de temporada
 ---
 
-Hoy viernes empieza Movie Park's Hollywood Christmas en el [Movie Park Germany](ref:movie-park-germany), en Bottrop-Kirchhellen, con el parque abierto de 14:00 a 20:00. Hasta el 5 de enero de 2027 abre 21 días. Las fechas, las novedades, el aparcamiento y cómo llegar están en nuestra noticia del 6 de noviembre sobre el [programa de Hollywood Christmas](/news/movie-park-hollywood-christmas-2026). El precio de la entrada de un día depende del día, y quien tenga pase de temporada puede renovarlo para 2027 más barato durante seis días.
+Hoy viernes empieza Movie Park's Hollywood Christmas en el [Movie Park Germany](ref:movie-park-germany), en Bottrop-Kirchhellen, con el parque abierto de 14:00 a 20:00. Hasta el 5 de enero de 2027 abre 21 días. Las fechas, las novedades, el aparcamiento y cómo llegar están en nuestra noticia del 6 de noviembre sobre el [programa de Hollywood Christmas](/news/movie-park-hollywood-christmas-2026). Hoy la entrada de un día cuesta 24,90 € online, y el sábado ya 41,90 €. Quien tenga pase de temporada puede renovarlo para 2027 más barato los dos primeros fines de semana.
 
 ## La tarde del viernes
 
@@ -59,9 +59,9 @@ Los viernes el parque pierde las primeras horas de la tarde, y los espectáculos
 - 19:00 · desfile · Christmas Boulevard
 - 19:50 · Hollywood Christmas Lights
 
-En el club las plazas son limitadas. Dos espectáculos se llaman en el plano del parque de otra forma que en la web: la fiesta de baile es Holiday y no Christmas Edition, y el desfile es Movie Park's Parade of Celebration Winter Edition en vez de Hollywood Christmas Parade. Los viernes el desfile termina a las 19:15; el resto de días, cinco minutos más tarde. Con lluvia, tormenta, granizo o mucha nieve se suspenden algunos espectáculos.
+En el club las plazas son limitadas. En el plano del parque, la fiesta de baile se llama Holiday Edition y no Christmas Edition, y el desfile aparece como Movie Park's Parade of Celebration Winter Edition en vez de Hollywood Christmas Parade. Los viernes el desfile termina a las 19:15; el resto de días, cinco minutos más tarde. Con lluvia, tormenta, granizo o mucha nieve se suspenden algunos espectáculos.
 
-Si quieres ver a Papá Noel al salir del trabajo, date prisa. Los viernes, la Santa Experience del centro de eventos de la entrada solo deja pasar de 15:00 hasta el último acceso a las 16:30; los demás días abre ya a las 13:00.
+Si quieres ver a Papá Noel al salir del trabajo, los viernes tienes hora y media. La Santa Experience del centro de eventos de la entrada solo deja pasar ese día de 15:00 hasta el último acceso a las 16:30; los demás días abre ya a las 13:00.
 
 ## El sábado la entrada cuesta 17 € más
 
@@ -76,9 +76,7 @@ Esto cuestan los dos primeros fines de semana en la tienda de entradas online:
 | Sábado, 5/12   | 36,90 €       | 31,90 €        |
 | Domingo, 6/12  | 34,90 €       | 29,90 €        |
 
-El precio normal que figura en la tienda es de 49,90 € desde 12 años y 44,90 € para niños. Para hoy todavía quedan entradas a la venta.
-
-A cambio de ahorrarte 17 € frente al sábado, el viernes tienes dos horas menos de parque.
+El precio normal que figura en la tienda es de 49,90 € desde 12 años y 44,90 € para niños. Para hoy todavía quedan entradas a la venta. A cambio, los viernes el parque abre dos horas menos que los sábados.
 
 ```best-days-widget slug=movie-park-germany
 
@@ -86,7 +84,7 @@ A cambio de ahorrarte 17 € frente al sábado, el viernes tienes dos horas meno
 
 ## Qué funciona y qué no
 
-Siete atracciones siguen cerradas hasta el 5 de enero: Iron Claw, NYC Transformer, Crazy Surfer, Area 51 – Top Secret, Dora's Big River Adventure, Stormy Cruise y SpongeBob Splash Bash. [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) para en la media hora anterior a la ceremonia del árbol y desde las 18:30 ya no vuelve a funcionar hasta el cierre. Un viernes, por tanto, tienes unas cuatro horas para subir a la Enterprise. Si hace mal tiempo pueden cerrar más atracciones.
+Siete atracciones siguen cerradas hasta el 5 de enero, y más si hace mal tiempo: Iron Claw, NYC Transformer, Crazy Surfer, Area 51 – Top Secret, Dora's Big River Adventure, Stormy Cruise y SpongeBob Splash Bash. [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) para en la media hora anterior a la ceremonia del árbol y desde las 18:30 ya no vuelve a funcionar hasta el cierre. Un viernes, por tanto, tienes unas cuatro horas para subir a la Enterprise.
 
 En el plano del parque aparece también [Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber), un simulador de 360 grados. Se sube desde 1 metro de altura, y por debajo de 1,30 metros solo con acompañante. [Side Kick](ref:movie-park-germany/side-kick) no se suma hasta el 27 de diciembre. La [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) funciona como Studio Tour Christmas Special Edition.
 
@@ -98,7 +96,7 @@ Para la Santa Experience, además de las entradas de 5 € y de 3 € para niño
 
 ## El pase de temporada solo se renueva seis días
 
-Quien tenga un pase de temporada 2026 o quiera cambiar un Summer Pass 2026 consigue el pase 2027 a precio especial, pero solo del 27 al 29 de noviembre y del 4 al 6 de diciembre. Entonces el Bronze cuesta 74,90 €, el Silber 96,90 €, el Gold 111,90 € y el Platin 129,90 €. Solo se hace en la taquilla de información o en el Visitor Welcome Center, no en la tienda web. El pase Bronze no vale del 27 de noviembre al 5 de enero.
+Quien tenga un pase de temporada 2026 o quiera cambiar un Summer Pass 2026 consigue el pase 2027 a precio especial, pero solo del 27 al 29 de noviembre y del 4 al 6 de diciembre. Entonces el Bronze cuesta 74,90 €, pero no vale del 27 de noviembre al 5 de enero, así que para Hollywood Christmas no sirve. El Silber cuesta 96,90 €, el Gold 111,90 € y el Platin 129,90 €. Solo se hace en la taquilla de información o en el Visitor Welcome Center, no en la tienda web.
 
 Con el Black November Deal, los pases 2026 y 2027 con Hollywood Christmas cuestan un 25 % menos: Silber 101,90 € en vez de 135,90 €, Gold 116,90 € en vez de 155,90 € y Platin 134,90 € en vez de 179,90 €. El parque no dice hasta cuándo dura. Lo que venden hoy otros parques por Black Friday está en nuestro [resumen de ofertas de Black Friday](/news/black-friday-parques-atracciones-hoy-2026).
 

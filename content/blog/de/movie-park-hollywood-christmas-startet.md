@@ -2,7 +2,7 @@
 title: 'Im Movie Park beginnt heute Hollywood Christmas'
 translationKey: movie-park-hollywood-christmas-startet
 date: '2026-11-27'
-time: '08:00'
+time: '11:10'
 author: patrick
 mode: published
 featured: false
@@ -43,7 +43,7 @@ seo:
     - Movie Park Saisonpass verlängern
 ---
 
-Im [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen beginnt heute Movie Park's Hollywood Christmas, am Freitag von 14 bis 20 Uhr. Bis zum 5. Januar 2027 hat der Park an 21 Tagen geöffnet. Termine, Neuheiten, Parken und Anfahrt stehen in unserer Meldung vom 6. November zum [Programm von Hollywood Christmas](/news/movie-park-hollywood-christmas-2026). Der Preis der Tageskarte hängt vom Tag ab, und wer einen Saisonpass hat, verlängert ihn an sechs Tagen günstiger auf 2027.
+Im [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen beginnt heute Movie Park's Hollywood Christmas, am Freitag von 14 bis 20 Uhr. Bis zum 5. Januar 2027 hat der Park an 21 Tagen geöffnet. Termine, Neuheiten, Parken und Anfahrt stehen in unserer Meldung vom 6. November zum [Programm von Hollywood Christmas](/news/movie-park-hollywood-christmas-2026). Heute kostet die Tageskarte online 24,90 €, am Samstag schon 41,90 €. Wer einen Saisonpass hat, verlängert ihn an den ersten beiden Wochenenden günstiger auf 2027.
 
 ## Der Freitagabend
 
@@ -59,9 +59,9 @@ Freitags fehlt dem Park der frühe Nachmittag, und der Showplan rückt zusammen 
 - 19:00 Uhr · Parade · Christmas Boulevard
 - 19:50 Uhr · Hollywood Christmas Lights
 
-Die Plätze im Club sind begrenzt. Zwei Programmpunkte heißen im Parkplan anders als auf der Website: die Tanzparty Holiday statt Christmas Edition und die Parade Movie Park's Parade of Celebration Winter Edition statt Hollywood Christmas Parade. Freitags dauert sie bis 19:15 Uhr, an den anderen Tagen fünf Minuten länger. Bei Regen, Sturm, Hagel oder starkem Schneefall fallen einige Shows aus.
+Die Plätze im Club sind begrenzt. Im Parkplan heißt die Tanzparty Holiday Edition statt Christmas Edition, und die Parade steht dort als Movie Park's Parade of Celebration Winter Edition statt Hollywood Christmas Parade. Freitags dauert sie bis 19:15 Uhr, an den anderen Tagen fünf Minuten länger. Bei Regen, Sturm, Hagel oder starkem Schneefall fallen einige Shows aus.
 
-Wer nach Feierabend zum Weihnachtsmann will, muss sich beeilen. Die Santa Experience im Eventcenter am Eingang lässt freitags nur von 15 Uhr bis zum letzten Einlass um 16:30 Uhr Gäste hinein, an den anderen Tagen schon ab 13 Uhr.
+Wer nach Feierabend zum Weihnachtsmann will, hat freitags anderthalb Stunden. Die Santa Experience im Eventcenter am Eingang lässt nur von 15 Uhr bis zum letzten Einlass um 16:30 Uhr Gäste hinein, an den anderen Tagen schon ab 13 Uhr.
 
 ## Am Samstag kostet die Tageskarte 17 € mehr
 
@@ -76,9 +76,7 @@ So kosten die ersten beiden Wochenenden online im Ticketshop:
 | Samstag, 5.12.  | 36,90 €      | 31,90 €        |
 | Sonntag, 6.12.  | 34,90 €      | 29,90 €        |
 
-Regulär stehen im Shop 49,90 € ab 12 Jahren und 44,90 € für Kinder. Für heute verkauft der Shop noch Karten.
-
-Für die 17 € Ersparnis gegenüber Samstag bekommst du am Freitag zwei Stunden weniger Park.
+Regulär stehen im Shop 49,90 € ab 12 Jahren und 44,90 € für Kinder. Für heute verkauft der Shop noch Karten. Dafür hat der Park freitags zwei Stunden kürzer offen als am Samstag.
 
 ```best-days-widget slug=movie-park-germany
 
@@ -86,7 +84,7 @@ Für die 17 € Ersparnis gegenüber Samstag bekommst du am Freitag zwei Stunden
 
 ## Was fährt und was nicht
 
-Sieben Attraktionen bleiben bis zum 5. Januar geschlossen: Iron Claw, NYC Transformer, Crazy Surfer, Area 51 – Top Secret, Dora's Big River Adventure, Stormy Cruise und SpongeBob Splash Bash. [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) pausiert in der halben Stunde vor der Weihnachtsbaumzeremonie und steht ab 18:30 Uhr bis Parkschluss still. An einem Freitag bleiben dir für die Enterprise also rund vier Stunden. Bei schlechtem Wetter können weitere Attraktionen ausfallen.
+Sieben Attraktionen bleiben bis zum 5. Januar geschlossen, bei schlechtem Wetter auch mehr: Iron Claw, NYC Transformer, Crazy Surfer, Area 51 – Top Secret, Dora's Big River Adventure, Stormy Cruise und SpongeBob Splash Bash. [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) pausiert in der halben Stunde vor der Weihnachtsbaumzeremonie und steht ab 18:30 Uhr bis Parkschluss still. An einem Freitag bleiben dir für die Enterprise also rund vier Stunden.
 
 Im Parkplan steht auch [Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber), ein 360-Grad-Simulator. Mitfahren darfst du ab 1 Meter, unter 1,30 Meter nur mit Begleitung. [Side Kick](ref:movie-park-germany/side-kick) kommt erst ab dem 27. Dezember dazu. Die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) läuft als Studio Tour Christmas Special Edition.
 
@@ -98,7 +96,7 @@ Für die Santa Experience gibt es neben den Karten zu 5 € und 3 € für Kinde
 
 ## Den Saisonpass verlängerst du nur an sechs Tagen
 
-Wer einen Saisonpass 2026 hat oder einen Summer Pass 2026 tauschen will, bekommt den Pass 2027 zum Sonderpreis, aber nur vom 27. bis 29. November und vom 4. bis 6. Dezember. Bronze kostet dann 74,90 €, Silber 96,90 €, Gold 111,90 € und Platin 129,90 €. Das geht nur an der Infokasse oder im Visitor Welcome Center, nicht im Webshop. Der Bronze-Pass gilt vom 27. November bis zum 5. Januar nicht.
+Wer einen Saisonpass 2026 hat oder einen Summer Pass 2026 tauschen will, bekommt den Pass 2027 zum Sonderpreis, aber nur vom 27. bis 29. November und vom 4. bis 6. Dezember. Bronze kostet dann 74,90 €, gilt aber vom 27. November bis zum 5. Januar nicht, also für Hollywood Christmas gar nicht. Silber kostet 96,90 €, Gold 111,90 € und Platin 129,90 €. Das geht nur an der Infokasse oder im Visitor Welcome Center, nicht im Webshop.
 
 Im Black November Deal kosten die Pässe für 2026 und 2027 mit Hollywood Christmas 25 Prozent weniger: Silber 101,90 € statt 135,90 €, Gold 116,90 € statt 155,90 €, Platin 134,90 € statt 179,90 €. Ein Enddatum nennt der Park nicht. Was andere Parks heute am Black Friday verkaufen, steht in unserer [Übersicht der Black-Friday-Angebote](/news/black-friday-heute-freizeitparks-2026).
 
