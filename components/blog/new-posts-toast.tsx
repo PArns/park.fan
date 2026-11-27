@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { useLocale } from 'next-intl';
-import { ArrowRight, X } from 'lucide-react';
+import { ArrowRight, Clock, MapPin, PenLine, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { LiveDot } from '@/components/common/live-dot';
@@ -40,6 +40,17 @@ const FAN_BOTTOM_GAP = 32;
 /** The fan opens once the lead card has landed, one card after the other. */
 const FAN_DELAY_MS = 350;
 const FAN_STAGGER_MS = 70;
+/**
+ * Room kept free under the last fanned-out card for it to open into: a few lines of excerpt, the
+ * meta line and the read link. Without it the bottom card would open past the window's edge.
+ */
+const PREVIEW_RESERVE = 112;
+/** How long a pointer rests on a card before it opens, so a sweep across the stack opens nothing. */
+const OPEN_INTENT_MS = 110;
+/** Switching between cards is quicker: the reader is already looking. */
+const SWITCH_INTENT_MS = 50;
+/** Leaving the stack closes it after a beat, so crossing the gap between two cards is no leave. */
+const CLOSE_DELAY_MS = 180;
 
 /**
  * Where the card enters from and leaves to: up from the bottom edge on a phone, in from the right
@@ -134,7 +145,12 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
   const more = rest.length;
   const eyebrow = eyebrowFor(labels, lead);
   const leadRef = useRef<HTMLDivElement>(null);
+  const leadPreviewRef = useRef<HTMLDivElement>(null);
   const [fit, setFit] = useState(0);
+  // The card that is open: under a resting pointer, or holding keyboard focus.
+  const [openKey, setOpenKey] = useState<string | null>(null);
+  const intent = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const canHover = useMediaQuery('(hover: hover) and (pointer: fine)');
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -190,7 +206,18 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
     const card = leadRef.current;
     if (isPhone || more === 0 || !card) return;
     const measure = () => {
-      setFit(fanFit(window.innerHeight, top + card.offsetHeight, more, FAN_ROW, FAN_BOTTOM_GAP));
+      // The lead card's own preview does not count: measured with it open, the fan would fold
+      // away under the pointer the moment the card opens.
+      const closedHeight = card.offsetHeight - (leadPreviewRef.current?.offsetHeight ?? 0);
+      setFit(
+        fanFit(
+          window.innerHeight,
+          top + closedHeight,
+          more,
+          FAN_ROW,
+          FAN_BOTTOM_GAP + PREVIEW_RESERVE
+        )
+      );
     };
     measure();
     const observer = new ResizeObserver(measure);
@@ -239,6 +266,35 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
     if (paused) animation.pause();
     else animation.play();
   }, [paused]);
+
+  useEffect(
+    () => () => {
+      if (intent.current) clearTimeout(intent.current);
+    },
+    []
+  );
+
+  const schedule = (next: string | null, delay: number) => {
+    if (intent.current) clearTimeout(intent.current);
+    intent.current = setTimeout(() => setOpenKey(next), delay);
+  };
+
+  // A mouse or a pen only: a finger has no hover, and on a phone the tap opens the post. The card
+  // names itself through `data-post-key`.
+  const onCardEnter = (event: React.PointerEvent<HTMLElement>) => {
+    const key = event.currentTarget.dataset.postKey;
+    if (!key || isPhone || !canHover || event.pointerType === 'touch') return;
+    if (swipe.current?.active) return;
+    schedule(key, openKey ? SWITCH_INTENT_MS : OPEN_INTENT_MS);
+  };
+
+  // Keyboard focus opens the card at once; a click's focus does not, the click is on its way out.
+  const onCardFocus = (event: React.FocusEvent<HTMLElement>) => {
+    const key = event.currentTarget.dataset.postKey;
+    if (!key || isPhone || !event.currentTarget.matches(':focus-visible')) return;
+    if (intent.current) clearTimeout(intent.current);
+    setOpenKey(key);
+  };
 
   // The swipe writes the card's transform directly, one style per pointer move, rather than
   // through state: a re-render per frame of the whole card would be the slow way to move a box.
@@ -336,10 +392,15 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
         // The browser keeps the other axis for scrolling and leaves this one to the swipe.
         style={{ touchAction: isPhone ? 'pan-x' : 'pan-y' }}
         onPointerEnter={() => setHovered(true)}
-        onPointerLeave={() => setHovered(false)}
+        onPointerLeave={() => {
+          setHovered(false);
+          schedule(null, CLOSE_DELAY_MS);
+        }}
         onFocus={() => setFocused(true)}
         onBlur={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocused(false);
+          if (event.currentTarget.contains(event.relatedTarget as Node | null)) return;
+          setFocused(false);
+          setOpenKey(null);
         }}
         className="relative select-none"
       >
@@ -362,12 +423,17 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
 
         <div
           ref={leadRef}
+          data-post-key={lead.key}
+          onPointerEnter={onCardEnter}
           className={cn(
             'relative z-10 overflow-hidden rounded-2xl border shadow-2xl backdrop-blur-xl',
             // Near-opaque on purpose: page text under a toast has to be gone, not blurred, and a
             // backdrop-filter under the section's opacity entrance cannot be relied on.
             'border-primary/25 bg-card/[0.97] ring-1 ring-black/5 dark:ring-white/5',
-            'shadow-primary/10 group/link cursor-pointer'
+            'shadow-primary/10 group/link cursor-pointer',
+            stackMotion(reduceMotion),
+            openKey === lead.key && openCard(reduceMotion),
+            openKey !== null && openKey !== lead.key && STEPPED_BACK
           )}
         >
           {/* A soft wash of the accent colour from the corner the card came in from. */}
@@ -402,6 +468,8 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
           <Link
             href={lead.path}
             prefetch={false}
+            data-post-key={lead.key}
+            onFocus={onCardFocus}
             onClick={(event) => {
               if (dragged.current) {
                 event.preventDefault();
@@ -427,15 +495,21 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                   style={lead.imagePosition ? { objectPosition: lead.imagePosition } : undefined}
                   className={cn(
                     'object-cover transition-transform duration-700',
-                    !reduceMotion && 'group-hover/link:scale-110'
+                    openKey === lead.key && !reduceMotion && 'scale-110'
                   )}
                 />
               ) : (
                 <BlogCoverFallback slug={slugFromPostPath(lead.path)} />
               )}
+              <Sheen active={openKey === lead.key} reduceMotion={reduceMotion} />
             </span>
             <span className="min-w-0 flex-1">
-              <span className="text-foreground group-hover/link:text-primary line-clamp-2 text-sm leading-snug font-semibold text-pretty transition-colors">
+              <span
+                className={cn(
+                  'text-foreground text-sm leading-snug font-semibold text-pretty transition-colors',
+                  openKey === lead.key ? 'text-primary line-clamp-none' : 'line-clamp-2'
+                )}
+              >
                 {lead.title}
               </span>
               <span className="text-muted-foreground mt-1 block truncate text-xs">
@@ -445,6 +519,15 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
             </span>
             <span className="sr-only">{labels.read}</span>
           </Link>
+
+          <PostPreview
+            ref={leadPreviewRef}
+            post={lead}
+            labels={labels}
+            open={openKey === lead.key}
+            reduceMotion={reduceMotion}
+            className="px-4"
+          />
 
           {/* Always drawn, so the card has the same shape whatever the count; only the count
                   line depends on there being more than one. Click-through: a tap on the count
@@ -495,8 +578,14 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
               >
                 <FanCard
                   post={post}
+                  labels={labels}
                   eyebrow={eyebrowFor(labels, post)}
                   day={relativeDay(post.date, locale)}
+                  open={openKey === post.key}
+                  steppedBack={openKey !== null && openKey !== post.key}
+                  reduceMotion={reduceMotion}
+                  onEnter={onCardEnter}
+                  onFocusVisible={onCardFocus}
                   onOpen={(event) => {
                     if (dragged.current) {
                       event.preventDefault();
@@ -515,49 +604,233 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
   );
 }
 
+/** How a card in the stack moves when it opens or steps back. */
+function stackMotion(reduceMotion: boolean): string {
+  return reduceMotion
+    ? 'transition-[opacity,border-color,box-shadow] duration-200'
+    : 'transition-[opacity,scale,translate,filter,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]';
+}
+
+/**
+ * The open card, the lead card and a fanned-out one alike: accent border and glow, and a nudge
+ * out of the stack towards the page.
+ */
+function openCard(reduceMotion: boolean): string {
+  return cn(
+    'border-primary/50 shadow-2xl shadow-primary/25 ring-primary/20',
+    !reduceMotion && '-translate-x-1'
+  );
+}
+
+/** Every card but the open one fades back, so the eye stays on the one being read. */
+const STEPPED_BACK = 'scale-[0.98] brightness-[0.65] saturate-[0.6]';
+
+/** Open: rows grow from nothing to their content. Closed: back, a little quicker. */
+const PREVIEW_ROWS_OPEN = 'grid-rows-[1fr]';
+const PREVIEW_ROWS_CLOSED = 'grid-rows-[0fr]';
+
+interface PostPreviewProps {
+  post: LatestPost;
+  labels: LatestPostsLabels;
+  open: boolean;
+  reduceMotion: boolean;
+  className?: string;
+  ref?: React.Ref<HTMLDivElement>;
+}
+
+/**
+ * What an open card adds: the whole excerpt, reading time, park and author, and the read link.
+ * Height through a grid row going from `0fr` to `1fr`, so it opens to its content without
+ * measuring it; the lines inside rise in one after the other once there is room.
+ *
+ * `pointer-events-none`: the post link's pseudo-element covers the card, and the lines here sit
+ * on their own layers while they move, which would otherwise catch the click.
+ */
+function PostPreview({ post, labels, open, reduceMotion, className, ref }: PostPreviewProps) {
+  const metaItems = [
+    post.readingMinutes && labels.readingTime
+      ? {
+          icon: Clock,
+          text: labels.readingTime.replace('{minutes}', String(post.readingMinutes)),
+        }
+      : null,
+    post.park ? { icon: MapPin, text: post.park } : null,
+    post.author ? { icon: PenLine, text: post.author } : null,
+  ].filter((item) => item !== null);
+  if (!post.excerpt && metaItems.length === 0) return null;
+
+  // Each line enters a beat after the one above it; on the way out they all go at once.
+  const line = (index: number) => ({
+    className: cn(
+      reduceMotion
+        ? 'transition-opacity duration-200'
+        : 'transition-[opacity,translate,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+      open ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-2 blur-[3px]'
+    ),
+    style: { transitionDelay: open && !reduceMotion ? `${120 + index * 70}ms` : '0ms' },
+  });
+
+  return (
+    <div
+      ref={ref}
+      aria-hidden={!open}
+      className={cn(
+        'pointer-events-none grid',
+        reduceMotion
+          ? ''
+          : open
+            ? 'transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]'
+            : 'transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]',
+        open ? PREVIEW_ROWS_OPEN : PREVIEW_ROWS_CLOSED
+      )}
+    >
+      <div className="min-h-0 overflow-hidden">
+        <div className={cn('flex flex-col gap-2 pb-3', className)}>
+          {post.excerpt && (
+            <p
+              {...line(0)}
+              className={cn(
+                'text-muted-foreground text-xs leading-relaxed text-pretty',
+                line(0).className
+              )}
+            >
+              {post.excerpt}
+            </p>
+          )}
+          <div {...line(1)} className={cn('flex items-center gap-3', line(1).className)}>
+            {metaItems.length > 0 && (
+              <span className="text-muted-foreground flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 text-[11px]">
+                {metaItems.map(({ icon: Icon, text }) => (
+                  <span key={text} className="inline-flex min-w-0 items-center gap-1">
+                    <Icon className="text-primary/80 h-3 w-3 shrink-0" />
+                    <span className="truncate">{text}</span>
+                  </span>
+                ))}
+              </span>
+            )}
+            <span className="text-primary ml-auto inline-flex shrink-0 items-center gap-1 text-[11px] font-semibold">
+              {labels.read}
+              <ArrowRight
+                className={cn(
+                  'h-3 w-3 transition-transform duration-500',
+                  open && !reduceMotion && 'translate-x-0.5'
+                )}
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** A streak of light across a cover as its card opens: once, on the way in only. */
+function Sheen({ active, reduceMotion }: { active: boolean; reduceMotion: boolean }) {
+  if (reduceMotion) return null;
+  return (
+    <span
+      aria-hidden
+      className={cn(
+        'pointer-events-none absolute inset-y-0 -left-full w-full -skew-x-12 bg-gradient-to-r from-transparent via-white/35 to-transparent',
+        active
+          ? 'translate-x-[250%] transition-transform delay-100 duration-1000 ease-out'
+          : 'translate-x-0 transition-none'
+      )}
+    />
+  );
+}
+
 interface FanCardProps {
   post: LatestPost;
+  labels: LatestPostsLabels;
   eyebrow: string;
   day: string;
+  open: boolean;
+  /** Another card is open: this one fades back. */
+  steppedBack: boolean;
+  reduceMotion: boolean;
+  onEnter: (event: React.PointerEvent<HTMLElement>) => void;
+  onFocusVisible: (event: React.FocusEvent<HTMLElement>) => void;
   onOpen: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-/** One further post in the fan under the lead card: a one-line card that links to the post. */
-function FanCard({ post, eyebrow, day, onOpen }: FanCardProps) {
+/**
+ * One further post in the fan under the lead card: a one-line card that links to the post, and
+ * opens into its preview while a pointer rests on it or it holds keyboard focus.
+ */
+function FanCard({
+  post,
+  labels,
+  eyebrow,
+  day,
+  open,
+  steppedBack,
+  reduceMotion,
+  onEnter,
+  onFocusVisible,
+  onOpen,
+}: FanCardProps) {
   return (
     <Link
       href={post.path}
       prefetch={false}
       onClick={onOpen}
       draggable={false}
+      data-post-key={post.key}
+      onPointerEnter={onEnter}
+      onFocus={onFocusVisible}
       className={cn(
-        'group/fan focus-visible:ring-ring flex h-16 items-center gap-3 rounded-xl border px-3 shadow-lg backdrop-blur-xl focus-visible:ring-2 focus-visible:outline-none',
-        'border-border/60 bg-card/[0.97] ring-1 ring-black/5 dark:ring-white/5'
+        'group/fan focus-visible:ring-ring flex flex-col rounded-xl border px-4 shadow-lg backdrop-blur-xl focus-visible:ring-2 focus-visible:outline-none',
+        'border-border/60 bg-card/[0.97] ring-1 ring-black/5 dark:ring-white/5',
+        stackMotion(reduceMotion),
+        open && openCard(reduceMotion),
+        steppedBack && STEPPED_BACK
       )}
     >
-      <span className="bg-muted relative block aspect-[16/10] h-11 shrink-0 overflow-hidden rounded-md">
-        {post.image ? (
-          <Image
-            src={post.image}
-            alt=""
-            fill
-            sizes="72px"
-            draggable={false}
-            style={post.imagePosition ? { objectPosition: post.imagePosition } : undefined}
-            className="object-cover"
-          />
-        ) : (
-          <BlogCoverFallback slug={slugFromPostPath(post.path)} />
-        )}
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className="text-muted-foreground block truncate text-[10px] font-semibold tracking-wide uppercase">
-          <span className="text-primary">{eyebrow}</span> · {day}
+      <span className="flex min-h-16 items-center gap-3 py-2.5">
+        <span
+          className={cn(
+            'bg-muted relative block aspect-[16/10] shrink-0 overflow-hidden rounded-md',
+            reduceMotion
+              ? ''
+              : 'transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+            // Open, the cover grows to the lead card's size, so every open card looks the same.
+            open ? 'h-[70px]' : 'h-11'
+          )}
+        >
+          {post.image ? (
+            <Image
+              src={post.image}
+              alt=""
+              fill
+              sizes="96px"
+              draggable={false}
+              style={post.imagePosition ? { objectPosition: post.imagePosition } : undefined}
+              className={cn(
+                'object-cover transition-transform duration-700',
+                open && !reduceMotion && 'scale-110'
+              )}
+            />
+          ) : (
+            <BlogCoverFallback slug={slugFromPostPath(post.path)} />
+          )}
+          <Sheen active={open} reduceMotion={reduceMotion} />
         </span>
-        <span className="text-foreground group-hover/fan:text-primary block truncate text-sm leading-snug font-semibold transition-colors">
-          {post.title}
+        <span className="min-w-0 flex-1">
+          <span className="text-muted-foreground block truncate text-[10px] font-semibold tracking-wide uppercase">
+            <span className="text-primary">{eyebrow}</span> · {day}
+          </span>
+          <span
+            className={cn(
+              'text-foreground block text-sm leading-snug font-semibold transition-colors',
+              open ? 'text-primary text-pretty' : 'truncate'
+            )}
+          >
+            {post.title}
+          </span>
         </span>
       </span>
+      <PostPreview post={post} labels={labels} open={open} reduceMotion={reduceMotion} />
     </Link>
   );
 }

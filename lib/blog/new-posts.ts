@@ -43,6 +43,17 @@ export interface LatestPost {
   image?: string;
   /** The cover's focal point as a CSS `object-position`, resolved by the route. */
   imagePosition?: string;
+  /**
+   * The post's full excerpt, shown when its card opens on hover or focus. Missing in a payload
+   * cached from before it existed; the card then stays closed.
+   */
+  excerpt?: string;
+  /** Estimated reading time in whole minutes; left out when it is not known. */
+  readingMinutes?: number;
+  /** The author's byline name (`shortName`, else `name`). */
+  author?: string;
+  /** Name of the park a news post belongs to, where it names one. */
+  park?: string;
 }
 
 /**
@@ -58,6 +69,8 @@ export interface LatestPostsLabels {
   /** Missing in a payload cached from before it existed, like `kind`. */
   eyebrowGuide?: string;
   read: string;
+  /** `{minutes}` is replaced with `readingMinutes`. Missing in a payload cached from before it. */
+  readingTime?: string;
   close: string;
   /** `{count}` is replaced with the number of further new posts. */
   moreOne: string;

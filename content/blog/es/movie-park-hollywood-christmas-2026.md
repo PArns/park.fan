@@ -41,6 +41,9 @@ seo:
     - Movie Park tiempos de espera
 ---
 
+> [!UPDATE] 2026-11-27
+> Hollywood Christmas abre desde hoy y la tienda de entradas ha cambiado los precios. En línea, el precio de la entrada de un día depende ahora del día, de 24,90 € a 41,90 € en los dos primeros fines de semana, frente a los 49,90 € normales desde 12 años y 44,90 € para niños. Los pases de temporada 2027 tienen un 25 % de descuento en el Black November: 134,90 €, 116,90 € y 101,90 €. Según la tienda, el pase Bronze no vale del 27 de noviembre al 5 de enero. Todo sobre la apertura está en nuestra [noticia sobre la primera tarde](/news/movie-park-hollywood-christmas-abre).
+
 El [Movie Park Germany](ref:movie-park-germany), en Bottrop-Kirchhellen, abre el viernes 27 de noviembre su fiesta de invierno, Movie Park's Hollywood Christmas. Las novedades son un tobogán de hielo de Ice-World, que se baja sentado en un neumático, y el desfile del 30.º aniversario del parque en versión de invierno. La fiesta dura 21 días, hasta el 5 de enero de 2027. Antes, el 8 de noviembre, termina el Halloween Horror Festival. Entre la última motosierra y el primer árbol iluminado, el parque cierra 18 días, del 9 al 26 de noviembre.
 
 ## Lo nuevo de este invierno
