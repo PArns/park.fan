@@ -73,7 +73,7 @@ Offen sind nach Angaben des Parks über 30 Attraktionen, darunter Achterbahnen, 
 
 ## Was der Winter kostet
 
-Euro und Złoty haben getrennte Preislisten in zwei Shops. Im Euro-Shop auf tickets.energylandia.pl kostet ein Tag im Winter Kingdom 38 €, ermäßigt 33 €. Ermäßigt zahlen Kinder unter 140 Zentimetern, Senioren ab 65 und Menschen mit Behinderung. Ab 15 Uhr gibt es ein Nachmittagsticket für 21 € oder ermäßigt 19 €. Reservieren musst du nichts, das Ticket gilt an jedem Öffnungstag bis zum 31. Januar. Im Ticket sind laut FAQ alle Attraktionen und Shows enthalten, die an dem Tag offen sind, die Eisbahn also auch.
+Euro und Złoty haben getrennte Preislisten, jede in einem eigenen Shop. Im Euro-Shop auf tickets.energylandia.pl kostet ein Tag im Winter Kingdom 38 €, ermäßigt 33 €. Ermäßigt zahlen Kinder unter 140 Zentimetern, Senioren ab 65 und Menschen mit Behinderung. Ab 15 Uhr gibt es ein Nachmittagsticket für 21 € oder ermäßigt 19 €. Reservieren musst du nichts, das Ticket gilt an jedem Öffnungstag bis zum 31. Januar. Im Ticket sind laut FAQ alle Attraktionen und Shows enthalten, die an dem Tag offen sind, die Eisbahn also auch.
 
 Im polnischen Shop auf ticket.energylandia.pl kostet das Winter-Ticket regulär 149 zł, in den Black Weeks bis Sonntag, den 29. November, nur 99 zł. Das Angebot gibt es nur online und höchstens zehn Stück insgesamt. Diese Tickets gelten aber erst ab dem 4. Dezember. Fürs Eröffnungswochenende zahlst du den normalen Preis. Das Nachmittagsticket ist im Angebot nicht dabei. Die [Black-Friday-Angebote der anderen Parks](/news/black-friday-freizeitparks-2026) haben wir in einem eigenen Beitrag gesammelt.
 
