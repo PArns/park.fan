@@ -39,17 +39,17 @@ seo:
     - Le Pal openingstijden 2027
 ---
 
-[Le Pal](ref:le-pal), voor de helft dierentuin en voor de helft pretpark, in Saint-Pourçain-sur-Besbre in het departement Allier, geeft de boomstambaan [Rivière du Grand Nord](ref:le-pal/the-canadian-river) voor het seizoen 2027 een nieuwe inrichting. Daarnaast komen er een carrousel in de Scandinavische zone en een verblijf voor de rode panda's waar je zelf in kunt lopen. Het park maakte dat op 6 oktober bekend, in zijn seizoensbalans over 2026. Op welke dag de drie nieuwigheden klaar zijn, heeft Le Pal nog niet bekendgemaakt.
+[Le Pal](ref:le-pal) in Saint-Pourçain-sur-Besbre (Allier), half dierentuin en half pretpark, geeft de boomstambaan [Rivière du Grand Nord](ref:le-pal/the-canadian-river) voor het seizoen 2027 een nieuwe inrichting. Daarnaast komen er een carrousel in de Scandinavische zone en een verblijf voor de rode panda's waar je zelf in kunt lopen. Het park maakte dat op 6 oktober bekend in zijn seizoensbalans over 2026. Le Pal heeft nog niet laten weten op welke dag de drie nieuwigheden klaar zijn.
 
 ## Wat er verandert aan de Rivière du Grand Nord
 
-De Rivière du Grand Nord is een boomstambaan midden in het pretparkgedeelte, vlak bij de Carrousel, L'Archipel en [Fjord Explorer](ref:le-pal/fjord-explorer). Aan het parcours en de rit zelf verandert niets, alleen het decor is nieuw. De baan krijgt een noordse omgeving en sluit beter aan op de Scandinavische zone, die in 2024 samen met Fjord Explorer openging. Kinderen mogen mee vanaf 1 meter, onder 1,40 meter alleen onder begeleiding.
+De Rivière du Grand Nord is een boomstambaan midden in het pretparkgedeelte, vlak bij de Carrousel, L'Archipel en [Fjord Explorer](ref:le-pal/fjord-explorer). Aan het parcours en de rit zelf verandert niets, alleen het decor is nieuw. De baan krijgt een noordse omgeving en sluit beter aan op de Scandinavische zone, die in 2024 samen met Fjord Explorer openging. Kinderen mogen mee vanaf 1 meter, kleiner dan 1,40 meter alleen met begeleiding.
 
-Fjord Explorer is een waterachtbaan van Mack Rides: 27 meter hoog, 497 meter lang, tot 79 km/u snel en met acht plaatsen per boot. Hij staat in een Scandinavisch dorp met bonte huisjes aan een meer. Instappen mag vanaf 1,10 meter, onder 1,30 meter alleen onder begeleiding.
+Fjord Explorer is een waterachtbaan van Mack Rides: 27 meter hoog, 497 meter lang, tot 79 km/u snel en met acht plaatsen per boot. Hij staat in een Scandinavisch dorp met kleurige huisjes aan een meer. Instappen mag vanaf 1,10 meter, kleiner dan 1,30 meter alleen met begeleiding.
 
 ## Een carrousel met voertuigen uit het park
 
-Op de nieuwe familiecarrousel zit je in nagebouwde voertuigen uit het park. Daar horen het zeilbootje van Fjord Explorer bij, een heteluchtballon van de [Ballons d'Orient](ref:le-pal/the-oriental-balloons) en het vliegtuig van de Ravitailleur. De Ravitailleur is een burgertent naast de Descente du Colorado, dus op de carrousel maakt dat vliegtuig voor het eerst rondjes, alleen zonder friet aan boord. Vanaf welke lengte kinderen alleen mogen, heeft Le Pal nog niet gepubliceerd.
+Op de nieuwe familiecarrousel zit je in nagebouwde voertuigen uit het park. Daar horen het zeilbootje van Fjord Explorer bij, een heteluchtballon van de [Ballons d'Orient](ref:le-pal/the-oriental-balloons) en het vliegtuig van de Ravitailleur. De Ravitailleur is een burgertent naast de Descente du Colorado, dus op de carrousel maakt dat vliegtuig voor het eerst rondjes, alleen zonder friet aan boord. Le Pal heeft nog niet gepubliceerd vanaf welke lengte kinderen alleen mogen.
 
 ## Een verblijf voor de rode panda's
 
@@ -82,13 +82,13 @@ Het dagticket met datum wordt duurder naarmate je later koopt, en je kunt het to
 
 ```
 
-## Er komen en blijven slapen
+## Bereikbaarheid en overnachten
 
 Met de auto neem je op de A79, afhankelijk van je rijrichting, afrit 28 Thiel-sur-Acolin of afrit 27 Dompierre-sur-Besbre Ouest. Parkeren is gratis. Vanuit Lyon rijd je ongeveer twee uur. Zonder auto neem je de bus vanaf het station van Moulins of het busstation van Vichy, voor € 2,30 per rit. Het dichtstbijzijnde treinstation is Dompierre-Sept-Fons, vanaf daar ga je met de taxi verder. Wie in het park blijft slapen, kan terecht in de lodges aan de Afrikaanse savanne van het dierenpark of in Hotel Savana Reserve. Een lodge kost vanaf € 342 voor twee personen.
 
-## Hoe het seizoen 2026 verliep
+## Het seizoen 2026 in cijfers
 
-Volgens eigen telling kwamen er in 2026 zo'n 720.000 bezoekers naar Le Pal. Dat is 3 procent meer dan een jaar eerder en het op twee na beste seizoen sinds de opening in 1973. In april kwamen er 92.000 bezoekers, in juni en juli drukten de hittegolven de aantallen. Het park investeerde in 2026 9 miljoen euro, waarvan 2 miljoen in de Delta des Éléphants. De olifanten hebben daar twee hectare, een rivier en twee zwembaden. In de bezoekersenquête 2026 van Qualimétrie kwam Fjord Explorer op de eerste plaats, voor Yukon Quad. Wat andere parken in Frankrijk en Europa in 2027 openen, staat in ons overzicht van de [nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
+Volgens eigen telling kwamen er in 2026 zo'n 720.000 bezoekers naar Le Pal. Dat is 3 procent meer dan een jaar eerder en het op twee na beste seizoen sinds de opening in 1973. In april kwamen er 92.000 bezoekers, in juni en juli drukten de hittegolven de aantallen. In 2026 investeerde het park 9 miljoen euro, waarvan 2 miljoen in de Delta des Éléphants. De olifanten hebben daar twee hectare, een rivier en twee badbassins. In de bezoekersenquête 2026 van Qualimétrie kwam Fjord Explorer op de eerste plaats, voor Yukon Quad. Andere nieuwigheden in Frankrijk en Europa staan in ons [overzicht van de nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 Bronnen:
 [Persbericht Bilan de saison 2026 (pdf)](https://www.lepal.com/uploads/media/default/0001/21/10ded16e796dc5ff1c9038e487d5a64209cf3b15.pdf),

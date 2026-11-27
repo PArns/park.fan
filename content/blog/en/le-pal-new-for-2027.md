@@ -39,17 +39,17 @@ seo:
     - Le Pal opening hours 2027
 ---
 
-[Le Pal](ref:le-pal), the zoo and theme park in Saint-Pourçain-sur-Besbre in the Allier department, is giving its [Rivière du Grand Nord](ref:le-pal/the-canadian-river) (The Great North River) log flume a new look for the 2027 season. It's also adding a carousel in the Scandinavia area and a red panda habitat that visitors can walk into. The park announced all three on 6 October in its review of the 2026 season. Le Pal hasn't said yet on which day each of them will be ready.
+[Le Pal](ref:le-pal), the zoo and theme park in Saint-Pourçain-sur-Besbre in the Allier department, is giving its [Rivière du Grand Nord](ref:le-pal/the-canadian-river) log flume a new look for the 2027 season. It's also adding a carousel in the Scandinavia area and a red panda habitat that visitors can walk into. The park announced all three on 6 October in its review of the 2026 season. Le Pal hasn't said yet when each of them will be ready.
 
 ## What changes on the Rivière du Grand Nord
 
 The Rivière du Grand Nord is a log flume in the middle of the theme park, close to the Carrousel, L'Archipel and [Fjord Explorer](ref:le-pal/fjord-explorer). The track and the ride stay as they are; only the scenery is new. The flume gets Nordic surroundings and is tied more closely to the Scandinavia area, which opened with Fjord Explorer in 2024. Children can ride from 1 metre, and under 1.40 metres they need an adult with them.
 
-Fjord Explorer is a Mack Rides water coaster, 27 metres tall and 497 metres long, with a top speed of 79 km/h and eight seats per boat. It sits in a Scandinavian village of brightly painted houses on a lake. Children can ride from 1.10 metres, and under 1.30 metres they need an adult with them.
+Fjord Explorer is a Mack Rides water coaster, 27 metres tall and 497 metres long, with a top speed of 79 km/h. Each boat seats eight. It sits in a Scandinavian village of brightly painted houses on a lake. Children can ride from 1.10 metres, and under 1.30 metres they need an adult with them.
 
 ## A carousel of the park's own vehicles
 
-On the new family carousel you ride in copies of vehicles from around the park: the Fjord Explorer sailing boat, a hot-air balloon from the [Ballons d'Orient](ref:le-pal/the-oriental-balloons) and the plane from the Ravitailleur. The Ravitailleur is a burger stand next to the Descente du Colorado, so on the carousel its plane finally gets to fly, though nobody's serving fries on board. Le Pal hasn't published the height at which children can ride alone.
+On the new family carousel you ride in copies of vehicles from around the park: the Fjord Explorer sailing boat, a hot-air balloon from the [Ballons d'Orient](ref:le-pal/the-oriental-balloons) and the plane from the Ravitailleur. The Ravitailleur is a burger stand next to the Descente du Colorado. On the carousel its plane flies for the first time, though without fries on board. Le Pal hasn't published the height at which children can ride alone.
 
 ## A habitat for the red pandas
 
@@ -57,7 +57,7 @@ The red pandas are getting a new, planted habitat near the Delta des Éléphants
 
 ## When the park is open in 2027
 
-The 2027 season runs from Saturday, 10 April, to Sunday, 3 October. Le Pal opens every day until 25 April. In May and the first half of June it's open mainly at weekends, on public holidays and on Wednesdays, then every day from 16 June to 1 September. In September it only opens at weekends and on 8 and 15 September, both Wednesdays. Gates open at 10 am and close at 5:30 pm or at 6 pm or later, depending on the day. After 3 October, only the zoo opens, on certain days until the end of October and only for guests staying in the lodges, with no rides. There's no winter or Christmas opening.
+The 2027 season runs from Saturday, 10 April, to Sunday, 3 October. Le Pal opens every day until 25 April. In May and the first half of June it's open mainly at weekends, on public holidays and on Wednesdays, then every day from 16 June to 1 September. In September it only opens at weekends and on 8 and 15 September, both Wednesdays. Gates open at 10 am and close at 5:30 pm or at 6 pm or later, depending on the day. After 3 October, only the zoo opens, with no rides. Until the end of October it opens on certain days for guests staying in the lodges. There's no winter or Christmas opening.
 
 ```best-days-widget slug=le-pal
 
@@ -76,7 +76,7 @@ Children under 1 metre (measured in their shoes) get in free. The child rate app
 | Zèbre season pass (online)        | €109                | €89              |
 | Lion season pass (online)         | €189                | €159             |
 
-The dated day ticket gets more expensive the later you buy it, and you can buy it until 11:59 pm the day before. Every season pass costs €10 more at the gate. If you had a 2026 season pass, renewing saves you €10, €15 or €20, depending on the tier. Zèbre and Lion include the Rapid'Sensations, which lets you skip the queue once at each of seven rides, Fjord Explorer and the Rivière du Grand Nord among them. On its own it costs from €19.50.
+The dated day ticket gets more expensive the later you buy it, and you can buy it until 11:59 pm the day before. Every season pass costs €10 more at the gate. If you had a 2026 season pass, renewing saves you €10, €15 or €20, depending on the tier. Zèbre and Lion include the Rapid'Sensations. It lets you skip the queue once at each of seven rides, Fjord Explorer and the Rivière du Grand Nord among them. On its own it costs from €19.50.
 
 ```ride-waits-widget park=le-pal top=8 columns=peak,days highlight=fjord-explorer
 
@@ -88,7 +88,7 @@ By car, leave the A79 at exit 28 Thiel-sur-Acolin or exit 27 Dompierre-sur-Besbr
 
 ## How the 2026 season went
 
-By its own count, Le Pal had about 720,000 visitors in 2026. That's 3% more than the year before and the third-best season since the park opened in 1973. April brought 92,000 visitors, while the heatwaves in June and July kept numbers down. The park invested €9 million in 2026, €2 million of it in the Delta des Éléphants, where the elephants have two hectares, a river and two bathing pools. In Qualimétrie's 2026 visitor survey, Fjord Explorer came first, ahead of Yukon Quad. Other new rides in France and the rest of Europe are in our [overview of new theme park attractions for 2027](/blog/new-theme-park-attractions-2027).
+By its own count, Le Pal had about 720,000 visitors in 2026. That's 3% more than the year before and the third-best season since the park opened in 1973. April brought 92,000 visitors, while the heatwaves in June and July kept numbers down. The park invested €9 million in 2026, €2 million of it in the Delta des Éléphants. The elephants there have two hectares, a river and two bathing pools. In Qualimétrie's 2026 visitor survey, Fjord Explorer came first, ahead of Yukon Quad. Other new rides in France and the rest of Europe are in our [overview of new theme park attractions for 2027](/blog/new-theme-park-attractions-2027).
 
 Sources:
 [Press release Bilan de saison 2026 (PDF)](https://www.lepal.com/uploads/media/default/0001/21/10ded16e796dc5ff1c9038e487d5a64209cf3b15.pdf),

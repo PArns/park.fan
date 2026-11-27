@@ -39,17 +39,17 @@ seo:
     - Le Pal horarios 2027
 ---
 
-[Le Pal](ref:le-pal), mitad zoo y mitad parque de atracciones, en Saint-Pourçain-sur-Besbre (departamento de Allier), renueva para la temporada 2027 su atracción de troncos [Rivière du Grand Nord](ref:le-pal/the-canadian-river). A eso se suman un carrusel en la zona escandinava y un recinto para los pandas rojos en el que podrán entrar los visitantes. El parque lo anunció el 6 de octubre, en su balance de la temporada 2026. Le Pal todavía no ha anunciado qué día estarán listas las tres novedades.
+[Le Pal](ref:le-pal), mitad zoo y mitad parque de atracciones, en Saint-Pourçain-sur-Besbre (departamento de Allier), renueva para la temporada 2027 su atracción de troncos [Rivière du Grand Nord](ref:le-pal/the-canadian-river). A eso se suman un carrusel en la zona escandinava y un recinto para los pandas rojos en el que podrán entrar los visitantes. El parque lo anunció el 6 de octubre, en su balance de la temporada 2026. Le Pal todavía no ha comunicado qué día estarán listas las tres novedades.
 
 ## Qué cambia en la Rivière du Grand Nord
 
 La Rivière du Grand Nord es una atracción de troncos en pleno centro del parque de atracciones, cerca del Carrousel, L'Archipel y [Fjord Explorer](ref:le-pal/fjord-explorer). El recorrido y el viaje se quedan como están; lo único nuevo son los decorados. La atracción tendrá un entorno nórdico y quedará más unida a la zona escandinava, que abrió en 2024 con Fjord Explorer. Pueden subir niños desde 1 metro, y por debajo de 1,40 metros solo acompañados.
 
-Fjord Explorer es una montaña rusa acuática de Mack Rides de 27 metros de altura y 497 metros de recorrido, que llega a 79 km/h, con ocho plazas por barca. Está en un pueblo escandinavo de casas de colores junto a un lago. Pueden subir niños desde 1,10 metros, y por debajo de 1,30 metros solo acompañados.
+Fjord Explorer es una montaña rusa acuática de Mack Rides de 27 metros de altura y 497 metros de recorrido, que llega a 79 km/h. Cada barca tiene ocho plazas. Está en un pueblo escandinavo de casas de colores junto a un lago. La altura mínima es de 1,10 metros, y quien mida menos de 1,30 metros sube acompañado.
 
 ## Un carrusel con vehículos del propio parque
 
-En el nuevo carrusel familiar te sientas en réplicas de vehículos que ya están en el parque: el velero de Fjord Explorer, un globo aerostático de los [Ballons d'Orient](ref:le-pal/the-oriental-balloons) y el avión del Ravitailleur. El Ravitailleur es un puesto de hamburguesas junto a la Descente du Colorado, así que en el carrusel su avión dará vueltas por primera vez, aunque sin patatas fritas a bordo. Desde qué altura podrán subir solos los niños, Le Pal aún no lo ha publicado.
+En el nuevo carrusel familiar te sientas en réplicas de vehículos que ya están en el parque: el velero de Fjord Explorer, un globo aerostático de los [Ballons d'Orient](ref:le-pal/the-oriental-balloons) y el avión del Ravitailleur. El Ravitailleur es un puesto de hamburguesas junto a la Descente du Colorado, así que en el carrusel su avión dará vueltas por primera vez, aunque sin patatas fritas a bordo. Le Pal aún no ha publicado la altura a partir de la cual los niños podrán subir solos.
 
 ## Un recinto para los pandas rojos
 
@@ -76,7 +76,7 @@ Los niños de menos de 1 metro (medidos con zapatos) entran gratis. La tarifa in
 | Pase de temporada Zèbre (en línea)   | 109 €                | 89 €                 |
 | Pase de temporada Lion (en línea)    | 189 €                | 159 €                |
 
-La entrada de un día con fecha sube de precio cuanto más tarde la compras, y se vende hasta las 23:59 del día anterior. En taquilla, cada pase de temporada cuesta 10 € más. Si ya tenías un pase de 2026, al renovarlo te ahorras 10, 15 o 20 €, según el nivel. Zèbre y Lion incluyen el Rapid'Sensations, con el que te saltas la fila una vez en cada una de siete atracciones, entre ellas Fjord Explorer y la Rivière du Grand Nord. Por separado cuesta desde 19,50 €.
+La entrada de un día con fecha sube de precio cuanto más tarde la compras, y se vende hasta las 23:59 del día anterior. En taquilla, cada pase de temporada cuesta 10 € más. Si ya tenías un pase de 2026, al renovarlo te ahorras 10, 15 o 20 €, según el nivel. Zèbre y Lion incluyen el Rapid'Sensations, con el que te saltas la cola una vez en cada una de siete atracciones, entre ellas Fjord Explorer y la Rivière du Grand Nord. Por separado cuesta desde 19,50 €.
 
 ```ride-waits-widget park=le-pal top=8 columns=peak,days highlight=fjord-explorer
 
@@ -84,11 +84,11 @@ La entrada de un día con fecha sube de precio cuanto más tarde la compras, y s
 
 ## Cómo llegar y dónde dormir
 
-En coche, desde la A79 se toma, según el sentido, la salida 28 Thiel-sur-Acolin o la 27 Dompierre-sur-Besbre Ouest, y el aparcamiento es gratis. Desde Lyon son unas dos horas. Sin coche, hay un autobús desde la estación de tren de Moulins y desde la estación de autobuses de Vichy hasta el parque, a 2,30 € el trayecto. La estación más cercana es Dompierre-Sept-Fons, y desde allí se sigue en taxi. Para dormir en el parque están los lodges junto a la sabana africana del parque zoológico y el hotel Savana Reserve. Los lodges cuestan desde 342 € para dos personas.
+En coche, desde la A79 tomas, según el sentido, la salida 28 Thiel-sur-Acolin o la 27 Dompierre-sur-Besbre Ouest, y el aparcamiento es gratis. Desde Lyon son unas dos horas. Sin coche, hay un autobús desde la estación de tren de Moulins y desde la estación de autobuses de Vichy hasta el parque, a 2,30 € el trayecto. La estación más cercana es Dompierre-Sept-Fons, y desde allí sigues en taxi. Para dormir en el parque están los lodges junto a la sabana africana del parque zoológico y el hotel Savana Reserve. Los lodges cuestan desde 342 € para dos personas.
 
-## Cómo fue la temporada 2026
+## Balance de la temporada 2026
 
-Según sus propias cifras, Le Pal recibió en 2026 unos 720.000 visitantes, un 3 % más que el año anterior y la tercera mejor temporada desde su apertura en 1973. Abril dejó 92.000 visitantes, y en junio y julio las olas de calor bajaron la afluencia. El parque invirtió 9 millones de euros en 2026, 2 millones de ellos en el Delta des Éléphants, donde los elefantes tienen dos hectáreas, un río y dos piscinas. En la encuesta de visitantes de 2026 de Qualimétrie, Fjord Explorer quedó en primer puesto, por delante de Yukon Quad. Las demás novedades de Francia y Europa están en el [resumen de novedades de los parques temáticos para 2027](/blog/novedades-parques-tematicos-2027).
+Según sus propias cifras, Le Pal recibió en 2026 unos 720.000 visitantes, un 3 % más que el año anterior y la tercera mejor temporada desde su apertura en 1973. Abril dejó 92.000 visitantes, y en junio y julio las olas de calor bajaron la afluencia. El parque invirtió 9 millones de euros en 2026, 2 millones de ellos en el Delta des Éléphants, donde los elefantes tienen dos hectáreas, un río y dos balsas para bañarse. En la encuesta de visitantes de 2026 de Qualimétrie, Fjord Explorer quedó en primer puesto, por delante de Yukon Quad. Las demás novedades de Francia y Europa están en el [resumen de novedades de los parques temáticos para 2027](/blog/novedades-parques-tematicos-2027).
 
 Fuentes:
 [Nota de prensa Bilan de saison 2026 (PDF)](https://www.lepal.com/uploads/media/default/0001/21/10ded16e796dc5ff1c9038e487d5a64209cf3b15.pdf),
