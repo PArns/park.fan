@@ -46,7 +46,7 @@ seo:
     - La Tanière du Dragon geschlossen
 ---
 
-Disneyland Paris spielt die Show Mickey and the Magician ab dem 11. Januar 2027 nicht mehr, weil das Animagique Theater in der [Disney Adventure World](ref:disney-adventure-world) eine große Renovierung bekommt. Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) nebenan sind ab dem 4. Januar [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) und [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) geschlossen, und [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon), das Piratenschiff in Adventureland, ist schon den ganzen Januar zu. Disney hat das auf der Showseite und im Kalender der Öffnungszeiten veröffentlicht. Wann Mickey wieder zaubert, hat Disney nicht bekannt gegeben.
+Disneyland Paris spielt die Show Mickey and the Magician ab dem 11. Januar 2027 nicht mehr, weil das Animagique Theater in der [Disney Adventure World](ref:disney-adventure-world) eine große Renovierung bekommt. Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) nebenan sind ab dem 4. Januar [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) und [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) geschlossen. [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon), das Piratenschiff in Adventureland, ist schon den ganzen Januar zu. Disney hat das auf der Showseite und im Kalender der Öffnungszeiten veröffentlicht. Wann Mickey wieder zaubert, hat Disney nicht bekannt gegeben.
 
 ## Der letzte Showtag ist der 10. Januar
 
@@ -83,7 +83,7 @@ In der Disney Adventure World ist im Januar nur [Crush's Coaster](ref:disney-adv
 
 ## Was im Januar sonst läuft
 
-Disney Enchanted Christmas, die Weihnachtssaison mit Mickeys Weihnachtsparade, endet am 6. Januar. Ab dem 7. Januar fährt im Disneyland Park wieder die Tagesparade Disney Stars on Parade, die über Weihnachten Pause hatte. Am Abend läuft auf der Main Street U.S.A. die Show Disney Tales of Magic, rund eine halbe Stunde lang. In Discoveryland ist [Mickey's PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic) geöffnet, ein 4D-Film mit Disney-Figuren.
+Disney Enchanted Christmas, die Weihnachtssaison mit Mickeys Weihnachtsparade, endet am 6. Januar. Ab dem 7. Januar fährt im Disneyland Park wieder die Tagesparade Disney Stars on Parade, die über Weihnachten Pause hatte. Am Abend läuft auf der Main Street, U.S.A. die Show Disney Tales of Magic, rund eine halbe Stunde lang. In Discoveryland ist [Mickey's PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic) geöffnet, ein 4D-Film mit Disney-Figuren.
 
 ## Öffnungszeiten im Januar 2027
 

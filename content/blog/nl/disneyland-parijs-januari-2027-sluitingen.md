@@ -32,7 +32,7 @@ coverImage:
 seo:
   title: 'Disneyland Paris in januari 2027: sluitingen en shows'
   description: >-
-    Disneyland Paris in januari 2027: Mickey and the Magician stopt op 11/1, Indiana Jones en La Tanière du Dragon sluiten op 4/1. Met openingstijden.
+    Disneyland Paris in januari 2027: Mickey and the Magician pauzeert vanaf 11 jan., Indiana Jones en La Tanière du Dragon sluiten 4 jan. Met openingstijden.
   keywords:
     - Disneyland Paris januari 2027
     - Disneyland Paris sluitingen
@@ -46,17 +46,17 @@ seo:
     - La Tanière du Dragon gesloten
 ---
 
-Vanaf 11 januari 2027 speelt Disneyland Paris de show Mickey and the Magician niet meer, omdat het Animagique Theater in [Disney Adventure World](ref:disney-adventure-world) grondig wordt gerenoveerd. In het [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) ernaast gaan op 4 januari [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) en [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) dicht. [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon), het piratenschip in Adventureland, is zelfs de hele januarimaand gesloten. Disney zette dat op de pagina van de show en in de kalender met openingstijden. Wanneer Mickey weer gaat toveren, heeft Disney niet bekendgemaakt.
+Vanaf 11 januari 2027 speelt Disneyland Paris de show Mickey and the Magician niet meer, omdat het Animagique Theater in [Disney Adventure World](ref:disney-adventure-world) grondig wordt gerenoveerd. In het [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) ernaast gaan op 4 januari [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) en [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) dicht. [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon), het piratenschip in Adventureland, is heel januari dicht. Disney zette dat op de pagina van de show en in de kalender met openingstijden. Wanneer Mickey weer gaat toveren, heeft Disney niet bekendgemaakt.
 
 ## De laatste showdag is 10 januari
 
-In de show leert Mickey toveren van figuren die het al kunnen: de Geest uit “Aladdin”, Lumière uit “Belle en het Beest” en Rafiki uit “De Leeuwenkoning”. Tussendoor wordt er gezongen en gedanst, en na ongeveer 30 minuten is het voorbij. Hoe je een heel theater laat verdwijnen, laat Disney vanaf 11 januari zonder Mickey zien. In 2016 won de show de Brass Ring Award van de branchevereniging IAAPA.
+In de show leert Mickey toveren van personages die het al kunnen: de Geest uit “Aladdin”, Lumière uit “Belle en het Beest” en Rafiki uit “De Leeuwenkoning”. Tussendoor wordt er gezongen en gedanst, en na ongeveer 30 minuten is het voorbij. Vanaf 11 januari doet Disney de lastigste truc zonder Mickey: een heel theater laten verdwijnen. In 2016 won de show de Brass Ring Award van de branchevereniging IAAPA.
 
 Tot en met 10 januari zit de show bij je ticket voor Disney Adventure World inbegrepen, maar het aantal plaatsen is beperkt. Wil je zeker binnenkomen, dan koop je gegarandeerde toegang met een eigen wachtrij. Dat kan op de website, in de app of op de dag zelf tot een uur voor aanvang bij de gastenservice. Kinderen vanaf drie jaar betalen daarvoor hetzelfde als volwassenen. Vijf minuten voor aanvang gaan de deuren dicht, en wie dan nog buiten staat, blijft buiten. De tijden van de voorstellingen staan tot 30 dagen van tevoren in de app.
 
-Een vervangende show in het Animagique Theater noemt Disney niet. Op de pagina van de show verwijst het park naar de rest van het programma in beide parken. In Disney Adventure World lopen in de rest van januari Minnie's Dream Factory, TOGETHER: a Pixar Musical Adventure, Goofy's Imaginary Orchestra, de Disney Princess Cavalcade en 's avonds Disney Cascade of Lights.
+Disney noemt geen vervangende show voor het Animagique Theater. Op de pagina van de show verwijst het park naar de rest van het programma in beide parken. In Disney Adventure World lopen in de rest van januari Minnie's Dream Factory, TOGETHER: a Pixar Musical Adventure, Goofy's Imaginary Orchestra, de Disney Princess Cavalcade en 's avonds Disney Cascade of Lights.
 
-Ook in het Disneyland Park pauzeert in januari een show: The Lion King: Rhythms of the Pride Lands in het Frontierland Theater. Op de pagina van de show noemt Disney een pauze van 7 januari tot 12 februari 2027, maar in de kalender staat de show nog tot 10 januari. Kom je speciaal voor de leeuwen, ga dan uit van de vroegste datum.
+Ook in het Disneyland Park pauzeert in januari een show: The Lion King: Rhythms of the Pride Lands in het Frontierland Theater. Op de pagina van de show noemt Disney een pauze van 7 januari tot 12 februari 2027, maar in de kalender staat de show nog tot 10 januari. Kom je speciaal voor de leeuwen, ga dan uit van de eerste datum.
 
 ## Wat er in januari dicht is
 
@@ -73,7 +73,7 @@ In het Disneyland Park zijn in januari deze attracties gesloten:
 
 Voor februari heeft Disney nog geen openingstijden gepubliceerd, en dus ook niet of Indiana Jones, La Tanière du Dragon en Pirate Galleon op 1 februari weer opengaan. Bij de [renovatie van Indiana Jones](/news/indiana-jones-disneyland-paris-renovatie-2027) sprak Disney sowieso alleen van enkele maanden. Op Indiana Jones zou ik daarom ook in de voorjaarsvakantie in februari niet rekenen.
 
-Met kleine kinderen mis je in januari het meest, want La Tanière du Dragon, Pirate Galleon en Thunder Mesa Riverboat Landing hebben geen minimale lengte. In La Tanière du Dragon loop je door een donkere kerker onder het Doornroosjekasteel, waar een verslagen draak geketend ligt te slapen, tot hij dat niet meer doet. Op de Pirate Galleon klauteren kinderen over het dek en bekijken ze de kanonnen. Bij Thunder Mesa Riverboat Landing stap je op de raderboot Molly Brown, die over de Rivers of the Far West langs Big Thunder Mountain vaart en vanaf 23 januari weer uitvaart.
+Met kleine kinderen mis je in januari het meest, want La Tanière du Dragon, Pirate Galleon en Thunder Mesa Riverboat Landing hebben geen minimumlengte. In La Tanière du Dragon loop je door een donkere kerker onder het Doornroosjekasteel, waar een verslagen draak geketend ligt te slapen, tot hij dat niet meer doet. Op de Pirate Galleon klauteren kinderen over het dek en bekijken ze de kanonnen. Bij Thunder Mesa Riverboat Landing stap je op de raderboot Molly Brown, die over de Rivers of the Far West langs Big Thunder Mountain vaart en vanaf 23 januari weer uitvaart.
 
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days
 
@@ -83,7 +83,7 @@ In Disney Adventure World is in januari alleen [Crush's Coaster](ref:disney-adve
 
 ## Wat er in januari verder te zien is
 
-Disney Enchanted Christmas, het kerstseizoen met de kerstparade van Mickey, eindigt op 6 januari. Vanaf 7 januari rijdt in het Disneyland Park weer de dagparade Disney Stars on Parade, die rond kerst pauze had. 's Avonds speelt op Main Street, U.S.A. de show Disney Tales of Magic, ongeveer een half uur lang. In Discoveryland is [Mickey's PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic) open, een 4D-film met Disney-figuren.
+Disney Enchanted Christmas, het kerstseizoen met de kerstparade van Mickey, eindigt op 6 januari. Vanaf 7 januari rijdt in het Disneyland Park weer de dagparade Disney Stars on Parade, die rond kerst pauze had. 's Avonds speelt op Main Street, U.S.A. de show Disney Tales of Magic, ongeveer een half uur lang. In Discoveryland is [Mickey's PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic) open, een 4D-film met Disney-personages.
 
 ## Openingstijden in januari 2027
 
@@ -95,11 +95,11 @@ Disney Adventure World heeft in januari dezelfde openingstijden als het Disneyla
 - vrijdag: op 8 en 22 januari 9.30 tot 21.00 uur, op 15 en 29 januari 9.30 tot 20.30 uur
 - vanaf 9 januari op zaterdag en zondag: 9.30 tot 22.00 uur
 
-Gasten van de Disney-hotels en van Les Villages Nature Paris en houders van de Disneyland Pass Gold mogen een uur eerder naar binnen, op de meeste dagen dus vanaf 8.30 uur en op 2 en 3 januari vanaf 8.00 uur. Aan de kassa bij de ingang verkoopt Disney geen tickets. Je komt binnen met een gedateerd ticket, of als je een ongedateerd ticket of een jaarkaart voor die dag hebt geregistreerd.
+Gasten van de Disney-hotels en Les Villages Nature Paris, en houders van de Disneyland Pass Gold mogen een uur eerder naar binnen, op de meeste dagen dus vanaf 8.30 uur en op 2 en 3 januari vanaf 8.00 uur. Aan de kassa bij de ingang verkoopt Disney geen tickets. Je komt binnen met een gedateerd ticket, of als je een ongedateerd ticket of een jaarkaart voor die dag hebt geregistreerd.
 
 ## Wanneer het in januari minder druk is
 
-Vanaf 4 januari zitten de kinderen in alle drie de Franse vakantiezones weer op school, want de kerstvakantie eindigt op de 3e. Juist op de 4e gaan ook Indiana Jones en La Tanière du Dragon dicht. De voorjaarsvakantie in de regio Parijs begint pas op 6 februari.
+Vanaf 4 januari zitten de kinderen in alle drie de Franse vakantiezones weer op school, want de kerstvakantie eindigt op 3 januari. Uitgerekend die maandag gaan ook Indiana Jones en La Tanière du Dragon dicht. De voorjaarsvakantie in de regio Parijs begint pas op 6 februari.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 

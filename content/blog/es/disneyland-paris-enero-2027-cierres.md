@@ -1,5 +1,5 @@
 ---
-title: 'Mickey and the Magician se despide el 11 de enero'
+title: 'Mickey and the Magician descansa desde el 11 de enero'
 translationKey: disneyland-paris-januar-2027-schliessungen
 date: '2026-11-27'
 time: '08:00'
@@ -46,17 +46,17 @@ seo:
     - La Tanière du Dragon cerrada
 ---
 
-A partir del 11 de enero de 2027, Disneyland Paris deja de representar Mickey and the Magician: el Animagique Theater de [Disney Adventure World](ref:disney-adventure-world) entra en una gran renovación. En el [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), justo al lado, [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) y [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) cierran el 4 de enero, y [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon), el barco pirata de Adventureland, ya está cerrado todo el mes. Disney lo ha publicado en la página del espectáculo y en el calendario de horarios. Cuándo volverá a hacer magia Mickey, no lo ha dicho.
+A partir del 11 de enero de 2027, Disneyland Paris deja de representar Mickey and the Magician: el Animagique Theater de [Disney Adventure World](ref:disney-adventure-world) entra en una gran renovación. En el [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), justo al lado, [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) y [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) cierran el 4 de enero. [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon), el barco pirata de Adventureland, está cerrado todo enero. Disney lo ha publicado en la página del espectáculo y en el calendario de horarios. Cuándo volverá a hacer magia Mickey, no lo ha dicho.
 
 ## La última función es el 10 de enero
 
 En el espectáculo, Mickey aprende magia con personajes que ya saben hacerla: el Genio de Aladdín, Lumière de La Bella y la Bestia y Rafiki de El Rey León. Entre truco y truco hay canciones y baile, y al cabo de unos 30 minutos se acaba. A partir del 11 de enero, Disney enseñará sin Mickey cómo se hace desaparecer un teatro entero. En 2016, la asociación del sector IAAPA le dio al espectáculo el premio Brass Ring.
 
-Hasta el 10 de enero, la entrada de Disney Adventure World incluye el espectáculo, pero las plazas son limitadas. Si quieres asegurarte el sitio, puedes comprar un acceso garantizado con fila propia en la web, en la app o, el mismo día, en los servicios de atención al cliente hasta una hora antes de empezar. Los niños a partir de tres años pagan lo mismo que los adultos. Las puertas se cierran cinco minutos antes del inicio, y quien llegue tarde se queda fuera. Los horarios de las funciones aparecen en la app con hasta 30 días de antelación.
+Hasta el 10 de enero, la entrada de Disney Adventure World incluye el espectáculo, pero las plazas son limitadas. Si quieres asegurarte el sitio, puedes comprar un acceso garantizado con fila propia en la web, en la app o, el mismo día, en los servicios de atención al cliente hasta una hora antes de empezar. Los niños a partir de tres años pagan por él lo mismo que los adultos. Las puertas se cierran cinco minutos antes del inicio, y quien llegue tarde se queda fuera. Los horarios de las funciones aparecen en la app con hasta 30 días de antelación.
 
 Disney no menciona ningún espectáculo que sustituya al de Mickey en el Animagique Theater. En la página del espectáculo, el parque remite al resto de la programación de los dos parques. En Disney Adventure World, durante el resto de enero hay Minnie's Dream Factory, TOGETHER: a Pixar Musical Adventure, Goofy's Imaginary Orchestra, la Disney Princess Cavalcade y, por la noche, Disney Cascade of Lights.
 
-En el Disneyland Park también se toma un descanso en enero The Lion King: Rhythms of the Pride Lands, en el Frontierland Theater. En su página, Disney habla de una pausa del 7 de enero al 12 de febrero de 2027, pero en el calendario el espectáculo sigue apareciendo hasta el 10 de enero. Si vas sobre todo por los leones, cuenta con la fecha más temprana.
+The Lion King: Rhythms of the Pride Lands, en el Frontierland Theater del Disneyland Park, también se toma un descanso en enero. En su página, Disney habla de una pausa del 7 de enero al 12 de febrero de 2027, pero en el calendario el espectáculo sigue apareciendo hasta el 10 de enero. Si vas sobre todo por los leones, cuenta con la fecha más temprana.
 
 ## Qué está cerrado en enero
 
@@ -83,7 +83,7 @@ En Disney Adventure World, la única atracción cerrada en enero es [Crush's Coa
 
 ## Qué más hay en enero
 
-Disney Enchanted Christmas, la temporada navideña con el desfile de Navidad de Mickey, termina el 6 de enero. Desde el 7 de enero vuelve al Disneyland Park el desfile de día Disney Stars on Parade, que había parado durante la Navidad. Por la noche, en Main Street U.S.A., se proyecta Disney Tales of Magic, de una media hora. En Discoveryland está abierto [Mickey's PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic), una película en 4D con personajes Disney.
+Disney Enchanted Christmas, la temporada navideña con el desfile de Navidad de Mickey, termina el 6 de enero. Desde el 7 de enero vuelve al Disneyland Park el desfile de día Disney Stars on Parade, que había parado durante la Navidad. Por la noche, en Main Street, U.S.A., se proyecta Disney Tales of Magic, que dura una media hora. En Discoveryland está abierto [Mickey's PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic), una película en 4D con personajes Disney.
 
 ## Horarios de enero de 2027
 
@@ -95,7 +95,7 @@ En enero, Disney Adventure World abre con el mismo horario que el Disneyland Par
 - viernes: el 8 y el 22 de enero de 9:30 a 21:00, el 15 y el 29 de enero de 9:30 a 20:30
 - desde el 9 de enero, sábados y domingos: de 9:30 a 22:00
 
-Los clientes de los hoteles Disney, de Les Villages Nature Paris y quienes tienen el Disneyland Pass Gold entran una hora antes, es decir, la mayoría de los días desde las 8:30 y el 2 y el 3 de enero desde las 8:00. En las taquillas de la entrada, Disney no vende entradas. Para entrar necesitas una entrada con fecha, o haber registrado para ese día una entrada sin fecha o un pase anual.
+Los clientes de los hoteles Disney, de Les Villages Nature Paris y quienes tienen el Disneyland Pass Gold entran una hora antes, es decir, la mayoría de los días desde las 8:30 y el 2 y el 3 de enero desde las 8:00. En las taquillas de la puerta, Disney no vende entradas. Para entrar necesitas una entrada con fecha, o haber registrado para ese día una entrada sin fecha o un pase anual.
 
 ## Cuándo hay menos gente en enero
 

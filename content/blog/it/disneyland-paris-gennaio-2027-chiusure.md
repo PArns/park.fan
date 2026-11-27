@@ -46,17 +46,17 @@ seo:
     - La Tanière du Dragon chiusa
 ---
 
-Dall’11 gennaio 2027 Disneyland Paris sospende lo spettacolo Mickey and the Magician, perché l’Animagique Theater di [Disney Adventure World](ref:disney-adventure-world) va incontro a una grande ristrutturazione. Nel vicino [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) chiudono dal 4 gennaio [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) e [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon), mentre [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon), la nave dei pirati di Adventureland, resta ferma per tutto gennaio. Disney lo ha pubblicato sulla pagina dello spettacolo e nel calendario degli orari. Quando Topolino tornerà a fare magie, Disney non lo ha ancora comunicato.
+Dall’11 gennaio 2027 Disneyland Paris sospende lo spettacolo Mickey and the Magician, perché l’Animagique Theater di [Disney Adventure World](ref:disney-adventure-world) viene sottoposto a una grande ristrutturazione. Nel vicino [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) chiudono dal 4 gennaio [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) e [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon). [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon), la nave dei pirati di Adventureland, resta ferma per tutto gennaio. Disney lo ha pubblicato sulla pagina dello spettacolo e nel calendario degli orari. Disney non ha ancora comunicato quando Topolino tornerà a fare magie.
 
 ## L’ultimo giorno di spettacolo è il 10 gennaio
 
-Nello spettacolo Topolino impara la magia da chi la sa già fare: il Genio di Aladdin, Lumière della Bella e la Bestia e Rafiki del Re Leone. In mezzo si canta e si balla, e dopo una trentina di minuti si chiude il sipario. Dall’11 gennaio il numero più difficile, far sparire un teatro intero, Disney lo prova senza Topolino. Nel 2016 lo spettacolo ha vinto il Brass Ring Award dell’associazione di settore IAAPA.
+Nello spettacolo Topolino impara la magia da chi la sa già fare: il Genio di Aladdin, Lumière della Bella e la Bestia e Rafiki del Re Leone. In mezzo si canta e si balla, e dopo una trentina di minuti si chiude il sipario. Dall’11 gennaio Disney prova senza Topolino il numero più difficile: far sparire un teatro intero. Nel 2016 lo spettacolo ha vinto il Brass Ring Award dell’associazione di settore IAAPA.
 
-Fino al 10 gennaio lo spettacolo è compreso nel biglietto per Disney Adventure World, ma i posti sono limitati. Chi vuole essere sicuro di entrare compra un accesso garantito, con una fila tutta sua. Si trova sul sito, nell’app oppure il giorno stesso ai servizi per gli ospiti, fino a un’ora prima dell’inizio. I bambini dai tre anni in su pagano quanto gli adulti. Le porte si chiudono cinque minuti prima dell’inizio, e chi a quel punto è ancora fuori resta fuori. Gli orari delle rappresentazioni compaiono nell’app fino a 30 giorni prima.
+Fino al 10 gennaio lo spettacolo è compreso nel biglietto per Disney Adventure World, ma i posti sono limitati. Chi vuole essere sicuro di entrare compra un accesso garantito, con una fila tutta sua. Si trova sul sito, nell’app oppure il giorno stesso ai servizi per gli ospiti, fino a un’ora prima dell’inizio. Per questo accesso i bambini dai tre anni in su pagano quanto gli adulti. Le porte si chiudono cinque minuti prima dell’inizio, e chi a quel punto è ancora fuori resta fuori. Gli orari delle rappresentazioni compaiono nell’app fino a 30 giorni prima.
 
-Uno spettacolo sostitutivo nell’Animagique Theater Disney non lo annuncia. Sulla pagina dello spettacolo il parco rimanda al resto del programma nei due parchi. Per il resto di gennaio Disney Adventure World propone Minnie’s Dream Factory, TOGETHER: a Pixar Musical Adventure, Goofy’s Imaginary Orchestra, la Disney Princess Cavalcade e, la sera, Disney Cascade of Lights.
+Disney non annuncia nessuno spettacolo sostitutivo per l’Animagique Theater. Sulla pagina dello spettacolo il parco rimanda al resto del programma nei due parchi. Per il resto di gennaio Disney Adventure World propone Minnie’s Dream Factory, TOGETHER: a Pixar Musical Adventure, Goofy’s Imaginary Orchestra, la Disney Princess Cavalcade e, la sera, Disney Cascade of Lights.
 
-A gennaio si ferma anche The Lion King: Rhythms of the Pride Lands, lo spettacolo del Frontierland Theater nel Disneyland Park. Sulla sua pagina Disney indica una pausa dal 7 gennaio al 12 febbraio 2027, ma nel calendario lo spettacolo compare ancora fino al 10 gennaio. Se vieni apposta per i leoni, conviene regolarti sulla data più vicina.
+A gennaio si ferma anche The Lion King: Rhythms of the Pride Lands, lo spettacolo del Frontierland Theater nel Disneyland Park. Sulla sua pagina Disney indica una pausa dal 7 gennaio al 12 febbraio 2027, ma nel calendario lo spettacolo compare ancora fino al 10 gennaio. Se vieni apposta per i leoni, conviene regolarti sulla data più anticipata.
 
 ## Cosa è chiuso a gennaio
 
@@ -71,7 +71,7 @@ Nel Disneyland Park a gennaio sono chiuse queste attrazioni:
 - [Le Carrousel de Lancelot](ref:/parks/europe/france/paris/disneyland-park/le-carrousel-de-lancelot) in Fantasyland: dal 12 al 14 gennaio
 - [Star Wars Hyperspace Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain) in Discoveryland: il 25 e il 26 gennaio
 
-Gli orari di febbraio Disney non li ha ancora pubblicati, quindi non si sa nemmeno se Indiana Jones, La Tanière du Dragon e Pirate Galleon riapriranno il 1° febbraio. Per la [ristrutturazione di Indiana Jones](/news/indiana-jones-disneyland-paris-ristrutturazione-2027) Disney ha parlato comunque solo di diversi mesi. Per questo io non conterei su Indiana Jones nemmeno durante le vacanze invernali di febbraio.
+Disney non ha ancora pubblicato gli orari di febbraio, quindi non si sa nemmeno se Indiana Jones, La Tanière du Dragon e Pirate Galleon riapriranno il 1° febbraio. Per la [ristrutturazione di Indiana Jones](/news/indiana-jones-disneyland-paris-ristrutturazione-2027) Disney ha parlato comunque solo di diversi mesi. Per questo io non conterei su Indiana Jones nemmeno durante le vacanze invernali di febbraio.
 
 Chi viene con bambini piccoli a gennaio perde di più, perché La Tanière du Dragon, Pirate Galleon e Thunder Mesa Riverboat Landing non hanno un’altezza minima. Nella Tanière du Dragon attraversi una segreta buia sotto il castello della Bella Addormentata, dove un drago sconfitto dorme in catene, finché non smette di dormire. Sulla Pirate Galleon i bambini si arrampicano sul ponte e guardano da vicino i cannoni. A Thunder Mesa Riverboat Landing sali sul battello a ruota Molly Brown, che naviga sui Rivers of the Far West passando accanto a Big Thunder Mountain e dal 23 gennaio torna a salpare.
 
@@ -79,11 +79,11 @@ Chi viene con bambini piccoli a gennaio perde di più, perché La Tanière du Dr
 
 ```
 
-A Disney Adventure World a gennaio è chiusa solo [Crush's Coaster](ref:disney-adventure-world/crushs-coaster). Le montagne russe sono in ristrutturazione e dovrebbero ripartire nell’estate 2027.
+A Disney Adventure World a gennaio è chiusa solo [Crush’s Coaster](ref:disney-adventure-world/crushs-coaster). Le montagne russe sono in ristrutturazione e dovrebbero ripartire nell’estate 2027.
 
 ## Cos’altro c’è a gennaio
 
-Disney Enchanted Christmas, la stagione natalizia con la parata di Natale di Topolino, finisce il 6 gennaio. Dal 7 gennaio nel Disneyland Park torna la parata diurna Disney Stars on Parade, che a Natale si era fermata. La sera su Main Street U.S.A. va in scena Disney Tales of Magic, che dura circa mezz’ora. In Discoveryland è aperto [Mickey's PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic), un film in 4D con i personaggi Disney.
+Disney Enchanted Christmas, la stagione natalizia con la parata di Natale di Topolino, finisce il 6 gennaio. Dal 7 gennaio nel Disneyland Park torna la parata diurna Disney Stars on Parade, che a Natale si era fermata. La sera su Main Street, U.S.A. va in scena Disney Tales of Magic, che dura circa mezz’ora. In Discoveryland è aperto [Mickey’s PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic), un film in 4D con i personaggi Disney.
 
 ## Orari di gennaio 2027
 
@@ -116,7 +116,7 @@ Fonti:
 [La Tanière du Dragon su disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/la-taniere-du-dragon/),
 [Pirate Galleon su disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/pirate-galleon/),
 [Thunder Mesa Riverboat Landing su disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/thunder-mesa-riverboat-landing/),
-[Crush's Coaster su disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disney-adventure-world/crushs-coaster/),
+[Crush’s Coaster su disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disney-adventure-world/crushs-coaster/),
 [comunicato di Disneyland Paris su Disney Enchanted Christmas 2026](https://news.disneylandparis.com/en/for-the-first-time-the-magic-of-christmas-will-extend-to-world-of-frozen-adding-a-whole-new-dimension-to-disney-enchanted-christmas-celebrated-across-both-disneyland-paris-parks/),
 [comunicato di Disneyland Paris sulla ristrutturazione di Indiana Jones](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),
 [Extra Magic Time (FAQ di Disney)](https://www.disneylandparis.com/en-int/faq/park-hours-schedules/extra-magic-hours),

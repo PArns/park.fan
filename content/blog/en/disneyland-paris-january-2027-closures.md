@@ -46,17 +46,17 @@ seo:
     - La Tanière du Dragon closed
 ---
 
-Disneyland Paris is taking Mickey and the Magician off the schedule from 11 January 2027, because the Animagique Theater in [Disney Adventure World](ref:disney-adventure-world) is getting a major refurbishment. Next door in [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) and [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) close from 4 January, and [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon), the pirate ship in Adventureland, is shut for the whole of January. Disney has put this on the show page and in its park hours calendar. Disney hasn't announced when Mickey will be back on stage.
+Disneyland Paris is taking Mickey and the Magician off the schedule from 11 January 2027, because the Animagique Theater in [Disney Adventure World](ref:disney-adventure-world) is getting a major refurbishment. Next door in [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) and [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon) close from 4 January. [Pirate Galleon](ref:/parks/europe/france/paris/disneyland-park/pirate-galleon), the pirate ship in Adventureland, is shut for the whole of January. Disney has put this on the show page and in its park hours calendar. Disney hasn't announced when Mickey will be back on stage.
 
 ## The last show day is 10 January
 
 In the show, Mickey learns magic from characters who already know how: the Genie from Aladdin, Lumière from Beauty and the Beast and Rafiki from The Lion King. There's singing and dancing in between, and after about 30 minutes it's over. From 11 January, Disney makes the whole theatre vanish, and this time Mickey isn't part of the trick. In 2016 the show won the Brass Ring Award from the industry association IAAPA.
 
-Until 10 January the show is included in your Disney Adventure World ticket, but seats are limited. If you want to be sure of getting in, buy guaranteed access with its own queue. It's sold on the website, in the app or on the day at guest services up to an hour before the show starts. Children aged three and up pay the adult price. The doors close five minutes before the start, and anyone still outside stays outside. Showtimes appear in the app up to 30 days ahead.
+Until 10 January the show is included in your Disney Adventure World ticket, but seats are limited. If you want to be sure of getting in, buy guaranteed access with its own queue. It's sold on the website, in the app or on the day at guest services up to an hour before the show starts. Children aged three and up pay the adult price for it. The doors close five minutes before the start, and anyone still outside stays outside. Showtimes appear in the app up to 30 days ahead.
 
-Disney hasn't named a replacement show for the Animagique Theater. The show page points to the rest of the entertainment in both parks. For the rest of January, Disney Adventure World has Minnie's Dream Factory, TOGETHER: a Pixar Musical Adventure, Goofy's Imaginary Orchestra, the Disney Princess Cavalcade and, in the evening, Disney Cascade of Lights.
+There's no replacement show for the Animagique Theater yet. The show page points to the rest of the entertainment in both parks. For the rest of January, Disney Adventure World has Minnie's Dream Factory, TOGETHER: a Pixar Musical Adventure, Goofy's Imaginary Orchestra, the Disney Princess Cavalcade and, in the evening, Disney Cascade of Lights.
 
-In Disneyland Park, The Lion King: Rhythms of the Pride Lands at the Frontierland Theater also takes a break in January. Its page gives a pause from 7 January to 12 February 2027, but the calendar still lists the show until 10 January. If you're coming for the lions, plan around the earlier date.
+In Disneyland Park, The Lion King: Rhythms of the Pride Lands at the Frontierland Theater also takes a break in January. Its page lists a break from 7 January to 12 February 2027, but the calendar still lists the show until 10 January. If you're coming for the lions, plan around the earlier date.
 
 ## What's closed in January
 
@@ -105,7 +105,7 @@ From 4 January, children in all three French holiday zones are back at school; t
 
 ```
 
-With Indiana Jones gone, the big coasters left in Disneyland Park in January are [Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain) and, on most days, Star Wars Hyperspace Mountain. The order to ride them and everything else in a day is in our [Disneyland Paris wait times guide](/blog/disneyland-paris-wait-times-tips).
+With Indiana Jones gone, the big coasters left in Disneyland Park in January are [Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain) and, on most days, Star Wars Hyperspace Mountain. Our [Disneyland Paris wait times guide](/blog/disneyland-paris-wait-times-tips) has the order to ride them and everything else in a day.
 
 Sources:
 [Mickey and the Magician on disneylandparis.com](https://www.disneylandparis.com/en-gb/entertainment/disney-adventure-world/mickey-and-the-magician-show),
