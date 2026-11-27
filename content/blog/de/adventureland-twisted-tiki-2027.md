@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Adventureland Iowa: neue Rutsche 2027 in Adventure Bay'
   description: >-
-    Adventureland in Iowa baut für Sommer 2027 die Raft-Rutsche Twisted Tiki in Adventure Bay. Die Saisonkarte 2027 kostet im Black Friday ab 69,99 $.
+    Adventureland in Iowa baut für Sommer 2027 die Raft-Rutsche Twisted Tiki in Adventure Bay. Die Saisonkarte 2027 kostet zum Black Friday ab 69,99 $.
   keywords:
     - Adventureland Iowa
     - Adventure Bay
@@ -76,8 +76,6 @@ Auch die zwei Neuheiten vor Twisted Tiki drehten sich ums Licht. Am Memorial-Day
 Adventureland liegt wenige Minuten von Des Moines entfernt direkt an der Interstate 80, die Adresse ist 3200 Adventureland Drive. Das karibische Flair aus der Pressemitteilung erreichst du also über eine Autobahnausfahrt im Mittleren Westen. Parken kostet 21 Dollar am Tag, ein Platz auf dem Preferred Parking 26 Dollar.
 
 ## Wann im Freizeitpark weniger los ist
-
-Wochentage und Monate darunter gelten für die Fahrgeschäfte des Freizeitparks, die Rutschen von Adventure Bay sind darin nicht enthalten.
 
 ```stats-widget slug=adventureland-resort show=weekdays,months
 

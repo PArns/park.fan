@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Adventureland Iowa : nouveau toboggan 2027 à Adventure Bay'
   description: >-
-    Adventureland, dans l’Iowa, ouvre à l’été 2027 le toboggan en bouée Twisted Tiki à Adventure Bay. Le pass saison 2027 démarre à 69,99 $ au Black Friday.
+    Adventureland, dans l’Iowa, ouvre à l’été 2027 le toboggan en bouée Twisted Tiki à Adventure Bay. Pass saison 2027 dès 69,99 $ au Black Friday.
   keywords:
     - Adventureland Iowa
     - Adventure Bay
@@ -76,8 +76,6 @@ Les deux nouveautés d’avant Twisted Tiki misaient déjà sur la lumière. Hyp
 Adventureland se trouve à quelques minutes de Des Moines, juste à côté de l’Interstate 80, au 3200 Adventureland Drive. L’ambiance caribéenne promise par le communiqué commence donc à une sortie d’autoroute du Midwest. Le parking coûte 21 dollars par jour, une place en Preferred Parking 26 dollars.
 
 ## Quand le parc d’attractions est plus calme
-
-Les jours de la semaine et les mois ci-dessous valent pour les attractions du parc d’attractions, sans les toboggans d’Adventure Bay.
 
 ```stats-widget slug=adventureland-resort show=weekdays,months
 

@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Adventureland Iowa: nuevo tobogán de Adventure Bay en 2027'
   description: >-
-    Adventureland, en Iowa, estrena en verano de 2027 el tobogán Twisted Tiki en Adventure Bay. El pase de temporada 2027 cuesta desde 69,99 $ en Black Friday.
+    Adventureland (Iowa) estrena en verano de 2027 el tobogán Twisted Tiki en Adventure Bay. El pase de temporada 2027 cuesta desde 69,99 $ en Black Friday.
   keywords:
     - Adventureland Iowa
     - Adventure Bay
@@ -54,7 +54,7 @@ La fecha de apertura todavía no se conoce. El parque publicará pronto el calen
 
 ## Lo que cuestan ahora los Season Passes de 2027
 
-Con la oferta del Black Friday te ahorras en línea hasta 60 dólares en los Season Passes de 2027. Adventureland no ha dicho hasta cuándo dura; solo indica que es «for a limited time». Todos los pases se pueden pagar en ocho plazos.
+Con la oferta del Black Friday te ahorras en línea hasta 60 dólares en los Season Passes de 2027. Adventureland no ha dado a conocer hasta cuándo dura; solo se sabe que es «for a limited time». Todos los pases se pueden pagar en ocho plazos.
 
 | Pase     | Precio Black Friday | Precio normal | Incluye                                                                               |
 | -------- | ------------------- | ------------- | ------------------------------------------------------------------------------------- |
@@ -76,8 +76,6 @@ Las dos novedades anteriores a Twisted Tiki también giraban en torno a la luz. 
 Adventureland está a pocos minutos de Des Moines, junto a la Interstate 80, en el 3200 de Adventureland Drive. El ambiente caribeño del que habla el comunicado empieza, pues, en una salida de autopista del Medio Oeste. Aparcar cuesta 21 dólares al día, y una plaza en el Preferred Parking, 26 dólares.
 
 ## Cuándo hay menos gente en el parque de atracciones
-
-Los días de la semana y los meses de abajo corresponden a las atracciones del parque de atracciones; los toboganes de Adventure Bay no están incluidos.
 
 ```stats-widget slug=adventureland-resort show=weekdays,months
 

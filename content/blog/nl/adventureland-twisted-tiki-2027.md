@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Adventureland Iowa: nieuwe glijbaan 2027 in Adventure Bay'
   description: >-
-    Adventureland in Iowa bouwt voor de zomer van 2027 de raftglijbaan Twisted Tiki in Adventure Bay. De seizoenspas 2027 kost met Black Friday vanaf 69,99 dollar.
+    Adventureland in Iowa bouwt voor de zomer van 2027 de raftglijbaan Twisted Tiki in Adventure Bay. Seizoenspas 2027 met Black Friday vanaf 69,99 dollar.
   keywords:
     - Adventureland Iowa
     - Adventure Bay
@@ -54,7 +54,7 @@ Wanneer Twisted Tiki opengaat, zegt Adventureland nog niet. De kalender voor 202
 
 ## Wat de seizoenspassen voor 2027 nu kosten
 
-In de Black Friday-actie bespaar je online tot 60 dollar op de seizoenspassen voor 2027. Hoe lang dat duurt, heeft Adventureland niet gezegd: de actie loopt alleen “for a limited time”. Elke pas kun je in acht termijnen betalen.
+In de Black Friday-actie bespaar je online tot 60 dollar op de seizoenspassen voor 2027. Een einddatum staat er niet bij, de actie loopt alleen “for a limited time”. Elke pas kun je in acht termijnen betalen.
 
 | Pas      | Black Friday-prijs  | Normale prijs | Inbegrepen                                                                      |
 | -------- | ------------------- | ------------- | ------------------------------------------------------------------------------- |
@@ -76,8 +76,6 @@ Ook de twee nieuwigheden vóór Twisted Tiki draaiden om licht. In het Memorial 
 Adventureland ligt een paar minuten van Des Moines, direct aan de Interstate 80, op 3200 Adventureland Drive. Het Caribische sfeertje uit het persbericht bereik je dus via een afrit van de snelweg in het Midwesten. Parkeren kost 21 dollar per dag, een plek op Preferred Parking 26 dollar.
 
 ## Wanneer het in het pretpark rustiger is
-
-De weekdagen en maanden hieronder gaan over de attracties van het pretpark. De glijbanen van Adventure Bay zitten er niet in.
 
 ```stats-widget slug=adventureland-resort show=weekdays,months
 

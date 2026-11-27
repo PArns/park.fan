@@ -1,5 +1,5 @@
 ---
-title: 'Adventureland adds the Twisted Tiki family raft slide for 2027'
+title: 'Adventureland builds Twisted Tiki raft slide for 2027'
 translationKey: adventureland-twisted-tiki-2027
 date: '2026-11-27'
 time: '08:00'
@@ -74,8 +74,6 @@ The two additions before Twisted Tiki were about light as well. Hyperlight opene
 Adventureland is a few minutes from Des Moines, right off Interstate 80, at 3200 Adventureland Drive. The Caribbean flair the press release promises is reached by a Midwest highway exit. Parking is $21 a day, or $26 for Preferred Parking.
 
 ## When the theme park is less busy
-
-The weekdays and months below cover the theme park's rides; the Adventure Bay slides aren't included.
 
 ```stats-widget slug=adventureland-resort show=weekdays,months
 
