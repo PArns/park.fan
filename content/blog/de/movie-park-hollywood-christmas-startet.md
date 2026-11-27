@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Hollywood Christmas im Movie Park beginnt heute, du hast von 14 bis 20 Uhr Zeit. Online kostet der Freitag 24,90 €, für Samstag zahlst du schon 41,90 €.
+  Hollywood Christmas beginnt heute, und am ersten Tag hat der Movie Park von 14 bis 20 Uhr offen. Online kostet der Freitag 24,90 €, für Samstag zahlst du schon 41,90 €.
 tags:
   - news
   - movie-park
@@ -25,12 +25,12 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/movie-park-studio-tour.jpg
   alt: 'Ein Modell eines Parkgeländes auf einem Werkstatttisch, daneben aufgerollte Pläne.'
-  caption: 'Die Modellbauwerkstatt ist eine der zwölf Szenen der Studio Tour.'
+  caption: 'Die Modellbauwerkstatt ist eine der Szenen der Studio Tour.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Movie Park Hollywood Christmas 2026: heute Start, Preise'
+  title: 'Movie Park Hollywood Christmas 2026: Showzeiten und Preise'
   description: >-
-    Movie Park Hollywood Christmas 2026 startet heute, Freitag von 14 bis 20 Uhr. Öffnungszeiten, Showzeiten, Preise je Tag, Coca-Cola Truck am Sonntag.
+    Movie Park Hollywood Christmas 2026 startet am 27. November um 14 Uhr. Online kostet die Tageskarte heute 24,90 €, am Samstag 41,90 €.
   keywords:
     - Movie Park Christmas 2026
     - Movie Park Hollywood Christmas
@@ -43,21 +43,42 @@ seo:
     - Movie Park Saisonpass verlängern
 ---
 
-Im [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen beginnt heute Movie Park's Hollywood Christmas, am Freitag von 14 bis 20 Uhr. Das Winterfest läuft an 21 Tagen bis zum 5. Januar 2027. Termine, Neuheiten, Parken und Anfahrt stehen in unserer [Meldung vom 6. November](/news/movie-park-hollywood-christmas-2026). Seitdem haben sich die Ticketpreise und das Angebot für Saisonpässe geändert.
+Im [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen beginnt heute Movie Park's Hollywood Christmas, am Freitag von 14 bis 20 Uhr. Bis zum 5. Januar 2027 hat der Park an 21 Tagen geöffnet. Termine, Neuheiten, Parken und Anfahrt stehen in unserer Meldung vom 6. November zum [Programm von Hollywood Christmas](/news/movie-park-hollywood-christmas-2026). Der Preis der Tageskarte hängt vom Tag ab, und wer einen Saisonpass hat, verlängert ihn an sechs Tagen günstiger auf 2027.
 
 ## Der Freitagabend
 
-Freitags fehlt dem Park der frühe Nachmittag, und der Showplan rückt entsprechend zusammen. Das erste Meet Santa & Friends im Western Saloon beginnt um 15 Uhr, das zweite um 16:15 Uhr. Christian Farla zaubert in Studio 7 um 15:30 und um 17:45 Uhr, die Nickelodeon Dance Party Christmas Edition läuft um 16:30 Uhr. Um 17:15 Uhr geht am großen Weihnachtsbaum im Eingangsbereich bei der Christmas Tree Celebration das Licht an, um 18 Uhr spielt Night of Wonder im Van Helsing's Club. Im Parkplan steht, dass die Plätze dort begrenzt sind.
+Freitags fehlt dem Park der frühe Nachmittag, und der Showplan rückt zusammen wie die Familie auf dem Sofa an Heiligabend. Das läuft heute:
 
-Um 19 Uhr fährt die Parade über den Christmas Boulevard. Die Website nennt sie Hollywood Christmas Parade, der Parkplan noch Movie Park's Parade of Celebration – Winter Edition. Freitags dauert sie bis 19:15 Uhr, an den anderen Tagen fünf Minuten länger. Um 19:50 Uhr beendet Hollywood Christmas Lights den Abend am Weihnachtsbaum. Bei Regen, Sturm, Hagel oder starkem Schneefall fallen laut Park einige Shows aus.
+- 15:00 Uhr · Meet Santa & Friends · Western Saloon
+- 15:30 Uhr · Christian Farla · Studio 7
+- 16:15 Uhr · Meet Santa & Friends · Western Saloon
+- 16:30 Uhr · Nickelodeon Dance Party
+- 17:15 Uhr · Christmas Tree Celebration · Weihnachtsbaum im Eingangsbereich
+- 17:45 Uhr · Christian Farla · Studio 7
+- 18:00 Uhr · Night of Wonder · Van Helsing's Club
+- 19:00 Uhr · Parade · Christmas Boulevard
+- 19:50 Uhr · Hollywood Christmas Lights
 
-Die Santa Experience im Eventcenter am Eingang hat freitags von 15 bis 16:30 Uhr geöffnet, letzter Einlass ist um 16:30 Uhr. Wer nach der Arbeit anreist, plant den Nordpol also besser vor der Weihnachtsbaumzeremonie ein.
+Die Plätze im Club sind begrenzt. Zwei Programmpunkte heißen im Parkplan anders als auf der Website: die Tanzparty Holiday statt Christmas Edition und die Parade Movie Park's Parade of Celebration Winter Edition statt Hollywood Christmas Parade. Freitags dauert sie bis 19:15 Uhr, an den anderen Tagen fünf Minuten länger. Bei Regen, Sturm, Hagel oder starkem Schneefall fallen einige Shows aus.
 
-## Der Preis hängt jetzt vom Tag ab
+Wer nach Feierabend zum Weihnachtsmann will, muss sich beeilen. Die Santa Experience im Eventcenter am Eingang lässt freitags nur von 15 Uhr bis zum letzten Einlass um 16:30 Uhr Gäste hinein, an den anderen Tagen schon ab 13 Uhr.
 
-Anfang November kostete die Tageskarte online an allen Eventtagen 24,90 €. Inzwischen verlangt der Ticketshop je nach Tag unterschiedliche Preise. Für heute zahlst du ab 12 Jahren 24,90 €, für Samstag 41,90 € und für Sonntag 39,90 €. Am nächsten Wochenende sind es 24,90 € am Freitag, 36,90 € am Samstag und 34,90 € am Sonntag. Kinder von 4 bis 11 zahlen an den Freitagen ebenfalls 24,90 €, samstags 36,90 € bzw. 31,90 € und sonntags 33,90 € bzw. 29,90 €. Als Ausgangspreis rechnet der Shop mit 49,90 € ab 12 Jahren und 44,90 € für Kinder. Am Morgen gab es für heute noch Karten.
+## Am Samstag kostet die Tageskarte 17 € mehr
 
-Der Freitag ist damit der günstigste Tag, dafür bekommst du zwei Stunden weniger als am Samstag. Bei der Santa Experience fehlen sogar zwei Stunden von dreieinhalb.
+So kosten die ersten beiden Wochenenden online im Ticketshop:
+
+| Tag             | ab 12 Jahren | 4 bis 11 Jahre |
+| --------------- | ------------ | -------------- |
+| Freitag, 27.11. | 24,90 €      | 24,90 €        |
+| Samstag, 28.11. | 41,90 €      | 36,90 €        |
+| Sonntag, 29.11. | 39,90 €      | 33,90 €        |
+| Freitag, 4.12.  | 24,90 €      | 24,90 €        |
+| Samstag, 5.12.  | 36,90 €      | 31,90 €        |
+| Sonntag, 6.12.  | 34,90 €      | 29,90 €        |
+
+Regulär stehen im Shop 49,90 € ab 12 Jahren und 44,90 € für Kinder. Für heute verkauft der Shop noch Karten.
+
+Für die 17 € Ersparnis gegenüber Samstag bekommst du am Freitag zwei Stunden weniger Park.
 
 ```best-days-widget slug=movie-park-germany
 
@@ -65,25 +86,25 @@ Der Freitag ist damit der günstigste Tag, dafür bekommst du zwei Stunden wenig
 
 ## Was fährt und was nicht
 
-Sieben Attraktionen bleiben bis zum 5. Januar geschlossen: Iron Claw, NYC Transformer, Crazy Surfer, Area 51 – Top Secret, Dora's Big River Adventure, Stormy Cruise und SpongeBob Splash Bash. Außerdem fährt bei schlechtem Wetter oder zu niedrigen Temperaturen nicht alles. [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) steht laut Parkplan wegen der Shows von 16:45 bis 17:15 Uhr still und ab 18:30 Uhr ganz. An einem Freitag bleiben dir für den Launch-Coaster also rund vier Stunden, und zur Weihnachtsbaumzeremonie macht offenbar auch die Enterprise Pause.
+Sieben Attraktionen bleiben bis zum 5. Januar geschlossen: Iron Claw, NYC Transformer, Crazy Surfer, Area 51 – Top Secret, Dora's Big River Adventure, Stormy Cruise und SpongeBob Splash Bash. [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) pausiert in der halben Stunde vor der Weihnachtsbaumzeremonie und steht ab 18:30 Uhr bis Parkschluss still. An einem Freitag bleiben dir für die Enterprise also rund vier Stunden. Bei schlechtem Wetter können weitere Attraktionen ausfallen.
 
-Im Winterplan steht auch [Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber), der 360-Grad-Simulator, ab 1 Meter Körpergröße, unter 1,30 Meter mit Begleitung. [Side Kick](ref:movie-park-germany/side-kick) kommt erst ab dem 27. Dezember dazu. Die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) läuft als Christmas Edition.
+Im Parkplan steht auch [Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber), ein 360-Grad-Simulator. Mitfahren darfst du ab 1 Meter, unter 1,30 Meter nur mit Begleitung. [Side Kick](ref:movie-park-germany/side-kick) kommt erst ab dem 27. Dezember dazu. Die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) läuft als Studio Tour Christmas Special Edition.
 
-## Eisrutsche, Eisbahn und Speedy Pass
+## Was extra kostet
 
-Die neue Eisrutsche ist laut Parkplan eine Reifenrutsche ab 1 Meter Körpergröße und kostet extra. Den Preis hat der Park bisher nicht bekannt gegeben, im Online-Shop gibt es sie nicht. Auch die Eisbahn mit Schlittschuhverleih kostet extra, in diesem Winter heißt sie OREO on Ice. Am Schlittschuhverleih an der Rockefeller Plaza kannst du gegen 10 € Pfand eine Fleecedecke leihen, solange welche da sind.
+Die neue Eisrutsche ist eine Reifenrutsche ab 1 Meter Körpergröße und nicht im Eintritt enthalten. Den Preis hat der Park bisher nicht bekannt gegeben, im Online-Shop gibt es sie nicht. Auch für die Eisbahn mit Schlittschuhverleih zahlst du extra, in diesem Winter heißt sie OREO on Ice. Am Schlittschuhverleih an der Rockefeller Plaza kannst du gegen 10 € Pfand eine Fleecedecke leihen, solange welche da sind.
 
-Für die Santa Experience gibt es neben den Karten zu 5 € und 3 € für Kinder jetzt ein Familienticket ab vier Personen. Der Speedy Pass Winter kostet im Shop 24,90 € und gilt unbegrenzt an allen geöffneten Fahrgeschäften, nicht aber für die Santa Experience, die Eisbahn und die Eisrutsche.
+Für die Santa Experience gibt es neben den Karten zu 5 € und 3 € für Kinder neu ein Familienticket ab vier Personen. Der Speedy Pass Winter kostet im Shop 24,90 €, so viel wie die Tageskarte am Freitag, und gilt für alle geöffneten regulären Fahrgeschäfte. Nicht dazu gehören die Shows, das Roxy 4D Kino, die Santa Experience, die Eisbahn und die Eisrutsche.
 
-## Saisonpass: verlängern nur an sechs Tagen
+## Den Saisonpass verlängerst du nur an sechs Tagen
 
-Wer einen Saisonpass 2026 hat oder einen Summer Pass 2026 tauschen will, bekommt den Pass 2027 nur heute bis Sonntag und vom 4. bis 6. Dezember zum Sonderpreis: Bronze 74,90 €, Silber 96,90 €, Gold 111,90 €, Platin 129,90 €. Das geht nur an der Infokasse oder im Visitor Welcome Center, nicht im Webshop. Der Bronze-Pass gilt bis zum 5. Januar nicht.
+Wer einen Saisonpass 2026 hat oder einen Summer Pass 2026 tauschen will, bekommt den Pass 2027 zum Sonderpreis, aber nur vom 27. bis 29. November und vom 4. bis 6. Dezember. Bronze kostet dann 74,90 €, Silber 96,90 €, Gold 111,90 € und Platin 129,90 €. Das geht nur an der Infokasse oder im Visitor Welcome Center, nicht im Webshop. Der Bronze-Pass gilt vom 27. November bis zum 5. Januar nicht.
 
-Im Black November Deal kosten die Pässe für 2026 und 2027 mit Hollywood Christmas jetzt 25 Prozent weniger: Platin 134,90 €, Gold 116,90 €, Silber 101,90 €. Anfang November waren es noch 30 Prozent. Ein Enddatum nennt der Park nicht. Was andere Parks am Black Friday verkaufen, steht in unserer [Übersicht](/news/black-friday-freizeitparks-2026).
+Im Black November Deal kosten die Pässe für 2026 und 2027 mit Hollywood Christmas 25 Prozent weniger: Silber 101,90 € statt 135,90 €, Gold 116,90 € statt 155,90 €, Platin 134,90 € statt 179,90 €. Ein Enddatum nennt der Park nicht. Was andere Parks heute am Black Friday verkaufen, steht in unserer [Übersicht der Black-Friday-Angebote](/news/black-friday-heute-freizeitparks-2026).
 
 ## Am Sonntag kommt der Coca-Cola Truck
 
-Am Sonntag, 29. November, steht der Coca-Cola Xmas Truck im Park, nur an diesem Tag. Der Gospelchor Leslie B. Harmonies singt erst ab dem 5. Dezember, an fünf Tagen bis zum 2. Januar.
+Nur am Sonntag, 29. November, kommt der Coca-Cola Xmas Truck in den Park. Der Gospelchor Leslie B. Harmonies singt am 5., 19., 20. und 27. Dezember und am 2. Januar.
 
 Quellen:
 [Hollywood Christmas](https://www.movieparkgermany.de/christmas),
