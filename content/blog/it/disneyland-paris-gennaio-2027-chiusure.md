@@ -50,11 +50,11 @@ Dall’11 gennaio 2027 Disneyland Paris sospende lo spettacolo Mickey and the Ma
 
 ## L’ultimo giorno di spettacolo è il 10 gennaio
 
-Nello spettacolo Topolino impara la magia da chi la sa già fare: il Genio di Aladdin, Lumière della Bella e la Bestia e Rafiki del Re Leone. In mezzo si canta e si balla, e dopo una trentina di minuti si chiude il sipario. Dall’11 gennaio Disney prova senza Topolino il numero più difficile: far sparire un teatro intero. Nel 2016 lo spettacolo ha vinto il Brass Ring Award dell’associazione di settore IAAPA.
+Nello spettacolo Topolino impara la magia da chi la sa già fare: il Genio di Aladdin, Lumière della Bella e la Bestia e Rafiki del Re Leone. In mezzo si canta e si balla, e dopo una trentina di minuti si chiude il sipario. Dall’11 gennaio Disney prova senza Topolino il numero più difficile: far sparire un teatro intero.
 
-Fino al 10 gennaio lo spettacolo è compreso nel biglietto per Disney Adventure World, ma i posti sono limitati. Chi vuole essere sicuro di entrare compra un accesso garantito, con una fila tutta sua. Si trova sul sito, nell’app oppure il giorno stesso ai servizi per gli ospiti, fino a un’ora prima dell’inizio. Per questo accesso i bambini dai tre anni in su pagano quanto gli adulti. Le porte si chiudono cinque minuti prima dell’inizio, e chi a quel punto è ancora fuori resta fuori. Gli orari delle rappresentazioni compaiono nell’app fino a 30 giorni prima.
+Hai tempo fino al 10 gennaio per vedere lo spettacolo che nel 2016 ha vinto il Brass Ring Award dell’associazione di settore IAAPA. È compreso nel biglietto per Disney Adventure World, ma i posti sono limitati. Chi vuole essere sicuro di entrare compra un accesso garantito, con una fila tutta sua. Si trova sul sito, nell’app oppure il giorno stesso ai servizi per gli ospiti, fino a un’ora prima dell’inizio. La pagina dello spettacolo non ne dice il prezzo, spiega solo che per questo accesso i bambini dai tre anni in su pagano quanto gli adulti. Le porte si chiudono cinque minuti prima dell’inizio, e dopo non entra più nessuno. Gli orari delle rappresentazioni compaiono nell’app fino a 30 giorni prima.
 
-Disney non annuncia nessuno spettacolo sostitutivo per l’Animagique Theater. Sulla pagina dello spettacolo il parco rimanda al resto del programma nei due parchi. Per il resto di gennaio Disney Adventure World propone Minnie’s Dream Factory, TOGETHER: a Pixar Musical Adventure, Goofy’s Imaginary Orchestra, la Disney Princess Cavalcade e, la sera, Disney Cascade of Lights.
+La pagina dello spettacolo non indica nessun sostituto per l’Animagique Theater e rimanda al resto del programma nei due parchi. Per Disney Adventure World il calendario riporta fino a fine gennaio Minnie’s Dream Factory, TOGETHER: a Pixar Musical Adventure e Goofy’s Imaginary Orchestra, più la parata Disney Princess Cavalcade e, la sera, lo spettacolo Disney Cascade of Lights.
 
 A gennaio si ferma anche The Lion King: Rhythms of the Pride Lands, lo spettacolo del Frontierland Theater nel Disneyland Park. Sulla sua pagina Disney indica una pausa dal 7 gennaio al 12 febbraio 2027, ma nel calendario lo spettacolo compare ancora fino al 10 gennaio. Se vieni apposta per i leoni, conviene regolarti sulla data più anticipata.
 
@@ -73,7 +73,7 @@ Nel Disneyland Park a gennaio sono chiuse queste attrazioni:
 
 Disney non ha ancora pubblicato gli orari di febbraio, quindi non si sa nemmeno se Indiana Jones, La Tanière du Dragon e Pirate Galleon riapriranno il 1° febbraio. Per la [ristrutturazione di Indiana Jones](/news/indiana-jones-disneyland-paris-ristrutturazione-2027) Disney ha parlato comunque solo di diversi mesi. Per questo io non conterei su Indiana Jones nemmeno durante le vacanze invernali di febbraio.
 
-Chi viene con bambini piccoli a gennaio perde di più, perché La Tanière du Dragon, Pirate Galleon e Thunder Mesa Riverboat Landing non hanno un’altezza minima. Nella Tanière du Dragon attraversi una segreta buia sotto il castello della Bella Addormentata, dove un drago sconfitto dorme in catene, finché non smette di dormire. Sulla Pirate Galleon i bambini si arrampicano sul ponte e guardano da vicino i cannoni. A Thunder Mesa Riverboat Landing sali sul battello a ruota Molly Brown, che naviga sui Rivers of the Far West passando accanto a Big Thunder Mountain e dal 23 gennaio torna a salpare.
+Chi viene con bambini piccoli a gennaio perde di più, perché La Tanière du Dragon, Pirate Galleon e Thunder Mesa Riverboat Landing non hanno un’altezza minima. Sotto il castello della Bella Addormentata, nella segreta buia della Tanière du Dragon, dorme in catene un drago sconfitto. I bambini si arrampicano sul ponte della Pirate Galleon e guardano da vicino i cannoni. E il battello a ruota Molly Brown, che parte da Thunder Mesa e naviga sui Rivers of the Far West passando accanto a Big Thunder Mountain, torna a salpare solo dal 23 gennaio.
 
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days
 
@@ -83,7 +83,7 @@ A Disney Adventure World a gennaio è chiusa solo [Crush’s Coaster](ref:disney
 
 ## Cos’altro c’è a gennaio
 
-Disney Enchanted Christmas, la stagione natalizia con la parata di Natale di Topolino, finisce il 6 gennaio. Dal 7 gennaio nel Disneyland Park torna la parata diurna Disney Stars on Parade, che a Natale si era fermata. La sera su Main Street, U.S.A. va in scena Disney Tales of Magic, che dura circa mezz’ora. In Discoveryland è aperto [Mickey’s PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic), un film in 4D con i personaggi Disney.
+Disney Enchanted Christmas, la stagione natalizia con la parata di Natale di Topolino, finisce il 6 gennaio. Dal 7 gennaio nel Disneyland Park torna la parata diurna Disney Stars on Parade, che a Natale si era fermata. La sera su Main Street, U.S.A. va in scena Disney Tales of Magic, che dura circa mezz’ora. In Discoveryland si proietta il film in 4D [Mickey’s PhilharMagic](ref:/parks/europe/france/paris/disneyland-park/mickeys-philharmagic) con i personaggi Disney.
 
 ## Orari di gennaio 2027
 
@@ -99,13 +99,13 @@ Chi dorme negli hotel Disney o a Les Villages Nature Paris e chi ha il Disneylan
 
 ## Quando a gennaio c’è meno gente
 
-Le vacanze di Natale finiscono il 3 gennaio, e dal 4 i bambini di tutte e tre le zone di vacanza francesi tornano a scuola. Proprio il 4 chiudono anche Indiana Jones e La Tanière du Dragon. Le vacanze invernali della regione di Parigi cominciano solo il 6 febbraio.
+Il 3 gennaio finiscono le vacanze di Natale in tutte e tre le zone di vacanza francesi, e proprio con il primo giorno di scuola chiudono Indiana Jones e La Tanière du Dragon. Le vacanze invernali della regione di Parigi cominciano solo il 6 febbraio.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
 ```
 
-Senza Indiana Jones, a gennaio nel Disneyland Park le grandi montagne russe sono [Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain) e, quasi tutti i giorni, Star Wars Hyperspace Mountain. In che ordine fare queste e le altre attrazioni in una giornata lo trovi nella nostra [guida ai tempi di attesa a Disneyland Paris](/blog/disneyland-paris-tempi-di-attesa-consigli).
+Senza Indiana Jones, a gennaio nel Disneyland Park le grandi montagne russe sono [Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain) e, quasi tutti i giorni, Star Wars Hyperspace Mountain. L’ordine per entrambe e per le altre attrazioni di una giornata lo trovi nella nostra [guida ai tempi di attesa a Disneyland Paris](/blog/disneyland-paris-tempi-di-attesa-consigli).
 
 Fonti:
 [Mickey and the Magician su disneylandparis.com](https://www.disneylandparis.com/en-gb/entertainment/disney-adventure-world/mickey-and-the-magician-show),
