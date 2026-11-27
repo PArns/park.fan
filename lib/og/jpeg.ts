@@ -1,8 +1,11 @@
 /**
  * Re-encodes an `ImageResponse` as JPEG. `next/og` can only emit PNG, which stores the photo under
- * a card's gradient losslessly and made the OG cards the largest responses on the site; JPEG (q82,
- * mozjpeg) is far smaller for every card type, flat ones included. mozjpeg's extra encode time is
- * paid once, since the cards are cached for 30 days. The URL ends in `og.jpg`
+ * a card's gradient losslessly and made the OG cards the largest responses on the site; JPEG is far
+ * smaller for every card type, flat ones included. No mozjpeg: its trellis quantisation costs
+ * several times the CPU of the whole card for a few percent of bytes, and a card is rendered far
+ * more often than its 30-day window suggests (docs/optimization/decisions.md). The quantisation
+ * table and Huffman optimisation keep most of the size gain at plain-libjpeg speed. The URL ends in
+ * `og.jpg`
  * (`OG_IMAGE_FILENAME`); the route still answers the old `og.png` directly.
  *
  * Falls back to the PNG when sharp is unavailable or the encode fails. That is why sharp is
@@ -17,7 +20,9 @@ export async function ogAsJpeg(image: Response): Promise<Response> {
 
   try {
     const { default: sharp } = await import('sharp');
-    const jpeg = await sharp(png).jpeg({ quality: 82, mozjpeg: true }).toBuffer();
+    const jpeg = await sharp(png)
+      .jpeg({ quality: 80, quantisationTable: 3, optimiseCoding: true })
+      .toBuffer();
     // Carry the caller's headers (Cache-Control above all) and correct the ones that describe the
     // body — Content-Length would otherwise still claim the PNG's size.
     headers.set('Content-Type', 'image/jpeg');

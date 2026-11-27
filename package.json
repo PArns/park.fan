@@ -255,6 +255,7 @@
     "test:api-build-retry": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-api-build-retry.mjs",
     "test:page-fetch-misses": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-page-fetch-misses.mjs",
     "test:breadcrumb-city": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-breadcrumb-city.mjs",
+    "test:deploy-purge": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-deploy-purge.mjs",
     "test:unprefixed-redirect": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-unprefixed-redirect.mjs"
   },
   "dependencies": {

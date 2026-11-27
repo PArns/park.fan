@@ -18,9 +18,13 @@ import { join } from 'node:path';
 /** Read once per warm function instance. Keyed by the site-relative source path. */
 const dataUriCache = new Map<string, string | null>();
 
-/** `/media/x/background.jpg` → `/media/x/background-16x9.jpg` */
+/**
+ * `/media/x/background.jpg` → `/media/x/background-16x9.jpg`. The crop is a `.jpg` whatever the
+ * source's extension (`scripts/generate-og-assets.mjs`), so a `.jpeg` or `.png` source has to land
+ * on `.jpg` too, or the card falls through to the HTTP fallback.
+ */
 function toCropPath(imagePath: string): string {
-  return imagePath.replace(/(\.[a-z0-9]+)$/i, '-16x9$1');
+  return imagePath.replace(/\.[a-z0-9]+$/i, '-16x9.jpg');
 }
 
 /**

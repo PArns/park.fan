@@ -52,6 +52,7 @@ Why it works this way: [the rule](../rules/the-code-index-is-generated-from-the-
 - [`lib/best-time/`](lib-best-time.md)
 - [`lib/blog/`](lib-blog.md)
 - [`lib/changelog/`](lib-changelog.md)
+- [`lib/cloudflare/`](lib-cloudflare.md)
 - [`lib/compare/`](lib-compare.md)
 - [`lib/contexts/`](lib-contexts.md)
 - [`lib/contribute/`](lib-contribute.md)
