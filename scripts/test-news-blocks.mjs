@@ -24,6 +24,20 @@ const ctx = {
       '/parks/europe/netherlands/kaatsheuvel/efteling': 'europe/netherlands/kaatsheuvel/efteling',
     })[ref] ?? null,
   postPage: 'https://park.fan/de/news/post',
+  glossary: (ref) =>
+    ref === 'single-rider'
+      ? {
+          name: 'Single Rider',
+          alternateNames: ['Einzelfahrer'],
+          definition:
+            'Erst.\n\nAuf dem [Taron](/de/parks/europe/germany/bruehl/phantasialand/taron).',
+          url: 'https://park.fan/de/glossar/single-rider',
+        }
+      : null,
+  gallery: (attrs, body) =>
+    attrs.folder === '/media/a' || body.includes('/media/a/b.jpg')
+      ? [{ imageId: 'a/b', alt: 'Alt', caption: null, credit: '© Foto' }]
+      : [],
 };
 
 const md = `
@@ -88,6 +102,42 @@ text: Ohne Anmeldung.
 ![Fremd](/media/x/y.jpg)
 
 [Europa-Park](ref:europa-park?full)
+
+\`\`\`weather-widget slug=europa-park
+
+\`\`\`
+
+\`\`\`map-widget slug=/parks/europe/netherlands/kaatsheuvel/efteling
+
+\`\`\`
+
+\`\`\`map-widget
+
+\`\`\`
+
+\`\`\`park-comparison-widget slugs=europa-park,nowhere-park highlight=europa-park show=quietest
+
+\`\`\`
+
+\`\`\`glossary-widget slug=single-rider
+
+\`\`\`
+
+\`\`\`glossary-widget slug=unknown-term
+
+\`\`\`
+
+\`\`\`gallery-widget folder=/media/a heading="Die Bilder"
+
+\`\`\`
+
+\`\`\`gallery-widget
+- /media/a/b.jpg | Alt
+\`\`\`
+
+\`\`\`gallery-widget folder=/media/empty
+
+\`\`\`
 `;
 
 const { blocks, skipped } = markdownToBlocks(md, ctx);
@@ -109,6 +159,12 @@ assert.deepEqual(types, [
   'table',
   'image',
   'link',
+  'weather',
+  'map',
+  'park-comparison',
+  'glossary',
+  'gallery',
+  'gallery',
 ]);
 assert.equal(
   blocks[0].text,
@@ -151,7 +207,43 @@ assert.deepEqual(blocks[8], {
   text: 'Plane deine Reise',
   url: 'https://park.fan/de/orlando#planner',
 });
-assert.deepEqual(skipped, ['stats-widget']);
+assert.deepEqual(skipped, ['stats-widget', 'map-widget', 'glossary-widget', 'gallery-widget']);
+// The five widgets the app draws itself: parks by path and slug, never a figure.
+assert.deepEqual(blocks[16], {
+  type: 'weather',
+  park: 'europe/germany/rust/europa-park',
+  parkSlug: 'europa-park',
+  url: 'https://park.fan/de/news/post',
+});
+assert.deepEqual(blocks[17], {
+  type: 'map',
+  park: 'europe/netherlands/kaatsheuvel/efteling',
+  parkSlug: 'efteling',
+  url: 'https://park.fan/de/news/post',
+});
+assert.deepEqual(blocks[18], {
+  type: 'park-comparison',
+  parks: [
+    { park: 'europe/germany/rust/europa-park', parkSlug: 'europa-park' },
+    { park: null, parkSlug: 'nowhere-park' },
+  ],
+  params: { highlight: 'europa-park', show: 'quietest' },
+  url: 'https://park.fan/de/news/post',
+});
+// A glossary link that names its locale is not given a second one.
+assert.deepEqual(blocks[19], {
+  type: 'glossary',
+  term: 'Single Rider',
+  alternateNames: ['Einzelfahrer'],
+  text: 'Erst.\n\nAuf dem [Taron](https://park.fan/de/parks/europe/germany/bruehl/phantasialand/taron).',
+  url: 'https://park.fan/de/glossar/single-rider',
+});
+assert.deepEqual(blocks[20], {
+  type: 'gallery',
+  heading: 'Die Bilder',
+  images: [{ imageId: 'a/b', alt: 'Alt', caption: null, credit: '© Foto' }],
+});
+assert.equal(blocks[21].heading, null);
 assert.deepEqual(blocks[7], {
   type: 'widget',
   widget: 'stats',
@@ -223,7 +315,7 @@ assert.deepEqual(
 
 // Every byline's avatar is a file of the bucket, and every such file is queued for upload.
 const avatars = new Map();
-const { files } = buildNewsExport(new Map(), avatars);
+const { files, stats } = await buildNewsExport(new Map(), avatars);
 const bylines = files.filter((f) => f.json.author).map((f) => f.json.author);
 assert.ok(bylines.length > 0 && avatars.size > 0);
 for (const { avatar, avatarSmall } of bylines.filter((b) => b.avatar)) {
@@ -282,5 +374,19 @@ for (const p of [...newsList.posts, ...guidesList.posts, newsBody, guideBody]) {
 assert.ok(guidesList.posts.some((p) => p.terms) && newsList.posts.some((p) => p.terms));
 // A label is the category's name in the locale, not its slug.
 assert.ok(guidesList.posts.some((p) => p.categoryLabel !== p.category));
+
+// Every widget fence of the real posts is a block now: what is left out names a park, term or
+// photo the export cannot find, never a widget kind.
+for (const dir of Object.values(stats))
+  for (const { skipped: left } of Object.values(dir))
+    for (const name of Object.keys(left))
+      assert.ok(!name.startsWith('code:') || !name.endsWith('-widget'), name);
+const all = files.flatMap((f) => f.json.blocks ?? []);
+for (const type of ['weather', 'map', 'park-comparison', 'glossary', 'gallery'])
+  assert.ok(
+    all.some((b) => b.type === type),
+    type
+  );
+for (const b of all.filter((x) => x.type === 'gallery')) assert.ok(b.images.length > 0);
 
 console.log('✓ news blocks');

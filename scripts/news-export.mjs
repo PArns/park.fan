@@ -9,6 +9,7 @@ import { basename, extname, join } from 'node:path';
 
 import { SITE_URL, locales } from '../i18n/config.ts';
 import { resolveAuthor } from '../lib/blog/authors.ts';
+import { galleryWidgetImages } from '../lib/blog/gallery.ts';
 import { BLOG_POSTS_META } from '../lib/blog/manifest.ts';
 import { getParkSlugsOfPost, getNewsParkRef } from '../lib/blog/backlinks.ts';
 import { parseRefKey } from '../lib/blog/derive.mjs';
@@ -17,6 +18,8 @@ import { BLOG_POST_BODIES } from '../lib/blog/manifest-bodies.ts';
 import { markdownToBlocks, selectGuides, selectNews } from '../lib/blog/news-blocks.ts';
 import { postPath } from '../lib/blog/paths.ts';
 import { withZoneOffset } from '../lib/blog/published-at.ts';
+import { buildGlossaryTermHref } from '../lib/glossary/segments.ts';
+import { getGlossaryTerms } from '../lib/glossary/translations.ts';
 import { getCreditLine, needsAttribution } from '../lib/media/credit.ts';
 import { getMediaImageForPath } from '../lib/media/index.ts';
 import { MEDIA_PARK_PATH_BY_SLUG } from '../lib/media/manifest-parks.ts';
@@ -115,9 +118,9 @@ function ridesOf(rideLinks) {
 /**
  * @param {Map<string, import('../lib/media/types.ts').MediaImage>} chosen photos to upload; grows
  * @param {Map<string, { src: string; width: number }>} avatars author avatar files to upload, by key; grows
- * @returns {{ files: { key: string; json: unknown }[]; stats: Record<'news' | 'guides', Record<string, { posts: number; skipped: Record<string, number> }>> }}
+ * @returns {Promise<{ files: { key: string; json: unknown }[]; stats: Record<'news' | 'guides', Record<string, { posts: number; skipped: Record<string, number> }>> }>}
  */
-export function buildNewsExport(chosen, avatars) {
+export async function buildNewsExport(chosen, avatars) {
   const generatedAt = new Date().toISOString();
   const files = [];
   const lists = [];
@@ -133,6 +136,7 @@ export function buildNewsExport(chosen, avatars) {
 
   for (const locale of locales) {
     const site = `${SITE_URL}/${locale}`;
+    const glossary = await getGlossaryTerms(locale);
     const ctx = {
       site,
       refUrl(href) {
@@ -156,6 +160,31 @@ export function buildNewsExport(chosen, avatars) {
         return image
           ? { id: image.id, credit: needsAttribution(image) ? getCreditLine(image) : null }
           : null;
+      },
+      // The widget's own lookup: the slug in the locale first, then the stable id.
+      glossary(ref) {
+        const term = glossary.find((t) => t.slug === ref) ?? glossary.find((t) => t.id === ref);
+        if (!term) return null;
+        return {
+          name: term.name,
+          alternateNames: term.alternateNames ?? [],
+          definition: term.definition,
+          url: `${SITE_URL}${buildGlossaryTermHref(locale, term.slug)}`,
+        };
+      },
+      gallery(attrs, body) {
+        return galleryWidgetImages(attrs, body, locale).flatMap((i) => {
+          const image = ctx.image(i.src.split('?')[0]);
+          if (!image) return [];
+          return [
+            {
+              imageId: image.id,
+              alt: i.alt ?? '',
+              caption: i.caption ?? null,
+              credit: image.credit,
+            },
+          ];
+        });
       },
     };
 

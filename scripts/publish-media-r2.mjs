@@ -70,7 +70,7 @@ for (const image of getHeroImages()) {
 
 // News covers and inline photos join `chosen`, so they ship like the card photos.
 const avatars = new Map();
-const news = buildNewsExport(chosen, avatars);
+const news = await buildNewsExport(chosen, avatars);
 
 const images = {};
 const files = []; // { key, body, contentType, cacheControl }

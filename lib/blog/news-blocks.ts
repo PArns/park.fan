@@ -28,7 +28,35 @@ export type NewsBlock =
     }
   | { type: 'table'; header: string[]; rows: string[][] }
   | { type: 'link'; text: string; url: string; park?: string }
-  | NewsWidgetBlock;
+  | NewsWidgetBlock
+  | NewsParkWidgetBlock
+  | { type: 'park-comparison'; parks: NewsParkRef[]; params: Record<string, string>; url: string }
+  | { type: 'glossary'; term: string; alternateNames: string[]; text: string; url: string }
+  | { type: 'gallery'; heading: string | null; images: NewsGalleryImage[] };
+
+/** A park as a widget names it: its API geo path (null when none is known) and its slug. */
+export interface NewsParkRef {
+  park: string | null;
+  parkSlug: string;
+}
+
+/**
+ * `weather-widget` and `map-widget`: the park's live weather or its map, for the app to draw from
+ * its own API calls. A type of their own, not a `widget` kind: the app build 1.0.1 draws an unknown
+ * `widget` as a link to the post it is already showing, and skips an unknown type.
+ */
+export interface NewsParkWidgetBlock extends NewsParkRef {
+  type: 'weather' | 'map';
+  url: string;
+}
+
+/** One photo of a `gallery` block, as an `image` block holds it. */
+export interface NewsGalleryImage {
+  imageId: string;
+  alt: string;
+  caption: string | null;
+  credit: string | null;
+}
 
 /** A widget fence that draws live park data, for the app to draw from its own API calls. */
 export interface NewsWidgetBlock {
@@ -60,6 +88,15 @@ export interface BlockContext {
   parkPath(ref: string): string | null;
   /** The post's own page, absolute. */
   postPage: string;
+  /** A glossary term by its slug in the locale or its id, with its page; null when unknown. */
+  glossary(ref: string): {
+    name: string;
+    alternateNames: string[];
+    definition: string;
+    url: string;
+  } | null;
+  /** The exported photos of a `gallery-widget`: its `folder=`, else the lines of its body. */
+  gallery(attrs: Record<string, string>, body: string): NewsGalleryImage[];
 }
 
 interface Selectable {
@@ -131,12 +168,20 @@ function widgetBlock(
   };
 }
 
+/** A park a fence names (bare slug or `/parks/…`); null when it names none. */
+function parkRef(ref: string | undefined, ctx: BlockContext): NewsParkRef | null {
+  const parkSlug = ref ? parseWidgetParkRef(ref)?.slug : null;
+  return parkSlug ? { park: ctx.parkPath(ref!), parkSlug } : null;
+}
+
 /** A link target as the app can open it: absolute, or null for what the web resolves itself. */
 function resolveHref(href: string, ctx: BlockContext): string | null {
   if (/^(ref|park|attraction):/.test(href)) return ctx.refUrl(href);
   if (/^(https?:|mailto:)/i.test(href)) return href;
   const post = /^(?:\/[a-z]{2})?\/(?:blog|news)\/([a-z0-9-]+)\/?(?:[?#].*)?$/.exec(href);
   if (post) return ctx.postUrl(post[1]);
+  // A path that already names its locale (`/de/parks/…`, as the glossary writes them).
+  if (/^\/(?:en|de|nl|fr|es|it)(?:[/?#]|$)/.test(href)) return `${new URL(ctx.site).origin}${href}`;
   if (href.startsWith('/')) return `${ctx.site}${href}`;
   return null;
 }
@@ -204,7 +249,9 @@ function calloutBlock(lines: string[], ctx: BlockContext): NewsBlock | null {
 /**
  * A post body as blocks. Widgets that draw live park data (`best-days-widget`,
  * `hourly-profile-widget`, `ride-waits-widget`, `stats-widget`) become `widget` blocks the app
- * fills from its own API calls, a `cta-widget` becomes a `link` block, and a lone
+ * fills from its own API calls; `weather-widget`, `map-widget` and `park-comparison-widget` blocks
+ * of their own type, with the parks they name and no figure. A `glossary-widget` carries the term's
+ * text, a `gallery-widget` its photos, a `cta-widget` becomes a `link` block, and a lone
  * `[Park](ref:slug?full)` paragraph (the park card) a `link` block to the park page carrying the
  * park's geo path. `skipped` names the fences left out.
  */
@@ -261,6 +308,40 @@ export function markdownToBlocks(
       if (name === 'cta-widget') {
         const url = attrs.href ? resolveHref(attrs.href, ctx) : null;
         if (url && attrs.label) blocks.push({ type: 'link', text: attrs.label, url });
+      } else if (name === 'weather-widget' || name === 'map-widget') {
+        const park = parkRef(attrs.slug, ctx);
+        if (park)
+          blocks.push({
+            type: name === 'map-widget' ? 'map' : 'weather',
+            ...park,
+            url: ctx.postPage,
+          });
+        else skipped.push(name);
+      } else if (name === 'park-comparison-widget') {
+        const { slugs = '', ...params } = attrs;
+        const parks = slugs.split(',').flatMap((s) => parkRef(s, ctx) ?? []);
+        if (parks.length)
+          blocks.push({ type: 'park-comparison', parks, params, url: ctx.postPage });
+        else skipped.push(name);
+      } else if (name === 'glossary-widget') {
+        const term = ctx.glossary(attrs.slug ?? attrs.term ?? attrs.id ?? '');
+        if (term) {
+          blocks.push({
+            type: 'glossary',
+            term: term.name,
+            alternateNames: term.alternateNames,
+            text: term.definition
+              .split(/\n\s*\n/)
+              .map((p) => inlineText(p, ctx))
+              .filter(Boolean)
+              .join('\n\n'),
+            url: term.url,
+          });
+        } else skipped.push(name);
+      } else if (name === 'gallery-widget') {
+        const images = ctx.gallery(attrs, body.join('\n'));
+        if (images.length) blocks.push({ type: 'gallery', heading: attrs.heading ?? null, images });
+        else skipped.push(name);
       } else if (Object.hasOwn(WIDGET_FENCES, name)) {
         const block = widgetBlock(WIDGET_FENCES[name], attrs, ctx);
         if (block) blocks.push(block);
