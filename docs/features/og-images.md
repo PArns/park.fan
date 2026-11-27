@@ -70,10 +70,17 @@ held the cards to a five-minute window. A place card fetches the park only for i
 the 159 KB geo document is fetched by the region, home and `/parks` cards, and by a place card
 only as a fallback for a missing city or country name.
 
+A ride page points at its own card only when the media database has a photo of the ride
+(`getRideOgImage` in `lib/og/ride-card.ts`); otherwise at its park's card, with the park's alt
+text, since a photo-less ride card was the park photo under the ride's name and one more URL per
+ride and locale for crawlers to render.
+
 ## Rendering and assets
 
-`next/og` (Satori) paints a PNG; `ogAsJpeg` re-encodes it with sharp (quality 82, mozjpeg), which is
-far smaller for every card type. sharp is imported inside the `try`, so a missing native binary
+`next/og` (Satori) paints a PNG; `ogAsJpeg` re-encodes it with sharp (quality 80, quantisation
+table 3, optimised Huffman coding), which is far smaller for every card type. Not mozjpeg: its
+trellis quantisation took about six times the CPU for about 8 % fewer bytes
+([decision](../optimization/decisions.md)). sharp is imported inside the `try`, so a missing native binary
 serves the PNG instead of failing every card.
 
 The photo and the brand marks are read from the deployment's own disk, not fetched over HTTP on
@@ -101,9 +108,13 @@ goes through the same function, never a hand-coloured copy.
 | Render threw (500)            | `public, max-age=0, s-maxage=300`                                         |
 | Bad path (400), unknown (404) | `no-store, must-revalidate`, as `CDN-Cache-Control` too                   |
 
-Thirty days because nothing on a card changes before the next deploy, which purges Cloudflare, and
-because the URLs are many and each is asked for about once a day: the five-minute window it
-replaced hit the cache almost never. The route sets the value with `cdnCacheHeaders` (also
+Thirty days because nothing on a card changes until a pull request changes the card, and because
+the URLs are many and each is asked for about once a day: the five-minute window it replaced hit
+the cache almost never. A deploy does not purge `/api/og/`
+([CDN caching](../architecture/cdn-caching.md#a-deploy-purges-cloudflare)); every URL from
+`getOgImageUrl` carries `?v=OG_CARD_VERSION` instead, and the pull request that changes what a card
+shows (layout, strings, brand marks, a photo) raises it. The route ignores the value. A post's
+`seo.ogImage` override in its frontmatter carries no version. The route sets the value with `cdnCacheHeaders` (also
 `CDN-Cache-Control`), `text-card.tsx` sets `Cache-Control` alone, and the `/api/og/:path*` rule in
 `next.config.ts` repeats it; the three must agree, because on Vercel the handler's header wins and
 under `next start` the rule does ([CDN caching](../architecture/cdn-caching.md#api-routes)). The

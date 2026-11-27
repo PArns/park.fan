@@ -24,11 +24,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`jpeg.ts`](../../lib/og/jpeg.ts)
 
-- `ogAsJpeg` _function_: Re-encodes an `ImageResponse` as JPEG. `next/og` can only emit PNG, which stores the photo under a card's gradient losslessly and made the OG cards the largest responses on the site; JPEG (q82, mozjpeg) is far smaller for every card type, …
+- `ogAsJpeg` _function_: Re-encodes an `ImageResponse` as JPEG. `next/og` can only emit PNG, which stores the photo under a card's gradient losslessly and made the OG cards the largest responses on the site; JPEG is far smaller for every card type, flat ones …
 
 ### [`parky-mark.tsx`](../../lib/og/parky-mark.tsx)
 
 - `OgParky` _component_: Parky for the share images, standing still at `size` pixels square, hat included: the same `ParkyStill` a post's "Parky says" card draws, so he is the drawing and never a copy of it.
+
+### [`ride-card.ts`](../../lib/og/ride-card.ts)
+
+- `getRideOgImage` _function_: The OG card a ride page points at: the ride's own card when the media database has a photo of the ride, else its park's card, so a ride without a photo adds no card URL of its own for crawlers to render (docs/features/og-images.md).
 
 ### [`satori-svg.ts`](../../lib/og/satori-svg.ts)
 

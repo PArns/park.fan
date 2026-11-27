@@ -833,3 +833,51 @@ Optimization, not Active CPU or Fast Origin Transfer.
 The billing per day agrees that the bill follows the request count: from about 60k invocations on
 24 October to about 110k on 25 November, while Active CPU per invocation stayed between 55 and
 80 ms and Fast Origin Transfer between 49 and 70 kB.
+
+---
+
+## 2026-11-27 — ACCEPTED: a deploy purges pages and relays only; OG cards encode without mozjpeg
+
+**Lever:** invocations and CPU per invocation. **Files:** `lib/cloudflare/deploy-purge.ts`,
+`app/api/webhooks/vercel-deploy/route.ts`, `lib/utils/og-image.ts` (`OG_CARD_VERSION`),
+`lib/og/jpeg.ts`, `lib/og/background-photo.ts`, `scripts/test-deploy-purge.mjs`.
+
+Vercel's Observability → Functions, production, 12 hours on 27 November: `/api/og/[...path]` was
+the largest Active CPU line, 9K invocations and 27 CPU-minutes (about 180 ms each, 29 % of the
+92 minutes), ahead of the ride page (22K, 26 min). The card has sent a 30-day window since
+October, and its comment expected about 300 renders a day; it was about 18,000.
+
+The cause was the deploy purge. The webhook purged the whole host (`{"hosts":["park.fan"]}`), and
+its runtime log shows nine purges in the 23 hours to 27 November 14:22 UTC. Each one emptied every
+OG card, every `/media/` original and every `/_next/image` rendition, and the 30-day window never
+outlived a working morning. The two spikes in the invocation and transfer charts sit at two of
+those purges. A deploy now purges a prefix per locale and per `/api/` route directory except `og`,
+the sitemap directories, `.well-known`, the files at the root and the root of `public/`, in two
+calls; `/api/og/`, `/media/` and
+`/_next/` stay. A changed card gets a new URL through `OG_CARD_VERSION` (`?v=`), raised by hand.
+
+Where the card's CPU went, measured on a four-core Linux runner with sharp from the repo, a
+1200×630 PNG of two park photos, 20 encodes each:
+
+| Encoder                                    | CPU per encode |       Size |
+| ------------------------------------------ | -------------: | ---------: |
+| q82, mozjpeg (before)                      |     154–171 ms |     166 kB |
+| q82, plain libjpeg                         |       27–28 ms | 202–211 kB |
+| q80, quantisation table 3, optimise coding |       24–28 ms | 179–182 kB |
+| q82, trellis quantisation only             |     114–129 ms | 183–190 kB |
+
+The trellis quantisation that mozjpeg switches on was most of the card's cost. The card now
+encodes at q80 with quantisation table 3 and optimised Huffman coding: about a sixth of the CPU for
+about 8 % more bytes. The served cards average about 34 kB (307 MB for 9K in the transfer view), so
+the bytes are cents.
+
+Also fixed: a source photo with a `.jpeg` extension looked for a `-16x9.jpeg` crop, while
+`generate-og-assets` writes every crop as `.jpg`. The card fell back to fetching the original over
+HTTP and failed with "Unsupported image type" (12 errors in the week). One photo was affected.
+
+**Check:** the `/api/og/[...path]` row in Observability → Functions over the next week, against
+9K invocations and 27 CPU-minutes per 12 hours. A ride page points at its own card only when the
+media database has a photo of the ride (`getRideOgImage` in `lib/og/ride-card.ts`, 108 rides on
+27 November); every other ride page points at its park's card. Before, each of about 43,000 ride
+URLs (7,152 rides × 6 locales) had a card of its own, most of them the park photo under the ride's
+name.

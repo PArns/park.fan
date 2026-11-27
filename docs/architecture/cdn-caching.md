@@ -230,8 +230,8 @@ hour. What a ring purges and costs, and which surfaces can still disagree:
 
 Cloudflare could be purged too: purge by tag is on every plan (the Free plan allows 5 requests a
 minute, 100 tags each), reading a `Cache-Tag` response header, with the token the deploy purge
-already holds. It is not built, because that purge has not been proven to work yet (PAR-1125); once
-it has, `/api/revalidate` can purge the same tags at Cloudflare and the hour can go back to a day.
+already holds. It is not built yet; the deploy purge works (see below), so `/api/revalidate` could
+purge the same tags at Cloudflare and the hour could go back to a day.
 
 **Checking it** needs Vercel without Cloudflare in front, which keeps its own hour: on the
 deployment's own domain, ask a calendar relay URL twice (`x-vercel-cache: HIT`), ring its tag (the
@@ -245,10 +245,28 @@ the next warmup rings, and write down here what it showed.
 
 ## A deploy purges Cloudflare
 
-After every production deploy, `app/api/webhooks/vercel-deploy/route.ts` deletes everything
-Cloudflare holds for the host `park.fan` (`POST /zones/:zone/purge_cache` with
-`{"hosts":["park.fan"]}`). Without it a deploy stays invisible for as long as a page's edge window
-runs.
+After every production deploy, `app/api/webhooks/vercel-deploy/route.ts` deletes what the deploy
+changed from Cloudflare (`POST /zones/:zone/purge_cache`, the bodies from
+`lib/cloudflare/deploy-purge.ts`): a prefix per locale (`park.fan/de` …), per `/api/` route
+directory (`park.fan/api/parks` …) and per sitemap directory and `.well-known`, and single URLs for
+the locale home pages, the route files at the root (`/`, `robots.txt`, the sitemaps, `llms.txt`,
+feeds, the manifest, `auth.md`, the favicon) and every file at the root of `public/` (the brand
+marks and icons, cached for a year under names without a hash). Two calls of at most 100 items.
+Prefixes end without a slash, so they reach the same URLs whether Cloudflare compares a prefix as a
+string or by path segment. Without the purge a deploy stays invisible for as long as a page's edge
+window runs.
+
+- **What stays.** `/api/og/`, `/media/` and `/_next/` are not purged: their URLs move with their
+  content (`?v=OG_CARD_VERSION`, `?v=<content hash>`, hashed file names). Until 27 November 2026
+  the webhook purged the whole host, about ten times a working day, and every OG card, photo and
+  image rendition a crawler asked for was rendered or read again after each deploy. A photo
+  referenced without `?v=` (a hard-coded `/media/` path) stays up to 31 days when it is replaced
+  under the same name; give it a new name.
+- **Also stays:** a redirect or 404 outside the purged prefixes (`/parks/…` without a locale, an old
+  `/blog/…`), which Cloudflare holds for 12 h. A deploy that adds or retargets one there shows up
+  to 12 h late.
+- **A new route directory** in `app/api/` or at the root of `app/`, or a new file at the root of
+  `public/`, has to be listed in `deploy-purge.ts`; `pnpm test:deploy-purge` fails until it is.
 
 - **Purge, not invalidate.** An invalidation keeps the entries, and with stale-while-revalidate
   Cloudflare serves each once more per PoP while it refreshes; for a news post that reader is the
@@ -263,8 +281,10 @@ runs.
   browser's own copy, and an instant rollback, which sends no `deployment.promoted`; promote the old
   deployment instead, or purge by hand.
 
-Purge by hostname is on every Cloudflare plan; the Free plan allows 5 such requests a minute
-([Cloudflare](https://developers.cloudflare.com/cache/how-to/purge-cache/)).
+Purge by prefix and by URL are on every Cloudflare plan, up to 100 items a call; the Free plan
+allows 5 prefix purges a minute, and a deploy sends one prefix call and one URL call
+([Cloudflare](https://developers.cloudflare.com/cache/how-to/purge-cache/)). A retry from Vercel
+sends both again.
 
 ### Setup
 
@@ -281,17 +301,18 @@ Purge by hostname is on every Cloudflare plan; the Free plan allows 5 such reque
 4. Redeploy, so the variables reach a deployment; its promote is the first run.
 
 **Checking it.** Every successful purge writes one line to the function's runtime log,
-`Cloudflare purge_cache ok: host park.fan, deployment <id>`; a failed one logs Cloudflare's status
-and errors. That a real promote produces the success line has not been checked yet: look for it in
-the runtime logs after the next production promote. The webhook's delivery log in Vercel shows
-Cloudflare's answer (`"success": true`).
+`Cloudflare purge_cache ok: host park.fan, <n> calls, deployment <id>`; a failed one logs
+Cloudflare's status and errors and stops there. The host purge it replaced logged a success line
+for every promote on 26 and 27 November 2026; the prefix purge is unproven until the first
+promote after it. Check then, from an ordinary network, that `/api/card-images`, `/sitemap.xml` and
+`/de?_rsc=x` answer `MISS` once, and that an OG card cached before the deploy answers `HIT` with an
+`age` older than it.
 A cached URL then answers `MISS` once (`EXPIRED` with Tiered Cache) and `HIT` after, with an `age`
 that starts at the purge and a `data-dpl-id` in the HTML naming the new deployment. A 403 challenge
 page in the delivery log means the WAF stopped Vercel's request.
 
-**Known limit:** only a failed purge is logged (`Cloudflare purge_cache <status>`, with the zone and
-the token's prefix and length), and a cloud container gets Cloudflare's `403` challenge, so the check
-above has to run from an ordinary network. That a promote really purges is not proven yet: PAR-1125.
+**Known limit:** a cloud container gets Cloudflare's `403` challenge, so the header check above has
+to run from an ordinary network.
 
 ## Measuring
 

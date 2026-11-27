@@ -313,7 +313,8 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 
 ### [`og-image.ts`](../../lib/utils/og-image.ts)
 
-- `getOgImageUrl` _function_: The OG image URL for a list of path segments (e.g. `['de', 'europe', 'germany']`).
+- `getOgImageUrl` _function_: The OG image URL for a list of path segments (e.g. `['de', 'europe', 'germany']`), with the card version as `?v=` so a changed card gets a new URL in Cloudflare and in the social platforms' caches.
+- `OG_CARD_VERSION` _const_: The version of every OG card. A deploy does not purge `/api/og/` (lib/cloudflare/deploy-purge.ts), so a cached card lives out its 30 days.
 - `OG_IMAGE_FILENAME` _const_: Trailing filename on every OG URL: social crawlers like an image extension, and the route strips the segment before parsing. `.jpg` because the endpoint returns JPEG.
 
 ### [`opening-hours-schema.ts`](../../lib/utils/opening-hours-schema.ts)

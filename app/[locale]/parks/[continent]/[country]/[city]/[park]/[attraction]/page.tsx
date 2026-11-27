@@ -95,7 +95,7 @@ import {
 } from '@/lib/blog/backlinks';
 import { RideProfileTeaser } from '@/components/parks/ride-profile-teaser';
 import { isEveningBetter } from '@/lib/utils/rope-drop';
-import { getOgImageUrl } from '@/lib/utils/og-image';
+import { getRideOgImage } from '@/lib/og/ride-card';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import {
@@ -208,7 +208,14 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   const tGlobal = await getTranslations({ locale, namespace: 'seo.global' });
   const tImageAlt = await getTranslations({ locale, namespace: 'seo.imageAlt' });
 
-  const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
+  const ogImage = getRideOgImage(park, [
+    locale,
+    continent,
+    country,
+    city,
+    parkSlug,
+    attractionSlug,
+  ]);
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park?.name || '');
 
@@ -254,12 +261,14 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       title,
       description,
       url: `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
-      ogImageUrl,
-      imageAlt: tImageAlt('attraction', {
-        ...parkArgs(locale as Locale, parkName, park?.nameArticleDe),
-        attraction: attractionName,
-        park: parkName,
-      }),
+      ogImageUrl: ogImage.url,
+      imageAlt: ogImage.isRideCard
+        ? tImageAlt('attraction', {
+            ...parkArgs(locale as Locale, parkName, park?.nameArticleDe),
+            attraction: attractionName,
+            park: parkName,
+          })
+        : tImageAlt('park', { park: parkName }),
     }),
     alternates: buildAlternates(
       locale,
@@ -282,7 +291,7 @@ async function closedRideMetadata({
 }: {
   locale: Locale;
   path: string;
-  pathSegments: string[];
+  pathSegments: [string, string, string, string, string, string];
   park: ParkWithAttractions;
   ride: ClosedRide;
 }): Promise<Metadata> {
@@ -294,6 +303,7 @@ async function closedRideMetadata({
   const title = buildClosedRideTitle(attractionName, parkName, t, phrase);
   const description = closedRideDescription(ride, park, locale, t);
   const url = `${SITE_URL}/${locale}${path}`;
+  const ogImage = getRideOgImage(park, pathSegments);
 
   return {
     title,
@@ -303,12 +313,14 @@ async function closedRideMetadata({
       title,
       description,
       url,
-      ogImageUrl: getOgImageUrl(pathSegments),
-      imageAlt: tImageAlt('attraction', {
-        ...parkArgs(locale, parkName, park.nameArticleDe),
-        attraction: attractionName,
-        park: parkName,
-      }),
+      ogImageUrl: ogImage.url,
+      imageAlt: ogImage.isRideCard
+        ? tImageAlt('attraction', {
+            ...parkArgs(locale, parkName, park.nameArticleDe),
+            attraction: attractionName,
+            park: parkName,
+          })
+        : tImageAlt('park', { park: parkName }),
     }),
     alternates: buildAlternates(locale, () => path),
   };
@@ -473,7 +485,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           breadcrumbs={breadcrumbs}
           currentPage={attractionCurrentPage}
           url={attractionUrl}
-          ogImageUrl={getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug])}
+          ogImageUrl={
+            getRideOgImage(park, [locale, continent, country, city, parkSlug, attractionSlug]).url
+          }
           description={closedRideDescription(closedRide, park, locale as Locale, tSeo)}
         />
       </RouteMessages>
@@ -495,7 +509,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   const ridePost = getPostAboutRide(locale as Locale, parkSlug, attractionSlug, { geoPath });
   const headerPost = ridePost ?? getGuideForPark(locale as Locale, parkSlug, { geoPath });
   // OG card is only a fallback for the JSON-LD image when the ride has no photo.
-  const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
+  const ogImageUrl = getRideOgImage(park, [
+    locale,
+    continent,
+    country,
+    city,
+    parkSlug,
+    attractionSlug,
+  ]).url;
 
   // Does the facts band have anything to show? Without this a ride with neither
   // metadata nor a profile renders a bare divider line. It covers the RCDB link
