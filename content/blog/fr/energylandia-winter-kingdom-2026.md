@@ -2,7 +2,7 @@
 title: 'Energylandia reste ouvert en hiver jusqu’à fin janvier'
 translationKey: energylandia-winter-kingdom-2026
 date: '2026-11-27'
-time: '08:21'
+time: '09:45'
 author: patrick
 mode: published
 featured: false
