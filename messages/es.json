@@ -2671,16 +2671,16 @@
     },
     "scenes": {
       "park": {
-        "title": "Cada atracción con su día en curso",
-        "caption": "La espera ahora, la tendencia y la mejor hora para tu próxima vuelta"
+        "title": "Esperas cada cinco minutos",
+        "caption": "Bajo cada atracción va la curva de hoy. Si sube, otros han llegado antes que tú."
       },
       "ride": {
-        "title": "¿Merece la pena la cola ahora?",
-        "caption": "El rango de hoy, el pico y la espera habitual a esta hora"
+        "title": "¿Hacer cola o churros primero?",
+        "caption": "Me sé la espera habitual de cada hora. Si hoy es más corta, te lo digo."
       },
       "compass": {
-        "title": "Llévame allí",
-        "caption": "La flecha te indica dirección, metros y minutos a pie hasta la atracción"
+        "title": "Con la flecha, a la atracción",
+        "caption": "Toca «Llévame allí» y sigue la flecha. También al baño, si conozco alguno."
       }
     },
     "trust": {

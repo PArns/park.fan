@@ -2671,16 +2671,16 @@
     },
     "scenes": {
       "park": {
-        "title": "Jede Bahn mit ihrem Tagesverlauf",
-        "caption": "Wartezeit jetzt, Trend und die beste Zeit für die nächste Runde"
+        "title": "Wartezeiten im Fünf-Minuten-Takt",
+        "caption": "Unter jeder Bahn läuft die Kurve von heute. Geht sie hoch, waren andere schneller als du."
       },
       "ride": {
-        "title": "Lohnt sich das Anstehen jetzt?",
-        "caption": "Spanne, Spitze und die übliche Wartezeit zu dieser Stunde"
+        "title": "Anstehen oder erst Churros?",
+        "caption": "Ich kenn die übliche Wartezeit jeder Stunde. Ist sie heute kürzer, sag ich’s dir."
       },
       "compass": {
-        "title": "Bring mich hin",
-        "caption": "Der Pfeil zeigt dir Richtung, Meter und Gehminuten bis zur Bahn"
+        "title": "Dem Pfeil nach zur Bahn",
+        "caption": "Tipp auf „Bring mich hin“ und lauf dem Pfeil nach. Zur Toilette auch, wo ich eine kenne."
       }
     },
     "trust": {

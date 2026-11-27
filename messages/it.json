@@ -2671,16 +2671,16 @@
     },
     "scenes": {
       "park": {
-        "title": "Ogni attrazione con la sua giornata",
-        "caption": "L'attesa adesso, la tendenza e l'orario migliore per il prossimo giro"
+        "title": "Attese nuove ogni cinque minuti",
+        "caption": "Sotto ogni attrazione c’è la curva di oggi. Se sale, qualcuno è arrivato prima di te."
       },
       "ride": {
-        "title": "Vale la pena fare la coda adesso?",
-        "caption": "La forbice di oggi, il picco e l'attesa abituale a quest'ora"
+        "title": "Coda adesso o prima i churros?",
+        "caption": "So l’attesa tipica di ogni ora. Se oggi è più breve, te lo dico."
       },
       "compass": {
-        "title": "Portami lì",
-        "caption": "La freccia ti indica direzione, metri e minuti a piedi fino all'attrazione"
+        "title": "Con la freccia all’attrazione",
+        "caption": "Tocca «Portami lì» e segui la freccia. Anche per il bagno, se ne conosco uno."
       }
     },
     "trust": {

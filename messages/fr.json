@@ -2671,16 +2671,16 @@
     },
     "scenes": {
       "park": {
-        "title": "Chaque attraction et sa journée",
-        "caption": "L'attente actuelle, la tendance et le meilleur moment pour y retourner"
+        "title": "Attentes à jour toutes les 5 min",
+        "caption": "Sous chaque attraction, la courbe du jour. Si elle monte, d’autres t’ont devancé."
       },
       "ride": {
-        "title": "La file vaut-elle le coup maintenant ?",
-        "caption": "L'écart du jour, le pic et l'attente habituelle à cette heure"
+        "title": "On fait la file ou des churros ?",
+        "caption": "Je connais l’attente habituelle de chaque heure. Si elle est plus courte, fonce."
       },
       "compass": {
-        "title": "Guide-moi",
-        "caption": "La flèche indique la direction, les mètres et les minutes de marche"
+        "title": "La flèche te mène à l’attraction",
+        "caption": "Touche « Guide-moi » et suis la flèche. Vers les toilettes aussi, quand j’en connais."
       }
     },
     "trust": {
