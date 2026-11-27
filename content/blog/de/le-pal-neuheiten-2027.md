@@ -24,7 +24,7 @@ rideLinks:
 seo:
   title: 'Le Pal 2027: Neuheiten mit Karussell und Roten Pandas'
   description: >-
-    Le Pal Neuheiten 2027: ein Karussell in der Skandinavien-Zone, neue Kulissen an der Rivière du Grand Nord und ein Gehege für Rote Pandas. Saison ab 10. April.
+    Le Pal Neuheiten 2027: ein neues Karussell, neue Kulissen an der Rivière du Grand Nord und ein Gehege für Rote Pandas. Saison ab 10. April.
   keywords:
     - Le Pal 2027
     - Le Pal nouveautés 2027
@@ -42,9 +42,9 @@ seo:
 
 ## Was sich an der Rivière du Grand Nord ändert
 
-Die Rivière du Grand Nord ist eine Baumstammbahn im Zentrum des Freizeitparks, neben dem alten Carrousel, der Attraktion L'Archipel und [Fjord Explorer](ref:le-pal/fjord-explorer). Strecke und Abfahrten bleiben, wie sie sind. Neu sind die Kulissen: Die Bahn bekommt eine nordische Umgebung und wird stärker an die Skandinavien-Zone angebunden, die 2024 mit Fjord Explorer eröffnet hat. Mitfahren dürfen Kinder ab 1 Meter, unter 1,40 Meter nur mit Begleitung.
+Die Rivière du Grand Nord ist eine Baumstammbahn im Zentrum des Freizeitparks, neben dem alten Carrousel, der Attraktion L'Archipel und [Fjord Explorer](ref:le-pal/fjord-explorer). Strecke und Fahrt bleiben, wie sie sind. Neu sind die Kulissen: Die Bahn bekommt eine nordische Umgebung und wird stärker an die Skandinavien-Zone angebunden, die 2024 mit Fjord Explorer eröffnet hat. Mitfahren dürfen Kinder ab 1 Meter, unter 1,40 Meter nur mit Begleitung.
 
-Fjord Explorer ist eine Wasserachterbahn von Mack Rides, 27 Meter hoch, 497 Meter lang und bis 79 km/h schnell, mit acht Plätzen pro Boot. Sie steht in einem nachgebauten norwegischen Dorf am Wasser und lässt Kinder ab 1,10 Meter einsteigen, unter 1,30 Meter mit Begleitung. In der Besucherumfrage 2026, die der Park bei Qualimétrie in Auftrag gegeben hat, lag sie auf Platz eins vor der Achterbahn Yukon Quad.
+Fjord Explorer ist eine Wasserachterbahn von Mack Rides, 27 Meter hoch, 497 Meter lang und bis 79 km/h schnell, mit acht Plätzen pro Boot. Sie steht in einem skandinavischen Dorf mit bunten Häusern an einem See und lässt Kinder ab 1,10 Meter einsteigen, unter 1,30 Meter mit Begleitung. In der Besucherumfrage 2026, die der Park bei Qualimétrie in Auftrag gegeben hat, lag sie auf Platz eins vor Yukon Quad.
 
 ## Ein Karussell mit Fahrzeugen aus dem Park
 
@@ -56,7 +56,7 @@ Die Roten Pandas bekommen ein neues, bepflanztes Gehege in der Nähe des Delta d
 
 ## Wann der Park 2027 offen hat
 
-Die Saison 2027 beginnt am Samstag, 10. April, und endet am Sonntag, 3. Oktober. In den Osterferien bis zum 25. April ist jeden Tag geöffnet, im Mai und Anfang Juni an den meisten Tagen und vom 16. Juni bis zum 1. September täglich. Im September öffnet Le Pal nur noch an den Wochenenden und an einigen Mittwochen. Geöffnet ist ab 10 Uhr, je nach Tag bis 17:30 Uhr oder mindestens bis 18 Uhr. Eine Öffnung im Winter oder zu Weihnachten gibt es nicht. Im Oktober bleibt nur der Tierpark für Gäste der Lodges offen, die Attraktionen sind dann zu.
+Die Saison 2027 beginnt am Samstag, 10. April, und endet am Sonntag, 3. Oktober. Bis zum 25. April ist jeden Tag geöffnet, im Mai und Anfang Juni an den meisten Tagen und vom 16. Juni bis zum 1. September täglich. Im September öffnet Le Pal nur noch an den Wochenenden und an einigen Mittwochen. Geöffnet ist ab 10 Uhr, je nach Tag bis 17:30 Uhr oder mindestens bis 18 Uhr. Eine Öffnung im Winter oder zu Weihnachten gibt es nicht. Danach bleibt bis Ende Oktober nur der Tierpark an einzelnen Tagen für Gäste der Lodges offen, ohne Attraktionen.
 
 ```best-days-widget slug=le-pal
 
