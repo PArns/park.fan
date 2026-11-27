@@ -174,7 +174,7 @@ that scrolls sideways with the next card in view. What it shows, in order:
 - **A short-wait card** shows the ride's own photo, „35 Min kürzer" (usual minus now) on it on a
   blurred badge, since the badge's fill is translucent and the photo busy, the wait as the biggest
   figure and a bar of the wait against the usual one; the bar and „jetzt" take the wait's crowd
-  colour (`waitTimeCrowdTier`). A walk-on (`isWalkOnWait`: 5 minutes or less, or the posted 13)
+  colour (`waitTimeCrowdTier`). A walk-on (`isWalkOnWait`: 5 minutes or less; a posted 13 shows as 13)
   says „Walk-on" in that colour in place of the number, sized to the card (`15cqi`, at most
   `text-3xl`): at 1024 px five cards leave 148 px, and the French „Sans attente" took 189 px at
   `text-3xl`; „jetzt 0 Min" at the foot keeps the minutes, and a screen reader reads

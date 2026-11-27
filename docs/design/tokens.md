@@ -63,7 +63,7 @@ sees them:
 | `CROWD_CHIP_CLASS`    | a soft chip (best-days chips)                                                                   |
 
 `CROWD_LEVEL_ORDER`, `CROWD_LEVEL_PERCENT_RANGE` (the API's thresholds) and `waitTimeCrowdTier()`
-(minutes → tier, one colour for a wait everywhere; a posted 13 is a walk-on and takes `very_low`)
+(minutes → tier, one colour for a wait everywhere; a walk-on, 5 minutes or less, takes `very_low`; a posted 13 is `low` like a 15)
 live in the same file; score → level is
 `scoreToCrowdLevel` in `lib/utils/crowd-analysis.ts`. `unknown` is not a tier and has no colour.
 

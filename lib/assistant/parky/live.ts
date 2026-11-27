@@ -2,7 +2,7 @@ import type { LiveParkSnapshot } from '@/lib/api/parks';
 import type { CrowdLevel, ParkAttraction, ParkStatus } from '@/lib/api/types';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { stripNewPrefix } from '@/lib/utils';
-import { isWalkOnWait, roundWaitTo5 } from '@/lib/utils/wait-time';
+import { isWalkOnWait, roundWaitTo5, WALK_ON_MAX_MINUTES } from '@/lib/utils/wait-time';
 import type { ParkyPlay } from './acts';
 
 /**
@@ -18,11 +18,11 @@ export type LiveChange = 'down' | 'drop';
  * The limits, in minutes: a walk-on, a queue that offends him, and a drop worth a whisper (at
  * least this much and at least half the wait gone).
  */
-export const LIVE_LIMITS = { walkOn: 10, queue: 60, drop: 20 } as const;
+export const LIVE_LIMITS = { walkOn: WALK_ON_MAX_MINUTES, queue: 60, drop: 20 } as const;
 
 /**
- * Whether a live standby wait is a walk-on by Parky's line: {@link isWalkOnWait} with his own
- * `limit`, wider than the five minutes the walk-on colour stops at, and the posted 13 either way.
+ * Whether a live standby wait is a walk-on by Parky's line: {@link isWalkOnWait} with `limit`, the
+ * same five minutes as everywhere unless a caller passes another.
  */
 export function isWalkOn(wait: number, limit: number = LIVE_LIMITS.walkOn): boolean {
   return isWalkOnWait(wait, limit);

@@ -127,6 +127,23 @@ locale, a request without `Accept-Language` goes to the default locale, and a wr
 prefix is lower-cased. Browsers with `Accept-Language` keep next-intl's negotiation; `/` is never
 touched. `pnpm test:unprefixed-redirect`.
 
+## Universal links for the iOS app
+
+`/.well-known/apple-app-site-association` (`app/.well-known/apple-app-site-association/route.ts`,
+data in `lib/apple-app-site-association.ts`) tells iOS which park.fan links open the app
+(`KC5QAXDX94.fan.park.app`, entitlement `applinks:park.fan`). It is JSON without an extension,
+served as `application/json` with no redirect; the proxy matcher skips any path containing a dot,
+so it never gets a locale prefix.
+
+The file names the pages the app has a screen for, bare and with a locale prefix (`/??/…`): the
+home page, `/parks` and everything under it, `/news`, `/blog`, `/favorites`, `/parky` and
+`/trip-planner`. Excluded first, because iOS takes the first pattern that matches: `/api`,
+`/admin`, account and login, the rankings, the brand pages, list pages of news and guides, and
+shared trip plans. A path the app opens but has no screen for (a continent, a city) is handed
+back to the website by the app itself. A page added to the app goes into `APP_PATHS` here and into
+the app's `pushLocation` (`lib/data/web_link.dart` in the app repo) together.
+`pnpm test:app-site-association`.
+
 ## Link prefetching
 
 `Link` from `@/i18n/navigation` (`i18n/no-prefetch-link.tsx`) prefetches nothing unless a call

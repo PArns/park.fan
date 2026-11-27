@@ -714,14 +714,14 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   park's page runs anyway (`parkLiveQueryKey`, React Query's cache, no request of its own). The
   headliners are the park's favourite in `PARK_FAVOURITES` and the first five top attractions of
   the `/stats` the page has loaded (`headlinersOf`). The slot's line is the first of these that
-  holds (`liveMoment`, limits in `LIVE_LIMITS`). A walk-on is `isWalkOn`: 10 minutes or less, or
-  Disney's posted 13 (`WALK_ON_WAIT_MINUTES`), the park's own sign for one, which sits above the
-  limit and counts for the shortest headliner that is one, not only the shortest overall:
+  holds (`liveMoment`, limits in `LIVE_LIMITS`). A walk-on is `isWalkOn`: 5 minutes or less
+  (`WALK_ON_MAX_MINUTES`, as on every card). Disney's posted 13 is park jargon for one and not a
+  walk-on here; the visitor reads „13 Min":
 
   | The page says                                       | Act                    | Lines             |
   | --------------------------------------------------- | ---------------------- | ----------------- |
   | shut today (closed, no hours for today on the page) | `doze` or `read`       | `liveClosed1`–`3` |
-  | a headliner open at 10 minutes or less, or at 13    | `airtime`              | `liveWalkOn1`–`3` |
+  | a headliner open at 5 minutes or less               | `airtime`              | `liveWalkOn1`–`3` |
   | the park's crowd level is very high or extreme      | `squashed` mood, 2.4 s | `liveFull1`–`3`   |
   | the longest open queue is over 60 minutes           | `grumpy`               | `liveQueue1`–`3`  |
   | a show starts in 15 to 30 minutes                   | `applause`             | `liveShow1`–`3`   |

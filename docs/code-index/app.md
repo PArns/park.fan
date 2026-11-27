@@ -35,6 +35,13 @@ Route `/.well-known/api-catalog` (route).
 - `GET` _function_
 - `dynamic` _const_: The API catalog (RFC 9727): the path an agent guesses, so it finds the OpenAPI description of api.park.fan without a human handing over the URL.
 
+### [`.well-known/apple-app-site-association/route.ts`](../../app/.well-known/apple-app-site-association/route.ts)
+
+Route `/.well-known/apple-app-site-association` (route).
+
+- `GET` _function_
+- `dynamic` _const_: Apple's association file for universal links.
+
 ### [`.well-known/mcp/server-card.json/route.ts`](../../app/.well-known/mcp/server-card.json/route.ts)
 
 Route `/.well-known/mcp/server-card.json` (route).

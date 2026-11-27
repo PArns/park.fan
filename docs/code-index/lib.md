@@ -5,6 +5,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`apple-app-site-association.ts`](../../lib/apple-app-site-association.ts)
+
+- `appleAppSiteAssociation` _function_: `/.well-known/apple-app-site-association`: which park.fan links iOS opens in the app (universal links, the app's `applinks:park.fan` entitlement). Every path not named here stays in Safari.
+- `IOS_APP_ID` _const_: The iOS app's App ID: team `KC5QAXDX94`, bundle `fan.park.app` (the app repo's `ios/Runner.xcodeproj`). Public by design: Apple reads it from the association file.
+
 ### [`content-urls.ts`](../../lib/content-urls.ts)
 
 - `getParkPaths` _function_: Park detail paths (`/parks/<continent>/<country>/<city>/<park>`), ordered most-popular-first so a time-bounded prewarm run covers the highest-traffic parks before the long tail. Popularity ranking is best-effort.

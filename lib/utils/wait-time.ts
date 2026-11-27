@@ -1,21 +1,20 @@
 /**
- * The posted walk-on: 13 minutes, the one posted wait that stays off the five-minute grid. Disney
- * posts it, and so does Efteling (Danse Macabre). It is the park's signal for „walk straight on",
- * and rounding it to 15 makes it an ordinary short queue.
+ * The posted 13 minutes, the one posted wait that stays off the five-minute grid. Disney posts it,
+ * and so does Efteling (Danse Macabre), as their signal for „walk straight on". It is shown as the
+ * 13 it is: rounding it to 15 would invent two minutes, and calling it a walk-on is park jargon.
  * The API keeps it the same way (`WALK_ON_WAIT_MINUTES` in `src/common/utils/wait-time.utils.ts`).
  */
 export const WALK_ON_WAIT_MINUTES = 13;
 
-/** The longest posted wait that counts as a walk-on and takes the walk-on colour. */
+/** The longest posted wait that counts as a walk-on, reads „Walk-on" and takes the walk-on colour. */
 export const WALK_ON_MAX_MINUTES = 5;
 
 /**
  * Whether a posted wait is a walk-on: at or under `limit` ({@link WALK_ON_MAX_MINUTES} unless a
- * surface draws its own line, as Parky does), or the posted 13 ({@link WALK_ON_WAIT_MINUTES}),
- * the park's own sign for one, which sits above any limit.
+ * surface passes its own). A posted 13 ({@link WALK_ON_WAIT_MINUTES}) is not one; it reads „13 Min".
  */
 export function isWalkOnWait(minutes: number, limit: number = WALK_ON_MAX_MINUTES): boolean {
-  return minutes <= limit || minutes === WALK_ON_WAIT_MINUTES;
+  return minutes <= limit;
 }
 
 /** The plain five-minute grid, without the walk-on exception. */
