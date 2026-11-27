@@ -2,7 +2,7 @@
 title: 'Adventureland abre en 2027 el tobogán familiar Twisted Tiki'
 translationKey: adventureland-twisted-tiki-2027
 date: '2026-11-27'
-time: '08:00'
+time: '08:15'
 author: patrick
 mode: published
 featured: false
@@ -41,20 +41,13 @@ seo:
 
 El fabricante del tobogán es ProSlide. En cada flotador caben hasta tres personas. La salida está a la altura de cinco pisos, y el tubo mide unos 150 metros y va cerrado de principio a fin, así que del cielo de Iowa no verás nada. El recorrido da dos giros completos de 360 grados, con anillos de colores y efectos de luz en las curvas.
 
-Para subir a Hyperlight, Bermuda Quadrangle o los toboganes de Gang Plank & Pirates' Plummet hay que medir al menos 48 pulgadas, es decir, 122 centímetros. La altura que pedirá Twisted Tiki todavía no aparece en ninguna página del parque.
+Adventureland aún no ha publicado si Twisted Tiki, al ser un tobogán familiar, pedirá menos que las 48 pulgadas (122 centímetros) de Hyperlight, Bermuda Quadrangle y Gang Plank & Pirates' Plummet.
 
-> [!QUOTE]
-> Como nuestro primer tobogán familiar con flotador, ofrece a los visitantes una nueva forma de vivir juntos el parque acuático, con giros emocionantes, luces brillantes y muchas sorpresas por el camino. Estamos deseando dar la bienvenida a bordo a los visitantes en el verano de 2027.
->
-> [en] As our first-ever family raft slide, it gives our visitors a new way to experience the water park together, with thrilling twists, vibrant lights and plenty of surprises along the way. We can't wait to welcome guests aboard in summer 2027.
->
-> Mike Lusky, director general de Adventureland, en el [comunicado del 17 de noviembre de 2026](https://adventurelandpark.com/press/all-new-twisted-tiki-water-slide/), traducido del inglés
-
-La fecha de apertura llegará con el calendario de 2027, que según el parque saldrá pronto junto con los eventos del año.
+Adventureland quiere publicar pronto el calendario de 2027 con los eventos del año, y la fecha de apertura de Twisted Tiki aparecerá ahí.
 
 ## Lo que cuestan ahora los Season Passes de 2027
 
-Con la oferta del Black Friday te ahorras en línea hasta 60 dólares en los Season Passes de 2027. La oferta es «for a limited time», y el parque no dice cuándo termina. Todos los pases se pueden pagar en ocho plazos.
+Con la oferta del Black Friday te ahorras en línea hasta 60 dólares en los Season Passes de 2027. No se sabe cuánto durará la oferta: Adventureland solo la anuncia «for a limited time». Todos los pases se pueden pagar en ocho plazos.
 
 | Pase     | Precio Black Friday | Precio normal | Incluye                                                                               |
 | -------- | ------------------- | ------------- | ------------------------------------------------------------------------------------- |
@@ -63,17 +56,17 @@ Con la oferta del Black Friday te ahorras en línea hasta 60 dólares en los Sea
 | Gold     | desde 159,99 $      | 219,99 $      | aparcamiento gratis, dos entradas para amigos, un flotador al día en Adventure Bay    |
 | Platinum | desde 199,99 $      | 259,99 $      | Neon Nights, entrada anticipada en Adventure Bay, otros diez parques                  |
 
-La entrada de un día para 2027 también cuesta 69,99 dólares. Con el mismo dinero tienes, por tanto, un día o un verano entero, aunque el verano del pase Bronze no incluye los sábados. Los niños de hasta tres años entran gratis. Adventure Bay entra en la entrada y en el Season Pass cualquier día en que el parque acuático abra, pero en los momentos de más afluencia el parque solo deja pasar allí a un número limitado de visitantes. Si tuviste un Season Pass en 2024, 2025 o 2026, al renovarlo te ahorras hasta 80 dólares. Entre los diez parques que Platinum suma a Altoona está el Noah's Ark Waterpark de Wisconsin.
+La entrada de un día para 2027 también cuesta 69,99 dólares. Con el mismo dinero tienes, por tanto, un día o un verano entero, aunque el verano del pase Bronze no incluye los sábados. Los niños de hasta tres años entran gratis. Adventure Bay está incluido en todas las entradas y en todos los Season Passes, pero los días de mucha gente el parque solo deja pasar al parque acuático a un número limitado de visitantes. Si tuviste un Season Pass en 2024, 2025 o 2026, al renovarlo te ahorras hasta 80 dólares. Uno de los diez parques que suma Platinum es el Noah's Ark Waterpark de Wisconsin.
 
 ## Qué más hay en Adventure Bay
 
-En la piscina de olas Breaker Beach, los niños de menos de 48 pulgadas tienen que llevar chaleco salvavidas, y en Reef Racer seis personas compiten una al lado de otra. El río lento Caribbean Cruiser atraviesa Adventure Bay de punta a punta. Gang Plank & Pirates' Plummet son los toboganes más rápidos de Adventure Bay. Para los niños están Kokomo Kove, con cubos que se vuelcan, y el barco pirata Shipwreck Shores. En Kokomo Kove, los toboganes más pequeños se pueden usar a partir de 36 pulgadas (91 centímetros), y los demás, a partir de 40 pulgadas (102 centímetros). Si hay tormenta, Adventure Bay cierra en cuanto se detecta un rayo a menos de diez millas (16 kilómetros).
+En la piscina de olas Breaker Beach, los niños de menos de 48 pulgadas tienen que llevar chaleco salvavidas, y en Reef Racer seis personas compiten una al lado de otra. El río lento Caribbean Cruiser recorre todo el parque acuático, y según el parque los toboganes más rápidos son Gang Plank & Pirates' Plummet. Para los niños están Kokomo Kove, con cubos que se vuelcan, y el barco pirata Shipwreck Shores. En Kokomo Kove, los toboganes más pequeños se pueden usar a partir de 36 pulgadas (91 centímetros), y los demás, a partir de 40 pulgadas (102 centímetros). Si hay tormenta, Adventure Bay cierra en cuanto se detecta un rayo a menos de diez millas (16 kilómetros).
 
-Hyperlight, la novedad de 2025, también cambia de color y suma sonido envolvente; ese tobogán abrió el fin de semana del Memorial Day. En 2026 llegaron las Neon Nights, los viernes y sábados del 10 de julio al 15 de agosto, con más de diez atracciones iluminadas por la noche y artistas itinerantes y música entre ellas. Para 2027, Silver y Gold te dan entradas con descuento.
+Hyperlight abrió el fin de semana del Memorial Day de 2025 y, como Twisted Tiki, cambia de color, además de tener sonido envolvente. En 2026 llegaron las Neon Nights, los viernes y sábados del 10 de julio al 15 de agosto, con más de diez atracciones iluminadas por la noche y artistas itinerantes y música entre ellas. Para 2027, Silver y Gold te dan entradas con descuento.
 
 ## Cómo llegar a Altoona
 
-Adventureland está a pocos minutos de Des Moines, junto a la Interstate 80, en el 3200 de Adventureland Drive. Al flotador tiki se llega, pues, por una salida de autopista del Medio Oeste. Aparcar cuesta 21 dólares al día, y una plaza en el Preferred Parking, 26 dólares.
+Adventureland está a pocos minutos de Des Moines, junto a la Interstate 80, en el 3200 de Adventureland Drive. Aparcar cuesta 21 dólares al día, y una plaza en el Preferred Parking, 26 dólares.
 
 ## Cuándo hay menos gente en el parque de atracciones
 

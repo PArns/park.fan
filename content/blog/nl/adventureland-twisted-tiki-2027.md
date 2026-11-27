@@ -2,7 +2,7 @@
 title: 'Adventureland bouwt familieglijbaan Twisted Tiki voor 2027'
 translationKey: adventureland-twisted-tiki-2027
 date: '2026-11-27'
-time: '08:00'
+time: '08:15'
 author: patrick
 mode: published
 featured: false
@@ -41,20 +41,13 @@ seo:
 
 Twisted Tiki komt van glijbaanbouwer ProSlide. In een raft passen maximaal drie personen. Je start op vijf verdiepingen hoogte, en de buis is zo'n 150 meter lang en helemaal dicht, dus van de lucht boven Iowa zie je niets. De baan draait twee keer 360 graden rond, en in de bochten lichten gekleurde ringen en lichteffecten op.
 
-Wie op Hyperlight, Bermuda Quadrangle of de glijbanen van Gang Plank & Pirates' Plummet wil, moet minstens 48 inch lang zijn, dat is 122 centimeter. Hoe lang je voor Twisted Tiki moet zijn, staat nog nergens op de site van het park.
+Adventureland heeft nog niet bekendgemaakt of je voor Twisted Tiki als gezinsglijbaan minder lang hoeft te zijn dan de 48 inch (122 centimeter) van Hyperlight, Bermuda Quadrangle en Gang Plank & Pirates' Plummet.
 
-> [!QUOTE]
-> Als onze allereerste raftglijbaan voor gezinnen geeft hij onze bezoekers een nieuwe manier om het waterpark samen te beleven, met spannende bochten, felle lichten en onderweg veel verrassingen. We kunnen niet wachten om de gasten in de zomer van 2027 aan boord te verwelkomen.
->
-> [en] As our first-ever family raft slide, it gives our visitors a new way to experience the water park together, with thrilling twists, vibrant lights and plenty of surprises along the way. We can't wait to welcome guests aboard in summer 2027.
->
-> Mike Lusky, general manager van Adventureland, in het [persbericht van 17 november 2026](https://adventurelandpark.com/press/all-new-twisted-tiki-water-slide/), vertaald uit het Engels
-
-De openingsdag volgt met de kalender voor 2027, die volgens het park binnenkort komt, samen met de evenementen van dat jaar.
+Adventureland wil de kalender voor 2027 met de evenementen van dat jaar binnenkort publiceren, en pas daarin staat de openingsdag van Twisted Tiki.
 
 ## Wat de seizoenspassen voor 2027 nu kosten
 
-In de Black Friday-actie bespaar je online tot 60 dollar op de seizoenspassen voor 2027. De actie loopt “for a limited time”, een einddatum noemt het park niet. Elke pas kun je in acht termijnen betalen.
+In de Black Friday-actie bespaar je online tot 60 dollar op de seizoenspassen voor 2027. Hoe lang de actie loopt, is nog onbekend: Adventureland adverteert alleen met “for a limited time”. Elke pas kun je in acht termijnen betalen.
 
 | Pas      | Black Friday-prijs  | Normale prijs | Inbegrepen                                                                      |
 | -------- | ------------------- | ------------- | ------------------------------------------------------------------------------- |
@@ -63,17 +56,17 @@ In de Black Friday-actie bespaar je online tot 60 dollar op de seizoenspassen vo
 | Gold     | vanaf 159,99 dollar | 219,99 dollar | gratis parkeren, twee vriendentickets, één band per dag in Adventure Bay        |
 | Platinum | vanaf 199,99 dollar | 259,99 dollar | Neon Nights, eerder naar binnen in Adventure Bay, tien andere parken            |
 
-Een dagticket voor 2027 kost ook 69,99 dollar. Voor hetzelfde geld heb je dus één dag of een hele zomer, alleen zitten er in de zomer van de Bronze-pas geen zaterdagen. Kinderen tot en met drie jaar mogen gratis naar binnen. Op elke dag dat het waterpark open is, zit Adventure Bay bij ticket en seizoenspas inbegrepen, maar op drukke momenten laat het park er maar een beperkt aantal gasten in. Had je in 2024, 2025 of 2026 een seizoenspas, dan bespaar je bij verlenging tot 80 dollar. Een van de tien parken die Platinum naast Altoona meegeeft, is Noah's Ark Waterpark in Wisconsin.
+Een dagticket voor 2027 kost ook 69,99 dollar. Voor hetzelfde geld heb je dus één dag of een hele zomer, alleen zitten er in de zomer van de Bronze-pas geen zaterdagen. Kinderen tot en met drie jaar mogen gratis naar binnen. Adventure Bay zit bij elk ticket en elke seizoenspas inbegrepen, maar op volle dagen laat het park maar een beperkt aantal gasten het waterpark in. Had je in 2024, 2025 of 2026 een seizoenspas, dan bespaar je bij verlenging tot 80 dollar. Een van de tien parken die Platinum erbij geeft, is Noah's Ark Waterpark in Wisconsin.
 
 ## Wat er verder in Adventure Bay staat
 
-In het golfslagbad Breaker Beach moeten kinderen onder de 48 inch een zwemvest dragen, en op Reef Racer glijden zes mensen naast elkaar om het hardst. De lazy river Caribbean Cruiser slingert door heel Adventure Bay. Gang Plank & Pirates' Plummet zijn de snelste glijbanen van Adventure Bay. Voor kinderen is er Kokomo Kove met kiepemmers: de kleinste glijbanen daar mogen ze vanaf 36 inch (91 centimeter) in, de rest vanaf 40 inch (102 centimeter). Daarnaast is er het piratenschip Shipwreck Shores. Bij onweer gaat Adventure Bay dicht zodra er binnen tien mijl (16 kilometer) bliksem wordt gemeten.
+In het golfslagbad Breaker Beach moeten kinderen onder de 48 inch een zwemvest dragen, en op Reef Racer glijden zes mensen naast elkaar om het hardst. Door het hele waterpark slingert de lazy river Caribbean Cruiser, en de snelste glijbanen zijn volgens het park Gang Plank & Pirates' Plummet. Voor kinderen is er Kokomo Kove met kiepemmers: de kleinste glijbanen daar mogen ze vanaf 36 inch (91 centimeter) in, de rest vanaf 40 inch (102 centimeter). Daarnaast is er het piratenschip Shipwreck Shores. Bij onweer gaat Adventure Bay dicht zodra er binnen tien mijl (16 kilometer) bliksem wordt gemeten.
 
-Hyperlight, de nieuwkomer van 2025, wisselt ook van kleur en heeft er surround sound bij; die glijbaan ging open in het Memorial Day-weekend. In 2026 kwamen de Neon Nights erbij, op vrijdag en zaterdag van 10 juli tot 15 augustus, met 's avonds meer dan tien verlichte attracties en rondlopende artiesten en muziek daartussen. Voor 2027 krijg je met Silver en Gold tickets met korting.
+Hyperlight ging open in het Memorial Day-weekend van 2025 en wisselt net als Twisted Tiki van kleur, met surround sound erbij. In 2026 kwamen de Neon Nights erbij, op vrijdag en zaterdag van 10 juli tot 15 augustus, met 's avonds meer dan tien verlichte attracties en rondlopende artiesten en muziek daartussen. Voor 2027 krijg je met Silver en Gold tickets met korting.
 
 ## Route naar Altoona
 
-Adventureland ligt een paar minuten van Des Moines, direct aan de Interstate 80, op 3200 Adventureland Drive. Naar het tiki-raft rijd je dus via een snelwegafrit in het Midwesten. Parkeren kost 21 dollar per dag, een plek op Preferred Parking 26 dollar.
+Adventureland ligt een paar minuten van Des Moines, direct aan de Interstate 80, op 3200 Adventureland Drive. Parkeren kost 21 dollar per dag, een plek op Preferred Parking 26 dollar.
 
 ## Wanneer het in het pretpark rustiger is
 

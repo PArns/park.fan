@@ -2,7 +2,7 @@
 title: 'Adventureland builds Twisted Tiki raft slide for 2027'
 translationKey: adventureland-twisted-tiki-2027
 date: '2026-11-27'
-time: '08:00'
+time: '08:15'
 author: patrick
 mode: published
 featured: false
@@ -41,18 +41,13 @@ seo:
 
 The slide maker ProSlide is building Twisted Tiki. A raft holds up to three people, the start is five storeys up, and the tube runs for about 150 metres. It's enclosed all the way, so you won't see any of the Iowa sky on the way down. The tube twists through two 360-degree spirals, and coloured rings and light effects glow in the curves.
 
-To ride Hyperlight, Bermuda Quadrangle or the Gang Plank & Pirates' Plummet slides, you have to be at least 48 inches (122 cm) tall. Twisted Tiki's height limit isn't on any of the park's pages yet.
+Adventureland hasn't published yet whether Twisted Tiki, as a family slide, asks for less than the 48 inches (122 cm) that Hyperlight, Bermuda Quadrangle and Gang Plank & Pirates' Plummet require.
 
-> [!QUOTE]
-> As our first-ever family raft slide, it gives our visitors a new way to experience the water park together, with thrilling twists, vibrant lights and plenty of surprises along the way. We can't wait to welcome guests aboard in summer 2027.
->
-> Mike Lusky, general manager of Adventureland, in the [17 November 2026 press release](https://adventurelandpark.com/press/all-new-twisted-tiki-water-slide/)
-
-The opening day comes with the 2027 calendar, which the park says is due soon, along with the year's events.
+Adventureland plans to publish the 2027 calendar and the year's events soon, and Twisted Tiki's opening day will be in it.
 
 ## What 2027 season passes cost right now
 
-The Black Friday sale takes up to $60 off 2027 season passes bought online. The sale runs "for a limited time", and the park doesn't name an end date. You can pay for any pass in eight instalments.
+The Black Friday sale takes up to $60 off 2027 season passes bought online. How long the sale runs is still open: Adventureland only advertises it "for a limited time". You can pay for any pass in eight instalments.
 
 | Pass     | Black Friday price | Regular price | Includes                                                                      |
 | -------- | ------------------ | ------------- | ----------------------------------------------------------------------------- |
@@ -61,17 +56,17 @@ The Black Friday sale takes up to $60 off 2027 season passes bought online. The 
 | Gold     | from $159.99       | $219.99       | free parking, two friend tickets, one free tube rental a day at Adventure Bay |
 | Platinum | from $199.99       | $259.99       | Neon Nights, early entry to Adventure Bay, ten more parks                     |
 
-A 2027 day ticket costs $69.99 too. So the same money buys you either one day or a whole summer, except that Bronze leaves out Saturdays. Children aged three and under get in free. Adventure Bay is included with tickets and season passes on any day the water park is open, but at peak times the park only lets a limited number of guests in. If you had a season pass in 2024, 2025 or 2026, you save up to $80 when you renew. Among the ten parks Platinum adds to Altoona is Noah's Ark Waterpark in Wisconsin.
+A 2027 day ticket costs $69.99 too. So the same money buys you either one day or a whole summer, except that Bronze leaves out Saturdays. Children aged three and under get in free. Adventure Bay is included in every ticket and season pass, but on busy days the park only lets a limited number of guests into the water park. If you had a season pass in 2024, 2025 or 2026, you save up to $80 when you renew. One of the ten parks Platinum adds is Noah's Ark Waterpark in Wisconsin.
 
 ## What else is at Adventure Bay
 
-Children under 48 inches have to wear a life jacket in the Breaker Beach wave pool, and on Reef Racer six people race each other side by side. The Caribbean Cruiser lazy river winds right through Adventure Bay. Gang Plank & Pirates' Plummet are the fastest slides in Adventure Bay. For kids there's the pirate ship Shipwreck Shores and Kokomo Kove with its tipping buckets. The smallest slides at Kokomo Kove are open from 36 inches (91 cm), the rest from 40 inches (102 cm). Adventure Bay closes during thunderstorms as soon as lightning is detected within ten miles (16 km).
+Children under 48 inches have to wear a life jacket in the Breaker Beach wave pool, and on Reef Racer six people race each other side by side. The Caribbean Cruiser lazy river winds through the whole water park, and the park says the fastest slides are Gang Plank & Pirates' Plummet. For kids there's the pirate ship Shipwreck Shores and Kokomo Kove with its tipping buckets. The smallest slides at Kokomo Kove are open from 36 inches (91 cm), the rest from 40 inches (102 cm). Adventure Bay closes during thunderstorms as soon as lightning is detected within ten miles (16 km).
 
-Hyperlight, the 2025 addition, changes colours as well and plays surround sound; the slide opened on Memorial Day weekend. Neon Nights arrived in 2026, on Fridays and Saturdays from 10 July to 15 August, with more than ten attractions lit up in the evening and roaming performers and music in between. In 2027, Silver and Gold passes get you discounted tickets for it.
+Hyperlight opened on Memorial Day weekend 2025 and changes colours like Twisted Tiki, with surround sound playing too. Neon Nights arrived in 2026, on Fridays and Saturdays from 10 July to 15 August, with more than ten attractions lit up in the evening and roaming performers and music in between. In 2027, Silver and Gold passes get you discounted tickets for it.
 
 ## Getting to Altoona
 
-Adventureland is a few minutes from Des Moines, right off Interstate 80, at 3200 Adventureland Drive. The way to a tiki raft, then, is an interstate exit in the Midwest. Parking is $21 a day, or $26 for Preferred Parking.
+Adventureland is a few minutes from Des Moines, right off Interstate 80, at 3200 Adventureland Drive. Parking is $21 a day, or $26 for Preferred Parking.
 
 ## When the theme park is less busy
 
