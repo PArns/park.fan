@@ -1,9 +1,8 @@
 /**
  * Re-encodes an `ImageResponse` as JPEG. `next/og` can only emit PNG, which stores the photo under
  * a card's gradient losslessly and made the OG cards the largest responses on the site; JPEG is far
- * smaller for every card type, flat ones included. No mozjpeg: its trellis quantisation costs
- * several times the CPU of the whole card for a few percent of bytes, and a card is rendered far
- * more often than its 30-day window suggests (docs/optimization/decisions.md). The quantisation
+ * smaller for every card type, flat ones included. No mozjpeg: its trellis quantisation costs more
+ * CPU than the rest of the card for few bytes (docs/optimization/decisions.md). The quantisation
  * table and Huffman optimisation keep most of the size gain at plain-libjpeg speed. The URL ends in
  * `og.jpg`
  * (`OG_IMAGE_FILENAME`); the route still answers the old `og.png` directly.

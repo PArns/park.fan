@@ -4,9 +4,8 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 
 /**
  * The OG card a ride page points at: the ride's own card when the media database has a photo of
- * the ride, else its park's card. Without a photo the ride card was the park's photo under the
- * ride's name, one URL per ride and locale; pointing those at the park card leaves one card per
- * park and locale, so a crawler sweep renders about 1,200 cards instead of about 43,000.
+ * the ride, else its park's card, so a ride without a photo adds no card URL of its own for
+ * crawlers to render (docs/features/og-images.md).
  *
  * @param park      The ride's park, for the photo lookup; without it the park card is used.
  * @param segments  `[locale, continent, country, city, park, ride]`.

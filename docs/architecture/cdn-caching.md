@@ -247,18 +247,26 @@ the next warmup rings, and write down here what it showed.
 
 After every production deploy, `app/api/webhooks/vercel-deploy/route.ts` deletes what the deploy
 changed from Cloudflare (`POST /zones/:zone/purge_cache`, the bodies from
-`lib/cloudflare/deploy-purge.ts`): a prefix per locale (`park.fan/de/` …) and per `/api/` route
-directory, `park.fan/sitemap` and `park.fan/.well-known/`, and single URLs for the locale home pages
-and the files at the root (`/`, `robots.txt`, `llms.txt`, `rss.xml`, `license.xml`, the manifest,
-`auth.md`), at most 30 items per call. Without it a deploy stays invisible for as long as a page's
-edge window runs.
+`lib/cloudflare/deploy-purge.ts`): a prefix per locale (`park.fan/de` …), per `/api/` route
+directory (`park.fan/api/parks` …) and per sitemap directory and `.well-known`, and single URLs for
+the locale home pages, the route files at the root (`/`, `robots.txt`, the sitemaps, `llms.txt`,
+feeds, the manifest, `auth.md`, the favicon) and every file at the root of `public/` (the brand
+marks and icons, cached for a year under names without a hash). Two calls of at most 100 items.
+Prefixes end without a slash, so they reach the same URLs whether Cloudflare compares a prefix as a
+string or by path segment. Without the purge a deploy stays invisible for as long as a page's edge
+window runs.
 
 - **What stays.** `/api/og/`, `/media/` and `/_next/` are not purged: their URLs move with their
   content (`?v=OG_CARD_VERSION`, `?v=<content hash>`, hashed file names). Until 27 November 2026
   the webhook purged the whole host, about ten times a working day, and every OG card, photo and
-  image rendition a crawler asked for was rendered or read again after each deploy.
-- **A new route directory** in `app/api/` or at the root of `app/` has to be listed in
-  `deploy-purge.ts`, as purged or kept; `pnpm test:deploy-purge` fails until it is.
+  image rendition a crawler asked for was rendered or read again after each deploy. A photo
+  referenced without `?v=` (a hard-coded `/media/` path) stays up to 31 days when it is replaced
+  under the same name; give it a new name.
+- **Also stays:** a redirect or 404 outside the purged prefixes (`/parks/…` without a locale, an old
+  `/blog/…`), which Cloudflare holds for 12 h. A deploy that adds or retargets one there shows up
+  to 12 h late.
+- **A new route directory** in `app/api/` or at the root of `app/`, or a new file at the root of
+  `public/`, has to be listed in `deploy-purge.ts`; `pnpm test:deploy-purge` fails until it is.
 
 - **Purge, not invalidate.** An invalidation keeps the entries, and with stale-while-revalidate
   Cloudflare serves each once more per PoP while it refreshes; for a news post that reader is the
@@ -273,10 +281,10 @@ edge window runs.
   browser's own copy, and an instant rollback, which sends no `deployment.promoted`; promote the old
   deployment instead, or purge by hand.
 
-Purge by prefix and by URL are on every Cloudflare plan; the Free plan allows 5 purge requests a
-minute, and a deploy sends three
+Purge by prefix and by URL are on every Cloudflare plan, up to 100 items a call; the Free plan
+allows 5 prefix purges a minute, and a deploy sends one prefix call and one URL call
 ([Cloudflare](https://developers.cloudflare.com/cache/how-to/purge-cache/)). A retry from Vercel
-sends all three again.
+sends both again.
 
 ### Setup
 
@@ -294,9 +302,11 @@ sends all three again.
 
 **Checking it.** Every successful purge writes one line to the function's runtime log,
 `Cloudflare purge_cache ok: host park.fan, <n> calls, deployment <id>`; a failed one logs
-Cloudflare's status and errors and stops there. The success line appeared for every promote on
-26 and 27 November 2026, nine in 23 hours. After a deploy, an OG card URL that was cached before
-it should still answer `HIT` with an `age` older than the deploy.
+Cloudflare's status and errors and stops there. The host purge it replaced logged a success line
+for every promote on 26 and 27 November 2026; the prefix purge is unproven until the first
+promote after it. Check then, from an ordinary network, that `/api/card-images`, `/sitemap.xml` and
+`/de?_rsc=x` answer `MISS` once, and that an OG card cached before the deploy answers `HIT` with an
+`age` older than it.
 A cached URL then answers `MISS` once (`EXPIRED` with Tiered Cache) and `HIT` after, with an `age`
 that starts at the purge and a `data-dpl-id` in the HTML naming the new deployment. A 403 challenge
 page in the delivery log means the WAF stopped Vercel's request.

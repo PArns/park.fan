@@ -32,7 +32,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`ride-card.ts`](../../lib/og/ride-card.ts)
 
-- `getRideOgImage` _function_: The OG card a ride page points at: the ride's own card when the media database has a photo of the ride, else its park's card.
+- `getRideOgImage` _function_: The OG card a ride page points at: the ride's own card when the media database has a photo of the ride, else its park's card, so a ride without a photo adds no card URL of its own for crawlers to render (docs/features/og-images.md).
 
 ### [`satori-svg.ts`](../../lib/og/satori-svg.ts)
 

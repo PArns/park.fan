@@ -191,7 +191,7 @@ generated first. Each script's header comment says what it pins.
 - **Calendar and forecasts:** `calendar`, `calendar-month`, `calendar-park-projection`, `day-comparison`, `holiday-names`, `park-best-days`, `weather-chart-axis`, `weekday-forecast`, `yearly-outlook`
 - **Location, compass, geo:** `breadcrumb-city`, `compass`, `coordinates`, `country-park-order`, `geolocation-permission`, `maps-links`, `nearby-cache`
 - **Favorites, follows, push:** `favorites-band`, `push-arming`, `push-follow-delete`, `push-follow-read`, `push-timezone`, `show-follows-store`
-- **Header, search, routing:** `hub-chapters`, `menu-focus`, `post-search`, `unprefixed-redirect`
+- **Header, search, routing:** `hub-chapters`, `menu-focus`, `post-search`, `unprefixed-redirect`, `deploy-purge`
 - **Blog, news, SEO:** `blog-image-sidecar`, `content-changes`, `glossary-ride-href`, `listing-pagination`, `meta-descriptions`, `most-read`, `new-posts`, `news-park`, `news-redirects`, `news-sitemap`, `news-split`, `scheduled-posts`, `viewed-parks`, `widget-park-ref`
 - **Media:** `capture-location`, `capture-session`, `crop-box`, `media`, `media-references`, `media-session`, `media-unique-roles`, `photo-backlog`
 - **API routes, admin, fetching:** `admin-cookie`, `admin-provenance`, `admin-proxy-path`, `admin-works-periods`, `api-build-retry`, `developer-key-requests`, `direct-api`, `edge-windows`, `guards`, `is-uuid`, `page-fetch-misses`, `request-ip`, `stats-fetchers`, `turnstile`

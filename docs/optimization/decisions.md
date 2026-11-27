@@ -852,7 +852,8 @@ its runtime log shows nine purges in the 23 hours to 27 November 14:22 UTC. Each
 OG card, every `/media/` original and every `/_next/image` rendition, and the 30-day window never
 outlived a working morning. The two spikes in the invocation and transfer charts sit at two of
 those purges. A deploy now purges a prefix per locale and per `/api/` route directory except `og`,
-`/sitemap`, `/.well-known/` and the files at the root, in three calls; `/api/og/`, `/media/` and
+the sitemap directories, `.well-known`, the files at the root and the root of `public/`, in two
+calls; `/api/og/`, `/media/` and
 `/_next/` stay. A changed card gets a new URL through `OG_CARD_VERSION` (`?v=`), raised by hand.
 
 Where the card's CPU went, measured on a four-core Linux runner with sharp from the repo, a

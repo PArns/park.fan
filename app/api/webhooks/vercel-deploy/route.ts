@@ -6,8 +6,9 @@ import { vercelSignatureValid } from '@/lib/security/vercel-webhook';
  * Purges park.fan's Cloudflare cache after a production deploy, so the next request shows the
  * deploy instead of waiting out the edge window (a day for the homepage, blog, news, glossary and
  * the guide hubs). Pages, relays and machine files go; OG cards, photos and `/_next/` stay, since
- * their URLs move with their content (`lib/cloudflare/deploy-purge.ts`). Purge, not invalidate: an invalidated entry is served once more per PoP while
- * Cloudflare revalidates it, and for a news post that is the reader who came for it.
+ * their URLs move with their content (`lib/cloudflare/deploy-purge.ts`). Purge, not invalidate:
+ * an invalidated entry is served once more per PoP while Cloudflare revalidates it, and for a news
+ * post that is the reader who came for it.
  *
  * Called by a Vercel webhook on `deployment.promoted`, which fires once park.fan points at the new
  * deployment. Setup: docs/architecture/cdn-caching.md#a-deploy-purges-cloudflare
