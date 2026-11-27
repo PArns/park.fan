@@ -2,7 +2,7 @@
 title: 'Black Friday: Erste Freizeitpark-Angebote enden heute'
 translationKey: black-friday-heute-freizeitparks-2026
 date: '2026-11-27'
-time: '08:00'
+time: '09:46'
 author: patrick
 mode: published
 featured: false
@@ -85,9 +85,9 @@ coverImage:
   caption: 'River Quest im Themenbereich Mystery.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Black Friday 2026 Freizeitparks: alle Angebote im Überblick'
+  title: 'Black Friday 2026 im Freizeitpark: Angebote nach Enddatum'
   description: >-
-    Phantasialand-Wintertraum nur heute ab 29 €, Heide Park und LEGOLAND verkaufen die Jahreskarte 2027 bis Montag billiger. Alle Black-Friday-Angebote.
+    Nur heute kostet der Phantasialand-Wintertraum ab 29 €. Die Angebote von Heide Park, LEGOLAND, Walibi, Six Flags und SeaWorld sortieren wir nach Enddatum.
   keywords:
     - Black Friday Freizeitpark
     - Freizeitpark Black Friday 2026
@@ -104,7 +104,7 @@ seo:
     - Jahreskarte 2027 günstig
 ---
 
-Heute ist Black Friday, und mit ihm enden der Black Deal für den Wintertraum im [Phantasialand](ref:phantasialand), die Silver Pässe 2027 von Six Flags in Nordamerika und die Black Nights im Hotel von Fårup Sommerland. Am Sonntag folgen die Phantasialand-Hotels, Walibi Belgium und Energylandia. Am Montag, dem 30. November, enden die Jahreskarten von Heide Park, LEGOLAND Deutschland und Walibi Holland. FORT FUN hat seine Black FUN-Days erst heute begonnen. Eine Einordnung, für wen sich welche Jahreskarte lohnt, steht in unserer [Übersicht vom Montag](/news/black-friday-freizeitparks-2026).
+Heute ist Black Friday, und mit ihm enden der Black Deal für den Wintertraum im [Phantasialand](ref:phantasialand), die Silver Pässe 2027 von Six Flags in Nordamerika und die Black Nights im Hotel von Fårup Sommerland. Am Sonntag folgen die Phantasialand-Hotels, Walibi Belgium und Energylandia. Am Montag, dem 30. November, enden die Jahreskarten von Heide Park, LEGOLAND Deutschland und Walibi Holland. FORT FUN hat seine Black FUN-Days erst heute begonnen. Welche Jahreskarte sich für wen lohnt, vergleicht unsere [Übersicht vom Montag](/news/black-friday-freizeitparks-2026).
 
 ## Angebote nach Enddatum
 
@@ -164,7 +164,7 @@ Kein Black-Friday-Angebot haben der Europa-Park und Rulantica, der Hansa-Park, d
 
 Im Phantasialand gilt das Black-Deal-Ticket nur für den Tag, den du buchst, und jeder Tag hat ein eigenes Kontingent. Der Wintertraum läuft bis zum 24. Januar 2027, meist von 11 bis 20 Uhr, an Silvester bis 18 Uhr. Eine Uhrzeit für das Ende des Angebots nennt der Park nicht, und laut Website können die Preise jederzeit steigen. Für 29 € kommst du noch vom 7. bis 11. und vom 15. bis 18. Dezember hinein, im Januar an den meisten Tagen unter der Woche. Der 12. Dezember ist ausverkauft, die übrigen Dezembertage kosten im Shop inzwischen 31 bis 37 €, am meisten der 5. und 6. Dezember. Am 24. und 25. Dezember, am 1. Januar und am 12. und 13. Januar ist der Park zu.
 
-Den Code BLACKDEAL nehmen Matamba und Ling Bao auch auf die schon reduzierten Frühbucherpreise. Er gilt nur an den Terminen, die im Buchungskalender schwarz markiert sind, und der Button auf den Hotelseiten setzt ihn von selbst ein. Im Ling Bao sind Pool und Wellness im Preis, in beiden Hotels das Frühstück. Die Seite des Hotels Charles Lindbergh erwähnt den Code nicht. Die Fantissima-Tickets gelten mit Show und Vier-Gang-Menü an ausgewählten Terminen von Januar bis Juni. Die 10 € Extra-Rabatt auf die ohnehin vergünstigten Vorverkaufstickets sind im Shop-Preis schon abgezogen. Auf der Startseite des Parks wirbt die Kachel noch mit „ab 89 €“, im Ticketshop steht der neue Preis.
+Den Code BLACKDEAL nehmen Matamba und Ling Bao auch auf die schon reduzierten Frühbucherpreise. Einlösen kannst du ihn nur an den Terminen, die im Buchungskalender schwarz markiert sind, und der Button auf den Hotelseiten setzt ihn von selbst ein. Im Ling Bao sind Pool und Wellness im Preis, in beiden Hotels das Frühstück. Die Seite des Hotels Charles Lindbergh erwähnt den Code nicht. Die Fantissima-Tickets bekommst du mit Show und Vier-Gang-Menü für ausgewählte Termine von Januar bis Juni. Die 10 € Extra-Rabatt auf die ohnehin vergünstigten Vorverkaufstickets sind im Shop-Preis schon abgezogen. Auf der Startseite des Parks wirbt die Kachel noch mit „ab 89 €“, im Ticketshop steht der neue Preis.
 
 Die Merlin Jahreskarte Platin ist im [Heide Park](ref:heide-park) und im [LEGOLAND Deutschland](ref:legoland-deutschland) dieselbe Karte, das LEGOLAND streicht nur einen höheren Normalpreis durch. Verlängern kostet bei Basic und Gold so viel wie neu, bei der Platin 99 €. Die Basic hat im Heide Park 35 Sperrtage, im LEGOLAND 36, die Gold im Heide Park zwei. Mit der Gold des Heide Parks kaufst du bis zu vier Freunde-Tickets für je 29 € und bekommst 15 % auf Übernachtungen. Das Parken buchst du im Heide Park bei Basic und Gold für 35 € dazu. Die Gold des LEGOLAND gilt auch im PEPPA PIG Park und beim WinterWonder.
 
@@ -172,17 +172,17 @@ Beide Parks verkaufen bis Montag auch Übernachtungen mit zwei Tagen Eintritt 25
 
 Beim [Movie Park Germany](ref:movie-park-germany) gilt die Jahreskarte ab dem Kauf, also auch für [Hollywood Christmas](/news/movie-park-hollywood-christmas-2026). Wer schon eine hat, verlängert sie nur vor Ort und nicht im Webshop, vom 27. bis 29. November und vom 4. bis 6. Dezember an der Infokasse oder im Visitor Welcome Center. Bronze kostet dann 74,90 €, Silber 96,90 €, Gold 111,90 € und Platin 129,90 €.
 
-Die Tageskarte 2027 von FORT FUN liegt nach Angabe des Parks über 40 % unter dem Preis an der Tageskasse, das Kontingent ist begrenzt. Sie gilt an allen regulären Öffnungstagen 2027 außer beim Hallow Eve SPECIAL, ab 90 cm Körpergröße. Die Jahreskarten Basic für 84,90 €, Action für 109,90 € und Familie für 329 € laufen 365 Tage ab dem Tag, an dem du sie einlöst. Eine Nacht im Abenteuercamp mit Frühstück und Tageskarten kostet 10 % weniger, du zahlst erst bei der Anreise und kannst kostenlos stornieren.
+Die Tageskarte 2027 von FORT FUN liegt nach Angabe des Parks über 40 % unter dem Preis an der Tageskasse, das Kontingent ist begrenzt. Du kommst damit an allen regulären Öffnungstagen 2027 hinein, außer beim Hallow Eve SPECIAL, ab 90 cm Körpergröße. Die Jahreskarten Basic für 84,90 €, Action für 109,90 € und Familie für 329 € laufen 365 Tage ab dem Tag, an dem du sie einlöst. Eine Nacht im Abenteuercamp mit Frühstück und Tageskarten kostet 10 % weniger, du zahlst erst bei der Anreise und kannst kostenlos stornieren.
 
-In Tripsdrill gelten die Gutscheine für den Tages-Pass und den 2-Tages-Pass im Erlebnispark und im Wildparadies, zu kaufen sind sie nur im Online-Shop. Im Natur-Resort gilt der Rabatt auf den Tagespreis für Nächte bis zum 18. März 2027, Frühstück und Wildparadies inklusive, die Erlebnis-Pakete ausgenommen.
+Die Gutscheine von Tripsdrill für den Tages-Pass und den 2-Tages-Pass kaufst du nur im Online-Shop, einlösen kannst du sie im Erlebnispark und im Wildparadies. Im Natur-Resort sparst du auf den Tagespreis, für Nächte bis zum 18. März 2027, Frühstück und Wildparadies inklusive, die Erlebnis-Pakete ausgenommen.
 
-Auf der Seite des [Plopsaland Deutschland](ref:plopsaland-deutschland) wirbt ein Banner mit „nur 16 € pro Ticket“, gemeint ist Majaland Deutschland in Haßloch. Die beiden Tickets löst du am selben Tag ein, an einem Öffnungstag der Wintersaison bis zum 14. März 2027. Der Majaland Pass gilt in derselben Zeit unbegrenzt, ist aber personalisiert. Wie viele Tickets es zu dem Preis gibt, schreibt Plopsa nicht dazu.
+Auf der Seite des [Plopsaland Deutschland](ref:plopsaland-deutschland) wirbt ein Banner mit „nur 16 € pro Ticket“, gemeint ist Majaland Deutschland in Haßloch. Die beiden Tickets löst du am selben Tag ein, an einem Öffnungstag der Wintersaison bis zum 14. März 2027. Der Majaland Pass gilt in derselben Zeit unbegrenzt, ist aber personalisiert.
 
 ## Niederlande und Belgien
 
 Ab vier Personen kostet bei [Walibi Holland](ref:walibi-holland) der Family & Friends-Deal 60 € für Explore und 76 € für Experience, pro Person. Auf der Aktionsseite steht als Enddatum der 30. November 2027, gemeint ist sicher dieses Jahr. Das Flex-Ticket des [Avonturenpark Hellendoorn](ref:avonturenpark-hellendoorn) gilt an einem regulären Öffnungstag bis zum 23. Juli 2027, ohne Reservierung. Auf der Aktionsseite streicht Hellendoorn 33,50 € durch, einen Euro mehr als den regulären Preis im Shop.
 
-Das Dagticket Winter von Slagharen gilt für Besuche vom 28. November bis 3. Januar. Die Abonnements Goud und Platinum gelten bis zum 9. Januar 2028, und bis zum 14. Dezember sind ausgewählte Winterunterkünfte bis zu 35 % billiger.
+Mit dem Dagticket Winter von Slagharen besuchst du den Park vom 28. November bis 3. Januar. Die Abonnements Goud und Platinum laufen bis zum 9. Januar 2028, und bis zum 14. Dezember sind ausgewählte Winterunterkünfte bis zu 35 % billiger.
 
 Der Walibi-Pass von [Walibi Belgium](ref:walibi-belgium) läuft ein Jahr ab dem 5. Dezember 2026. Insgesamt verkauft der Park höchstens 18.000 Pässe zum Black-Week-Preis, die Premium-Pässe kosten 15 % weniger: Gold 344,25 €, Ruby 450,50 €, Diamond 620,50 €.
 
@@ -194,17 +194,17 @@ Die Black-November-Abos von [Bobbejaanland](ref:bobbejaanland) laufen 365 Tage a
 
 ## Übriges Europa
 
-In [Energylandia](ref:energylandia) gelten die Black-Weeks-Preise auch für ermäßigte Tickets und für zwei und drei Tage, höchstens zehn pro Kauf und nur auf ticket.energylandia.pl. Alle Tickets gelten ab dem 4. Dezember, das fürs Winter Kingdom bis zum 31. Januar 2027. Was im [Winter Kingdom](/news/energylandia-winter-kingdom-2026) läuft, steht in unserem Beitrag von heute.
+In [Energylandia](ref:energylandia) bekommst du die Black-Weeks-Preise auch für ermäßigte Tickets und für zwei und drei Tage, höchstens zehn pro Kauf und nur auf ticket.energylandia.pl. Alle Tickets gelten ab dem 4. Dezember, das fürs [Winter Kingdom](/news/energylandia-winter-kingdom-2026) bis zum 31. Januar 2027.
 
-Im Parc Astérix heißt der Black Friday „Vendredi Gaulois“. Das Billet Givré gilt an einem Tag deiner Wahl vom 19. Dezember bis 3. Januar, ist nicht erstattbar und nicht umtauschbar, Kinder unter drei Jahren kommen umsonst. Ohne festen Tag kostet das Weihnachtsticket 57 €. In Nigloland gilt das Frühlingsticket vom 27. März bis 2. Mai 2027 für Erwachsene und Kinder zum gleichen Preis, den Hotelrabatt gibt es mit dem Code NIGLOBLACK.
+Im Parc Astérix heißt der Black Friday „Vendredi Gaulois“. Mit dem Billet Givré kommst du an einem Tag deiner Wahl vom 19. Dezember bis 3. Januar hinein, es ist nicht erstattbar und nicht umtauschbar, Kinder unter drei Jahren kommen umsonst. Ohne festen Tag kostet das Weihnachtsticket 57 €. In Nigloland zahlen Erwachsene und Kinder für das Frühlingsticket vom 27. März bis 2. Mai 2027 gleich viel, den Hotelrabatt gibt es mit dem Code NIGLOBLACK.
 
-Die Black-Days-Tickets von PortAventura World mit dem Code BLACKPAW26 sind auf 1.000 Stück begrenzt und gelten nur für Erwachsene, für mehrere Tage oder mehrere Parks. Vom 5. bis 8., am 12. und 13. und vom 19. bis 31. Dezember sowie vom 1. bis 6. Januar sind sie gesperrt. Beim Hotel-Roulette erfährst du das Vier-Sterne-Hotel am Tag vor der Anreise, die Buchung ist nicht erstattbar. Die Bonos von Parque Warner und Parque de Atracciones gelten schon für den Rest von 2026, in einer Stückzahl, die die Parks nicht nennen.
+Die Black-Days-Tickets von PortAventura World mit dem Code BLACKPAW26 sind auf 1.000 Stück begrenzt und gelten nur für Erwachsene, für mehrere Tage oder mehrere Parks. Vom 5. bis 8., am 12. und 13. und vom 19. bis 31. Dezember sowie vom 1. bis 6. Januar sind sie gesperrt. Beim Hotel-Roulette erfährst du das Vier-Sterne-Hotel am Tag vor der Anreise, die Buchung ist nicht erstattbar. Die Bonos von Parque Warner und Parque de Atracciones gelten schon für den Rest von 2026, die Stückzahl ist begrenzt.
 
-Die Abos 2027 von [Mirabilandia](ref:mirabilandia) kosten neu und als Verlängerung gleich viel, Bronze gilt nur bis 24. Oktober 2027 und nicht vom 9. bis 22. August. Park und Hotel zusammen sind bis Dienstag 10 % billiger, Tickets ohne festes Datum bis zu 15 € unter dem vollen Preis. In Gardaland liegt die Anreise zwischen dem 30. März und 30. Juni 2027, ausgenommen der 1. Mai und der 2. Juni.
+Die Abos 2027 von [Mirabilandia](ref:mirabilandia) kosten neu und als Verlängerung gleich viel, Bronze gilt nur bis 24. Oktober 2027 und nicht vom 9. bis 22. August. Park und Hotel zusammen sind bis Dienstag 10 % billiger, Tickets ohne festes Datum bis zu 15 € unter dem vollen Preis. In Gardaland reist du für das Black-Friday-Paket zwischen dem 30. März und dem 30. Juni 2027 an, nur nicht am 1. Mai und am 2. Juni.
 
-Thorpe Park gibt mit dem Code SAVE20 £20 Rabatt, für Nächte in der Shark Cabin zwischen dem 20. April und 12. Mai 2027, mit einem Tag Unlimited Fastrack. Chessington gibt £30 mit SAVE30 auf ausgewählte Nächte im Februar und vom 5. bis 7. März 2027. Bei Alton Towers gilt der Preis für Nächte vom 22. Januar bis 7. März 2027, LEGOLAND Windsor vom 27. Dezember bis 18. März 2027. Den Merlin Annual Pass gibt es zum Black-Friday-Preis nur als Neukauf, nicht als Verlängerung. Bei Paultons Park gilt das Angebot für Nächte bis zum 1. November 2027, mit Parkplatz und Stornoschutz.
+Thorpe Park gibt mit dem Code SAVE20 £20 Rabatt, für Nächte in der Shark Cabin zwischen dem 20. April und 12. Mai 2027, mit einem Tag Unlimited Fastrack. Chessington zieht mit SAVE30 £30 ab, für ausgewählte Nächte im Februar und vom 5. bis 7. März 2027. Den Kurzurlaub-Preis von Alton Towers bekommst du für Nächte vom 22. Januar bis 7. März 2027, den von LEGOLAND Windsor für Nächte vom 27. Dezember bis 18. März 2027. Den Merlin Annual Pass gibt es zum Black-Friday-Preis nur als Neukauf, nicht als Verlängerung. Das Übernachtungsangebot von Paultons Park gilt für Nächte bis zum 1. November 2027 und schließt Parkplatz und Stornoschutz ein.
 
-Der neue Essential-Saisonpass von [LEGOLAND Billund](ref:legoland-billund) gilt nicht vom 26. Juni bis 8. August 2027 und an 17 weiteren Tagen im März, Mai und Oktober. Alle Pässe 2027 schließen den Dezember 2026 schon ein. Telefonisch bucht Fårup Sommerland die Black Nights nur heute bis 16 Uhr, unter 96 73 92 07. Das Guldkortet von [Gröna Lund](ref:grona-lund) gilt den ganzen Sommer 2027, die Konzerte eingeschlossen.
+Der neue Essential-Saisonpass von [LEGOLAND Billund](ref:legoland-billund) gilt nicht vom 26. Juni bis 8. August 2027 und an 17 weiteren Tagen im März, Mai und Oktober. Alle Pässe 2027 schließen den Dezember 2026 schon ein. Telefonisch bucht Fårup Sommerland die Black Nights nur heute bis 16 Uhr, unter 96 73 92 07. Mit dem Guldkortet von [Gröna Lund](ref:grona-lund) kommst du den ganzen Sommer 2027 hinein, auch zu den Konzerten.
 
 ## USA und Kanada
 
@@ -224,7 +224,7 @@ Die meisten Parks zählen bis Mitternacht Eastern Time herunter, bei uns ist das
 
 Bei [Canada's Wonderland](ref:canadas-wonderland) ist WinterFest 2026 im Silver Pass schon enthalten. [Knott's Berry Farm](ref:knotts-berry-farm) rabattiert die Pässe nicht. Dort wie in Cedar Point, Carowinds, Kings Dominion, Darien Lake und im Schlitterbahn New Braunfels ist bis Montag beim Buchen die dritte Hotelnacht gratis, in Cedar Point für Nächte vom 1. Mai bis 30. Juni 2027.
 
-Fünf Parks gehören nicht mehr zu Six Flags und laufen jetzt unter Enchanted Parks: [Worlds of Fun](ref:worlds-of-fun), [Valleyfair](ref:valleyfair), [Michigan's Adventure](ref:michigans-adventure), [Mid America Adventure](ref:mid-america-parks), früher Six Flags St. Louis, und [Great Escape](ref:six-flags-great-escape). Sie verkaufen bis Montag Pässe und Tickets 2027 billiger, in Mid America Adventure den Explorer-Pass ab 55,99 $, in Worlds of Fun das Any Day Ticket für 35,99 $. Die beiden höheren Pässe Legend und Elite gelten in allen acht Parks von Enchanted Parks, also auch in drei, die hier nicht stehen.
+Fünf Parks gehören nicht mehr zu Six Flags und laufen jetzt unter Enchanted Parks: [Worlds of Fun](ref:worlds-of-fun), [Valleyfair](ref:valleyfair), [Michigan's Adventure](ref:michigans-adventure), [Mid America Adventure](ref:mid-america-parks), früher Six Flags St. Louis, und [Great Escape](ref:six-flags-great-escape). Sie verkaufen bis Montag Pässe und Tickets 2027 billiger, in Mid America Adventure den Explorer-Pass ab 55,99 $, in Worlds of Fun das Any Day Ticket für 35,99 $. Die beiden höheren Pässe Legend und Elite gelten in allen acht Parks von Enchanted Parks.
 
 In [SeaWorld Orlando](ref:seaworld-orlando) und [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) kosten die Jahreskarten heute Silver 198 $ statt 279 $, Gold 222 $ statt 315 $ und Platinum 351 $ statt 549 $. Die Fun Card von SeaWorld gilt bis Ende 2027, mit Sperrtagen und ohne Parken.
 
