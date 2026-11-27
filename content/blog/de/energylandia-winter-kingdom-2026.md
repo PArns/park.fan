@@ -63,7 +63,7 @@ Auf der Eisbahn gibt es eine kleine und eine große Fläche. Helm und Schutzhand
 
 Neu im Programm ist Arctic Loop, ein Karussell mit Schlauchbooten, die sich langsam auf dem Boden drehen. Mitfahren dürfen Kinder von zwei bis 13 Jahren mit Begleitung, die zwischen 100 und 200 Zentimeter groß sind. Daneben gibt es ein Rentiergehege, in dem die Rentiere laut Energylandia sprechen können, eine Werkstatt für Lebkuchen von 12:30 bis 17:30 Uhr und eine für Briefe an den Nikolaus, die den ganzen Tag offen hat. Der Nikolaus selbst sitzt von 12:30 bis 17:30 Uhr am Lancelot Shop und lässt sich fotografieren.
 
-Um 11:20 Uhr begrüßen Nikolaus, Elfen und die Maskottchen die ersten Gäste vor dem Tor. Im Teatr Egypt spielen Elfen die Shows „Następny przystanek: Święta!“, in der der Nikolaus mit seinem Schlitten Ärger hat, und „Fabryka Elfów“ aus der Geschenkfabrik, jeweils 15 Minuten lang. Elf René zaubert im Town Hall Theatre fünfmal am Tag in „Elfastycznie!“. Den Abschluss macht um 18:15 Uhr die Parade „Santa Express“ mit dem Bähnchen des Nikolaus im Bereich der Achterbahn Formuła.
+Um 11:20 Uhr begrüßen Nikolaus, Elfen und die Maskottchen die ersten Gäste vor dem Tor. Im Teatr Egypt spielen Elfen die Shows „Następny przystanek: Święta!“, in der die Reise des Nikolaus nach Lappland schiefzugehen droht, und „Fabryka Elfów“ aus der Geschenkfabrik, jeweils 15 Minuten lang. Elf René zaubert im Town Hall Theatre fünfmal am Tag in „Elfastycznie!“. Den Abschluss macht um 18:15 Uhr die Parade „Santa Express“ mit dem Bähnchen des Nikolaus im Bereich der Achterbahn Formuła.
 
 ## Welche Bahnen fahren
 
@@ -77,7 +77,7 @@ Offen sind nach Angaben des Parks über 30 Attraktionen, darunter Achterbahnen, 
 
 Im Ticketshop auf Englisch kostet ein Tag im Winter Kingdom 38 € ab 140 Zentimetern und 33 € ermäßigt. Ermäßigt zahlen Kinder unter 140 Zentimetern, Senioren ab 65 und Menschen mit Behinderung. Ab 15 Uhr gibt es ein Nachmittagsticket für 21 € oder ermäßigt 19 €. Reservieren musst du nichts, das Ticket gilt an jedem Öffnungstag bis zum 31. Januar.
 
-Bis Sonntag, den 29. November, verkauft der Park in den Black Weeks das Winter-Ticket für 99 zł statt 149 zł, nur online auf ticket.energylandia.pl und höchstens zehn Stück pro Kauf. Diese Tickets gelten aber erst ab dem 4. Dezember. Wer schon am Eröffnungswochenende kommen will, zahlt den normalen Preis, und das Nachmittagsticket ist im Angebot nicht dabei. Was die anderen Parks rund um den Black Friday anbieten, steht in unserer [Übersicht zum Black Friday](/news/black-friday-freizeitparks-2026).
+Bis Sonntag, den 29. November, verkauft der Park in den Black Weeks das Winter-Ticket für 99 zł statt 149 zł, nur online auf ticket.energylandia.pl und höchstens zehn Stück insgesamt. Diese Tickets gelten aber erst ab dem 4. Dezember. Wer schon am Eröffnungswochenende kommen will, zahlt den normalen Preis, und das Nachmittagsticket ist im Angebot nicht dabei. Was die anderen Parks rund um den Black Friday anbieten, steht in unserer [Übersicht zum Black Friday](/news/black-friday-freizeitparks-2026).
 
 Der Parkplatz vor dem Eingang kostet 30 zł am Tag. Zum Anziehen empfiehlt der Park Zwiebellook, Skikleidung und eine Skibrille mit Gummiband, also eher Piste als Weihnachtsmarkt.
 
