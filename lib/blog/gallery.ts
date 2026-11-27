@@ -96,3 +96,51 @@ export function resolveGallery(
   }
   return [];
 }
+
+/**
+ * Parse a gallery code-fence body into BlogImage[].
+ *
+ * Accepts simple line-based format — one image per line:
+ *
+ *   - /path/to.jpg
+ *   - /path/to.jpg | Alt text
+ *   - /path/to.jpg | Alt text | Caption
+ *   - /path/to.jpg | Alt text | Caption | © Credit
+ *
+ * Lines starting with attribute keys (heading=, slug=) are ignored — they were
+ * already consumed as widget attrs by parseAttrs().
+ */
+function parseGalleryBody(body: string): BlogImage[] {
+  const images: BlogImage[] = [];
+  for (const rawLine of body.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line) continue;
+    if (/^[a-zA-Z][a-zA-Z0-9_-]*\s*[:=]/.test(line) && !line.startsWith('-')) continue;
+    const stripped = line.replace(/^-\s*/, '').trim();
+    if (!stripped) continue;
+    const [src, alt, caption, credit] = stripped.split('|').map((s) => s.trim());
+    if (!src) continue;
+    images.push({
+      src,
+      alt: alt || undefined,
+      caption: caption || undefined,
+      credit: credit || undefined,
+    });
+  }
+  return images;
+}
+
+/**
+ * The photos of a `gallery-widget` fence: its `folder=` (the recommended shape, no file list and
+ * the captions of the database), else the lines of its body.
+ */
+export function galleryWidgetImages(
+  attrs: Record<string, string>,
+  body: string,
+  locale?: string
+): BlogImage[] {
+  const folder = attrs.folder ?? attrs.dir ?? attrs.path;
+  // A hand-listed body goes through `resolveGallery`, the enrichment a frontmatter gallery gets,
+  // which also attaches the content version to each path.
+  return folder ? listFolderImages(folder, locale) : resolveGallery(parseGalleryBody(body), locale);
+}

@@ -71,8 +71,7 @@ import { BlogGlossaryWidget } from './blog-glossary-widget';
 import { BlogCtaWidget } from './blog-cta-widget';
 import { BlogGallery } from './blog-gallery';
 import { parseWidgetAttrs, parseWidgetParkRef, parseWidgetRideRef } from '@/lib/blog/widget-park';
-import { listFolderImages, resolveGallery } from '@/lib/blog/gallery';
-import type { BlogImage } from '@/lib/blog/types';
+import { galleryWidgetImages } from '@/lib/blog/gallery';
 import { postPath } from '@/lib/blog/paths';
 
 /** Box / title classes + icon per GitHub-alert callout type. Kept as static
@@ -1020,50 +1019,9 @@ function renderWidget(
     return <BlogCtaWidget href={attrs.href} label={attrs.label} text={attrs.text} />;
   }
   if (name === 'gallery-widget') {
-    // Prefer a folder reference if one was passed via attrs; otherwise parse
-    // the line-based body. The folder form is the recommended shape since it
-    // requires no manual file listing and picks up captions.json overrides.
-    const folder = attrs.folder ?? attrs.dir ?? attrs.path;
-    // A hand-listed body goes through `resolveGallery`, the enrichment a frontmatter gallery gets,
-    // which also attaches the content version to each path.
-    const images = folder
-      ? listFolderImages(folder, ctx.locale)
-      : resolveGallery(parseGalleryBody(body), ctx.locale);
+    const images = galleryWidgetImages(attrs, body, ctx.locale);
     if (images.length === 0) return null;
     return <BlogGallery images={images} heading={attrs.heading} />;
   }
   return null;
-}
-
-/**
- * Parse a gallery code-fence body into BlogImage[].
- *
- * Accepts simple line-based format — one image per line:
- *
- *   - /path/to.jpg
- *   - /path/to.jpg | Alt text
- *   - /path/to.jpg | Alt text | Caption
- *   - /path/to.jpg | Alt text | Caption | © Credit
- *
- * Lines starting with attribute keys (heading=, slug=) are ignored — they were
- * already consumed as widget attrs by parseAttrs().
- */
-function parseGalleryBody(body: string): BlogImage[] {
-  const images: BlogImage[] = [];
-  for (const rawLine of body.split(/\r?\n/)) {
-    const line = rawLine.trim();
-    if (!line) continue;
-    if (/^[a-zA-Z][a-zA-Z0-9_-]*\s*[:=]/.test(line) && !line.startsWith('-')) continue;
-    const stripped = line.replace(/^-\s*/, '').trim();
-    if (!stripped) continue;
-    const [src, alt, caption, credit] = stripped.split('|').map((s) => s.trim());
-    if (!src) continue;
-    images.push({
-      src,
-      alt: alt || undefined,
-      caption: caption || undefined,
-      credit: credit || undefined,
-    });
-  }
-  return images;
 }

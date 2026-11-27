@@ -305,11 +305,26 @@ parkSlugs, cover, coverAlt, readingMinutes}`. `url` is the absolute
     each `{park, parkSlug, ride, label}`; `params` the fence's other attributes as written (`top`,
     `columns`, `highlight`, `show`, `from`, `to`); `url` the post on the web, for an app that cannot
     draw the widget
+  - `{type: 'weather' | 'map', park, parkSlug, url}`, a `weather-widget` or `map-widget`: the
+    park's live weather or its map, `park` and `parkSlug` as in `widget`
+  - `{type: 'park-comparison', parks: [{park, parkSlug}], params, url}`, a
+    `park-comparison-widget`: the parks of its `slugs=` in their order, `params` its other
+    attributes as written (`highlight`, `show`)
+  - `{type: 'glossary', term, alternateNames, text, url}`, a `glossary-widget`: the term's name
+    and other names in that locale, its full definition (paragraphs separated by a blank line) and
+    its glossary page
+  - `{type: 'gallery', heading, images: [{imageId, alt, caption, credit}]}`, a `gallery-widget`:
+    its `heading` or `null`, and its photos as an `image` block holds them
   - A `text` holds only `**bold**`, `*italic*` and `[label](https://…)` with absolute URLs; a
     park, ride or post reference becomes its web page, or plain text when its path is unknown.
 - **Widgets:** `best-days-widget`, `hourly-profile-widget`, `ride-waits-widget` and `stats-widget`
   become `widget` blocks, which the app fills from its own API calls; one naming no park and no ride
-  is left out. `cta-widget` becomes a `link` block; a paragraph that is only
+  is left out. `weather-widget`, `map-widget` and `park-comparison-widget` name their parks the same
+  way and carry no figure either, but have a block type of their own: the app build 1.0.1 draws a
+  `widget` kind it does not know as a link to the post it already shows, and skips a type it does
+  not know, as it did while the export left these out. A `glossary-widget` carries the term's text
+  and a `gallery-widget` its photos (exported like inline photos); an unknown term or a gallery
+  without an exported photo is left out. `cta-widget` becomes a `link` block; a paragraph that is only
   `[Park](ref:slug?full)` becomes a `link` block to the park page. Fence attributes are read by
   `parseWidgetAttrs`, the parser the web's own widgets use.
 - **Photos:** a cover or inline photo not among the card photos is exported with the same widths
