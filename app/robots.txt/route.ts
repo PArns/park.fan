@@ -54,6 +54,13 @@ const ANSWER_CRAWLERS = [
   'DuckAssistBot',
 ];
 
+/**
+ * Answer crawlers shut out for what they cost: their sweep of the URL surface reaches the origin
+ * request by request, and the assistant behind them sends no readers. The measurement is in
+ * docs/optimization/decisions.md.
+ */
+const COSTLY_CRAWLERS = ['meta-webindexer'];
+
 function block(userAgents: string[], lines: string[]): string {
   return [...userAgents.map((agent) => `User-agent: ${agent}`), ...lines].join('\n');
 }
@@ -82,6 +89,7 @@ export function GET(): Response {
       block(['*'], [CONTENT_SIGNAL, ...CRAWLABLE_RULES]),
       block(ANSWER_CRAWLERS, [CONTENT_SIGNAL, ...CRAWLABLE_RULES]),
       block(TRAINING_CRAWLERS, [CONTENT_SIGNAL_TRAINING_ONLY, 'Disallow: /']),
+      block(COSTLY_CRAWLERS, [CONTENT_SIGNAL, 'Disallow: /']),
       [
         `Sitemap: ${SITE_URL}/sitemap.xml`,
         `Sitemap: ${SITE_URL}/sitemap-attractions.xml`,

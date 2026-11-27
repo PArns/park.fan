@@ -46,6 +46,11 @@ is waiting (`ANSWER_CRAWLERS`: `OAI-SearchBot`, `ChatGPT-User`, `Claude-User`, `
 `PerplexityBot`, …) get what a search engine gets. This is Cloudflare's own Search / Agent /
 Training split; enforcement lives in Cloudflare AI Crawl Control, not in this repo.
 
+One answer crawler is the exception: `meta-webindexer` (Meta AI's search) gets `Disallow: /`
+(`COSTLY_CRAWLERS`), because it was about a fifth of the requests reaching Vercel and Meta sends
+almost no readers ([decision](../optimization/decisions.md)). AI Crawl Control does not list it, so
+robots.txt is the only fence. `facebookexternalhit` (link previews) is not affected.
+
 ## Licensing: the same answers as RSL
 
 `Content-Signal` is read by crawlers that parse robots.txt; RSL by licensing tooling. Both come

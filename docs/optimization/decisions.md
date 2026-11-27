@@ -805,7 +805,7 @@ generator to ship only the keys a component reads.
 
 ---
 
-## 2026-11-27 — ACCEPTED: Cloudflare keeps 404 and 410 for 12 h; meta-webindexer is a fifth of the origin traffic
+## 2026-11-27 — ACCEPTED: Cloudflare keeps 404 and 410 for 12 h; robots.txt shuts out meta-webindexer
 
 **Lever:** invocations. **Where:** the Cloudflare dashboard ("Frontend cache", status code TTL),
 recorded in [CDN caching](../architecture/cdn-caching.md#cloudflare-rules).
@@ -820,8 +820,12 @@ By source network: Facebook (AS32934) 537,910, Microsoft 228,240, Amazon 175,430
 OVH 123,560. Almost all of the Facebook share carries `meta-webindexer/1.1`, the crawler behind
 Meta AI's search; `facebookexternalhit` (link previews) is 10,340. In the same 30 days park.fan's
 own statistic counts 24 visits from Facebook and none from Meta AI. Our robots.txt lists
-`meta-externalagent` with the training crawlers, but not `meta-webindexer`, which falls under the
-wildcard block. Whether to block it is open in PAR-1122.
+`meta-externalagent` with the training crawlers, but `meta-webindexer` fell under the wildcard
+block. It now gets `Disallow: /` (`COSTLY_CRAWLERS` in `app/robots.txt/route.ts`); Meta documents
+that it follows robots.txt. Cloudflare's AI Crawl Control does not know the crawler (its Meta entry
+lists Meta-ExternalAgent, FacebookBot, Meta-ExternalFetcher and Muse), so a toggle there would not
+reach it. `facebookexternalhit` stays allowed for link previews. The check: the AS32934 share of
+origin requests in Cloudflare over the following week.
 
 The path `/_next/image` is the largest single path (415,200), but it is billed under Image
 Optimization, not Active CPU or Fast Origin Transfer.
