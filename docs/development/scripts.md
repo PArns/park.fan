@@ -48,7 +48,7 @@ CI (`.github/workflows/checks.yml`) runs, on every pull request and push to `mai
 
 | Script                           | Writes                                                                                                                                                    | Committed?               |
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| `generate-build-info.mjs`        | `build-info.json` (version, commit count, timestamp); `prebuild` only                                                                                     | no                       |
+| `generate-build-info.mjs`        | `build-info.json` (version, commit count, timestamp); `prebuild`, and `test:unit` with `--offline --if-missing`                                           | no                       |
 | `pnpm generate:message-chunks`   | `lib/i18n/message-chunks/`, the namespaces a lazy boundary fetches                                                                                        | no                       |
 | `pnpm generate:route-namespaces` | `i18n/route-namespaces.generated.ts` ([below](#the-route-namespace-map-is-generated-not-written))                                                         | **yes**                  |
 | `pnpm generate:client-glossary`  | `lib/glossary/client-data.ts` and `lib/glossary/client-data/<locale>.ts`                                                                                  | no                       |

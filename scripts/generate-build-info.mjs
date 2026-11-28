@@ -42,9 +42,15 @@ function getCommitCountFromGitHub(owner, repo) {
   });
 }
 
+// `--offline` skips GitHub and `--if-missing` keeps an existing file, so the unit tests can have a
+// build-info.json without a network call or overwriting the one a build wrote.
+const OFFLINE = process.argv.includes('--offline');
+const IF_MISSING = process.argv.includes('--if-missing');
+
 async function generateBuildInfo() {
+  if (IF_MISSING && fs.existsSync('build-info.json')) return;
   try {
-    const commitCount = await getCommitCountFromGitHub(owner, repo);
+    const commitCount = OFFLINE ? 0 : await getCommitCountFromGitHub(owner, repo);
 
     const packageJsonPath = path.resolve(process.cwd(), 'package.json');
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
