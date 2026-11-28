@@ -10,7 +10,8 @@ export const runtime = 'nodejs';
 /**
  * POST /api/news-export/run: starts the export workflow for the API's MCP tools, as „Export neu
  * starten“ does in the admin, with the same answers: `{ started: true, workflowUrl }`, or
- * `{ started: false, reason }` with 503 (no GitHub token here) or 502 (GitHub refused).
+ * `{ started: false, reason }` with 503 (no GitHub token here) or 502 (GitHub refused), or with
+ * `maybeStarted: true` and 504 when GitHub left it open whether the run started.
  *
  *   curl -X POST https://park.fan/api/news-export/run -H "Authorization: Bearer $REVALIDATE_SECRET"
  *

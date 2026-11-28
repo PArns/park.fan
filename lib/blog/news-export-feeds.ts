@@ -18,7 +18,12 @@ export const EXPORT_FEEDS = {
 /** One feed of the export, `news` or `guides`. */
 export type ExportFeed = keyof typeof EXPORT_FEEDS;
 
+/** The bucket key of one feed's list in one locale: `news/de.json`. */
+export function exportListKey(feed: ExportFeed, locale: string): string {
+  return `${feed}/${locale}.json`;
+}
+
 /** The list of one feed in one locale: `https://media.park.fan/news/de.json`. */
 export function exportListUrl(feed: ExportFeed, locale: string): string {
-  return `${MEDIA_EXPORT_BASE}/${feed}/${locale}.json`;
+  return `${MEDIA_EXPORT_BASE}/${exportListKey(feed, locale)}`;
 }

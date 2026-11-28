@@ -2,7 +2,9 @@ import 'server-only';
 
 import buildInfo from '@/build-info.json';
 import { locales } from '@/i18n/config';
+import { postArrivals } from '@/lib/admin/news-export-arrival';
 import {
+  DISPLAY_LOCALE,
   compareExportFeed,
   parseExportList,
   type ExportListReading,
@@ -10,7 +12,7 @@ import {
   type SitePostRef,
 } from '@/lib/admin/news-export-lag';
 import { newsExportWorkflowUrl } from '@/lib/admin/news-export-run';
-import { listPosts } from '@/lib/blog/listing';
+import { listPosts, resolveEntryForLocale } from '@/lib/blog/listing';
 import { EXPORT_FEEDS, exportListUrl, type ExportFeed } from '@/lib/blog/news-export-feeds';
 import { withZoneOffset } from '@/lib/blog/published-at';
 
@@ -60,9 +62,19 @@ function sitePosts(feed: ExportFeed, locale: (typeof locales)[number]): SitePost
 }
 
 /**
+ * The file a post's arrival is read from: its German one, else the one the site falls back to, as
+ * the panel's titles do.
+ */
+function sourceFile(translationKey: string): string | null {
+  const resolved = resolveEntryForLocale(translationKey, DISPLAY_LOCALE);
+  return resolved ? `content/blog/${resolved.loadedLocale}/${resolved.entry.slug}.md` : null;
+}
+
+/**
  * The app's news and guides export on media.park.fan against this deployment's posts, per feed:
  * when it last ran, its newest post and the site's, and what it is missing. The admin's route and
- * the API's server route answer with it; the lists are read here so no browser asks the bucket.
+ * the API's server route answer with it; the lists are read here so no browser asks the bucket,
+ * and GitHub only for when the missing posts reached the default branch.
  */
 export async function buildNewsExportReport(): Promise<NewsExportReport> {
   const now = Date.now();
@@ -78,10 +90,8 @@ export async function buildNewsExportReport(): Promise<NewsExportReport> {
   );
 
   const deployedAt = buildInfo.buildDate ?? null;
-  return {
-    checkedAt: new Date(Math.min(...reads.map((read) => read.readAt))).toISOString(),
-    deployedAt,
-    feeds: feeds.map((feed) =>
+  const compare = (arrivedAt?: Record<string, number>) =>
+    feeds.map((feed) =>
       compareExportFeed({
         feed,
         site: Object.fromEntries(locales.map((locale) => [locale, sitePosts(feed, locale)])),
@@ -89,9 +99,30 @@ export async function buildNewsExportReport(): Promise<NewsExportReport> {
           reads.filter((read) => read.feed === feed).map((read) => [read.locale, read.reading])
         ),
         deployedAt,
+        arrivedAt,
         now,
       })
-    ),
+    );
+
+  // Which posts are missing is known only after a first comparison; the oldest are asked first.
+  const files = new Map<string, string>();
+  for (const post of compare()
+    .flatMap((status) => status.missing)
+    .sort((a, b) => Date.parse(a.publishedAt) - Date.parse(b.publishedAt))) {
+    const file = sourceFile(post.translationKey);
+    if (file) files.set(post.translationKey, file);
+  }
+  const arrivals = await postArrivals([...files.values()]);
+  const arrivedAt: Record<string, number> = {};
+  for (const [key, file] of files) {
+    const at = arrivals.get(file);
+    if (at !== undefined) arrivedAt[key] = at;
+  }
+
+  return {
+    checkedAt: new Date(Math.min(...reads.map((read) => read.readAt))).toISOString(),
+    deployedAt,
+    feeds: compare(arrivedAt),
     workflowUrl: newsExportWorkflowUrl(),
   };
 }

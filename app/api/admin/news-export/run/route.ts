@@ -11,8 +11,9 @@ export const runtime = 'nodejs';
 /**
  * POST /api/admin/news-export/run: „Export neu starten“ on `/admin/system`. Starts the export
  * workflow on GitHub and answers `{ started: true, workflowUrl }`, or `{ started: false, reason }`
- * with 503 (no token here) or 502 (GitHub refused). Role editor, the floor of the admin's other
- * job starts.
+ * with 503 (no token here) or 502 (GitHub refused), or with `maybeStarted: true` and 504 when the
+ * start was sent and GitHub did not answer in time or answered 5xx. Role editor, the floor of the
+ * admin's other job starts.
  */
 export async function POST(request: Request) {
   const denied = await denyUnlessAdmin(request, 'editor');

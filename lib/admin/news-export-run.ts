@@ -5,6 +5,7 @@ import { adminGithubToken, adminRepo } from '@/lib/admin/github';
 import {
   NEWS_EXPORT_WORKFLOW,
   exportRunRefusal,
+  exportRunUnclear,
   type NewsExportRunAnswer,
 } from '@/lib/admin/news-export-lag';
 
@@ -19,7 +20,7 @@ export function newsExportWorkflowUrl(): string {
 
 /** What a start answers, with the HTTP status the routes send it with. */
 export interface NewsExportRunResult {
-  status: 200 | 502 | 503;
+  status: 200 | 502 | 503 | 504;
   answer: NewsExportRunAnswer;
 }
 
@@ -36,12 +37,14 @@ export async function startNewsExport(): Promise<NewsExportRunResult> {
 
   const { owner, repo } = adminRepo();
   const octokit = new Octokit({ auth: token });
+  let dispatching = false;
   try {
     const { data } = await octokit.repos.get({
       owner,
       repo,
       request: { signal: AbortSignal.timeout(GITHUB_TIMEOUT_MS) },
     });
+    dispatching = true;
     await octokit.actions.createWorkflowDispatch({
       owner,
       repo,
@@ -53,6 +56,11 @@ export async function startNewsExport(): Promise<NewsExportRunResult> {
     // The status alone, so nothing of the request, its token header included, reaches the log.
     const status = (error as { response?: { status?: unknown } }).response?.status;
     const failure = typeof status === 'number' ? status : 'unreachable';
+    // No answer to the dispatch, or a 5xx, says nothing about whether GitHub queued the run.
+    if (dispatching && (failure === 'unreachable' || failure >= 500)) {
+      console.error(`[news-export run] maybe started: ${failure}`);
+      return exportRunUnclear(failure);
+    }
     console.error(`[news-export run] not started: ${failure}`);
     return exportRunRefusal(failure);
   }
