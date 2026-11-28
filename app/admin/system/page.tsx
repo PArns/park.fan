@@ -44,6 +44,7 @@ import {
   StatusDot,
   Tile,
 } from '../_ui/primitives';
+import { NewsExportPanel } from './news-export-panel';
 
 const CHIP_LABELS: Record<string, string> = {
   coretemp: 'CPU · coretemp',
@@ -364,6 +365,8 @@ export default function SystemPage() {
           </PanelBody>
         </Panel>
       ) : null}
+
+      <NewsExportPanel />
 
       {data.gpu?.available && data.gpu.gpus?.length ? (
         <Panel>
