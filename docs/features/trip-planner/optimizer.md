@@ -100,7 +100,10 @@ steps share `PlannerStepRail` with the wizard:
 2. **Wichtigkeit** (`PlannerFitList`): the list in `fitOrder` with a checkbox and a pin per row. The
    photos and peaks come from the panel's own `/plan/day` (`wishesWithRides`).
 3. **Ergebnis**: how many rides, when the last queue is left, the queueing cost, and what is left
-   out **by name**.
+   out **by name**. A pinned ride the day has no minute for stands in a box of its own above
+   „Bleibt draußen“ (the answer's `pinnedMissed`, split off by `fitLeftOut`): the API gives a pin
+   up only where no unpinned ride can make room, so unticking others would not bring it back. A
+   server without the field reads as no pin missed.
 
 What the levers bought on the days they were measured:
 

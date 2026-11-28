@@ -3718,6 +3718,7 @@
       "resultEnd": "Última atracción hasta las",
       "resultWait": "Tiempo de cola en total",
       "resultOut": "Se queda fuera",
+      "resultPinnedOut": "{count, plural, one {Esta atracción fijada ya no cabe en el día} other {Estas atracciones fijadas ya no caben en el día}}",
       "resultHint": "En el planificador puedes seguir moviendo, borrando y reordenando.",
       "apply": "Aplicar el plan",
       "applied": "{count, plural, one {Una atracción planificada} other {# atracciones planificadas}}",

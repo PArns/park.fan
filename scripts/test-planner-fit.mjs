@@ -3,8 +3,8 @@
  *
  * The measuring is the API's: which wish falls out, what a lever buys and the plan a choice leaves
  * are `src/planner/day-optimizer/fit.vectors.spec.ts` there. What is here changes on a tap and must
- * not wait for a request: the order the list is drawn in, the toggles, and the question an
- * „In den Plan" press asks.
+ * not wait for a request: the order the list is drawn in, the toggles, what the result names, and
+ * the question an „In den Plan" press asks.
  *
  *     pnpm test:planner-fit
  */
@@ -13,6 +13,7 @@ import {
   addWishKey,
   entryWishKey,
   fitChoiceAll,
+  fitLeftOut,
   fitOrder,
   leverKey,
   togglePin,
@@ -101,6 +102,30 @@ const wish = (key, slug) => ({
   check('der für alle Blöcke auch', leverKey({ kind: 'drop-all-blocks' }) === 'drop-all-blocks:*');
 }
 
+// ── What the result names ───────────────────────────────────────────────────
+{
+  const choice = toggleWish(togglePin(fitChoiceAll(), addWishKey('taron')), addWishKey('raik'));
+  const out = fitLeftOut(
+    { missed: ['a:taron', 'a:fly', 'a:chiapas'], pinnedMissed: ['a:taron'] },
+    choice
+  );
+  check(
+    'eine gepinnte Bahn ohne Minute steht für sich',
+    out.pinned.join() === 'a:taron',
+    out.pinned.join()
+  );
+  check(
+    'der Rest: erst ohne Minute, dann abgewählt',
+    out.rest.join() === 'a:fly,a:chiapas,a:raik',
+    out.rest.join()
+  );
+  const older = fitLeftOut({ missed: ['a:taron'], pinnedMissed: [] }, choice);
+  check(
+    'ohne pinnedMissed bleibt alles beim Rest',
+    older.pinned.length === 0 && older.rest.join() === 'a:taron,a:raik'
+  );
+}
+
 // ── „In den Plan": the question, asked of the API ───────────────────────────
 
 /** Runs `read` with `fetch` answering `answer`, and hands back what was sent. */
@@ -162,6 +187,21 @@ const fitAnswer = (fitted, wanted) => ({
     noRoomForRide({ target, entries, attractionSlug: 'taron' })
   );
   check('wo alles passt, nicht', fits === null);
+  check(
+    'ein Server ohne pinnedMissed liest sich als leer',
+    Array.isArray(result?.answer.pinnedMissed) && result.answer.pinnedMissed.length === 0
+  );
+  const pinnedAnswer = fitAnswer(2, 3);
+  pinnedAnswer.fit.missed = ['a:taron'];
+  pinnedAnswer.fit.pinnedMissed = ['a:taron'];
+  const { result: pinnedOut } = await withFetch(pinnedAnswer, () =>
+    noRoomForRide({ target, entries, attractionSlug: 'taron' })
+  );
+  check(
+    'und mit Feld kommt es an',
+    pinnedOut?.answer.pinnedMissed.join() === 'a:taron',
+    pinnedOut?.answer.pinnedMissed.join()
+  );
   const { result: refused } = await withFetch({ status: 'refused', refusal: 'unknown-ride' }, () =>
     noRoomForRide({ target, entries, attractionSlug: 'nope' })
   );

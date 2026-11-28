@@ -3718,6 +3718,7 @@
       "resultEnd": "Last ride by",
       "resultWait": "Time queuing in total",
       "resultOut": "Left out",
+      "resultPinnedOut": "{count, plural, one {This pinned ride no longer fits into the day} other {These pinned rides no longer fit into the day}}",
       "resultHint": "You can still drag, delete and re-sort everything in the planner afterwards.",
       "apply": "Apply plan",
       "applied": "{count, plural, one {One ride planned} other {# rides planned}}",
