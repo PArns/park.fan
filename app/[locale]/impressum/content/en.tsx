@@ -221,15 +221,15 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
         </h2>
         <p className="mb-4">
           Without an account and without an API key, the API at api.park.fan serves a park&apos;s
-          current wait times and nothing else. Everything else park.fan publishes on its pages and
-          through the API may be used outside park.fan only with an API key: the directory of parks
-          and rides, park and ride data such as heights, minimum height, ride profiles and links,
-          opening hours, seasons and events, the weather, the statistics, the forecasts, the day and
-          trip planners and the travel region data. Texts and photos are not included.
+          current wait times and, at <code>/v1/parks/…/facilities</code>, its toilets and drinking
+          water. Everything else park.fan publishes on its pages and through the API may be used
+          outside park.fan only with an API key: the directory of parks and rides, park and ride
+          data such as heights, minimum height, ride profiles and links, opening hours, seasons and
+          events, the weather, the statistics, the forecasts, the day and trip planners and the
+          travel region data. Texts and photos are not included.
         </p>
         <p className="mb-4">
-          Nothing in this section applies to the data on toilets and drinking water that the API
-          serves without an API key at <code>/v1/parks/…/facilities</code>. It comes from
+          Nothing in this section applies to the data on toilets and drinking water. It comes from
           OpenStreetMap (
           <LegalLink href="https://www.openstreetmap.org/copyright">
             © OpenStreetMap contributors

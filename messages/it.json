@@ -1295,7 +1295,7 @@
     },
     "headlinerForecastTitle": "Attese di picco previste (attrazioni di punta)",
     "crowdMeaning": {
-      "very_low": "Quasi nessuna coda – attese brevi, anche sulle attrazioni principali.",
+      "very_low": "Quasi nessuna coda – attese brevi, anche sulle attrazioni di punta.",
       "low": "Giornata tranquilla – attese sotto la media.",
       "moderate": "Una giornata tipica – attese normali per questo parco.",
       "high": "Più affollato del solito – aspettati attese decisamente più lunghe.",
@@ -1354,8 +1354,8 @@
         "busiestPast": "{count, plural, =1 {L’affluenza maggiore c’è stata {days}.} other {L’affluenza maggiore c’è stata {days}.}}",
         "hours": "Di solito aperto dalle {from} alle {to}.",
         "schoolVacation": "{days, plural, =1 {Un giorno cade} other {# giorni cadono}} nelle vacanze scolastiche della regione del parco.",
-        "headlinerFuture": "Nell’ora più affollata, sulle attrazioni di punta sono attesi in media {minutes} minuti.",
-        "headlinerPast": "Nell’ora più affollata, le attrazioni di punta hanno registrato in media {minutes} minuti.",
+        "headlinerFuture": "Nel loro momento più affollato, le attrazioni di punta arrivano in media a {minutes} minuti.",
+        "headlinerPast": "Nel loro momento più affollato, le attrazioni di punta hanno registrato in media {minutes} minuti.",
         "factOpenDays": "Aperto",
         "factOpenDaysValue": "{open} giorni su {total}",
         "factHours": "Orari",
@@ -1604,7 +1604,7 @@
         "boardingGroupsAvailable": "Gruppi di imbarco disponibili",
         "boardingGroupsDistributed": "Gruppi distribuiti",
         "boardingGroupsPaused": "Gruppi di imbarco in pausa",
-        "returnState": "Orario di ritorno: {kind, select, full {Pieno} finished {Terminato} other {{state}}}",
+        "returnState": "Orario di ritorno: {kind, select, full {Esaurito} finished {Terminato per oggi} other {{state}}}",
         "return": "Orario di ritorno: {start}–{end}",
         "returnNoEnd": "Orario di ritorno: {start}"
       }
@@ -1733,7 +1733,7 @@
       "medianCaption": "Mediana in minuti",
       "medianDetail": "Metà dei {usable} guasti con una fine osservata era finita dopo {minutes} minuti.",
       "longestCaption": "Guasto più lungo",
-      "shareDetail": "I guasti segnalati hanno occupato circa il {percent} % del tempo in cui l'attrazione era in funzione o segnalata come guasta.",
+      "shareDetail": "I guasti hanno occupato circa il {percent} % del tempo in cui l'attrazione era in funzione o segnalata come guasta.",
       "withheld": {
         "not_down_capable": "Per questo parco nessuna fonte dati segnala guasti. Se {name} si ferma, qui non lo vediamo.",
         "park_never_reports": "La fonte dati di questo parco non segnala guasti. Li riconosciamo dalle chiusure durante l'orario di apertura, ma non pubblichiamo statistiche.",
@@ -1749,7 +1749,7 @@
         "heavily_censored": "Negli ultimi {days} giorni sono stati segnalati {count} guasti. Di troppi non abbiamo visto la fine, di solito perché il parco ha chiuso mentre l'attrazione era ancora ferma. È troppo poco per indicare una durata.",
         "stale_data": "Questi dati non sono aggiornati al momento, quindi non li mostriamo."
       },
-      "longestDetail": "Il più lungo dei {usable} guasti con una fine osservata."
+      "longestDetail": "Tra i {usable} guasti con una fine osservata."
     },
     "retired": {
       "h1Suffix": "Chiuso definitivamente",
@@ -3706,7 +3706,7 @@
       "resultEnd": "Ultima attrazione entro le",
       "resultWait": "Attesa complessiva",
       "resultOut": "Resta fuori",
-      "resultPinnedOut": "{count, plural, one {Questa attrazione fissata in cima non ci sta più nella giornata} other {Queste attrazioni fissate in cima non ci stanno più nella giornata}}",
+      "resultPinnedOut": "{count, plural, one {Non ci sta più nella giornata, nemmeno in cima} other {Non ci stanno più nella giornata, nemmeno in cima}}",
       "resultHint": "Nel pianificatore puoi ancora spostare, eliminare e riordinare.",
       "apply": "Applica il piano",
       "applied": "{count, plural, one {Una attrazione pianificata} other {# attrazioni pianificate}}",

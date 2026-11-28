@@ -735,7 +735,7 @@
       "between": "{min}–{max} min",
       "from": "à partir de {min} min"
     },
-    "avgHeadlinerPeak": "Attente de pointe moy. des attractions phares",
+    "avgHeadlinerPeak": "Attente de pointe moy. (attractions phares)",
     "openAttractions": "Attractions ouvertes",
     "closedAttractions": "Attractions fermées",
     "schedule": "Horaires",
@@ -1295,7 +1295,7 @@
     },
     "headlinerForecastTitle": "Attentes de pointe prévues (attractions phares)",
     "crowdMeaning": {
-      "very_low": "Très peu de monde – attentes courtes, y compris sur les grandes attractions.",
+      "very_low": "Très peu de monde – attentes courtes, y compris sur les attractions phares.",
       "low": "Journée calme – attentes inférieures à la moyenne.",
       "moderate": "Une journée typique – attentes normales pour ce parc.",
       "high": "Plus de monde que d’habitude – attendez-vous à des files nettement plus longues.",
@@ -1360,7 +1360,7 @@
         "factOpenDaysValue": "{open} jours sur {total}",
         "factHours": "Horaires",
         "factHoursValue": "{from}–{to}",
-        "factWait": "Attente de pointe moy. des attractions phares",
+        "factWait": "Attente de pointe moy. (attractions phares)",
         "factWaitValue": "{minutes} min",
         "factSchoolVacation": "Vacances scolaires",
         "factSchoolVacationValue": "{days, plural, =1 {# jour} other {# jours}}",
@@ -1604,7 +1604,7 @@
         "boardingGroupsAvailable": "Groupes disponibles",
         "boardingGroupsDistributed": "Groupes distribués",
         "boardingGroupsPaused": "Groupes suspendus",
-        "returnState": "Horaire de retour : {state}",
+        "returnState": "Horaire de retour : {kind, select, full {Complet} finished {Plus aucun} other {{state}}}",
         "return": "Horaire de retour : {start}–{end}",
         "returnNoEnd": "Horaire de retour : {start}"
       }
@@ -1733,7 +1733,7 @@
       "medianCaption": "Médiane en minutes",
       "medianDetail": "La moitié des {usable} pannes dont la fin a été observée étaient terminées après {minutes} minutes.",
       "longestCaption": "Panne la plus longue",
-      "shareDetail": "Les pannes signalées ont représenté environ {percent} % du temps où l'attraction fonctionnait ou était signalée en panne.",
+      "shareDetail": "Les pannes ont représenté environ {percent} % du temps où l'attraction fonctionnait ou était signalée en panne.",
       "withheld": {
         "not_down_capable": "Aucune source de données ne signale de pannes pour ce parc. Si {name} tombe en panne, nous ne le voyons pas ici.",
         "park_never_reports": "La source de données de ce parc ne signale pas de pannes. Nous les repérons via les fermetures pendant les heures d'ouverture, sans publier de statistiques.",
@@ -1749,7 +1749,7 @@
         "heavily_censored": "{count} pannes ont été signalées ces {days} derniers jours. Pour trop d'entre elles, nous n'avons pas vu la fin, le plus souvent parce que le parc a fermé alors que l'attraction était encore à l'arrêt. C'est trop peu pour en tirer une durée.",
         "stale_data": "Ces chiffres ne sont pas à jour actuellement, nous ne les affichons donc pas."
       },
-      "longestDetail": "La plus longue des {usable} pannes dont la fin a été observée."
+      "longestDetail": "Sur les {usable} pannes dont la fin a été observée."
     },
     "retired": {
       "h1Suffix": "Fermé définitivement",
@@ -3706,7 +3706,7 @@
       "resultEnd": "Dernière attraction jusqu’à",
       "resultWait": "Temps d’attente cumulé",
       "resultOut": "Laissé de côté",
-      "resultPinnedOut": "{count, plural, one {Cette attraction épinglée ne rentre plus dans la journée} other {Ces attractions épinglées ne rentrent plus dans la journée}}",
+      "resultPinnedOut": "{count, plural, one {Ne rentre plus dans la journée, même tout en haut} other {Ne rentrent plus dans la journée, même tout en haut}}",
       "resultHint": "Dans le planning, vous pourrez encore déplacer, supprimer et retrier.",
       "apply": "Appliquer le plan",
       "applied": "{count, plural, one {Une attraction planifiée} other {# attractions planifiées}}",

@@ -717,7 +717,7 @@
       "full": "Vol",
       "unknown": "Geen voorspelling",
       "closed": "Gesloten",
-      "withUsual": "{level} · anders {minutes} min"
+      "withUsual": "{level} · meestal {minutes} min"
     },
     "crowdScale": {
       "title": "Drukteniveaus",
@@ -735,7 +735,7 @@
       "between": "{min}–{max} min",
       "from": "vanaf {min} min"
     },
-    "avgHeadlinerPeak": "Gem. piekwachttijd headliners",
+    "avgHeadlinerPeak": "Gem. piekwachttijd van de headliners",
     "openAttractions": "Open attracties",
     "closedAttractions": "Gesloten attracties",
     "schedule": "Schema",
@@ -1295,7 +1295,7 @@
     },
     "headlinerForecastTitle": "Verwachte piekwachttijden (headliners)",
     "crowdMeaning": {
-      "very_low": "Nauwelijks drukte – korte wachttijden, ook bij de grote banen.",
+      "very_low": "Nauwelijks drukte – korte wachttijden, ook bij de headliners.",
       "low": "Rustige dag – wachttijden onder het gemiddelde.",
       "moderate": "Een typische dag – normale wachttijden voor dit park.",
       "high": "Drukker dan normaal – reken op merkbaar langere wachttijden.",
@@ -1354,13 +1354,13 @@
         "busiestPast": "{count, plural, =1 {Het drukst was het op {days}.} other {Het drukst was het op {days}.}}",
         "hours": "Meestal open van {from} tot {to} uur.",
         "schoolVacation": "{days, plural, =1 {Op één dag} other {Op # dagen}} vallen er schoolvakanties in de regio van het park.",
-        "headlinerFuture": "Op het drukste moment kun je bij de headliners gemiddeld {minutes} minuten verwachten.",
-        "headlinerPast": "Op het drukste moment werd bij de headliners gemiddeld {minutes} minuten gemeten.",
+        "headlinerFuture": "Bij de headliners kun je op hun drukste moment gemiddeld {minutes} minuten verwachten.",
+        "headlinerPast": "Bij de headliners werd op hun drukste moment gemiddeld {minutes} minuten gemeten.",
         "factOpenDays": "Open",
         "factOpenDaysValue": "{open} van {total} dagen",
         "factHours": "Openingstijden",
         "factHoursValue": "{from}–{to} uur",
-        "factWait": "Gem. piekwachttijd headliners",
+        "factWait": "Gem. piekwachttijd van de headliners",
         "factWaitValue": "{minutes} min.",
         "factSchoolVacation": "Schoolvakanties",
         "factSchoolVacationValue": "{days, plural, =1 {# dag} other {# dagen}}",
@@ -1604,7 +1604,7 @@
         "boardingGroupsAvailable": "Groups beschikbaar",
         "boardingGroupsDistributed": "Groups uitgedeeld",
         "boardingGroupsPaused": "Boarding Groups gepauzeerd",
-        "returnState": "Terugkeertijd: {state}",
+        "returnState": "Terugkeertijd: {kind, select, full {Volgeboekt} finished {Geen meer} other {{state}}}",
         "return": "Terugkeertijd: {start}–{end}",
         "returnNoEnd": "Terugkeertijd: {start}"
       }
@@ -1733,7 +1733,7 @@
       "medianCaption": "Mediaan in minuten",
       "medianDetail": "De helft van de {usable} storingen met een waargenomen einde was na {minutes} minuten voorbij.",
       "longestCaption": "Langste storing",
-      "shareDetail": "Gemelde storingen besloegen ongeveer {percent}% van de tijd waarin de attractie draaide of er een storing gemeld was.",
+      "shareDetail": "Storingen besloegen ongeveer {percent}% van de tijd waarin de attractie draaide of er een storing gemeld was.",
       "withheld": {
         "not_down_capable": "Voor dit park meldt geen enkele databron storingen. Of {name} uitvalt zien we hier niet.",
         "park_never_reports": "De databron voor dit park meldt geen storingen. Wij herkennen ze aan sluitingen tijdens openingsuren, maar tonen daarover geen statistiek.",
@@ -1749,7 +1749,7 @@
         "heavily_censored": "In de afgelopen {days} dagen zijn {count} storingen gemeld. Van te veel daarvan hebben we het einde niet gezien, meestal omdat het park sloot terwijl de attractie nog stil stond. Dat is te weinig voor een tijdsduur.",
         "stale_data": "Deze cijfers zijn momenteel niet actueel, daarom tonen we ze niet."
       },
-      "longestDetail": "De langste van de {usable} storingen met een waargenomen einde."
+      "longestDetail": "Gerekend over de {usable} storingen met een waargenomen einde."
     },
     "retired": {
       "h1Suffix": "Definitief gesloten",
@@ -3706,7 +3706,7 @@
       "resultEnd": "Laatste attractie tot",
       "resultWait": "Wachttijd bij elkaar",
       "resultOut": "Blijft eruit",
-      "resultPinnedOut": "{count, plural, one {Deze vastgepinde attractie past niet meer in de dag} other {Deze vastgepinde attracties passen niet meer in de dag}}",
+      "resultPinnedOut": "{count, plural, one {Past ook helemaal bovenaan niet meer in de dag} other {Passen ook helemaal bovenaan niet meer in de dag}}",
       "resultHint": "In de planner kun je daarna nog schuiven, verwijderen en opnieuw sorteren.",
       "apply": "Plan overnemen",
       "applied": "{count, plural, one {Eén attractie ingepland} other {# attracties ingepland}}",
