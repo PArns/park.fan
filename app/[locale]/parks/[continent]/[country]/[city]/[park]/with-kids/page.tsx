@@ -21,7 +21,7 @@ import {
   findRelocatedParkRedirect,
   findRenamedParkRedirect,
 } from '@/lib/utils/redirect-utils';
-import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
+import { translateContinent, translateCountry, formatSlug } from '@/lib/i18n/helpers';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import {
@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: ParkKidsPageProps): Promise<M
   if (!data) return { title: tNotFound('park'), robots: { index: false } };
 
   const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
   const parkPhrases = parkArgs(locale as Locale, parkName, park.nameArticleDe);
 
   const title = fitTitle(
@@ -170,7 +170,7 @@ export default async function ParkKidsPage({ params }: ParkKidsPageProps) {
   // only the twelve fields the calendar shell keeps.
   const park = leanParkForCalendarShell(parkFull);
   const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
   const pagePath = parkKidsPath(locale, continent, country, city, parkSlug);

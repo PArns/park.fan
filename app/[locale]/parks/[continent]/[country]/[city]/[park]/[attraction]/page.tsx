@@ -17,7 +17,7 @@ import {
   type ClosedRide,
 } from '@/lib/parks/closed-ride';
 import { ClosedRidePage } from '@/components/parks/closed-ride-page';
-import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
+import { translateCountry, translateContinent, formatSlug } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { Link } from '@/i18n/navigation';
@@ -223,7 +223,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park?.name || '');
 
-  const cityName = park?.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park?.city || formatSlug(city);
 
   const keywords = [
     attractionName,
@@ -452,7 +452,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
   const continentName = translateContinent(tGeo, continent, locale);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
   const attractionName = stripNewPrefix(attraction?.name ?? closedRide?.name ?? '');
   const parkName = stripNewPrefix(park.name);
 

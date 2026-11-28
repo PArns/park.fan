@@ -29,6 +29,16 @@ export type SessionProxyScope = 'admin' | 'developer' | 'account';
 const FORWARDED_RESPONSE_HEADERS = ['content-type'];
 
 /**
+ * Backend routes that hand out a session and sit behind a Turnstile challenge in a route of their
+ * own (`/api/admin/session`, `/api/account/register`, `/api/developers/register`).
+ */
+const CHALLENGED_ELSEWHERE: Record<SessionProxyScope, ReadonlySet<string>> = {
+  admin: new Set(['auth/login']),
+  developer: new Set(['register']),
+  account: new Set(['register']),
+};
+
+/**
  * Endpoints after which the cached identity of `resolveAdminIdentity` must be cleared. Clearing
  * only helps the instance that served the request, so it is the second line; the first is that
  * `requireAdmin` never answers a write from cache (`lib/admin/session.ts`).
@@ -63,12 +73,17 @@ export async function proxySessionRequest(
   const route = path.join('/');
   const token = await readSessionToken(request);
 
+  // The backend skips its Turnstile check for a caller carrying the key, so signing in and
+  // registering go through the routes that check the challenge first. A session is no exception:
+  // anyone can register one, and it would turn this proxy into unchallenged login attempts.
+  if (CHALLENGED_ELSEWHERE[scope].has(route)) {
+    return NextResponse.json({ error: 'Not found' }, { status: 404, headers: NO_STORE });
+  }
+
   // No valid session, no proxy: `getServerApiHeaders()` attaches the `x-auth-key` the API reads as
   // a throttle bypass and as licence to trust `forwardedFor`, which an anonymous caller must not
   // get. The cookie is validated with the backend, not just read back. Not `requireAdmin`, because
-  // the password change and TOTP enrolment a session may still owe are behind this proxy. That
-  // includes `auth/login`: the backend skips its Turnstile check for a caller carrying the key, so
-  // signing in goes through `/api/admin/session`, which checks the challenge first.
+  // the password change and TOTP enrolment a session may still owe are behind this proxy.
   if (!(await resolveAdminIdentity(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

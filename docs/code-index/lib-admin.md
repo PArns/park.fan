@@ -295,7 +295,6 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `headlinersFirst` _function_: A park's rides with headliners first, otherwise in the order the backend sent them.
 - `reportDay` _function_: The report's day (`YYYY-MM-DD`, Berlin): what "overdue" and "in N Tagen" count from.
 - `reportTime` _function_: The report's time of day in Berlin, `10:04`.
-- `daysBetween` _function_: Calendar days from `from` to `to` (`YYYY-MM-DD`), negative when `to` lies before.
 - `formatShortDay` _function_: A day as `07.11.`, with the year only when it differs from `today`'s.
 - `formatWeekdayDay` _function_: A day as `Di, 22.12.`, with the year only when it differs from `today`'s.
 - `formatDaysAway` _function_: „in 3 Tagen“, „morgen“, „heute“, „seit 2 Tagen“ for a day count from the report's day.

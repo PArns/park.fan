@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { verifyTicket } from '@/lib/contribute/ticket';
 import { recordSubmission } from '@/lib/contribute/submissions';
 import { isAcceptedMimeType } from '@/lib/contribute/config';
-import { contributionFileUrl } from '@/lib/contribute/storage';
+import { contributionFileUrl, isContributionImageKey } from '@/lib/contribute/storage';
 import {
   uploadedBlobSchema,
   type StoredImageRecord,
@@ -42,10 +42,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'too-many-files', max: ticket.maxFiles }, { status: 422 });
   }
 
-  const prefix = `contributions/${ticket.sid}/`;
   const images: StoredImageRecord[] = [];
   for (const b of parsed.blobs) {
-    if (!b.pathname.startsWith(prefix)) {
+    if (!isContributionImageKey(b.pathname, ticket.sid)) {
       return NextResponse.json({ error: 'pathname-outside-submission' }, { status: 422 });
     }
     if (!isAcceptedMimeType(b.contentType)) {

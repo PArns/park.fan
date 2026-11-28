@@ -8,7 +8,6 @@ import assert from 'node:assert/strict';
 import {
   chartTop,
   dayMae,
-  daysBetween,
   formatDaysAway,
   formatGain,
   formatShortDay,
@@ -456,7 +455,6 @@ test('gains and days read in German', () => {
   assert.equal(formatShortDay('2027-01-05', '2026-11-07'), '05.01.2027');
   assert.equal(formatDaysAway(45), 'in 45 Tagen');
   assert.equal(formatDaysAway(-2), 'seit 2 Tagen');
-  assert.equal(daysBetween('2026-11-07', '2026-12-22'), 45);
 });
 
 test('live progress takes the scarcer of days and parks, full once live confirmed it', () => {

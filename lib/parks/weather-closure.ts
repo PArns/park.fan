@@ -1,4 +1,5 @@
 import type { WeatherClosure } from '@/lib/api/types';
+import { getNumberFormat } from '@/lib/utils/intl-format';
 import { convertTemp, type TemperatureUnit } from '@/lib/utils/temperature';
 
 /** The parts of the weather-closure line, each a message of `parks.weatherClosure`. */
@@ -54,7 +55,7 @@ export function weatherClosureTemps(
   const temp =
     Math.round(now) < threshold
       ? String(Math.round(now))
-      : new Intl.NumberFormat(locale, {
+      : getNumberFormat(locale, {
           minimumFractionDigits: 1,
           maximumFractionDigits: 1,
         }).format(Math.floor(now * 10) / 10);

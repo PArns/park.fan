@@ -10,7 +10,6 @@ import type {
 import {
   CELL_STATE_META,
   CHECK_STATE_META,
-  daysBetween,
   formatDaysAway,
   formatDiff,
   formatError,
@@ -20,6 +19,7 @@ import {
   whiskerGeometry,
 } from '@/lib/admin/model-comparison';
 import { getNumberFormat } from '@/lib/utils/intl-format';
+import { daysBetween } from '@/lib/utils/park-day';
 import { Chip, Meta } from '../../../_ui/primitives';
 import { CheckDot, STATE_TONE, StateDot } from './state-dot';
 

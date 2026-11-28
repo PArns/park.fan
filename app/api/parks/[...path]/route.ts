@@ -361,7 +361,7 @@ export async function GET(
       const parkData = await getParkByGeoPath(continent, country, city, park);
 
       if (!parkData) {
-        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
       }
 
       const positions = (parkData.attractions ?? [])
@@ -419,7 +419,7 @@ export async function GET(
       const parkData = await getParkByGeoPath(continent, country, city, park);
 
       if (!parkData) {
-        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
       }
 
       const stats = pickRideFigures(parkData.attractions ?? []);
@@ -444,7 +444,7 @@ export async function GET(
       const parkData = await getParkByGeoPath(continent, country, city, park);
 
       if (!parkData) {
-        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
       }
 
       const rides = (parkData.attractions ?? []).map((a) => ({
@@ -497,7 +497,7 @@ export async function GET(
       const data = await getParkWaitTimesFresh(continent, country, city, park);
 
       if (!data) {
-        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
       }
 
       return NextResponse.json(data, {
@@ -700,7 +700,10 @@ export async function GET(
       );
 
       if (!data) {
-        return NextResponse.json({ error: 'Attraction not found' }, { status: 404 });
+        return NextResponse.json(
+          { error: 'Attraction not found' },
+          { status: 404, headers: NO_STORE }
+        );
       }
 
       return NextResponse.json(data, {
@@ -727,7 +730,10 @@ export async function GET(
       );
 
       if (!data) {
-        return NextResponse.json({ error: 'Nowcast not available' }, { status: 404 });
+        return NextResponse.json(
+          { error: 'Nowcast not available' },
+          { status: 404, headers: NO_STORE }
+        );
       }
 
       return NextResponse.json(data, {

@@ -25,6 +25,17 @@ export function safeName(name: string): string {
   return base.length > 0 ? base.slice(0, 80) : 'image';
 }
 
+const IMAGE_KEY_RE = /^contributions\/([0-9a-f-]{36})\/(?!\.+$)[A-Za-z0-9._-]+$/;
+
+/**
+ * Whether `key` names one file directly inside a submission's folder, `submissionId`'s when given.
+ * A key reaches the Blob store from a request, so a prefix test alone would let `..` leave the folder.
+ */
+export function isContributionImageKey(key: string, submissionId?: string): boolean {
+  const match = IMAGE_KEY_RE.exec(key);
+  return match !== null && (submissionId === undefined || match[1] === submissionId);
+}
+
 /**
  * Where the admin reads a stored image: our authenticated route, never the raw private blob URL.
  * Built from the key on the server, so nothing a browser sends decides what the moderator loads.

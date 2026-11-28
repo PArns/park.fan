@@ -10,7 +10,7 @@ import type {
   ModelComparisonReport,
 } from '@/lib/api/admin-model-comparison';
 import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
-import { parkDayOf } from '@/lib/utils/park-day';
+import { daysBetween, parkDayOf } from '@/lib/utils/park-day';
 
 /**
  * The pure half of the admin model comparison (`app/admin/ml/vergleich`): wording, column order,
@@ -417,11 +417,6 @@ export function reportTime(generatedAt: string): string {
     minute: '2-digit',
     timeZone: REPORT_ZONE,
   }).format(new Date(generatedAt));
-}
-
-/** Calendar days from `from` to `to` (`YYYY-MM-DD`), negative when `to` lies before. */
-export function daysBetween(from: string, to: string): number {
-  return Math.round((Date.parse(`${to}T12:00:00Z`) - Date.parse(`${from}T12:00:00Z`)) / 86_400_000);
 }
 
 /** A day as `07.11.`, with the year only when it differs from `today`'s. */

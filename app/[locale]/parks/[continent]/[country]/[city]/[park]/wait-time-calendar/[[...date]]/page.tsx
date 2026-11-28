@@ -40,7 +40,7 @@ import {
   shiftParkCalendarMonth,
   type ParkCalendarMonth,
 } from '@/lib/parks/calendar-segments';
-import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
+import { translateContinent, translateCountry, formatSlug } from '@/lib/i18n/helpers';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import {
@@ -143,7 +143,7 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   const month = resolved.month;
 
   const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
   // The hub (and the current month's URL, which is canonical to it) is the calendar for the months
   // ahead, so its title names their years: „November 2026“ told a search in a park's winter break
   // about the month it is closed. Every other month is searched by its name and keeps it.
@@ -310,7 +310,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   }
 
   const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
   // The park's day for the outlook. Safe to read the server clock: this route is `force-dynamic`.

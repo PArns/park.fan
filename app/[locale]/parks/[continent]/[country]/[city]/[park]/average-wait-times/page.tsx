@@ -27,7 +27,7 @@ import {
   findRelocatedParkRedirect,
   findRenamedParkRedirect,
 } from '@/lib/utils/redirect-utils';
-import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
+import { translateContinent, translateCountry, formatSlug } from '@/lib/i18n/helpers';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { getDateTimeFormat, getListFormat, weekdayName } from '@/lib/utils/intl-format';
 import { stripNewPrefix } from '@/lib/utils';
@@ -100,7 +100,7 @@ export async function generateMetadata({ params }: ParkStatsPageProps): Promise<
   if (!stats?.meta.displayable) return { title: tNotFound('park'), robots: { index: false } };
 
   const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
   const parkPhrases = parkArgs(locale as Locale, parkName, park.nameArticleDe);
 
   // Two candidates, longest-preferred, for the same reason the calendar has two: the catalogue's
@@ -229,7 +229,7 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
   // fields the calendar shell keeps, for the same two components.
   const park = leanParkForCalendarShell(parkFull);
   const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
   const pagePath = parkStatsPath(locale, continent, country, city, parkSlug);

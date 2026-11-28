@@ -1,3 +1,4 @@
+import { calculateDistance } from '@/lib/utils/distance-utils';
 import type { MediaGps, MediaImage } from './types';
 
 /**
@@ -34,16 +35,7 @@ export function distanceMeters(
   a: { lat: number; lon: number },
   b: { latitude: number; longitude: number }
 ): number {
-  const EARTH_RADIUS_M = 6_371_000;
-  const toRad = (deg: number) => (deg * Math.PI) / 180;
-
-  const dLat = toRad(b.latitude - a.lat);
-  const dLon = toRad(b.longitude - a.lon);
-  const lat1 = toRad(a.lat);
-  const lat2 = toRad(b.latitude);
-
-  const h = Math.sin(dLat / 2) ** 2 + Math.sin(dLon / 2) ** 2 * Math.cos(lat1) * Math.cos(lat2);
-  return 2 * EARTH_RADIUS_M * Math.asin(Math.sqrt(h));
+  return calculateDistance(a.lat, a.lon, b.latitude, b.longitude);
 }
 
 /** The closest park to a GPS fix, or null when the list is empty. */

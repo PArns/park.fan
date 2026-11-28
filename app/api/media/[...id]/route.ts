@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { MEDIA_REVISION, getMediaImage, getRideImages } from '@/lib/media';
 import { serializeMediaImage } from '@/lib/media/api';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { isValidLocale } from '@/i18n/config';
 
 /**
  * One image by its database id, with everything a client needs to render and
@@ -38,7 +39,8 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
     );
   }
 
-  const locale = new URL(request.url).searchParams.get('locale') ?? 'de';
+  const requested = new URL(request.url).searchParams.get('locale');
+  const locale = requested && isValidLocale(requested) ? requested : 'de';
 
   // Per-image ETag: one image changing must not invalidate the others.
   const etag = `"${image.version}-${locale}"`;

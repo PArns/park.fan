@@ -9,7 +9,7 @@ import {
   buildAlternates,
   fitTitle,
 } from '@/lib/utils/metadata';
-import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
+import { translateCountry, translateContinent, formatSlug } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
@@ -141,7 +141,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   // A park that closed for good: the title and snippet say so instead of promising live waits.
   const closedCopy = isClosedPark(park) ? await closedParkCopy(park, locale as Locale) : null;
 
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
 
   const parkNameLower = parkName.toLowerCase();
@@ -403,7 +403,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // Format names for breadcrumb - use actual names from park data (proper umlauts)
   const continentName = translateContinent(tGeo, continent, locale);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
 
   // Today's schedule is picked CLIENT-side inside <ParkTodayPanel> (from the browser clock in the
   // park's timezone) — the full day-stable park.schedule is handed down instead of a server-derived

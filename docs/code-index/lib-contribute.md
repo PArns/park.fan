@@ -28,6 +28,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`storage.ts`](../../lib/contribute/storage.ts)
 
 - `safeName` _function_: Strip anything unsafe so a filename can't escape the submission folder.
+- `isContributionImageKey` _function_: Whether `key` names one file directly inside a submission's folder, `submissionId`'s when given. A key reaches the Blob store from a request, so a prefix test alone would let `..` leave the folder.
 - `contributionFileUrl` _function_: Where the admin reads a stored image: our authenticated route, never the raw private blob URL. Built from the key on the server, so nothing a browser sends decides what the moderator loads.
 - `putImage` _function_: Store one image via the configured driver.
 - `countImages` _function_: How many images a submission already holds. The upload route checks it against the ticket's `maxFiles`, because finalize only counts what the browser reports and an upload it never reports would otherwise be free.

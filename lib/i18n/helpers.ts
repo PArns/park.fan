@@ -56,7 +56,7 @@ export function translateContinent(
  * Format a slug into a readable string
  * Example: "north-america" -> "North America"
  */
-function formatSlug(slug: string): string {
+export function formatSlug(slug: string): string {
   return slug
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))

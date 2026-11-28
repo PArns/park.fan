@@ -57,8 +57,8 @@ function buildAuthorFile(a: NonNullable<SavePayload['newAuthors']>[number]): str
   if (a.shortName) lines.push(`shortName: ${yamlString(a.shortName)}`);
   if (a.role) lines.push(`role: ${yamlString(a.role)}`);
   if (a.location) lines.push(`location: ${yamlString(a.location)}`);
-  if (a.url) lines.push(`url: ${a.url}`);
-  if (a.avatar) lines.push(`avatar: ${a.avatar}`);
+  if (a.url) lines.push(`url: ${yamlString(a.url)}`);
+  if (a.avatar) lines.push(`avatar: ${yamlString(a.avatar)}`);
   if (a.bio) lines.push(`bio: ${yamlString(a.bio)}`);
   lines.push('---', '');
   if (a.bio) lines.push(a.bio, '');
