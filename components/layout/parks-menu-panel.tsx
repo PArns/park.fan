@@ -129,7 +129,7 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
     // Not cancelled when the pointer moves on: the response is a cache write keyed by country and
     // right whenever it lands. Discarding it while the key stays in `requested` would leave every
     // country skimmed past on its skeleton for the session.
-    fetch(`/api/nav/geo/${countryKey}`)
+    fetch(`/api/nav/geo/${countryKey}?locale=${locale}`)
       .then((r) => {
         if (!r.ok) throw new Error(`nav geo ${r.status}`);
         return r.json();
@@ -142,7 +142,7 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
         // link above still works in the meantime.
         requested.current.delete(countryKey);
       });
-  }, [countryKey]);
+  }, [countryKey, locale]);
 
   /*
    * Hover has to be rested on, not crossed: the way to the detail row leads over the countries

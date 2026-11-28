@@ -59,6 +59,10 @@ export const CACHE_TTL = {
   // /v1/page-views/top, the most-read rankings over 7 and 30 days. The API caches them for an hour
   // too: a sum over a week does not move in five minutes, and the lists are not a ticker.
   pageViews: 3600,
+  // The same park ranking, asked for a day fresh by the lists it orders: the country pages and the
+  // header menu's country pane. A day is a thirtieth of the window it sums, and the country pages
+  // are ISR on `countrySummary`'s day: an hour here would rebuild each of them 24 times a day.
+  parkViewOrder: 86400,
   // `/v1/trip-regions/:region`, the parks, hotel areas and drive times of a region. Curated in the
   // API's code and moved only by its deploy; the API asks the edge for a day too.
   tripRegion: 86400,

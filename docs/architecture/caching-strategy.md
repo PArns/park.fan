@@ -65,6 +65,7 @@ Server fetches cache through `fetch` with `next: { revalidate, tags }`. Windows 
 | ML dashboard and metrics history       | `getMLDashboard`, `getMLMetricsHistory`                  | 1 day (training runs daily)             | `ml`                            |
 | Glossary ride lists                    | `lib/api/glossary-rides.ts`                              | 7 days                                  | `glossary-rides`, `attractions` |
 | Popular parks, most-viewed parks       | `getPopularParks`, `getMostViewedParks` (API route only) | 1800 s / `CACHE_TTL.pageViews`          | `popular-parks`, `page-views`   |
+| Park view order (country lists)        | `getParkOrderViews` (country page, menu country pane)    | `CACHE_TTL.parkViewOrder`, 1 day        | `page-views`                    |
 | Live park for the MCP server           | `getParkByGeoPathForAgents`                              | `CACHE_TTL.agentPark`, 300 s            | as the park                     |
 
 Uncached (`no-store`): search (`lib/api/search.ts`), the day plan (`lib/api/plan.ts`) and the

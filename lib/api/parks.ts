@@ -7,6 +7,7 @@ import { getGeoStructure } from './discovery';
 import {
   VIEWED_PARKS_ASK_FOR,
   VIEWED_PARKS_DAYS,
+  parkOrderViews,
   rankedFirst,
   resolveViewedParks,
 } from '@/lib/parks/viewed-parks';
@@ -626,16 +627,11 @@ export function getPopularParks(limit = 20): Promise<PopularPark[]> {
  */
 export async function getMostViewedParks(locale: Locale, limit = 20): Promise<PopularPark[]> {
   const [top, geo, requested] = await Promise.all([
-    api
-      .get<{ items: MostReadRanking }>('/v1/page-views/top', {
-        params: { kind: 'park', locale, days: VIEWED_PARKS_DAYS, limit: VIEWED_PARKS_ASK_FOR },
-        next: { revalidate: CACHE_TTL.pageViews, tags: ['page-views'] },
-      })
-      .catch(() => ({ items: [] })),
+    getParkViewRanking(locale, CACHE_TTL.pageViews).catch((): MostReadRanking => []),
     getGeoStructure(),
     getPopularParks(limit),
   ]);
-  const viewed: PopularPark[] = resolveViewedParks(top.items, geo).map((park) => ({
+  const viewed: PopularPark[] = resolveViewedParks(top, geo).map((park) => ({
     rank: 0,
     requests: park.views,
     id: park.id,
@@ -650,4 +646,34 @@ export async function getMostViewedParks(locale: Locale, limit = 20): Promise<Po
     ...park,
     rank: index + 1,
   }));
+}
+
+/**
+ * The views that order a country's park list for this locale's readers (`parkOrderViews`), on
+ * the day-long {@link CACHE_TTL.parkViewOrder}: the country pages and the header menu's country
+ * pane. Empty when the counter does not answer, and the lists keep their own order.
+ */
+export async function getParkOrderViews(locale: Locale): Promise<ReadonlyMap<string, number>> {
+  try {
+    return parkOrderViews(
+      await getParkViewRanking(locale, CACHE_TTL.parkViewOrder),
+      VIEWED_PARKS_ASK_FOR
+    );
+  } catch {
+    return new Map();
+  }
+}
+
+/**
+ * This locale's park ranking over {@link VIEWED_PARKS_DAYS} days, {@link VIEWED_PARKS_ASK_FOR}
+ * long. One request URL for every reader, so the hero's fallback and the country lists share one
+ * Data Cache entry and one upstream call; each reader brings its own window.
+ */
+function getParkViewRanking(locale: Locale, revalidate: number): Promise<MostReadRanking> {
+  return api
+    .get<{ items: MostReadRanking }>('/v1/page-views/top', {
+      params: { kind: 'park', locale, days: VIEWED_PARKS_DAYS, limit: VIEWED_PARKS_ASK_FOR },
+      next: { revalidate, tags: ['page-views'] },
+    })
+    .then((top) => top.items);
 }
