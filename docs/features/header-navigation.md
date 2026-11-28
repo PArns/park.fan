@@ -83,8 +83,10 @@ imported. `useMenuReveal` collects targets at any depth, so **never wrap a panel
 
 `ParksMenuPanel`: five continent columns with their countries, server-rendered into every page; a
 detail row of cities and parks fetched per country from `/api/nav/geo/[continent]/[country]` (once
-per country per tab); a photo rail. Switching countries arms on enter and commits after
-`COUNTRY_DWELL_MS`, so crossing countries on the way down to the detail row does not switch it; how
+per country per tab, with `?locale=`, so the parks the reader's language opens most lead:
+[country lists](most-read.md#country-lists)); a photo rail. Switching countries arms on enter and
+commits after `COUNTRY_DWELL_MS`, so crossing countries on the way down to the detail row does not
+switch it; how
 hover, focus and a failed request behave is in
 [the rule](../rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md#what-else-is-load-bearing).
 The detail row holds its height whether or not a country is open.

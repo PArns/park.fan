@@ -171,6 +171,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `getParkYearlyPredictions` _function_: The park's long-range crowd forecast, day by day.
 - `getPopularParks` _function_: Get the most-requested parks, ranked by tracked request volume. The popularity ranking drifts slowly, so 30 min of staleness is fine.
 - `getMostViewedParks` _function_: The parks this locale's readers opened most in the last `VIEWED_PARKS_DAYS` days (the page-view counter, `kind=park`), topped up from `getPopularParks` to `limit`, in its shape: `requests` carries the views, `url` the API path the other …
+- `getParkOrderViews` _function_: The views that order a country's park list for this locale's readers (`parkOrderViews`), on the day-long `CACHE_TTL.parkViewOrder`: the country pages and the header menu's country pane.
 - Types: `ParkDailyPrediction`, `ParkYearlyHoliday`, `ParkYearlyPredictions`
 - Re-exports: `./park-live-projection`
 

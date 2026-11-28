@@ -216,10 +216,13 @@ Which two days of a park's calendar are being compared, across a change of month
 
 - `geoParks` _function_: Every park of the geo structure by UUID, in the structure's order (continents, then countries, cities and parks as the API lists them), with the fields the popular-parks surfaces draw.
 - `resolveViewedParks` _function_: The ranked parks the geo structure knows, most viewed first, without those under `VIEWED_PARK_MIN_VIEWS`. A key that is no park of the structure (a park since merged or removed) is dropped.
+- `parkOrderViews` _function_: The views, by park id, that may order a country's parks: those of at least `PARK_ORDER_MIN_VIEWS`, and where the ranking came back as long as `askedFor`, only those above its last entry, since a park with as many views as the last may lie …
+- `orderCitiesByViews` _function_: A country's cities in view order: in each city the counted parks by their views, the others after them as they came; the cities by their most viewed park, those without a counted park after them as they came.
 - `rankedFirst` _function_: `ranked` first, then `fallback` without what `ranked` already holds, cut to `count`: how a popular-parks surface puts the counted parks ahead of its hand-picked list and keeps its length when few parks were read.
 - `VIEWED_PARKS_DAYS` _const_: The window the park ranking sums over, in UTC days with today included.
 - `VIEWED_PARK_MIN_VIEWS` _const_: Views a park needs in that window to count as popular: below it one reader would decide.
 - `VIEWED_PARKS_ASK_FOR` _const_: The parks asked of the API per locale, its most. A country column in the footer takes the country's parks among them, so the cut has to reach past the few parks every language reads.
+- `PARK_ORDER_MIN_VIEWS` _const_: Views a park needs before a country's list places it by them (the country page, the header menu's country pane); below, it keeps the list's own order.
 - Types: `ViewedPark`
 
 ### [`weather-closure.ts`](../../lib/parks/weather-closure.ts)

@@ -26,6 +26,8 @@ import { TripPlannerBand } from '@/components/trip-regions/trip-planner-band';
 import { Link } from '@/i18n/navigation';
 import { Trophy } from 'lucide-react';
 import { getCurrentRankingSeed } from '@/lib/api/rankings';
+import { getParkOrderViews } from '@/lib/api/parks';
+import { orderCitiesByViews } from '@/lib/parks/viewed-parks';
 import { rankingPath } from '@/lib/rankings/segments';
 
 interface CountryPageProps {
@@ -94,18 +96,19 @@ export default async function CountryPage({ params }: CountryPageProps) {
   const tExplore = await getTranslations('explore');
   const tRankings = await getTranslations('rankings');
 
-  const [response, summary, ranking] = await Promise.all([
+  const [response, summary, ranking, views] = await Promise.all([
     // Only the API's own 404 may end in `notFound()` — see the continent page.
     nullOnNotFound(getCitiesWithParks(continent, country)),
     catchNonFatal(getCountrySummary(continent, country)),
     getCurrentRankingSeed(continent, country),
+    getParkOrderViews(locale as Locale),
   ]);
 
   if (!response || !response.data || response.data.length === 0) {
     notFound();
   }
 
-  const cities = response.data;
+  const cities = orderCitiesByViews(response.data, views);
   const countryGuide = getGuideForCountry(locale as Locale, country);
 
   const totalParks = cities.reduce((sum, c) => sum + c.parkCount, 0);
