@@ -6968,7 +6968,7 @@ step: {
   // renders its raw key on every page of the site.
   const LOCALE_TAB = {
     de: 'Tagesplaner',
-    en: 'Trip planner',
+    en: 'Day planner',
     nl: 'Dagplanner',
     fr: 'Planificateur',
     es: 'Planificador',
