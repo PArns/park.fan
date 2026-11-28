@@ -17,23 +17,14 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { fitSentences } from '../lib/utils/metadata.ts';
 import { getGlossaryTerms } from '../lib/glossary/translations.ts';
+import { attempt, finishChecks, quietChecks } from './lib/run-cases.mjs';
+
+quietChecks();
 
 const LIMIT = 155;
 const LOCALES = ['en', 'de', 'fr', 'it', 'nl', 'es'];
 
-let failures = 0;
-let checks = 0;
-function test(name, fn) {
-  checks++;
-  try {
-    fn();
-  } catch (error) {
-    failures++;
-    console.error(`✗ ${name}\n  ${error.message}`);
-  }
-}
-
-test('fitSentences keeps whole sentences and abbreviations together', () => {
+attempt('fitSentences keeps whole sentences and abbreviations together', () => {
   const text =
     'Airtime is the moment you lift out of the seat on a hill, z. B. on Taron at Phantasialand. ' +
     'It comes in two kinds: floater and ejector. Floater airtime is gentle and lasts long.';
@@ -43,14 +34,14 @@ test('fitSentences keeps whole sentences and abbreviations together', () => {
   assert.ok(out.includes('z. B. on Taron'), out);
 });
 
-test('fitSentences clips one long sentence at a word with an ellipsis', () => {
+attempt('fitSentences clips one long sentence at a word with an ellipsis', () => {
   const out = fitSentences('word '.repeat(60).trim(), 155);
   assert.ok(out.length <= 155 && out.endsWith('…') && !out.endsWith(' …'), out);
 });
 
 for (const locale of LOCALES) {
   const terms = await getGlossaryTerms(locale);
-  test(`glossary ${locale}: ${terms.length} descriptions fit`, () => {
+  attempt(`glossary ${locale}: ${terms.length} descriptions fit`, () => {
     for (const term of terms) {
       const description = fitSentences(term.definition.split('\n\n')[0], LIMIT);
       assert.ok(description.length <= LIMIT, `${term.id}: ${description.length}`);
@@ -67,7 +58,7 @@ for (const locale of LOCALES) {
     .map((f) => ({ f, d: matter(fs.readFileSync(path.join(dir, f), 'utf8')).data }))
     .map(({ f, d }) => ({ f, len: (d.seo?.description ?? d.excerpt ?? '').length }))
     .filter(({ len }) => len > LIMIT);
-  test(`blog ${locale}: seo.description at most ${LIMIT} characters`, () => {
+  attempt(`blog ${locale}: seo.description at most ${LIMIT} characters`, () => {
     assert.deepEqual(
       long.map(({ f, len }) => `${f} (${len})`),
       []
@@ -75,5 +66,4 @@ for (const locale of LOCALES) {
   });
 }
 
-console.log(`${checks - failures}/${checks} checks passed`);
-if (failures > 0) process.exit(1);
+finishChecks();

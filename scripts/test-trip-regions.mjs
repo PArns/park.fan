@@ -49,13 +49,7 @@ import {
   fitTitle,
   titleWidth,
 } from '../lib/utils/metadata.ts';
-
-let passed = 0;
-const test = (name, fn) => {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-};
+import { test, reportPassed } from './lib/run-cases.mjs';
 
 const messages = Object.fromEntries(
   locales.map((l) => [
@@ -406,4 +400,4 @@ test('every trip-region read carries the API version, and a change of the types 
   );
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

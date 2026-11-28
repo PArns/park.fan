@@ -9,6 +9,9 @@
 import { readFileSync } from 'node:fs';
 import { unavailableNote } from '../lib/planner/unavailable.ts';
 import { canOptimize } from '../lib/planner/optimize.ts';
+import { checkThat, finishChecks, quietChecks } from './lib/run-cases.mjs';
+
+quietChecks();
 
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
 const REASONS = [
@@ -47,14 +50,6 @@ const day = (reason, extra = {}, liveWaitTimes) => ({
 const lookup = (locale, key) =>
   key.split('.').reduce((o, k) => o?.[k], messages[locale].planner.unavailable);
 
-let failed = 0;
-const check = (name, ok, detail = '') => {
-  if (!ok) {
-    failed++;
-    console.error(`✗ ${name} ${detail}`);
-  }
-};
-
 let applied = 0;
 for (const reason of REASONS) {
   const fixtures =
@@ -70,39 +65,42 @@ for (const reason of REASONS) {
   for (const fixture of fixtures) {
     const note = unavailableNote(fixture);
     applied++;
-    check(`${reason}: note`, note !== null);
+    checkThat(`${reason}: note`, note !== null);
     if (!note) continue;
     for (const locale of LOCALES) {
-      check(`${reason}/${locale}: key ${note.key}`, typeof lookup(locale, note.key) === 'string');
+      checkThat(
+        `${reason}/${locale}: key ${note.key}`,
+        typeof lookup(locale, note.key) === 'string'
+      );
     }
-    check(`${reason}: no Optimieren`, canOptimize(fixture, {}) === false);
+    checkThat(`${reason}: no Optimieren`, canOptimize(fixture, {}) === false);
   }
 }
 
 const sourceKeys = (d) => unavailableNote(d)?.key;
-check(
+checkThat(
   'no_wait_time_source follows the park flag',
   sourceKeys(day('no_wait_time_source', {}, { available: false, reason: 'in_park_app_only' })) ===
     'no_wait_time_source.in_park_app_only'
 );
-check(
+checkThat(
   'feed_stale carries the days',
   unavailableNote(day('feed_stale', { staleDays: 96 }))?.values?.days === 96
 );
-check('a day with curves has no note', unavailableNote({ ...day(null), rides: [{}] }) === null);
-check(
+checkThat('a day with curves has no note', unavailableNote({ ...day(null), rides: [{}] }) === null);
+checkThat(
   'no flag on the park gets the neutral sentence',
   unavailableNote(day('no_wait_time_source', {}))?.key === 'no_wait_time_source.unknown'
 );
-check(
+checkThat(
   'a reason beside rides is ignored',
   unavailableNote({ ...day('park_closed'), rides: [{}] }) === null
 );
-check(
+checkThat(
   'feed_stale with 0 days falls back',
   unavailableNote(day('feed_stale', { staleDays: 0 }))?.key === 'feed_stale_unknown'
 );
-check(
+checkThat(
   'no_wait_time_source with rides does not optimise',
   canOptimize(
     {
@@ -112,12 +110,12 @@ check(
     {}
   ) === false
 );
-check('no day has no note', unavailableNote(null) === null);
+checkThat('no day has no note', unavailableNote(null) === null);
 
 const unused = Object.keys(messages.de.planner.unavailable).filter(
   (k) => k !== 'feed_stale_unknown' && !REASONS.includes(k)
 );
-check('no message without a reason', unused.length === 0, unused.join(','));
+checkThat('no message without a reason', unused.length === 0, unused.join(','));
 
-console.log(`${applied} fixtures, ${failed} failed`);
-if (failed > 0) process.exit(1);
+console.log(`${applied} fixtures`);
+finishChecks();

@@ -6,6 +6,7 @@
 // current fix wherever the page knows a ride's point.
 import assert from 'node:assert/strict';
 import { resolveInParkBlock, withCurrentDistances } from '../lib/utils/in-park-block.ts';
+import { test, reportPassed } from './lib/run-cases.mjs';
 
 const PARK_ID = 'park-phl';
 const PARK = { lat: 50.8005, lng: 6.8793 };
@@ -54,13 +55,6 @@ const base = {
   loading: false,
   simulated: false,
 };
-
-let n = 0;
-function test(name, fn) {
-  fn();
-  n++;
-  console.log(`ok ${n} - ${name}`);
-}
 
 test('before the permission check nothing is known', () => {
   assert.deepEqual(resolveInParkBlock({ ...base, initialCheckDone: false }), { kind: 'pending' });
@@ -212,4 +206,4 @@ test('withCurrentDistances rounds to whole metres and does not mutate its input'
   assert.equal(rides[0].distance, 900);
 });
 
-console.log(`\n${n} passed`);
+reportPassed();

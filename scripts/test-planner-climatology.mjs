@@ -8,6 +8,9 @@
 import { readFileSync } from 'node:fs';
 import { bandCarriesFigure, estimateFor } from '../lib/planner/estimate.ts';
 import { climatologyNote } from '../lib/planner/climatology.ts';
+import { checkThat, finishChecks, quietChecks } from './lib/run-cases.mjs';
+
+quietChecks();
 
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
 const STATES = ['holiday', 'school_vacation', 'regular', 'school_unknown'];
@@ -18,16 +21,6 @@ const messages = Object.fromEntries(
     JSON.parse(readFileSync(new URL(`../messages/${l}.json`, import.meta.url))).planner,
   ])
 );
-
-let failed = 0;
-let applied = 0;
-const check = (name, ok, detail = '') => {
-  applied++;
-  if (!ok) {
-    failed++;
-    console.error(`✗ ${name} ${detail}`);
-  }
-};
 
 const day = (tier, extra = {}) => ({
   parkSlug: 'x',
@@ -56,51 +49,56 @@ const climatology = (holidayState, days = 4) => ({
 });
 const entry = { id: 'e', attractionSlug: 'a', startMinute: 600 };
 
-check(
+checkThat(
   'climatology: the band carries no figure, even beside a measured lead error',
   bandCarriesFigure(day('climatology', { leadTimeMae: 14 })) === false
 );
-check(
+checkThat(
   'composed with a lead error keeps its figure',
   bandCarriesFigure(day('composed', { leadTimeMae: 14 }))
 );
-check('measured keeps its figure', bandCarriesFigure(day('measured')));
+checkThat('measured keeps its figure', bandCarriesFigure(day('measured')));
 
 const look = estimateFor(day('climatology'), entry);
-check('climatology: wait is the curve', look.wait === 30);
-check('climatology: no spread', look.uncertaintyMinutes === null);
-check('climatology: no typical error', look.expectedError === null);
-check('climatology: the block says so', look.tier === 'climatology');
+checkThat('climatology: wait is the curve', look.wait === 30);
+checkThat('climatology: no spread', look.uncertaintyMinutes === null);
+checkThat('climatology: no typical error', look.expectedError === null);
+checkThat('climatology: the block says so', look.tier === 'climatology');
 const composed = estimateFor(day('composed'), entry);
-check(
+checkThat(
   'composed: spread and error survive',
   composed.uncertaintyMinutes === 12 && composed.expectedError === 9
 );
 
 for (const state of STATES) {
   const note = climatologyNote(day('climatology', { climatology: climatology(state, 3) }));
-  check(`${state}: note`, note !== null);
+  checkThat(`${state}: note`, note !== null);
   if (!note) continue;
-  check(`${state}: counts the reference days`, note.values.days === 3);
-  check(`${state}: keeps the situation`, note.holidayState === state);
+  checkThat(`${state}: counts the reference days`, note.values.days === 3);
+  checkThat(`${state}: keeps the situation`, note.holidayState === state);
   for (const locale of LOCALES) {
-    check(`${state}/${locale}: message`, typeof messages[locale].climatology?.[state] === 'string');
+    checkThat(
+      `${state}/${locale}: message`,
+      typeof messages[locale].climatology?.[state] === 'string'
+    );
   }
 }
 for (const locale of LOCALES) {
-  check(`${locale}: title`, typeof messages[locale].climatology?.title === 'string');
-  check(`${locale}: tier label`, typeof messages[locale].tier?.climatology === 'string');
+  checkThat(`${locale}: title`, typeof messages[locale].climatology?.title === 'string');
+  checkThat(`${locale}: tier label`, typeof messages[locale].tier?.climatology === 'string');
 }
-check(
+checkThat(
   'a tier other than climatology has no note',
   climatologyNote(day('composed', { climatology: climatology('regular') })) === null
 );
-check('climatology without its object has no note', climatologyNote(day('climatology')) === null);
-check('no day has no note', climatologyNote(null) === null);
+checkThat(
+  'climatology without its object has no note',
+  climatologyNote(day('climatology')) === null
+);
+checkThat('no day has no note', climatologyNote(null) === null);
 const unused = Object.keys(messages.de.climatology).filter(
   (k) => k !== 'title' && !STATES.includes(k)
 );
-check('no message without a situation', unused.length === 0, unused.join(','));
+checkThat('no message without a situation', unused.length === 0, unused.join(','));
 
-console.log(`${applied} checks, ${failed} failed`);
-if (failed > 0) process.exit(1);
+finishChecks();

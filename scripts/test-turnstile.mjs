@@ -16,6 +16,8 @@
 // allowlist skips its check. An unset allowlist must not be able to take the
 // admin login down on the deploy that shipped it; an unset secret means there
 // is nothing to verify with at all.
+import { runCases } from './lib/run-cases.mjs';
+
 process.env.TURNSTILE_SECRET_KEY = 'test-secret';
 process.env.NODE_ENV = 'production';
 
@@ -130,52 +132,31 @@ const testCases = [
   },
 ];
 
-let passed = 0;
-let failed = 0;
+/** The two fields a case names; the verdict may carry more. */
+const verdict = ({ success, reason }) => ({ success, reason });
 
-for (const testCase of testCases) {
-  if (testCase.hostnames) {
-    process.env.TURNSTILE_HOSTNAMES = testCase.hostnames;
-  } else {
-    delete process.env.TURNSTILE_HOSTNAMES;
-  }
-  siteverifyReply = testCase.reply;
-
-  const result = await verifyTurnstile(testCase.token ?? 'a-token', testCase.check);
-  const matches =
-    result.success === testCase.expected.success && result.reason === testCase.expected.reason;
-
-  if (matches) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
-    failed++;
-  }
-}
-
-// The secret is the one thing that may not be missing in production.
-delete process.env.TURNSTILE_SECRET_KEY;
-siteverifyReply = { success: true, action: 'admin-login', hostname: 'park.fan' };
-const unconfigured = await verifyTurnstile('a-token', ADMIN);
-if (unconfigured.success === false && unconfigured.reason === 'not-configured') {
-  console.log('✅ PASS: no secret in production refuses rather than waving through');
-  passed++;
-} else {
-  console.log('❌ FAIL: no secret in production refuses rather than waving through');
-  console.log(`   Got:      ${JSON.stringify(unconfigured)}`);
-  failed++;
-}
-
-console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${passed + failed} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+await runCases(
+  [
+    ...testCases.map((testCase) => ({
+      name: testCase.name,
+      actual: async () => {
+        if (testCase.hostnames) process.env.TURNSTILE_HOSTNAMES = testCase.hostnames;
+        else delete process.env.TURNSTILE_HOSTNAMES;
+        siteverifyReply = testCase.reply;
+        return verdict(await verifyTurnstile(testCase.token ?? 'a-token', testCase.check));
+      },
+      expected: verdict(testCase.expected),
+    })),
+    {
+      // The secret is the one thing that may not be missing in production.
+      name: 'no secret in production refuses rather than waving through',
+      actual: async () => {
+        delete process.env.TURNSTILE_SECRET_KEY;
+        siteverifyReply = { success: true, action: 'admin-login', hostname: 'park.fan' };
+        return verdict(await verifyTurnstile('a-token', ADMIN));
+      },
+      expected: { success: false, reason: 'not-configured' },
+    },
+  ],
+  { json: true }
+);

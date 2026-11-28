@@ -198,9 +198,10 @@ forgets a failed script promise for the same reason; otherwise every retry would
 
 The admin lives on park.fan's own origin and gets the headers `next.config.ts` sends on every path:
 `X-Frame-Options: DENY`, HSTS, `nosniff`, `Referrer-Policy` and `Permissions-Policy`. The first rule
-in `headers()` adds the site's baseline `Content-Security-Policy: object-src 'none'; base-uri 'self'`:
-no plugin content, and no injected `<base>` that resolves the page's `/_next/…` scripts against
-another host. It names no script or style source. A policy that does needs a fresh nonce per
+in `headers()` adds the site's baseline
+`Content-Security-Policy: object-src 'none'; base-uri 'self'; frame-ancestors 'none'`: no plugin
+content, no injected `<base>` that resolves the page's `/_next/…` scripts against another host, and
+no framing, which `X-Frame-Options` says for the browsers that still read it. It names no script or style source. A policy that does needs a fresh nonce per
 request, so every page it covers renders per request and no shared cache can hold it.
 
 The SVG rule further down replaces the baseline with

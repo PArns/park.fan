@@ -17,19 +17,13 @@
  *
  * Run: `pnpm test:capture-location`
  */
-import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 import {
   pathFromNearbyParks,
   readInParkAnswer,
 } from '../app/admin/capture/_lib/use-park-location.ts';
-
-let checked = 0;
-const check = (actual, expected, message) => {
-  assert.deepEqual(actual, expected, message);
-  checked += 1;
-};
+import { expectEqual, expectThat, reportPassed } from './lib/run-cases.mjs';
 
 const PATH = 'europe/germany/bruehl/phantasialand';
 
@@ -61,19 +55,19 @@ const inPark = (park = {}, rides) => ({
 
 // --- the in-park answer ----------------------------------------------------
 
-check(
+expectEqual(
   readInParkAnswer(inPark()),
   { slug: 'phantasialand', name: 'Phantasialand', path: PATH },
   'the answer as the endpoint sends it — no park.url — must resolve the park from a ride'
 );
 
-check(
+expectEqual(
   readInParkAnswer(inPark({ url: '/v1/parks/europe/germany/bruehl/phantasialand' }, [])).path,
   PATH,
   'a park.url, should the endpoint ever send one, is read first'
 );
 
-check(
+expectEqual(
   readInParkAnswer(
     inPark({}, [
       { slug: 'no-url', distance: 5 },
@@ -84,13 +78,13 @@ check(
   'a ride without a URL must not end the search'
 );
 
-check(
+expectEqual(
   readInParkAnswer(inPark({}, [])),
   { slug: 'phantasialand', name: 'Phantasialand', path: null },
   'no ride and no park.url: the park is still named, and the path is left for the second request'
 );
 
-check(
+expectEqual(
   readInParkAnswer(inPark({ name: undefined })).name,
   'phantasialand',
   'a park without a name falls back to its slug rather than to nothing'
@@ -102,7 +96,7 @@ for (const [answer, why] of [
   [null, 'null'],
   [inPark({ slug: '' }), 'a park without a slug'],
 ]) {
-  check(readInParkAnswer(answer), null, `${why} names no park`);
+  expectEqual(readInParkAnswer(answer), null, `${why} names no park`);
 }
 
 // --- the second request ----------------------------------------------------
@@ -127,22 +121,22 @@ const nearbyParks = {
   },
 };
 
-check(
+expectEqual(
   pathFromNearbyParks(nearbyParks, 'phantasialand'),
   PATH,
   'the park is found by the slug the in_park answer named'
 );
-check(
+expectEqual(
   pathFromNearbyParks(nearbyParks, 'attractiepark-toverland'),
   'europe/netherlands/sevenum/attractiepark-toverland',
   'and not by its position in the list'
 );
-check(
+expectEqual(
   pathFromNearbyParks(nearbyParks, 'efteling'),
   null,
   'a slug that is not in the list is not guessed from the nearest entry'
 );
-check(
+expectEqual(
   pathFromNearbyParks(inPark(), 'phantasialand'),
   null,
   'an in_park answer is not a nearby_parks list'
@@ -154,14 +148,8 @@ const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
 const hook = read('../app/admin/capture/_lib/use-park-location.ts');
 const page = read('../app/admin/capture/page.tsx');
 
-const grep = (source, pattern, message) => {
-  assert.match(source, pattern, message);
-  checked += 1;
-};
-const absent = (source, pattern, message) => {
-  assert.doesNotMatch(source, pattern, message);
-  checked += 1;
-};
+const grep = (source, pattern, message) => expectThat(pattern.test(source), message);
+const absent = (source, pattern, message) => expectThat(!pattern.test(source), message);
 
 grep(
   hook,
@@ -213,4 +201,4 @@ grep(
   '"Neu orten" must ask for the park again, not only restart the watch'
 );
 
-console.log(`capture location: ${checked} checks passed`);
+reportPassed();

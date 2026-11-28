@@ -16,6 +16,7 @@ import {
   sortPurchases,
 } from '../lib/parks/purchases.ts';
 import { GET as parksRelay } from '../app/api/parks/[...path]/route.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const multiPass = {
   id: 'lightninglanemultipass_80007944',
@@ -168,14 +169,4 @@ test('a path that is no slug is a 400 no cache keeps', async () => {
   }
 });
 
-let failed = 0;
-for (const { name, run } of tests) {
-  try {
-    await run();
-  } catch (error) {
-    failed++;
-    console.log(`FAIL: ${name}\n   ${error.message.split('\n').join('\n   ')}`);
-  }
-}
-console.log(`\nResults: ${tests.length - failed}/${tests.length} passed, ${failed} failed\n`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(tests, { quiet: true });

@@ -16,6 +16,7 @@ import {
   queueAvailability,
   queueShut,
 } from '../lib/parks/queue-availability.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const lastUpdated = '2026-11-27T23:30:21.363Z';
 const price = { amount: 1600, currency: 'USD', formatted: '$16.00' };
@@ -119,26 +120,12 @@ test(
   JSON.stringify({ singleRider: false, virtualLine: false, fastPass: false })
 );
 
-let passed = 0;
-let failed = 0;
-for (const testCase of testCases) {
-  let result;
-  try {
-    result = testCase.actual();
-    if (result !== null && typeof result !== 'string' && typeof result !== 'boolean')
-      result = JSON.stringify(result);
-  } catch (error) {
-    result = `THREW: ${error.message}`;
-  }
-  if (result === testCase.expected) {
-    passed++;
-  } else {
-    console.log(`FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
-    failed++;
-  }
-}
-
-console.log(`\nResults: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-process.exit(failed === 0 ? 0 : 1);
+// A case expects a string or a boolean as it is, and anything else serialised.
+const comparable = (result) =>
+  result !== null && typeof result !== 'string' && typeof result !== 'boolean'
+    ? JSON.stringify(result)
+    : result;
+await runCases(testCases, {
+  quiet: true,
+  same: (result, expected) => comparable(result) === expected,
+});

@@ -8,7 +8,7 @@ import { locales, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
-import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { LIVE_TRIP_REGION_IDENTITIES } from '@/lib/trip-regions/regions/identities';
 import type { WhenPeriodKey } from '@/lib/trip-regions/plan-when';
 import type { TripWizardStepKey } from '@/lib/trip-regions/wizard-steps';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
@@ -903,7 +903,7 @@ const GLOSSARY_SEGMENT_SET = spellings(GLOSSARY_SEGMENTS);
 const PLANNER_SEGMENT_SET = spellings(PLANNER_SEGMENTS);
 /** The live trip regions' hub segments in every locale (`/de/orlando`, `/fr/japon`). */
 const TRIP_REGION_SEGMENT_SET = new Set(
-  LIVE_TRIP_REGIONS.flatMap((region) => Object.values(region.segments))
+  LIVE_TRIP_REGION_IDENTITIES.flatMap((region) => Object.values(region.segments))
 );
 const BEST_TIME_SEGMENT_SET = spellings(BEST_TIME_SEGMENTS);
 /** A region's month page: `/de/orlando/2026/12`. */

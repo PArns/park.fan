@@ -10,6 +10,7 @@ import {
   buildAttractionUrlFromGeo,
   parkChapterUrl,
 } from '../lib/utils/url-utils.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const PHL = { continent: 'europe', country: 'germany', city: 'bruehl', slug: 'phantasialand' };
 
@@ -194,47 +195,19 @@ const test404Cases = [
 console.log('🧪 Testing URL Building Functions\n');
 console.log('='.repeat(80) + '\n');
 
-let passed = 0;
-let failed = 0;
+/** The builders a case names in `test`, each taking the case's `input`. */
+const BUILDERS = {
+  convertApiUrlToFrontendUrl: (input) => convertApiUrlToFrontendUrl(input.url),
+  buildParkUrl: (input) => buildParkUrl(input),
+  buildAttractionUrl: (input) => buildAttractionUrl(input.parkUrl, input.slug),
+  parkChapterUrl: (input) => parkChapterUrl(input.url, input.chapter, input.park),
+  buildAttractionUrlFromGeo: (input) => buildAttractionUrlFromGeo(input),
+};
 
-test404Cases.forEach((testCase, index) => {
-  console.log(`Test ${index + 1}: ${testCase.name}`);
-  console.log(`Input:`, testCase.input);
-
-  let result;
-  if (testCase.test === 'convertApiUrlToFrontendUrl') {
-    result = convertApiUrlToFrontendUrl(testCase.input.url);
-  } else if (testCase.test === 'buildParkUrl') {
-    result = buildParkUrl(testCase.input);
-  } else if (testCase.test === 'buildAttractionUrl') {
-    result = buildAttractionUrl(testCase.input.parkUrl, testCase.input.slug);
-  } else if (testCase.test === 'parkChapterUrl') {
-    result = parkChapterUrl(testCase.input.url, testCase.input.chapter, testCase.input.park);
-  } else if (testCase.test === 'buildAttractionUrlFromGeo') {
-    result = buildAttractionUrlFromGeo(testCase.input);
-  }
-
-  const success = result === testCase.expected;
-
-  if (success) {
-    console.log(`✅ PASS`);
-    console.log(`   Result: ${result}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL`);
-    console.log(`   Expected: ${testCase.expected}`);
-    console.log(`   Got:      ${result}`);
-    failed++;
-  }
-  console.log('');
-});
-
-console.log('='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${test404Cases.length} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed! URL building is working correctly.');
-} else {
-  console.log('⚠️  Some tests failed. Review the output above.');
-  process.exit(1);
-}
+await runCases(
+  test404Cases.map(({ name, test, input, expected }) => ({
+    name,
+    actual: () => BUILDERS[test]?.(input),
+    expected,
+  }))
+);

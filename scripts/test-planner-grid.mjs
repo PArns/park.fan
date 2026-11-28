@@ -50,6 +50,7 @@ import {
   withEarlyEntry,
   yFor,
 } from '../lib/planner/day-grid.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -848,14 +849,5 @@ test(
   test('early entry: withEarlyEntry passes null through', withEarlyEntry(null, true), null);
 }
 
-// ── Report ───────────────────────────────────────────────────────────────────
-let failed = 0;
-for (const { name, actual, expected } of cases) {
-  const ok = Object.is(actual, expected);
-  if (!ok) failed++;
-  console.log(
-    `${ok ? '✅' : '❌'} ${name}${ok ? '' : ` — erwartet ${expected}, bekommen ${actual}`}`
-  );
-}
-console.log(`\n${cases.length - failed}/${cases.length} bestanden (PX_PER_MIN = ${PX_PER_MIN})`);
-process.exit(failed === 0 ? 0 : 1);
+console.log(`PX_PER_MIN = ${PX_PER_MIN}`);
+await runCases(cases, { same: Object.is });

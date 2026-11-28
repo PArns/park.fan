@@ -24,6 +24,7 @@ import {
   coverOffset,
 } from '../lib/planner/ride-drag.ts';
 import { buildDayGrid, clampStart, rideFloor } from '../lib/planner/day-grid.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -266,14 +267,4 @@ test(
   GRID.openMin
 );
 
-// ── Report ───────────────────────────────────────────────────────────────────
-let failed = 0;
-for (const { name, actual, expected } of cases) {
-  const ok = Object.is(actual, expected);
-  if (!ok) failed++;
-  console.log(
-    `${ok ? '✅' : '❌'} ${name}${ok ? '' : ` — erwartet ${expected}, bekommen ${actual}`}`
-  );
-}
-console.log(`\n${cases.length - failed}/${cases.length} bestanden`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(cases, { same: Object.is });

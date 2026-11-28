@@ -26,6 +26,7 @@ import {
   weatherRailSegments,
   withinWeatherHorizon,
 } from '../lib/planner/weather-rail.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -167,14 +168,4 @@ test('across a year boundary', withinWeatherHorizon('2026-12-28', '2027-01-05'),
 test('a nonsense date is out', withinWeatherHorizon('2026-09-03', 'tomorrow'), false);
 test('the horizon is fourteen days', WEATHER_RAIL_MAX_LEAD_DAYS, 14);
 
-// ── Report ───────────────────────────────────────────────────────────────────
-let failed = 0;
-for (const { name, actual, expected } of cases) {
-  const ok = Object.is(actual, expected);
-  if (!ok) failed++;
-  console.log(
-    `${ok ? '✅' : '❌'} ${name}${ok ? '' : ` — erwartet ${expected}, bekommen ${actual}`}`
-  );
-}
-console.log(`\n${cases.length - failed}/${cases.length} bestanden`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(cases, { same: Object.is });

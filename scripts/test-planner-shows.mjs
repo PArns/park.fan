@@ -18,6 +18,7 @@
  */
 
 import { showDayHours, showLinesFor } from '../lib/planner/shows.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -143,14 +144,4 @@ test(
   test('lines come back ascending', lines.map((l) => l.minute).join(','), '555,750,1020');
 }
 
-// ── Report ───────────────────────────────────────────────────────────────────
-let failed = 0;
-for (const { name, actual, expected } of cases) {
-  const ok = Object.is(actual, expected);
-  if (!ok) failed++;
-  console.log(
-    `${ok ? '✅' : '❌'} ${name}${ok ? '' : ` — erwartet ${expected}, bekommen ${actual}`}`
-  );
-}
-console.log(`\n${cases.length - failed}/${cases.length} bestanden`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(cases, { same: Object.is });

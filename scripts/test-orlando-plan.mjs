@@ -211,6 +211,7 @@ import {
   tripWhenShownProps,
 } from '../lib/trip-regions/plan-analytics.ts';
 import { onSiteEvent } from '../lib/analytics/site-analytics.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const ORLANDO = requireTripRegion('orlando');
 const STEP = ORLANDO.tickets;
@@ -3663,14 +3664,4 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   );
 }
 
-// ── Report ───────────────────────────────────────────────────────────────────
-let failed = 0;
-for (const { name, actual, expected } of cases) {
-  const ok = JSON.stringify(actual) === JSON.stringify(expected);
-  if (!ok) failed++;
-  console.log(
-    `${ok ? '✅' : '❌'} ${name}${ok ? '' : ` — expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`}`
-  );
-}
-console.log(`\n${cases.length - failed}/${cases.length} passed`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(cases, { json: true });

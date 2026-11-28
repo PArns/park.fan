@@ -9,6 +9,7 @@
  */
 
 import { quietestOpenDay, QUIETEST_DAY_WINDOW_DAYS } from '../lib/utils/quietest-day.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const testCases = [];
 const test = (name, actual, expected) => testCases.push({ name, actual, expected });
@@ -106,17 +107,4 @@ test(
 
 test('an empty list names nothing', () => show(quietestOpenDay([], '2026-10-04')), 'none');
 
-let failed = 0;
-for (const { name, actual, expected } of testCases) {
-  const got = actual();
-  if (got === expected) {
-    console.log(`ok   ${name}`);
-  } else {
-    failed++;
-    console.log(
-      `FAIL ${name}\n     expected ${JSON.stringify(expected)}\n     got      ${JSON.stringify(got)}`
-    );
-  }
-}
-console.log(`${testCases.length - failed}/${testCases.length} passed`);
-if (failed > 0) process.exit(1);
+await runCases(testCases);

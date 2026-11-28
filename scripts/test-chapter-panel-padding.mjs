@@ -22,23 +22,10 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { cn } from '../lib/utils.ts';
+import { attempt, finishChecks } from './lib/run-cases.mjs';
 
 const COMPONENT = 'components/common/chapter-panel.tsx';
 const RIDE_PROFILE = 'components/parks/ride-profile-section.tsx';
-
-let failures = 0;
-let checks = 0;
-
-function check(name, fn) {
-  checks++;
-  try {
-    fn();
-    console.log(`  ok  ${name}`);
-  } catch (error) {
-    failures++;
-    console.error(`  FAIL ${name}\n       ${error.message.split('\n').join('\n       ')}`);
-  }
-}
 
 // --- What the component says --------------------------------------------------------------------
 
@@ -77,7 +64,7 @@ const [DEFAULT_BASE, DEFAULT_CONTAINER] = DEFAULT_PADDING.split(/\s+/);
 
 console.log('ChapterPanel body padding');
 
-check(`default padding is one plain and one container class (${DEFAULT_PADDING})`, () => {
+attempt(`default padding is one plain and one container class (${DEFAULT_PADDING})`, () => {
   assert.equal(DEFAULT_PADDING.split(/\s+/).length, 2);
   assert.ok(isPadding(DEFAULT_BASE) && variantOf(DEFAULT_BASE) === '', DEFAULT_BASE);
   assert.ok(
@@ -86,17 +73,17 @@ check(`default padding is one plain and one container class (${DEFAULT_PADDING})
   );
 });
 
-check('bodyPadding="none" leaves no padding class, plain or container', () => {
+attempt('bodyPadding="none" leaves no padding class, plain or container', () => {
   const classes = bodyClasses({ bodyPadding: 'none' });
   assert.deepEqual(classes.filter(isPadding), [], classes.join(' '));
 });
 
-check('bodyPadding="none" with a non-padding bodyClassName still leaves none', () => {
+attempt('bodyPadding="none" with a non-padding bodyClassName still leaves none', () => {
   const classes = bodyClasses({ bodyPadding: 'none', bodyClassName: 'space-y-4' });
   assert.deepEqual(classes.filter(isPadding), [], classes.join(' '));
 });
 
-check(`default (prop omitted) keeps both ${DEFAULT_BASE} and ${DEFAULT_CONTAINER}`, () => {
+attempt(`default (prop omitted) keeps both ${DEFAULT_BASE} and ${DEFAULT_CONTAINER}`, () => {
   assert.equal(BODY_PADDING_FALLBACK, 'default');
   assert.deepEqual(bodyClasses().filter(isPadding), [DEFAULT_BASE, DEFAULT_CONTAINER]);
   assert.deepEqual(bodyClasses({ bodyPadding: 'default' }).filter(isPadding), [
@@ -105,13 +92,13 @@ check(`default (prop omitted) keeps both ${DEFAULT_BASE} and ${DEFAULT_CONTAINER
   ]);
 });
 
-check('a p-0 in bodyClassName does NOT cancel the container variant (the trap this pins)', () => {
+attempt('a p-0 in bodyClassName does NOT cancel the container variant (the trap this pins)', () => {
   const classes = bodyClasses({ bodyClassName: 'p-0' });
   assert.ok(classes.includes(DEFAULT_CONTAINER), `twMerge changed: ${classes.join(' ')}`);
 });
 
 const rideMatch = readFileSync(RIDE_PROFILE, 'utf8').match(/bodyClassName="([^"]+)"/);
-check(`RideProfileSection's own p-5 sm:p-6 outranks the default`, () => {
+attempt(`RideProfileSection's own p-5 sm:p-6 outranks the default`, () => {
   assert.ok(rideMatch, `${RIDE_PROFILE}: no bodyClassName="…"`);
   const own = rideMatch[1].split(/\s+/).filter(isPadding);
   assert.deepEqual(own, ['p-5', 'sm:p-6'], `${RIDE_PROFILE} changed its padding: ${rideMatch[1]}`);
@@ -159,7 +146,7 @@ for (const file of [...walk('components'), ...walk('app')]) {
   }
 }
 
-check(`found the call sites (${sites.length}), at least one with bodyPadding="none"`, () => {
+attempt(`found the call sites (${sites.length}), at least one with bodyPadding="none"`, () => {
   assert.ok(sites.length >= 5, `only ${sites.length} <ChapterPanel> calls found`);
   assert.ok(sites.some((s) => s.bodyPadding === 'none'));
   assert.ok(
@@ -171,7 +158,7 @@ check(`found the call sites (${sites.length}), at least one with bodyPadding="no
 for (const site of sites) {
   const classes = bodyClasses(site);
   const own = (site.bodyClassName ?? '').split(/\s+/).filter(isPadding);
-  check(`${site.where} → ${classes.filter(isPadding).join(' ') || '(no padding)'}`, () => {
+  attempt(`${site.where} → ${classes.filter(isPadding).join(' ') || '(no padding)'}`, () => {
     // Zero padding asked for with a class: the default's container variant survives it.
     assert.ok(
       !own.some((cls) => /^p-0$/.test(cls)),
@@ -197,5 +184,4 @@ for (const site of sites) {
   });
 }
 
-console.log(`\n${checks - failures}/${checks} checks passed`);
-if (failures > 0) process.exit(1);
+finishChecks();

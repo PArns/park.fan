@@ -49,6 +49,7 @@ import {
 } from '../lib/planner/types.ts';
 import { parsePlannerPayload } from '../lib/planner/store.ts';
 import { actualVsEstimate, estimateFor } from '../lib/planner/estimate.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const testCases = [];
 const test = (name, actual, expected) => testCases.push({ name, actual, expected });
@@ -566,7 +567,6 @@ test(
   'Phantasialand'
 );
 
-let passed = 0;
 // ── Free blocks: a plan may contain things the catalogue does not ───────────
 // A lunch break is not a ride. It carries no slug — an empty string would be a
 // claim that a ride exists with no name, and every lookup keyed on it would
@@ -1027,7 +1027,6 @@ test(
   );
 }
 
-let failed = 0;
 // ── The park chooser lists the planned days in date order ───────────────────
 {
   const geo = { continent: 'north-america', country: 'united-states', city: 'orlando' };
@@ -1054,18 +1053,4 @@ let failed = 0;
   );
 }
 
-for (const testCase of testCases) {
-  if (JSON.stringify(testCase.actual) === JSON.stringify(testCase.expected)) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(testCase.actual)}`);
-    failed++;
-  }
-}
-
-console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(testCases, { json: true });

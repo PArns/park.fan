@@ -11,6 +11,7 @@
  */
 
 import { weatherClosureLine, weatherClosureTemps } from '../lib/parks/weather-closure.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const base = {
   cause: 'cold',
@@ -107,25 +108,8 @@ test(
   JSON.stringify({ temp: '-1 °C', threshold: null })
 );
 
-let passed = 0;
-let failed = 0;
-for (const testCase of testCases) {
-  let result;
-  try {
-    result = testCase.actual();
-    if (result !== null) result = JSON.stringify(result);
-  } catch (error) {
-    result = `THREW: ${error.message}`;
-  }
-  if (result === testCase.expected) {
-    passed++;
-  } else {
-    console.log(`FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
-    failed++;
-  }
-}
-
-console.log(`\nResults: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-process.exit(failed === 0 ? 0 : 1);
+// A case expects the serialised reading, and `null` for none.
+await runCases(testCases, {
+  quiet: true,
+  same: (result, expected) => (result === null ? null : JSON.stringify(result)) === expected,
+});

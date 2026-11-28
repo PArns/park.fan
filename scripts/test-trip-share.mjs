@@ -18,6 +18,7 @@
  * Run: `pnpm test:trip-share`
  */
 import assert from 'node:assert/strict';
+import { attempt, finishChecks } from './lib/run-cases.mjs';
 
 const TRIP_ID_KEY = 'parkfan_trip_id';
 const PLANNER_KEY = 'parkfan_planner';
@@ -96,32 +97,19 @@ const plan = (slug, entries, version = 1) => ({
   version,
 });
 
-let passed = 0;
-const failures = [];
-async function test(name, fn) {
-  try {
-    await fn();
-    passed++;
-    console.log(`  ✓ ${name}`);
-  } catch (error) {
-    failures.push({ name, error });
-    console.log(`  ✗ ${name}\n    ${error.message}`);
-  }
-}
-
 console.log('\ntripIdFromHash');
 
-await test('reads a 16-character id with or without the #', () => {
+await attempt('reads a 16-character id with or without the #', () => {
   assert.equal(tripIdFromHash(`#${SENDER_ID}`), SENDER_ID);
   assert.equal(tripIdFromHash(SENDER_ID), SENDER_ID);
 });
 
-await test('decodes and trims before checking', () => {
+await attempt('decodes and trims before checking', () => {
   assert.equal(tripIdFromHash(`#${SENDER_ID}%20`), SENDER_ID);
   assert.equal(tripIdFromHash('#aB3dE5fG7hJ9kL-_'), 'aB3dE5fG7hJ9kL-_');
 });
 
-await test('refuses anything that is not an id', () => {
+await attempt('refuses anything that is not an id', () => {
   for (const hash of [
     '',
     '#',
@@ -136,7 +124,7 @@ await test('refuses anything that is not an id', () => {
   }
 });
 
-await test('puts the id in the fragment, never in the path', () => {
+await attempt('puts the id in the fragment, never in the path', () => {
   const url = sharedTripUrl('https://park.fan', 'de', SENDER_ID);
   assert.equal(url, `https://park.fan/de/trip-planner/shared#${SENDER_ID}`);
   assert.equal(new URL(url).pathname.includes(SENDER_ID), false);
@@ -144,7 +132,7 @@ await test('puts the id in the fragment, never in the path', () => {
 
 console.log('\nparsePlannerPayload');
 
-await test('reads the payload of a GET /api/trips/<id> body', () => {
+await attempt('reads the payload of a GET /api/trips/<id> body', () => {
   const body = JSON.stringify({
     id: SENDER_ID,
     payload: plan('phantasialand', [entry('a', 'taron', 600)], 17),
@@ -157,7 +145,7 @@ await test('reads the payload of a GET /api/trips/<id> body', () => {
   assert.equal(parsed.version, 17);
 });
 
-await test('a shared park whose slug or geo is not all slugs is dropped', () => {
+await attempt('a shared park whose slug or geo is not all slugs is dropped', () => {
   const shared = plan('phantasialand', [entry('a', 'taron', 600)]);
   shared.parks['..'] = { ...shared.parks.phantasialand, slug: '..' };
   shared.parks.bad = {
@@ -170,13 +158,13 @@ await test('a shared park whose slug or geo is not all slugs is dropped', () => 
   assert.deepEqual(Object.keys(parsed.parks), ['phantasialand']);
 });
 
-await test('a body that is not JSON, or not an object, is null', () => {
+await attempt('a body that is not JSON, or not an object, is null', () => {
   assert.equal(parsePlannerPayload('not json'), null);
   assert.equal(parsePlannerPayload('null'), null);
   assert.equal(parsePlannerPayload('"text"'), null);
 });
 
-await test('a body without a usable payload is an empty plan', () => {
+await attempt('a body without a usable payload is an empty plan', () => {
   for (const body of ['{}', '{"payload":null}', '{"payload":"x"}', '{"payload":{"parks":7}}']) {
     const parsed = parsePlannerPayload(body);
     assert.ok(parsed, body);
@@ -184,7 +172,7 @@ await test('a body without a usable payload is an empty plan', () => {
   }
 });
 
-await test('drops __proto__ keys instead of following them', () => {
+await attempt('drops __proto__ keys instead of following them', () => {
   const parsed = parsePlannerPayload(
     '{"payload":{"__proto__":{"polluted":true},"parks":{},"version":1}}'
   );
@@ -202,7 +190,7 @@ function seed({ ownTripId }) {
   answersByRoute = {};
 }
 
-await test('push off: replaces the local plan and sends nothing', async () => {
+await attempt('push off: replaces the local plan and sends nothing', async () => {
   seed({ ownTripId: null });
   plannerStore.update(() => plan('efteling', [entry('o', 'baron-1898', 600)], 4));
   const before = plannerStore.getSnapshot().version;
@@ -218,7 +206,7 @@ await test('push off: replaces the local plan and sends nothing', async () => {
   assert.deepEqual(calls, []);
 });
 
-await test('push on: one PUT to the viewer’s own trip, none to the sender’s', async () => {
+await attempt('push on: one PUT to the viewer’s own trip, none to the sender’s', async () => {
   seed({ ownTripId: OWN_ID });
 
   await adoptSharedPlan(plan('phantasialand', [entry('s', 'taron', 600)]));
@@ -236,7 +224,7 @@ const ARMED_KEY = 'parkfan_push_armed';
 
 console.log('\nadoptSharedPlan · the viewer’s own trip had expired');
 
-await test('re-points the subscription row at the new trip id', async () => {
+await attempt('re-points the subscription row at the new trip id', async () => {
   seed({ ownTripId: OWN_ID });
   answersByRoute = {
     [`PUT /api/trips/${OWN_ID}`]: ok(404),
@@ -263,7 +251,7 @@ await test('re-points the subscription row at the new trip id', async () => {
   );
 });
 
-await test('a refused re-point takes the new trip back down and clears the record', async () => {
+await attempt('a refused re-point takes the new trip back down and clears the record', async () => {
   seed({ ownTripId: OWN_ID });
   storage.set(ARMED_KEY, JSON.stringify({ endpoint: SUBSCRIPTION.endpoint, tripId: OWN_ID }));
   answersByRoute = {
@@ -281,7 +269,7 @@ await test('a refused re-point takes the new trip back down and clears the recor
   assert.equal(storage.get(ARMED_KEY), undefined);
 });
 
-await test('no subscription left in the browser: the new trip is taken back down', async () => {
+await attempt('no subscription left in the browser: the new trip is taken back down', async () => {
   seed({ ownTripId: OWN_ID });
   answersByRoute = {
     [`PUT /api/trips/${OWN_ID}`]: ok(404),
@@ -306,7 +294,7 @@ await test('no subscription left in the browser: the new trip is taken back down
   assert.equal(storage.get(TRIP_ID_KEY), undefined);
 });
 
-await test('a trip that survives the PUT is not re-pointed', async () => {
+await attempt('a trip that survives the PUT is not re-pointed', async () => {
   seed({ ownTripId: OWN_ID });
 
   await adoptSharedPlan(plan('phantasialand', [entry('s', 'taron', 600)]));
@@ -317,5 +305,4 @@ await test('a trip that survives the PUT is not re-pointed', async () => {
   );
 });
 
-console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);
-if (failures.length > 0) process.exit(1);
+finishChecks();

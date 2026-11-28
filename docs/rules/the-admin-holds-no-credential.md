@@ -1,7 +1,8 @@
 # The admin holds no credential (REQUIREMENT)
 
-`/admin` authenticates with an **httpOnly session cookie** (`parkfan_admin_session`,
-`lib/admin/session.ts`). Client code sends nothing: `adminFetch` is a plain same-origin fetch, and
+`/admin` authenticates with an **httpOnly session cookie** (`__Host-parkfan_admin_session` in
+production, the bare name on plain-http development; `lib/admin/session.ts`). The prefix binds the
+cookie to this exact host, so a sibling host under `park.fan` cannot set one here. Client code sends nothing: `adminFetch` is a plain same-origin fetch, and
 `app/api/admin/[...path]` turns the cookie into `Authorization: Bearer …` server-side.
 
 ## Seven things in the proxy are load-bearing

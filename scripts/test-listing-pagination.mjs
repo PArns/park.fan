@@ -32,29 +32,20 @@ import {
   POSTS_PER_PAGE,
   splitPageSegments,
 } from '../lib/blog/pagination.ts';
+import { attempt, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failures = 0;
-let checks = 0;
-function test(name, fn) {
-  checks++;
-  try {
-    fn();
-  } catch (error) {
-    failures++;
-    console.error(`✗ ${name}\n  ${error.message}`);
-  }
-}
+quietChecks();
 
 const range = (n) => Array.from({ length: n }, (_, i) => i);
 
 // ── arithmetic ───────────────────────────────────────────────────────────────
-test('an empty listing has one page and no page to link', () => {
+attempt('an empty listing has one page and no page to link', () => {
   assert.equal(pageCount(0), 1);
   assert.equal(hasPage(0, 1), false);
   assert.deepEqual(laterPageNumbers(0), []);
 });
 
-test('an exact multiple fills its last page, one post more opens the next', () => {
+attempt('an exact multiple fills its last page, one post more opens the next', () => {
   assert.equal(pageCount(POSTS_PER_PAGE), 1);
   assert.equal(pageCount(POSTS_PER_PAGE + 1), 2);
   assert.deepEqual(laterPageNumbers(POSTS_PER_PAGE * 3), [2, 3]);
@@ -64,14 +55,14 @@ test('an exact multiple fills its last page, one post more opens the next', () =
 });
 
 // ── URLs ─────────────────────────────────────────────────────────────────────
-test('page 1 is the listing itself, a later page a /page/<n> path', () => {
+attempt('page 1 is the listing itself, a later page a /page/<n> path', () => {
   assert.equal(pagedPath('/blog', 1), '/blog');
   assert.equal(pagedPath('/blog', 2), '/blog/page/2');
   assert.deepEqual(pagedSegments(['guides'], 1), ['guides']);
   assert.deepEqual(pagedSegments(['guides'], 3), ['guides', 'page', '3']);
 });
 
-test('a page segment is a page only as the links write it', () => {
+attempt('a page segment is a page only as the links write it', () => {
   assert.equal(parsePageNumber('2'), 2);
   assert.equal(parsePageNumber('12'), 12);
   for (const bad of ['1', '0', '02', '-2', '2.5', 'x', '', undefined]) {
@@ -79,7 +70,7 @@ test('a page segment is a page only as the links write it', () => {
   }
 });
 
-test('the category catch-all splits off its page tail and nothing else', () => {
+attempt('the category catch-all splits off its page tail and nothing else', () => {
   assert.deepEqual(splitPageSegments(['guides']), { segments: ['guides'], page: 1 });
   assert.deepEqual(splitPageSegments(['guides', 'page', '2']), { segments: ['guides'], page: 2 });
   assert.deepEqual(splitPageSegments(['reports', 'europe']), {
@@ -96,13 +87,16 @@ test('the category catch-all splits off its page tail and nothing else', () => {
   }
 });
 
-test('the page row lists short runs in full and elides long ones around the current page', () => {
-  assert.deepEqual(pageWindow(1, 3), [1, 2, 3]);
-  assert.deepEqual(pageWindow(1, 10), [1, 2, null, 10]);
-  assert.deepEqual(pageWindow(5, 10), [1, null, 4, 5, 6, null, 10]);
-  assert.deepEqual(pageWindow(3, 10), [1, 2, 3, 4, null, 10]);
-  assert.deepEqual(pageWindow(10, 10), [1, null, 9, 10]);
-});
+attempt(
+  'the page row lists short runs in full and elides long ones around the current page',
+  () => {
+    assert.deepEqual(pageWindow(1, 3), [1, 2, 3]);
+    assert.deepEqual(pageWindow(1, 10), [1, 2, null, 10]);
+    assert.deepEqual(pageWindow(5, 10), [1, null, 4, 5, 6, null, 10]);
+    assert.deepEqual(pageWindow(3, 10), [1, 2, 3, 4, null, 10]);
+    assert.deepEqual(pageWindow(10, 10), [1, null, 9, 10]);
+  }
+);
 
 // ── every listing, every locale ──────────────────────────────────────────────
 function pagesOf(list) {
@@ -126,7 +120,7 @@ for (const locale of locales) {
   for (const [name, list] of Object.entries(listingsOf)) {
     if (list.length === 0) continue;
     listings++;
-    test(`${locale} ${name}: the pages hold the listing, each post once, in order`, () => {
+    attempt(`${locale} ${name}: the pages hold the listing, each post once, in order`, () => {
       const pages = pagesOf(list);
       assert.equal(pages.length, pageCount(list.length));
       assert.deepEqual(
@@ -141,7 +135,7 @@ for (const locale of locales) {
     });
   }
 
-  test(`${locale}: a tag page's alternates name only locales that build that page`, () => {
+  attempt(`${locale}: a tag page's alternates name only locales that build that page`, () => {
     for (const tag of listTags(locale)) {
       for (const page of laterPageNumbers(tag.count)) {
         for (const [target, url] of Object.entries(buildTagAlternates(locale, tag.slug, page))) {
@@ -155,7 +149,5 @@ for (const locale of locales) {
   });
 }
 
-console.log(
-  `\n${checks - failures}/${checks} checks passed · ${listings} listings over ${locales.length} locales, ${POSTS_PER_PAGE} posts a page`
-);
-process.exit(failures === 0 ? 0 : 1);
+console.log(`${listings} listings over ${locales.length} locales, ${POSTS_PER_PAGE} posts a page`);
+finishChecks();

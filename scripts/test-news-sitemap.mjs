@@ -27,18 +27,9 @@ import {
   newsWindowStart,
   NEWS_SITEMAP_MAX_URLS,
 } from '../lib/seo/news-sitemap.ts';
+import { attempt, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failures = 0;
-let checks = 0;
-function test(name, fn) {
-  checks++;
-  try {
-    fn();
-  } catch (error) {
-    failures++;
-    console.error(`✗ ${name}\n  ${error.message}`);
-  }
-}
+quietChecks();
 
 const TODAY = '2026-09-24';
 const post = (slug, date, { category = 'news', isFallback = false, title = slug, time } = {}) => ({
@@ -48,13 +39,13 @@ const post = (slug, date, { category = 'news', isFallback = false, title = slug,
 });
 const locs = (xml) => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 
-test('the window starts two days back, across a month edge', () => {
+attempt('the window starts two days back, across a month edge', () => {
   assert.equal(newsWindowStart('2026-09-24'), '2026-09-22');
   assert.equal(newsWindowStart('2026-10-01'), '2026-09-29');
   assert.equal(newsWindowStart('2027-01-01'), '2026-12-30');
 });
 
-test('today and the two days before are in, three days back and tomorrow are out', () => {
+attempt('today and the two days before are in, three days back and tomorrow are out', () => {
   const xml = buildNewsSitemap(
     [
       [
@@ -75,7 +66,7 @@ test('today and the two days before are in, three days back and tomorrow are out
   ]);
 });
 
-test('articles, news subcategories and EN fallbacks are told apart', () => {
+attempt('articles, news subcategories and EN fallbacks are told apart', () => {
   const xml = buildNewsSitemap(
     [
       [
@@ -92,7 +83,7 @@ test('articles, news subcategories and EN fallbacks are told apart', () => {
   assert.deepEqual(locs(xml), ['https://park.fan/en/news/opening']);
 });
 
-test('an entry names publication, language, date and the escaped title', () => {
+attempt('an entry names publication, language, date and the escaped title', () => {
   const xml = buildNewsSitemap(
     [['fr', [post('fright', '2026-09-23', { title: 'Peur & <frissons>' })]]],
     TODAY
@@ -103,7 +94,7 @@ test('an entry names publication, language, date and the escaped title', () => {
   assert.match(xml, /<news:title>Peur &amp; &lt;frissons&gt;<\/news:title>/);
 });
 
-test('a time goes out with Berlin’s offset, and the later post of a day comes first', () => {
+attempt('a time goes out with Berlin’s offset, and the later post of a day comes first', () => {
   const xml = buildNewsSitemap(
     [
       [
@@ -123,7 +114,7 @@ test('a time goes out with Berlin’s offset, and the later post of a day comes 
   ]);
 });
 
-test('an empty window is a well-formed urlset with the news namespace', () => {
+attempt('an empty window is a well-formed urlset with the news namespace', () => {
   const xml = buildNewsSitemap([['de', [post('old', '2026-01-01')]]], TODAY);
   assert.ok(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));
   assert.match(
@@ -134,7 +125,7 @@ test('an empty window is a well-formed urlset with the news namespace', () => {
   assert.equal(locs(xml).length, 0);
 });
 
-test('the cap keeps the newest 1000', () => {
+attempt('the cap keeps the newest 1000', () => {
   const many = [];
   for (let i = 0; i < NEWS_SITEMAP_MAX_URLS; i++) many.push(post(`old-${i}`, '2026-09-22'));
   many.push(post('newest', TODAY));
@@ -149,7 +140,7 @@ const newsDates = real.flatMap(([, posts]) =>
   posts.filter((p) => p.frontmatter.category?.startsWith('news')).map((p) => p.frontmatter.date)
 );
 
-test('every real news post builds into well-formed entries on its own day', () => {
+attempt('every real news post builds into well-formed entries on its own day', () => {
   assert.ok(newsDates.length > 0, 'no news posts in the manifest');
   for (const date of new Set(newsDates)) {
     const xml = buildNewsSitemap(real, date);
@@ -163,7 +154,5 @@ test('every real news post builds into well-formed entries on its own day', () =
   }
 });
 
-console.log(
-  `\n${checks - failures}/${checks} checks passed · ${newsDates.length} real news entries`
-);
-process.exit(failures === 0 ? 0 : 1);
+console.log(`${newsDates.length} real news entries`);
+finishChecks();

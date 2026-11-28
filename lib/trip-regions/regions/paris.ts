@@ -1,4 +1,5 @@
 import type { TripRegionConfig } from '../registry';
+import { PARIS_IDENTITY } from './identities';
 import type { TicketEntry } from '../plan-tickets';
 
 /**
@@ -22,17 +23,11 @@ const ENTRIES: readonly TicketEntry[] = [
 
 /** Paris' entry in `TRIP_REGIONS`. */
 export const PARIS: TripRegionConfig = {
-  slug: 'paris',
-  live: true,
-  segments: { en: 'paris', de: 'paris', nl: 'paris', fr: 'paris', es: 'paris', it: 'paris' },
+  ...PARIS_IDENTITY,
   timezone: 'Europe/Paris',
   // Between Disneyland Paris and Parc Astérix.
   centre: { latitude: 49.0, longitude: 2.68 },
   photo: '/media/disneyland-park/background.jpg',
-  scene: () =>
-    import('../../../components/assistant/parky/paris-scene').then((m) => ({
-      default: m.ParkyParisScene,
-    })),
   hub: {
     // Sleeping Beauty's castle at Disneyland Park.
     // The API's default area of the Disneyland Paris base.

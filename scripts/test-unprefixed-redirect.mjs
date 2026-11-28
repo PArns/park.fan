@@ -5,6 +5,7 @@
 // with a 307 to `/en/…`, which 404s when the path carries another locale's park sub-page segment
 // (`/en/…/calendrier-temps-attente/…`). See lib/i18n/unprefixed-redirect.ts.
 import { unprefixedPathRedirect } from '../lib/i18n/unprefixed-redirect.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const park = '/parks/asia/china/guang-zhou-shi/chimelong-water-park';
 
@@ -96,29 +97,10 @@ const testCases = [
   },
 ];
 
-let passed = 0;
-let failed = 0;
-
-for (const testCase of testCases) {
-  const result = unprefixedPathRedirect(testCase.path, testCase.accept);
-  if (result === testCase.expected) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${testCase.expected}`);
-    console.log(`   Got:      ${result}`);
-    failed++;
-  }
-}
-
-console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+await runCases(
+  testCases.map(({ name, path, accept, expected }) => ({
+    name,
+    actual: () => unprefixedPathRedirect(path, accept),
+    expected,
+  }))
+);

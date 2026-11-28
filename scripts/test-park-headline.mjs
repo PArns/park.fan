@@ -16,23 +16,13 @@ import {
   resetParkHeadlines,
   subscribeParkHeadlines,
 } from '../lib/parks/park-headline.ts';
+import { check, finishChecks, quietChecks } from './lib/run-cases.mjs';
+
+quietChecks();
 
 const PARK = 'phantasialand';
 const EARLY = '2026-11-24T13:50:50.000Z';
 const LATE = '2026-11-24T13:55:49.000Z';
-
-let failed = 0;
-let passed = 0;
-function check(name, actual, expected) {
-  const a = JSON.stringify(actual);
-  const e = JSON.stringify(expected);
-  if (a === e) {
-    passed++;
-  } else {
-    failed++;
-    console.log(`❌ FAIL: ${name}\n   Expected: ${e}\n   Got:      ${a}`);
-  }
-}
 
 // A newer reading replaces an older one, whatever order they arrive in.
 resetParkHeadlines();
@@ -99,5 +89,4 @@ check(
 );
 check('no park id: nothing held', heldParkHeadline(undefined), undefined);
 
-console.log(`\n📊 Results: ${passed}/${passed + failed} passed, ${failed} failed\n`);
-process.exit(failed === 0 ? 0 : 1);
+finishChecks();

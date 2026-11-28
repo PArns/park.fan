@@ -19,6 +19,7 @@ import {
   withQueryPart,
 } from '../lib/trip-regions/plan-ideas.ts';
 import { DEFAULT_PLAN_STATE, writePlanQuery } from '../lib/trip-regions/plan-query.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -139,14 +140,4 @@ test(
   ['2027-05-09', '2027-05-06', null]
 );
 
-// ── Report ───────────────────────────────────────────────────────────────────
-let failed = 0;
-for (const { name, actual, expected } of cases) {
-  const ok = JSON.stringify(actual) === JSON.stringify(expected);
-  if (!ok) failed++;
-  console.log(
-    `${ok ? '✅' : '❌'} ${name}${ok ? '' : ` — expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`}`
-  );
-}
-console.log(`\n${cases.length - failed}/${cases.length} passed`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(cases, { json: true });

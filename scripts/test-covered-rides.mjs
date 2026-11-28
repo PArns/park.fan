@@ -15,18 +15,12 @@ import {
 } from '../lib/utils/covered-rides.ts';
 import { walkMinutesFrom } from '../lib/planner/next-best-ride.ts';
 import { offersShelter, SHELTER_LEAD_MINUTES } from '../lib/utils/nowcast-shelter.ts';
+import { test, reportPassed } from './lib/run-cases.mjs';
 
 const fixture = (name) =>
   JSON.parse(
     readFileSync(new URL(`./fixtures/covered-rides/${name}.json`, import.meta.url), 'utf8')
   ).attractions;
-
-let passed = 0;
-const test = (name, fn) => {
-  fn();
-  passed += 1;
-  console.log(`✅ ${name}`);
-};
 
 test('isCovered: indoor and covered_queue count, outdoor and unknown do not', () => {
   assert.equal(isCovered({ indoorOutdoor: 'indoor' }), true);
@@ -227,4 +221,4 @@ test('shelter: nothing forecast offers nothing', () => {
   assert.equal(offersShelter(cast({}), NOW), false);
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

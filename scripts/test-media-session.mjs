@@ -11,22 +11,7 @@
  */
 
 import { resolveSession, sessionChanges } from '../lib/admin/media-session.ts';
-
-let passed = 0;
-let failed = 0;
-
-function check(name, actual, expected) {
-  const ok = JSON.stringify(actual) === JSON.stringify(expected);
-  if (ok) {
-    passed += 1;
-    console.log(`✅ ${name}`);
-  } else {
-    failed += 1;
-    console.log(
-      `❌ ${name}\n   expected ${JSON.stringify(expected)}\n   actual   ${JSON.stringify(actual)}`
-    );
-  }
-}
+import { check, finishChecks } from './lib/run-cases.mjs';
 
 const REPO = { owner: 'PArns', repo: 'park.fan', baseBranch: 'main' };
 
@@ -182,6 +167,5 @@ check(
 );
 check('a body with no log is empty', sessionChanges('Nothing here yet.'), []);
 
-console.log(`\n📊 ${passed} passed, ${failed} failed\n`);
-if (failed) process.exit(1);
+finishChecks();
 console.log('🎉 Sessions resolve.');

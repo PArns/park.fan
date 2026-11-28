@@ -16,26 +16,26 @@ import {
   toFrontmatter,
 } from '../app/admin/blog-editor/_lib/types.ts';
 import { buildPostFile } from '../app/admin/blog-editor/_lib/serialize.ts';
+import { checkThat, finishChecks, quietChecks } from './lib/run-cases.mjs';
+
+quietChecks();
 
 const root = join(import.meta.dirname, '..', 'content', 'blog');
 const locales = ['en', 'de', 'nl', 'fr', 'es', 'it'];
 
-let passed = 0;
-let failed = 0;
 for (const locale of locales) {
   for (const file of readdirSync(join(root, locale)).filter((f) => f.endsWith('.md'))) {
     const { data, content } = matter(readFileSync(join(root, locale, file), 'utf8'));
     // Through JSON, as the load route hands the draft to the browser.
     const draft = JSON.parse(JSON.stringify(fromFrontmatter(data)));
     const saved = matter(buildPostFile(toFrontmatter(draft), content)).data;
-    if (isDeepStrictEqual(saved, data)) {
-      passed++;
-    } else {
-      failed++;
-      const keys = new Set([...Object.keys(data), ...Object.keys(saved)]);
-      const changed = [...keys].filter((k) => !isDeepStrictEqual(data[k], saved[k]));
-      console.log(`❌ FAIL: ${locale}/${file} changes ${changed.join(', ')}`);
-    }
+    const keys = new Set([...Object.keys(data), ...Object.keys(saved)]);
+    const changed = [...keys].filter((k) => !isDeepStrictEqual(data[k], saved[k]));
+    checkThat(
+      `${locale}/${file} survives the editor`,
+      isDeepStrictEqual(saved, data),
+      `changes ${changed.join(', ')}`
+    );
   }
 }
 
@@ -44,27 +44,21 @@ for (const locale of locales) {
   const fm = fromFrontmatter({ title: 'T', coverImage: { src: '/media/a.jpg', caption: 'Alt' } });
   const same = toFrontmatter(fm).coverImage;
   const swapped = toFrontmatter({ ...fm, coverSrc: '/media/b.jpg' }).coverImage;
-  if (same?.caption === 'Alt' && swapped && !('caption' in swapped)) passed++;
-  else {
-    failed++;
-    console.log('❌ FAIL: cover caption follows its photo');
-  }
+  checkThat(
+    'cover caption follows its photo',
+    same?.caption === 'Alt' && swapped && !('caption' in swapped)
+  );
 }
 
 {
   // A new translation keeps the cover photo and its credit, but not the source language's caption.
   const raw = { title: 'x', coverImage: { src: '/a.jpg', credit: 'C', caption: 'Im Winter.' } };
   const copied = rawForTranslation(raw);
-  if (
+  checkThat(
+    'a translation starts without the source caption',
     isDeepStrictEqual(copied?.coverImage, { src: '/a.jpg', credit: 'C' }) &&
-    raw.coverImage.caption === 'Im Winter.'
-  )
-    passed++;
-  else {
-    failed++;
-    console.log('❌ FAIL: a translation starts without the source caption');
-  }
+      raw.coverImage.caption === 'Im Winter.'
+  );
 }
 
-console.log(`${passed} passed, ${failed} failed`);
-if (failed) process.exit(1);
+finishChecks();

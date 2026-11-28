@@ -17,17 +17,9 @@
  */
 
 import { buildBacklog, scoreRide } from '../lib/media/photo-backlog.ts';
+import { check, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failures = 0;
-
-const check = (label, actual, expected) => {
-  const a = JSON.stringify(actual);
-  const e = JSON.stringify(expected);
-  if (a !== e) {
-    console.error(`  ❌ ${label}\n       expected ${e}\n       got      ${a}`);
-    failures++;
-  }
-};
+quietChecks();
 
 /** A ride with nothing going for it; every case below overrides what it needs. */
 const ride = (over = {}) => ({
@@ -184,8 +176,5 @@ check('reason: nothing measured says nothing', scoreRide(ride()).reason, {
   value: null,
 });
 
-if (failures) {
-  console.error(`\n❌ ${failures} check(s) failed.`);
-  process.exit(1);
-}
+finishChecks();
 console.log('✅ photo backlog: ordering, degradation, season and coverage rules hold.');

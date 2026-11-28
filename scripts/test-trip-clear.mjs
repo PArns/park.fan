@@ -8,14 +8,7 @@
  *
  * Run: pnpm test:trip-clear
  */
-import assert from 'node:assert/strict';
-
-let passed = 0;
-function check(actual, expected, label) {
-  assert.deepEqual(actual, expected, label);
-  console.log(`  ✓ ${label}`);
-  passed++;
-}
+import { expectEqual, reportPassed } from './lib/run-cases.mjs';
 
 const storage = () => {
   const map = new Map();
@@ -119,54 +112,70 @@ seed();
 const planner = mountPlanner(TRIP);
 const keptOrlando = rememberedTrip('orlando');
 let cleared = clearTrip('orlando');
-check(href(), '/de/orlando', 'the address bar is the hub, no query and no fragment');
-check(writePlanQuery(planner.state), '', 'the planner on screen is empty, its pins with it');
-check(planner.history, [], 'and so is its edit history');
-check(tripPlannerBridge.current()?.query, '', 'Parky reads no trip on screen');
-check(rememberedTrip('orlando'), null, 'the remembered trip is gone, so a reload restores nothing');
-check(rememberedTrip('japan')?.query, JAPAN, "another region's trip stays");
-check([...tripWizardAnswered.get('orlando')], [], "the assistant's answers are forgotten");
-check([...tripWizardAnswered.get('japan')], ['route'], "another region's answers stay");
-check(tripTicketAnswer('orlando').getSnapshot(), null, 'the ticket question will be asked again');
-check(tripTicketAnswer('japan').getSnapshot(), 'yes', "another region's ticket answer stays");
-check(visitedParks('orlando').getSnapshot(), {}, 'no park is ticked off as visited any more');
-check(
+expectEqual(href(), '/de/orlando', 'the address bar is the hub, no query and no fragment');
+expectEqual(writePlanQuery(planner.state), '', 'the planner on screen is empty, its pins with it');
+expectEqual(planner.history, [], 'and so is its edit history');
+expectEqual(tripPlannerBridge.current()?.query, '', 'Parky reads no trip on screen');
+expectEqual(
+  rememberedTrip('orlando'),
+  null,
+  'the remembered trip is gone, so a reload restores nothing'
+);
+expectEqual(rememberedTrip('japan')?.query, JAPAN, "another region's trip stays");
+expectEqual([...tripWizardAnswered.get('orlando')], [], "the assistant's answers are forgotten");
+expectEqual([...tripWizardAnswered.get('japan')], ['route'], "another region's answers stay");
+expectEqual(
+  tripTicketAnswer('orlando').getSnapshot(),
+  null,
+  'the ticket question will be asked again'
+);
+expectEqual(tripTicketAnswer('japan').getSnapshot(), 'yes', "another region's ticket answer stays");
+expectEqual(visitedParks('orlando').getSnapshot(), {}, 'no park is ticked off as visited any more');
+expectEqual(
   visitedParks('japan').getSnapshot(),
   { 'tokyo-disneyland': '2027-04-02' },
   "another region's ticks stay"
 );
-check(interviewStore.getSnapshot(), null, "Parky's interview for the trip ends");
+expectEqual(interviewStore.getSnapshot(), null, "Parky's interview for the trip ends");
 
 cleared.restore();
-check(href(), `/de/orlando?${TRIP}#calendar-2027-10-16`, 'the undo puts the address back');
-check(writePlanQuery(planner.state), TRIP, 'the plan comes back with its pins');
-check(planner.history, ['pin'], 'and its edit history');
-check(rememberedTrip('orlando'), keptOrlando, 'the remembered trip comes back, party and all');
-check([...tripWizardAnswered.get('orlando')], ['hotel', 'pace'], 'the answers come back');
-check(tripTicketAnswer('orlando').getSnapshot(), 'no', 'the ticket answer comes back');
-check(visitedParks('orlando').getSnapshot(), { epcot: '2027-10-15' }, 'and so do the ticks');
-check(interviewStore.getSnapshot(), interview, 'the interview comes back where it stood');
-check(
+expectEqual(href(), `/de/orlando?${TRIP}#calendar-2027-10-16`, 'the undo puts the address back');
+expectEqual(writePlanQuery(planner.state), TRIP, 'the plan comes back with its pins');
+expectEqual(planner.history, ['pin'], 'and its edit history');
+expectEqual(
+  rememberedTrip('orlando'),
+  keptOrlando,
+  'the remembered trip comes back, party and all'
+);
+expectEqual([...tripWizardAnswered.get('orlando')], ['hotel', 'pace'], 'the answers come back');
+expectEqual(tripTicketAnswer('orlando').getSnapshot(), 'no', 'the ticket answer comes back');
+expectEqual(visitedParks('orlando').getSnapshot(), { epcot: '2027-10-15' }, 'and so do the ticks');
+expectEqual(interviewStore.getSnapshot(), interview, 'the interview comes back where it stood');
+expectEqual(
   events.filter((e) => e.name === 'assistant_interview_ended'),
   [],
   'a delete taken back counts no ended interview'
 );
 cleared.drop();
-check(events.length, 0, 'a copy put back is spent: dropping it counts nothing');
+expectEqual(events.length, 0, 'a copy put back is spent: dropping it counts nothing');
 
 console.log('\nclearTrip: let go');
 cleared = clearTrip('orlando');
-check(takeTripUndo('orlando'), 'none', "Parky's undo has no change left to bring the trip back");
+expectEqual(
+  takeTripUndo('orlando'),
+  'none',
+  "Parky's undo has no change left to bring the trip back"
+);
 cleared.drop();
-check(
+expectEqual(
   events.map((e) => e.name),
   ['assistant_interview_ended'],
   'letting the copy go counts the interview it ended'
 );
-check(events[0].props.outcome, 'left', 'as left');
+expectEqual(events[0].props.outcome, 'left', 'as left');
 cleared.restore();
-check(rememberedTrip('orlando'), null, 'and nothing is kept after it');
-check(writePlanQuery(planner.state), '', 'the planner stays empty');
+expectEqual(rememberedTrip('orlando'), null, 'and nothing is kept after it');
+expectEqual(writePlanQuery(planner.state), '', 'the planner stays empty');
 
 console.log('\nclearTrip: without a planner on screen');
 seed();
@@ -183,17 +192,21 @@ connectPlannerBridge(
     clear: () => () => undefined,
   }
 )();
-check(tripPlannerBridge.current(), null, 'no planner on screen');
+expectEqual(tripPlannerBridge.current(), null, 'no planner on screen');
 cleared = clearTrip('orlando');
-check(href(), '/de/orlando', "the address bar's query goes all the same");
-check(interviewStore.getSnapshot()?.region, 'japan', "another region's interview runs on");
+expectEqual(href(), '/de/orlando', "the address bar's query goes all the same");
+expectEqual(interviewStore.getSnapshot()?.region, 'japan', "another region's interview runs on");
 cleared.restore();
-check(href(), `/de/orlando?${TRIP}#calendar-2027-10-16`, 'and the undo puts it back as it was');
+expectEqual(
+  href(),
+  `/de/orlando?${TRIP}#calendar-2027-10-16`,
+  'and the undo puts it back as it was'
+);
 
 console.log('\nThe ticks of every region, as the visitor account syncs them');
 const byRegion = (visits) =>
   [...visits].sort((a, b) => `${a.region}${a.park}`.localeCompare(`${b.region}${b.park}`));
-check(
+expectEqual(
   byRegion(readAllVisited()),
   [
     { region: 'japan', park: 'tokyo-disneyland', date: '2027-04-02' },
@@ -205,17 +218,21 @@ replaceAllVisited([
   { region: 'orlando', park: 'magic-kingdom-park', date: '2027-10-16' },
   { region: 'orlando', park: 'Bad Slug', date: '2027-10-16' },
 ]);
-check(
+expectEqual(
   visitedParks('orlando').getSnapshot(),
   { 'magic-kingdom-park': '2027-10-16' },
   "the account's copy replaces this browser's, a broken entry left out"
 );
-check(visitedParks('japan').getSnapshot(), {}, 'a region the account has no ticks for is emptied');
+expectEqual(
+  visitedParks('japan').getSnapshot(),
+  {},
+  'a region the account has no ticks for is emptied'
+);
 visitedParks('orlando').toggle('epcot', '2027-11-20');
-check(
+expectEqual(
   visitedParks('orlando').getSnapshot(),
   { epcot: '2027-11-20' },
   'a tick drops the ones of an earlier trip, so the account never collects them'
 );
 
-console.log(`\n${passed} passed`);
+reportPassed();

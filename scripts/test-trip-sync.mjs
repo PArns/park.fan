@@ -26,6 +26,7 @@
  * Run: `pnpm test:trip-sync`
  */
 import assert from 'node:assert/strict';
+import { attempt, finishChecks } from './lib/run-cases.mjs';
 
 const TRIP_ID_KEY = 'parkfan_trip_id';
 const PLANNER_KEY = 'parkfan_planner';
@@ -99,22 +100,9 @@ function answers(...queue) {
   };
 }
 
-let passed = 0;
-const failures = [];
-async function test(name, fn) {
-  try {
-    await fn();
-    passed++;
-    console.log(`  ✓ ${name}`);
-  } catch (error) {
-    failures.push({ name, error });
-    console.log(`  ✗ ${name}\n    ${error.message}`);
-  }
-}
-
 console.log('\nsyncTrip · an existing trip');
 
-await test('a 200 keeps the id and sends nothing else', async () => {
+await attempt('a 200 keeps the id and sends nothing else', async () => {
   seed();
   answers(response(200, { id: EXISTING_ID }));
   const result = await syncTrip();
@@ -125,7 +113,7 @@ await test('a 200 keeps the id and sends nothing else', async () => {
   assert.equal(getTripId(), EXISTING_ID);
 });
 
-await test('a 404 is the ONE answer that starts a new trip', async () => {
+await attempt('a 404 is the ONE answer that starts a new trip', async () => {
   seed();
   answers(response(404), response(201, { id: NEW_ID }));
   const result = await syncTrip();
@@ -137,7 +125,7 @@ await test('a 404 is the ONE answer that starts a new trip', async () => {
   assert.equal(getTripId(), NEW_ID);
 });
 
-await test('a 500 keeps the id and does NOT create a second trip', async () => {
+await attempt('a 500 keeps the id and does NOT create a second trip', async () => {
   seed();
   answers(response(500));
   const result = await syncTrip();
@@ -148,7 +136,7 @@ await test('a 500 keeps the id and does NOT create a second trip', async () => {
   assert.equal(getTripId(), EXISTING_ID);
 });
 
-await test('a 502 from the route’s own catch reads the same way', async () => {
+await attempt('a 502 from the route’s own catch reads the same way', async () => {
   seed();
   answers(response(502, { error: 'Trip service unreachable' }));
   const result = await syncTrip();
@@ -157,7 +145,7 @@ await test('a 502 from the route’s own catch reads the same way', async () => 
   assert.equal(getTripId(), EXISTING_ID);
 });
 
-await test('a 429 keeps the id and carries the limiter’s own window', async () => {
+await attempt('a 429 keeps the id and carries the limiter’s own window', async () => {
   seed();
   answers(response(429, { retryAfterSeconds: 42 }));
   const result = await syncTrip();
@@ -166,14 +154,14 @@ await test('a 429 keeps the id and carries the limiter’s own window', async ()
   assert.equal(getTripId(), EXISTING_ID);
 });
 
-await test('a 429 with an unreadable body still reads as rate-limited', async () => {
+await attempt('a 429 with an unreadable body still reads as rate-limited', async () => {
   seed();
   answers(response(429));
   const result = await syncTrip();
   assert.deepEqual(result, { ok: false, error: { reason: 'rate-limited', retryAfterSeconds: 60 } });
 });
 
-await test('a 400 keeps the id — the same payload would be refused again', async () => {
+await attempt('a 400 keeps the id — the same payload would be refused again', async () => {
   seed();
   answers(response(400, { message: 'Not a trip payload: too large' }));
   const result = await syncTrip();
@@ -182,7 +170,7 @@ await test('a 400 keeps the id — the same payload would be refused again', asy
   assert.equal(getTripId(), EXISTING_ID);
 });
 
-await test('a thrown fetch keeps the id and does not create a second trip', async () => {
+await attempt('a thrown fetch keeps the id and does not create a second trip', async () => {
   seed();
   fetchStub = () => {
     throw new TypeError('Failed to fetch');
@@ -193,7 +181,7 @@ await test('a thrown fetch keeps the id and does not create a second trip', asyn
   assert.equal(getTripId(), EXISTING_ID);
 });
 
-await test('a 404 whose POST then fails leaves no id — the trip really is gone', async () => {
+await attempt('a 404 whose POST then fails leaves no id — the trip really is gone', async () => {
   seed();
   answers(response(404), response(500));
   const result = await syncTrip();
@@ -207,7 +195,7 @@ await test('a 404 whose POST then fails leaves no id — the trip really is gone
 
 console.log('\nsyncTrip · no trip yet');
 
-await test('a 201 stores the id the API issued', async () => {
+await attempt('a 201 stores the id the API issued', async () => {
   seed({ tripId: null });
   answers(response(201, { id: NEW_ID }));
   const result = await syncTrip();
@@ -217,7 +205,7 @@ await test('a 201 stores the id the API issued', async () => {
   assert.equal(getTripId(), NEW_ID);
 });
 
-await test('a refused create stores nothing and names its class', async () => {
+await attempt('a refused create stores nothing and names its class', async () => {
   seed({ tripId: null });
   answers(response(429, { retryAfterSeconds: 12.4 }));
   const result = await syncTrip();
@@ -227,7 +215,7 @@ await test('a refused create stores nothing and names its class', async () => {
   assert.equal(getTripId(), null);
 });
 
-await test('a 400 on create is invalid, not a reason to retry', async () => {
+await attempt('a 400 on create is invalid, not a reason to retry', async () => {
   seed({ tripId: null });
   answers(response(400));
   const result = await syncTrip();
@@ -235,7 +223,7 @@ await test('a 400 on create is invalid, not a reason to retry', async () => {
   assert.equal(getTripId(), null);
 });
 
-await test('a create answered without an id is a failure, not a trip', async () => {
+await attempt('a create answered without an id is a failure, not a trip', async () => {
   seed({ tripId: null });
   answers(response(201, { expiresAt: '2027-10-15T00:00:00.000Z' }));
   const result = await syncTrip();
@@ -243,7 +231,7 @@ await test('a create answered without an id is a failure, not a trip', async () 
   assert.equal(getTripId(), null);
 });
 
-await test('a create answered with an unreadable body is a failure, not a crash', async () => {
+await attempt('a create answered with an unreadable body is a failure, not a crash', async () => {
   seed({ tripId: null });
   answers(response(201));
   const result = await syncTrip();
@@ -251,7 +239,7 @@ await test('a create answered with an unreadable body is a failure, not a crash'
   assert.equal(getTripId(), null);
 });
 
-await test('a 404 on the create route is our end, not the visitor’s payload', async () => {
+await attempt('a 404 on the create route is our end, not the visitor’s payload', async () => {
   seed({ tripId: null });
   answers(response(404));
   const result = await syncTrip();
@@ -261,7 +249,7 @@ await test('a 404 on the create route is our end, not the visitor’s payload', 
 
 console.log('\nforgetTrip · switching push off');
 
-await test('a 204 deletes the row and only then forgets the id', async () => {
+await attempt('a 204 deletes the row and only then forgets the id', async () => {
   seed();
   answers(response(204));
   const result = await forgetTrip();
@@ -275,7 +263,7 @@ await test('a 204 deletes the row and only then forgets the id', async () => {
   assert.equal(getTripId(), null);
 });
 
-await test('a 404 is a success — the trip is already gone', async () => {
+await attempt('a 404 is a success — the trip is already gone', async () => {
   seed();
   answers(response(404));
   const result = await forgetTrip();
@@ -284,7 +272,7 @@ await test('a 404 is a success — the trip is already gone', async () => {
   assert.equal(getTripId(), null);
 });
 
-await test('a 500 keeps the id, so the row stays reachable', async () => {
+await attempt('a 500 keeps the id, so the row stays reachable', async () => {
   seed();
   answers(response(500));
   const result = await forgetTrip();
@@ -294,7 +282,7 @@ await test('a 500 keeps the id, so the row stays reachable', async () => {
   assert.equal(getTripId(), EXISTING_ID);
 });
 
-await test('a 429 keeps the id and names the limiter', async () => {
+await attempt('a 429 keeps the id and names the limiter', async () => {
   seed();
   answers(response(429, { retryAfterSeconds: 42 }));
   const result = await forgetTrip();
@@ -302,7 +290,7 @@ await test('a 429 keeps the id and names the limiter', async () => {
   assert.equal(getTripId(), EXISTING_ID);
 });
 
-await test('a 400 keeps the id', async () => {
+await attempt('a 400 keeps the id', async () => {
   seed();
   answers(response(400));
   const result = await forgetTrip();
@@ -310,7 +298,7 @@ await test('a 400 keeps the id', async () => {
   assert.equal(getTripId(), EXISTING_ID);
 });
 
-await test('a thrown fetch keeps the id', async () => {
+await attempt('a thrown fetch keeps the id', async () => {
   seed();
   fetchStub = () => {
     throw new TypeError('Failed to fetch');
@@ -321,7 +309,7 @@ await test('a thrown fetch keeps the id', async () => {
   assert.equal(getTripId(), EXISTING_ID);
 });
 
-await test('nothing stored sends no request and still reads as done', async () => {
+await attempt('nothing stored sends no request and still reads as done', async () => {
   seed({ tripId: null });
   const result = await forgetTrip();
   assert.deepEqual(result, { ok: true });
@@ -329,7 +317,7 @@ await test('nothing stored sends no request and still reads as done', async () =
   assert.equal(getTripId(), null);
 });
 
-await test('a second call after a success sends nothing', async () => {
+await attempt('a second call after a success sends nothing', async () => {
   seed();
   answers(response(204));
   await forgetTrip();
@@ -348,7 +336,7 @@ console.log('\nforgetTrip · overtaking a sync that is already on the wire');
  * the switch-off had just cleared: a plan nobody asked for, standing for 400
  * days, plus a browser that reads as subscribed on the next mount.
  */
-await test('a sync whose PUT 404s after the delete does not create a new trip', async () => {
+await attempt('a sync whose PUT 404s after the delete does not create a new trip', async () => {
   seed();
   // The PUT is answered only after `forgetTrip` has been and gone.
   let releasePut;
@@ -382,7 +370,7 @@ await test('a sync whose PUT 404s after the delete does not create a new trip', 
   );
 });
 
-await test('a switch-off during the gap where the sync holds no id still wins', async () => {
+await attempt('a switch-off during the gap where the sync holds no id still wins', async () => {
   seed();
   let releasePost;
   const held = new Promise((resolve) => {
@@ -419,7 +407,7 @@ await test('a switch-off during the gap where the sync holds no id still wins', 
   assert.equal(calls[2].url, `/api/trips/${NEW_ID}`);
 });
 
-await test('a sync started after a delete is a normal create', async () => {
+await attempt('a sync started after a delete is a normal create', async () => {
   seed();
   answers(response(204), response(201, { id: NEW_ID }));
   await forgetTrip();
@@ -440,7 +428,7 @@ async function editAndSettle() {
   await new Promise((resolve) => setImmediate(resolve));
 }
 
-await test('a background sync that starts a new trip tells the caller the new id', async () => {
+await attempt('a background sync that starts a new trip tells the caller the new id', async () => {
   seed();
   answers(response(404), response(201, { id: NEW_ID }));
   const heard = [];
@@ -451,7 +439,7 @@ await test('a background sync that starts a new trip tells the caller the new id
   assert.equal(getTripId(), NEW_ID);
 });
 
-await test('a background sync that keeps its id tells nobody', async () => {
+await attempt('a background sync that keeps its id tells nobody', async () => {
   seed();
   answers(response(200, { id: EXISTING_ID }));
   const heard = [];
@@ -461,11 +449,10 @@ await test('a background sync that keeps its id tells nobody', async () => {
   assert.deepEqual(heard, []);
 });
 
-await test('a create with no id before it is not a replacement', async () => {
+await attempt('a create with no id before it is not a replacement', async () => {
   seed({ tripId: null });
   answers(response(201, { id: NEW_ID }));
   assert.deepEqual(await syncTrip(), { ok: true, id: NEW_ID });
 });
 
-console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);
-if (failures.length > 0) process.exit(1);
+finishChecks();

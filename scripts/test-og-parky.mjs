@@ -15,23 +15,18 @@ import {
   parseParkyStamp,
   remarkCallouts,
 } from '../lib/blog/remark-callouts.ts';
+import { checkThat, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failed = 0;
-function check(name, ok) {
-  if (!ok) {
-    failed++;
-    console.log(`❌ FAIL: ${name}`);
-  }
-}
+quietChecks();
 
 // The brand palette's documented pairs, give or take one step of rounding per channel.
 const near = (hex, want) =>
   [1, 3, 5].every(
     (i) => Math.abs(parseInt(hex.slice(i, i + 2), 16) - parseInt(want.slice(i, i + 2), 16)) <= 1
   );
-check('brand blue', near(oklchToHex(0.628, 0.137, 241.275), '#2191d3'));
-check('brand green', near(oklchToHex(0.752, 0.181, 146.391), '#51cc64'));
-check('white', oklchToHex(1, 0, 0) === '#ffffff');
+checkThat('brand blue', near(oklchToHex(0.628, 0.137, 241.275), '#2191d3'));
+checkThat('brand green', near(oklchToHex(0.752, 0.181, 146.391), '#51cc64'));
+checkThat('white', oklchToHex(1, 0, 0) === '#ffffff');
 
 const Dot = ({ colour }) => createElement('circle', { r: 1, fill: colour });
 const tree = forSatori(
@@ -42,20 +37,20 @@ const tree = forSatori(
   )
 );
 const markup = renderToStaticMarkup(tree);
-check('components called through', markup.includes('<circle'));
-check('no oklch left', !markup.includes('oklch'));
+checkThat('components called through', markup.includes('<circle'));
+checkThat('no oklch left', !markup.includes('oklch'));
 
-check('parky is a callout type', CALLOUT_TYPES.includes('parky'));
-check('marker reads [!PARKY]', CALLOUT_MARKER_RE.exec('[!PARKY] tip')?.[1] === 'PARKY');
-check('marker still reads [!NOTE]', CALLOUT_MARKER_RE.test('[!NOTE]'));
+checkThat('parky is a callout type', CALLOUT_TYPES.includes('parky'));
+checkThat('marker reads [!PARKY]', CALLOUT_MARKER_RE.exec('[!PARKY] tip')?.[1] === 'PARKY');
+checkThat('marker still reads [!NOTE]', CALLOUT_MARKER_RE.test('[!NOTE]'));
 
-check(
+checkThat(
   'verdict on the marker line',
   parseParkyStamp('[!PARKY] Lohnt sich!\nTaron ab 17 Uhr.')?.label === 'Lohnt sich!'
 );
-check('bare marker has no stamp', parseParkyStamp('[!PARKY]\nTaron ab 17 Uhr.') === null);
-check('one-line tip stays the tip', parseParkyStamp('[!PARKY] Taron ab 17 Uhr.') === null);
-check(
+checkThat('bare marker has no stamp', parseParkyStamp('[!PARKY]\nTaron ab 17 Uhr.') === null);
+checkThat('one-line tip stays the tip', parseParkyStamp('[!PARKY] Taron ab 17 Uhr.') === null);
+checkThat(
   'a long marker line stays the tip',
   parseParkyStamp('[!PARKY] Taron fahren wir erst nach fünf\nweil es dann dunkel ist.') === null
 );
@@ -70,11 +65,11 @@ function parky(text) {
   return { props: quote.data?.hProperties ?? {}, text: quote.children[0]?.children[0]?.value };
 }
 const stamped = parky('[!PARKY] Lohnt sich!\nTaron ab 17 Uhr.');
-check('stamp lands on the callout', stamped.props['data-callout-stamp'] === 'Lohnt sich!');
-check('stamp leaves the tip', stamped.text === 'Taron ab 17 Uhr.');
+checkThat('stamp lands on the callout', stamped.props['data-callout-stamp'] === 'Lohnt sich!');
+checkThat('stamp leaves the tip', stamped.text === 'Taron ab 17 Uhr.');
 const plain = parky('[!PARKY]\nTaron ab 17 Uhr.');
-check('plain card has no stamp', !('data-callout-stamp' in plain.props));
-check('plain card keeps its tip', plain.text === 'Taron ab 17 Uhr.');
+checkThat('plain card has no stamp', !('data-callout-stamp' in plain.props));
+checkThat('plain card keeps its tip', plain.text === 'Taron ab 17 Uhr.');
 
-if (failed) process.exit(1);
+finishChecks();
 console.log('✅ og-parky: all checks passed');

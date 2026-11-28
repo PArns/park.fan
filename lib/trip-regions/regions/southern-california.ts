@@ -1,4 +1,5 @@
 import type { TripRegionConfig } from '../registry';
+import { SOUTHERN_CALIFORNIA_IDENTITY } from './identities';
 import type { TicketEntry } from '../plan-tickets';
 
 /**
@@ -56,24 +57,11 @@ const ENTRIES: readonly TicketEntry[] = [
 
 /** Southern California's entry in `TRIP_REGIONS`. */
 export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
-  slug: 'southern-california',
-  live: true,
-  segments: {
-    en: 'california',
-    de: 'kalifornien',
-    nl: 'californie',
-    fr: 'californie',
-    es: 'california',
-    it: 'california',
-  },
+  ...SOUTHERN_CALIFORNIA_IDENTITY,
   timezone: 'America/Los_Angeles',
   // Anaheim, where the most parks of the region are; San Diego and Valencia are a drive away.
   centre: { latitude: 33.81, longitude: -117.92 },
   photo: '/media/disneyland-anaheim/sleeping-beauty-castle.jpg',
-  scene: () =>
-    import('../../../components/assistant/parky/southern-california-scene').then((m) => ({
-      default: m.ParkySouthernCaliforniaScene,
-    })),
   hub: {
     // Sleeping Beauty Castle in Anaheim, then Pixar Pier at Disney California Adventure, then
     // Universal.

@@ -12,6 +12,7 @@ import {
   suggestNextRides,
   walkMinutesFrom,
 } from '../lib/planner/next-best-ride.ts';
+import { test, reportPassed } from './lib/run-cases.mjs';
 
 const fixture = (name) =>
   JSON.parse(
@@ -19,13 +20,6 @@ const fixture = (name) =>
   );
 
 const NOW = 11 * 60 + 29;
-let passed = 0;
-const test = (name, fn) => {
-  fn();
-  passed += 1;
-  console.log(`✅ ${name}`);
-};
-
 test('large park: three suggestions, biggest measured gap first', () => {
   const { day, nearby } = fixture('phantasialand');
   const out = suggestNextRides({ rides: nearby, day, nowMinute: NOW });
@@ -349,4 +343,4 @@ test('slots: an hour without any slot falls back to hours, a partial one does no
   );
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

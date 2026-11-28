@@ -11,22 +11,7 @@
  */
 
 import { postFilePath, rewriteReferences } from '../lib/admin/media-references.ts';
-
-let passed = 0;
-let failed = 0;
-
-function check(name, actual, expected) {
-  const ok = JSON.stringify(actual) === JSON.stringify(expected);
-  if (ok) {
-    passed += 1;
-    console.log(`✅ ${name}`);
-  } else {
-    failed += 1;
-    console.log(
-      `❌ ${name}\n   expected ${JSON.stringify(expected)}\n   actual   ${JSON.stringify(actual)}`
-    );
-  }
-}
+import { check, finishChecks } from './lib/run-cases.mjs';
 
 const FROM = { collection: 'my-post', name: 'taron' };
 const TO = { collection: 'phantasialand', name: 'taron', ext: 'jpg' };
@@ -102,6 +87,5 @@ check(
   'content/blog/de/phantasialand-tipps.md'
 );
 
-console.log(`\n📊 ${passed} passed, ${failed} failed\n`);
-if (failed) process.exit(1);
+finishChecks();
 console.log('🎉 Moving an image takes its references with it.');

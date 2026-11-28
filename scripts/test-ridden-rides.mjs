@@ -2,6 +2,7 @@
 // The cases worth guarding: a stable snapshot between reads, junk in storage, and a write that
 // fails (full quota) still showing the mark until the stored value changes.
 import assert from 'node:assert/strict';
+import { runCases } from './lib/run-cases.mjs';
 
 const data = new Map();
 let failWrites = false;
@@ -81,14 +82,4 @@ const cases = [
   ],
 ];
 
-let failed = 0;
-for (const [name, fn] of cases) {
-  try {
-    fn();
-    console.log(`ok   ${name}`);
-  } catch (e) {
-    failed++;
-    console.log(`FAIL ${name}\n${e.message}`);
-  }
-}
-if (failed) process.exit(1);
+await runCases(cases.map(([name, run]) => ({ name, run })));

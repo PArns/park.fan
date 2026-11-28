@@ -23,6 +23,7 @@ import {
   shiftMonth,
   weekdayLabels,
 } from '../lib/planner/month-grid.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -117,14 +118,4 @@ test('a German month label', monthLabel('2026-09', 'de-DE'), 'September 2026');
 test('an English one', monthLabel('2026-09', 'en-GB'), 'September 2026');
 test('and one where the month name differs', monthLabel('2026-10', 'nl-NL'), 'oktober 2026');
 
-// ── Report ───────────────────────────────────────────────────────────────────
-let failed = 0;
-for (const { name, actual, expected } of cases) {
-  const ok = Object.is(actual, expected);
-  if (!ok) failed++;
-  console.log(
-    `${ok ? '✅' : '❌'} ${name}${ok ? '' : ` — erwartet ${expected}, bekommen ${actual}`}`
-  );
-}
-console.log(`\n${cases.length - failed}/${cases.length} bestanden`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(cases, { same: Object.is });

@@ -36,6 +36,7 @@ import os from 'os';
 import path from 'path';
 import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
+import { checkThat, finishChecks } from './lib/run-cases.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SCRIPT = path.join(__dirname, 'vercel-ignore-build.sh');
@@ -94,17 +95,8 @@ const CASES = [
   ['docs and the backlog together', SKIP, ['docs/changelog.md', 'todo.md']],
 ];
 
-let failures = 0;
-let checks = 0;
-const pass = (msg) => {
-  checks += 1;
-  console.log(`  ✓ ${msg}`);
-};
-const fail = (msg) => {
-  checks += 1;
-  failures += 1;
-  console.log(`  ✗ ${msg}`);
-};
+const pass = (msg) => checkThat(msg, true);
+const fail = (msg) => checkThat(msg, false);
 
 const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'ignore-build-'));
 const git = (...args) => execFileSync('git', args, { cwd: repo, encoding: 'utf8' }).trim();
@@ -269,8 +261,5 @@ try {
   if (shallowRepo) fs.rmSync(shallowRepo, { recursive: true, force: true });
 }
 
-if (failures > 0) {
-  console.error(`\n✗ ${failures} case(s) failed.`);
-  process.exit(1);
-}
-console.log(`\n✅ ${checks} cases — nothing a build step reads can be skipped.`);
+finishChecks();
+console.log('✅ nothing a build step reads can be skipped.');

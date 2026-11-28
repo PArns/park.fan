@@ -20,18 +20,9 @@ import { BLOG_POSTS_META } from '../lib/blog/manifest.ts';
 import { getNewsParkRef } from '../lib/blog/backlinks.ts';
 import { parseRefKey } from '../lib/blog/derive.mjs';
 import { isNewsCategory } from '../lib/blog/paths.ts';
+import { attempt, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failures = 0;
-let checks = 0;
-function test(name, fn) {
-  checks++;
-  try {
-    fn();
-  } catch (error) {
-    failures++;
-    console.error(`✗ ${name}\n  ${error.message}`);
-  }
-}
+quietChecks();
 
 const keyOf = (entry) => entry.frontmatter.translationKey?.trim() || entry.slug;
 
@@ -47,12 +38,12 @@ const newsPosts = [...byPost].filter(([, entries]) =>
   entries.some((e) => isNewsCategory(e.frontmatter.category))
 );
 
-test('there are news posts to test against', () => {
+attempt('there are news posts to test against', () => {
   assert.ok(newsPosts.length > 0, 'no post in the manifest has category news');
 });
 
 let configured = 0;
-test('a post with parkLinks belongs to its first entry', () => {
+attempt('a post with parkLinks belongs to its first entry', () => {
   for (const [key, entries] of byPost) {
     const list = entries.map((e) => e.frontmatter.parkLinks).find((v) => Array.isArray(v));
     if (!list || list.length === 0) continue;
@@ -67,7 +58,7 @@ test('a post with parkLinks belongs to its first entry', () => {
   assert.ok(configured > 0, 'no post with parkLinks in the manifest');
 });
 
-test('every news post today names its park, unless it opts out with parkLinks: false', () => {
+attempt('every news post today names its park, unless it opts out with parkLinks: false', () => {
   for (const [key, entries] of newsPosts) {
     // The Berlin Dungeon is not a park in the API, so its closing note sets `parkLinks: false`.
     if (entries.some((e) => e.frontmatter.parkLinks === false)) continue;
@@ -75,19 +66,19 @@ test('every news post today names its park, unless it opts out with parkLinks: f
   }
 });
 
-test('the Disneyland Paris note keeps the Paris geo path of its first entry', () => {
+attempt('the Disneyland Paris note keeps the Paris geo path of its first entry', () => {
   const ref = getNewsParkRef('disneyland-paris-halloween-2026');
   assert.deepEqual(ref, { slug: 'disneyland-park', geo: ['europe/france/paris'] });
 });
 
-test('parkLinks: false means no park', () => {
+attempt('parkLinks: false means no park', () => {
   for (const [key, entries] of byPost) {
     if (!entries.some((e) => e.frontmatter.parkLinks === false)) continue;
     assert.equal(getNewsParkRef(key), null, key);
   }
 });
 
-test('without parkLinks the pick is a park the post references', () => {
+attempt('without parkLinks the pick is a park the post references', () => {
   for (const [key, entries] of byPost) {
     if (entries.some((e) => e.frontmatter.parkLinks !== undefined)) continue;
     const referenced = new Set(
@@ -102,14 +93,9 @@ test('without parkLinks the pick is a park the post references', () => {
   }
 });
 
-test('an unknown post has no park', () => {
+attempt('an unknown post has no park', () => {
   assert.equal(getNewsParkRef('no-such-post-at-all'), null);
 });
 
-if (failures > 0) {
-  console.error(`\n${failures} of ${checks} checks failed.`);
-  process.exit(1);
-}
-console.log(
-  `✓ ${checks} checks passed (${newsPosts.length} news posts, ${configured} posts with parkLinks).`
-);
+console.log(`${newsPosts.length} news posts, ${configured} posts with parkLinks`);
+finishChecks();

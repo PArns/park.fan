@@ -13,7 +13,6 @@
  * and the posts and glossary cards' checks.
  */
 
-import assert from 'node:assert/strict';
 import { readSse } from '@/lib/assistant/sse.ts';
 import { directionsHref, safeAssistantHref } from '@/lib/assistant/links.ts';
 import { assistantVisible } from '@/lib/assistant/config.ts';
@@ -128,12 +127,7 @@ import {
   showTimes,
 } from '@/lib/assistant/cards.ts';
 import { parkChapterUrl } from '@/lib/utils/url-utils.ts';
-
-let passed = 0;
-function check(actual, expected, label) {
-  assert.deepEqual(actual, expected, label);
-  passed++;
-}
+import { expectEqual, reportPassed } from './lib/run-cases.mjs';
 
 // A stream that splits events, and even a UTF-8 character, across chunks.
 const text =
@@ -150,7 +144,7 @@ const stream = new ReadableStream({
 });
 const events = [];
 for await (const event of readSse(stream)) events.push(event);
-check(
+expectEqual(
   events,
   [
     { event: 'start', data: '{"a":1}' },
@@ -160,55 +154,59 @@ check(
   'reads events split across chunks'
 );
 
-check(safeAssistantHref('/de/parks/europe'), '/de/parks/europe', 'keeps a site path');
-check(
+expectEqual(safeAssistantHref('/de/parks/europe'), '/de/parks/europe', 'keeps a site path');
+expectEqual(
   safeAssistantHref('https://park.fan/de/blog/x?y=1#z'),
   '/de/blog/x?y=1#z',
   'turns a park.fan URL into a path'
 );
-check(safeAssistantHref('https://www.park.fan/en'), '/en', 'accepts www');
-check(safeAssistantHref('javascript:alert(1)'), null, 'refuses javascript:');
-check(safeAssistantHref('//evil.example/x'), null, 'refuses protocol-relative');
-check(
+expectEqual(safeAssistantHref('https://www.park.fan/en'), '/en', 'accepts www');
+expectEqual(safeAssistantHref('javascript:alert(1)'), null, 'refuses javascript:');
+expectEqual(safeAssistantHref('//evil.example/x'), null, 'refuses protocol-relative');
+expectEqual(
   safeAssistantHref('https://park.fan//evil.example/x'),
   null,
   'refuses a site URL whose path starts with two slashes'
 );
-check(safeAssistantHref('/.//evil.example'), null, 'refuses a dot path that collapses to //');
-check(safeAssistantHref('https://park.fan/\\evil.example'), null, 'refuses a backslash path');
-check(
+expectEqual(safeAssistantHref('/.//evil.example'), null, 'refuses a dot path that collapses to //');
+expectEqual(safeAssistantHref('https://park.fan/\\evil.example'), null, 'refuses a backslash path');
+expectEqual(
   safeAssistantHref('/\\evil.example/x'),
   null,
   'refuses a backslash path that leaves the site'
 );
-check(safeAssistantHref('https://park.fan.evil.example/'), null, 'refuses a look-alike host');
-check(safeAssistantHref('http://park.fan/'), null, 'refuses plain http');
-check(safeAssistantHref(undefined), null, 'no href, no link');
-check(
+expectEqual(safeAssistantHref('https://park.fan.evil.example/'), null, 'refuses a look-alike host');
+expectEqual(safeAssistantHref('http://park.fan/'), null, 'refuses plain http');
+expectEqual(safeAssistantHref(undefined), null, 'no href, no link');
+expectEqual(
   directionsHref('https://www.google.com/maps/dir/?api=1&destination=50.8,6.88'),
   'https://www.google.com/maps/dir/?api=1&destination=50.8,6.88',
   'directions to coordinates'
 );
-check(
+expectEqual(
   directionsHref('https://www.google.com/maps/dir/?api=1&destination=evil'),
   null,
   'directions only to coordinates'
 );
-check(
+expectEqual(
   directionsHref('https://evil.example/maps/dir/?api=1&destination=1,2'),
   null,
   'directions only on google.com'
 );
 
 const on = { enabled: true, rolloutPercent: 25 };
-check(assistantVisible({ config: on, bucket: 24, forced: false }), true, 'inside the share');
-check(assistantVisible({ config: on, bucket: 25, forced: false }), false, 'outside the share');
-check(
+expectEqual(assistantVisible({ config: on, bucket: 24, forced: false }), true, 'inside the share');
+expectEqual(
+  assistantVisible({ config: on, bucket: 25, forced: false }),
+  false,
+  'outside the share'
+);
+expectEqual(
   assistantVisible({ config: on, bucket: 80, forced: false, invited: true }),
   true,
   "invited by Parky's page, outside the share"
 );
-check(
+expectEqual(
   assistantVisible({
     config: { enabled: false, rolloutPercent: 100 },
     bucket: 0,
@@ -218,12 +216,12 @@ check(
   false,
   'an invitation does not switch a stopped Parky on'
 );
-check(
+expectEqual(
   assistantVisible({ config: { enabled: false, rolloutPercent: 100 }, bucket: 0, forced: false }),
   false,
   'off beats the share'
 );
-check(
+expectEqual(
   assistantVisible({ config: { enabled: false, rolloutPercent: 0 }, bucket: 99, forced: true }),
   true,
   '?assistant=on forces it'
@@ -232,14 +230,14 @@ check(
 const plain = postPlainText(
   '## Heading\n\nSee [the park](/de/parks/x) and ![a photo](/a.jpg).\n\n```js\ncode()\n```\n\n<div>html</div>**bold**'
 );
-check(
+expectEqual(
   plain,
   { text: 'Heading\n\nSee the park and .\n\nhtmlbold', shortened: false },
   'strips Markdown'
 );
 const long = postPlainText(`${'a'.repeat(6000)}\n\n${'b'.repeat(6000)}`);
-check(long.shortened, true, 'marks a cut text');
-check(long.text.length <= POST_TEXT_LIMIT, true, 'cuts at the limit');
+expectEqual(long.shortened, true, 'marks a cut text');
+expectEqual(long.text.length <= POST_TEXT_LIMIT, true, 'cuts at the limit');
 
 const guide = [
   'Intro about the park.',
@@ -253,21 +251,21 @@ const guide = [
   '## Best days to visit',
   `Tuesdays are quiet. ${'Crowds vary. '.repeat(300)}`,
 ].join('\n\n');
-check(
+expectEqual(
   postSections(guide).sections.map((section) => section.heading),
   ['Getting there', 'Parking', 'Food', 'Best days to visit'],
   'splits at H2 and H3, not inside code'
 );
-check(postSections(guide).intro, 'Intro about the park.', 'keeps the intro apart');
-check(
+expectEqual(postSections(guide).intro, 'Intro about the park.', 'keeps the intro apart');
+expectEqual(
   postSections(guide).sections[0].body,
   'Take the train from Cologne.',
   'plain-texts each section'
 );
 const parking = postTextForQuery(guide, 'what does parking cost?');
-check(parking.text.startsWith('Intro about the park.\n\nGetting there'), true, 'intro first');
-check(parking.text.includes('Parking costs ten euros.'), true, 'keeps the matching section');
-check(parking.omitted, [], 'leaves nothing out of a short post');
+expectEqual(parking.text.startsWith('Intro about the park.\n\nGetting there'), true, 'intro first');
+expectEqual(parking.text.includes('Parking costs ten euros.'), true, 'keeps the matching section');
+expectEqual(parking.omitted, [], 'leaves nothing out of a short post');
 const big = [
   'Intro.',
   ...['Arrival', 'Food', 'Hotels', 'Rides', 'Shows', 'Tickets'].map(
@@ -277,20 +275,20 @@ const big = [
   'Tuesdays in May are the quietest.',
 ].join('\n\n');
 const quiet = postTextForQuery(big, 'Which days are quiet?');
-check(
+expectEqual(
   quiet.text.includes('Tuesdays in May are the quietest.'),
   true,
   'reaches the end of a long post'
 );
-check(quiet.text.length <= POST_TEXT_LIMIT, true, 'stays within the limit');
-check(quiet.omitted.length > 0 && quiet.shortened, true, 'names what it left out');
-check(quiet.sections.length, 7, 'lists every heading');
-check(
+expectEqual(quiet.text.length <= POST_TEXT_LIMIT, true, 'stays within the limit');
+expectEqual(quiet.omitted.length > 0 && quiet.shortened, true, 'names what it left out');
+expectEqual(quiet.sections.length, 7, 'lists every heading');
+expectEqual(
   quiet.text.indexOf('Arrival') < quiet.text.indexOf('Quiet days'),
   true,
   "keeps the post's order"
 );
-check(
+expectEqual(
   postTextForQuery(big, 'hotels').omitted.includes('Hotels'),
   false,
   'a heading hit wins its section a place'
@@ -319,18 +317,18 @@ const leer = postTextForQuery(
   ].join('\n\n'),
   'Wann ist Europa-Park am leersten?'
 );
-check(
+expectEqual(
   leer.omitted.includes('Wann ist im Europa-Park am wenigsten los?'),
   false,
   'a matching FAQ entry beats the H3s of a winning H2 that do not match'
 );
-check(leer.omitted.includes('Der Brückentag'), true, 'those H3s fill only the room left');
-check(
+expectEqual(leer.omitted.includes('Der Brückentag'), true, 'those H3s fill only the room left');
+expectEqual(
   ['Der Wochentag', 'Der Monat'].filter((heading) => leer.omitted.includes(heading)),
   [],
   'a winning H2 brings its H3s'
 );
-check(
+expectEqual(
   leer.text.indexOf('Wann der') < leer.text.indexOf('Dienstag') &&
     leer.text.indexOf('Dienstag') < leer.text.indexOf('Im Mai'),
   true,
@@ -350,13 +348,17 @@ const h3Alone = postTextForQuery(
   'Can I book VIP?'
 );
 // Only the best section is cut to fit, so the long H3 is in only when "VIP" counted.
-check(
+expectEqual(
   h3Alone.text.includes('The VIP tour skips every queue.'),
   true,
   'keeps a short word written in capitals'
 );
-check(h3Alone.text.includes('Tickets\n\nVIP tour'), true, 'a winning H3 keeps its H2 heading line');
-check(h3Alone.omitted.includes('Tickets'), true, 'names the H2 whose text it left out');
+expectEqual(
+  h3Alone.text.includes('Tickets\n\nVIP tour'),
+  true,
+  'a winning H3 keeps its H2 heading line'
+);
+expectEqual(h3Alone.omitted.includes('Tickets'), true, 'names the H2 whose text it left out');
 
 const park = {
   slug: 'phantasialand',
@@ -364,17 +366,17 @@ const park = {
   geo: { continent: 'europe', country: 'germany', city: 'bruehl' },
   timezone: 'Europe/Berlin',
 };
-check(
+expectEqual(
   readAssistantAction({ type: 'navigate', path: '/de/blog/x' })?.type,
   'navigate',
   'navigates on site'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'navigate', path: 'https://evil.example/' }),
   null,
   'never off site'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'navigate',
     path: '/orlando?from=2027-03-03&to=2027-03-10&parks=epcot:1#planner',
@@ -382,8 +384,8 @@ check(
   { type: 'navigate', path: '/orlando?from=2027-03-03&to=2027-03-10&parks=epcot:1#planner' },
   'the Orlando hub keeps its plan and the planner anchor'
 );
-check(readAssistantAction({ type: 'drop_database' }), null, 'unknown actions are dropped');
-check(
+expectEqual(readAssistantAction({ type: 'drop_database' }), null, 'unknown actions are dropped');
+expectEqual(
   readAssistantAction({
     type: 'planner_add_rides',
     park,
@@ -393,7 +395,7 @@ check(
   'planner_add_rides',
   'adds rides to a plan'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_add_rides',
     park: { ...park, slug: '../x' },
@@ -403,7 +405,7 @@ check(
   null,
   'refuses a park slug that is no slug'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_add_block',
     park,
@@ -413,7 +415,7 @@ check(
   null,
   'refuses a block icon the planner does not have'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'card',
     card: {
@@ -429,7 +431,7 @@ check(
   null,
   'refuses a card linking off site'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'card',
     card: {
@@ -462,8 +464,8 @@ check(
     type: 'card',
     card: { kind: 'idea', region: 'orlando', idea },
   });
-  check(read?.type, 'card', 'takes an idea card for a live region');
-  check(
+  expectEqual(read?.type, 'card', 'takes an idea card for a live region');
+  expectEqual(
     read?.card,
     {
       kind: 'idea',
@@ -481,7 +483,7 @@ check(
     },
     'rebuilds an idea field by field, so nothing else rides along'
   );
-  check(
+  expectEqual(
     readAssistantAction({
       type: 'card',
       card: { kind: 'idea', region: 'orlando', idea: { ...idea, kind: 'teleport' } },
@@ -489,7 +491,7 @@ check(
     null,
     'refuses an idea of a kind this client does not know'
   );
-  check(
+  expectEqual(
     readAssistantAction({
       type: 'card',
       card: { kind: 'idea', region: 'atlantis', idea },
@@ -497,7 +499,7 @@ check(
     null,
     'refuses an idea for a region that is not live'
   );
-  check(
+  expectEqual(
     readAssistantAction({
       type: 'card',
       card: { kind: 'idea', region: 'orlando', idea: { ...idea, query: 'a b<script>' } },
@@ -506,7 +508,7 @@ check(
     "refuses an idea whose change is not in the planner's alphabet"
   );
 }
-check(
+expectEqual(
   readAssistantAction({
     type: 'card',
     card: { kind: 'parks', parks: [{ name: 'X', place: null, url: 'https://evil.example' }] },
@@ -514,12 +516,12 @@ check(
   null,
   'refuses a park row linking off site'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'navigate', path: 'https://park.fan/de/blog/x', extra: 1 }),
   { type: 'navigate', path: '/de/blog/x' },
   'a page is carried out as the path it was checked as'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'card',
     card: {
@@ -549,46 +551,46 @@ check(
     imagePosition: '50% 40%',
   };
   const read = (card) => readAssistantAction({ type: 'card', card: structuredClone(card) })?.card;
-  check(read({ kind: 'posts', posts: [post] })?.posts[0], post, 'takes a posts card as sent');
-  check(
+  expectEqual(read({ kind: 'posts', posts: [post] })?.posts[0], post, 'takes a posts card as sent');
+  expectEqual(
     read({ kind: 'posts', posts: [{ ...post, image: 'https://evil.example/x.jpg' }] })?.posts[0],
     { ...post, image: null, imagePosition: null },
     'a cover from another host is dropped, not the post'
   );
-  check(
+  expectEqual(
     read({ kind: 'posts', posts: [{ ...post, url: 'https://evil.example/blog/x' }] }),
     undefined,
     'refuses a post linking off site'
   );
-  check(
+  expectEqual(
     read({ kind: 'posts', posts: [post, post, post, post] }),
     undefined,
     'refuses more than three posts'
   );
-  check(read({ kind: 'posts', posts: [] }), undefined, 'refuses an empty posts card');
+  expectEqual(read({ kind: 'posts', posts: [] }), undefined, 'refuses an empty posts card');
   const term = {
     name: 'Blockbremse',
     definition: 'Eine Bremse, die einen Zug anhält.',
     category: 'coasters',
     url: 'https://park.fan/de/glossar/blockbremse',
   };
-  check(
+  expectEqual(
     read({ kind: 'glossary', terms: [term] })?.terms[0],
     { ...term, url: '/de/glossar/blockbremse' },
     'takes a glossary card and links the path it checked'
   );
-  check(
+  expectEqual(
     read({ kind: 'glossary', terms: [{ ...term, name: '' }] }),
     undefined,
     'refuses a glossary term without a name'
   );
 }
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_optimize', park, date: '2026-11-02', mode: 'drop' }),
   null,
   'refuses an optimise mode the planner does not have'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_open_day',
     park: { ...park, timezone: 'Mars/Olympus' },
@@ -598,7 +600,7 @@ check(
   'refuses a time zone the browser cannot format'
 );
 for (const durationMinutes of ['lots', 10_000, 2.5]) {
-  check(
+  expectEqual(
     readAssistantAction({
       type: 'planner_add_block',
       park,
@@ -611,29 +613,29 @@ for (const durationMinutes of ['lots', 10_000, 2.5]) {
 }
 
 // The language switch: one of the six, nothing else rides along, and never off the site.
-check(
+expectEqual(
   readAssistantAction({ type: 'switch_locale', locale: 'it', path: 'https://evil.example/' }),
   { type: 'switch_locale', locale: 'it' },
   'switches to one of the six, carrying nothing else'
 );
 for (const locale of ['pt', 'de-DE', 'EN', '../admin', '', null, 42, { toString: () => 'de' }]) {
-  check(
+  expectEqual(
     readAssistantAction({ type: 'switch_locale', locale }),
     null,
     `refuses the locale ${String(locale)}`
   );
 }
-check(
+expectEqual(
   readAssistantAction({ type: 'feedback_sent', message: '<b>x</b>' }),
   { type: 'feedback_sent' },
   'feedback sent is only a chip'
 );
-check(
+expectEqual(
   localeSwitchPath('/de/beste-reisezeit', 'en', null),
   '/best-time-to-visit',
   'respells a localized segment'
 );
-check(
+expectEqual(
   localeSwitchPath(
     '/de/parks/europe/germany/bruehl/phantasialand/wartezeiten-kalender',
     'fr',
@@ -642,23 +644,23 @@ check(
   '/parks/europe/germany/bruehl/phantasialand/calendrier-temps-attente',
   "respells a park's sub-page"
 );
-check(localeSwitchPath('/de', 'it', null), '/', 'the home page in the other language');
-check(
+expectEqual(localeSwitchPath('/de', 'it', null), '/', 'the home page in the other language');
+expectEqual(
   localeSwitchPath('/de/blog/taron-wartezeiten', 'en', '/en/blog/taron-wait-times'),
   '/blog/taron-wait-times',
   "the page's own hreflang alternate wins"
 );
-check(
+expectEqual(
   localeSwitchPath('/de/blog/x', 'en', '//evil.example/en/blog/x'),
   '/blog/x',
   'an alternate off the site is passed over'
 );
-check(
+expectEqual(
   localeSwitchPath('/de/blog/x', 'en', '/fr/blog/x'),
   '/blog/x',
   'an alternate in another language is passed over'
 );
-check(localeSwitchPath('//evil.example/de', 'en', null), null, 'never a path off the site');
+expectEqual(localeSwitchPath('//evil.example/de', 'en', null), null, 'never a path off the site');
 {
   const store = new Map();
   globalThis.window = {
@@ -669,10 +671,14 @@ check(localeSwitchPath('//evil.example/de', 'en', null), null, 'never a path off
     },
   };
   reopenAfterSwitch();
-  check(takeReopen(), true, 'the switched page opens the window again');
-  check(takeReopen(), false, 'once');
+  expectEqual(takeReopen(), true, 'the switched page opens the window again');
+  expectEqual(takeReopen(), false, 'once');
   reopenAfterSwitch();
-  check(takeReopen(Date.now() + 60_000), false, 'a switch that never landed opens nothing later');
+  expectEqual(
+    takeReopen(Date.now() + 60_000),
+    false,
+    'a switch that never landed opens nothing later'
+  );
   // A tapped day tip hands its day and sentence to the chat with the question, once.
   const dayTip = {
     park: 'europe/germany/bruehl/phantasialand',
@@ -681,11 +687,15 @@ check(localeSwitchPath('//evil.example/de', 'en', null), null, 'never a path off
   };
   store.set('parkfan:assistant-ask', 'Wie holen wir das Beste raus?');
   store.set('parkfan:assistant-ask-day-tip', JSON.stringify(dayTip));
-  check(takeParkyAsk(), { question: 'Wie holen wir das Beste raus?', dayTip }, 'ask: tip with day');
-  check(takeParkyAsk(), null, 'ask: once');
+  expectEqual(
+    takeParkyAsk(),
+    { question: 'Wie holen wir das Beste raus?', dayTip },
+    'ask: tip with day'
+  );
+  expectEqual(takeParkyAsk(), null, 'ask: once');
   store.set('parkfan:assistant-ask', 'Und?');
   store.set('parkfan:assistant-ask-day-tip', '{"park":1}');
-  check(
+  expectEqual(
     takeParkyAsk(),
     { question: 'Und?' },
     'ask: a broken day tip costs the tip, not the question'
@@ -693,33 +703,41 @@ check(localeSwitchPath('//evil.example/de', 'en', null), null, 'never a path off
   delete globalThis.window;
 }
 
-check(localizedPath('/parks/europe', 'de'), '/de/parks/europe', 'adds the locale');
-check(localizedPath('/en/blog/x', 'de'), '/en/blog/x', 'keeps a locale already there');
+expectEqual(localizedPath('/parks/europe', 'de'), '/de/parks/europe', 'adds the locale');
+expectEqual(localizedPath('/en/blog/x', 'de'), '/en/blog/x', 'keeps a locale already there');
 
-check(
+expectEqual(
   splitWaits('Taron: 30 Min. und F.L.Y. 40 min'),
   [{ text: 'Taron: ' }, { minutes: 30 }, { text: ' und F.L.Y. ' }, { minutes: 40 }],
   'waits become chips'
 );
-check(
+expectEqual(
   splitWaits('wait 25 minutes now'),
   [{ text: 'wait ' }, { minutes: 25 }, { text: ' now' }],
   'english'
 );
-check(splitWaits('20 minuti'), [{ minutes: 20 }], 'italian');
-check(splitWaits('Minimum 120 cm'), [{ text: 'Minimum 120 cm' }], 'other numbers stay text');
-check(splitWaits('10 Minutenkarten'), [{ text: '10 Minutenkarten' }], 'only whole words');
-check(boredomAfter(0), 'awake', 'awake with company');
-check(boredomAfter(BORED_AFTER_MS), 'bored', 'bored after a quiet spell');
-check(boredomAfter(ASLEEP_AFTER_MS), 'asleep', 'asleep after a long one');
-check(nextBoredomInMs(1_000), BORED_AFTER_MS - 1_000, 'counts down to boredom');
-check(nextBoredomInMs(BORED_AFTER_MS), ASLEEP_AFTER_MS - BORED_AFTER_MS, 'then to sleep');
-check(nextBoredomInMs(ASLEEP_AFTER_MS), null, 'only activity ends sleep');
-check(boredomAfter(BORED_AFTER_MS * LATE_SLEEPY_FACTOR, 22), 'bored', 'at 22:00 sleepy sooner');
-check(boredomAfter(BORED_AFTER_MS * LATE_SLEEPY_FACTOR, 21), 'awake', 'at 21:00 not yet');
-check(boredomAfter(ASLEEP_AFTER_MS * LATE_SLEEPY_FACTOR, 2), 'asleep', 'asleep sooner at 02:00');
-check(boredomAfter(BORED_AFTER_MS * LATE_SLEEPY_FACTOR, 5), 'awake', 'morning from 05:00');
-check(
+expectEqual(splitWaits('20 minuti'), [{ minutes: 20 }], 'italian');
+expectEqual(splitWaits('Minimum 120 cm'), [{ text: 'Minimum 120 cm' }], 'other numbers stay text');
+expectEqual(splitWaits('10 Minutenkarten'), [{ text: '10 Minutenkarten' }], 'only whole words');
+expectEqual(boredomAfter(0), 'awake', 'awake with company');
+expectEqual(boredomAfter(BORED_AFTER_MS), 'bored', 'bored after a quiet spell');
+expectEqual(boredomAfter(ASLEEP_AFTER_MS), 'asleep', 'asleep after a long one');
+expectEqual(nextBoredomInMs(1_000), BORED_AFTER_MS - 1_000, 'counts down to boredom');
+expectEqual(nextBoredomInMs(BORED_AFTER_MS), ASLEEP_AFTER_MS - BORED_AFTER_MS, 'then to sleep');
+expectEqual(nextBoredomInMs(ASLEEP_AFTER_MS), null, 'only activity ends sleep');
+expectEqual(
+  boredomAfter(BORED_AFTER_MS * LATE_SLEEPY_FACTOR, 22),
+  'bored',
+  'at 22:00 sleepy sooner'
+);
+expectEqual(boredomAfter(BORED_AFTER_MS * LATE_SLEEPY_FACTOR, 21), 'awake', 'at 21:00 not yet');
+expectEqual(
+  boredomAfter(ASLEEP_AFTER_MS * LATE_SLEEPY_FACTOR, 2),
+  'asleep',
+  'asleep sooner at 02:00'
+);
+expectEqual(boredomAfter(BORED_AFTER_MS * LATE_SLEEPY_FACTOR, 5), 'awake', 'morning from 05:00');
+expectEqual(
   nextBoredomInMs(0, 23),
   BORED_AFTER_MS * LATE_SLEEPY_FACTOR,
   'the late countdown is the shorter one'
@@ -753,24 +771,24 @@ check(
   };
   let notified = 0;
   const unsubscribe = parkyBoredom.subscribe(() => notified++);
-  check(parkyBoredom.getSnapshot(), 'awake', 'starts awake');
+  expectEqual(parkyBoredom.getSnapshot(), 'awake', 'starts awake');
   advance(BORED_AFTER_MS - 1_000);
   window.dispatchEvent(new Event('pointermove'));
   advance(1_000);
-  check(parkyBoredom.getSnapshot(), 'awake', 'a move pushes boredom back');
+  expectEqual(parkyBoredom.getSnapshot(), 'awake', 'a move pushes boredom back');
   advance(BORED_AFTER_MS);
-  check(parkyBoredom.getSnapshot(), 'bored', 'bored once quiet long enough');
+  expectEqual(parkyBoredom.getSnapshot(), 'bored', 'bored once quiet long enough');
   advance(ASLEEP_AFTER_MS - BORED_AFTER_MS);
-  check(parkyBoredom.getSnapshot(), 'asleep', 'then asleep');
+  expectEqual(parkyBoredom.getSnapshot(), 'asleep', 'then asleep');
   const armed = timers.filter((timer) => timer.fn).length;
-  check(armed, 0, 'no timer while asleep');
-  check(parkyBoredom.wokeUp(), false, 'falling asleep is no waking');
+  expectEqual(armed, 0, 'no timer while asleep');
+  expectEqual(parkyBoredom.wokeUp(), false, 'falling asleep is no waking');
   window.dispatchEvent(new Event('keydown'));
-  check(parkyBoredom.getSnapshot(), 'awake', 'a key wakes it');
-  check(parkyBoredom.wokeUp(), true, 'and says so');
-  check(notified, 3, 'one notice per change');
+  expectEqual(parkyBoredom.getSnapshot(), 'awake', 'a key wakes it');
+  expectEqual(parkyBoredom.wokeUp(), true, 'and says so');
+  expectEqual(notified, 3, 'one notice per change');
   unsubscribe();
-  check(
+  expectEqual(
     timers.filter((timer) => timer.fn).length,
     0,
     'the last subscriber leaving stops the timer'
@@ -784,9 +802,9 @@ check(
 for (let i = 0; i < 50; i++) {
   if (pickRandom(['a', 'b'], 'a') !== 'b') throw new Error('pickRandom returned the excluded item');
 }
-check(pickRandom(['a'], 'a'), 'a', 'a list of one has nothing else to give');
-check(pickSome([1, 2, 3, 4], 4).sort(), [1, 2, 3, 4], 'picks each item once');
-check(pickSome([1, 2], 5).length, 2, 'never more than there are');
+expectEqual(pickRandom(['a'], 'a'), 'a', 'a list of one has nothing else to give');
+expectEqual(pickSome([1, 2, 3, 4], 4).sort(), [1, 2, 3, 4], 'picks each item once');
+expectEqual(pickSome([1, 2], 5).length, 2, 'never more than there are');
 
 // The opener on a stand-in sessionStorage: kept across a reload, a new chat draws again.
 {
@@ -798,23 +816,27 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
     },
   };
   const first = sessionOpener();
-  check(GREETING_KEYS.includes(first.greeting), true, 'draws one of the greetings');
-  check(first.site.length, SUGGESTIONS_SHOWN, 'offers a few questions');
-  check(new Set(first.park).size, SUGGESTIONS_SHOWN, 'never the same question twice');
-  check(
+  expectEqual(GREETING_KEYS.includes(first.greeting), true, 'draws one of the greetings');
+  expectEqual(first.site.length, SUGGESTIONS_SHOWN, 'offers a few questions');
+  expectEqual(new Set(first.park).size, SUGGESTIONS_SHOWN, 'never the same question twice');
+  expectEqual(
     first.park.every((key) => SUGGESTION_KEYS.park.includes(key)),
     true,
     'a park page asks about that park'
   );
-  check(sessionOpener(), first, 'a reload keeps the opener');
+  expectEqual(sessionOpener(), first, 'a reload keeps the opener');
   const next = drawOpener(first);
-  check(next.greeting !== first.greeting, true, 'a new chat greets differently');
-  check(sessionOpener(), next, 'and keeps that');
+  expectEqual(next.greeting !== first.greeting, true, 'a new chat greets differently');
+  expectEqual(sessionOpener(), next, 'and keeps that');
   store.set(
     'parkfan:assistant-opener',
     JSON.stringify({ greeting: 'greeting', site: [], park: [] })
   );
-  check(GREETING_KEYS.includes(sessionOpener().greeting), true, 'a stale opener draws afresh');
+  expectEqual(
+    GREETING_KEYS.includes(sessionOpener().greeting),
+    true,
+    'a stale opener draws afresh'
+  );
   delete globalThis.window;
 }
 // The visitor's own plans, as the bubble, the greeting and the subtitle read them.
@@ -840,13 +862,13 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
   const moments = (planner, extra = {}) =>
     yoursMoments({ planner, ridden: 0, alerts: [], lastPark: null, now, ...extra });
   const efteling = plan(park('efteling', 'Efteling', ['2026-11-19']));
-  check(
+  expectEqual(
     moments(efteling),
     [{ kind: 'soon', park: 'Efteling', date: '2026-11-19', days: 5 }],
     'five days to Efteling'
   );
-  check(moments(plan()), [], 'nothing planned, nothing to say');
-  check(
+  expectEqual(moments(plan()), [], 'nothing planned, nothing to say');
+  expectEqual(
     moments(
       plan(
         park('efteling', 'Efteling', ['2026-11-14', '2026-11-13', '2026-11-15']),
@@ -856,7 +878,7 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
     ['today', 'yesterday', 'tomorrow', 'soon', 'trip'],
     'today, yesterday, tomorrow, soon, then the trip'
   );
-  check(
+  expectEqual(
     moments(plan(park('efteling', 'Efteling', ['2026-11-14', '2026-11-14']))).map((m) => m.kind),
     ['today'],
     'a day counted once'
@@ -865,26 +887,30 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
     park('a', 'Magic Kingdom', ['2026-12-01', '2026-12-02'], 'America/New_York'),
     park('b', 'Epic Universe', ['2026-12-03'], 'America/New_York')
   );
-  check(
+  expectEqual(
     moments(far),
     [{ kind: 'trip', count: 3, date: '2026-12-01' }],
     'three days within a month are a trip, from its first'
   );
-  check(moments(plan(park('a', 'A', ['2026-12-20']))), [], 'further than two weeks: no countdown');
-  check(
+  expectEqual(
+    moments(plan(park('a', 'A', ['2026-12-20']))),
+    [],
+    'further than two weeks: no countdown'
+  );
+  expectEqual(
     moments(plan(), { ridden: 25 }),
     [{ kind: 'ridden', count: 25 }],
     'a milestone of rides ticked off'
   );
-  check(moments(plan(), { ridden: 26 }), [], 'past the milestone, quiet again');
-  check(
+  expectEqual(moments(plan(), { ridden: 26 }), [], 'past the milestone, quiet again');
+  expectEqual(
     moments(efteling, { lastPark: { name: 'Toverland' }, alerts: ['Baron 1898'] }).map(
       (m) => m.kind
     ),
     ['soon', 'back', 'alert'],
     'the last park and an alert come after the plan'
   );
-  check(
+  expectEqual(
     moments(plan(park('a', 'A', ['2026-11-14'], 'Pacific/Pago_Pago'))).map((m) => m.kind),
     ['tomorrow'],
     "each park's own today: at Pago Pago it is still the 13th"
@@ -893,24 +919,24 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
     ...efteling.parks.efteling,
     days: { '2026-11-19': { date: '2026-11-19', entries: [] } },
   };
-  check(moments(plan(empty)), [], 'an empty day the planner only opened is no plan');
-  check(nextUp(efteling, now), { park: 'Efteling', date: '2026-11-19' }, 'next up: Efteling');
-  check(nextUp(plan(), now), null, 'nothing next');
+  expectEqual(moments(plan(empty)), [], 'an empty day the planner only opened is no plan');
+  expectEqual(nextUp(efteling, now), { park: 'Efteling', date: '2026-11-19' }, 'next up: Efteling');
+  expectEqual(nextUp(plan(), now), null, 'nothing next');
 
-  check(dayOfMonth('2026-03-03', 'de'), '3. März', 'a German day of the month');
-  check(dayOfMonth('2026-03-03', 'en'), 'March 3', 'an English one');
-  check(shortDay('2026-11-19', 'de'), 'Do., 19. Nov.', "the subtitle's short date");
-  check(
+  expectEqual(dayOfMonth('2026-03-03', 'de'), '3. März', 'a German day of the month');
+  expectEqual(dayOfMonth('2026-03-03', 'en'), 'March 3', 'an English one');
+  expectEqual(shortDay('2026-11-19', 'de'), 'Do., 19. Nov.', "the subtitle's short date");
+  expectEqual(
     whenOf({ kind: 'tomorrow', park: 'A', date: '2026-11-15' }, 'de'),
     { key: 'whenTomorrow' },
     'tomorrow is tomorrow'
   );
-  check(
+  expectEqual(
     whenOf({ kind: 'soon', park: 'A', date: '2026-11-19', days: 5 }, 'de'),
     { key: 'whenWeekday', weekday: 'Donnerstag' },
     'within a week, the weekday'
   );
-  check(
+  expectEqual(
     whenOf({ kind: 'soon', park: 'A', date: '2026-11-25', days: 11 }, 'de'),
     { key: 'whenDate', date: '25. November' },
     'further out, the date'
@@ -919,7 +945,7 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
     `${key}(${Object.entries(values)
       .map(([k, v]) => `${k}=${v}`)
       .join(',')})`;
-  check(
+  expectEqual(
     yoursValues({ kind: 'soon', park: 'Efteling', date: '2026-11-19', days: 5 }, 'de', t),
     { park: 'Efteling', when: 'whenWeekday(weekday=Donnerstag)', days: 5 },
     'a countdown fills its park, when and days'
@@ -944,10 +970,10 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
       'suggestMyTrip',
       'suggestMyBack',
     ]) {
-      check(typeof messages[key], 'string', `${locale} has ${key}`);
+      expectEqual(typeof messages[key], 'string', `${locale} has ${key}`);
     }
-    check(messages.yoursSoon.includes('{days}'), true, `${locale} counts the days down`);
-    check(messages.greetingSoon.includes('{when}'), true, `${locale} says when`);
+    expectEqual(messages.yoursSoon.includes('{days}'), true, `${locale} counts the days down`);
+    expectEqual(messages.greetingSoon.includes('{when}'), true, `${locale} says when`);
   }
 }
 
@@ -962,25 +988,29 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
   };
   const soon = { kind: 'soon', park: 'Efteling', date: '2026-11-19', days: 5 };
   const opener = sessionOpener(() => [soon, { kind: 'alert', ride: 'Baron 1898' }]);
-  check(opener.yours, soon, 'the chat opens with the next planned day');
-  check(greetingKeyOf(opener), 'greetingSoon', 'with its own greeting');
+  expectEqual(opener.yours, soon, 'the chat opens with the next planned day');
+  expectEqual(greetingKeyOf(opener), 'greetingSoon', 'with its own greeting');
   const keys = suggestionKeysOf(opener, false);
-  check(keys.slice(0, 2), ['suggestMyDay', 'suggestMyWeather'], 'its questions first');
-  check(keys.length, SUGGESTIONS_SHOWN, 'still three questions');
-  check(
+  expectEqual(keys.slice(0, 2), ['suggestMyDay', 'suggestMyWeather'], 'its questions first');
+  expectEqual(keys.length, SUGGESTIONS_SHOWN, 'still three questions');
+  expectEqual(
     sessionOpener(() => []),
     opener,
     'a reload keeps the personal greeting'
   );
   const plain = drawOpener(opener, [{ kind: 'ridden', count: 25 }]);
-  check(plain.yours, undefined, 'a milestone has no greeting of its own');
-  check(greetingKeyOf(plain), plain.greeting, 'so the drawn one greets');
-  check(suggestionKeysOf(plain, true), plain.park, 'and the page questions stay');
+  expectEqual(plain.yours, undefined, 'a milestone has no greeting of its own');
+  expectEqual(greetingKeyOf(plain), plain.greeting, 'so the drawn one greets');
+  expectEqual(suggestionKeysOf(plain, true), plain.park, 'and the page questions stay');
   store.set(
     'parkfan:assistant-opener',
     JSON.stringify({ ...opener, yours: { kind: 'soon', park: 'Efteling' } })
   );
-  check(sessionOpener(() => []).yours, undefined, 'a moment that does not hold is drawn afresh');
+  expectEqual(
+    sessionOpener(() => []).yours,
+    undefined,
+    'a moment that does not hold is drawn afresh'
+  );
   delete globalThis.window;
 }
 
@@ -1000,24 +1030,24 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
   };
   const day = 86_400_000;
   const start = Date.parse('2026-11-01T10:00:00Z');
-  check(lastParkBack(start), null, 'nothing kept yet');
+  expectEqual(lastParkBack(start), null, 'nothing kept yet');
   rememberLastPark('Toverland', 'toverland', start + 60_000);
-  check(lastParkBack(start + 120_000), null, 'not on the visit it was kept in');
+  expectEqual(lastParkBack(start + 120_000), null, 'not on the visit it was kept in');
   session = new Map();
-  check(
+  expectEqual(
     lastParkBack(start + 2 * day),
     { name: 'Toverland', slug: 'toverland', at: start + 60_000 },
     'a later visit picks it up'
   );
   session = new Map();
-  check(lastParkBack(start + 31 * day), null, 'a month on, it is too old to bring up');
-  check(readLastPark('{"name":"  ","at":1}'), null, 'a blank name is no record');
-  check(
+  expectEqual(lastParkBack(start + 31 * day), null, 'a month on, it is too old to bring up');
+  expectEqual(readLastPark('{"name":"  ","at":1}'), null, 'a blank name is no record');
+  expectEqual(
     readLastPark('{"name":"A","slug":"../x","at":1}'),
     { name: 'A', slug: null, at: 1 },
     'an odd slug is dropped'
   );
-  check(readLastPark('not json'), null, 'junk is no record');
+  expectEqual(readLastPark('not json'), null, 'junk is no record');
   globalThis.window = {
     get localStorage() {
       throw new Error('blocked');
@@ -1027,7 +1057,7 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
     },
   };
   rememberLastPark('Efteling', 'efteling');
-  check(lastParkBack(), null, 'blocked storage: nothing brought up, nothing thrown');
+  expectEqual(lastParkBack(), null, 'blocked storage: nothing brought up, nothing thrown');
   delete globalThis.window;
 }
 
@@ -1040,10 +1070,10 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
       setItem: (key, value) => store.set(key, value),
     },
   };
-  check(reactionsShown(), 0, 'a fresh visit has its line');
+  expectEqual(reactionsShown(), 0, 'a fresh visit has its line');
   countReaction();
-  check(reactionsShown(), REACTIONS_PER_SESSION, 'a bored line spends it');
-  check(
+  expectEqual(reactionsShown(), REACTIONS_PER_SESSION, 'a bored line spends it');
+  expectEqual(
     store.get('parkfan:assistant-teasers'),
     String(TEASER_SCHEDULE_MS.length),
     'the schedule too'
@@ -1051,29 +1081,33 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
   delete globalThis.window;
 }
 
-check(
+expectEqual(
   parkPathOf('/de/parks/europe/germany/bruehl/phantasialand'),
   'europe/germany/bruehl/phantasialand',
   "a park's page has its geo path"
 );
-check(
+expectEqual(
   parkPathOf('/en/parks/europe/germany/bruehl/phantasialand/taron'),
   'europe/germany/bruehl/phantasialand',
   "a ride's page belongs to its park"
 );
-check(parkPathOf('/de/parks/europe/germany'), null, 'a country is no park');
-check(
+expectEqual(parkPathOf('/de/parks/europe/germany'), null, 'a country is no park');
+expectEqual(
   PARK_FAVOURITES['europe/germany/bruehl/phantasialand'].ride,
   'Taron',
   'Parky wants to ride Taron'
 );
-check(
+expectEqual(
   parkPageOf('/de/parks/europe/germany/soltau/heide-park'),
   { continent: 'europe', country: 'germany', city: 'soltau', parkSlug: 'heide-park' },
   "a park's own page"
 );
-check(parkPageOf('/de/parks/europe/germany/soltau/heide-park/colossos'), null, 'not a ride page');
-check(
+expectEqual(
+  parkPageOf('/de/parks/europe/germany/soltau/heide-park/colossos'),
+  null,
+  'not a ride page'
+);
+expectEqual(
   topCoaster([
     { attractionName: 'Meet Mickey', attractionType: 'Meet & Greet' },
     { attractionName: 'Big Thunder Mountain', attractionType: 'Roller Coaster' },
@@ -1081,8 +1115,12 @@ check(
   'Big Thunder Mountain',
   'the coaster with the longest waits, not the top attraction'
 );
-check(topCoaster([{ attractionName: 'Piraten', attractionType: null }]), 'Piraten', 'else the top');
-check(topCoaster([]), null, 'no ranking, no ride');
+expectEqual(
+  topCoaster([{ attractionName: 'Piraten', attractionType: null }]),
+  'Piraten',
+  'else the top'
+);
+expectEqual(topCoaster([]), null, 'no ranking, no ride');
 
 // Parky's facts: one per sentence a finding supports, none without its data.
 {
@@ -1097,26 +1135,34 @@ check(topCoaster([]), null, 'no ranking, no ride');
     busiestP50: 34,
   };
   const facts = parkyFacts(full, 'Phantasialand', 'en', labels);
-  check(
+  expectEqual(
     facts.map((f) => f.key),
     Object.values(FACT_KEYS).flat(),
     'every sentence once for a park with every finding'
   );
-  check(
+  expectEqual(
     facts.find((f) => f.key === 'factLongest1').values,
     { park: 'Phantasialand', ride: 'Taron', wait: 50 },
     'the longest queue on the five-minute grid'
   );
-  check(facts.find((f) => f.key === 'factGap1').values.extra, 30, 'the gap between grid values');
-  check(facts.find((f) => f.key === 'factQuietest1').values.days, 'Weekdays', 'the working week');
-  check(
+  expectEqual(
+    facts.find((f) => f.key === 'factGap1').values.extra,
+    30,
+    'the gap between grid values'
+  );
+  expectEqual(
+    facts.find((f) => f.key === 'factQuietest1').values.days,
+    'Weekdays',
+    'the working week'
+  );
+  expectEqual(
     facts.find((f) => f.key === 'factBusiest1').values.months,
     'July and August',
     'months named'
   );
   const close = parkyFacts({ ...full, longestP50: 27 }, 'P', 'en', labels).map((f) => f.key);
-  check(close.includes('factGap1'), false, 'no gap under ten minutes');
-  check(
+  expectEqual(close.includes('factGap1'), false, 'no gap under ten minutes');
+  expectEqual(
     parkyFacts(
       { ...full, longestName: null, quietestDays: [], busiestP50: null, parkP50: 1 },
       'P',
@@ -1129,7 +1175,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
   for (const locale of ['de', 'en', 'nl', 'fr', 'es', 'it']) {
     const messages = JSON.parse(readFileSync(`messages/${locale}.json`, 'utf8')).assistant;
     for (const key of Object.values(FACT_KEYS).flat()) {
-      check(typeof messages[key], 'string', `${locale} has ${key}`);
+      expectEqual(typeof messages[key], 'string', `${locale} has ${key}`);
     }
   }
 }
@@ -1146,82 +1192,86 @@ check(topCoaster([]), null, 'no ranking, no ride');
     parkNews: false,
     forced: null,
   };
-  check(lineSources(slot), ['yours', 'invitation'], 'an ordinary page invites');
-  check(
+  expectEqual(lineSources(slot), ['yours', 'invitation'], 'an ordinary page invites');
+  expectEqual(
     lineSources({ ...slot, arrival: true, holiday: true }),
     ['yours', 'entrance', 'holiday', 'invitation'],
     "the visitor's own plans first, then the entrance, then the holiday"
   );
-  check(
+  expectEqual(
     lineSources({ ...slot, slot: 1, arrival: true, holiday: true }),
     ['invitation'],
     'own plans, entrance and holiday only in the first slot'
   );
-  check(
+  expectEqual(
     lineSources({ ...slot, slot: 1, forced: 'yours' }),
     ['yours', 'invitation'],
     '?parky=yours in any slot'
   );
-  check(
+  expectEqual(
     lineSources({ ...slot, slot: 1, page: 'park', parkLuck: true }),
     ['live', 'clock', 'fact', 'park', 'invitation'],
     'live and clock before the fact, a fact in the last slot before the park line'
   );
-  check(
+  expectEqual(
     lineSources({ ...slot, page: 'park', arrival: true, holiday: true }),
     ['yours', 'entrance', 'live', 'clock', 'holiday', 'invitation'],
     'the entrance before the live waits, the live waits before the clock'
   );
-  check(
+  expectEqual(
     lineSources({ ...slot, page: 'park' }),
     ['yours', 'live', 'clock', 'invitation'],
     'the park line only on its draw'
   );
-  check(
+  expectEqual(
     lineSources({ ...slot, page: 'park', parkNews: true }),
     ['yours', 'clock', 'invitation'],
     'live is level with the weather: once the park had its news, no live line'
   );
-  check(
+  expectEqual(
     lineSources({ ...slot, page: 'park', parkNews: true, forced: 'live' }),
     ['live', 'yours', 'clock', 'invitation'],
     '?parky=live past the news already said'
   );
-  check(
+  expectEqual(
     lineSources({ ...slot, page: 'park', parkNews: true, forced: 'show' }),
     ['live', 'yours', 'clock', 'invitation'],
     '?parky=show puts the live line first, past the news already said'
   );
-  check(lineSources({ ...slot, slot: 1, page: 'home' }), ['fact', 'invitation'], 'home: a fact');
-  check(lineSources({ ...slot, slot: 1 }), ['invitation'], 'no fact on other pages');
-  check(
+  expectEqual(
+    lineSources({ ...slot, slot: 1, page: 'home' }),
+    ['fact', 'invitation'],
+    'home: a fact'
+  );
+  expectEqual(lineSources({ ...slot, slot: 1 }), ['invitation'], 'no fact on other pages');
+  expectEqual(
     lineSources({ ...slot, page: 'park', forced: 'fact' }),
     ['fact', 'yours', 'live', 'clock', 'invitation'],
     '?parky=fact in any slot, first'
   );
-  check(
+  expectEqual(
     lineSources({ ...slot, page: 'park', arrival: true, forced: 'clock' }),
     ['clock', 'yours', 'entrance', 'live', 'invitation'],
     "?parky=clock first, even over the visitor's plans"
   );
-  check(
+  expectEqual(
     lineSources({ ...slot, page: 'park', forced: 'egg' }),
     ['yours', 'live', 'clock', 'park', 'invitation'],
     '?parky=egg'
   );
-  check(
+  expectEqual(
     lineSources({ ...slot, forced: 'live' }),
     ['yours', 'invitation'],
     'live only on a park page'
   );
   // One unasked line a visit: the schedule has one slot, which is also the last.
-  check(TEASER_SCHEDULE_MS.length, 1, 'one scheduled line a visit');
-  check(
+  expectEqual(TEASER_SCHEDULE_MS.length, 1, 'one scheduled line a visit');
+  expectEqual(
     lineSources({ ...slot, lastSlot: 0, page: 'home' }),
     ['yours', 'fact', 'invitation'],
     "with one slot, home gets the visitor's plans, else a fact"
   );
-  check(parkNewsKey('europe/a/b/c'), 'news:europe/a/b/c', 'one news key per park');
+  expectEqual(parkNewsKey('europe/a/b/c'), 'news:europe/a/b/c', 'one news key per park');
 }
 
 // The live waits: moments, changes and the act's rate limit.
@@ -1236,22 +1286,22 @@ check(topCoaster([]), null, 'no ranking, no ride');
   });
   const park = (rides, extra = {}) => ({ status: 'OPERATING', attractions: rides, ...extra });
   const heads = ['Taron', 'Black Mamba'];
-  check(
+  expectEqual(
     liveMoment(park([ride('Taron', 'OPERATING', 5), ride('Maus', 'OPERATING', 5)]), heads, false),
     { kind: 'walkOn', ride: 'Taron', wait: 5 },
     'a headliner at 5 minutes is a walk-on'
   );
-  check(
+  expectEqual(
     liveMoment(park([ride('Taron', 'OPERATING', 10)]), heads, false),
     null,
     'a headliner at 10 minutes is no walk-on'
   );
-  check(
+  expectEqual(
     liveMoment(park([ride('Taron', 'OPERATING', 15), ride('Maus', 'OPERATING', 5)]), heads, false),
     null,
     'a walk-on counts only for a headliner, and 15 minutes is no walk-on'
   );
-  check(
+  expectEqual(
     liveMoment(
       park([ride('Taron', 'OPERATING', 11), ride('Black Mamba', 'OPERATING', 13)]),
       heads,
@@ -1260,7 +1310,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     null,
     "Disney's posted 13 is no walk-on"
   );
-  check(
+  expectEqual(
     liveMoment(
       park([
         { ...ride('Black Mamba', 'OPERATING', 5), tooColdToGetWet: true },
@@ -1272,7 +1322,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     { kind: 'walkOn', ride: 'Taron', wait: 5 },
     'a headliner too cold to get wet is no walk-on, the next one is'
   );
-  check(
+  expectEqual(
     liveChange(
       park([{ ...ride('Taron', 'OPERATING', 60), tooColdToGetWet: true }]),
       park([{ ...ride('Taron', 'OPERATING', 20), tooColdToGetWet: true }]),
@@ -1281,22 +1331,22 @@ check(topCoaster([]), null, 'no ranking, no ride');
     null,
     'a wet headliner emptying in the cold is no drop worth a hop'
   );
-  check(
+  expectEqual(
     liveMoment(park([ride('Taron', 'OPERATING', 75), ride('Maus', 'OPERATING', 61)]), heads, false),
     { kind: 'queue', ride: 'Taron', wait: 75 },
     'the longest queue over an hour'
   );
-  check(
+  expectEqual(
     liveMoment(park([ride('Taron', 'OPERATING', 60)]), heads, false),
     null,
     'an hour exactly is not over an hour'
   );
-  check(
+  expectEqual(
     liveMoment(park([ride('Taron', 'DOWN', 90)]), heads, false),
     null,
     'a ride that is down has no queue to grumble at'
   );
-  check(
+  expectEqual(
     liveMoment(
       park([ride('Taron', 'OPERATING', 75)], { currentLoad: { crowdLevel: 'very_high' } }),
       heads,
@@ -1305,7 +1355,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     { kind: 'full' },
     'a very full park before a long queue'
   );
-  check(
+  expectEqual(
     liveMoment(
       park([], {
         analytics: { statistics: { crowdLevel: 'extreme' } },
@@ -1317,7 +1367,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     { kind: 'full' },
     "the day's crowd statistic first, as the park header reads it"
   );
-  check(
+  expectEqual(
     liveMoment(
       park([ride('Taron', 'OPERATING', 5)], { currentLoad: { crowdLevel: 'extreme' } }),
       heads,
@@ -1326,14 +1376,18 @@ check(topCoaster([]), null, 'no ranking, no ride');
     { kind: 'walkOn', ride: 'Taron', wait: 5 },
     'a walk-on is better news than a full park'
   );
-  check(liveMoment(park([], { status: 'CLOSED' }), heads, true), { kind: 'closed' }, 'shut today');
-  check(liveMoment(park([], { status: 'CLOSED' }), heads, false), null, 'shut for the night');
-  check(
+  expectEqual(
+    liveMoment(park([], { status: 'CLOSED' }), heads, true),
+    { kind: 'closed' },
+    'shut today'
+  );
+  expectEqual(liveMoment(park([], { status: 'CLOSED' }), heads, false), null, 'shut for the night');
+  expectEqual(
     liveMoment(park([ride('Taron', 'OPERATING', 40)]), heads, false, true),
     { kind: 'queue', ride: 'Taron', wait: 40 },
     '?parky=live counts any open queue as long'
   );
-  check(
+  expectEqual(
     liveMoment(park([ride('New: Taron', 'OPERATING', 5)]), ['Taron'], false)?.ride,
     'Taron',
     'names without their "New" prefix'
@@ -1349,36 +1403,48 @@ check(topCoaster([]), null, 'no ranking, no ride');
     showtimes: minutes.map((m) => ({ startTime: at(m) })),
   });
   const quiet = (shows) => park([ride('Taron', 'OPERATING', 30)], { shows });
-  check(
+  expectEqual(
     showSoon(quiet([show('Parade', [SHOW_SOON_MIN.from])]), now),
     { kind: 'show', show: 'Parade', minutes: 15 },
     'a show 15 minutes off is soon'
   );
-  check(showSoon(quiet([show('Parade', [SHOW_SOON_MIN.to])]), now)?.minutes, 30, 'and 30 still');
-  check(showSoon(quiet([show('Parade', [14, 31])]), now), null, 'outside the window, nothing');
-  check(
+  expectEqual(
+    showSoon(quiet([show('Parade', [SHOW_SOON_MIN.to])]), now)?.minutes,
+    30,
+    'and 30 still'
+  );
+  expectEqual(
+    showSoon(quiet([show('Parade', [14, 31])]), now),
+    null,
+    'outside the window, nothing'
+  );
+  expectEqual(
     showSoon(quiet([show('Late', [25]), show('Early', [-60, 20])]), now),
     { kind: 'show', show: 'Early', minutes: 20 },
     'the next show of all, from any of its showtimes'
   );
-  check(showSoon(quiet([show('Gone', [20], 'CLOSED')]), now), null, 'a closed show is no show');
-  check(
+  expectEqual(
+    showSoon(quiet([show('Gone', [20], 'CLOSED')]), now),
+    null,
+    'a closed show is no show'
+  );
+  expectEqual(
     showSoon(quiet([show('Tonight', [240])]), now, true),
     { kind: 'show', show: 'Tonight', minutes: 240 },
     '?parky=show takes any show still to start'
   );
-  check(showSoon(quiet([show('Earlier', [-5])]), now, true), null, 'but none that started');
-  check(
+  expectEqual(showSoon(quiet([show('Earlier', [-5])]), now, true), null, 'but none that started');
+  expectEqual(
     liveMoment(quiet([show('Parade', [20])]), heads, false, false, { now }),
     { kind: 'show', show: 'Parade', minutes: 20 },
     'a show soon when nothing else holds'
   );
-  check(
+  expectEqual(
     liveMoment(quiet([show('Parade', [20])]), heads, false),
     null,
     'shows count only with a clock to read them at'
   );
-  check(
+  expectEqual(
     liveMoment(
       park([ride('Taron', 'OPERATING', 75)], { shows: [show('Parade', [20])] }),
       heads,
@@ -1389,7 +1455,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     'queue',
     'a long queue before a show'
   );
-  check(
+  expectEqual(
     liveMoment(
       park([ride('Taron', 'OPERATING', 5)], { shows: [show('Parade', [20])] }),
       heads,
@@ -1400,7 +1466,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     'walkOn',
     'a walk-on before a show'
   );
-  check(
+  expectEqual(
     liveMoment(
       park([ride('Taron', 'OPERATING', 5)], { shows: [show('Tonight', [240])] }),
       heads,
@@ -1411,7 +1477,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     { kind: 'show', show: 'Tonight', minutes: 240 },
     '?parky=show ahead of every other moment'
   );
-  check(
+  expectEqual(
     liveMoment(
       park([], { status: 'CLOSED', shows: [show('Parade', [20], 'CLOSED')] }),
       heads,
@@ -1422,14 +1488,14 @@ check(topCoaster([]), null, 'no ranking, no ride');
     { kind: 'closed' },
     'a park shut today has no show line'
   );
-  check(showRunning(quiet([show('Parade', [0])]), now), true, 'a show that starts now is on');
-  check(showRunning(quiet([show('Parade', [-SHOW_RUN_MIN + 1])]), now), true, 'and still on');
-  check(showRunning(quiet([show('Parade', [-SHOW_RUN_MIN])]), now), false, 'then over');
-  check(showRunning(quiet([show('Parade', [5])]), now), false, 'not on before it starts');
-  check(showRunning(park([]), now), false, 'no shows, none on');
+  expectEqual(showRunning(quiet([show('Parade', [0])]), now), true, 'a show that starts now is on');
+  expectEqual(showRunning(quiet([show('Parade', [-SHOW_RUN_MIN + 1])]), now), true, 'and still on');
+  expectEqual(showRunning(quiet([show('Parade', [-SHOW_RUN_MIN])]), now), false, 'then over');
+  expectEqual(showRunning(quiet([show('Parade', [5])]), now), false, 'not on before it starts');
+  expectEqual(showRunning(park([]), now), false, 'no shows, none on');
 
   const before = park([ride('Taron', 'OPERATING', 60), ride('Black Mamba', 'OPERATING', 40)]);
-  check(
+  expectEqual(
     liveChange(
       before,
       park([ride('Taron', 'DOWN', null), ride('Black Mamba', 'OPERATING', 40)]),
@@ -1438,7 +1504,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     { kind: 'down', ride: 'Taron' },
     'a headliner went down'
   );
-  check(
+  expectEqual(
     liveChange(
       before,
       park([ride('Taron', 'OPERATING', 25), ride('Black Mamba', 'OPERATING', 40)]),
@@ -1447,7 +1513,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     { kind: 'drop', ride: 'Taron', wait: 25 },
     'a sharp drop: 35 minutes less, more than half gone'
   );
-  check(
+  expectEqual(
     liveChange(
       before,
       park([ride('Taron', 'OPERATING', 35), ride('Black Mamba', 'OPERATING', 40)]),
@@ -1456,7 +1522,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     null,
     'not half gone: no drop'
   );
-  check(
+  expectEqual(
     liveChange(
       before,
       park([ride('Taron', 'OPERATING', 60), ride('Black Mamba', 'OPERATING', 25)]),
@@ -1465,17 +1531,17 @@ check(topCoaster([]), null, 'no ranking, no ride');
     null,
     '15 minutes less is no drop'
   );
-  check(
+  expectEqual(
     liveChange(park([ride('Maus', 'OPERATING', 20)]), park([ride('Maus', 'DOWN', null)]), heads),
     null,
     'a ride outside the headliners going down is no news'
   );
-  check(
+  expectEqual(
     liveChange(park([ride('Maus', 'OPERATING', 20)]), park([ride('Maus', 'DOWN', null)]), []),
     { kind: 'down', ride: 'Maus' },
     'without known headliners every ride counts'
   );
-  check(
+  expectEqual(
     liveChange(
       before,
       park([ride('Taron', 'OPERATING', 75), ride('Black Mamba', 'OPERATING', 40)]),
@@ -1484,7 +1550,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     { kind: 'queue', ride: 'Taron', wait: 75 },
     'a queue newly over an hour'
   );
-  check(
+  expectEqual(
     liveChange(
       park([ride('Taron', 'OPERATING', 75)]),
       park([ride('Taron', 'OPERATING', 80)]),
@@ -1493,11 +1559,11 @@ check(topCoaster([]), null, 'no ranking, no ride');
     null,
     'a long queue that stays long is nothing new'
   );
-  check(liveChange(before, before, heads), null, 'the same reading changes nothing');
-  check(liveActDue(null, 0), true, 'the first act plays');
-  check(liveActDue(0, LIVE_ACT_GAP_MS - 1), false, 'then not before the gap');
-  check(liveActDue(0, LIVE_ACT_GAP_MS), true, 'and again after it');
-  check(
+  expectEqual(liveChange(before, before, heads), null, 'the same reading changes nothing');
+  expectEqual(liveActDue(null, 0), true, 'the first act plays');
+  expectEqual(liveActDue(0, LIVE_ACT_GAP_MS - 1), false, 'then not before the gap');
+  expectEqual(liveActDue(0, LIVE_ACT_GAP_MS), true, 'and again after it');
+  expectEqual(
     headlinersOf(
       'Taron',
       [1, 2, 3, 4, 5, 6].map((n) => ({ attractionName: `R${n}` }))
@@ -1505,7 +1571,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     ['Taron', 'R1', 'R2', 'R3', 'R4', 'R5'],
     'the favourite and five top attractions'
   );
-  check(
+  expectEqual(
     Object.values(LIVE_LINES).every((lines) => lines.length >= 3),
     true,
     'several lines for every reading'
@@ -1521,27 +1587,63 @@ check(topCoaster([]), null, 'no ranking, no ride');
   const berlin = 'Europe/Berlin';
   // Berlin is UTC+2 in July.
   const at = (iso) => Date.parse(iso);
-  check(clockMoment(hours, berlin, at('2026-07-01T06:00:00Z')), 'ropeDrop', '08:00: an hour to go');
-  check(clockMoment(hours, berlin, at('2026-07-01T05:59:00Z')), null, '07:59: too early');
-  check(clockMoment(hours, berlin, at('2026-07-01T07:00:00Z')), null, '09:00: open, no rope drop');
-  check(clockMoment(hours, berlin, at('2026-07-01T12:00:00Z')), null, 'midday: nothing');
-  check(clockMoment(hours, berlin, at('2026-07-01T15:30:00Z')), 'closing', '17:30: half an hour');
-  check(clockMoment(hours, berlin, at('2026-07-01T16:00:00Z')), null, '18:00: closed');
-  check(clockMoment(hours, berlin, at('2026-07-02T22:45:00Z')), 'closing', '00:45: past midnight');
-  check(clockMoment(hours, berlin, at('2026-07-02T21:45:00Z')), null, '23:45: still over an hour');
-  check(clockMoment(hours, berlin, at('2026-07-02T23:00:00Z')), null, '01:00: the day is over');
-  check(
+  expectEqual(
+    clockMoment(hours, berlin, at('2026-07-01T06:00:00Z')),
+    'ropeDrop',
+    '08:00: an hour to go'
+  );
+  expectEqual(clockMoment(hours, berlin, at('2026-07-01T05:59:00Z')), null, '07:59: too early');
+  expectEqual(
+    clockMoment(hours, berlin, at('2026-07-01T07:00:00Z')),
+    null,
+    '09:00: open, no rope drop'
+  );
+  expectEqual(clockMoment(hours, berlin, at('2026-07-01T12:00:00Z')), null, 'midday: nothing');
+  expectEqual(
+    clockMoment(hours, berlin, at('2026-07-01T15:30:00Z')),
+    'closing',
+    '17:30: half an hour'
+  );
+  expectEqual(clockMoment(hours, berlin, at('2026-07-01T16:00:00Z')), null, '18:00: closed');
+  expectEqual(
+    clockMoment(hours, berlin, at('2026-07-02T22:45:00Z')),
+    'closing',
+    '00:45: past midnight'
+  );
+  expectEqual(
+    clockMoment(hours, berlin, at('2026-07-02T21:45:00Z')),
+    null,
+    '23:45: still over an hour'
+  );
+  expectEqual(
+    clockMoment(hours, berlin, at('2026-07-02T23:00:00Z')),
+    null,
+    '01:00: the day is over'
+  );
+  expectEqual(
     clockMoment(hours, 'America/New_York', at('2026-07-01T12:30:00Z')),
     'ropeDrop',
     'the same hours in New York: 08:30 there'
   );
-  check(clockMoment(hours, berlin, at('2026-07-03T08:00:00Z')), null, 'no hours, no clock');
-  check(clockMoment(hours, berlin, at('2026-07-01T02:00:00Z'), true), 'ropeDrop', 'preview: early');
-  check(clockMoment(hours, berlin, at('2026-07-01T12:00:00Z'), true), 'closing', 'preview: open');
-  check(clockMoment(hours, berlin, at('2026-07-01T20:00:00Z'), true), 'closing', 'preview: late');
-  check(opensToday(hours, berlin, at('2026-07-01T20:00:00Z')), true, 'opens today');
-  check(opensToday(hours, berlin, at('2026-07-03T08:00:00Z')), false, 'shut today');
-  check(
+  expectEqual(clockMoment(hours, berlin, at('2026-07-03T08:00:00Z')), null, 'no hours, no clock');
+  expectEqual(
+    clockMoment(hours, berlin, at('2026-07-01T02:00:00Z'), true),
+    'ropeDrop',
+    'preview: early'
+  );
+  expectEqual(
+    clockMoment(hours, berlin, at('2026-07-01T12:00:00Z'), true),
+    'closing',
+    'preview: open'
+  );
+  expectEqual(
+    clockMoment(hours, berlin, at('2026-07-01T20:00:00Z'), true),
+    'closing',
+    'preview: late'
+  );
+  expectEqual(opensToday(hours, berlin, at('2026-07-01T20:00:00Z')), true, 'opens today');
+  expectEqual(opensToday(hours, berlin, at('2026-07-03T08:00:00Z')), false, 'shut today');
+  expectEqual(
     openingDaysOf({
       openingHoursSpecification: [
         { opens: '09:00', closes: '18:00', validFrom: '2026-07-01' },
@@ -1552,8 +1654,8 @@ check(topCoaster([]), null, 'no ranking, no ride');
     [{ date: '2026-07-01', opens: '09:00', closes: '18:00' }],
     'hours from structured data, the unreadable left out'
   );
-  check(openingDaysOf(null), [], 'no structured data, no hours');
-  check(
+  expectEqual(openingDaysOf(null), [], 'no structured data, no hours');
+  expectEqual(
     CLOCK_PARK_KEYS.test('parkRopeDrop1') &&
       CLOCK_PARK_KEYS.test('parkClosing2') &&
       !CLOCK_PARK_KEYS.test('parkLine1'),
@@ -1561,7 +1663,7 @@ check(topCoaster([]), null, 'no ranking, no ride');
     'the clock keeps the general opening and closing lines out'
   );
 }
-check(
+expectEqual(
   parkNameIn([
     { textContent: 'not json' },
     {
@@ -1573,16 +1675,16 @@ check(
   'Heide Park',
   "the park's name from the page's structured data"
 );
-check(holidayOn(new Date(2026, 9, 31)), 'halloween', 'Halloween');
-check(holidayOn(new Date(2026, 11, 25)), 'christmas', 'Christmas');
-check(holidayOn(new Date(2027, 0, 1)), 'newyear', 'New Year');
-check(holidayOn(new Date(2026, 9, 30)), null, 'an ordinary day');
+expectEqual(holidayOn(new Date(2026, 9, 31)), 'halloween', 'Halloween');
+expectEqual(holidayOn(new Date(2026, 11, 25)), 'christmas', 'Christmas');
+expectEqual(holidayOn(new Date(2027, 0, 1)), 'newyear', 'New Year');
+expectEqual(holidayOn(new Date(2026, 9, 30)), null, 'an ordinary day');
 {
   const keys = ['ArrowUp', 'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown'];
   keys.push('ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'B', 'a');
   const reached = keys.reduce((progress, key) => konamiProgress(progress, key), 0);
-  check(reached, KONAMI_LENGTH, 'the Konami code, with a third ↑ and a capital B');
-  check(konamiProgress(5, 'x'), 0, 'a wrong key starts over');
+  expectEqual(reached, KONAMI_LENGTH, 'the Konami code, with a third ↑ and a capital B');
+  expectEqual(konamiProgress(5, 'x'), 0, 'a wrong key starts over');
 }
 
 // Muting on a stand-in sessionStorage: a line closed by hand silences the rest of the session.
@@ -1594,93 +1696,97 @@ check(holidayOn(new Date(2026, 9, 30)), null, 'an ordinary day');
       setItem: (key, value) => store.set(key, value),
     },
   };
-  check(linesMuted(), false, 'not muted at first');
+  expectEqual(linesMuted(), false, 'not muted at first');
   muteLines();
-  check(linesMuted(), true, 'a line closed by hand mutes the rest');
+  expectEqual(linesMuted(), true, 'a line closed by hand mutes the rest');
   delete globalThis.window;
 }
 for (const [name, motion] of Object.entries(RIDE_MOTION)) {
   const { stops } = motion;
   const at = stops.map((stop) => stop.at);
-  check(
+  expectEqual(
     at.every((value, i) => i === 0 || value >= at[i - 1]),
     true,
     `${name}: its moments run forward`
   );
-  check([at[0], at[at.length - 1]], [0, 1], `${name}: from start to end`);
+  expectEqual([at[0], at[at.length - 1]], [0, 1], `${name}: from start to end`);
   const rest = (stop) => [stop.x, stop.y, stop.angle];
-  check(rest(stops[0]), [REST.x, REST.y, 0], `${name}: starts at rest`);
-  check(rest(stops[stops.length - 1]), [REST.x, REST.y, 0], `${name}: ends at rest`);
-  check(motion.track.startsWith('M'), true, `${name}: has rails`);
+  expectEqual(rest(stops[0]), [REST.x, REST.y, 0], `${name}: starts at rest`);
+  expectEqual(rest(stops[stops.length - 1]), [REST.x, REST.y, 0], `${name}: ends at rest`);
+  expectEqual(motion.track.startsWith('M'), true, `${name}: has rails`);
 }
-check(
+expectEqual(
   Math.max(...RIDE_MOTION.launch.stops.map((stop) => stop.angle)),
   90,
   'the launch stands upright in its spike'
 );
-check(
+expectEqual(
   RIDE_MOTION.hills.stops.some((stop) => stop.opacity === 0),
   true,
   'the hills ride leaves the picture and comes back'
 );
-check(
+expectEqual(
   rideKeyframe({ x: 20, y: 40, angle: 45, at: 0.5 }).transform,
   'translate(-4px, -9px) rotate(45deg) translate(0px, 0px) scale(1, 1)',
   'a stop as a keyframe, turned about the wheels'
 );
-check(
+expectEqual(
   rideKeyframe({ x: 24, y: 20, angle: 0, at: 0.5, lift: 6 }).transform,
   'translate(0px, -29px) rotate(0deg) translate(0px, -6px) scale(1, 1)',
   'airtime floats Parky up off his seat in the car'
 );
 for (const ride of ['hills', 'tower', 'flume']) {
-  check(
+  expectEqual(
     RIDE_MOTION[ride].stops.some((stop) => stop.lift > 0),
     true,
     `${ride}: Parky gets airtime`
   );
 }
-check(
+expectEqual(
   RIDE_MOTION.flume.splash,
   RIDE_MOTION.flume.stops.find((stop) => stop.scaleY < 1)?.at,
   'the flume splashes as the boat hits the water'
 );
-check(
+expectEqual(
   RIDE_MOTION.flume.stops.some((stop) => stop.opacity === 0),
   true,
   'the log boat drifts out of the picture and floats back in'
 );
-check(
+expectEqual(
   RIDE_MOTION.teacups.stops.filter((stop) => stop.x === REST.x && stop.y === REST.y).length > 3,
   true,
   'the teacup passes the station on each lap'
 );
-check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a ride by name');
+expectEqual([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a ride by name');
 {
   const fitting = (box) => RIDES.filter((ride) => rideFits(ride, box));
-  check(
+  expectEqual(
     fitting({ left: 318, top: 772, width: 56 }),
     [...RIDES],
     'the button in a phone corner has room for every ride'
   );
-  check(
+  expectEqual(
     fitting({ left: 18, top: 62, width: 64 }),
     ['coaster'],
     "in the phone's open window only the loop fits"
   );
-  check(
+  expectEqual(
     fitting({ left: 828, top: 102, width: 80 }),
     ['coaster', 'hills', 'flume', 'teacups'],
     'in the window on a short laptop screen the launch and the free fall would leave the top'
   );
-  check(fitting({ left: 828, top: 290, width: 80 }), [...RIDES], 'a tall screen fits them all');
-  check(
+  expectEqual(
+    fitting({ left: 828, top: 290, width: 80 }),
+    [...RIDES],
+    'a tall screen fits them all'
+  );
+  expectEqual(
     RIDE_MOTION.tower.reach.top < RIDE_MOTION.launch.reach.top &&
       RIDE_MOTION.hills.reach.left < RIDE_MOTION.launch.reach.left,
     true,
     'the free fall reaches highest, the hills furthest left'
   );
-  check(
+  expectEqual(
     rideFits('tower', { left: 0, top: 0, width: 0 }),
     true,
     'a drawing not laid out yet has room'
@@ -1689,7 +1795,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
 // Answers to what the visitor does.
 {
   const act = (name, props) => reactionTo(name, props)?.act ?? null;
-  check(
+  expectEqual(
     [
       act('planner_opened', { source: 'tab' }),
       act('planner_wizard_finished', { headliners: true }),
@@ -1697,7 +1803,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     ['plan', 'cheer'],
     'the planner opened gets the checklist, a finished plan the confetti'
   );
-  check(
+  expectEqual(
     [
       act('theme_toggled', { theme: 'dark' }),
       act('theme_toggled', { theme: 'light' }),
@@ -1706,18 +1812,26 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     ['nightcap', 'shades', null],
     'the dark brings out the nightcap, the light the sunglasses'
   );
-  check(
+  expectEqual(
     [act('favorite_add', { type: 'park' }), act('favorite_remove', { type: 'park' })],
     ['love', null],
     'a favourite added, not one removed'
   );
-  check(
+  expectEqual(
     [act('ride_alert_set', { source: 'card' }), act('show_follow_add', { source: 'panel' })],
     ['bell', 'bell'],
     'an alert and a followed show ring the bell'
   );
-  check([act('search_typed', { surface: 'hero' }), act('nonsense')], [null, null], 'others pass');
-  check([isReactionAct('love'), isReactionAct('coaster')], [true, false], 'a reaction by name');
+  expectEqual(
+    [act('search_typed', { surface: 'hero' }), act('nonsense')],
+    [null, null],
+    'others pass'
+  );
+  expectEqual(
+    [isReactionAct('love'), isReactionAct('coaster')],
+    [true, false],
+    'a reaction by name'
+  );
 
   // Every line a reaction can say is there in all six languages.
   const names = [
@@ -1733,10 +1847,10 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   ];
   const keys = names.flatMap(([name, props]) => reactionTo(name, props).keys);
   const acts = new Set(names.map(([name, props]) => reactionTo(name, props).act));
-  check([...acts].sort(), [...REACTION_ACTS].sort(), 'every reaction act answers something');
+  expectEqual([...acts].sort(), [...REACTION_ACTS].sort(), 'every reaction act answers something');
   for (const locale of ['de', 'en', 'nl', 'fr', 'es', 'it']) {
     const lines = JSON.parse(readFileSync(`messages/${locale}.json`, 'utf8')).assistant;
-    check(
+    expectEqual(
       keys.filter((key) => typeof lines[key] !== 'string'),
       [],
       `${locale}: every reaction line exists`
@@ -1753,10 +1867,10 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
       setItem: (key, value) => store.set(key, value),
     },
   };
-  check(answeredWithLine('favourite'), false, 'no favourite line yet');
+  expectEqual(answeredWithLine('favourite'), false, 'no favourite line yet');
   countAnswer('favourite');
   countAnswer('favourite');
-  check(
+  expectEqual(
     [answeredWithLine('favourite'), answeredWithLine('theme')],
     [true, false],
     'the favourite line is said, the theme line is still to come'
@@ -1768,7 +1882,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
       },
     },
   };
-  check(answeredWithLine('theme'), true, 'without storage no answer gets a line');
+  expectEqual(answeredWithLine('theme'), true, 'without storage no answer gets a line');
   delete globalThis.window;
 }
 
@@ -1783,7 +1897,11 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   stop();
   stopThrowing();
   trackSiteEvent('favorite_add', { type: 'show' });
-  check(heard, [['favorite_add', { type: 'park' }]], 'heard once, then not after unsubscribing');
+  expectEqual(
+    heard,
+    [['favorite_add', { type: 'park' }]],
+    'heard once, then not after unsubscribing'
+  );
 }
 // Thrown by a scroll: distance by hand, how far by the hand, not one fast frame.
 {
@@ -1812,51 +1930,55 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   /** A mouse wheel turned `perSecond` notches a second, 100 px each, smoothed over 100 ms. */
   const wheel = (perSecond, ms) => (t) => (t < ms ? (perSecond * 100) / 1000 : 0);
 
-  check(flingOf(new FlingTracker(), flick(2)), null, 'a reading swipe leaves Parky in his corner');
-  check(flingOf(new FlingTracker(), flick(5)), null, 'so does a brisk one');
-  check(flingOf(new FlingTracker(), flick(9)), 'down', 'a hard flick down throws him up');
-  check(flingOf(new FlingTracker(), flick(-9)), 'up', 'a hard flick up presses him flat');
-  check(
+  expectEqual(
+    flingOf(new FlingTracker(), flick(2)),
+    null,
+    'a reading swipe leaves Parky in his corner'
+  );
+  expectEqual(flingOf(new FlingTracker(), flick(5)), null, 'so does a brisk one');
+  expectEqual(flingOf(new FlingTracker(), flick(9)), 'down', 'a hard flick down throws him up');
+  expectEqual(flingOf(new FlingTracker(), flick(-9)), 'up', 'a hard flick up presses him flat');
+  expectEqual(
     flingOf(new FlingTracker(), (t) => (t >= 100 && t < 100 + FRAME ? 30 : 1)),
     null,
     'one frame read late, at 30 px/ms, is no throw'
   );
-  check(
+  expectEqual(
     flingOf(new FlingTracker(), wheel(15, 1_000), { kind: 'wheel' }),
     null,
     'a wheel turned briskly is no throw'
   );
-  check(
+  expectEqual(
     flingOf(new FlingTracker(), (t) => (t % 500 < 200 ? 4 : 0), { kind: 'wheel', ms: 2_000 }),
     null,
     'nor is a wheel turned bit by bit, eight notches at a time'
   );
-  check(
+  expectEqual(
     flingOf(new FlingTracker(), wheel(25, 1_000), { kind: 'wheel' }),
     'down',
     'a wheel rolled hard is'
   );
-  check(
+  expectEqual(
     flingOf(new FlingTracker(), (t) => (t < 600 ? 2.2 : 0), { kind: 'bar' }),
     'down',
     "the scrollbar's thumb pulled briskly, a screen in half a second, is"
   );
-  check(
+  expectEqual(
     flingOf(new FlingTracker(), (t) => (t < 300 ? 5 : 0), { kind: 'bar' }),
     'down',
     "the scrollbar's thumb pulled quickly is"
   );
-  check(
+  expectEqual(
     flingOf(new FlingTracker(), () => 0.8, { kind: 'bar' }),
     null,
     'pulled slowly, to read along, it is not'
   );
-  check(
+  expectEqual(
     flingOf(new FlingTracker(), (t) => (t < 100 ? 120 : 0), { kind: 'bar' }),
     'down',
     'on a long page the thumb moves more than a screen a frame, and that is no jump'
   );
-  check(
+  expectEqual(
     [
       flingOf(new FlingTracker(), (t) => (t < 500 ? 3.4 : 0), { kind: 'wheel' }),
       flingOf(new FlingTracker(), (t) => (t < 500 ? 3.4 : 0), { kind: 'touch' }),
@@ -1864,12 +1986,12 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     ['down', null],
     'the same distance throws him by wheel, which has no momentum, and not by finger, which has'
   );
-  check(
+  expectEqual(
     flingOf(new FlingTracker(), (t) => (t % 400 < 150 ? 4.7 : 0), { kind: 'key' }),
     null,
     'the space bar, pressed again and again, is no throw'
   );
-  check(
+  expectEqual(
     flingOf(new FlingTracker(), (t) => (t < 600 ? 7 : 0), { kind: 'key' }),
     'down',
     'a held key is'
@@ -1878,13 +2000,13 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     // A link to a new page: the page jumps to its top in one frame.
     const tracker = new FlingTracker();
     flingOf(tracker, () => 0.5, { ms: 100 });
-    check(
+    expectEqual(
       tracker.read(120, 0, VIEWPORT, { kind: 'touch', at: 120 }).fling,
       null,
       'a jump to the top is no throw'
     );
   }
-  check(
+  expectEqual(
     [
       flingOf(new FlingTracker(), flick(9), { hand: null }),
       flingOf(new FlingTracker(), flick(9), { hand: { kind: 'touch', at: -FLING_HAND_MS - 1 } }),
@@ -1895,31 +2017,31 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
 
   const tracker = new FlingTracker();
   const touch = { kind: 'touch', at: 2_000 };
-  check(flingOf(tracker, flick(9)), 'down', 'thrown');
-  check(
+  expectEqual(flingOf(tracker, flick(9)), 'down', 'thrown');
+  expectEqual(
     tracker.read(2_000, 0, VIEWPORT, touch),
     { fling: 'down', holding: false },
     'a jump neither turns him over nor holds him up'
   );
-  check(
+  expectEqual(
     tracker.read(2_010, 50, VIEWPORT, touch),
     { fling: 'down', holding: true },
     'the page still moving holds him'
   );
-  check(
+  expectEqual(
     tracker.read(2_020, 40, VIEWPORT, touch),
     { fling: 'down', holding: true },
     'back up as well: the first direction holds until he lets go'
   );
-  check(tracker.read(2_120, 42, VIEWPORT, touch).holding, false, 'the page all but stopped');
+  expectEqual(tracker.read(2_120, 42, VIEWPORT, touch).holding, false, 'the page all but stopped');
   tracker.letGo();
-  check(
+  expectEqual(
     flingOf(tracker, flick(9), { from: 3_000 }),
     'down',
     'once he has let go, the same throw again throws him again'
   );
   tracker.letGo();
-  check(
+  expectEqual(
     flingOf(tracker, flick(-9), { from: 4_500 }),
     'up',
     'and the other way: down and back up plays both'
@@ -1943,39 +2065,51 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
 
   // 2026-11-05 is a Thursday: three blanks before it, Monday first.
   const weeks = calendarWeeks(run('2026-11-05', 7));
-  check(weeks.length, 2, 'a week from a Thursday spans two rows');
-  check(
+  expectEqual(weeks.length, 2, 'a week from a Thursday spans two rows');
+  expectEqual(
     weeks[0].map((cell) => cell?.date ?? null),
     [null, null, null, '2026-11-05', '2026-11-06', '2026-11-07', '2026-11-08'],
     'the first row is padded to the first weekday'
   );
-  check(
+  expectEqual(
     weeks[1].map((cell) => cell?.date ?? null),
     ['2026-11-09', '2026-11-10', '2026-11-11', null, null, null, null],
     'the last row is padded after the last day'
   );
-  check(calendarWeeks(run('2026-11-02', 14)).length, 2, 'two weeks from a Monday need no blanks');
-  check(
+  expectEqual(
+    calendarWeeks(run('2026-11-02', 14)).length,
+    2,
+    'two weeks from a Monday need no blanks'
+  );
+  expectEqual(
     calendarWeeks([calendarDay('2026-11-02'), calendarDay('2026-11-04')])[0]
       .slice(0, 3)
       .map((cell) => cell?.date ?? null),
     ['2026-11-02', null, '2026-11-04'],
     'a missing day stays a gap'
   );
-  check(calendarWeeks([]), [], 'no days, no weeks');
+  expectEqual(calendarWeeks([]), [], 'no days, no weeks');
 
-  check(
+  expectEqual(
     parkHours('2026-11-07T10:00:00+01:00', '2026-11-07T18:30:00+01:00', 'de'),
     '10:00–18:30',
     'hours in the park clock the offset gives, not the reader’s'
   );
-  check(
+  expectEqual(
     parkHours('2026-07-04T09:00:00-04:00', '2026-07-04T23:00:00-04:00', 'en'),
     '9 AM–11 PM',
     'an offset west of Greenwich, on a 12-hour clock'
   );
-  check(parkHours('2026-11-07T10:00:00+01:00', null, 'de'), null, 'no closing time, no hours');
-  check(parkHours('2026-11-07T10:00:00', '2026-11-07T18:00:00', 'de'), null, 'no offset, no hours');
+  expectEqual(
+    parkHours('2026-11-07T10:00:00+01:00', null, 'de'),
+    null,
+    'no closing time, no hours'
+  );
+  expectEqual(
+    parkHours('2026-11-07T10:00:00', '2026-11-07T18:00:00', 'de'),
+    null,
+    'no offset, no hours'
+  );
 
   const tiles = {
     kind: 'tiles',
@@ -1992,12 +2126,12 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     closes: '2026-11-07T18:00:00+01:00',
     weather: { condition: 'rain', tempMin: 4, tempMax: 9, climateNormal: true },
   };
-  check(
+  expectEqual(
     presentTiles(tiles),
     ['crowd', 'avgWait', 'peakWait', 'rides', 'hours', 'weather'],
     'every stat with a value has a tile'
   );
-  check(
+  expectEqual(
     presentTiles({
       ...tiles,
       crowdLevel: null,
@@ -2011,8 +2145,8 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   );
 
   const read = (card) => readAssistantAction({ type: 'card', card: structuredClone(card) })?.card;
-  check(read(tiles)?.kind, 'tiles', 'takes a tiles card');
-  check(
+  expectEqual(read(tiles)?.kind, 'tiles', 'takes a tiles card');
+  expectEqual(
     read({ ...tiles, avgWaitMinutes: 'lots', weather: { condition: 'sun' } }),
     {
       ...tiles,
@@ -2027,15 +2161,19 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     },
     'a tiles value it cannot draw is dropped, not the card'
   );
-  check(read({ ...tiles, date: 'tomorrow' }), undefined, 'refuses a tiles card without a day');
+  expectEqual(
+    read({ ...tiles, date: 'tomorrow' }),
+    undefined,
+    'refuses a tiles card without a day'
+  );
   const calendar = {
     kind: 'calendar',
     park: 'Efteling',
     url: '/parks/europe/netherlands/kaatsheuvel/efteling',
     days: run('2026-11-05', 7),
   };
-  check(read(calendar)?.days.length, 7, 'takes a calendar card');
-  check(
+  expectEqual(read(calendar)?.days.length, 7, 'takes a calendar card');
+  expectEqual(
     read({
       ...calendar,
       days: [calendarDay('2026-11-05', { status: 'CLOSED', crowdLevel: 'low', holiday: 'yes' })],
@@ -2043,33 +2181,33 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     calendarDay('2026-11-05', { status: 'CLOSED', crowdLevel: null }),
     'a closed day carries no level, and a holiday is true or false'
   );
-  check(
+  expectEqual(
     read({ ...calendar, days: [calendarDay('2026-11-05', { crowdLevel: 'unknown' })] })?.days[0]
       .crowdLevel,
     'unknown',
     'a day may say its level is unknown'
   );
-  check(
+  expectEqual(
     read({ ...calendar, days: [calendarDay('2026-11-06'), calendarDay('2026-11-05')] }),
     undefined,
     'refuses days out of order'
   );
-  check(
+  expectEqual(
     read({ ...calendar, days: run('2026-11-01', 43) }),
     undefined,
     'refuses more than six weeks'
   );
-  check(
+  expectEqual(
     read({ ...calendar, url: 'https://evil.example' }),
     undefined,
     'refuses a calendar off site'
   );
-  check(
+  expectEqual(
     read({ kind: 'hologram', name: 'X', url: null }),
     undefined,
     'refuses a kind it does not know'
   );
-  check(
+  expectEqual(
     localizedPath(`${calendar.url}/wait-time-calendar`, 'fr'),
     '/fr/parks/europe/netherlands/kaatsheuvel/efteling/calendrier-temps-attente',
     'the calendar link lands on the crowd calendar in the reader’s spelling'
@@ -2085,7 +2223,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     '2026-11-05T14:00:00+01:00',
     '2026-11-05T17:00:00+01:00',
   ];
-  check(
+  expectEqual(
     showTimes(times, Date.parse('2026-11-05T13:30:00+01:00')).map(({ past, next }) => [past, next]),
     [
       [true, false],
@@ -2094,18 +2232,22 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     ],
     'times before now are past, the first one after is next'
   );
-  check(
+  expectEqual(
     showTimes(times, null).some(({ past, next }) => past || next),
     false,
     'without a clock no time is past or next, so the server render and hydration agree'
   );
-  check(
+  expectEqual(
     showTimes(times, Date.parse('2026-11-05T18:00:00+01:00')).filter(({ next }) => next).length,
     0,
     'after the last show nothing is next'
   );
-  check(parkClock('2026-11-05T14:00:00+01:00', 'de'), '14:00', 'a show time in the park clock');
-  check(parkClock('soon', 'de'), null, 'an unreadable time has no clock');
+  expectEqual(
+    parkClock('2026-11-05T14:00:00+01:00', 'de'),
+    '14:00',
+    'a show time in the park clock'
+  );
+  expectEqual(parkClock('soon', 'de'), null, 'an unreadable time has no clock');
 
   const ride = {
     kind: 'ride',
@@ -2116,7 +2258,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     waitMinutes: 40,
     url: `${parkUrl}/taron`,
   };
-  check(
+  expectEqual(
     read({
       ...ride,
       ropeDrop: { strength: 'high', savings: 35 },
@@ -2128,14 +2270,14 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     { ...ride, ropeDrop: { strength: 'high', savings: 35 }, singleRider: true, outOfSeason: true },
     'a ride keeps the extras that hold and drops any flag that is not true'
   );
-  check(
+  expectEqual(
     read({ ...ride, ropeDrop: { strength: 'huge', savings: 35 } }),
     ride,
     'a rope-drop hint the badge cannot draw is dropped'
   );
 
   const rides = { kind: 'rides', park: 'Phantasialand', order: 'longest', url: parkUrl };
-  check(
+  expectEqual(
     read({
       ...rides,
       rides: [
@@ -2151,7 +2293,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     ],
     'a row without a wait keeps its status; a status without a badge is dropped'
   );
-  check(
+  expectEqual(
     read({ ...rides, rides: [{ name: 'Taron', waitMinutes: 40 }] })?.rides[0].waitMinutes,
     40,
     'a row from before rows had a status still reads'
@@ -2164,19 +2306,19 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     date: '2026-11-05',
     shows: [{ name: 'Rookburgh Show', status: 'OPERATING', times, url: null }],
   };
-  check(read(shows)?.shows[0].times, times, 'takes a shows card');
-  check(
+  expectEqual(read(shows)?.shows[0].times, times, 'takes a shows card');
+  expectEqual(
     read({ ...shows, shows: [{ name: 'X', status: 'ON', times: ['noon', times[0]], url: null }] })
       ?.shows[0],
     { name: 'X', status: null, times: [times[0]], url: null },
     'an unreadable time or status is dropped, not the show'
   );
-  check(
+  expectEqual(
     read({ ...shows, shows: [{ ...shows.shows[0], url: 'https://evil.example' }] }),
     undefined,
     'refuses a show linking off site'
   );
-  check(read({ ...shows, date: null }), undefined, 'refuses a shows card without a day');
+  expectEqual(read({ ...shows, date: null }), undefined, 'refuses a shows card without a day');
 
   const restaurants = {
     kind: 'restaurants',
@@ -2199,7 +2341,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
       },
     ],
   };
-  check(
+  expectEqual(
     read(restaurants)?.restaurants,
     [
       restaurants.restaurants[0],
@@ -2207,7 +2349,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     ],
     'a restaurant keeps what it knows and drops the rest'
   );
-  check(
+  expectEqual(
     read({ ...restaurants, restaurants: [{ name: null }] }),
     undefined,
     'refuses a restaurant without a name'
@@ -2228,31 +2370,31 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
       url: 'https://www.openstreetmap.org/copyright',
     },
   };
-  check(read(navigate)?.mapsUrl, route, 'a navigate card keeps its walking route');
-  check(
+  expectEqual(read(navigate)?.mapsUrl, route, 'a navigate card keeps its walking route');
+  expectEqual(
     read({ ...navigate, mapsUrl: 'https://evil.example/?destination=50.7995,6.8828' }),
     undefined,
     'refuses a navigate card routing anywhere but Google Maps'
   );
-  check(
+  expectEqual(
     read({ ...navigate, latitude: 51 }),
     undefined,
     'refuses a navigate card whose route leads somewhere else than its point'
   );
-  check(
+  expectEqual(
     read({ ...navigate, credit: { text: 'x', url: 'https://evil.example' } }),
     undefined,
     'refuses a credit that links anywhere but OpenStreetMap'
   );
-  check(read({ ...navigate, place: 'lockers' }), undefined, 'refuses a place it cannot name');
+  expectEqual(read({ ...navigate, place: 'lockers' }), undefined, 'refuses a place it cannot name');
 
-  check(
+  expectEqual(
     [parkChapterUrl(parkUrl, 'shows'), parkChapterUrl(parkUrl, 'restaurants')],
     [`${parkUrl}#shows`, `${parkUrl}#restaurants`],
     'the list cards link the park page chapter'
   );
 
-  check(
+  expectEqual(
     presentTiles({
       kind: 'tiles',
       park: 'X',
@@ -2282,152 +2424,164 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
 {
   const now = Date.parse('2026-11-16T12:00:00Z');
   const today = '2026-11-16';
-  check(isServableTipRequest(today, today, 'de', now), true, 'tip: today');
-  check(
+  expectEqual(isServableTipRequest(today, today, 'de', now), true, 'tip: today');
+  expectEqual(
     isServableTipRequest('2026-11-15', '2026-11-15', 'en', now),
     true,
     'tip: yesterday by UTC, today at a park west of UTC'
   );
-  check(
+  expectEqual(
     isServableTipRequest('2026-11-15', today, 'en', now),
     false,
     "tip: before the park's today"
   );
-  check(isServableTipRequest('2026-11-14', '2026-11-14', 'en', now), false, 'tip: two days ago');
-  check(isServableTipRequest('2027-02-16', today, 'nl', now), true, 'tip: the horizon');
-  check(isServableTipRequest('2027-02-17', today, 'nl', now), false, 'tip: past the horizon');
-  check(isServableTipRequest('2026-02-30', today, 'de', now), false, 'tip: no such day');
-  check(isServableTipRequest(today, '2026-11-19', 'de', now), false, 'tip: a today far from UTC');
-  check(isServableTipRequest(today, null, 'de', now), false, 'tip: no today');
-  check(isServableTipRequest(today, today, 'pt', now), false, 'tip: not a site language');
-  check(isServableTipRequest(null, today, 'de', now), false, 'tip: no date');
-  check(isParkyDayTip({ verdict: 'good', text: 'Hin da!' }), true, 'tip: a tip');
-  check(isParkyDayTip({ verdict: 'great', text: 'Hin da!' }), false, 'tip: unknown verdict');
-  check(isParkyDayTip({ verdict: 'bad', text: '  ' }), false, 'tip: empty text');
-  check(
+  expectEqual(
+    isServableTipRequest('2026-11-14', '2026-11-14', 'en', now),
+    false,
+    'tip: two days ago'
+  );
+  expectEqual(isServableTipRequest('2027-02-16', today, 'nl', now), true, 'tip: the horizon');
+  expectEqual(isServableTipRequest('2027-02-17', today, 'nl', now), false, 'tip: past the horizon');
+  expectEqual(isServableTipRequest('2026-02-30', today, 'de', now), false, 'tip: no such day');
+  expectEqual(
+    isServableTipRequest(today, '2026-11-19', 'de', now),
+    false,
+    'tip: a today far from UTC'
+  );
+  expectEqual(isServableTipRequest(today, null, 'de', now), false, 'tip: no today');
+  expectEqual(isServableTipRequest(today, today, 'pt', now), false, 'tip: not a site language');
+  expectEqual(isServableTipRequest(null, today, 'de', now), false, 'tip: no date');
+  expectEqual(isParkyDayTip({ verdict: 'good', text: 'Hin da!' }), true, 'tip: a tip');
+  expectEqual(isParkyDayTip({ verdict: 'great', text: 'Hin da!' }), false, 'tip: unknown verdict');
+  expectEqual(isParkyDayTip({ verdict: 'bad', text: '  ' }), false, 'tip: empty text');
+  expectEqual(
     isParkyDayTip({ verdict: 'good', crowdLevel: 'very_low', text: 'Hin da!' }),
     true,
     'tip: with the level it was written for'
   );
-  check(
+  expectEqual(
     isParkyDayTip({ verdict: 'good', crowdLevel: 'high', text: 'Hin da!' }),
     false,
     'tip: a level that disagrees with its own verdict'
   );
-  check(
+  expectEqual(
     isParkyDayTip({ verdict: 'meh', crowdLevel: 'closed', text: 'Hm.' }),
     false,
     'tip: a level with no verdict'
   );
   // Without the level it was written for, a tip is held to its verdict.
-  check(
+  expectEqual(
     tipAgreesWithLevel({ verdict: 'bad' }, 'very_low'),
     false,
     'tip: "lieber nicht" over a quiet day'
   );
-  check(tipAgreesWithLevel({ verdict: 'good' }, 'high'), false, 'tip: "hin da" over a busy day');
-  check(
+  expectEqual(
+    tipAgreesWithLevel({ verdict: 'good' }, 'high'),
+    false,
+    'tip: "hin da" over a busy day'
+  );
+  expectEqual(
     tipAgreesWithLevel({ verdict: 'good' }, 'low'),
     true,
     'tip: low and very low share a verdict'
   );
-  check(tipAgreesWithLevel({ verdict: 'meh' }, 'moderate'), true, 'tip: moderate is meh');
-  check(tipAgreesWithLevel({ verdict: 'bad' }, 'extreme'), true, 'tip: extreme is bad');
-  check(
+  expectEqual(tipAgreesWithLevel({ verdict: 'meh' }, 'moderate'), true, 'tip: moderate is meh');
+  expectEqual(tipAgreesWithLevel({ verdict: 'bad' }, 'extreme'), true, 'tip: extreme is bad');
+  expectEqual(
     tipAgreesWithLevel({ verdict: 'bad' }, 'unknown'),
     true,
     'tip: an unrated day contradicts nothing'
   );
-  check(
+  expectEqual(
     tipAgreesWithLevel({ verdict: 'good' }, null),
     true,
     'tip: no panel, nothing to contradict'
   );
   // With it, the level itself.
-  check(
+  expectEqual(
     tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, 'extreme'),
     false,
     'tip: a sentence for "hoch" over "extrem"'
   );
-  check(
+  expectEqual(
     tipAgreesWithLevel({ verdict: 'good', crowdLevel: 'low' }, 'very_low'),
     false,
     'tip: a sentence for "niedrig" over "sehr niedrig"'
   );
-  check(
+  expectEqual(
     tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'extreme' }, 'extreme'),
     true,
     'tip: written for the level the panel shows'
   );
-  check(
+  expectEqual(
     tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, 'unknown'),
     true,
     'tip: with its level, an unrated panel still contradicts nothing'
   );
-  check(
+  expectEqual(
     tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, null),
     true,
     'tip: with its level, no panel'
   );
   // Today's tip names the level so far it was written from; the dialog shows its own beside it.
   const todayTip = { verdict: 'bad', crowdLevel: 'high', todayCrowdLevel: 'low' };
-  check(
+  expectEqual(
     tipAgreesWithLevel(todayTip, 'high', 'low'),
     true,
     'tip: today, the same level so far as „Heute bisher"'
   );
-  check(
+  expectEqual(
     tipAgreesWithLevel(todayTip, 'high', 'very_high'),
     false,
     'tip: today, „bisher ruhig" beside „Heute bisher: sehr hoch"'
   );
-  check(
+  expectEqual(
     tipAgreesWithLevel(todayTip, 'extreme', 'low'),
     false,
     'tip: today, the same level so far does not excuse another forecast'
   );
-  check(
+  expectEqual(
     tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, 'high', 'low'),
     true,
     'tip: today, a tip without a level so far contradicts no „Heute bisher"'
   );
-  check(
+  expectEqual(
     tipAgreesWithLevel(todayTip, 'high', null),
     true,
     'tip: today, a dialog without a level so far has nothing to contradict'
   );
-  check(tipAgreesWithLevel(todayTip, 'high'), true, 'tip: no level so far passed at all');
-  check(mayKeepNoTip('private, max-age=300'), true, 'tip: the API lets its 204 be kept');
-  check(mayKeepNoTip('public, max-age=300, s-maxage=300'), true, 'tip: the shared 204 too');
-  check(
+  expectEqual(tipAgreesWithLevel(todayTip, 'high'), true, 'tip: no level so far passed at all');
+  expectEqual(mayKeepNoTip('private, max-age=300'), true, 'tip: the API lets its 204 be kept');
+  expectEqual(mayKeepNoTip('public, max-age=300, s-maxage=300'), true, 'tip: the shared 204 too');
+  expectEqual(
     mayKeepNoTip('private, no-store'),
     false,
     "tip: a today that is not the park's keeps nothing"
   );
-  check(mayKeepNoTip('No-Store'), false, 'tip: in any case');
-  check(mayKeepNoTip(null), true, 'tip: a 204 without a header takes the relay window');
-  check(tipVerdictFor('very_high'), 'bad', 'tip: very high is bad');
-  check(tipVerdictFor('closed'), null, 'tip: a closed day gets no tip');
-  check(tipVerdictFor('unknown'), null, 'tip: an unrated day gets no tip');
+  expectEqual(mayKeepNoTip('No-Store'), false, 'tip: in any case');
+  expectEqual(mayKeepNoTip(null), true, 'tip: a 204 without a header takes the relay window');
+  expectEqual(tipVerdictFor('very_high'), 'bad', 'tip: very high is bad');
+  expectEqual(tipVerdictFor('closed'), null, 'tip: a closed day gets no tip');
+  expectEqual(tipVerdictFor('unknown'), null, 'tip: an unrated day gets no tip');
 }
 // Parky's stamp on a ride's live wait: only on a ride that usually queues, the walk-on first, then
 // half the usual or less.
 {
-  check(rideStampVerdict(5, null), null, 'stamp: no usual, no stamp');
-  check(rideStampVerdict(5, 15), null, 'stamp: a ride that is short anyway');
-  check(rideStampVerdict(5, 20), 'walkOn', 'stamp: walk-on at the limit, usual 20');
-  check(rideStampVerdict(10, 20), 'belowTypical', 'stamp: 10 is no walk-on, but half of 20');
-  check(rideStampVerdict(5, 40), 'walkOn', 'stamp: a walk-on before the half');
-  check(rideStampVerdict(13, 30), 'belowTypical', "stamp: Disney's posted 13 is no walk-on");
-  check(rideStampVerdict(14, 30), 'belowTypical', 'stamp: 14 is the printed 15, half of 30');
-  check(rideStampVerdict(20, 40), 'belowTypical', 'stamp: half the usual');
-  check(rideStampVerdict(22, 40), 'belowTypical', 'stamp: the printed 20 against 40');
-  check(rideStampVerdict(23, 40), null, 'stamp: the printed 25 is more than half');
-  check(rideStampVerdict(15, 25), null, 'stamp: 15 against 25');
+  expectEqual(rideStampVerdict(5, null), null, 'stamp: no usual, no stamp');
+  expectEqual(rideStampVerdict(5, 15), null, 'stamp: a ride that is short anyway');
+  expectEqual(rideStampVerdict(5, 20), 'walkOn', 'stamp: walk-on at the limit, usual 20');
+  expectEqual(rideStampVerdict(10, 20), 'belowTypical', 'stamp: 10 is no walk-on, but half of 20');
+  expectEqual(rideStampVerdict(5, 40), 'walkOn', 'stamp: a walk-on before the half');
+  expectEqual(rideStampVerdict(13, 30), 'belowTypical', "stamp: Disney's posted 13 is no walk-on");
+  expectEqual(rideStampVerdict(14, 30), 'belowTypical', 'stamp: 14 is the printed 15, half of 30');
+  expectEqual(rideStampVerdict(20, 40), 'belowTypical', 'stamp: half the usual');
+  expectEqual(rideStampVerdict(22, 40), 'belowTypical', 'stamp: the printed 20 against 40');
+  expectEqual(rideStampVerdict(23, 40), null, 'stamp: the printed 25 is more than half');
+  expectEqual(rideStampVerdict(15, 25), null, 'stamp: 15 against 25');
 }
-check(isWalkOn(5), true, 'walk-on: the limit');
-check(isWalkOn(6), false, 'walk-on: over the limit');
-check(isWalkOn(13), false, "walk-on: Disney's posted 13 is not one");
+expectEqual(isWalkOn(5), true, 'walk-on: the limit');
+expectEqual(isWalkOn(6), false, 'walk-on: over the limit');
+expectEqual(isWalkOn(13), false, "walk-on: Disney's posted 13 is not one");
 // Which rides stand out in their park: a few at most, or none when the park is simply empty.
 {
   const ride = (id, wait, baseline, status = 'OPERATING') => ({
@@ -2440,30 +2594,30 @@ check(isWalkOn(13), false, "walk-on: Disney's posted 13 is not one");
   const busy = [ride('a', 45, 40), ride('b', 60, 50), ride('c', 30, 30)];
   const three = [...busy, ride('w1', 5, 40), ride('w2', 10, 25), ride('h1', 15, 40)];
   const found = standoutRides(three, 'OPERATING');
-  check(found.size, 3, 'standouts: three stand out');
-  check(found.get('w1'), 'walkOn', 'standouts: a walk-on on a ride that queues');
-  check(found.get('h1'), 'belowTypical', 'standouts: under half its baseline');
-  check(found.has('a'), false, 'standouts: an ordinary queue');
-  check(
+  expectEqual(found.size, 3, 'standouts: three stand out');
+  expectEqual(found.get('w1'), 'walkOn', 'standouts: a walk-on on a ride that queues');
+  expectEqual(found.get('h1'), 'belowTypical', 'standouts: under half its baseline');
+  expectEqual(found.has('a'), false, 'standouts: an ordinary queue');
+  expectEqual(
     standoutRides([...three, ride('w3', 5, 30)], 'OPERATING').size,
     0,
     'standouts: four, the park is empty'
   );
-  check(
+  expectEqual(
     standoutRides([ride('k', 5, 10), ride('n', 5, null)], 'OPERATING').size,
     0,
     'standouts: short anyway or no baseline'
   );
-  check(
+  expectEqual(
     standoutRides([...busy, { ...ride('wet', 5, 40), tooColdToGetWet: true }], 'OPERATING').size,
     0,
     'standouts: a wet ride in the cold gets no stamp'
   );
-  check(
+  expectEqual(
     standoutRides([ride('d', 5, 40, 'DOWN')], 'OPERATING').size,
     0,
     'standouts: a ride that is down'
   );
-  check(standoutRides(three, 'CLOSED').size, 0, 'standouts: a closed park');
+  expectEqual(standoutRides(three, 'CLOSED').size, 0, 'standouts: a closed park');
 }
-console.log(`assistant: ${passed} checks passed`);
+reportPassed();

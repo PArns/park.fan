@@ -21,18 +21,7 @@ import {
   toggleWish,
 } from '../lib/planner/fit.ts';
 import { noRoomForRide, requestedRideChoice } from '../lib/planner/add-ride-fit.ts';
-
-let passed = 0;
-const failures = [];
-function check(name, ok, detail = '') {
-  if (ok) {
-    passed++;
-    console.log(`✅ ${name}`);
-  } else {
-    failures.push(name);
-    console.log(`❌ ${name}${detail ? ` — ${detail}` : ''}`);
-  }
-}
+import { checkThat, finishChecks } from './lib/run-cases.mjs';
 
 const wish = (key, slug) => ({
   key,
@@ -53,18 +42,18 @@ const wish = (key, slug) => ({
     wish(addWishKey('c'), 'c'),
   ];
   const keys = (choice) => fitOrder(wishes, choice).map((w) => w.key);
-  check(
+  checkThat(
     'ohne Angaben: wie angeboten, die zweite Runde hinter allen ersten',
     keys(fitChoiceAll()).join(',') === 'e:a1,a:b,a:c,e:a2',
     keys(fitChoiceAll()).join(',')
   );
   const pinned = togglePin(fitChoiceAll(), addWishKey('c'));
-  check('eine angepinnte Bahn steht oben', keys(pinned)[0] === 'a:c');
-  check(
+  checkThat('eine angepinnte Bahn steht oben', keys(pinned)[0] === 'a:c');
+  checkThat(
     'eine angepinnte zweite Runde bleibt, wo sie angepinnt ist',
     keys(togglePin(fitChoiceAll(), entryWishKey('a2')))[0] === 'e:a2'
   );
-  check(
+  checkThat(
     'noch einmal antippen löst den Pin',
     keys(togglePin(pinned, addWishKey('c')))[0] === 'e:a1'
   );
@@ -74,9 +63,9 @@ const wish = (key, slug) => ({
 {
   const pinned = togglePin(fitChoiceAll(), addWishKey('b'));
   const off = toggleWish(pinned, addWishKey('b'));
-  check('eine abgewählte Bahn ist nicht mehr angepinnt', off.priority.length === 0);
-  check('und abgewählt', off.dropped.has('a:b'));
-  check('noch einmal: wieder dabei', !toggleWish(off, addWishKey('b')).dropped.has('a:b'));
+  checkThat('eine abgewählte Bahn ist nicht mehr angepinnt', off.priority.length === 0);
+  checkThat('und abgewählt', off.dropped.has('a:b'));
+  checkThat('noch einmal: wieder dabei', !toggleWish(off, addWishKey('b')).dropped.has('a:b'));
 
   const blocks = [
     { entryId: 'lunch', label: 'Essen', icon: 'food', durationMinutes: 60 },
@@ -85,21 +74,27 @@ const wish = (key, slug) => ({
   const shorten = { kind: 'shorten-block', entryId: 'lunch' };
   const drop = { kind: 'drop-block', entryId: 'lunch' };
   const short = toggleLever(blocks, fitChoiceAll(), shorten);
-  check('kürzen kürzt', short.shortBlocks.has('lunch') && !short.droppedBlocks.has('lunch'));
+  checkThat('kürzen kürzt', short.shortBlocks.has('lunch') && !short.droppedBlocks.has('lunch'));
   const dropped = toggleLever(blocks, short, drop);
-  check(
+  checkThat(
     'streichen ersetzt das Kürzen am selben Block',
     dropped.droppedBlocks.has('lunch') && !dropped.shortBlocks.has('lunch')
   );
-  check('und hebt sich selbst auf', !toggleLever(blocks, dropped, drop).droppedBlocks.has('lunch'));
+  checkThat(
+    'und hebt sich selbst auf',
+    !toggleLever(blocks, dropped, drop).droppedBlocks.has('lunch')
+  );
   const all = toggleLever(blocks, fitChoiceAll(), { kind: 'drop-all-blocks' });
-  check('alle streichen streicht alle', all.droppedBlocks.size === 2);
-  check(
+  checkThat('alle streichen streicht alle', all.droppedBlocks.size === 2);
+  checkThat(
     'und noch einmal keinen',
     toggleLever(blocks, all, { kind: 'drop-all-blocks' }).droppedBlocks.size === 0
   );
-  check('ein Hebel hat einen Schlüssel', leverKey(drop) === 'drop-block:lunch');
-  check('der für alle Blöcke auch', leverKey({ kind: 'drop-all-blocks' }) === 'drop-all-blocks:*');
+  checkThat('ein Hebel hat einen Schlüssel', leverKey(drop) === 'drop-block:lunch');
+  checkThat(
+    'der für alle Blöcke auch',
+    leverKey({ kind: 'drop-all-blocks' }) === 'drop-all-blocks:*'
+  );
 }
 
 // ── What the result names ───────────────────────────────────────────────────
@@ -109,18 +104,18 @@ const wish = (key, slug) => ({
     { missed: ['a:taron', 'a:fly', 'a:chiapas'], pinnedMissed: ['a:taron'] },
     choice
   );
-  check(
+  checkThat(
     'eine gepinnte Bahn ohne Minute steht für sich',
     out.pinned.join() === 'a:taron',
     out.pinned.join()
   );
-  check(
+  checkThat(
     'der Rest: erst ohne Minute, dann abgewählt',
     out.rest.join() === 'a:fly,a:chiapas,a:raik',
     out.rest.join()
   );
   const older = fitLeftOut({ missed: ['a:taron'], pinnedMissed: [] }, choice);
-  check(
+  checkThat(
     'ohne pinnedMissed bleibt alles beim Rest',
     older.pinned.length === 0 && older.rest.join() === 'a:taron,a:raik'
   );
@@ -171,7 +166,7 @@ const fitAnswer = (fitted, wanted) => ({
   const { result, sent } = await withFetch(fitAnswer(2, 3), () =>
     noRoomForRide({ target, entries, attractionSlug: 'taron', earlyEntry: true })
   );
-  check(
+  checkThat(
     'die Frage ist der Tag plus diese Bahn',
     sent[0].mode === 'fit' &&
       sent[0].add.join() === 'taron' &&
@@ -179,15 +174,15 @@ const fitAnswer = (fitted, wanted) => ({
       sent[0].prefs.earlyEntry === true &&
       !('choice' in sent[0])
   );
-  check(
+  checkThat(
     'wo nicht alles passt, öffnet die Frage',
     result !== null && result.question.add.join() === 'taron' && result.answer.wanted === 3
   );
   const { result: fits } = await withFetch(fitAnswer(3, 3), () =>
     noRoomForRide({ target, entries, attractionSlug: 'taron' })
   );
-  check('wo alles passt, nicht', fits === null);
-  check(
+  checkThat('wo alles passt, nicht', fits === null);
+  checkThat(
     'ein Server ohne pinnedMissed liest sich als leer',
     Array.isArray(result?.answer.pinnedMissed) && result.answer.pinnedMissed.length === 0
   );
@@ -197,7 +192,7 @@ const fitAnswer = (fitted, wanted) => ({
   const { result: pinnedOut } = await withFetch(pinnedAnswer, () =>
     noRoomForRide({ target, entries, attractionSlug: 'taron' })
   );
-  check(
+  checkThat(
     'und mit Feld kommt es an',
     pinnedOut?.answer.pinnedMissed.join() === 'a:taron',
     pinnedOut?.answer.pinnedMissed.join()
@@ -205,15 +200,11 @@ const fitAnswer = (fitted, wanted) => ({
   const { result: refused } = await withFetch({ status: 'refused', refusal: 'unknown-ride' }, () =>
     noRoomForRide({ target, entries, attractionSlug: 'nope' })
   );
-  check('eine verweigerte Frage legt wie bisher ab', refused === null);
-  check(
+  checkThat('eine verweigerte Frage legt wie bisher ab', refused === null);
+  checkThat(
     'und das Gegenüber öffnet mit der Bahn oben',
     requestedRideChoice('taron').priority.join() === 'a:taron'
   );
 }
 
-console.log(`\n${passed} passed, ${failures.length} failed`);
-if (failures.length) {
-  console.log(failures.map((name) => `  ${name}`).join('\n'));
-  process.exit(1);
-}
+finishChecks();

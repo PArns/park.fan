@@ -4,7 +4,6 @@
  * (`lib/assistant/actions.ts`) and the reorder they write (`moveEntryToIndex`).
  */
 
-import assert from 'node:assert/strict';
 import { readAssistantAction } from '@/lib/assistant/actions.ts';
 import { interviewEnded, interviewPlanStood, interviewRegion } from '@/lib/assistant/interview.ts';
 import {
@@ -48,12 +47,7 @@ import {
   FAVORITES_SNAPSHOT_MAX,
   RIDDEN_SNAPSHOT_MAX,
 } from '@/lib/assistant/favorites-context.ts';
-
-let passed = 0;
-function check(actual, expected, label) {
-  assert.deepEqual(actual, expected, label);
-  passed++;
-}
+import { expectEqual, reportPassed } from './lib/run-cases.mjs';
 
 const park = {
   slug: 'phantasialand',
@@ -74,10 +68,14 @@ const ride = (state, date, slug, startMinute) =>
   addEntry(state, { ...at(date), attractionSlug: slug, attractionName: slug, startMinute }, now);
 
 // --- The snapshot ---
-check(assistantPlannerSnapshot(EMPTY_PLANNER_STATE, now), undefined, 'an empty plan sends nothing');
+expectEqual(
+  assistantPlannerSnapshot(EMPTY_PLANNER_STATE, now),
+  undefined,
+  'an empty plan sends nothing'
+);
 
 let state = ride(EMPTY_PLANNER_STATE, '2026-11-04', 'taron', 600);
-check(assistantPlannerSnapshot(state, now), undefined, 'yesterday is not sent');
+expectEqual(assistantPlannerSnapshot(state, now), undefined, 'yesterday is not sent');
 
 state = ride(state, '2026-11-07', 'taron', 600);
 state = addCustomEntry(
@@ -95,14 +93,14 @@ state = ride(state, '2026-11-05', 'black-mamba', 540);
 state = setDayPrefs(state, park.slug, '2026-11-05', { riderHeightCm: 120, avoidWet: true });
 state = { ...state, activeParkSlug: park.slug, activeDate: '2026-11-07' };
 const snap = assistantPlannerSnapshot(state, now);
-check(snap.active, { park: 'phantasialand', date: '2026-11-07' }, 'the active day');
-check(
+expectEqual(snap.active, { park: 'phantasialand', date: '2026-11-07' }, 'the active day');
+expectEqual(
   snap.days.map((d) => d.date),
   ['2026-11-05', '2026-11-07'],
   'today and later, nearest first'
 );
-check(snap.days[0].prefs, { riderHeightCm: 120, avoidWet: true }, 'the day prefs ride along');
-check(
+expectEqual(snap.days[0].prefs, { riderHeightCm: 120, avoidWet: true }, 'the day prefs ride along');
+expectEqual(
   snap.days[1].entries,
   [
     {
@@ -138,11 +136,11 @@ let many = EMPTY_PLANNER_STATE;
 for (let i = 0; i < 9; i++) many = ride(many, `2026-11-${String(10 + i)}`, 'taron', 600);
 for (let i = 0; i < 45; i++) many = ride(many, '2026-11-10', `r${i}`, 600 + i);
 const capped = assistantPlannerSnapshot(many, now);
-check(capped.days.length, SNAPSHOT_MAX_DAYS, 'at most eight days in full');
-check(capped.days[0].date, '2026-11-10', 'the nearest kept');
-check(capped.days[0].entries.length, SNAPSHOT_MAX_ENTRIES, 'at most forty entries a day');
-check(capped.active, undefined, 'no active day, no field');
-check(
+expectEqual(capped.days.length, SNAPSHOT_MAX_DAYS, 'at most eight days in full');
+expectEqual(capped.days[0].date, '2026-11-10', 'the nearest kept');
+expectEqual(capped.days[0].entries.length, SNAPSHOT_MAX_ENTRIES, 'at most forty entries a day');
+expectEqual(capped.active, undefined, 'no active day, no field');
+expectEqual(
   capped.more,
   [{ park: { slug: park.slug, name: park.name }, date: '2026-11-18', entries: 1 }],
   'every other planned day by park and date'
@@ -151,14 +149,14 @@ const farActive = assistantPlannerSnapshot(
   { ...many, activeParkSlug: park.slug, activeDate: '2026-11-18' },
   now
 );
-check(
+expectEqual(
   farActive.days.map((d) => d.date).includes('2026-11-18') &&
     farActive.days.length === SNAPSHOT_MAX_DAYS &&
     farActive.more.map((d) => d.date),
   ['2026-11-17'],
   'the day open in the planner always in full, the nearest after it'
 );
-check(
+expectEqual(
   assistantPlannerSnapshot(reserveDays(EMPTY_PLANNER_STATE, [{ park, date: '2026-11-20' }]), now)
     .days[0].entries,
   [],
@@ -170,7 +168,7 @@ let day = ride(EMPTY_PLANNER_STATE, '2026-11-07', 'a', 600);
 day = ride(day, '2026-11-07', 'b', 660);
 day = ride(day, '2026-11-07', 'c', 720);
 const moved = moveEntryToIndex(day, park.slug, '2026-11-07', 'c-1', 0);
-check(
+expectEqual(
   entriesFor(moved, park.slug, '2026-11-07').map((e) => [e.id, e.startMinute]),
   [
     ['c-1', 600],
@@ -179,21 +177,29 @@ check(
   ],
   'a move takes the slots in the new order'
 );
-check(moveEntryToIndex(day, park.slug, '2026-11-07', 'a-1', 0), day, 'the same place is no write');
-check(moveEntryToIndex(day, park.slug, '2026-11-07', 'nope', 1), day, 'an unknown id is ignored');
+expectEqual(
+  moveEntryToIndex(day, park.slug, '2026-11-07', 'a-1', 0),
+  day,
+  'the same place is no write'
+);
+expectEqual(
+  moveEntryToIndex(day, park.slug, '2026-11-07', 'nope', 1),
+  day,
+  'an unknown id is ignored'
+);
 
 // --- Parky's undo ---
 const undoDate = '2026-11-07';
 const removed = removeEntry(day, park.slug, undoDate, 'b-1');
 rememberParkyChange(day, removed, park.slug, undoDate);
 const undone = undoParkyChange(removed, park, undoDate);
-check(undone.outcome, 'undone', 'an untouched day is put back');
-check(
+expectEqual(undone.outcome, 'undone', 'an untouched day is put back');
+expectEqual(
   entriesFor(undone.state, park.slug, undoDate).map((e) => e.id),
   ['a-1', 'b-1', 'c-1'],
   'with what Parky removed'
 );
-check(
+expectEqual(
   undoParkyChange(undone.state, park, undoDate),
   { state: undone.state, outcome: 'none' },
   'and the change is used up'
@@ -201,29 +207,29 @@ check(
 
 rememberParkyChange(day, removed, park.slug, undoDate);
 const edited = ride(removed, undoDate, 'd', 900);
-check(
+expectEqual(
   undoParkyChange(edited, park, undoDate),
   { state: edited, outcome: 'changed' },
   "the visitor's own edit since is never undone"
 );
-check(undoParkyChange(edited, park, undoDate).outcome, 'none', 'nor tried again');
+expectEqual(undoParkyChange(edited, park, undoDate).outcome, 'none', 'nor tried again');
 
 const ticked = setEntryDone(removed, park.slug, undoDate, 'a-1', true);
 rememberParkyChange(day, removed, park.slug, undoDate);
-check(undoParkyChange(ticked, park, undoDate).outcome, 'changed', 'a tick is an edit too');
+expectEqual(undoParkyChange(ticked, park, undoDate).outcome, 'changed', 'a tick is an edit too');
 
 const reserved = reserveDays(EMPTY_PLANNER_STATE, [{ park, date: '2026-11-08' }]);
 rememberParkyChange(EMPTY_PLANNER_STATE, reserved, park.slug, '2026-11-08');
 // Opening the date files an empty day, which reads as no change.
 const reopened = openDay(reserved, park, '2026-11-08');
-check(
+expectEqual(
   undoParkyChange(reopened, park, '2026-11-08').state.parks[park.slug],
   undefined,
   'undo drops a day that did not exist'
 );
 const cleared = clearDay(day, park.slug, undoDate);
 rememberParkyChange(day, cleared, park.slug, undoDate);
-check(
+expectEqual(
   undoParkyChange(openDay(cleared, park, undoDate), park, undoDate).outcome,
   'undone',
   'a cleared day shown again empty still undoes'
@@ -231,7 +237,7 @@ check(
 
 // --- The actions ---
 const date = '2026-11-07';
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_remove',
     park,
@@ -242,32 +248,32 @@ check(
   { type: 'planner_remove', park, date, entryIds: ['taron-1'] },
   'remove: ids that are no ids are dropped, nothing rides along'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_remove', park, date, entryIds: [] }),
   null,
   'remove: no ids, no action'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_remove', park, date: '7.11.', entryIds: ['a-1'] }),
   null,
   'remove: a date'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_move', park, date, entryId: 'a-1', toIndex: 2 }),
   { type: 'planner_move', park, date, entryId: 'a-1', toIndex: 2 },
   'move'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_move', park, date, entryId: 'a-1', toIndex: -1 }),
   null,
   'move: a negative index'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_move', park, date, entryId: 'a-1', toIndex: 1.5 }),
   null,
   'move: a fraction'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_update_block',
     park,
@@ -287,7 +293,7 @@ check(
   },
   'update block: a bad start is left out, the rest kept'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_update_block',
     park,
@@ -298,7 +304,7 @@ check(
   null,
   'update block: nothing valid to change'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_add_show',
     park,
@@ -309,7 +315,7 @@ check(
   { type: 'planner_add_show', park, date, showSlug: 'fantissima', start: '14:30' },
   'add show'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_add_show',
     park,
@@ -320,7 +326,7 @@ check(
   null,
   'add show: HH:MM only'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_set_prefs',
     park,
@@ -330,37 +336,37 @@ check(
   { type: 'planner_set_prefs', park, date, prefs: { riderHeightCm: 120, earlyEntry: false } },
   'set prefs: an invalid answer is left out'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_set_prefs', park, date, prefs: { riderHeightCm: 20 } }),
   null,
   'set prefs: out of range'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_mark_done', park, date, entryIds: ['a-1'], done: true }),
   { type: 'planner_mark_done', park, date, entryIds: ['a-1'], done: true },
   'mark done'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_mark_done', park, date, entryIds: ['a-1'] }),
   null,
   'mark done: done is required'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_clear_day', park, date, x: 1 }),
   { type: 'planner_clear_day', park, date },
   'clear day'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_undo', park, date }),
   { type: 'planner_undo', park, date },
   'undo'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_undo', park: { ...park, timezone: 'Mars/Base' }, date }),
   null,
   'undo: the park is checked'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_reserve_days',
     park,
@@ -369,7 +375,7 @@ check(
   { type: 'planner_reserve_days', park, dates: ['2026-11-08'] },
   'reserve days'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_reserve_days', park, dates: [] }),
   null,
   'reserve days: none'
@@ -380,7 +386,7 @@ const epcot = {
   geo: { continent: 'north-america', country: 'united-states', city: 'orlando' },
   timezone: 'America/New_York',
 };
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_reserve_trip',
     days: [
@@ -401,12 +407,12 @@ check(
   },
   'reserve trip: each park checked, each park and day once, nothing riding along'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_reserve_trip', days: [{ park: epcot, date: 'x' }] }),
   null,
   'reserve trip: none left'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_reserve_trip',
     days: Array.from({ length: 20 }, (_, i) => ({
@@ -422,7 +428,7 @@ check(
     { park: epcot, date: '2027-03-04' },
     { park, date: '2027-03-05' },
   ]);
-  check(
+  expectEqual(
     [
       trip.parks.epcot?.days['2027-03-04']?.reserved,
       trip.parks.phantasialand?.days['2027-03-05']?.reserved,
@@ -431,21 +437,25 @@ check(
     'reserve trip: one write files the days of several parks'
   );
 }
-check(
+expectEqual(
   readAssistantAction({ type: 'planner_share', url: 'https://evil.example' }),
   { type: 'planner_share' },
   'share carries nothing'
 );
 
 // --- Reminders: the snapshot ---
-check(assistantAlertsSnapshot('unavailable', [], []), undefined, 'no push, nothing set: no field');
-check(
+expectEqual(
+  assistantAlertsSnapshot('unavailable', [], []),
+  undefined,
+  'no push, nothing set: no field'
+);
+expectEqual(
   assistantAlertsSnapshot('needs-permission', [], []),
   { push: 'needs-permission', rides: [], shows: [] },
   'push in reach is sent though nothing is set'
 );
 const names = { parkSlug: 'phantasialand', slug: 'taron', name: 'Taron' };
-check(
+expectEqual(
   assistantAlertsSnapshot(
     'unavailable',
     [
@@ -490,7 +500,7 @@ check(
   },
   'set reminders are sent even without push; an entry without names is left out; a pin reads in the park clock'
 );
-check(
+expectEqual(
   assistantAlertsSnapshot(
     'ready',
     Array.from({ length: 120 }, (_, i) => ({
@@ -516,32 +526,36 @@ const rideSet = {
   kind: 'wait_below',
   thresholdMinutes: 15,
 };
-check(readAssistantAction({ ...rideSet, x: 1 }), rideSet, 'ride alert, nothing rides along');
-check(
+expectEqual(readAssistantAction({ ...rideSet, x: 1 }), rideSet, 'ride alert, nothing rides along');
+expectEqual(
   alertTarget(rideSet),
   { kind: 'ride', attractionId: rideId, name: 'Taron', thresholdMinutes: 15 },
   'a wait alert writes its threshold'
 );
 const reopen = readAssistantAction({ ...rideSet, kind: 'reopen' });
-check(
+expectEqual(
   reopen,
   { type: 'alert_ride_set', park, rideId, rideSlug: 'taron', rideName: 'Taron', kind: 'reopen' },
   'a reopen alert carries no threshold'
 );
-check(alertTarget(reopen).thresholdMinutes, null, 'and writes none');
-check(
+expectEqual(alertTarget(reopen).thresholdMinutes, null, 'and writes none');
+expectEqual(
   readAssistantAction({ ...rideSet, thresholdMinutes: 241 }),
   null,
   'a threshold the API refuses'
 );
-check(
+expectEqual(
   readAssistantAction({ ...rideSet, thresholdMinutes: undefined }),
   null,
   'a wait alert needs one'
 );
-check(readAssistantAction({ ...rideSet, kind: 'soon' }), null, 'an unknown kind');
-check(readAssistantAction({ ...rideSet, rideId: 'taron' }), null, 'a ride id that is no UUID');
-check(
+expectEqual(readAssistantAction({ ...rideSet, kind: 'soon' }), null, 'an unknown kind');
+expectEqual(
+  readAssistantAction({ ...rideSet, rideId: 'taron' }),
+  null,
+  'a ride id that is no UUID'
+);
+expectEqual(
   readAssistantAction({ ...rideSet, park: 'phantasialand' }),
   null,
   'the park is the planner park'
@@ -554,8 +568,8 @@ const showSet = {
   showName: 'Fantissima',
   start: '2026-11-05T15:00:00+01:00',
 };
-check(readAssistantAction(showSet), showSet, 'show reminder');
-check(
+expectEqual(readAssistantAction(showSet), showSet, 'show reminder');
+expectEqual(
   alertTarget(showSet, now),
   {
     kind: 'show',
@@ -566,57 +580,61 @@ check(
   },
   "the instant as sent, printed in the park's clock"
 );
-check(
+expectEqual(
   alertTarget({ ...showSet, start: '2026-11-05T11:00:00+01:00' }, now),
   null,
   'a performance already over'
 );
-check(
+expectEqual(
   readAssistantAction({ ...showSet, start: '15:00' }),
   null,
   'start is an instant, not a clock'
 );
-check(readAssistantAction({ ...showSet, showName: '' }), null, 'a show without a name');
-check(
+expectEqual(readAssistantAction({ ...showSet, showName: '' }), null, 'a show without a name');
+expectEqual(
   readAssistantAction({ type: 'alert_remove', park, rideSlug: 'taron' }),
   { type: 'alert_remove', park, rideSlug: 'taron' },
   'remove a ride alert'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'alert_remove', park, showSlug: 'fantissima', rideSlug: '<b>' }),
   { type: 'alert_remove', park, showSlug: 'fantissima' },
   'remove a show reminder; a slug that is none does not count'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'alert_remove', park, rideSlug: 'taron', showSlug: 'fantissima' }),
   null,
   'remove: exactly one'
 );
-check(readAssistantAction({ type: 'alert_remove', park }), null, 'remove: nothing named');
-check(removalOutcome({ ok: true, value: undefined }), 'alertRemoved', 'a removal shows its chip');
-check(
+expectEqual(readAssistantAction({ type: 'alert_remove', park }), null, 'remove: nothing named');
+expectEqual(
+  removalOutcome({ ok: true, value: undefined }),
+  'alertRemoved',
+  'a removal shows its chip'
+);
+expectEqual(
   removalOutcome({ ok: false, error: { reason: 'rate-limited', retryAfterSeconds: 30 } }),
   { failed: { reason: 'rate-limited', retryAfterSeconds: 30 } },
   'a failed removal carries its failure, the wait included'
 );
-check(removalOutcome(null), null, 'nothing to remove, nothing shown');
+expectEqual(removalOutcome(null), null, 'nothing to remove, nothing shown');
 
 // --- Favourites ---
 const noFavorites = { parks: [], attractions: [], shows: [], restaurants: [] };
-check(assistantFavoritesSnapshot(noFavorites), undefined, 'no favourites, no field');
+expectEqual(assistantFavoritesSnapshot(noFavorites), undefined, 'no favourites, no field');
 const uuid = '0b6f2f1e-3c4d-4e5f-8a9b-0c1d2e3f4a5b';
 const uuidN = (i) => `0b6f2f1e-3c4d-4e5f-8a9b-${String(i).padStart(12, '0')}`;
-check(
+expectEqual(
   assistantFavoritesSnapshot({ ...noFavorites, attractions: [uuid, 'taron'] }),
   { ...noFavorites, attractions: [uuid] },
   'UUIDs as stored, anything else dropped'
 );
-check(
+expectEqual(
   assistantFavoritesSnapshot({ ...noFavorites, shows: ['old-slug'] }),
   undefined,
   'nothing but slugs is nothing'
 );
-check(
+expectEqual(
   assistantFavoritesSnapshot({
     ...noFavorites,
     parks: Array.from({ length: 60 }, (_, i) => uuidN(i)),
@@ -624,8 +642,8 @@ check(
   FAVORITES_SNAPSHOT_MAX,
   'at most fifty of a kind'
 );
-check(assistantRiddenSnapshot(new Set()), undefined, 'no ridden rides, no field');
-check(
+expectEqual(assistantRiddenSnapshot(new Set()), undefined, 'no ridden rides, no field');
+expectEqual(
   assistantRiddenSnapshot(new Set([uuid, 'taron'])),
   [uuid],
   'ridden rides as UUIDs, anything else dropped'
@@ -633,47 +651,51 @@ check(
 {
   const many = new Set(Array.from({ length: RIDDEN_SNAPSHOT_MAX + 20 }, (_, i) => uuidN(i)));
   const sent = assistantRiddenSnapshot(many);
-  check(sent.length, RIDDEN_SNAPSHOT_MAX, 'at most as many ridden rides as the API takes');
-  check(sent.at(-1), uuidN(RIDDEN_SNAPSHOT_MAX + 19), 'the newest marks kept');
+  expectEqual(sent.length, RIDDEN_SNAPSHOT_MAX, 'at most as many ridden rides as the API takes');
+  expectEqual(sent.at(-1), uuidN(RIDDEN_SNAPSHOT_MAX + 19), 'the newest marks kept');
 }
 const favorite = { type: 'favorite_set', entity: 'attraction', id: uuid, name: 'Taron', on: true };
-check(readAssistantAction({ ...favorite, x: 1 }), favorite, 'favourite, nothing rides along');
-check(
+expectEqual(readAssistantAction({ ...favorite, x: 1 }), favorite, 'favourite, nothing rides along');
+expectEqual(
   readAssistantAction({ ...favorite, entity: 'hotel' }),
   null,
   'an entity the site does not star'
 );
-check(
+expectEqual(
   readAssistantAction({ ...favorite, entity: undefined, kind: 'park' }),
   null,
   'the field is entity'
 );
-check(readAssistantAction({ ...favorite, id: 'taron' }), null, 'an id that is no UUID');
-check(readAssistantAction({ ...favorite, on: 'yes' }), null, 'on must be a boolean');
+expectEqual(readAssistantAction({ ...favorite, id: 'taron' }), null, 'an id that is no UUID');
+expectEqual(readAssistantAction({ ...favorite, on: 'yes' }), null, 'on must be a boolean');
 
 // --- Parky's break ---
-check(
+expectEqual(
   readAssistantAction({ type: 'chat_end', cooldownMinutes: 30, text: 'x' }),
   { type: 'chat_end', cooldownMinutes: 30 },
   'chat end'
 );
-check(readAssistantAction({ type: 'chat_end', cooldownMinutes: 0 }), null, 'chat end: no break');
-check(
+expectEqual(
+  readAssistantAction({ type: 'chat_end', cooldownMinutes: 0 }),
+  null,
+  'chat end: no break'
+);
+expectEqual(
   readAssistantAction({ type: 'chat_end', cooldownMinutes: MAX_BREAK_MINUTES + 1 }),
   null,
   'chat end: longer than a day'
 );
-check(readAssistantAction({ type: 'chat_end' }), null, 'chat end: the length is required');
-check(isChatEnded(CHAT_ENDED_CODE), true, 'the refusal code');
-check(isChatEnded('off'), false, 'another code is not the break');
-check(
+expectEqual(readAssistantAction({ type: 'chat_end' }), null, 'chat end: the length is required');
+expectEqual(isChatEnded(CHAT_ENDED_CODE), true, 'the refusal code');
+expectEqual(isChatEnded('off'), false, 'another code is not the break');
+expectEqual(
   breakMinutesFrom({ code: 'chat_ended', cooldownMinutes: 12 }),
   12,
   "the refusal's own length"
 );
-check(breakMinutesFrom({ code: 'chat_ended' }, '90'), 2, 'Retry-After seconds, rounded up');
-check(breakMinutesFrom(null, null), DEFAULT_BREAK_MINUTES, 'nothing said: the default');
-check(breakMinutesFrom({ cooldownMinutes: 1e9 }), MAX_BREAK_MINUTES, 'capped at a day');
+expectEqual(breakMinutesFrom({ code: 'chat_ended' }, '90'), 2, 'Retry-After seconds, rounded up');
+expectEqual(breakMinutesFrom(null, null), DEFAULT_BREAK_MINUTES, 'nothing said: the default');
+expectEqual(breakMinutesFrom({ cooldownMinutes: 1e9 }), MAX_BREAK_MINUTES, 'capped at a day');
 
 const memory = () => {
   const items = new Map();
@@ -684,12 +706,12 @@ const memory = () => {
   };
 };
 const tab = memory();
-check(readBreakUntil(tab, now), null, 'no break');
+expectEqual(readBreakUntil(tab, now), null, 'no break');
 const until = startBreak(tab, 10, now);
-check(until, now + 10 * 60_000, 'a break ends after its minutes');
-check(readBreakUntil(tab, now + 60_000), until, 'and is read back, as after a reload');
-check(readBreakUntil(tab, until), null, 'over at its end');
-check(readBreakUntil(tab, now), null, 'and forgotten once over');
+expectEqual(until, now + 10 * 60_000, 'a break ends after its minutes');
+expectEqual(readBreakUntil(tab, now + 60_000), until, 'and is read back, as after a reload');
+expectEqual(readBreakUntil(tab, until), null, 'over at its end');
+expectEqual(readBreakUntil(tab, now), null, 'and forgotten once over');
 const refusing = {
   getItem() {
     throw new Error('blocked');
@@ -699,8 +721,8 @@ const refusing = {
   },
   removeItem() {},
 };
-check(startBreak(refusing, 5, now), now + 5 * 60_000, 'blocked storage still gives the end');
-check(readBreakUntil(refusing, now), null, 'and reads as no break');
+expectEqual(startBreak(refusing, 5, now), now + 5 * 60_000, 'blocked storage still gives the end');
+expectEqual(readBreakUntil(refusing, now), null, 'and reads as no break');
 
 // --- The trip planner: the bridge, the remembered trip, Parky's change and its undo ---
 const local = new Map();
@@ -727,19 +749,23 @@ const { assistantTripsSnapshot, rememberTripChange, sameTripQuery, takeTripUndo 
   await import('@/lib/assistant/trip-context.ts');
 const { readPlanQuery } = await import('@/lib/trip-regions/plan-query.ts');
 
-check(holdsTrip(''), false, 'an untouched planner holds no trip');
-check(holdsTrip('when=2027-06-01_2027-09-30&days=10'), true, 'a search is a trip worth keeping');
-check(
+expectEqual(holdsTrip(''), false, 'an untouched planner holds no trip');
+expectEqual(
+  holdsTrip('when=2027-06-01_2027-09-30&days=10'),
+  true,
+  'a search is a trip worth keeping'
+);
+expectEqual(
   cleanParty({ size: 99, heightsCm: [105, 20, 'x', 132] }),
   { heightsCm: [105, 132] },
   'a party keeps a sensible count and heights only'
 );
 rememberTrip('orlando', '');
-check(rememberedTrip('orlando'), null, 'a bare hub visit keeps nothing');
+expectEqual(rememberedTrip('orlando'), null, 'a bare hub visit keeps nothing');
 rememberTrip('orlando', 'from=2027-10-14&to=2027-10-21', 1);
 rememberParty('orlando', { size: 4, heightsCm: [105] }, 2);
 rememberTrip('orlando', '', 3);
-check(
+expectEqual(
   rememberedTrip('orlando'),
   {
     region: 'orlando',
@@ -750,7 +776,7 @@ check(
   'the trip and the party kept together; an empty planner never erases them'
 );
 local.set('parkfan_trip_orlando', '{"query":"<script>","party":"x"}');
-check(rememberedTrip('orlando'), null, 'a hand-edited record costs only itself');
+expectEqual(rememberedTrip('orlando'), null, 'a hand-edited record costs only itself');
 rememberTrip('orlando', 'from=2027-10-14&to=2027-10-21', 4);
 rememberParty('orlando', { size: 4, heightsCm: [105] }, 5);
 
@@ -767,12 +793,12 @@ let disconnect = connectPlannerBridge(
   undefined,
   { edit: () => undefined, undo: () => false }
 );
-check(
+expectEqual(
   tripPlannerBridge.current(),
   { region: 'orlando', query: 'from=2027-10-14&to=2027-10-21' },
   'the planner on screen publishes its query'
 );
-check(
+expectEqual(
   assistantTripsSnapshot(['orlando', 'japan']),
   [
     {
@@ -784,7 +810,7 @@ check(
   ],
   'the trip on screen, with the party kept for it, once'
 );
-check(
+expectEqual(
   tripPlannerBridge.apply('japan', 'from=2027-04-01&to=2027-04-10'),
   false,
   'another region is not on screen'
@@ -793,12 +819,12 @@ check(
 // Parky changes the trip on screen through the planner's own update.
 const before = tripPlannerBridge.current().query;
 rememberTripChange('orlando', before, 'from=2027-10-14&to=2027-10-21&lock=epcot@2027-10-15');
-check(
+expectEqual(
   tripPlannerBridge.apply('orlando', 'from=2027-10-14&to=2027-10-21&lock=epcot@2027-10-15'),
   true,
   'the change goes through the planner on screen'
 );
-check(
+expectEqual(
   writes.at(-1).locks,
   [{ target: 'epcot', date: '2027-10-15' }],
   'read back as the planner reads a link'
@@ -812,12 +838,12 @@ disconnect = connectPlannerBridge(
   undefined,
   { edit: () => undefined, undo: () => false }
 );
-check(
+expectEqual(
   takeTripUndo('orlando'),
   { query: 'from=2027-10-14&to=2027-10-21' },
   "Parky's undo goes back while the trip is as he left it"
 );
-check(takeTripUndo('orlando'), 'none', 'and only once');
+expectEqual(takeTripUndo('orlando'), 'none', 'and only once');
 rememberTripChange('orlando', 'from=2027-10-14&to=2027-10-21', tripPlannerBridge.current().query);
 disconnect();
 tripState = readPlanQuery(new URLSearchParams('from=2027-10-16&to=2027-10-23'));
@@ -825,9 +851,9 @@ disconnect = connectPlannerBridge('orlando', tripState, tripState, () => undefin
   edit: () => undefined,
   undo: () => false,
 });
-check(takeTripUndo('orlando'), 'changed', "the visitor's own change since is never undone");
+expectEqual(takeTripUndo('orlando'), 'changed', "the visitor's own change since is never undone");
 disconnect();
-check(tripPlannerBridge.current(), null, 'a planner that leaves the page disconnects');
+expectEqual(tripPlannerBridge.current(), null, 'a planner that leaves the page disconnects');
 
 // One of Parky's ideas goes through the planner's own edit, which its status band can undo.
 const ideaEdits = [];
@@ -852,17 +878,17 @@ const moveIdea = {
   totals: {},
   savedMinutes: 10,
 };
-check(
+expectEqual(
   tripPlannerBridge.applyIdea('japan', moveIdea, 'parky'),
   false,
   'an idea for another region waits'
 );
-check(
+expectEqual(
   tripPlannerBridge.applyIdea('orlando', moveIdea, 'parky'),
   true,
   'an idea applies to the planner on screen'
 );
-check(
+expectEqual(
   [tripState.locks, ideaEdits],
   [
     [
@@ -873,18 +899,18 @@ check(
   ],
   "its lock replaces the planner's whole, as one edit of Parky's"
 );
-check(
+expectEqual(
   [tripPlannerBridge.undo('orlando'), ideaUndos],
   [true, 1],
   "and the chat's Undo is the planner's"
 );
 disconnect();
-check(sameTripQuery('to=2&from=1', 'from=1&to=2'), true, 'parameter order says nothing');
+expectEqual(sameTripQuery('to=2&from=1', 'from=1&to=2'), true, 'parameter order says nothing');
 forgetTrip('orlando');
-check(assistantTripsSnapshot(['orlando']), undefined, 'no trip, no field');
+expectEqual(assistantTripsSnapshot(['orlando']), undefined, 'no trip, no field');
 
 // --- The new actions, each checked and rebuilt ---
-check(
+expectEqual(
   readAssistantAction({
     type: 'trip_set',
     region: 'orlando',
@@ -900,18 +926,18 @@ check(
   },
   'a trip change: the query in the planner alphabet, known kinds once, nothing riding along'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'trip_set', region: 'orlando', query: 'from=<x>' }),
   null,
   'a query outside the planner alphabet is refused'
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'trip_undo', region: 'Orlando!' }),
   null,
   'an undo names a region slug'
 );
 // Only a region the site has live: any other has no hub to open or undo in.
-check(
+expectEqual(
   readAssistantAction({
     type: 'trip_set',
     region: 'tokyo',
@@ -921,8 +947,12 @@ check(
   null,
   'a trip change for a region not live is refused'
 );
-check(readAssistantAction({ type: 'trip_undo', region: 'tokyo' }), null, 'and so is its undo');
-check(
+expectEqual(
+  readAssistantAction({ type: 'trip_undo', region: 'tokyo' }),
+  null,
+  'and so is its undo'
+);
+expectEqual(
   readAssistantAction({
     type: 'trip_set',
     region: 'orlando',
@@ -944,17 +974,21 @@ check(
     mustDoRides: [],
     source: 'chat',
   };
-  check(interviewRegion(trip), 'orlando', "a trip's region");
-  check(interviewRegion({ ...trip, region: undefined }), 'none', 'none before the region step');
-  check(interviewRegion({ kind: 'day', region: 'orlando' }), 'none', 'a park day has none');
-  check(interviewPlanStood(trip), true, 'the core answered or passed: the plan stood');
-  check(
+  expectEqual(interviewRegion(trip), 'orlando', "a trip's region");
+  expectEqual(
+    interviewRegion({ ...trip, region: undefined }),
+    'none',
+    'none before the region step'
+  );
+  expectEqual(interviewRegion({ kind: 'day', region: 'orlando' }), 'none', 'a park day has none');
+  expectEqual(interviewPlanStood(trip), true, 'the core answered or passed: the plan stood');
+  expectEqual(
     interviewEnded({ ...trip, skipped: [] }, 'left'),
     { kind: 'trip', outcome: 'left', steps: 3, plan: false, region: 'orlando' },
     'left before the parks: no plan'
   );
 }
-check(
+expectEqual(
   readAssistantAction({
     type: 'replies',
     replies: [
@@ -971,8 +1005,8 @@ check(
   { type: 'replies', replies: ['Next summer', 'Find the best dates', 'More', 'Even more'] },
   'replies: plain lines, each once, no link or Markdown, at most four'
 );
-check(readAssistantAction({ type: 'replies', replies: [] }), null, 'no reply, no chips');
-check(
+expectEqual(readAssistantAction({ type: 'replies', replies: [] }), null, 'no reply, no chips');
+expectEqual(
   readAssistantAction({
     type: 'planner_move',
     park,
@@ -983,7 +1017,7 @@ check(
   { type: 'planner_move', park, date: '2026-11-07', entryId: 'taron-1', start: '14:00' },
   'a move to a time'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_move',
     park,
@@ -995,7 +1029,7 @@ check(
   null,
   'never a place and a time at once'
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'planner_reserve_trip',
     days: [{ park, date: '2026-11-07' }],
@@ -1008,7 +1042,7 @@ check(
   },
   "a filed trip carries the smallest rider's height, nothing else"
 );
-check(
+expectEqual(
   readAssistantAction({
     type: 'interview_state',
     interview: {
@@ -1039,12 +1073,12 @@ check(
   },
   "the interview's state rebuilt from what it may hold"
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'interview_state', interview: { kind: 'day', step: 'parks' } }),
   null,
   "a step of the other kind's interview refuses the state"
 );
-check(
+expectEqual(
   readAssistantAction({ type: 'interview_state', interview: null, outcome: 'done' }),
   { type: 'interview_state', interview: null, outcome: 'done' },
   'an interview that is over'
@@ -1054,7 +1088,7 @@ check(
 const { interviewStore, startInterview, takeInterviewKickoff } =
   await import('@/lib/assistant/interview.ts');
 startInterview({ kind: 'day', park: 'phantasialand', date: '2026-11-07' });
-check(
+expectEqual(
   interviewStore.getSnapshot(),
   {
     kind: 'day',
@@ -1068,24 +1102,28 @@ check(
   },
   'the button sets the interview on its first step'
 );
-check(interviewStore.getSnapshot(), interviewStore.getSnapshot(), 'one snapshot between writes');
-check(takeInterviewKickoff(), 'day', 'its first question waits for the window');
-check(takeInterviewKickoff(), null, 'once');
+expectEqual(
+  interviewStore.getSnapshot(),
+  interviewStore.getSnapshot(),
+  'one snapshot between writes'
+);
+expectEqual(takeInterviewKickoff(), 'day', 'its first question waits for the window');
+expectEqual(takeInterviewKickoff(), null, 'once');
 interviewStore.set(null);
-check(interviewStore.getSnapshot(), null, 'ended');
+expectEqual(interviewStore.getSnapshot(), null, 'ended');
 
 // --- A hub link as Parky writes it, in the reader's own segment ---
 const { regionHubPath } = await import('@/lib/assistant/links.ts');
-check(
+expectEqual(
   regionHubPath('/trip-regions/orlando?from=2027-10-14#planner', 'de'),
   '/orlando?from=2027-10-14#planner',
   "the route folder becomes the region's segment"
 );
-check(
+expectEqual(
   regionHubPath('/trip-regions/atlantis', 'de'),
   '/trip-regions/atlantis',
   'an unknown region stays'
 );
-check(regionHubPath('/parks/europe', 'de'), '/parks/europe', 'any other path stays');
+expectEqual(regionHubPath('/parks/europe', 'de'), '/parks/europe', 'any other path stays');
 
-console.log(`assistant context: ${passed} checks passed`);
+reportPassed();

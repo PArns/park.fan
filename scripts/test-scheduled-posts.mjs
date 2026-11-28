@@ -25,47 +25,38 @@ import {
   setBlogClockForTest,
 } from '../lib/blog/listing.ts';
 import { berlinStamp, isScheduled } from '../lib/blog/published-at.ts';
+import { attempt, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failures = 0;
-let checks = 0;
-function test(name, fn) {
-  checks++;
-  try {
-    fn();
-  } catch (error) {
-    failures++;
-    console.error(`✗ ${name}\n  ${error.message}`);
-  }
-}
+quietChecks();
 
 // 2026-10-12 12:30 Berlin (CEST, UTC+2).
 const NOW = Date.UTC(2026, 9, 12, 10, 30);
 const stamp = berlinStamp(NOW);
 
-test('berlinStamp reads Berlin wall time', () => {
+attempt('berlinStamp reads Berlin wall time', () => {
   assert.equal(stamp, '2026-10-12T12:30');
   assert.equal(berlinStamp(Date.UTC(2026, 0, 15, 23, 30)), '2026-01-16T00:30');
 });
 
-test('a date without time: yesterday and today are out, tomorrow is scheduled', () => {
+attempt('a date without time: yesterday and today are out, tomorrow is scheduled', () => {
   assert.equal(isScheduled({ date: '2026-10-11' }, stamp), false);
   assert.equal(isScheduled({ date: '2026-10-12' }, stamp), false);
   assert.equal(isScheduled({ date: '2026-10-13' }, stamp), true);
 });
 
-test('a date with time: today counts from its minute', () => {
+attempt('a date with time: today counts from its minute', () => {
   assert.equal(isScheduled({ date: '2026-10-12', time: '12:30' }, stamp), false);
   assert.equal(isScheduled({ date: '2026-10-12', time: '12:31' }, stamp), true);
   assert.equal(isScheduled({ date: '2026-10-11', time: '23:59' }, stamp), false);
   assert.equal(isScheduled({ date: '2026-10-13', time: '00:00' }, stamp), true);
 });
 
-test('a malformed or missing date is never held back', () => {
+attempt('a malformed or missing date is never held back', () => {
   assert.equal(isScheduled({ date: undefined }, stamp), false);
   assert.equal(isScheduled({ date: 'soon' }, stamp), false);
 });
 
-test('the day turns at Berlin midnight, not UTC midnight', () => {
+attempt('the day turns at Berlin midnight, not UTC midnight', () => {
   const lateUtc = Date.UTC(2026, 9, 12, 22, 30); // 00:30 Berlin on the 13th
   assert.equal(isScheduled({ date: '2026-10-13' }, berlinStamp(lateUtc)), false);
   const earlyUtc = Date.UTC(2026, 9, 12, 21, 30); // 23:30 Berlin on the 12th
@@ -98,7 +89,7 @@ function visibility() {
   };
 }
 
-test('the day before: absent from every surface', () => {
+attempt('the day before: absent from every surface', () => {
   setBlogClockForTest(probeNoon - dayMs);
   const v = visibility();
   assert.equal(v.meta, false);
@@ -119,7 +110,7 @@ test('the day before: absent from every surface', () => {
   assert.equal(v.key, null, 'slug lookup');
 });
 
-test('on its day: listed everywhere again, from the same process', () => {
+attempt('on its day: listed everywhere again, from the same process', () => {
   setBlogClockForTest(probeNoon);
   const v = visibility();
   assert.equal(v.meta, true);
@@ -131,12 +122,11 @@ test('on its day: listed everywhere again, from the same process', () => {
   assert.equal(v.key, PROBE_KEY);
 });
 
-test('a day later: still listed', () => {
+attempt('a day later: still listed', () => {
   setBlogClockForTest(probeNoon + dayMs);
   assert.equal(getMetaIndex().has(PROBE_KEY), true);
 });
 
 setBlogClockForTest(null);
 
-console.log(`${checks - failures}/${checks} checks passed`);
-if (failures > 0) process.exit(1);
+finishChecks();

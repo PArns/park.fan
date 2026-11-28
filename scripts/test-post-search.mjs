@@ -18,20 +18,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { isPostQuery, searchPosts, searchPostsBySection } from '../lib/navigation/post-search.ts';
-
-let passed = 0;
-const failures = [];
-
-async function test(name, fn) {
-  try {
-    await fn();
-    passed += 1;
-    console.log(`  ok  ${name}`);
-  } catch (error) {
-    failures.push(name);
-    console.log(`FAIL  ${name}\n      ${error.message}`);
-  }
-}
+import { attempt, finishChecks } from './lib/run-cases.mjs';
 
 /** An index entry with only the fields the search reads. */
 const entry = (path, title, { category = 'Guides', excerpt = '', terms, parks, news } = {}) => ({
@@ -75,12 +62,12 @@ const paths = (result) => result.matches.map((match) => match.path);
 // When the panel searches at all
 // ---------------------------------------------------------------------------
 
-await test('one letter is not a query', () => {
+await attempt('one letter is not a query', () => {
   assert.equal(isPostQuery('d'), false);
   assert.deepEqual(searchPosts(INDEX, 'd'), { matches: [], total: 0 });
 });
 
-await test('punctuation and spaces are not letters', () => {
+await attempt('punctuation and spaces are not letters', () => {
   assert.equal(isPostQuery(' - '), false);
   assert.equal(isPostQuery('a b'), true);
 });
@@ -89,13 +76,13 @@ await test('punctuation and spaces are not letters', () => {
 // What matches
 // ---------------------------------------------------------------------------
 
-await test('every word has to match', () => {
+await attempt('every word has to match', () => {
   assert.deepEqual(paths(searchPosts(INDEX, 'disneyland halloween')), [
     '/blog/disneyland-paris-halloween',
   ]);
 });
 
-await test('a title hit outranks a teaser hit, whatever the recency', () => {
+await attempt('a title hit outranks a teaser hit, whatever the recency', () => {
   // The rain guide names Disneyland Paris only in its teaser.
   assert.deepEqual(paths(searchPosts(INDEX, 'disneyland')), [
     '/blog/disneyland-paris-halloween',
@@ -103,24 +90,24 @@ await test('a title hit outranks a teaser hit, whatever the recency', () => {
   ]);
 });
 
-await test('accents and case fold', () => {
+await attempt('accents and case fold', () => {
   assert.deepEqual(paths(searchPosts(INDEX, 'ASTERIX')), ['/blog/parc-asterix']);
   assert.deepEqual(paths(searchPosts(INDEX, 'karnan')), ['/blog/hansa-park']);
 });
 
-await test('"ß" folds to "ss"', () => {
+await attempt('"ß" folds to "ss"', () => {
   assert.deepEqual(paths(searchPosts(INDEX, 'strasse')), ['/blog/strasse']);
 });
 
-await test('keywords and tags are searched without being shown', () => {
+await attempt('keywords and tags are searched without being shown', () => {
   assert.deepEqual(paths(searchPosts(INDEX, 'sierksdorf')), ['/blog/hansa-park']);
 });
 
-await test('the category is searched', () => {
+await attempt('the category is searched', () => {
   assert.deepEqual(paths(searchPosts(INDEX, 'park.fan')), ['/blog/kompass']);
 });
 
-await test('a fragment inside a word counts from four letters on', () => {
+await attempt('a fragment inside a word counts from four letters on', () => {
   // German compounds: „Jahreskarten" holds „karte".
   assert.deepEqual(paths(searchPosts(INDEX, 'karte')), ['/blog/jahreskarte']);
   // Three letters inside a word are noise: "dis" starts "Disneyland" but only sits in "Paradis".
@@ -130,13 +117,13 @@ await test('a fragment inside a word counts from four letters on', () => {
   ]);
 });
 
-await test('a word that starts a word outranks the same word inside one', () => {
+await attempt('a word that starts a word outranks the same word inside one', () => {
   // "Park" starts a word in the compass guide's title and sits inside „Freizeitpark".
   const found = paths(searchPosts(INDEX, 'park'));
   assert.ok(found.indexOf('/blog/kompass') < found.indexOf('/blog/regen'));
 });
 
-await test('equal scores keep the panel order', () => {
+await attempt('equal scores keep the panel order', () => {
   // Three titles carry „im" and score alike; the rain guide has it in its teaser only.
   assert.deepEqual(paths(searchPosts(INDEX, 'im')), [
     '/blog/disneyland-paris-halloween',
@@ -146,13 +133,13 @@ await test('equal scores keep the panel order', () => {
   ]);
 });
 
-await test('the limit cuts the list, the total does not', () => {
+await attempt('the limit cuts the list, the total does not', () => {
   const result = searchPosts(INDEX, 'die', 1);
   assert.equal(result.matches.length, 1);
   assert.ok(result.total > 1);
 });
 
-await test('nothing found is an empty list', () => {
+await attempt('nothing found is an empty list', () => {
   assert.deepEqual(searchPosts(INDEX, 'xyzzy'), { matches: [], total: 0 });
 });
 
@@ -183,7 +170,7 @@ const LINKED = [
   }),
 ];
 
-await test('a park whose page lists the post finds it, whatever the title says', () => {
+await attempt('a park whose page lists the post finds it, whatever the title says', () => {
   assert.deepEqual(paths(searchPosts(LINKED, 'disneyland', LINKED.length)), [
     '/blog/disneyland-paris',
     '/blog/single-rider',
@@ -192,13 +179,13 @@ await test('a park whose page lists the post finds it, whatever the title says',
   ]);
 });
 
-await test('a park link ranks below a title hit and above a teaser hit', () => {
+await attempt('a park link ranks below a title hit and above a teaser hit', () => {
   const found = paths(searchPosts(LINKED, 'disneyland', LINKED.length));
   assert.ok(found.indexOf('/blog/disneyland-paris') < found.indexOf('/blog/single-rider'));
   assert.ok(found.indexOf('/blog/single-rider') < found.indexOf('/blog/regen'));
 });
 
-await test('the sections keep articles and news apart, each cut, each counted', () => {
+await attempt('the sections keep articles and news apart, each cut, each counted', () => {
   const { articles, news } = searchPostsBySection(LINKED, 'disneyland', 2);
   assert.deepEqual(paths(articles), ['/blog/disneyland-paris', '/blog/single-rider']);
   assert.equal(articles.total, 3);
@@ -206,13 +193,13 @@ await test('the sections keep articles and news apart, each cut, each counted', 
   assert.equal(news.total, 1);
 });
 
-await test('a section nothing matched is empty, not missing', () => {
+await attempt('a section nothing matched is empty, not missing', () => {
   const { articles, news } = searchPostsBySection(LINKED, 'silvester', 3);
   assert.deepEqual(articles, { matches: [], total: 0, titleMatch: false });
   assert.deepEqual(paths(news), ['/news/efteling-silvester']);
 });
 
-await test('a section says whether its best match carries the query in its title', () => {
+await attempt('a section says whether its best match carries the query in its title', () => {
   // The guide's title names Disneyland; the news post is found by its park only.
   const { articles, news } = searchPostsBySection(LINKED, 'disneyland', 3);
   assert.equal(articles.titleMatch, true);
@@ -245,7 +232,7 @@ const blogIndex = readFileSync(
   'utf8'
 );
 
-await test('the route serves the articles and the news, with their parks', () => {
+await attempt('the route serves the articles and the news, with their parks', () => {
   assert.match(route, /getPostSearchIndex\(/);
   const index = menu.slice(menu.indexOf('export function getPostSearchIndex'));
   assert.match(index, /listArticlesByRecency\(locale\)/);
@@ -253,13 +240,13 @@ await test('the route serves the articles and the news, with their parks', () =>
   assert.match(menu, /getParkSlugsOfPost\(post\.translationKey\)/);
 });
 
-await test('the guides panel and /blog search the articles only', () => {
+await attempt('the guides panel and /blog search the articles only', () => {
   assert.match(scopes, /articles: \(posts\) => posts\.filter\(\(post\) => !post\.news\)/);
   assert.match(panel, /usePostSearchIndex\(armed, 'articles'\)/);
   assert.match(blogIndex, /<ListingSearch scope="articles">/);
 });
 
-await test('the route and next.config agree on the cache window', () => {
+await attempt('the route and next.config agree on the cache window', () => {
   const inRoute = route.match(/cdnCacheHeaders\('([^']+)'\)/)?.[1];
   const inConfig = config.match(
     /source: '\/api\/nav\/posts\/:locale',\s*headers: sharedCache\('([^']+)'\)/
@@ -268,5 +255,4 @@ await test('the route and next.config agree on the cache window', () => {
   assert.equal(inConfig, inRoute);
 });
 
-console.log(`\n${passed} passed, ${failures.length} failed`);
-if (failures.length > 0) process.exit(1);
+finishChecks();

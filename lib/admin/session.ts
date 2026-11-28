@@ -5,13 +5,24 @@ import { ACCOUNT_MARKER_COOKIE, ADMIN_MARKER_COOKIE, readCookie } from './cookie
 import { adminGuardRefusal, isStaffRole, type AdminIdentity, type AdminRole } from './roles';
 import { isCrossOriginWrite } from '@/lib/security/same-origin';
 
+const SESSION_COOKIE_BASE = 'parkfan_admin_session';
+
 /**
  * The admin session cookie: httpOnly, so no script on the admin origin can read the token, and
  * `SameSite=Strict`. A Strict cookie is not sent on a navigation from another site, which the OAuth
  * consent link is; that page's document needs none, because the session is read by a same-origin
  * fetch afterwards. See docs/rules/the-admin-holds-no-credential.md and docs/features/admin.md.
+ *
+ * In production the name carries the `__Host-` prefix: a browser accepts such a cookie only from
+ * this exact host, over https and without a `Domain`, so a sibling host under `park.fan` cannot
+ * plant a session cookie of its own choosing here. The prefix needs `Secure`, which plain-http
+ * development does not have, so there the bare name stays.
  */
-export const ADMIN_SESSION_COOKIE = 'parkfan_admin_session';
+export const ADMIN_SESSION_COOKIE =
+  process.env.NODE_ENV === 'production' ? `__Host-${SESSION_COOKIE_BASE}` : SESSION_COOKIE_BASE;
+
+/** The name sessions were stored under before the prefix; cleared on sign-in and sign-out. */
+const LEGACY_SESSION_COOKIE = SESSION_COOKIE_BASE;
 
 /**
  * Validated identities, briefly, so a burst of admin requests does not ask the backend who the
@@ -183,12 +194,18 @@ export function markerCookieOptions(maxAgeSeconds: number) {
 /** What `cookies()` returns, as far as the markers need it. */
 type CookieStore = Awaited<ReturnType<typeof cookies>>;
 
+/** A cookie under the old name no longer signs anyone in; it is removed where the session changes. */
+function dropLegacySessionCookie(store: CookieStore) {
+  if (LEGACY_SESSION_COOKIE !== ADMIN_SESSION_COOKIE) store.delete(LEGACY_SESSION_COOKIE);
+}
+
 /**
  * The script-readable markers that go with a session, by its role: the admin marker for staff,
  * which public pages read to ask the admin for its figures, and the account marker for a visitor,
  * which starts the sync. A developer gets neither.
  */
 export function setSessionMarkers(store: CookieStore, role: AdminRole, maxAgeSeconds: number) {
+  dropLegacySessionCookie(store);
   if (isStaffRole(role)) store.set(ADMIN_MARKER_COOKIE, '1', markerCookieOptions(maxAgeSeconds));
   else store.delete(ADMIN_MARKER_COOKIE);
   if (role === 'user') store.set(ACCOUNT_MARKER_COOKIE, '1', markerCookieOptions(maxAgeSeconds));
@@ -197,6 +214,7 @@ export function setSessionMarkers(store: CookieStore, role: AdminRole, maxAgeSec
 
 /** Drops both markers, on sign-out or when the session turned out to be gone. */
 export function clearSessionMarkers(store: CookieStore) {
+  dropLegacySessionCookie(store);
   store.delete(ADMIN_MARKER_COOKIE);
   store.delete(ACCOUNT_MARKER_COOKIE);
 }
