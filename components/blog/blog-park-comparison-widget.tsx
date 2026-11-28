@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { GlassCard } from '@/components/common/glass-card';
 import { ParkComparisonCard } from '@/components/parks/park-comparison-card';
 import { getParkHistoricalStatsSeed } from '@/lib/api/stats';
 import { parkGeoPath } from '@/lib/blog/widget-park';

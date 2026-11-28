@@ -28,9 +28,7 @@ export function useRidePositions(geo: PlannerGeo | null, parkSlug: string | null
   return useQuery({
     queryKey: ['ride-positions', geo?.continent, geo?.country, geo?.city, parkSlug],
     queryFn: async (): Promise<RidePositions> => {
-      const response = await fetch(
-        parkRelayUrl({ ...geo!, parkSlug: parkSlug! }, '/positions')
-      );
+      const response = await fetch(parkRelayUrl({ ...geo!, parkSlug: parkSlug! }, '/positions'));
       if (!response.ok) throw new Error(`positions ${response.status}`);
       const { positions, declination } = (await response.json()) as {
         positions: RidePosition[];

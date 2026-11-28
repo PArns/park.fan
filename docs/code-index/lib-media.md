@@ -95,6 +95,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `mediaStats` _function_: Counters the admin browser and the build report both show.
 - Re-exports: `./types`, `./manifest-parks`, `./manifest`, `./manifest-search`
 
+### [`park-geo.ts`](../../lib/media/park-geo.ts)
+
+- `loadParkGeoCatalog` _function_: Every park that has coordinates, for the media admin's GPS checks. One loader for the browser and the upload analysis, so both measure against the same list. A failure is an empty list: the check is advice, and the editor works without it.
+- `PARK_GEO_REVALIDATE_SECONDS` _const_: An hour: the admin compares a photo's position against a park's, and a park's coordinate changes only with a correction.
+- Types: `GeoParkRecord`
+
 ### [`photo-backlog.ts`](../../lib/media/photo-backlog.ts)
 
 Which rides in a park still have no photograph, and which of them to shoot first.
@@ -102,6 +108,10 @@ Which rides in a park still have no photograph, and which of them to shoot first
 - `scoreRide` _function_: The importance of one ride, and the sentence explaining it.
 - `buildBacklog` _function_: Sort a park's rides into the three lists the capture screen renders.
 - Types: `BacklogRide`, `BacklogReasonKind`, `BacklogReason`, `RankedRide`, `Backlog`
+
+### [`search-params.ts`](../../lib/media/search-params.ts)
+
+- `parseMediaSearchParams` _function_: The media filters of a query string, read the same way by the public API and the admin browser.
 
 ### [`session-photos.ts`](../../lib/media/session-photos.ts)
 

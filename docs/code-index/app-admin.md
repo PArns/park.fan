@@ -79,6 +79,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `formatUptime` _function_: Formats an uptime given in hours as `3d 4h` from one day up, otherwise as `5h 12m`.
 - `formatDay` _function_: A timestamp as a German calendar day for admin lists, `—` when there is none.
 - `formatDayTime` _function_: A timestamp as day and time on German time, `27.11., 17:36`, `—` when there is none. Berlin rather than the reader's clock, because post dates are written there.
+- `formatDateTime` _function_: A timestamp as short day and time on the reader's own clock, `27.11.26, 17:36`.
+- `formatTimestamp` _function_: A timestamp to the second on the reader's own clock, `27.11.2026, 17:36:05`.
 - `formatAgo` _function_: An ISO time as the admin says it, in German and relative to now: `vor 3 Stunden`.
 - `maeColor` _function_: Returns the text colour class for a model's MAE: green below 10, amber below 15, red above.
 
@@ -260,6 +262,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `SearchSelect` _component_: A select whose list is filtered as you type, for lists too long to scroll (a hundred parks, a park's seventy rides). Matching ignores case and accents and also reads `keywords`; arrows, Enter and Escape work as in any combobox.
 - `MultiSearchSelect` _component_: Several values picked from a list too long for `ToggleChips` (a hundred parks, a park's seventy rides): each picked value is a chip that removes itself, and a `SearchSelect` adds the next.
 - `MonthPicker` _component_: The twelve months as a grid, because a season is a shape: April to October reads as a block, and an artefact like `[1,2,3,4,12]`, a recording window that began in December, shows at once.
+- `Pager` _component_: Back, forward and "3 / 12" under a paged list. `page` counts from one; a list with a single page draws nothing.
 - `useFieldId` _hook_: A labelled input id, for the many places a Field wraps one control.
 - `FIELD_CLASS` _const_: The same look for a bare `<input>` or `<textarea>`, exported so no call site keeps its own copy. Padded rather than fixed-height, because the textareas carry their own `min-h-*`.
 - Types: `SelectOption`
@@ -432,12 +435,12 @@ Route `/admin/app-version` (page).
 - `reportReasonLabel` _function_: The admin's word for a report's reason; a reason this build does not know reads as sent.
 - `sitePageUrl` _function_: Where a page a chat or a feedback names opens on the site, or null for anything but a path of slugs. The API stores only those; checked again because the path is glued to the origin, where `@host` or `//host` would lead off the site.
 - `formatUsd` _function_: A cost in US dollars, to a hundredth of a cent: one answer costs fractions of a cent.
-- `formatDateTime` _function_: A timestamp in the admin's own clock.
-- `formatCount` _function_: A count with thousands separators.
 - `ASSISTANT_API` _const_: The admin proxy prefix of every Parky endpoint.
 - `FEEDBACK_KIND_LABEL` _const_: The admin's words for a `FeedbackKind`.
 - `KNOWLEDGE_TOPIC_PATTERN` _const_: A topic's name as the API takes it: lowercase words joined by "_", 2 to 40 characters.
 - `KNOWLEDGE_LIMITS` _const_: The API's bounds for a topic's two texts (`knowledgeWriteSchema`).
+- `formatCount` _const_
+- `formatDateTime` _const_
 - Types: `AssistantSettings`, `ConversationRow`, `ToolCall`, `ConversationMessage`, `FeedbackEntry`, `FeedbackStatus`, `FeedbackKind`, `KnowledgeTopic`, `KnowledgeEdit`, `KnowledgeTopicDetail`, `Page`, `ConversationDetail`, `AssistantStats`
 
 ### [`assistant/_lib/delete-chat.tsx`](../../app/admin/assistant/_lib/delete-chat.tsx)
@@ -540,6 +543,8 @@ Route `/admin/attractions/[id]` (page).
 ### [`blog-editor/_components/form-fields.tsx`](../../app/admin/blog-editor/_components/form-fields.tsx)
 
 - `Field` _component_: The blog editor's labelled field: the admin's shared one, with `error` as a boolean.
+- `ModalFooter` _component_: The foot of a create dialog: the two shortcuts, cancel, and the save button under `label`.
+- `MODAL_INPUT_CLASS` _const_: The text field of the editor's create dialogs; a variant adds to it with `cn`.
 
 ### [`blog-editor/_components/frontmatter-form.tsx`](../../app/admin/blog-editor/_components/frontmatter-form.tsx)
 
@@ -1158,6 +1163,11 @@ Route `/admin/tickets` (page).
 ### [`traffic/_components/reindex-panel.tsx`](../../app/admin/traffic/_components/reindex-panel.tsx)
 
 - `ReindexPanel` _component_: The pages Google has not crawled since they changed, to request indexing for in Search Console, and the record of every request, so a page is requested once per change even while Search Console still shows the old crawl.
+
+### [`traffic/_components/report-pending.tsx`](../../app/admin/traffic/_components/report-pending.tsx)
+
+- `TrafficReportPending` _component_: A traffic report that has nothing to draw yet: its head over the reason the filters leave it nothing to count, the error with a retry, or the loading line. One frame, so every report says the three the same way.
+- `RankedPanelState` _component_: What a ranked panel shows in place of its rows: the error with a retry, the skeleton while it loads, and "Noch keine Daten" for an empty window. The rows themselves are the caller's.
 
 ### [`traffic/_components/search-console-section.tsx`](../../app/admin/traffic/_components/search-console-section.tsx)
 

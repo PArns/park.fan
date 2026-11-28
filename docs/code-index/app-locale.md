@@ -318,6 +318,7 @@ Route `/[locale]/glossary` (page).
 - `IntroWithAside` _component_: A chapter's opening paragraph with one fact parked beside it, in the band the capped text leaves empty under the section head's full-width rule. One number, not a dashboard.
 - `Ambience` _component_: A soft tint behind a chapter, so nine sections in a row do not read as one long grey column.
 - `ParkAnatomy` _component_: The park page walked top to bottom, in the order the sections actually render.
+- `GuideCta` _component_: An outlined link at the end of a guide chapter, to the page the chapter was about. In the chrome and not in the six content modules, so its look is written once while the label stays prose.
 - Types: `AnatomyStep`
 
 ### [`how-park-fan-works/_demos.tsx`](../../app/%5Blocale%5D/how-park-fan-works/_demos.tsx)

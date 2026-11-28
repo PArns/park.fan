@@ -1,6 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { Ban } from 'lucide-react';
-import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { GlassCard } from '@/components/common/glass-card';
@@ -13,7 +11,6 @@ import { ParkBackground } from '@/components/parks/park-background';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { BreadcrumbStructuredData, ParkStructuredData } from '@/components/seo/structured-data';
 import { getMediaAltBySrc } from '@/lib/media/text';
-import { closedRidePost, closedRideSource, formatClosedOn } from '@/lib/parks/closed-ride';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { stripNewPrefix } from '@/lib/utils';
 import type { Breadcrumb, ParkWithAttractions } from '@/lib/api/types';
@@ -52,7 +49,6 @@ export async function ClosedParkPage({
   const parkName = stripNewPrefix(park.name);
   const backgroundImage = getParkBackgroundImage(park);
   const parkPath = `/parks/${geoPath}/${park.slug}`;
-
 
   return (
     <>

@@ -123,6 +123,11 @@ The German names the admin shows for the permissions and for the answers of a ke
 - `FACILITY_STATE_TONE` _const_: The chip colour of a `FacilityState`.
 - Types: `FacilityReviewStatus`, `FacilityRunOutcome`, `FacilityParkRow`, `FacilityCounts`, `FacilityType`, `FacilityTypeMeta`, `FacilityBulkProgress`, `FacilityQueueState`, `FacilityList`, `FacilityPoint`, `FacilityReview`, `FacilityBulkApproval`, `FacilityState`, `FacilityPlot`
 
+### [`format-number.ts`](../../lib/admin/format-number.ts)
+
+- `formatCount` _function_: A count with the German thousands separator. Takes a string too, because the API sends a bigint as one.
+- `formatDecimal` _function_: A float with one decimal, `2,4`.
+
 ### [`github.ts`](../../lib/admin/github.ts)
 
 - `adminRepo` _function_: The repository and base branch every admin write targets, blog posts and media alike.
@@ -480,9 +485,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `visitorsNote` _function_: The sentence about visitors under the series' title: why they are missing, why an hourly series has none under a filter or for the hours before today, or what they are.
 - `hourlyNotice` _function_: What a panel says when the API could not read the hourly rows for the whole window (`hourlyFrom`), in German, or `null` when nothing was cut.
 - `hasTraffic` _function_: Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros.
-- `formatCount` _function_: A count with the German thousands separator.
 - `formatDuration` _function_: A duration in whole seconds: `45 s` under a minute, `1:42 min` under an hour, `1:05 h` beyond. `null` is a duration nobody measured, `–`.
-- `formatDecimal` _function_: A float with one decimal, `2,4`.
 - `formatShare` _function_: A 0..1 share as a percentage: `42 %`, `4,2 %` under ten, `< 0,1 %` for a trace, `0 %` for none. A rate that has nothing to divide (no visits, no openings) is no share at all: the caller shows `–` for that, since 0 % is an answer.
 - `sum` _function_: The sum of a list of numbers.
 - `pageTypeLabel` _function_: A page type as it reads in a list; one this build has no word for stays as sent.
@@ -539,6 +542,8 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `MARKED_ROW_SCOPES` _const_: Which rows of one mark a report counts: none of them, them with the rest, or them alone.
 - `MARKED_ROW_LABEL` _const_: Each mark's switch: its name, and the words of each scope with what it does when hovered.
 - `VISITOR_FILTER_HINT` _const_: Why a visitor figure can be missing: the API counts visitors without a filter and under one filter on country, device, browser, operating system or channel, and under any other filter, several included, sends `null`.
+- `formatCount` _const_
+- `formatDecimal` _const_
 - `PAGE_TYPE_LABEL` _const_: The German name of a page type this build knows; see `pageTypeLabel` for any other.
 - `DEVICES` _const_: The device classes the API derives from the User-Agent, in the order a list shows them.
 - `DEVICE_LABEL` _const_: The German name of a device class.
@@ -623,7 +628,6 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 
 - `utcDay` _function_: The UTC day of a moment, `YYYY-MM-DD`.
 - `isUtcDay` _function_: Whether a string is a real calendar day, so `2026-02-30` is not one.
-- `addDays` _function_: A day moved by whole days, in either direction.
 - `daysBetween` _function_: How many days the window `from` to `to` holds, both ends included.
 - `weekStart` _function_: The Monday of the ISO week a day is in.
 - `rangeWindow` _function_: The window a range stands for, given today.
@@ -641,6 +645,7 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 - `isoWeek` _function_: The ISO week number and its year of a day: the week with the year's first Thursday is week 1.
 - `formatPeriodAxis` _function_: A period start for an axis: an hour `14:00`, a day or a week's Monday `28.10.`, a month `Okt. 26`.
 - `formatPeriodLong` _function_: A period for a tooltip or a table row: `28.10. 14:00 UTC`, `Mi 28.10.2026`, `KW 44, ab 26.10.2026`, `Oktober 2026`.
+- `addDays` _const_
 - `RANGE_PRESETS` _const_: The presets, in the order the picker lists them. The rolling ones end today and are `days` in the address; the calendar ones (a week, a month, yesterday) are dates, so a link keeps meaning the week it was copied in.
 - `INTERVAL_LABEL` _const_: The steps of a series, finest first, and what the toggle calls them.
 - `INTERVAL_SENTENCE` _const_: What one point of a series stands for, in a sentence.

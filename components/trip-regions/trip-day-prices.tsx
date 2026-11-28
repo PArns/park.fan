@@ -39,9 +39,7 @@ export function TripDayPrices({
   const { data } = useQuery<{ days: PurchaseDay[] }>({
     queryKey: ['park-purchases', geo?.continent, geo?.country, geo?.city, park.slug],
     queryFn: async () => {
-      const response = await fetch(
-        parkRelayUrl({ ...geo!, parkSlug: park.slug }, '/purchases')
-      );
+      const response = await fetch(parkRelayUrl({ ...geo!, parkSlug: park.slug }, '/purchases'));
       if (!response.ok) throw new Error(`Park purchases ${response.status}`);
       return response.json();
     },

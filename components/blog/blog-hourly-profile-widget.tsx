@@ -1,5 +1,4 @@
 import { getLocale, getTranslations } from 'next-intl/server';
-import { GlassCard } from '@/components/common/glass-card';
 import {
   ParkHourlyProfileCard,
   type HourlyProfileLabels,
@@ -41,10 +40,9 @@ export async function BlogHourlyProfileWidget({
   from,
   to,
 }: BlogHourlyProfileWidgetProps) {
-  const [t, tOverview, tBlog] = await Promise.all([
+  const [t, tOverview] = await Promise.all([
     getTranslations('parks.stats'),
     getTranslations('parks.overview'),
-    getTranslations('blog'),
   ]);
   const geo = park ? parkGeoPath(park) : null;
 

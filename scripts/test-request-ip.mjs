@@ -15,7 +15,39 @@ const CLIENT_V4 = '87.153.243.192';
 const CLIENT_V6 = '2003:e9:df14:300:c923:284e:dc42:5a33';
 const CF_EDGE = '172.71.150.11'; // a Cloudflare edge address
 
+/** Runs `read` with the origin secret configured, as on a deployment behind the Cloudflare rule. */
+function withOriginSecret(read) {
+  process.env.CF_ORIGIN_SECRET = 's3cret';
+  try {
+    return read();
+  } finally {
+    delete process.env.CF_ORIGIN_SECRET;
+  }
+}
+
 const testCases = [
+  {
+    name: 'Origin secret set, request without it: cf-connecting-ip is not believed',
+    actual: () =>
+      withOriginSecret(() =>
+        getClientIp(req({ 'cf-connecting-ip': '198.51.100.9', 'x-forwarded-for': CLIENT_V4 }))
+      ),
+    expected: CLIENT_V4,
+  },
+  {
+    name: 'Origin secret set, request carrying it: cf-connecting-ip counts',
+    actual: () =>
+      withOriginSecret(() =>
+        getClientIp(
+          req({
+            'cf-connecting-ip': CLIENT_V4,
+            'x-forwarded-for': CF_EDGE,
+            'x-cf-origin-secret': 's3cret',
+          })
+        )
+      ),
+    expected: CLIENT_V4,
+  },
   {
     name: 'Cloudflare → Vercel, IPv4 visitor: cf-connecting-ip beats Vercel x-forwarded-for',
     actual: () =>

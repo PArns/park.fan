@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { GlassCard } from '@/components/common/glass-card';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';

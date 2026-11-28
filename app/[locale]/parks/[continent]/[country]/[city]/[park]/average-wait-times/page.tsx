@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { notFound, permanentRedirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { CalendarDays, Clock, Zap } from 'lucide-react';
 
 import { SITE_URL } from '@/i18n/config';
@@ -21,16 +21,10 @@ import { parkStatsPath } from '@/lib/parks/stats-segments';
 import { plannerPath } from '@/lib/planner/segments';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
-import {
-  cityHasOwnPage,
-  findParkPageRedirect,
-  findRelocatedParkRedirect,
-  findRenamedParkRedirect,
-} from '@/lib/utils/redirect-utils';
-import { translateContinent, translateCountry, formatSlug } from '@/lib/i18n/helpers';
+import { cityHasOwnPage } from '@/lib/utils/redirect-utils';
+import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { getDateTimeFormat, getListFormat, weekdayName } from '@/lib/utils/intl-format';
-import { stripNewPrefix } from '@/lib/utils';
 import {
   buildOpenGraphMetadata,
   fitWithin,

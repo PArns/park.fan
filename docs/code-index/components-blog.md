@@ -89,6 +89,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `BlogLanguageNotice` _component_: Two related notices about this post's language:
 
+### [`blog-listing-page.tsx`](../../components/blog/blog-listing-page.tsx)
+
+- `BlogListingPage` _component_: One page of a blog listing below the index, a category's or a tag's: breadcrumbs, header, the blog's stream and the page links, plus Blog and BreadcrumbList JSON-LD.
+
 ### [`blog-map-client.tsx`](../../components/blog/blog-map-client.tsx)
 
 - `BlogMapClient` _component_: Mounts the map when it comes near the viewport, not on hydration.
@@ -218,6 +222,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`blog-widget-label.tsx`](../../components/blog/blog-widget-label.tsx)
 
 - `BlogWidgetLabel` _component_: The small caps line over a widget in a post („Park im Fokus", „Wetter", „Karte").
+
+### [`blog-widget-park-not-found.tsx`](../../components/blog/blog-widget-park-not-found.tsx)
+
+- `BlogWidgetParkNotFound` _component_: What a post's widget shows when its `park` reference resolves to nothing: the slug as written, so a typo in the post is visible on the page instead of a widget that is silently missing.
 
 ### [`blog-youtube-embed.tsx`](../../components/blog/blog-youtube-embed.tsx)
 

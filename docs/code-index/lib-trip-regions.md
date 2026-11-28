@@ -162,8 +162,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub-trip.ts`](../../lib/trip-regions/hub-trip.ts)
 
-Whether a region's hub shows a plan: the hub has two states (docs/features/orlando-hub.md#two-states), the landing page without a plan and "Your trip" with one.
-
 - `hubTripOf` _function_: The trip a planner query holds: both dates, as days, in order; else none.
 - `restorableTrip` _function_: The remembered query the hub puts back into the address bar, or null.
 - Types: `HubTripDates`

@@ -7,7 +7,6 @@ import { isIsoDate } from '@/lib/utils/iso-date';
  * pinned in `scripts/test-orlando-hub.mjs`; the hook that reads them is `HubTripProvider`.
  */
 
-
 /** The dates of a planned trip, `YYYY-MM-DD` in the region's time. */
 export interface HubTripDates {
   from: string;

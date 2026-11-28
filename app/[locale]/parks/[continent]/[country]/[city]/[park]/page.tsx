@@ -10,7 +10,7 @@ import {
   fitTitle,
 } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent, formatSlug } from '@/lib/i18n/helpers';
-import { notFound, permanentRedirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
 import { ClosedRidesList } from '@/components/parks/closed-rides-list';
@@ -69,7 +69,11 @@ import { parkArgs } from '@/lib/i18n/park-phrase';
 import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 import { PageViewBeacon } from '@/components/analytics/page-view-beacon';
 import { parkPagePath } from '@/lib/parks/paths';
-import { redirectMalformedParkPath, redirectRelocatedPark, redirectRenamedPark } from '@/lib/parks/park-route';
+import {
+  redirectMalformedParkPath,
+  redirectRelocatedPark,
+  redirectRenamedPark,
+} from '@/lib/parks/park-route';
 
 interface ParkPageProps {
   params: Promise<{

@@ -26,7 +26,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`calendar-utils.ts`](../../lib/utils/calendar-utils.ts)
 
-- `isIsoDate` _function_: Whether `value` has the shape `YYYY-MM-DD`; it does not check that the day exists.
 - `isClosedCalendarDay` _function_: Whether the park is shut on a calendar day. Both fields are read, because a day the park has since closed can still carry the crowd level it was forecast with.
 - `forecastCrowdLevel` _function_: The forecast crowd level a day is rated on: `predictedCrowdLevel`, with `crowdLevel` for older API builds and unratable days, and `'closed'` on a day the park is shut.
 - `hourlyPredictionInstants` _function_: Turn a day's `HourlyPrediction` series into UTC instants, so each bar can be shown on the park's clock and the past ones told apart.
@@ -34,6 +33,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `isServableCalendarRange` _function_: Whether the calendar route may answer for `from`–`to`: two real days, in order, at most `MAX_CALENDAR_RANGE_DAYS` apart counting both ends.
 - `isServableHourlyProfileRange` _function_: Whether the hourly-profile route may answer for `from`–`to`: two real days in order and at most `MAX_HOURLY_PROFILE_RANGE_DAYS` apart.
 - `isServableHourlyDate` _function_: Whether the hourly route may answer for `date`: a real calendar day, and one some park could call today or tomorrow, i.e. one day before to two days after the UTC date.
+- `isIsoDate` _const_
 - `MAX_CALENDAR_RANGE_DAYS` _const_: The longest range the calendar route serves: one month, which is all the grid ever asks for.
 
 ### [`carto-tile-url.ts`](../../lib/utils/carto-tile-url.ts)
@@ -100,10 +100,6 @@ Covered rides: where a visitor can go when the nowcast says rain is coming. The 
 - `CROWD_DOT_CLASS` _const_: Solid `bg-crowd-*` fill per level (status dots in the hero bubbles, …).
 - `CROWD_CHIP_CLASS` _const_: Soft tinted chip (translucent bg + border + text) per level (best-days chips, …).
 - Types: `ColoredCrowdLevel`, `CrowdPercentRange`
-
-### [`date-fns-locale.ts`](../../lib/utils/date-fns-locale.ts)
-
-- `dateFnsLocale` _function_: The date-fns locale that names days and months in the reader's language.
 
 ### [`day-runs.ts`](../../lib/utils/day-runs.ts)
 
@@ -237,10 +233,15 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 - `getRelativeTimeFormat` _function_: Cached `Intl.RelativeTimeFormat`. Same arguments → same instance.
 - `getListFormat` _function_: Cached `Intl.ListFormat`. Same arguments → same instance.
 - `formatTime` _function_: Cached equivalent of `new Date(ms).toLocaleTimeString(locale, options)`.
+- `formatIsoDay` _function_: A plain `YYYY-MM-DD` as a calendar date in `locale`. Anchored at noon UTC and read in UTC, so the server and a browser in any zone print the same day.
 - `weekdayName` _function_: The weekday name for a day index, 0 = Sunday … 6 = Saturday, as the API's `DayOfWeekStat.dayOfWeek` and `Date#getUTCDay` count.
 - `formatClockTime` _function_: One clock time as short as the locale allows: „09:00" in German, „9 AM" or „9:30 AM" in English. A 12-hour clock drops a `:00` it does not need; a 24-hour one keeps both digits, since „9–18" reads like a date range.
 - `formatHoursRange` _function_: Today's hours as short as the locale allows (`formatClockTime`): „09:00–18:00" in German, „9 AM–6 PM" in English, for the homepage hero's half-width hours tile.
 - `WEEKDAYS_MONDAY_FIRST` _const_: Day indices (0 = Sunday, as `weekdayName` counts) in the Monday-first order every week on the site is drawn in.
+
+### [`iso-date.ts`](../../lib/utils/iso-date.ts)
+
+- `isIsoDate` _function_: Whether `value` has the shape `YYYY-MM-DD`; it does not check that the day exists. In a module without imports, so the proxy and a stored-value parser can ask without pulling a date library.
 
 ### [`leaflet-icons.ts`](../../lib/utils/leaflet-icons.ts)
 
@@ -264,6 +265,11 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 - `noLiveWaitTimesReason` _function_: Why this park's wait times cannot be read, or `null` when they can. The one reader for the app.
 - `hasReadableWaitTimes` _function_: Shorthand for the common `noLiveWaitTimesReason(park) !== null`.
 - `stripUnreadableWaitStats` _function_: Drop a listing park's wait-derived stats when there is no source behind them, so a card does not read „Ø 0 min · 0/82 open" for a park we simply have no numbers for. Cards already lay out around the fields being absent.
+
+### [`local-record-store.ts`](../../lib/utils/local-record-store.ts)
+
+- `createLocalRecordStore` _function_: The store behind a record a visitor keeps in this browser.
+- Types: `LocalRecordStore`
 
 ### [`menu-focus.ts`](../../lib/utils/menu-focus.ts)
 
@@ -531,6 +537,7 @@ Route guards for the `/[locale]/...` tree.
 ### [`servable-route.ts`](../../lib/utils/servable-route.ts)
 
 - `isSlug` _function_: True when `value` is slug-shaped: lowercase alphanumerics and dashes, nothing that reads as a path.
+- `isStrictSlug` _function_: True when `value` is a slug as the site writes its own: words of lowercase alphanumerics joined by single dashes, none at either end. Stricter than `isSlug`, which only rules out what reads as a path.
 - `isServableRoute` _function_: True when a `/[locale]/...` URL can possibly resolve: a locale we serve and slug-shaped geo segments (pass only the locale on routes without geo params). For `generateMetadata`, which must return rather than throw.
 - `isSlugPath` _function_: True when every segment is slug-shaped: the guard for an `/api/*` route that interpolates its catch-all segments into a backend path.
 

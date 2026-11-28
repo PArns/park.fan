@@ -40,7 +40,10 @@ export function useParkyDayTip({
     queryKey: ['parky-tip', geo.continent, geo.country, geo.city, parkSlug, date, today, locale],
     queryFn: async ({ signal }) => {
       const response = await fetch(
-        parkRelayUrl({ ...geo, parkSlug }, `/parky-tip?date=${date}&today=${today}&locale=${locale}`),
+        parkRelayUrl(
+          { ...geo, parkSlug },
+          `/parky-tip?date=${date}&today=${today}&locale=${locale}`
+        ),
         { signal }
       );
       if (response.status !== 200) return null;

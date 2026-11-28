@@ -2,7 +2,11 @@
 
 import { useMemo } from 'react';
 import { PARK_CARD_GRID_CLASS, ParkCard } from '@/components/parks/park-card';
-import { useLiveParksByRegion, type LiveParkFields, liveCardProps } from '@/lib/hooks/use-live-parks-by-region';
+import {
+  useLiveParksByRegion,
+  type LiveParkFields,
+  liveCardProps,
+} from '@/lib/hooks/use-live-parks-by-region';
 
 /** Static, day-stable card fields resolved on the server (translation + fs background lookup). */
 export interface FeaturedCardStatic {

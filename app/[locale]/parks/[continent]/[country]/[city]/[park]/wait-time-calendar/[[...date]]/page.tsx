@@ -23,12 +23,7 @@ import {
   seasonsNeedDayStatus,
 } from '@/lib/parks/park-season-days';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
-import {
-  cityHasOwnPage,
-  findParkPageRedirect,
-  findRelocatedParkRedirect,
-  findRenamedParkRedirect,
-} from '@/lib/utils/redirect-utils';
+import { cityHasOwnPage } from '@/lib/utils/redirect-utils';
 import {
   currentParkCalendarMonth,
   isParkCalendarMonthInRange,
@@ -40,9 +35,8 @@ import {
   shiftParkCalendarMonth,
   type ParkCalendarMonth,
 } from '@/lib/parks/calendar-segments';
-import { translateContinent, translateCountry, formatSlug } from '@/lib/i18n/helpers';
+import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
-import { stripNewPrefix } from '@/lib/utils';
 import {
   buildOpenGraphMetadata,
   fitWithin,
@@ -79,7 +73,12 @@ import { ParkNavTiles } from '@/components/parks/park-nav-tiles';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import { parkPagePath } from '@/lib/parks/paths';
-import { parkDisplayNames, redirectMalformedParkPath, redirectRelocatedPark, redirectRenamedPark } from '@/lib/parks/park-route';
+import {
+  parkDisplayNames,
+  redirectMalformedParkPath,
+  redirectRelocatedPark,
+  redirectRenamedPark,
+} from '@/lib/parks/park-route';
 
 interface ParkCalendarPageProps {
   params: Promise<{

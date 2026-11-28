@@ -173,6 +173,7 @@
     "test:next-best-ride": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-next-best-ride.mjs",
     "test:covered-rides": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-covered-rides.mjs",
     "test:request-ip": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-request-ip.mjs",
+    "test:same-origin": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-same-origin.mjs",
     "test:turnstile": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-turnstile.mjs",
     "test:admin-cookie": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-cookie.mjs",
     "test:admin-provenance": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-provenance.mjs",

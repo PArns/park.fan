@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { Ban, Hourglass, MapPin } from 'lucide-react';
+import { Hourglass, MapPin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
 import { Badge } from '@/components/ui/badge';
@@ -24,12 +24,7 @@ import {
 } from '@/components/seo/structured-data';
 import { objectPositionForSrc } from '@/lib/media/focus';
 import { getMediaAltBySrc } from '@/lib/media/text';
-import {
-  closedRidePost,
-  closedRideSource,
-  formatClosedOn,
-  type ClosedRide,
-} from '@/lib/parks/closed-ride';
+import { type ClosedRide } from '@/lib/parks/closed-ride';
 import {
   getAttractionBackgroundImage,
   getCardObjectPosition,
@@ -90,7 +85,6 @@ export async function ClosedRidePage({
   const parkName = stripNewPrefix(park.name);
   const parkPath = parkPagePath({ continent, country, city, parkSlug });
 
-
   // Typed as `{ name }`, served as a plain string on this endpoint (X2: "Thrill Rides").
   const rawLand = ride.land as unknown;
   const land =
@@ -99,7 +93,6 @@ export async function ClosedRidePage({
   const backgroundImage = getAttractionBackgroundImage(park, attractionSlug);
   const rcdbBadge =
     ride.rcdbId != null ? <RcdbBadge rcdbId={ride.rcdbId} attractionName={attractionName} /> : null;
-
 
   return (
     <>

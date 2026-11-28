@@ -698,7 +698,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                     <div className="text-muted-foreground flex min-h-[58px] flex-wrap content-start items-center gap-3 sm:min-h-0">
                       <Link
                         href={
-                          parkPagePath({ continent, country, city, parkSlug }) as '/parks/europe/germany/rust/europa-park'
+                          parkPagePath({
+                            continent,
+                            country,
+                            city,
+                            parkSlug,
+                          }) as '/parks/europe/germany/rust/europa-park'
                         }
                         prefetch={false}
                         className="hover:text-foreground flex items-center gap-1 transition-colors"

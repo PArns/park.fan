@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { GlassCard } from '@/components/common/glass-card';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import { BlogMapClient } from './blog-map-client';

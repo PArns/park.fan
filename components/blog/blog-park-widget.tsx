@@ -1,6 +1,5 @@
 import { getTranslations } from 'next-intl/server';
 import { BlogParkCardLive } from './blog-park-card-live';
-import { GlassCard } from '@/components/common/glass-card';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 import { BlogWidgetLabel } from '@/components/blog/blog-widget-label';

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { notFound, permanentRedirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { CalendarDays, Ruler, Zap } from 'lucide-react';
 
 import { SITE_URL } from '@/i18n/config';
@@ -15,15 +15,9 @@ import { kidsPageData } from '@/lib/parks/kids-page';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { parkKidsPath } from '@/lib/parks/kids-segments';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
-import {
-  cityHasOwnPage,
-  findParkPageRedirect,
-  findRelocatedParkRedirect,
-  findRenamedParkRedirect,
-} from '@/lib/utils/redirect-utils';
-import { translateContinent, translateCountry, formatSlug } from '@/lib/i18n/helpers';
+import { cityHasOwnPage } from '@/lib/utils/redirect-utils';
+import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
-import { stripNewPrefix } from '@/lib/utils';
 import {
   buildOpenGraphMetadata,
   fitWithin,

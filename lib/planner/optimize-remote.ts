@@ -228,16 +228,13 @@ export async function requestOptimize(
   const { geo, parkSlug } = target;
   let response: Response;
   try {
-    response = await fetch(
-      parkRelayUrl({ ...geo, parkSlug }, '/plan/optimize'),
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-        cache: 'no-store',
-        signal,
-      }
-    );
+    response = await fetch(parkRelayUrl({ ...geo, parkSlug }, '/plan/optimize'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      cache: 'no-store',
+      signal,
+    });
   } catch (error) {
     if (signal?.aborted) throw error;
     throw new OptimizeError(0);

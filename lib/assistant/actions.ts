@@ -518,7 +518,8 @@ function isDaysOrTiles(card: AssistantCard): boolean {
     }
     return true;
   }
-  if (card.kind !== 'tiles' || !isIsoDate(card.date) || typeof card.live !== 'boolean') return false;
+  if (card.kind !== 'tiles' || !isIsoDate(card.date) || typeof card.live !== 'boolean')
+    return false;
   card.crowdLevel = level(card.crowdLevel, true);
   card.avgWaitMinutes = number(card.avgWaitMinutes);
   card.peakWaitMinutes = number(card.peakWaitMinutes);
@@ -785,7 +786,9 @@ function readInterviewState(action: Record<string, unknown>): AssistantAction | 
   if (action.interview !== null && !interview) return null;
   const party = cleanParty(action.party);
   const region =
-    typeof action.region === 'string' && isStrictSlug(action.region) && liveTripRegion(action.region)
+    typeof action.region === 'string' &&
+    isStrictSlug(action.region) &&
+    liveTripRegion(action.region)
       ? action.region
       : undefined;
   return {
@@ -899,7 +902,8 @@ function readPlannerEdit(action: Record<string, unknown>): AssistantAction | nul
 
 const FAVORITE_TYPES = new Set(['park', 'attraction', 'show', 'restaurant']);
 
-const isSlug = (value: unknown): value is string => typeof value === 'string' && isStrictSlug(value);
+const isSlug = (value: unknown): value is string =>
+  typeof value === 'string' && isStrictSlug(value);
 const isName = (value: unknown): value is string =>
   typeof value === 'string' && value.trim().length > 0 && value.length <= 120;
 

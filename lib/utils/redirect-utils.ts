@@ -186,8 +186,5 @@ export function findRenamedParkRedirect(
   park: { url?: string | null },
   requested: { continent: string; country: string; city: string; parkSlug: string }
 ): string | null {
-  return movedPath(
-    park.url,
-    parkPagePath(requested)
-  );
+  return movedPath(park.url, parkPagePath(requested));
 }

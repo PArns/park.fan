@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { GlassCard } from '@/components/common/glass-card';
 import { RideWaitTable, type RideWaitTableLabels } from '@/components/parks/ride-wait-table';
 import { parkGeoPath, parseWidgetRideRef } from '@/lib/blog/widget-park';
 import type { RideWaitPark, RideWaitTarget } from '@/lib/hooks/use-ride-wait-stats';

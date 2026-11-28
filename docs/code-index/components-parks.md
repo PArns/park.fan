@@ -111,6 +111,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `CitySummarySection` _component_: Intro paragraph of a city page: names the city and lists its parks, joined with the locale's own "and". Server Component; the sentence is indexable page copy.
 
+### [`closed-notice.tsx`](../../components/parks/closed-notice.tsx)
+
+- `ClosedNotice` _component_: The notice on a page that stays up for a park or a ride that has closed for good: the day it closed and where the closure is told.
+- `CLOSED_NOTICE_LINK_CLASS` _const_: The link style inside a closure notice, also for the lines a page adds below.
+
 ### [`closed-park-page.tsx`](../../components/parks/closed-park-page.tsx)
 
 - `ClosedParkPage` _component_: The page of a park that closed for good, built like `ClosedRidePage`: when it closed, why, its closed rides and the posts about it.
@@ -197,6 +202,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`glass-notice.tsx`](../../components/parks/glass-notice.tsx)
 
+- `FrostedSurface` _component_: The two layers under a notice or a weather banner: a frosted one, then one sheer tint. The tints alone are far too sheer over a park's hero photo.
 - `GlassNotice` _component_: The surface every "here is why this page looks like this" notice sits on.
 
 ### [`halloween-maze-badge.tsx`](../../components/parks/halloween-maze-badge.tsx)

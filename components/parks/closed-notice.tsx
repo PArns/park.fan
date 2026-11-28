@@ -25,7 +25,12 @@ interface ClosedNoticeProps {
  * closed and where the closure is told. Our own post comes first, because it is written for the
  * reader in their language; an outside source only where the reason names no post of ours.
  */
-export async function ClosedNotice({ retiredAt, retiredReason, locale, children }: ClosedNoticeProps) {
+export async function ClosedNotice({
+  retiredAt,
+  retiredReason,
+  locale,
+  children,
+}: ClosedNoticeProps) {
   const t = await getTranslations('attractions.retired');
   const post = closedRidePost(retiredReason, locale);
   const source = post ? null : closedRideSource(retiredReason);

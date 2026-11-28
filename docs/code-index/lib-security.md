@@ -10,6 +10,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `bearerUnauthorized` _function_: `null` when the request carries `Bearer <process.env[envName]>`, the response to return otherwise. An unset secret disables the route with a 503 rather than accepting `Bearer undefined`, which anybody can send.
 - `cronUnauthorized` _function_: The gate every `/api/cron/*` route opens with; see `bearerUnauthorized`.
 
+### [`same-origin.ts`](../../lib/security/same-origin.ts)
+
+- `isCrossOriginWrite` _function_: Whether a state-changing request was sent by a page of another origin. The session cookie is `SameSite=Strict`, but "site" is all of `*.park.fan`: a page on any sibling host is same-site and its form post carries the cookie.
+
 ### [`turnstile-actions.ts`](../../lib/security/turnstile-actions.ts)
 
 - `TURNSTILE_ACTIONS` _const_: The actions this app renders Turnstile widgets with.

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import { CalendarPlus, ChevronDown, Sparkles } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -44,7 +43,6 @@ import type {
   TripRegionPark,
   TripSeason,
 } from '@/lib/trip-regions/types';
-import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import { PlanSelect } from '../planner/plan-controls';
 import { TripDayPrices } from '../trip-day-prices';
 import { DayWeather } from '@/components/common/day-weather';
