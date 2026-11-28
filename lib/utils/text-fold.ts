@@ -1,17 +1,11 @@
+import { foldText as foldForSearch } from '../media/tokenize.mjs';
+
 /**
  * Text reduced for matching: lower case, accents off, "ß" as "ss", so "farup" finds "Fårup" and
- * "strasse" finds "Straße". "ß" has no Unicode decomposition, hence the explicit replace. NFD also
- * splits every Hangul syllable into its letters, which no step removes, so the closing NFC puts
- * them back together; otherwise „래" would find „랜드".
+ * "strasse" finds "Straße". The media search's fold, so every search matches alike; it is plain JS
+ * because the media index is built without TypeScript.
  */
-export function foldText(value: string): string {
-  return value
-    .replace(/\u00df/g, 'ss')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .normalize('NFC')
-    .toLowerCase();
-}
+export const foldText: (value: string) => string = foldForSearch;
 
 /** A ride name reduced for matching, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.". */
 export function foldRideName(value: string): string {
