@@ -1,9 +1,12 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { ShieldAlert } from 'lucide-react';
 import { ChapterPanel } from '@/components/common/chapter-panel';
+import { TILE_GLASS } from '@/components/common/glass-card';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { roundOutageMinutes } from '@/lib/utils/outage';
-import { formatShortDuration } from '@/lib/utils/duration';
+import { formatSpanDuration } from '@/lib/utils/duration';
+import { getNumberFormat } from '@/lib/utils/intl-format';
+import { cn } from '@/lib/utils';
 import type { DowntimeBlock } from '@/lib/api/types';
 
 /**
@@ -20,7 +23,8 @@ export async function AttractionDowntimeSection({
   downtime,
   attractionName,
 }: {
-  downtime: DowntimeBlock | undefined;
+  /** `null` where the read failed: the chapter goes, the page stays. */
+  downtime: DowntimeBlock | null | undefined;
   attractionName: string;
 }) {
   if (!downtime) return null;
@@ -29,7 +33,13 @@ export async function AttractionDowntimeSection({
 
   if (downtime.kind === 'withheld') {
     return (
-      <p className="text-muted-foreground mt-2 text-xs">
+      // On the chapters' glass: bare muted text over the ride's photo cannot be read.
+      <p
+        className={cn(
+          TILE_GLASS,
+          'border-border/50 text-muted-foreground mt-2 w-fit max-w-full rounded-lg border px-3 py-1.5 text-xs'
+        )}
+      >
         <span data-nosnippet>
           {t(`withheld.${downtime.reason}`, {
             name: attractionName,
@@ -41,10 +51,19 @@ export async function AttractionDowntimeSection({
     );
   }
 
-  const sharePercent = Math.round(downtime.downShare * 1000) / 10;
+  // Formatted here, not in the message: a bare number argument prints "3.8" in every locale.
+  const sharePercent = getNumberFormat(locale, { maximumFractionDigits: 1 }).format(
+    downtime.downShare * 100
+  );
 
   return (
-    <ChapterPanel icon={ShieldAlert} title={t('title')} id="downtime" hint={t('hint')}>
+    <ChapterPanel
+      icon={ShieldAlert}
+      title={t('title')}
+      id="downtime"
+      hint={t('hint')}
+      bodyPadding="none"
+    >
       <PanelGrid columnCount={3}>
         <div className={PANEL_CELL}>
           <PanelMetric caption={t('reportedCaption', { days: downtime.windowDays })}>
@@ -80,18 +99,19 @@ export async function AttractionDowntimeSection({
           </p>
         </div>
 
-        <div className={PANEL_CELL}>
+        {/* Across both tracks while the grid has two, so the third figure leaves no empty cell. */}
+        <div className={cn(PANEL_CELL, 'sm:col-span-2 @min-[1024px]/page:col-span-1')}>
           <PanelMetric caption={t('longestCaption')}>
             {/* Hours, not raw minutes: the longest outages run past a thousand minutes, a number
-                nobody converts in their head. */}
+                nobody converts in their head. Counted in operating minutes, so it can pass a day. */}
             <span className="text-3xl leading-none font-bold tabular-nums">
-              {formatShortDuration(roundOutageMinutes(downtime.longestMinutes), locale)}
+              {formatSpanDuration(roundOutageMinutes(downtime.longestMinutes), locale)}
             </span>
           </PanelMetric>
           <p className="text-muted-foreground mt-2 text-xs">
             {/* Describes the number above it: a maximum is the most sampling-sensitive
                 statistic there is, so what belongs here is the set it was taken over. */}
-            <span data-nosnippet>{t('longestDetail', { count: downtime.outages })}</span>
+            <span data-nosnippet>{t('longestDetail', { usable: downtime.usableDurations })}</span>
           </p>
         </div>
       </PanelGrid>
@@ -99,7 +119,7 @@ export async function AttractionDowntimeSection({
       {/* The one denominator on the card, and it describes the chapter rather
           than any single tile, so it sits under the grid instead of borrowing a
           cell that belongs to another figure. */}
-      <p className="text-muted-foreground mt-3 text-xs">
+      <p className="text-muted-foreground px-5 py-3 text-xs">
         <span data-nosnippet>{t('shareDetail', { percent: sharePercent })}</span>
       </p>
     </ChapterPanel>

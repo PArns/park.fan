@@ -1733,7 +1733,7 @@
       "medianCaption": "Mediana in minuti",
       "medianDetail": "Metà dei {usable} guasti con una fine osservata era finita dopo {minutes} minuti.",
       "longestCaption": "Guasto più lungo",
-      "shareDetail": "Circa il {percent} % del tempo in cui l'attrazione era in funzione.",
+      "shareDetail": "I guasti segnalati hanno occupato circa il {percent} % del tempo in cui l'attrazione era in funzione o segnalata come guasta.",
       "withheld": {
         "not_down_capable": "Per questo parco nessuna fonte dati segnala guasti. Se {name} si ferma, qui non lo vediamo.",
         "park_never_reports": "La fonte dati di questo parco non segnala guasti. Li riconosciamo dalle chiusure durante l'orario di apertura, ma non pubblichiamo statistiche.",
@@ -1749,7 +1749,7 @@
         "heavily_censored": "Negli ultimi {days} giorni sono stati segnalati {count} guasti. Di troppi non abbiamo visto la fine, di solito perché il parco ha chiuso mentre l'attrazione era ancora ferma. È troppo poco per indicare una durata.",
         "stale_data": "Questi dati non sono aggiornati al momento, quindi non li mostriamo."
       },
-      "longestDetail": "Il massimo dei {count} guasti segnalati."
+      "longestDetail": "Il più lungo dei {usable} guasti con una fine osservata."
     },
     "retired": {
       "h1Suffix": "Chiuso definitivamente",

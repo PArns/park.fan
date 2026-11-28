@@ -167,6 +167,14 @@ The detail's `hasDayCurve` decides whether the chart asks `/stats/day` for its P
 reaches the chart through the client's own detail query, not the ride shell, which is built from
 the park payload and never carries it.
 
+`downtime` is the one field of the detail the server render needs: whether the downtime chapter
+exists at all, a 271 px panel on desktop or one line, is only known from it, so it cannot wait for
+the client's query ([a streamed section owes the page its height](../rules/a-streamed-section-owes-the-page-its-height.md)).
+The park payload does not carry it. `getAttractionDowntime` asks the detail with `?days=1`, which
+cuts the history and the schedule to one day (Baron 1898, 2026-11-28: 3.5 KB instead of 29.7 KB),
+without the forecast flag so Cloudflare shares the answer, and keeps it a day in the Data Cache,
+the window the nightly profile rebuild sets. The ride page runs it beside `getRideRank`.
+
 ### Park schedule: only today's holiday context ships
 
 The same field on the park payload is 8.4 KB over 17 days, and only today's entry is rendered

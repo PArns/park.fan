@@ -1733,7 +1733,7 @@
       "medianCaption": "Median in minutes",
       "medianDetail": "Half of the {usable} outages with an observed end were over after {minutes} minutes.",
       "longestCaption": "Longest outage",
-      "shareDetail": "About {percent} % of the time the ride was running.",
+      "shareDetail": "Reported outages took up about {percent}% of the time the ride was running or reported down.",
       "withheld": {
         "not_down_capable": "No data source reports outages for this park. Whether {name} breaks down is something we cannot see here.",
         "park_never_reports": "The data source for this park does not report outages. We spot them from closures during opening hours, but publish no statistics on them.",
@@ -1749,7 +1749,7 @@
         "heavily_censored": "{count} outages were reported in the last {days} days. For too many of them we never saw the end, usually because the park closed while the ride was still down. That is not enough for a duration.",
         "stale_data": "These figures are not current right now, so we are not showing them."
       },
-      "longestDetail": "The maximum across the {count} reported outages."
+      "longestDetail": "The longest of the {usable} outages with an observed end."
     },
     "retired": {
       "h1Suffix": "Closed Permanently",

@@ -166,6 +166,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `getParkByGeoPathForAgents` _function_: The live projection of `getParkByGeoPathFresh`, held in the Data Cache for `CACHE_TTL.agentPark` and tagged like the shell. For the MCP server, whose callers poll.
 - `getAttractionByGeoPath` _function_: Get a specific attraction by geographic path with full data including history. Cached in the Vercel Data Cache via `fetch` `next: { revalidate }`; live wait times are refreshed client-side.
 - `getAttractionByGeoPathFresh` _function_: Live (no-store) variant of `getAttractionByGeoPath` for the client detail fetch.
+- `getAttractionDowntime` _function_: The ride's reported-outage block for the ride page's downtime chapter, which the server render must have: whether that chapter exists at all is only known from it, so it cannot arrive with the client's detail query.
 - `getParkWaitTimesFresh` _function_: Live (no-store) lean wait-times snapshot for a whole park — park status + every attraction's queues, ~9 KB where the full park payload is ~95 KB.
 - `getParkYearlyPredictions` _function_: The park's long-range crowd forecast, day by day.
 - `getPopularParks` _function_: Get the most-requested parks, ranked by tracked request volume. The popularity ranking drifts slowly, so 30 min of staleness is fine.

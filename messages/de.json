@@ -1733,7 +1733,7 @@
       "medianCaption": "Median in Minuten",
       "medianDetail": "Die Hälfte der {usable} Störungen mit beobachtetem Ende war nach {minutes} Minuten vorbei.",
       "longestCaption": "Längste Störung",
-      "shareDetail": "Rund {percent} % der Zeit, in der die Bahn lief.",
+      "shareDetail": "Gemeldete Störungen machten rund {percent} % der Zeit aus, in der die Bahn lief oder als gestört gemeldet war.",
       "withheld": {
         "not_down_capable": "Für diesen Park meldet keine Datenquelle Störungen. Ob {name} ausfällt, sehen wir hier nicht.",
         "park_never_reports": "Für diesen Park meldet die Datenquelle keine Störungen. Wir erkennen sie an Schließungen während der Öffnungszeit, zeigen dazu aber keine Statistik.",
@@ -1749,7 +1749,7 @@
         "heavily_censored": "In den letzten {days} Tagen wurden {count} Störungen gemeldet. Zu viele davon haben wir nicht enden sehen, meist weil der Park zumachte, während die Bahn noch stand. Für eine Dauer reicht das nicht.",
         "stale_data": "Diese Zahlen sind gerade nicht aktuell, deshalb zeigen wir sie nicht."
       },
-      "longestDetail": "Das Maximum der {count} gemeldeten Störungen."
+      "longestDetail": "Die längste der {usable} Störungen mit beobachtetem Ende."
     },
     "retired": {
       "h1Suffix": "Dauerhaft geschlossen",

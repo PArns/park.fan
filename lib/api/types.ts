@@ -799,11 +799,6 @@ export interface ParkAttraction {
    * so it rides the server render and not the poll. See {@link PerformanceSchedule}.
    */
   performanceSchedules?: PerformanceSchedule[];
-  /**
-   * Reported-outage figures, or the reason there are none. Attraction detail response only: the
-   * park page renders none of it, so the park list and the poll do not carry it.
-   */
-  downtime?: DowntimeBlock;
   /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
   minimumHeight?: number | null;
   /** Maximum rider height in cm (kiddie rides). */
@@ -1203,7 +1198,8 @@ export interface AttractionResponse {
   rideProfile?: RideProfile | null;
   /**
    * How often this ride has been reported down, or the reason nothing is said. Absent while the
-   * reconstruction has never run; present-and-withheld carries the reason.
+   * reconstruction has never run; present-and-withheld carries the reason. Only this response
+   * carries it, never the park payload, so the ride page reads it with `getAttractionDowntime`.
    */
   downtime?: DowntimeBlock;
   /**
