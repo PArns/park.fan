@@ -16,6 +16,7 @@ import { parseRefKey } from '../lib/blog/derive.mjs';
 import { getListItemByLocaleSlug, listPosts } from '../lib/blog/listing.ts';
 import { BLOG_POST_BODIES } from '../lib/blog/manifest-bodies.ts';
 import { markdownToBlocks, selectGuides, selectNews } from '../lib/blog/news-blocks.ts';
+import { MEDIA_EXPORT_BASE } from '../lib/blog/news-export-feeds.ts';
 import { postPath } from '../lib/blog/paths.ts';
 import { withZoneOffset } from '../lib/blog/published-at.ts';
 import { buildGlossaryTermHref } from '../lib/glossary/segments.ts';
@@ -28,7 +29,7 @@ import { getPostSearchIndex } from '../lib/navigation/blog-menu.ts';
 import { queryWords } from '../lib/navigation/post-search.ts';
 
 /** The bucket's public host; the avatar URLs and the photo index both start here. */
-export const MEDIA_BASE = 'https://media.park.fan';
+export const MEDIA_BASE = MEDIA_EXPORT_BASE;
 /** The two edge lengths an author avatar ships at, small first. */
 export const AVATAR_SIZES = [96, 192];
 
