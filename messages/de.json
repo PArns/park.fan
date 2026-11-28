@@ -1295,7 +1295,7 @@
     },
     "headlinerForecastTitle": "Erwartete Spitzenwartezeiten (Headliner)",
     "crowdMeaning": {
-      "very_low": "Kaum Andrang – kurze Wartezeiten, auch an den großen Bahnen.",
+      "very_low": "Kaum Andrang – kurze Wartezeiten, auch an den Headlinern.",
       "low": "Wenig los – Wartezeiten unter dem Durchschnitt.",
       "moderate": "Ein typischer Tag – normale Wartezeiten für diesen Park.",
       "high": "Mehr Andrang als üblich – rechne mit spürbar längeren Wartezeiten.",
@@ -1354,8 +1354,8 @@
         "busiestPast": "{count, plural, =1 {Am vollsten war es am {days}.} other {Am vollsten war es am {days}.}}",
         "hours": "Geöffnet ist meist von {from} bis {to} Uhr.",
         "schoolVacation": "{days, plural, =1 {An einem Tag} other {An # Tagen}} liegen in der Region des Parks Schulferien.",
-        "headlinerFuture": "Zur vollsten Zeit sind an den Headlinern im Schnitt {minutes} Minuten zu erwarten.",
-        "headlinerPast": "Zur vollsten Zeit wurden an den Headlinern im Schnitt {minutes} Minuten gemessen.",
+        "headlinerFuture": "An den Headlinern sind zu ihrer Spitzenzeit im Schnitt {minutes} Minuten zu erwarten.",
+        "headlinerPast": "An den Headlinern wurden zu ihrer Spitzenzeit im Schnitt {minutes} Minuten gemessen.",
         "factOpenDays": "Geöffnet",
         "factOpenDaysValue": "{open} von {total} Tagen",
         "factHours": "Öffnungszeiten",
@@ -1604,7 +1604,7 @@
         "boardingGroupsAvailable": "Gruppen verfügbar",
         "boardingGroupsDistributed": "Gruppen verteilt",
         "boardingGroupsPaused": "Gruppen pausiert",
-        "returnState": "Rückkehrzeit: {state}",
+        "returnState": "Rückkehrzeit: {kind, select, full {Ausgebucht} finished {Keine mehr} other {{state}}}",
         "return": "Rückkehrzeit: {start}–{end}",
         "returnNoEnd": "Rückkehrzeit: {start}"
       }
@@ -1733,7 +1733,7 @@
       "medianCaption": "Median in Minuten",
       "medianDetail": "Die Hälfte der {usable} Störungen mit beobachtetem Ende war nach {minutes} Minuten vorbei.",
       "longestCaption": "Längste Störung",
-      "shareDetail": "Gemeldete Störungen machten rund {percent} % der Zeit aus, in der die Bahn lief oder als gestört gemeldet war.",
+      "shareDetail": "Von der Zeit, in der die Bahn lief oder als gestört gemeldet war, entfielen rund {percent} % auf Störungen.",
       "withheld": {
         "not_down_capable": "Für diesen Park meldet keine Datenquelle Störungen. Ob {name} ausfällt, sehen wir hier nicht.",
         "park_never_reports": "Für diesen Park meldet die Datenquelle keine Störungen. Wir erkennen sie an Schließungen während der Öffnungszeit, zeigen dazu aber keine Statistik.",
@@ -1749,7 +1749,7 @@
         "heavily_censored": "In den letzten {days} Tagen wurden {count} Störungen gemeldet. Zu viele davon haben wir nicht enden sehen, meist weil der Park zumachte, während die Bahn noch stand. Für eine Dauer reicht das nicht.",
         "stale_data": "Diese Zahlen sind gerade nicht aktuell, deshalb zeigen wir sie nicht."
       },
-      "longestDetail": "Die längste der {usable} Störungen mit beobachtetem Ende."
+      "longestDetail": "Gezählt sind die {usable} Störungen mit beobachtetem Ende."
     },
     "retired": {
       "h1Suffix": "Dauerhaft geschlossen",
@@ -3706,7 +3706,7 @@
       "resultEnd": "Letzte Bahn bis",
       "resultWait": "Wartezeit zusammen",
       "resultOut": "Bleibt draußen",
-      "resultPinnedOut": "{count, plural, one {Diese gepinnte Bahn passt nicht mehr in den Tag} other {Diese gepinnten Bahnen passen nicht mehr in den Tag}}",
+      "resultPinnedOut": "{count, plural, one {Passt auch ganz oben nicht mehr in den Tag} other {Passen auch ganz oben nicht mehr in den Tag}}",
       "resultHint": "Im Planer kannst du danach weiter schieben, löschen und neu sortieren.",
       "apply": "Plan übernehmen",
       "applied": "{count, plural, one {Eine Bahn eingeplant} other {# Bahnen eingeplant}}",
