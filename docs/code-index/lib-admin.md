@@ -70,8 +70,8 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 - `curatedFieldOptions` _function_: `curatedEnumOptions` for one key of `GET /v1/admin/content/fields`, so a kind the API adds shows up in every select without a frontend change. Empty while the descriptors are not loaded.
 - `shownAttractionKind` _function_: The kind an admin row shows: the editor's stored value, else the API's derived one, flagged so the editor sees the decision is still open.
 - `servedKindsFromList` _function_: The served kinds of a park's attractions, keyed by id, read off the admin list: the editor's kind where `attractionKindSource` is `curated`, the rule's where it is `derived`.
-- `rowsWithoutKind` _function_: The rows of a park's admin attraction list that a data-quality „ohne Art" entry names, for a report that sends names only: a row matches on its resolved name and on storing no kind, and two rows of the same name are both listed.
-- `kindlessAttractions` _function_: The attractions a data-quality „ohne Art" card asks about: the report's `withoutKindRefs` where it sends them, else the rows of the park's list that `rowsWithoutKind` finds by name. Null while that fallback still waits for the list.
+- `rowsWithoutKind` _function_: The rows of a park's admin attraction list that a data-quality „ohne Gattung" entry names, for a report that sends names only: a row matches on its resolved name and on storing no kind, and two rows of the same name are both listed.
+- `kindlessAttractions` _function_: The attractions a data-quality „ohne Gattung" card asks about: the report's `withoutKindRefs` where it sends them, else the rows of the park's list that `rowsWithoutKind` finds by name. Null while that fallback still waits for the list.
 - Types: `CuratedEnumOption`, `ServedAttractionKind`, `ShownAttractionKind`, `AttractionKindColumns`, `KindlessAttraction`
 
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
@@ -312,6 +312,11 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `MATRIX_BLOCKS` _const_: How the matrix is cut into blocks: the live and today rows share one, since the same models answer both. A group not named here gets a block of its own after these.
 - Types: `DayChoice`, `CellRef`, `ResultDate`, `FamilyRun`, `MatrixBlock`
 
+### [`news-export-arrival.ts`](../../lib/admin/news-export-arrival.ts)
+
+- `postArrivals` _function_: When each of `files` (repository paths, the first the longest waiting) reached the default branch, in ms, read through GitHub with the admin's token and kept in memory.
+- `ARRIVALS_PER_CHECK` _const_: Files the check asks GitHub about at most per report; the rest wait for the next one.
+
 ### [`news-export-lag.ts`](../../lib/admin/news-export-lag.ts)
 
 - `parseExportList` _function_: An export list's JSON (`{schema, generatedAt, locale, posts}`) as the check needs it. Without a readable `generatedAt` and a post array it failed; a post without slug, title or date is skipped, as the API's push job skips it.
@@ -320,7 +325,9 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `exportVerdict` _function_: A feed's verdict in a few words: `aktuell`, `1 Meldung noch nicht drin` while a run may still be on its way, `2 Guides fehlen` after that, and the locales whose list could not be read.
 - `exportNeedsRun` _function_: Whether a new run is the answer: a feed is late or a list could not be read.
 - `exportRunRefusal` _function_: The answer to a start that failed, with the German sentence the panel shows.
+- `exportRunUnclear` _function_: The answer to a start that was sent while GitHub answered with no answer in time or a 5xx: the workflow may run all the same, so a second start would queue a second run behind it.
 - `EXPORT_BEHIND_MINUTES` _const_: Minutes a post may be on the site without being in the export. Amber after an hour, longer than two runs back to back, so nothing that was on its way is still running.
+- `DISPLAY_LOCALE` _const_: The locale whose titles the admin shows where a post has it, since the admin reads German.
 - `NEWS_EXPORT_WORKFLOW` _const_: The export's workflow file in `.github/workflows/`, which a new run is started from.
 - Types: `ExportPostRef`, `SitePostRef`, `ExportListReading`, `MissingPost`, `ExportFeedStatus`, `NewsExportReport`, `NewsExportRunAnswer`, `NewsExportRunFailure`, `NewsExportRunRefusal`
 

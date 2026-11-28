@@ -230,7 +230,7 @@ export function AttractionCard({
   const stats = attraction.statistics;
   const history = stats?.history;
 
-  const trend = isOperatingOrUnknown && waitTime !== null ? shortTermWaitTrend(history) : null;
+  const trend = waitTime !== null ? shortTermWaitTrend(history) : null;
 
   // The "in X min" text is time-relative, so the client <AttractionCardBestTime> renders it. A ride
   // that starts at set times today has its next show instead.
@@ -257,9 +257,9 @@ export function AttractionCard({
   // there is one of the two. Without it row 3 is empty rather than covered, so the photo
   // the visitor sees runs all the way down — and the framed photo layer has to
   // claim that row too, or its lower edge sits exposed mid-card as a crop seam.
-  const waitShown = isOperatingOrUnknown && waitTime !== null;
+  const waitShown = waitTime !== null;
   const hasBottomPanel = performanceTimes !== null || waitShown;
-  const walkOn = parkyStamp && status === 'OPERATING' && waitShown;
+  const walkOn = parkyStamp && waitShown;
   // 40 px per corner circle (34 px and a 6 px gap), a pair at the least, and never less than the
   // corner Parky stands in.
   const cornerReserve = Math.max(
@@ -561,9 +561,7 @@ export function AttractionCard({
                 that the ride is popular. */}
             <TransportSystemBadge
               attractionKind={attraction.attractionKind}
-              attractionKindSource={
-                'attractionKindSource' in attraction ? attraction.attractionKindSource : undefined
-              }
+              attractionKindSource={attraction.attractionKindSource}
             />
             <HalloweenMazeBadge attractionKind={attraction.attractionKind} />
             {/* Rope drop is planning info — shown regardless of live status (it

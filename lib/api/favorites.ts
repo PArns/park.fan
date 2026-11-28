@@ -10,6 +10,7 @@ import type {
   AccuracyBadge,
   LiveWaitTimes,
   AttractionKind,
+  AttractionKindSource,
   HourlyForecastItem,
   PerformanceSchedule,
   WorksPeriod,
@@ -151,6 +152,11 @@ export interface FavoriteAttraction extends Pick<
    * the API ships it.
    */
   attractionKind?: AttractionKind | null;
+  /**
+   * Who decided {@link FavoriteAttraction.attractionKind}; a blog ride reference carries it from
+   * the attraction detail, so its card hides a transport badge only the API's rule gave.
+   */
+  attractionKindSource?: AttractionKindSource | null;
   /**
    * The ride's performance start times; a blog ride reference carries them from the attraction
    * detail, so its card shows the next start in place of a CLOSED between two performances.

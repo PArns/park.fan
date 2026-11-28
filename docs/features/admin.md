@@ -488,7 +488,7 @@ park page's `ThemePark` structured data.
 
 The park editor's **Merkmale** tab (`?tab=features`, `parks/_components/attraction-features-editor.tsx`)
 edits five per-ride facts as one table, one chip per column: Fast Pass (`hasFastPass`,
-`fastPassPrice`), Virtual Line, Single Rider, Indoor/Outdoor and Typ (`attractionKind`). The generic
+`fastPassPrice`), Virtual Line, Single Rider, Indoor/Outdoor and Gattung (`attractionKind`). The generic
 editor shows the same columns, but the source is a park's price or info page listing a dozen rides
 at once; ride by ride that is forty page views and forty revalidations. The list delivers the
 columns raw (`null` = not checked), the select options come from the field descriptors, and edits
@@ -500,7 +500,7 @@ cache eviction and revalidation are batched (backend: curation → editing a who
 Fast Pass chip says what the generic editor cannot: that the park has no currency set (the API
 serves no price above 0 without one), and that 0 means free, not unknown.
 
-The Typ column also shows the kind the API's rule derived where nobody decided one
+The Gattung column also shows the kind the API's rule derived where nobody decided one
 (`attractionKindSource: "derived"`, contract in the backend's
 [attraction kind](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/attraction-kind.md)):
 the select reads „abgeleitet: Show“ and „Übernehmen“ stores it as the editor's kind. The served
@@ -518,12 +518,15 @@ any correction does. Labels, options and the stored-before-derived choice are
 as its raw value. Every screen reads a park's list through `useParkAttractions`
 (`_lib/use-park-attractions.ts`), one key per query string.
 
-What neither an editor nor the rule could file is the data-quality section „Attraktionen ohne Art“
-(`data-quality/kind-actions.tsx`), one card per park. The report names the attractions and, from
-the API that sends them, their ids (`withoutKindRefs`); without the ids the card matches the names
-against the park's list (`rowsWithoutKind`), a fallback that goes with the attraction-kinds route
-(`kindlessAttractions` picks one). The picks are saved in one bulk PATCH. An attraction no kind
-fits (a pool, a Christmas market) stays on the list; nothing marks it answered.
+What neither an editor nor the rule could file is the data-quality section „Attraktionen ohne
+Gattung“ (`data-quality/kind-actions.tsx`), one card per park. The report names the attractions
+and, from the API that sends them, their ids (`withoutKindRefs`); without the ids the card matches
+the names against the park's list (`rowsWithoutKind`), a fallback that goes with the
+attraction-kinds route (`kindlessAttractions` picks one). The picks are saved in one bulk PATCH. An
+attraction no kind fits (a pool, a Christmas market) gets „Passt in keine Gattung“ on its row: the
+editor says what it is, and the card writes a `no_kind_fits` review mark through
+`/api/admin/review-marks` with that as its reason, then invalidates the report, which leaves marked
+attractions out. An API that does not know the mark yet refuses it, and the row shows its message.
 
 ### Seasons
 

@@ -67,3 +67,15 @@ export async function resolve(specifier, context, nextResolve) {
 
   return nextResolve(specifier, context);
 }
+
+// Next imports JSON without an attribute (`import buildInfo from '@/build-info.json'`), which bare
+// Node ESM refuses; the attribute is added here so such a module can be tested as it ships.
+export async function load(url, context, nextLoad) {
+  if (url.endsWith('.json') && context.importAttributes?.type !== 'json') {
+    return nextLoad(url, {
+      ...context,
+      importAttributes: { ...context.importAttributes, type: 'json' },
+    });
+  }
+  return nextLoad(url, context);
+}

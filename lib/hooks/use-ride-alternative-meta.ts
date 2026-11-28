@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import type { AttractionKind } from '@/lib/api/types';
+import type { AttractionKind, AttractionKindSource } from '@/lib/api/types';
 
 /** What the live poll leaves out about one ride, as `/ride-alternatives` answers it. */
 export interface RideAlternativeMeta {
@@ -12,6 +12,8 @@ export interface RideAlternativeMeta {
   minimumHeight: number | null;
   /** Absent from an answer the CDN cached before the relay sent it. */
   attractionKind?: AttractionKind | null;
+  /** Who decided the kind; absent from an answer the CDN cached before the relay sent it. */
+  attractionKindSource?: AttractionKindSource | null;
 }
 
 interface UseRideAlternativeMetaParams {

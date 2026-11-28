@@ -22,7 +22,7 @@ import { levelAbove, worstTone, type HealthTone, type Threshold } from './health
 export const EXPORT_BEHIND_MINUTES: Threshold = { warn: 60, bad: 360 };
 
 /** The locale whose titles the admin shows where a post has it, since the admin reads German. */
-const DISPLAY_LOCALE = 'de';
+export const DISPLAY_LOCALE = 'de';
 
 /** A post as both sides know it; `publishedAt` carries Berlin's offset, as the export writes it. */
 export interface ExportPostRef {
@@ -64,8 +64,9 @@ export interface ExportFeedStatus {
   /** Newest first. */
   missing: MissingPost[];
   /**
-   * Minutes the longest-missing post has been on the site, counted from its date or from this
-   * deployment, whichever is later; null when nothing is missing.
+   * Minutes the longest-missing post has been on the site, counted from its date or from when it
+   * reached the default branch, whichever is later, and from this deployment where that time is
+   * unknown; null when nothing is missing.
    */
   behindMinutes: number | null;
   /** The locales whose list could not be read, with the reason. */
@@ -140,6 +141,7 @@ export function compareExportFeed({
   site,
   exported,
   deployedAt,
+  arrivedAt = {},
   now,
 }: {
   feed: ExportFeed;
@@ -147,8 +149,16 @@ export function compareExportFeed({
   site: Readonly<Record<string, readonly SitePostRef[]>>;
   /** The export's list per locale; a locale without one counts as unreadable. */
   exported: Readonly<Record<string, ExportListReading | undefined>>;
-  /** When this deployment was built. A post may have arrived with it, so no wait starts earlier. */
+  /**
+   * When this deployment was built: the latest a post on it can have arrived, so the wait of a post
+   * without an arrival time starts there.
+   */
   deployedAt: string | null;
+  /**
+   * When each post reached the default branch, in ms, by translation key, where GitHub said. A
+   * later deployment does not move it, so it is the clock for the posts it names.
+   */
+  arrivedAt?: Readonly<Record<string, number>>;
   now: number;
 }): ExportFeedStatus {
   const deployed = deployedAt ? Date.parse(deployedAt) : Number.NaN;
@@ -188,9 +198,9 @@ export function compareExportFeed({
 
   let behindMinutes: number | null = null;
   for (const post of missing.values()) {
-    // A post dated before this deployment may have arrived with it, so the wait counts from the
-    // later of the two.
-    const known = [Date.parse(post.publishedAt), deployed].filter(Number.isFinite);
+    // A post dated before its arrival waits from the arrival, a scheduled one from its date.
+    const arrived = arrivedAt[post.translationKey] ?? deployed;
+    const known = [Date.parse(post.publishedAt), arrived].filter(Number.isFinite);
     if (known.length === 0) continue;
     const minutes = Math.max(0, (now - Math.max(...known)) / 60_000);
     behindMinutes = Math.max(behindMinutes ?? 0, minutes);
@@ -258,10 +268,11 @@ export const NEWS_EXPORT_WORKFLOW = 'publish-media.yml';
 
 /**
  * What starting a run answers, from `/api/admin/news-export/run` and `/api/news-export/run` alike:
- * the workflow's page where the run shows up, or why it did not start, in German.
+ * the workflow's page where the run shows up, or why it did not start, in German. `maybeStarted`
+ * marks a start GitHub may have taken without saying so.
  */
 export type NewsExportRunAnswer =
-  { started: true; workflowUrl: string } | { started: false; reason: string };
+  { started: true; workflowUrl: string } | { started: false; reason: string; maybeStarted?: true };
 
 /**
  * Why a run did not start: no token on this deployment, the status GitHub refused with, or no
@@ -269,17 +280,20 @@ export type NewsExportRunAnswer =
  */
 export type NewsExportRunFailure = 'no-token' | 'unreachable' | number;
 
-/** A refused start as the routes answer it: 503 without a token, 502 for anything GitHub did. */
+/**
+ * A start that did not go through as the routes answer it: 503 without a token, 502 for anything
+ * GitHub refused, 504 when the start was sent and GitHub gave no answer or a 5xx.
+ */
 export interface NewsExportRunRefusal {
-  status: 502 | 503;
-  answer: { started: false; reason: string };
+  status: 502 | 503 | 504;
+  answer: { started: false; reason: string; maybeStarted?: true };
 }
 
 const GITHUB_REFUSALS: Readonly<Record<number, string>> = {
-  401: 'GitHub hat das Token abgelehnt (401), es ist abgelaufen oder widerrufen.',
+  401: 'GitHub hat das Token abgelehnt (401). Vermutlich ist es abgelaufen oder widerrufen.',
   // A fine-grained token that sees the repository but may not run its workflows answers 403.
   403: 'GitHub hat den Start abgelehnt (403). Dem Token fehlt vermutlich die Berechtigung „Actions: Read and write“ für das Repository.',
-  404: `GitHub findet den Workflow nicht (404). Entweder sieht das Token das Repository nicht, oder ${NEWS_EXPORT_WORKFLOW} fehlt auf dem Standard-Branch.`,
+  404: `GitHub findet den Workflow nicht (404). Entweder hat das Token keinen Zugriff auf das Repository, oder ${NEWS_EXPORT_WORKFLOW} fehlt auf dem Standard-Branch.`,
   422: `GitHub nimmt den Start nicht an (422): ${NEWS_EXPORT_WORKFLOW} hat auf dem Standard-Branch keinen workflow_dispatch-Trigger.`,
 };
 
@@ -297,7 +311,26 @@ export function exportRunRefusal(failure: NewsExportRunFailure): NewsExportRunRe
   }
   const reason =
     failure === 'unreachable'
-      ? 'GitHub hat nicht geantwortet. In ein paar Minuten noch einmal versuchen oder den Lauf auf GitHub starten.'
-      : (GITHUB_REFUSALS[failure] ?? `GitHub hat den Start mit ${failure} abgelehnt.`);
+      ? 'GitHub hat nicht geantwortet. Versuch es in ein paar Minuten noch einmal oder starte den Lauf auf GitHub.'
+      : (GITHUB_REFUSALS[failure] ?? `GitHub hat den Start mit Status ${failure} abgelehnt.`);
   return { status: 502, answer: { started: false, reason } };
+}
+
+/**
+ * The answer to a start that was sent while GitHub answered with no answer in time or a 5xx: the
+ * workflow may run all the same, so a second start would queue a second run behind it.
+ */
+export function exportRunUnclear(failure: 'unreachable' | number): NewsExportRunRefusal {
+  const what =
+    failure === 'unreachable'
+      ? 'GitHub hat auf den Start nicht rechtzeitig geantwortet.'
+      : `GitHub hat den Start mit Status ${failure} beantwortet.`;
+  return {
+    status: 504,
+    answer: {
+      started: false,
+      maybeStarted: true,
+      reason: `${what} Der Lauf kann trotzdem gestartet sein: Schau auf GitHub unter ${NEWS_EXPORT_WORKFLOW} nach, bevor du ihn noch einmal startest.`,
+    },
+  };
 }

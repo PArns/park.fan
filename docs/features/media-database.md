@@ -345,23 +345,35 @@ two places say so.
   hold the concurrency group, and every export queued behind it, that long. A failed run writes a job summary and an `::error` annotation that say whether
   anything was uploaded (the lists go up after the bodies and `index.json` last, so a run that
   stopped partway leaves some lists new and the rest old) and how to start a new one: **Run
-  workflow** on the workflow's page, or `gh workflow run publish-media.yml`. GitHub notifies
-  whoever triggered the run.
+  workflow** on the workflow's page, or `gh workflow run publish-media.yml`. A cancelled run writes
+  the same, since the job's limit cancels a run rather than failing it (`failure() || cancelled()`).
+  GitHub notifies whoever triggered the run. The workflow's token may only read the repository
+  (`permissions: contents: read`), and its push paths include every file the export imports that
+  decides what goes out (`news-export-feeds.ts`, `backlinks.ts`, `map-with-concurrency.mjs`).
 - **`/admin/system`, „Export für die App“** (`app/admin/system/news-export-panel.tsx`). Its route,
   `GET /api/admin/news-export` (role viewer), builds the report in `lib/admin/news-export-report.ts`:
   it reads the twelve lists (`news/` and `guides/`, six
   locales) server-side, never from the browser, and keeps each one it could read for five minutes
   in memory: the lists' own `max-age`, and not the Data Cache, which would store all twelve again
   every window to serve a handful of editors. It compares them with the deployment's own posts,
-  selected by the functions the export uses (`EXPORT_FEEDS` in `lib/blog/news-export-feeds.ts`).
+  selected by the functions the export uses (`EXPORT_FEEDS` in `lib/blog/news-export-feeds.ts`,
+  which `scripts/news-export.mjs` iterates too).
   Per feed the panel shows when the export last ran (the oldest `generatedAt`, so a run that
   stopped halfway shows), the newest post in the export and on the site, and every post the site
   lists and the export lacks, with its locales.
 - **By slug, not by date.** A post merged days after its own date is older than the last run, so
   comparing `generatedAt` with the newest date would call the export current.
-- **How long a post has waited** counts from its date or the deployment's build time
-  (`build-info.json`), whichever is later, since a post dated earlier may have arrived with this
-  deployment. Amber after an hour, longer than two runs back to back; red after six hours, the
+- **How long a post has waited** counts from its date or from when it reached the default
+  branch, whichever is later. The arrival is read from GitHub with the admin's token
+  (`lib/admin/news-export-arrival.ts`): the oldest commit on the default branch that touches the
+  post's German file (else the file the site falls back to), and of that commit the earliest merge
+  of a pull request into the default branch, since a commit made on a branch carries the branch's
+  time; a commit pushed straight to the branch counts with its own. Only missing posts are asked
+  about, five per check, oldest first, and a time once read is kept in memory, since it never
+  changes. Without a token, or where GitHub fails, the wait counts from the deployment's build time
+  (`build-info.json`) instead, the latest the post can have arrived; that clock starts again with
+  every later deploy, which is why it is only the fallback. Amber after an hour, longer than two
+  runs back to back; red after six hours, the
   window in which the API still announces a post (`NEWS_MAX_AGE_MS` in its news push job): an
   export that catches up later brings the post to the app without a notification. A list that
   cannot be read is red. While a post is younger than the hour, the tile says „noch nicht drin“.
@@ -372,7 +384,10 @@ two places say so.
   (`lib/admin/news-export-run.ts`). It answers `{started: true, workflowUrl}`, or
   `{started: false, reason}` with 503 without a token and 502 for anything GitHub refused; the
   reason is the German sentence the panel shows, and a 403 most likely means a token without
-  „Actions: Read and write“. The log gets GitHub's status, never the request. After a start the
+  „Actions: Read and write“. When the dispatch was sent and GitHub gave no answer in time or a 5xx,
+  the run may have started all the same: the answer is 504 with `maybeStarted: true`, the panel says
+  „Vielleicht gestartet“ and links the workflow's runs to look at before starting another, and the
+  API's `run_news_export` treats the 504 as unclear. The log gets GitHub's status, never the request. After a start the
   panel links the workflow page and reads the export once more 25 minutes later, or on „Neu lesen“;
   it does not poll. A viewer gets the workflow page instead of the button; while no feed is amber
   or red, an editor still finds the button below the tiles. The pure half is `lib/admin/news-export-lag.ts` (`pnpm test:admin-news-export`,
@@ -381,7 +396,9 @@ two places say so.
   `/api/revalidate`, `Authorization: Bearer $REVALIDATE_SECRET`, 503 without the secret and 401 on a
   wrong one: `GET /api/news-export/status` answers the `NewsExportReport` above (`no-store`), and
   `POST /api/news-export/run` starts a run with the admin route's answers. The API depends on both
-  paths and shapes. Like `/api/revalidate` they are outside `proxy.ts`'s matcher and not in
+  paths and shapes; `pnpm test:admin-news-export` checks the status against a copy of the API's
+  schema (`newsExportReport` in its `src/mcp/tools/news-export.tools.ts`), and the role floors of
+  the admin's two routes. Like `/api/revalidate` they are outside `proxy.ts`'s matcher and not in
   `robots.txt`, which names only the back office. Cloudflare challenges non-browser clients on
   `park.fan/api/*`, so whatever lets the API's calls to `/api/revalidate` through has to cover
   `/api/news-export/` too.

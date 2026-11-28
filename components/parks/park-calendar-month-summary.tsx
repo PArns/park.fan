@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { CalendarRange, Clock, GraduationCap, Timer } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -9,13 +10,27 @@ import { getDateTimeFormat, getListFormat } from '@/lib/utils/intl-format';
 import type { CalendarMonthSummary, NamedCalendarDay } from '@/lib/parks/calendar-month-summary';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
-/** One entry of the scannable fact row. Named so the optional entries below can be filtered
- *  into it — an inline `NonNullable<typeof f>` resolves to `false | {...}` and narrows nothing. */
-interface Fact {
-  key: string;
-  icon: LucideIcon;
-  label: string;
-  value: string;
+/**
+ * The scannable fact row's entries in their order, each with its icon and label key. The summary
+ * and its skeleton both read this list, so the skeleton prints the same labels at the same widths.
+ */
+const FACT_ENTRIES = [
+  { key: 'open', icon: CalendarRange, label: 'factOpenDays' },
+  { key: 'hours', icon: Clock, label: 'factHours' },
+  { key: 'wait', icon: Timer, label: 'factWait' },
+  { key: 'vacation', icon: GraduationCap, label: 'factSchoolVacation' },
+] as const;
+
+type FactKey = (typeof FACT_ENTRIES)[number]['key'];
+
+/** A fact's label with its icon, in the summary and in its skeleton alike. */
+function FactTerm({ icon: Icon, label }: { icon: LucideIcon; label: string }) {
+  return (
+    <dt className="text-muted-foreground flex items-center gap-1.5 text-xs">
+      <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+      {label}
+    </dt>
+  );
 }
 
 /**
@@ -95,36 +110,20 @@ export async function ParkCalendarMonthSummary({
     sentences.push(t(`headliner${tense}`, { minutes: summary.avgHeadlinerWait }));
   }
 
-  const factCandidates: Array<Fact | false | null> = [
-    {
-      key: 'open',
-      icon: CalendarRange,
-      label: t('factOpenDays'),
-      value: t('factOpenDaysValue', { open: summary.openDays, total: summary.totalDays }),
-    },
-    summary.hours && {
-      key: 'hours',
-      icon: Clock,
-      label: t('factHours'),
-      value: t('factHoursValue', {
-        from: summary.hours.openingTime,
-        to: summary.hours.closingTime,
-      }),
-    },
-    summary.avgHeadlinerWait !== null && {
-      key: 'wait',
-      icon: Timer,
-      label: t('factWait'),
-      value: t('factWaitValue', { minutes: summary.avgHeadlinerWait }),
-    },
-    summary.schoolVacationDays > 0 && {
-      key: 'vacation',
-      icon: GraduationCap,
-      label: t('factSchoolVacation'),
-      value: t('factSchoolVacationValue', { days: summary.schoolVacationDays }),
-    },
-  ];
-  const facts = factCandidates.filter((f): f is Fact => Boolean(f));
+  const values: Record<FactKey, string | null> = {
+    open: t('factOpenDaysValue', { open: summary.openDays, total: summary.totalDays }),
+    hours: summary.hours
+      ? t('factHoursValue', { from: summary.hours.openingTime, to: summary.hours.closingTime })
+      : null,
+    wait:
+      summary.avgHeadlinerWait !== null
+        ? t('factWaitValue', { minutes: summary.avgHeadlinerWait })
+        : null,
+    vacation:
+      summary.schoolVacationDays > 0
+        ? t('factSchoolVacationValue', { days: summary.schoolVacationDays })
+        : null,
+  };
 
   // German formats a day number with its ordinal dot („Freitag, 28."), so a sentence ending in a
   // full stop gave „28..". Collapsing the pair at the join is locale-safe; dropping the dot would
@@ -148,15 +147,14 @@ export async function ParkCalendarMonthSummary({
       {/* The same numbers again, scannable. Not decoration: the prose above is what an answer
         engine quotes, this row is what a person skims before deciding to read it. */}
       <dl className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
-        {facts.map(({ key, icon: Icon, label, value }) => (
-          <div key={key} className="flex flex-col gap-1">
-            <dt className="text-muted-foreground flex items-center gap-1.5 text-xs">
-              <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-              {label}
-            </dt>
-            <dd className="text-sm font-semibold tabular-nums">{value}</dd>
-          </div>
-        ))}
+        {FACT_ENTRIES.map(({ key, icon, label }) =>
+          values[key] === null ? null : (
+            <div key={key} className="flex flex-col gap-1">
+              <FactTerm icon={icon} label={t(label)} />
+              <dd className="text-sm font-semibold tabular-nums">{values[key]}</dd>
+            </div>
+          )
+        )}
       </dl>
 
       {/* The quiet days once more as the badge the grid uses for them, so the claim in the
@@ -196,6 +194,7 @@ export async function ParkCalendarMonthSummary({
  * docs/rules/a-streamed-section-owes-the-page-its-height.md.
  */
 export function ParkCalendarMonthSummarySkeleton() {
+  const t = useTranslations('parks.calendarPage.summary');
   return (
     <div className="flex flex-col gap-4" aria-hidden="true">
       <Skeleton className="h-[15px] w-32" />
@@ -210,13 +209,16 @@ export function ParkCalendarMonthSummarySkeleton() {
       </div>
 
       <dl className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
-        {/* Four entries at every width: one row from `sm` up, two in the phone's two-column grid,
-            which is what the real row almost always takes. Only `factOpenDays` is unconditional, so
-            a month can come back with a single row, but rarely does. */}
-        {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="flex flex-col gap-1">
-            <Skeleton className="h-[16px] w-24" />
-            <Skeleton className="h-[20px] w-16" />
+        {/* All four entries, which is what the real row almost always takes; only `factOpenDays`
+            is unconditional, so a month can come back with fewer, but rarely does. The labels are
+            the real ones because they need no data: they wrap to one to four lines by language and
+            width, the school holidays' too, and only the text itself reserves that per breakpoint. */}
+        {FACT_ENTRIES.map(({ key, icon, label }) => (
+          <div key={key} className="flex flex-col gap-1">
+            <FactTerm icon={icon} label={t(label)} />
+            <dd>
+              <Skeleton className="h-[20px] w-16" />
+            </dd>
           </div>
         ))}
       </dl>

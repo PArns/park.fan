@@ -783,7 +783,7 @@ Route `/admin/contributions` (page).
 
 ### [`data-quality/kind-actions.tsx`](../../app/admin/data-quality/kind-actions.tsx)
 
-- `WithoutKindParkCard` _component_: Data-quality card for one park's live attractions that carry no kind, asking what each one is: names them, and opens a select per attraction on the card that saves through the audited bulk endpoint.
+- `WithoutKindParkCard` _component_: Data-quality card for one park's live attractions that carry no kind, asking what each one is: names them, and opens a select per attraction on the card that saves through the audited bulk endpoint, beside a review mark for an attraction …
 
 ### [`data-quality/page.tsx`](../../app/admin/data-quality/page.tsx)
 

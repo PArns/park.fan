@@ -6,7 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import type L from 'leaflet';
 import type { ParkWithAttractions, ParkAttraction, ParkShow } from '@/lib/api/types';
 import { formatDistance } from '@/lib/utils/distance-utils';
-import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
+import { liveStandbyWait } from '@/lib/utils/park-utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { stripNewPrefix } from '@/lib/utils';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
@@ -281,10 +281,7 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
                 {nearbyEntities.map((entity) => {
                   const attraction =
                     entity.type === 'attraction' ? (entity.data as ParkAttraction) : null;
-                  const waitTime =
-                    attraction && getLiveAttractionStatus(attraction, park.status) === 'OPERATING'
-                      ? getStandbyWait(attraction)
-                      : null;
+                  const waitTime = attraction ? liveStandbyWait(attraction, park.status) : null;
                   const nextShow =
                     entity.type === 'show' ? getNextShowTime(entity.data as ParkShow) : null;
 

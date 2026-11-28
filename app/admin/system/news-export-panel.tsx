@@ -63,20 +63,33 @@ const RUN_DURATION = 'etwa 20 Minuten';
  */
 const RECHECK_AFTER_MS = 25 * 60_000;
 
-/** The restart from the panel: not asked, on its way to GitHub, started, or refused with why. */
+/**
+ * The restart from the panel: not asked, on its way to GitHub, started, or not started with why,
+ * `maybeStarted` where GitHub left it open.
+ */
 type RunState =
   | { state: 'idle' }
   | { state: 'starting' }
   | { state: 'started'; workflowUrl: string }
-  | { state: 'failed'; reason: string };
+  | { state: 'failed'; reason: string; maybeStarted: boolean };
 
-/** The German sentence of a refused start, which the routes send as `reason`, else the error's. */
-function refusalReason(error: unknown): string {
+/** A start that did not go through, from the route's German `reason`, else the error's message. */
+function failedRun(error: unknown): Extract<RunState, { state: 'failed' }> {
   if (error instanceof AdminApiError) {
-    const reason = (error.payload as { reason?: unknown } | null)?.reason;
-    if (typeof reason === 'string') return reason;
+    const payload = error.payload as { reason?: unknown; maybeStarted?: unknown } | null;
+    if (typeof payload?.reason === 'string') {
+      return {
+        state: 'failed',
+        reason: payload.reason,
+        maybeStarted: payload.maybeStarted === true,
+      };
+    }
   }
-  return error instanceof Error ? error.message : 'unbekannter Fehler';
+  return {
+    state: 'failed',
+    reason: error instanceof Error ? error.message : 'unbekannter Fehler',
+    maybeStarted: false,
+  };
 }
 
 /**
@@ -112,10 +125,10 @@ export function NewsExportPanel() {
       setRun(
         answer.started
           ? { state: 'started', workflowUrl: answer.workflowUrl }
-          : { state: 'failed', reason: answer.reason }
+          : { state: 'failed', reason: answer.reason, maybeStarted: answer.maybeStarted === true }
       );
     } catch (error) {
-      setRun({ state: 'failed', reason: refusalReason(error) });
+      setRun(failedRun(error));
     }
   }
 
@@ -124,7 +137,7 @@ export function NewsExportPanel() {
       <PanelHeader
         icon={Smartphone}
         title="Export für die App"
-        hint="Was die App von media.park.fan liest und wonach die API Mitteilungen schickt"
+        hint="Was die App von media.park.fan liest und zu welchen Beiträgen die API Mitteilungen schickt"
       />
       {query.isError ? (
         <ErrorState message={query.error.message} onRetry={() => void query.refetch()} />
@@ -162,13 +175,13 @@ export function NewsExportPanel() {
                   )}
                   <Button asChild size="sm" variant="outline" className="max-sm:flex-1">
                     <a href={report.workflowUrl} target="_blank" rel="noopener noreferrer">
-                      {canRun ? 'Auf GitHub' : 'Auf GitHub starten'}
+                      {canRun ? 'Auf GitHub öffnen' : 'Auf GitHub starten'}
                       <ExternalLink aria-hidden="true" />
                     </a>
                   </Button>
                 </div>
               </div>
-              {run.state === 'failed' && <RunRefused reason={run.reason} />}
+              {run.state === 'failed' && <RunRefused run={run} workflowUrl={report.workflowUrl} />}
             </Notice>
           ) : (
             canRun && (
@@ -183,7 +196,9 @@ export function NewsExportPanel() {
                     Nötig erst, wenn ein Feed gelb oder rot ist. Ein Lauf dauert {RUN_DURATION}.
                   </p>
                 </div>
-                {run.state === 'failed' && <RunRefused reason={run.reason} />}
+                {run.state === 'failed' && (
+                  <RunRefused run={run} workflowUrl={report.workflowUrl} />
+                )}
               </div>
             )
           )}
@@ -221,11 +236,36 @@ function RestartButton({
   );
 }
 
-/** Why the start was refused, as the route said it. */
-function RunRefused({ reason }: { reason: string }) {
+/**
+ * Why the start did not go through, as the route said it. Where GitHub left it open, the run may
+ * be on its way, so the line links its runs rather than asking for another start.
+ */
+function RunRefused({
+  run,
+  workflowUrl,
+}: {
+  run: Extract<RunState, { state: 'failed' }>;
+  workflowUrl: string;
+}) {
+  if (!run.maybeStarted) {
+    return (
+      <p role="alert" className="mt-2 text-xs text-red-300">
+        Nicht gestartet: {run.reason}
+      </p>
+    );
+  }
   return (
-    <p role="alert" className="mt-2 text-xs text-red-300">
-      Nicht gestartet: {reason}
+    <p role="alert" className="mt-2 text-xs text-amber-200">
+      Vielleicht gestartet: {run.reason}{' '}
+      <a
+        href={workflowUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1 underline underline-offset-2"
+      >
+        Läufe auf GitHub ansehen
+        <ExternalLink className="h-3 w-3" aria-hidden="true" />
+      </a>
     </p>
   );
 }
@@ -250,8 +290,8 @@ function RunStarted({
         <div className="min-w-0">
           <p className="font-medium">Export gestartet</p>
           <p className="mt-0.5 text-[13px] text-emerald-100/80">
-            Ein Lauf dauert {RUN_DURATION}. In {RECHECK_AFTER_MS / 60_000} Minuten liest dieser
-            Bereich den Export von selbst neu.
+            Ein Lauf dauert {RUN_DURATION}. In {RECHECK_AFTER_MS / 60_000} Minuten steht hier der
+            neue Stand, ohne dass du neu lädst.
           </p>
         </div>
         <div className="flex shrink-0 flex-wrap gap-2 max-sm:w-full">
@@ -310,7 +350,7 @@ function FeedTile({ status, now }: { status: ExportFeedStatus; now: number | nul
 
       <div className="grid grid-cols-1 gap-3 text-sm">
         <PostMeta label="Neueste im Export" post={status.newestExported} />
-        <PostMeta label="Neueste auf der Webseite" post={status.newestOnSite} />
+        <PostMeta label="Neueste auf der Website" post={status.newestOnSite} />
         {status.behindMinutes !== null && (
           <Meta
             label="Rückstand"
@@ -341,8 +381,7 @@ function FeedTile({ status, now }: { status: ExportFeedStatus; now: number | nul
           {rest > 0 && <p className="text-muted-foreground text-xs">und {rest} weitere</p>}
           {!late && (
             <p className="text-muted-foreground text-xs">
-              Ein Lauf dauert {RUN_DURATION}. Nach {durationLabel(EXPORT_BEHIND_MINUTES.warn)}{' '}
-              Rückstand wird das hier gelb.
+              Ab {durationLabel(EXPORT_BEHIND_MINUTES.warn)} Rückstand wird dieser Feed gelb.
             </p>
           )}
         </div>

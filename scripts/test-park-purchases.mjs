@@ -1,7 +1,8 @@
 /**
  * Unit tests for the day prices of paid queue products (`lib/parks/purchases.ts`): what the
  * purchases relay keeps of a park's `/schedule` rows, which day a card shows, the order of its rows,
- * a placeholder price, and which days a trip sheet asks the relay for.
+ * a placeholder price, and which days a trip sheet asks the relay for. Then the relay's 400 for a
+ * path that is no slug, which carries its own `no-store` rather than the purchases rule's hour.
  *
  * Run: pnpm test:park-purchases
  */
@@ -14,6 +15,7 @@ import {
   purchaseDays,
   sortPurchases,
 } from '../lib/parks/purchases.ts';
+import { GET as parksRelay } from '../app/api/parks/[...path]/route.ts';
 
 const multiPass = {
   id: 'lightninglanemultipass_80007944',
@@ -127,6 +129,20 @@ test('a placeholder price shows none', () => {
   );
 });
 
+test('a paid lane on the ride card reads the same rule', () => {
+  const lane = (price) => ({ queueType: 'PAID_STANDBY', waitTime: 10, status: 'OPERATING', price });
+  assert.equal(
+    formattedPurchasePrice(lane({ amount: 1500, currency: 'EUR', formatted: '15,00 €' })),
+    '15,00 €'
+  );
+  assert.equal(
+    formattedPurchasePrice(lane({ amount: 0, currency: 'EUR', formatted: 'Unknown' })),
+    null
+  );
+  assert.equal(formattedPurchasePrice(lane(null)), null);
+  assert.equal(formattedPurchasePrice({ queueType: 'STANDBY', waitTime: 10 }), null);
+});
+
 test('a sheet asks from today to the end of the relay window, and not before the clock is read', () => {
   const today = '2026-11-28';
   assert.equal(PURCHASE_DAYS_AHEAD, 30);
@@ -137,10 +153,25 @@ test('a sheet asks from today to the end of the relay window, and not before the
   assert.equal(inPurchaseWindow(today, null), false);
 });
 
+test('a path that is no slug is a 400 no cache keeps', async () => {
+  const call = (path) =>
+    parksRelay(new Request(`https://park.fan/api/parks/${path.join('/')}`), {
+      params: Promise.resolve({ path }),
+    });
+  for (const path of [
+    ['Europe', 'united-states', 'orlando', 'magic-kingdom', 'purchases'],
+    ['north-america', 'united-states', 'orlando', 'magic-kingdom', 'weather', 'Hourly'],
+  ]) {
+    const response = await call(path);
+    assert.equal(response.status, 400);
+    assert.match(response.headers.get('cache-control') ?? '', /^no-store/);
+  }
+});
+
 let failed = 0;
 for (const { name, run } of tests) {
   try {
-    run();
+    await run();
   } catch (error) {
     failed++;
     console.log(`FAIL: ${name}\n   ${error.message.split('\n').join('\n   ')}`);

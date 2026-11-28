@@ -15,8 +15,8 @@ import { getParkRefsOfPost, getNewsParkRef } from '../lib/blog/backlinks.ts';
 import { parseRefKey } from '../lib/blog/derive.mjs';
 import { getListItemByLocaleSlug, listPosts } from '../lib/blog/listing.ts';
 import { BLOG_POST_BODIES } from '../lib/blog/manifest-bodies.ts';
-import { markdownToBlocks, selectGuides, selectNews } from '../lib/blog/news-blocks.ts';
-import { MEDIA_EXPORT_BASE } from '../lib/blog/news-export-feeds.ts';
+import { markdownToBlocks } from '../lib/blog/news-blocks.ts';
+import { EXPORT_FEEDS, MEDIA_EXPORT_BASE, exportListKey } from '../lib/blog/news-export-feeds.ts';
 import { postPath } from '../lib/blog/paths.ts';
 import { withZoneOffset } from '../lib/blog/published-at.ts';
 import { buildGlossaryTermHref } from '../lib/glossary/segments.ts';
@@ -195,11 +195,9 @@ export async function buildNewsExport(chosen, avatars) {
     const all = listPosts(locale);
     // The website's own search entries by post path, so the app matches the same words and label.
     const search = new Map(getPostSearchIndex(locale).map((entry) => [entry.path, entry]));
-    // Both kinds go through the same serializer; only the folder and the selection differ.
-    for (const [dir, select] of [
-      ['news', selectNews],
-      ['guides', selectGuides],
-    ]) {
+    // Both kinds go through the same serializer; only the folder and the selection differ. The
+    // feeds are the admin's check's (`EXPORT_FEEDS`), so both read the same selection.
+    for (const [dir, select] of Object.entries(EXPORT_FEEDS)) {
       const posts = [];
       const skipped = {};
       for (const post of select(all)) {
@@ -240,7 +238,10 @@ export async function buildNewsExport(chosen, avatars) {
           },
         });
       }
-      lists.push({ key: `${dir}/${locale}.json`, json: { schema: 1, generatedAt, locale, posts } });
+      lists.push({
+        key: exportListKey(dir, locale),
+        json: { schema: 1, generatedAt, locale, posts },
+      });
       (stats[dir] ??= {})[locale] = { posts: posts.length, skipped };
     }
   }

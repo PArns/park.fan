@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import type { QueueDataItem, QueueType } from '@/lib/api/types';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { formatTime } from '@/lib/utils/intl-format';
+import { formattedPurchasePrice } from '@/lib/parks/purchases';
 import { queueAvailability, queueShut, type QueueShut } from '@/lib/parks/queue-availability';
 
 /** The glossary term that explains each queue type, for the queue labels that link to it. */
@@ -57,16 +58,6 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
     return wt !== null && wt !== undefined && typeof wt === 'number' && wt > 0 ? wt : null;
   };
 
-  // The API may send placeholder prices (amount 0, formatted "Unknown") when the
-  // real fee isn't available. Treat those as "no price" so we never render junk.
-  const getFormattedPrice = (q: QueueDataItem): string | null => {
-    if (!('price' in q) || !q.price) return null;
-    const { amount, formatted } = q.price;
-    if (!formatted || formatted.trim().toLowerCase() === 'unknown') return null;
-    if (typeof amount === 'number' && amount <= 0) return null;
-    return formatted;
-  };
-
   switch (queue.queueType) {
     case 'STANDBY':
       return null;
@@ -83,7 +74,7 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
 
     case 'PAID_RETURN_TIME': {
       Icon = Zap;
-      const price = getFormattedPrice(queue);
+      const price = formattedPurchasePrice(queue);
       label = shutState
         ? t('queue.details.lightningLaneState', { state: shutState })
         : price
@@ -95,7 +86,7 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
 
     case 'PAID_STANDBY': {
       Icon = Zap;
-      const price = getFormattedPrice(queue);
+      const price = formattedPurchasePrice(queue);
       label = shutState
         ? t('queue.details.expressState', { state: shutState })
         : price

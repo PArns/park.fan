@@ -6,8 +6,8 @@ calendar or ride page, it is paid by **every request including the crawler's**, 
 re-fetched. The [poll's projection rule](api-budget-per-page.md) applies to it as well:
 
 - **A page that renders none of a thing must not ship it.** Trim the park per route before it
-  crosses the client boundary: `leanParkForShell` (`lib/api/parks.ts`) drops `comparison`,
-  `baseline` and the sparkline history; `leanParkForAttractionShell` (`lib/api/parks.ts`) and
+  crosses the client boundary: `leanParkForShell` (`lib/api/parks.ts`) drops `comparison` and the
+  sparkline history; `leanParkForAttractionShell` (`lib/api/parks.ts`) and
   `leanParkForCalendarShell` (`lib/api/park-live-projection.ts`) keep only what their route draws.
 - **A trim that keeps the short set is an allow-list**, like `leanParkForCalendarShell`, so a field
   the API adds next month stays out by default.

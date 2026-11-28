@@ -111,9 +111,10 @@ lays it over the server-rendered park in the hook's `select`, so every consumer 
 render appears within one poll.
 
 - `comparison` is never rendered and is not in the projection.
-- `baseline` rides the poll for the ride card's crowd-scale tooltip
-  (`rideCrowdMinuteRanges`) but stays out of the server render, which a shell written before opening
-  would not have anyway: +39 B brotli per poll on Epcot's 33 rides.
+- `baseline` rides the poll and the server render: the ride card's crowd badge prints it
+  („Niedrig · sonst 45 Min.“) and its crowd-scale tooltip reads it (`rideCrowdMinuteRanges`). A
+  badge that waited for the poll would grow after the first paint and move the card grid. +39 B
+  brotli per poll on Epcot's 33 rides.
 - Each ride's `park: { slug }`, the key `enrichAttractionsWithImages` looks a photo up by, is
   stripped after the lookup: nothing reads a park that carries only a slug.
 - `dataTimestamp`, the time the API built the payload, rides every poll: the „as of" line over the

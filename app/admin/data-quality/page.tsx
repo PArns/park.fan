@@ -260,22 +260,23 @@ export default function DataQualityPage() {
       </Panel>
 
       <Panel>
-        <PanelHeader icon={Shapes} title="Attraktionen ohne Art" />
+        <PanelHeader icon={Shapes} title="Attraktionen ohne Gattung" />
         <PanelBody className="space-y-3">
           <p className="text-muted-foreground text-sm">
-            Attraktionen, deren Art weder jemand eingetragen hat noch die API ableiten konnte. Die
-            Regel liest jede Nacht die Bahnart im Ride-Profil, die Mindestgröße und bei
-            Nebenattraktionen den Namen; ein Ride-Profil mit Bahnart oder eine Mindestgröße nimmt
-            eine Attraktion also ab der nächsten Nacht auch von der Liste. Ohne Art zeigt die
-            Website keinen Hinweis auf Transportsystem oder Maze. Was in keine Art passt, etwa ein
-            Pool oder ein Weihnachtsmarkt, bleibt hier stehen.
+            Attraktionen, deren Gattung weder jemand eingetragen hat noch die API ableiten konnte.
+            Die API leitet sie jede Nacht aus der Bahnart im Ride-Profil, der Mindestgröße und bei
+            Nebenattraktionen aus dem Namen ab. Bekommt eine Attraktion ein Ride-Profil mit Bahnart
+            oder eine Mindestgröße, steht sie ab der nächsten Nacht nicht mehr auf dieser Liste.
+            Ohne Gattung zeigt die Website keinen Hinweis auf Transportsystem oder Halloween-Maze.
+            Was in keine Gattung passt, etwa ein Pool oder ein Weihnachtsmarkt, nimmt „Passt in
+            keine Gattung“ von der Liste.
           </p>
           {quality.error ? null : quality.loading && !quality.data ? (
             <LoadingState />
           ) : withoutKind.more.total === 0 ? (
             <EmptyState
               icon={ShieldCheck}
-              title="Jede Attraktion hat eine Art"
+              title="Jede Attraktion hat eine Gattung"
               description="Von jemandem eingetragen oder von der API abgeleitet."
             />
           ) : (

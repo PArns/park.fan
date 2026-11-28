@@ -127,7 +127,7 @@ export async function GET(
 
   // Before any segment reaches a backend URL: see `isSlugPath`.
   if (!path || !isSlugPath(path)) {
-    return NextResponse.json({ error: 'Invalid path' }, { status: 400 });
+    return NextResponse.json({ error: 'Invalid path' }, { status: 400, headers: NO_STORE });
   }
 
   // Beyond the wait times every branch relays keyed data, so it answers park.fan's own pages only.
@@ -195,7 +195,7 @@ export async function GET(
     if (!from || !to) {
       return NextResponse.json(
         { error: 'Missing required query parameters: from, to' },
-        { status: 400 }
+        { status: 400, headers: NO_STORE }
       );
     }
 
@@ -204,7 +204,7 @@ export async function GET(
         {
           error: `Invalid range. Expected: YYYY-MM-DD, from <= to, at most ${MAX_CALENDAR_RANGE_DAYS} days`,
         },
-        { status: 400 }
+        { status: 400, headers: NO_STORE }
       );
     }
 
@@ -250,7 +250,7 @@ export async function GET(
     if (!date || !isServableHourlyDate(date, Date.now())) {
       return NextResponse.json(
         { error: 'Missing or out-of-range query parameter: date (YYYY-MM-DD, today ± a day)' },
-        { status: 400 }
+        { status: 400, headers: NO_STORE }
       );
     }
 
@@ -435,7 +435,8 @@ export async function GET(
   }
 
   // What the ride page needs to name a shorter queue nearby and the live poll leaves out: where
-  // each ride is, its type, its minimum height and its kind. Day-stable like `positions`.
+  // each ride is, its type, its minimum height and its kind with who decided it. Day-stable like
+  // `positions`.
   if (path && path.length === 5 && path[4] === 'ride-alternatives') {
     const [continent, country, city, park] = path;
 
@@ -453,6 +454,7 @@ export async function GET(
         types: a.rideProfile?.types ?? [],
         minimumHeight: a.minimumHeight ?? null,
         attractionKind: a.attractionKind ?? null,
+        attractionKindSource: a.attractionKindSource ?? null,
       }));
 
       return NextResponse.json({ rides }, { headers: cdnCacheHeaders(RIDE_STATS_CACHE_CONTROL) });
@@ -774,7 +776,7 @@ export async function GET(
       error:
         'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /purchases, /ride-stats, /stats, /stats/hourly, /stats/day, /wait-times, /parky-tip, /weather/nowcast, or /weather/hourly',
     },
-    { status: 400 }
+    { status: 400, headers: NO_STORE }
   );
 }
 

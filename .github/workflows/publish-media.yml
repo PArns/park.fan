@@ -13,10 +13,17 @@ on:
       - 'public/media/**'
       - 'content/blog/**'
       - 'scripts/news-export.mjs'
+      - 'scripts/lib/map-with-concurrency.mjs'
       - 'lib/blog/news-blocks.ts'
+      - 'lib/blog/news-export-feeds.ts'
+      - 'lib/blog/backlinks.ts'
       - 'lib/navigation/blog-menu.ts'
       - 'scripts/publish-media-r2.mjs'
   workflow_dispatch:
+
+# Nothing here writes to the repository; the upload reaches R2 with its own keys.
+permissions:
+  contents: read
 
 concurrency:
   group: publish-media
@@ -69,23 +76,36 @@ jobs:
       # The website shows a post as soon as it deploys; the app and the push notifications get it only
       # from this upload. GitHub's own notice for a red run names the workflow, not that consequence,
       # so the summary and the annotation say what is missing, what is live and how to catch up.
+      # `cancelled()` too: the job's 60-minute limit cancels the run, and `failure()` is false then.
       - name: Say what the app is missing
-        if: failure()
+        if: failure() || cancelled()
         env:
           UPLOAD: ${{ steps.upload.outcome }}
+          JOB: ${{ job.status }}
         run: |
-          if [ "$UPLOAD" = failure ]; then
-            state="The upload stopped partway: files written before the error are new, the rest and index.json are still those of the last successful run."
+          if [ "$JOB" = cancelled ]; then
+            what="was cancelled"
+            why="Someone stopped the run, or it ran past the job's 60-minute limit."
+          else
+            what="failed"
+            why=""
+          fi
+          if [ "$UPLOAD" = failure ] || [ "$UPLOAD" = cancelled ]; then
+            state="The upload stopped partway: files written before it stopped are new, the rest and index.json are still those of the last successful run."
           else
             state="Nothing was uploaded: media.park.fan still serves the export of the last successful run."
           fi
           {
-            echo "### The export for the app failed"
+            echo "### The export for the app $what"
             echo
+            if [ -n "$why" ]; then
+              echo "$why"
+              echo
+            fi
             echo "$state"
             echo
             echo "Until a run succeeds, the app and its push notifications lack posts the website already shows. The admin's System page lists them under „Export für die App“."
             echo
             echo "Start a new run with **Run workflow** on this workflow's page, or \`gh workflow run publish-media.yml\`."
           } >> "$GITHUB_STEP_SUMMARY"
-          echo "::error title=Export for the app failed::$state Start a new run once the cause is fixed: gh workflow run publish-media.yml"
+          echo "::error title=Export for the app $what::$state Start a new run once the cause is fixed: gh workflow run publish-media.yml"
