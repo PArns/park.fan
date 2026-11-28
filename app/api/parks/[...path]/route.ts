@@ -4,8 +4,8 @@ import {
   bestDaysCacheTag,
   getIntegratedCalendar,
   getBestDaysSnapshotFresh,
-  parkCalendarCacheTag,
 } from '@/lib/api/integrated-calendar';
+import { parkCalendarCacheTag } from '@/lib/api/park-live-projection';
 import {
   foreignForecastRequest,
   isKeylessRelayPath,

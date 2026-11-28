@@ -3,6 +3,7 @@ import { withSeedTimeout } from './seed-timeout';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import { parkCalendarMonthRange, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import { readWithApiKey, type ApiKeyRefusal } from '@/lib/api/keyed-read';
+import { parkCalendarCacheTag } from './park-live-projection';
 
 /**
  * Which days of a calendar range carry an hourly crowd curve (`CalendarDay.hourly`). The backend
@@ -60,23 +61,6 @@ export async function getIntegratedCalendar(
 
   const data: IntegratedCalendarResponse = await response.json();
   return data;
-}
-
-/**
- * Cache tag for ONE park's calendar: the `/calendar` relay's copy at Vercel's edge, a month page's
- * summary and Parky's day tip relay. The backend rings it after every forecast warmup, together with
- * {@link bestDaysCacheTag}, and after a schedule correction, so the grid, the summary, best-days and
- * the tip take the new forecast at the same moment. Not `parkCacheTag`, which also drops the park's
- * structure fetch every park page reads and goes out every 15 minutes while the park is open.
- * Hand-written twin of `parkCalendarCacheTag` in the API (`park-status-transitions.ts`).
- */
-export function parkCalendarCacheTag(
-  continent: string,
-  country: string,
-  city: string,
-  parkSlug: string
-): string {
-  return `park-calendar:${continent}/${country}/${city}/${parkSlug}`;
 }
 
 /**

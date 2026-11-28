@@ -17,6 +17,26 @@ export function parkCacheTag(
 }
 
 /**
+ * Cache tag for ONE park's calendar: the `/calendar` relay's copy at Vercel's edge, a month page's
+ * summary, the yearly outlook and Parky's day tip relay. The backend rings it after every forecast
+ * warmup, together with `bestDaysCacheTag`, and after a schedule correction, so the grid, the
+ * summary, the outlook, best-days and the tip take the new forecast at the same moment. Not
+ * {@link parkCacheTag}, which also drops the park's structure fetch every park page reads and goes
+ * out every 15 minutes while the park is open. It sits here rather than in `integrated-calendar.ts`
+ * because `lib/api/parks.ts` tags with it and reaches the browser bundle, where that module and its
+ * `next/server` import must not go. Hand-written twin of `parkCalendarCacheTag` in the API
+ * (`park-status-transitions.ts`).
+ */
+export function parkCalendarCacheTag(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): string {
+  return `park-calendar:${continent}/${country}/${city}/${parkSlug}`;
+}
+
+/**
  * One attraction in the park poll's response: only what can change between two polls. The poll
  * repeats every five minutes for as long as a tab is open, so the static half stays in the server
  * render and `mergeLiveParkSnapshot` lays this back over it. Identity fields ride along so a ride
