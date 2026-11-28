@@ -3,7 +3,7 @@
 `AttractionDowntimeSection` las `attraction.downtime` aus dem Park-Payload, und der trägt das Feld
 nicht: Die API liefert den Block nur im Attraktions-Detail. Auf keiner Ride-Seite erschien deshalb
 etwas davon, weder die einzeilige Begründung noch die Zahlen, die die Gates inzwischen freigeben
-(am 28. November zum Beispiel für Baron 1898, Seven Dwarfs Mine Train in Magic Kingdom und TRON
+(am 28. November zum Beispiel für Baron 1898, Seven Dwarfs Mine Train im Magic Kingdom und TRON
 Lightcycle / Run). `getAttractionDowntime` (`lib/api/parks.ts`) holt den Block jetzt serverseitig
 aus dem Detail mit `?days=1`, 3,5 statt 29,7 KB, einen Tag im Data Cache, parallel zu
 `getRideRank`. Das Feld steht nicht mehr in `ParkAttraction`, damit niemand es dort wieder sucht.
