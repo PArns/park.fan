@@ -179,17 +179,14 @@ function leanAttractionForShell(a: ParkAttraction): ParkAttraction {
   // which is the copy that lands in the HTML of every park page. 1.0 KB per park page, on the
   // route with the second-highest origin-miss count in the app.
   //
-  // `baseline` is rendered now (the ride card's crowd-scale tooltip) and still stays out of
-  // the HTML: the tooltip draws nothing until someone reaches for it, and the poll that
-  // `useLiveParkData` fires on mount carries it long before that. Shipping it here would put
-  // a number in every park page's HTML that no first paint shows.
+  // `baseline` stays: the crowd badge prints it („Niedrig · sonst 45 Min."), so the first paint
+  // needs it, and a badge that grows when the poll brings it shifts the card grid.
   const {
     url: _url,
     history: _history,
     hourlyForecast: _hourlyForecast,
     predictionAccuracy: _predictionAccuracy,
     comparison: _comparison,
-    baseline: _baseline,
     ...lean
   } = a as ParkAttraction & { comparison?: unknown };
   if (lean.statistics) {

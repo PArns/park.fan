@@ -1,5 +1,5 @@
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
-import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
+import { getLiveAttractionStatus, liveStandbyWait } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 /**
@@ -20,10 +20,9 @@ export function liveWaitsFor(
 
   const out = new Map<string, number>();
   for (const attraction of park.attractions ?? []) {
-    // The house helpers: `getLiveAttractionStatus` prefers `effectiveStatus`, the only source that
-    // knows a ride is out of season, and a stopped feed keeps its last queue value.
-    if (getLiveAttractionStatus(attraction, park.status) !== 'OPERATING') continue;
-    const minutes = getStandbyWait(attraction);
+    // The house helper: its status prefers `effectiveStatus`, the only source that knows a ride is
+    // out of season, and a stopped feed keeps its last queue value.
+    const minutes = liveStandbyWait(attraction, park.status);
     if (typeof minutes === 'number') out.set(attraction.slug, minutes);
   }
   return out;

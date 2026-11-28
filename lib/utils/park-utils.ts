@@ -64,6 +64,20 @@ export function getStandbyWait(attraction: ParkAttraction | FavoriteAttraction):
 }
 
 /**
+ * The standby wait a visitor is shown: the reading of a ride that runs now by
+ * {@link getLiveAttractionStatus}, else null. An UNKNOWN ride may still carry a figure its feed
+ * stopped updating, and a closed one its last.
+ */
+export function liveStandbyWait(
+  attraction: ParkAttraction | FavoriteAttraction,
+  parkStatus?: ParkStatus
+): number | null {
+  return getLiveAttractionStatus(attraction, parkStatus) === 'OPERATING'
+    ? getStandbyWait(attraction)
+    : null;
+}
+
+/**
  * Groups attractions by land (`fallbackName` when none), each land sorted by name. With
  * `mazeName`, every `MAZE` joins one group of that name whatever land it sits in: a Halloween
  * maze is a seasonal walk-through, and a visitor looks for it as a kind, not as a corner of the
@@ -100,10 +114,8 @@ export function sortByShortestWait(
   attractions: ParkAttraction[],
   parkStatus?: ParkStatus
 ): ParkAttraction[] {
-  const wait = (a: ParkAttraction) =>
-    getLiveAttractionStatus(a, parkStatus) === 'OPERATING' ? getStandbyWait(a) : null;
   return attractions
-    .map((attraction) => ({ attraction, wait: wait(attraction) }))
+    .map((attraction) => ({ attraction, wait: liveStandbyWait(attraction, parkStatus) }))
     .sort((a, b) => {
       if (a.wait !== null && b.wait !== null && a.wait !== b.wait) return a.wait - b.wait;
       if ((a.wait === null) !== (b.wait === null)) return a.wait === null ? 1 : -1;
