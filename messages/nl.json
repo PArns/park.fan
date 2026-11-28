@@ -839,7 +839,6 @@
     "mapMarkers": {
       "noMapData": "Geen kaartgegevens beschikbaar voor dit park.",
       "parkCenter": "Park centrum",
-      "status": "Status",
       "waitTime": "Wachttijd",
       "crowdLevel": "Drukteniveau",
       "topSpeed": "Topsnelheid",

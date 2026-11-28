@@ -1188,7 +1188,6 @@
     "mapMarkers": {
       "noMapData": "Keine Kartendaten für diesen Park verfügbar.",
       "parkCenter": "Park Zentrum",
-      "status": "Status",
       "waitTime": "Wartezeit",
       "crowdLevel": "Auslastung",
       "topSpeed": "Topspeed",

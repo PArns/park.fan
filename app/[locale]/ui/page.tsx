@@ -1310,7 +1310,8 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   <ParkStatusBadge status="UNKNOWN" />
                 </Row>
                 <p className="text-muted-foreground mt-1 text-xs">
-                  UNKNOWN = park-level only (no schedule data), falls through to CLOSED styling
+                  UNKNOWN = no information, never a closure; a status the badge does not know reads
+                  as UNKNOWN too
                 </p>
               </Sub>
             </Section>

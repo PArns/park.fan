@@ -839,7 +839,6 @@
     "mapMarkers": {
       "noMapData": "Aucune donnée de carte disponible pour ce parc.",
       "parkCenter": "Centre du parc",
-      "status": "Statut",
       "waitTime": "Attente",
       "crowdLevel": "Affluence",
       "topSpeed": "Vitesse max",

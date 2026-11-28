@@ -628,7 +628,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-status-badge.tsx`](../../components/parks/park-status-badge.tsx)
 
-- `ParkStatusBadge` _component_: Status badge for a park or a ride: operating, down, closed, refurbishment, unknown, or `RETIRED` for a ride that closed for good. An unrecognised status falls back to the closed style.
+- `ParkStatusBadge` _component_: Status badge for a park or a ride: operating, down, closed, refurbishment, unknown, or `RETIRED` for a ride that closed for good. An unrecognised status reads as unknown, never as closed: it says nothing about whether the ride runs.
 - Types: `ClosedPermanentlyStatus`
 
 ### [`park-tabs-list.tsx`](../../components/parks/park-tabs-list.tsx)

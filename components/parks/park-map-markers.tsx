@@ -4,9 +4,12 @@ import { memo, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Marker, Popup } from 'react-leaflet';
 import type { Marker as LeafletMarker } from 'leaflet';
-import type { ParkAttraction, ParkShow, ParkRestaurant } from '@/lib/api/types';
+import type { ParkAttraction, ParkShow, ParkRestaurant, ParkStatus } from '@/lib/api/types';
 import { stripNewPrefix } from '@/lib/utils';
-import { getStandbyWait } from '@/lib/utils/park-utils';
+import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import {
   attractionOperatingIcon,
   attractionClosedIcon,
@@ -33,16 +36,20 @@ export function getNextShowtimeDate(show: ParkShow): Date | null {
 
 interface AttractionMarkersProps {
   attractions: ParkAttraction[];
+  /** The park's status: a closed park shuts every ride, whatever its own feed still says. */
+  parkStatus?: ParkStatus;
   /** Speed, height and duration by attraction id; empty until the map's own fetch lands. */
   figures?: Record<string, RideFigures>;
 }
 
 /**
  * The ride pins. Memoised: nothing here is time-relative, so the minute tick the show markers need
- * does not reconcile them.
+ * does not reconcile them. Status, wait and crowd level follow the ride's card: the effective
+ * status, and a wait and a level only while the ride runs.
  */
 export const AttractionMarkers = memo(function AttractionMarkers({
   attractions,
+  parkStatus,
   figures,
 }: AttractionMarkersProps) {
   const t = useTranslations('parks.mapMarkers');
@@ -51,10 +58,15 @@ export const AttractionMarkers = memo(function AttractionMarkers({
   return (
     <>
       {attractions.map((attraction) => {
-        const isOperating = attraction.status === 'OPERATING';
+        const status = getLiveAttractionStatus(attraction, parkStatus);
+        const isOperating = status === 'OPERATING';
         const icon = isOperating ? attractionOperatingIcon : attractionClosedIcon;
 
-        const waitTime = getStandbyWait(attraction);
+        const waitTime = isOperating ? getStandbyWait(attraction) : null;
+        const crowdLevel =
+          isOperating && attraction.crowdLevel && isColoredCrowdLevel(attraction.crowdLevel)
+            ? attraction.crowdLevel
+            : null;
         const ride = figures?.[attraction.id];
 
         return (
@@ -69,25 +81,19 @@ export const AttractionMarkers = memo(function AttractionMarkers({
                 {attraction.land && (
                   <div className="text-muted-foreground text-xs">{attraction.land}</div>
                 )}
-                {attraction.status && (
-                  <div className="mt-1 text-xs">
-                    {t('status')}:{' '}
-                    <span className={isOperating ? 'text-status-operating' : 'text-status-closed'}>
-                      {tParks(`status.${attraction.status}`)}
-                    </span>
-                  </div>
-                )}
+                <div className="mt-1.5">
+                  <ParkStatusBadge status={status} />
+                </div>
                 {waitTime !== null && (
                   <div className="mt-1 text-xs">
-                    {t('waitTime')}: <span className="font-semibold">{waitTime} min</span>
+                    {t('waitTime')}:{' '}
+                    <span className="font-semibold">{roundWaitTo5(waitTime)} min</span>
                   </div>
                 )}
-                {attraction.crowdLevel && (
+                {crowdLevel && (
                   <div className="mt-1 text-xs">
                     {t('crowdLevel')}:{' '}
-                    <span className="font-semibold">
-                      {tParks(`crowdLevels.${attraction.crowdLevel}`)}
-                    </span>
+                    <span className="font-semibold">{tParks(`crowdLevels.${crowdLevel}`)}</span>
                   </div>
                 )}
                 {ride?.topSpeedKmh != null && (
