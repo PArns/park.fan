@@ -7,12 +7,12 @@ import { cn } from '@/lib/utils';
 import {
   attractionKindLabel,
   curatedFieldOptions,
+  servedKindsFromList,
   shownAttractionKind,
 } from '@/lib/admin/attraction-kind';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
 import type { AdminAttractionListItem, AdminParkDetail, CuratedFieldSpec } from '../../_lib/types';
 import { useParkAttractions } from '../../_lib/use-park-attractions';
-import { useServedAttractionKinds } from '../../_lib/use-served-attraction-kinds';
 import {
   EmptyState,
   ErrorState,
@@ -126,11 +126,7 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
   }, [rows]);
 
   const [column, setColumn] = useState<Column>('fastPass');
-  const served = useServedAttractionKinds(
-    park.id,
-    column === 'kind' ? park.path : null,
-    attractions.data?.attractions
-  );
+  const served = servedKindsFromList(attractions.data?.attractions);
   const [overrides, setOverrides] = useState<Record<string, Partial<RowState>>>({});
   const [reason, setReason] = useState('');
   const [sourceUrl, setSourceUrl] = useState('');

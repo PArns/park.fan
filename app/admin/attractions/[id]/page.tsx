@@ -11,11 +11,11 @@ import {
   RollerCoaster,
   Sliders,
 } from 'lucide-react';
+import { servedKindsFromList } from '@/lib/admin/attraction-kind';
 import { cn } from '@/lib/utils';
 import { adminKeys, useAdminQuery } from '../../_lib/api';
 import type { AdminAttractionDetail } from '../../_lib/types';
 import { useParkAttractions } from '../../_lib/use-park-attractions';
-import { useServedAttractionKinds } from '../../_lib/use-served-attraction-kinds';
 import { AdminPage, ErrorState, Meta, SkeletonRows } from '../../_ui/primitives';
 import { CuratedFieldsPanel } from '../../_ui/curated-fields';
 import { HistoryList } from '../../_ui/history-list';
@@ -57,11 +57,7 @@ export default function AttractionDetailPage({ params }: { params: Promise<{ id:
   // for the park editor's tabs, which share this request.
   const park = attraction.data?.park ?? null;
   const parkList = useParkAttractions(park?.id ?? null);
-  const served = useServedAttractionKinds(
-    park?.id ?? '',
-    park?.path ?? null,
-    parkList.data?.attractions
-  )[id];
+  const served = servedKindsFromList(parkList.data?.attractions)[id];
 
   if (attraction.isError) {
     return (

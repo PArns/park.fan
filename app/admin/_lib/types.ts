@@ -165,13 +165,10 @@ export interface AdminAttractionListItem {
   indoorOutdoor?: string | null;
   /** Null is "nobody decided", never RIDE. */
   attractionKind?: string | null;
-  /**
-   * The kind the API's rule derives, kept for every row, curated or not. Absent from an API that
-   * does not send it yet, like `attractionKindSource`.
-   */
-  derivedAttractionKind?: string | null;
+  /** The kind the API's rule derives, kept for every row, curated or not. */
+  derivedAttractionKind: string | null;
   /** Who decided the kind the API serves; null when neither the editor nor the rule did. */
-  attractionKindSource?: AttractionKindSource | null;
+  attractionKindSource: AttractionKindSource | null;
   hasRideProfile: boolean;
   curatedFieldCount: number;
   updatedAt: string;

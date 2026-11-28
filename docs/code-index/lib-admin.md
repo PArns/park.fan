@@ -69,10 +69,8 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 - `curatedEnumOptions` _function_: The options of a curated enum field as the admin's selects list them, in the API's order: an attraction kind under its German name, any other value as itself.
 - `curatedFieldOptions` _function_: `curatedEnumOptions` for one key of `GET /v1/admin/content/fields`, so a kind the API adds shows up in every select without a frontend change. Empty while the descriptors are not loaded.
 - `shownAttractionKind` _function_: The kind an admin row shows: the editor's stored value, else the API's derived one, flagged so the editor sees the decision is still open.
-- `servedKindsFromList` _function_: The served kinds of a park's attractions, keyed by id, read off the admin list: the editor's kind where `attractionKindSource` is `curated`, the rule's where it is `derived`.
-- `rowsWithoutKind` _function_: The rows of a park's admin attraction list that a data-quality „ohne Gattung" entry names, for a report that sends names only: a row matches on its resolved name and on storing no kind, and two rows of the same name are both listed.
-- `kindlessAttractions` _function_: The attractions a data-quality „ohne Gattung" card asks about: the report's `withoutKindRefs` where it sends them, else the rows of the park's list that `rowsWithoutKind` finds by name. Null while that fallback still waits for the list.
-- Types: `CuratedEnumOption`, `ServedAttractionKind`, `ShownAttractionKind`, `AttractionKindColumns`, `KindlessAttraction`
+- `servedKindsFromList` _function_: The served kinds of a park's attractions, keyed by id, read off the admin list: the editor's kind where `attractionKindSource` is `curated`, the rule's where it is `derived`. Empty until the rows are in.
+- Types: `CuratedEnumOption`, `ServedAttractionKind`, `ShownAttractionKind`, `AttractionKindColumns`
 
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 

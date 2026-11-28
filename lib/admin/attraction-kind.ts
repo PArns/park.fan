@@ -82,27 +82,22 @@ export interface AttractionKindColumns {
   id: string;
   /** The editor's kind; null is "nobody decided". */
   attractionKind?: string | null;
-  /** The rule's kind, kept for every row; absent from an API that does not send it yet. */
-  derivedAttractionKind?: string | null;
-  /** Who decided the served kind; absent from an API that does not send it yet. */
-  attractionKindSource?: AttractionKindSource | null;
+  /** The rule's kind, kept for every row. */
+  derivedAttractionKind: string | null;
+  /** Who decided the served kind; null when neither the editor nor the rule did. */
+  attractionKindSource: AttractionKindSource | null;
 }
 
 /**
  * The served kinds of a park's attractions, keyed by id, read off the admin list: the editor's
- * kind where `attractionKindSource` is `curated`, the rule's where it is `derived`. Null when no
- * row carries the columns, which is an API that does not send them yet; an empty list needs no
- * answer and gives an empty map.
+ * kind where `attractionKindSource` is `curated`, the rule's where it is `derived`. Empty until the
+ * rows are in.
  */
 export function servedKindsFromList(
-  rows: readonly AttractionKindColumns[]
-): Record<string, ServedAttractionKind> | null {
-  const carried = rows.some(
-    (row) => row.attractionKindSource !== undefined || row.derivedAttractionKind !== undefined
-  );
-  if (rows.length > 0 && !carried) return null;
+  rows: readonly AttractionKindColumns[] | undefined
+): Record<string, ServedAttractionKind> {
   const kinds: Record<string, ServedAttractionKind> = {};
-  for (const row of rows) {
+  for (const row of rows ?? []) {
     const source = row.attractionKindSource;
     const kind =
       source === 'derived'
@@ -113,39 +108,4 @@ export function servedKindsFromList(
     if (kind && source) kinds[row.id] = { kind, source };
   }
   return kinds;
-}
-
-/**
- * The rows of a park's admin attraction list that a data-quality „ohne Gattung" entry names, for a
- * report that sends names only: a row matches on its resolved name and on storing no kind, and two
- * rows of the same name are both listed.
- */
-export function rowsWithoutKind<T extends { name: string; attractionKind?: string | null }>(
-  names: readonly string[],
-  rows: readonly T[]
-): T[] {
-  const wanted = new Set(names);
-  return rows.filter((row) => !row.attractionKind && wanted.has(row.name));
-}
-
-/** An attraction a data-quality „ohne Gattung" card asks about. */
-export interface KindlessAttraction {
-  id: string;
-  name: string;
-}
-
-/**
- * The attractions a data-quality „ohne Gattung" card asks about: the report's `withoutKindRefs` where
- * it sends them, else the rows of the park's list that {@link rowsWithoutKind} finds by name. Null
- * while that fallback still waits for the list.
- */
-export function kindlessAttractions(
-  entry: {
-    withoutKind: readonly string[];
-    withoutKindRefs?: readonly KindlessAttraction[];
-  },
-  rows: readonly { id: string; name: string; attractionKind?: string | null }[] | undefined
-): KindlessAttraction[] | null {
-  const found = entry.withoutKindRefs ?? (rows ? rowsWithoutKind(entry.withoutKind, rows) : null);
-  return found?.map(({ id, name }) => ({ id, name })) ?? null;
 }
