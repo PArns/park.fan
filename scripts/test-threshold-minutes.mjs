@@ -28,13 +28,7 @@ import {
   rideAlertPickerRows,
 } from '../lib/push/ride-alert-picker.ts';
 import { roundWaitTo5 } from '../lib/utils/wait-time.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 test('accepts a value in range', () => {
   assert.equal(parseThresholdMinutes('20'), 20);
@@ -284,4 +278,4 @@ test('the search folds case, accents and punctuation', () => {
   assert.deepEqual(ids('zzz'), []);
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

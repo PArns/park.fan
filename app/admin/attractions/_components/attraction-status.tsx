@@ -143,12 +143,7 @@ export function AttractionStatus({
           {error && <p className="text-destructive text-xs">{error}</p>}
 
           <div className="flex items-center gap-2">
-            <Button
-              size="sm"
-              onClick={retire}
-              disabled={busy}
-              className="bg-destructive hover:bg-destructive/90 text-white"
-            >
+            <Button size="sm" onClick={retire} disabled={busy} variant="destructive">
               {busy && <Loader2 className="h-4 w-4 animate-spin" />}
               Stilllegen
             </Button>

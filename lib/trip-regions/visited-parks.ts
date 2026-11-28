@@ -1,5 +1,7 @@
+import { createLocalRecordStore } from '@/lib/utils/local-record-store';
 import { addDays } from '@/lib/utils/park-day';
 import { MAX_TRIP_DAYS } from './plan-query';
+import { isIsoDate } from '@/lib/utils/iso-date';
 
 /*
  * The parks a visitor has ticked off in a region's hub as already visited, so the day's tip and
@@ -23,7 +25,6 @@ export interface VisitedPark {
 const NONE: VisitedRecord = Object.freeze({});
 const NO_PARKS: ReadonlySet<string> = new Set();
 const SLUG = /^[a-z0-9-]{1,80}$/;
-const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 /** Where a region's ticks live. */
 export const visitedKey = (region: string) => `parkfan_${region}_visited`;
@@ -42,7 +43,7 @@ export function parseVisited(raw: string | null): VisitedRecord {
     if (!value || typeof value !== 'object' || Array.isArray(value)) return NONE;
     const entries = Object.entries(value as Record<string, unknown>).filter(
       (entry): entry is [string, string] =>
-        SLUG.test(entry[0]) && typeof entry[1] === 'string' && DATE.test(entry[1])
+        SLUG.test(entry[0]) && typeof entry[1] === 'string' && isIsoDate(entry[1])
     );
     return entries.length > 0 ? Object.freeze(Object.fromEntries(entries)) : NONE;
   } catch {
@@ -84,60 +85,23 @@ const stores = new Map<string, VisitedParks>();
 export function visitedParks(region: string): VisitedParks {
   let store = stores.get(region);
   if (store) return store;
-  const key = visitedKey(region);
-  const listeners = new Set<() => void>();
-  let cachedRaw: string | null = null;
-  let cached: VisitedRecord = NONE;
-
-  const readRaw = (): string | null => {
-    try {
-      return window.localStorage.getItem(key);
-    } catch {
-      return null;
-    }
-  };
-  const getSnapshot = (): VisitedRecord => {
-    const raw = readRaw();
-    if (raw !== cachedRaw) {
-      cachedRaw = raw;
-      cached = parseVisited(raw);
-    }
-    return cached;
-  };
-  const write = (next: VisitedRecord) => {
-    try {
-      if (Object.keys(next).length === 0) window.localStorage.removeItem(key);
-      else window.localStorage.setItem(key, JSON.stringify(next));
-    } catch {
-      // Private mode or a full store: the ticks last until the page is left. Pinning the raw that
-      // is stored now keeps `next` as the snapshot until the stored value changes under it.
-      cachedRaw = readRaw();
-      cached = next;
-    }
-    for (const listener of listeners) listener();
-    for (const listener of anyListeners) listener();
-  };
+  const { write, ...record } = createLocalRecordStore({
+    key: visitedKey(region),
+    parse: parseVisited,
+    empty: NONE,
+    onWrite: () => {
+      for (const listener of anyListeners) listener();
+    },
+  });
 
   store = {
-    subscribe(listener) {
-      listeners.add(listener);
-      const onStorage = (event: StorageEvent) => {
-        if (event.key === key || event.key === null) listener();
-      };
-      window.addEventListener('storage', onStorage);
-      return () => {
-        listeners.delete(listener);
-        window.removeEventListener('storage', onStorage);
-      };
-    },
-    getSnapshot,
-    getServerSnapshot: () => NONE,
+    ...record,
     toggle(slug, today) {
       // Ticks of an earlier trip go with the next write, so neither the browser nor the account
       // collects them.
-      const active = visitedOn(getSnapshot(), today);
+      const active = visitedOn(record.getSnapshot(), today);
       const next: Record<string, string> = Object.fromEntries(
-        Object.entries(getSnapshot()).filter(([park]) => active.has(park))
+        Object.entries(record.getSnapshot()).filter(([park]) => active.has(park))
       );
       const ticked = !active.has(slug);
       if (ticked) next[slug] = today;
@@ -145,14 +109,8 @@ export function visitedParks(region: string): VisitedParks {
       write(Object.freeze(next));
       return ticked;
     },
-    forget() {
-      const kept = getSnapshot();
-      if (kept === NONE) return () => undefined;
-      write(NONE);
-      return () => write(kept);
-    },
-    replace(record) {
-      write(Object.keys(record).length > 0 ? Object.freeze({ ...record }) : NONE);
+    replace(next) {
+      write(Object.keys(next).length > 0 ? Object.freeze({ ...next }) : NONE);
     },
   };
   stores.set(region, store);
@@ -188,7 +146,7 @@ export function readAllVisited(): VisitedPark[] {
 export function replaceAllVisited(visits: readonly VisitedPark[]): void {
   const byRegion = new Map<string, Record<string, string>>();
   for (const { region, park, date } of visits) {
-    if (!SLUG.test(region) || !SLUG.test(park) || !DATE.test(date)) continue;
+    if (!SLUG.test(region) || !SLUG.test(park) || !isIsoDate(date)) continue;
     byRegion.set(region, { ...byRegion.get(region), [park]: date });
   }
   for (const region of new Set([...storedRegions(), ...byRegion.keys()])) {

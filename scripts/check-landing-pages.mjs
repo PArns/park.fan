@@ -35,8 +35,8 @@
  */
 
 import { chromium } from 'playwright';
-import { existsSync } from 'node:fs';
 import { TRIP_REGION_PAGES } from './lib/trip-region-pages.mjs';
+import { LAUNCH } from './lib/browser.mjs';
 
 const args = process.argv.slice(2);
 const flag = (name, fallback) => {
@@ -46,9 +46,6 @@ const flag = (name, fallback) => {
 
 /** `localhost`, not `127.0.0.1`: see BASE in scripts/measure-cls.mjs. */
 const BASE = flag('base', process.env.BASE ?? 'http://localhost:3000').replace(/\/$/, '');
-/** Same fallback as scripts/check-header-reach.mjs and check-card-framing.mjs. */
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
-const LAUNCH = existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {};
 /** Hydration, `Reveal` and the deferred client sections settle. */
 const SETTLE_MS = Number(flag('settle', '1500'));
 

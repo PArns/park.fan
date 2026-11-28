@@ -2,6 +2,7 @@ import type { PlanDay } from '@/lib/api/types';
 import type { FitBlock, FitChoice, FitLever, FitWish } from './fit';
 import { dayClock, resolveTimeZone, type DayClock } from './park-time';
 import type { PlannerDayPrefs, PlannerEntry, PlannerGeo } from './types';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 /**
  * The day optimizer, asked over the network. It runs in the API (`POST …/plan/optimize`, behind
@@ -228,7 +229,7 @@ export async function requestOptimize(
   let response: Response;
   try {
     response = await fetch(
-      `/api/parks/${geo.continent}/${geo.country}/${geo.city}/${parkSlug}/plan/optimize`,
+      parkRelayUrl({ ...geo, parkSlug }, '/plan/optimize'),
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

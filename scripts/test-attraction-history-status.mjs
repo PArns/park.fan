@@ -9,13 +9,7 @@ import {
   attractionHistoryStatus,
   historyHasARunningDay,
 } from '@/lib/parks/attraction-history-status.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const curve = {
   date: '2026-10-21',
@@ -59,4 +53,4 @@ test('a window with only walk-on days still draws the grid', () => {
   );
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

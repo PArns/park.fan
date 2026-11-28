@@ -16,13 +16,7 @@ import {
   withParkCoordinates,
   withAttractionCoordinates,
 } from '../lib/api/coordinates.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 console.log('parseCoordinate');
 
@@ -128,4 +122,4 @@ test('parses an attraction detail response', () => {
   assert.equal(attraction.park.slug, 'walibi-holland');
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

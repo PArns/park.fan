@@ -24,13 +24,7 @@ import {
   sortDecisionsReadyFirst,
 } from '../lib/admin/ml-overview.ts';
 import { FIXTURE_OVERVIEW } from '../lib/admin/ml-overview-fixture.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 test('every decision state has its pill, and a new one reads neutral', () => {
   assert.deepEqual(decisionStateMeta('ready'), { label: 'bereit', tone: 'success' });
@@ -180,4 +174,4 @@ test('the sample shows a frozen report with a warning and a drift watch', () => 
   );
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

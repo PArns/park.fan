@@ -24,13 +24,7 @@ import { riderHeightChoiceFor, RIDER_HEIGHT_CHOICES } from '../lib/planner/party
 import { unprefixedPathRedirect } from '../lib/i18n/unprefixed-redirect.ts';
 import { plannerPageHeight } from '../lib/planner/page-height.ts';
 import { readFileSync } from 'node:fs';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 /** `n` attractions with a limit from `heights` (cycled) and `m` without one. */
 function park(n, m, heights = [100, 120, 140]) {
@@ -289,4 +283,4 @@ test('the header list and the rewrite list in next.config.ts match PARK_KIDS_SEG
   assert.ok(en);
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

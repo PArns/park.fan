@@ -4,7 +4,6 @@ import { useCallback, useState, useMemo, useEffect, useRef, useSyncExternalStore
 import { useRouter, getPathname } from '@/i18n/navigation';
 import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import {
-  addDays,
   format,
   parseISO,
   startOfMonth,
@@ -21,9 +20,9 @@ import { useLocationHash } from '@/lib/hooks/use-location-hash';
 import { extremeCandidates, rankOf } from '@/lib/parks/calendar-month-summary';
 import type { CalendarDay } from '@/lib/api/types';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
-import { parkDayOf } from '@/lib/utils/park-day';
+import { addDays, parkDayOf } from '@/lib/utils/park-day';
+import { WEEKDAYS_MONDAY_FIRST, weekdayName } from '@/lib/utils/intl-format';
 import { ridesInWorksOn, worksPeriodsOf, type RideInWorks } from '@/lib/utils/works-period';
-import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
 import {
   parkCalendarDayFromHash,
   parkCalendarPath,
@@ -84,8 +83,6 @@ export function ParkCalendarGrid({
   const router = useRouter();
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
-
-  const dateLocale = dateFnsLocale(locale);
 
   // Derived from the URL, not held in state. `month` is null only on the hub, where "this month"
   // is the answer and the browser clock is the right source for it.
@@ -189,7 +186,7 @@ export function ParkCalendarGrid({
   // back at the park's title card.
   const handleDayNavigate = (direction: -1 | 1) => {
     if (!openDate) return;
-    const target = format(addDays(parseISO(openDate), direction), 'yyyy-MM-dd');
+    const target = addDays(openDate, direction);
     setSelectedDate(target);
     if (target.slice(0, 7) !== format(currentMonth, 'yyyy-MM')) {
       const href = monthHref(direction === 1 ? nextMonth : prevMonth);
@@ -210,7 +207,7 @@ export function ParkCalendarGrid({
     let currentWeek: ((typeof allDays)[0] | null)[] = [];
 
     const firstDay = allDays[0];
-    const weekStart = startOfWeek(firstDay, { weekStartsOn: 1, locale: dateLocale });
+    const weekStart = startOfWeek(firstDay, { weekStartsOn: 1 });
     const daysBeforeFirst = Math.floor(
       (firstDay.getTime() - weekStart.getTime()) / (1000 * 60 * 60 * 24)
     );
@@ -238,20 +235,16 @@ export function ParkCalendarGrid({
       computedWeeks.push(currentWeek);
     }
 
-    const computedHeaders: string[] = [];
-    const monday = new Date(2024, 0, 1);
-    for (let i = 0; i < 7; i++) {
-      const date = new Date(monday);
-      date.setDate(monday.getDate() + i);
-      computedHeaders.push(format(date, 'EEE', { locale: dateLocale }));
-    }
+    const computedHeaders = WEEKDAYS_MONDAY_FIRST.map((dayOfWeek) =>
+      weekdayName(dayOfWeek, locale, 'short')
+    );
 
     return {
       weeks: computedWeeks,
       weekdayHeaders: computedHeaders,
       listDays: allDays,
     };
-  }, [currentMonth, dateLocale]);
+  }, [currentMonth, locale]);
 
   const calendarMap = useMemo(() => {
     const map = new Map<string, CalendarDay>();

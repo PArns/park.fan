@@ -35,8 +35,6 @@ import { BarList, CATEGORICAL, HeatMatrix, SeriesChart, type BarRow } from '../.
 import {
   AdminPage,
   EmptyState,
-  ErrorState,
-  LoadingState,
   Panel,
   PanelBody,
   PanelHeader,
@@ -48,7 +46,7 @@ import { TrafficFilterBar } from './filter-bar';
 import { HourlyNotice } from './hourly-notice';
 import { TrafficCsvButton } from './list-parts';
 import { RankedEntitiesPanel } from './ranked-entities';
-import { UnsupportedNote } from './unsupported-note';
+import { TrafficReportPending } from './report-pending';
 
 /** The raw events behind the page, so every number on it can be taken apart. */
 const PLANNER_EVENT_LINKS = [
@@ -491,29 +489,16 @@ export function PlannerView() {
     </>
   );
 
-  if (reason) {
+  if (reason || !data) {
     return (
-      <AdminPage width="wide">
-        <Panel>
-          {header}
-          <UnsupportedNote reason={reason} filters={filters} />
-        </Panel>
-      </AdminPage>
-    );
-  }
-
-  if (!data) {
-    return (
-      <AdminPage width="wide">
-        <Panel>
-          {header}
-          {error ? (
-            <ErrorState message={`Tagesplaner: ${error.message}`} onRetry={() => void refetch()} />
-          ) : (
-            <LoadingState label="Lade Tagesplaner…" />
-          )}
-        </Panel>
-      </AdminPage>
+      <TrafficReportPending
+        header={header}
+        name="Tagesplaner"
+        reason={reason}
+        error={error}
+        onRetry={() => void refetch()}
+        filters={filters}
+      />
     );
   }
 

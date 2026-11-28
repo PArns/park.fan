@@ -274,7 +274,7 @@ function CandidateRow({
               size="sm"
               onClick={() => merge(false)}
               disabled={busy !== null}
-              className="bg-destructive hover:bg-destructive/90 text-white"
+              variant="destructive"
             >
               {busy === 'live' && <Loader2 className="h-4 w-4 animate-spin" />}
               Endgültig zusammenführen

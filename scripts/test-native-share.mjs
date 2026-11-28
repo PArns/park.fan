@@ -7,13 +7,7 @@
  */
 import assert from 'node:assert/strict';
 import { canShareNatively, shareNatively } from '../lib/utils/native-share.ts';
-
-let passed = 0;
-async function test(name, fn) {
-  await fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 /** Puts a `navigator` with the given `share` (or none) on the global object. */
 function withShare(share) {
@@ -60,4 +54,4 @@ await test('any other refusal is unavailable, so the caller copies the link', as
   }
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

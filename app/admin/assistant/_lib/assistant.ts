@@ -1,3 +1,5 @@
+import { formatCount } from '@/lib/admin/format-number';
+import { formatDateTime } from '@/app/admin/_lib/format';
 /**
  * Shapes and formatters of Parky's admin pages. The API drops null fields, so anything that may
  * be null arrives as absent and is typed optional.
@@ -194,20 +196,10 @@ const usd = new Intl.NumberFormat('de-DE', {
   currency: 'USD',
   maximumFractionDigits: 4,
 });
-const dateTime = new Intl.DateTimeFormat('de-DE', { dateStyle: 'short', timeStyle: 'short' });
-const count = new Intl.NumberFormat('de-DE');
 
 /** A cost in US dollars, to a hundredth of a cent: one answer costs fractions of a cent. */
 export function formatUsd(value: number | string): string {
   return usd.format(Number(value));
 }
 
-/** A timestamp in the admin's own clock. */
-export function formatDateTime(iso: string): string {
-  return dateTime.format(new Date(iso));
-}
-
-/** A count with thousands separators. */
-export function formatCount(value: number | string): string {
-  return count.format(Number(value));
-}
+export { formatCount, formatDateTime };

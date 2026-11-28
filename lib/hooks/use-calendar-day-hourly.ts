@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import type { HourlyPrediction } from '@/lib/api/types';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 /** What `/api/parks/<geo>/<park>/calendar/hourly?date=…` answers: the day it was asked for, and
  *  that day's curve. `hourly` is empty on every day the backend has no curve for. */
@@ -50,7 +51,7 @@ export function useCalendarDayHourly({
     queryKey: ['calendar-hourly', continent, country, city, parkSlug, date],
     queryFn: async () => {
       const response = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/calendar/hourly?date=${date}`
+        parkRelayUrl({ continent, country, city, parkSlug }, `/calendar/hourly?date=${date}`)
       );
 
       if (!response.ok) {

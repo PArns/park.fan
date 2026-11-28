@@ -1,6 +1,7 @@
 import { TRIP_PLANNER_ID } from './paths';
 import { TRIP_REGIONS, tripRegionConfig } from './registry';
 import type { TicketProduct, TripRegion } from './types';
+import { isIsoDate } from '@/lib/utils/iso-date';
 
 /**
  * The trip planner's state and its one URL form. The state lives in the address bar under
@@ -194,7 +195,6 @@ export const PLAN_QUERY_NAMES = [
   'moveBuffer',
 ] as const;
 
-const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SLUG = /^[a-z0-9-]+$/;
 const AREA = /^[a-z_]+$/;
 /**
@@ -205,7 +205,7 @@ const WITHIN = /^[A-Z]{2}(?:-[A-Za-z]{1,10}){1,2}$/;
 
 /** A real `YYYY-MM-DD` day, not `2026-02-31`. */
 export function isPlanDate(value: string | null | undefined): value is string {
-  if (!value || !DATE.test(value)) return false;
+  if (!value || !isIsoDate(value)) return false;
   const d = new Date(`${value}T12:00:00Z`);
   return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === value;
 }

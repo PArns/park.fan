@@ -2,7 +2,6 @@
 
 import { useId, useMemo, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { addDays, format, parseISO } from 'date-fns';
 import { ChevronRight, Crown, Loader2, Sparkles, Users } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
@@ -45,7 +44,7 @@ import { isInSeason } from '@/lib/utils/season';
 import { forecastCrowdLevel } from '@/lib/utils/calendar-utils';
 import { coveredOfferReady, rankCoveredRides } from '@/lib/utils/covered-rides';
 import { isParkDayOver } from '@/lib/utils/park-day-over';
-import { parkDayOf } from '@/lib/utils/park-day';
+import { addDays, parkDayOf } from '@/lib/utils/park-day';
 import { eventSeasonsOn, type SeasonsNearToday } from '@/lib/parks/park-season-days';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
@@ -416,7 +415,7 @@ export function ParkTodayPanel({
   const handleDetailNavigate = (direction: -1 | 1) => {
     setDetailDate((prev) => {
       const base = prev ?? todayStr;
-      return base ? format(addDays(parseISO(base), direction), 'yyyy-MM-dd') : prev;
+      return base ? addDays(base, direction) : prev;
     });
   };
 

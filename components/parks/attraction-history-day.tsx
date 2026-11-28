@@ -2,8 +2,7 @@
 
 import { memo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { format, parseISO } from 'date-fns';
-import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
+import { formatIsoDay } from '@/lib/utils/intl-format';
 import type {
   AttractionHistoryDay as AttractionHistoryDayData,
   ScheduleItem,
@@ -98,12 +97,9 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
   const tLegend = useTranslations('attractions.historyLegend');
   const locale = useLocale();
 
-  const dateLocale = dateFnsLocale(locale);
-
-  const dayDate = parseISO(day.dateStr);
-  const dayOfWeek = format(dayDate, 'EEE', { locale: dateLocale });
-  const dayOfMonth = format(dayDate, 'd', { locale: dateLocale });
-  const month = format(dayDate, 'MMM', { locale: dateLocale });
+  const dayOfWeek = formatIsoDay(day.dateStr, locale, { weekday: 'short' });
+  const dayOfMonth = formatIsoDay(day.dateStr, locale, { day: 'numeric' });
+  const month = formatIsoDay(day.dateStr, locale, { month: 'short' });
 
   const { historyData } = day;
   const isOpen = day.attractionStatus === 'OPEN';

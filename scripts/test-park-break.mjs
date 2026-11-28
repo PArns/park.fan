@@ -15,13 +15,7 @@ import {
   parkBreakUntil,
 } from '../lib/utils/park-break.ts';
 import { OFFSEASON_MIN_DAYS } from '../lib/utils/schedule-utils.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 /** A northern park shut on `today`, with its next opening at 10:00 park time on `reopensOn`. */
 function park(reopensOn, today = '2026-11-13', overrides = {}) {
@@ -204,4 +198,4 @@ test('the countdown rounds up to whole weeks, as the panel and the cards say it'
   assert.equal(formatBreakCountdown('en', 7), 'in 1 week');
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

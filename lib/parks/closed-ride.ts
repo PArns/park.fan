@@ -9,6 +9,7 @@ import { stripNewPrefix } from '@/lib/utils';
 import type { AttractionResponse, ClosedAttraction, ParkBase } from '@/lib/api/types';
 import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
 import type { Locale } from '@/i18n/config';
+import { parkPagePath } from '@/lib/parks/paths';
 
 /** The detail answer for a slug the park payload missed; one fetch for both questions asked of it. */
 const getMissedRide = cache(getAttractionByGeoPath);
@@ -20,7 +21,7 @@ function ridePath(
   parkSlug: string,
   attractionSlug: string
 ): string {
-  return `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`;
+  return `${parkPagePath({ continent, country, city, parkSlug })}/${attractionSlug}`;
 }
 
 /**

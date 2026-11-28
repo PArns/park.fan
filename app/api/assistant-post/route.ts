@@ -5,6 +5,7 @@ import { getPostByLocaleSlug } from '@/lib/blog';
 import { postPath } from '@/lib/blog/paths';
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 import { postPlainText, postSections, postTextForQuery } from '@/lib/assistant/post-text';
+import { isStrictSlug } from '@/lib/utils/servable-route';
 
 /**
  * One post's text for Parky, the chat assistant on api.park.fan: plain text without Markdown,
@@ -13,7 +14,6 @@ import { postPlainText, postSections, postTextForQuery } from '@/lib/assistant/p
  * the second half of a long guide can reach the model too.
  */
 
-const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const QUERY_MAX = 200;
 
 /**
@@ -27,7 +27,7 @@ export function GET(request: NextRequest) {
   const query = (params.get('q') ?? '').trim();
   if (
     !routing.locales.includes(locale as Locale) ||
-    !SLUG.test(slug) ||
+    !isStrictSlug(slug) ||
     slug.length > 160 ||
     query.length > QUERY_MAX
   ) {

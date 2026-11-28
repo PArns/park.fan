@@ -12,13 +12,7 @@ import {
   sortWorksPeriods,
   worksPeriodsError,
 } from '../app/admin/_lib/works-periods.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const p = (from, to, toUncertain = false) => ({ from, to, toUncertain });
 
@@ -99,4 +93,4 @@ test('legacy fields hide by flag, or by key next to a periods field in the same 
   assert.equal(isHiddenCuratedField(field('x', { hidden: true }), []), true);
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

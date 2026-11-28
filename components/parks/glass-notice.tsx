@@ -15,6 +15,27 @@ interface GlassNoticeProps {
 }
 
 /**
+ * The two layers under a notice or a weather banner: a frosted one, then one sheer tint. The tints
+ * alone are far too sheer over a park's hero photo. The blur lives on a layer and not on the
+ * `<section>` around it, which would otherwise become a backdrop-filter stacking context and hide
+ * the tooltips of whatever sits inside. The parent is `relative` and `rounded-xl`.
+ */
+export function FrostedSurface({ tintClassName }: { tintClassName?: string }) {
+  return (
+    <>
+      <div
+        className="bg-background/85 pointer-events-none absolute inset-0 rounded-xl backdrop-blur-md"
+        aria-hidden="true"
+      />
+      <div
+        className={cn('pointer-events-none absolute inset-0 rounded-xl', tintClassName)}
+        aria-hidden="true"
+      />
+    </>
+  );
+}
+
+/**
  * The surface every "here is why this page looks like this" notice sits on.
  *
  * Built on the weather banners' surface (frosted layer plus tint) rather than a flat tinted box,
@@ -39,16 +60,7 @@ export function GlassNotice({
       role="note"
       data-nosnippet
     >
-      {/* Frosted surface, same as the weather banners: the tints alone are far too sheer
-          over the park's hero photo. */}
-      <div
-        className="bg-background/85 pointer-events-none absolute inset-0 rounded-xl backdrop-blur-md"
-        aria-hidden="true"
-      />
-      <div
-        className={cn('pointer-events-none absolute inset-0 rounded-xl', tintClassName)}
-        aria-hidden="true"
-      />
+      <FrostedSurface tintClassName={tintClassName} />
       <div className="relative flex items-start gap-3">
         <Icon className={cn('mt-0.5 h-5 w-5 shrink-0', iconClassName)} aria-hidden="true" />
         <div className="min-w-0 flex-1">

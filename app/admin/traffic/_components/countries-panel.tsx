@@ -3,7 +3,8 @@
 import { BREAKDOWN_PANELS } from '@/lib/admin/site-analytics';
 import type { BreakdownResponse } from '@/lib/api/admin-site-analytics';
 import { BarList } from '../../_ui/charts';
-import { ErrorState, Panel, PanelBody, PanelHeader, SkeletonRows } from '../../_ui/primitives';
+import { Panel, PanelBody, PanelHeader } from '../../_ui/primitives';
+import { RankedPanelState } from './report-pending';
 import {
   useTrafficData,
   type TrafficFilterActions,
@@ -34,29 +35,23 @@ export function CountriesPanel({ filters }: { filters: TrafficFilters & TrafficF
         hint={hint}
         action={<TrafficCsvButton report={title} data={data} filters={filters} />}
       />
-      {!data && error ? (
-        <ErrorState message={`${title}: ${error.message}`} onRetry={() => void refetch()} />
-      ) : !data ? (
-        <SkeletonRows rows={5} />
-      ) : data.items.length === 0 ? (
-        <PanelBody>
-          <p className="text-muted-foreground py-6 text-center text-sm">Noch keine Daten</p>
-        </PanelBody>
-      ) : (
-        <PanelBody className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center [&>*]:min-w-0">
-          <BarList
-            rows={data.items.map((item) => breakdownRow('country', item, filters))}
-            limit={10}
-            unit={MEASURE_UNIT[data.measure]}
-          />
-          <WorldMap
-            items={data.items}
-            active={held}
-            onSelect={(code) => filters.toggleFilter('country', code)}
-          />
-          <HourlyNotice data={data} className="mt-0 lg:col-span-2" />
-        </PanelBody>
-      )}
+      <RankedPanelState title={title} data={data} error={error} onRetry={() => void refetch()}>
+        {(data) => (
+          <PanelBody className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center [&>*]:min-w-0">
+            <BarList
+              rows={data.items.map((item) => breakdownRow('country', item, filters))}
+              limit={10}
+              unit={MEASURE_UNIT[data.measure]}
+            />
+            <WorldMap
+              items={data.items}
+              active={held}
+              onSelect={(code) => filters.toggleFilter('country', code)}
+            />
+            <HourlyNotice data={data} className="mt-0 lg:col-span-2" />
+          </PanelBody>
+        )}
+      </RankedPanelState>
     </Panel>
   );
 }

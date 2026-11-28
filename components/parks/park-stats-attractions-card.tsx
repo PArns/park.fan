@@ -6,6 +6,7 @@ import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import type { TopAttractionStat } from '@/lib/api/types';
+import { parkPagePath } from '@/lib/parks/paths';
 
 interface ParkStatsAttractionsCardProps {
   attractions: TopAttractionStat[];
@@ -156,7 +157,7 @@ export function ParkStatsAttractionsCard({
                     a park has lands. */}
                 <td className={cn('max-w-0 pr-3', hasMeta ? 'py-0' : 'py-1.5')}>
                   <Link
-                    href={`/parks/${continent}/${country}/${city}/${parkSlug}/${a.attractionSlug}`}
+                    href={`${parkPagePath({ continent, country, city, parkSlug })}/${a.attractionSlug}`}
                     prefetch={false}
                     className={cn(
                       'hover:text-primary block truncate font-medium transition-colors',

@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { getNumberFormat } from '@/lib/utils/intl-format';
 
 interface MetricBarProps {
   label: string;
@@ -46,7 +47,7 @@ export function MetricBar({
         <span
           className={cn('font-mono font-medium tabular-nums', getTextColor(percentage, thresholds))}
         >
-          {value.toLocaleString('de-DE', { maximumFractionDigits: 1 })}
+          {getNumberFormat('de-DE', { maximumFractionDigits: 1 }).format(value)}
           {unit && <span className="text-muted-foreground ml-0.5">{unit}</span>}
           <span className="text-muted-foreground ml-1">({displayPct}%)</span>
         </span>

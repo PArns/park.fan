@@ -20,6 +20,7 @@ import {
 import { rememberTileRow } from '@/lib/hooks/use-tile-row-anchor';
 import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import { cn } from '@/lib/utils';
+import { parkPagePath } from '@/lib/parks/paths';
 
 /**
  * The same entry-tile row on a park sub-page, where every cell is a link: chapter cells link to the
@@ -50,7 +51,7 @@ export function ParkNavTiles({
     initialData: source.park,
   });
   const { items, tileCount } = useParkTileItems({ ...source, park: livePark ?? source.park });
-  const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
+  const parkPath = parkPagePath({ continent, country, city, parkSlug });
 
   return (
     <ParkTileGrid tileCount={tileCount} parkSlug={parkSlug}>

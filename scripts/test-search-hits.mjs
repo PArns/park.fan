@@ -14,13 +14,7 @@
 import assert from 'node:assert/strict';
 import { rankByMatch, searchMatchScore } from '../lib/utils/search-ranking.ts';
 import { mergeSearchHits, withFuzzyMatches } from '../app/admin/_lib/search-hits.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 test('whole name, then prefix, then inside, then typo', () => {
   assert.equal(searchMatchScore('Taron', 'taron'), 100);
@@ -81,4 +75,4 @@ test('a loaded list gains the fuzzy hits it holds, in fuzzy order, once', () => 
   );
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

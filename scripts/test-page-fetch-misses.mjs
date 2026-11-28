@@ -15,30 +15,8 @@
 import { catchNonFatal, nullOnNotFound } from '../lib/api/client.ts';
 import { getCitiesWithParks } from '../lib/api/discovery.ts';
 import { getParkByGeoPath } from '../lib/api/parks.ts';
-
-const json = (body, status = 200) =>
-  new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
-
-/** Swap global fetch for the duration of one case. */
-async function withFetch(impl, run) {
-  const original = globalThis.fetch;
-  globalThis.fetch = impl;
-  try {
-    return await run();
-  } finally {
-    globalThis.fetch = original;
-  }
-}
-
-/** Runs `fn`, returning 'threw' instead of propagating — the outcome IS the assertion. */
-const outcome = async (fn) => {
-  try {
-    const value = await fn();
-    return value === null ? 'null' : 'data';
-  } catch {
-    return 'threw';
-  }
-};
+import { runCases } from './lib/run-cases.mjs';
+import { json, outcome, withFetch } from './lib/fake-fetch.mjs';
 
 const notFound = async () => json({ message: 'Not found' }, 404);
 const serverError = async () => json({ error: 'boom' }, 500);
@@ -138,29 +116,4 @@ const testCases = [
   },
 ];
 
-let passed = 0;
-let failed = 0;
-
-for (const testCase of testCases) {
-  const result = await testCase.run();
-  if (result === testCase.expected) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${testCase.expected}`);
-    console.log(`   Got:      ${result}`);
-    failed++;
-  }
-}
-
-console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+await runCases(testCases);

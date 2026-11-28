@@ -2,6 +2,7 @@ import GithubSlugger from 'github-slugger';
 import { isNewsCategory } from './paths';
 import { newestPublishedFirst } from './published-at';
 import { parseWidgetAttrs, parseWidgetParkRef, parseWidgetRideRef } from './widget-park';
+import { isIsoDate } from '@/lib/utils/iso-date';
 
 /**
  * The news and guides export for the native app (`scripts/publish-media-r2.mjs`,
@@ -235,7 +236,7 @@ function calloutBlock(lines: string[], ctx: BlockContext): NewsBlock | null {
     return paragraphs.length
       ? { type: 'quote', text: paragraphs.join('\n\n'), source: null }
       : null;
-  const date = kind === 'update' && /^\d{4}-\d{2}-\d{2}$/.test(rest) ? rest : null;
+  const date = kind === 'update' && isIsoDate(rest) ? rest : null;
   // `[!PARKY] Lohnt sich` carries Parky's verdict on the marker line, followed by the tip.
   const label = kind === 'parky' && rest && paragraphs.length ? rest : null;
   if (rest && !date && !label) paragraphs.unshift(inlineText(rest, ctx));

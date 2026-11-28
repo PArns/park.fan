@@ -114,6 +114,20 @@ export function formatTime(
   return getDateTimeFormat(locale, options).format(value);
 }
 
+/**
+ * A plain `YYYY-MM-DD` as a calendar date in `locale`. Anchored at noon UTC and read in UTC, so
+ * the server and a browser in any zone print the same day.
+ */
+export function formatIsoDay(
+  isoDate: string,
+  locale: string,
+  options: Intl.DateTimeFormatOptions
+): string {
+  return getDateTimeFormat(locale, { ...options, timeZone: 'UTC' }).format(
+    new Date(`${isoDate.slice(0, 10)}T12:00:00Z`)
+  );
+}
+
 /** Day indices (0 = Sunday, as `weekdayName` counts) in the Monday-first order every week on the site is drawn in. */
 export const WEEKDAYS_MONDAY_FIRST: readonly number[] = [1, 2, 3, 4, 5, 6, 0];
 

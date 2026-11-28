@@ -1,10 +1,10 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import { suggestPark, suggestRides, type GeoAttraction } from '@/lib/media/suggest';
-import type { GeoPark } from '@/lib/media/geo';
+import { loadParkGeoCatalog, PARK_GEO_REVALIDATE_SECONDS } from '@/lib/media/park-geo';
 import type { MediaGps } from '@/lib/media/types';
 import { LOW_RES_LONG_EDGE } from '../route';
 
@@ -42,50 +42,20 @@ function toDecimalDegrees(dms: unknown, ref: unknown): number | null {
   return ref === 'S' || ref === 'W' ? -value : value;
 }
 
-/** Park + attraction coordinates, cached in the Data Cache for an hour. */
-async function loadCatalog(): Promise<{ parks: GeoPark[] }> {
-  try {
-    const response = await fetch('https://api.park.fan/v1/parks?limit=1000', {
-      headers: getServerApiHeaders(),
-      signal: AbortSignal.timeout(15_000),
-      next: { revalidate: 3600 },
-    });
-    if (!response.ok) return { parks: [] };
-    const data = (await response.json()).data ?? [];
-    return {
-      parks: data
-        .filter((p: { latitude?: string; longitude?: string }) => p.latitude && p.longitude)
-        .map(
-          (p: {
-            slug: string;
-            name: string;
-            latitude: string;
-            longitude: string;
-            url?: string;
-          }) => ({
-            slug: p.slug,
-            name: p.name,
-            latitude: Number(p.latitude),
-            longitude: Number(p.longitude),
-            url: p.url,
-          })
-        ),
-    };
-  } catch {
-    return { parks: [] };
-  }
-}
+/** One batch's rides per park: a batch is mostly one park, and the map dies with the request. */
+type AttractionCache = Map<string, GeoAttraction[]>;
 
-const attractionCache = new Map<string, GeoAttraction[]>();
-
-async function loadAttractions(parkUrl: string): Promise<GeoAttraction[]> {
+async function loadAttractions(
+  parkUrl: string,
+  attractionCache: AttractionCache
+): Promise<GeoAttraction[]> {
   const cached = attractionCache.get(parkUrl);
   if (cached) return cached;
   try {
-    const response = await fetch(`https://api.park.fan${parkUrl}`, {
+    const response = await fetch(`${getApiBaseUrl()}${parkUrl}`, {
       headers: getServerApiHeaders(),
       signal: AbortSignal.timeout(15_000),
-      next: { revalidate: 3600 },
+      next: { revalidate: PARK_GEO_REVALIDATE_SECONDS },
     });
     if (!response.ok) return [];
     const body = await response.json();
@@ -125,7 +95,8 @@ export async function POST(req: Request) {
   }
 
   const { sharp, exifReader } = await loadTools();
-  const { parks } = await loadCatalog();
+  const parks = await loadParkGeoCatalog();
+  const attractionCache: AttractionCache = new Map();
 
   const results = await Promise.all(
     files.map(async (file) => {
@@ -165,9 +136,9 @@ export async function POST(req: Request) {
       const park = gps ? suggestPark(gps, parks) : null;
       let rides: ReturnType<typeof suggestRides> = [];
       if (gps && park) {
-        const parkRecord = parks.find((p) => p.slug === park.slug) as
-          (GeoPark & { url?: string }) | undefined;
-        if (parkRecord?.url) rides = suggestRides(gps, await loadAttractions(parkRecord.url));
+        const parkRecord = parks.find((p) => p.slug === park.slug);
+        if (parkRecord?.url)
+          rides = suggestRides(gps, await loadAttractions(parkRecord.url, attractionCache));
       }
 
       return {

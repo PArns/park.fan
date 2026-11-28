@@ -359,12 +359,7 @@ export function RideProfileEditor({
               >
                 Abbrechen
               </Button>
-              <Button
-                size="sm"
-                onClick={remove}
-                disabled={saving}
-                className="bg-destructive hover:bg-destructive/90 text-white"
-              >
+              <Button size="sm" onClick={remove} disabled={saving} variant="destructive">
                 {saving && <Loader2 className="h-4 w-4 animate-spin" />}
                 Endgültig löschen
               </Button>

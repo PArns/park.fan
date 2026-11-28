@@ -48,6 +48,7 @@ import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import { PlanSelect } from '../planner/plan-controls';
 import { TripDayPrices } from '../trip-day-prices';
 import { DayWeather } from '@/components/common/day-weather';
+import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 
 /** How many big rides a park lists for its day. */
 const BIG_RIDES = 5;
@@ -417,17 +418,14 @@ function BigRides({ park, date }: { park: TripRegionPark; date: string }) {
   const t = useTranslations('tripHub.sheet');
   const [open, setOpen] = useState(false);
   const geo = parkGeo(park);
-  const { data, isError, isPending } = useQuery<IntegratedCalendarResponse>({
-    queryKey: ['calendar', geo?.continent, geo?.country, geo?.city, park.slug, date, date],
-    queryFn: async () => {
-      const response = await fetch(
-        `/api/parks/${geo!.continent}/${geo!.country}/${geo!.city}/${park.slug}/calendar?from=${date}&to=${date}`
-      );
-      if (!response.ok) throw new Error(`Park calendar ${response.status}`);
-      return response.json();
-    },
+  const { data, isError, isPending } = useCalendarData({
+    continent: geo?.continent ?? '',
+    country: geo?.country ?? '',
+    city: geo?.city ?? '',
+    parkSlug: park.slug,
+    from: date,
+    to: date,
     enabled: open && geo !== null,
-    staleTime: 60 * 60 * 1000,
   });
   if (!geo) return null;
   const rides = data?.days?.[0]?.headlinerForecast?.rides?.slice(0, BIG_RIDES) ?? [];

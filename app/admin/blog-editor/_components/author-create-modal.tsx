@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Image as ImageIcon, UserPlus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { slugify } from '../_lib/types';
-import { Field } from './form-fields';
+import { Field, MODAL_INPUT_CLASS, ModalFooter } from './form-fields';
 import { ImagePicker } from './image-picker';
 import { isBlogKey } from '@/lib/admin/blog-paths';
 
@@ -172,7 +172,7 @@ function AuthorForm({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Patrick Arns"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
+                className={MODAL_INPUT_CLASS}
               />
             </Field>
             <Field
@@ -194,7 +194,10 @@ function AuthorForm({
                   setKey(e.target.value);
                 }}
                 placeholder="patrick"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs transition-colors outline-none disabled:cursor-not-allowed disabled:opacity-60"
+                className={cn(
+                  MODAL_INPUT_CLASS,
+                  'font-mono text-xs disabled:cursor-not-allowed disabled:opacity-60'
+                )}
               />
             </Field>
           </div>
@@ -206,7 +209,7 @@ function AuthorForm({
               value={shortName}
               onChange={(e) => setShortName(e.target.value)}
               placeholder="Patrick"
-              className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
+              className={MODAL_INPUT_CLASS}
             />
           </Field>
           <div className="grid grid-cols-2 gap-3">
@@ -215,7 +218,7 @@ function AuthorForm({
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 placeholder="Founder of park.fan"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
+                className={MODAL_INPUT_CLASS}
               />
             </Field>
             <Field label="Location (optional)">
@@ -223,7 +226,7 @@ function AuthorForm({
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 placeholder="Germany"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
+                className={MODAL_INPUT_CLASS}
               />
             </Field>
           </div>
@@ -233,7 +236,7 @@ function AuthorForm({
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="https://example.com"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
+                className={MODAL_INPUT_CLASS}
               />
             </Field>
             <Field label="Avatar (optional)">
@@ -242,7 +245,7 @@ function AuthorForm({
                   value={avatar}
                   onChange={(e) => setAvatar(e.target.value)}
                   placeholder="/media/authors/patrick.jpg"
-                  className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground min-w-0 flex-1 rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
+                  className={cn(MODAL_INPUT_CLASS, 'min-w-0 flex-1')}
                 />
                 <button
                   type="button"
@@ -262,37 +265,17 @@ function AuthorForm({
               onChange={(e) => setBio(e.target.value)}
               placeholder="One or two sentences for the author block on posts."
               rows={3}
-              className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
+              className={MODAL_INPUT_CLASS}
             />
           </Field>
         </div>
 
-        <div className="border-border/60 bg-muted/20 flex items-center gap-2 border-t px-4 py-3">
-          <span className="text-muted-foreground/70 mr-auto hidden text-[10px] sm:block">
-            <kbd className="bg-muted rounded px-1 py-0.5 font-mono">Esc</kbd> cancel ·{' '}
-            <kbd className="bg-muted rounded px-1 py-0.5 font-mono">⌘⏎</kbd> save
-          </span>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-muted-foreground hover:text-foreground rounded-md px-3 py-1.5 text-xs font-semibold"
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            disabled={!valid}
-            onClick={submit}
-            className={cn(
-              'rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors',
-              valid
-                ? 'bg-primary text-primary-foreground hover:bg-primary/90'
-                : 'bg-muted text-muted-foreground cursor-not-allowed'
-            )}
-          >
-            {isEdit ? 'Save changes' : 'Create author'}
-          </button>
-        </div>
+        <ModalFooter
+          valid={valid}
+          onClose={onClose}
+          onSubmit={submit}
+          label={isEdit ? 'Save changes' : 'Create author'}
+        />
       </div>
       <ImagePicker
         open={avatarPickerOpen}

@@ -17,6 +17,7 @@ import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 import type { ParkyEntrance } from '@/lib/assistant/entrance';
 import type { ParkyElement } from '@/lib/analytics/parky-elements';
 import type { SearchTab } from '@/components/search/search-result-groups';
+import { isUuid } from '@/lib/utils';
 
 /**
  * Our own cookieless statistic on api.park.fan (`POST /v1/analytics/collect`): page views and
@@ -837,7 +838,6 @@ const FLUSH_DELAY_MS = 1000;
  * visit's first pageview has opened it, so an event that left first would count without a channel.
  */
 const FIRST_PAGEVIEW_WAIT_MS = 3000;
-const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const REFERRER_PATTERN = /^[a-z0-9][a-z0-9.-]{0,99}$/;
 /**
  * The `utm_source` values sent as `source` when no referrer came: the hosts of the AI assistants the
@@ -1314,7 +1314,7 @@ export function trackSiteEvent<Name extends string>(
       ...base,
       name,
       ...(clean && { props: clean }),
-      ...(id && UUID_PATTERN.test(id) && { entity: id }),
+      ...(id && isUuid(id) && { entity: id }),
     });
   } catch {
     // A statistic never breaks the page.

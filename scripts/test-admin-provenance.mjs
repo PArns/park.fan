@@ -2,6 +2,7 @@
 // The failures worth guarding against are an empty string sent as a value, a scheme the backend's
 // @IsUrl rejects (or `javascript:`) getting through, and a reason over the 2,000-character limit.
 import { provenanceBody } from '../lib/admin/provenance.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const URL_OK = 'https://www.rcdb.com/16847.htm';
 
@@ -58,21 +59,4 @@ const testCases = [
   },
 ];
 
-let passed = 0;
-let failed = 0;
-
-testCases.forEach((testCase) => {
-  const result = testCase.actual();
-  if (JSON.stringify(result) === JSON.stringify(testCase.expected)) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
-    failed++;
-  }
-});
-
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(testCases, { json: true });

@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import type { WeatherNowcast } from '@/lib/api/types';
 import { readParkSimulationParam } from '@/lib/parks/park-simulation';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 interface UseWeatherNowcastParams {
   continent: string;
@@ -35,7 +36,7 @@ export function useWeatherNowcast({
     queryKey: ['weather-nowcast', continent, country, city, parkSlug, simState],
     queryFn: async () => {
       const url = new URL(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/weather/nowcast`,
+        parkRelayUrl({ continent, country, city, parkSlug }, '/weather/nowcast'),
         window.location.origin
       );
       if (simState) url.searchParams.set('state', simState);

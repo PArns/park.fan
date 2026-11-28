@@ -92,6 +92,7 @@ import {
 import { KeyRequestsPanel } from './_components/key-requests-panel';
 import { useKeyRequests } from '../_lib/use-key-requests';
 import { useToast } from '../_ui/toast';
+import { formatCount } from '@/lib/admin/format-number';
 
 const USAGE_OPTIONS = (Object.keys(DATA_API_KEY_USAGE_LABELS) as DataApiKeyUsage[]).map(
   (usage) => ({ value: usage, label: DATA_API_KEY_USAGE_LABELS[usage] })
@@ -174,7 +175,7 @@ function KeyOverview({ items }: { items: DataApiKey[] }) {
     .map((key) => ({ key: key.id, label: key.name, value: sum(key, 'requests') }))
     .filter((row) => row.value > 0)
     .sort((a, b) => b.value - a.value);
-  const count = (value: number) => value.toLocaleString('de-DE');
+  const count = formatCount;
   const origin = [
     fromRequests > 0 && `${count(fromRequests)} aus Anträgen`,
     waiting > 0 && `${count(waiting)} nicht abgeholt`,

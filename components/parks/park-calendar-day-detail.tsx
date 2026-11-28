@@ -3,7 +3,6 @@
 import { createElement, useState, type ReactNode } from 'react';
 import { roundWaitTo5, waitBandTop } from '@/lib/utils/wait-time';
 import { useLocale, useTranslations } from 'next-intl';
-import { addDays, format, parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import {
@@ -46,7 +45,7 @@ import { ClimateNormalDetail } from '@/components/common/day-weather';
 import { isClimateNormal } from '@/lib/utils/day-weather';
 import { getRegionLabel, getCountryName, countryFlagEmoji } from '@/lib/utils/region-names';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
-import { parkDayOf } from '@/lib/utils/park-day';
+import { addDays, parkDayOf } from '@/lib/utils/park-day';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { upcomingHourlyPredictions } from '@/lib/utils/calendar-utils';
 import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
@@ -145,7 +144,7 @@ export function ParkCalendarDayDetail({
   // Only while the dialog is open: this component stays mounted behind every calendar page, and a
   // clock subscription would re-render it every minute for a chart almost nobody opens.
   const browserNow = useMinuteNowDate(open);
-  const tomorrowInPark = format(addDays(parseISO(todayInPark), 1), 'yyyy-MM-dd');
+  const tomorrowInPark = addDays(todayInPark, 1);
   const canHaveHourly =
     !!day && (day.isToday || day.date === todayInPark || day.date === tomorrowInPark);
   const hourlyQuery = useCalendarDayHourly({

@@ -83,13 +83,7 @@ import {
   plotValue,
   sortPoints,
 } from '../lib/admin/traffic-series.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const search = {
   from: '2026-10-26',
@@ -966,4 +960,4 @@ test('an event property reads its values, and 0 or nothing where it was not sent
   assert.equal(propCount(detail, 'block', 'footer'), 0);
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

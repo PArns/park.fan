@@ -2,6 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import type { PlannerGeo } from '@/lib/planner/types';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 export interface RidePosition {
   slug: string;
@@ -28,7 +29,7 @@ export function useRidePositions(geo: PlannerGeo | null, parkSlug: string | null
     queryKey: ['ride-positions', geo?.continent, geo?.country, geo?.city, parkSlug],
     queryFn: async (): Promise<RidePositions> => {
       const response = await fetch(
-        `/api/parks/${geo!.continent}/${geo!.country}/${geo!.city}/${parkSlug}/positions`
+        parkRelayUrl({ ...geo!, parkSlug: parkSlug! }, '/positions')
       );
       if (!response.ok) throw new Error(`positions ${response.status}`);
       const { positions, declination } = (await response.json()) as {

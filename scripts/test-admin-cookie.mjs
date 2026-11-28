@@ -7,6 +7,7 @@
 // percent-encoding (decodeURIComponent throws), and the ordinary case of the
 // session sitting behind three other cookies.
 import { readCookie } from '../lib/admin/cookie.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const NAME = 'parkfan_admin_session';
 const TOKEN = 'aZ09-_abcdefghijklmnopqrstuvwxyz0123456789xy';
@@ -84,29 +85,4 @@ const testCases = [
   },
 ];
 
-let passed = 0;
-let failed = 0;
-
-testCases.forEach((testCase) => {
-  const result = testCase.actual();
-  if (result === testCase.expected) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
-    failed++;
-  }
-});
-
-console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+await runCases(testCases);

@@ -43,13 +43,7 @@ import {
   fixtureDay,
 } from '../lib/admin/model-comparison-fixture.ts';
 import { matchesQuery } from '../lib/utils/text-fold.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 test('a model a cell names but the report does not list still gets a column', () => {
   const report = {
@@ -476,4 +470,4 @@ test('live progress takes the scarcer of days and parks, full once live confirme
   assert.equal(progressLabel(5, 14, live), '5 von 14');
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

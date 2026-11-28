@@ -14,13 +14,7 @@ import {
   servedKindsFromList,
   shownAttractionKind,
 } from '../lib/admin/attraction-kind.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 test('every kind the API lists has a German name, GAME included', () => {
   for (const kind of ['RIDE', 'TRANSPORT', 'SHOW', 'WALKTHROUGH', 'MAZE', 'GAME']) {
@@ -110,4 +104,4 @@ test('rows not loaded yet, or an empty list, give an empty map', () => {
   assert.deepEqual(servedKindsFromList([]), {});
 });
 
-console.log(`admin-attraction-kind: ${passed} tests passed`);
+reportPassed();

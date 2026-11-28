@@ -1,7 +1,7 @@
 'use client';
 
 import { ParkCard } from '@/components/parks/park-card';
-import { useLiveParksByRegion } from '@/lib/hooks/use-live-parks-by-region';
+import { useLiveParksByRegion, liveCardProps } from '@/lib/hooks/use-live-parks-by-region';
 import { useViewerPosition } from '@/lib/hooks/use-distance-to';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { calculateDistance } from '@/lib/utils/distance-utils';
@@ -77,18 +77,7 @@ export function LiveParkGrid({ regions, parks, className }: LiveParkGridProps) {
             objectPosition={park.backgroundPosition}
             distance={distance}
             variant="detailed"
-            // Live overlay — undefined until the client batch call resolves, so the prerendered
-            // shell shows the card without a status badge (the footer renders its own skeleton).
-            status={live?.status}
-            crowdLevel={live?.crowdLevel}
-            averageWaitTime={live?.averageWaitTime}
-            headlineUpdatedAt={live?.updatedAt}
-            operatingAttractions={live?.operatingAttractions}
-            totalAttractions={live?.totalAttractions}
-            timezone={live?.timezone}
-            hasOperatingSchedule={live?.hasOperatingSchedule}
-            todaySchedule={live?.todaySchedule}
-            nextSchedule={live?.nextSchedule}
+            {...liveCardProps(live)}
           />
         );
       })}

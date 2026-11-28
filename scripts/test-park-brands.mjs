@@ -13,13 +13,7 @@ import {
   SIX_FLAGS,
   UNIVERSAL,
 } from '../lib/parks/park-brands.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const park = (slug, name) => ({ id: slug, slug, name, country: '', attractionCount: 1 });
 const city = (slug, parks) => ({
@@ -123,4 +117,4 @@ test('a country without a brand park is left out', () => {
   );
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

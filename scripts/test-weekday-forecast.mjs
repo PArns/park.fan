@@ -8,13 +8,7 @@
  */
 import assert from 'node:assert/strict';
 import { upcomingWeekdayForecast } from '../lib/parks/weekday-forecast.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const day = (date, overrides = {}) => ({
   date,
@@ -86,4 +80,4 @@ test('a day without a ratable level says so instead of borrowing one', () => {
   assert.deepEqual(unknown.day, { level: 'unknown' });
 });
 
-console.log(`\n${passed} tests passed`);
+reportPassed();

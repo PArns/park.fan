@@ -10,6 +10,7 @@
 // The projection carries the block on request (`?full=1`) and the merge has to treat an absent
 // block as "unchanged" rather than "empty" — most polls do not carry it.
 import { leanParkForLivePoll, mergeLiveParkSnapshot } from '../lib/api/park-live-projection.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 /** The server render: written before the park opened. */
 const SEED = {
@@ -195,29 +196,4 @@ const testCases = [
 console.log('🧪 Testing the park poll’s day-scoped block (shows + restaurants)\n');
 console.log('='.repeat(80) + '\n');
 
-let passed = 0;
-let failed = 0;
-
-testCases.forEach((testCase) => {
-  const result = testCase.actual();
-  if (result === testCase.expected) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
-    failed++;
-  }
-});
-
-console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+await runCases(testCases);

@@ -5,6 +5,7 @@ import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { parkGeo } from '@/lib/trip-regions/hub-data';
 import { inPurchaseWindow, type PurchaseDay } from '@/lib/parks/purchases';
 import type { TripRegionPark } from '@/lib/trip-regions/types';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 /**
  * A park's Lightning Lane prices on one day of a trip sheet, the hub's and the planner's, as the park
@@ -39,7 +40,7 @@ export function TripDayPrices({
     queryKey: ['park-purchases', geo?.continent, geo?.country, geo?.city, park.slug],
     queryFn: async () => {
       const response = await fetch(
-        `/api/parks/${geo!.continent}/${geo!.country}/${geo!.city}/${park.slug}/purchases`
+        parkRelayUrl({ ...geo!, parkSlug: park.slug }, '/purchases')
       );
       if (!response.ok) throw new Error(`Park purchases ${response.status}`);
       return response.json();

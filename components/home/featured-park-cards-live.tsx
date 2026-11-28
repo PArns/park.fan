@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { PARK_CARD_GRID_CLASS, ParkCard } from '@/components/parks/park-card';
-import { useLiveParksByRegion, type LiveParkFields } from '@/lib/hooks/use-live-parks-by-region';
+import { useLiveParksByRegion, type LiveParkFields, liveCardProps } from '@/lib/hooks/use-live-parks-by-region';
 
 /** Static, day-stable card fields resolved on the server (translation + fs background lookup). */
 export interface FeaturedCardStatic {
@@ -31,18 +31,7 @@ function FeaturedLiveCard({ park, live }: { park: FeaturedCardStatic; live?: Liv
       backgroundImage={park.backgroundImage}
       objectPosition={park.backgroundPosition}
       variant="detailed"
-      // Live overlay — undefined until the client batch call resolves, so the prerendered
-      // shell shows the card without a status badge (the footer renders its own skeleton).
-      status={live?.status}
-      crowdLevel={live?.crowdLevel}
-      averageWaitTime={live?.averageWaitTime}
-      headlineUpdatedAt={live?.updatedAt}
-      operatingAttractions={live?.operatingAttractions}
-      totalAttractions={live?.totalAttractions}
-      timezone={live?.timezone}
-      hasOperatingSchedule={live?.hasOperatingSchedule}
-      todaySchedule={live?.todaySchedule}
-      nextSchedule={live?.nextSchedule}
+      {...liveCardProps(live)}
       reserveStatusRow
     />
   );

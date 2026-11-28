@@ -4,6 +4,7 @@ import { mergeLiveParkSnapshot, type LiveParkSnapshot } from '@/lib/api/parks';
 import { readParkSimulationParam } from '@/lib/parks/park-simulation';
 import type { ParkWithAttractions } from '@/lib/api/types';
 import { LIVE_POLL_QUERY_OPTIONS, LIVE_POLL_TIMEOUT_MS } from '@/lib/hooks/live-poll-options';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 interface UseLiveParkDataParams {
   continent: string;
@@ -83,7 +84,7 @@ export function useLiveParkData({
     queryKey,
     queryFn: async () => {
       const url = new URL(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}`,
+        parkRelayUrl({ continent, country, city, parkSlug }),
         window.location.origin
       );
       if (simState) url.searchParams.set('state', simState);

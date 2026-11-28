@@ -33,6 +33,7 @@ import {
 } from '../_ui/primitives';
 import { useToast } from '../_ui/toast';
 import { sitePageUrl } from '../assistant/_lib/assistant';
+import { formatTimestamp } from '../_lib/format';
 
 interface ListResponse {
   submissions: SubmissionRecord[];
@@ -340,7 +341,7 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
               </a>
             )}
             <span className="text-muted-foreground ml-auto text-xs tabular-nums">
-              {new Date(submission.createdAt).toLocaleString('en-GB')}
+              {formatTimestamp(submission.createdAt)}
             </span>
           </div>
 

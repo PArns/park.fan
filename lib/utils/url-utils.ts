@@ -6,6 +6,7 @@
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
 import type { SearchResultItem } from '@/lib/api/types';
+import { parkPagePath } from '@/lib/parks/paths';
 
 /**
  * Convert a backend API URL to a frontend route, or `'#'` when it cannot be converted.
@@ -155,7 +156,12 @@ export interface AttractionGeoData {
  */
 export function buildParkUrl(data: ParkGeoData): string {
   if (data.continent && data.country && data.city && data.slug) {
-    return `/parks/${data.continent}/${data.country}/${data.city}/${data.slug}`;
+    return parkPagePath({
+      continent: data.continent,
+      country: data.country,
+      city: data.city,
+      parkSlug: data.slug,
+    });
   }
 
   if (data.url) {

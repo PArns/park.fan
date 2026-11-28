@@ -1,4 +1,6 @@
 import type { SeriesInterval } from '@/lib/api/admin-site-analytics';
+import { isIsoDate } from '@/lib/utils/iso-date';
+import { addDays } from '@/lib/utils/park-day';
 
 /**
  * The window and the series step of the traffic dashboards: the presets, a custom range, which
@@ -22,7 +24,6 @@ export interface RangeWindow {
 }
 
 const DAY_MS = 86_400_000;
-const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
 /** The UTC day of a moment, `YYYY-MM-DD`. */
 export function utcDay(now: Date = new Date()): string {
@@ -35,13 +36,10 @@ function parseDay(day: string): number {
 
 /** Whether a string is a real calendar day, so `2026-02-30` is not one. */
 export function isUtcDay(value: string): boolean {
-  return DATE_PATTERN.test(value) && utcDay(new Date(parseDay(value))) === value;
+  return isIsoDate(value) && utcDay(new Date(parseDay(value))) === value;
 }
 
-/** A day moved by whole days, in either direction. */
-export function addDays(day: string, days: number): string {
-  return utcDay(new Date(parseDay(day) + days * DAY_MS));
-}
+export { addDays };
 
 /** How many days the window `from` to `to` holds, both ends included. */
 export function daysBetween(from: string, to: string): number {

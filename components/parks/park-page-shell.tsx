@@ -27,6 +27,7 @@ import { ParkInfoCard } from '@/components/parks/park-info-card';
 import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 import { SectionMark } from '@/components/analytics/section-mark';
 import { SectionSeenTracker } from '@/components/analytics/section-seen-tracker';
+import { parkPagePath } from '@/lib/parks/paths';
 
 interface ParkPageShellProps {
   park: ParkWithAttractions;
@@ -157,7 +158,7 @@ export async function ParkPageShell({
   const tGeo = await getTranslations('geo');
   const parkName = stripNewPrefix(park.name);
   const parkBgImage = getParkBackgroundImage(park);
-  const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
+  const parkPath = parkPagePath({ continent, country, city, parkSlug });
 
   /* Built once and placed in one of two slots — a second copy would be a second set of props to
      keep in step, and this one already carries six. */

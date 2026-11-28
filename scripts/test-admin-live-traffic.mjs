@@ -23,13 +23,7 @@ import {
   risenKeys,
 } from '../lib/admin/live-traffic.ts';
 import { countryShadePercent, largestRing } from '../lib/admin/world-map.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ok  ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const minute = (iso, pageviews = 0, events = 0, visitors = 0) => ({
   minute: iso,
@@ -250,4 +244,4 @@ test('referrersEmptyText names direct visits instead of an empty list', () => {
   assert.equal(referrersEmptyText(0), 'Noch kein Besuch in den letzten 30 Minuten');
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

@@ -2,6 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import type { RideFigures } from '@/lib/api/ride-figures';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 interface UseRideFiguresParams {
   continent?: string;
@@ -24,7 +25,10 @@ export function useRideFigures({ continent, country, city, parkSlug }: UseRideFi
     queryKey: ['ride-figures', continent, country, city, parkSlug],
     queryFn: async (): Promise<Record<string, RideFigures>> => {
       const response = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/ride-stats`
+        parkRelayUrl(
+          { continent: continent!, country: country!, city: city!, parkSlug: parkSlug! },
+          '/ride-stats'
+        )
       );
       if (!response.ok) throw new Error(`ride-stats ${response.status}`);
       const { stats } = (await response.json()) as { stats: Record<string, RideFigures> };

@@ -29,13 +29,8 @@ import {
 } from '../lib/utils/compass.ts';
 import { calculateDistance } from '../lib/utils/distance-utils.ts';
 import { resolveCompassDemo, resolveSimLocation } from '../lib/nearby-simulation.ts';
+import { reportPassed, test } from './lib/run-cases.mjs';
 
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
 const near = (actual, expected, tolerance, label) =>
   assert.ok(
     Math.abs(angleDelta(expected, actual)) <= tolerance,
@@ -435,4 +430,4 @@ test('the next show is the first performance still to come, across shows', () =>
   assert.equal(nextShow(undefined, now), null);
 });
 
-console.log(`\n${passed} tests passed.`);
+reportPassed();

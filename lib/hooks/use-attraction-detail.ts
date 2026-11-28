@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import type { AttractionResponse } from '@/lib/api/types';
+import { parkRelayUrl } from '@/lib/parks/paths';
+import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 
 interface UseAttractionDetailParams {
   continent: string;
@@ -41,7 +43,7 @@ export function useAttractionDetail({
     queryKey: ['attraction-detail', continent, country, city, parkSlug, attractionSlug],
     queryFn: async () => {
       const response = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+        parkRelayUrl({ continent, country, city, parkSlug }, `/attractions/${attractionSlug}`),
         { cache: 'no-store' }
       );
 
@@ -58,10 +60,10 @@ export function useAttractionDetail({
     enabled: enabled && !!attractionSlug && typeof window !== 'undefined',
     // Polling consumers use 5 min, the backend's own cache window for an attraction. Others read
     // this for the sparkline and the forecast, not for a live badge.
-    staleTime: poll ? 5 * 60_000 : 10 * 60_000,
+    staleTime: poll ? LIVE_POLL_QUERY_OPTIONS.staleTime : 10 * 60_000,
     gcTime: 15 * 60_000,
     refetchOnWindowFocus: poll,
-    refetchInterval: poll ? 5 * 60_000 : false,
+    refetchInterval: poll ? LIVE_POLL_QUERY_OPTIONS.refetchInterval : false,
     retry: 1,
   });
 }

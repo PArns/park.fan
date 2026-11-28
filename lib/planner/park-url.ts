@@ -1,8 +1,9 @@
 import type { PlannerGeo } from './types';
+import { parkPagePath } from '@/lib/parks/paths';
 
 /** A planned park's own page, locale-free: `/parks/<continent>/<country>/<city>/<park>`. */
 export function plannerParkPath(park: { slug: string; geo: PlannerGeo }): string {
-  return `/parks/${park.geo.continent}/${park.geo.country}/${park.geo.city}/${park.slug}`;
+  return parkPagePath({ ...park.geo, parkSlug: park.slug });
 }
 
 /**

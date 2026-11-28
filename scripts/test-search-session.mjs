@@ -11,13 +11,7 @@
 import assert from 'node:assert/strict';
 import { createSearchSession, trackResultClick } from '../lib/analytics/search-session.ts';
 import { createSearchPresence } from '../lib/analytics/search-presence.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 /** A session on `surface` and the events it sent, as `[name, props]` pairs, the entity third. */
 function recorded(surface) {
@@ -265,4 +259,4 @@ test('a field that leaves the page open leaves no search behind; a remount bring
   assert.equal(presence.getSnapshot(), false);
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

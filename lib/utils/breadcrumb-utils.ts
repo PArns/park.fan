@@ -1,4 +1,5 @@
 import type { Breadcrumb } from '@/lib/api/types';
+import { parkPagePath } from '@/lib/parks/paths';
 
 interface BreadcrumbResult {
   breadcrumbs: Breadcrumb[];
@@ -165,7 +166,7 @@ export function generateAttractionBreadcrumbs({
       { name: continentName, url: `/parks/${continent}` },
       { name: countryName, url: `/parks/${continent}/${country}` },
       ...cityCrumb(continent, country, city, cityName, cityHasPage),
-      { name: parkName, url: `/parks/${continent}/${country}/${city}/${parkSlug}` },
+      { name: parkName, url: parkPagePath({ continent, country, city, parkSlug }) },
     ],
     currentPage: attractionName,
   };

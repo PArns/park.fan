@@ -6,13 +6,7 @@
  */
 import assert from 'node:assert/strict';
 import { activeNavItem, flatNavItems, navParent, visibleGroups } from '../app/admin/_app/nav.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const owner = visibleGroups('owner');
 const hrefs = (groups) => groups.flatMap((group) => flatNavItems(group.items)).map((i) => i.href);
@@ -52,4 +46,4 @@ test('the role filter hides entries at every depth', () => {
   assert.ok(viewer.includes('/admin/traffic/seo'));
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

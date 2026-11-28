@@ -13,13 +13,7 @@
  */
 import assert from 'node:assert/strict';
 import { parkPhrase } from '../lib/i18n/park-phrase.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 console.log('parkPhrase — German');
 
@@ -69,4 +63,4 @@ test('never inflects outside German', () => {
   assert.equal(parkPhrase('en', 'subject', 'Phantasialand', 'das'), 'Phantasialand');
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

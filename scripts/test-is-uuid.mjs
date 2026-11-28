@@ -7,13 +7,7 @@
  */
 import assert from 'node:assert/strict';
 import { isUuid } from '../lib/utils.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 test('accepts a real UUID', () => {
   assert.equal(isUuid('a1b2c3d4-e5f6-4789-a012-3456789abcde'), true);
@@ -37,4 +31,4 @@ test('refuses a UUID missing a hyphen or with the wrong segment lengths', () => 
   assert.equal(isUuid('a1b2c3d-e5f6-4789-a012-3456789abcde'), false);
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

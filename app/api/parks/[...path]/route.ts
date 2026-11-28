@@ -1,4 +1,3 @@
-import geomagnetism from 'geomagnetism';
 import { NextRequest, NextResponse } from 'next/server';
 import {
   bestDaysCacheTag,
@@ -388,6 +387,8 @@ export async function GET(
             lng: positions.reduce((sum, p) => sum + p.longitude, 0) / positions.length,
           }
         : null;
+      // Loaded here: this module answers every live poll, and only this branch needs the model.
+      const { default: geomagnetism } = await import('geomagnetism');
       const declination = middle
         ? Math.round(geomagnetism.model().point([middle.lat, middle.lng]).decl * 10) / 10
         : 0;

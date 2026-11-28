@@ -22,6 +22,7 @@ import { getNumberFormat } from '@/lib/utils/intl-format';
 import { daysBetween } from '@/lib/utils/park-day';
 import { Chip, Meta } from '../../../_ui/primitives';
 import { CheckDot, STATE_TONE, StateDot } from './state-dot';
+import { isIsoDate } from '@/lib/utils/iso-date';
 
 /**
  * The inspector body for one cell: its state and sentence, when the result is due or how late it
@@ -127,7 +128,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 /** A benchmark period: `2025-10-11..2026-10-10` reads `11.10.2025 bis 10.10.2026`, prose stays. */
 function formatPeriod(period: string): string {
   const parts = period.split('..');
-  if (parts.length !== 2 || !parts.every((part) => /^\d{4}-\d{2}-\d{2}$/.test(part))) return period;
+  if (parts.length !== 2 || !parts.every(isIsoDate)) return period;
   return parts.map((part) => part.split('-').reverse().join('.')).join(' bis ');
 }
 

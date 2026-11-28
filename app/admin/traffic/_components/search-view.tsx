@@ -37,7 +37,7 @@ import {
   withoutEmptyColumns,
 } from '@/lib/admin/site-analytics';
 import { INTERVAL_SENTENCE } from '@/lib/admin/traffic-range';
-import { UnsupportedNote } from './unsupported-note';
+import { TrafficReportPending } from './report-pending';
 import type { SearchOverview } from '@/lib/api/admin-site-analytics';
 import {
   BarList,
@@ -48,16 +48,7 @@ import {
   type SharePart,
 } from '../../_ui/charts';
 import { Segmented } from '../../_ui/controls';
-import {
-  AdminPage,
-  EmptyState,
-  ErrorState,
-  LoadingState,
-  Panel,
-  PanelBody,
-  PanelHeader,
-  Tile,
-} from '../../_ui/primitives';
+import { AdminPage, EmptyState, Panel, PanelBody, PanelHeader, Tile } from '../../_ui/primitives';
 import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/use-traffic';
 import { HourlyNotice } from './hourly-notice';
 import { TrafficCsvButton } from './list-parts';
@@ -503,29 +494,16 @@ export function SearchView() {
     </>
   );
 
-  if (reason) {
+  if (reason || !data) {
     return (
-      <AdminPage width="wide">
-        <Panel>
-          {header}
-          <UnsupportedNote reason={reason} filters={filters} />
-        </Panel>
-      </AdminPage>
-    );
-  }
-
-  if (!data) {
-    return (
-      <AdminPage width="wide">
-        <Panel>
-          {header}
-          {error ? (
-            <ErrorState message={`Suche: ${error.message}`} onRetry={() => void refetch()} />
-          ) : (
-            <LoadingState label="Lade Suche…" />
-          )}
-        </Panel>
-      </AdminPage>
+      <TrafficReportPending
+        header={header}
+        name="Suche"
+        reason={reason}
+        error={error}
+        onRetry={() => void refetch()}
+        filters={filters}
+      />
     );
   }
 

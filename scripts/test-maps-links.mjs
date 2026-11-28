@@ -11,13 +11,7 @@
  */
 import assert from 'node:assert/strict';
 import { parkMapsLinks } from '../lib/parks/maps-links.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 test('builds both links for Phantasialand', () => {
   const links = parkMapsLinks(50.7984, 6.8794);
@@ -68,4 +62,4 @@ test('refuses a coordinate that is still a string, so a forgotten parse stays vi
   assert.equal(parkMapsLinks('50.7984', '6.8794'), null);
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

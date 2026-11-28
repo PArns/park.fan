@@ -17,6 +17,7 @@ import {
   historyListRows,
   historyRows,
 } from '../lib/parks/attraction-history-geometry.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const testCases = [];
 const test = (name, actual, expected) => testCases.push({ name, actual, expected });
@@ -68,34 +69,4 @@ test(
   'stable'
 );
 
-let passed = 0;
-let failed = 0;
-
-for (const testCase of testCases) {
-  let result;
-  try {
-    result = testCase.actual();
-  } catch (error) {
-    result = `THREW: ${error.message}`;
-  }
-  if (result === testCase.expected) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
-    failed++;
-  }
-}
-
-console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+await runCases(testCases);

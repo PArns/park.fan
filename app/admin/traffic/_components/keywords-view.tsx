@@ -28,6 +28,7 @@ import { useAdminQuery } from '../../_lib/api';
 import { formatDecimal } from '@/lib/admin/site-analytics';
 import type { KeywordReport, KeywordRow } from '@/lib/api/admin-search-console';
 import { addDays } from '@/lib/utils/park-day';
+import { formatCount } from '@/lib/admin/format-number';
 
 const COUNTRIES = [
   { value: 'deu', label: 'Deutschland' },
@@ -114,11 +115,9 @@ function KeywordTable({ rows, compact = false }: { rows: KeywordRow[]; compact?:
                   <td className="text-muted-foreground max-w-56 truncate py-1.5 pr-3 max-md:hidden">
                     {row.page ?? '–'}
                   </td>
-                  <td className="py-1.5 text-right">
-                    {row.current.clicks.toLocaleString('de-DE')}
-                  </td>
+                  <td className="py-1.5 text-right">{formatCount(row.current.clicks)}</td>
                   <td className="py-1.5 text-right max-sm:hidden">
-                    {row.current.impressions.toLocaleString('de-DE')}
+                    {formatCount(row.current.impressions)}
                   </td>
                 </>
               )}
@@ -134,9 +133,9 @@ function KeywordTable({ rows, compact = false }: { rows: KeywordRow[]; compact?:
 function Compare({ now, before }: { now: number; before: number }) {
   return (
     <>
-      {now.toLocaleString('de-DE')}
+      {formatCount(now)}
       <span className="text-muted-foreground ml-2 text-sm font-normal">
-        Vorwoche {before.toLocaleString('de-DE')}
+        Vorwoche {formatCount(before)}
       </span>
     </>
   );

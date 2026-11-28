@@ -49,6 +49,7 @@ import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import { categoryPathBreadcrumbs, resolveCategoryLabel } from '@/lib/blog/categories';
 import type { Breadcrumb } from '@/lib/api/types';
 import { blogFeedAlternates } from '@/lib/blog/feed';
+import { languageName } from '@/lib/utils/intl-format';
 
 /** The body column beside the ToC, drawn by the article and by what follows it alike. */
 const TOC_GRID = 'lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-8';
@@ -255,9 +256,7 @@ export async function BlogPostPageBody({
 
   // Fallback notice (the requested locale is untranslated): written in the reader's selected
   // locale, naming the language actually shown in that same locale ("the German version").
-  const loadedLanguageName =
-    new Intl.DisplayNames([locale], { type: 'language' }).of(post.loadedLocale) ??
-    localeNames[post.loadedLocale];
+  const loadedLanguageName = languageName(locale, post.loadedLocale);
   const fallbackLabel = post.isFallback
     ? tBlog('languageNotice.fallback', { language: loadedLanguageName })
     : null;

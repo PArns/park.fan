@@ -16,6 +16,7 @@
  */
 
 import { escapeRefocusesTrigger, focusLeftMenu, holdsTextEntry } from '../lib/utils/menu-focus.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -88,26 +89,4 @@ test('no focus does not', holdsTextEntry(fieldRoot, null), false);
 console.log('\n🧪 Menu focus rule\n');
 console.log('='.repeat(80) + '\n');
 
-let passed = 0;
-let failed = 0;
-for (const testCase of cases) {
-  if (testCase.actual === testCase.expected) {
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(testCase.actual)}`);
-    failed++;
-  }
-}
-
-console.log('='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${cases.length} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+await runCases(cases, { quiet: true });

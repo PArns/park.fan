@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { TICKET_CLICKS_HREF } from '@/lib/admin/tickets';
+import { formatCount } from '@/lib/admin/format-number';
 
 /**
  * „Klicks (30 T.): 12“ for a product or one of its links, leading to the event's own page. An
@@ -19,7 +20,7 @@ export function ClickFigure({
 }) {
   const [value, title] =
     count !== null
-      ? [count.toLocaleString('de-DE'), 'Klicks auf den Ticketlink in den letzten 30 Tagen']
+      ? [formatCount(count), 'Klicks auf den Ticketlink in den letzten 30 Tagen']
       : loading
         ? ['…', 'Lädt']
         : failed

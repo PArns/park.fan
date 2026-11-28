@@ -65,19 +65,13 @@ import {
 } from '../components/trip-regions/hub/hub-cell-styles.ts';
 import { addDays } from '../lib/utils/park-day.ts';
 import { parseVisited, visitedOn } from '../lib/trip-regions/visited-parks.ts';
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const fixture = (name) =>
   JSON.parse(readFileSync(new URL(`./fixtures/orlando/${name}.json`, import.meta.url), 'utf8'));
 const region = fixture('region');
 const calendar = fixture('calendar');
 const bestDays = fixture('best-days');
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
 
 const NOV = { year: 2026, month: 11 };
 
@@ -949,4 +943,4 @@ test("a week's averages share one cell with their envelope; a forecast and a wee
   assert.equal(plain.weather.tempMaxP75, 17.2);
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

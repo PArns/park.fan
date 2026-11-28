@@ -17,6 +17,7 @@ import {
   sameLocationBasis,
   writeCache,
 } from '../lib/nearby/nearby-cache.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 /** Minimal localStorage + window stand-in; the module only touches getItem/setItem. */
 const store = new Map();
@@ -232,29 +233,4 @@ const testCases = [
 console.log('🧪 Testing the persisted nearby-parks cache\n');
 console.log('='.repeat(80) + '\n');
 
-let passed = 0;
-let failed = 0;
-
-testCases.forEach((testCase) => {
-  const result = testCase.actual();
-  if (result === testCase.expected) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
-    failed++;
-  }
-});
-
-console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+await runCases(testCases);

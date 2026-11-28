@@ -22,13 +22,7 @@ import {
   fingerprintPark,
   mergeScheduleCoverage,
 } from '../lib/seo/content-changes/fingerprint.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const taron = {
   id: 'ride-1',
@@ -374,4 +368,4 @@ test('no previous snapshot at all is the first run, not a crash', () => {
   assert.deepEqual(merged, { '/parks/a/b/c/d': null });
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

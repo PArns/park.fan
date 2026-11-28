@@ -16,18 +16,12 @@ import {
   windowReads,
 } from './lib/fake-browser.mjs';
 import { ForegroundTimer, MAX_ENGAGEMENT_SECONDS } from '../lib/analytics/foreground-timer.ts';
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 // A fresh copy of the facade per case that depends on its module state (the first pageview of a
 // load carries the referrer, later ones do not).
 let copies = 0;
 const facade = () => import(`../lib/analytics/site-analytics.ts?copy=${copies++}`);
-
-let passed = 0;
-async function test(name, fn) {
-  await fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
 
 browser();
 const { sitePageTypeOf, searchPosition } = await facade();
@@ -869,6 +863,6 @@ await test('a tab that is hidden before the pageview does not keep events back',
   assert.equal(requests[0].via, 'beacon');
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();
 // The facade's flush timer would keep Node alive for a second after the last case.
 process.exit(0);

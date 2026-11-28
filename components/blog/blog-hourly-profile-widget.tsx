@@ -8,6 +8,7 @@ import { getParkHourlyProfileSeed } from '@/lib/api/stats';
 import { isServableHourlyProfileRange } from '@/lib/utils/calendar-utils';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
+import { BlogWidgetParkNotFound } from '@/components/blog/blog-widget-park-not-found';
 
 interface BlogHourlyProfileWidgetProps {
   park: ResolvedPark | null;
@@ -48,11 +49,7 @@ export async function BlogHourlyProfileWidget({
   const geo = park ? parkGeoPath(park) : null;
 
   if (!park || !geo) {
-    return (
-      <GlassCard variant="light" className="not-prose clear-both my-8">
-        <p className="text-muted-foreground text-sm">{tBlog('widget.parkNotFound', { slug })}</p>
-      </GlassCard>
-    );
+    return <BlogWidgetParkNotFound slug={slug} />;
   }
 
   const locale = await getLocale();

@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config';
+import { parkPagePath } from '@/lib/parks/paths';
 
 /**
  * Locale → localized URL segment for a park's wait-time record: crowd by month and weekday, the
@@ -31,5 +32,5 @@ export function parkStatsPath(
   parkSlug: string
 ): string {
   const segment = PARK_STATS_SEGMENTS[locale as Locale] ?? PARK_STATS_CANONICAL_SEGMENT;
-  return `/parks/${continent}/${country}/${city}/${parkSlug}/${segment}`;
+  return `${parkPagePath({ continent, country, city, parkSlug })}/${segment}`;
 }

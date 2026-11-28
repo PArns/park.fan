@@ -20,13 +20,7 @@ import {
   seasonRidePatch,
   weekdayDates,
 } from '../app/admin/_lib/seasons.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const stored = {
   id: 's1',
@@ -195,4 +189,4 @@ test('a ride page offers the running and coming seasons that bind, the first to 
   );
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

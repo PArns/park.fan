@@ -1,5 +1,6 @@
 import { routing } from '@/i18n/routing';
 import type { CrowdLevel } from '@/lib/api/types';
+import { isIsoDate } from '@/lib/utils/iso-date';
 
 /** Parky's verdict on a calendar day, from its crowd level (the API decides, not the model). */
 export type ParkyTipVerdict = 'good' | 'meh' | 'bad';
@@ -36,11 +37,10 @@ export interface ParkyDayTip {
 /** The API answers days from today up to its calendar's horizon, park time. */
 const HORIZON_DAYS = 92;
 const DAY_MS = 86_400_000;
-const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 /** `value` as a real `YYYY-MM-DD` day at UTC midnight, or null. */
 function dayAt(value: string | null): number | null {
-  if (!value || !DATE_RE.test(value)) return null;
+  if (!value || !isIsoDate(value)) return null;
   const at = Date.parse(`${value}T00:00:00Z`);
   return Number.isNaN(at) || new Date(at).toISOString().slice(0, 10) !== value ? null : at;
 }

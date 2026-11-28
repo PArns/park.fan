@@ -15,7 +15,7 @@ import {
 import { cn } from '@/lib/utils';
 import { useCan } from '../_app/session';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
-import { formatAgo } from '../_lib/format';
+import { formatAgo, formatDateTime } from '../_lib/format';
 import { Segmented, TextInput } from '../_ui/controls';
 import {
   AdminPage,
@@ -31,6 +31,7 @@ import {
 } from '../_ui/primitives';
 import { PublicLink } from '../_ui/row-links';
 import { useToast } from '../_ui/toast';
+import { formatCount } from '@/lib/admin/format-number';
 
 const KEY = ['admin', 'weather-closure'] as const;
 const PATH = '/api/admin/weather-closure?minProbability=0.5';
@@ -216,11 +217,7 @@ export default function WeatherClosurePage() {
           </p>
           {data?.generatedAt && (
             <p className="text-muted-foreground text-xs">
-              Zuletzt berechnet {formatAgo(data.generatedAt)} (
-              {new Date(data.generatedAt).toLocaleString('de-DE', {
-                dateStyle: 'short',
-                timeStyle: 'short',
-              })}
+              Zuletzt berechnet {formatAgo(data.generatedAt)} ({formatDateTime(data.generatedAt)}
               ).
             </p>
           )}
@@ -248,7 +245,7 @@ export default function WeatherClosurePage() {
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             <StatTile
               label="Bahnen mit Profil"
-              value={data.totals.rides.toLocaleString('de-DE')}
+              value={formatCount(data.totals.rides)}
               sub="genug kalte oder verschneite Stunden zum Lernen"
             />
             <StatTile

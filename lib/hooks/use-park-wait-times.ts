@@ -6,6 +6,7 @@ import type {
   QueueDataItem,
 } from '@/lib/api/types';
 import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 /** Live, per-ride fields the blog's ride references overlay client-side. */
 export interface LiveRideFields {
@@ -52,7 +53,7 @@ export function useParkWaitTimes(
   const query = useQuery<ParkWaitTimesSnapshot>({
     queryKey: ['park-wait-times', continent, country, city, parkSlug],
     queryFn: async () => {
-      const res = await fetch(`/api/parks/${continent}/${country}/${city}/${parkSlug}/wait-times`, {
+      const res = await fetch(parkRelayUrl({ continent, country, city, parkSlug }, '/wait-times'), {
         cache: 'no-store',
       });
       if (!res.ok) throw new Error(`Failed to fetch wait times: ${res.statusText}`);

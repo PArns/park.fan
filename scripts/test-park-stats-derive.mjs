@@ -13,13 +13,7 @@
  */
 import assert from 'node:assert/strict';
 import { deriveParkBestDays, deriveParkStatsFindings } from '../lib/parks/park-stats-derive.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 /** A weekday row: `[dayOfWeek, avgCrowdScore, avgWaitP50, sampleDays]`, 0 = Sunday. */
 const dow = ([dayOfWeek, avgCrowdScore, avgWaitP50, sampleDays = 34]) => ({
@@ -208,4 +202,4 @@ test('ignores a ride nobody has watched for long', () => {
   assert.equal(out.longestP50, 45);
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

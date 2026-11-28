@@ -6,6 +6,7 @@
 // lookup resolve to the Cloudflare colo, so /api/nearby listed the parks around that
 // datacenter instead of the visitor's.
 import { getClientIp, pickClientIp, isLocalOrUnusableIp } from '../lib/utils/request-ip.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 /** Minimal NextRequest stand-in — the helpers only read request.headers. */
 const req = (headers) => ({ headers: new Headers(headers) });
@@ -109,29 +110,4 @@ const testCases = [
 console.log('🧪 Testing client-IP resolution (Cloudflare → Vercel)\n');
 console.log('='.repeat(80) + '\n');
 
-let passed = 0;
-let failed = 0;
-
-testCases.forEach((testCase) => {
-  const result = testCase.actual();
-  if (result === testCase.expected) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
-    failed++;
-  }
-});
-
-console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+await runCases(testCases);

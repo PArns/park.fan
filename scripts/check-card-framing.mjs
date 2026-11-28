@@ -55,13 +55,10 @@
  * card, so it can gate a release check as easily as a manual look.
  */
 
-import { existsSync } from 'node:fs';
 import { chromium } from 'playwright';
+import { LAUNCH } from './lib/browser.mjs';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
-// Same rule as scripts/render-coaster-elements.mjs: prefer a Chromium the image
-// already ships (CI and the container block `playwright install`).
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
 const FRAME = 'div[data-card-photo="frame"] img';
 
 /** Surfaces that render the three card kinds, in the states they ship in. */
@@ -146,9 +143,7 @@ async function measure(page, path) {
   }, FRAME);
 }
 
-const browser = await chromium.launch(
-  existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {}
-);
+const browser = await chromium.launch(LAUNCH);
 const page = await browser.newPage({ viewport: { width: 1280, height: 1400 } });
 
 let failures = 0;

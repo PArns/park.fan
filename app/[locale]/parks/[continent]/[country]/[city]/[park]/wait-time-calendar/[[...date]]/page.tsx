@@ -78,6 +78,8 @@ import { ParkHeaderCard } from '@/components/parks/park-header-card';
 import { ParkNavTiles } from '@/components/parks/park-nav-tiles';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { parkArgs } from '@/lib/i18n/park-phrase';
+import { parkPagePath } from '@/lib/parks/paths';
+import { parkDisplayNames, redirectMalformedParkPath, redirectRelocatedPark, redirectRenamedPark } from '@/lib/parks/park-route';
 
 interface ParkCalendarPageProps {
   params: Promise<{
@@ -142,8 +144,7 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   if (resolved === 'invalid') return { title: tNotFound('park'), robots: { index: false } };
   const month = resolved.month;
 
-  const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || formatSlug(city);
+  const { parkName, cityName } = parkDisplayNames(park, city);
   // The hub (and the current month's URL, which is canonical to it) is the calendar for the months
   // ahead, so its title names their years: „November 2026“ told a search in a park's winter break
   // about the month it is closed. Every other month is searched by its name and keeps it.
@@ -266,11 +267,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
 
   // The same three redirects the park page runs, for the same reason: this URL is reachable
   // directly from search and a stale geo path must transfer rather than 404.
-  const malformed = await findParkPageRedirect(continent, country, city, parkSlug);
-  if (malformed) {
-    // Keep the calendar segment and the month, as the relocated and renamed branches below do.
-    permanentRedirect(`/${locale}${malformed}${parkCalendarSuffix(locale, month)}`);
-  }
+  // Each keeps the calendar segment and the month.
+  const calendarSuffix = parkCalendarSuffix(locale, month);
+  await redirectMalformedParkPath({ continent, country, city, parkSlug }, locale, calendarSuffix);
 
   // The month the page is about: on the hub the current one, the month the grid opens on.
   // Awaited inside its own boundary below, and data-cached so the many URLs do not each mean an
@@ -292,27 +291,20 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
     statsAvailablePromise,
   ]);
   if (!park) {
-    const relocated = await findRelocatedParkRedirect(continent, country, city, parkSlug);
-    if (relocated) {
-      permanentRedirect(`/${locale}${relocated}${parkCalendarSuffix(locale, month)}`);
-    }
+    await redirectRelocatedPark({ continent, country, city, parkSlug }, locale, calendarSuffix);
     notFound();
   }
 
-  const renamed = findRenamedParkRedirect(park, { continent, country, city, parkSlug });
-  if (renamed) {
-    permanentRedirect(`/${locale}${renamed}${parkCalendarSuffix(locale, month)}`);
-  }
+  redirectRenamedPark(park, { continent, country, city, parkSlug }, locale, calendarSuffix);
 
   // A park that closed for good has no calendar to forecast; its page says so.
   if (isClosedPark(park)) {
     permanentRedirect(`/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`);
   }
 
-  const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || formatSlug(city);
+  const { parkName, cityName } = parkDisplayNames(park, city);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
-  const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
+  const parkPath = parkPagePath({ continent, country, city, parkSlug });
   // The park's day for the outlook. Safe to read the server clock: this route is `force-dynamic`.
   const todayIso = parkDayOf(new Date(), park.timezone);
 

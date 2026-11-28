@@ -12,6 +12,7 @@ import type {
   ChangelogHighlight,
   ResolvedHighlight,
 } from './types';
+import { isIsoDate } from '@/lib/utils/iso-date';
 
 /**
  * The public changelog, read from `content/changelog/<version>.md` at build time. A directory
@@ -63,7 +64,7 @@ function toIsoDate(value: unknown): string | null {
   if (value instanceof Date) {
     return Number.isNaN(value.getTime()) ? null : value.toISOString().slice(0, 10);
   }
-  if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value.trim())) {
+  if (typeof value === 'string' && isIsoDate(value.trim())) {
     return value.trim();
   }
   return null;

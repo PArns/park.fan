@@ -23,13 +23,7 @@
 import assert from 'node:assert/strict';
 import { parseWidgetParkRef, parseWidgetRideRef } from '../lib/blog/widget-park.ts';
 import { extractInlineRefs } from '../lib/blog/derive.mjs';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 console.log('parseWidgetParkRef');
 
@@ -135,4 +129,4 @@ test('a bare fence still indexes exactly what it always did', () => {
   assert.equal(parkGeoPaths.size, 0);
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

@@ -10,13 +10,7 @@ import {
   leadingProfile,
   weatherClosureState,
 } from '../lib/admin/weather-closure.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const profile = (attributableShare, overrides = {}) => ({
   thresholdC: 9,
@@ -98,4 +92,4 @@ test('the row reads the cause that explains the ride best', () => {
   assert.equal(leadingProfile(ride({ cold: null })), null);
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

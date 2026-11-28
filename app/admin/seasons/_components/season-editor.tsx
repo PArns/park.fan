@@ -734,7 +734,7 @@ export function SeasonEditor({
                       type="button"
                       onClick={() => void remove()}
                       disabled={busy}
-                      className="bg-destructive hover:bg-destructive/90 text-white"
+                      variant="destructive"
                     >
                       {busy && <Loader2 className="h-4 w-4 animate-spin" />}
                       Endgültig löschen

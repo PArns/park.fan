@@ -9,7 +9,7 @@ import {
   searchMedia,
 } from '@/lib/media';
 import { serializeMediaImage, type MediaApiImage } from '@/lib/media/api';
-import type { MediaLicense, MediaRole } from '@/lib/media/types';
+import { parseMediaSearchParams } from '@/lib/media/search-params';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 /**
@@ -64,23 +64,7 @@ export async function GET(request: NextRequest) {
   const limit = Math.min(Math.max(toInt(params.get('limit'), DEFAULT_LIMIT), 1), MAX_LIMIT);
   const offset = Math.max(toInt(params.get('offset'), 0), 0);
 
-  // `park=` and `ride=` accept an explicit empty value to mean "has none" — that
-  // is how a client asks for the park-level tier (images of a park but of no
-  // particular ride), which is a real category here, not an absence of data.
-  const park = params.has('park') ? params.get('park') || null : undefined;
-  const ride = params.has('ride') ? params.get('ride') || null : undefined;
-
-  const results = searchMedia({
-    q: params.get('q') ?? undefined,
-    park,
-    ride,
-    collection: params.get('collection') ?? undefined,
-    tags: params.getAll('tag'),
-    role: (params.get('role') as MediaRole) || undefined,
-    license: (params.get('license') as MediaLicense) || undefined,
-    unlicensedOnly: params.get('unlicensed') === '1',
-    unassignedOnly: params.get('unassigned') === '1',
-  });
+  const results = searchMedia(parseMediaSearchParams(params));
 
   const body: MediaApiResponse = {
     revision: MEDIA_REVISION,

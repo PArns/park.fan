@@ -1,6 +1,7 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import { LOAD_LAST_META } from '@/lib/hooks/use-load-last';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 interface UseCalendarDataParams {
   continent: string;
@@ -39,7 +40,7 @@ export function useCalendarData({
     queryKey: ['calendar', continent, country, city, parkSlug, from, to],
     queryFn: async () => {
       const response = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/calendar?from=${from}&to=${to}`
+        parkRelayUrl({ continent, country, city, parkSlug }, `/calendar?from=${from}&to=${to}`)
       );
 
       if (!response.ok) {

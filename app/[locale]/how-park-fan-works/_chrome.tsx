@@ -1,4 +1,6 @@
 import React from 'react';
+import type { LucideIcon } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 
@@ -239,5 +241,30 @@ export function ParkAnatomy({
         </li>
       ))}
     </ol>
+  );
+}
+
+/**
+ * An outlined link at the end of a guide chapter, to the page the chapter was about. In the chrome
+ * and not in the six content modules, so its look is written once while the label stays prose.
+ */
+export function GuideCta({
+  href,
+  icon: Icon,
+  children,
+}: {
+  href: React.ComponentProps<typeof Link>['href'];
+  icon: LucideIcon;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      prefetch={false}
+      className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
+    >
+      <Icon className="h-4 w-4" />
+      {children}
+    </Link>
   );
 }

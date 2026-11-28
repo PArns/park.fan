@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
-import Fuse from 'fuse.js';
+import type Fuse from 'fuse.js';
 import type { ParkAttraction, ParkShow, ParkStatus } from '@/lib/api/types';
 import { isInSeason } from '@/lib/utils/season';
 import { sortShowsByNextStart } from '@/lib/utils/show-order';
@@ -237,9 +237,25 @@ export function useAttractionFilter({
     return map;
   }, [attractionsByLand]);
 
+  // Fuse and its index are for the visitor who types: most never do, so the library is fetched
+  // with the first character and no index is built before that.
+  const [FuseIndex, setFuseIndex] = useState<typeof Fuse | null>(null);
+  const wantsSearch = searchQuery.length > 0;
+  useEffect(() => {
+    if (!wantsSearch || FuseIndex) return;
+    let cancelled = false;
+    void import('fuse.js').then((mod) => {
+      if (!cancelled) setFuseIndex(() => mod.default);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [wantsSearch, FuseIndex]);
+
   const fuse = useMemo(() => {
+    if (!FuseIndex) return null;
     const allAttractions = Object.values(attractionsByLand).flat();
-    return new Fuse(allAttractions, {
+    return new FuseIndex(allAttractions, {
       keys: [
         { name: 'name', weight: 0.8 },
         { name: 'slug', weight: 0.8 },
@@ -251,7 +267,7 @@ export function useAttractionFilter({
       ignoreLocation: true,
       minMatchCharLength: MIN_QUERY_LENGTH,
     });
-  }, [attractionsByLand]);
+  }, [attractionsByLand, FuseIndex]);
 
   const offSeasonAttractionCount = useMemo(
     () =>
@@ -420,10 +436,12 @@ export function useAttractionFilter({
   // not searching, because Fuse cannot match below `minMatchCharLength`.
   const deferredQuery = useDeferredValue(searchQuery);
   const searchTerm = deferredQuery.trim();
-  const isSearching = searchTerm.length >= MIN_QUERY_LENGTH;
+  // Not searching until the index exists: an empty answer before that would say "no attractions
+  // found" about a search that has not run.
+  const isSearching = searchTerm.length >= MIN_QUERY_LENGTH && fuse !== null;
 
   const filteredAttractionsByLand = useMemo(() => {
-    if (!isSearching) return inSeasonAttractionsByLand;
+    if (!isSearching || !fuse) return inSeasonAttractionsByLand;
     // Not filtered by season: typing a name asks for that ride whatever month it is, and an
     // exact search for an off-season ride must not answer "no attractions found". The cards say
     // "Nur im Winter" on their own. The height filter stays applied (`heightFilteredByLand`).
@@ -488,8 +506,8 @@ export function useAttractionFilter({
   // is one. A park without closed rides builds no index.
   const closedFuse = useMemo(
     () =>
-      closedRides.length > 0
-        ? new Fuse(closedRides, {
+      FuseIndex && closedRides.length > 0
+        ? new FuseIndex(closedRides, {
             keys: [
               { name: 'name', weight: 0.8 },
               { name: 'slug', weight: 0.8 },
@@ -501,7 +519,7 @@ export function useAttractionFilter({
             minMatchCharLength: MIN_QUERY_LENGTH,
           })
         : null,
-    [closedRides]
+    [closedRides, FuseIndex]
   );
   const closedRideMatches = useMemo(
     () =>

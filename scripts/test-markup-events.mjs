@@ -8,6 +8,7 @@
  * Run: pnpm test:markup-events
  */
 import assert from 'node:assert/strict';
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 // The modules check `instanceof Element`; in Node the stand-ins below pass as objects.
 globalThis.Element = Object;
@@ -20,13 +21,6 @@ const { tripTileAttributes, tripTileClickOf, tripTileLinkAttributes } =
 
 const ORIGIN = 'https://park.fan';
 const PARK = '313CA334-C04F-4855-BFD9-C8BEB7A00D98';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
 
 /**
  * A minimal element tree: `closest` for a tag, `a[href]` or `[attribute]`, `contains`,
@@ -195,4 +189,4 @@ test('nothing for a tile link outside a tile, an unknown link or a slug of anoth
   assert.equal(tripTileClickOf(null), null);
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

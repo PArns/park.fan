@@ -12,6 +12,7 @@ import { resolveCompassDemo } from '@/lib/nearby-simulation';
 import { PARK_COMPASS_ID, setCompassPresent } from '@/lib/home/compass-presence';
 import type { NearbyAttractionsData, NearbyResponse } from '@/types/nearby';
 import { useLoadParkCompass, type ParkCompassComponent } from './use-load-park-compass';
+import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 
 const subscribeNever = () => () => {};
 const readSim = () => new URLSearchParams(window.location.search).get('sim');
@@ -52,7 +53,7 @@ export function ParkCompassSlot({ placement }: { placement: 'hero' | 'news' }) {
     },
     enabled: demo !== null,
     // The same cadence as the real one: waits move every few minutes.
-    refetchInterval: 5 * 60 * 1000,
+    refetchInterval: LIVE_POLL_QUERY_OPTIONS.refetchInterval,
     refetchOnWindowFocus: false,
   });
 

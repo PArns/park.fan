@@ -7,13 +7,7 @@
  */
 import assert from 'node:assert/strict';
 import { parkGeoSegments } from '../lib/admin/park-geo-path.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const park = ['europe', 'germany', 'bruehl', 'phantasialand'];
 
@@ -42,4 +36,4 @@ test('a segment that is not a slug is refused', () => {
   assert.equal(parkGeoSegments('europe/germany/bruehl/phantasialand?x=1'), null);
 });
 
-console.log(`admin-park-geo-path: ${passed} tests passed`);
+reportPassed();

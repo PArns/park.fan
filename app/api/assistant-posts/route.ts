@@ -4,6 +4,7 @@ import { SITE_URL } from '@/i18n/config';
 import { getPostSearchIndex, type PostSearchEntry } from '@/lib/navigation/blog-menu';
 import { searchPosts } from '@/lib/navigation/post-search';
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
+import { isStrictSlug } from '@/lib/utils/servable-route';
 
 /**
  * Post search for Parky, the chat assistant on api.park.fan, which has no copy of the blog. The
@@ -13,7 +14,6 @@ import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 const LIMIT = 6;
 const KINDS = new Set(['news', 'article', 'any']);
-const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 /** A posts card shows three at most, so a request names no more. */
 const MAX_SLUGS = 3;
 
@@ -30,7 +30,7 @@ export function GET(request: NextRequest) {
   if (
     !routing.locales.includes(locale as Locale) ||
     !KINDS.has(kind) ||
-    (slugs && (slugs.length > MAX_SLUGS || !slugs.every((slug) => SLUG.test(slug))))
+    (slugs && (slugs.length > MAX_SLUGS || !slugs.every((slug) => isStrictSlug(slug))))
   ) {
     return NextResponse.json({ error: 'Bad request' }, { status: 400, headers: NO_STORE });
   }

@@ -19,13 +19,7 @@ import {
   performanceSchedulesForSave,
   seasonOfRow,
 } from '../app/admin/_lib/performance-schedules.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const HOURLY = ['13:00', '14:00', '15:00', '16:00', '17:00'];
 const winter = { from: '2026-11-14', to: '2027-01-24', times: HOURLY };
@@ -144,4 +138,4 @@ test("a row whose days are a season's shows that season in its picker", () => {
   assert.equal(seasonOfRow({ from: null, to: null }, seasons), null);
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

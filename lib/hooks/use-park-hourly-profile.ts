@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
 import type { HourlyProfileRange, ParkHourlyProfile } from '@/lib/api/types';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 interface UseParkHourlyProfileParams {
   continent: string;
@@ -50,7 +51,7 @@ export function useParkHourlyProfile({
       const window = range ? `&from=${range.from}&to=${range.to}` : '';
       // No `cache: 'no-store'`: the route's day-long `max-age` is meant for this browser cache.
       const res = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/stats/hourly?topN=${topN}${window}`
+        parkRelayUrl({ continent, country, city, parkSlug }, `/stats/hourly?topN=${topN}${window}`)
       );
       if (res.status === 404) return null;
       if (!res.ok) throw new Error(`hourly profile ${parkSlug}: ${res.statusText}`);

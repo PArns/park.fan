@@ -6,12 +6,7 @@
  */
 import assert from 'node:assert/strict';
 import { chatSource, tokenSeries } from '../lib/admin/parky-tokens.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const day = (name, source, totalTokens) => ({ day: name, source, totalTokens });
 
@@ -64,4 +59,4 @@ test('an empty window draws zeros, and a row outside it is left out', () => {
   assert.deepEqual(outside.web, [0]);
 });
 
-console.log(`admin-parky-tokens: ${passed} tests passed`);
+reportPassed();

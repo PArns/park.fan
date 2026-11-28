@@ -5,6 +5,7 @@ import { getParkHistoricalStatsSeed } from '@/lib/api/stats';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ComparisonPark } from '@/lib/hooks/use-park-comparison-stats';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
+import { BlogWidgetParkNotFound } from '@/components/blog/blog-widget-park-not-found';
 
 interface BlogParkComparisonWidgetProps {
   /** Pre-resolved parks, keyed by the slug written in the fence. */
@@ -76,13 +77,7 @@ export async function BlogParkComparisonWidget({
   // A single unresolvable slug is a typo in the post; showing the other six silently would hide
   // it. Name what is missing instead, the way the other widgets do.
   if (resolved.length === 0) {
-    return (
-      <GlassCard variant="light" className="not-prose clear-both my-8">
-        <p className="text-muted-foreground text-sm">
-          {tBlog('widget.parkNotFound', { slug: missing.join(', ') || slugs })}
-        </p>
-      </GlassCard>
-    );
+    return <BlogWidgetParkNotFound slug={missing.join(', ') || slugs} />;
   }
 
   // Server seed for the numbers, so crawlers do not get park names beside skeleton cells. Fetched

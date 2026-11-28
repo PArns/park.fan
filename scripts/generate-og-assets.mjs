@@ -55,11 +55,10 @@
 
 import fs from 'fs';
 import path from 'path';
-import crypto from 'crypto';
-import os from 'os';
 import { fileURLToPath } from 'url';
 
 import { mapWithConcurrency } from './lib/map-with-concurrency.mjs';
+import { IMAGE_CONCURRENCY, sha256 } from './lib/image-jobs.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -99,14 +98,6 @@ try {
   console.warn('⚠️  sharp not available — skipping OG asset generation.');
   process.exit(0);
 }
-
-const CONCURRENCY = (() => {
-  const override = Number(process.env.IMAGE_CROP_CONCURRENCY);
-  if (Number.isFinite(override) && override >= 1) return Math.floor(override);
-  return Math.min(8, Math.max(2, os.cpus()?.length || 2));
-})();
-
-const sha256 = (buffer) => crypto.createHash('sha256').update(buffer).digest('hex');
 
 function cacheKey(sourceBytes) {
   return sha256(
@@ -265,7 +256,9 @@ async function main() {
   const crops = collectCrops(MEDIA_DIR);
   const claimed = { cache: new Set(), out: new Set() };
 
-  const stats = await mapWithConcurrency(crops, CONCURRENCY, (crop) => renditionFor(crop, claimed));
+  const stats = await mapWithConcurrency(crops, IMAGE_CONCURRENCY, (crop) =>
+    renditionFor(crop, claimed)
+  );
   const brand = copyBrandAssets(claimed);
 
   const written = stats.reduce((sum, s) => sum + (s?.written ?? 0), 0);
@@ -279,7 +272,7 @@ async function main() {
   console.log(
     `✅ ${written} rendered, ${restored} from cache, ${skipped} already on disk, ` +
       `${brand} brand assets (${crops.length} crops → ${megabytes} MB in og-assets/, ` +
-      `${CONCURRENCY} at a time, ${seconds}s` +
+      `${IMAGE_CONCURRENCY} at a time, ${seconds}s` +
       `${pruned ? `, ${pruned} stale renditions pruned` : ''}` +
       `${prunedCache ? `, ${prunedCache} stale cache entries pruned` : ''}).`
   );

@@ -30,6 +30,7 @@ import { DEVELOPERS_PATH } from '@/lib/developers/paths';
 import { getRankedCountries, RANKING_MIN_INDEXED_RIDES } from '@/lib/api/rankings';
 import { rankingHubPath, rankingPath } from '@/lib/rankings/segments';
 import { currentRankingYear, FIRST_RANKING_YEAR } from '@/lib/rankings/year';
+import { parkPagePath } from '@/lib/parks/paths';
 
 const BASE_URL = SITE_URL;
 
@@ -344,7 +345,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const statsParks = await parksWithStatsPage(catalogue);
   for (const park of catalogue) {
     if (!statsParks.has(parkGeoKey(park))) continue;
-    const parkPath = `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
+    const parkPath = parkPagePath(park);
     const statsAlternates = buildAlternates(
       (locale) => `${parkPath}/${PARK_STATS_SEGMENTS[locale as Locale]}`
     );
@@ -362,7 +363,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const kidsParks = await parksWithKidsPage(catalogue);
   for (const park of catalogue) {
     if (!kidsParks.has(parkGeoKey(park))) continue;
-    const parkPath = `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
+    const parkPath = parkPagePath(park);
     const kidsAlternates = buildAlternates(
       (locale) => `${parkPath}/${PARK_KIDS_SEGMENTS[locale as Locale]}`
     );

@@ -5,7 +5,7 @@ import { History } from 'lucide-react';
 import { adminKeys, useAdminQuery } from '../_lib/api';
 import type { AuditEntry } from '../_lib/types';
 import { EmptyState, ErrorState, SkeletonRows, Toolbar } from '../_ui/primitives';
-import { Select, TextInput } from '../_ui/controls';
+import { Pager, Select, TextInput } from '../_ui/controls';
 import { HistoryList } from '../_ui/history-list';
 import { useCan } from '../_app/session';
 
@@ -124,29 +124,12 @@ export default function HistoryPage() {
               invalidateKeys={[['admin', 'history']]}
             />
 
-            {lastPage > 0 && (
-              <div className="flex items-center justify-center gap-3 text-xs">
-                <button
-                  type="button"
-                  disabled={page === 0}
-                  onClick={() => setPage((current) => Math.max(0, current - 1))}
-                  className="border-border/60 rounded-lg border px-3 py-1.5 disabled:opacity-40"
-                >
-                  Zurück
-                </button>
-                <span className="text-muted-foreground tabular-nums">
-                  {page + 1} / {lastPage + 1}
-                </span>
-                <button
-                  type="button"
-                  disabled={page >= lastPage}
-                  onClick={() => setPage((current) => Math.min(lastPage, current + 1))}
-                  className="border-border/60 rounded-lg border px-3 py-1.5 disabled:opacity-40"
-                >
-                  Weiter
-                </button>
-              </div>
-            )}
+            <Pager
+              page={page + 1}
+              pages={lastPage + 1}
+              onPage={(next) => setPage(next - 1)}
+              className="justify-center"
+            />
           </>
         )}
       </div>

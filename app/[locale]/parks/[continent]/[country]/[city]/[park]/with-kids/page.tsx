@@ -49,6 +49,8 @@ import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { eventSeasonsNearToday } from '@/lib/parks/park-season-days';
 import { parkDayOf } from '@/lib/utils/park-day';
+import { parkPagePath } from '@/lib/parks/paths';
+import { parkDisplayNames, resolveParkOrRedirect } from '@/lib/parks/park-route';
 
 interface ParkKidsPageProps {
   params: Promise<{
@@ -82,8 +84,7 @@ export async function generateMetadata({ params }: ParkKidsPageProps): Promise<M
   const data = kidsPageData(park.attractions ?? []);
   if (!data) return { title: tNotFound('park'), robots: { index: false } };
 
-  const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || formatSlug(city);
+  const { parkName, cityName } = parkDisplayNames(park, city);
   const parkPhrases = parkArgs(locale as Locale, parkName, park.nameArticleDe);
 
   const title = fitTitle(
@@ -133,24 +134,13 @@ export default async function ParkKidsPage({ params }: ParkKidsPageProps) {
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
-  // Not `catchNonFatal`: a swallowed outage would become a `notFound()` the edge serves for up to a
-  // day.
-  const parkFull = await getParkByGeoPath(continent, country, city, parkSlug);
-
   // The same three redirects the park page and the record page run: this URL is reachable
   // directly from search and a stale geo path must transfer rather than 404.
-  const suffix = kidsSuffix(locale);
-  const malformed = await findParkPageRedirect(continent, country, city, parkSlug);
-  if (malformed) permanentRedirect(`/${locale}${malformed}${suffix}`);
-
-  if (!parkFull) {
-    const relocated = await findRelocatedParkRedirect(continent, country, city, parkSlug);
-    if (relocated) permanentRedirect(`/${locale}${relocated}${suffix}`);
-    notFound();
-  }
-
-  const renamed = findRenamedParkRedirect(parkFull, { continent, country, city, parkSlug });
-  if (renamed) permanentRedirect(`/${locale}${renamed}${suffix}`);
+  const parkFull = await resolveParkOrRedirect(
+    { continent, country, city, parkSlug },
+    locale,
+    kidsSuffix(locale)
+  );
 
   const data = kidsPageData(parkFull.attractions ?? []);
   if (!data) notFound();
@@ -169,10 +159,9 @@ export default async function ParkKidsPage({ params }: ParkKidsPageProps) {
   // The ride list is read above and printed by `ParkKidsTiers`; everything else on the page needs
   // only the twelve fields the calendar shell keeps.
   const park = leanParkForCalendarShell(parkFull);
-  const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || formatSlug(city);
+  const { parkName, cityName } = parkDisplayNames(park, city);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
-  const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
+  const parkPath = parkPagePath({ continent, country, city, parkSlug });
   const pagePath = parkKidsPath(locale, continent, country, city, parkSlug);
   const canonicalUrl = `${SITE_URL}/${locale}${pagePath}`;
   const parkPhrases = parkArgs(locale as Locale, parkName, park.nameArticleDe);

@@ -11,13 +11,7 @@
 import assert from 'node:assert/strict';
 import { resolveHeroPark } from '../lib/home/hero-park.ts';
 import { popularFill, shutParkSchedules, sortOpenFirst } from '../lib/home/hero-browse.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const URL_OF = '/v1/parks/europe/germany/bruehl/phantasialand';
 const park = (extra = {}) => ({
@@ -113,4 +107,4 @@ test('popularFill: tops up to the minimum with parks not listed; a full list get
   assert.deepEqual(popularFill([{ id: 'a' }, { id: 'b' }], popular, 2), []);
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

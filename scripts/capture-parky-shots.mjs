@@ -9,10 +9,11 @@
  * `node scripts/capture-parky-shots.mjs --base=http://localhost:3100`.
  * Writes `public/media/parky/<locale>/{chat,plan,search}.webp`.
  */
-import { existsSync, mkdirSync } from 'node:fs';
+import { mkdirSync } from 'node:fs';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 import { PHONE } from './lib/phone-device.mjs';
+import { LAUNCH } from './lib/browser.mjs';
 
 const base =
   process.argv.find((arg) => arg.startsWith('--base='))?.slice(7) ?? 'http://localhost:3000';
@@ -209,10 +210,7 @@ async function save(page, locale, name) {
   console.log(`  ✓ ${locale}/${name}.webp`);
 }
 
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
-const browser = await chromium.launch(
-  existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {}
-);
+const browser = await chromium.launch(LAUNCH);
 for (const locale of Object.keys(CHATS)) {
   if (only && locale !== only) continue;
   mkdirSync(`public/media/parky/${locale}`, { recursive: true });

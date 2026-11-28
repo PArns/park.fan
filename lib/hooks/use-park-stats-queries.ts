@@ -1,6 +1,7 @@
 import { queryOptions, useQueries } from '@tanstack/react-query';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
 import type { ParkHistoricalStats } from '@/lib/api/types';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 /** The four path segments `/api/parks/.../stats` is addressed by. */
 export interface ParkStatsTarget {
@@ -28,7 +29,7 @@ const DEPTH_TOP_N: Record<StatsDepth, number | null> = {
 };
 
 function statsUrl(target: ParkStatsTarget, depth: StatsDepth): string {
-  const base = `/api/parks/${target.continent}/${target.country}/${target.city}/${target.parkSlug}/stats`;
+  const base = parkRelayUrl(target, '/stats');
   const topN = DEPTH_TOP_N[depth];
   return topN == null ? base : `${base}?topN=${topN}`;
 }

@@ -24,6 +24,7 @@ import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { warningsInOpeningHours } from '@/lib/utils/warnings-in-opening-hours';
 import type { ParkWithAttractions, WeatherWarning } from '@/lib/api/types';
+import { FrostedSurface } from '@/components/parks/glass-notice';
 
 interface WeatherWarningBannerProps {
   /** The warnings to show; the park page takes them from {@link useParkWeatherWarnings}. */
@@ -315,15 +316,7 @@ function WarningCard({
       role="alert"
       aria-live="polite"
     >
-      {/* Frosted surface + semantic tint so the banner stays legible over the hero. */}
-      <div
-        className="bg-background/85 pointer-events-none absolute inset-0 rounded-xl backdrop-blur-md"
-        aria-hidden="true"
-      />
-      <div
-        className={cn('pointer-events-none absolute inset-0 rounded-xl', styles.bg)}
-        aria-hidden="true"
-      />
+      <FrostedSurface tintClassName={styles.bg} />
 
       <div className="relative flex items-start gap-3">
         <div className={cn('mt-0.5 shrink-0', styles.iconColor)}>

@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
-import { Segmented } from '../../_ui/controls';
+import { Pager, Segmented } from '../../_ui/controls';
 import {
   AdminPage,
   Chip,
@@ -89,28 +89,13 @@ export default function AssistantFeedbackPage() {
             ))}
           </ul>
         )}
-        {data && pages > 1 && (
-          <div className="border-border/50 flex items-center justify-end gap-2 border-t px-4 py-2 text-xs">
-            <Button
-              size="sm"
-              variant="outline"
-              disabled={page <= 1}
-              onClick={() => setPage(page - 1)}
-            >
-              Zurück
-            </Button>
-            <span className="tabular-nums">
-              {page} / {pages}
-            </span>
-            <Button
-              size="sm"
-              variant="outline"
-              disabled={page >= pages}
-              onClick={() => setPage(page + 1)}
-            >
-              Weiter
-            </Button>
-          </div>
+        {data && (
+          <Pager
+            page={page}
+            pages={pages}
+            onPage={setPage}
+            className="border-border/50 border-t px-4 py-2"
+          />
         )}
       </Panel>
     </AdminPage>

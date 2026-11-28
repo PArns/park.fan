@@ -15,6 +15,7 @@
  * Run: `pnpm test:show-follows-store`
  */
 import assert from 'node:assert/strict';
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const KEY = 'parkfan_show_follows';
 
@@ -48,13 +49,6 @@ function seed(value) {
 function stored() {
   const raw = storage.get(KEY);
   return raw === undefined ? null : JSON.parse(raw);
-}
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
 }
 
 test('a bare string entry reads as the open-ended follow', () => {
@@ -224,4 +218,4 @@ test('reconciling an already matching entry writes nothing', () => {
   assert.equal(storage.get(KEY), before);
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

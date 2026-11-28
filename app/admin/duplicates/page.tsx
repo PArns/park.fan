@@ -190,7 +190,7 @@ function PairRow({ pair, canMerge }: { pair: DuplicatePair; canMerge: boolean })
               size="sm"
               onClick={() => merge(false)}
               disabled={busy !== null}
-              className="bg-destructive hover:bg-destructive/90 text-white"
+              variant="destructive"
             >
               {busy === 'live' && <Loader2 className="h-4 w-4 animate-spin" />}
               Endgültig zusammenführen
@@ -360,12 +360,7 @@ function ParkMergePanel() {
             <Button size="sm" variant="ghost" autoFocus onClick={() => setConfirming(false)}>
               Abbrechen
             </Button>
-            <Button
-              size="sm"
-              onClick={mergePair}
-              disabled={busy}
-              className="bg-destructive hover:bg-destructive/90 text-white"
-            >
+            <Button size="sm" onClick={mergePair} disabled={busy} variant="destructive">
               {busy && <Loader2 className="h-4 w-4 animate-spin" />}
               Zusammenführen
             </Button>
