@@ -39,6 +39,9 @@ seo:
     - TREEville Hersheypark
 ---
 
+> [!UPDATE] 2026-11-28
+> The Fire & Ice Experience only premiered on Friday, November 27, two weeks after Candylane opened, Hersheypark says in a [press release](https://stories.hersheypa.com/hersheypark-christmas-candylane-debuts-new-fire--ice-experience/). It runs on Fridays and Saturdays, through December 27 according to the park, with a show every 15 minutes from 5:15 pm until the fireworks at 8 pm. Lights and flames go off to Christmas music in the former Tidal Force basin, and it's the first time Candylane has used pyrotechnics. You don't pay extra: it's included in your Candylane ticket.
+
 Christmas Candylane opens at [Hersheypark](ref:hersheypark) in Pennsylvania on November 13, and for the first time in 20 seasons it'll run without Hershey Sweet Lights. The drive-through light show isn't coming back in 2026; the park says it wants to put its effort into growing Candylane instead. Candylane's own lights are inside the park, and you walk past them. New this year is the Fire & Ice Experience, where lights and open flames go off in time to a soundtrack written for it.
 
 [Hersheypark](ref:hersheypark?full)
@@ -95,6 +98,7 @@ For food, 1906 Grill, 8-Cut Crust and Chickie's & Pete's are among the places op
 
 Sources:
 [Hersheypark Christmas Candylane](https://www.hersheypark.com/plan-your-visit/christmas-candylane),
+[Fire & Ice press release (Hershey, PA Stories)](https://stories.hersheypa.com/hersheypark-christmas-candylane-debuts-new-fire--ice-experience/),
 [Fall Weekend 2026 (Hershey, PA Stories)](https://stories.hersheypa.com/hersheypark-to-hold-fall-weekend-november-7-and-8-2026/),
 [holiday season rides](https://www.hersheypark.com/things-to-do/rides-and-attractions?season=Christmas),
 [Hersheypark opening hours](https://www.hersheypark.com/plan-your-visit/hours).
