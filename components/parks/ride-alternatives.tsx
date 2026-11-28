@@ -15,7 +15,7 @@ import {
   rankRideAlternatives,
   type AlternativeCandidate,
 } from '@/lib/parks/ride-alternatives';
-import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
+import { liveStandbyWait } from '@/lib/utils/park-utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { buildAttractionUrlFromGeo } from '@/lib/utils/url-utils';
 import { stripNewPrefix } from '@/lib/utils';
@@ -42,8 +42,7 @@ interface RideAlternativesProps {
  */
 export function RideAlternatives(props: RideAlternativesProps) {
   const { attraction, park } = useLiveAttractionData(props);
-  const status = attraction ? getLiveAttractionStatus(attraction, park.status) : null;
-  const wait = attraction && status === 'OPERATING' ? getStandbyWait(attraction) : null;
+  const wait = attraction ? liveStandbyWait(attraction, park.status) : null;
   const afterLoad = useAfterLoad();
 
   if (!afterLoad || wait == null || roundWaitTo5(wait) < MIN_ALTERNATIVE_SAVING_MIN) return null;
@@ -77,12 +76,13 @@ function RideAlternativesList({
     const candidates: AlternativeCandidate[] = (park.attractions ?? []).map((a) => ({
       slug: a.slug,
       name: a.name,
-      wait: getLiveAttractionStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
+      wait: liveStandbyWait(a, park.status),
       latitude: info(a.slug)?.latitude ?? null,
       longitude: info(a.slug)?.longitude ?? null,
       types: info(a.slug)?.types ?? [],
       minimumHeight: info(a.slug)?.minimumHeight ?? null,
       kind: info(a.slug)?.attractionKind ?? null,
+      kindSource: info(a.slug)?.attractionKindSource,
     }));
     const here = info(attractionSlug);
     return rankRideAlternatives(
@@ -93,6 +93,7 @@ function RideAlternativesList({
         longitude: here?.longitude ?? null,
         types: here?.types ?? [],
         kind: here?.attractionKind ?? null,
+        kindSource: here?.attractionKindSource,
       },
       candidates
     );

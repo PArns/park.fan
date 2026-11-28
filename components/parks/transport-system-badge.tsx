@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 import type { AttractionKind, AttractionKindSource } from '@/lib/api/types';
+import { statedAttractionKind } from '@/lib/parks/attraction-kind';
 
 interface TransportSystemBadgeProps {
   /**
@@ -10,11 +11,7 @@ interface TransportSystemBadgeProps {
    * null and absent — renders nothing.
    */
   attractionKind?: AttractionKind | null;
-  /**
-   * Who decided the kind. A `derived` `TRANSPORT` renders nothing: for a minor ride the API's rule
-   * may have read it from the name alone, and the badge tells a visitor to discount the queue.
-   * Absent (an older payload) predates the rule, so its kind is an editor's.
-   */
+  /** Who decided the kind; a `derived` `TRANSPORT` renders nothing ({@link statedAttractionKind}). */
   attractionKindSource?: AttractionKindSource | null;
   className?: string;
 }
@@ -36,7 +33,7 @@ export function TransportSystemBadge({
 }: TransportSystemBadgeProps) {
   const t = useTranslations('parks.transportSystem');
 
-  if (attractionKind !== 'TRANSPORT' || attractionKindSource === 'derived') return null;
+  if (statedAttractionKind(attractionKind, attractionKindSource) !== 'TRANSPORT') return null;
 
   return (
     <Badge

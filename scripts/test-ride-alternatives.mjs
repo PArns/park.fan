@@ -1,7 +1,8 @@
 /**
  * Ride alternatives (`lib/parks/ride-alternatives.ts`): open rides at least 15 printed minutes
  * shorter, same type first and nearest first, three at most, nothing without a live wait, and a
- * transport system, show or game only for one of its own kind.
+ * transport system, show or game only for one of its own kind; a transport system only the API's
+ * rule derived counts as unknown, as on the transport badge (`statedAttractionKind`).
  */
 
 import assert from 'node:assert/strict';
@@ -145,6 +146,40 @@ check(
   ),
   ['other-show'],
   'a show answers a show'
+);
+
+const derived = (slug, kind) => ({ ...ofKind(slug, kind), kindSource: 'derived' });
+check(
+  slugs(
+    rankRideAlternatives({ ...here, kind: 'RIDE' }, [
+      derived('express-coaster', 'TRANSPORT'),
+      { ...ofKind('railway', 'TRANSPORT'), kindSource: 'curated' },
+      derived('derived-show', 'SHOW'),
+      derived('derived-game', 'GAME'),
+    ])
+  ),
+  ['express-coaster'],
+  'a derived transport system stays in, a curated one and a derived show or game do not'
+);
+check(
+  slugs(
+    rankRideAlternatives({ ...here, kind: 'TRANSPORT', kindSource: 'derived' }, [
+      { ...ofKind('railway', 'TRANSPORT'), kindSource: 'curated' },
+      ofKind('coaster', 'RIDE'),
+    ])
+  ),
+  ['coaster'],
+  'a ride only the rule called a transport system is not offered a railway'
+);
+check(
+  slugs(
+    rankRideAlternatives({ ...here, kind: 'TRANSPORT' }, [
+      ofKind('other-railway', 'TRANSPORT'),
+      derived('express-coaster', 'TRANSPORT'),
+    ])
+  ),
+  ['express-coaster', 'other-railway'],
+  'a railway without a source is an editor’s and answers a railway'
 );
 
 console.log(`ride-alternatives: ${passed} checks passed`);
