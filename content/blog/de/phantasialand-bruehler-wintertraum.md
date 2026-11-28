@@ -25,7 +25,7 @@ coverImage:
   caption: 'Die Station von Raik in Klugheim, dahinter laufen die Schienen von Taron.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Euer Brühler Wintertraum im Phantasialand: Anmeldung und Tage'
+  title: 'Euer Brühler Wintertraum: Phantasialand gratis für Brühler'
   description: >-
     Das Phantasialand lädt alle mit Hauptwohnsitz in Brühl gratis zum Wintertraum ein. Anmeldung bis 15. Dezember, Besuch bis 24. Januar, Ferien ausgenommen.
   keywords:
