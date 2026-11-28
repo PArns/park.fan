@@ -38,21 +38,21 @@ seo:
     - temps d’attente Six Flags Magic Mountain
 ---
 
-ArieForce One, la montagne russe du Fun Spot America Atlanta, en Géorgie, parc aujourd’hui fermé, va être reconstruite à [Six Flags Magic Mountain](ref:six-flags-magic-mountain), au nord de Los Angeles. Brian Oerding, le directeur du parc, l’a confirmé le 29 octobre dans une déclaration relayée par FOX 11 Los Angeles. Elle doit reprendre du service lors de la saison 2028 ou 2029. Six Flags n’a encore communiqué ni la date d’ouverture ni l’endroit du parc où elle sera installée.
+ArieForce One va être reconstruite à [Six Flags Magic Mountain](ref:six-flags-magic-mountain), au nord de Los Angeles. Elle vient du Fun Spot America Atlanta, en Géorgie, un parc qui a fermé. Brian Oerding, le directeur du parc, l’a confirmé le 29 octobre dans une déclaration relayée par FOX 11 Los Angeles. Elle doit reprendre du service lors de la saison 2028 ou 2029. Six Flags n’a encore communiqué ni la date d’ouverture ni l’endroit du parc où elle sera installée.
 
 ## Ce qu’est ArieForce One
 
-ArieForce One est une montagne russe I-Box de Rocky Mountain Construction (RMC). Contrairement aux modèles hybrides du constructeur, elle est entièrement en acier, structure comprise. Un lift à chaîne hisse le train à 47 mètres, puis la première descente plonge de 44,5 mètres à 83 degrés. Les trains atteignent 103 km/h sur un parcours d’environ 1 040 mètres, qui compte quatre inversions. Deux trains circulent, de cinq wagons et 20 places chacun.
+ArieForce One est une montagne russe I-Box de Rocky Mountain Construction (RMC). Contrairement aux modèles hybrides du constructeur, elle est entièrement en acier, structure comprise. Un lift à chaîne hisse le train à 47 mètres, puis la première descente plonge de 44,5 mètres à 83 degrés. Les trains atteignent 103 km/h sur un parcours d’environ 1 040 mètres, qui compte quatre inversions. Deux trains de cinq wagons circulent, avec 20 places chacun.
 
 La première inversion est un Raven Truss Dive, une figure que RMC a construite ici pour la première fois. S’y ajoutent une bosse d’airtime inclinée vers l’extérieur et un zero-g stall, le plus grand du monde selon Six Flags. La taille minimale qui sera exigée à Magic Mountain n’a pas encore été publiée.
 
 Le nom ne change pas. Il rend hommage à John Arie Sr., le fondateur de Fun Spot America, et Six Flags s’était engagé à le garder dès le rachat.
 
-## Où elle sera installée
+## Où et quand elle sera remontée
 
-Puisque l’emplacement n’est pas fixé, on ne sait pas non plus si ArieForce One prendra la place de [X2](ref:six-flags-magic-mountain/x2). X2 ne tourne plus depuis juillet, et fin septembre, Six Flags [l’a fermée définitivement](/news/x2-six-flags-magic-mountain-ferme).
+Six Flags n’a pas annoncé si ArieForce One prendra la place de [X2](ref:six-flags-magic-mountain/x2). X2 ne tourne plus depuis juillet, et fin septembre, Six Flags [l’a fermée définitivement](/news/x2-six-flags-magic-mountain-ferme).
 
-Oerding a laissé entendre que les premières pièces pourraient arriver en camion à Valencia dès la semaine de l’annonce. Six Flags compte en dire plus début 2027 sur ses projets pour le parc et sur le calendrier.
+Fin octobre, Oerding a laissé entendre que les premières pièces étaient peut-être déjà en route vers le parc, en camion. Six Flags compte en dire plus début 2027 sur ses projets pour le parc et sur le calendrier.
 
 > [!QUOTE]
 > À Six Flags Magic Mountain, nous préparons quelque chose de bien plus grand qu’une simple attraction. […] Le prochain chapitre s’ouvre en 2027 avec le Thrill Glider, le premier du genre. Nous pouvons maintenant confirmer qu’ArieForce One, chouchou des fans, viendra s’y ajouter.
@@ -63,15 +63,15 @@ Oerding a laissé entendre que les premières pièces pourraient arriver en cami
 
 ## Ce qui ouvre avant, en 2027
 
-Avant ArieForce One, le Thrill Glider de Vekoma ouvrira en 2027, lui aussi sans date précise. Vous y êtes allongé à plat ventre dans un véhicule façon moto, suspendu sous le rail, le visage tourné vers l’avant. L’attraction culmine à 33 mètres, atteint 80 km/h en deux lancements et enchaîne cinq inversions sur environ 1 030 mètres. Un tour dure 84 secondes, et il faut mesurer au moins 1,22 mètre. Elle se construit sur le terrain de l’ancien Golden Bear Theatre, entre [Full Throttle](ref:six-flags-magic-mountain/full-throttle) et [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom), à côté du Looney Tunes Land réaménagé. Vous trouverez les détails dans notre [article sur le Thrill Glider](/news/thrill-glider-six-flags-magic-mountain).
+Le Thrill Glider de Vekoma ouvrira en 2027, lui aussi sans date précise. Vous y êtes allongé à plat ventre dans un véhicule façon moto, suspendu sous le rail, le visage tourné vers l’avant. L’attraction culmine à 33 mètres, atteint 80 km/h en deux lancements et enchaîne cinq inversions sur environ 1 030 mètres. Un tour dure 84 secondes, et il faut mesurer au moins 1,22 mètre. Elle se construit sur le terrain de l’ancien Golden Bear Theatre, entre [Full Throttle](ref:six-flags-magic-mountain/full-throttle) et [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom), à côté du Looney Tunes Land réaménagé. Vous trouverez les détails dans notre [article sur le Thrill Glider](/news/thrill-glider-six-flags-magic-mountain).
 
-Les deux montagnes russes s’inscrivent dans une transformation du parc étalée sur plusieurs années. Comme premières étapes, Oerding cite la rénovation du parc aquatique Hurricane Harbor Los Angeles et le nouveau Looney Tunes Land. Sont prévus aussi de nouveaux manèges pour les familles, davantage de spectacles, des événements tout au long de la saison, un parc plus soigné et des travaux d’infrastructure sur l’ensemble du site.
+Les deux montagnes russes s’inscrivent dans une transformation du parc étalée sur plusieurs années. Comme premières étapes, Oerding cite la rénovation du parc aquatique Hurricane Harbor Los Angeles et le réaménagement du Looney Tunes Land. Sont prévus aussi de nouveaux manèges pour les familles, davantage de spectacles, des événements répartis sur la saison et des travaux de décor et d’infrastructure sur l’ensemble du site.
 
 ## D’où vient ArieForce One
 
 ArieForce One a ouvert le 31 mars 2023 au Fun Spot America Atlanta, à Fayetteville, en Géorgie. Les derniers tours ont eu lieu le 2 août 2026, quelques semaines avant que le parc ne ferme pour de bon, après 36 ans. Fun Spot America exploite toujours ses deux parcs de Floride, à Orlando et à Kissimmee.
 
-Le 8 septembre, Six Flags a annoncé avoir racheté l’attraction pour la démonter et la remonter dans l’un de ses parcs. Lequel, Six Flags ne le disait pas encore, et son directeur des opérations, Mark Pauls, prévoyait que les fans allaient se mettre à deviner. Les paris ont duré sept semaines.
+Le 8 septembre, Six Flags a annoncé avoir racheté l’attraction pour la démonter et la remonter dans l’un de ses parcs. Six Flags ne disait pas encore lequel, et Mark Pauls, son directeur des opérations, prévoyait que les fans allaient se mettre à deviner. Les paris ont duré sept semaines.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 
