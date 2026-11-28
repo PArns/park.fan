@@ -8,13 +8,12 @@ import type {
   TrendDirection,
   ComparisonStatus,
   AccuracyBadge,
-  BestVisitSlot,
-  RopeDropInfo,
   LiveWaitTimes,
   AttractionKind,
   HourlyForecastItem,
   PerformanceSchedule,
   WorksPeriod,
+  ParkAttraction,
 } from '@/lib/api/types';
 
 /** A favorite park as `/v1/favorites` returns it. */
@@ -47,8 +46,24 @@ export interface FavoritePark {
   nextSchedule?: ScheduleSummary;
 }
 
-/** A favorite attraction as `/v1/favorites` returns it. */
-export interface FavoriteAttraction {
+/**
+ * A favorite attraction as `/v1/favorites` returns it. It renders as the park page's ride card, so
+ * the fields that card reads for the crown, the best time, the rope-drop tip and the closure lines
+ * are the park payload's own, picked from `ParkAttraction`: the API answers them from the same
+ * services (backend `docs/frontend/favorites.md`, "The park page's card"). A ride comes either from
+ * the cached detail payload or rebuilt, depending on the API's cache, and a rebuilt one carries no
+ * `tooColdToGetWet`, so its absence says nothing about the weather.
+ */
+export interface FavoriteAttraction extends Pick<
+  ParkAttraction,
+  | 'isHeadliner'
+  | 'bestVisitTimes'
+  | 'ropeDrop'
+  | 'tooColdToGetWet'
+  | 'outage'
+  | 'notRunToday'
+  | 'weatherClosure'
+> {
   id: string;
   name: string;
   slug: string;
@@ -131,9 +146,6 @@ export interface FavoriteAttraction {
   backgroundImage?: string | null; // Added by proxy route
   /** Focal point as a CSS `object-position`, attached by the same proxy route. */
   backgroundPosition?: string;
-  bestVisitTimes?: BestVisitSlot[] | null;
-  /** Not yet delivered by /v1/favorites; typed so cards light up once the API ships it. */
-  ropeDrop?: RopeDropInfo | null;
   /**
    * Not yet delivered by /v1/favorites either; typed so the card's transport badge lights up once
    * the API ships it.
