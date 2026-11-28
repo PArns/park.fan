@@ -44,7 +44,7 @@ ArieForce One, la montagne russe du Fun Spot America Atlanta, en Géorgie, parc 
 
 ArieForce One est une montagne russe I-Box de Rocky Mountain Construction (RMC). Contrairement aux modèles hybrides du constructeur, elle est entièrement en acier, structure comprise. Un lift à chaîne hisse le train à 47 mètres, puis la première descente plonge de 44,5 mètres à 83 degrés. Les trains atteignent 103 km/h sur un parcours d’environ 1 040 mètres, qui compte quatre inversions. Deux trains circulent, de cinq wagons et 20 places chacun.
 
-La première inversion est un Raven Truss Dive, une figure que RMC a construite ici pour la première fois. Viennent ensuite une bosse d’airtime inclinée vers l’extérieur et un zero-g stall, où le train reste un moment la tête en bas sur une section presque droite. Selon Six Flags, c’est le plus grand du monde. La taille minimale qui sera exigée à Magic Mountain n’a pas encore été publiée.
+La première inversion est un Raven Truss Dive, une figure que RMC a construite ici pour la première fois. S’y ajoutent une bosse d’airtime inclinée vers l’extérieur et un zero-g stall, le plus grand du monde selon Six Flags. La taille minimale qui sera exigée à Magic Mountain n’a pas encore été publiée.
 
 Le nom ne change pas. Il rend hommage à John Arie Sr., le fondateur de Fun Spot America, et Six Flags s’était engagé à le garder dès le rachat.
 
@@ -52,7 +52,7 @@ Le nom ne change pas. Il rend hommage à John Arie Sr., le fondateur de Fun Spot
 
 Puisque l’emplacement n’est pas fixé, on ne sait pas non plus si ArieForce One prendra la place de [X2](ref:six-flags-magic-mountain/x2). X2 ne tourne plus depuis juillet, et fin septembre, Six Flags [l’a fermée définitivement](/news/x2-six-flags-magic-mountain-ferme).
 
-La semaine de l’annonce, les premières pièces d’ArieForce One roulaient déjà en camion vers Valencia, en Californie. Six Flags compte présenter début 2027 l’ensemble de ses projets pour le parc, calendrier compris.
+Oerding a laissé entendre que les premières pièces pourraient arriver en camion à Valencia dès la semaine de l’annonce. Six Flags compte en dire plus début 2027 sur ses projets pour le parc et sur le calendrier.
 
 > [!QUOTE]
 > À Six Flags Magic Mountain, nous préparons quelque chose de bien plus grand qu’une simple attraction. […] Le prochain chapitre s’ouvre en 2027 avec le Thrill Glider, le premier du genre. Nous pouvons maintenant confirmer qu’ArieForce One, chouchou des fans, viendra s’y ajouter.
@@ -83,4 +83,5 @@ Sources :
 [ArieForce One dans la Roller Coaster DataBase](https://rcdb.com/19332.htm),
 [Six Flags Magic Mountain Announces Thrill Glider (PR Newswire)](https://www.prnewswire.com/news-releases/six-flags-magic-mountain-announces-thrill-glider-the-worlds-first-thrillglider-roller-coaster-opening-in-2027-302875547.html),
 [New in 2027: Thrill Glider](https://www.sixflags.com/magicmountain/new-in-2027),
-[Retiring X2](https://www.sixflags.com/blog/retiring-x2-magic-mountain).
+[Retiring X2](https://www.sixflags.com/blog/retiring-x2-magic-mountain),
+[Six Flags Magic Mountain retires X2 roller coaster amid lawsuits (Spectrum News 1)](https://spectrumnews1.com/ca/la/entertainment/2026/09/29/six-flags-magic-mountain-x2-roller-coaster).

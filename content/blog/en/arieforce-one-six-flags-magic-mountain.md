@@ -44,7 +44,7 @@ ArieForce One, the coaster from the closed Fun Spot America Atlanta in Georgia, 
 
 ArieForce One is an I-Box coaster by Rocky Mountain Construction (RMC). Unlike the company's hybrids, it's steel all the way through, structure included. A chain lift takes the train up 154 feet, and the first drop falls 146 feet at 83 degrees. Trains hit 64 mph on about 3,400 feet of track with four inversions. Two trains run, each with five cars and 20 seats.
 
-The first inversion is a Raven Truss Dive, an element RMC built here for the first time. There's also an outward-banked airtime hill and a zero-g stall, where the train runs upside down for a while along an almost straight stretch. Six Flags calls it the biggest in the world. It hasn't yet said what the height requirement will be at Magic Mountain.
+The first inversion is a Raven Truss Dive, an element RMC built here for the first time. There's also an outward-banked airtime hill and a zero-g stall, which Six Flags calls the biggest in the world. It hasn't yet published the height requirement for Magic Mountain.
 
 The name stays. It honours John Arie Sr., who founded Fun Spot America, and Six Flags promised to keep it when it bought the ride.
 
@@ -52,7 +52,7 @@ The name stays. It honours John Arie Sr., who founded Fun Spot America, and Six 
 
 Since the spot in the park isn't settled, nobody knows yet whether ArieForce One will take over the site of [X2](ref:six-flags-magic-mountain/x2). X2 hasn't run since July, and at the end of September Six Flags [retired it for good](/news/x2-six-flags-magic-mountain-closed).
 
-In the week of the announcement, the first pieces of ArieForce One were already on trucks headed for Valencia, California. Six Flags plans to present the full plan for the park, timeline included, in early 2027.
+Oerding hinted that the first pieces could already be arriving in Valencia by truck in the week of the announcement. Six Flags wants to share more on its plan for the park and the timeline in early 2027.
 
 > [!QUOTE]
 > At Six Flags Magic Mountain, we're building toward something much bigger than any single attraction. […] The next chapter arrives in 2027 with the debut of the first-of-its-kind Thrill Glider. Now, we can confirm the future addition of the fan-favorite ArieForce One.
@@ -63,7 +63,7 @@ In the week of the announcement, the first pieces of ArieForce One were already 
 
 Vekoma's Thrill Glider opens ahead of ArieForce One in 2027, also without a fixed date. You lie face down in a vehicle shaped like a motorbike and hang beneath the track, facing forward. The ride is 107 feet tall, reaches 50 mph over two launches and packs five inversions into about 3,380 feet. A ride lasts 84 seconds, and you need to be 48 inches tall. It's going up on the site of the former Golden Bear Theatre, between [Full Throttle](ref:six-flags-magic-mountain/full-throttle) and [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom), next to the redesigned Looney Tunes Land. Our [post on the Thrill Glider](/news/thrill-glider-six-flags-magic-mountain) has more.
 
-Both coasters are part of a makeover spread over several years. Oerding names the overhaul of the Hurricane Harbor Los Angeles water park and the new Looney Tunes Land as the first steps. After that come new family rides, more shows, events through the season, a better-looking park and infrastructure work across the grounds.
+Both coasters are part of a makeover spread over several years. Oerding names the overhaul of the Hurricane Harbor Los Angeles water park and the new Looney Tunes Land as the first steps. Also on the list are new family rides, more shows, events through the season, a better-looking park and infrastructure work across the grounds.
 
 ## Where ArieForce One comes from
 
@@ -81,4 +81,5 @@ Sources:
 [ArieForce One on the Roller Coaster DataBase](https://rcdb.com/19332.htm),
 [Six Flags Magic Mountain Announces Thrill Glider (PR Newswire)](https://www.prnewswire.com/news-releases/six-flags-magic-mountain-announces-thrill-glider-the-worlds-first-thrillglider-roller-coaster-opening-in-2027-302875547.html),
 [New in 2027: Thrill Glider](https://www.sixflags.com/magicmountain/new-in-2027),
-[Retiring X2](https://www.sixflags.com/blog/retiring-x2-magic-mountain).
+[Retiring X2](https://www.sixflags.com/blog/retiring-x2-magic-mountain),
+[Six Flags Magic Mountain retires X2 roller coaster amid lawsuits (Spectrum News 1)](https://spectrumnews1.com/ca/la/entertainment/2026/09/29/six-flags-magic-mountain-x2-roller-coaster).
