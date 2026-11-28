@@ -38,21 +38,21 @@ seo:
     - six flags magic mountain wait times
 ---
 
-De achtbaan ArieForce One uit het gesloten Fun Spot America Atlanta in Georgia krijgt een nieuw thuis in [Six Flags Magic Mountain](ref:six-flags-magic-mountain), ten noorden van Los Angeles. Parkdirecteur Brian Oerding bevestigde dat op 29 oktober in een verklaring waarover FOX 11 Los Angeles berichtte. De baan moet in het seizoen 2028 of 2029 weer rijden. Een openingsdatum en de plek in het park heeft Six Flags nog niet bekendgemaakt.
+De achtbaan ArieForce One uit het gesloten Fun Spot America Atlanta in Georgia krijgt een nieuw thuis in [Six Flags Magic Mountain](ref:six-flags-magic-mountain), ten noorden van Los Angeles. Parkdirecteur Brian Oerding bevestigde dat op 29 oktober in een verklaring waarover FOX 11 Los Angeles berichtte. De baan moet in het seizoen 2028 of 2029 weer rijden. Een openingsdatum, de plek in het park en de minimumlengte heeft Six Flags nog niet bekendgemaakt.
 
-## Wat voor baan er komt
+## Wat voor baan ArieForce One is
 
 ArieForce One is een I-Box-achtbaan van Rocky Mountain Construction (RMC). Anders dan de hybride banen van de fabrikant is hij helemaal van staal, de ondersteuning ook. Een kettinglift trekt de trein naar 47 meter. De eerste afdaling is 44,5 meter diep en 83 graden steil. De treinen halen 103 km/u op een baan van zo'n 1.040 meter met vier inversies. Er rijden twee treinen, elk met vijf wagens en 20 plaatsen.
 
-De eerste inversie is een Raven Truss Dive, een element dat RMC hier voor het eerst bouwde. Verder zitten er een naar buiten hellende airtimeheuvel en een zero-g stall in, volgens Six Flags de grootste ter wereld. Welke minimumlengte in Magic Mountain gaat gelden, heeft Six Flags nog niet gepubliceerd.
+De eerste inversie is een Raven Truss Dive, een element dat RMC hier voor het eerst bouwde. Verder zitten er een naar buiten hellende airtimeheuvel en een zero-g stall in, volgens Six Flags de grootste ter wereld.
 
 De naam blijft. Die verwijst naar John Arie Sr., de oprichter van Fun Spot America, en Six Flags had al bij de aankoop beloofd hem te houden.
 
 ## Waar en wanneer hij wordt opgebouwd
 
-Of ArieForce One op het terrein van [X2](ref:six-flags-magic-mountain/x2) komt, heeft Six Flags niet bekendgemaakt. X2 rijdt sinds juli niet meer, en eind september heeft Six Flags [de baan definitief buiten gebruik gesteld](/news/x2-six-flags-magic-mountain-gesloten).
+[X2](ref:six-flags-magic-mountain/x2) rijdt sinds juli niet meer, en eind september heeft Six Flags de baan [definitief buiten gebruik gesteld](/news/x2-six-flags-magic-mountain-gesloten). Daarmee komt dat terrein vrij. Of ArieForce One daar terechtkomt, is net zo onzeker als de openingsdatum.
 
-Eind oktober liet Oerding doorschemeren dat de eerste onderdelen misschien al per vrachtwagen onderweg waren naar het park. Meer over het plan voor het park en het tijdschema wil Six Flags begin 2027 bekendmaken.
+Het tijdschema en de rest van de plannen voor het park wil Six Flags pas begin 2027 presenteren, al liet Oerding eind oktober doorschemeren dat de eerste onderdelen misschien al per vrachtwagen onderweg waren.
 
 > [!QUOTE]
 > Bij Six Flags Magic Mountain werken we toe naar iets dat veel groter is dan één attractie. […] Het volgende hoofdstuk begint in 2027 met de Thrill Glider, de eerste baan in zijn soort. Nu kunnen we bevestigen dat publiekslieveling ArieForce One erbij komt.
@@ -61,11 +61,11 @@ Eind oktober liet Oerding doorschemeren dat de eerste onderdelen misschien al pe
 >
 > Brian Oerding, parkdirecteur van Six Flags Magic Mountain, in zijn verklaring van 29 oktober 2026, geciteerd door [FOX 11 Los Angeles](https://www.foxla.com/news/arieforce-one-coaster-moving-six-flags-magic-mountain-california), vertaald uit het Engels
 
-## Wat er in 2027 eerst komt
+## De Thrill Glider is in 2027 eerst aan de beurt
 
 De Thrill Glider van Vekoma opent in 2027, ook nog zonder vaste datum. Je ligt op je buik, als op een motor, met je gezicht naar voren onder de rails. De baan is 33 meter hoog, komt met twee launches op 80 km/u en heeft vijf inversies op zo'n 1.030 meter. Een rit duurt 84 seconden, meerijden mag vanaf 1,22 meter. Hij wordt gebouwd op het terrein van het voormalige Golden Bear Theatre, tussen [Full Throttle](ref:six-flags-magic-mountain/full-throttle) en [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom) en naast het vernieuwde Looney Tunes Land. Meer daarover lees je in ons [artikel over de Thrill Glider](/news/thrill-glider-six-flags-magic-mountain).
 
-Beide banen horen bij een verbouwing die een paar jaar duurt. Als eerste stappen noemt Oerding de vernieuwing van waterpark Hurricane Harbor Los Angeles en de herinrichting van Looney Tunes Land. Verder moeten er nieuwe attracties voor gezinnen komen, meer shows, evenementen verspreid over het seizoen en werk aan de aankleding en de infrastructuur in het hele park.
+Beide banen horen bij een verbouwing die een paar jaar duurt. Als eerste stappen noemt Oerding de vernieuwing van waterpark Hurricane Harbor Los Angeles en de herinrichting van Looney Tunes Land. Voor wat daarna komt, noemt Six Flags tot nu toe alleen categorieën: nieuwe attracties voor gezinnen, meer shows, evenementen verspreid over het seizoen en werk aan de aankleding en de infrastructuur in het hele park.
 
 ## Waar ArieForce One vandaan komt
 

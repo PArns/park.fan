@@ -38,21 +38,21 @@ seo:
     - six flags magic mountain tiempos de espera
 ---
 
-ArieForce One se volverá a montar en [Six Flags Magic Mountain](ref:six-flags-magic-mountain), al norte de Los Ángeles. Viene del Fun Spot America Atlanta, un parque de Georgia que ya ha cerrado. Lo confirmó el director del parque, Brian Oerding, en un comunicado del 29 de octubre que recogió FOX 11 Los Angeles. La atracción debería volver a funcionar en la temporada 2028 o en la de 2029. Six Flags todavía no ha anunciado ni el día de la apertura ni el lugar que ocupará en el parque.
+ArieForce One se volverá a montar en [Six Flags Magic Mountain](ref:six-flags-magic-mountain), al norte de Los Ángeles. Viene del Fun Spot America Atlanta, un parque de Georgia que ya ha cerrado. Lo confirmó el director del parque, Brian Oerding, en un comunicado del 29 de octubre que recogió FOX 11 Los Angeles. La atracción debería volver a funcionar en la temporada 2028 o en la de 2029. Six Flags todavía no ha anunciado el día de la apertura, el lugar que ocupará en el parque ni la altura mínima.
 
-## Qué montaña rusa llega
+## Qué montaña rusa es ArieForce One
 
 ArieForce One es una I-Box de Rocky Mountain Construction (RMC). A diferencia de las híbridas del fabricante, es toda de acero, incluida la estructura. Un lift de cadena sube el tren a 47 metros y la primera bajada cae 44,5 metros con una inclinación de 83 grados. Los trenes llegan a 103 km/h en un recorrido de unos 1.040 metros con cuatro inversiones. Circulan dos trenes de cinco vagones y 20 plazas cada uno.
 
-La primera inversión es un Raven Truss Dive, un elemento que RMC construyó aquí por primera vez. Se suman una colina de airtime inclinada hacia fuera y un zero-g stall que, según Six Flags, es el más grande del mundo. La altura mínima que se pedirá en Magic Mountain aún no se ha publicado.
+La primera inversión es un Raven Truss Dive, un elemento que RMC construyó aquí por primera vez. Se suman una colina de airtime inclinada hacia fuera y un zero-g stall que, según Six Flags, es el más grande del mundo.
 
 El nombre se queda. Recuerda a John Arie Sr., fundador de Fun Spot America, y Six Flags ya se comprometió a mantenerlo cuando compró la atracción.
 
 ## Dónde y cuándo se montará
 
-Six Flags no ha anunciado si ArieForce One ocupará el terreno de [X2](ref:six-flags-magic-mountain/x2). X2 no funciona desde julio, y a finales de septiembre Six Flags [la retiró para siempre](/news/x2-six-flags-magic-mountain-cierra).
+[X2](ref:six-flags-magic-mountain/x2) no funciona desde julio, y a finales de septiembre Six Flags [la retiró para siempre](/news/x2-six-flags-magic-mountain-cierra). Su terreno queda libre, pero que ArieForce One vaya a ocupar ese hueco está tan en el aire como la fecha de apertura.
 
-A finales de octubre, Oerding dio a entender que las primeras piezas quizá ya iban en camión hacia el parque. Six Flags quiere contar más sobre el plan para el parque y el calendario a principios de 2027.
+Six Flags no presentará el calendario ni el resto de sus planes para el parque hasta principios de 2027, aunque a finales de octubre Oerding dio a entender que las primeras piezas quizá ya iban en camión hacia allí.
 
 > [!QUOTE]
 > En Six Flags Magic Mountain trabajamos en algo mucho más grande que una sola atracción. […] El próximo capítulo llega en 2027 con el Thrill Glider, la primera de su clase. Ahora podemos confirmar que se sumará ArieForce One, una de las favoritas del público.
@@ -61,11 +61,11 @@ A finales de octubre, Oerding dio a entender que las primeras piezas quizá ya i
 >
 > Brian Oerding, director de Six Flags Magic Mountain, en su comunicado del 29 de octubre de 2026, citado por [FOX 11 Los Angeles](https://www.foxla.com/news/arieforce-one-coaster-moving-six-flags-magic-mountain-california), traducido del inglés
 
-## Lo que llega antes, en 2027
+## El Thrill Glider llega antes, en 2027
 
 El Thrill Glider de Vekoma abrirá en 2027, también sin fecha fija. En él vas tumbado boca abajo en un vehículo parecido a una moto, colgado bajo la vía y mirando hacia delante. Mide 33 metros de alto, alcanza 80 km/h con dos lanzamientos y tiene cinco inversiones en unos 1.030 metros. Cada viaje dura 84 segundos y puedes subir a partir de 1,22 metros. Se construye en el terreno del antiguo Golden Bear Theatre, entre [Full Throttle](ref:six-flags-magic-mountain/full-throttle) y [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom), junto al renovado Looney Tunes Land. Tienes más detalles en nuestro [artículo sobre el Thrill Glider](/news/thrill-glider-six-flags-magic-mountain).
 
-Las dos montañas rusas forman parte de una transformación de varios años. Como primeros pasos, Oerding cita la reforma del parque acuático Hurricane Harbor Los Angeles y la remodelación de Looney Tunes Land. También están previstas nuevas atracciones familiares, más espectáculos, eventos repartidos por la temporada y obras de decoración e infraestructura por todo el recinto.
+Las dos montañas rusas forman parte de una transformación de varios años. Como primeros pasos, Oerding cita la reforma del parque acuático Hurricane Harbor Los Angeles y la remodelación de Looney Tunes Land. De lo que vendrá después, Six Flags solo ha dado categorías: nuevas atracciones familiares, más espectáculos, eventos repartidos por la temporada y obras de decoración e infraestructura por todo el recinto.
 
 ## De dónde viene ArieForce One
 
