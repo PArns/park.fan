@@ -42,6 +42,13 @@ since a bounding box cannot see a pseudo-element), that a drag with `pointerType
 block, that the ±15 button is 44 px and moves a quarter hour, and that the axis keeps its 200 px
 floor.
 
+**The pass seeds the fixture day on the live day's hours** (`planOpeningAt`). `PLAN` is written
+for a park that opens at 9:00, like every stubbed `/plan/day` in the file. On a winter day that
+opens at 11:00, Taron's 10:00 is under the opening: the touch drag is clamped to the opening
+instead of moving the block 50 minutes, and the held drag cannot scroll the block to the middle of
+the scroller, so the ghost is not under the action bar. Every entry moves by the same whole hours,
+so the gaps stay as written.
+
 **That page is opened with `hasTouch`, and nothing it asserts means anything without it.** A
 390 × 844 viewport alone is a mouse in a narrow window (`{coarse: false, fine: true, hover: true}`),
 so everything that decides by pointer type — the snap step, the block body's `(pointer: fine)` gate,

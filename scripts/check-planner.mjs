@@ -154,6 +154,34 @@ const PLAN = {
   version: 2,
 };
 
+/**
+ * The opening {@link PLAN}'s Phantasialand day is written against, and every stubbed `/plan/day`
+ * in this file opens at it too: Taron at 10:00, F.L.Y. at 12:30, Black Mamba at 15:00.
+ */
+const PLAN_OPEN_HOUR = 9;
+
+/**
+ * {@link PLAN} with its Phantasialand day moved to a park that opens at `openHour`: every entry by
+ * the same whole hours, so the gaps between the blocks stay as written. `PLAN` itself when the
+ * opening is not known.
+ *
+ * For a pass that drags on the live day. Taron's 10:00 is an hour into a day that opens at 9:00 and
+ * an hour before one that opens at 11:00. There a drag from it is clamped to the opening instead of
+ * following the finger, and a block that close to the top of the axis cannot be scrolled to the
+ * middle of the scroller, where a held drag needs it.
+ */
+function planOpeningAt(openHour) {
+  if (typeof openHour !== 'number') return PLAN;
+  const shift = openHour - PLAN_OPEN_HOUR;
+  const plan = structuredClone(PLAN);
+  for (const entry of plan.parks[PARK.slug].days[DATE].entries) {
+    // Black Mamba keeps the old `hour` shape it is seeded in.
+    if (typeof entry.startMinute === 'number') entry.startMinute += shift * 60;
+    if (typeof entry.hour === 'number') entry.hour += shift;
+  }
+  return plan;
+}
+
 // The way in is a tab on the window's edge, not a floating pill in the corner,
 // and it is drawn on every page whether or not anything is planned — so this
 // selector is a data attribute rather than an aria-label: the tab's accessible
@@ -348,11 +376,11 @@ async function gotoPlannerPage(page, url, ready) {
 }
 
 /** Seeds the plan the way the store writes it, then loads the page fresh. */
-async function seed(page) {
+async function seed(page, plan = PLAN) {
   await page.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
-  await page.evaluate((plan) => {
-    window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
-  }, PLAN);
+  await page.evaluate((seeded) => {
+    window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+  }, plan);
   await page.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
 }
 
@@ -956,11 +984,18 @@ if (process.argv.includes('--orlando')) {
 
 // ── Is the backend endpoint live? ────────────────────────────────────────────
 let planStatus;
+/**
+ * The test day's `/plan/day` answer, or `null` without a 200. Read once, here, for every pass
+ * that plans against the park's real hours.
+ */
+let liveDay = null;
 try {
   // The day-plan relay answers park.fan's own pages only.
-  planStatus = (
-    await fetch(`${BASE}${PLAN_PATH}`, { headers: { 'Sec-Fetch-Site': 'same-origin' } })
-  ).status;
+  const response = await fetch(`${BASE}${PLAN_PATH}`, {
+    headers: { 'Sec-Fetch-Site': 'same-origin' },
+  });
+  planStatus = response.status;
+  liveDay = response.ok ? await response.json().catch(() => null) : null;
 } catch (error) {
   console.error(`Could not reach ${BASE} — is the site running? (${error.message})`);
   // Nine static assertions have already run at this point, so this exit owes a
@@ -1508,7 +1543,8 @@ step: if (await reopen.count()) {
 // what `hasTouch` alone already gives: `{coarse:true, fine:false, hover:false}`.
 const phone = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true });
 noteErrors(phone);
-await seed(phone);
+// The touch drags below start from the first block, and the day's opening is the floor they stop at.
+await seed(phone, planOpeningAt(liveDay?.context?.openHour));
 
 // The sheet here is MODAL, unlike the 1280 px panel above: the desktop one
 // marks nothing outside itself, which is why the same open on a wide viewport
@@ -7149,13 +7185,7 @@ step: {
   // rather than written down: this park shuts at 18:00 today and the assertion
   // below is about the RULE, not about that number, so a hard-coded 1140 would
   // stop testing anything the season the hours move.
-  // The relay answers only the site's own pages (`isSameOriginRequest`), as a browser would ask.
-  const context = await fetch(
-    `${BASE}/api/parks/europe/germany/bruehl/phantasialand/plan/day?date=${DATE}`,
-    { headers: { 'Sec-Fetch-Site': 'same-origin' } }
-  )
-    .then((response) => (response.ok ? response.json() : null))
-    .catch(() => null);
+  const context = liveDay;
   // `buildDayGrid`'s own arithmetic: `closeHour` is the hour the closing time
   // FALLS IN, so this IS the gate. It used to read `+ 1` on the opposite
   // reading, which is what handed the optimiser an hour of park that does not
