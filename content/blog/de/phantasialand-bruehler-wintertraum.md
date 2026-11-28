@@ -27,7 +27,7 @@ coverImage:
 seo:
   title: 'Euer Brühler Wintertraum im Phantasialand: Anmeldung und Tage'
   description: >-
-    Das Phantasialand lädt alle mit Hauptwohnsitz in Brühl gratis in den Wintertraum ein. Anmeldung bis 15. Dezember, Besuch bis 24. Januar, außer in den Ferien.
+    Das Phantasialand lädt alle mit Hauptwohnsitz in Brühl gratis in den Wintertraum ein. Anmeldung bis 15. Dezember, Besuch bis 24. Januar, Ferien ausgenommen.
   keywords:
     - Euer Brühler Wintertraum
     - Phantasialand Brühler Wintertraum
