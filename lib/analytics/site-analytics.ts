@@ -338,8 +338,11 @@ export interface SiteEventMap {
   parky_element_seen: ParkyElement;
   /** One of those elements was pressed, which hands Parky its question and opens him. */
   parky_element_clicked: ParkyElement;
-  /** Parky's window closed again, with how many questions were asked while it was open. */
-  assistant_closed: { questions: number };
+  /**
+   * Parky's window closed again, with how many questions were asked while it was open and whether
+   * an answer was still on its way (`answering`): closed before it could be read.
+   */
+  assistant_closed: { questions: number; answering: boolean };
   /**
    * A question to Parky: a suggested one, typed, a reply chip or the interview's kickoff; never its
    * text. `first` for a chat's first question, `position` the chip's place (1 the likeliest).

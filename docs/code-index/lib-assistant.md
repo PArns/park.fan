@@ -80,6 +80,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `SETTLE_MS` _const_: Once the page has moved slower than that for this long, he lets go: long enough to hold on through the gaps between a wheel's bursts or a finger's swipes, so he does not bounce about.
 - Types: `ParkyFling`, `FlingHand`, `FlingHandAt`, `FlingState`
 
+### [`interview-kickoff.ts`](../../lib/assistant/interview-kickoff.ts)
+
+- `interviewKickoff` _function_: The first question of an interview at its first step, and the state it leaves the interview in: a step the planner already answers (the region of the hub the button stands on, the park and day of the planner's column) counts as answered …
+- Types: `KickoffAsk`, `KickoffReplyKey`, `KickoffReply`, `KickoffContext`, `InterviewKickoff`
+
 ### [`interview.ts`](../../lib/assistant/interview.ts)
 
 - `interviewCore` _function_: The core steps of an interview of this kind, the ones before its plan.
@@ -88,16 +93,16 @@ by hand: change the comment in the code and re-run the script. -->
 - `interviewPlanStood` _function_: Whether the interview's plan stands: every core step answered or passed.
 - `interviewEnded` _function_: What `assistant_interview_ended` carries for an interview that ends now.
 - `readInterview` _function_: An interview read leniently, from the API's action or this tab's storage, rebuilt so nothing rides along; null for one that cannot be read.
-- `startInterview` _function_: The planner's button: the interview set on its first step, and its first question waiting for the chat window, which sends it once its session is ready (`takeInterviewKickoff`).
+- `startInterview` _function_: The planner's button: the interview set on its first step, and its start waiting for the chat window, which asks the first question once its session is ready (`takeInterviewKickoff`).
 - `openInterview` _function_: A button's way into the interview: the interview set on its first step (`startInterview`) and the chat window opened for it, which asks the first question once its session is ready.
-- `takeInterviewKickoff` _function_: The kind of interview whose first question waits to be sent, once: reading it clears it.
+- `takeInterviewKickoff` _function_: The interview start that waits for the chat window, once: reading it clears it.
 - `TRIP_INTERVIEW_CORE` _const_: The interview goes from simple to detailed: a short core, then the plan, then refinements Parky offers as replies (`refine`). The order is a guide; a step answered early counts at once.
 - `TRIP_INTERVIEW_REFINE` _const_: A trip's refinements, offered once its plan stands.
 - `DAY_INTERVIEW_CORE` _const_: A park day's core: the park and the date, the must-dos.
 - `DAY_INTERVIEW_REFINE` _const_: A park day's refinements, offered once the day is planned.
 - `INTERVIEW_REFINE` _const_: The phase after the core: the plan stands, the refinements are on offer.
 - `interviewStore` _const_: The interview's store: what runs, set or ended by the API's action and by the bar's button.
-- Types: `InterviewStep`, `InterviewKind`, `AssistantInterview`, `InterviewStart`
+- Types: `InterviewStep`, `InterviewKind`, `AssistantInterview`, `InterviewStart`, `InterviewKickoffStart`
 
 ### [`last-park.ts`](../../lib/assistant/last-park.ts)
 

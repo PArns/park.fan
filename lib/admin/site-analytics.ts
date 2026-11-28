@@ -746,7 +746,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   assistant_closed: {
     label: 'Parky geschlossen',
-    when: 'Das Chatfenster schließt; mit der Zahl der Fragen, solange es offen war.',
+    when: 'Das Chatfenster schließt; mit der Zahl der Fragen, solange es offen war, und ob dabei noch eine Antwort unterwegs war.',
   },
   assistant_question: {
     label: 'Frage an Parky',

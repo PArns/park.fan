@@ -193,13 +193,22 @@ export interface InterviewStart {
   kind: InterviewKind;
   region?: string;
   park?: string;
+  /** The park by name, for the first question the window words itself. */
+  parkName?: string;
   date?: string;
 }
 
+/** The start that waits for the chat window: its kind, and the park's name where the planner had it. */
+export interface InterviewKickoffStart {
+  kind: InterviewKind;
+  parkName?: string;
+}
+
 /**
- * The planner's button: the interview set on its first step, and its first question waiting for
- * the chat window, which sends it once its session is ready (`takeInterviewKickoff`). It counts the
- * start itself, since the store write below is no action and `trackInterview` never sees it.
+ * The planner's button: the interview set on its first step, and its start waiting for the chat
+ * window, which asks the first question once its session is ready (`takeInterviewKickoff`). It
+ * counts the start itself, since the store write below is no action and `trackInterview` never
+ * sees it.
  */
 export function startInterview(start: InterviewStart): void {
   const first = interviewCore(start.kind)[0];
@@ -220,7 +229,11 @@ export function startInterview(start: InterviewStart): void {
     source: 'planner',
   });
   try {
-    storage()?.setItem(KICKOFF_KEY, start.kind);
+    const waiting: InterviewKickoffStart = {
+      kind: start.kind,
+      ...(start.parkName && { parkName: start.parkName }),
+    };
+    storage()?.setItem(KICKOFF_KEY, JSON.stringify(waiting));
   } catch {
     // The window then opens without the first question; the bar still says the interview runs.
   }
@@ -235,12 +248,15 @@ export function openInterview(start: InterviewStart): void {
   openParky('interview');
 }
 
-/** The kind of interview whose first question waits to be sent, once: reading it clears it. */
-export function takeInterviewKickoff(): InterviewKind | null {
+/** The interview start that waits for the chat window, once: reading it clears it. */
+export function takeInterviewKickoff(): InterviewKickoffStart | null {
   try {
-    const kind = storage()?.getItem(KICKOFF_KEY);
+    const raw = storage()?.getItem(KICKOFF_KEY);
     storage()?.removeItem(KICKOFF_KEY);
-    return kind === 'trip' || kind === 'day' ? kind : null;
+    const value = raw ? (JSON.parse(raw) as Partial<InterviewKickoffStart> | null) : null;
+    if (value?.kind !== 'trip' && value?.kind !== 'day') return null;
+    const parkName = typeof value.parkName === 'string' ? value.parkName.trim().slice(0, 120) : '';
+    return { kind: value.kind, ...(parkName && { parkName }) };
   } catch {
     return null;
   }
