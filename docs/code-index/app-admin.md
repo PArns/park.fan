@@ -78,6 +78,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `formatDisplayName` _function_: A display name with the first letter of each part capitalised, fixed on the way out rather than in the account. Only first letters change, so `McMahon` does not become `Mcmahon`.
 - `formatUptime` _function_: Formats an uptime given in hours as `3d 4h` from one day up, otherwise as `5h 12m`.
 - `formatDay` _function_: A timestamp as a German calendar day for admin lists, `—` when there is none.
+- `formatDayTime` _function_: A timestamp as day and time on German time, `27.11., 17:36`, `—` when there is none. Berlin rather than the reader's clock, because post dates are written there.
 - `formatAgo` _function_: An ISO time as the admin says it, in German and relative to now: `vor 3 Stunden`.
 - `maeColor` _function_: Returns the text colour class for a model's MAE: green below 10, amber below 15, red above.
 
@@ -1039,6 +1040,10 @@ Route `/admin/retirement` (page).
 Route `/admin/seasons` (page).
 
 - `default (SeasonsPage)` _component_: Every park's seasons in one place, filtered by year, kind, status, trip region, park and whether they run today, with the form to add, change or delete one. The filters are the address, so a reload or a shared link opens the same list.
+
+### [`system/news-export-panel.tsx`](../../app/admin/system/news-export-panel.tsx)
+
+- `NewsExportPanel` _component_: The native app's export on media.park.fan against the site, per feed: when it last ran, its newest post and the site's, and what it lacks.
 
 ### [`system/page.tsx`](../../app/admin/system/page.tsx)
 

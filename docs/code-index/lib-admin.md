@@ -310,6 +310,16 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `MATRIX_BLOCKS` _const_: How the matrix is cut into blocks: the live and today rows share one, since the same models answer both. A group not named here gets a block of its own after these.
 - Types: `DayChoice`, `CellRef`, `ResultDate`, `FamilyRun`, `MatrixBlock`
 
+### [`news-export-lag.ts`](../../lib/admin/news-export-lag.ts)
+
+- `parseExportList` _function_: An export list's JSON (`{schema, generatedAt, locale, posts}`) as the check needs it. Without a readable `generatedAt` and a post array it failed; a post without slug, title or date is skipped, as the API's push job skips it.
+- `compareExportFeed` _function_: Compares one feed of the export with the site's posts of that feed, locale by locale.
+- `exportIsLate` _function_: Whether a feed's missing posts have waited past the amber mark, so no run is still on its way.
+- `exportVerdict` _function_: A feed's verdict in a few words: `aktuell`, `1 Meldung noch nicht drin` while a run may still be on its way, `2 Guides fehlen` after that, and the locales whose list could not be read.
+- `exportNeedsRun` _function_: Whether a new run is the answer: a feed is late or a list could not be read.
+- `EXPORT_BEHIND_MINUTES` _const_: Minutes a post may be on the site without being in the export. Amber after an hour, longer than two runs back to back, so nothing that was on its way is still running.
+- Types: `ExportPostRef`, `SitePostRef`, `ExportListReading`, `MissingPost`, `ExportFeedStatus`, `NewsExportReport`
+
 ### [`park-geo-path.ts`](../../lib/admin/park-geo-path.ts)
 
 - `parkGeoSegments` _function_: The four slugs of a park's geo path, as an admin route takes it in `?path=`, or null when it is not four slugs. `/v1/parks/a/b/c/d`, `/parks/a/b/c/d` and `a/b/c/d` all name the same park.

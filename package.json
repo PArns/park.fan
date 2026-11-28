@@ -85,6 +85,7 @@
     "test:admin-park-geo-path": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-park-geo-path.mjs",
     "test:admin-seasons": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-seasons.mjs",
     "test:admin-health": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-health.mjs",
+    "test:admin-news-export": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-news-export.mjs",
     "test:site-analytics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-site-analytics.mjs",
     "test:park-day-over": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-day-over.mjs",
     "test:park-opening": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-opening.mjs",

@@ -192,6 +192,14 @@ Route `/api/admin/media/session` (route).
 - `runtime` _const_: Whether a media session is running, where, and what is in it. A session is the branch with the `media/session-` prefix and its pull request; the state lives in git, so a reload, a second tab or another machine see the same one.
 - `dynamic` _const_
 
+### [`admin/news-export/route.ts`](../../app/api/admin/news-export/route.ts)
+
+Route `/api/admin/news-export` (route).
+
+- `GET` _function_: GET /api/admin/news-export: the app's news and guides export on media.park.fan against this deployment's posts, per feed: when it last ran, its newest post and the site's, and what it is missing.
+- `dynamic` _const_
+- `runtime` _const_
+
 ### [`admin/session/route.ts`](../../app/api/admin/session/route.ts)
 
 Route `/api/admin/session` (route).

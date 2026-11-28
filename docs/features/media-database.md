@@ -334,6 +334,45 @@ parkSlugs, rides, cover, coverAlt, readingMinutes}`. `url` is the absolute
 - **Photos:** a cover or inline photo not among the card photos is exported with the same widths
   and added to `images`; `license: unknown` is left out, so the post gets `cover: null`.
 
+### Watching the export
+
+The website shows a post from its deploy on; the app and the API's push notifications get it only
+from this export. A run that fails or never starts leaves them silent while the site looks fine, so
+two places say so.
+
+- **The workflow** stops `pnpm publish:media` after 50 minutes and the job after 60. A run took 18
+  to 26 minutes in November 2026, and a job may run six hours by default: a run that hangs would
+  hold the concurrency group, and every export queued behind it, that long. A failed run writes a job summary and an `::error` annotation that say whether
+  anything was uploaded (the lists go up after the bodies and `index.json` last, so a run that
+  stopped partway leaves some lists new and the rest old) and how to start a new one: **Run
+  workflow** on the workflow's page, or `gh workflow run publish-media.yml`. GitHub notifies
+  whoever triggered the run.
+- **`/admin/system`, „Export für die App“** (`app/admin/system/news-export-panel.tsx`). Its route,
+  `GET /api/admin/news-export` (role viewer), reads the twelve lists (`news/` and `guides/`, six
+  locales) server-side, never from the browser, and keeps each one it could read for five minutes
+  in memory: the lists' own `max-age`, and not the Data Cache, which would store all twelve again
+  every window to serve a handful of editors. It compares them with the deployment's own posts,
+  selected by the functions the export uses (`EXPORT_FEEDS` in `lib/blog/news-export-feeds.ts`).
+  Per feed the panel shows when the export last ran (the oldest `generatedAt`, so a run that
+  stopped halfway shows), the newest post in the export and on the site, and every post the site
+  lists and the export lacks, with its locales.
+- **By slug, not by date.** A post merged days after its own date is older than the last run, so
+  comparing `generatedAt` with the newest date would call the export current.
+- **How long a post has waited** counts from its date or the deployment's build time
+  (`build-info.json`), whichever is later, since a post dated earlier may have arrived with this
+  deployment. Amber after an hour, longer than two runs back to back; red after six hours, the
+  window in which the API still announces a post (`NEWS_MAX_AGE_MS` in its news push job): an
+  export that catches up later brings the post to the app without a notification. A list that
+  cannot be read is red. While a post is younger than the hour, the tile says „noch nicht drin“.
+- **The answer** to an amber or red feed is a new run, so the panel asks „Export neu starten?“ and
+  links the workflow page. The pure half is `lib/admin/news-export-lag.ts`
+  (`pnpm test:admin-news-export`).
+
+Two cases reach the panel as a missing post and nothing else: a merge that touched none of the
+workflow's paths, and a scheduled post, which the run at its merge leaves out and no later run
+picks up until something else starts one. The regular comparison inside the API, which would put a
+late export on the overview, belongs to the backend.
+
 ## Related
 
 - [Writing to the media database](media-database-writes.md): admin browser, sessions, uploads
