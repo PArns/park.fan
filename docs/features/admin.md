@@ -503,17 +503,27 @@ serves no price above 0 without one), and that 0 means free, not unknown.
 The Typ column also shows the kind the API's rule derived where nobody decided one
 (`attractionKindSource: "derived"`, contract in the backend's
 [attraction kind](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/attraction-kind.md)):
-the select reads „abgeleitet: Show“ and „Übernehmen“ stores it as the editor's kind. The admin list
-sends only the stored column, so the served kinds come from `/api/admin/attraction-kinds?path=`,
-which reads the park shell the park page renders from and answers per attraction id
-(`useServedAttractionKinds`). The Fahrgeschäfte tab shows the same kind as a chip, muted while only
-the rule says so. Labels, options and the stored-before-derived choice are `lib/admin/attraction-kind.ts`
-(`pnpm test:admin-attraction-kind`); a kind the API adds later shows as its raw value.
+the select reads „abgeleitet: Show“ and „Übernehmen“ stores it as the editor's kind. The served
+kinds come from the admin list itself, whose rows carry `derivedAttractionKind` and
+`attractionKindSource` beside the stored column (`servedKindsFromList`, `useServedAttractionKinds`).
+An API that does not send the two columns yet gets the old way: `/api/admin/attraction-kinds?path=`
+reads the park shell the park page renders from and answers per attraction id. That route and the
+fallback go once the API ships the columns. The Fahrgeschäfte tab shows the same kind as a chip,
+muted while only the rule says so. A ride's own page (`/admin/attractions/:id`) reads the park's
+list too, under the same key, and its Gattung field offers the derived kind the same way: the empty
+select reads „abgeleitet: Show“, „Übernehmen“ puts it in the form, and the save bar writes it
+through the ride's audited PATCH (`derivedValues` on `CuratedFieldsPanel`). A curated kind shows as
+any correction does. Labels, options and the stored-before-derived choice are
+`lib/admin/attraction-kind.ts` (`pnpm test:admin-attraction-kind`); a kind the API adds later shows
+as its raw value. Every screen reads a park's list through `useParkAttractions`
+(`_lib/use-park-attractions.ts`), one key per query string.
 
 What neither an editor nor the rule could file is the data-quality section „Attraktionen ohne Art“
-(`data-quality/kind-actions.tsx`), one card per park. The report sends names, not ids, so the card
-matches them against the park's list (`rowsWithoutKind`) and saves the picks in one bulk PATCH. An
-attraction no kind fits (a pool, a Christmas market) stays on the list; nothing marks it answered.
+(`data-quality/kind-actions.tsx`), one card per park. The report names the attractions and, from
+the API that sends them, their ids (`withoutKindRefs`); without the ids the card matches the names
+against the park's list (`rowsWithoutKind`), a fallback that goes with the attraction-kinds route
+(`kindlessAttractions` picks one). The picks are saved in one bulk PATCH. An attraction no kind
+fits (a pool, a Christmas market) stays on the list; nothing marks it answered.
 
 ### Seasons
 
