@@ -121,7 +121,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`integrated-calendar.ts`](../../lib/api/integrated-calendar.ts)
 
 - `getIntegratedCalendar` _function_: Fetch a park's integrated calendar (hours, weather, holidays per day) in one uncached call. `from` defaults to today and `to` to 30 days later on the API side.
-- `parkCalendarCacheTag` _function_: Cache tag for ONE park's calendar: the `/calendar` relay's copy at Vercel's edge, a month page's summary and Parky's day tip relay.
 - `bestDaysCacheTag` _function_: Cache tag for a park's best-days snapshot, server read and relay, which the backend rings after every forecast warmup. The slug alone, as the API sends it: two parks that share one are rung together, which costs a refetch and nothing else.
 - `getBestDaysCalendar` _function_: Best-days snapshot for the SSR seed, data-cached and tagged so repeat renders never touch the backend. Feeds the best-days section and the crowd FAQ and its FAQPage JSON-LD.
 - `getBestDaysSnapshotFresh` _function_: Live (no-store) best-days snapshot for the `/api/parks/.../best-days` client-poll proxy, so it reflects the backend's latest snapshot. Mirrors `getParkByGeoPathFresh`.
@@ -150,6 +149,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-live-projection.ts`](../../lib/api/park-live-projection.ts)
 
 - `parkCacheTag` _function_: Cache tag for ONE park's structure fetch, so the backend can drop that park's entry alone.
+- `parkCalendarCacheTag` _function_: Cache tag for ONE park's calendar: the `/calendar` relay's copy at Vercel's edge, a month page's summary, the yearly outlook and Parky's day tip relay.
 - `leanParkForLivePoll` _function_: Project a park down to `LiveParkSnapshot`.
 - `mergeLiveParkSnapshot` _function_: Lay a `LiveParkSnapshot` back over the server-rendered park.
 - `leanParkForCalendarShell` _function_: Trim for the serialized park on the park SUB-pages (calendar, wait-time record), which render no attraction cards: only `ParkTodayPanel`'s headliner rows, `useParkTileItems` and the calendar's works marks read `park.attractions`, and they …

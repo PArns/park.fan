@@ -61,8 +61,8 @@ contract is in `app/api/revalidate/route.ts`: `Authorization: Bearer $REVALIDATE
 (**503** until the secret is set), at most 50 entries per array, **400** when neither
 `tags` nor `paths` has one. A park's own tag is `park:<continent>/<country>/<city>/<slug>`
 (`parkCacheTag`, `lib/api/park-live-projection.ts`), its calendar's
-`park-calendar:<continent>/<country>/<city>/<slug>` (`parkCalendarCacheTag`,
-`lib/api/integrated-calendar.ts`); each has a hand-written twin in the API — change both.
+`park-calendar:<continent>/<country>/<city>/<slug>` (`parkCalendarCacheTag`, the same file); each
+has a hand-written twin in the API — change both.
 
 ## Favorites
 

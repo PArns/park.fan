@@ -13,7 +13,7 @@ import {
 } from '@/lib/parks/viewed-parks';
 import type { MostReadRanking } from '@/lib/blog/most-read-config';
 import type { Locale } from '@/i18n/config';
-import { parkCacheTag } from './park-live-projection';
+import { parkCacheTag, parkCalendarCacheTag } from './park-live-projection';
 import { parseCoordinate, withAttractionCoordinates, withCoordinates } from './coordinates';
 import type {
   CrowdLevel,
@@ -575,10 +575,12 @@ export interface ParkYearlyPredictions {
  * (Europa-Park answered with 124 entries over the same span, not 182), which is why the consumer
  * lays the days out against the calendar instead of trusting the list to be dense.
  *
- * Data-cached for {@link CACHE_TTL.predictions} — a day, which is the forecast's own cadence: the
- * backend recomputes it in the nightly batch and caches it 24 h in Redis behind the same window.
- * Tagged with the park's own tag so a forecast warmup drops this entry rather than waiting the
- * window out.
+ * Data-cached for {@link CACHE_TTL.predictions}, a day. The API's forecast warmup, twice a day,
+ * drops its own copy of the outlook, and the ring after it carries {@link parkCalendarCacheTag}, so
+ * the outlook changes with the calendar grid and the month summary beside it instead of up to a day
+ * later. The park's own tag stays: the API keeps its answer for an hour and a schedule correction
+ * does not drop it, so the correction's ring can fetch the old closures once more; while the park
+ * is open, the park's tag comes every 15 minutes and fetches the corrected ones about an hour later.
  *
  * Returns `null` for anything that goes wrong, including the 404 a park without a forecast gets:
  * a park page must not fail over a chapter most of its readers scroll past. A degraded answer is
@@ -596,7 +598,11 @@ export async function getParkYearlyPredictions(
     const cached = await api.get<ParkYearlyPredictions>(path, {
       next: {
         revalidate: CACHE_TTL.predictions,
-        tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
+        tags: [
+          'parks',
+          parkCacheTag(continent, country, city, parkSlug),
+          parkCalendarCacheTag(continent, country, city, parkSlug),
+        ],
       },
     });
     if (!cached.isDegraded) return cached;
