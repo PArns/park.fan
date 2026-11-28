@@ -117,8 +117,6 @@ export const adminKeys = {
   park: (id: string) => ['admin', 'park', id] as const,
   parkAttractions: (id: string, params?: Record<string, unknown>) =>
     ['admin', 'park', id, 'attractions', params ?? {}] as const,
-  /** Under the park, so a save that invalidates the park refreshes the served kinds too. */
-  parkAttractionKinds: (id: string) => ['admin', 'park', id, 'attraction-kinds'] as const,
   attraction: (id: string) => ['admin', 'attraction', id] as const,
   seasons: (params?: Record<string, unknown>) =>
     params ? (['admin', 'seasons', params] as const) : (['admin', 'seasons'] as const),

@@ -1,9 +1,8 @@
 /**
  * Unit tests for the admin's attraction-kind helpers (`lib/admin/attraction-kind.ts`): every kind
  * has a German name and a later one shows as itself, only an attraction kind gets labels, a row
- * shows the editor's kind before the API's derived one and never a stale curated copy, the admin
- * list's kind columns give the served kinds or say they are missing, and a data-quality card takes
- * the report's ids or finds its rows by name and an empty kind.
+ * shows the editor's kind before the API's derived one and never a stale curated copy, and the
+ * admin list's kind columns give the served kinds.
  *
  * Run: `pnpm test:admin-attraction-kind`
  */
@@ -12,8 +11,6 @@ import {
   attractionKindLabel,
   curatedEnumOptions,
   curatedFieldOptions,
-  kindlessAttractions,
-  rowsWithoutKind,
   servedKindsFromList,
   shownAttractionKind,
 } from '../lib/admin/attraction-kind.ts';
@@ -82,21 +79,6 @@ test('a served curated kind the row no longer stores, or no kind at all, shows n
   assert.equal(shownAttractionKind('', { kind: '', source: 'derived' }), null);
 });
 
-test('the report names find the rows that store no kind, two of one name both', () => {
-  const rows = [
-    { id: 'a', name: 'Pools', attractionKind: null },
-    { id: 'b', name: 'Main Train', attractionKind: null },
-    { id: 'c', name: 'Main Train', attractionKind: undefined },
-    { id: 'd', name: 'Abyssus', attractionKind: 'RIDE' },
-    { id: 'e', name: 'Not listed', attractionKind: null },
-  ];
-  assert.deepEqual(
-    rowsWithoutKind(['Abyssus', 'Main Train', 'Pools'], rows).map((row) => row.id),
-    ['a', 'b', 'c']
-  );
-  assert.deepEqual(rowsWithoutKind([], rows), []);
-});
-
 test("the list's kind columns give the served kind by who decided it", () => {
   const rows = [
     {
@@ -123,35 +105,9 @@ test("the list's kind columns give the served kind by who decided it", () => {
   });
 });
 
-test('a list without the kind columns asks for the fallback, an empty one does not', () => {
-  assert.equal(
-    servedKindsFromList([
-      { id: 'a', attractionKind: 'RIDE' },
-      { id: 'b', attractionKind: null },
-    ]),
-    null
-  );
+test('rows not loaded yet, or an empty list, give an empty map', () => {
+  assert.deepEqual(servedKindsFromList(undefined), {});
   assert.deepEqual(servedKindsFromList([]), {});
-});
-
-test("a card takes the report's ids where it sends them, and needs no list", () => {
-  const entry = {
-    withoutKind: ['Main Train'],
-    withoutKindRefs: [{ id: 'x', name: 'Main Train', slug: 'main-train' }],
-  };
-  assert.deepEqual(kindlessAttractions(entry, undefined), [{ id: 'x', name: 'Main Train' }]);
-});
-
-test('without ids a card waits for the list, then matches names', () => {
-  const entry = { withoutKind: ['Main Train'] };
-  assert.equal(kindlessAttractions(entry, undefined), null);
-  assert.deepEqual(
-    kindlessAttractions(entry, [
-      { id: 'b', name: 'Main Train', attractionKind: null },
-      { id: 'd', name: 'Main Train', attractionKind: 'TRANSPORT' },
-    ]),
-    [{ id: 'b', name: 'Main Train' }]
-  );
 });
 
 console.log(`admin-attraction-kind: ${passed} tests passed`);

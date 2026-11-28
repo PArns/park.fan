@@ -186,10 +186,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `useParkCatalog` _hook_: Every park, under the key of the parks page's unfiltered list, so a park picker opened anywhere in the admin asks once and a page that already holds the list costs nothing. `enabled: false` reads the cache without asking.
 - `parkCatalogOptions` _function_: The parks as picker options: the name, town and country as a hint, and the slug to match on.
 
-### [`_lib/use-served-attraction-kinds.ts`](../../app/admin/_lib/use-served-attraction-kinds.ts)
-
-- `useServedAttractionKinds` _hook_: The kinds the API serves for one park's attractions, keyed by attraction id, read off the rows of the park's admin list (`servedKindsFromList`). The map is empty until the rows are in.
-
 ### [`_lib/works-periods.ts`](../../app/admin/_lib/works-periods.ts)
 
 - `isHiddenCuratedField` _function_: Whether the editor leaves a field out: flagged `legacy` or `hidden` by the backend, or one of the old single-window columns while a `periods` field in the same group already holds their value.

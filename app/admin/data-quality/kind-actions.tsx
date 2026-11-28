@@ -4,12 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { CircleSlash, Loader2, Save, Shapes } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { curatedFieldOptions, kindlessAttractions } from '@/lib/admin/attraction-kind';
+import { curatedFieldOptions } from '@/lib/admin/attraction-kind';
 import type { AttractionsWithoutKind } from '@/lib/api/admin';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import type { CuratedFieldSpec } from '../_lib/types';
-import { useParkAttractions } from '../_lib/use-park-attractions';
-import { Chip, ErrorState, SkeletonRows } from '../_ui/primitives';
+import { Chip, ErrorState } from '../_ui/primitives';
 import { Select, TextInput } from '../_ui/controls';
 import { useToast } from '../_ui/toast';
 import { useCan } from '../_app/session';
@@ -93,9 +92,6 @@ function KindPicker({ park, onClose }: { park: AttractionsWithoutKind; onClose: 
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
   const canEdit = useCan('editor');
-  // A report without `withoutKindRefs` names the attractions only, and the park's list supplies
-  // their ids. That list and the name matching go once the API sends the refs.
-  const list = useParkAttractions(park.withoutKindRefs ? null : park.parkId);
   const specs = useAdminQuery<{ attraction: CuratedFieldSpec[] }>(
     adminKeys.fields,
     '/api/admin/content/fields'
@@ -105,8 +101,7 @@ function KindPicker({ park, onClose }: { park: AttractionsWithoutKind; onClose: 
   const [saving, setSaving] = useState(false);
   const [noFit, setNoFit] = useState<string | null>(null);
 
-  const found = kindlessAttractions(park, list.data?.attractions);
-  const rows = found ?? [];
+  const rows = park.withoutKindRefs;
   const entries = rows.flatMap((row) =>
     picked[row.id] ? [{ id: row.id, fields: { attractionKind: picked[row.id] } }] : []
   );
@@ -144,66 +139,45 @@ function KindPicker({ park, onClose }: { park: AttractionsWithoutKind; onClose: 
     }
   }
 
-  if (list.isError) return <ErrorState message={list.error.message} />;
-  if (found === null) return <SkeletonRows rows={3} />;
-
   return (
     <div className="border-border/60 mt-3 space-y-3 rounded-lg border p-3">
       {specs.isError && <ErrorState message={`Gattungen nicht geladen: ${specs.error.message}`} />}
-      {rows.length === 0 ? (
-        <p className="text-muted-foreground text-xs">
-          Keiner dieser Namen steht so in der Liste des Parks, vermutlich wurden sie umbenannt. Im{' '}
-          <Link
-            href={`/admin/parks/${park.parkId}?tab=features`}
-            className="text-primary hover:underline"
-          >
-            Merkmale-Tab
-          </Link>{' '}
-          lässt sich die Gattung unter dem neuen Namen setzen.
-        </p>
-      ) : (
-        <ul className="divide-border/40 divide-y">
-          {rows.map((row) => (
-            <li key={row.id} className="flex flex-wrap items-center gap-2 py-1.5">
-              <Link
-                href={`/admin/attractions/${row.id}`}
-                className="hover:text-primary min-w-0 flex-1 truncate text-sm transition-colors"
-              >
-                {row.name}
-              </Link>
-              <Select
-                value={picked[row.id] ?? null}
-                onValueChange={(kind) => pick(row.id, kind)}
-                options={options}
-                emptyLabel="— offen —"
-                className="w-48"
-                disabled={!canEdit || saving || !specs.isSuccess}
+      <ul className="divide-border/40 divide-y">
+        {rows.map((row) => (
+          <li key={row.id} className="flex flex-wrap items-center gap-2 py-1.5">
+            <Link
+              href={`/admin/attractions/${row.id}`}
+              className="hover:text-primary min-w-0 flex-1 truncate text-sm transition-colors"
+            >
+              {row.name}
+            </Link>
+            <Select
+              value={picked[row.id] ?? null}
+              onValueChange={(kind) => pick(row.id, kind)}
+              options={options}
+              emptyLabel="— offen —"
+              className="w-48"
+              disabled={!canEdit || saving || !specs.isSuccess}
+            />
+            {canEdit && noFit !== row.id && (
+              <Button size="sm" variant="ghost" onClick={() => setNoFit(row.id)} disabled={saving}>
+                <CircleSlash className="h-4 w-4" /> Passt in keine Gattung
+              </Button>
+            )}
+            {noFit === row.id && (
+              <NoKindFits
+                row={row}
+                onCancel={() => setNoFit(null)}
+                onDone={() => {
+                  setNoFit(null);
+                  pick(row.id, null);
+                  invalidate(adminKeys.dataQuality());
+                }}
               />
-              {canEdit && noFit !== row.id && (
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  onClick={() => setNoFit(row.id)}
-                  disabled={saving}
-                >
-                  <CircleSlash className="h-4 w-4" /> Passt in keine Gattung
-                </Button>
-              )}
-              {noFit === row.id && (
-                <NoKindFits
-                  row={row}
-                  onCancel={() => setNoFit(null)}
-                  onDone={() => {
-                    setNoFit(null);
-                    pick(row.id, null);
-                    invalidate(adminKeys.dataQuality());
-                  }}
-                />
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+            )}
+          </li>
+        ))}
+      </ul>
       {!canEdit && (
         <p className="text-muted-foreground text-xs">
           Dein Konto darf lesen, aber nicht kuratieren.

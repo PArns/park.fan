@@ -22,6 +22,7 @@ import { cn } from '@/lib/utils';
 import { formatRiderHeight } from '@/lib/utils/temperature';
 import {
   attractionKindLabel,
+  servedKindsFromList,
   shownAttractionKind,
   type ServedAttractionKind,
 } from '@/lib/admin/attraction-kind';
@@ -30,7 +31,6 @@ import type { AdminParkDetail } from '../../_lib/types';
 import { withFuzzyMatches } from '../../_lib/search-hits';
 import { useFuzzyHits } from '../../_lib/use-fuzzy-hits';
 import { useParkAttractions } from '../../_lib/use-park-attractions';
-import { useServedAttractionKinds } from '../../_lib/use-served-attraction-kinds';
 import {
   AdminPage,
   Chip,
@@ -151,7 +151,7 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
           canEdit={canEdit}
         />
       )}
-      {tab === 'attractions' && <ParkAttractionsTab parkId={id} parkPath={data.path} />}
+      {tab === 'attractions' && <ParkAttractionsTab parkId={id} />}
       {tab === 'features' && <AttractionFeaturesEditor park={data} />}
       {tab === 'seasons' && (
         <div id="seasons">
@@ -302,7 +302,7 @@ function KindChip({
   );
 }
 
-function ParkAttractionsTab({ parkId, parkPath }: { parkId: string; parkPath: string }) {
+function ParkAttractionsTab({ parkId }: { parkId: string }) {
   const [query, setQuery] = useState('');
   const [includeRetired, setIncludeRetired] = useState(false);
 
@@ -327,7 +327,7 @@ function ParkAttractionsTab({ parkId, parkPath }: { parkId: string; parkPath: st
     fuzzyIds,
     (attraction) => attraction.id
   );
-  const servedKinds = useServedAttractionKinds(parkId, parkPath, rows);
+  const servedKinds = servedKindsFromList(rows);
 
   return (
     <Panel>
