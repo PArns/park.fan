@@ -116,7 +116,7 @@ export function servedKindsFromList(
 }
 
 /**
- * The rows of a park's admin attraction list that a data-quality „ohne Art" entry names, for a
+ * The rows of a park's admin attraction list that a data-quality „ohne Gattung" entry names, for a
  * report that sends names only: a row matches on its resolved name and on storing no kind, and two
  * rows of the same name are both listed.
  */
@@ -128,14 +128,14 @@ export function rowsWithoutKind<T extends { name: string; attractionKind?: strin
   return rows.filter((row) => !row.attractionKind && wanted.has(row.name));
 }
 
-/** An attraction a data-quality „ohne Art" card asks about. */
+/** An attraction a data-quality „ohne Gattung" card asks about. */
 export interface KindlessAttraction {
   id: string;
   name: string;
 }
 
 /**
- * The attractions a data-quality „ohne Art" card asks about: the report's `withoutKindRefs` where
+ * The attractions a data-quality „ohne Gattung" card asks about: the report's `withoutKindRefs` where
  * it sends them, else the rows of the park's list that {@link rowsWithoutKind} finds by name. Null
  * while that fallback still waits for the list.
  */

@@ -59,7 +59,7 @@ const COLUMNS: Array<{ id: Column; label: string; field: FieldKey }> = [
   { id: 'virtualLine', label: 'Virtual Line', field: 'hasVirtualLine' },
   { id: 'singleRider', label: 'Single Rider', field: 'hasSingleRider' },
   { id: 'indoorOutdoor', label: 'Indoor/Outdoor', field: 'indoorOutdoor' },
-  { id: 'kind', label: 'Typ', field: 'attractionKind' },
+  { id: 'kind', label: 'Gattung', field: 'attractionKind' },
 ];
 
 function rowFrom(row: AdminAttractionListItem): RowState {
@@ -297,7 +297,7 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
               onValueChange={(attractionKind) => setRow(row.id, { attractionKind })}
               options={optionsFor('attractionKind')}
               placeholder={derived ? `abgeleitet: ${attractionKindLabel(derived)}` : undefined}
-              emptyLabel="— nicht entschieden —"
+              emptyLabel="— offen —"
               className="w-52"
               // Without the option list a stored value shows as "—", and the only
               // pick left would clear it.
