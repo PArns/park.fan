@@ -58,7 +58,7 @@ Der Besuch ist bis zum 24. Januar 2027 möglich, die Weihnachtsferien sind ausge
 - jeder Tag bis einschließlich Dienstag, 22. Dezember
 - vom 7. bis zum 24. Januar, außer Dienstag, 12., und Mittwoch, 13. Januar, an denen der Park geschlossen ist
 
-Wie lange die Stadt Brühl für die Prüfung braucht, hat das Phantasialand nicht bekannt gegeben. Für einen Wunschtag in der ersten Dezemberwoche würde ich mich deshalb heute noch anmelden und nicht erst am 14. Dezember. Am wenigsten los war im letzten Wintertraum nach unseren Messungen unter der Woche im Januar. Wer frei wählen kann, nimmt also einen Montag bis Freitag nach den Ferien.
+Wie lange die Stadt Brühl für die Prüfung braucht, hat das Phantasialand nicht bekannt gegeben. Für einen Wunschtag in der ersten Dezemberwoche würde ich mich deshalb heute noch anmelden und nicht erst am 14. Dezember. Am wenigsten los war im letzten Wintertraum nach unseren Messungen unter der Woche im Januar. Mein Tipp deshalb: ein Montag bis Freitag nach den Ferien.
 
 ```best-days-widget slug=phantasialand
 
