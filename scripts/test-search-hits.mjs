@@ -3,10 +3,11 @@
  * and the admin's merge of fuzzy and exact hits (`app/admin/_lib/search-hits.ts`).
  *
  * What is pinned: a whole-name match beats a prefix beats an inner match beats a typo only the
- * API found; punctuation and accents fold; equal scores put operating first and otherwise keep
- * their order; one entity found by both searches is listed once with the admin's fields and the
- * site's status; an exact curated-name hit outranks a fuzzy guess; a loaded list gains the
- * entries the fuzzy search found in its own order, never twice and never one it does not hold.
+ * API found; punctuation and accents fold; Hangul syllables stay whole; equal scores put operating
+ * first and otherwise keep their order; one entity found by both searches is listed once with the
+ * admin's fields and the site's status; an exact curated-name hit outranks a fuzzy guess; a loaded
+ * list gains the entries the fuzzy search found in its own order, never twice and never one it
+ * does not hold.
  *
  * Run: `pnpm test:search-hits`
  */
@@ -31,6 +32,12 @@ test('whole name, then prefix, then inside, then typo', () => {
 test('punctuation and accents fold', () => {
   assert.equal(searchMatchScore('F.L.Y.', 'fly'), 100);
   assert.equal(searchMatchScore('Fårup Sommerland', 'farup'), 50);
+});
+
+test('Hangul syllables stay whole', () => {
+  assert.equal(searchMatchScore('에버랜드', '에버'), 50);
+  assert.equal(searchMatchScore('에버랜드', '랜드'), 30);
+  assert.equal(searchMatchScore('에버랜드', '래'), 0);
 });
 
 test('equal scores put operating first and keep their order otherwise', () => {

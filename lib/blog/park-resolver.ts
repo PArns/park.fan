@@ -164,8 +164,11 @@ function leanDetailForBlogRef(detail: AttractionResponse): AttractionResponse {
     currentLoad: detail.currentLoad,
     statistics: detail.statistics,
     bestVisitTimes: detail.bestVisitTimes,
-    // One enum value, and the card's transport badge has nothing else to read.
+    // The card's transport badge reads the kind and who decided it.
     attractionKind: detail.attractionKind ?? null,
+    attractionKindSource: detail.attractionKindSource ?? null,
+    // The inline chip keeps a ride out of season red when its park is only shut for the night.
+    isCurrentlyInSeason: detail.isCurrentlyInSeason ?? null,
     // A few start times at most; the inline chip and the card show the next one in place of the
     // CLOSED a feed reads between two performances.
     performanceSchedules: detail.performanceSchedules,

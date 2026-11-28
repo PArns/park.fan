@@ -1,11 +1,13 @@
 /**
  * The blog's inline park chip for a closed park (`isClosedForNow`): grey „Gerade zu" while the park
  * opens again within days, red „Geschlossen" for a park closed during its own hours, off season or
- * with no opening known. Phantasialand in Brühl (Europe/Berlin), Wintertraum hours 11:00 to 20:00.
+ * with no opening known. The ride chip (`rideChipClosedStatus`) follows its park overnight, unless
+ * the ride is out of season or has a status of its own. Phantasialand in Brühl (Europe/Berlin),
+ * Wintertraum hours 11:00 to 20:00.
  *
  * Run: pnpm test:blog-park-chip
  */
-import { isClosedForNow } from '../lib/blog/live-display.ts';
+import { isClosedForNow, rideChipClosedStatus } from '../lib/blog/live-display.ts';
 
 let failed = 0;
 function check(name, actual, expected) {
@@ -86,6 +88,42 @@ check(
   'before the clock: no hours today stay a closure',
   isClosedForNow(park(shut('2026-01-12'), day('2026-03-28')), null),
   false
+);
+
+const night = at('2026-11-28T22:30:00+01:00');
+const nightPark = park(day('2026-11-28'), day('2026-11-29'));
+check(
+  'ride of a park shut for the night',
+  rideChipClosedStatus({ status: 'CLOSED' }, nightPark, night),
+  'CLOSED_FOR_NOW'
+);
+check(
+  'ride out of season stays closed',
+  rideChipClosedStatus({ status: 'CLOSED', isCurrentlyInSeason: false }, nightPark, night),
+  'CLOSED'
+);
+check(
+  'ride in maintenance keeps its status',
+  rideChipClosedStatus({ status: 'REFURBISHMENT' }, nightPark, night),
+  'REFURBISHMENT'
+);
+check(
+  'ride closed while its park is open stays closed',
+  rideChipClosedStatus(
+    { status: 'CLOSED' },
+    park(day('2026-11-28'), day('2026-11-29'), 'OPERATING'),
+    at('2026-11-28T15:00:00+01:00')
+  ),
+  'CLOSED'
+);
+check(
+  'ride without a status of a park off season',
+  rideChipClosedStatus(
+    {},
+    park(shut('2026-01-12'), day('2026-03-28')),
+    at('2026-01-12T12:00:00+01:00')
+  ),
+  'CLOSED'
 );
 
 if (failed) process.exit(1);

@@ -1,12 +1,15 @@
 /**
  * Text reduced for matching: lower case, accents off, "ß" as "ss", so "farup" finds "Fårup" and
- * "strasse" finds "Straße". "ß" has no Unicode decomposition, hence the explicit replace.
+ * "strasse" finds "Straße". "ß" has no Unicode decomposition, hence the explicit replace. NFD also
+ * splits every Hangul syllable into its letters, which no step removes, so the closing NFC puts
+ * them back together; otherwise „래" would find „랜드".
  */
 export function foldText(value: string): string {
   return value
     .replace(/\u00df/g, 'ss')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
+    .normalize('NFC')
     .toLowerCase();
 }
 

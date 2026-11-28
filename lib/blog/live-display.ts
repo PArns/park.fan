@@ -6,7 +6,7 @@ import {
 } from '@/lib/utils/performance-schedule';
 import type { ParkWallClock } from '@/lib/utils/park-day';
 import { OFFSEASON_MIN_DAYS, nextParkOpening, operatingHours } from '@/lib/utils/schedule-utils';
-import type { ScheduleSummary } from '@/lib/api/types';
+import type { AttractionStatus, ScheduleSummary } from '@/lib/api/types';
 
 /** True when a park/attraction status string means "not currently operating". */
 export function isNotOperating(status: string | undefined): boolean {
@@ -40,6 +40,22 @@ export function isClosedForNow(
     nowMs
   );
   return opening !== null && Date.parse(opening.at) - nowMs < OFFSEASON_MIN_DAYS * 86_400_000;
+}
+
+/**
+ * The badge a blog ride chip shows for a ride that is not running. A ride is CLOSED whenever its
+ * park is, so overnight every ride chip would read as a closure next to a grey park chip; while the
+ * park is only {@link isClosedForNow}, the ride says `CLOSED_FOR_NOW` too. A ride out of season, in
+ * maintenance or down keeps its own status.
+ */
+export function rideChipClosedStatus(
+  ride: { status?: AttractionStatus; isCurrentlyInSeason?: boolean | null },
+  park: Parameters<typeof isClosedForNow>[0],
+  nowMs: number | null
+): AttractionStatus | 'CLOSED_FOR_NOW' {
+  const status = ride.status ?? 'CLOSED';
+  if (status !== 'CLOSED' || ride.isCurrentlyInSeason === false) return status;
+  return isClosedForNow(park, nowMs) ? 'CLOSED_FOR_NOW' : status;
 }
 
 /**
