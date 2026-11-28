@@ -57,13 +57,7 @@
     "temperatureUnitToggle": "Switch temperature unit",
     "updated": "Updated",
     "reservation": "Reservation required",
-    "trend": "Trend",
     "in": "in",
-    "vsTypical": "vs Typical",
-    "much_higher": "Much Higher",
-    "higher": "Higher",
-    "lower": "Lower",
-    "much_lower": "Much Lower",
     "typical": "Typical",
     "up": "Up",
     "down": "Down",
@@ -722,7 +716,8 @@
       "extreme": "Extreme",
       "full": "Full",
       "unknown": "No forecast",
-      "closed": "Closed"
+      "closed": "Closed",
+      "withUsual": "{level} · usually {minutes} min"
     },
     "crowdScale": {
       "title": "Crowd levels",
@@ -740,7 +735,7 @@
       "between": "{min}–{max} min",
       "from": "{min} min or more"
     },
-    "avgWaitTime": "Avg. Wait Time",
+    "avgHeadlinerPeak": "Avg. headliner peak wait",
     "openAttractions": "Open Attractions",
     "closedAttractions": "Closed Attractions",
     "schedule": "Schedule",
@@ -841,7 +836,6 @@
     "mapMarkers": {
       "noMapData": "No map data available for this park.",
       "parkCenter": "Park Center",
-      "status": "Status",
       "waitTime": "Wait Time",
       "crowdLevel": "Crowd Level",
       "topSpeed": "Top speed",
@@ -1223,7 +1217,6 @@
     },
     "crowdToday": "Crowds today",
     "crowdTodaySoFar": "so far",
-    "crowdTodayShort": "Today",
     "clock": {
       "localTime": "local time"
     },
@@ -1300,7 +1293,7 @@
       "instruction": "Advice",
       "source": "Source: {name}"
     },
-    "headlinerForecastTitle": "Expected waits (headliners)",
+    "headlinerForecastTitle": "Expected peak waits (headliners)",
     "crowdMeaning": {
       "very_low": "Barely any crowds – short waits, even on the big coasters.",
       "low": "Quiet day – waits below average.",
@@ -1315,8 +1308,8 @@
       "soFarLabel": "So far today",
       "hourlyTitle": "Hour-by-hour forecast",
       "holidaysTitle": "Holidays & school breaks",
-      "actualWaitsTitle": "Average waits",
-      "waitBand": "± {minutes} min",
+      "actualWaitsTitle": "Recorded peak waits (headliners)",
+      "waitBand": "up to ~{minutes} {unit}",
       "waitBandUnknown": "no range available",
       "openToday": "Show today’s details",
       "prevDay": "Previous day",
@@ -1361,13 +1354,13 @@
         "busiestPast": "{count, plural, =1 {The busiest was {days}.} other {The busiest were {days}.}}",
         "hours": "Gates are usually open {from} to {to}.",
         "schoolVacation": "{days, plural, =1 {One day falls} other {# days fall}} inside a school holiday in the park’s region.",
-        "headlinerFuture": "Expect around {minutes} minutes at the headline rides.",
-        "headlinerPast": "The headline rides averaged {minutes} minutes.",
+        "headlinerFuture": "At their busiest, expect around {minutes} minutes at the headliners.",
+        "headlinerPast": "At their busiest, the headliners averaged {minutes} minutes.",
         "factOpenDays": "Open",
         "factOpenDaysValue": "{open} of {total} days",
         "factHours": "Opening hours",
         "factHoursValue": "{from}–{to}",
-        "factWait": "Headliner average",
+        "factWait": "Avg. headliner peak wait",
         "factWaitValue": "{minutes} min",
         "factSchoolVacation": "School holidays",
         "factSchoolVacationValue": "{days, plural, =1 {# day} other {# days}}",
@@ -1375,9 +1368,9 @@
       },
       "dataset": {
         "name": "Crowd levels and wait times at {park}, {month}",
-        "description": "Expected crowd level for every day of {month} at {park}: opening hours, public and school holidays, weather forecast and the expected wait at the headline rides. Derived from measured wait times.",
+        "description": "Expected crowd level for every day of {month} at {park}: opening hours, public and school holidays, weather forecast and the expected headliner peak wait. Derived from measured wait times.",
         "varCrowd": "Expected crowd level per day",
-        "varWait": "Expected wait at the headline rides",
+        "varWait": "Expected headliner peak wait",
         "varHours": "Opening hours",
         "varHolidays": "Public and school holidays",
         "varWeather": "Weather forecast"
@@ -1468,7 +1461,7 @@
       "noReasons": "There are no comparable figures for these two days.",
       "difference": "Difference: {value}",
       "reasonCrowd": "Crowds",
-      "reasonWait": "Headliner wait",
+      "reasonWait": "Headliner peak wait",
       "reasonHours": "Opening hours",
       "reasonWeather": "Rainfall",
       "reasonHoliday": "Holidays and school breaks",
@@ -1517,13 +1510,6 @@
     "title": "Attractions",
     "sectionNavLabel": "Sections on this page",
     "waitTime": "Wait Time",
-    "status": {
-      "operating": "Operating",
-      "down": "Temporarily Down",
-      "closed": "Closed",
-      "refurbishment": "Under Maintenance",
-      "unknown": "Unknown"
-    },
     "label": {
       "OPERATING": "Open",
       "DOWN": "Down",

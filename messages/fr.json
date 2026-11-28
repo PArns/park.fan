@@ -57,13 +57,7 @@
     "temperatureUnitToggle": "Changer d’unité de température",
     "updated": "Mis à jour",
     "reservation": "Réservation requise",
-    "trend": "Tendance",
     "in": "dans",
-    "vsTypical": "vs habituel",
-    "much_higher": "Beaucoup plus élevé",
-    "higher": "Plus élevé",
-    "lower": "Plus bas",
-    "much_lower": "Beaucoup plus bas",
     "typical": "Habituel",
     "up": "En hausse",
     "down": "En baisse",
@@ -722,7 +716,8 @@
       "extreme": "Extrême",
       "full": "Complet",
       "unknown": "Pas de prévision",
-      "closed": "Fermé"
+      "closed": "Fermé",
+      "withUsual": "{level} · d’habitude {minutes} min"
     },
     "crowdScale": {
       "title": "Niveaux d’affluence",
@@ -740,7 +735,7 @@
       "between": "{min}–{max} min",
       "from": "à partir de {min} min"
     },
-    "avgWaitTime": "Attente Moy.",
+    "avgHeadlinerPeak": "Attente de pointe moy. des attractions phares",
     "openAttractions": "Attractions ouvertes",
     "closedAttractions": "Attractions fermées",
     "schedule": "Horaires",
@@ -841,7 +836,6 @@
     "mapMarkers": {
       "noMapData": "Aucune donnée de carte disponible pour ce parc.",
       "parkCenter": "Centre du parc",
-      "status": "Statut",
       "waitTime": "Attente",
       "crowdLevel": "Affluence",
       "topSpeed": "Vitesse max",
@@ -1223,7 +1217,6 @@
     },
     "crowdToday": "Affluence du jour",
     "crowdTodaySoFar": "jusqu’ici",
-    "crowdTodayShort": "Aujourd’hui",
     "clock": {
       "localTime": "heure locale"
     },
@@ -1300,7 +1293,7 @@
       "instruction": "Conseil",
       "source": "Source : {name}"
     },
-    "headlinerForecastTitle": "Attentes prévues (attractions phares)",
+    "headlinerForecastTitle": "Attentes de pointe prévues (attractions phares)",
     "crowdMeaning": {
       "very_low": "Très peu de monde – attentes courtes, y compris sur les grandes attractions.",
       "low": "Journée calme – attentes inférieures à la moyenne.",
@@ -1315,8 +1308,8 @@
       "soFarLabel": "Jusqu’à présent",
       "hourlyTitle": "Prévision par heure",
       "holidaysTitle": "Jours fériés & vacances scolaires",
-      "actualWaitsTitle": "Attentes moyennes",
-      "waitBand": "± {minutes} min",
+      "actualWaitsTitle": "Attentes de pointe relevées (attractions phares)",
+      "waitBand": "jusqu’à ~{minutes} {unit}",
       "waitBandUnknown": "marge inconnue",
       "openToday": "Voir les détails d’aujourd’hui",
       "prevDay": "Jour précédent",
@@ -1361,13 +1354,13 @@
         "busiestPast": "{count, plural, =1 {L’affluence a été la plus forte {days}.} other {L’affluence a été la plus forte {days}.}}",
         "hours": "Ouverture le plus souvent de {from} à {to}.",
         "schoolVacation": "{days, plural, =1 {Un jour tombe} other {# jours tombent}} pendant les vacances scolaires de la région du parc.",
-        "headlinerFuture": "Comptez environ {minutes} minutes sur les grandes attractions.",
-        "headlinerPast": "Les grandes attractions ont affiché {minutes} minutes en moyenne.",
+        "headlinerFuture": "Aux heures de pointe, comptez environ {minutes} minutes sur les attractions phares.",
+        "headlinerPast": "Aux heures de pointe, les attractions phares ont affiché {minutes} minutes en moyenne.",
         "factOpenDays": "Ouvert",
         "factOpenDaysValue": "{open} jours sur {total}",
         "factHours": "Horaires",
         "factHoursValue": "{from}–{to}",
-        "factWait": "Moyenne grandes attractions",
+        "factWait": "Attente de pointe moy. des attractions phares",
         "factWaitValue": "{minutes} min",
         "factSchoolVacation": "Vacances scolaires",
         "factSchoolVacationValue": "{days, plural, =1 {# jour} other {# jours}}",
@@ -1375,9 +1368,9 @@
       },
       "dataset": {
         "name": "Affluence et temps d’attente à {park}, {month}",
-        "description": "Affluence attendue pour chaque jour de {month} à {park} : horaires, jours fériés et vacances scolaires, prévisions météo et temps d’attente attendu sur les grandes attractions. Calculé à partir de temps d’attente mesurés.",
+        "description": "Affluence attendue pour chaque jour de {month} à {park} : horaires, jours fériés et vacances scolaires, prévisions météo et attente de pointe prévue des attractions phares. Calculé à partir de temps d’attente mesurés.",
         "varCrowd": "Affluence attendue par jour",
-        "varWait": "Temps d’attente attendu sur les grandes attractions",
+        "varWait": "Attente de pointe prévue des attractions phares",
         "varHours": "Horaires d’ouverture",
         "varHolidays": "Jours fériés et vacances scolaires",
         "varWeather": "Prévisions météo"
@@ -1468,7 +1461,7 @@
       "noReasons": "Aucune valeur comparable n'est disponible pour ces deux jours.",
       "difference": "Écart : {value}",
       "reasonCrowd": "Affluence",
-      "reasonWait": "Attente aux attractions phares",
+      "reasonWait": "Attente de pointe des attractions phares",
       "reasonHours": "Horaires d'ouverture",
       "reasonWeather": "Précipitations",
       "reasonHoliday": "Jours fériés et vacances",
@@ -1517,13 +1510,6 @@
     "title": "Attractions",
     "sectionNavLabel": "Sections de cette page",
     "waitTime": "Attente",
-    "status": {
-      "operating": "Ouvert",
-      "down": "Panne temporaire",
-      "closed": "Fermé",
-      "refurbishment": "En maintenance",
-      "unknown": "Inconnu"
-    },
     "label": {
       "OPERATING": "Ouvert",
       "DOWN": "Panne",

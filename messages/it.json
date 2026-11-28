@@ -57,13 +57,7 @@
     "temperatureUnitToggle": "Cambia unità di temperatura",
     "updated": "Aggiornato",
     "reservation": "Prenotazione richiesta",
-    "trend": "Tendenza",
     "in": "tra",
-    "vsTypical": "vs tipico",
-    "much_higher": "Molto più alta",
-    "higher": "Più alta",
-    "lower": "Più bassa",
-    "much_lower": "Molto più bassa",
     "typical": "Tipico",
     "up": "Su",
     "down": "Giù",
@@ -722,7 +716,8 @@
       "extreme": "Estrema",
       "full": "Pieno",
       "unknown": "Nessuna previsione",
-      "closed": "Chiuso"
+      "closed": "Chiuso",
+      "withUsual": "{level} · di solito {minutes} min"
     },
     "crowdScale": {
       "title": "Livelli di affluenza",
@@ -740,7 +735,7 @@
       "between": "{min}–{max} min",
       "from": "da {min} min"
     },
-    "avgWaitTime": "Tempo di attesa medio",
+    "avgHeadlinerPeak": "Attesa di picco media (attrazioni di punta)",
     "openAttractions": "Attrazioni aperte",
     "closedAttractions": "Attrazioni chiuse",
     "schedule": "Programma",
@@ -841,7 +836,6 @@
     "mapMarkers": {
       "noMapData": "Nessun dato cartografico disponibile per questo parco.",
       "parkCenter": "Centro del parco",
-      "status": "Stato",
       "waitTime": "Tempo di attesa",
       "crowdLevel": "Livello di affluenza",
       "topSpeed": "Velocità max",
@@ -1223,7 +1217,6 @@
     },
     "crowdToday": "Affluenza di oggi",
     "crowdTodaySoFar": "finora",
-    "crowdTodayShort": "Oggi",
     "clock": {
       "localTime": "ora locale"
     },
@@ -1300,7 +1293,7 @@
       "instruction": "Consiglio",
       "source": "Fonte: {name}"
     },
-    "headlinerForecastTitle": "Attese previste (highlights)",
+    "headlinerForecastTitle": "Attese di picco previste (attrazioni di punta)",
     "crowdMeaning": {
       "very_low": "Quasi nessuna coda – attese brevi, anche sulle attrazioni principali.",
       "low": "Giornata tranquilla – attese sotto la media.",
@@ -1315,8 +1308,8 @@
       "soFarLabel": "Oggi finora",
       "hourlyTitle": "Previsione oraria",
       "holidaysTitle": "Festività e vacanze scolastiche",
-      "actualWaitsTitle": "Attese medie",
-      "waitBand": "± {minutes} min",
+      "actualWaitsTitle": "Attese di picco registrate (attrazioni di punta)",
+      "waitBand": "fino a ~{minutes} {unit}",
       "waitBandUnknown": "nessun margine noto",
       "openToday": "Mostra i dettagli di oggi",
       "prevDay": "Giorno precedente",
@@ -1361,13 +1354,13 @@
         "busiestPast": "{count, plural, =1 {L’affluenza maggiore c’è stata {days}.} other {L’affluenza maggiore c’è stata {days}.}}",
         "hours": "Di solito aperto dalle {from} alle {to}.",
         "schoolVacation": "{days, plural, =1 {Un giorno cade} other {# giorni cadono}} nelle vacanze scolastiche della regione del parco.",
-        "headlinerFuture": "Sulle attrazioni principali sono attesi in media {minutes} minuti.",
-        "headlinerPast": "Le attrazioni principali hanno registrato in media {minutes} minuti.",
+        "headlinerFuture": "Nell’ora più affollata, sulle attrazioni di punta sono attesi in media {minutes} minuti.",
+        "headlinerPast": "Nell’ora più affollata, le attrazioni di punta hanno registrato in media {minutes} minuti.",
         "factOpenDays": "Aperto",
         "factOpenDaysValue": "{open} giorni su {total}",
         "factHours": "Orari",
         "factHoursValue": "{from}–{to}",
-        "factWait": "Media attrazioni principali",
+        "factWait": "Attesa di picco media (attrazioni di punta)",
         "factWaitValue": "{minutes} min",
         "factSchoolVacation": "Vacanze scolastiche",
         "factSchoolVacationValue": "{days, plural, =1 {# giorno} other {# giorni}}",
@@ -1375,9 +1368,9 @@
       },
       "dataset": {
         "name": "Affluenza e tempi di attesa a {park}, {month}",
-        "description": "Affluenza prevista per ogni giorno di {month} a {park}: orari, festività e vacanze scolastiche, previsioni meteo e l’attesa prevista sulle attrazioni principali. Ricavato da tempi di attesa misurati.",
+        "description": "Affluenza prevista per ogni giorno di {month} a {park}: orari, festività e vacanze scolastiche, previsioni meteo e l’attesa di picco prevista delle attrazioni di punta. Ricavato da tempi di attesa misurati.",
         "varCrowd": "Affluenza prevista per giorno",
-        "varWait": "Attesa prevista sulle attrazioni principali",
+        "varWait": "Attesa di picco prevista delle attrazioni di punta",
         "varHours": "Orari di apertura",
         "varHolidays": "Festività e vacanze scolastiche",
         "varWeather": "Previsioni meteo"
@@ -1468,7 +1461,7 @@
       "noReasons": "Per questi due giorni non ci sono valori confrontabili.",
       "difference": "Differenza: {value}",
       "reasonCrowd": "Affluenza",
-      "reasonWait": "Attesa alle attrazioni principali",
+      "reasonWait": "Attesa di picco delle attrazioni di punta",
       "reasonHours": "Orari di apertura",
       "reasonWeather": "Precipitazioni",
       "reasonHoliday": "Festivi e vacanze",
@@ -1517,13 +1510,6 @@
     "title": "Attrazioni",
     "sectionNavLabel": "Sezioni di questa pagina",
     "waitTime": "Tempo di attesa",
-    "status": {
-      "operating": "Operativa",
-      "down": "Temporaneamente ferma",
-      "closed": "Chiusa",
-      "refurbishment": "In manutenzione",
-      "unknown": "Sconosciuto"
-    },
     "label": {
       "OPERATING": "Aperta",
       "DOWN": "Ferma",

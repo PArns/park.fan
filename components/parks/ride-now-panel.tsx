@@ -40,7 +40,6 @@ interface RideNowPanelProps {
   attraction: ParkAttraction;
   /** The ride's effective status, already resolved against the park's — see the ride page. */
   status: AttractionStatus;
-  statusLabel: string;
   /**
    * Today in the park's timezone (`yyyy-MM-dd`), resolved on the server, so the typical/busy pair
    * is in the served HTML rather than appearing after mount. The route is `force-dynamic`, so the
@@ -77,7 +76,6 @@ export function RideNowPanel({
   park,
   attraction,
   status,
-  statusLabel,
   todayIso,
   performanceTimes = null,
   shellSlotCount,
@@ -279,10 +277,14 @@ export function RideNowPanel({
                     )}
                   </div>
                 ) : (
-                  <span className="text-xl font-semibold">{statusLabel}</span>
+                  // A dash, not the status in words: the badge above already names it, and a
+                  // second word for the same state reads as a second state.
+                  <span className="text-muted-foreground text-xl font-semibold" aria-hidden="true">
+                    —
+                  </span>
                 )}
-                {/* Inside the box reserved for the number, where a ride with no wait shows its
-                  status: a DOWN ride is that case. The `full` block carries both estimate figures,
+                {/* Inside the box reserved for the number, where a ride with no wait has its dash:
+                  a DOWN ride is that case. The `full` block carries both estimate figures,
                   since this is the page a visitor opens standing in front of the ride. */}
                 <OutageNote
                   outage={attraction.outage}
@@ -308,10 +310,15 @@ export function RideNowPanel({
                     className="my-1.5"
                   />
                 )}
+                {/* When the source last answered, not when the figure last moved: a queue that
+                    stood at 30 all afternoon is still a reading from a minute ago. */}
                 {mainQueue?.lastUpdated && (
                   <span className="text-muted-foreground text-xs">
                     {tCommon('updated')}{' '}
-                    <LocalTime time={mainQueue.lastUpdated} timeZone={timezone} />
+                    <LocalTime
+                      time={mainQueue.lastObserved ?? mainQueue.lastUpdated}
+                      timeZone={timezone}
+                    />
                   </span>
                 )}
               </div>

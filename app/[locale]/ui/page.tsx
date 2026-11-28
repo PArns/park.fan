@@ -42,8 +42,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
-import { ComparisonBadge } from '@/components/parks/comparison-badge';
-import { PeakHourBadge } from '@/components/parks/peak-hour-badge';
 
 import { ParkCard } from '@/components/parks/park-card';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
@@ -51,17 +49,13 @@ import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skel
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
 import { ShowCard } from '@/components/parks/show-card';
-import { ShowCardSkeleton } from '@/components/parks/show-card-skeleton';
-import { RestaurantCardSkeleton } from '@/components/parks/restaurant-card-skeleton';
 
-import { ParkStatus } from '@/components/parks/park-status';
-import { WaitTimeSparkline } from '@/components/parks/wait-time-sparkline';
 import { HourlyP90Sparkline } from '@/components/parks/hourly-p90-sparkline';
 
 import { LandSection } from '@/components/parks/land-section';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { AttractionHistoryDay } from '@/components/parks/attraction-history-day';
-import { AttractionTypicalWaitsDemo } from '@/components/parks/attraction-typical-waits-demo';
+import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-waits';
 import type { DayDataProps } from '@/components/parks/attraction-history-day';
 
 import { WeatherCardShowcase, ParkTimeInfoShowcase } from '@/components/parks/weather-card-demo';
@@ -88,23 +82,19 @@ import { OperatingHoursDisplay } from '@/components/common/operating-hours-displ
 import { MetricBar } from '@/components/common/metric-bar';
 import { TrainingStatusBadge } from '@/components/common/training-status-badge';
 
-import { TrendIndicator } from '@/components/parks/trend-indicator';
-import { WaitTimeBadge } from '@/components/parks/wait-time-badge';
 import { QueueTypeBadge } from '@/components/parks/queue-type-badge';
 
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 import { SearchCommand } from '@/components/search/search-bar';
 
-import { WaitTimeInfoCard } from '@/components/parks/wait-time-info-card';
-
 import type {
-  ParkResponse,
   ParkAttraction,
   CalendarDay,
   CrowdLevel,
   AttractionHistoryDay as AttractionHistoryDayType,
   ScheduleItem,
+  TypicalWaits,
 } from '@/lib/api/types';
 import { assertServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
@@ -204,43 +194,6 @@ const _todayAt = (h: number, m: number) => {
 };
 const bestVisitOptimal = _todayAt(14, 15);
 const bestVisitGood = _todayAt(16, 30);
-
-const MOCK_PARK = {
-  id: 'phantasialand',
-  slug: 'phantasialand',
-  name: 'Phantasialand',
-  city: 'Brühl',
-  country: 'Germany',
-  continent: 'Europe',
-  timezone: 'Europe/Berlin',
-  status: 'OPERATING' as const,
-  currentLoad: { crowdLevel: 'high' as CrowdLevel, baseline: 30, currentWaitTime: 35 },
-  analytics: {
-    occupancy: {
-      current: 67,
-      trend: 'stable' as const,
-      comparedToTypical: 5,
-      comparisonStatus: 'typical' as const,
-      baseline90thPercentile: 75,
-      updatedAt: now,
-    },
-    statistics: {
-      avgWaitTime: 35,
-      avgWaitToday: 40,
-      peakHour: '2026-06-01T14:30:00+02:00',
-      peakHourSource: 'prediction' as const,
-      crowdLevel: 'high' as CrowdLevel,
-      totalAttractions: 42,
-      operatingAttractions: 38,
-      closedAttractions: 4,
-      timestamp: now,
-      peakWaitToday: 75,
-    },
-  },
-  latitude: 50.7989,
-  longitude: 6.879,
-  url: '/europe/germany/bruhl/phantasialand',
-} as unknown as ParkResponse;
 
 const SPARKLINE_HISTORY = [
   { timestamp: twoHoursAgo, waitTime: 20 },
@@ -466,6 +419,26 @@ const MOCK_ATTRACTION_FAVORITES = {
     history: SPARKLINE_HISTORY,
   },
 } as unknown as ParkAttraction;
+
+const MOCK_TYPICAL_WAITS: TypicalWaits = {
+  weekday: { typical: 35, busy: 60, sampleDays: 142 },
+  weekend: { typical: 50, busy: 85, sampleDays: 88 },
+  byDayOfWeek: [
+    { dayOfWeek: 1, isWeekend: false, typical: 30, busy: 55, sampleDays: 28 },
+    { dayOfWeek: 2, isWeekend: false, typical: 32, busy: 52, sampleDays: 29 },
+    { dayOfWeek: 3, isWeekend: false, typical: 35, busy: 58, sampleDays: 27 },
+    { dayOfWeek: 4, isWeekend: false, typical: 38, busy: 62, sampleDays: 28 },
+    { dayOfWeek: 5, isWeekend: false, typical: 42, busy: 70, sampleDays: 30 },
+    { dayOfWeek: 6, isWeekend: true, typical: 55, busy: 90, sampleDays: 44 },
+    { dayOfWeek: 0, isWeekend: true, typical: 48, busy: 80, sampleDays: 44 },
+  ],
+  peak: { value: 120, date: '2025-08-09' },
+  windowDays: 365,
+  dataFrom: '2025-06-19',
+  dataTo: '2026-06-18',
+  displayable: true,
+  generatedAt: '2026-06-19T03:00:00.000Z',
+};
 
 const MOCK_HISTORY_DAY_OPEN: DayDataProps = {
   dateStr: '2026-03-07',
@@ -1251,54 +1224,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 </div>
               </Sub>
 
-              <ComponentLabel
-                name="WaitTimeInfoCard"
-                file="components/parks/wait-time-info-card.tsx"
-              />
-              <Sub title="WaitTimeInfoCard — operating / closed / no data">
-                <div className="grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
-                  <WaitTimeInfoCard
-                    waitTime={45}
-                    trend="up"
-                    minWaitToday={15}
-                    maxWaitToday={70}
-                    labels={{
-                      title: 'Wait Time',
-                      minutes: 'Minutes',
-                      todayMin: 'Min.',
-                      todayMax: 'Max.',
-                      min: 'min.',
-                      trendLabel: 'Rising',
-                    }}
-                  />
-                  <WaitTimeInfoCard
-                    waitTime={20}
-                    trend="down"
-                    minWaitToday={10}
-                    maxWaitToday={55}
-                    labels={{
-                      title: 'Wait Time',
-                      minutes: 'Minutes',
-                      todayMin: 'Min.',
-                      todayMax: 'Max.',
-                      min: 'min.',
-                      trendLabel: 'Falling',
-                    }}
-                  />
-                  <WaitTimeInfoCard
-                    waitTime={null}
-                    statusLabel="Closed"
-                    labels={{
-                      title: 'Wait Time',
-                      minutes: 'Minutes',
-                      todayMin: 'Min.',
-                      todayMax: 'Max.',
-                      min: 'min.',
-                    }}
-                  />
-                </div>
-              </Sub>
-
               <ComponentLabel name="StatusInfoCard" file="components/common/status-info-card.tsx" />
               <Sub title="StatusInfoCard — glass=true / glass=false">
                 <div className="grid max-w-xl grid-cols-1 gap-4 sm:grid-cols-2">
@@ -1385,38 +1310,9 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   <ParkStatusBadge status="UNKNOWN" />
                 </Row>
                 <p className="text-muted-foreground mt-1 text-xs">
-                  UNKNOWN = park-level only (no schedule data), falls through to CLOSED styling
+                  UNKNOWN = no information, never a closure; a status the badge does not know reads
+                  as UNKNOWN too
                 </p>
-              </Sub>
-
-              <ComponentLabel name="ComparisonBadge" file="components/parks/comparison-badge.tsx" />
-              <Sub title="ComparisonBadge — All ComparisonStatus values (much_lower / lower / typical / higher / much_higher / closed)">
-                <Row>
-                  <ComparisonBadge comparison="much_lower" />
-                  <ComparisonBadge comparison="lower" />
-                  <ComparisonBadge comparison="typical" />
-                  <ComparisonBadge comparison="higher" />
-                  <ComparisonBadge comparison="much_higher" />
-                  <ComparisonBadge comparison="closed" />
-                </Row>
-                <p className="text-muted-foreground mt-1 text-xs">
-                  much_lower / much_higher / closed → fallthrough to outline (no color). Consider
-                  extending the component.
-                </p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <ComparisonBadge comparison="lower" showIcon={false} />
-                  <ComparisonBadge comparison="typical" showIcon={false} />
-                  <ComparisonBadge comparison="higher" showIcon={false} />
-                  <span className="text-muted-foreground self-center text-xs">showIcon=false</span>
-                </div>
-              </Sub>
-
-              <ComponentLabel name="PeakHourBadge" file="components/parks/peak-hour-badge.tsx" />
-              <Sub title="PeakHourBadge — renders after hydration if peak is in future">
-                <div className="flex items-center gap-2">
-                  <span className="text-muted-foreground text-sm">Peak at 23:59:</span>
-                  <PeakHourBadge peakHour="2099-12-31T23:59:00+01:00" />
-                </div>
               </Sub>
             </Section>
 
@@ -1788,18 +1684,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 </div>
               </Sub>
 
-              <ComponentLabel
-                name="ShowCardSkeleton"
-                file="components/parks/show-card-skeleton.tsx"
-              />
-              <Sub title="ShowCardSkeleton — Loading State">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                  <ShowCardSkeleton />
-                  <ShowCardSkeleton />
-                  <ShowCardSkeleton />
-                </div>
-              </Sub>
-
               <ComponentLabel name="RestaurantCard" file="components/parks/restaurant-card.tsx" />
               <Sub title="RestaurantCard — various states">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -1844,18 +1728,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 </div>
               </Sub>
 
-              <ComponentLabel
-                name="RestaurantCardSkeleton"
-                file="components/parks/restaurant-card-skeleton.tsx"
-              />
-              <Sub title="RestaurantCardSkeleton — Loading State">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                  <RestaurantCardSkeleton />
-                  <RestaurantCardSkeleton />
-                  <RestaurantCardSkeleton />
-                </div>
-              </Sub>
-
               <ComponentLabel name="LandSection" file="components/parks/land-section.tsx" />
               <Sub title="LandSection — land header + attraction grid (as used in park attractions tab)">
                 <LandSection
@@ -1874,70 +1746,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
             </Section>
 
             <Section title="Park Status & Timing" icon={Map}>
-              <ComponentLabel name="ParkStatus" file="components/parks/park-status.tsx" />
-
-              <Sub title='variant="compact" — OPERATING / CLOSED'>
-                <Row>
-                  <GlassCard variant="medium" className="inline-block">
-                    <ParkStatus park={MOCK_PARK} variant="compact" />
-                  </GlassCard>
-                  <GlassCard variant="medium" className="inline-block">
-                    <ParkStatus
-                      park={
-                        {
-                          ...MOCK_PARK,
-                          status: 'CLOSED' as const,
-                          currentLoad: null,
-                        } as unknown as ParkResponse
-                      }
-                      variant="compact"
-                    />
-                  </GlassCard>
-                </Row>
-              </Sub>
-
-              <Sub title='variant="card" — OPERATING / CLOSED'>
-                <div className="grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
-                  <ParkStatus park={MOCK_PARK} variant="card" />
-                  <ParkStatus
-                    park={
-                      {
-                        ...MOCK_PARK,
-                        status: 'CLOSED' as const,
-                        currentLoad: null,
-                      } as unknown as ParkResponse
-                    }
-                    variant="card"
-                  />
-                </div>
-              </Sub>
-
-              <Sub title='variant="hero" — OPERATING'>
-                <ParkStatus park={MOCK_PARK} variant="hero" />
-              </Sub>
-
-              <Sub title='variant="detailed" — OPERATING (crowd + wait + attractions cards)'>
-                <ParkStatus park={MOCK_PARK} variant="detailed" />
-              </Sub>
-
-              <Sub title='variant="detailed" — CLOSED (renders nothing — expected)'>
-                <GlassCard variant="medium" className="inline-flex items-center gap-2 px-4 py-3">
-                  <ParkStatus
-                    park={
-                      {
-                        ...MOCK_PARK,
-                        status: 'CLOSED' as const,
-                        currentLoad: null,
-                      } as unknown as ParkResponse
-                    }
-                    variant="detailed"
-                  />
-                  <span className="text-muted-foreground text-xs italic">
-                    — detailed returns null when CLOSED (no stats)
-                  </span>
-                </GlassCard>
-              </Sub>
-
               <ComponentLabel name="ParkTimeInfo" file="components/parks/park-time-info.tsx" />
               <Sub title="ParkTimeInfo — with today schedule (live clock + opens/closes in countdown)">
                 <ParkTimeInfoShowcase />
@@ -1959,17 +1767,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
             </Section>
 
             <Section title="Charts & Sparklines" icon={BarChart2}>
-              <ComponentLabel
-                name="WaitTimeSparkline"
-                file="components/parks/wait-time-sparkline.tsx"
-              />
-              <Sub title="WaitTimeSparkline — Hover for tooltip">
-                <GlassCard variant="medium" className="max-w-xs p-4">
-                  <p className="text-muted-foreground mb-3 text-xs">Taron — last 2 hours</p>
-                  <WaitTimeSparkline history={SPARKLINE_HISTORY} className="h-16 w-full" />
-                </GlassCard>
-              </Sub>
-
               <ComponentLabel
                 name="HourlyP90Sparkline"
                 file="components/parks/hourly-p90-sparkline.tsx"
@@ -2232,7 +2029,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 file="components/parks/attraction-typical-waits.tsx"
               />
               <Sub title="AttractionTypicalWaits — typical (P50) vs busy (P90) peak waits, weekday/weekend + per-day, gated on displayable">
-                <AttractionTypicalWaitsDemo />
+                <AttractionTypicalWaits typicalWaits={MOCK_TYPICAL_WAITS} className="max-w-md" />
               </Sub>
             </Section>
 
@@ -2306,70 +2103,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
             </Section>
 
             <Section title="Shared Micro-Components" icon={Info}>
-              <ComponentLabel name="TrendIndicator" file="components/parks/trend-indicator.tsx" />
-              <Sub title="TrendIndicator — variant=icon, size=sm (default) / size=md">
-                <div className="space-y-3">
-                  <Row>
-                    {(['up', 'increasing', 'stable', 'down', 'decreasing'] as const).map((t) => (
-                      <div key={t} className="flex flex-col items-center gap-1">
-                        <TrendIndicator trend={t} size="sm" />
-                        <span className="text-muted-foreground font-mono text-[10px]">{t}</span>
-                      </div>
-                    ))}
-                    <span className="text-muted-foreground mb-0.5 self-end text-xs">sm</span>
-                  </Row>
-                  <Row>
-                    {(['up', 'stable', 'down'] as const).map((t) => (
-                      <div key={t} className="flex flex-col items-center gap-1">
-                        <TrendIndicator trend={t} size="md" />
-                        <span className="text-muted-foreground font-mono text-[10px]">{t}</span>
-                      </div>
-                    ))}
-                    <span className="text-muted-foreground mb-0.5 self-end text-xs">md</span>
-                  </Row>
-                </div>
-              </Sub>
-              <Sub title="TrendIndicator — variant=pill with label (park-status detailed)">
-                <Row>
-                  {(['up', 'stable', 'down'] as const).map((t) => (
-                    <TrendIndicator key={t} trend={t} variant="pill" label={t} />
-                  ))}
-                  {(['up', 'stable', 'down'] as const).map((t) => (
-                    <TrendIndicator key={`md-${t}`} trend={t} variant="pill" size="md" label={t} />
-                  ))}
-                </Row>
-              </Sub>
-
-              <ComponentLabel name="WaitTimeBadge" file="components/parks/wait-time-badge.tsx" />
-              <Sub title="WaitTimeBadge — size=lg (attraction card main) / size=sm (park card avg)">
-                <Row>
-                  <div className="flex flex-col gap-2">
-                    <span className="text-muted-foreground font-mono text-[10px]">
-                      size=&quot;lg&quot;
-                    </span>
-                    <WaitTimeBadge waitTime={45} size="lg" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <span className="text-muted-foreground font-mono text-[10px]">
-                      size=&quot;lg&quot; 1 min
-                    </span>
-                    <WaitTimeBadge waitTime={1} size="lg" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <span className="text-muted-foreground font-mono text-[10px]">
-                      size=&quot;sm&quot;
-                    </span>
-                    <WaitTimeBadge waitTime={35} size="sm" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <span className="text-muted-foreground font-mono text-[10px]">
-                      size=&quot;sm&quot; 1 min
-                    </span>
-                    <WaitTimeBadge waitTime={1} size="sm" />
-                  </div>
-                </Row>
-              </Sub>
-
               <ComponentLabel name="QueueTypeBadge" file="components/parks/queue-type-badge.tsx" />
               <Sub title="QueueTypeBadge — all queue types">
                 <Row>

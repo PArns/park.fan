@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { CrowdLevel } from '@/lib/api/types';
 import { CROWD_BADGE_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { CrowdLevelScaleTooltip } from './crowd-level-scale-tooltip';
 
 import { User, Users, AlertCircle, Ban, HelpCircle } from 'lucide-react';
@@ -33,6 +34,12 @@ interface CrowdLevelBadgeProps {
    * `showLabel`, because the label is what names the button.
    */
   withScale?: boolean;
+  /**
+   * The wait a ride's level was rated against, in minutes (`ParkAttraction.baseline`). A ride's
+   * level is relative to its own usual queue, so the label names it: „Niedrig · sonst 45 Min.".
+   * Only a coloured level takes it.
+   */
+  usualMinutes?: number | null;
 }
 
 /**
@@ -44,17 +51,22 @@ export function CrowdLevelBadge({
   showLabel = true,
   className,
   withScale = false,
+  usualMinutes,
 }: CrowdLevelBadgeProps) {
   const t = useTranslations('parks.crowdLevels');
 
   if (!level) return null;
 
   const config = crowdLevelConfig[level] || { colorClass: 'bg-muted' };
+  const label =
+    typeof usualMinutes === 'number' && isColoredCrowdLevel(level)
+      ? t('withUsual', { level: t(level), minutes: roundWaitTo5(usualMinutes) })
+      : t(level);
 
   const badge = (
     <Badge className={cn(config.colorClass, className)}>
       {config.Icon && <config.Icon className="h-3 w-3 text-white" />}
-      {showLabel ? t(level) : null}
+      {showLabel ? label : null}
     </Badge>
   );
 

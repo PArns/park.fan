@@ -13,13 +13,7 @@
   "common": {
     "scroll": "Scrollen",
     "loading": "Laden…",
-    "trend": "Trend",
     "in": "in",
-    "vsTypical": "vs Typisch",
-    "much_higher": "Viel höher",
-    "higher": "Höher",
-    "lower": "Niedriger",
-    "much_lower": "Viel niedriger",
     "typical": "Typisch",
     "up": "Steigend",
     "down": "Fallend",
@@ -964,7 +958,8 @@
       "extreme": "Extrem",
       "full": "Voll",
       "unknown": "Keine Prognose",
-      "closed": "Geschlossen"
+      "closed": "Geschlossen",
+      "withUsual": "{level} · sonst {minutes} Min."
     },
     "crowdScale": {
       "title": "Auslastungsstufen",
@@ -982,7 +977,7 @@
       "between": "{min}–{max} min",
       "from": "ab {min} min"
     },
-    "avgWaitTime": "Ø Wartezeit",
+    "avgHeadlinerPeak": "Ø Spitzenwartezeit der Headliner",
     "openAttractions": "Offene Attraktionen",
     "closedAttractions": "Geschlossene Attraktionen",
     "schedule": "Öffnungszeiten",
@@ -1191,7 +1186,6 @@
     "mapMarkers": {
       "noMapData": "Keine Kartendaten für diesen Park verfügbar.",
       "parkCenter": "Park Zentrum",
-      "status": "Status",
       "waitTime": "Wartezeit",
       "crowdLevel": "Auslastung",
       "topSpeed": "Topspeed",
@@ -1223,7 +1217,6 @@
     },
     "crowdToday": "Auslastung heute",
     "crowdTodaySoFar": "bisher",
-    "crowdTodayShort": "Heute",
     "clock": {
       "localTime": "Ortszeit"
     },
@@ -1300,7 +1293,7 @@
       "instruction": "Hinweis",
       "source": "Quelle: {name}"
     },
-    "headlinerForecastTitle": "Erwartete Wartezeiten (Headliner)",
+    "headlinerForecastTitle": "Erwartete Spitzenwartezeiten (Headliner)",
     "crowdMeaning": {
       "very_low": "Kaum Andrang – kurze Wartezeiten, auch an den großen Bahnen.",
       "low": "Wenig los – Wartezeiten unter dem Durchschnitt.",
@@ -1315,8 +1308,8 @@
       "soFarLabel": "Heute bisher",
       "hourlyTitle": "Prognose je Stunde",
       "holidaysTitle": "Ferien & Feiertage",
-      "actualWaitsTitle": "Ø Wartezeiten",
-      "waitBand": "± {minutes} Min.",
+      "actualWaitsTitle": "Gemessene Spitzenwartezeiten (Headliner)",
+      "waitBand": "bis ~{minutes} {unit}",
       "waitBandUnknown": "keine Spanne bekannt",
       "openToday": "Details für heute anzeigen",
       "prevDay": "Vorheriger Tag",
@@ -1361,13 +1354,13 @@
         "busiestPast": "{count, plural, =1 {Am vollsten war es am {days}.} other {Am vollsten war es am {days}.}}",
         "hours": "Geöffnet ist meist von {from} bis {to} Uhr.",
         "schoolVacation": "{days, plural, =1 {An einem Tag} other {An # Tagen}} liegen in der Region des Parks Schulferien.",
-        "headlinerFuture": "An den großen Bahnen sind im Schnitt {minutes} Minuten zu erwarten.",
-        "headlinerPast": "An den großen Bahnen wurden im Schnitt {minutes} Minuten gemessen.",
+        "headlinerFuture": "Zur vollsten Zeit sind an den Headlinern im Schnitt {minutes} Minuten zu erwarten.",
+        "headlinerPast": "Zur vollsten Zeit wurden an den Headlinern im Schnitt {minutes} Minuten gemessen.",
         "factOpenDays": "Geöffnet",
         "factOpenDaysValue": "{open} von {total} Tagen",
         "factHours": "Öffnungszeiten",
         "factHoursValue": "{from}–{to} Uhr",
-        "factWait": "Ø an den großen Bahnen",
+        "factWait": "Ø Spitzenwartezeit der Headliner",
         "factWaitValue": "{minutes} Min.",
         "factSchoolVacation": "Schulferien",
         "factSchoolVacationValue": "{days, plural, =1 {# Tag} other {# Tage}}",
@@ -1375,9 +1368,9 @@
       },
       "dataset": {
         "name": "Andrang und Wartezeiten {inPark}, {month}",
-        "description": "Erwarteter Andrang für jeden Tag im {month} {inPark}: Öffnungszeiten, Feiertage und Schulferien, Wettervorhersage und die erwartete Wartezeit an den großen Bahnen. Aus gemessenen Wartezeiten abgeleitet.",
+        "description": "Erwarteter Andrang für jeden Tag im {month} {inPark}: Öffnungszeiten, Feiertage und Schulferien, Wettervorhersage und die erwartete Spitzenwartezeit der Headliner. Aus gemessenen Wartezeiten abgeleitet.",
         "varCrowd": "Erwarteter Andrang je Tag",
-        "varWait": "Erwartete Wartezeit an den großen Bahnen",
+        "varWait": "Erwartete Spitzenwartezeit der Headliner",
         "varHours": "Öffnungszeiten",
         "varHolidays": "Feiertage und Schulferien",
         "varWeather": "Wettervorhersage"
@@ -1468,7 +1461,7 @@
       "noReasons": "Zu diesen beiden Tagen liegen keine vergleichbaren Werte vor.",
       "difference": "Unterschied: {value}",
       "reasonCrowd": "Andrang",
-      "reasonWait": "Wartezeit an den Headlinern",
+      "reasonWait": "Spitzenwartezeit der Headliner",
       "reasonHours": "Öffnungszeiten",
       "reasonWeather": "Niederschlag",
       "reasonHoliday": "Feiertage und Ferien",
@@ -1517,13 +1510,6 @@
     "title": "Attraktionen",
     "sectionNavLabel": "Abschnitte dieser Seite",
     "waitTime": "Wartezeit",
-    "status": {
-      "operating": "In Betrieb",
-      "down": "Vorübergehend geschlossen",
-      "closed": "Geschlossen",
-      "refurbishment": "In Wartung",
-      "unknown": "Unbekannt"
-    },
     "label": {
       "OPERATING": "Geöffnet",
       "DOWN": "Störung",

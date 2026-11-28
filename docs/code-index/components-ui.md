@@ -131,7 +131,7 @@ Popover primitives (shadcn/ui on Radix Popover): root, trigger, anchor and the f
 
 ### [`progress.tsx`](../../components/ui/progress.tsx)
 
-Progress bar primitive (shadcn/ui on Radix Progress) whose fill goes from green to yellow, orange and red as the value passes 40, 70 and 85.
+Progress bar primitive (shadcn/ui on Radix Progress). The fill goes from green to yellow, orange and red as it passes 40, 70 and 85 % of `max`, unless `indicatorClassName` colours it by what the bar measures.
 
 - `Progress` _component_
 

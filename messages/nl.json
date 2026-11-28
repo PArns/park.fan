@@ -57,13 +57,7 @@
     "temperatureUnitToggle": "Temperatuureenheid wisselen",
     "updated": "Bijgewerkt",
     "reservation": "Reservering vereist",
-    "trend": "Trend",
     "in": "over",
-    "vsTypical": "vs normaal",
-    "much_higher": "Veel hoger",
-    "higher": "Hoger",
-    "lower": "Lager",
-    "much_lower": "Veel lager",
     "typical": "Normaal",
     "up": "Omhoog",
     "down": "Omlaag",
@@ -722,7 +716,8 @@
       "extreme": "Extreem",
       "full": "Vol",
       "unknown": "Geen voorspelling",
-      "closed": "Gesloten"
+      "closed": "Gesloten",
+      "withUsual": "{level} · anders {minutes} min"
     },
     "crowdScale": {
       "title": "Drukteniveaus",
@@ -740,7 +735,7 @@
       "between": "{min}–{max} min",
       "from": "vanaf {min} min"
     },
-    "avgWaitTime": "Gem. Wachttijd",
+    "avgHeadlinerPeak": "Gem. piekwachttijd headliners",
     "openAttractions": "Open attracties",
     "closedAttractions": "Gesloten attracties",
     "schedule": "Schema",
@@ -841,7 +836,6 @@
     "mapMarkers": {
       "noMapData": "Geen kaartgegevens beschikbaar voor dit park.",
       "parkCenter": "Park centrum",
-      "status": "Status",
       "waitTime": "Wachttijd",
       "crowdLevel": "Drukteniveau",
       "topSpeed": "Topsnelheid",
@@ -1223,7 +1217,6 @@
     },
     "crowdToday": "Drukte vandaag",
     "crowdTodaySoFar": "tot nu toe",
-    "crowdTodayShort": "Vandaag",
     "clock": {
       "localTime": "lokale tijd"
     },
@@ -1300,7 +1293,7 @@
       "instruction": "Advies",
       "source": "Bron: {name}"
     },
-    "headlinerForecastTitle": "Verwachte wachttijden (hoogtepunten)",
+    "headlinerForecastTitle": "Verwachte piekwachttijden (headliners)",
     "crowdMeaning": {
       "very_low": "Nauwelijks drukte – korte wachttijden, ook bij de grote banen.",
       "low": "Rustige dag – wachttijden onder het gemiddelde.",
@@ -1315,8 +1308,8 @@
       "soFarLabel": "Vandaag tot nu toe",
       "hourlyTitle": "Voorspelling per uur",
       "holidaysTitle": "Feestdagen & schoolvakanties",
-      "actualWaitsTitle": "Gemiddelde wachttijden",
-      "waitBand": "± {minutes} min",
+      "actualWaitsTitle": "Gemeten piekwachttijden (headliners)",
+      "waitBand": "tot ~{minutes} {unit}",
       "waitBandUnknown": "geen marge bekend",
       "openToday": "Details van vandaag bekijken",
       "prevDay": "Vorige dag",
@@ -1361,13 +1354,13 @@
         "busiestPast": "{count, plural, =1 {Het drukst was het op {days}.} other {Het drukst was het op {days}.}}",
         "hours": "Meestal open van {from} tot {to} uur.",
         "schoolVacation": "{days, plural, =1 {Op één dag} other {Op # dagen}} vallen er schoolvakanties in de regio van het park.",
-        "headlinerFuture": "Bij de grote attracties zijn gemiddeld {minutes} minuten te verwachten.",
-        "headlinerPast": "Bij de grote attracties werd gemiddeld {minutes} minuten gemeten.",
+        "headlinerFuture": "Op het drukste moment kun je bij de headliners gemiddeld {minutes} minuten verwachten.",
+        "headlinerPast": "Op het drukste moment werd bij de headliners gemiddeld {minutes} minuten gemeten.",
         "factOpenDays": "Open",
         "factOpenDaysValue": "{open} van {total} dagen",
         "factHours": "Openingstijden",
         "factHoursValue": "{from}–{to} uur",
-        "factWait": "Gem. grote attracties",
+        "factWait": "Gem. piekwachttijd headliners",
         "factWaitValue": "{minutes} min.",
         "factSchoolVacation": "Schoolvakanties",
         "factSchoolVacationValue": "{days, plural, =1 {# dag} other {# dagen}}",
@@ -1375,9 +1368,9 @@
       },
       "dataset": {
         "name": "Drukte en wachttijden in {park}, {month}",
-        "description": "Verwachte drukte voor elke dag in {month} in {park}: openingstijden, feestdagen en schoolvakanties, weersverwachting en de verwachte wachttijd bij de grote attracties. Afgeleid van gemeten wachttijden.",
+        "description": "Verwachte drukte voor elke dag in {month} in {park}: openingstijden, feestdagen en schoolvakanties, weersverwachting en de verwachte piekwachttijd van de headliners. Afgeleid van gemeten wachttijden.",
         "varCrowd": "Verwachte drukte per dag",
-        "varWait": "Verwachte wachttijd bij de grote attracties",
+        "varWait": "Verwachte piekwachttijd van de headliners",
         "varHours": "Openingstijden",
         "varHolidays": "Feestdagen en schoolvakanties",
         "varWeather": "Weersverwachting"
@@ -1468,7 +1461,7 @@
       "noReasons": "Voor deze twee dagen zijn er geen vergelijkbare cijfers.",
       "difference": "Verschil: {value}",
       "reasonCrowd": "Drukte",
-      "reasonWait": "Wachttijd bij de topattracties",
+      "reasonWait": "Piekwachttijd van de headliners",
       "reasonHours": "Openingstijden",
       "reasonWeather": "Neerslag",
       "reasonHoliday": "Feestdagen en vakanties",
@@ -1517,13 +1510,6 @@
     "title": "Attracties",
     "sectionNavLabel": "Onderdelen op deze pagina",
     "waitTime": "Wachttijd",
-    "status": {
-      "operating": "In bedrijf",
-      "down": "Tijdelijke storing",
-      "closed": "Gesloten",
-      "refurbishment": "In onderhoud",
-      "unknown": "Onbekend"
-    },
     "label": {
       "OPERATING": "Open",
       "DOWN": "Storing",

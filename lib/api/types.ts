@@ -307,7 +307,14 @@ export interface QueueTrend {
 export interface BaseQueue {
   queueType: QueueType;
   status: QueueStatus;
+  /** When the posted wait last changed. */
   lastUpdated: string;
+  /**
+   * When a source last delivered the ride, changed or not: the time an „Aktualisiert" line shows.
+   * Absent on a payload built before the field existed and `null` on a heartbeat row; fall back to
+   * `lastUpdated` then.
+   */
+  lastObserved?: string | null;
   /** Present on live standby/single-rider queues; absent from the park-list snapshot. */
   trend?: QueueTrend;
 }

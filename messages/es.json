@@ -57,13 +57,7 @@
     "temperatureUnitToggle": "Cambiar la unidad de temperatura",
     "updated": "Actualizado",
     "reservation": "Reserva requerida",
-    "trend": "Tendencia",
     "in": "en",
-    "vsTypical": "vs típico",
-    "much_higher": "Mucho más alto",
-    "higher": "Más alto",
-    "lower": "Más bajo",
-    "much_lower": "Mucho más bajo",
     "typical": "Típico",
     "up": "Sube",
     "down": "Baja",
@@ -722,7 +716,8 @@
       "extreme": "Extrema",
       "full": "Lleno",
       "unknown": "Sin previsión",
-      "closed": "Cerrado"
+      "closed": "Cerrado",
+      "withUsual": "{level} · normalmente {minutes} min"
     },
     "crowdScale": {
       "title": "Niveles de afluencia",
@@ -740,7 +735,7 @@
       "between": "{min}–{max} min",
       "from": "desde {min} min"
     },
-    "avgWaitTime": "Espera Prom.",
+    "avgHeadlinerPeak": "Espera punta media (atracciones estrella)",
     "openAttractions": "Atracciones abiertas",
     "closedAttractions": "Atracciones cerradas",
     "schedule": "Horario",
@@ -841,7 +836,6 @@
     "mapMarkers": {
       "noMapData": "No hay datos de mapa disponibles para este parque.",
       "parkCenter": "Centro del parque",
-      "status": "Estado",
       "waitTime": "Espera",
       "crowdLevel": "Afluencia",
       "topSpeed": "Velocidad máx.",
@@ -1223,7 +1217,6 @@
     },
     "crowdToday": "Afluencia de hoy",
     "crowdTodaySoFar": "hasta ahora",
-    "crowdTodayShort": "Hoy",
     "clock": {
       "localTime": "hora local"
     },
@@ -1300,7 +1293,7 @@
       "instruction": "Recomendación",
       "source": "Fuente: {name}"
     },
-    "headlinerForecastTitle": "Esperas previstas (destacados)",
+    "headlinerForecastTitle": "Esperas punta previstas (atracciones estrella)",
     "crowdMeaning": {
       "very_low": "Apenas hay gente: esperas cortas, también en las atracciones grandes.",
       "low": "Día tranquilo: esperas por debajo de la media.",
@@ -1315,8 +1308,8 @@
       "soFarLabel": "Hoy hasta ahora",
       "hourlyTitle": "Previsión por horas",
       "holidaysTitle": "Festivos y vacaciones escolares",
-      "actualWaitsTitle": "Esperas medias",
-      "waitBand": "± {minutes} min",
+      "actualWaitsTitle": "Esperas punta registradas (atracciones estrella)",
+      "waitBand": "hasta ~{minutes} {unit}",
       "waitBandUnknown": "sin margen conocido",
       "openToday": "Ver los detalles de hoy",
       "prevDay": "Día anterior",
@@ -1361,13 +1354,13 @@
         "busiestPast": "{count, plural, =1 {La mayor afluencia se dio {days}.} other {La mayor afluencia se dio {days}.}}",
         "hours": "Suele abrir de {from} a {to}.",
         "schoolVacation": "{days, plural, =1 {Un día cae} other {# días caen}} en vacaciones escolares de la región del parque.",
-        "headlinerFuture": "En las atracciones principales se esperan unos {minutes} minutos de media.",
-        "headlinerPast": "Las atracciones principales promediaron {minutes} minutos.",
+        "headlinerFuture": "En la hora punta se esperan unos {minutes} minutos de media en las atracciones estrella.",
+        "headlinerPast": "En la hora punta, las atracciones estrella promediaron {minutes} minutos.",
         "factOpenDays": "Abierto",
         "factOpenDaysValue": "{open} de {total} días",
         "factHours": "Horario",
         "factHoursValue": "{from}–{to}",
-        "factWait": "Media atracciones principales",
+        "factWait": "Espera punta media (atracciones estrella)",
         "factWaitValue": "{minutes} min",
         "factSchoolVacation": "Vacaciones escolares",
         "factSchoolVacationValue": "{days, plural, =1 {# día} other {# días}}",
@@ -1375,9 +1368,9 @@
       },
       "dataset": {
         "name": "Afluencia y tiempos de espera en {park}, {month}",
-        "description": "Afluencia prevista para cada día de {month} en {park}: horarios, festivos y vacaciones escolares, previsión meteorológica y la espera prevista en las atracciones principales. Derivado de tiempos de espera medidos.",
+        "description": "Afluencia prevista para cada día de {month} en {park}: horarios, festivos y vacaciones escolares, previsión meteorológica y la espera punta prevista de las atracciones estrella. Derivado de tiempos de espera medidos.",
         "varCrowd": "Afluencia prevista por día",
-        "varWait": "Espera prevista en las atracciones principales",
+        "varWait": "Espera punta prevista de las atracciones estrella",
         "varHours": "Horario de apertura",
         "varHolidays": "Festivos y vacaciones escolares",
         "varWeather": "Previsión meteorológica"
@@ -1468,7 +1461,7 @@
       "noReasons": "No hay valores comparables para estos dos días.",
       "difference": "Diferencia: {value}",
       "reasonCrowd": "Afluencia",
-      "reasonWait": "Espera en las atracciones principales",
+      "reasonWait": "Espera punta de las atracciones estrella",
       "reasonHours": "Horario de apertura",
       "reasonWeather": "Precipitación",
       "reasonHoliday": "Festivos y vacaciones",
@@ -1517,13 +1510,6 @@
     "title": "Atracciones",
     "sectionNavLabel": "Secciones de esta página",
     "waitTime": "Espera",
-    "status": {
-      "operating": "Operativo",
-      "down": "Fuera de servicio temporal",
-      "closed": "Cerrado",
-      "refurbishment": "En mantenimiento",
-      "unknown": "Desconocido"
-    },
     "label": {
       "OPERATING": "Abierto",
       "DOWN": "Caído",

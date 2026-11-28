@@ -28,7 +28,8 @@ interface ParkStatusBadgeProps {
 
 /**
  * Status badge for a park or a ride: operating, down, closed, refurbishment, unknown, or `RETIRED`
- * for a ride that closed for good. An unrecognised status falls back to the closed style.
+ * for a ride that closed for good. An unrecognised status reads as unknown, never as closed: it
+ * says nothing about whether the ride runs.
  */
 export function ParkStatusBadge({ status, label, className }: ParkStatusBadgeProps) {
   const t = useTranslations('parks.status');
@@ -47,14 +48,15 @@ export function ParkStatusBadge({ status, label, className }: ParkStatusBadgePro
     CLOSED_FOR_NOW: { color: 'badge-status-unknown', icon: DoorClosed },
   };
 
-  const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.CLOSED;
+  const known = status in statusConfig ? status : 'UNKNOWN';
+  const config = statusConfig[known];
   const Icon = config.icon;
 
   return (
     <Badge className={cn(config.color, className)}>
       <Icon className="h-3 w-3 text-white" />
       {/* A span of its own: a label with markup in it is no bare text `Badge` would wrap. */}
-      <span>{label ?? t(status)}</span>
+      <span>{label ?? t(known)}</span>
     </Badge>
   );
 }

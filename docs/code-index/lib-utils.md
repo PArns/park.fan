@@ -383,7 +383,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 
 ### [`park-utils.ts`](../../lib/utils/park-utils.ts)
 
-- `getAttractionDisplayStatus` _function_: Effective display status of an attraction: every attraction is CLOSED while the park is not operating; otherwise the STANDBY queue status beats the attraction's own field.
+- `getAttractionDisplayStatus` _function_: Effective display status of an attraction: every attraction is CLOSED while the park is not operating; otherwise the STANDBY queue status beats the attraction's own field, and a ride that carries neither is UNKNOWN.
 - `getLiveAttractionStatus` _function_: The status a visitor is shown for one attraction, from the live payload.
 - `isAttractionOpenNow` _function_: Whether a ride counts as open now: strictly OPERATING, and UNKNOWN is not it, since a count or a filter promising "open" must not answer with rides nobody has heard from.
 - `getStandbyWait` _function_: STANDBY wait of an attraction in minutes, or null when it has no standby queue. Says nothing about whether the ride is open: pair it with `getAttractionDisplayStatus`.
@@ -604,6 +604,7 @@ Converts backend API URLs to frontend routes. Always go through these helpers wi
 - `isWalkOnWait` _function_: Whether a posted wait is a walk-on: at or under `limit` (`WALK_ON_MAX_MINUTES` unless a surface passes its own). A posted 13 (`WALK_ON_WAIT_MINUTES`) is not one; it reads „13 Min".
 - `roundWaitTo5` _function_: Rounds a wait time for display to five-minute steps, except the posted walk-on 13 (`WALK_ON_WAIT_MINUTES`). Parks post multiples of five; percentiles and averages on top are what produce 51 or 47.
 - `typicalHourFigures` _function_: The two figures of the ride panel's „usually X, rarely over Y" line, both rounded for display, or null when there is nothing to say.
+- `waitBandTop` _function_: The top of a forecast's spread as a displayed wait: `wait` plus `uncertaintyMinutes`, on the five-minute grid, so the day dialog can say „~45 bis ~60 Min.".
 - `roundAverageWaitTo5` _function_: The five-minute grid for a figure this app computes itself, such as a mean over many days. The walk-on 13 is a value a park posts; an average that happens to land on 13 is an ordinary short wait and goes to 15 like 12.8 does.
 - `roundWaitDeltaTo5` _function_: The same five-minute grid for a DIFFERENCE between two wait times. `roundWaitTo5` floors everything under 2.5 to zero, which is right for a queue and wrong for a delta: it would turn every falling trend into „stable".
 - `shortTermWaitTrend` _function_: The short-term movement of one queue, as a direction and the number that produced it, from the same arithmetic so arrow and figure cannot disagree.
