@@ -79,7 +79,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-geo-live-stats.ts`](../../lib/hooks/use-geo-live-stats.ts)
 
 - `useGeoLiveStats` _hook_: Live open-park counts per continent and country, one request shared by every consumer on a page. Client-only, so the counts are not baked into the ISR shell.
-- `findOpenParkCount` _function_: The live open-park count for a continent or a country within it.
+- `findOpenParkCount` _function_: The live open-park count of every park, of a continent, or of a country within it.
 
 ### [`use-global-stats.ts`](../../lib/hooks/use-global-stats.ts)
 

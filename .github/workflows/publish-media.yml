@@ -37,6 +37,14 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       # The crops are not in git, and the manifest only knows a `…-16x9.jpg` cover whose file exists.
+      # generate-image-crops keys each crop by its photo's bytes and focal point; the cache hands
+      # back the last run's, so only a new or refocused photo is cut again.
+      - uses: actions/cache@v6
+        with:
+          path: .next/cache/image-crops
+          key: image-crops-${{ hashFiles('public/media/**') }}
+          restore-keys: image-crops-
+
       - run: pnpm generate:image-crops
 
       - run: pnpm generate:media

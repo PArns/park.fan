@@ -425,26 +425,36 @@ export function getNewsParkRef(translationKey: string): ManifestParkRef | null {
   return geo.length > 0 ? { slug: best.slug, geo } : { slug: best.slug };
 }
 
-let PARKS_OF_POST: Map<string, string[]> | null = null;
+let PARKS_OF_POST: Map<string, ManifestParkRef[]> | null = null;
 
 /**
- * The parks whose pages list a post, by translation key: the park index read backwards, so the
- * search finds a post by every park whose page links it (`getPostSearchIndex`), and `parkLinks`
- * decides there exactly as it does on the park pages.
+ * The parks whose pages list a post, by translation key: the park index read backwards, so
+ * `parkLinks` decides here exactly as it does on the park pages. `geo` holds the
+ * `continent/country/city` paths the post pinned the slug to; without it the post names any park
+ * of that slug. The app export reads `geo`, because a post about Anaheim's `disneyland-park` is
+ * not about the Paris one.
  */
-export function getParkSlugsOfPost(translationKey: string): readonly string[] {
+export function getParkRefsOfPost(translationKey: string): readonly ManifestParkRef[] {
   if (!PARKS_OF_POST) {
-    const inverted = new Map<string, string[]>();
+    const inverted = new Map<string, ManifestParkRef[]>();
     for (const [slug, mentions] of buildIndex().parks) {
       for (const mention of mentions) {
-        const slugs = inverted.get(mention.translationKey) ?? [];
-        slugs.push(slug);
-        inverted.set(mention.translationKey, slugs);
+        const refs = inverted.get(mention.translationKey) ?? [];
+        refs.push(mention.geoPaths.size > 0 ? { slug, geo: [...mention.geoPaths] } : { slug });
+        inverted.set(mention.translationKey, refs);
       }
     }
     PARKS_OF_POST = inverted;
   }
   return PARKS_OF_POST.get(translationKey) ?? [];
+}
+
+/**
+ * {@link getParkRefsOfPost} as slugs, so the search finds a post by every park whose page links
+ * it (`getPostSearchIndex`).
+ */
+export function getParkSlugsOfPost(translationKey: string): readonly string[] {
+  return getParkRefsOfPost(translationKey).map((ref) => ref.slug);
 }
 
 /** The same for a single ride. Ranking and locale semantics as above. */

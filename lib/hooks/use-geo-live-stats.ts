@@ -20,16 +20,18 @@ export function useGeoLiveStats() {
 }
 
 /**
- * The live open-park count for a continent or a country within it. `undefined` means not loaded
- * yet and nothing else: `/v1/analytics/geo-live` only carries regions with at least one park open,
- * so a region missing from a loaded response has zero.
+ * The live open-park count of every park, of a continent, or of a country within it. `undefined`
+ * means not loaded yet and nothing else: `/v1/analytics/geo-live` only carries regions with at
+ * least one park open, so a region missing from a loaded response has zero. The API counts the
+ * same open parks for it as for the homepage's `/v1/analytics/realtime`, so the totals agree.
  */
 export function findOpenParkCount(
   stats: GeoLiveStatsDto | undefined,
-  continentSlug: string,
+  continentSlug?: string,
   countrySlug?: string
 ): number | undefined {
   if (!stats) return undefined;
+  if (!continentSlug) return stats.continents.reduce((sum, c) => sum + c.openParkCount, 0);
   const continent = stats.continents.find((c) => c.slug === continentSlug);
   if (!continent) return 0;
   if (!countrySlug) return continent.openParkCount;

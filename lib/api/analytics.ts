@@ -1,5 +1,5 @@
 import { api } from './client';
-import type { GlobalStats, GeoLiveStatsDto, TickerResponse } from './types';
+import type { GlobalStats, TickerResponse } from './types';
 
 /**
  * Get global real-time statistics, cached a week. Only an SSR seed: the homepage counts refresh
@@ -21,16 +21,5 @@ export function getGlobalStats(): Promise<GlobalStats> {
 export function getTickerData(): Promise<TickerResponse> {
   return api.get<TickerResponse>('/v1/analytics/ticker', {
     next: { revalidate: 600, tags: ['analytics'] },
-  });
-}
-
-/**
- * Get live statistics for geographic regions, cached a week. Only an SSR seed: open-park counts
- * refresh client-side via `useGeoLiveStats`, and this window pins every static route that bakes it
- * (homepage, /parks).
- */
-export function getGeoLiveStats(): Promise<GeoLiveStatsDto> {
-  return api.get<GeoLiveStatsDto>('/v1/analytics/geo-live', {
-    next: { revalidate: 604800, tags: ['analytics'] },
   });
 }

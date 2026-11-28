@@ -969,6 +969,7 @@
     "status": {
       "OPERATING": "Open",
       "CLOSED": "Closed",
+      "CLOSED_FOR_NOW": "Closed for now",
       "REFURBISHMENT": "Maintenance",
       "DOWN": "Down",
       "UNKNOWN": "Unknown",

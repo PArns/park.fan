@@ -244,11 +244,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `LiveAttractionData` _component_: Live chapter of the ride page: today's wait-time chart and the ride's other queues (single rider, paid lanes, return windows, boarding groups), from the ride's detail query, polled every five minutes over the server-rendered park snapshot.
 
-### [`live-country-cards.tsx`](../../components/parks/live-country-cards.tsx)
-
-- `LiveCountryCards` _component_: Continent-page country grid. The card structure (name, link, total parks, city count) is prerendered/edge-cached; the live open-park count is layered on the client via the shared `useGeoLiveStats` batch call, so the continent shell need …
-- Types: `StaticCountryCard`
-
 ### [`live-crowd-level-badge.tsx`](../../components/parks/live-crowd-level-badge.tsx)
 
 - `LiveCrowdLevelBadge` _component_: An open park's crowd badge as the newest reading on the page has it (`useParkHeadline`), so a card agrees with the favourites and the park's own page. A client leaf, since `ParkCard` also renders on the server.
@@ -264,7 +259,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`live-open-count.tsx`](../../components/parks/live-open-count.tsx)
 
-- `LiveOpenCount` _component_: Inline live "open parks" number for a continent (or a country within it).
+- `LiveOpenCount` _component_: Inline live "open parks" number for every park, a continent or a country within it.
 
 ### [`live-park-data.tsx`](../../components/parks/live-park-data.tsx)
 
@@ -274,6 +269,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `LiveParkGrid` _component_: Renders a grid of park cards whose STRUCTURE (name, link, city, photo) is prerendered and edge-cached, while the live status / crowd / wait time / schedule is layered on the client via `useLiveParksByRegion`.
 - Types: `StaticPark`
+
+### [`live-region-cards.tsx`](../../components/parks/live-region-cards.tsx)
+
+- `LiveRegionCards` _component_: The continent grid of `/parks`, or with `continent` that continent's country grid.
+- Types: `StaticRegionCard`
 
 ### [`live-wait-pill.tsx`](../../components/parks/live-wait-pill.tsx)
 
@@ -637,7 +637,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-status-badge.tsx`](../../components/parks/park-status-badge.tsx)
 
 - `ParkStatusBadge` _component_: Status badge for a park or a ride: operating, down, closed, refurbishment, unknown, or `RETIRED` for a ride that closed for good. An unrecognised status falls back to the closed style.
-- Types: `ClosedPermanentlyStatus`
+- Types: `ClosedPermanentlyStatus`, `ClosedForNowStatus`
 
 ### [`park-status.tsx`](../../components/parks/park-status.tsx)
 
