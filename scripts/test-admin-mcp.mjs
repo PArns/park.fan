@@ -5,8 +5,8 @@
 // the redirect host is the headline, and a response whose address differs from the one the person
 // read is not followed. The consent page also has to refuse framing: in an iframe it is clickjacking
 // with a real session behind it, so the header that forbids it is pinned here too.
-import { getPathMatch } from 'next/dist/shared/lib/router/utils/path-match.js';
 import nextConfig from '../next.config.ts';
+import { resolveHeader } from './lib/header-rules.mjs';
 import {
   CLAUDE_CODE_ADD_COMMAND,
   MCP_URL,
@@ -30,17 +30,7 @@ import {
 
 const headerRules = await nextConfig.headers();
 
-/** The value a response header ends up with for `path`: every matching rule applies, the last wins. */
-function headerFor(path, key) {
-  let value;
-  for (const rule of headerRules) {
-    if (!getPathMatch(rule.source)(path)) continue;
-    for (const header of rule.headers) {
-      if (header.key.toLowerCase() === key.toLowerCase()) value = header.value;
-    }
-  }
-  return value;
-}
+const headerFor = (path, key) => resolveHeader(headerRules, path, key).value;
 
 const BIDI_OVERRIDE = '‮';
 const ZERO_WIDTH = '​';

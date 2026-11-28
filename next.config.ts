@@ -861,6 +861,15 @@ const nextConfig: NextConfig = {
     }));
 
     return [
+      // The site's baseline Content-Security-Policy, the admin's too, since it shares this origin.
+      // It names no script or style source and so blocks nothing the pages load; one that does
+      // needs a nonce per request. First, because the last rule that sets a key wins and the SVG
+      // rule below has to keep its stricter policy; see
+      // docs/features/admin.md#headers-shared-with-the-site.
+      {
+        source: '/(.*)',
+        headers: [{ key: 'Content-Security-Policy', value: "object-src 'none'; base-uri 'self'" }],
+      },
       // Content-Language per locale — helps Google associate pages with their language
       ...localeHeaderRules,
       // Machine-readable entry points, advertised where an agent arrives first (RFC 8288 +
