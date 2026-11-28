@@ -21,6 +21,7 @@ import type {
   ParkWithAttractions,
   ParkAttraction,
   AttractionResponse,
+  DowntimeBlock,
   ParkWaitTimesResponse,
   PopularPark,
   ScheduleItem,
@@ -488,6 +489,28 @@ export async function getAttractionByGeoPathFresh(
     if (err instanceof ApiError && err.status === 404) return null;
     throw err;
   }
+}
+
+/**
+ * The ride's reported-outage block for the ride page's downtime chapter, which the server render
+ * must have: whether that chapter exists at all is only known from it, so it cannot arrive with
+ * the client's detail query. The park payload does not carry it, and the detail's history is the
+ * bulk of that response, so this asks for one day of history and keeps only the block. Without the
+ * forecast flag the answer is public and Cloudflare shares it; the block is rebuilt nightly, which
+ * is the window {@link ATTRACTION_REVALIDATE} already holds.
+ */
+export async function getAttractionDowntime(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  attractionSlug: string
+): Promise<DowntimeBlock | undefined> {
+  const detail = await api.get<Pick<AttractionResponse, 'downtime'>>(
+    `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+    { params: { days: 1 }, next: { revalidate: ATTRACTION_REVALIDATE, tags: ['attractions'] } }
+  );
+  return detail.downtime;
 }
 
 /**

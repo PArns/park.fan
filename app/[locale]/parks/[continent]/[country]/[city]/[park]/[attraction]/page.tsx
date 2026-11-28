@@ -39,7 +39,11 @@ import { RcdbBadge } from '@/components/parks/rcdb-badge';
 import { RideExposureLine } from '@/components/parks/ride-exposure-line';
 import { ChapterPanel } from '@/components/common/chapter-panel';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
-import { getParkByGeoPath, leanParkForAttractionShell } from '@/lib/api/parks';
+import {
+  getAttractionDowntime,
+  getParkByGeoPath,
+  leanParkForAttractionShell,
+} from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
@@ -547,7 +551,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // The data card's content, from the same park payload as everything above: no request of its own.
   const typeTerm = await rideTypeTerm(attraction, locale as Locale);
   const rideSummary = buildRideSummary(attraction, typeTerm, locale);
-  const rideRank = await getRideRank(locale, continent, country, parkSlug, attractionSlug);
+  // The downtime block is not in the park payload; its own read runs beside the rank's, and a
+  // failure costs only the chapter.
+  const [rideRank, downtime] = await Promise.all([
+    getRideRank(locale, continent, country, parkSlug, attractionSlug),
+    catchNonFatal(getAttractionDowntime(continent, country, city, parkSlug, attractionSlug)),
+  ]);
 
   const tFaqItems = await getTranslations('seo.faq.attraction');
   const tRideProfile = await getTranslations('attraction.rideProfile');
@@ -985,10 +994,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               say. A ChapterPanel only where there are numbers. The refusals about our data stay
               apart from the ride: "no source here reports outages" must never read as "this ride
               never breaks". */}
-            <AttractionDowntimeSection
-              downtime={attraction.downtime}
-              attractionName={attraction.name}
-            />
+            <AttractionDowntimeSection downtime={downtime} attractionName={attraction.name} />
 
             {/* Chapter: what this ride is and does, the curated link into the glossary. Static
               data, so it renders into the shell; its own <PageSection> carries the #ride-profile

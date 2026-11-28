@@ -1745,7 +1745,7 @@
       "medianCaption": "Mediana en minutos",
       "medianDetail": "La mitad de las {usable} averías con final observado terminaron a los {minutes} minutos.",
       "longestCaption": "Avería más larga",
-      "shareDetail": "Alrededor del {percent} % del tiempo en que la atracción estuvo funcionando.",
+      "shareDetail": "Las averías notificadas supusieron alrededor del {percent} % del tiempo en que la atracción funcionaba o figuraba como averiada.",
       "withheld": {
         "not_down_capable": "Para este parque ninguna fuente de datos notifica averías. Si {name} se avería, aquí no lo vemos.",
         "park_never_reports": "La fuente de datos de este parque no notifica averías. Las detectamos por cierres durante el horario de apertura, pero no publicamos estadísticas.",
@@ -1761,7 +1761,7 @@
         "heavily_censored": "En los últimos {days} días se notificaron {count} averías. De demasiadas no vimos el final, casi siempre porque el parque cerró mientras la atracción seguía parada. Es muy poco para dar una duración.",
         "stale_data": "Estas cifras no están actualizadas en este momento, por eso no las mostramos."
       },
-      "longestDetail": "El máximo de las {count} averías notificadas."
+      "longestDetail": "La más larga de las {usable} averías con final observado."
     },
     "retired": {
       "h1Suffix": "Cerrado definitivamente",

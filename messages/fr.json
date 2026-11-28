@@ -1745,7 +1745,7 @@
       "medianCaption": "Médiane en minutes",
       "medianDetail": "La moitié des {usable} pannes dont la fin a été observée étaient terminées après {minutes} minutes.",
       "longestCaption": "Panne la plus longue",
-      "shareDetail": "Environ {percent} % du temps où l'attraction fonctionnait.",
+      "shareDetail": "Les pannes signalées ont représenté environ {percent} % du temps où l'attraction fonctionnait ou était signalée en panne.",
       "withheld": {
         "not_down_capable": "Aucune source de données ne signale de pannes pour ce parc. Si {name} tombe en panne, nous ne le voyons pas ici.",
         "park_never_reports": "La source de données de ce parc ne signale pas de pannes. Nous les repérons via les fermetures pendant les heures d'ouverture, sans publier de statistiques.",
@@ -1761,7 +1761,7 @@
         "heavily_censored": "{count} pannes ont été signalées ces {days} derniers jours. Pour trop d'entre elles, nous n'avons pas vu la fin, le plus souvent parce que le parc a fermé alors que l'attraction était encore à l'arrêt. C'est trop peu pour en tirer une durée.",
         "stale_data": "Ces chiffres ne sont pas à jour actuellement, nous ne les affichons donc pas."
       },
-      "longestDetail": "Le maximum sur les {count} pannes signalées."
+      "longestDetail": "La plus longue des {usable} pannes dont la fin a été observée."
     },
     "retired": {
       "h1Suffix": "Fermé définitivement",

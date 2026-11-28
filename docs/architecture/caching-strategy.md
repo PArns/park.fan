@@ -53,6 +53,7 @@ Server fetches cache through `fetch` with `next: { revalidate, tags }`. Windows 
 | -------------------------------------- | -------------------------------------------------------- | --------------------------------------- | ------------------------------- |
 | Park structure (SSR seed)              | `getParkByGeoPath` (`lib/api/parks.ts`)                  | `PARK_REVALIDATE`, 1 day                | `parks`, `park:<geo path>`      |
 | Attraction detail (SSR)                | `getAttractionByGeoPath`                                 | `ATTRACTION_REVALIDATE`, 1 day          | `attractions`                   |
+| Ride downtime block (SSR)              | `getAttractionDowntime`                                  | `ATTRACTION_REVALIDATE`, 1 day          | `attractions`                   |
 | Geo structure, continents, header menu | `getGeoStructure`, `getContinents`, `getGeoMenu`         | `CACHE_TTL.geo` / `.continents`, 7 days | `geo`                           |
 | URL enumeration (sitemaps, IndexNow)   | `getSitemapAttractions`, geo reads in sitemap code       | `CACHE_TTL.geoSitemap`, 1 day           | `geo`                           |
 | Country summary                        | `getCountrySummary`                                      | `CACHE_TTL.countrySummary`, 1 day       | `geo`                           |
