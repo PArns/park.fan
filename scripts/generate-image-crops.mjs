@@ -74,6 +74,7 @@ import {
   cropBox,
   paintedSize,
 } from '../lib/media/crop-box.mjs';
+import { mapWithConcurrency } from './lib/map-with-concurrency.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -334,22 +335,6 @@ function pruneCache(seen) {
     }
   }
   return pruned;
-}
-
-/** Run `task` over `items` with at most `limit` in flight. */
-async function mapWithConcurrency(items, limit, task) {
-  const results = [];
-  let next = 0;
-  await Promise.all(
-    Array.from({ length: Math.min(limit, items.length) }, async () => {
-      while (true) {
-        const index = next++;
-        if (index >= items.length) return;
-        results[index] = await task(items[index]);
-      }
-    })
-  );
-  return results;
 }
 
 async function main() {

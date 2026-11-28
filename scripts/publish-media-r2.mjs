@@ -30,12 +30,16 @@ import {
 import { MEDIA_PARK_PATH_BY_SLUG } from '../lib/media/manifest-parks.ts';
 import { imageParkKey, parkGeoPath } from '../lib/media/park-path.mjs';
 import { MEDIA_BASE, buildNewsExport } from './news-export.mjs';
+import { mapWithConcurrency } from './lib/map-with-concurrency.mjs';
 
 const WIDTHS = [400, 828, 1200, 1600];
 const QUALITY = 78;
 const IMMUTABLE = 'public, max-age=31536000, immutable';
 // The index changes whenever a photo does; five minutes keeps the app at most that far behind.
 const INDEX_CACHE = 'public, max-age=300';
+// Every key is a round trip to R2 (a HEAD for each photo file, a PUT for each post), and a run is
+// mostly those round trips, so they overlap. aws4fetch retries a 429 or 5xx on its own.
+const REQUESTS_IN_FLIGHT = 16;
 
 const outArg = process.argv.indexOf('--out');
 const outDir = outArg > 0 ? process.argv[outArg + 1] : null;
@@ -157,19 +161,30 @@ async function put(key, body, contentType, cacheControl) {
     body,
     headers: { 'Content-Type': contentType, 'Cache-Control': cacheControl },
   });
-  if (!res.ok) throw new Error(`PUT ${key}: ${res.status} ${await res.text()}`);
+  // Read to the end either way, so the connection goes back to the pool.
+  const text = await res.text();
+  if (!res.ok) throw new Error(`PUT ${key}: ${res.status} ${text}`);
 }
 
-let uploaded = 0;
-for (const file of files) {
+const uploads = await mapWithConcurrency(files, REQUESTS_IN_FLIGHT, async (file) => {
   const head = await r2.fetch(url(file.key), { method: 'HEAD' });
-  if (head.ok) continue;
+  if (head.ok) return 0;
   if (head.status !== 404) throw new Error(`HEAD ${file.key}: ${head.status}`);
   await put(file.key, await encode(file), 'image/webp', IMMUTABLE);
-  uploaded++;
-}
-// Mutable like the index, so the app is at most five minutes behind a post.
-for (const file of news.files) await put(file.key, newsBody(file), 'application/json', INDEX_CACHE);
+  return 1;
+});
+const uploaded = uploads.reduce((sum, n) => sum + n, 0);
+// Mutable like the index, so the app is at most five minutes behind a post. A list
+// (`news/<locale>.json`) goes up after every body (`news/<locale>/<slug>.json`), so it never names
+// one that is not there yet.
+const isList = (file) => file.key.split('/').length === 2;
+const putNews = (file) => put(file.key, newsBody(file), 'application/json', INDEX_CACHE);
+await mapWithConcurrency(
+  news.files.filter((file) => !isList(file)),
+  REQUESTS_IN_FLIGHT,
+  putNews
+);
+await mapWithConcurrency(news.files.filter(isList), REQUESTS_IN_FLIGHT, putNews);
 // Last, so the index never names a file that is not there yet.
 await put('index.json', JSON.stringify(index), 'application/json', INDEX_CACHE);
 console.log(
