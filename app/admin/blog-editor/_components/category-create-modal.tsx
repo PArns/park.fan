@@ -5,7 +5,7 @@ import { ChevronRight, FolderPlus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { slugify } from '../_lib/types';
 import type { CategoryOption } from '../_lib/initial-data';
-import { Field } from './form-fields';
+import { Field, MODAL_INPUT_CLASS, ModalFooter } from './form-fields';
 import { isBlogKey } from '@/lib/admin/blog-paths';
 
 export interface NewCategoryDraft {
@@ -176,7 +176,7 @@ function CategoryForm({
               value={parent}
               disabled={isEdit}
               onChange={(e) => setParent(e.target.value)}
-              className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none disabled:cursor-not-allowed disabled:opacity-60"
+              className={cn(MODAL_INPUT_CLASS, 'disabled:cursor-not-allowed disabled:opacity-60')}
             >
               <option value="">— top-level —</option>
               {sortedParents.map((c) => {
@@ -198,7 +198,7 @@ function CategoryForm({
                 value={labelEn}
                 onChange={(e) => setLabelEn(e.target.value)}
                 placeholder="Disney World"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
+                className={MODAL_INPUT_CLASS}
               />
             </Field>
             <Field
@@ -220,7 +220,10 @@ function CategoryForm({
                   setSlug(e.target.value);
                 }}
                 placeholder="disney-world"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs transition-colors outline-none disabled:cursor-not-allowed disabled:opacity-60"
+                className={cn(
+                  MODAL_INPUT_CLASS,
+                  'font-mono text-xs disabled:cursor-not-allowed disabled:opacity-60'
+                )}
               />
             </Field>
           </div>
@@ -243,32 +246,12 @@ function CategoryForm({
           </Field>
         </div>
 
-        <div className="border-border/60 bg-muted/20 flex items-center gap-2 border-t px-4 py-3">
-          <span className="text-muted-foreground/70 mr-auto hidden text-[10px] sm:block">
-            <kbd className="bg-muted rounded px-1 py-0.5 font-mono">Esc</kbd> cancel ·{' '}
-            <kbd className="bg-muted rounded px-1 py-0.5 font-mono">⌘⏎</kbd> save
-          </span>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-muted-foreground hover:text-foreground rounded-md px-3 py-1.5 text-xs font-semibold"
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            disabled={!valid}
-            onClick={submit}
-            className={cn(
-              'rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors',
-              valid
-                ? 'bg-primary text-primary-foreground hover:bg-primary/90'
-                : 'bg-muted text-muted-foreground cursor-not-allowed'
-            )}
-          >
-            {isEdit ? 'Save changes' : 'Create category'}
-          </button>
-        </div>
+        <ModalFooter
+          valid={valid}
+          onClose={onClose}
+          onSubmit={submit}
+          label={isEdit ? 'Save changes' : 'Create category'}
+        />
       </div>
     </div>
   );

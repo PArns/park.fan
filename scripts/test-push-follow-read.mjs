@@ -29,6 +29,7 @@
  * Run: `pnpm test:push-follow-read`
  */
 import assert from 'node:assert/strict';
+import { attempt, finishChecks } from './lib/run-cases.mjs';
 
 /** Set per test: what `fetch` answers. */
 let fetchStub = () => {
@@ -85,6 +86,18 @@ const LOOKUP_BROKEN = {
 function setNavigator(value) {
   Object.defineProperty(globalThis, 'navigator', { value, configurable: true, writable: true });
 }
+
+/** Each test starts with no recorded calls and a subscribed browser, and leaves one behind. */
+const test = (name, fn) =>
+  attempt(name, async () => {
+    calls = [];
+    setNavigator(SUBSCRIBED);
+    try {
+      await fn();
+    } finally {
+      setNavigator(SUBSCRIBED);
+    }
+  });
 setNavigator(SUBSCRIBED);
 
 globalThis.fetch = async (url, init) => {
@@ -133,23 +146,6 @@ const SHOW_FOLLOW = {
   timezone: 'Europe/Berlin',
   createdAt: '2026-09-01T10:00:00.000Z',
 };
-
-let passed = 0;
-const failures = [];
-async function test(name, fn) {
-  calls = [];
-  setNavigator(SUBSCRIBED);
-  try {
-    await fn();
-    passed++;
-    console.log(`  ✓ ${name}`);
-  } catch (error) {
-    failures.push({ name, error });
-    console.log(`  ✗ ${name}\n    ${error.message}`);
-  } finally {
-    setNavigator(SUBSCRIBED);
-  }
-}
 
 /**
  * Both fetchers answer the same question about different rows, so they get the
@@ -225,5 +221,4 @@ for (const { label, call, endpoint, row } of FETCHERS) {
   });
 }
 
-console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);
-if (failures.length > 0) process.exit(1);
+finishChecks();

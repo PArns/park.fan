@@ -63,8 +63,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import crypto from 'crypto';
-import os from 'os';
 import { fileURLToPath } from 'url';
 
 import { normalizeSidecar } from '../lib/media/sidecar.mjs';
@@ -75,6 +73,7 @@ import {
   paintedSize,
 } from '../lib/media/crop-box.mjs';
 import { mapWithConcurrency } from './lib/map-with-concurrency.mjs';
+import { IMAGE_CONCURRENCY, sha256 } from './lib/image-jobs.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -112,21 +111,6 @@ try {
   console.warn('⚠️  sharp not available — skipping aspect-ratio crop generation.');
   process.exit(0);
 }
-
-/**
- * How many sources to crop at once.
- *
- * The measurement in the header puts the knee at the core count; past it the
- * wall-clock gets slightly worse, so there is nothing to win by over-committing.
- * Floor of 2 so a single-core CI box still overlaps encode with file IO.
- */
-const CONCURRENCY = (() => {
-  const override = Number(process.env.IMAGE_CROP_CONCURRENCY);
-  if (Number.isFinite(override) && override >= 1) return Math.floor(override);
-  return Math.min(8, Math.max(2, os.cpus()?.length || 2));
-})();
-
-const sha256 = (buffer) => crypto.createHash('sha256').update(buffer).digest('hex');
 
 /**
  * The focal point from the image's sidecar, if it has one.
@@ -353,7 +337,9 @@ async function main() {
   // claim, so the prune below can tell a live entry from a leftover.
   const seen = new Set();
 
-  const stats = await mapWithConcurrency(sources, CONCURRENCY, (source) => cropOne(source, seen));
+  const stats = await mapWithConcurrency(sources, IMAGE_CONCURRENCY, (source) =>
+    cropOne(source, seen)
+  );
 
   const written = stats.reduce((sum, s) => sum + (s?.written ?? 0), 0);
   const restored = stats.reduce((sum, s) => sum + (s?.restored ?? 0), 0);
@@ -363,7 +349,7 @@ async function main() {
 
   console.log(
     `✅ ${written} cut, ${restored} from cache, ${skipped} already on disk ` +
-      `(${sources.length} sources, ${CONCURRENCY} at a time, ${seconds}s` +
+      `(${sources.length} sources, ${IMAGE_CONCURRENCY} at a time, ${seconds}s` +
       `${pruned ? `, ${pruned} stale cache entries pruned` : ''}).`
   );
 }

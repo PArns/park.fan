@@ -1,10 +1,11 @@
 # The admin holds no credential (REQUIREMENT)
 
-`/admin` authenticates with an **httpOnly session cookie** (`parkfan_admin_session`,
-`lib/admin/session.ts`). Client code sends nothing: `adminFetch` is a plain same-origin fetch, and
+`/admin` authenticates with an **httpOnly session cookie** (`__Host-parkfan_admin_session` in
+production, the bare name on plain-http development; `lib/admin/session.ts`). The prefix binds the
+cookie to this exact host, so a sibling host under `park.fan` cannot set one here. Client code sends nothing: `adminFetch` is a plain same-origin fetch, and
 `app/api/admin/[...path]` turns the cookie into `Authorization: Bearer …` server-side.
 
-## Five things in the proxy are load-bearing
+## Seven things in the proxy are load-bearing
 
 Each was a bug before:
 
@@ -22,6 +23,13 @@ parkfan_admin_session=x` once satisfied the gate in front of `getServerApiHeader
 5. **It relays every query parameter, a repeated one every time, except `pass`**
    (`adminProxyQuery`, `lib/admin/proxy-path.ts`). Copying them with `set` kept only the last
    `filter=`, so two filters on a traffic page reached the API as one.
+6. **It refuses `auth/login` and `register`.** The API asks a caller carrying `x-auth-key` for no
+   Turnstile, and anyone can register a session, so those paths would be unchallenged login
+   attempts. Signing in and registering go through `/api/admin/session`, `/api/account/register`
+   and `/api/developers/register`, which check the challenge first.
+7. **It refuses a write from another origin** (`isCrossOriginWrite`, `lib/security/same-origin.ts`),
+   as `requireAdmin` does. `SameSite=Strict` is scoped to the site, and every `*.park.fan` host is
+   the same site.
 
 ## Three things the page does see
 

@@ -9,6 +9,7 @@
 //
 // The segments below are what the handler receives, i.e. already decoded.
 import { adminProxyPath, adminProxyQuery, isSafeSegment } from '../lib/admin/proxy-path.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const relayed = (query) => adminProxyQuery(new URLSearchParams(query)).toString();
 
@@ -100,27 +101,4 @@ const testCases = [
   { name: 'no query stays no query', actual: () => relayed(''), expected: '' },
 ];
 
-let passed = 0;
-let failed = 0;
-
-for (const testCase of testCases) {
-  let result;
-  try {
-    result = testCase.actual();
-  } catch (error) {
-    result = `threw: ${error instanceof Error ? error.message : String(error)}`;
-  }
-  if (result === testCase.expected) {
-    passed++;
-    console.log(`  ✓ ${testCase.name}`);
-  } else {
-    failed++;
-    console.log(`  ✗ ${testCase.name}`);
-    console.log(`      expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`      actual:   ${JSON.stringify(result)}`);
-  }
-}
-
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-if (failed > 0) process.exit(1);
-console.log('🎉 All tests passed!');
+await runCases(testCases);

@@ -7,6 +7,7 @@ import {
   upcomingHourlyPredictions,
 } from '../lib/utils/calendar-utils.ts';
 import { getWeatherConfig } from '../lib/utils/weather-utils.ts';
+import { check, checkThat, finishChecks } from './lib/run-cases.mjs';
 
 // ---------------------------------------------------------------------------
 // getWeatherConfig, as the calendar reads it
@@ -51,22 +52,8 @@ const calendarLabels = {
 console.log('🧪 Testing getWeatherConfig labels for the calendar\n');
 console.log('='.repeat(80) + '\n');
 
-let passed = 0;
-let failed = 0;
-let total = 0;
-
 for (const [code, expected] of Object.entries(calendarLabels)) {
-  total++;
-  const { label } = getWeatherConfig(Number(code));
-  if (label === expected) {
-    console.log(`✅ PASS: WMO ${code} → ${expected}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: WMO ${code}`);
-    console.log(`   Expected: ${expected}`);
-    console.log(`   Got:      ${label}`);
-    failed++;
-  }
+  check(`WMO ${code} → ${expected}`, getWeatherConfig(Number(code)).label, expected);
 }
 
 // ---------------------------------------------------------------------------
@@ -80,18 +67,6 @@ for (const [code, expected] of Object.entries(calendarLabels)) {
 
 console.log('\n' + '='.repeat(80));
 console.log('\n🧪 Testing hourlyPredictionInstants\n');
-
-const check = (name, condition, detail) => {
-  total++;
-  if (condition) {
-    console.log(`✅ PASS: ${name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${name}`);
-    if (detail) console.log(`   ${detail}`);
-    failed++;
-  }
-};
 
 const labels = (date, hours, timezone) =>
   hourlyPredictionInstants(date, hours, timezone).map((instant) =>
@@ -138,7 +113,7 @@ const labelCases = [
 
 for (const c of labelCases) {
   const got = labels(c.date, c.hours, c.timezone);
-  check(
+  checkThat(
     c.name,
     got.join(' ') === c.expected.join(' '),
     `Expected: ${c.expected.join(' ')}   Got: ${got.join(' ')}`
@@ -153,12 +128,12 @@ for (const c of labelCases) {
   // one before it, or the `0` is filed twenty-three hours earlier than its neighbour.
   const instants = hourlyPredictionInstants('2026-09-14', [22, 23, 0, 1], 'America/New_York');
   const steps = instants.slice(1).map((v, i) => v - instants[i]);
-  check(
+  checkThat(
     'a series crossing midnight UTC stays one hour apart',
     steps.every((s) => s === 3600_000),
     `Steps (ms): ${steps.join(', ')}`
   );
-  check(
+  checkThat(
     'and the wrap lands on the next UTC day, not the same one',
     instants[2] === Date.parse('2026-09-15T00:00:00Z'),
     `Got: ${new Date(instants[2]).toISOString()}`
@@ -170,28 +145,28 @@ for (const c of labelCases) {
 // disagree by a whole day — an earlier version was 24 h out in both.
 {
   const tokyo = hourlyPredictionInstants('2026-09-15', [20, 21, 22, 23], 'Asia/Tokyo');
-  check(
+  checkThat(
     'a park east of UTC: its local 15th starts on the UTC 14th, and hour 20 belongs there',
     tokyo[0] === Date.parse('2026-09-14T20:00:00Z'),
     `Got: ${new Date(tokyo[0]).toISOString()}`
   );
   const halifax = hourlyPredictionInstants('2026-09-13', [2, 3], 'America/Halifax');
-  check(
+  checkThat(
     'a park west of UTC: its local 13th reaches into the UTC 14th, and hour 2 belongs there',
     halifax[0] === Date.parse('2026-09-14T02:00:00Z'),
     `Got: ${new Date(halifax[0]).toISOString()}`
   );
 }
 
-check(
+checkThat(
   'an empty series stays empty',
   hourlyPredictionInstants('2026-09-14', [], 'Europe/Berlin').length === 0
 );
-check(
+checkThat(
   'a date the API never sends yields nothing',
   hourlyPredictionInstants('', [11], 'Europe/Berlin').length === 0
 );
-check(
+checkThat(
   'and so does a timezone that is not one',
   hourlyPredictionInstants('2026-09-14', [11], 'Middle/Earth').length === 0
 );
@@ -216,12 +191,12 @@ const at = (iso) => Date.parse(iso);
     at('2026-09-14T11:41:00Z'),
     'Europe/Berlin'
   );
-  check(
+  checkThat(
     'a fresh curve loses nothing — the current hour has not ended',
     kept.length === 5 && kept[0].hour === 11,
     `kept ${kept.map((k) => k.hour).join(' ')}`
   );
-  check(
+  checkThat(
     'and every entry carries the instant its bar covers',
     kept[0].instant === at('2026-09-14T11:00:00Z') &&
       kept[4].instant === at('2026-09-14T15:00:00Z'),
@@ -237,7 +212,7 @@ const at = (iso) => Date.parse(iso);
     at('2026-09-14T14:20:00Z'),
     'Europe/Berlin'
   );
-  check(
+  checkThat(
     'a curve kept for three hours drops the three that are over',
     kept.map((k) => k.hour).join(' ') === '14 15',
     `kept ${kept.map((k) => k.hour).join(' ')}`
@@ -251,7 +226,7 @@ const at = (iso) => Date.parse(iso);
     at('2026-09-14T16:00:00Z'),
     'Europe/Berlin'
   );
-  check(
+  checkThat(
     'past the last bar the section has nothing left to draw',
     kept.length === 0,
     `kept ${kept.map((k) => k.hour).join(' ')}`
@@ -266,7 +241,7 @@ const at = (iso) => Date.parse(iso);
     at('2026-09-14T12:00:00Z'),
     'Europe/Berlin'
   );
-  check(
+  checkThat(
     'a bar ends when its hour does, not when it starts',
     kept.map((k) => k.hour).join(' ') === '12 13 14 15',
     `kept ${kept.map((k) => k.hour).join(' ')}`
@@ -281,7 +256,7 @@ const at = (iso) => Date.parse(iso);
     at('2026-09-14T14:20:00Z'),
     'Europe/Berlin'
   );
-  check(
+  checkThat(
     "tomorrow's curve survives today's afternoon in full",
     kept.length === 5,
     `kept ${kept.map((k) => k.hour).join(' ')}`
@@ -318,12 +293,12 @@ console.log('\n🧪 Testing isServableHourlyDate\n');
     ['nonsense', false, 'anything else'],
   ];
   for (const [date, expected, name] of cases) {
-    check(
+    checkThat(
       `${expected ? 'serves' : 'refuses'} ${date || '(empty)'} — ${name}`,
       isServableHourlyDate(date, now) === expected
     );
   }
-  check(
+  checkThat(
     'the window moves with the clock, it is not pinned to a build',
     isServableHourlyDate('2027-01-02', at('2027-01-01T00:00:00Z')) &&
       !isServableHourlyDate('2026-09-14', at('2027-01-01T00:00:00Z'))
@@ -345,7 +320,7 @@ console.log('\n🧪 Testing isServableHourlyProfileRange\n');
     ['', '2026-10-21', false, 'an empty start'],
   ];
   for (const [from, to, expected, name] of cases) {
-    check(
+    checkThat(
       `${expected ? 'serves' : 'refuses'} ${from || '(empty)'}…${to} — ${name}`,
       isServableHourlyProfileRange(from, to) === expected
     );
@@ -367,7 +342,7 @@ console.log('\n🧪 Testing isServableCalendarRange\n');
     ['', '2026-10-31', false, 'an empty end'],
   ];
   for (const [from, to, expected, name] of cases) {
-    check(
+    checkThat(
       `${expected ? 'serves' : 'refuses'} ${from || '(empty)'}…${to} — ${name}`,
       isServableCalendarRange(from, to) === expected
     );
@@ -385,7 +360,7 @@ console.log('\n🧪 Testing isServableCalendarRange\n');
     at('2026-09-14T22:30:00Z'),
     'Asia/Tokyo'
   );
-  check(
+  checkThat(
     'east of UTC, an hour that is over is cut like anywhere else',
     tokyoEvening.map((k) => k.hour).join(' ') === '22 23',
     `kept ${tokyoEvening.map((k) => k.hour).join(' ')}`
@@ -396,7 +371,7 @@ console.log('\n🧪 Testing isServableCalendarRange\n');
     at('2026-09-14T02:00:00Z'),
     'America/Halifax'
   );
-  check(
+  checkThat(
     'west of UTC, a fresh curve is not thrown away for being on yesterday',
     halifaxLate.map((k) => k.hour).join(' ') === '2 3',
     `kept ${halifaxLate.map((k) => k.hour).join(' ')}`
@@ -404,12 +379,4 @@ console.log('\n🧪 Testing isServableCalendarRange\n');
 }
 
 console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${total} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+finishChecks();

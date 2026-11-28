@@ -7,7 +7,7 @@ import { PhotoCredit, TILE_CREDIT_POSITION } from '@/components/media/photo-cred
 import { LazyMount } from '@/components/parks/lazy-mount';
 import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
-import { TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { TRIP_REGION_IDENTITIES } from '@/lib/trip-regions/regions/identities';
 import type { MoreMenuPhoto } from '@/lib/navigation/more-menu';
 
 /**
@@ -27,7 +27,7 @@ interface ArtProps {
  */
 const SCENES: Partial<Record<string, LazyExoticComponent<ComponentType<ArtProps>>>> =
   Object.fromEntries(
-    TRIP_REGIONS.flatMap(({ slug: id, scene: load }) =>
+    TRIP_REGION_IDENTITIES.flatMap(({ slug: id, scene: load }) =>
       load
         ? [
             [

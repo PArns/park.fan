@@ -6,16 +6,9 @@
  * Run: pnpm test:blog-performance-chip
  */
 import { inlinePerformanceSlot } from '../lib/blog/live-display.ts';
+import { check, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failed = 0;
-function check(name, actual, expected) {
-  if (actual !== expected) {
-    failed++;
-    console.log(
-      `❌ FAIL: ${name}: expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`
-    );
-  }
-}
+quietChecks();
 
 const schedules = [
   { from: '2026-11-14', to: '2027-01-24', times: ['13:00', '14:00', '15:00', '16:00', '17:00'] },
@@ -79,5 +72,5 @@ check(
 );
 check('closed park before the tick', inlinePerformanceSlot(gate('CLOSED', 'CLOSED'), null), null);
 
-if (failed) process.exit(1);
+finishChecks();
 console.log('✅ blog-performance-chip: all checks passed');

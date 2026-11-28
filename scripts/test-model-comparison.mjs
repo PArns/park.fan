@@ -8,7 +8,6 @@ import assert from 'node:assert/strict';
 import {
   chartTop,
   dayMae,
-  daysBetween,
   formatDaysAway,
   formatGain,
   formatShortDay,
@@ -44,13 +43,7 @@ import {
   fixtureDay,
 } from '../lib/admin/model-comparison-fixture.ts';
 import { matchesQuery } from '../lib/utils/text-fold.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 test('a model a cell names but the report does not list still gets a column', () => {
   const report = {
@@ -456,7 +449,6 @@ test('gains and days read in German', () => {
   assert.equal(formatShortDay('2027-01-05', '2026-11-07'), '05.01.2027');
   assert.equal(formatDaysAway(45), 'in 45 Tagen');
   assert.equal(formatDaysAway(-2), 'seit 2 Tagen');
-  assert.equal(daysBetween('2026-11-07', '2026-12-22'), 45);
 });
 
 test('live progress takes the scarcer of days and parks, full once live confirmed it', () => {
@@ -478,4 +470,4 @@ test('live progress takes the scarcer of days and parks, full once live confirme
   assert.equal(progressLabel(5, 14, live), '5 von 14');
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

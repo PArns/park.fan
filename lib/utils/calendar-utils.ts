@@ -4,12 +4,9 @@ import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
 const HOUR_MS = 60 * 60 * 1000;
 const DAY_MS = 24 * HOUR_MS;
 
-const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+import { isIsoDate } from './iso-date';
 
-/** Whether `value` has the shape `YYYY-MM-DD`; it does not check that the day exists. */
-export function isIsoDate(value: string): boolean {
-  return ISO_DATE_RE.test(value);
-}
+export { isIsoDate };
 
 /**
  * Whether the park is shut on a calendar day. Both fields are read, because a day the park has

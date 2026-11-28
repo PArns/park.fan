@@ -7,12 +7,7 @@
 import assert from 'node:assert/strict';
 import { parkyElementRows } from '../lib/admin/parky-elements.ts';
 import { PARKY_ELEMENT_KINDS } from '../lib/analytics/parky-elements.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const table = (cells) => ({
   row: 'prop:element',
@@ -78,4 +73,4 @@ test('a kind the site no longer sends, or `other`, comes after the known ones', 
   });
 });
 
-console.log(`admin parky elements: ${passed} passed`);
+reportPassed();

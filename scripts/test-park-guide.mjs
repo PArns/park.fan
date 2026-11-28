@@ -22,18 +22,9 @@ import assert from 'node:assert/strict';
 import { BLOG_POSTS_META } from '../lib/blog/manifest.ts';
 import { getGuideForPark, MAX_PRIMER_PARK_LINKS } from '../lib/blog/backlinks.ts';
 import { parseRefKey } from '../lib/blog/derive.mjs';
+import { attempt, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failures = 0;
-let checks = 0;
-function test(name, fn) {
-  checks++;
-  try {
-    fn();
-  } catch (error) {
-    failures++;
-    console.error(`✗ ${name}\n  ${error.message}`);
-  }
-}
+quietChecks();
 
 const keyOf = (entry) => entry.frontmatter.translationKey?.trim() || entry.slug;
 const isGuide = (entry) => (entry.frontmatter.category ?? '').split('/')[0] === 'guides';
@@ -57,7 +48,7 @@ const configured = [...guides].filter(([, entries]) => firstPark(entries) && !is
 const unconfigured = [...guides].filter(([, entries]) => !firstPark(entries));
 const listedRoundUps = [...guides].filter(([, entries]) => isRoundUp(entries));
 
-test('there are configured guides and round-ups to test against', () => {
+attempt('there are configured guides and round-ups to test against', () => {
   assert.ok(configured.length >= 5, `configured guides: ${configured.length}`);
   assert.ok(unconfigured.length >= 1, `round-up guides: ${unconfigured.length}`);
 });
@@ -66,14 +57,14 @@ for (const [translationKey, entries] of configured) {
   const primary = firstPark(entries);
   const slug = primary.key.split('/')[0];
   const geoPath = primary.geoPath;
-  test(`${translationKey}: is the guide of ${slug}`, () => {
+  attempt(`${translationKey}: is the guide of ${slug}`, () => {
     const found = getGuideForPark('de', slug, geoPath ? { geoPath } : {});
     assert.equal(found?.translationKey, translationKey);
   });
 }
 
 for (const [translationKey, entries] of unconfigured) {
-  test(`${translationKey}: has no parkLinks, so it is no park's guide`, () => {
+  attempt(`${translationKey}: has no parkLinks, so it is no park's guide`, () => {
     const seen = new Set(entries.flatMap((e) => e.parkRefs.map((ref) => ref.slug)));
     for (const slug of seen) {
       const found = getGuideForPark('de', slug);
@@ -83,16 +74,19 @@ for (const [translationKey, entries] of unconfigured) {
 }
 
 for (const [translationKey, entries] of listedRoundUps) {
-  test(`${translationKey}: lists more than ${MAX_PRIMER_PARK_LINKS} parks, so it is no park's guide`, () => {
-    for (const value of parkLinksOf(entries)) {
-      const slug = parseRefKey(String(value)).key.split('/')[0];
-      const found = getGuideForPark('de', slug);
-      assert.notEqual(found?.translationKey, translationKey, `${slug} offers ${translationKey}`);
+  attempt(
+    `${translationKey}: lists more than ${MAX_PRIMER_PARK_LINKS} parks, so it is no park's guide`,
+    () => {
+      for (const value of parkLinksOf(entries)) {
+        const slug = parseRefKey(String(value)).key.split('/')[0];
+        const found = getGuideForPark('de', slug);
+        assert.notEqual(found?.translationKey, translationKey, `${slug} offers ${translationKey}`);
+      }
     }
-  });
+  );
 }
 
-test('a park that is only a second parkLinks entry is not offered that guide', () => {
+attempt('a park that is only a second parkLinks entry is not offered that guide', () => {
   const second = configured
     .map(([translationKey, entries]) => {
       const links = entries.map((e) => e.frontmatter.parkLinks).find(Array.isArray);
@@ -106,11 +100,10 @@ test('a park that is only a second parkLinks entry is not offered that guide', (
   assert.notEqual(getGuideForPark('de', second.slug)?.translationKey, second.translationKey);
 });
 
-test('a park without a guide gets null', () => {
+attempt('a park without a guide gets null', () => {
   for (const locale of ['de', 'en', 'nl', 'fr', 'es', 'it']) {
     assert.equal(getGuideForPark(locale, 'a-park-that-does-not-exist'), null);
   }
 });
 
-console.log(`${checks - failures}/${checks} checks passed`);
-if (failures > 0) process.exit(1);
+finishChecks();

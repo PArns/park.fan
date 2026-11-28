@@ -18,16 +18,16 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
 import { PARKY_STAMP_MAX_CHARS, parseParkyStamp } from '../lib/blog/remark-callouts.ts';
+import { checkThat, finishChecks, quietChecks } from './lib/run-cases.mjs';
+
+quietChecks();
+
+/** A box that breaks a rule is a failed check under the sentence that says which. */
+const fail = (message) => checkThat(message, false);
 
 const BLOG_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '../content/blog');
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
 const MAX_BOXES = 2;
-
-let failed = 0;
-function fail(message) {
-  failed++;
-  console.log(`❌ ${message}`);
-}
 
 /** Each `> [!PARKY]` box of a body as the text remark sees: the quote's lines without `> `. */
 function parkyBoxes(body) {
@@ -84,5 +84,5 @@ for (const [key, posts] of groups) {
   }
 }
 
-if (failed) process.exit(1);
+finishChecks();
 console.log(`✅ blog-parky: ${groups.size} translation groups agree on their Parky boxes`);

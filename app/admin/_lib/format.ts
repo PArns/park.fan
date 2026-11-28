@@ -48,6 +48,20 @@ export function formatDayTime(value: string | null): string {
   }).format(parsed);
 }
 
+/** A timestamp as short day and time on the reader's own clock, `27.11.26, 17:36`. */
+export function formatDateTime(value: string | number | Date): string {
+  return getDateTimeFormat('de-DE', { dateStyle: 'short', timeStyle: 'short' }).format(
+    new Date(value)
+  );
+}
+
+/** A timestamp to the second on the reader's own clock, `27.11.2026, 17:36:05`. */
+export function formatTimestamp(value: string | number | Date): string {
+  return getDateTimeFormat('de-DE', { dateStyle: 'medium', timeStyle: 'medium' }).format(
+    new Date(value)
+  );
+}
+
 /** An ISO time as the admin says it, in German and relative to now: `vor 3 Stunden`. */
 export function formatAgo(iso: string): string {
   return formatDistanceToNow(parseISO(iso), { addSuffix: true, locale: de });

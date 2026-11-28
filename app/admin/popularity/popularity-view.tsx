@@ -20,6 +20,7 @@ import type { PageViewKind as Kind } from '@/lib/analytics/page-views';
 import { cn } from '@/lib/utils';
 import { Segmented } from '../_ui/controls';
 import { CATEGORICAL, SeriesChart } from '../_ui/charts';
+import { formatCount } from '@/lib/admin/format-number';
 
 /** German first: most of the traffic, and the admin's own language. */
 const LOCALES: readonly Locale[] = ['de', ...locales.filter((locale) => locale !== 'de')];
@@ -61,8 +62,6 @@ interface PageViewsOverview {
 
 /** A post's German title and page, keyed by `translationKey`. */
 export type PostTitles = Record<string, { title: string; path: string }>;
-
-const number = new Intl.NumberFormat('de-DE');
 
 /** One day's views over every kind. */
 function dayTotal(day: PageViewsOverview['daily'][number]): number {
@@ -150,7 +149,7 @@ export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
             <StatTile
               key={kind.kind}
               label={KIND_LABEL[kind.kind]}
-              value={number.format(kind.total)}
+              value={formatCount(kind.total)}
               sub={leadingLocale(kind.byLocale, kind.total) ?? 'noch keine Aufrufe'}
             />
           ))}
@@ -188,11 +187,11 @@ export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
                       <td className="py-2 pr-3 font-medium">{KIND_LABEL[kind.kind]}</td>
                       {LOCALES.map((locale) => (
                         <td key={locale} className="text-muted-foreground px-2 py-2 text-right">
-                          {kind.byLocale[locale] ? number.format(kind.byLocale[locale]) : '–'}
+                          {kind.byLocale[locale] ? formatCount(kind.byLocale[locale]) : '–'}
                         </td>
                       ))}
                       <td className="py-2 pl-3 text-right font-semibold">
-                        {number.format(kind.total)}
+                        {formatCount(kind.total)}
                       </td>
                     </tr>
                   ))}
@@ -298,12 +297,12 @@ export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
                                   )}
                                 >
                                   {entry.byLocale[locale]
-                                    ? number.format(entry.byLocale[locale])
+                                    ? formatCount(entry.byLocale[locale])
                                     : '–'}
                                 </td>
                               ))}
                               <td className="py-2 pr-4 pl-2 text-right font-semibold">
-                                {number.format(entry.total)}
+                                {formatCount(entry.total)}
                               </td>
                             </tr>
                           );

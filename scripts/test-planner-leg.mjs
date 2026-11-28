@@ -23,6 +23,7 @@ import {
 } from '../lib/planner/leg.ts';
 import { RIDE_DURATION_MIN, START_STEP_MIN } from '../lib/planner/day-grid.ts';
 import { LEG_CHIP_COMPACT_PX, LEG_CHIP_PX, legChipPlacement } from '../lib/planner/leg-chip.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -366,14 +367,4 @@ test('the detour factor is the documented one', DETOUR_MAX, 1.6);
   );
 }
 
-// ── Report ───────────────────────────────────────────────────────────────────
-let failed = 0;
-for (const { name, actual, expected } of cases) {
-  const ok = Object.is(actual, expected);
-  if (!ok) failed++;
-  console.log(
-    `${ok ? '✅' : '❌'} ${name}${ok ? '' : ` — erwartet ${expected}, bekommen ${actual}`}`
-  );
-}
-console.log(`\n${cases.length - failed}/${cases.length} bestanden`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(cases, { same: Object.is });

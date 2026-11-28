@@ -1,4 +1,3 @@
-import geomagnetism from 'geomagnetism';
 import { NextRequest, NextResponse } from 'next/server';
 import {
   bestDaysCacheTag,
@@ -361,7 +360,7 @@ export async function GET(
       const parkData = await getParkByGeoPath(continent, country, city, park);
 
       if (!parkData) {
-        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
       }
 
       const positions = (parkData.attractions ?? [])
@@ -388,6 +387,8 @@ export async function GET(
             lng: positions.reduce((sum, p) => sum + p.longitude, 0) / positions.length,
           }
         : null;
+      // Loaded here: this module answers every live poll, and only this branch needs the model.
+      const { default: geomagnetism } = await import('geomagnetism');
       const declination = middle
         ? Math.round(geomagnetism.model().point([middle.lat, middle.lng]).decl * 10) / 10
         : 0;
@@ -419,7 +420,7 @@ export async function GET(
       const parkData = await getParkByGeoPath(continent, country, city, park);
 
       if (!parkData) {
-        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
       }
 
       const stats = pickRideFigures(parkData.attractions ?? []);
@@ -444,7 +445,7 @@ export async function GET(
       const parkData = await getParkByGeoPath(continent, country, city, park);
 
       if (!parkData) {
-        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
       }
 
       const rides = (parkData.attractions ?? []).map((a) => ({
@@ -497,7 +498,7 @@ export async function GET(
       const data = await getParkWaitTimesFresh(continent, country, city, park);
 
       if (!data) {
-        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
       }
 
       return NextResponse.json(data, {
@@ -700,7 +701,10 @@ export async function GET(
       );
 
       if (!data) {
-        return NextResponse.json({ error: 'Attraction not found' }, { status: 404 });
+        return NextResponse.json(
+          { error: 'Attraction not found' },
+          { status: 404, headers: NO_STORE }
+        );
       }
 
       return NextResponse.json(data, {
@@ -727,7 +731,10 @@ export async function GET(
       );
 
       if (!data) {
-        return NextResponse.json({ error: 'Nowcast not available' }, { status: 404 });
+        return NextResponse.json(
+          { error: 'Nowcast not available' },
+          { status: 404, headers: NO_STORE }
+        );
       }
 
       return NextResponse.json(data, {

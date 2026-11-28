@@ -143,6 +143,14 @@ Which two days of a park's calendar are being compared, across a change of month
 - `resetParkHeadlines` _function_: Forgets every reading. For tests.
 - Types: `ParkHeadline`
 
+### [`park-route.ts`](../../lib/parks/park-route.ts)
+
+- `redirectMalformedParkPath` _function_: 308s a URL whose city segment holds a park slug to the path that park really has.
+- `redirectRelocatedPark` _function_: 308s a park the API no longer has under the requested geo segments to its current path, and returns where the slug is known nowhere. Only for after the API lookup failed: see `findRelocatedParkRedirect`.
+- `redirectRenamedPark` _function_: 308s a park the API returned under another path than the one requested: the API answered the old path with a 301 that `fetch` followed, and the page would otherwise render at two URLs.
+- `resolveParkOrRedirect` _function_: The park of a sub-page route, or the redirect or 404 the route owes instead.
+- `parkDisplayNames` _function_: A park's name and its city's as the page prints them: the name without the „new" prefix, and the city from the park's own record, which has the correct spelling („Brühl"), before the slug.
+
 ### [`park-season-days.ts`](../../lib/parks/park-season-days.ts)
 
 - `formatSeasonRange` _function_: A season's bounds as one localized range, „20. Nov. – 18. Jan. 2027": the year once when both ends share it, on both ends when they do not. Falls back to the raw dates when either does not parse.
@@ -174,6 +182,12 @@ Which two days of a park's calendar are being compared, across a change of month
 - `deriveParkBestDays` _function_: Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's `avgCrowdScore` (`tierAggregate`). Relative to the park, because the API's absolute levels put six of Europa-Park's seven weekdays on „Normal".
 - `parkStatsShape` _function_: `ParkStatsShape` of an aggregate; `null` where the chapter renders nothing at all.
 - Types: `ParkStatsFindings`, `BestDaysTier`, `ParkBestDays`, `ParkStatsShape`
+
+### [`paths.ts`](../../lib/parks/paths.ts)
+
+- `parkPagePath` _function_: Locale-relative path of a park's page, `/parks/<continent>/<country>/<city>/<park>`. Every sub-page, ride page and relay URL of the park hangs below it, so the order of the segments is written here once.
+- `parkRelayUrl` _function_: URL of the site's own relay for a park, `/api/parks/<geo>/<park>` plus `suffix` (a sub-resource and its query, starting with `/` or `?`).
+- Types: `ParkPathParts`
 
 ### [`purchases.ts`](../../lib/parks/purchases.ts)
 

@@ -25,12 +25,10 @@
  *     BASE=http://localhost:3000 pnpm check:webmcp
  */
 
-import { existsSync } from 'node:fs';
 import { chromium } from 'playwright';
+import { LAUNCH } from './lib/browser.mjs';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
-// Same rule as the other browser scripts: prefer a Chromium the image already ships.
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
 
 /** The slice of the WebMCP surface the page uses, recorded so the test can call back into it. */
 const STUB = () => {
@@ -57,9 +55,7 @@ const STUB = () => {
   };
 };
 
-const browser = await chromium.launch(
-  existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {}
-);
+const browser = await chromium.launch(LAUNCH);
 const page = await browser.newPage();
 await page.addInitScript(STUB);
 

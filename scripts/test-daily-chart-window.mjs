@@ -1,6 +1,7 @@
 // Regression tests for the slot range of a ride's "wait times today" chart. Six Flags Qiddiya City
 // opens 16:00 and closes at midnight (Asia/Riyadh); a closing bound of "00:00" left one bar at 00h.
 import { dailyChartWindow } from '../lib/parks/daily-chart-window.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const TZ = 'Asia/Riyadh';
 const win = (open, close, tz = TZ) => {
@@ -46,15 +47,4 @@ const testCases = [
   },
 ];
 
-let failed = 0;
-for (const { name, actual, expected } of testCases) {
-  const got = actual();
-  if (got === expected) {
-    console.log(`✅ ${name}`);
-  } else {
-    failed++;
-    console.error(`❌ ${name}: expected ${JSON.stringify(expected)}, got ${JSON.stringify(got)}`);
-  }
-}
-if (failed) process.exit(1);
-console.log(`\n${testCases.length} cases passed`);
+await runCases(testCases);

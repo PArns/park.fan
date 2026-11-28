@@ -162,8 +162,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub-trip.ts`](../../lib/trip-regions/hub-trip.ts)
 
-Whether a region's hub shows a plan: the hub has two states (docs/features/orlando-hub.md#two-states), the landing page without a plan and "Your trip" with one.
-
 - `hubTripOf` _function_: The trip a planner query holds: both dates, as days, in order; else none.
 - `restorableTrip` _function_: The remembered query the hub puts back into the address bar, or null.
 - Types: `HubTripDates`
@@ -537,6 +535,17 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `ownWords` _function_: A region's own words for `key`, or `null` where its copy has not written them yet.
 - Types: `CodeWords`
 
+### [`regions/identities.ts`](../../lib/trip-regions/regions/identities.ts)
+
+- `tripRegionSegment` _function_: A region's URL segment in a locale, the English one where a locale lacks its own.
+- `ORLANDO_IDENTITY` _const_: Orlando's identity; the rest of the region is `regions/orlando.ts`.
+- `SOUTHERN_CALIFORNIA_IDENTITY` _const_: Southern California's identity; the rest of the region is `regions/southern-california.ts`.
+- `JAPAN_IDENTITY` _const_: Japan's identity; the rest of the region is `regions/japan.ts`.
+- `PARIS_IDENTITY` _const_: Paris' identity; the rest of the region is `regions/paris.ts`.
+- `TRIP_REGION_IDENTITIES` _const_: Every trip region, live or coming, in the order the planner band and the admin list them. `TRIP_REGIONS` takes its order from this list, so there is one.
+- `LIVE_TRIP_REGION_IDENTITIES` _const_: The regions whose pages answer and whose links show, as every page may read them.
+- Types: `TripRegionSceneProps`, `TripRegionSceneLoader`, `TripRegionIdentity`
+
 ### [`regions/japan.ts`](../../lib/trip-regions/regions/japan.ts)
 
 - `JAPAN` _const_: Japan's entry in `TRIP_REGIONS`.
@@ -558,14 +567,14 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `tripRegionConfig` _function_: A region by its slug, live or not.
 - `liveTripRegion` _function_: A live region by its slug, or `undefined`: what a page or a link may answer for.
 - `requireTripRegion` _function_: A region that has to exist, for code holding a slug that came from a page of that region. An unknown slug is a programming error, never a visitor's, so it throws.
-- `tripRegionSegment` _function_: A region's URL segment in a locale, the English one where a locale lacks its own.
 - `tripRegionBySegment` _function_: The live region and locale a URL segment belongs to: `kalifornien` is German, `california` is English, Spanish and Italian. Every locale that spells the region so, in the list's order.
 - `bestTimePageOf` _function_: The best-time page of a region by its id (`region` or a resort segment).
 - `tripRegionTitle` _function_: A region as the admin names it, which writes in no reader's language: the slug in title case, `southern-california` → „Southern California“.
-- `TRIP_REGIONS` _const_: Every trip region, live or coming, in the order the planner band and the admin list them.
+- `tripRegionSegment` _const_
+- `TRIP_REGIONS` _const_: Every trip region, live or coming, in the order of `TRIP_REGION_IDENTITIES`. An identity without its file is a region half added, and stops the build here rather than a page later.
 - `LIVE_TRIP_REGIONS` _const_: The regions whose pages answer and whose links show.
 - `PARK_NAME_SUFFIXES` _const_: Every park-name suffix of every region, for `shortParkName`, which is called without one.
-- Types: `TripRegionSceneProps`, `TripRegionSceneLoader`, `TripBestTimePage`, `TripTicketStep`, `TripHubFaq`, `TripHubShots`, `TripHubResort`, `TripHub`, `TripHotelKind`, `TripRegionConfig`
+- Types: `TripRegionSceneLoader`, `TripRegionSceneProps`, `TripBestTimePage`, `TripTicketStep`, `TripHubFaq`, `TripHubShots`, `TripHubResort`, `TripHub`, `TripHotelKind`, `TripRegionConfig`
 
 ### [`relay.ts`](../../lib/trip-regions/relay.ts)
 

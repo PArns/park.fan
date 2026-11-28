@@ -59,6 +59,7 @@ import {
   UrlInput,
   useFieldId,
 } from './controls';
+import { formatDateTime } from '../_lib/format';
 
 /**
  * One editor for every curated field: the backend describes its curatable columns and this renders
@@ -867,12 +868,8 @@ function CuratedFieldsEditor({
         /* Said out loud: silently reinstating yesterday's edits would surprise as much as losing
            them. */
         <p className="border-border/60 bg-muted/40 text-muted-foreground rounded-lg border px-3 py-2 text-xs">
-          Nicht gespeicherte Änderungen von{' '}
-          {new Date(form.restoredAt).toLocaleString('de-DE', {
-            dateStyle: 'short',
-            timeStyle: 'short',
-          })}{' '}
-          wiederhergestellt. Speichern oder verwerfen.
+          Nicht gespeicherte Änderungen von {formatDateTime(form.restoredAt)} wiederhergestellt.
+          Speichern oder verwerfen.
         </p>
       )}
       {/* Each tab carries two counts, so a hidden group does not hide work: corrected fields

@@ -52,6 +52,7 @@ import { stormSignal } from '@/lib/trip-regions/date-facts';
 import { stormCodeIn } from '@/lib/trip-regions/hub-facts';
 import { STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { DaySignalChip, DaySignalKey } from '@/components/parks/day-signal-key';
+import { getCountryName } from '@/lib/utils/region-names';
 
 /**
  * The chapters of a region's best-time pages, server-rendered whole: Level 0 is the answer in the
@@ -692,7 +693,6 @@ export async function SchoolHolidayLinks({
 }) {
   const t = await getTranslations({ locale, namespace: 'tripBestTime.holidays' });
   const hubPath = tripRegionPath(regionSlug, locale);
-  const countryName = new Intl.DisplayNames([locale], { type: 'region' });
   return (
     <div className="space-y-3">
       {countries.map((country) => {
@@ -706,7 +706,7 @@ export async function SchoolHolidayLinks({
             className="rounded-xl border p-4 [&_summary]:cursor-pointer"
           >
             <summary className="flex min-h-11 items-center text-lg font-semibold">
-              <h3 className="inline">{countryName.of(country) ?? country}</h3>
+              <h3 className="inline">{getCountryName(country, locale)}</h3>
             </summary>
             <ul className="mt-3 divide-y">
               {own.map((region) => {

@@ -21,6 +21,7 @@
  */
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { attempt, finishChecks } from './lib/run-cases.mjs';
 
 const storage = new Map();
 let storageThrows = false;
@@ -87,25 +88,11 @@ const NOON = [
   post('heide-park-guide', '2026-09-20', 'Guides'),
 ];
 
-let passed = 0;
-const failures = [];
-
-async function test(name, fn) {
-  try {
-    await fn();
-    passed += 1;
-    console.log(`  ok  ${name}`);
-  } catch (error) {
-    failures.push(name);
-    console.log(`FAIL  ${name}\n      ${error.message}`);
-  }
-}
-
 // ---------------------------------------------------------------------------
 // What is new — news included
 // ---------------------------------------------------------------------------
 
-await test('news published later the same day is new', () => {
+await attempt('news published later the same day is new', () => {
   reset();
   writeSeen(MORNING);
   const fresh = unseenPosts(readSeen(), NOON);
@@ -119,7 +106,7 @@ await test('news published later the same day is new', () => {
   );
 });
 
-await test('a news post already seen is not announced again', () => {
+await attempt('a news post already seen is not announced again', () => {
   reset();
   writeSeen(MORNING);
   assert.equal(
@@ -128,7 +115,7 @@ await test('a news post already seen is not announced again', () => {
   );
 });
 
-await test('news and articles arriving together are both new', () => {
+await attempt('news and articles arriving together are both new', () => {
   reset();
   writeSeen(NOON);
   const next = [
@@ -142,7 +129,7 @@ await test('news and articles arriving together are both new', () => {
   );
 });
 
-await test('a post that only dropped out of the list is not new when it comes back', () => {
+await attempt('a post that only dropped out of the list is not new when it comes back', () => {
   reset();
   writeSeen(MORNING);
   // `walibi-belgium-guide` was in the morning list; `winter-parks-2026` never was, but it is
@@ -158,7 +145,7 @@ await test('a post that only dropped out of the list is not new when it comes ba
   );
 });
 
-await test('the record is the list it was written from', () => {
+await attempt('the record is the list it was written from', () => {
   reset();
   writeSeen(NOON);
   assert.deepEqual(readSeen(), { newest: '2026-09-23', keys: NOON.map((p) => p.key) });
@@ -179,7 +166,7 @@ const LABELS = {
   allPosts: 'Alle ansehen',
 };
 
-await test('the kind follows the category path', () => {
+await attempt('the kind follows the category path', () => {
   assert.equal(latestPostKind('news'), 'news');
   assert.equal(latestPostKind('news/europa-park'), 'news');
   assert.equal(latestPostKind('guides'), 'guide');
@@ -189,31 +176,34 @@ await test('the kind follows the category path', () => {
   assert.equal(latestPostKind(undefined), 'post');
 });
 
-await test('a news post is announced as news and sends "see all" to /news', () => {
+await attempt('a news post is announced as news and sends "see all" to /news', () => {
   const lead = { ...post('dollywood-season-pass-2027', '2026-10-22'), kind: 'news' };
   assert.equal(eyebrowFor(LABELS, lead), 'News');
   assert.equal(allPostsPathFor(lead), '/news');
 });
 
-await test('a guide is announced as a guide and sends "see all" to /blog', () => {
+await attempt('a guide is announced as a guide and sends "see all" to /blog', () => {
   const lead = { ...post('hansa-park-guide', '2026-09-22', 'Guides'), kind: 'guide' };
   assert.equal(eyebrowFor(LABELS, lead), 'Neuer Guide verfügbar');
   assert.equal(allPostsPathFor(lead), '/blog');
 });
 
-await test('any other post is announced by its own category and sends "see all" to /blog', () => {
-  const other = {
-    ...post('trip-planner-launch', '2026-09-05', undefined),
-    kind: 'post',
-    categoryRoot: 'Neu auf park.fan',
-  };
-  assert.equal(eyebrowFor(LABELS, other), 'Neu auf park.fan');
-  assert.equal(allPostsPathFor(other), '/blog');
-  const uncategorised = { ...post('loose-post', '2026-09-05', undefined), kind: 'post' };
-  assert.equal(eyebrowFor(LABELS, uncategorised), 'Neuer Artikel');
-});
+await attempt(
+  'any other post is announced by its own category and sends "see all" to /blog',
+  () => {
+    const other = {
+      ...post('trip-planner-launch', '2026-09-05', undefined),
+      kind: 'post',
+      categoryRoot: 'Neu auf park.fan',
+    };
+    assert.equal(eyebrowFor(LABELS, other), 'Neu auf park.fan');
+    assert.equal(allPostsPathFor(other), '/blog');
+    const uncategorised = { ...post('loose-post', '2026-09-05', undefined), kind: 'post' };
+    assert.equal(eyebrowFor(LABELS, uncategorised), 'Neuer Artikel');
+  }
+);
 
-await test('a cached payload without a kind still announces news as news', () => {
+await attempt('a cached payload without a kind still announces news as news', () => {
   // `stale-while-revalidate` can hand the browser a payload from before `kind` existed.
   const cachedNews = { ...post('dollywood-season-pass-2027', '2026-10-22'), path: '/news/x' };
   assert.equal(kindOfLatestPost(cachedNews), 'news');
@@ -228,7 +218,7 @@ await test('a cached payload without a kind still announces news as news', () =>
   assert.equal(allPostsPathFor(cachedArticle), '/blog');
 });
 
-await test('the fan shows as many further posts as fit, never more than there are', () => {
+await attempt('the fan shows as many further posts as fit, never more than there are', () => {
   // 900 px window, lead card ending at 324 px, 72 px rows, 32 px kept free: room for 7.
   assert.equal(fanFit(900, 324, 5, 72, 32), 5);
   assert.equal(fanFit(560, 324, 5, 72, 32), 2);
@@ -243,20 +233,20 @@ await test('the fan shows as many further posts as fit, never more than there ar
 
 const T0 = Date.UTC(2026, 8, 23, 9, 0);
 
-await test('the first check is allowed, and claims the interval', () => {
+await attempt('the first check is allowed, and claims the interval', () => {
   reset();
   assert.equal(claimCheck(T0), true);
   assert.equal(storage.get(CHECKED_AT_STORAGE_KEY), String(T0));
 });
 
-await test('a second trigger inside the interval does not ask', () => {
+await attempt('a second trigger inside the interval does not ask', () => {
   reset();
   claimCheck(T0);
   assert.equal(claimCheck(T0 + 1), false);
   assert.equal(claimCheck(T0 + CHECK_INTERVAL_MS - 1), false);
 });
 
-await test('the same tab asks again once the interval has passed', () => {
+await attempt('the same tab asks again once the interval has passed', () => {
   // The case the session flag missed: a reload in a tab that has been open since the morning.
   reset();
   claimCheck(T0);
@@ -264,19 +254,19 @@ await test('the same tab asks again once the interval has passed', () => {
   assert.equal(claimCheck(T0 + CHECK_INTERVAL_MS + 1), false);
 });
 
-await test('a check stamped in the future does not block', () => {
+await attempt('a check stamped in the future does not block', () => {
   reset();
   storage.set(CHECKED_AT_STORAGE_KEY, String(T0 + 24 * 60 * 60_000));
   assert.equal(claimCheck(T0), true);
 });
 
-await test('an unreadable stamp does not block', () => {
+await attempt('an unreadable stamp does not block', () => {
   reset();
   storage.set(CHECKED_AT_STORAGE_KEY, 'yesterday');
   assert.equal(claimCheck(T0), true);
 });
 
-await test('storage that throws never asks', () => {
+await attempt('storage that throws never asks', () => {
   reset();
   storageThrows = true;
   assert.equal(claimCheck(T0), false);
@@ -296,21 +286,21 @@ const route = readFileSync(
 );
 const config = readFileSync(new URL('../next.config.ts', import.meta.url), 'utf8');
 
-await test('the watcher asks through claimCheck, not a session flag', () => {
+await attempt('the watcher asks through claimCheck, not a session flag', () => {
   assert.match(watcher, /claimCheck\(\)/);
   assert.doesNotMatch(watcher, /sessionStorage/);
 });
 
-await test('the watcher asks again when a tab comes back to the front', () => {
+await attempt('the watcher asks again when a tab comes back to the front', () => {
   assert.match(watcher, /visibilitychange/);
 });
 
-await test('the route lists news like every other post', () => {
+await attempt('the route lists news like every other post', () => {
   assert.match(route, /listPosts\(locale\)/);
   assert.doesNotMatch(route, /isNewsPost|listArticlesByRecency|NEWS_CATEGORY/);
 });
 
-await test("the route sends each post's kind, its root category and all three eyebrows", () => {
+await attempt("the route sends each post's kind, its root category and all three eyebrows", () => {
   assert.match(route, /latestPostKind\(category\)/);
   assert.match(route, /categoryRoot:/);
   for (const key of ['eyebrow', 'eyebrowNews', 'eyebrowGuide']) {
@@ -318,14 +308,14 @@ await test("the route sends each post's kind, its root category and all three ey
   }
 });
 
-await test('the route orders a day by its time, through newestPublishedFirst', () => {
+await attempt('the route orders a day by its time, through newestPublishedFirst', () => {
   // The toast leads with the first post; by the date alone a day's news falls into key order.
   // See docs/features/new-posts-toast.md.
   assert.match(route, /newestPublishedFirst\(a\.frontmatter, b\.frontmatter\)/);
   assert.doesNotMatch(route, /frontmatter\.date [<>=]/);
 });
 
-await test('the route and next.config agree on the cache window', () => {
+await attempt('the route and next.config agree on the cache window', () => {
   const inRoute = route.match(/cdnCacheHeaders\('([^']+)'\)/)?.[1];
   const inConfig = config.match(
     /source: '\/api\/blog-latest\/:locale',\s*headers: sharedCache\('([^']+)'\)/
@@ -336,5 +326,4 @@ await test('the route and next.config agree on the cache window', () => {
   assert.equal(Number(inRoute.match(/max-age=(\d+)/)?.[1]) * 1000, CHECK_INTERVAL_MS);
 });
 
-console.log(`\n${passed} passed, ${failures.length} failed`);
-if (failures.length > 0) process.exit(1);
+finishChecks();

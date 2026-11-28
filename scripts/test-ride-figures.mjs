@@ -10,13 +10,7 @@
  */
 import assert from 'node:assert/strict';
 import { pickRideFigures } from '../lib/api/ride-figures.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const ride = (id, stats) => ({ id, rideProfile: stats === undefined ? undefined : { stats } });
 
@@ -67,4 +61,4 @@ test('an empty park answers an empty object', () => {
   assert.deepEqual(pickRideFigures([]), {});
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

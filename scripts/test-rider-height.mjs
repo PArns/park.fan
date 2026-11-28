@@ -17,13 +17,7 @@ import {
   riderHeightStops,
   riderHeightThresholds,
 } from '../lib/utils/rider-height.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 console.log('rider height');
 
@@ -121,4 +115,4 @@ test('the lowest stop clears nothing that has a limit', () => {
   );
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

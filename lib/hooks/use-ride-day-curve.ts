@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
 import type { RideDayCurve } from '@/lib/api/types';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 interface UseRideDayCurveParams {
   continent: string;
@@ -40,7 +41,7 @@ export function useRideDayCurve({
     queryFn: async () => {
       const query = attraction ? `?attraction=${encodeURIComponent(attraction)}` : '';
       const res = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/stats/day${query}`,
+        parkRelayUrl({ continent, country, city, parkSlug }, `/stats/day${query}`),
         { cache: 'no-store' }
       );
       if (res.status === 404) return null;

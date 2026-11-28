@@ -7,12 +7,14 @@ import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
 import { RANKING_SEGMENTS } from '@/lib/rankings/segments';
-import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { LIVE_TRIP_REGION_IDENTITIES } from '@/lib/trip-regions/regions/identities';
 
 type SegmentFamily = Readonly<Record<string, string>>;
 
 /** A trip region hub's segment per locale: `/kalifornien`, `/california`. */
-const TRIP_REGION_FAMILIES: readonly SegmentFamily[] = LIVE_TRIP_REGIONS.map((r) => r.segments);
+const TRIP_REGION_FAMILIES: readonly SegmentFamily[] = LIVE_TRIP_REGION_IDENTITIES.map(
+  (r) => r.segments
+);
 
 /**
  * First segments written in the reader's language: `/beste-reisezeit`, `/tagesplaner`, a trip

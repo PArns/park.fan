@@ -12,6 +12,8 @@ import { readInterview, type AssistantInterview } from './interview';
 import { cleanParty, type TripParty } from '@/lib/trip-regions/remembered-trip';
 import { liveTripRegion } from '@/lib/trip-regions/registry';
 import { PLAN_IDEA_KINDS, type PlanIdea } from '@/lib/trip-regions/plan-ideas';
+import { isIsoDate } from '@/lib/utils/iso-date';
+import { isStrictSlug } from '@/lib/utils/servable-route';
 
 /** The park as the API names it for the planner. */
 export interface AssistantPlannerPark {
@@ -375,8 +377,6 @@ export type AssistantActionChip =
   | 'undoStale'
   | 'undone';
 
-const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const DAY = /^\d{4}-\d{2}-\d{2}$/;
 const OPTIMIZE_MODES = new Set(['order', 'headliners']);
 /** Park-local `HH:MM`, the way the planner prints a start. */
 const CLOCK = /^(?:[01]\d|2[0-3]):[0-5]\d$/;
@@ -439,11 +439,11 @@ function isPark(value: unknown): value is AssistantPlannerPark {
   const park = value as AssistantPlannerPark | null;
   return (
     !!park &&
-    SLUG.test(park.slug) &&
+    isStrictSlug(park.slug) &&
     typeof park.name === 'string' &&
     park.name.length <= 120 &&
     [park.geo?.continent, park.geo?.country, park.geo?.city].every(
-      (part) => typeof part === 'string' && SLUG.test(part)
+      (part) => typeof part === 'string' && isStrictSlug(part)
     ) &&
     isTimeZone(park.timezone)
   );
@@ -497,7 +497,7 @@ const level = (v: unknown, unknown: boolean) =>
 function isDayRun(days: unknown): days is Array<{ date: string }> {
   if (!Array.isArray(days) || days.length === 0 || days.length > MAX_CALENDAR_DAYS) return false;
   const dates = days.map((d) =>
-    typeof d?.date === 'string' && DAY.test(d.date) ? Date.parse(d.date) : NaN
+    typeof d?.date === 'string' && isIsoDate(d.date) ? Date.parse(d.date) : NaN
   );
   return (
     dates.every((at, i) => !Number.isNaN(at) && (i === 0 || at > dates[i - 1])) &&
@@ -518,7 +518,8 @@ function isDaysOrTiles(card: AssistantCard): boolean {
     }
     return true;
   }
-  if (card.kind !== 'tiles' || !DAY.test(card.date) || typeof card.live !== 'boolean') return false;
+  if (card.kind !== 'tiles' || !isIsoDate(card.date) || typeof card.live !== 'boolean')
+    return false;
   card.crowdLevel = level(card.crowdLevel, true);
   card.avgWaitMinutes = number(card.avgWaitMinutes);
   card.peakWaitMinutes = number(card.peakWaitMinutes);
@@ -543,7 +544,7 @@ function isDaysOrTiles(card: AssistantCard): boolean {
 /** Shows and restaurants: a row with a bad link or name refuses the card, a bad value is dropped. */
 function isShowsOrRestaurants(card: AssistantCard): boolean {
   if (card.kind === 'shows') {
-    if (!DAY.test(card.date) || !Array.isArray(card.shows) || card.shows.length > MAX_ROWS) {
+    if (!isIsoDate(card.date) || !Array.isArray(card.shows) || card.shows.length > MAX_ROWS) {
       return false;
     }
     for (const show of card.shows) {
@@ -600,7 +601,7 @@ function isPostsOrTerms(card: AssistantCard): boolean {
     if (!Array.isArray(posts) || posts.length === 0 || posts.length > MAX_POST_CARD) return false;
     for (const post of posts) {
       const url = sitePath(post?.url);
-      if (!filled(post?.title, 200) || !url || !DAY.test(post.date)) return false;
+      if (!filled(post?.title, 200) || !url || !isIsoDate(post.date)) return false;
       post.url = url;
       post.updated = post.updated === true;
       post.news = post.news === true;
@@ -703,7 +704,7 @@ function readTrip(value: unknown): AssistantAction | null {
   const seen = new Set<string>();
   const days: Array<{ park: AssistantPlannerPark; date: string }> = [];
   for (const day of value) {
-    if (!isPark(day?.park) || typeof day.date !== 'string' || !DAY.test(day.date)) continue;
+    if (!isPark(day?.park) || typeof day.date !== 'string' || !isIsoDate(day.date)) continue;
     const key = `${day.park.slug}@${day.date}`;
     if (seen.has(key)) continue;
     seen.add(key);
@@ -731,21 +732,21 @@ function readIdeaCard(
   card: Record<string, unknown>
 ): Extract<AssistantCard, { kind: 'idea' }> | null {
   const { region } = card;
-  if (typeof region !== 'string' || !SLUG.test(region) || !liveTripRegion(region)) return null;
+  if (typeof region !== 'string' || !isStrictSlug(region) || !liveTripRegion(region)) return null;
   const raw = (card.idea ?? {}) as Record<string, unknown>;
   const kind = raw.kind as PlanIdea['kind'];
   if (!PLAN_IDEA_KINDS.includes(kind)) return null;
   if (typeof raw.query !== 'string' || !TRIP_QUERY.test(raw.query)) return null;
   const savedMinutes = number(raw.savedMinutes);
   if (savedMinutes === null) return null;
-  const slug = (v: unknown) => (typeof v === 'string' && SLUG.test(v) ? v : undefined);
-  const day = (v: unknown) => (typeof v === 'string' && DAY.test(v) ? v : undefined);
+  const slug = (v: unknown) => (typeof v === 'string' && isStrictSlug(v) ? v : undefined);
+  const day = (v: unknown) => (typeof v === 'string' && isIsoDate(v) ? v : undefined);
   const park = slug(raw.park);
   const from = day(raw.from);
   const to = day(raw.to);
   const swapWith = slug(raw.with);
   const places = Array.isArray(raw.places)
-    ? raw.places.filter((p): p is string => typeof p === 'string' && SLUG.test(p)).slice(0, 8)
+    ? raw.places.filter((p): p is string => typeof p === 'string' && isStrictSlug(p)).slice(0, 8)
     : [];
   return {
     kind: 'idea',
@@ -771,7 +772,7 @@ function readIdeaCard(
  */
 function readTripSet(action: Record<string, unknown>): AssistantAction | null {
   const { region, query } = action;
-  if (typeof region !== 'string' || !SLUG.test(region) || !liveTripRegion(region)) return null;
+  if (typeof region !== 'string' || !isStrictSlug(region) || !liveTripRegion(region)) return null;
   if (typeof query !== 'string' || !TRIP_QUERY.test(query)) return null;
   const change = (Array.isArray(action.change) ? action.change : []).filter(
     (kind): kind is TripChangeKind => typeof kind === 'string' && TRIP_CHANGES.has(kind)
@@ -785,7 +786,9 @@ function readInterviewState(action: Record<string, unknown>): AssistantAction | 
   if (action.interview !== null && !interview) return null;
   const party = cleanParty(action.party);
   const region =
-    typeof action.region === 'string' && SLUG.test(action.region) && liveTripRegion(action.region)
+    typeof action.region === 'string' &&
+    isStrictSlug(action.region) &&
+    liveTripRegion(action.region)
       ? action.region
       : undefined;
   return {
@@ -813,7 +816,7 @@ function readPlannerEdit(action: Record<string, unknown>): AssistantAction | nul
   if (!isPark(park)) return null;
   if (action.type === 'planner_reserve_days') {
     const dates = Array.isArray(action.dates)
-      ? [...new Set(action.dates.filter((d) => typeof d === 'string' && DAY.test(d)))]
+      ? [...new Set(action.dates.filter((d) => typeof d === 'string' && isIsoDate(d)))]
       : [];
     return dates.length > 0
       ? {
@@ -824,7 +827,7 @@ function readPlannerEdit(action: Record<string, unknown>): AssistantAction | nul
         }
       : null;
   }
-  if (typeof date !== 'string' || !DAY.test(date)) return null;
+  if (typeof date !== 'string' || !isIsoDate(date)) return null;
   const day = { park, date };
   switch (action.type) {
     case 'planner_remove': {
@@ -873,7 +876,7 @@ function readPlannerEdit(action: Record<string, unknown>): AssistantAction | nul
     }
     case 'planner_add_show':
       return typeof action.showSlug === 'string' &&
-        SLUG.test(action.showSlug) &&
+        isStrictSlug(action.showSlug) &&
         typeof action.start === 'string' &&
         CLOCK.test(action.start)
         ? { type: 'planner_add_show', ...day, showSlug: action.showSlug, start: action.start }
@@ -899,7 +902,8 @@ function readPlannerEdit(action: Record<string, unknown>): AssistantAction | nul
 
 const FAVORITE_TYPES = new Set(['park', 'attraction', 'show', 'restaurant']);
 
-const isSlug = (value: unknown): value is string => typeof value === 'string' && SLUG.test(value);
+const isSlug = (value: unknown): value is string =>
+  typeof value === 'string' && isStrictSlug(value);
 const isName = (value: unknown): value is string =>
   typeof value === 'string' && value.trim().length > 0 && value.length <= 120;
 
@@ -994,22 +998,22 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
       return isCard(action.card) ? action : null;
     }
     case 'planner_open_day':
-      return isPark(action.park) && DAY.test(action.date) ? action : null;
+      return isPark(action.park) && isIsoDate(action.date) ? action : null;
     case 'planner_optimize':
-      return isPark(action.park) && DAY.test(action.date) && OPTIMIZE_MODES.has(action.mode)
+      return isPark(action.park) && isIsoDate(action.date) && OPTIMIZE_MODES.has(action.mode)
         ? action
         : null;
     case 'planner_add_rides':
       return isPark(action.park) &&
-        DAY.test(action.date) &&
+        isIsoDate(action.date) &&
         Array.isArray(action.rides) &&
         action.rides.length <= 10 &&
-        action.rides.every((ride) => SLUG.test(ride.slug) && short(ride.name))
+        action.rides.every((ride) => isStrictSlug(ride.slug) && short(ride.name))
         ? action
         : null;
     case 'planner_add_block':
       return isPark(action.park) &&
-        DAY.test(action.date) &&
+        isIsoDate(action.date) &&
         short(action.block?.label, 40) &&
         (PLANNER_BLOCK_ICONS as readonly string[]).includes(action.block.icon) &&
         isWhole(action.block.durationMinutes, 10, 240) &&
@@ -1026,7 +1030,7 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
       return readTripSet(action as unknown as Record<string, unknown>);
     case 'trip_undo':
       return typeof action.region === 'string' &&
-        SLUG.test(action.region) &&
+        isStrictSlug(action.region) &&
         liveTripRegion(action.region)
         ? { type: 'trip_undo', region: action.region }
         : null;

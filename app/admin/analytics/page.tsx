@@ -16,6 +16,7 @@ import {
   Tile,
   crowdChipClass,
 } from '../_ui/primitives';
+import { formatCount } from '@/lib/admin/format-number';
 
 const TREND_ICON: Record<string, string> = { rising: '▲', falling: '▼', stable: '·' };
 const TREND_COLOR: Record<string, string> = {
@@ -43,11 +44,8 @@ export default function AnalyticsPage() {
           <StatTile label="Offene Bahnen" value={c.openAttractions} sub={`von ${c.attractions}`} />
           <StatTile label="Shows" value={c.shows} />
           <StatTile label="Restaurants" value={c.restaurants} />
-          <StatTile
-            label="Wartezeit gesamt"
-            value={`${c.totalWaitTime.toLocaleString('de-DE')}'`}
-          />
-          <StatTile label="Wartezeit-Zeilen" value={c.queueDataRecords.toLocaleString('de-DE')} />
+          <StatTile label="Wartezeit gesamt" value={`${formatCount(c.totalWaitTime)}'`} />
+          <StatTile label="Wartezeit-Zeilen" value={formatCount(c.queueDataRecords)} />
         </PanelBody>
       </Panel>
 

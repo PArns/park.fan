@@ -18,13 +18,7 @@ import {
   FEED_STALE_MINUTES,
   WEATHER_DAYS_AHEAD,
 } from '../lib/admin/health.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const NOW = Date.parse('2026-11-03T11:00:00Z');
 const ok = (data) => ({ state: 'ok', data });
@@ -498,4 +492,4 @@ test('a loading source keeps its row and raises nothing', () => {
   assert.equal(health.problems.length, 0);
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

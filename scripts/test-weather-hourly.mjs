@@ -12,6 +12,7 @@
 
 import { hourlyDayPoints } from '../lib/api/weather-hourly.ts';
 import { hoursOf } from '../lib/utils/weather-chart-axis.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const hour = (time, extra = {}) => ({
   time,
@@ -167,25 +168,4 @@ test(
   '2026-11-28T14:00'
 );
 
-let passed = 0;
-let failed = 0;
-for (const testCase of testCases) {
-  let result;
-  const expected = JSON.stringify(testCase.expected);
-  try {
-    result = JSON.stringify(testCase.actual());
-  } catch (error) {
-    result = `THREW: ${error.message}`;
-  }
-  if (result === expected) {
-    passed++;
-  } else {
-    console.log(`FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${expected}`);
-    console.log(`   Got:      ${result}`);
-    failed++;
-  }
-}
-
-console.log(`\nResults: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(testCases, { json: true, quiet: true });

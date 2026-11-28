@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import type { PlanDay } from '@/lib/api/types';
 import { rememberPlanDayIds } from '@/lib/planner/entity-ids';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 interface UsePlanDayParams {
   continent: string;
@@ -53,7 +54,7 @@ export function planDayQuery({
     queryFn: async (): Promise<PlanDay | null> => {
       const query = date ? `?date=${encodeURIComponent(date)}` : '';
       const res = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/plan/day${query}`,
+        parkRelayUrl({ continent, country, city, parkSlug }, `/plan/day${query}`),
         { cache: 'no-store' }
       );
       if (res.status === 404) return null;

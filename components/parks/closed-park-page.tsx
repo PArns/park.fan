@@ -1,6 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { Ban } from 'lucide-react';
-import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { GlassCard } from '@/components/common/glass-card';
@@ -8,12 +6,11 @@ import { PageContainer } from '@/components/common/page-container';
 import { ShareButtons } from '@/components/common/share-buttons';
 import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ClosedRidesList } from '@/components/parks/closed-rides-list';
-import { GlassNotice } from '@/components/parks/glass-notice';
+import { ClosedNotice } from '@/components/parks/closed-notice';
 import { ParkBackground } from '@/components/parks/park-background';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { BreadcrumbStructuredData, ParkStructuredData } from '@/components/seo/structured-data';
 import { getMediaAltBySrc } from '@/lib/media/text';
-import { closedRidePost, closedRideSource, formatClosedOn } from '@/lib/parks/closed-ride';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { stripNewPrefix } from '@/lib/utils';
 import type { Breadcrumb, ParkWithAttractions } from '@/lib/api/types';
@@ -50,13 +47,8 @@ export async function ClosedParkPage({
 }: ClosedParkPageProps) {
   const t = await getTranslations('attractions.retired');
   const parkName = stripNewPrefix(park.name);
-  const post = closedRidePost(park.retiredReason, locale);
-  const source = post ? null : closedRideSource(park.retiredReason);
   const backgroundImage = getParkBackgroundImage(park);
   const parkPath = `/parks/${geoPath}/${park.slug}`;
-
-  const linkClass =
-    'text-primary hover:text-primary/80 font-medium underline decoration-dotted underline-offset-4';
 
   return (
     <>
@@ -101,43 +93,11 @@ export async function ClosedParkPage({
             </GlassCard>
           </div>
 
-          <GlassNotice
-            icon={Ban}
-            title={t('noticeTitle', { date: formatClosedOn(park.retiredAt, locale) })}
-            tintClassName="bg-red-500/5 dark:bg-red-500/10"
-            iconClassName="text-red-600 dark:text-red-400"
-            className="mb-8"
-          >
-            {post && (
-              <span className="block">
-                {t.rich('noticePost', {
-                  title: post.title,
-                  link: (chunks) => (
-                    <Link href={post.href as '/'} className={linkClass}>
-                      {chunks}
-                    </Link>
-                  ),
-                })}
-              </span>
-            )}
-            {source && (
-              <span className="block">
-                {t.rich('noticeSource', {
-                  host: source.host,
-                  link: (chunks) => (
-                    <a
-                      href={source.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={linkClass}
-                    >
-                      {chunks}
-                    </a>
-                  ),
-                })}
-              </span>
-            )}
-          </GlassNotice>
+          <ClosedNotice
+            retiredAt={park.retiredAt}
+            retiredReason={park.retiredReason}
+            locale={locale}
+          />
 
           <ClosedRidesList
             rides={park.closedAttractions}

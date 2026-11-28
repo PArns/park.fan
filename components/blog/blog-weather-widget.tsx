@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { GlassCard } from '@/components/common/glass-card';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';
@@ -7,6 +6,7 @@ import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 import { BlogWidgetLabel } from '@/components/blog/blog-widget-label';
+import { BlogWidgetParkNotFound } from '@/components/blog/blog-widget-park-not-found';
 
 /** The nowcast is a seed the card's own poll replaces, so it may not hold the post's render long. */
 const NOWCAST_SEED_TIMEOUT_MS = 2000;
@@ -31,11 +31,7 @@ export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) 
   const geo = park ? parkGeoPath(park) : null;
 
   if (!park || !geo) {
-    return (
-      <GlassCard variant="light" className="not-prose clear-both my-8">
-        <p className="text-muted-foreground text-sm">{tBlog('widget.parkNotFound', { slug })}</p>
-      </GlassCard>
-    );
+    return <BlogWidgetParkNotFound slug={slug} />;
   }
 
   const [full, nowcast] = await Promise.all([

@@ -429,16 +429,7 @@ function ApproveDialog({ request, onClose }: { request: KeyRequestRecord; onClos
                 Mal angezeigt. Hier erscheint er in der Liste der Keys.
               </DialogDescription>
             </DialogHeader>
-            <DialogFooter>
-              {mail && (
-                <Button variant="outline" asChild>
-                  <a href={mail}>
-                    <Mail className="h-4 w-4" /> Benachrichtigung mailen
-                  </a>
-                </Button>
-              )}
-              <Button onClick={onClose}>Fertig</Button>
-            </DialogFooter>
+            <DecidedFooter mail={mail} onClose={onClose} />
           </>
         ) : (
           <form onSubmit={(event) => void approve(event)} className="grid gap-4">
@@ -578,16 +569,7 @@ function RejectDialog({ request, onClose }: { request: KeyRequestRecord; onClose
                 Der Entwickler sieht die Entscheidung und die Begründung im Dashboard.
               </DialogDescription>
             </DialogHeader>
-            <DialogFooter>
-              {mail && (
-                <Button variant="outline" asChild>
-                  <a href={mail}>
-                    <Mail className="h-4 w-4" /> Benachrichtigung mailen
-                  </a>
-                </Button>
-              )}
-              <Button onClick={onClose}>Fertig</Button>
-            </DialogFooter>
+            <DecidedFooter mail={mail} onClose={onClose} />
           </>
         ) : (
           <form onSubmit={(event) => void reject(event)} className="grid gap-4">
@@ -621,5 +603,27 @@ function RejectDialog({ request, onClose }: { request: KeyRequestRecord; onClose
         )}
       </DialogContent>
     </Dialog>
+  );
+}
+
+/** The foot of a decided request: the mail to the developer where there is an address, and done. */
+function DecidedFooter({
+  mail,
+  onClose,
+}: {
+  mail: string | null | undefined;
+  onClose: () => void;
+}) {
+  return (
+    <DialogFooter>
+      {mail && (
+        <Button variant="outline" asChild>
+          <a href={mail}>
+            <Mail className="h-4 w-4" /> Benachrichtigung mailen
+          </a>
+        </Button>
+      )}
+      <Button onClick={onClose}>Fertig</Button>
+    </DialogFooter>
   );
 }

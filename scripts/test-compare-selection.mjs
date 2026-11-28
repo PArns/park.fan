@@ -12,13 +12,7 @@ import {
   parseCompareParam,
   serializeCompare,
 } from '../lib/compare/selection.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const park = (continent, country, city, parkSlug) => ({
   slug: `${continent}/${country}/${city}/${parkSlug}`,
@@ -82,4 +76,4 @@ test('what is written is read back as the same parks', () => {
   ]);
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

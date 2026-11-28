@@ -11,13 +11,11 @@ import { CalendarDayTile } from './calendar-day-tile';
 import { useTranslations, useLocale } from 'next-intl';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { DayWeather } from '@/components/common/day-weather';
-import { format, parseISO } from 'date-fns';
-import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
-import { formatHoursRange } from '@/lib/utils/intl-format';
+import { formatHoursRange, formatIsoDay } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 
 /** Props of one crowd-calendar day cell. */
@@ -111,12 +109,9 @@ function ParkCalendarDayComponent({
   const seasonLabel = useSeasonLabel();
   const locale = useLocale();
 
-  const dateLocale = dateFnsLocale(locale);
-
-  const dayDate = parseISO(day.date);
-  const dayOfWeek = format(dayDate, 'EEE', { locale: dateLocale });
-  const dayOfMonth = format(dayDate, 'd', { locale: dateLocale });
-  const month = format(dayDate, 'MMM', { locale: dateLocale });
+  const dayOfWeek = formatIsoDay(day.date, locale, { weekday: 'short' });
+  const dayOfMonth = formatIsoDay(day.date, locale, { day: 'numeric' });
+  const month = formatIsoDay(day.date, locale, { month: 'short' });
 
   const isClosed = day.status === 'CLOSED';
   const isUnknown = day.status === 'UNKNOWN';

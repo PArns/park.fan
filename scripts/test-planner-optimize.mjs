@@ -26,18 +26,7 @@ import {
   wishesWithRides,
 } from '../lib/planner/optimize-remote.ts';
 import { fitChoiceAll, toggleWish } from '../lib/planner/fit.ts';
-
-let passed = 0;
-const failures = [];
-function check(name, ok, detail = '') {
-  if (ok) {
-    passed++;
-    console.log(`✅ ${name}`);
-  } else {
-    failures.push(name);
-    console.log(`❌ ${name}${detail ? ` — ${detail}` : ''}`);
-  }
-}
+import { checkThat, finishChecks } from './lib/run-cases.mjs';
 
 function ride(slug, options = {}) {
   const hours = [];
@@ -89,21 +78,21 @@ const grid = (payload) => buildDayGrid(payload.context.openHour, payload.context
     ride('small'),
   ]);
   const entries = [entry('small-1', 'small', 10 * 60)];
-  check(
+  checkThat(
     'ohne Angaben zur Gruppe kommen alle Headliner infrage',
     headlinersToAdd(payload, entries, undefined).length === 3
   );
   const withChild = headlinersToAdd(payload, entries, { riderHeightCm: 120, avoidWet: true });
-  check(
+  checkThat(
     'zu klein und nass fallen nach dem Filter raus',
     withChild.length === 1 && withChild[0].attractionSlug === 'big-3',
     withChild.map((r) => r.attractionSlug).join(', ')
   );
-  check(
+  checkThat(
     'und die Übersprungenen werden gezählt',
     headlinersSkipped(payload, entries, { riderHeightCm: 120, avoidWet: true }) === 2
   );
-  check(
+  checkThat(
     'ein Headliner, der schon im Tag ist, wird nicht noch einmal angeboten',
     headlinersToAdd(payload, [entry('b', 'big-3', 600)], undefined).every(
       (r) => r.attractionSlug !== 'big-3'
@@ -116,14 +105,14 @@ const grid = (payload) => buildDayGrid(payload.context.openHour, payload.context
   const unread = day([ride('a'), ride('b')], {
     liveWaitTimes: { available: false, reason: 'app-only' },
   });
-  check(
+  checkThat(
     'ein Park ohne lesbare Wartezeiten wird nicht optimiert',
     !canOptimize(unread, grid(unread))
   );
   const readable = day([ride('a'), ride('b')]);
-  check('ein Park mit Wartezeiten schon', canOptimize(readable, grid(readable)));
-  check('ohne Achse nicht', !canOptimize(readable, null));
-  check('ohne Bahnen nicht', !canOptimize(day([]), grid(day([]))));
+  checkThat('ein Park mit Wartezeiten schon', canOptimize(readable, grid(readable)));
+  checkThat('ohne Achse nicht', !canOptimize(readable, null));
+  checkThat('ohne Bahnen nicht', !canOptimize(day([]), grid(day([]))));
 }
 
 // ── What a press may move ───────────────────────────────────────────────────
@@ -149,13 +138,13 @@ const grid = (payload) => buildDayGrid(payload.context.openHour, payload.context
       startMinute: 780,
     },
   ];
-  check(
+  checkThat(
     'Wartung, Abgehaktes und freie Blöcke sind nicht verschiebbar',
     movableEntries(entries, undefined, payload)
       .map((e) => e.id)
       .join(',') === 'a-1,b-1'
   );
-  check(
+  checkThat(
     'eine Bahn, deren Zeit schon läuft, auch nicht',
     movableEntries(entries, { phase: 'today', nowMinute: 11 * 60 + 5 }, payload)
       .map((e) => e.id)
@@ -202,25 +191,25 @@ const ok = (body) => new Response(JSON.stringify(body), { status: 200 });
       })
   );
   const body = sent[0]?.body ?? {};
-  check(
+  checkThat(
     'die Anfrage geht an das Relais des Parks',
     sent[0]?.url === '/api/parks/europe/germany/bruehl/phantasialand/plan/optimize' &&
       sent[0]?.init?.method === 'POST',
     sent[0]?.url
   );
-  check('die Antwort kommt durch', result?.status === 'unchanged');
-  check(
+  checkThat('die Antwort kommt durch', result?.status === 'unchanged');
+  checkThat(
     'der Tag geht ohne den veralteten Stundenspiegel',
     body.entries?.length === 1 && !('hour' in body.entries[0]),
     JSON.stringify(body.entries)
   );
-  check(
+  checkThat(
     'die Wahl geht als Listen',
     JSON.stringify(body.choice) ===
       JSON.stringify({ dropped: ['e:a-1'], droppedBlocks: [], shortBlocks: [], priority: [] })
   );
-  check('ein Tag in der Zukunft schickt keine Uhrzeit', !('nowMinute' in body));
-  check(
+  checkThat('ein Tag in der Zukunft schickt keine Uhrzeit', !('nowMinute' in body));
+  checkThat(
     'und alles andere wie gefragt',
     body.mode === 'fit' && body.date === '2099-07-01' && body.add?.[0] === 'taron' && body.levers
   );
@@ -233,7 +222,7 @@ const ok = (body) => new Response(JSON.stringify(body), { status: 200 });
     () => requestOptimize({ ...target, date: today }, { mode: 'day', entries: [] })
   );
   const minute = sent[0]?.body?.nowMinute;
-  check(
+  checkThat(
     'heute geht die Minute des Parks mit',
     Number.isInteger(minute) && minute >= 0 && minute < 1440,
     String(minute)
@@ -242,7 +231,7 @@ const ok = (body) => new Response(JSON.stringify(body), { status: 200 });
     () => ok({ status: 'unchanged' }),
     () => requestOptimize({ ...target, date: today }, { mode: 'day', entries: [], nowMinute: 600 })
   );
-  check('eine gehaltene Minute geht so mit', pinned[0]?.body?.nowMinute === 600);
+  checkThat('eine gehaltene Minute geht so mit', pinned[0]?.body?.nowMinute === 600);
 }
 
 {
@@ -250,7 +239,7 @@ const ok = (body) => new Response(JSON.stringify(body), { status: 200 });
     () => new Response('{}', { status: 503 }),
     () => requestOptimize(target, { mode: 'day', entries: [] })
   );
-  check(
+  checkThat(
     'eine Fehlerantwort wird ein OptimizeError mit ihrem Status',
     result instanceof OptimizeError && result.status === 503
   );
@@ -260,7 +249,7 @@ const ok = (body) => new Response(JSON.stringify(body), { status: 200 });
     },
     () => requestOptimize(target, { mode: 'day', entries: [] })
   );
-  check('ohne Netz Status 0', offline instanceof OptimizeError && offline.status === 0);
+  checkThat('ohne Netz Status 0', offline instanceof OptimizeError && offline.status === 0);
 }
 
 {
@@ -282,11 +271,11 @@ const ok = (body) => new Response(JSON.stringify(body), { status: 200 });
       }),
     () => requestOptimize(target, { mode: 'headliners', entries: [] })
   );
-  check(
+  checkThat(
     'ein Stopp ohne entryId ist eine neue Bahn, mit null wie im Typ',
     result.plan.stops[0].entryId === null && result.plan.stops[0].waitMinutes === null
   );
-  check('fehlende Felder werden null', result.before === null && result.fit === null);
+  checkThat('fehlende Felder werden null', result.before === null && result.fit === null);
 }
 
 // ── The walking a press saves ───────────────────────────────────────────────
@@ -299,8 +288,8 @@ const ok = (body) => new Response(JSON.stringify(body), { status: 200 });
     clashes: 0,
     ...(walkMinutes !== undefined && { walkMinutes }),
   });
-  check('saved walking is before minus after', walkSaved(score(30), score(18)) === 12);
-  check(
+  checkThat('saved walking is before minus after', walkSaved(score(30), score(18)) === 12);
+  checkThat(
     'a score without walking saves none, never NaN',
     walkSaved(score(undefined), score(18)) === 0 && walkSaved(score(30), score(undefined)) === 0
   );
@@ -313,18 +302,18 @@ const ok = (body) => new Response(JSON.stringify(body), { status: 200 });
     custom: { label, icon: 'food', durationMinutes: 60 },
     startMinute: 780,
   });
-  check(
+  checkThat(
     'ein neuer Name für einen Block ist keine neue Frage',
     optimizeKeyOf([block('Essen')]) === optimizeKeyOf([block('Mittag')])
   );
-  check(
+  checkThat(
     'eine neue Länge schon',
     optimizeKeyOf([block('Essen')]) !==
       optimizeKeyOf([
         { ...block('Essen'), custom: { ...block('Essen').custom, durationMinutes: 30 } },
       ])
   );
-  check(
+  checkThat(
     'ein Häkchen auch',
     optimizeKeyOf([entry('a', 'a', 600)]) !== optimizeKeyOf([entry('a', 'a', 600, { done: true })])
   );
@@ -353,14 +342,10 @@ const ok = (body) => new Response(JSON.stringify(body), { status: 200 });
     ],
     payload
   );
-  check(
+  checkThat(
     'die Wünsche bekommen ihre Zeile aus dem Tag zurück',
     joined[0].ride?.dayPeak === 35 && joined[1].ride === null
   );
 }
 
-console.log(`\n${passed}/${passed + failures.length} bestanden`);
-if (failures.length > 0) {
-  console.log(failures.map((f) => `  · ${f}`).join('\n'));
-  process.exit(1);
-}
+finishChecks();

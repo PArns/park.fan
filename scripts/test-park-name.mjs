@@ -7,13 +7,7 @@
  */
 import assert from 'node:assert/strict';
 import { nameWithAbbreviations } from '../lib/utils.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 test('one abbreviation follows the name in brackets', () => {
   assert.equal(nameWithAbbreviations('Europa-Park', ['EP']), 'Europa-Park (EP)');
@@ -31,4 +25,4 @@ test('a park without any keeps its bare name', () => {
   assert.equal(nameWithAbbreviations('Phantasialand', []), 'Phantasialand');
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

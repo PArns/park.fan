@@ -11,6 +11,17 @@ export function isSlug(value: string): boolean {
   return GEO_SLUG_RE.test(value);
 }
 
+const STRICT_SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+/**
+ * True when `value` is a slug as the site writes its own: words of lowercase alphanumerics joined
+ * by single dashes, none at either end. Stricter than {@link isSlug}, which only rules out what
+ * reads as a path.
+ */
+export function isStrictSlug(value: string): boolean {
+  return STRICT_SLUG_RE.test(value);
+}
+
 /**
  * True when a `/[locale]/...` URL can possibly resolve: a locale we serve and slug-shaped geo
  * segments (pass only the locale on routes without geo params). For `generateMetadata`, which must

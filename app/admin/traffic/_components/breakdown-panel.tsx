@@ -19,7 +19,8 @@ import type {
 } from '@/lib/api/admin-site-analytics';
 import { BarList, type BarRow } from '../../_ui/charts';
 import { PageLinks, PublicLink } from '../../_ui/row-links';
-import { ErrorState, Panel, PanelBody, PanelHeader, SkeletonRows } from '../../_ui/primitives';
+import { Panel, PanelBody, PanelHeader } from '../../_ui/primitives';
+import { RankedPanelState } from './report-pending';
 import {
   useTrafficData,
   type TrafficFilterActions,
@@ -126,31 +127,25 @@ export function BreakdownPanel({
           </span>
         }
       />
-      {!data && error ? (
-        <ErrorState message={`${title}: ${error.message}`} onRetry={() => void refetch()} />
-      ) : !data ? (
-        <SkeletonRows rows={5} />
-      ) : data.items.length === 0 ? (
-        <PanelBody>
-          <p className="text-muted-foreground py-6 text-center text-sm">Noch keine Daten</p>
-        </PanelBody>
-      ) : (
-        <PanelBody>
-          <BarList
-            rows={data.items.map((item) => breakdownRow(dim, item, filters))}
-            limit={limit}
-            unit={unit}
-          />
-          {dim === 'referrer' && withoutReferrer > 0 && (
-            <p className="text-muted-foreground mt-3 text-[11px]">
-              Ohne Herkunft (direkt, aus der eigenen Seite oder darunter):{' '}
-              {formatCount(withoutReferrer)} Besuche (
-              {formatShare(data.total.views > 0 ? withoutReferrer / data.total.views : 0)})
-            </p>
-          )}
-          <HourlyNotice data={data} />
-        </PanelBody>
-      )}
+      <RankedPanelState title={title} data={data} error={error} onRetry={() => void refetch()}>
+        {(data) => (
+          <PanelBody>
+            <BarList
+              rows={data.items.map((item) => breakdownRow(dim, item, filters))}
+              limit={limit}
+              unit={unit}
+            />
+            {dim === 'referrer' && withoutReferrer > 0 && (
+              <p className="text-muted-foreground mt-3 text-[11px]">
+                Ohne Herkunft (direkt, aus der eigenen Seite oder darunter):{' '}
+                {formatCount(withoutReferrer)} Besuche (
+                {formatShare(data.total.views > 0 ? withoutReferrer / data.total.views : 0)})
+              </p>
+            )}
+            <HourlyNotice data={data} />
+          </PanelBody>
+        )}
+      </RankedPanelState>
     </Panel>
   );
 }

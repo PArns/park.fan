@@ -38,18 +38,9 @@ import { getBlogMenu } from '../lib/navigation/blog-menu.ts';
 import { getNewsMenu } from '../lib/navigation/news-menu.ts';
 import { NEWS_ONLY_TAGS } from '../lib/blog/news-redirects.ts';
 import { newsRedirect } from '../lib/blog/news-redirects-rule.ts';
+import { attempt, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failures = 0;
-let checks = 0;
-function test(name, fn) {
-  checks++;
-  try {
-    fn();
-  } catch (error) {
-    failures++;
-    console.error(`✗ ${name}\n  ${error.message}`);
-  }
-}
+quietChecks();
 
 let newsSeen = 0;
 let articlesSeen = 0;
@@ -61,33 +52,33 @@ for (const locale of locales) {
   newsSeen += news.length;
   articlesSeen += articles.length;
 
-  test(`${locale}: the articles hold no news post`, () => {
+  attempt(`${locale}: the articles hold no news post`, () => {
     const leaked = articles.filter(isNewsPost).map((p) => p.slug);
     assert.deepEqual(leaked, []);
   });
 
-  test(`${locale}: the news holds nothing but news`, () => {
+  attempt(`${locale}: the news holds nothing but news`, () => {
     const leaked = news.filter((p) => !isNewsPost(p)).map((p) => p.slug);
     assert.deepEqual(leaked, []);
   });
 
-  test(`${locale}: articles and news together are every listed post, each once`, () => {
+  attempt(`${locale}: articles and news together are every listed post, each once`, () => {
     const keys = [...articles, ...news].map((p) => p.translationKey).sort();
     assert.deepEqual(keys, all.map((p) => p.translationKey).sort());
   });
 
-  test(`${locale}: every article lives under /blog, every news post under /news`, () => {
+  attempt(`${locale}: every article lives under /blog, every news post under /news`, () => {
     for (const post of articles) assert.match(postPath(post), /^\/blog\//, post.slug);
     for (const post of news) assert.match(postPath(post), /^\/news\//, post.slug);
   });
 
-  test(`${locale}: the category tree has no news branch`, () => {
+  attempt(`${locale}: the category tree has no news branch`, () => {
     const { flat } = buildCategoryTree(locale);
     const newsPaths = [...flat.keys()].filter((path) => isNewsCategory(path));
     assert.deepEqual(newsPaths, []);
   });
 
-  test(`${locale}: every tag archive counts articles only`, () => {
+  attempt(`${locale}: every tag archive counts articles only`, () => {
     for (const tag of listTags(locale)) {
       const onArticles = articles.filter((p) =>
         (p.frontmatter.tags ?? []).some((t) => normalizeTagSlug(t) === tag.slug)
@@ -96,7 +87,7 @@ for (const locale of locales) {
     }
   });
 
-  test(`${locale}: the news-only tags are the ones the proxy sends to /news`, () => {
+  attempt(`${locale}: the news-only tags are the ones the proxy sends to /news`, () => {
     const tagsOf = (posts) =>
       new Set(
         posts.flatMap((p) => (p.frontmatter.tags ?? []).map(normalizeTagSlug)).filter(Boolean)
@@ -112,7 +103,7 @@ for (const locale of locales) {
     }
   });
 
-  test(`${locale}: the blog menu lists articles and blog categories only`, () => {
+  attempt(`${locale}: the blog menu lists articles and blog categories only`, () => {
     const menu = getBlogMenu(locale);
     for (const post of menu.recent) assert.match(post.path, /^\/blog\//, post.path);
     assert.deepEqual(
@@ -121,7 +112,7 @@ for (const locale of locales) {
     );
   });
 
-  test(`${locale}: the blog menu lists the last-changed articles and prints that day`, () => {
+  attempt(`${locale}: the blog menu lists the last-changed articles and prints that day`, () => {
     const menu = getBlogMenu(locale);
     const expected = listArticlesByRecency(locale).slice(0, menu.recent.length);
     assert.deepEqual(
@@ -133,13 +124,13 @@ for (const locale of locales) {
     );
   });
 
-  test(`${locale}: news runs newest first by date and time`, () => {
+  attempt(`${locale}: news runs newest first by date and time`, () => {
     const stamps = news.map((p) => publishedAt(p.frontmatter));
     assert.deepEqual(stamps, [...stamps].sort().reverse());
     for (const post of news) assert.match(post.frontmatter.time ?? '', POST_TIME, post.slug);
   });
 
-  test(`${locale}: the news menu lists the newest news, newest first`, () => {
+  attempt(`${locale}: the news menu lists the newest news, newest first`, () => {
     const menu = getNewsMenu(locale);
     assert.equal(menu.total, news.length);
     assert.deepEqual(
@@ -149,15 +140,10 @@ for (const locale of locales) {
   });
 }
 
-test('the manifest has both kinds, or this test proves nothing', () => {
+attempt('the manifest has both kinds, or this test proves nothing', () => {
   assert.ok(newsSeen > 0, 'no news post in any locale');
   assert.ok(articlesSeen > 0, 'no article in any locale');
 });
 
-if (failures > 0) {
-  console.error(`\n${failures}/${checks} checks failed.`);
-  process.exit(1);
-}
-console.log(
-  `✓ ${checks} checks passed (${articlesSeen} article and ${newsSeen} news listings over ${locales.length} locales).`
-);
+console.log(`${articlesSeen} article and ${newsSeen} news listings over ${locales.length} locales`);
+finishChecks();

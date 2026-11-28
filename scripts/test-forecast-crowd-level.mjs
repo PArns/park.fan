@@ -10,13 +10,7 @@
  */
 import assert from 'node:assert/strict';
 import { forecastCrowdLevel, isClosedCalendarDay } from '../lib/utils/calendar-utils.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 console.log('forecastCrowdLevel');
 
@@ -68,4 +62,4 @@ test('reads both the status and the crowd level', () => {
   assert.equal(isClosedCalendarDay({ status: 'OPERATING', crowdLevel: 'low' }), false);
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

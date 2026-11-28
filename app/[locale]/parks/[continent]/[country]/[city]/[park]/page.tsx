@@ -9,8 +9,8 @@ import {
   buildAlternates,
   fitTitle,
 } from '@/lib/utils/metadata';
-import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
-import { notFound, permanentRedirect } from 'next/navigation';
+import { translateCountry, translateContinent, formatSlug } from '@/lib/i18n/helpers';
+import { notFound } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
 import { ClosedRidesList } from '@/components/parks/closed-rides-list';
@@ -68,6 +68,12 @@ import { ParkSimulationNotice } from '@/components/parks/park-simulation-notice'
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 import { PageViewBeacon } from '@/components/analytics/page-view-beacon';
+import { parkPagePath } from '@/lib/parks/paths';
+import {
+  redirectMalformedParkPath,
+  redirectRelocatedPark,
+  redirectRenamedPark,
+} from '@/lib/parks/park-route';
 
 interface ParkPageProps {
   params: Promise<{
@@ -141,7 +147,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   // A park that closed for good: the title and snippet say so instead of promising live waits.
   const closedCopy = isClosedPark(park) ? await closedParkCopy(park, locale as Locale) : null;
 
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
 
   const parkNameLower = parkName.toLowerCase();
@@ -228,7 +234,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       ogImageUrl,
       imageAlt: tImageAlt('park', { park: parkName }),
     }),
-    alternates: buildAlternates(locale, () => `/parks/${continent}/${country}/${city}/${parkSlug}`),
+    alternates: buildAlternates(locale, () => parkPagePath({ continent, country, city, parkSlug })),
   };
 }
 
@@ -253,10 +259,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // Check for malformed URLs first (e.g. /parks/europe/netherlands/efteling/villa-volta
   // where "efteling" is the park and "villa-volta" is an attraction). Redirect before
   // calling the API to avoid 404s on the backend.
-  const redirectUrl = await findParkPageRedirect(continent, country, city, parkSlug);
-  if (redirectUrl) {
-    permanentRedirect(`/${locale}${redirectUrl}`);
-  }
+  await redirectMalformedParkPath({ continent, country, city, parkSlug }, locale);
 
   // Best-days SEED: fired here but DELIBERATELY NOT awaited on the render's critical path — it is
   // consumed only inside <Suspense> boundaries below (the best-days section + the FAQ JSON-LD), so
@@ -311,10 +314,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
     // The park slug is stable across API geo re-slugs (bruhl → bruehl etc.).
     // If it exists under different geo segments, 308 to the canonical path so
     // Google transfers the old URL's signals instead of dropping a 404.
-    const relocatedUrl = await findRelocatedParkRedirect(continent, country, city, parkSlug);
-    if (relocatedUrl) {
-      permanentRedirect(`/${locale}${relocatedUrl}`);
-    }
+    await redirectRelocatedPark({ continent, country, city, parkSlug }, locale);
     notFound();
   }
 
@@ -322,10 +322,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // its slug and the API answered our request for the OLD path with a 301 that `fetch` followed
   // silently. Without this the park would render at two URLs with the stale one canonical, and
   // the redirect's ranking transfer would never reach the browser or Googlebot.
-  const renamedUrl = findRenamedParkRedirect(park, { continent, country, city, parkSlug });
-  if (renamedUrl) {
-    permanentRedirect(`/${locale}${renamedUrl}`);
-  }
+  redirectRenamedPark(park, { continent, country, city, parkSlug }, locale);
 
   // NOTE: bestDaysSeedPromise is intentionally NOT awaited here — see the comment where it's
   // created. It is passed to the <Suspense>-wrapped FAQ JSON-LD + best-days slot below so it
@@ -403,7 +400,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // Format names for breadcrumb - use actual names from park data (proper umlauts)
   const continentName = translateContinent(tGeo, continent, locale);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
 
   // Today's schedule is picked CLIENT-side inside <ParkTodayPanel> (from the browser clock in the
   // park's timezone) — the full day-stable park.schedule is handed down instead of a server-derived
@@ -488,7 +485,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         countryName={countryName}
         breadcrumbs={breadcrumbs}
         currentPage={parkCurrentPage}
-        pagePath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+        pagePath={parkPagePath({ continent, country, city, parkSlug })}
         // Today is this page's subject; the history and the outlook are the crowd calendar's.
         hideStats
         // The two chapters that belong to the PARK rather than to any one of its pages, handed in
@@ -536,7 +533,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               breadcrumbs={breadcrumbs}
               currentPage={{
                 name: parkCurrentPage,
-                url: `/parks/${continent}/${country}/${city}/${parkSlug}`,
+                url: parkPagePath({ continent, country, city, parkSlug }),
               }}
               locale={locale}
             />
@@ -619,7 +616,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           pushes „Heute im Park" down as little as it can. Inline, so whether it exists is settled
           before the first byte; nothing for any other park. */}
         <TripPlannerTile
-          park={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+          park={parkPagePath({ continent, country, city, parkSlug })}
           phone="row"
           className="mb-4"
         />
@@ -659,7 +656,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               country={country}
               city={city}
               parkSlug={parkSlug}
-              parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+              parkPath={parkPagePath({ continent, country, city, parkSlug })}
               renderedAtMs={seedNowMs}
               seasons={eventSeasonsNearToday(seasons, todayIso)}
             />
@@ -674,7 +671,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
                 carries none of it. Renders nothing for a park without one. */}
               <ClosedRidesList
                 rides={parkFull?.closedAttractions}
-                parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                parkPath={parkPagePath({ continent, country, city, parkSlug })}
                 locale={locale}
                 className="mt-8"
               />

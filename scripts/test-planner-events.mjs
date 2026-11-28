@@ -33,13 +33,7 @@ import {
 import { addCustomEntry } from '../lib/planner/actions.ts';
 import { parsePlannerPayload } from '../lib/planner/store.ts';
 import { EMPTY_PLANNER_STATE } from '../lib/planner/types.ts';
-
-let passed = 0;
-async function test(name, fn) {
-  await fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const PARK = '0b6f0d1c-6a49-4c38-9a2e-3f1d2b7c8e01';
 const RIDE = '1c7e2a3d-4b5f-4d6e-8f70-819a2b3c4d5e';
@@ -212,4 +206,4 @@ await test('a park named once goes into the plan, so a later visit still sends i
   assert.equal(read('not-a-uuid'), undefined);
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import nextConfig from '../next.config.ts';
 import { resolveHeader } from './lib/header-rules.mjs';
 
-const BASELINE = "object-src 'none'; base-uri 'self'";
+const BASELINE = "object-src 'none'; base-uri 'self'; frame-ancestors 'none'";
 const SVG = "default-src 'none'; style-src 'unsafe-inline'; sandbox";
 
 const rules = await nextConfig.headers();

@@ -2,16 +2,13 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { Droplets, ChevronLeft, ChevronRight, Info } from 'lucide-react';
-import { parseISO } from 'date-fns';
-import { format } from 'date-fns';
-import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { getWeatherConfig, getDayWeatherWarning } from '@/lib/utils/weather-utils';
 import { Temp, Precip } from '@/components/common/unit-display';
 import { HeatWarningBadge, isHeatWarning } from './heat-warning-badge';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { forecastOpeningByDate } from '@/lib/parks/forecast-opening-hours';
-import { formatHoursRange } from '@/lib/utils/intl-format';
+import { formatHoursRange, formatIsoDay } from '@/lib/utils/intl-format';
 import type { ScheduleItem, WeatherDay } from '@/lib/api/types';
 
 interface WeatherForecastStripProps {
@@ -40,7 +37,6 @@ export function WeatherForecastStrip({
   const t = useTranslations('parks.weather');
   const tParks = useTranslations('parks');
   const tCommon = useTranslations('common');
-  const dateLocale = dateFnsLocale(locale);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
@@ -147,8 +143,7 @@ export function WeatherForecastStrip({
         <div className="flex w-full min-w-max">
           {validForecast.map((day, i) => {
             const { icon: ForecastIcon, color } = getWeatherConfig(day.weatherCode);
-            const date = parseISO(day.date);
-            const dayLabel = format(date, 'EEE', { locale: dateLocale });
+            const dayLabel = formatIsoDay(day.date, locale, { weekday: 'short' });
             const precip = parseFloat(day.precipitationSum || '0');
             const tempMax = parseFloat(day.temperatureMax);
             const isLast = i === validForecast.length - 1;
@@ -175,7 +170,7 @@ export function WeatherForecastStrip({
                   {dayLabel}
                 </span>
                 <span className="text-muted-foreground/70 text-[9px] leading-none">
-                  {format(date, 'd.M.', { locale: dateLocale })}
+                  {formatIsoDay(day.date, locale, { day: 'numeric', month: 'numeric' })}
                 </span>
                 <ForecastIcon className={`h-4 w-4 ${color}`} />
                 <div className="flex flex-col items-center leading-none">

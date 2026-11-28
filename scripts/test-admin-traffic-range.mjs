@@ -26,13 +26,7 @@ import {
   rangeWindow,
   weekStart,
 } from '../lib/admin/traffic-range.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 // A Wednesday.
 const TODAY = '2026-10-28';
@@ -197,4 +191,4 @@ test('a period reads on an axis and in a table in its own step', () => {
   assert.equal(formatPeriodLong('2026-10-01', 'month'), 'Oktober 2026');
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

@@ -26,13 +26,7 @@ import {
   osmElementUrl,
 } from '../lib/admin/facilities.ts';
 import { activeNavItem, visibleGroups } from '../app/admin/_app/nav.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const counts = (toilets, drinkingWater, sights) => ({
   toilets,
@@ -255,4 +249,4 @@ test('the page sits under Kuratieren, for editors', () => {
   assert.ok(!hrefs('viewer').includes('/admin/facilities'));
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

@@ -39,13 +39,10 @@
  *     BASE=http://localhost:3000 pnpm check:admin-login-form
  */
 
-import { existsSync } from 'node:fs';
 import { chromium } from 'playwright';
+import { LAUNCH } from './lib/browser.mjs';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
-/** Same rule as scripts/check-card-framing.mjs: prefer a Chromium the image already ships. */
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
-const LAUNCH = existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {};
 
 const results = [];
 const check = (name, ok, detail = '') => {

@@ -13,21 +13,7 @@ import { withParkCardImage, withRideCardImage } from '../lib/media/card-images.t
 import { enrichParksWithImages, getCardImageMap } from '../lib/utils/park-assets.ts';
 import { tripPlannerPhotos } from '../lib/trip-regions/plan-photos.ts';
 import { rolesToYield, uniqueClaims } from '../lib/admin/media-unique-roles.ts';
-
-let passed = 0;
-let failed = 0;
-
-function check(name, actual, expected) {
-  const a = JSON.stringify(actual);
-  const e = JSON.stringify(expected);
-  if (a === e) {
-    passed++;
-    console.log(`  ✓ ${name}`);
-  } else {
-    failed++;
-    console.log(`  ✗ ${name}\n      expected ${e}\n      got      ${a}`);
-  }
-}
+import { check, finishChecks } from './lib/run-cases.mjs';
 
 const PARIS = 'europe/france/paris/disneyland-park';
 const ANAHEIM = 'north-america/united-states/anaheim/disneyland-park';
@@ -251,5 +237,4 @@ check(
   ['park-background']
 );
 
-console.log(`\n📊 ${passed} passed, ${failed} failed\n`);
-if (failed > 0) process.exit(1);
+finishChecks();

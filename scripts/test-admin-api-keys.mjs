@@ -19,6 +19,7 @@ import {
   DEFAULT_ROTATION_GRACE_HOURS,
   usedMonths,
 } from '../lib/admin/api-keys.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 // 11 November 2026, 10:00 in Berlin (UTC+1).
 const NOW = Date.parse('2026-11-11T09:00:00Z');
@@ -249,27 +250,4 @@ const testCases = [
   },
 ];
 
-let passed = 0;
-let failed = 0;
-
-for (const testCase of testCases) {
-  let result;
-  try {
-    result = testCase.actual();
-  } catch (error) {
-    result = `threw: ${error instanceof Error ? error.message : String(error)}`;
-  }
-  if (JSON.stringify(result) === JSON.stringify(testCase.expected)) {
-    passed++;
-    console.log(`  ✓ ${testCase.name}`);
-  } else {
-    failed++;
-    console.log(`  ✗ ${testCase.name}`);
-    console.log(`      expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`      actual:   ${JSON.stringify(result)}`);
-  }
-}
-
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-if (failed > 0) process.exit(1);
-console.log('🎉 All tests passed!');
+await runCases(testCases, { json: true });

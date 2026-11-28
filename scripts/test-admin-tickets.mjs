@@ -36,13 +36,7 @@ import {
   ticketUrlProblem,
   windowTableFor,
 } from '../lib/admin/tickets.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const DISNEY = ['magic-kingdom-park', 'epcot', 'disneys-hollywood-studios'];
 const DISNEY_WINDOWS = [1, 4, 5, 7, 8, 9, 10, 12, 13, 14].map((window, i) => ({
@@ -625,4 +619,4 @@ test('a product the table folded into the rest is unknown; one absent from a who
   assert.deepEqual(ticketClicks(product(), whole, null), { total: 0, links: [0] });
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

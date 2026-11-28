@@ -18,6 +18,8 @@ import {
   previousKeyValidUntil,
   type RotationGraceHours,
 } from '@/lib/developers/key-lifecycle';
+import { formatCount } from '@/lib/admin/format-number';
+import { isIsoDate } from '@/lib/utils/iso-date';
 
 export { DEFAULT_ROTATION_GRACE_HOURS, ROTATION_GRACE_HOURS, previousKeyValidUntil };
 export type { RotationGraceHours };
@@ -155,10 +157,10 @@ export function parseRequestsPerHour(text: string): number | null | undefined {
 export function formatHourlyUsage(
   key: Pick<DataApiKey, 'requestsPerHour' | 'requestsThisHour'>
 ): string {
-  const used = (key.requestsThisHour ?? 0).toLocaleString('de-DE');
+  const used = formatCount(key.requestsThisHour ?? 0);
   return key.requestsPerHour === null
     ? `${used} in dieser Stunde, ohne eigenes Limit`
-    : `${used} von ${key.requestsPerHour.toLocaleString('de-DE')} in dieser Stunde`;
+    : `${used} von ${formatCount(key.requestsPerHour)} in dieser Stunde`;
 }
 
 /**
@@ -166,7 +168,7 @@ export function formatHourlyUsage(
  * of them. „Heute“ is the UTC day the counters run on.
  */
 export function formatKeyUsage(stats: DataApiKeyStats): string {
-  const count = (value: number) => value.toLocaleString('de-DE');
+  const count = formatCount;
   const today = stats.days.at(-1)?.requests ?? 0;
   const total = keyDaysSum(stats, 'requests');
   const limited = keyDaysSum(stats, 'limited');
@@ -228,7 +230,7 @@ export function keyExpiryFrom(
 ): string | null | undefined {
   if (choice === 'never') return null;
   if (choice === 'date') {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return undefined;
+    if (!isIsoDate(day)) return undefined;
     const end = fromZonedTime(`${day}T23:59:59.999`, KEY_EXPIRY_TIME_ZONE);
     return Number.isFinite(end.getTime()) && end.getTime() > nowMs ? end.toISOString() : undefined;
   }

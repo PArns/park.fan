@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config';
+import { parkPagePath } from '@/lib/parks/paths';
 
 /**
  * Locale → localized URL segment for a park's „with kids" page, which prints the rides by the
@@ -30,5 +31,5 @@ export function parkKidsPath(
   parkSlug: string
 ): string {
   const segment = PARK_KIDS_SEGMENTS[locale as Locale] ?? PARK_KIDS_CANONICAL_SEGMENT;
-  return `/parks/${continent}/${country}/${city}/${parkSlug}/${segment}`;
+  return `${parkPagePath({ continent, country, city, parkSlug })}/${segment}`;
 }

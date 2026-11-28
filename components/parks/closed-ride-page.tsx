@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { Ban, Hourglass, MapPin } from 'lucide-react';
+import { Hourglass, MapPin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
 import { Badge } from '@/components/ui/badge';
@@ -10,7 +10,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { ShareButtons } from '@/components/common/share-buttons';
 import { AttractionBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-waits';
-import { GlassNotice } from '@/components/parks/glass-notice';
+import { ClosedNotice, CLOSED_NOTICE_LINK_CLASS } from '@/components/parks/closed-notice';
 import { ParkBackground } from '@/components/parks/park-background';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
@@ -24,12 +24,7 @@ import {
 } from '@/components/seo/structured-data';
 import { objectPositionForSrc } from '@/lib/media/focus';
 import { getMediaAltBySrc } from '@/lib/media/text';
-import {
-  closedRidePost,
-  closedRideSource,
-  formatClosedOn,
-  type ClosedRide,
-} from '@/lib/parks/closed-ride';
+import { type ClosedRide } from '@/lib/parks/closed-ride';
 import {
   getAttractionBackgroundImage,
   getCardObjectPosition,
@@ -37,6 +32,7 @@ import {
 } from '@/lib/utils/park-assets';
 import { stripNewPrefix } from '@/lib/utils';
 import type { Breadcrumb, ParkWithAttractions } from '@/lib/api/types';
+import { parkPagePath } from '@/lib/parks/paths';
 
 interface ClosedRidePageProps {
   locale: Locale;
@@ -87,12 +83,7 @@ export async function ClosedRidePage({
   const t = await getTranslations('attractions.retired');
   const attractionName = stripNewPrefix(ride.name);
   const parkName = stripNewPrefix(park.name);
-  const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
-
-  const post = closedRidePost(ride.retiredReason, locale);
-  // Our own post first: it is written for the reader, in their language. An outside source only
-  // where the reason names no post of ours.
-  const source = post ? null : closedRideSource(ride.retiredReason);
+  const parkPath = parkPagePath({ continent, country, city, parkSlug });
 
   // Typed as `{ name }`, served as a plain string on this endpoint (X2: "Thrill Rides").
   const rawLand = ride.land as unknown;
@@ -102,9 +93,6 @@ export async function ClosedRidePage({
   const backgroundImage = getAttractionBackgroundImage(park, attractionSlug);
   const rcdbBadge =
     ride.rcdbId != null ? <RcdbBadge rcdbId={ride.rcdbId} attractionName={attractionName} /> : null;
-
-  const linkClass =
-    'text-primary hover:text-primary/80 font-medium underline decoration-dotted underline-offset-4';
 
   return (
     <>
@@ -184,42 +172,11 @@ export async function ClosedRidePage({
             </GlassCard>
           </div>
 
-          <GlassNotice
-            icon={Ban}
-            title={t('noticeTitle', { date: formatClosedOn(ride.retiredAt, locale) })}
-            tintClassName="bg-red-500/5 dark:bg-red-500/10"
-            iconClassName="text-red-600 dark:text-red-400"
-            className="mb-8"
+          <ClosedNotice
+            retiredAt={ride.retiredAt}
+            retiredReason={ride.retiredReason}
+            locale={locale}
           >
-            {post && (
-              <span className="block">
-                {t.rich('noticePost', {
-                  title: post.title,
-                  link: (chunks) => (
-                    <Link href={post.href as '/'} className={linkClass}>
-                      {chunks}
-                    </Link>
-                  ),
-                })}
-              </span>
-            )}
-            {source && (
-              <span className="block">
-                {t.rich('noticeSource', {
-                  host: source.host,
-                  link: (chunks) => (
-                    <a
-                      href={source.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={linkClass}
-                    >
-                      {chunks}
-                    </a>
-                  ),
-                })}
-              </span>
-            )}
             <span className="mt-1 block">
               {t.rich('noticePark', {
                 park: parkName,
@@ -227,14 +184,14 @@ export async function ClosedRidePage({
                   <Link
                     href={parkPath as '/parks/europe/germany/rust/europa-park'}
                     prefetch={false}
-                    className={linkClass}
+                    className={CLOSED_NOTICE_LINK_CLASS}
                   >
                     {chunks}
                   </Link>
                 ),
               })}
             </span>
-          </GlassNotice>
+          </ClosedNotice>
 
           {/* The typical-waits card is computed over 365 days, so for a year after the closure it
               still describes the ride as it ran. The chapter title says which time it is about;

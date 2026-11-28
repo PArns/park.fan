@@ -29,7 +29,10 @@ import { SheetRegionLink } from '@/components/layout/sheet-region-link';
 import { NavMenu, NavEntryLabel, headerNavInk } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
-import { LIVE_TRIP_REGIONS, tripRegionSegment } from '@/lib/trip-regions/registry';
+import {
+  LIVE_TRIP_REGION_IDENTITIES,
+  tripRegionSegment,
+} from '@/lib/trip-regions/regions/identities';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
 import { PlannerMenuPanel } from '@/components/layout/planner-menu-panel';
 import { formatPlanDay, usePlanSummary } from '@/lib/planner/plan-summary';
@@ -333,7 +336,7 @@ export function Header({
   // localized segment), so match against all of them.
   const isBestTime = Object.values(BEST_TIME_SEGMENTS).some((s) => pathname === '/' + s);
   // A trip region's best-time pages open on the same hero, under the region's own segment.
-  const isRegionBestTime = LIVE_TRIP_REGIONS.some((region) =>
+  const isRegionBestTime = LIVE_TRIP_REGION_IDENTITIES.some((region) =>
     Object.values(BEST_TIME_SEGMENTS).some((s) => {
       const base = `/${tripRegionSegment(region, locale)}/${s}`;
       return pathname === base || pathname.startsWith(`${base}/`);

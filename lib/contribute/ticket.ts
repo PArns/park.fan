@@ -12,16 +12,18 @@ import type { TicketPayload } from './types';
  * — the HMAC means the client can't change the assignment or inflate the file budget.
  *
  * Secret: `CONTRIBUTE_TICKET_SECRET`, falling back to the Blob token (already a
- * server-only secret present in prod). A constant dev secret keeps local dev working.
+ * server-only secret present in prod). A constant dev secret keeps local dev working; production
+ * with neither set signs nothing, because that constant is public.
  */
 
 const TTL_MS = 15 * 60_000; // 15 minutes — enough to upload a batch.
 
 function secretKey(): Promise<CryptoKey> {
-  const secret =
-    process.env.CONTRIBUTE_TICKET_SECRET ||
-    process.env.BLOB_READ_WRITE_TOKEN ||
-    'dev-insecure-contribute-secret';
+  const configured = process.env.CONTRIBUTE_TICKET_SECRET || process.env.BLOB_READ_WRITE_TOKEN;
+  if (!configured && process.env.NODE_ENV === 'production') {
+    return Promise.reject(new Error('CONTRIBUTE_TICKET_SECRET is not set'));
+  }
+  const secret = configured || 'dev-insecure-contribute-secret';
   return crypto.subtle.importKey(
     'raw',
     new TextEncoder().encode(secret),

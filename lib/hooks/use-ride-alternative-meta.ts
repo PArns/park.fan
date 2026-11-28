@@ -2,6 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import type { AttractionKind, AttractionKindSource } from '@/lib/api/types';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 /** What the live poll leaves out about one ride, as `/ride-alternatives` answers it. */
 export interface RideAlternativeMeta {
@@ -40,7 +41,7 @@ export function useRideAlternativeMeta({
     queryKey: ['ride-alternatives', continent, country, city, parkSlug],
     queryFn: async (): Promise<Map<string, RideAlternativeMeta>> => {
       const response = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/ride-alternatives`
+        parkRelayUrl({ continent, country, city, parkSlug }, '/ride-alternatives')
       );
       if (!response.ok) throw new Error(`ride-alternatives ${response.status}`);
       const { rides } = (await response.json()) as { rides: RideAlternativeMeta[] };

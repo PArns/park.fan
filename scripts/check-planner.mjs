@@ -35,18 +35,16 @@
  *     pnpm check:planner --orlando   # the multi-day trip planner's tickets alone, on Orlando
  */
 
-import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 // The rendered chip heights are asserted below, so the numbers come from the
 // module that states them rather than from a copy that can drift (PAR-180).
 import { LEG_CHIP_COMPACT_PX, LEG_CHIP_PX } from '../lib/planner/leg-chip.ts';
 import { checkOrlandoTickets } from './check-planner-orlando.mjs';
+import { LAUNCH } from './lib/browser.mjs';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
-// Same rule as scripts/check-card-framing.mjs: prefer a Chromium the image
-// already ships (CI and the container block `playwright install`).
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
 
 const PARK = {
   slug: 'phantasialand',
@@ -974,9 +972,7 @@ async function tapBlock(page, locator, name, options = {}) {
 // The rest of this file is the day planner's; the Orlando part needs the trip-region API (the
 // API's `pnpm trip-regions:dev`) and none of `/plan/day`, so it can run without it.
 if (process.argv.includes('--orlando')) {
-  const browser = await chromium.launch(
-    existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {}
-  );
+  const browser = await chromium.launch(LAUNCH);
   await checkOrlandoTickets({ browser, base: BASE, check });
   await browser.close();
   await exitAfterFlush(printBalance() === 0 ? 0 : 1);
@@ -1018,9 +1014,7 @@ if (planStatus === 200) {
 }
 const live = planStatus === 200;
 
-const browser = await chromium.launch(
-  existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {}
-);
+const browser = await chromium.launch(LAUNCH);
 
 const consoleErrors = [];
 /**

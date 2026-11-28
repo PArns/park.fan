@@ -4,6 +4,7 @@ import { Activity } from 'lucide-react';
 import { adminKeys, useAdminQuery } from '../../_lib/api';
 import { ErrorState, Panel, PanelBody, PanelHeader, SkeletonRows } from '../../_ui/primitives';
 import { cn } from '@/lib/utils';
+import { formatCount } from '@/lib/admin/format-number';
 
 /** One day's counts from `GET /v1/admin/auth/attempts`, keyed `<kind>:<outcome>`. */
 interface AttemptDay {
@@ -112,7 +113,7 @@ export function AttemptsPanel() {
                               value > 0 && row.alert && 'text-amber-500'
                             )}
                           >
-                            {value.toLocaleString('de-DE')}
+                            {formatCount(value)}
                           </td>
                         );
                       })}

@@ -1,4 +1,5 @@
 import type { TripRegionConfig } from '../registry';
+import { ORLANDO_IDENTITY } from './identities';
 import type { TicketEntry } from '../plan-tickets';
 
 /**
@@ -93,25 +94,11 @@ const ENTRIES: readonly TicketEntry[] = [
 
 /** Orlando's entry in `TRIP_REGIONS`. */
 export const ORLANDO: TripRegionConfig = {
-  slug: 'orlando',
-  live: true,
-  // The city's name and the word people search with in every language.
-  segments: {
-    en: 'orlando',
-    de: 'orlando',
-    nl: 'orlando',
-    fr: 'orlando',
-    es: 'orlando',
-    it: 'orlando',
-  },
+  ...ORLANDO_IDENTITY,
   timezone: 'America/New_York',
   // Between the two resorts.
   centre: { latitude: 28.42, longitude: -81.51 },
   photo: '/media/disney-animal-kingdom/kunst-des-wartens-cover.jpg',
-  scene: () =>
-    import('../../../components/assistant/parky/orlando-scene').then((m) => ({
-      default: m.ParkyOrlandoScene,
-    })),
   hub: {
     // The Tree of Life at Animal Kingdom, then VelociCoaster at Islands of Adventure.
     // The middle of Walt Disney World.

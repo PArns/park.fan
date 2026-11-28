@@ -23,6 +23,9 @@ import { readFileSync } from 'node:fs';
 import { locales } from '../i18n/config.ts';
 import { HOWTO_CHAPTERS } from '../lib/howto/chapters.ts';
 import { BEST_TIME_CHAPTERS } from '../lib/best-time/chapters.ts';
+import { attempt, finishChecks, quietChecks } from './lib/run-cases.mjs';
+
+quietChecks();
 
 const HUBS = [
   { name: 'guide', dir: 'app/[locale]/how-park-fan-works/content', chapters: HOWTO_CHAPTERS },
@@ -36,19 +39,7 @@ const HUBS = [
 /** Both shapes the modules use: one attribute per line, and the whole call on one line. */
 const SECTION_SHELL = /<SectionShell\s+id="([^"]+)"\s+index="(\d+)"/g;
 
-let failures = 0;
-let checks = 0;
 let compared = 0;
-function test(name, fn) {
-  checks++;
-  try {
-    fn();
-  } catch (error) {
-    failures++;
-    console.error(`✗ ${name}\n  ${error.message}`);
-  }
-}
-
 for (const hub of HUBS) {
   for (const locale of locales) {
     const source = readFileSync(`${hub.dir}/${locale}.tsx`, 'utf8');
@@ -58,15 +49,15 @@ for (const hub of HUBS) {
     }));
     const listed = (hub.chapters[locale] ?? []).map(({ id, index }) => ({ id, index }));
 
-    test(`${hub.name}, ${locale}: the page renders chapters at all`, () => {
+    attempt(`${hub.name}, ${locale}: the page renders chapters at all`, () => {
       assert.ok(rendered.length > 0, `no <SectionShell id=… index=…> in ${hub.dir}/${locale}.tsx`);
     });
 
-    test(`${hub.name}, ${locale}: the list is the page's chapters, in order`, () => {
+    attempt(`${hub.name}, ${locale}: the list is the page's chapters, in order`, () => {
       assert.deepEqual(listed, rendered);
     });
 
-    test(`${hub.name}, ${locale}: every chapter has a label`, () => {
+    attempt(`${hub.name}, ${locale}: every chapter has a label`, () => {
       const blank = (hub.chapters[locale] ?? []).filter((c) => !c.label.trim()).map((c) => c.id);
       assert.deepEqual(blank, []);
     });
@@ -75,10 +66,5 @@ for (const hub of HUBS) {
   }
 }
 
-if (failures > 0) {
-  console.error(`\n${failures}/${checks} checks failed.`);
-  process.exit(1);
-}
-console.log(
-  `✓ ${checks} checks passed (${compared} chapter links over ${HUBS.length} hubs × ${locales.length} locales).`
-);
+console.log(`${compared} chapter links over ${HUBS.length} hubs × ${locales.length} locales`);
+finishChecks();

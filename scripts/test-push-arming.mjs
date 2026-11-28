@@ -29,6 +29,7 @@
  */
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { attempt, finishChecks } from './lib/run-cases.mjs';
 
 const ARMED_KEY = 'parkfan_push_armed';
 
@@ -66,38 +67,24 @@ function reset() {
   storageThrows = false;
 }
 
-let passed = 0;
-const failures = [];
-
-async function test(name, fn) {
-  try {
-    await fn();
-    passed += 1;
-    console.log(`  ok  ${name}`);
-  } catch (error) {
-    failures.push(name);
-    console.log(`FAIL  ${name}\n      ${error.message}`);
-  }
-}
-
 // ---------------------------------------------------------------------------
 // The pair, and the three states the acceptance criteria name
 // ---------------------------------------------------------------------------
 
-await test('nothing stored reads off', () => {
+await attempt('nothing stored reads off', () => {
   reset();
   assert.equal(readArmedPush(), null);
   assert.equal(pushIsArmedFor(ENDPOINT, TRIP_ID), false);
 });
 
-await test('the confirmed pair reads on', () => {
+await attempt('the confirmed pair reads on', () => {
   reset();
   rememberArmedPush(ENDPOINT, TRIP_ID);
   assert.deepEqual(readArmedPush(), { endpoint: ENDPOINT, tripId: TRIP_ID });
   assert.equal(pushIsArmedFor(ENDPOINT, TRIP_ID), true);
 });
 
-await test('a ride alert alone is not the planner switch', () => {
+await attempt('a ride alert alone is not the planner switch', () => {
   reset();
   // The visitor has an armed ride alert, so the origin's subscription exists
   // and `getSubscription()` answers — and they once uploaded a plan, so a trip
@@ -105,13 +92,13 @@ await test('a ride alert alone is not the planner switch', () => {
   assert.equal(pushIsArmedFor(ENDPOINT, TRIP_ID), false);
 });
 
-await test('a rotated endpoint expires the record', () => {
+await attempt('a rotated endpoint expires the record', () => {
   reset();
   rememberArmedPush(ENDPOINT, TRIP_ID);
   assert.equal(pushIsArmedFor(OTHER_ENDPOINT, TRIP_ID), false);
 });
 
-await test('a replaced trip id expires the record', () => {
+await attempt('a replaced trip id expires the record', () => {
   reset();
   // `syncTrip` drops the id on a 404 and POSTs a fresh trip. The server's
   // subscription still names the old one, so the switch may not claim `on`.
@@ -119,7 +106,7 @@ await test('a replaced trip id expires the record', () => {
   assert.equal(pushIsArmedFor(ENDPOINT, OTHER_TRIP_ID), false);
 });
 
-await test('no subscription and no trip read off whatever is stored', () => {
+await attempt('no subscription and no trip read off whatever is stored', () => {
   reset();
   rememberArmedPush(ENDPOINT, TRIP_ID);
   assert.equal(pushIsArmedFor(undefined, TRIP_ID), false);
@@ -127,7 +114,7 @@ await test('no subscription and no trip read off whatever is stored', () => {
   assert.equal(pushIsArmedFor(null, null), false);
 });
 
-await test('switching off drops it', () => {
+await attempt('switching off drops it', () => {
   reset();
   rememberArmedPush(ENDPOINT, TRIP_ID);
   forgetArmedPush();
@@ -135,7 +122,7 @@ await test('switching off drops it', () => {
   assert.equal(pushIsArmedFor(ENDPOINT, TRIP_ID), false);
 });
 
-await test('re-arming the same browser for a new trip replaces the pair', () => {
+await attempt('re-arming the same browser for a new trip replaces the pair', () => {
   reset();
   rememberArmedPush(ENDPOINT, TRIP_ID);
   rememberArmedPush(ENDPOINT, OTHER_TRIP_ID);
@@ -148,7 +135,7 @@ await test('re-arming the same browser for a new trip replaces the pair', () => 
 // What a broken or hostile store does
 // ---------------------------------------------------------------------------
 
-await test('a storage that throws reads off rather than crashing', () => {
+await attempt('a storage that throws reads off rather than crashing', () => {
   reset();
   rememberArmedPush(ENDPOINT, TRIP_ID);
   storageThrows = true;
@@ -159,7 +146,7 @@ await test('a storage that throws reads off rather than crashing', () => {
   forgetArmedPush();
 });
 
-await test('garbage under the key reads off', () => {
+await attempt('garbage under the key reads off', () => {
   for (const raw of [
     'not json',
     'null',
@@ -187,7 +174,7 @@ const hook = readFileSync(
   'utf8'
 );
 
-await test('resolve() asks the record and no longer the two local signals', () => {
+await attempt('resolve() asks the record and no longer the two local signals', () => {
   assert.match(
     hook,
     /setState\(pushIsArmedFor\(existing\?\.endpoint, getTripId\(\)\) \? 'on' : 'off'\)/,
@@ -200,7 +187,7 @@ await test('resolve() asks the record and no longer the two local signals', () =
 // row too (PAR-586); the write is still in that one helper.
 const repoint = readFileSync(new URL('../lib/planner/push-repoint.ts', import.meta.url), 'utf8');
 
-await test('the record is written after the POST answered, and only there', () => {
+await attempt('the record is written after the POST answered, and only there', () => {
   assert.equal(hook.match(/rememberArmedPush\(/g), null, 'the hook writes nothing itself');
   const writes = repoint.match(/rememberArmedPush\(/g) ?? [];
   assert.equal(writes.length, 1, 'exactly one write');
@@ -220,7 +207,7 @@ await test('the record is written after the POST answered, and only there', () =
   assert.ok(helper !== -1 && fetchAt > helper && write > fetchAt, 'the write follows the POST');
 });
 
-await test('switching off clears it, and a failed enable does not', () => {
+await attempt('switching off clears it, and a failed enable does not', () => {
   const clears = hook.match(/forgetArmedPush\(\)/g) ?? [];
   assert.equal(clears.length, 1, 'exactly one clear');
   // In `disable()`'s `finally`, beside the `setState('off')` it belongs to.
@@ -230,5 +217,4 @@ await test('switching off clears it, and a failed enable does not', () => {
   assert.ok(disable !== -1 && clear > disable, 'it is inside disable(), not enable()');
 });
 
-console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);
-if (failures.length > 0) process.exit(1);
+finishChecks();

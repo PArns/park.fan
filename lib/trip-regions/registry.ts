@@ -1,43 +1,33 @@
-import type { ComponentType } from 'react';
 import type { Locale } from '../../i18n/config';
 import type { TicketEntry } from './plan-tickets';
 import { JAPAN } from './regions/japan';
 import { ORLANDO } from './regions/orlando';
 import { PARIS } from './regions/paris';
 import { SOUTHERN_CALIFORNIA } from './regions/southern-california';
+import {
+  TRIP_REGION_IDENTITIES,
+  tripRegionSegment,
+  type TripRegionIdentity,
+  type TripRegionSceneLoader,
+  type TripRegionSceneProps,
+} from './regions/identities';
+
+export { tripRegionSegment };
+export type { TripRegionSceneLoader, TripRegionSceneProps };
 
 /**
  * The one list of trip regions: a region with a crowd calendar hub and a trip planner, and
  * everything about it that is not the API's (`/v1/trip-regions/:region`) or a sentence (the
  * messages under `tripRegions.<slug>`). A region is this entry, its file under `regions/`, its
- * messages and its Parky scene; no code outside this folder names one.
+ * messages and its Parky scene; no code outside this folder names one. What every page loads of
+ * a region (slug, `live`, segments, scene) is `regions/identities.ts`; this module adds the rest,
+ * so only a page that plans with a region carries its tickets and hub.
  *
  * `next.config.ts` builds its rewrites, redirects and edge windows from this list, and it loads
  * before the `@/` aliases exist, so this module and the region files import nothing at run time
  * but each other (type imports compile away; a scene is a lazy `import()` nobody calls there).
  * Client-safe. See docs/features/trip-regions.md.
  */
-
-/**
- * What a region's illustration receives. The scene is decoration: its root `<svg>` carries
- * `aria-hidden` and `focusable="false"`, its motion plays only under
- * `prefers-reduced-motion: no-preference` and comes to rest on the finished picture, it takes its
- * colours from Tailwind classes with `dark:` twins so it follows the theme, and its gradient ids
- * are its own, since the band stays in the document beside every other drawing on the page.
- */
-export interface TripRegionSceneProps {
-  className?: string;
-  /**
-   * Keep moving after the entrance, for as long as the scene is shown: the header's planner band
-   * while it is open (it is `display: none` when closed, which stops every animation in it), the
-   * trip planner's assistant while its dialog is open, and a tile on a page while it shows below
-   * the header (`RegionSceneInView`). Without it the scene plays its entrance and stands still.
-   */
-  loop?: boolean;
-}
-
-/** A region's illustration as a lazily loaded module, so its markup is in no page's HTML. */
-export type TripRegionSceneLoader = () => Promise<{ default: ComponentType<TripRegionSceneProps> }>;
 
 /** One of a region's best-time pages: the whole region, or one resort under its own segment. */
 export interface TripBestTimePage {
@@ -158,24 +148,13 @@ export interface TripHotelKind {
 }
 
 /** One trip region. Every field is the region's own; a sentence goes in the messages. */
-export interface TripRegionConfig {
-  /** The API's key (`/v1/trip-regions/<slug>`), the messages' (`tripRegions.<slug>`), analytics'. */
-  slug: string;
-  /**
-   * Whether the region's pages answer and its links show. A region is added here with `false` and
-   * goes live once its hub, its messages in six languages and its scene are in.
-   */
-  live: boolean;
-  /** The hub's URL segment per locale: `/de/kalifornien`. One word, ASCII, as every slug here. */
-  segments: Readonly<Record<Locale, string>>;
+export interface TripRegionConfig extends TripRegionIdentity {
   /** The zone every park of the region runs on, and every "today" of its pages is read in. */
   timezone: string;
   /** The region's middle, for the Dataset's `spatialCoverage`. */
   centre: { latitude: number; longitude: number };
   /** The hub's own photo, a source in the media catalog: the tile's picture until the scene loads. */
   photo?: string;
-  /** The Parky scene of the planner band's tile, loaded when the band first opens. */
-  scene?: TripRegionSceneLoader;
   hub: TripHub;
   /** The best-time pages under `/<segment>/<best-time segment>`, the region's own first. */
   bestTime: readonly TripBestTimePage[];
@@ -228,13 +207,17 @@ export interface TripRegionConfig {
   regionGuide?: string;
 }
 
-/** Every trip region, live or coming, in the order the planner band and the admin list them. */
-export const TRIP_REGIONS: readonly TripRegionConfig[] = [
-  ORLANDO,
-  SOUTHERN_CALIFORNIA,
-  JAPAN,
-  PARIS,
-];
+const CONFIGS: readonly TripRegionConfig[] = [ORLANDO, SOUTHERN_CALIFORNIA, JAPAN, PARIS];
+
+/**
+ * Every trip region, live or coming, in the order of `TRIP_REGION_IDENTITIES`. An identity
+ * without its file is a region half added, and stops the build here rather than a page later.
+ */
+export const TRIP_REGIONS: readonly TripRegionConfig[] = TRIP_REGION_IDENTITIES.map(({ slug }) => {
+  const config = CONFIGS.find((region) => region.slug === slug);
+  if (!config) throw new Error(`Trip region without its file under regions/: ${slug}`);
+  return config;
+});
 
 /** The regions whose pages answer and whose links show. */
 export const LIVE_TRIP_REGIONS: readonly TripRegionConfig[] = TRIP_REGIONS.filter((r) => r.live);
@@ -257,11 +240,6 @@ export function requireTripRegion(slug: string): TripRegionConfig {
   const region = tripRegionConfig(slug);
   if (!region) throw new Error(`Unknown trip region: ${slug}`);
   return region;
-}
-
-/** A region's URL segment in a locale, the English one where a locale lacks its own. */
-export function tripRegionSegment(region: TripRegionConfig, locale: string): string {
-  return region.segments[locale as Locale] ?? region.segments.en;
 }
 
 /**

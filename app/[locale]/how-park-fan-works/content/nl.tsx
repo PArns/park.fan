@@ -1,4 +1,3 @@
-import { Link } from '@/i18n/navigation';
 import {
   A,
   SectionShell,
@@ -69,7 +68,7 @@ import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
 import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
-import { Ambience, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
+import { Ambience, GuideCta, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
 import { ChapterList, ChapterRail } from '../_chapter-rail';
 import {
   TARON_BASELINE,
@@ -621,22 +620,12 @@ export function ContentNL() {
         </div>
 
         <div className="flex flex-wrap gap-3 pt-1">
-          <Link
-            href="/fancast"
-            prefetch={false}
-            className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
-          >
-            <Sparkles className="h-4 w-4" />
+          <GuideCta href="/fancast" icon={Sparkles}>
             Hoe goed het model raakt
-          </Link>
-          <Link
-            href={bestTime}
-            prefetch={false}
-            className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
-          >
-            <CalendarDays className="h-4 w-4" />
+          </GuideCta>
+          <GuideCta href={bestTime} icon={CalendarDays}>
             Beste reistijd per park
-          </Link>
+          </GuideCta>
         </div>
       </SectionShell>
 
@@ -700,14 +689,9 @@ export function ContentNL() {
               pagina’s met een eigen adres.
             </PG>
             <div className="pt-1">
-              <Link
-                href={PARK}
-                prefetch={false}
-                className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
-              >
-                <Activity className="h-4 w-4" />
+              <GuideCta href={PARK} icon={Activity}>
                 Phantasialand bekijken
-              </Link>
+              </GuideCta>
             </div>
           </div>
         </div>

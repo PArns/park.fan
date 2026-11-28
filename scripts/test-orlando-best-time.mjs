@@ -32,15 +32,9 @@ import {
 } from '@/lib/trip-regions/best-time.ts';
 import { requireTripRegion } from '@/lib/trip-regions/registry.ts';
 import { localizedPath } from '@/lib/i18n/localized-path.ts';
+import { test, reportPassed } from './lib/run-cases.mjs';
 
 const ORLANDO = requireTripRegion('orlando');
-
-let passed = 0;
-const test = (name, fn) => {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-};
 
 test('the title names the coming year from September on', () => {
   assert.equal(bestTimeYear('2026-08-31'), 2026);
@@ -429,4 +423,4 @@ test('a written best-time path gets the reader’s segment', () => {
   assert.equal(localizedPath('/orlando/2027/3', 'nl'), '/nl/orlando/2027/3');
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

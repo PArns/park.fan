@@ -24,6 +24,7 @@
  * Run: `pnpm test:push-follow-delete`
  */
 import assert from 'node:assert/strict';
+import { attempt, finishChecks } from './lib/run-cases.mjs';
 
 const RIDE_ALERTS_KEY = 'parkfan_ride_alerts';
 const SHOW_FOLLOWS_KEY = 'parkfan_show_follows';
@@ -137,22 +138,9 @@ function showFollows() {
   return JSON.parse(storage.get(SHOW_FOLLOWS_KEY) ?? '[]');
 }
 
-let passed = 0;
-const failures = [];
-async function test(name, fn) {
-  try {
-    await fn();
-    passed++;
-    console.log(`  ✓ ${name}`);
-  } catch (error) {
-    failures.push({ name, error });
-    console.log(`  ✗ ${name}\n    ${error.message}`);
-  }
-}
-
 console.log('\nremoveRideAlert');
 
-await test('a 204 clears the mirror and reports success', async () => {
+await attempt('a 204 clears the mirror and reports success', async () => {
   seed();
   fetchStub = () => response(204);
   const result = await removeRideAlert('r1');
@@ -160,7 +148,7 @@ await test('a 204 clears the mirror and reports success', async () => {
   assert.deepEqual(rideAlerts(), []);
 });
 
-await test('the DELETE goes out BEFORE the mirror moves', async () => {
+await attempt('the DELETE goes out BEFORE the mirror moves', async () => {
   seed();
   fetchStub = () => response(204);
   await removeRideAlert('r1');
@@ -175,7 +163,7 @@ await test('the DELETE goes out BEFORE the mirror moves', async () => {
   ]);
 });
 
-await test('a 500 leaves the alert in the mirror and reports network', async () => {
+await attempt('a 500 leaves the alert in the mirror and reports network', async () => {
   seed();
   fetchStub = () => response(500);
   const result = await removeRideAlert('r1');
@@ -183,7 +171,7 @@ await test('a 500 leaves the alert in the mirror and reports network', async () 
   assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: 30 }]);
 });
 
-await test('a 404 counts as gone: mirror cleared, success reported', async () => {
+await attempt('a 404 counts as gone: mirror cleared, success reported', async () => {
   seed();
   fetchStub = () => response(404);
   const result = await removeRideAlert('r1');
@@ -191,7 +179,7 @@ await test('a 404 counts as gone: mirror cleared, success reported', async () =>
   assert.deepEqual(rideAlerts(), []);
 });
 
-await test('a 429 carries the limiter’s own retryAfterSeconds, mirror untouched', async () => {
+await attempt('a 429 carries the limiter’s own retryAfterSeconds, mirror untouched', async () => {
   seed();
   fetchStub = () => response(429, { retryAfterSeconds: 42 });
   const result = await removeRideAlert('r1');
@@ -199,7 +187,7 @@ await test('a 429 carries the limiter’s own retryAfterSeconds, mirror untouche
   assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: 30 }]);
 });
 
-await test('a 429 with an unreadable body still reads as rate-limited', async () => {
+await attempt('a 429 with an unreadable body still reads as rate-limited', async () => {
   seed();
   fetchStub = () => response(429);
   const result = await removeRideAlert('r1');
@@ -211,28 +199,28 @@ await test('a 429 with an unreadable body still reads as rate-limited', async ()
  * once where it enters the app. A value the caller had to bound on its own would be a countdown
  * that disagrees with the moment it disappears.
  */
-await test('a window past an hour is capped rather than printed as given', async () => {
+await attempt('a window past an hour is capped rather than printed as given', async () => {
   seed();
   fetchStub = () => response(429, { retryAfterSeconds: 7200 });
   const result = await removeRideAlert('r1');
   assert.equal(result.error.retryAfterSeconds, 3600);
 });
 
-await test('a window under a second takes the same road as an unreadable body', async () => {
+await attempt('a window under a second takes the same road as an unreadable body', async () => {
   seed();
   fetchStub = () => response(429, { retryAfterSeconds: 0 });
   const result = await removeRideAlert('r1');
   assert.equal(result.error.retryAfterSeconds, 60);
 });
 
-await test('a fractional window is rounded, not printed with decimals', async () => {
+await attempt('a fractional window is rounded, not printed with decimals', async () => {
   seed();
   fetchStub = () => response(429, { retryAfterSeconds: 12.4 });
   const result = await removeRideAlert('r1');
   assert.equal(result.error.retryAfterSeconds, 12);
 });
 
-await test('a 400 reads as invalid, mirror untouched', async () => {
+await attempt('a 400 reads as invalid, mirror untouched', async () => {
   seed();
   fetchStub = () => response(400);
   const result = await removeRideAlert('r1');
@@ -240,7 +228,7 @@ await test('a 400 reads as invalid, mirror untouched', async () => {
   assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: 30 }]);
 });
 
-await test('a thrown fetch reads as network, mirror untouched', async () => {
+await attempt('a thrown fetch reads as network, mirror untouched', async () => {
   seed();
   fetchStub = () => {
     throw new TypeError('Failed to fetch');
@@ -250,7 +238,7 @@ await test('a thrown fetch reads as network, mirror untouched', async () => {
   assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: 30 }]);
 });
 
-await test('a browser with no subscription clears the stale entry without asking', async () => {
+await attempt('a browser with no subscription clears the stale entry without asking', async () => {
   setNavigator(UNSUBSCRIBED);
   seed();
   fetchStub = () => response(204);
@@ -261,7 +249,7 @@ await test('a browser with no subscription clears the stale entry without asking
   assert.equal(calls.length, 0);
 });
 
-await test('a failed subscription lookup is a failure, not "nothing to delete"', async () => {
+await attempt('a failed subscription lookup is a failure, not "nothing to delete"', async () => {
   setNavigator(LOOKUP_BROKEN);
   seed();
   fetchStub = () => response(204);
@@ -274,7 +262,7 @@ await test('a failed subscription lookup is a failure, not "nothing to delete"',
   assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: 30 }]);
 });
 
-await test('another browser’s alerts are left alone', async () => {
+await attempt('another browser’s alerts are left alone', async () => {
   seed({
     rideAlerts: [
       { attractionId: 'r1', thresholdMinutes: 30 },
@@ -288,7 +276,7 @@ await test('another browser’s alerts are left alone', async () => {
 
 console.log('\nunfollowShow');
 
-await test('a 204 clears the mirror and reports success', async () => {
+await attempt('a 204 clears the mirror and reports success', async () => {
   seed();
   fetchStub = () => response(204);
   const result = await unfollowShow('s1');
@@ -296,7 +284,7 @@ await test('a 204 clears the mirror and reports success', async () => {
   assert.deepEqual(showFollows(), []);
 });
 
-await test('the DELETE goes out BEFORE the mirror moves', async () => {
+await attempt('the DELETE goes out BEFORE the mirror moves', async () => {
   seed();
   fetchStub = () => response(204);
   await unfollowShow('s1');
@@ -306,7 +294,7 @@ await test('the DELETE goes out BEFORE the mirror moves', async () => {
   assert.deepEqual(JSON.parse(calls[0].showFollowsAtCall), [{ showId: 's1', startTime: null }]);
 });
 
-await test('a 500 leaves the follow in the mirror and reports network', async () => {
+await attempt('a 500 leaves the follow in the mirror and reports network', async () => {
   seed();
   fetchStub = () => response(500);
   const result = await unfollowShow('s1');
@@ -314,7 +302,7 @@ await test('a 500 leaves the follow in the mirror and reports network', async ()
   assert.deepEqual(showFollows(), [{ showId: 's1', startTime: null }]);
 });
 
-await test('a 404 counts as gone: mirror cleared, success reported', async () => {
+await attempt('a 404 counts as gone: mirror cleared, success reported', async () => {
   seed();
   fetchStub = () => response(404);
   const result = await unfollowShow('s1');
@@ -322,7 +310,7 @@ await test('a 404 counts as gone: mirror cleared, success reported', async () =>
   assert.deepEqual(showFollows(), []);
 });
 
-await test('a pinned performance is dropped whichever one it named', async () => {
+await attempt('a pinned performance is dropped whichever one it named', async () => {
   seed({ showFollows: [{ showId: 's1', startTime: '2026-09-10T19:10:00.000Z' }] });
   fetchStub = () => response(204);
   const result = await unfollowShow('s1');
@@ -330,7 +318,7 @@ await test('a pinned performance is dropped whichever one it named', async () =>
   assert.deepEqual(showFollows(), []);
 });
 
-await test('a browser with no subscription clears the stale entry without asking', async () => {
+await attempt('a browser with no subscription clears the stale entry without asking', async () => {
   setNavigator(UNSUBSCRIBED);
   seed();
   fetchStub = () => response(204);
@@ -341,7 +329,7 @@ await test('a browser with no subscription clears the stale entry without asking
   assert.equal(calls.length, 0);
 });
 
-await test('a failed subscription lookup is a failure, not "nothing to delete"', async () => {
+await attempt('a failed subscription lookup is a failure, not "nothing to delete"', async () => {
   setNavigator(LOOKUP_BROKEN);
   seed();
   fetchStub = () => response(204);
@@ -352,20 +340,25 @@ await test('a failed subscription lookup is a failure, not "nothing to delete"',
   assert.deepEqual(showFollows(), [{ showId: 's1', startTime: null }]);
 });
 
-await test('a reopen alert is sent without a threshold and replaces a wait-time alert in the mirror', async () => {
-  seed();
-  fetchStub = () => response(200, { attractionId: 'r1', kind: 'reopen', thresholdMinutes: null });
-  const result = await setReopenAlert('r1');
-  assert.equal(result.ok, true);
-  assert.deepEqual(calls[0].body, {
-    endpoint: 'https://push.example/abc',
-    attractionId: 'r1',
-    kind: 'reopen',
-  });
-  assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: null, kind: 'reopen' }]);
-});
+await attempt(
+  'a reopen alert is sent without a threshold and replaces a wait-time alert in the mirror',
+  async () => {
+    seed();
+    fetchStub = () => response(200, { attractionId: 'r1', kind: 'reopen', thresholdMinutes: null });
+    const result = await setReopenAlert('r1');
+    assert.equal(result.ok, true);
+    assert.deepEqual(calls[0].body, {
+      endpoint: 'https://push.example/abc',
+      attractionId: 'r1',
+      kind: 'reopen',
+    });
+    assert.deepEqual(rideAlerts(), [
+      { attractionId: 'r1', thresholdMinutes: null, kind: 'reopen' },
+    ]);
+  }
+);
 
-await test('a wait-time alert replaces a reopen alert on the same ride', async () => {
+await attempt('a wait-time alert replaces a reopen alert on the same ride', async () => {
   seed({ rideAlerts: [{ attractionId: 'r1', thresholdMinutes: null, kind: 'reopen' }] });
   fetchStub = () => response(200, { attractionId: 'r1', kind: null, thresholdMinutes: 25 });
   const result = await setRideAlert('r1', 25);
@@ -378,7 +371,7 @@ await test('a wait-time alert replaces a reopen alert on the same ride', async (
   assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: 25 }]);
 });
 
-await test('a failed reopen write leaves the mirror alone', async () => {
+await attempt('a failed reopen write leaves the mirror alone', async () => {
   seed();
   fetchStub = () => response(400);
   const result = await setReopenAlert('r1');
@@ -386,7 +379,7 @@ await test('a failed reopen write leaves the mirror alone', async () => {
   assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: 30 }]);
 });
 
-await test('a reopen entry survives a reload and is removed like any other', async () => {
+await attempt('a reopen entry survives a reload and is removed like any other', async () => {
   seed({
     rideAlerts: [
       { attractionId: 'r1', thresholdMinutes: null, kind: 'reopen' },
@@ -398,5 +391,4 @@ await test('a reopen entry survives a reload and is removed like any other', asy
   assert.deepEqual(rideAlerts(), [{ attractionId: 'r2', thresholdMinutes: 20 }]);
 });
 
-console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);
-if (failures.length > 0) process.exit(1);
+finishChecks();

@@ -231,8 +231,14 @@ const nextConfig: NextConfig = {
     // crop would be served from the 1-year rendition cache for a year. Next only
     // allows a query on a local image when a pattern permits it, and an omitted
     // `search` means "any query"; the second entry keeps every other local image
-    // (logos, icons, textures) on the default no-query rule.
-    localPatterns: [{ pathname: '/media/**' }, { pathname: '/**', search: '' }],
+    // (logos, icons, textures) on the default no-query rule. Those are files at the root of
+    // `public/` and bundled assets, and nothing else: with `/**` the optimizer would also take any
+    // route of this site as its source, `/api/og/…` included, at 14 widths and 5 qualities each.
+    localPatterns: [
+      { pathname: '/media/**' },
+      { pathname: '/*', search: '' },
+      { pathname: '/_next/static/**', search: '' },
+    ],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 828, 1080, 1200, 1920, 2560, 3840],
     imageSizes: [32, 48, 64, 96, 128, 256, 384],
@@ -868,7 +874,12 @@ const nextConfig: NextConfig = {
       // docs/features/admin.md#headers-shared-with-the-site.
       {
         source: '/(.*)',
-        headers: [{ key: 'Content-Security-Policy', value: "object-src 'none'; base-uri 'self'" }],
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+          },
+        ],
       },
       // Content-Language per locale — helps Google associate pages with their language
       ...localeHeaderRules,

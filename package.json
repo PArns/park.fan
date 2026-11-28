@@ -12,8 +12,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "dev:live": "node scripts/dev-live.mjs",
-    "prebuild": "node scripts/generate-build-info.mjs && node scripts/generate-message-chunks.mjs && node scripts/check-client-messages.mjs && node scripts/check-untranslated.mjs && node scripts/check-blog-updated-at.mjs && node scripts/generate-client-glossary.mjs && node scripts/generate-blog-manifest.mjs && pnpm generate:most-read-seed && pnpm generate:image-crops && pnpm generate:og-assets && pnpm generate:media",
-    "typecheck": "node scripts/generate-build-info.mjs && pnpm generate:message-chunks && pnpm generate:client-glossary && pnpm generate:blog-manifest && node --experimental-strip-types scripts/generate-most-read-seed.mjs --offline --if-missing && pnpm generate:media && tsc --noEmit",
+    "prebuild": "node scripts/generate-all.mjs --for=build",
+    "typecheck": "node scripts/generate-all.mjs --for=typecheck && tsc --noEmit",
     "build": "pnpm prebuild && next build --turbo && node scripts/check-no-has.mjs --built",
     "analyze": "pnpm prebuild && cross-env ANALYZE=true next build --webpack",
     "build:webpack": "pnpm prebuild && next build --webpack",
@@ -173,6 +173,7 @@
     "test:next-best-ride": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-next-best-ride.mjs",
     "test:covered-rides": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-covered-rides.mjs",
     "test:request-ip": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-request-ip.mjs",
+    "test:same-origin": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-same-origin.mjs",
     "test:turnstile": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-turnstile.mjs",
     "test:admin-cookie": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-cookie.mjs",
     "test:admin-provenance": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-provenance.mjs",

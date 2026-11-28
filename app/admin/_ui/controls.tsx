@@ -2,6 +2,7 @@
 
 import { useId, useState, type ComponentProps, type ReactNode } from 'react';
 import { ArrowDown, ArrowUp, Check, ChevronDown, ExternalLink, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
   Command,
@@ -821,4 +822,35 @@ export function MonthPicker({
 export function useFieldId(prefix: string): string {
   const id = useId();
   return `${prefix}-${id}`;
+}
+
+/**
+ * Back, forward and "3 / 12" under a paged list. `page` counts from one; a list with a single page
+ * draws nothing.
+ */
+export function Pager({
+  page,
+  pages,
+  onPage,
+  className,
+}: {
+  page: number;
+  pages: number;
+  onPage: (page: number) => void;
+  className?: string;
+}) {
+  if (pages <= 1) return null;
+  return (
+    <div className={cn('flex items-center justify-end gap-2 text-xs', className)}>
+      <Button size="sm" variant="outline" disabled={page <= 1} onClick={() => onPage(page - 1)}>
+        Zurück
+      </Button>
+      <span className="tabular-nums">
+        {page} / {pages}
+      </span>
+      <Button size="sm" variant="outline" disabled={page >= pages} onClick={() => onPage(page + 1)}>
+        Weiter
+      </Button>
+    </div>
+  );
 }

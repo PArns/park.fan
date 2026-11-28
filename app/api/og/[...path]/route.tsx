@@ -42,6 +42,7 @@ import {
 } from '@/components/common/icons/flags'; // Added generic icon import if needed, but imported specifically here
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 import { isSlugPath } from '@/lib/utils/servable-route';
+import { formatSlug } from '@/lib/i18n/helpers';
 
 // OG Image dimensions
 const WIDTH = 1200;
@@ -427,10 +428,7 @@ export async function GET(
       // Priority: Park City (Source of Truth) > CityNode Name > Slug Fallback
       // We prioritize park.city because the detailed park record usually has the correct formatted name (e.g. "Brühl"),
       // whereas cityNode might just be derived from the slug ("Bruehl").
-      const cityName =
-        (park && park.city) ||
-        (await geoNodes()).cityNode?.name ||
-        city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+      const cityName = (park && park.city) || (await geoNodes()).cityNode?.name || formatSlug(city);
 
       const normalizedCountry = country.toLowerCase().replace(/\s+/g, '-');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

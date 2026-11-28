@@ -23,13 +23,7 @@ import {
   worksUpcomingLabel,
   worksWindowLabel,
 } from '../lib/utils/works-period.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const closed = (from, to) => ({ from, to, toUncertain: false });
 
@@ -235,4 +229,4 @@ test('the 8th and the 11th are flagged for the Italian elision, and only they', 
   assert.equal(dayNumberElides(null), 'no');
 });
 
-console.log(`\n${passed} assertions passed.`);
+reportPassed();

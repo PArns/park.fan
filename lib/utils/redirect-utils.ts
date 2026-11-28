@@ -7,6 +7,7 @@ import { cache } from 'react';
 import { getContinentsOrLastGood, perContinentsDocument } from '@/lib/api/discovery';
 import type { Continent } from '@/lib/api/types';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { parkPagePath } from '@/lib/parks/paths';
 
 /**
  * Park-slug → geo-path index for redirect lookups, built once per continents document and falling
@@ -105,7 +106,7 @@ export const findCityPageRedirect = cache(
     );
 
     if (park) {
-      return `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
+      return parkPagePath(park);
     }
 
     return null;
@@ -153,7 +154,7 @@ export const findRelocatedParkRedirect = cache(
       park &&
       (park.continent !== continent || park.country !== country || park.city !== citySlug)
     ) {
-      return `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
+      return parkPagePath(park);
     }
 
     return null;
@@ -185,8 +186,5 @@ export function findRenamedParkRedirect(
   park: { url?: string | null },
   requested: { continent: string; country: string; city: string; parkSlug: string }
 ): string | null {
-  return movedPath(
-    park.url,
-    `/parks/${requested.continent}/${requested.country}/${requested.city}/${requested.parkSlug}`
-  );
+  return movedPath(park.url, parkPagePath(requested));
 }

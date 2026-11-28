@@ -42,32 +42,7 @@ import {
   parseCollectionPath,
   visibleNodes,
 } from '../app/admin/media/_lib/folders.ts';
-
-let passed = 0;
-let failed = 0;
-
-function check(name, actual, expected) {
-  const ok = JSON.stringify(actual) === JSON.stringify(expected);
-  if (ok) {
-    passed += 1;
-    console.log(`✅ ${name}`);
-  } else {
-    failed += 1;
-    console.log(
-      `❌ ${name}\n   expected: ${JSON.stringify(expected)}\n   got:      ${JSON.stringify(actual)}`
-    );
-  }
-}
-
-function checkThat(name, condition, detail = '') {
-  if (condition) {
-    passed += 1;
-    console.log(`✅ ${name}`);
-  } else {
-    failed += 1;
-    console.log(`❌ ${name}${detail ? `\n   ${detail}` : ''}`);
-  }
-}
+import { check, checkThat, finishChecks } from './lib/run-cases.mjs';
 
 const ids = (images) => images.map((i) => i.id);
 
@@ -640,6 +615,5 @@ console.log('\n── replace by drop ──────────────
 }
 
 console.log('\n' + '='.repeat(62));
-console.log(`\n📊 ${passed} passed, ${failed} failed\n`);
-if (failed > 0) process.exit(1);
+finishChecks();
 console.log('🎉 Media database behaves.\n');

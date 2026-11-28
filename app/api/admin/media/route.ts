@@ -1,7 +1,6 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 
-import { getServerApiHeaders } from '@/lib/api/client';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import {
   MEDIA_REVISION,
@@ -13,12 +12,14 @@ import {
   mediaStats,
   searchMedia,
 } from '@/lib/media';
-import { checkParkAssignment, type GeoPark } from '@/lib/media/geo';
+import { checkParkAssignment } from '@/lib/media/geo';
+import { loadParkGeoCatalog } from '@/lib/media/park-geo';
+import { parseMediaSearchParams } from '@/lib/media/search-params';
 import { versionedSrc } from '@/lib/media/focus';
 import { getMediaText } from '@/lib/media/text';
 import { MEDIA_LICENSES, MEDIA_ROLES } from '@/lib/media/types';
 import { TAG_FACETS } from '@/lib/media/tags.mjs';
-import type { MediaImage, MediaLicense, MediaRole } from '@/lib/media/types';
+import type { MediaImage } from '@/lib/media/types';
 
 /**
  * The admin media browser's read endpoint.
@@ -54,29 +55,6 @@ function toRow(image: MediaImage) {
   };
 }
 
-/** Park coordinates, for the GPS cross-check. Fetched fresh; failures are non-fatal. */
-async function loadParkGeo(): Promise<GeoPark[]> {
-  try {
-    const response = await fetch('https://api.park.fan/v1/parks?limit=1000', {
-      headers: getServerApiHeaders(),
-      signal: AbortSignal.timeout(15_000),
-      next: { revalidate: 3600 },
-    });
-    if (!response.ok) return [];
-    const parks = (await response.json()).data ?? [];
-    return parks
-      .filter((p: { latitude?: string; longitude?: string }) => p.latitude && p.longitude)
-      .map((p: { slug: string; name: string; latitude: string; longitude: string }) => ({
-        slug: p.slug,
-        name: p.name,
-        latitude: Number(p.latitude),
-        longitude: Number(p.longitude),
-      }));
-  } catch {
-    return [];
-  }
-}
-
 export async function GET(req: Request) {
   const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
@@ -88,26 +66,15 @@ export async function GET(req: Request) {
   if (id) {
     const image = getMediaImage(id);
     if (!image) return NextResponse.json({ error: 'Not found' }, { status: 404 });
-    const geo = await loadParkGeo();
+    const geo = await loadParkGeoCatalog();
     return NextResponse.json({
       image: toRow(image),
       geo: checkParkAssignment(image, geo),
     });
   }
 
-  const park = params.has('park') ? params.get('park') || null : undefined;
-  const ride = params.has('ride') ? params.get('ride') || null : undefined;
-
   let results = searchMedia({
-    q: params.get('q') ?? undefined,
-    park,
-    ride,
-    collection: params.get('collection') ?? undefined,
-    tags: params.getAll('tag'),
-    role: (params.get('role') as MediaRole) || undefined,
-    license: (params.get('license') as MediaLicense) || undefined,
-    unlicensedOnly: params.get('unlicensed') === '1',
-    unassignedOnly: params.get('unassigned') === '1',
+    ...parseMediaSearchParams(params),
     reviewOnly: params.get('review') === '1',
   });
 

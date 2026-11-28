@@ -10,6 +10,7 @@
  */
 
 import { rideCrowdMinuteRanges, rideCrowdLevelForWait } from '../lib/utils/ride-crowd-scale.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const testCases = [];
 const test = (name, actual, expected) => testCases.push({ name, actual, expected });
@@ -90,15 +91,4 @@ for (const [name, wait, baseline, apiLevel] of observed) {
   );
 }
 
-let failed = 0;
-for (const { name, actual, expected } of testCases) {
-  const ok = JSON.stringify(actual) === JSON.stringify(expected);
-  if (!ok) {
-    failed++;
-    console.error(
-      `✗ ${name}\n  expected ${JSON.stringify(expected)}\n  received ${JSON.stringify(actual)}`
-    );
-  }
-}
-console.log(`${testCases.length - failed}/${testCases.length} passed`);
-if (failed) process.exit(1);
+await runCases(testCases, { json: true, quiet: true });

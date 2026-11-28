@@ -1,4 +1,5 @@
 import type { TripRegionConfig } from '../registry';
+import { JAPAN_IDENTITY } from './identities';
 import type { TicketEntry } from '../plan-tickets';
 
 /**
@@ -54,17 +55,11 @@ const ENTRIES: readonly TicketEntry[] = [
 
 /** Japan's entry in `TRIP_REGIONS`. */
 export const JAPAN: TripRegionConfig = {
-  slug: 'japan',
-  live: true,
-  segments: { en: 'japan', de: 'japan', nl: 'japan', fr: 'japon', es: 'japon', it: 'giappone' },
+  ...JAPAN_IDENTITY,
   timezone: 'Asia/Tokyo',
   // Tokyo Disney Resort. The region spans several cities, and its trips several bases.
   centre: { latitude: 35.63, longitude: 139.88 },
   photo: '/media/tokyo-disneysea/mermaid-lagoon.jpg',
-  scene: () =>
-    import('../../../components/assistant/parky/japan-scene').then((m) => ({
-      default: m.ParkyJapanScene,
-    })),
   hub: {
     // Mermaid Lagoon at Tokyo DisneySea, then Cinderella Castle seen from World Bazaar.
     // Between the two Disney parks, where most trips start.

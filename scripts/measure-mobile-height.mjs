@@ -43,7 +43,8 @@
  */
 
 import { chromium, devices } from 'playwright';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { LAUNCH } from './lib/browser.mjs';
 
 const args = process.argv.slice(2);
 const valueOf = (name, fallback) => {
@@ -88,9 +89,6 @@ const paths = args.filter((a, i) => {
   return !(prev && prev.startsWith('--') && VALUED.has(prev.slice(2)));
 });
 const PATHS = paths.length ? paths : DEFAULT_PATHS;
-
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
-const LAUNCH = existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {};
 
 /** Runs in the page: scrolls down one screen at a time until the document stops growing. */
 async function scrollToEnd(page) {

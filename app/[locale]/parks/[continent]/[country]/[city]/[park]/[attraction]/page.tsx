@@ -17,7 +17,7 @@ import {
   type ClosedRide,
 } from '@/lib/parks/closed-ride';
 import { ClosedRidePage } from '@/components/parks/closed-ride-page';
-import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
+import { translateCountry, translateContinent, formatSlug } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { Link } from '@/i18n/navigation';
@@ -111,6 +111,8 @@ import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import { PageViewBeacon } from '@/components/analytics/page-view-beacon';
+import { parkPagePath } from '@/lib/parks/paths';
+import { redirectRelocatedPark, redirectRenamedPark } from '@/lib/parks/park-route';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -148,7 +150,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   if (park && closedRide) {
     return closedRideMetadata({
       locale: locale as Locale,
-      path: `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+      path: `${parkPagePath({ continent, country, city, parkSlug })}/${attractionSlug}`,
       pathSegments: [locale, continent, country, city, parkSlug, attractionSlug],
       park,
       ride: closedRide,
@@ -223,7 +225,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park?.name || '');
 
-  const cityName = park?.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park?.city || formatSlug(city);
 
   const keywords = [
     attractionName,
@@ -276,7 +278,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     }),
     alternates: buildAlternates(
       locale,
-      () => `/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`
+      () => `${parkPagePath({ continent, country, city, parkSlug })}/${canonicalAttractionSlug}`
     ),
   };
 }
@@ -413,20 +415,18 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   if (!park) {
     // Park slug is stable across API geo re-slugs — 308 old attraction URLs
     // (e.g. /germany/bruhl/phantasialand/taron) to the park's current path.
-    const relocatedUrl = await findRelocatedParkRedirect(continent, country, city, parkSlug);
-    if (relocatedUrl) {
-      permanentRedirect(`/${locale}${relocatedUrl}/${attractionSlug}`);
-    }
+    await redirectRelocatedPark(
+      { continent, country, city, parkSlug },
+      locale,
+      `/${attractionSlug}`
+    );
   }
 
   // Renamed park (upstream slug change): the API 301'd the old path and `fetch` followed it,
   // so the park resolved under a path it no longer owns. Send the visitor — and the attraction's
   // accumulated ranking — to the current one instead of rendering a duplicate.
   if (park) {
-    const renamedUrl = findRenamedParkRedirect(park, { continent, country, city, parkSlug });
-    if (renamedUrl) {
-      permanentRedirect(`/${locale}${renamedUrl}/${attractionSlug}`);
-    }
+    redirectRenamedPark(park, { continent, country, city, parkSlug }, locale, `/${attractionSlug}`);
   }
 
   if (!park) {
@@ -452,7 +452,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
   const continentName = translateContinent(tGeo, continent, locale);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const cityName = park.city || formatSlug(city);
   const attractionName = stripNewPrefix(attraction?.name ?? closedRide?.name ?? '');
   const parkName = stripNewPrefix(park.name);
 
@@ -636,7 +636,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           breadcrumbs={breadcrumbs}
           currentPage={{
             name: attractionCurrentPage,
-            url: `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+            url: `${parkPagePath({ continent, country, city, parkSlug })}/${attractionSlug}`,
           }}
           locale={locale}
         />
@@ -698,7 +698,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                     <div className="text-muted-foreground flex min-h-[58px] flex-wrap content-start items-center gap-3 sm:min-h-0">
                       <Link
                         href={
-                          `/parks/${continent}/${country}/${city}/${parkSlug}` as '/parks/europe/germany/rust/europa-park'
+                          parkPagePath({
+                            continent,
+                            country,
+                            city,
+                            parkSlug,
+                          }) as '/parks/europe/germany/rust/europa-park'
                         }
                         prefetch={false}
                         className="hover:text-foreground flex items-center gap-1 transition-colors"
@@ -1033,7 +1038,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       id: attraction.id,
                       name: attractionName,
                       slug: attractionSlug,
-                      url: `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+                      url: `${parkPagePath({ continent, country, city, parkSlug })}/${attractionSlug}`,
                       country: park.country ?? undefined,
                       parentParkName: parkName,
                     })

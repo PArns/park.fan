@@ -6,6 +6,7 @@ import {
   NOTABLE_GUST_KMH,
   nowcastOutlook,
 } from '../lib/utils/nowcast-conditions.ts';
+import { test, reportPassed } from './lib/run-cases.mjs';
 
 const TZ = 'Europe/Berlin';
 // 12:07 Berlin (summer time) is 10:07Z; the 12:00 slot is still running, 11:45 has passed.
@@ -27,14 +28,7 @@ function step(time, windGusts, visibility) {
 
 const times = ['11:45', '12:00', '12:15', '12:30', '12:45'].map((h) => `2026-07-14T${h}`);
 
-let runs = 0;
-const check = (name, fn) => {
-  fn();
-  runs += 1;
-  console.log(`ok  ${name}`);
-};
-
-check('a calm window has neither gust nor visibility', () => {
+test('a calm window has neither gust nor visibility', () => {
   const o = nowcastOutlook(
     times.map((t) => step(t, 20, 24000)),
     OBSERVED_AT,
@@ -44,7 +38,7 @@ check('a calm window has neither gust nor visibility', () => {
   assert.equal(o.visibility, null);
 });
 
-check('slots that have passed are dropped, the running one stays', () => {
+test('slots that have passed are dropped, the running one stays', () => {
   const o = nowcastOutlook(
     times.map((t) => step(t, 20, 24000)),
     OBSERVED_AT,
@@ -54,7 +48,7 @@ check('slots that have passed are dropped, the running one stays', () => {
   assert.equal(o.steps[0].time, '2026-07-14T12:00');
 });
 
-check('a gust that passed does not count', () => {
+test('a gust that passed does not count', () => {
   const o = nowcastOutlook(
     times.map((t, i) => step(t, i === 0 ? 90 : 20, 24000)),
     OBSERVED_AT,
@@ -63,7 +57,7 @@ check('a gust that passed does not count', () => {
   assert.equal(o.gust, null);
 });
 
-check('the strongest gust wins and sits at its own time', () => {
+test('the strongest gust wins and sits at its own time', () => {
   const o = nowcastOutlook(
     times.map((t, i) => step(t, [10, 55, 72, 61, 30][i], 24000)),
     OBSERVED_AT,
@@ -72,7 +66,7 @@ check('the strongest gust wins and sits at its own time', () => {
   assert.deepEqual(o.gust, { kmh: 72, time: '2026-07-14T12:15' });
 });
 
-check('the gust threshold is inclusive, the visibility threshold is not', () => {
+test('the gust threshold is inclusive, the visibility threshold is not', () => {
   const edge = nowcastOutlook(
     times.map((t) => step(t, NOTABLE_GUST_KMH, LOW_VISIBILITY_M)),
     OBSERVED_AT,
@@ -82,7 +76,7 @@ check('the gust threshold is inclusive, the visibility threshold is not', () => 
   assert.equal(edge.visibility, null);
 });
 
-check('the lowest visibility wins; null readings are skipped', () => {
+test('the lowest visibility wins; null readings are skipped', () => {
   const o = nowcastOutlook(
     times.map((t, i) => step(t, null, [null, 900, 240, null, 500][i])),
     OBSERVED_AT,
@@ -92,4 +86,4 @@ check('the lowest visibility wins; null readings are skipped', () => {
   assert.equal(o.gust, null);
 });
 
-console.log(`\n${runs} checks passed`);
+reportPassed();

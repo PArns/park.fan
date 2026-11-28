@@ -26,6 +26,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 import { TRIP_CALENDAR_ID, tripRegionPath } from '../lib/trip-regions/paths.ts';
+import { LAUNCH } from './lib/browser.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'public/media/reiseplaner');
@@ -406,10 +407,7 @@ async function shootPost(browser, id, locale) {
   }
 }
 
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
-const browser = await chromium.launch(
-  existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {}
-);
+const browser = await chromium.launch(LAUNCH);
 let failed = 0;
 const jobs = POST
   ? POST_IDS.flatMap((id) =>

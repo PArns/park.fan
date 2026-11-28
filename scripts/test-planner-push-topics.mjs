@@ -12,6 +12,7 @@
 
 import { resolvePushTopics } from '../lib/planner/push-topics.ts';
 import { parkGeoFromUrl } from '../lib/planner/park-url.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const cases = [];
 const test = (name, actual, expected) =>
@@ -82,14 +83,4 @@ test('a path with no parks segment', parkGeoFromUrl('/de/blog/etwas'), null);
 test('a truncated path', parkGeoFromUrl('/parks/europe/germany'), null);
 test('nothing at all', parkGeoFromUrl(null), null);
 
-// ── Report ───────────────────────────────────────────────────────────────────
-let failed = 0;
-for (const { name, actual, expected } of cases) {
-  const ok = actual === expected;
-  if (!ok) failed++;
-  console.log(
-    `${ok ? '✅' : '❌'} ${name}${ok ? '' : ` — erwartet ${expected}, bekommen ${actual}`}`
-  );
-}
-console.log(`\n${cases.length - failed}/${cases.length} bestanden`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(cases);

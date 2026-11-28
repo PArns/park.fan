@@ -2,7 +2,7 @@ import 'server-only';
 import { NextResponse } from 'next/server';
 import { get } from '@vercel/blob';
 import { denyUnlessAdmin } from '@/lib/admin/session';
-import { readImageLocal } from '@/lib/contribute/storage';
+import { isContributionImageKey, readImageLocal } from '@/lib/contribute/storage';
 import { resolveDriver } from '@/lib/storage/driver';
 
 export const dynamic = 'force-dynamic';
@@ -37,6 +37,10 @@ export async function GET(request: Request) {
 
   const key = url.searchParams.get('key');
   if (!key) return NextResponse.json({ error: 'missing-key' }, { status: 400 });
+  // The store also holds the submission records and other private objects.
+  if (!isContributionImageKey(key)) {
+    return NextResponse.json({ error: 'not-found' }, { status: 404 });
+  }
 
   const ext = key.split('.').pop()?.toLowerCase() ?? '';
   const fallbackType = EXT_TYPES[ext] ?? 'application/octet-stream';

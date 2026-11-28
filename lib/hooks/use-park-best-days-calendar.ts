@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 interface UseParkBestDaysCalendarParams {
   continent: string;
@@ -31,7 +32,7 @@ export function parkBestDaysQueryOptions({
     queryKey: ['park-best-days-calendar', continent, country, city, parkSlug] as const,
     queryFn: async (): Promise<BestDaysSnapshot> => {
       const response = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/best-days`,
+        parkRelayUrl({ continent, country, city, parkSlug }, '/best-days'),
         { cache: 'no-store' }
       );
 

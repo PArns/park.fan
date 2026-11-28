@@ -11,6 +11,7 @@ Country and continent names that fall back to the prettified slug and log the mi
 
 - `translateCountry` _function_: Translate a country by its slug with logging
 - `translateContinent` _function_: Translate a continent by its slug with logging
+- `formatSlug` _function_: Format a slug into a readable string Example: "north-america" -&gt; "North America"
 
 ### [`hreflang.ts`](../../lib/i18n/hreflang.ts)
 

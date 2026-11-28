@@ -14,13 +14,7 @@ import {
   seasonsInMonth,
   seasonsNeedDayStatus,
 } from '../lib/parks/park-season-days.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const season = (id, fields) => ({
   id,
@@ -224,4 +218,4 @@ test('„Heute im Park" gets the seasons on today or tomorrow, with only those d
   assert.equal('priceFrom' in near.seasons[0], false);
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

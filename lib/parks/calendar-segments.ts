@@ -1,5 +1,7 @@
 import type { Locale } from '@/i18n/config';
 import { monthLength, parkWallClock } from '@/lib/utils/park-day';
+import { parkPagePath } from '@/lib/parks/paths';
+import { isIsoDate } from '@/lib/utils/iso-date';
 
 /**
  * Locale → localized URL segment for a park's wait-time calendar, and the month URLs under it
@@ -39,7 +41,7 @@ export function parkCalendarPath(
   month?: { year: number; month: number }
 ): string {
   const segment = PARK_CALENDAR_SEGMENTS[locale as Locale] ?? PARK_CALENDAR_CANONICAL_SEGMENT;
-  const base = `/parks/${continent}/${country}/${city}/${parkSlug}/${segment}`;
+  const base = `${parkPagePath({ continent, country, city, parkSlug })}/${segment}`;
   return month ? `${base}/${month.year}/${month.month}` : base;
 }
 
@@ -82,7 +84,7 @@ export function parkCalendarDayHash(date: string): string {
  */
 export function parkCalendarDayFromHash(hash: string, monthKey: string): string | null {
   const date = hash.replace(/^#/, '');
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || date.slice(0, 7) !== monthKey) return null;
+  if (!isIsoDate(date) || date.slice(0, 7) !== monthKey) return null;
   const year = Number(date.slice(0, 4));
   const month = Number(date.slice(5, 7));
   const day = Number(date.slice(8, 10));

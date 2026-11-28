@@ -16,22 +16,13 @@ import {
 } from '../lib/utils/metadata.ts';
 import { GLOSSARY_SEGMENTS } from '../lib/glossary/segments.ts';
 import { PLANNER_SEGMENTS } from '../lib/planner/segments.ts';
+import { attempt, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failures = 0;
-let checks = 0;
-function test(name, fn) {
-  checks++;
-  try {
-    fn();
-  } catch (error) {
-    failures++;
-    console.error(`✗ ${name}\n  ${error.message}`);
-  }
-}
+quietChecks();
 
 const SITE = 'https://park.fan';
 
-test('a page in every locale: canonical, six hreflang links in order, x-default last', () => {
+attempt('a page in every locale: canonical, six hreflang links in order, x-default last', () => {
   const alternates = buildAlternates('de', () => '/fancast');
   assert.equal(alternates.canonical, `${SITE}/de/fancast`);
   assert.deepEqual(Object.entries(alternates.languages), [
@@ -45,14 +36,14 @@ test('a page in every locale: canonical, six hreflang links in order, x-default 
   ]);
 });
 
-test("the home page's path is empty, not a slash", () => {
+attempt("the home page's path is empty, not a slash", () => {
   const alternates = buildAlternates('fr', () => '');
   assert.equal(alternates.canonical, `${SITE}/fr`);
   assert.equal(alternates.languages['x-default'], `${SITE}/en`);
   assert.equal(alternates.languages.nl, `${SITE}/nl`);
 });
 
-test('a localized segment per language, the English one for x-default', () => {
+attempt('a localized segment per language, the English one for x-default', () => {
   const planner = buildAlternates('nl', (l) => `/${PLANNER_SEGMENTS[l]}`);
   assert.equal(planner.canonical, `${SITE}/nl/dagplanner`);
   assert.equal(planner.languages.de, `${SITE}/de/tagesplaner`);
@@ -62,20 +53,23 @@ test('a localized segment per language, the English one for x-default', () => {
   assert.equal(glossary.languages['x-default'], `${SITE}/en/glossary`);
 });
 
-test('a listing names only the locales it exists in, and x-default only with an English page', () => {
-  assert.deepEqual(
-    alternateLanguages((l) => (l === 'de' || l === 'en' ? '/blog/page/2' : null)),
-    {
-      en: `${SITE}/en/blog/page/2`,
-      de: `${SITE}/de/blog/page/2`,
-      'x-default': `${SITE}/en/blog/page/2`,
-    }
-  );
-  assert.deepEqual(
-    alternateLanguages((l) => (l === 'de' ? '/blog/page/3' : null)),
-    { de: `${SITE}/de/blog/page/3` }
-  );
-});
+attempt(
+  'a listing names only the locales it exists in, and x-default only with an English page',
+  () => {
+    assert.deepEqual(
+      alternateLanguages((l) => (l === 'de' || l === 'en' ? '/blog/page/2' : null)),
+      {
+        en: `${SITE}/en/blog/page/2`,
+        de: `${SITE}/de/blog/page/2`,
+        'x-default': `${SITE}/en/blog/page/2`,
+      }
+    );
+    assert.deepEqual(
+      alternateLanguages((l) => (l === 'de' ? '/blog/page/3' : null)),
+      { de: `${SITE}/de/blog/page/3` }
+    );
+  }
+);
 
 const card = {
   locale: 'de',
@@ -85,7 +79,7 @@ const card = {
   ogImageUrl: `${SITE}/api/og/de/fancast`,
 };
 
-test('the share card: a website in every other locale, its image named by the title', () => {
+attempt('the share card: a website in every other locale, its image named by the title', () => {
   const { openGraph, twitter } = buildOpenGraphMetadata(card);
   assert.equal(openGraph.type, 'website');
   assert.equal(openGraph.locale, 'de_DE');
@@ -102,7 +96,7 @@ test('the share card: a website in every other locale, its image named by the ti
   });
 });
 
-test('an article, a profile, a page in one language and a post with its dates', () => {
+attempt('an article, a profile, a page in one language and a post with its dates', () => {
   assert.equal(buildOpenGraphMetadata({ ...card, type: 'article' }).openGraph.type, 'article');
   const profile = buildOpenGraphMetadata({
     ...card,
@@ -123,5 +117,4 @@ test('an article, a profile, a page in one language and a post with its dates', 
   assert.equal(post.section, 'Guides');
 });
 
-console.log(`${checks - failures}/${checks} checks passed`);
-if (failures > 0) process.exit(1);
+finishChecks();

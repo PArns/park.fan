@@ -32,7 +32,7 @@
  * Absolute numbers depend on the machine. Compare runs on one machine, and read the ratio.
  */
 import { chromium } from 'playwright';
-import { existsSync } from 'node:fs';
+import { LAUNCH } from './lib/browser.mjs';
 
 const args = process.argv.slice(2);
 const flag = (name, fallback) => {
@@ -47,11 +47,8 @@ const PATH = flag(
 const CPU = Number(flag('cpu', '4'));
 const SETTLE_MS = Number(flag('settle', '15000'));
 const ONLY = flag('only', null)?.split(',');
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
 
-const browser = await chromium.launch(
-  existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {}
-);
+const browser = await chromium.launch(LAUNCH);
 const context = await browser.newContext({
   viewport: { width: 390, height: 844 },
   deviceScaleFactor: 2,

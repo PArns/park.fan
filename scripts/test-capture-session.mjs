@@ -16,7 +16,6 @@
  *
  * Run: `pnpm test:capture-session`
  */
-import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 import {
@@ -26,12 +25,7 @@ import {
   sessionSidecars,
   sidecarFromPatch,
 } from '../lib/media/session-photos.ts';
-
-let checked = 0;
-const check = (actual, expected, message) => {
-  assert.deepEqual(actual, expected, message);
-  checked += 1;
-};
+import { expectEqual, expectThat, reportPassed } from './lib/run-cases.mjs';
 
 /** A sidecar as `pulls.listFiles` sends an added one: the whole file, one hunk. */
 const addedPatch = (sidecar) => {
@@ -72,12 +66,12 @@ const FILES = [
 
 // --- paths ------------------------------------------------------------------
 
-check(
+expectEqual(
   mediaPath('public/media/phantasialand/wellenflug-2.jpg'),
   { collection: 'phantasialand', name: 'wellenflug-2', ext: 'jpg' },
   'a media path splits into collection, name and extension'
 );
-check(
+expectEqual(
   mediaPath('public/media/toverland/halloween/troy.JSON'),
   { collection: 'toverland/halloween', name: 'troy', ext: 'json' },
   'a nested collection keeps its slash, and the extension is compared lower-case'
@@ -87,17 +81,17 @@ for (const path of [
   'public/media/loose.jpg',
   'public/media/phantasialand/README',
 ]) {
-  check(mediaPath(path), null, `${path} is not a media file`);
+  expectEqual(mediaPath(path), null, `${path} is not a media file`);
 }
 
 // --- names ------------------------------------------------------------------
 
-check(
+expectEqual(
   sessionNames(FILES, 'phantasialand').sort(),
   ['avoras', 'wellenflug', 'wellenflug-2'],
   'image and sidecar share one name, and each counts once'
 );
-check(
+expectEqual(
   sessionNames(
     [
       ...FILES,
@@ -113,7 +107,7 @@ check(
 
 // --- sidecars ---------------------------------------------------------------
 
-check(
+expectEqual(
   sessionSidecars([
     ...FILES,
     { filename: 'public/media/phantasialand/gone.json', status: 'removed' },
@@ -127,8 +121,12 @@ check(
   'only sidecars under public/media that survive the merge are read'
 );
 
-check(sidecarFromPatch(addedPatch(AVORAS)), AVORAS, 'an added sidecar is read whole off its patch');
-check(
+expectEqual(
+  sidecarFromPatch(addedPatch(AVORAS)),
+  AVORAS,
+  'an added sidecar is read whole off its patch'
+);
+expectEqual(
   sidecarFromPatch(`${addedPatch(AVORAS)}\n\\ No newline at end of file`),
   AVORAS,
   'the no-newline marker is not part of the file'
@@ -138,12 +136,12 @@ for (const [patch, why] of [
   ['@@ -3,7 +3,7 @@\n   "ride": "avoras",\n-  "tags": []\n+  "tags": ["day"]', 'a changed sidecar'],
   ['@@ -0,0 +1,2 @@\n+{\n+  "park": ', 'a patch that is not valid JSON'],
 ]) {
-  check(sidecarFromPatch(patch), null, `${why} is not read from the patch`);
+  expectEqual(sidecarFromPatch(patch), null, `${why} is not read from the patch`);
 }
 
 // --- rides ------------------------------------------------------------------
 
-check(
+expectEqual(
   [
     ...ridesInSidecars(
       FILES.filter((file) => file.patch).map((file) => sidecarFromPatch(file.patch)),
@@ -153,7 +151,7 @@ check(
   ['avoras', 'wellenflug'],
   'the rides come out of the sidecars, each once'
 );
-check(
+expectEqual(
   [
     ...ridesInSidecars(
       [
@@ -177,14 +175,8 @@ const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
 const route = read('../app/api/admin/media/backlog/route.ts');
 const uploads = read('../app/admin/capture/_lib/use-capture-uploads.ts');
 
-const grep = (source, pattern, message) => {
-  assert.match(source, pattern, message);
-  checked += 1;
-};
-const absent = (source, pattern, message) => {
-  assert.doesNotMatch(source, pattern, message);
-  checked += 1;
-};
+const grep = (source, pattern, message) => expectThat(pattern.test(source), message);
+const absent = (source, pattern, message) => expectThat(!pattern.test(source), message);
 
 grep(
   route,
@@ -212,4 +204,4 @@ grep(
   'photos waiting in the queue keep their names across a reload'
 );
 
-console.log(`capture session: ${checked} checks passed`);
+reportPassed();

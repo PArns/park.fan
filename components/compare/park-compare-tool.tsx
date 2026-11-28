@@ -9,6 +9,7 @@ import { CompareParkPicker } from '@/components/compare/compare-park-picker';
 import { compareKey, MAX_COMPARE_PARKS, serializeCompare } from '@/lib/compare/selection';
 import { useParkComparisonStats, type ComparisonPark } from '@/lib/hooks/use-park-comparison-stats';
 import type { SearchParkHit } from '@/lib/utils/search-park-hits';
+import { parkPagePath } from '@/lib/parks/paths';
 
 interface CardLabels {
   title: string;
@@ -59,7 +60,7 @@ export function ParkCompareTool({
     const row: ComparisonPark = {
       slug: compareKey({ ...hit.geo, parkSlug: hit.slug }),
       name: hit.name,
-      href: `/parks/${hit.geo.continent}/${hit.geo.country}/${hit.geo.city}/${hit.slug}`,
+      href: parkPagePath({ ...hit.geo, parkSlug: hit.slug }),
       ...hit.geo,
       parkSlug: hit.slug,
     };

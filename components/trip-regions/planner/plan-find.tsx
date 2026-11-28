@@ -32,6 +32,7 @@ import {
 } from './plan-controls';
 import { PlanDates } from './plan-dates';
 import { useSchoolBreaks, useTripCalendar } from './use-trip-plan';
+import { getCountryName } from '@/lib/utils/region-names';
 
 /**
  * Step 1, the dates, its two answers side by side as equals: „Ich kenne meine Daten“, the range
@@ -176,13 +177,6 @@ export function PlanFind() {
   const last = today ? addDays(today, MAX_DAYS_AHEAD) : undefined;
   const breaks = useSchoolBreaks(live);
   const countries = useMemo(() => holidayRegionsFor(breaks.data, locale), [breaks.data, locale]);
-  const countryName = useMemo(() => {
-    try {
-      return new Intl.DisplayNames([locale], { type: 'region' });
-    } catch {
-      return null;
-    }
-  }, [locale]);
   const withinRegion = countries.flatMap((c) => c.regions).find((r) => r.code === state.within);
   const withinCountry =
     countries.find((c) => c.regions.some((r) => r.code === state.within))?.country ??
@@ -303,7 +297,7 @@ export function PlanFind() {
               >
                 {countries.map((c) => (
                   <option key={c.country} value={c.country}>
-                    {countryName?.of(c.country) ?? c.country}
+                    {getCountryName(c.country, locale)}
                   </option>
                 ))}
               </PlanSelect>

@@ -1,11 +1,11 @@
 import { getTranslations } from 'next-intl/server';
 import { BlogParkCardLive } from './blog-park-card-live';
-import { GlassCard } from '@/components/common/glass-card';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 import { BlogWidgetLabel } from '@/components/blog/blog-widget-label';
 import { STANDALONE_CARD_ROWS_CLASS } from '@/components/parks/card-rows';
 import { cn } from '@/lib/utils';
+import { BlogWidgetParkNotFound } from '@/components/blog/blog-widget-park-not-found';
 
 interface BlogParkWidgetProps {
   park: ResolvedPark | null;
@@ -26,11 +26,7 @@ export async function BlogParkWidget({ park, slug, inRow = false }: BlogParkWidg
   const tBlog = await getTranslations('blog');
 
   if (!park) {
-    return (
-      <GlassCard variant="light" className="not-prose my-8">
-        <p className="text-muted-foreground text-sm">{tBlog('widget.parkNotFound', { slug })}</p>
-      </GlassCard>
-    );
+    return <BlogWidgetParkNotFound slug={slug} className="not-prose my-8" />;
   }
 
   return (

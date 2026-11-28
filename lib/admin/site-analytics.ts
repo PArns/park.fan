@@ -30,6 +30,7 @@ import type {
   TrafficOverview,
 } from '@/lib/api/admin-site-analytics';
 import { formatPeriodLong, germanDay, rangeParams, type TrafficRange } from './traffic-range';
+import { formatCount, formatDecimal } from './format-number';
 
 /**
  * The pure half of the traffic dashboards (`app/admin/traffic`): the windows, languages and
@@ -355,16 +356,7 @@ export function hasTraffic(totals: AnalyticsTotals): boolean {
   return (totals.pageviews ?? 0) > 0 || (totals.events ?? 0) > 0 || totals.visits > 0;
 }
 
-const number = new Intl.NumberFormat('de-DE');
-const oneDecimal = new Intl.NumberFormat('de-DE', {
-  minimumFractionDigits: 1,
-  maximumFractionDigits: 1,
-});
-
-/** A count with the German thousands separator. */
-export function formatCount(value: number): string {
-  return number.format(value);
-}
+export { formatCount, formatDecimal };
 
 /**
  * A duration in whole seconds: `45 s` under a minute, `1:42 min` under an hour, `1:05 h` beyond.
@@ -379,11 +371,6 @@ export function formatDuration(seconds: number | null | undefined): string {
   return `${Math.floor(whole / 3600)}:${pad(Math.floor((whole % 3600) / 60))} h`;
 }
 
-/** A float with one decimal, `2,4`. */
-export function formatDecimal(value: number): string {
-  return oneDecimal.format(value);
-}
-
 /**
  * A 0..1 share as a percentage: `42 %`, `4,2 %` under ten, `< 0,1 %` for a trace, `0 %` for none.
  * A rate that has nothing to divide (no visits, no openings) is no share at all: the caller shows
@@ -394,7 +381,7 @@ export function formatShare(share: number): string {
   if (share <= 0) return '0 %';
   const percent = share * 100;
   if (percent < 0.1) return '< 0,1 %';
-  return `${percent < 10 ? oneDecimal.format(percent) : number.format(Math.round(percent))} %`;
+  return `${percent < 10 ? formatDecimal(percent) : formatCount(Math.round(percent))} %`;
 }
 
 /** The sum of a list of numbers. */

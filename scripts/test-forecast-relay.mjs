@@ -3,6 +3,7 @@
 // which relay paths stay keyless, which requests count as the site's own, and how the flag is appended.
 import { isKeylessRelayPath, isSameOriginRequest } from '../lib/api/forecast-relay.ts';
 import { fetchWithForecast, readWithForecast, withForecast } from '../lib/api/forecast-query.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const park = ['north-america', 'united-states', 'orlando', 'magic-kingdom-park'];
 const request = (headers) => new Request('https://park.fan/api/parks/x', { headers });
@@ -151,27 +152,4 @@ const testCases = [
   },
 ];
 
-let passed = 0;
-let failed = 0;
-
-for (const testCase of testCases) {
-  let result;
-  try {
-    result = await testCase.actual();
-  } catch (error) {
-    result = `threw: ${error instanceof Error ? error.message : String(error)}`;
-  }
-  if (JSON.stringify(result) === JSON.stringify(testCase.expected)) {
-    passed++;
-    console.log(`  ✓ ${testCase.name}`);
-  } else {
-    failed++;
-    console.log(`  ✗ ${testCase.name}`);
-    console.log(`      expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`      actual:   ${JSON.stringify(result)}`);
-  }
-}
-
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-if (failed > 0) process.exit(1);
-console.log('🎉 All tests passed!');
+await runCases(testCases, { json: true });

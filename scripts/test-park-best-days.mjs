@@ -12,6 +12,7 @@
 
 import assert from 'node:assert/strict';
 import { deriveParkBestDays } from '../lib/parks/park-stats-derive.ts';
+import { attempt, finishChecks } from './lib/run-cases.mjs';
 
 const bucket = ([key, avgCrowdScore, sampleDays]) => ({
   avgCrowdScore,
@@ -79,17 +80,6 @@ const fujiQ = stats(
   ]
 );
 
-let failed = 0;
-function test(name, fn) {
-  try {
-    fn();
-    console.log(`✓ ${name}`);
-  } catch (err) {
-    failed++;
-    console.error(`✗ ${name}\n  ${err.message}`);
-  }
-}
-
 const phantasialand = stats(
   [
     [0, 3.4, 33],
@@ -114,20 +104,23 @@ const phantasialand = stats(
   ]
 );
 
-test('Phantasialand: Monday to Friday quieter, Saturday AND Sunday busier', () => {
+await attempt('Phantasialand: Monday to Friday quieter, Saturday AND Sunday busier', () => {
   const r = deriveParkBestDays(phantasialand);
   // Mean 2.99: the weekdays sit 0.19 to 0.29 below it, Sunday 0.41 and Saturday 0.91 above.
   assert.deepEqual(r.days, ['busy', 'quiet', 'quiet', 'quiet', 'quiet', 'quiet', 'busy']);
 });
 
-test('Phantasialand: the five weekdays tie for quietest, Saturday alone is busiest', () => {
-  const r = deriveParkBestDays(phantasialand);
-  // Wednesday's 2.8 is one rounding step from the others' 2.7, so it shares the minimum.
-  assert.deepEqual(r.quietDays, [1, 2, 3, 4, 5]);
-  assert.deepEqual(r.busyDays, [6]);
-});
+await attempt(
+  'Phantasialand: the five weekdays tie for quietest, Saturday alone is busiest',
+  () => {
+    const r = deriveParkBestDays(phantasialand);
+    // Wednesday's 2.8 is one rounding step from the others' 2.7, so it shares the minimum.
+    assert.deepEqual(r.quietDays, [1, 2, 3, 4, 5]);
+    assert.deepEqual(r.busyDays, [6]);
+  }
+);
 
-test('Phantasialand: both month ends pass the same sample gate', () => {
+await attempt('Phantasialand: both month ends pass the same sample gate', () => {
   const r = deriveParkBestDays(phantasialand);
   // October reads 1.6, lower than September, on 16 measured days against a median month of 30:
   // it is out of the quiet end exactly as the 6-day December is out of the busy one.
@@ -135,7 +128,7 @@ test('Phantasialand: both month ends pass the same sample gate', () => {
   assert.deepEqual(r.busyMonths, [8]);
 });
 
-test('Europa-Park: the week is tiered against its own mean, in both directions', () => {
+await attempt('Europa-Park: the week is tiered against its own mean, in both directions', () => {
   const r = deriveParkBestDays(europaPark);
   // Mean 2.2: Sunday, Thursday and Friday 0.2 or more below, Tuesday and Saturday above.
   assert.deepEqual(r.days, ['quiet', 'middle', 'busy', 'middle', 'quiet', 'quiet', 'busy']);
@@ -143,24 +136,30 @@ test('Europa-Park: the week is tiered against its own mean, in both directions',
   assert.deepEqual(r.busyDays, [6]);
 });
 
-test('Europa-Park: January, the first days of the winter season, is not the quietest month', () => {
-  const r = deriveParkBestDays(europaPark);
-  // Jan 18, Mar 14, Oct 15 and Dec 6 measured days against a median month of 30: left out.
-  assert.ok(!r.quietMonths.includes(1));
-  assert.deepEqual(r.quietMonths, [5, 6]);
-  assert.deepEqual(r.busyMonths, [8]);
-});
+await attempt(
+  'Europa-Park: January, the first days of the winter season, is not the quietest month',
+  () => {
+    const r = deriveParkBestDays(europaPark);
+    // Jan 18, Mar 14, Oct 15 and Dec 6 measured days against a median month of 30: left out.
+    assert.ok(!r.quietMonths.includes(1));
+    assert.deepEqual(r.quietMonths, [5, 6]);
+    assert.deepEqual(r.busyMonths, [8]);
+  }
+);
 
-test('Fuji-Q: Wednesday to Friday quiet, the weekend busy; Friday and Saturday are the ends', () => {
-  const r = deriveParkBestDays(fujiQ);
-  assert.deepEqual(r.days, ['busy', 'busy', 'middle', 'quiet', 'quiet', 'quiet', 'busy']);
-  assert.deepEqual(r.quietDays, [5]);
-  assert.deepEqual(r.busyDays, [6]);
-  assert.deepEqual(r.quietMonths, [6]);
-  assert.deepEqual(r.busyMonths, [8, 9]);
-});
+await attempt(
+  'Fuji-Q: Wednesday to Friday quiet, the weekend busy; Friday and Saturday are the ends',
+  () => {
+    const r = deriveParkBestDays(fujiQ);
+    assert.deepEqual(r.days, ['busy', 'busy', 'middle', 'quiet', 'quiet', 'quiet', 'busy']);
+    assert.deepEqual(r.quietDays, [5]);
+    assert.deepEqual(r.busyDays, [6]);
+    assert.deepEqual(r.quietMonths, [6]);
+    assert.deepEqual(r.busyMonths, [8, 9]);
+  }
+);
 
-test('a day close to the mean is neither end', () => {
+await attempt('a day close to the mean is neither end', () => {
   const r = deriveParkBestDays(
     stats(
       [0, 1, 2, 3, 4, 5, 6].map((d) => [d, d === 6 ? 2.6 : 2, 30]),
@@ -172,7 +171,7 @@ test('a day close to the mean is neither end', () => {
   assert.deepEqual(r.busyDays, [6]);
 });
 
-test('a week whose range is under 0.3 marks no day at all', () => {
+await attempt('a week whose range is under 0.3 marks no day at all', () => {
   const r = deriveParkBestDays(
     stats(
       [0, 1, 2, 3, 4, 5, 6].map((d) => [d, d === 6 ? 2.2 : 2, 30]),
@@ -185,12 +184,12 @@ test('a week whose range is under 0.3 marks no day at all', () => {
   assert.deepEqual(r.busyMonths, [8]);
 });
 
-test('an aggregate that is not displayable gives nothing', () => {
+await attempt('an aggregate that is not displayable gives nothing', () => {
   assert.equal(deriveParkBestDays({ ...fujiQ, meta: { ...fujiQ.meta, displayable: false } }), null);
   assert.equal(deriveParkBestDays(null), null);
 });
 
-test('a flat week and a flat year give nothing', () => {
+await attempt('a flat week and a flat year give nothing', () => {
   const flat = stats(
     [0, 1, 2, 3, 4, 5, 6].map((d) => [d, 2, 30]),
     [5, 6, 7, 8].map((m) => [m, 2.05, 30])
@@ -198,7 +197,4 @@ test('a flat week and a flat year give nothing', () => {
   assert.equal(deriveParkBestDays(flat), null);
 });
 
-if (failed) {
-  console.error(`\n${failed} failed`);
-  process.exit(1);
-}
+finishChecks();

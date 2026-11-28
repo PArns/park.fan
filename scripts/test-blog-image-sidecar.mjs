@@ -10,22 +10,7 @@
  */
 
 import { sidecarForUpload, textFromDrafts } from '../lib/admin/blog-image-sidecar.ts';
-
-let passed = 0;
-let failed = 0;
-
-function check(name, actual, expected) {
-  const ok = JSON.stringify(actual) === JSON.stringify(expected);
-  if (ok) {
-    passed += 1;
-    console.log(`✅ ${name}`);
-  } else {
-    failed += 1;
-    console.log(
-      `❌ ${name}\n   expected ${JSON.stringify(expected)}\n   actual   ${JSON.stringify(actual)}`
-    );
-  }
-}
+import { check, finishChecks } from './lib/run-cases.mjs';
 
 const PATH = '/media/my-post/taron-queue.jpg';
 
@@ -117,6 +102,5 @@ check('an image nobody wrote text for still gets a row', JSON.parse(sidecarForUp
   credit: { license: 'unknown' },
 });
 
-console.log(`\n📊 ${passed} passed, ${failed} failed\n`);
-if (failed) process.exit(1);
+finishChecks();
 console.log('🎉 Editor uploads describe themselves.');

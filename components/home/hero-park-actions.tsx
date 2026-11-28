@@ -19,6 +19,7 @@ import { useParkOpeningLabel } from '@/lib/hooks/use-hero-status-labels';
 import { cn } from '@/lib/utils';
 import type { PlannerGeo } from '@/lib/planner/types';
 import type { ScheduleSummary } from '@/lib/api/types';
+import { parkPagePath } from '@/lib/parks/paths';
 
 /** What the hero knows about the park the visitor is in or next to, from `/api/nearby`. */
 export interface HeroPark {
@@ -78,7 +79,7 @@ export function HeroParkActions({
   const now = useMinuteNowDate();
   const openingLabel = useParkOpeningLabel();
   const { geo } = park;
-  const parkPath = geo ? `/parks/${geo.continent}/${geo.country}/${geo.city}/${park.slug}` : null;
+  const parkPath = geo ? parkPagePath({ ...geo, parkSlug: park.slug }) : null;
 
   const { data: nowcast, isPending: weatherPending } = useWeatherNowcast({
     continent: geo?.continent ?? '',

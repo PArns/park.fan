@@ -14,13 +14,7 @@ import {
   isAppleId,
 } from '../lib/admin/apns.ts';
 import { activeNavItem, visibleGroups } from '../app/admin/_app/nav.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 test('the key id comes from Apple’s file name, also from a second download', () => {
   assert.equal(apnsKeyIdFromFilename('AuthKey_ABC123DEFG.p8'), 'ABC123DEFG');
@@ -73,4 +67,4 @@ test('the page sits under Betrieb, for owners', () => {
   assert.ok(!hrefs('editor').includes('/admin/push'));
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

@@ -1,3 +1,4 @@
+import { createLocalRecordStore } from '@/lib/utils/local-record-store';
 import { addDays } from '@/lib/utils/park-day';
 import {
   DEFAULT_PLAN_STATE,
@@ -8,6 +9,7 @@ import {
   writePlanQuery,
   type PlanLock,
 } from './plan-query';
+import { isIsoDate } from '@/lib/utils/iso-date';
 
 /*
  * The days a visitor has picked in a region's hub calendar, one park per date: a press on a park's
@@ -23,7 +25,6 @@ export type HubPicks = Readonly<Record<string, string>>;
 
 const NONE: HubPicks = Object.freeze({});
 const SLUG = /^[a-z0-9-]{1,80}$/;
-const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 /** Where a region's picks live. */
 export const hubPicksKey = (region: string) => `parkfan_${region}_hub_picks`;
@@ -36,7 +37,7 @@ export function parseHubPicks(raw: string | null): HubPicks {
     if (!value || typeof value !== 'object' || Array.isArray(value)) return NONE;
     const entries = Object.entries(value as Record<string, unknown>).filter(
       (entry): entry is [string, string] =>
-        DATE.test(entry[0]) && typeof entry[1] === 'string' && SLUG.test(entry[1])
+        isIsoDate(entry[0]) && typeof entry[1] === 'string' && SLUG.test(entry[1])
     );
     return entries.length > 0 ? Object.freeze(Object.fromEntries(entries)) : NONE;
   } catch {
@@ -118,60 +119,12 @@ const stores = new Map<string, HubPicksStore>();
 export function hubPicks(region: string): HubPicksStore {
   let store = stores.get(region);
   if (store) return store;
-  const key = hubPicksKey(region);
-  const listeners = new Set<() => void>();
-  let cachedRaw: string | null = null;
-  let cached: HubPicks = NONE;
-
-  const readRaw = (): string | null => {
-    try {
-      return window.localStorage.getItem(key);
-    } catch {
-      return null;
-    }
-  };
-  const getSnapshot = (): HubPicks => {
-    const raw = readRaw();
-    if (raw !== cachedRaw) {
-      cachedRaw = raw;
-      cached = parseHubPicks(raw);
-    }
-    return cached;
-  };
-  const write = (next: HubPicks) => {
-    try {
-      if (Object.keys(next).length === 0) window.localStorage.removeItem(key);
-      else window.localStorage.setItem(key, JSON.stringify(next));
-    } catch {
-      // Private mode or a full store: the picks last until the page is left.
-      cachedRaw = readRaw();
-      cached = next;
-    }
-    for (const listener of listeners) listener();
-  };
-
-  store = {
-    subscribe(listener) {
-      listeners.add(listener);
-      const onStorage = (event: StorageEvent) => {
-        if (event.key === key || event.key === null) listener();
-      };
-      window.addEventListener('storage', onStorage);
-      return () => {
-        listeners.delete(listener);
-        window.removeEventListener('storage', onStorage);
-      };
-    },
-    getSnapshot,
-    getServerSnapshot: () => NONE,
-    set: write,
-    forget() {
-      const kept = getSnapshot();
-      if (kept === NONE) return () => undefined;
-      write(NONE);
-      return () => write(kept);
-    },
-  };
+  const { write, ...record } = createLocalRecordStore({
+    key: hubPicksKey(region),
+    parse: parseHubPicks,
+    empty: NONE,
+  });
+  store = { ...record, set: write };
   stores.set(region, store);
   return store;
 }

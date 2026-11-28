@@ -12,7 +12,7 @@ import type {
 } from '@/lib/api/admin-search-console';
 import { useCan } from '../../_app/session';
 import { adminFetch, useAdminQuery } from '../../_lib/api';
-import { formatAgo } from '../../_lib/format';
+import { formatAgo, formatDateTime } from '../../_lib/format';
 import {
   Chip,
   EmptyState,
@@ -219,10 +219,7 @@ export function ReindexPanel({ siteUrl }: { siteUrl: string }) {
                   {data.history.map((row) => (
                     <li key={`${row.path}-${row.requestedAt}`} className="flex gap-2">
                       <span className="text-muted-foreground shrink-0 tabular-nums">
-                        {new Date(row.requestedAt).toLocaleString('de-DE', {
-                          dateStyle: 'short',
-                          timeStyle: 'short',
-                        })}
+                        {formatDateTime(row.requestedAt)}
                       </span>
                       <span className="min-w-0 flex-1">
                         <StartTruncated>{row.path}</StartTruncated>

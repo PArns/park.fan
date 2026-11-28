@@ -7,13 +7,7 @@
  */
 import assert from 'node:assert/strict';
 import { localizedPath } from '@/lib/i18n/localized-path.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 test("a path without a locale gets the reader's", () => {
   assert.equal(localizedPath('/parks/europe', 'de'), '/de/parks/europe');
@@ -93,4 +87,4 @@ test('an unknown locale only prefixes', () => {
   assert.equal(localizedPath('/best-time-to-visit', 'xx'), '/xx/best-time-to-visit');
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();

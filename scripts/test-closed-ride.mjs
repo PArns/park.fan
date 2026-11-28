@@ -29,31 +29,22 @@ import {
 } from '../lib/parks/closed-ride.ts';
 import { buildClosedRideDescription, buildClosedRideTitle } from '../lib/seo/attraction-meta.ts';
 import { findRenamedParkRedirect, movedPath } from '../lib/utils/redirect-utils.ts';
+import { attempt, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failures = 0;
-let checks = 0;
-function test(name, fn) {
-  checks++;
-  try {
-    fn();
-  } catch (error) {
-    failures++;
-    console.error(`✗ ${name}\n  ${error.message}`);
-  }
-}
+quietChecks();
 
 const X2_REASON = 'https://park.fan/news/x2-six-flags-magic-mountain-closed';
 
 // ── Which responses are a page ───────────────────────────────────────────────
 
-test('a ride retired as closed is a page', () => {
+attempt('a ride retired as closed is a page', () => {
   assert.equal(
     isClosedRide({ retiredKind: 'closed', retiredAt: '2026-07-13T00:00:00.000Z' }),
     true
   );
 });
 
-test('a park with retiredAt is closed; absent or null is a running park', () => {
+attempt('a park with retiredAt is closed; absent or null is a running park', () => {
   assert.equal(isClosedPark({ retiredAt: '2025-11-02T00:00:00.000Z' }), true);
   assert.equal(isClosedPark({ retiredAt: null }), false);
   // The live API does not send the field yet.
@@ -61,14 +52,14 @@ test('a park with retiredAt is closed; absent or null is a running park', () => 
   assert.equal(isClosedPark(null), false);
 });
 
-test('a reclassified row is not: nothing closed', () => {
+attempt('a reclassified row is not: nothing closed', () => {
   assert.equal(
     isClosedRide({ retiredKind: 'reclassified', retiredAt: '2026-09-01T00:00:00.000Z' }),
     false
   );
 });
 
-test('a live name-duplicate the park payload dropped is not either', () => {
+attempt('a live name-duplicate the park payload dropped is not either', () => {
   assert.equal(isClosedRide({ retiredKind: null, retiredAt: null }), false);
   assert.equal(isClosedRide({}), false);
   assert.equal(isClosedRide(null), false);
@@ -76,18 +67,18 @@ test('a live name-duplicate the park payload dropped is not either', () => {
 
 // ── The news post ────────────────────────────────────────────────────────────
 
-test('the English news URL becomes the German post on a German page', () => {
+attempt('the English news URL becomes the German post on a German page', () => {
   const post = closedRidePost(X2_REASON, 'de');
   assert.ok(post, 'no post resolved');
   assert.equal(post.href, '/news/x2-six-flags-magic-mountain-geschlossen');
   assert.match(post.title, /X2/);
 });
 
-test('and stays the English post on an English page', () => {
+attempt('and stays the English post on an English page', () => {
   assert.equal(closedRidePost(X2_REASON, 'en')?.href, '/news/x2-six-flags-magic-mountain-closed');
 });
 
-test('a locale-prefixed URL to another translation resolves too', () => {
+attempt('a locale-prefixed URL to another translation resolves too', () => {
   const post = closedRidePost(
     'Source: https://park.fan/de/news/x2-six-flags-magic-mountain-geschlossen.',
     'nl'
@@ -95,37 +86,37 @@ test('a locale-prefixed URL to another translation resolves too', () => {
   assert.equal(post?.href, '/news/x2-six-flags-magic-mountain-gesloten');
 });
 
-test('a reason that names no post of ours has no post', () => {
+attempt('a reason that names no post of ours has no post', () => {
   assert.equal(closedRidePost('Removed with DinoLand', 'de'), null);
   assert.equal(closedRidePost('https://blogmickey.com/2026/02/dino-sue-removed', 'de'), null);
   assert.equal(closedRidePost(null, 'de'), null);
 });
 
-test('a post that is not in the manifest has none either', () => {
+attempt('a post that is not in the manifest has none either', () => {
   assert.equal(closedRidePost('https://park.fan/news/no-such-post-anywhere', 'de'), null);
 });
 
 // ── An outside source ────────────────────────────────────────────────────────
 
-test('an outside source is its host, without the full stop that ends the sentence', () => {
+attempt('an outside source is its host, without the full stop that ends the sentence', () => {
   assert.deepEqual(
     closedRideSource('Removed with DinoLand, see https://www.blogmickey.com/2026/02/dino-sue.'),
     { href: 'https://www.blogmickey.com/2026/02/dino-sue', host: 'blogmickey.com' }
   );
 });
 
-test('our own site is never an outside source', () => {
+attempt('our own site is never an outside source', () => {
   assert.equal(closedRideSource(X2_REASON), null);
 });
 
-test('a reason without a URL has no source', () => {
+attempt('a reason without a URL has no source', () => {
   assert.equal(closedRideSource('blogmickey.com/2026/02/dino-sue-removed'), null);
   assert.equal(closedRideSource(null), null);
 });
 
 // ── The day it closed ────────────────────────────────────────────────────────
 
-test('the closing day is the day entered, not the evening before in California', () => {
+attempt('the closing day is the day entered, not the evening before in California', () => {
   assert.equal(formatClosedOn('2026-07-13T00:00:00.000Z', 'de'), '13. Juli 2026');
   assert.equal(formatClosedOn('2026-07-13T00:00:00.000Z', 'en'), 'July 13, 2026');
   assert.equal(formatClosedMonth('2026-07-13T00:00:00.000Z', 'de'), 'Juli 2026');
@@ -133,7 +124,7 @@ test('the closing day is the day entered, not the evening before in California',
 
 // ── The park page's ride search ──────────────────────────────────────────────
 
-test('the search gets each closed ride with the month it closed as finished text', () => {
+attempt('the search gets each closed ride with the month it closed as finished text', () => {
   const rides = closedRidesForSearch(
     [
       {
@@ -152,7 +143,7 @@ test('the search gets each closed ride with the month it closed as finished text
   ]);
 });
 
-test('a park without a closed ride ships no list at all', () => {
+attempt('a park without a closed ride ships no list at all', () => {
   assert.equal(
     closedRidesForSearch([], 'de', (m) => m),
     undefined
@@ -171,13 +162,13 @@ const t = (key, values = {}) =>
   messages.seo.attraction[key].replace(/\{(\w+)\}/g, (_, name) => String(values[name] ?? ''));
 const phrase = { locale: 'de', articleDe: null };
 
-test('the title says the ride is closed, not that it has live wait times', () => {
+attempt('the title says the ride is closed, not that it has live wait times', () => {
   const title = buildClosedRideTitle('X2', 'Six Flags Magic Mountain', t, phrase);
   assert.equal(title, 'X2 in Six Flags Magic Mountain – dauerhaft geschlossen');
   assert.doesNotMatch(title, /LIVE/);
 });
 
-test('a title too long for the park drops the park, not the closure', () => {
+attempt('a title too long for the park drops the park, not the closure', () => {
   const title = buildClosedRideTitle(
     'Batman The Ride: The Dark Knight Coaster Experience',
     'Six Flags Magic Mountain',
@@ -190,24 +181,27 @@ test('a title too long for the park drops the park, not the closure', () => {
   );
 });
 
-test('the description carries the date, the weekday peak in steps of five and the builder', () => {
-  const description = buildClosedRideDescription(
-    'X2',
-    'Six Flags Magic Mountain',
-    '13. Juli 2026',
-    { weekdayPeak: 83, manufacturer: 'Arrow Dynamics', openedYear: 2002 },
-    t,
-    phrase
-  );
-  assert.equal(
-    description,
-    'X2 in Six Flags Magic Mountain ist seit dem 13. Juli 2026 dauerhaft geschlossen. ' +
-      'Davor dauerte das Anstehen an normalen Wochentagen bis zu 85 Minuten.'
-  );
-  assert.ok(description.length <= 160, `${description.length} characters`);
-});
+attempt(
+  'the description carries the date, the weekday peak in steps of five and the builder',
+  () => {
+    const description = buildClosedRideDescription(
+      'X2',
+      'Six Flags Magic Mountain',
+      '13. Juli 2026',
+      { weekdayPeak: 83, manufacturer: 'Arrow Dynamics', openedYear: 2002 },
+      t,
+      phrase
+    );
+    assert.equal(
+      description,
+      'X2 in Six Flags Magic Mountain ist seit dem 13. Juli 2026 dauerhaft geschlossen. ' +
+        'Davor dauerte das Anstehen an normalen Wochentagen bis zu 85 Minuten.'
+    );
+    assert.ok(description.length <= 160, `${description.length} characters`);
+  }
+);
 
-test('without wait figures it keeps the builder and the year', () => {
+attempt('without wait figures it keeps the builder and the year', () => {
   const description = buildClosedRideDescription(
     'X2',
     'Six Flags Magic Mountain',
@@ -223,7 +217,7 @@ test('without wait figures it keeps the builder and the year', () => {
   );
 });
 
-test('with nothing else known it is the one sentence', () => {
+attempt('with nothing else known it is the one sentence', () => {
   assert.equal(
     buildClosedRideDescription(
       'Dino-Sue',
@@ -241,7 +235,7 @@ test('with nothing else known it is the one sentence', () => {
 // from the followed fetch under its current `url`; the page sends the visitor there instead of a 404.
 const OLD_RIDE = '/parks/north-america/united-states/muskegon/michigans-adventure/lazy-river';
 
-test('a ride the API answered under another park is moved there', () => {
+attempt('a ride the API answered under another park is moved there', () => {
   assert.equal(
     movedPath(
       '/v1/parks/north-america/united-states/muskegon/wildwater-adventure/attractions/lazy-river',
@@ -251,7 +245,7 @@ test('a ride the API answered under another park is moved there', () => {
   );
 });
 
-test('a ride answered under the path asked for has not moved', () => {
+attempt('a ride answered under the path asked for has not moved', () => {
   assert.equal(
     movedPath(
       '/v1/parks/north-america/united-states/muskegon/michigans-adventure/attractions/lazy-river',
@@ -261,12 +255,12 @@ test('a ride answered under the path asked for has not moved', () => {
   );
 });
 
-test('no url, or one that is not a park path, never redirects', () => {
+attempt('no url, or one that is not a park path, never redirects', () => {
   assert.equal(movedPath(null, OLD_RIDE), null);
   assert.equal(movedPath('https://example.com/elsewhere', OLD_RIDE), null);
 });
 
-test('a renamed park still redirects through the same comparison', () => {
+attempt('a renamed park still redirects through the same comparison', () => {
   const requested = {
     continent: 'europe',
     country: 'germany',
@@ -283,8 +277,4 @@ test('a renamed park still redirects through the same comparison', () => {
   );
 });
 
-if (failures > 0) {
-  console.error(`\n${failures} of ${checks} checks failed.`);
-  process.exit(1);
-}
-console.log(`✓ closed-ride: ${checks} checks passed.`);
+finishChecks();

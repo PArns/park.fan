@@ -28,6 +28,7 @@
  * Run: `pnpm test:push-timezone`
  */
 import assert from 'node:assert/strict';
+import { attempt, finishChecks } from './lib/run-cases.mjs';
 
 const SENT_KEY = 'parkfan_push_timezone';
 const RIDE_ALERTS_KEY = 'parkfan_ride_alerts';
@@ -110,6 +111,18 @@ globalThis.fetch = async (url, init) => {
  * and the test has to move it between two calls within one run.
  */
 let browserZone = 'Europe/Berlin';
+
+/** Each test starts from a subscribed browser in Berlin with empty storage and a server that agrees. */
+const test = (name, fn) =>
+  attempt(name, () => {
+    calls = [];
+    unsubscribed = 0;
+    storage.clear();
+    browserZone = 'Europe/Berlin';
+    fetchStub = () => ({ ok: true, status: 204 });
+    setNavigator(subscribedNavigator());
+    return fn();
+  });
 const RealDateTimeFormat = Intl.DateTimeFormat;
 Intl.DateTimeFormat = function DateTimeFormat(...args) {
   if (args.length > 0) return new RealDateTimeFormat(...args);
@@ -126,25 +139,6 @@ function armRideAlert() {
 /** The planner's own record — the other half of the "is anything armed" gate. */
 function armPlanner(endpoint = ENDPOINT) {
   storage.set(ARMED_KEY, JSON.stringify({ endpoint, tripId: 'n7Qk2Fd3Xb9p' }));
-}
-
-let passed = 0;
-const failures = [];
-async function test(name, fn) {
-  calls = [];
-  unsubscribed = 0;
-  storage.clear();
-  browserZone = 'Europe/Berlin';
-  fetchStub = () => ({ ok: true, status: 204 });
-  setNavigator(subscribedNavigator());
-  try {
-    await fn();
-    passed++;
-    console.log(`  ✓ ${name}`);
-  } catch (error) {
-    failures.push({ name, error });
-    console.log(`  ✗ ${name}\n    ${error.message}`);
-  }
 }
 
 console.log('\nrefreshPushTimezone — when it writes');
@@ -305,5 +299,4 @@ await test('garbage in the slot reads as none rather than throwing', async () =>
   assert.equal(readSentPushTimezone(), null);
 });
 
-console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);
-if (failures.length > 0) process.exit(1);
+finishChecks();

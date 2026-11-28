@@ -5,6 +5,7 @@ import { isIsoDate } from '@/lib/utils/calendar-utils';
 import { addDays } from '@/lib/utils/park-day';
 import { isSeasonEvent } from '@/lib/parks/park-season-days';
 import type { ParkSeason, ParkSeasonKind, ParkSeasonStatus } from './types';
+import { formatCount } from '@/lib/admin/format-number';
 
 /**
  * The season editor's pure half: labels, the draft a form edits, the bodies it sends, the API's
@@ -386,7 +387,7 @@ const TIME = /^([01]\d|2[0-3]):[0-5]\d$/;
 const CURRENCY = /^[A-Z]{3}$/;
 
 function tooLong(value: string, limit: number): string | null {
-  return value.trim().length > limit ? `Höchstens ${limit.toLocaleString('de-DE')} Zeichen.` : null;
+  return value.trim().length > limit ? `Höchstens ${formatCount(limit)} Zeichen.` : null;
 }
 
 function urlProblem(value: string): string | null {

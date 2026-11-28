@@ -8,7 +8,7 @@ import { locales, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
-import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { LIVE_TRIP_REGION_IDENTITIES } from '@/lib/trip-regions/regions/identities';
 import type { WhenPeriodKey } from '@/lib/trip-regions/plan-when';
 import type { TripWizardStepKey } from '@/lib/trip-regions/wizard-steps';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
@@ -17,6 +17,7 @@ import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 import type { ParkyEntrance } from '@/lib/assistant/entrance';
 import type { ParkyElement } from '@/lib/analytics/parky-elements';
 import type { SearchTab } from '@/components/search/search-result-groups';
+import { isUuid } from '@/lib/utils';
 
 /**
  * Our own cookieless statistic on api.park.fan (`POST /v1/analytics/collect`): page views and
@@ -840,7 +841,6 @@ const FLUSH_DELAY_MS = 1000;
  * visit's first pageview has opened it, so an event that left first would count without a channel.
  */
 const FIRST_PAGEVIEW_WAIT_MS = 3000;
-const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const REFERRER_PATTERN = /^[a-z0-9][a-z0-9.-]{0,99}$/;
 /**
  * The `utm_source` values sent as `source` when no referrer came: the hosts of the AI assistants the
@@ -906,7 +906,7 @@ const GLOSSARY_SEGMENT_SET = spellings(GLOSSARY_SEGMENTS);
 const PLANNER_SEGMENT_SET = spellings(PLANNER_SEGMENTS);
 /** The live trip regions' hub segments in every locale (`/de/orlando`, `/fr/japon`). */
 const TRIP_REGION_SEGMENT_SET = new Set(
-  LIVE_TRIP_REGIONS.flatMap((region) => Object.values(region.segments))
+  LIVE_TRIP_REGION_IDENTITIES.flatMap((region) => Object.values(region.segments))
 );
 const BEST_TIME_SEGMENT_SET = spellings(BEST_TIME_SEGMENTS);
 /** A region's month page: `/de/orlando/2026/12`. */
@@ -1317,7 +1317,7 @@ export function trackSiteEvent<Name extends string>(
       ...base,
       name,
       ...(clean && { props: clean }),
-      ...(id && UUID_PATTERN.test(id) && { entity: id }),
+      ...(id && isUuid(id) && { entity: id }),
     });
   } catch {
     // A statistic never breaks the page.

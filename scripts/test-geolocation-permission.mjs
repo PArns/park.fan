@@ -15,17 +15,11 @@ import {
   promptStateIsReliable,
   wasOnlyDismissed,
 } from '../lib/utils/geolocation-permission.ts';
+import { test, reportPassed } from './lib/run-cases.mjs';
 
 const SAFARI = 'Apple Computer, Inc.';
 const CHROME = 'Google Inc.';
 const FIREFOX = '';
-
-let n = 0;
-function test(name, fn) {
-  fn();
-  n++;
-  console.log(`ok ${n} - ${name}`);
-}
 
 test('WebKit is the engine whose `prompt` cannot be trusted', () => {
   assert.equal(promptStateIsReliable(SAFARI), false);
@@ -130,4 +124,4 @@ test('banner: a close stamped in the future does not keep it shut for good', () 
   assert.equal(locationBannerIsQuiet(now + 365 * 24 * 3600 * 1000, now), false);
 });
 
-console.log(`\n${n} passed`);
+reportPassed();

@@ -29,21 +29,12 @@ import {
   postPath,
 } from '../lib/blog/paths.ts';
 import { newsRedirect } from '../lib/blog/news-redirects-rule.ts';
+import { attempt, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failures = 0;
-let checks = 0;
-function test(name, fn) {
-  checks++;
-  try {
-    fn();
-  } catch (error) {
-    failures++;
-    console.error(`✗ ${name}\n  ${error.message}`);
-  }
-}
+quietChecks();
 
 // ── paths.ts ─────────────────────────────────────────────────────────────────
-test('isNewsCategory takes news and its subcategories, nothing else', () => {
+attempt('isNewsCategory takes news and its subcategories, nothing else', () => {
   assert.equal(isNewsCategory('news'), true);
   assert.equal(isNewsCategory('news/openings'), true);
   assert.equal(isNewsCategory('newsletter'), false);
@@ -52,14 +43,14 @@ test('isNewsCategory takes news and its subcategories, nothing else', () => {
   assert.equal(isNewsCategory(null), false);
 });
 
-test('postPath puts news under /news and everything else under /blog', () => {
+attempt('postPath puts news under /news and everything else under /blog', () => {
   assert.equal(postPath({ slug: 'a', frontmatter: { category: 'news' } }), '/news/a');
   assert.equal(postPath({ slug: 'a', frontmatter: { category: 'guides' } }), '/blog/a');
   assert.equal(postPath({ slug: 'a', frontmatter: {} }), '/blog/a');
   assert.equal(newsPostPath('a'), '/news/a');
 });
 
-test('categoryPath sends only the news category to the overview', () => {
+attempt('categoryPath sends only the news category to the overview', () => {
   assert.equal(categoryPath('news'), NEWS_INDEX_PATH);
   assert.equal(categoryPath('guides'), '/blog/category/guides');
   assert.equal(categoryPath('news/openings'), '/blog/category/news/openings');
@@ -69,11 +60,11 @@ test('categoryPath sends only the news category to the overview', () => {
 const newsUrls = listAllUrlSlugsByLocale('news');
 const blogUrls = listAllUrlSlugsByLocale('blog');
 
-test('there are news posts to test against', () => {
+attempt('there are news posts to test against', () => {
   assert.ok(newsUrls.length > 0, 'listAllUrlSlugsByLocale("news") is empty');
 });
 
-test('every news URL is the 308 target of its old /blog/ URL, in one hop', () => {
+attempt('every news URL is the 308 target of its old /blog/ URL, in one hop', () => {
   for (const { locale, slug } of newsUrls) {
     const target = newsRedirect(`/${locale}/blog/${slug}`);
     assert.equal(target, `/${locale}/news/${slug}`, `/${locale}/blog/${slug}`);
@@ -81,20 +72,20 @@ test('every news URL is the 308 target of its old /blog/ URL, in one hop', () =>
   }
 });
 
-test('no article is redirected', () => {
+attempt('no article is redirected', () => {
   for (const { locale, slug } of blogUrls) {
     assert.equal(newsRedirect(`/${locale}/blog/${slug}`), null, `/${locale}/blog/${slug}`);
   }
 });
 
-test('no slug is prerendered under both routes in one locale', () => {
+attempt('no slug is prerendered under both routes in one locale', () => {
   const blog = new Set(blogUrls.map(({ locale, slug }) => `${locale}/${slug}`));
   for (const { locale, slug } of newsUrls) {
     assert.ok(!blog.has(`${locale}/${slug}`), `${locale}/${slug} is under /blog and /news`);
   }
 });
 
-test("a news post's slug from another locale lands on that locale's canonical /news URL", () => {
+attempt("a news post's slug from another locale lands on that locale's canonical /news URL", () => {
   for (const localeMap of getMetaIndex().values()) {
     const entries = [...localeMap.values()];
     if (!entries.some((entry) => isNewsCategory(entry.fm.category))) continue;
@@ -112,7 +103,7 @@ test("a news post's slug from another locale lands on that locale's canonical /n
   }
 });
 
-test('/blog/category/news goes to /news in every locale; other paths fall through', () => {
+attempt('/blog/category/news goes to /news in every locale; other paths fall through', () => {
   for (const locale of locales) {
     assert.equal(newsRedirect(`/${locale}/blog/category/news`), `/${locale}/news`);
     assert.equal(newsRedirect(`/${locale}/blog/category/guides`), null);
@@ -126,8 +117,5 @@ test('/blog/category/news goes to /news in every locale; other paths fall throug
   assert.equal(newsRedirect(`/en/blog/${slug}/extra`), null, 'deeper path');
 });
 
-console.log(
-  `\n${checks - failures}/${checks} checks passed · ${newsUrls.length} news URLs, ` +
-    `${blogUrls.length} article URLs`
-);
-process.exit(failures === 0 ? 0 : 1);
+console.log(`${newsUrls.length} news URLs, ${blogUrls.length} article URLs`);
+finishChecks();

@@ -7,6 +7,7 @@ import {
   subscribeToFavorites,
 } from '@/lib/utils/favorites';
 import { getFavorites, type FavoritesResponse } from '@/lib/api/favorites';
+import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 
 /**
  * Every starred id, each kind sorted, as one string: the query key's view of the cookie, so a star
@@ -91,10 +92,10 @@ export function useFavorites({ enabled = true, poll = true }: UseFavoritesOption
       );
     },
     enabled: !geoLoading && enabled && ids !== null,
-    staleTime: 5 * 60 * 1000,
-    gcTime: 10 * 60 * 1000,
+    staleTime: LIVE_POLL_QUERY_OPTIONS.staleTime,
+    gcTime: LIVE_POLL_QUERY_OPTIONS.gcTime,
     refetchOnWindowFocus: poll,
-    refetchInterval: poll ? 5 * 60 * 1000 : false,
+    refetchInterval: poll ? LIVE_POLL_QUERY_OPTIONS.refetchInterval : false,
     // When geo resolves, or a star is set or removed, the queryKey changes (new cache entry). Keep
     // showing the previous list while the new one loads instead of flashing a skeleton.
     placeholderData: (previousData: FavoritesResponse | undefined) => previousData,

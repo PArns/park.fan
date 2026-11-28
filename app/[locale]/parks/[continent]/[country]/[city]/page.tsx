@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata, buildAlternates, fitTitle } from '@/lib/utils/metadata';
-import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
+import { translateCountry, translateContinent, formatSlug } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { LiveParkGrid } from '@/components/parks/live-park-grid';
@@ -31,8 +31,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
 
   const response = await catchNonFatal(getCitiesWithParks(continent, country));
   const city = response?.data?.find((c) => c.slug === citySlug);
-  const cityName =
-    city?.name || citySlug.charAt(0).toUpperCase() + citySlug.slice(1).replace(/-/g, ' ');
+  const cityName = city?.name || formatSlug(citySlug);
 
   const countryName = translateCountry(tGeo, country, locale);
 

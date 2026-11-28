@@ -5,12 +5,38 @@ import type { NextRequest } from 'next/server';
  * Vercel, so Vercel's `x-forwarded-for` and `x-real-ip` name a Cloudflare edge, not the visitor;
  * `cf-connecting-ip` must come first or every GeoIP lookup resolves to a datacenter.
  */
-const CLIENT_IP_HEADERS = [
+const CLOUDFLARE_IP_HEADERS = [
   'cf-connecting-ip', // Cloudflare: always the true client, always a single address
   'true-client-ip', // Cloudflare Enterprise alias for the same value
+] as const;
+const PLATFORM_IP_HEADERS = [
   'x-forwarded-for', // no Cloudflare in front: direct *.vercel.app, local dev
   'x-real-ip',
 ] as const;
+
+/** Equal or not, in a time that depends on the length only. */
+function sameSecret(sent: string, expected: string): boolean {
+  if (sent.length !== expected.length) return false;
+  let difference = 0;
+  for (let i = 0; i < sent.length; i++) {
+    difference |= sent.charCodeAt(i) ^ expected.charCodeAt(i);
+  }
+  return difference === 0;
+}
+
+/**
+ * Whether the request provably came through Cloudflare. Anyone who reaches the deployment directly
+ * can write `cf-connecting-ip` themselves and pick a new rate-limit bucket per request. With
+ * `CF_ORIGIN_SECRET` set (and a Cloudflare Transform Rule adding it as `x-cf-origin-secret`, the
+ * pair api.park.fan uses), only a request carrying it may name its own address; unset, every
+ * request passes.
+ */
+function cameThroughCloudflare(request: Request | NextRequest): boolean {
+  const secret = process.env.CF_ORIGIN_SECRET ?? '';
+  if (!secret) return true;
+  const header = (process.env.CF_ORIGIN_SECRET_HEADER ?? 'x-cf-origin-secret').toLowerCase();
+  return sameSecret(request.headers.get(header) ?? '', secret);
+}
 
 /** Drop an optional port and IPv6 brackets: `1.2.3.4:5678` → `1.2.3.4`, `[::1]:443` → `::1`. */
 function stripPort(ip: string): string {
@@ -53,7 +79,10 @@ export function isLocalOrUnusableIp(ip: string): boolean {
  * since the admin route handlers are typed on it.
  */
 export function getClientIp(request: Request | NextRequest): string {
-  for (const header of CLIENT_IP_HEADERS) {
+  const headers = cameThroughCloudflare(request)
+    ? [...CLOUDFLARE_IP_HEADERS, ...PLATFORM_IP_HEADERS]
+    : PLATFORM_IP_HEADERS;
+  for (const header of headers) {
     const ip = pickClientIp(request.headers.get(header) ?? '');
     if (ip) return ip;
   }

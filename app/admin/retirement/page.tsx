@@ -217,9 +217,7 @@ function CandidateRow({ candidate, canRetire }: { candidate: Candidate; canRetir
               size="sm"
               onClick={mode === 'retire' ? retire : clearCandidate}
               disabled={busy}
-              className={
-                mode === 'retire' ? 'bg-destructive hover:bg-destructive/90 text-white' : ''
-              }
+              variant={mode === 'retire' ? 'destructive' : 'default'}
             >
               {busy && <Loader2 className="h-4 w-4 animate-spin" />}
               {mode === 'retire' ? 'Stilllegen' : 'Als geprüft vermerken'}

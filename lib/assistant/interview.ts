@@ -1,6 +1,8 @@
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { openParky } from '@/lib/assistant/open';
 import { isUuid } from '@/lib/utils';
+import { isIsoDate } from '@/lib/utils/iso-date';
+import { isStrictSlug } from '@/lib/utils/servable-route';
 
 /**
  * Parky's interview as this tab holds it, beside the chat in session storage: which kind, the step
@@ -50,8 +52,6 @@ export interface AssistantInterview {
 
 const KEY = 'parkfan:assistant-interview';
 const KICKOFF_KEY = 'parkfan:assistant-interview-kickoff';
-const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const DAY = /^\d{4}-\d{2}-\d{2}$/;
 const STEPS = new Set<string>([
   ...TRIP_INTERVIEW_CORE,
   ...TRIP_INTERVIEW_REFINE,
@@ -122,7 +122,7 @@ export function readInterview(value: unknown): AssistantInterview | null {
   if (raw.kind !== 'trip' && raw.kind !== 'day') return null;
   if (!isStep(raw.step) || !stepOf(raw.kind, raw.step)) return null;
   const mustDoRides = (Array.isArray(raw.mustDoRides) ? raw.mustDoRides : [])
-    .filter((m): m is { park: string; rides: unknown } => SLUG.test(String(m?.park ?? '')))
+    .filter((m): m is { park: string; rides: unknown } => isStrictSlug(String(m?.park ?? '')))
     .map((m) => ({
       park: m.park,
       rides: (Array.isArray(m.rides) ? m.rides : [])
@@ -132,9 +132,9 @@ export function readInterview(value: unknown): AssistantInterview | null {
     .slice(0, 8);
   return {
     kind: raw.kind,
-    ...(typeof raw.region === 'string' && SLUG.test(raw.region) && { region: raw.region }),
-    ...(typeof raw.park === 'string' && SLUG.test(raw.park) && { park: raw.park }),
-    ...(typeof raw.date === 'string' && DAY.test(raw.date) && { date: raw.date }),
+    ...(typeof raw.region === 'string' && isStrictSlug(raw.region) && { region: raw.region }),
+    ...(typeof raw.park === 'string' && isStrictSlug(raw.park) && { park: raw.park }),
+    ...(typeof raw.date === 'string' && isIsoDate(raw.date) && { date: raw.date }),
     step: raw.step,
     answered: steps(raw.answered),
     skipped: steps(raw.skipped),

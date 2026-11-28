@@ -29,7 +29,7 @@ import {
   type Threshold,
 } from '@/lib/admin/health';
 import { HEALTH_TEXT } from '../_ui/metrics';
-import { formatDay, formatUptime } from '../_lib/format';
+import { formatDay, formatTimestamp, formatUptime } from '../_lib/format';
 import { getNumberFormat } from '@/lib/utils/intl-format';
 import { MetricBar } from '@/components/common/metric-bar';
 import type { HostDisk, SiteAnalyticsHealth, SystemHealthResponse } from '@/lib/api/admin';
@@ -45,6 +45,7 @@ import {
   Tile,
 } from '../_ui/primitives';
 import { NewsExportPanel } from './news-export-panel';
+import { formatCount } from '@/lib/admin/format-number';
 
 const CHIP_LABELS: Record<string, string> = {
   coretemp: 'CPU · coretemp',
@@ -117,8 +118,8 @@ function DropCounts({
         {reasons.map((reason) => (
           <tr key={reason}>
             <td className="py-1 font-mono text-xs">{reason}</td>
-            <td className="py-1 text-right">{(today[reason] ?? 0).toLocaleString('de-DE')}</td>
-            <td className="py-1 text-right">{(yesterday[reason] ?? 0).toLocaleString('de-DE')}</td>
+            <td className="py-1 text-right">{formatCount(today[reason] ?? 0)}</td>
+            <td className="py-1 text-right">{formatCount(yesterday[reason] ?? 0)}</td>
           </tr>
         ))}
       </tbody>
@@ -316,18 +317,14 @@ export default function SystemPage() {
                 <span
                   className={`text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums ${queueClass}`}
                 >
-                  {fresh.queueRowsLastHour.toLocaleString('de-DE')}
+                  {formatCount(fresh.queueRowsLastHour)}
                 </span>
                 <p className="text-muted-foreground mt-0.5 text-xs">Zeilen in der letzten Stunde</p>
               </div>
               <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
                 <Meta
                   label="Neueste Zeile"
-                  value={
-                    fresh.latestQueueTime
-                      ? new Date(fresh.latestQueueTime).toLocaleString('de-DE')
-                      : '—'
-                  }
+                  value={fresh.latestQueueTime ? formatTimestamp(fresh.latestQueueTime) : '—'}
                 />
               </div>
             </Tile>
@@ -582,7 +579,7 @@ export default function SystemPage() {
               thresholds={[60, 80]}
             />
             <div className="grid grid-cols-3 gap-3 pt-1 text-sm">
-              <Meta label="Schlüssel" value={data.redis.keys.toLocaleString('de-DE')} />
+              <Meta label="Schlüssel" value={formatCount(data.redis.keys)} />
               <Meta label="Clients" value={data.redis.connectedClients} />
               <Meta
                 label="Trefferquote"
@@ -641,7 +638,7 @@ export default function SystemPage() {
                     value={stats.parkedWindows}
                     valueClassName={stats.parkedWindows > 0 ? 'text-red-400' : undefined}
                   />
-                  <Meta label="Offene Besuche" value={stats.openVisits.toLocaleString('de-DE')} />
+                  <Meta label="Offene Besuche" value={formatCount(stats.openVisits)} />
                 </div>
                 <p className="text-muted-foreground text-[11px]">
                   Zuletzt geschrieben:{' '}

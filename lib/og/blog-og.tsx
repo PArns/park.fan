@@ -8,8 +8,20 @@ import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { getTranslations } from 'next-intl/server';
 import { NEWS_CATEGORY } from '@/lib/blog/paths';
 import { getAuthor } from '@/lib/blog/authors';
+import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 const SITE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://park.fan';
+
+/** A category path is made of slugs; anything else is text somebody wants on a card. */
+const CATEGORY_SEGMENT = /^[a-z0-9][a-z0-9-]*$/i;
+
+/**
+ * No card for a post or tag that does not exist. The path would otherwise be the card's headline:
+ * any sentence under park.fan's name, rendered once and kept at the edge for a month.
+ */
+function notFound(): Response {
+  return new Response('Not found', { status: 404, headers: NO_STORE });
+}
 
 interface BlogOgParams {
   locale: Locale;
@@ -67,7 +79,8 @@ export async function renderBlogOg({
   } else if (first === 'tag') {
     const tagSlug = rest[0];
     const canonical = tagSlug ? findCanonicalTag(locale, tagSlug) : null;
-    title = canonical ? `#${canonical}` : `#${tagSlug ?? 'tag'}`;
+    if (!canonical) return notFound();
+    title = `#${canonical}`;
     kicker = 'Blog · Tag';
     palette = paletteFromString(tagSlug ?? '');
   } else if (first === 'author') {
@@ -80,6 +93,7 @@ export async function renderBlogOg({
       palette = paletteFromString(rest[0]);
     }
   } else if (first === 'category') {
+    if (!rest.every((segment) => CATEGORY_SEGMENT.test(segment))) return notFound();
     const fullPath = rest.join('/');
     const last = rest[rest.length - 1] ?? '';
     title = resolveCategoryLabel(fullPath, locale, last);
@@ -107,7 +121,7 @@ export async function renderBlogOg({
         palette = paletteFromString(categoryPath);
       }
     } else {
-      title = first;
+      return notFound();
     }
   }
 

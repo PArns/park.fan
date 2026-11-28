@@ -1,11 +1,11 @@
 import { getTranslations } from 'next-intl/server';
-import { GlassCard } from '@/components/common/glass-card';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import { BlogMapClient } from './blog-map-client';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 import type { ParkWithAttractions } from '@/lib/api/types';
 import { BlogWidgetLabel } from '@/components/blog/blog-widget-label';
+import { BlogWidgetParkNotFound } from '@/components/blog/blog-widget-park-not-found';
 
 interface BlogMapWidgetProps {
   park: ResolvedPark | null;
@@ -33,11 +33,7 @@ export async function BlogMapWidget({ park, slug }: BlogMapWidgetProps) {
   }
 
   if (!park || !full) {
-    return (
-      <GlassCard variant="light" className="not-prose clear-both my-8">
-        <p className="text-muted-foreground text-sm">{tBlog('widget.parkNotFound', { slug })}</p>
-      </GlassCard>
-    );
+    return <BlogWidgetParkNotFound slug={slug} />;
   }
 
   return (

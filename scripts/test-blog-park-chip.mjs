@@ -8,16 +8,9 @@
  * Run: pnpm test:blog-park-chip
  */
 import { isClosedForNow, rideChipClosedStatus } from '../lib/blog/live-display.ts';
+import { check, finishChecks, quietChecks } from './lib/run-cases.mjs';
 
-let failed = 0;
-function check(name, actual, expected) {
-  if (actual !== expected) {
-    failed++;
-    console.log(
-      `❌ FAIL: ${name}: expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`
-    );
-  }
-}
+quietChecks();
 
 const day = (date, open = '11:00', close = '20:00') => ({
   openingTime: `${date}T${open}:00+01:00`,
@@ -126,5 +119,5 @@ check(
   'CLOSED'
 );
 
-if (failed) process.exit(1);
+finishChecks();
 console.log('✅ blog-park-chip: all checks passed');

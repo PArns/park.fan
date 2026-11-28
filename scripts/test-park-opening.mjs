@@ -17,13 +17,7 @@ import {
   isTodayAhead,
   nextParkOpening,
 } from '../lib/utils/schedule-utils.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const operating = (openingTime, closingTime) => ({
   scheduleType: 'OPERATING',
@@ -236,4 +230,4 @@ test('formatParkOpeningCountdown: tomorrow, the weekday within a week, days beyo
   );
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

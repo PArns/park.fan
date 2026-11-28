@@ -1,3 +1,4 @@
+import { isIsoDate } from '@/lib/utils/iso-date';
 /**
  * Whether a region's hub shows a plan: the hub has two states (docs/features/orlando-hub.md#two-states),
  * the landing page without a plan and "Your trip" with one. A plan is the planner's query with both
@@ -5,8 +6,6 @@
  * browser remembers it (`remembered-trip.ts`) and the hub puts it back. Pure, so the rules are
  * pinned in `scripts/test-orlando-hub.mjs`; the hook that reads them is `HubTripProvider`.
  */
-
-const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
 
 /** The dates of a planned trip, `YYYY-MM-DD` in the region's time. */
 export interface HubTripDates {
@@ -19,7 +18,7 @@ export function hubTripOf(query: string): HubTripDates | null {
   const params = new URLSearchParams(query);
   const from = params.get('from');
   const to = params.get('to');
-  if (!from || !to || !ISO_DAY.test(from) || !ISO_DAY.test(to) || to < from) return null;
+  if (!from || !to || !isIsoDate(from) || !isIsoDate(to) || to < from) return null;
   return { from, to };
 }
 

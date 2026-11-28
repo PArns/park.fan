@@ -1,8 +1,8 @@
-import { getLocale, getTranslations } from 'next-intl/server';
-import { GlassCard } from '@/components/common/glass-card';
+import { getLocale } from 'next-intl/server';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
+import { BlogWidgetParkNotFound } from '@/components/blog/blog-widget-park-not-found';
 
 interface BlogBestDaysWidgetProps {
   park: ResolvedPark | null;
@@ -18,15 +18,10 @@ interface BlogBestDaysWidgetProps {
  * so they never land in the server render and a post's render does not wait for them.
  */
 export async function BlogBestDaysWidget({ park, slug }: BlogBestDaysWidgetProps) {
-  const tBlog = await getTranslations('blog');
   const geo = park ? parkGeoPath(park) : null;
 
   if (!park || !geo) {
-    return (
-      <GlassCard variant="light" className="not-prose clear-both my-8">
-        <p className="text-muted-foreground text-sm">{tBlog('widget.parkNotFound', { slug })}</p>
-      </GlassCard>
-    );
+    return <BlogWidgetParkNotFound slug={slug} />;
   }
 
   const locale = await getLocale();

@@ -16,6 +16,7 @@ import { parsePlannerPayload } from '../lib/planner/store.ts';
 import { hasAnyPlan, isPlannedDay } from '../lib/planner/types.ts';
 import { clearDay, reserveDays } from '../lib/planner/actions.ts';
 import { nextPlannedDay } from '../lib/planner/park-time.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -325,14 +326,4 @@ const base = { from: '2026-10-01', to: '2026-10-05', fixed: [], travelDays: true
   test('an opened empty day is still no countdown', none, null);
 }
 
-// ── Report ───────────────────────────────────────────────────────────────────
-let failed = 0;
-for (const { name, actual, expected } of cases) {
-  const ok = JSON.stringify(actual) === JSON.stringify(expected);
-  if (!ok) failed++;
-  console.log(
-    `${ok ? '✅' : '❌'} ${name}${ok ? '' : ` — erwartet ${JSON.stringify(expected)}, bekommen ${JSON.stringify(actual)}`}`
-  );
-}
-console.log(`\n${cases.length - failed}/${cases.length} bestanden`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(cases, { json: true });

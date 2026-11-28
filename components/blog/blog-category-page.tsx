@@ -13,17 +13,12 @@ import {
   resolveCategoryLabel,
 } from '@/lib/blog/categories';
 import { hasPage, paginate, pagedPath, pagedTitle, splitPageSegments } from '@/lib/blog/pagination';
-import { BlogCategoryPills, BlogPostStream } from '@/components/blog/blog-post-stream';
-import { ListingPagination } from '@/components/blog/listing-pagination';
-import { BlogSectionHeader } from '@/components/blog/blog-section-header';
-import { PageBottomSections } from '@/components/common/page-bottom-sections';
-import { BlogStructuredData } from '@/components/seo/blog-structured-data';
-import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
-import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { BlogCategoryPills } from '@/components/blog/blog-post-stream';
 import type { Breadcrumb } from '@/lib/api/types';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { blogFeedAlternates } from '@/lib/blog/feed';
 import { categoryPath, NEWS_CATEGORY } from '@/lib/blog/paths';
+import { BlogListingPage } from '@/components/blog/blog-listing-page';
 
 /**
  * Metadata for a blog category listing at `/blog/category/[...path]`, where the path may end in
@@ -95,17 +90,12 @@ export async function BlogCategoryPageBody({ locale, path }: { locale: string; p
   const fullPath = segments.join('/');
   const current = paginate(allInCategory, split.page);
   if (!current) notFound();
-  const { page } = current;
-  const totalItems = allInCategory.length;
-  const pageLabel = t('pagination.pageLabel', { page });
 
   const label = resolveCategoryLabel(fullPath, locale as Locale, segments[segments.length - 1]);
 
-  // Build the project-standard Breadcrumb[] shape: Blog → ancestor categories.
-  // The current page (label) is passed via `currentPage` so BreadcrumbNav
-  // renders it un-linked, exactly like the geo pages.
+  // Blog → ancestor categories; the category itself is the listing's own crumb.
   const ancestorCrumbs = categoryPathBreadcrumbs(fullPath).slice(0, -1);
-  const breadcrumbs: Breadcrumb[] = [
+  const ancestors: Breadcrumb[] = [
     { name: t('blog'), url: '/blog' },
     ...ancestorCrumbs.map((crumbSegments) => {
       const cp = crumbSegments.join('/');
@@ -116,57 +106,19 @@ export async function BlogCategoryPageBody({ locale, path }: { locale: string; p
     }),
   ];
 
-  // A later page names the category as a crumb and itself as the current page.
-  const categoryCrumb: Breadcrumb = { name: label, url: categoryPath(fullPath) };
-  const visibleBreadcrumbs = page > 1 ? [...breadcrumbs, categoryCrumb] : breadcrumbs;
-  const seoBreadcrumbs: Breadcrumb[] = [
-    ...breadcrumbs,
-    categoryCrumb,
-    ...(page > 1 ? [{ name: pageLabel, url: pagedPath(categoryPath(fullPath), page) }] : []),
-  ];
-
   return (
-    <>
-      <BlogStructuredData
-        locale={locale}
-        name={`${label} · ${t('title')}`}
-        description={t('category.description', { category: label })}
-        posts={current.items}
-        path={pagedPath(categoryPath(fullPath), page)}
-      />
-      <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
-      <div className="container mx-auto px-4 py-10 sm:py-14">
-        <BreadcrumbNav
-          breadcrumbs={visibleBreadcrumbs}
-          currentPage={page > 1 ? pageLabel : label}
-          variant="plain"
-          className="mb-6"
-        />
-
-        <BlogSectionHeader
-          as="h1"
-          badge={t('category.label')}
-          badgeIcon={FolderTree}
-          title={label}
-          meta={
-            page > 1
-              ? `${t('category.postsCount', { count: totalItems })} · ${t('pagination.pageOf', { page, total: current.pageCount })}`
-              : t('category.postsCount', { count: totalItems })
-          }
-        />
-
-        <div className="max-w-5xl">
-          <BlogCategoryPills locale={locale as Locale} active={segments[0]} total={all.length} />
-          <BlogPostStream locale={locale as Locale} posts={current.items} />
-          <ListingPagination
-            base={categoryPath(fullPath)}
-            page={page}
-            pageCount={current.pageCount}
-          />
-        </div>
-      </div>
-
-      <PageBottomSections locale={locale} />
-    </>
+    <BlogListingPage
+      locale={locale}
+      label={label}
+      description={t('category.description', { category: label })}
+      basePath={categoryPath(fullPath)}
+      ancestors={ancestors}
+      badge={t('category.label')}
+      badgeIcon={FolderTree}
+      postsCount={t('category.postsCount', { count: allInCategory.length })}
+      current={current}
+    >
+      <BlogCategoryPills locale={locale as Locale} active={segments[0]} total={all.length} />
+    </BlogListingPage>
   );
 }

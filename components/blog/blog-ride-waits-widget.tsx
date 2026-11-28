@@ -1,9 +1,9 @@
 import { getTranslations } from 'next-intl/server';
-import { GlassCard } from '@/components/common/glass-card';
 import { RideWaitTable, type RideWaitTableLabels } from '@/components/parks/ride-wait-table';
 import { parkGeoPath, parseWidgetRideRef } from '@/lib/blog/widget-park';
 import type { RideWaitPark, RideWaitTarget } from '@/lib/hooks/use-ride-wait-stats';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
+import { BlogWidgetParkNotFound } from '@/components/blog/blog-widget-park-not-found';
 
 type Column = 'park' | 'land' | 'type' | 'peak' | 'days';
 const COLUMNS: readonly Column[] = ['park', 'land', 'type', 'peak', 'days'];
@@ -107,11 +107,7 @@ export async function BlogRideWaitsWidget({
     minutes: tOverview('minutesUnit'),
   };
 
-  const notFound = (slug: string) => (
-    <GlassCard variant="light" className="not-prose clear-both my-8">
-      <p className="text-muted-foreground text-sm">{tBlog('widget.parkNotFound', { slug })}</p>
-    </GlassCard>
-  );
+  const notFound = (slug: string) => <BlogWidgetParkNotFound slug={slug} />;
 
   if (rides) {
     // Semicolons, not commas: a ride type often holds a comma.

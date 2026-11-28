@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { notFound, permanentRedirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { CalendarDays, Clock, Zap } from 'lucide-react';
 
 import { SITE_URL } from '@/i18n/config';
@@ -21,16 +21,10 @@ import { parkStatsPath } from '@/lib/parks/stats-segments';
 import { plannerPath } from '@/lib/planner/segments';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
-import {
-  cityHasOwnPage,
-  findParkPageRedirect,
-  findRelocatedParkRedirect,
-  findRenamedParkRedirect,
-} from '@/lib/utils/redirect-utils';
+import { cityHasOwnPage } from '@/lib/utils/redirect-utils';
 import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { getDateTimeFormat, getListFormat, weekdayName } from '@/lib/utils/intl-format';
-import { stripNewPrefix } from '@/lib/utils';
 import {
   buildOpenGraphMetadata,
   fitWithin,
@@ -64,6 +58,8 @@ import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { eventSeasonsNearToday } from '@/lib/parks/park-season-days';
 import { parkDayOf } from '@/lib/utils/park-day';
 import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
+import { parkPagePath } from '@/lib/parks/paths';
+import { parkDisplayNames, resolveParkOrRedirect } from '@/lib/parks/park-route';
 
 interface ParkStatsPageProps {
   params: Promise<{
@@ -99,8 +95,7 @@ export async function generateMetadata({ params }: ParkStatsPageProps): Promise<
   const stats = await catchNonFatal(getParkStatsForPage(continent, country, city, parkSlug));
   if (!stats?.meta.displayable) return { title: tNotFound('park'), robots: { index: false } };
 
-  const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const { parkName, cityName } = parkDisplayNames(park, city);
   const parkPhrases = parkArgs(locale as Locale, parkName, park.nameArticleDe);
 
   // Two candidates, longest-preferred, for the same reason the calendar has two: the catalogue's
@@ -169,26 +164,15 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
-  // Not `catchNonFatal`, for the reason `getParkStatsForPage` below throws: swallowed, an outage
-  // would become a `notFound()` the edge then serves for up to a day.
-  const parkFull = await getParkByGeoPath(continent, country, city, parkSlug);
-
   // The same three redirects the park page and the calendar run, for the same reason: this URL is
   // reachable directly from search and a stale geo path must transfer rather than 404. The
   // segment is rebuilt from `parkStatsPath` with throwaway geo segments so the two can never
   // disagree about how it is spelled.
-  const suffix = statsSuffix(locale);
-  const malformed = await findParkPageRedirect(continent, country, city, parkSlug);
-  if (malformed) permanentRedirect(`/${locale}${malformed}${suffix}`);
-
-  if (!parkFull) {
-    const relocated = await findRelocatedParkRedirect(continent, country, city, parkSlug);
-    if (relocated) permanentRedirect(`/${locale}${relocated}${suffix}`);
-    notFound();
-  }
-
-  const renamed = findRenamedParkRedirect(parkFull, { continent, country, city, parkSlug });
-  if (renamed) permanentRedirect(`/${locale}${renamed}${suffix}`);
+  const parkFull = await resolveParkOrRedirect(
+    { continent, country, city, parkSlug },
+    locale,
+    statsSuffix(locale)
+  );
 
   const stats = await getParkStatsForPage(continent, country, city, parkSlug);
   // The aggregate IS the page, so an absent or thin one is a 404 and not an empty chapter. A
@@ -228,10 +212,9 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
   // This page draws no attraction cards either, so it ships none of their data — the same twelve
   // fields the calendar shell keeps, for the same two components.
   const park = leanParkForCalendarShell(parkFull);
-  const parkName = stripNewPrefix(park.name);
-  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const { parkName, cityName } = parkDisplayNames(park, city);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
-  const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
+  const parkPath = parkPagePath({ continent, country, city, parkSlug });
   const pagePath = parkStatsPath(locale, continent, country, city, parkSlug);
   const canonicalUrl = `${SITE_URL}/${locale}${pagePath}`;
   const parkPhrases = parkArgs(locale as Locale, parkName, park.nameArticleDe);

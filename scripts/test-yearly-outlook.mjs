@@ -17,13 +17,7 @@ import {
   OUTLOOK_MONTHS,
   withoutGuessedClosures,
 } from '../lib/utils/yearly-outlook.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 const day = (date, crowdLevel, recommendation) => ({
   date,
@@ -359,4 +353,4 @@ test('refuses a nonsense date rather than drawing NaN months', () => {
   assert.deepEqual(buildYearlyOutlook([], '2026-09-22', [], 0), []);
 });
 
-console.log(`\n${passed} tests passed`);
+reportPassed();

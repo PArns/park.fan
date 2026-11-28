@@ -59,3 +59,23 @@ export function useRegionParks(continent: string, country: string, enabled = tru
   );
   return useLiveParksByRegion(regions);
 }
+
+/**
+ * The live half of a `ParkCard` in a grid whose shell is prerendered without it. Every field is
+ * undefined until the batch call resolves, so the shell shows the card without a status badge and
+ * the footer renders its own skeleton.
+ */
+export function liveCardProps(live: LiveParkFields | undefined) {
+  return {
+    status: live?.status,
+    crowdLevel: live?.crowdLevel,
+    averageWaitTime: live?.averageWaitTime,
+    headlineUpdatedAt: live?.updatedAt,
+    operatingAttractions: live?.operatingAttractions,
+    totalAttractions: live?.totalAttractions,
+    timezone: live?.timezone,
+    hasOperatingSchedule: live?.hasOperatingSchedule,
+    todaySchedule: live?.todaySchedule,
+    nextSchedule: live?.nextSchedule,
+  };
+}

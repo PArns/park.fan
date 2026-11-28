@@ -13,18 +13,11 @@ import {
   normalizeTagSlug,
 } from '@/lib/blog/tags';
 import { paginate, pagedPath, pagedTitle } from '@/lib/blog/pagination';
-import { BlogPostStream } from '@/components/blog/blog-post-stream';
-import { ListingPagination } from '@/components/blog/listing-pagination';
-import { BlogSectionHeader } from '@/components/blog/blog-section-header';
-import { PageBottomSections } from '@/components/common/page-bottom-sections';
-import { BlogStructuredData } from '@/components/seo/blog-structured-data';
-import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
-import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import type { Breadcrumb } from '@/lib/api/types';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { blogFeedAlternates } from '@/lib/blog/feed';
 import { NEWS_ONLY_TAGS } from '@/lib/blog/news-redirects';
 import { NEWS_INDEX_PATH } from '@/lib/blog/paths';
+import { BlogListingPage } from '@/components/blog/blog-listing-page';
 
 /** Locale-relative path of a tag archive's first page. */
 function tagPath(tag: string): string {
@@ -117,54 +110,17 @@ export async function BlogTagPageBody({
   const current = paginate(allPosts, page);
   if (!current) notFound();
 
-  const label = `#${canonicalTag}`;
-  const pageLabel = t('pagination.pageLabel', { page });
-  const breadcrumbs: Breadcrumb[] = [{ name: t('blog'), url: '/blog' }];
-  const tagCrumb: Breadcrumb = { name: label, url: tagPath(tag) };
-  const seoBreadcrumbs: Breadcrumb[] = [
-    ...breadcrumbs,
-    tagCrumb,
-    ...(page > 1 ? [{ name: pageLabel, url: pagedPath(tagPath(tag), page) }] : []),
-  ];
-
   return (
-    <>
-      <BlogStructuredData
-        locale={locale}
-        name={`${label} · ${t('title')}`}
-        description={t('tag.description', { tag: canonicalTag })}
-        posts={current.items}
-        path={pagedPath(tagPath(tag), page)}
-      />
-      <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
-
-      <div className="container mx-auto px-4 py-10 sm:py-14">
-        <BreadcrumbNav
-          breadcrumbs={page > 1 ? [...breadcrumbs, tagCrumb] : breadcrumbs}
-          currentPage={page > 1 ? pageLabel : label}
-          variant="plain"
-          className="mb-6"
-        />
-
-        <BlogSectionHeader
-          as="h1"
-          badge={t('tag.label')}
-          badgeIcon={Tag}
-          title={label}
-          meta={
-            page > 1
-              ? `${t('tag.postsCount', { count: allPosts.length })} · ${t('pagination.pageOf', { page, total: current.pageCount })}`
-              : t('tag.postsCount', { count: allPosts.length })
-          }
-        />
-
-        <div className="max-w-5xl">
-          <BlogPostStream locale={locale as Locale} posts={current.items} />
-          <ListingPagination base={tagPath(tag)} page={page} pageCount={current.pageCount} />
-        </div>
-      </div>
-
-      <PageBottomSections locale={locale} />
-    </>
+    <BlogListingPage
+      locale={locale}
+      label={`#${canonicalTag}`}
+      description={t('tag.description', { tag: canonicalTag })}
+      basePath={tagPath(tag)}
+      ancestors={[{ name: t('blog'), url: '/blog' }]}
+      badge={t('tag.label')}
+      badgeIcon={Tag}
+      postsCount={t('tag.postsCount', { count: allPosts.length })}
+      current={current}
+    />
   );
 }

@@ -1,4 +1,5 @@
 import { buildOpeningHoursSpecification } from '../lib/utils/opening-hours-schema.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const op = (date, openingTime, closingTime, scheduleType = 'OPERATING') => ({
   date,
@@ -184,33 +185,13 @@ const testCases = [
   { name: 'Empty schedule', schedule: [], timeZone: 'Europe/Berlin', expected: undefined },
 ];
 
-let passed = 0;
-let failed = 0;
-
 console.log('\nopening-hours-schema\n' + '='.repeat(80) + '\n');
 
-for (const testCase of testCases) {
-  const result = buildOpeningHoursSpecification(testCase.schedule, testCase.timeZone);
-  const success = JSON.stringify(result) === JSON.stringify(testCase.expected);
-
-  if (success) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
-    failed++;
-  }
-}
-
-console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+await runCases(
+  testCases.map(({ name, schedule, timeZone, expected }) => ({
+    name,
+    actual: () => buildOpeningHoursSpecification(schedule, timeZone),
+    expected,
+  })),
+  { json: true }
+);

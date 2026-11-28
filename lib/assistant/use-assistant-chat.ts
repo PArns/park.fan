@@ -15,7 +15,7 @@ import {
 } from './actions';
 import { assistantTripsSnapshot } from './trip-context';
 import { interviewStore } from './interview';
-import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { LIVE_TRIP_REGION_IDENTITIES } from '@/lib/trip-regions/regions/identities';
 import { tripPlannerBridge } from '@/lib/trip-regions/planner-bridge';
 import { trackSiteEvent, type AssistantQuestionKind } from '@/lib/analytics/site-analytics';
 import { plannerStore } from '@/lib/planner/store';
@@ -42,7 +42,7 @@ import {
 } from './chat-end';
 
 /** The trip regions live on the site, sent with every question. */
-const LIVE_REGION_SLUGS = LIVE_TRIP_REGIONS.map((region) => region.slug);
+const LIVE_REGION_SLUGS = LIVE_TRIP_REGION_IDENTITIES.map((region) => region.slug);
 
 /** The longest greeting the API takes as `opener`. */
 const OPENER_MAX = 300;

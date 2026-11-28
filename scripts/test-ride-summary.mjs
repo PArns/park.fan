@@ -22,6 +22,7 @@ import { buildRideSummary, rideSummaryRenders } from '../lib/parks/ride-summary.
 import { buildAttractionFaqItems } from '../lib/faq/attraction-faq.ts';
 import { buildAttractionDescription, buildAttractionFacts } from '../lib/seo/attraction-meta.ts';
 import { MAX_DESCRIPTION_LENGTH } from '../lib/utils/metadata.ts';
+import { attempt, finishChecks } from './lib/run-cases.mjs';
 
 const LOCALES = ['en', 'de', 'nl', 'fr', 'es', 'it'];
 const messages = Object.fromEntries(
@@ -30,17 +31,6 @@ const messages = Object.fromEntries(
     JSON.parse(readFileSync(new URL(`../messages/${l}.json`, import.meta.url))),
   ])
 );
-
-let failed = 0;
-const test = (name, fn) => {
-  try {
-    fn();
-    console.log(`  ✓ ${name}`);
-  } catch (err) {
-    failed++;
-    console.log(`  ✗ ${name}\n    ${err.message.split('\n').join('\n    ')}`);
-  }
-};
 
 const VOLETARIUM = {
   id: 'bca60b06',
@@ -192,7 +182,7 @@ const minutesIn = (text) =>
 
 console.log('Ride data card');
 
-test('a headliner gets every sentence its data supports, in order', () => {
+await attempt('a headliner gets every sentence its data supports, in order', () => {
   const s = buildRideSummary(VOLETARIUM, TYPE, 'en');
   assert.deepEqual(
     s.sentences.map((x) => x.key),
@@ -205,7 +195,7 @@ test('a headliner gets every sentence its data supports, in order', () => {
   assert.ok(rideSummaryRenders(s));
 });
 
-test('the English text reads as the facts, 60 to 130 words', () => {
+await attempt('the English text reads as the facts, 60 to 130 words', () => {
   const text = cardText(buildRideSummary(VOLETARIUM, TYPE, 'en'), 'en');
   console.log(`    EN: ${text}`);
   assert.match(
@@ -219,7 +209,7 @@ test('the English text reads as the facts, 60 to 130 words', () => {
   assert.ok(words >= 60 && words <= 130, `${words} words`);
 });
 
-test('and so does the German', () => {
+await attempt('and so does the German', () => {
   const text = cardText(buildRideSummary(VOLETARIUM, { ...TYPE, href: '/de/x' }, 'de'), 'de');
   console.log(`    DE: ${text}`);
   assert.match(
@@ -230,7 +220,7 @@ test('and so does the German', () => {
   assert.doesNotMatch(text, /\.\./);
 });
 
-test('every minute printed is on the five-minute grid', () => {
+await attempt('every minute printed is on the five-minute grid', () => {
   const raw = structuredClone(VOLETARIUM);
   raw.typicalWaits.weekday.typical = 53;
   raw.typicalWaits.peak.value = 91;
@@ -242,7 +232,7 @@ test('every minute printed is on the five-minute grid', () => {
   }
 });
 
-test('the same ride reads the same at noon and at night', () => {
+await attempt('the same ride reads the same at noon and at night', () => {
   const day = {
     ...VOLETARIUM,
     status: 'OPERATING',
@@ -253,7 +243,7 @@ test('the same ride reads the same at noon and at night', () => {
   assert.deepEqual(buildRideSummary(day, TYPE, 'en'), buildRideSummary(night, TYPE, 'en'));
 });
 
-test('a coaster lists its figures with the locale’s own list pattern', () => {
+await attempt('a coaster lists its figures with the locale’s own list pattern', () => {
   const s = buildRideSummary(BLUE_FIRE, { name: 'Launch Coaster', href: '/x' }, 'en');
   const text = cardText(s, 'en');
   assert.match(
@@ -268,7 +258,7 @@ test('a coaster lists its figures with the locale’s own list pattern', () => {
   assert.match(fr, /4 inversions et un tour de 2:25 min\./);
 });
 
-test('English picks „an" before a vowel', () => {
+await attempt('English picks „an" before a vowel', () => {
   const text = cardText(
     buildRideSummary(BLUE_FIRE, { name: 'Inverted Coaster', href: '/x' }, 'en'),
     'en'
@@ -276,7 +266,7 @@ test('English picks „an" before a vowel', () => {
   assert.match(text, /is an Inverted Coaster/);
 });
 
-test('a minor ride gets the short honest version, without wait sentences', () => {
+await attempt('a minor ride gets the short honest version, without wait sentences', () => {
   const s = buildRideSummary(VINDJAMMER, { name: 'Pendulum Ride', href: '/x' }, 'en');
   assert.deepEqual(
     s.sentences.map((x) => x.key),
@@ -289,13 +279,13 @@ test('a minor ride gets the short honest version, without wait sentences', () =>
   );
 });
 
-test('a ride with one fact on file gets no card at all', () => {
+await attempt('a ride with one fact on file gets no card at all', () => {
   const s = buildRideSummary(CAROUSEL, null, 'en');
   assert.equal(s.sentences.length, 1);
   assert.equal(rideSummaryRenders(s), false);
 });
 
-test('a wait that rounds to zero is left out, not printed as „0 minutes"', () => {
+await attempt('a wait that rounds to zero is left out, not printed as „0 minutes"', () => {
   const quiet = structuredClone(VOLETARIUM);
   quiet.typicalWaits.weekday.typical = 1;
   quiet.typicalWaits.weekend.typical = 2;
@@ -310,7 +300,7 @@ test('a wait that rounds to zero is left out, not printed as „0 minutes"', () 
   );
 });
 
-test('figures the API does not mark displayable are not used', () => {
+await attempt('figures the API does not mark displayable are not used', () => {
   const thin = structuredClone(VOLETARIUM);
   thin.typicalWaits.displayable = false;
   const keys = buildRideSummary(thin, TYPE, 'en').sentences.map((x) => x.key);
@@ -318,7 +308,7 @@ test('figures the API does not mark displayable are not used', () => {
   assert.equal(keys.includes('quietDay'), false);
 });
 
-test('every sentence and branch renders in all six locales', () => {
+await attempt('every sentence and branch renders in all six locales', () => {
   const variants = [
     VOLETARIUM,
     BLUE_FIRE,
@@ -347,7 +337,7 @@ const faq = (ride, locale) =>
     locale
   );
 
-test('the wait answer is the ride’s typical and record wait, never today’s', () => {
+await attempt('the wait answer is the ride’s typical and record wait, never today’s', () => {
   const answer = faq(VOLETARIUM, 'en').find((f) => f.iconName === 'Clock').answer;
   console.log(`    EN: ${answer}`);
   assert.match(
@@ -360,7 +350,7 @@ test('the wait answer is the ride’s typical and record wait, never today’s',
   assert.equal(faq(live, 'en').find((f) => f.iconName === 'Clock').answer, answer);
 });
 
-test('a ride without typical waits keeps the general answer', () => {
+await attempt('a ride without typical waits keeps the general answer', () => {
   const answer = faq(VINDJAMMER, 'en').find((f) => f.iconName === 'Clock').answer;
   assert.equal(
     answer,
@@ -368,12 +358,15 @@ test('a ride without typical waits keeps the general answer', () => {
   );
 });
 
-test('the single-rider question follows the curated flag when the night feed drops the queue', () => {
-  assert.ok(faq(VOLETARIUM, 'en').some((f) => f.iconName === 'Users'));
-  assert.ok(!faq(VINDJAMMER, 'en').some((f) => f.iconName === 'Users'));
-});
+await attempt(
+  'the single-rider question follows the curated flag when the night feed drops the queue',
+  () => {
+    assert.ok(faq(VOLETARIUM, 'en').some((f) => f.iconName === 'Users'));
+    assert.ok(!faq(VINDJAMMER, 'en').some((f) => f.iconName === 'Users'));
+  }
+);
 
-test('every FAQ answer renders in all six locales', () => {
+await attempt('every FAQ answer renders in all six locales', () => {
   for (const locale of LOCALES) {
     for (const item of faq(VOLETARIUM, locale)) assert.doesNotMatch(item.answer, /[{}]/, locale);
   }
@@ -392,7 +385,7 @@ const describe = (ride, locale, typeName) => {
   );
 };
 
-test('the ride’s own facts lead, and the description fits', () => {
+await attempt('the ride’s own facts lead, and the description fits', () => {
   for (const locale of LOCALES) {
     for (const [ride, type] of [
       [VOLETARIUM, 'Flying Theater'],
@@ -412,19 +405,18 @@ test('the ride’s own facts lead, and the description fits', () => {
   assert.match(de, /^Voletarium im Europa-Park: Flying Theater/);
 });
 
-test('speed, height and ride time follow the type, where a ride is searched with them', () => {
-  const en = describe(BLUE_FIRE, 'en', 'Launch Coaster');
-  const it = describe(BLUE_FIRE, 'it', 'Launch Coaster');
-  console.log(`    EN: ${en}\n    IT: ${it}`);
-  assert.match(
-    en,
-    /^Blue Fire Megacoaster at Europa-Park: Launch Coaster, top speed 100 km\/h, 38 m tall/i
-  );
-  assert.match(it, /velocità max 100 km\/h, altezza 38 m/);
-});
+await attempt(
+  'speed, height and ride time follow the type, where a ride is searched with them',
+  () => {
+    const en = describe(BLUE_FIRE, 'en', 'Launch Coaster');
+    const it = describe(BLUE_FIRE, 'it', 'Launch Coaster');
+    console.log(`    EN: ${en}\n    IT: ${it}`);
+    assert.match(
+      en,
+      /^Blue Fire Megacoaster at Europa-Park: Launch Coaster, top speed 100 km\/h, 38 m tall/i
+    );
+    assert.match(it, /velocità max 100 km\/h, altezza 38 m/);
+  }
+);
 
-if (failed) {
-  console.log(`\n${failed} failed`);
-  process.exit(1);
-}
-console.log('\nall passed');
+finishChecks();

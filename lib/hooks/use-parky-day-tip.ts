@@ -5,6 +5,7 @@ import { isParkyDayTip, type ParkyDayTip } from '@/lib/assistant/parky-tip';
 import { PARKY_TIP_NONE_SECONDS } from '@/lib/api/cdn-cache-headers';
 import { CALENDAR_STALE_TIME_MS } from '@/lib/hooks/use-calendar-data';
 import type { PlannerGeo } from '@/lib/planner/types';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 /**
  * As long as the month the dialog shows the tip on stays fresh in the tab: flipping back to a day
@@ -39,7 +40,10 @@ export function useParkyDayTip({
     queryKey: ['parky-tip', geo.continent, geo.country, geo.city, parkSlug, date, today, locale],
     queryFn: async ({ signal }) => {
       const response = await fetch(
-        `/api/parks/${geo.continent}/${geo.country}/${geo.city}/${parkSlug}/parky-tip?date=${date}&today=${today}&locale=${locale}`,
+        parkRelayUrl(
+          { ...geo, parkSlug },
+          `/parky-tip?date=${date}&today=${today}&locale=${locale}`
+        ),
         { signal }
       );
       if (response.status !== 200) return null;

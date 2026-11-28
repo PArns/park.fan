@@ -11,11 +11,12 @@
  * language, `--shot=favorite,favorites-menu` for some of the shots). Writes
  * `public/media/home/<locale>/{park,calendar,ride,favorite,favorites-menu}.webp`.
  */
-import { existsSync, mkdirSync } from 'node:fs';
+import { mkdirSync } from 'node:fs';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 import { PHONE } from './lib/phone-device.mjs';
 import { TOUR_PARK } from '../lib/home/tour-park.mjs';
+import { LAUNCH } from './lib/browser.mjs';
 
 const base =
   process.argv.find((arg) => arg.startsWith('--base='))?.slice(7) ?? 'http://localhost:3000';
@@ -200,10 +201,7 @@ async function capture(browser, locale, shot) {
   await context.close();
 }
 
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
-const browser = await chromium.launch(
-  existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {}
-);
+const browser = await chromium.launch(LAUNCH);
 for (const locale of Object.keys(CALENDAR)) {
   if (only && locale !== only) continue;
   mkdirSync(`public/media/home/${locale}`, { recursive: true });

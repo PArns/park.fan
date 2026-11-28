@@ -124,6 +124,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useLiveParksByRegion` _hook_: Live park status for a set of regions, keyed by park id: one request per distinct region set, answered with the `LiveParkFields` projection.
 - `useRegionParks` _hook_: Single-region convenience wrapper for the blog's park references.
+- `liveCardProps` _function_: The live half of a `ParkCard` in a grid whose shell is prerendered without it. Every field is undefined until the batch call resolves, so the shell shows the card without a status badge and the footer renders its own skeleton.
 - Types: `LiveParkFields`
 
 ### [`use-live-position.ts`](../../lib/hooks/use-live-position.ts)

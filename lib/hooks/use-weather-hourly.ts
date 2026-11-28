@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import type { WeatherHourlyToday } from '@/lib/api/types';
 import { parkDayOf } from '@/lib/utils/park-day';
+import { parkRelayUrl } from '@/lib/parks/paths';
 
 interface UseWeatherHourlyParams {
   continent: string | undefined;
@@ -47,7 +48,10 @@ export function useWeatherHourly({
       // Today in the park's zone, from the browser clock.
       const day = date ?? parkDayOf(Date.now(), timezone!);
       const response = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/weather/hourly?date=${day}`,
+        parkRelayUrl(
+          { continent: continent!, country: country!, city: city!, parkSlug: parkSlug! },
+          `/weather/hourly?date=${day}`
+        ),
         { cache: 'no-store' }
       );
 

@@ -15,28 +15,13 @@ import {
   rolesToYield,
   uniqueClaims,
 } from '../lib/admin/media-unique-roles.ts';
+import { check, finishChecks } from './lib/run-cases.mjs';
 
 // A park is its path in a claim (`lib/media/park-path.mjs`), so Paris and Anaheim, both
 // `disneyland-park`, never take a role from each other.
 const PHANTASIALAND = 'europe/germany/bruehl/phantasialand';
 const EFTELING = 'europe/netherlands/kaatsheuvel/efteling';
 const EUROPA_PARK = 'europe/germany/rust/europa-park';
-
-let passed = 0;
-let failed = 0;
-
-function check(name, actual, expected) {
-  const ok = JSON.stringify(actual) === JSON.stringify(expected);
-  if (ok) {
-    passed += 1;
-    console.log(`✅ ${name}`);
-  } else {
-    failed += 1;
-    console.log(
-      `❌ ${name}\n   expected ${JSON.stringify(expected)}\n   actual   ${JSON.stringify(actual)}`
-    );
-  }
-}
 
 /** A branch stub: `files` is what `read` answers, `writes` records what was written. */
 function branch(files) {
@@ -230,6 +215,5 @@ console.log('\n🔎 Hand-over\n');
   );
 }
 
-console.log(`\n📊 ${passed} passed, ${failed} failed\n`);
-if (failed) process.exit(1);
+finishChecks();
 console.log('🎉 Unique roles move.');

@@ -32,9 +32,9 @@
  *     pnpm check:semantic-html
  *     pnpm check:semantic-html --base=http://localhost:3204
  */
-import { existsSync } from 'node:fs';
 import { chromium } from 'playwright';
 import { TRIP_REGION_PAGES } from './lib/trip-region-pages.mjs';
+import { LAUNCH } from './lib/browser.mjs';
 
 const args = process.argv.slice(2);
 const flag = (name, fallback) => {
@@ -44,9 +44,6 @@ const flag = (name, fallback) => {
 
 /** `localhost`, not `127.0.0.1`: see BASE in scripts/measure-cls.mjs. */
 const BASE = flag('base', process.env.BASE ?? 'http://localhost:3000').replace(/\/$/, '');
-/** Same fallback as scripts/check-landing-pages.mjs. */
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
-const LAUNCH = existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {};
 const SETTLE_MS = Number(flag('settle', '1500'));
 
 const EP = '/de/parks/europe/germany/rust/europa-park';

@@ -32,13 +32,7 @@ import { POST as runForTheApi } from '../app/api/news-export/run/route.ts';
 import { GET as statusForTheApi } from '../app/api/news-export/status/route.ts';
 import { GET as reportForTheAdmin } from '../app/api/admin/news-export/route.ts';
 import { POST as runForTheAdmin } from '../app/api/admin/news-export/run/route.ts';
-
-let passed = 0;
-function test(name, fn) {
-  fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { test, reportPassed } from './lib/run-cases.mjs';
 
 const LOCALES = ['en', 'de', 'fr', 'it', 'nl', 'es'];
 const NOW = Date.parse('2026-11-28T12:00:00Z');
@@ -368,12 +362,6 @@ const json = (status, body, headers = {}) =>
 const github = (dispatch) => (url) =>
   url.endsWith('/dispatches') ? dispatch() : json(200, { default_branch: 'trunk' });
 
-async function testAsync(name, fn) {
-  await fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
-
 /** A commit of a file's history as GitHub lists it. */
 const commit = (sha, date) => ({ sha, commit: { committer: { date } } });
 /** A pull request as GitHub lists it for a commit. */
@@ -407,40 +395,37 @@ function arrivalsGithub({ commits = {}, pulls = {}, pages = {} }) {
 const arrivalsOf = (answer, files, env = { BLOG_EDITOR_GITHUB_TOKEN: TOKEN }) =>
   against(answer, env, () => postArrivals(files));
 
-await testAsync('without a token no arrival is asked for', async () => {
+await test('without a token no arrival is asked for', async () => {
   const { result, requests } = await arrivalsOf(() => json(500, {}), ['content/blog/de/a.md'], {});
   assert.equal(result.size, 0);
   assert.deepEqual(requests, []);
 });
 
-await testAsync(
-  'a post arrives when the pull request with its first commit merged into the default branch',
-  async () => {
-    const file = 'content/blog/de/merged.md';
-    const { result, requests } = await arrivalsOf(
-      arrivalsGithub({
-        commits: {
-          [file]: [commit('c3', '2026-11-28T07:10:10Z'), commit('c1', '2026-11-28T06:32:02Z')],
-        },
-        pulls: {
-          c1: [
-            pull('release/2026-11-28', '2026-11-28T06:50:00Z'),
-            pull('main', '2026-11-28T07:17:51Z'),
-          ],
-        },
-      }),
-      [file]
-    );
-    assert.equal(result.get(file), Date.parse('2026-11-28T07:17:51Z'));
-    const listed = new URL(requests[0].url);
-    assert.equal(listed.pathname, '/repos/PArns/park.fan/commits');
-    assert.equal(listed.searchParams.get('path'), file);
-    assert.equal(listed.searchParams.has('sha'), false);
-    assert.equal(requests[1].url, `${GITHUB_API}/commits/c1/pulls`);
-  }
-);
+await test('a post arrives when the pull request with its first commit merged into the default branch', async () => {
+  const file = 'content/blog/de/merged.md';
+  const { result, requests } = await arrivalsOf(
+    arrivalsGithub({
+      commits: {
+        [file]: [commit('c3', '2026-11-28T07:10:10Z'), commit('c1', '2026-11-28T06:32:02Z')],
+      },
+      pulls: {
+        c1: [
+          pull('release/2026-11-28', '2026-11-28T06:50:00Z'),
+          pull('main', '2026-11-28T07:17:51Z'),
+        ],
+      },
+    }),
+    [file]
+  );
+  assert.equal(result.get(file), Date.parse('2026-11-28T07:17:51Z'));
+  const listed = new URL(requests[0].url);
+  assert.equal(listed.pathname, '/repos/PArns/park.fan/commits');
+  assert.equal(listed.searchParams.get('path'), file);
+  assert.equal(listed.searchParams.has('sha'), false);
+  assert.equal(requests[1].url, `${GITHUB_API}/commits/c1/pulls`);
+});
 
-await testAsync('a commit pushed to the default branch arrives with its own time', async () => {
+await test('a commit pushed to the default branch arrives with its own time', async () => {
   const file = 'content/blog/de/pushed.md';
   const { result } = await arrivalsOf(
     arrivalsGithub({ commits: { [file]: [commit('p1', '2026-11-27T16:00:00Z')] } }),
@@ -449,28 +434,25 @@ await testAsync('a commit pushed to the default branch arrives with its own time
   assert.equal(result.get(file), Date.parse('2026-11-27T16:00:00Z'));
 });
 
-await testAsync(
-  'a file with more commits than a page reads its first on the last page',
-  async () => {
-    const file = 'content/blog/de/long.md';
-    const { result, requests } = await arrivalsOf(
-      arrivalsGithub({
-        commits: { [file]: [commit('new', '2026-11-28T10:00:00Z')] },
-        pages: {
-          [file]: {
-            2: [],
-            3: [commit('mid', '2026-11-20T10:00:00Z'), commit('old', '2026-11-01T10:00:00Z')],
-          },
+await test('a file with more commits than a page reads its first on the last page', async () => {
+  const file = 'content/blog/de/long.md';
+  const { result, requests } = await arrivalsOf(
+    arrivalsGithub({
+      commits: { [file]: [commit('new', '2026-11-28T10:00:00Z')] },
+      pages: {
+        [file]: {
+          2: [],
+          3: [commit('mid', '2026-11-20T10:00:00Z'), commit('old', '2026-11-01T10:00:00Z')],
         },
-      }),
-      [file]
-    );
-    assert.equal(result.get(file), Date.parse('2026-11-01T10:00:00Z'));
-    assert.equal(new URL(requests[1].url).searchParams.get('page'), '3');
-  }
-);
+      },
+    }),
+    [file]
+  );
+  assert.equal(result.get(file), Date.parse('2026-11-01T10:00:00Z'));
+  assert.equal(new URL(requests[1].url).searchParams.get('page'), '3');
+});
 
-await testAsync('an arrival read once is kept, a failed read is not', async () => {
+await test('an arrival read once is kept, a failed read is not', async () => {
   const kept = 'content/blog/de/kept.md';
   const failing = 'content/blog/de/failing.md';
   const answer = (url) =>
@@ -489,7 +471,7 @@ await testAsync('an arrival read once is kept, a failed read is not', async () =
   );
 });
 
-await testAsync('a check asks GitHub about a handful of files, the oldest first', async () => {
+await test('a check asks GitHub about a handful of files, the oldest first', async () => {
   const files = [...Array(ARRIVALS_PER_CHECK + 3).keys()].map(
     (i) => `content/blog/de/many-${i}.md`
   );
@@ -502,12 +484,12 @@ await testAsync('a check asks GitHub about a handful of files, the oldest first'
   assert.equal(listed.length, ARRIVALS_PER_CHECK);
 });
 
-await testAsync('a file the default branch does not hold has no arrival', async () => {
+await test('a file the default branch does not hold has no arrival', async () => {
   const { result } = await arrivalsOf(arrivalsGithub({}), ['content/blog/de/branch-only.md']);
   assert.equal(result.size, 0);
 });
 
-await testAsync('without a token nothing is asked and the answer is 503', async () => {
+await test('without a token nothing is asked and the answer is 503', async () => {
   const { result, requests } = await startAgainst(() => json(500, {}), {});
   assert.equal(result.status, 503);
   assert.equal(result.answer.started, false);
@@ -516,46 +498,40 @@ await testAsync('without a token nothing is asked and the answer is 503', async 
   assert.deepEqual(requests, []);
 });
 
-await testAsync(
-  'a start runs the workflow on the default branch, not the base branch',
-  async () => {
-    const { result, requests } = await startAgainst(
-      github(() => new Response(null, { status: 204 })),
-      { BLOG_EDITOR_GITHUB_TOKEN: TOKEN, BLOG_EDITOR_BASE_BRANCH: 'staging' }
-    );
-    assert.deepEqual(result, {
-      status: 200,
-      answer: { started: true, workflowUrl: WORKFLOW_PAGE },
-    });
-    const dispatch = requests.at(-1);
-    assert.equal(dispatch.method, 'POST');
-    assert.equal(dispatch.url, `${GITHUB_API}/actions/workflows/publish-media.yml/dispatches`);
-    assert.deepEqual(JSON.parse(dispatch.body), { ref: 'trunk' });
-  }
-);
+await test('a start runs the workflow on the default branch, not the base branch', async () => {
+  const { result, requests } = await startAgainst(
+    github(() => new Response(null, { status: 204 })),
+    { BLOG_EDITOR_GITHUB_TOKEN: TOKEN, BLOG_EDITOR_BASE_BRANCH: 'staging' }
+  );
+  assert.deepEqual(result, {
+    status: 200,
+    answer: { started: true, workflowUrl: WORKFLOW_PAGE },
+  });
+  const dispatch = requests.at(-1);
+  assert.equal(dispatch.method, 'POST');
+  assert.equal(dispatch.url, `${GITHUB_API}/actions/workflows/publish-media.yml/dispatches`);
+  assert.deepEqual(JSON.parse(dispatch.body), { ref: 'trunk' });
+});
 
-await testAsync(
-  'a 403 names the missing Actions permission, and no log holds the token',
-  async () => {
-    const { result, logged } = await startAgainst(
-      github(() => json(403, { message: 'Resource not accessible by personal access token' }))
-    );
-    assert.equal(result.status, 502);
-    assert.match(result.answer.reason, /\(403\)/);
-    assert.match(result.answer.reason, /Actions: Read and write/);
-    assert.match(logged, /not started: 403/);
-    assert.doesNotMatch(logged, new RegExp(TOKEN));
-  }
-);
+await test('a 403 names the missing Actions permission, and no log holds the token', async () => {
+  const { result, logged } = await startAgainst(
+    github(() => json(403, { message: 'Resource not accessible by personal access token' }))
+  );
+  assert.equal(result.status, 502);
+  assert.match(result.answer.reason, /\(403\)/);
+  assert.match(result.answer.reason, /Actions: Read and write/);
+  assert.match(logged, /not started: 403/);
+  assert.doesNotMatch(logged, new RegExp(TOKEN));
+});
 
-await testAsync('a 404 says the token cannot reach the repository or the workflow', async () => {
+await test('a 404 says the token cannot reach the repository or the workflow', async () => {
   const { result } = await startAgainst(github(() => json(404, { message: 'Not Found' })));
   assert.equal(result.status, 502);
   assert.match(result.answer.reason, /\(404\)/);
   assert.match(result.answer.reason, /publish-media\.yml/);
 });
 
-await testAsync('no answer from GitHub is a 502 that says so', async () => {
+await test('no answer from GitHub is a 502 that says so', async () => {
   const { result } = await startAgainst(() => {
     throw new TypeError('fetch failed');
   });
@@ -563,13 +539,13 @@ await testAsync('no answer from GitHub is a 502 that says so', async () => {
   assert.match(result.answer.reason, /nicht geantwortet/);
 });
 
-await testAsync('a 5xx before the dispatch is a 502: nothing was sent', async () => {
+await test('a 5xx before the dispatch is a 502: nothing was sent', async () => {
   const { result } = await startAgainst(() => json(503, { message: 'Unavailable' }));
   assert.equal(result.status, 502);
   assert.equal(result.answer.maybeStarted, undefined);
 });
 
-await testAsync('a dispatch answered with a 5xx may have started: 504', async () => {
+await test('a dispatch answered with a 5xx may have started: 504', async () => {
   const { result, logged } = await startAgainst(
     github(() => json(502, { message: 'Bad Gateway' }))
   );
@@ -581,7 +557,7 @@ await testAsync('a dispatch answered with a 5xx may have started: 504', async ()
   assert.match(logged, /maybe started: 502/);
 });
 
-await testAsync('a dispatch without an answer in time may have started: 504', async () => {
+await test('a dispatch without an answer in time may have started: 504', async () => {
   const { result } = await startAgainst(
     github(() => {
       throw new DOMException('The operation was aborted due to timeout', 'TimeoutError');
@@ -595,35 +571,32 @@ await testAsync('a dispatch without an answer in time may have started: 504', as
 const bearer = (url, method, authorization) =>
   new Request(url, { method, headers: authorization ? { authorization } : {} });
 
-await testAsync(
-  "the API's run route is shut without the secret and refuses a wrong one",
-  async () => {
-    const call = (authorization) =>
-      runForTheApi(bearer('https://park.fan/api/news-export/run', 'POST', authorization));
-    const shut = await against(
-      () => json(500, {}),
-      {},
-      () => call('Bearer undefined')
-    );
-    assert.equal(shut.result.status, 503);
-    const { result } = await against(
-      () => json(500, {}),
-      { REVALIDATE_SECRET: 'mcp-test-secret' },
-      async () => {
-        assert.equal((await call('Bearer wrong')).status, 401);
-        assert.equal((await call(undefined)).status, 401);
-        return call('Bearer mcp-test-secret');
-      }
-    );
-    assert.equal(result.status, 503);
-    assert.match(result.headers.get('cache-control') ?? '', /^no-store/);
-    const body = await result.json();
-    assert.equal(body.started, false);
-    assert.match(body.reason, /kein GitHub-Token/);
-  }
-);
+await test("the API's run route is shut without the secret and refuses a wrong one", async () => {
+  const call = (authorization) =>
+    runForTheApi(bearer('https://park.fan/api/news-export/run', 'POST', authorization));
+  const shut = await against(
+    () => json(500, {}),
+    {},
+    () => call('Bearer undefined')
+  );
+  assert.equal(shut.result.status, 503);
+  const { result } = await against(
+    () => json(500, {}),
+    { REVALIDATE_SECRET: 'mcp-test-secret' },
+    async () => {
+      assert.equal((await call('Bearer wrong')).status, 401);
+      assert.equal((await call(undefined)).status, 401);
+      return call('Bearer mcp-test-secret');
+    }
+  );
+  assert.equal(result.status, 503);
+  assert.match(result.headers.get('cache-control') ?? '', /^no-store/);
+  const body = await result.json();
+  assert.equal(body.started, false);
+  assert.match(body.reason, /kein GitHub-Token/);
+});
 
-await testAsync("the API's run route answers a start GitHub left open with 504", async () => {
+await test("the API's run route answers a start GitHub left open with 504", async () => {
   const { result } = await against(
     github(() => json(500, { message: 'Server Error' })),
     { REVALIDATE_SECRET: 'mcp-test-secret', BLOG_EDITOR_GITHUB_TOKEN: TOKEN },
@@ -703,61 +676,52 @@ function bucket(url) {
   return json(200, { schema: 1, generatedAt: new Date().toISOString(), locale, posts });
 }
 
-await testAsync(
-  "the API's status route is shut without the secret and refuses a wrong one",
-  async () => {
-    const call = (authorization) =>
-      statusForTheApi(bearer('https://park.fan/api/news-export/status', 'GET', authorization));
-    const shut = await against(bucket, {}, () => call('Bearer undefined'));
-    assert.equal(shut.result.status, 503);
-    const { result, requests } = await against(
-      bucket,
-      { REVALIDATE_SECRET: 'mcp-test-secret' },
-      async () => [await call('Bearer wrong'), await call(undefined)]
-    );
-    assert.deepEqual(
-      result.map((response) => response.status),
-      [401, 401]
-    );
-    assert.deepEqual(requests, []);
-  }
-);
+await test("the API's status route is shut without the secret and refuses a wrong one", async () => {
+  const call = (authorization) =>
+    statusForTheApi(bearer('https://park.fan/api/news-export/status', 'GET', authorization));
+  const shut = await against(bucket, {}, () => call('Bearer undefined'));
+  assert.equal(shut.result.status, 503);
+  const { result, requests } = await against(
+    bucket,
+    { REVALIDATE_SECRET: 'mcp-test-secret' },
+    async () => [await call('Bearer wrong'), await call(undefined)]
+  );
+  assert.deepEqual(
+    result.map((response) => response.status),
+    [401, 401]
+  );
+  assert.deepEqual(requests, []);
+});
 
-await testAsync(
-  "the status route answers the report in the shape the API's tool reads",
-  async () => {
-    const { result, requests } = await against(
-      bucket,
-      { REVALIDATE_SECRET: 'mcp-test-secret' },
-      () =>
-        statusForTheApi(
-          bearer('https://park.fan/api/news-export/status', 'GET', 'Bearer mcp-test-secret')
-        )
-    );
-    assert.equal(result.status, 200);
-    assert.match(result.headers.get('cache-control') ?? '', /^no-store/);
-    const report = await result.json();
-    const parsed = apiReportSchema.safeParse(report);
-    assert.ok(parsed.success, JSON.stringify(parsed.error?.issues));
-    // A field the API's schema does not name reaches no model; add it there when it is meant to.
-    assert.deepEqual(Object.keys(report).sort(), Object.keys(apiReportSchema.shape).sort());
-    const feedKeys = Object.keys(apiReportSchema.shape.feeds.element.shape).sort();
-    for (const feed of report.feeds) assert.deepEqual(Object.keys(feed).sort(), feedKeys);
-    assert.deepEqual(
-      report.feeds.map((feed) => feed.feed),
-      Object.keys(EXPORT_FEEDS)
-    );
-    const news = report.feeds.find((feed) => feed.feed === 'news');
-    const guides = report.feeds.find((feed) => feed.feed === 'guides');
-    assert.deepEqual(news.missing[0].locales, ['de']);
-    assert.ok(HEALTH_TONES.includes(news.tone));
-    assert.equal(guides.tone, 'bad');
-    assert.deepEqual(guides.unreadable, [{ locale: 'fr', message: 'HTTP 404' }]);
-    // Twelve lists and no GitHub: this deployment has no token.
-    assert.equal(requests.length, 12);
-    assert.ok(requests.every((request) => request.url.startsWith(MEDIA_EXPORT_BASE)));
-  }
-);
+await test("the status route answers the report in the shape the API's tool reads", async () => {
+  const { result, requests } = await against(bucket, { REVALIDATE_SECRET: 'mcp-test-secret' }, () =>
+    statusForTheApi(
+      bearer('https://park.fan/api/news-export/status', 'GET', 'Bearer mcp-test-secret')
+    )
+  );
+  assert.equal(result.status, 200);
+  assert.match(result.headers.get('cache-control') ?? '', /^no-store/);
+  const report = await result.json();
+  const parsed = apiReportSchema.safeParse(report);
+  assert.ok(parsed.success, JSON.stringify(parsed.error?.issues));
+  // A field the API's schema does not name reaches no model; add it there when it is meant to.
+  assert.deepEqual(Object.keys(report).sort(), Object.keys(apiReportSchema.shape).sort());
+  const feedKeys = Object.keys(apiReportSchema.shape.feeds.element.shape).sort();
+  for (const feed of report.feeds) assert.deepEqual(Object.keys(feed).sort(), feedKeys);
+  assert.deepEqual(
+    report.feeds.map((feed) => feed.feed),
+    Object.keys(EXPORT_FEEDS)
+  );
+  const news = report.feeds.find((feed) => feed.feed === 'news');
+  const guides = report.feeds.find((feed) => feed.feed === 'guides');
+  assert.deepEqual(news.missing[0].locales, ['de']);
+  assert.ok(HEALTH_TONES.includes(news.tone));
+  assert.equal(guides.tone, 'bad');
+  assert.deepEqual(guides.unreadable, [{ locale: 'fr', message: 'HTTP 404' }]);
+  // Twelve lists and no GitHub: this deployment has no token.
+  assert.equal(requests.length, 12);
+  assert.ok(requests.every((request) => request.url.startsWith(MEDIA_EXPORT_BASE)));
+});
 
 /** The admin API's `auth/me` for a session token `role:<role>`, and the bucket for the rest. */
 function adminBackend(url, init) {
@@ -782,7 +746,7 @@ const asRole = (url, method, role) =>
     headers: role ? { cookie: `parkfan_admin_session=role:${role}` } : {},
   });
 
-await testAsync('the admin report needs the viewer role', async () => {
+await test('the admin report needs the viewer role', async () => {
   const { result } = await against(adminBackend, {}, async () => {
     const statuses = [];
     for (const role of [null, 'user', 'developer', 'viewer']) {
@@ -796,7 +760,7 @@ await testAsync('the admin report needs the viewer role', async () => {
   assert.deepEqual(result, [401, 403, 403, 200]);
 });
 
-await testAsync('the admin restart needs the editor role', async () => {
+await test('the admin restart needs the editor role', async () => {
   const { result, requests } = await against(adminBackend, {}, async () => {
     const statuses = [];
     for (const role of [null, 'viewer', 'author', 'editor']) {
@@ -812,4 +776,4 @@ await testAsync('the admin restart needs the editor role', async () => {
   assert.ok(requests.every((request) => !request.url.startsWith('https://api.github.com')));
 });
 
-console.log(`\n${passed} passed`);
+reportPassed();

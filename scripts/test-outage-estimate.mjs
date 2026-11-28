@@ -27,6 +27,7 @@ import { formatShowClock } from '../lib/push/show-clock.ts';
 import { formatTime } from '../lib/utils/intl-format.ts';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { runCases } from './lib/run-cases.mjs';
 
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
 
@@ -634,29 +635,4 @@ const testCases = [
 
 console.log('\n🔧 Running outage: reading the estimate\n' + '='.repeat(80) + '\n');
 
-let passed = 0;
-let failed = 0;
-
-testCases.forEach((testCase) => {
-  const result = testCase.actual();
-  if (result === testCase.expected) {
-    console.log(`✅ PASS: ${testCase.name}`);
-    passed++;
-  } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Expected: ${JSON.stringify(testCase.expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
-    failed++;
-  }
-});
-
-console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
-
-if (failed === 0) {
-  console.log('🎉 All tests passed!');
-  process.exit(0);
-} else {
-  console.log('⚠️  Some tests failed.');
-  process.exit(1);
-}
+await runCases(testCases);

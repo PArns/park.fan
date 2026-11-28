@@ -2,6 +2,7 @@
 // several schedule rows per date: Europa-Park sends 17 `OPERATING` and 17 `EXTRA_HOURS` rows for
 // the same 17 days, and the early-entry row must never replace the public opening.
 import { forecastOpeningByDate } from '../lib/parks/forecast-opening-hours.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const row = (date, scheduleType, openingTime = null, closingTime = null) => ({
   date,
@@ -106,15 +107,4 @@ const testCases = [
   },
 ];
 
-let failed = 0;
-for (const { name, actual, expected } of testCases) {
-  const got = actual();
-  if (got === expected) {
-    console.log(`✅ ${name}`);
-  } else {
-    failed++;
-    console.error(`❌ ${name}: expected ${JSON.stringify(expected)}, got ${JSON.stringify(got)}`);
-  }
-}
-if (failed) process.exit(1);
-console.log(`\n${testCases.length} cases passed`);
+await runCases(testCases);

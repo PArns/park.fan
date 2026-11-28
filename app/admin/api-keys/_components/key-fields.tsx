@@ -23,6 +23,7 @@ import {
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { parkCatalogOptions, useParkCatalog } from '../../_lib/use-park-catalog';
 import { Field, MultiSearchSelect, Select, TextInput, ToggleChips } from '../../_ui/controls';
+import { formatCount } from '@/lib/admin/format-number';
 
 /** The hourly allowance, as a number field that also takes German thousands points. */
 export function LimitField({
@@ -42,7 +43,7 @@ export function LimitField({
       hint="Gezählt ab jeder vollen Stunde, zusätzlich zum allgemeinen Limit der API. Leer lassen, wenn der Key kein eigenes Limit haben soll."
       error={
         invalid
-          ? `Eine ganze Zahl von 1 bis ${MAX_REQUESTS_PER_HOUR.toLocaleString('de-DE')} oder leer.`
+          ? `Eine ganze Zahl von 1 bis ${formatCount(MAX_REQUESTS_PER_HOUR)} oder leer.`
           : null
       }
     >

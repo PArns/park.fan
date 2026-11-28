@@ -37,6 +37,7 @@ import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 
 import sharp from 'sharp';
+import { viewBoxOf } from './lib/svg.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -53,13 +54,6 @@ const WORDMARK_ID = 'park.fan';
 const MEASURE_PX = 4000;
 
 // ---------------------------------------------------------------------------------------------
-
-function viewBoxOf(svg, file) {
-  const match = svg.match(/viewBox="([\d.\s-]+)"/);
-  if (!match) throw new Error(`${file}: no viewBox`);
-  const [x, y, w, h] = match[1].trim().split(/\s+/).map(Number);
-  return { x, y, w, h };
-}
 
 /**
  * Remove `<tag id="…">…</tag>` and everything inside it, matching the close by depth.

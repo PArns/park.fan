@@ -29,7 +29,7 @@ import {
 import { isClosedCalendarDay } from '@/lib/utils/calendar-utils';
 import { CROWD_TEXT_CLASS, type ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
-import { getNumberFormat } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { DialogHero } from '@/components/common/dialog-hero';
@@ -104,10 +104,10 @@ export function ParkCalendarComparison({
    */
   const fmt = useMemo(
     () => ({
-      full: new Intl.DateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long' }),
-      weekday: new Intl.DateTimeFormat(locale, { weekday: 'long' }),
-      date: new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long' }),
-      short: new Intl.DateTimeFormat(locale, {
+      full: getDateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long' }),
+      weekday: getDateTimeFormat(locale, { weekday: 'long' }),
+      date: getDateTimeFormat(locale, { day: 'numeric', month: 'long' }),
+      short: getDateTimeFormat(locale, {
         weekday: 'short',
         day: 'numeric',
         month: 'numeric',

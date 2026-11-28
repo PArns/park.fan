@@ -64,10 +64,10 @@ export async function POST(request: Request) {
       if (!response.ok) {
         const result = await response.json().catch(() => null);
         // Cloudflare answers a wrong zone ID and an invalid token alike with 401 "Authentication
-        // error", so the log names what was sent: the zone, and of the token only its prefix and
+        // error", so the log names what was sent: the zone, and of the token only its
         // length.
         console.error(
-          `Cloudflare purge_cache ${response.status}: zone ${zone}, token ${token.slice(0, 5)}… (${token.length} chars)`,
+          `Cloudflare purge_cache ${response.status}: zone ${zone}, token of ${token.length} chars`,
           JSON.stringify(result?.errors ?? result)
         );
         // A non-2xx makes Vercel deliver the event again, with backoff, for up to a day. Every call

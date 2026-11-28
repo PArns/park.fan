@@ -36,12 +36,9 @@
  */
 
 import { chromium } from 'playwright';
-import { existsSync } from 'node:fs';
+import { LAUNCH } from './lib/browser.mjs';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
-/** Same fallback as scripts/check-card-framing.mjs. */
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
-const LAUNCH = existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {};
 
 const LOCALE = 'en';
 const MIN_CONTRAST = 4.5;

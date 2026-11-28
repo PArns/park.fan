@@ -11,6 +11,7 @@
  */
 import { getParkYearlyPredictions } from '../lib/api/parks.ts';
 import { getBestDaysCalendar, getCalendarMonthSeed } from '../lib/api/integrated-calendar.ts';
+import { runCases } from './lib/run-cases.mjs';
 
 const GEO = ['europe', 'germany', 'rust', 'europa-park'];
 const CALENDAR_TAG = 'park-calendar:europe/germany/rust/europa-park';
@@ -42,16 +43,10 @@ const reads = [
   ['month summary', () => getCalendarMonthSeed(...GEO, { year: 2026, month: 12 }), CALENDAR_TAG],
 ];
 
-let failed = 0;
-for (const [name, read, expected] of reads) {
-  const tags = await tagsOf(read);
-  if (tags.includes(expected)) {
-    console.log(`ok   ${name}: ${expected}`);
-  } else {
-    console.log(`FAIL ${name}: expected ${expected}, got ${JSON.stringify(tags)}`);
-    failed++;
-  }
-}
-
-console.log(`\nResults: ${reads.length - failed}/${reads.length} passed, ${failed} failed\n`);
-process.exit(failed === 0 ? 0 : 1);
+await runCases(
+  reads.map(([name, read, expected]) => ({
+    name: `${name}: ${expected}`,
+    actual: async () => (await tagsOf(read)).includes(expected),
+    expected: true,
+  }))
+);

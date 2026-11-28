@@ -8,13 +8,11 @@
  */
 import { appleAppSiteAssociation, IOS_APP_ID } from '../lib/apple-app-site-association.ts';
 import { GET } from '../app/.well-known/apple-app-site-association/route.ts';
+import { checkThat, finishChecks } from './lib/run-cases.mjs';
 
-let failed = 0;
-const check = (actual, expected, name) => {
-  if (actual === expected) return console.log(`  ok  ${name}`);
-  failed++;
-  console.error(`FAIL  ${name}: expected ${expected}, got ${actual}`);
-};
+/** The association's facts read value first, so the name sits beside what it describes. */
+const check = (actual, expected, name) =>
+  checkThat(name, actual === expected, `expected ${expected}, got ${actual}`);
 
 const [details] = appleAppSiteAssociation().applinks.details;
 const glob = (pattern) =>
@@ -76,7 +74,4 @@ check(
   'the body is the file'
 );
 
-if (failed > 0) {
-  console.error(`\n${failed} failed`);
-  process.exit(1);
-}
+finishChecks();

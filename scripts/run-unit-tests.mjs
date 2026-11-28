@@ -5,11 +5,12 @@
  *
  * Run: pnpm test:unit [--list] [--jobs=<n>]
  */
-import { spawn, spawnSync } from 'node:child_process';
+import { spawn } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { availableParallelism } from 'node:os';
 import { delimiter, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { runGenerators } from './generate-all.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const scripts = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).scripts;
@@ -48,32 +49,8 @@ if (process.argv.includes('--list')) {
 }
 
 // The tests import generated files that are git-ignored. Writing them once here keeps the tests
-// from racing each other over a half-written manifest. MEDIA_VERIFY=0 keeps the media generator off
-// the live catalog, so no test result depends on api.park.fan.
-const PRELUDE = [
-  ['scripts/generate-build-info.mjs', '--offline', '--if-missing'],
-  ['scripts/generate-blog-manifest.mjs'],
-  ['scripts/generate-media-manifest.mjs'],
-  // The tests never ask the API: an existing seed stays, a missing one is written empty.
-  [
-    '--experimental-strip-types',
-    'scripts/generate-most-read-seed.mjs',
-    '--offline',
-    '--if-missing',
-  ],
-];
-for (const argv of PRELUDE) {
-  const file = argv.find((arg) => arg.endsWith('.mjs'));
-  const r = spawnSync(process.execPath, argv, {
-    cwd: root,
-    encoding: 'utf8',
-    env: { ...process.env, MEDIA_VERIFY: '0' },
-  });
-  if (r.status !== 0) {
-    console.error(`${file} failed (exit ${r.status})\n${r.stdout}${r.stderr}`);
-    process.exit(1);
-  }
-}
+// from racing each other over a half-written manifest.
+if (runGenerators('test', { quiet: true }) !== 0) process.exit(1);
 
 const env = {
   ...process.env,

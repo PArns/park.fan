@@ -18,13 +18,7 @@ import {
 import * as umami from '../lib/analytics/umami.ts';
 import { countNearbyResultOnce } from '../lib/hooks/use-nearby-analytics.ts';
 import { askPushPermission } from '../lib/push/push-permission.ts';
-
-let passed = 0;
-async function test(name, fn) {
-  await fn();
-  passed++;
-  console.log(`  ✓ ${name}`);
-}
+import { reportPassed, test } from './lib/run-cases.mjs';
 
 /** The event names our own counter received from `run`, in order. */
 async function counted(run, page = {}) {
@@ -183,5 +177,5 @@ await test('the hit after a query page loses its title once, then titles return'
   assert.equal('title' in hit(), true);
 });
 
-console.log(`\n${passed} cases passed.`);
+reportPassed();
 process.exit(0);
