@@ -356,6 +356,15 @@ const known = new Set(types);
 for (const file of files.filter((f) => f.key.startsWith('guides/')))
   for (const b of file.json.blocks ?? []) assert.ok(known.has(b.type), `${file.key}: ${b.type}`);
 
+// The list names each post's rides as its article does, so the app finds a ride's posts without
+// loading every article.
+for (const [dir, list] of [
+  ['news', newsList],
+  ['guides', guidesList],
+])
+  for (const p of list.posts) assert.deepEqual(p.rides, json(`${dir}/de/${p.slug}.json`).rides);
+assert.ok(newsList.posts.some((p) => p.rides.length > 0));
+
 // The app searches what the website searches: `terms` and `categoryLabel` are the site search's
 // own entry for the post, in the lists and in the article files. `terms` leaves out what the title
 // says: a word the title holds whole, however it is cased, accented or hyphenated.

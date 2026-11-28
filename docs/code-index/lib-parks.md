@@ -171,6 +171,14 @@ Which two days of a park's calendar are being compared, across a change of month
 - `parkStatsShape` _function_: `ParkStatsShape` of an aggregate; `null` where the chapter renders nothing at all.
 - Types: `ParkStatsFindings`, `BestDaysTier`, `ParkBestDays`, `ParkStatsShape`
 
+### [`queue-availability.ts`](../../lib/parks/queue-availability.ts)
+
+- `queueAvailability` _function_: The one reading of a queue's `state`, for the card and the ride page alike. The API sends it on every queue type; the paid lanes keep their price while they are full or finished.
+- `queueShut` _function_: `full` or `finished` while the lane hands out nothing, else `null`. A shut paid lane still carries its price and its last return window or wait, and none of them may read as on sale.
+- `liveQueueChips` _function_: The queues an attraction card shows as live chips: everything but standby, and single rider only while it posts a wait.
+- `factChipsCoveredByLive` _function_: Which curated fact chips a live chip already covers. The live chip names the same lane and says what it does right now, full or finished included, so the fact beside it would be the same word twice.
+- Types: `QueueAvailability`, `QueueShut`
+
 ### [`ride-alternatives.ts`](../../lib/parks/ride-alternatives.ts)
 
 - `rankRideAlternatives` _function_: Up to three open rides of the same park that are at least 15 minutes shorter than the ride the visitor is looking at: same ride type first, then the rest, each group nearest first.

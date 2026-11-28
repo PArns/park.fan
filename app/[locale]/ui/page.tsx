@@ -2404,6 +2404,22 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   <div className="flex flex-col items-start gap-1">
                     <QueueTypeBadge
                       queue={{
+                        queueType: 'PAID_RETURN_TIME',
+                        status: 'OPERATING',
+                        lastUpdated: now,
+                        state: 'FINISHED',
+                        returnStart: null,
+                        returnEnd: null,
+                        price: { amount: 1600, currency: 'USD', formatted: '$16.00' },
+                      }}
+                    />
+                    <span className="text-muted-foreground font-mono text-[10px]">
+                      PAID_RETURN_TIME (finished)
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-start gap-1">
+                    <QueueTypeBadge
+                      queue={{
                         queueType: 'PAID_STANDBY',
                         status: 'OPERATING',
                         lastUpdated: now,
@@ -2413,6 +2429,21 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                     />
                     <span className="text-muted-foreground font-mono text-[10px]">
                       PAID_STANDBY
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-start gap-1">
+                    <QueueTypeBadge
+                      queue={{
+                        queueType: 'PAID_STANDBY',
+                        status: 'OPERATING',
+                        lastUpdated: now,
+                        state: 'TEMP_FULL',
+                        waitTime: 15,
+                        price: { amount: 10, currency: 'EUR', formatted: '€10' },
+                      }}
+                    />
+                    <span className="text-muted-foreground font-mono text-[10px]">
+                      PAID_STANDBY (full)
                     </span>
                   </div>
                   <div className="flex flex-col items-start gap-1">
@@ -2436,13 +2467,28 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                         queueType: 'RETURN_TIME',
                         status: 'OPERATING',
                         lastUpdated: now,
-                        state: 'FULL',
+                        state: 'TEMP_FULL',
                         returnStart: null,
                         returnEnd: null,
                       }}
                     />
                     <span className="text-muted-foreground font-mono text-[10px]">
                       RETURN_TIME (full)
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-start gap-1">
+                    <QueueTypeBadge
+                      queue={{
+                        queueType: 'RETURN_TIME',
+                        status: 'OPERATING',
+                        lastUpdated: now,
+                        state: 'FINISHED',
+                        returnStart: null,
+                        returnEnd: null,
+                      }}
+                    />
+                    <span className="text-muted-foreground font-mono text-[10px]">
+                      RETURN_TIME (finished)
                     </span>
                   </div>
                   <div className="flex flex-col items-start gap-1">

@@ -315,9 +315,10 @@ export interface SingleRiderQueue extends BaseQueue {
   waitTime: number | null;
 }
 
-/** A free virtual queue with return times. */
+/** A queue with return times and no price of its own: a virtual queue, or Disney's Multi Pass. */
 export interface ReturnTimeQueue extends BaseQueue {
   queueType: 'RETURN_TIME';
+  /** `AVAILABLE`, `TEMP_FULL`, `FINISHED`: read it with `queueAvailability()`. */
   state: string | null;
   returnStart: string | null;
   returnEnd: string | null;
@@ -326,6 +327,8 @@ export interface ReturnTimeQueue extends BaseQueue {
 /** A paid return-time offer (e.g. Lightning Lane). */
 export interface PaidReturnTimeQueue extends BaseQueue {
   queueType: 'PAID_RETURN_TIME';
+  /** `AVAILABLE`, `TEMP_FULL`, `FINISHED`: read it with `queueAvailability()`. */
+  state?: string | null;
   returnStart: string | null;
   returnEnd: string | null;
   price: {
@@ -347,6 +350,8 @@ export interface BoardingGroupQueue extends BaseQueue {
 /** A paid standby line. */
 export interface PaidStandbyQueue extends BaseQueue {
   queueType: 'PAID_STANDBY';
+  /** `AVAILABLE`, `TEMP_FULL`, `FINISHED`: read it with `queueAvailability()`. */
+  state?: string | null;
   waitTime: number | null;
   price: {
     amount: number;

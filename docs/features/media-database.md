@@ -268,7 +268,7 @@ written before them.
   `https://park.fan/<locale>/blog/<slug>`, and the list is not capped.
 - **`news/<locale>.json`:** `{schema: 1, generatedAt, locale, posts: [Post]}`, with `Post` =
   `{slug, url, title, teaser, publishedAt, updatedAt?, category, categoryLabel?, terms?, parks,
-parkSlugs, cover, coverAlt, readingMinutes}`. `url` is the absolute
+parkSlugs, rides, cover, coverAlt, readingMinutes}`. `url` is the absolute
   `https://park.fan/<locale>/news/<slug>`; `publishedAt` and `updatedAt` carry Berlin's offset;
   `teaser` is the frontmatter `excerpt`; `categoryLabel` and `terms` are the post's entry in the
   site search (`getPostSearchIndex`, `lib/navigation/blog-menu.ts`): the category's label in that
@@ -278,14 +278,15 @@ parkSlugs, cover, coverAlt, readingMinutes}`. `url` is the absolute
   geo paths of the parks the post is about, the keys of `parks` in `index.json`, the park of the
   news label first (`getNewsParkRef`); `parkSlugs` are the same parks as slugs, because a park
   nobody photographed and no post linked by its full path has no known path and is then missing
-  from `parks` only; `cover` is an id in `images` of `index.json` or `null` (the post has no photo:
-  draw the fallback), `coverAlt` its alt text in that locale.
-- **`news/<locale>/<slug>.json`:** `Post` plus `schema`, `locale`, `author`, `rides` and `blocks`.
+  from `parks` only; `rides` are the post's `rideLinks` as `<park geo path>/<ride slug>`, where the
+  park's path is known; `cover` is an id in `images` of `index.json` or `null` (the post has no
+  photo: draw the fallback), `coverAlt` its alt text in that locale.
+- **`news/<locale>/<slug>.json`:** `Post` plus `schema`, `locale`, `author` and `blocks`.
   `author` is the byline, `{name, role, avatar, avatarSmall}`: the short name, the role in that
   locale or `null`, and the avatar as absolute `https://media.park.fan/authors/<name>-<hash>-<w>.webp`
   URLs (192 px and 96 px squares) or `null`. The app loads them from the bucket, never from the
-  website; the hash is that of the source file, so a key is immutable and uploaded once. `rides` are the post's `rideLinks` as
-  `<park geo path>/<ride slug>`, where the park's path is known. `blocks`, in reading order:
+  website; the hash is that of the source file, so a key is immutable and uploaded once. `blocks`,
+  in reading order:
   - `{type: 'heading', level, text, id}`, `id` the anchor the web gives the heading (`#id`)
   - `{type: 'paragraph', text}`
   - `{type: 'list', ordered, items: [text]}`

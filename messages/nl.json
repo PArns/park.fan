@@ -1609,16 +1609,17 @@
         "singleRiderNoTime": "Single Rider",
         "lightningLane": "Lightning Lane: {price}",
         "lightningLaneNoPrice": "Lightning Lane: beschikbaar",
+        "lightningLaneState": "Lightning Lane: {state}",
         "express": "Express: {price}",
         "expressNoPrice": "Express: beschikbaar",
-        "virtualQueue": "Virtuele wachtrij",
-        "virtualQueueFull": "Virtuele wachtrij vol",
+        "expressState": "Express: {state}",
         "boardingGroups": "Boarding Groups: {start}-{end}",
         "boardingGroupsAvailable": "Groups beschikbaar",
         "boardingGroupsDistributed": "Groups uitgedeeld",
         "boardingGroupsPaused": "Boarding Groups gepauzeerd",
-        "return": "Terug: {start} - {end}",
-        "returnNoEnd": "Terug: {start}"
+        "returnState": "Terugkeertijd: {state}",
+        "return": "Terugkeertijd: {start}–{end}",
+        "returnNoEnd": "Terugkeertijd: {start}"
       }
     },
     "h1Suffix": "Live wachttijd",
