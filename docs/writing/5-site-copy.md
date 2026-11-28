@@ -186,3 +186,19 @@ would notice and says it with the number behind it; which changes belong in one 
 [a version is a unit of communication](../rules/a-version-is-a-unit-of-communication.md). The
 collection's own format is in [content/changelog/README.md](../../content/changelog/README.md).
 `pnpm check:changelog` runs the changelog half of `check:prose` in CI.
+
+That half reads every bullet as a paragraph, so the patterns of [§2.20](2-20-check-patterns.md)
+reach an entry as they reach a post: the critic of the 2.20.0 draft marked
+`from rope drop and single rider to maintenance and out of season`, `brochure-span` (#68), in a
+bullet the check had read as one long list. The summary is left out, because it repeats the
+bullets by design, and so are the rules that spare a post about park.fan (#115, #116, #126): every
+sentence of a release note is about park.fan.
+
+**`## Fixed` does not end every bullet on the state before or after.** Three bullets of that draft
+closed on `Both fit the screen now.`, `It now stands at the end of the day.` and `Their links
+pointed nowhere before.`. The heading has already said that the fault is gone, so the closing
+`now` adds nothing, and three in a row are a refrain. Say what was broken and stop
+(`On a 360 px phone the weather chart and its legend ran off the side.`), or put the new figure in
+the sentence about the fault. `check:prose` warns (`fixed-now-refrain`) when three bullets under
+`## Fixed` end on `now` or `before`, or close on a sentence with `now` after one about the fault.
+A bullet of one sentence that says what works now is the fix itself and does not count.
