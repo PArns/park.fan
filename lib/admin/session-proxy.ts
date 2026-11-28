@@ -13,6 +13,7 @@ import {
 import { adminProxyPath, adminProxyQuery } from '@/lib/admin/proxy-path';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 import { NO_STORE } from '@/lib/api/cdn-cache-headers';
+import { isCrossOriginWrite } from '@/lib/security/same-origin';
 
 /**
  * The session proxy to api.park.fan behind `/api/admin/*` (the admin UI), `/api/developer/*` (the
@@ -71,6 +72,12 @@ export async function proxySessionRequest(
   }
 
   const route = path.join('/');
+  if (isCrossOriginWrite(request)) {
+    return NextResponse.json(
+      { error: 'Cross-origin request refused' },
+      { status: 403, headers: NO_STORE }
+    );
+  }
   const token = await readSessionToken(request);
 
   // The backend skips its Turnstile check for a caller carrying the key, so signing in and

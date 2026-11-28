@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { ACCOUNT_MARKER_COOKIE, ADMIN_MARKER_COOKIE, readCookie } from './cookie';
 import { adminGuardRefusal, isStaffRole, type AdminIdentity, type AdminRole } from './roles';
+import { isCrossOriginWrite } from '@/lib/security/same-origin';
 
 /**
  * The admin session cookie: httpOnly, so no script on the admin origin can read the token, and
@@ -142,6 +143,12 @@ export async function requireAdmin(
   // backend knows a session was just revoked.
   const method = (request.method ?? 'GET').toUpperCase();
   const writes = method !== 'GET' && method !== 'HEAD';
+  if (isCrossOriginWrite(request)) {
+    return {
+      response: Response.json({ error: 'Cross-origin request refused' }, { status: 403 }),
+      identity: null,
+    };
+  }
   const identity = await resolveAdminIdentity(request, { revalidate: writes });
 
   const refusal = adminGuardRefusal(identity, minRole);
