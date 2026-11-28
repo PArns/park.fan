@@ -720,7 +720,8 @@
       "extreme": "Extreme",
       "full": "Full",
       "unknown": "No forecast",
-      "closed": "Closed"
+      "closed": "Closed",
+      "withUsual": "{level} · usually {minutes} min"
     },
     "crowdScale": {
       "title": "Crowd levels",
@@ -1512,13 +1513,6 @@
     "title": "Attractions",
     "sectionNavLabel": "Sections on this page",
     "waitTime": "Wait Time",
-    "status": {
-      "operating": "Operating",
-      "down": "Temporarily Down",
-      "closed": "Closed",
-      "refurbishment": "Under Maintenance",
-      "unknown": "Unknown"
-    },
     "label": {
       "OPERATING": "Open",
       "DOWN": "Down",

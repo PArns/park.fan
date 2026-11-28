@@ -720,7 +720,8 @@
       "extreme": "Estrema",
       "full": "Pieno",
       "unknown": "Nessuna previsione",
-      "closed": "Chiuso"
+      "closed": "Chiuso",
+      "withUsual": "{level} · di solito {minutes} min"
     },
     "crowdScale": {
       "title": "Livelli di affluenza",
@@ -1512,13 +1513,6 @@
     "title": "Attrazioni",
     "sectionNavLabel": "Sezioni di questa pagina",
     "waitTime": "Tempo di attesa",
-    "status": {
-      "operating": "Operativa",
-      "down": "Temporaneamente ferma",
-      "closed": "Chiusa",
-      "refurbishment": "In manutenzione",
-      "unknown": "Sconosciuto"
-    },
     "label": {
       "OPERATING": "Aperta",
       "DOWN": "Ferma",

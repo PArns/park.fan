@@ -961,7 +961,8 @@
       "extreme": "Extrem",
       "full": "Voll",
       "unknown": "Keine Prognose",
-      "closed": "Geschlossen"
+      "closed": "Geschlossen",
+      "withUsual": "{level} · sonst {minutes} Min."
     },
     "crowdScale": {
       "title": "Auslastungsstufen",
@@ -1512,13 +1513,6 @@
     "title": "Attraktionen",
     "sectionNavLabel": "Abschnitte dieser Seite",
     "waitTime": "Wartezeit",
-    "status": {
-      "operating": "In Betrieb",
-      "down": "Vorübergehend geschlossen",
-      "closed": "Geschlossen",
-      "refurbishment": "In Wartung",
-      "unknown": "Unbekannt"
-    },
     "label": {
       "OPERATING": "Geöffnet",
       "DOWN": "Störung",

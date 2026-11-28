@@ -720,7 +720,8 @@
       "extreme": "Extreem",
       "full": "Vol",
       "unknown": "Geen voorspelling",
-      "closed": "Gesloten"
+      "closed": "Gesloten",
+      "withUsual": "{level} · anders {minutes} min"
     },
     "crowdScale": {
       "title": "Drukteniveaus",
@@ -1512,13 +1513,6 @@
     "title": "Attracties",
     "sectionNavLabel": "Onderdelen op deze pagina",
     "waitTime": "Wachttijd",
-    "status": {
-      "operating": "In bedrijf",
-      "down": "Tijdelijke storing",
-      "closed": "Gesloten",
-      "refurbishment": "In onderhoud",
-      "unknown": "Onbekend"
-    },
     "label": {
       "OPERATING": "Open",
       "DOWN": "Storing",

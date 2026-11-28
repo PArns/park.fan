@@ -206,7 +206,9 @@ export function AttractionCard({
         day: todayIso,
       })
     : null;
-  const waitTime = isOperatingOrUnknown && !performanceTimes ? getStandbyWait(attraction) : null;
+  // Only a running ride has a wait: an UNKNOWN one may carry a reported figure, and the ride's own
+  // page shows none for it either.
+  const waitTime = status === 'OPERATING' && !performanceTimes ? getStandbyWait(attraction) : null;
   const parkName =
     parkNameProp ??
     ('park' in attraction && attraction.park?.name
@@ -528,9 +530,10 @@ export function AttractionCard({
                 />
               )
             )}
-            {isOperatingOrUnknown && !performanceTimes && crowdLevel && (
+            {status === 'OPERATING' && !performanceTimes && crowdLevel && (
               // The scale is this ride's own, in minutes, and only where the API sent the
-              // baseline it rated against — without one the badge stands alone.
+              // baseline it rated against — without one the badge stands alone. The badge names
+              // that baseline too, or two cards at 35 min read „Niedrig" and „Hoch" side by side.
               <RideCrowdScaleTooltip
                 level={isColoredCrowdLevel(crowdLevel) ? crowdLevel : null}
                 baseline={attraction.baseline}
@@ -539,6 +542,7 @@ export function AttractionCard({
                   level={
                     crowdLevel as 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme'
                   }
+                  usualMinutes={attraction.baseline}
                 />
               </RideCrowdScaleTooltip>
             )}
