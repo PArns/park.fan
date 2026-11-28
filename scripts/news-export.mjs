@@ -11,7 +11,7 @@ import { SITE_URL, locales } from '../i18n/config.ts';
 import { resolveAuthor } from '../lib/blog/authors.ts';
 import { galleryWidgetImages } from '../lib/blog/gallery.ts';
 import { BLOG_POSTS_META } from '../lib/blog/manifest.ts';
-import { getParkSlugsOfPost, getNewsParkRef } from '../lib/blog/backlinks.ts';
+import { getParkRefsOfPost, getNewsParkRef } from '../lib/blog/backlinks.ts';
 import { parseRefKey } from '../lib/blog/derive.mjs';
 import { getListItemByLocaleSlug, listPosts } from '../lib/blog/listing.ts';
 import { BLOG_POST_BODIES } from '../lib/blog/manifest-bodies.ts';
@@ -49,17 +49,20 @@ function parkPath(slug, geo) {
 /**
  * The parks a news post is about: its label park first, then the parks whose pages list it.
  * `parks` holds the geo paths that are known; `parkSlugs` every slug, for the app to match against
- * its own park list where no path is known.
+ * its own park list where no path is known. A slug the post pinned to a city stands for that
+ * park only: the catalog's path for a shared slug is the first park of it.
  */
-function parksOf(translationKey) {
-  const primary = getNewsParkRef(translationKey);
-  const slugs = [
-    ...new Set([primary?.slug, ...getParkSlugsOfPost(translationKey)].filter(Boolean)),
-  ];
-  const paths = [];
-  if (primary) paths.push(parkPath(primary.slug, primary.geo?.[0]));
-  for (const slug of slugs) paths.push(parkPath(slug));
-  return { parks: [...new Set(paths.filter(Boolean))], parkSlugs: slugs };
+export function parksOf(translationKey) {
+  const refs = [getNewsParkRef(translationKey), ...getParkRefsOfPost(translationKey)].filter(
+    Boolean
+  );
+  const paths = refs.flatMap((ref) =>
+    ref.geo?.length ? ref.geo.map((geo) => parkPath(ref.slug, geo)) : [parkPath(ref.slug)]
+  );
+  return {
+    parks: [...new Set(paths.filter(Boolean))],
+    parkSlugs: [...new Set(refs.map((ref) => ref.slug))],
+  };
 }
 
 /**

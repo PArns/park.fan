@@ -10,9 +10,6 @@ import { parseWidgetAttrs, parseWidgetParkRef, parseWidgetRideRef } from './widg
  * the script injects everything that needs the manifests ({@link BlockContext}).
  */
 
-/** At most this many news posts per locale in `news/<locale>.json`. */
-export const NEWS_EXPORT_CAP = 100;
-
 export type NewsBlock =
   | { type: 'heading'; level: number; text: string; id: string }
   | { type: 'paragraph'; text: string }
@@ -104,24 +101,24 @@ interface Selectable {
   frontmatter: { category?: string; date: string; time?: string };
 }
 
-function select<T extends Selectable>(posts: readonly T[], news: boolean, cap: number): T[] {
+function select<T extends Selectable>(posts: readonly T[], news: boolean): T[] {
   return posts
     .filter((p) => !p.isFallback && isNewsCategory(p.frontmatter.category) === news)
-    .sort((a, b) => newestPublishedFirst(a.frontmatter, b.frontmatter))
-    .slice(0, cap);
-}
-
-/** News only (the `/news` listing), own-locale posts, newest first, capped. */
-export function selectNews<T extends Selectable>(posts: readonly T[], cap = NEWS_EXPORT_CAP): T[] {
-  return select(posts, true, cap);
+    .sort((a, b) => newestPublishedFirst(a.frontmatter, b.frontmatter));
 }
 
 /**
- * The guides (the `/blog` listing: every post that is not news), own-locale posts, newest first.
- * Not capped, because a guide stays worth reading where a news post ages out.
+ * News only (the `/news` listing), own-locale posts, newest first. Not capped: the app searches
+ * and filters the list on the device, so a post left out is one the website's search finds and
+ * the app's does not.
  */
+export function selectNews<T extends Selectable>(posts: readonly T[]): T[] {
+  return select(posts, true);
+}
+
+/** The guides (the `/blog` listing: every post that is not news), own-locale posts, newest first. */
 export function selectGuides<T extends Selectable>(posts: readonly T[]): T[] {
-  return select(posts, false, Infinity);
+  return select(posts, false);
 }
 
 const WIDGET_FENCES: Record<string, NewsWidgetBlock['widget']> = {

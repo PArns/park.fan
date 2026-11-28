@@ -245,7 +245,8 @@ images: {id: {v, w, h, widths, focus, credit, attribution, roles, bannerFocus?, 
   path, because `disneyland-park` and `universal-islands-of-adventure` each exist twice, and the photo
   is looked up by that path too. `credit` is
   `getCreditLine()`, `attribution` is `needsAttribution()`; the app shows the line on the photo when
-  it is true, as the cards do. Files are scaled, never cropped, so the app applies `focus` itself.
+  it is true, as the cards do. The line carries its own `©`, so it is drawn as it stands, with no
+  „Foto:“ in front, as `PhotoCredit` draws it on the website. Files are scaled, never cropped, so the app applies `focus` itself.
 - **When:** `.github/workflows/publish-media.yml` on every push to `main` touching `public/media/**`
   or `content/blog/**`, and by hand (`workflow_dispatch`). Secrets: `R2_ENDPOINT`
   (`https://<account>.eu.r2.cloudflarestorage.com`), `R2_BUCKET`, `R2_ACCESS_KEY_ID`,
@@ -261,11 +262,13 @@ written before them.
 
 - **Which posts:** the `/news` listing: `isNewsCategory()` (`news` and `news/…`), `listPosts()` so
   drafts, hidden and scheduled posts stay out, only posts the locale has itself (no English
-  fallback), newest first by date and time, at most 100 per locale.
+  fallback), newest first by date and time, all of them: the app searches and filters the list on
+  the device, so it holds every post the website's search finds (117 German news are 100 KB, 26 KB
+  compressed).
 - **Guides:** every other post (the `/blog` listing, `selectGuides()`) is written by the same code
   to `guides/<locale>.json` and `guides/<locale>/<slug>.json`, with the same fields and block
-  types as the news files below. Two things differ: `url` is
-  `https://park.fan/<locale>/blog/<slug>`, and the list is not capped.
+  types as the news files below. Only `url` differs: it is
+  `https://park.fan/<locale>/blog/<slug>`.
 - **`news/<locale>.json`:** `{schema: 1, generatedAt, locale, posts: [Post]}`, with `Post` =
   `{slug, url, title, teaser, publishedAt, updatedAt?, category, categoryLabel?, terms?, parks,
 parkSlugs, cover, coverAlt, readingMinutes}`. `url` is the absolute

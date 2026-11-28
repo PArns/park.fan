@@ -32,6 +32,7 @@ export interface BlogImage {
   src: string;
   alt?: string;
   caption?: string;
+  /** The whole line with its sign, `© 2026 Patrick Arns` (`getCreditLine()`); drawn as it stands. */
   credit?: string;
   /** Intrinsic pixel width, baked into the manifest so layouts can reserve space (CLS). */
   width?: number;

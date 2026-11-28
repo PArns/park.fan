@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 
 import { markdownToBlocks, selectGuides, selectNews } from '../lib/blog/news-blocks.ts';
 import { getPostSearchIndex } from '../lib/navigation/blog-menu.ts';
-import { MEDIA_BASE, buildNewsExport, termsBeyondTitle } from './news-export.mjs';
+import { MEDIA_BASE, buildNewsExport, parksOf, termsBeyondTitle } from './news-export.mjs';
 
 const ctx = {
   site: 'https://park.fan/de',
@@ -292,17 +292,14 @@ const post = (slug, category, date, time, isFallback = false) => ({
   isFallback,
   frontmatter: { category, date, time },
 });
-const picked = selectNews(
-  [
-    post('old', 'news', '2026-10-01', '10:00'),
-    post('guide', 'guides/orlando', '2026-11-01'),
-    post('sub', 'news/parks', '2026-11-02', '08:00'),
-    post('fallback', 'news', '2026-11-03', '08:00', true),
-    post('late', 'news', '2026-11-02', '18:00'),
-  ],
-  2
-).map((p) => p.slug);
-assert.deepEqual(picked, ['late', 'sub']);
+const picked = selectNews([
+  post('old', 'news', '2026-10-01', '10:00'),
+  post('guide', 'guides/orlando', '2026-11-01'),
+  post('sub', 'news/parks', '2026-11-02', '08:00'),
+  post('fallback', 'news', '2026-11-03', '08:00', true),
+  post('late', 'news', '2026-11-02', '18:00'),
+]).map((p) => p.slug);
+assert.deepEqual(picked, ['late', 'sub', 'old']);
 assert.deepEqual(
   selectGuides([
     post('news', 'news', '2026-11-05', '10:00'),
@@ -388,5 +385,23 @@ for (const type of ['weather', 'map', 'park-comparison', 'glossary', 'gallery'])
     type
   );
 for (const b of all.filter((x) => x.type === 'gallery')) assert.ok(b.images.length > 0);
+
+// Every news post the website's search knows is in the list, so the app's search and park
+// filter see the same posts.
+const listed = new Set(newsList.posts.map((p) => new URL(p.url).pathname.slice('/de'.length)));
+for (const entry of searchEntries.values())
+  if (entry.path.startsWith('/news/')) assert.ok(listed.has(entry.path), entry.path);
+
+// A slug pinned to one city is that park only: the Anaheim posts do not carry the Paris path of
+// the same `disneyland-park`, and the Paris ones not Anaheim's.
+const anaheim = 'north-america/united-states/anaheim/disneyland-park';
+const paris = 'europe/france/paris/disneyland-park';
+for (const key of ['disneyland-after-dark-2027', 'disneyland-resort-holidays-2026']) {
+  const { parks, parkSlugs } = parksOf(key);
+  assert.ok(parks.includes(anaheim) && !parks.includes(paris), `${key}: ${parks}`);
+  assert.equal(parkSlugs.filter((slug) => slug === 'disneyland-park').length, 1, key);
+}
+assert.deepEqual(parksOf('disneyland-paris-halloween-2026').parks.slice(0, 1), [paris]);
+assert.ok(!parksOf('disneyland-paris-halloween-2026').parks.includes(anaheim));
 
 console.log('✓ news blocks');
