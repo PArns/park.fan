@@ -39,6 +39,7 @@ export const PURGED_API_DIRS = [
   'ml',
   'nav',
   'nearby',
+  'news-export',
   'parks',
   'push',
   'revalidate',

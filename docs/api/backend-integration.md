@@ -64,6 +64,14 @@ contract is in `app/api/revalidate/route.ts`: `Authorization: Bearer $REVALIDATE
 `park-calendar:<continent>/<country>/<city>/<slug>` (`parkCalendarCacheTag`, the same file); each
 has a hand-written twin in the API — change both.
 
+## The export for the MCP tools
+
+The API's MCP server reads and restarts the app's news export through `GET /api/news-export/status`
+and `POST /api/news-export/run`, with the same `Authorization: Bearer $REVALIDATE_SECRET` (**503**
+until the secret is set, **401** on any other). Paths and answers are in
+[watching the export](../features/media-database.md#watching-the-export); the API depends on both,
+so a rename is a change on both sides.
+
 ## Favorites
 
 Stored in a **cookie** in the browser, enriched by the API.

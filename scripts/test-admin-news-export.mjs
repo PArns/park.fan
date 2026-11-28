@@ -2,7 +2,9 @@
  * Unit tests for the export check on `/admin/system` (`lib/admin/news-export-lag.ts`): which posts
  * of the site the app's export lacks, how long they have waited, counted from the post's date or
  * the deployment, whichever is later, when that turns amber and red, what an unreadable list does,
- * and the verdict's words.
+ * and the verdict's words. Then the restart (`lib/admin/news-export-run.ts`) against a stand-in
+ * for GitHub: the default branch, the answers without a token and for GitHub's refusals, a log
+ * that never holds the token, and the API's route behind `REVALIDATE_SECRET`.
  *
  * Run: pnpm test:admin-news-export
  */
@@ -12,9 +14,12 @@ import {
   compareExportFeed,
   exportIsLate,
   exportNeedsRun,
+  exportRunRefusal,
   exportVerdict,
   parseExportList,
 } from '../lib/admin/news-export-lag.ts';
+import { startNewsExport } from '../lib/admin/news-export-run.ts';
+import { POST as runForTheApi } from '../app/api/news-export/run/route.ts';
 
 let passed = 0;
 function test(name, fn) {
@@ -245,6 +250,153 @@ test('a list without a time or posts fails', () => {
   assert.deepEqual(parseExportList('{}'), failed);
   assert.deepEqual(parseExportList({ generatedAt: 'gestern', posts: [] }), failed);
   assert.deepEqual(parseExportList({ generatedAt: '2026-11-27T16:36:16.407Z' }), failed);
+});
+
+test('a refusal GitHub gave no sentence for still names its status', () => {
+  assert.deepEqual(exportRunRefusal(500), {
+    status: 502,
+    answer: { started: false, reason: 'GitHub hat den Start mit 500 abgelehnt.' },
+  });
+});
+
+const TOKEN = 'github_pat_test_only';
+const WORKFLOW_PAGE = 'https://github.com/PArns/park.fan/actions/workflows/publish-media.yml';
+
+/**
+ * Runs a start against a stand-in for GitHub's REST API and returns its result, the requests it
+ * made and everything it logged. `answer(url, init)` gives the stand-in's response.
+ */
+async function startAgainst(answer, env = { BLOG_EDITOR_GITHUB_TOKEN: TOKEN }) {
+  const saved = { fetch: globalThis.fetch, env: { ...process.env }, console: { ...console } };
+  const requests = [];
+  const logged = [];
+  for (const key of ['BLOG_EDITOR_GITHUB_TOKEN', 'GITHUB_TOKEN', 'GITHUB_REPOSITORY']) {
+    delete process.env[key];
+  }
+  Object.assign(process.env, env);
+  globalThis.fetch = async (url, init) => {
+    requests.push({ url: String(url), method: init.method, body: init.body ?? null });
+    return answer(String(url), init);
+  };
+  for (const level of ['log', 'info', 'warn', 'error', 'debug']) {
+    console[level] = (...args) => logged.push(args.map(String).join(' '));
+  }
+  try {
+    return { result: await startNewsExport(), requests, logged: logged.join('\n') };
+  } finally {
+    globalThis.fetch = saved.fetch;
+    for (const key of Object.keys(process.env)) if (!(key in saved.env)) delete process.env[key];
+    Object.assign(process.env, saved.env);
+    Object.assign(console, saved.console);
+  }
+}
+
+const json = (status, body) =>
+  new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
+/** GitHub's repository answer naming `trunk`, then `dispatch` for the start itself. */
+const github = (dispatch) => (url) =>
+  url.endsWith('/dispatches') ? dispatch() : json(200, { default_branch: 'trunk' });
+
+async function testAsync(name, fn) {
+  await fn();
+  passed++;
+  console.log(`  ✓ ${name}`);
+}
+
+await testAsync('without a token nothing is asked and the answer is 503', async () => {
+  const { result, requests } = await startAgainst(() => json(500, {}), {});
+  assert.equal(result.status, 503);
+  assert.equal(result.answer.started, false);
+  assert.match(result.answer.reason, /kein GitHub-Token/);
+  assert.match(result.answer.reason, /BLOG_EDITOR_GITHUB_TOKEN/);
+  assert.deepEqual(requests, []);
+});
+
+await testAsync(
+  'a start runs the workflow on the default branch, not the base branch',
+  async () => {
+    const { result, requests } = await startAgainst(
+      github(() => new Response(null, { status: 204 })),
+      { BLOG_EDITOR_GITHUB_TOKEN: TOKEN, BLOG_EDITOR_BASE_BRANCH: 'staging' }
+    );
+    assert.deepEqual(result, {
+      status: 200,
+      answer: { started: true, workflowUrl: WORKFLOW_PAGE },
+    });
+    const dispatch = requests.at(-1);
+    assert.equal(dispatch.method, 'POST');
+    assert.equal(
+      dispatch.url,
+      'https://api.github.com/repos/PArns/park.fan/actions/workflows/publish-media.yml/dispatches'
+    );
+    assert.deepEqual(JSON.parse(dispatch.body), { ref: 'trunk' });
+  }
+);
+
+await testAsync(
+  'a 403 names the missing Actions permission, and no log holds the token',
+  async () => {
+    const { result, logged } = await startAgainst(
+      github(() => json(403, { message: 'Resource not accessible by personal access token' }))
+    );
+    assert.equal(result.status, 502);
+    assert.match(result.answer.reason, /\(403\)/);
+    assert.match(result.answer.reason, /Actions: Read and write/);
+    assert.match(logged, /not started: 403/);
+    assert.doesNotMatch(logged, new RegExp(TOKEN));
+  }
+);
+
+await testAsync('a 404 says the token does not see the repository or the workflow', async () => {
+  const { result } = await startAgainst(github(() => json(404, { message: 'Not Found' })));
+  assert.equal(result.status, 502);
+  assert.match(result.answer.reason, /\(404\)/);
+  assert.match(result.answer.reason, /publish-media\.yml/);
+});
+
+await testAsync('no answer from GitHub is a 502 that says so', async () => {
+  const { result } = await startAgainst(() => {
+    throw new TypeError('fetch failed');
+  });
+  assert.equal(result.status, 502);
+  assert.match(result.answer.reason, /nicht geantwortet/);
+});
+
+await testAsync("the API's route is shut without the secret and refuses a wrong one", async () => {
+  const saved = {
+    secret: process.env.REVALIDATE_SECRET,
+    token: process.env.BLOG_EDITOR_GITHUB_TOKEN,
+  };
+  const call = (authorization) =>
+    runForTheApi(
+      new Request('https://park.fan/api/news-export/run', {
+        method: 'POST',
+        headers: authorization ? { authorization } : {},
+      })
+    );
+  try {
+    delete process.env.REVALIDATE_SECRET;
+    delete process.env.BLOG_EDITOR_GITHUB_TOKEN;
+    delete process.env.GITHUB_TOKEN;
+    assert.equal((await call('Bearer undefined')).status, 503);
+    process.env.REVALIDATE_SECRET = 'mcp-test-secret';
+    assert.equal((await call('Bearer wrong')).status, 401);
+    assert.equal((await call(undefined)).status, 401);
+    const opened = await call('Bearer mcp-test-secret');
+    assert.equal(opened.status, 503);
+    assert.match(opened.headers.get('cache-control') ?? '', /^no-store/);
+    const body = await opened.json();
+    assert.equal(body.started, false);
+    assert.match(body.reason, /kein GitHub-Token/);
+  } finally {
+    for (const [key, value] of [
+      ['REVALIDATE_SECRET', saved.secret],
+      ['BLOG_EDITOR_GITHUB_TOKEN', saved.token],
+    ]) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
+  }
 });
 
 console.log(`\n${passed} passed`);

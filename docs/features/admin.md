@@ -919,7 +919,8 @@ sidebar entry.
 
 - [Writing to the media database](media-database-writes.md): the media browser, sessions and uploads
 - [Watching the export](media-database.md#watching-the-export): „Export für die App“ on
-  `/admin/system`, whether the app's news and guides on media.park.fan are behind the site
+  `/admin/system`, whether the app's news and guides on media.park.fan are behind the site, and
+  „Export neu starten“
 - [Contributions](contribute.md): the moderation queue at `/admin/contributions`
 - [Most read](most-read.md#the-admin): `/admin/popularity`
 - [Site analytics](site-analytics.md#the-admin): `/admin/traffic` with its filters and map, its event pages, `/admin/traffic/seo`, `/admin/traffic/keywords`, `/admin/traffic/search`, `/admin/traffic/planner` and the live view `/admin/traffic/live`

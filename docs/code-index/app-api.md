@@ -196,7 +196,15 @@ Route `/api/admin/media/session` (route).
 
 Route `/api/admin/news-export` (route).
 
-- `GET` _function_: GET /api/admin/news-export: the app's news and guides export on media.park.fan against this deployment's posts, per feed: when it last ran, its newest post and the site's, and what it is missing.
+- `GET` _function_: GET /api/admin/news-export: the app's news and guides export on media.park.fan against this deployment's posts, for „Export für die App“ on `/admin/system`. The API's MCP tools read the same report from `/api/news-export/status`.
+- `dynamic` _const_
+- `runtime` _const_
+
+### [`admin/news-export/run/route.ts`](../../app/api/admin/news-export/run/route.ts)
+
+Route `/api/admin/news-export/run` (route).
+
+- `POST` _function_: POST /api/admin/news-export/run: „Export neu starten“ on `/admin/system`. Starts the export workflow on GitHub and answers `{ started: true, workflowUrl }`, or `{ started: false, reason }` with 503 (no token here) or 502 (GitHub refused).
 - `dynamic` _const_
 - `runtime` _const_
 
@@ -416,6 +424,22 @@ Route `/api/nav/trip-regions` (route).
 Route `/api/nearby` (route).
 
 - `GET` _function_
+
+### [`news-export/run/route.ts`](../../app/api/news-export/run/route.ts)
+
+Route `/api/news-export/run` (route).
+
+- `POST` _function_: POST /api/news-export/run: starts the export workflow for the API's MCP tools, as „Export neu starten“ does in the admin, with the same answers: `{ started: true, workflowUrl }`, or `{ started: false, reason }` with 503 (no GitHub token …
+- `dynamic` _const_
+- `runtime` _const_
+
+### [`news-export/status/route.ts`](../../app/api/news-export/status/route.ts)
+
+Route `/api/news-export/status` (route).
+
+- `GET` _function_: GET /api/news-export/status: the report `/api/admin/news-export` answers the admin (`NewsExportReport`), for the API's MCP tools, which hold no admin session.
+- `dynamic` _const_
+- `runtime` _const_
 
 ### [`og/[...path]/route.tsx`](../../app/api/og/%5B...path%5D/route.tsx)
 

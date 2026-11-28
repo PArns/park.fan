@@ -319,8 +319,20 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `exportIsLate` _function_: Whether a feed's missing posts have waited past the amber mark, so no run is still on its way.
 - `exportVerdict` _function_: A feed's verdict in a few words: `aktuell`, `1 Meldung noch nicht drin` while a run may still be on its way, `2 Guides fehlen` after that, and the locales whose list could not be read.
 - `exportNeedsRun` _function_: Whether a new run is the answer: a feed is late or a list could not be read.
+- `exportRunRefusal` _function_: The answer to a start that failed, with the German sentence the panel shows.
 - `EXPORT_BEHIND_MINUTES` _const_: Minutes a post may be on the site without being in the export. Amber after an hour, longer than two runs back to back, so nothing that was on its way is still running.
-- Types: `ExportPostRef`, `SitePostRef`, `ExportListReading`, `MissingPost`, `ExportFeedStatus`, `NewsExportReport`
+- `NEWS_EXPORT_WORKFLOW` _const_: The export's workflow file in `.github/workflows/`, which a new run is started from.
+- Types: `ExportPostRef`, `SitePostRef`, `ExportListReading`, `MissingPost`, `ExportFeedStatus`, `NewsExportReport`, `NewsExportRunAnswer`, `NewsExportRunFailure`, `NewsExportRunRefusal`
+
+### [`news-export-report.ts`](../../lib/admin/news-export-report.ts)
+
+- `buildNewsExportReport` _function_: The app's news and guides export on media.park.fan against this deployment's posts, per feed: when it last ran, its newest post and the site's, and what it is missing.
+
+### [`news-export-run.ts`](../../lib/admin/news-export-run.ts)
+
+- `newsExportWorkflowUrl` _function_: The workflow's page on GitHub, which lists its runs and has „Run workflow“.
+- `startNewsExport` _function_: Starts the export workflow by `workflow_dispatch` with the admin's GitHub token, on the repository's default branch rather than the admin's base branch: a run publishes to the bucket the app reads, and only the default branch is live.
+- Types: `NewsExportRunResult`
 
 ### [`park-geo-path.ts`](../../lib/admin/park-geo-path.ts)
 
