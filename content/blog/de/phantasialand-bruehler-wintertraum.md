@@ -66,9 +66,9 @@ Das Ticket kommt erst, wenn die Stadt Brühl deine Anmeldung geprüft hat. Wie l
 
 ## So meldest du dich an
 
-Im Formular stehen Name, E-Mail-Adresse, Telefonnummer, Anschrift, Geburtsdatum und der gewünschte Besuchstag. Den Namen schreibst du genau so wie im Personalausweis, mit allen Sonderzeichen: Wer dort Jürgen heißt, ist im Formular nicht Juergen. Außerdem stimmst du zu, dass das Phantasialand deine Angaben an die Stadt Brühl gibt, die sie mit dem Melderegister abgleicht. Das Ticket schickt das Phantasialand dann per E-Mail.
+Im Formular stehen Name, E-Mail-Adresse, Telefonnummer, Anschrift, Geburtsdatum und der gewünschte Besuchstag. Den Namen schreibst du genau so wie im Personalausweis, mit allen Sonderzeichen: Wer dort Jürgen heißt, ist im Formular nicht Juergen. Außerdem stimmst du zu, dass das Phantasialand deine Angaben an die Stadt Brühl gibt, die sie mit dem Melderegister abgleicht. Hat die Stadt deine Angaben bestätigt, kommt das Ticket per E-Mail.
 
-Jeder Besuchstag hat ein begrenztes Kontingent. Ist dein Wunschtag schon voll, hat das Phantasialand nicht bekannt gegeben, ob du einen anderen angeboten bekommst.
+Jeder Besuchstag hat ein begrenztes Kontingent, und einen Ersatztag für einen vollen Wunschtag stellt das Phantasialand nirgends in Aussicht. Auch deshalb lohnt es sich nicht, bis zum 15. zu warten.
 
 ```cta-widget
 href: https://www.phantasialand.de/de/euer-bruehler-wintertraum/
@@ -78,16 +78,16 @@ text: Halte den Personalausweis bereit, Anmeldeschluss ist der 15. Dezember 2026
 
 ## Am Eingang und im Park
 
-Das Ticket ist nicht übertragbar und gilt nur zusammen mit einem gültigen Nachweis deines Wohnsitzes. Welches Dokument dafür gilt, nennt das Phantasialand nicht. Im Personalausweis steht deine Anschrift, und das Formular richtet sich schon nach seiner Schreibweise. Er gehört also in die Jackentasche.
+Das Ticket ist nicht übertragbar und gilt nur zusammen mit einem gültigen Nachweis deines Wohnsitzes. Welches Dokument dafür gilt, nennt das Phantasialand nicht. Ich würde den Personalausweis einstecken, weil deine Anschrift darin steht und du den Namen schon nach ihm ins Formular geschrieben hast.
 
-Der Wintertraum hat an seinen Öffnungstagen von 11 bis 20 Uhr geöffnet. Die Shows des Abends und die Bahnen, die im Winter fahren, findest du in unserem [Guide zum Wintertraum](/blog/phantasialand-wintertraum). Zum Schluss gibt es gegen 19:50 Uhr auf dem Kaiserplatz MAGIC SYMPHONY, wenn das Wetter mitspielt.
+Der Wintertraum öffnet um 11 Uhr und schließt um 20 Uhr. Die Shows des Abends und die Bahnen, die im Winter fahren, findest du in unserem [Guide zum Wintertraum](/blog/phantasialand-wintertraum). Gegen 19:50 Uhr steigt über dem Kaiserplatz das Feuerwerk von MAGIC SYMPHONY. Ob es stattfindet, hängt vom Wetter ab.
 
 ## Begleitung von außerhalb
 
-Wer nicht mit Hauptwohnsitz in Brühl gemeldet ist, braucht ein normales Tagesticket, auch Freunde und Verwandte, die mitkommen. Das gibt es nur online, eine Tageskasse hat das Phantasialand nicht. Im [Black Deal](/news/phantasialand-black-deal-wintertraum) kostet ein Wintertraum-Tag ab 29 €, am Wochenende und in den Ferien ab 33 €, allerdings nur noch bis Montag, 30. November. Am Besuchstag selbst kannst du bis 16 Uhr im Online-Shop kaufen, falls die Kölner Verwandtschaft erst beim Frühstück beschließt, doch mitzukommen.
+Freunde und Verwandte, die nicht in Brühl gemeldet sind, brauchen ein normales Tagesticket. Das verkauft das Phantasialand nur im Online-Shop. Im [Black Deal](/news/phantasialand-black-deal-wintertraum) kostet ein Wintertraum-Tag ab 29 €, am Wochenende und in den Ferien ab 33 €, allerdings nur noch bis Montag, 30. November. Am Besuchstag selbst kannst du bis 16 Uhr im Online-Shop kaufen, falls die Kölner Verwandtschaft erst beim Frühstück beschließt, doch mitzukommen.
 
 ## 60 Jahre in Badorf
 
-Eröffnet hat das Phantasialand am 30. April 1967 als Märchenwald. Gegründet haben ihn der Schausteller Gottlieb Löffelhardt und der Puppenspieler Richard Schmidt. Der Park liegt im Südwesten des Brühler Stadtteils Badorf auf dem Höhenrücken der Ville. Mit Parkplätzen und Hotels kommt das Gelände auf rund 28 Hektar, der Park selbst auf etwa 12. Durch den Park von heute führt unser [Guide zum Phantasialand](/blog/phantasialand-tipps).
+Am 30. April 1967 eröffneten der Schausteller Gottlieb Löffelhardt und der Puppenspieler Richard Schmidt im Südwesten des Brühler Stadtteils Badorf, auf dem Höhenrücken der Ville, einen Märchenwald, aus dem das Phantasialand wurde. Mit Parkplätzen und Hotels kommt das Gelände auf rund 28 Hektar, der Park selbst auf etwa 12. Durch den Park von heute führt unser [Guide zum Phantasialand](/blog/phantasialand-tipps).
 
 Quellen: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informationen und Anreise (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Ferienordnung NRW (Schulministerium)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).
