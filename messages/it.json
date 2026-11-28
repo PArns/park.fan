@@ -57,9 +57,7 @@
     "temperatureUnitToggle": "Cambia unità di temperatura",
     "updated": "Aggiornato",
     "reservation": "Prenotazione richiesta",
-    "trend": "Tendenza",
     "in": "tra",
-    "vsTypical": "vs tipico",
     "much_higher": "Molto più alta",
     "higher": "Più alta",
     "lower": "Più bassa",
@@ -1222,7 +1220,6 @@
     },
     "crowdToday": "Affluenza di oggi",
     "crowdTodaySoFar": "finora",
-    "crowdTodayShort": "Oggi",
     "clock": {
       "localTime": "ora locale"
     },

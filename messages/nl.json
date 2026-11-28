@@ -57,9 +57,7 @@
     "temperatureUnitToggle": "Temperatuureenheid wisselen",
     "updated": "Bijgewerkt",
     "reservation": "Reservering vereist",
-    "trend": "Trend",
     "in": "over",
-    "vsTypical": "vs normaal",
     "much_higher": "Veel hoger",
     "higher": "Hoger",
     "lower": "Lager",
@@ -1222,7 +1220,6 @@
     },
     "crowdToday": "Drukte vandaag",
     "crowdTodaySoFar": "tot nu toe",
-    "crowdTodayShort": "Vandaag",
     "clock": {
       "localTime": "lokale tijd"
     },

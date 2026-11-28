@@ -13,9 +13,7 @@
   "common": {
     "scroll": "Scrollen",
     "loading": "Laden…",
-    "trend": "Trend",
     "in": "in",
-    "vsTypical": "vs Typisch",
     "much_higher": "Viel höher",
     "higher": "Höher",
     "lower": "Niedriger",
@@ -1222,7 +1220,6 @@
     },
     "crowdToday": "Auslastung heute",
     "crowdTodaySoFar": "bisher",
-    "crowdTodayShort": "Heute",
     "clock": {
       "localTime": "Ortszeit"
     },

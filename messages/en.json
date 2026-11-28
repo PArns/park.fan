@@ -57,9 +57,7 @@
     "temperatureUnitToggle": "Switch temperature unit",
     "updated": "Updated",
     "reservation": "Reservation required",
-    "trend": "Trend",
     "in": "in",
-    "vsTypical": "vs Typical",
     "much_higher": "Much Higher",
     "higher": "Higher",
     "lower": "Lower",
@@ -1222,7 +1220,6 @@
     },
     "crowdToday": "Crowds today",
     "crowdTodaySoFar": "so far",
-    "crowdTodayShort": "Today",
     "clock": {
       "localTime": "local time"
     },

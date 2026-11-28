@@ -58,10 +58,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AttractionSortToggle` _component_: The ride list's order, two segments in one glass box: by land, or shortest wait first.
 
-### [`attraction-typical-waits-demo.tsx`](../../components/parks/attraction-typical-waits-demo.tsx)
-
-- `AttractionTypicalWaitsDemo` _component_: `AttractionTypicalWaits` filled with fixed mock stats, for the `/ui` component showcase.
-
 ### [`attraction-typical-waits.tsx`](../../components/parks/attraction-typical-waits.tsx)
 
 - `AttractionTypicalWaits` _component_: A ride's typical (P50) and busy (P90) waits: weekday against weekend, a bar per day of the week and the record peak, rounded to five. Renders nothing unless the API marks the data displayable.
@@ -131,10 +127,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`closed-rides-list.tsx`](../../components/parks/closed-rides-list.tsx)
 
 - `ClosedRidesList` _component_: The park's rides that closed for good, under its live ride list.
-
-### [`comparison-badge.tsx`](../../components/parks/comparison-badge.tsx)
-
-- `ComparisonBadge` _component_: Badge saying how busy a ride is compared with usual (`much_lower` to `much_higher`, or `closed`), in the crowd-level colours. Renders nothing for `null`; only `/ui` uses it.
 
 ### [`country-park-groups.tsx`](../../components/parks/country-park-groups.tsx)
 
@@ -639,10 +631,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `ParkStatusBadge` _component_: Status badge for a park or a ride: operating, down, closed, refurbishment, unknown, or `RETIRED` for a ride that closed for good. An unrecognised status falls back to the closed style.
 - Types: `ClosedPermanentlyStatus`
 
-### [`park-status.tsx`](../../components/parks/park-status.tsx)
-
-- `ParkStatus` _component_: A park's live status in four sizes: status and crowd badges (`compact`), plus average wait and open rides (`card`), large header badges (`hero`), or the crowd, wait-time and ride cards (`detailed`).
-
 ### [`park-tabs-list.tsx`](../../components/parks/park-tabs-list.tsx)
 
 - `ParkTabsList` _component_: The park page's entry-tile row: five chapter cells that switch a tab in place, plus the cells that are pages rather than panels (the crowd calendar, the wait-time record), which are links.
@@ -668,10 +656,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkYearlyOutlookSkeleton` _component_: What the page holds open while the forecast is in flight: the chapter itself over an empty frame (`buildYearlyOutlook([], todayIso)`), so the reservation is the real geometry at every breakpoint and in both themes …
 
-### [`peak-hour-badge.tsx`](../../components/parks/peak-hour-badge.tsx)
-
-- `PeakHourBadge` _component_: Badge counting down to the peak hour ("in 1 hour 20 minutes"). Renders nothing before mount, for an invalid timestamp, or once the time has passed.
-
 ### [`performance-badge.tsx`](../../components/parks/performance-badge.tsx)
 
 - `PerformanceBadge` _component_: „Feste Vorstellungen": stands where the status badge would on a ride that shows today's performance times instead of a wait. The feed reads such a ride CLOSED between two performances, and a red badge over a countdown would contradict it.
@@ -693,10 +677,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`reservation-badge.tsx`](../../components/parks/reservation-badge.tsx)
 
 - `ReservationBadge` _component_: „Reservierung erforderlich" on a restaurant that takes guests only with a booking.
-
-### [`restaurant-card-skeleton.tsx`](../../components/parks/restaurant-card-skeleton.tsx)
-
-- `RestaurantCardSkeleton` _component_: Placeholder in the shape of `RestaurantCard`: title, park name, cuisine badge and distance.
 
 ### [`restaurant-card.tsx`](../../components/parks/restaurant-card.tsx)
 
@@ -808,10 +788,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ShowCardShowtimes` _component_: Today's showtimes for a show card, with past and next highlighted; a Client Component because both depend on the current time. Each badge opens `ShowFollowDialog` for its own performance, so tapping 19:10 files a reminder for 19:10.
 
-### [`show-card-skeleton.tsx`](../../components/parks/show-card-skeleton.tsx)
-
-- `ShowCardSkeleton` _component_: Placeholder in the shape of `ShowCard`: title, park name, distance, three showtime chips and a status badge.
-
 ### [`show-card.tsx`](../../components/parks/show-card.tsx)
 
 - `ShowCard` _component_: Card linking to a show: name, seasonal badge, today's showtimes while it runs or its status badge when it does not, with a notification bell and a favorite star in the corner.
@@ -839,21 +815,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `TitleRowToggle` _component_: A weather warning as one line in the park header's „Heute im Park" row, where the weather reading otherwise sits; a press opens the full warning under the row.
 - Types: `TitleRowToggleTone`
 
-### [`today-wait-range.tsx`](../../components/parks/today-wait-range.tsx)
-
-- `TodayWaitRange` _component_: "Today min X min · max Y min" line under a live wait value — shared by the attraction live panel and the wait-time info card so the coloring and separator stay identical. Renders nothing when neither bound is known.
-
 ### [`transport-system-badge.tsx`](../../components/parks/transport-system-badge.tsx)
 
 - `TransportSystemBadge` _component_: „Transportsystem": the word that separates a station from a ride.
-
-### [`trend-icon.tsx`](../../components/parks/trend-icon.tsx)
-
-- `TrendIcon` _component_: Direction icon for a wait-time trend string (`up`/`increasing`, `down`/`decreasing`, anything else → flat) — shared by the attraction live panel and the wait-time info card.
-
-### [`trend-indicator.tsx`](../../components/parks/trend-indicator.tsx)
-
-- `TrendIndicator` _component_: Up, down or flat trend arrow in the trend colours: a bare icon, or a pill with an optional label the caller has already translated.
 
 ### [`trend-pill.tsx`](../../components/parks/trend-pill.tsx)
 
@@ -863,21 +827,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `VirtualLineBadge` _component_: „Virtual queue": that the ride hands out return times or boarding groups at all, not whether it does right now.
 
-### [`wait-time-badge.tsx`](../../components/parks/wait-time-badge.tsx)
-
-- `WaitTimeBadge` _component_: Clock icon and a wait time in minutes: large and bold (`lg`) for a ride card's main figure, small and muted (`sm`) for a park's average. Shows the number as given, without rounding.
-
-### [`wait-time-info-card.tsx`](../../components/parks/wait-time-info-card.tsx)
-
-- `WaitTimeInfoCard` _component_: Card with a ride's current wait time in large type, today's low and high, a trend arrow and a faded sparkline of today underneath; shows a status icon and label when the ride is not open.
-
 ### [`wait-time-sparkline-card.tsx`](../../components/parks/wait-time-sparkline-card.tsx)
 
 - `WaitTimeSparklineCard` _component_: The attraction card's wait-time curve for today, with four time ticks, held flat up to now on the shared minute clock. With no history it draws `fallbackWaitTime` over the last hour.
-
-### [`wait-time-sparkline.tsx`](../../components/parks/wait-time-sparkline.tsx)
-
-- `WaitTimeSparkline` _component_: Sparkline of a ride's recent wait times from its statistics history, held flat up to now, with tooltip times in the park's timezone.
 
 ### [`weather-background.tsx`](../../components/parks/weather-background.tsx)
 
