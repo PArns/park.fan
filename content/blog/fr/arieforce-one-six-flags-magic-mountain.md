@@ -1,0 +1,86 @@
+---
+title: 'ArieForce One part pour Six Flags Magic Mountain'
+translationKey: arieforce-one-six-flags-magic-mountain
+date: '2026-11-28'
+time: '09:30'
+author: patrick
+mode: published
+featured: false
+excerpt: >-
+  La montagne russe du Fun Spot America Atlanta, un parc aujourd’hui fermé, sera reconstruite en Californie. À Six Flags Magic Mountain, vous pourrez y monter au plus tôt en 2028.
+tags:
+  - news
+  - six-flags-magic-mountain
+  - montagnes-russes
+  - rocky-mountain-construction
+  - nouveautes-2028
+category: news
+parkLinks:
+  - six-flags-magic-mountain
+rideLinks:
+  - six-flags-magic-mountain/x2
+  - six-flags-magic-mountain/full-throttle
+  - six-flags-magic-mountain/lex-luthor-drop-of-doom
+seo:
+  title: 'ArieForce One, la future montagne russe de Magic Mountain'
+  description: >-
+    Six Flags reconstruit à Magic Mountain ArieForce One, la montagne russe RMC venue de Géorgie. Ouverture en 2028 ou 2029, emplacement encore inconnu.
+  keywords:
+    - ArieForce One
+    - ArieForce One Six Flags Magic Mountain
+    - Six Flags Magic Mountain nouvelle montagne russe
+    - Six Flags Magic Mountain 2028
+    - Magic Mountain nouvelle montagne russe 2028
+    - ArieForce One ouverture
+    - Fun Spot America Atlanta
+    - Rocky Mountain Construction
+    - temps d’attente Magic Mountain
+    - temps d’attente Six Flags Magic Mountain
+---
+
+ArieForce One, la montagne russe du Fun Spot America Atlanta, en Géorgie, parc aujourd’hui fermé, va être reconstruite à [Six Flags Magic Mountain](ref:six-flags-magic-mountain), au nord de Los Angeles. Brian Oerding, le directeur du parc, l’a confirmé le 29 octobre dans une déclaration relayée par FOX 11 Los Angeles. Elle doit reprendre du service lors de la saison 2028 ou 2029. Six Flags n’a encore communiqué ni la date d’ouverture ni l’endroit du parc où elle sera installée.
+
+## Ce qu’est ArieForce One
+
+ArieForce One est une montagne russe I-Box de Rocky Mountain Construction (RMC). Contrairement aux modèles hybrides du constructeur, elle est entièrement en acier, structure comprise. Un lift à chaîne hisse le train à 47 mètres, puis la première descente plonge de 44,5 mètres à 83 degrés. Les trains atteignent 103 km/h sur un parcours d’environ 1 040 mètres, qui compte quatre inversions. Deux trains circulent, de cinq wagons et 20 places chacun.
+
+La première inversion est un Raven Truss Dive, une figure que RMC a construite ici pour la première fois. Viennent ensuite une bosse d’airtime inclinée vers l’extérieur et un zero-g stall, où le train reste un moment la tête en bas sur une section presque droite. Selon Six Flags, c’est le plus grand du monde. La taille minimale qui sera exigée à Magic Mountain n’a pas encore été publiée.
+
+Le nom ne change pas. Il rend hommage à John Arie Sr., le fondateur de Fun Spot America, et Six Flags s’était engagé à le garder dès le rachat.
+
+## Où elle sera installée
+
+Puisque l’emplacement n’est pas fixé, on ne sait pas non plus si ArieForce One prendra la place de [X2](ref:six-flags-magic-mountain/x2). X2 ne tourne plus depuis juillet, et fin septembre, Six Flags [l’a fermée définitivement](/news/x2-six-flags-magic-mountain-ferme).
+
+La semaine de l’annonce, les premières pièces d’ArieForce One roulaient déjà en camion vers Valencia, en Californie. Six Flags compte présenter début 2027 l’ensemble de ses projets pour le parc, calendrier compris.
+
+> [!QUOTE]
+> À Six Flags Magic Mountain, nous préparons quelque chose de bien plus grand qu’une simple attraction. […] Le prochain chapitre s’ouvre en 2027 avec le Thrill Glider, le premier du genre. Nous pouvons maintenant confirmer qu’ArieForce One, chouchou des fans, viendra s’y ajouter.
+>
+> [en] At Six Flags Magic Mountain, we're building toward something much bigger than any single attraction. […] The next chapter arrives in 2027 with the debut of the first-of-its-kind Thrill Glider. Now, we can confirm the future addition of the fan-favorite ArieForce One.
+>
+> Brian Oerding, directeur de Six Flags Magic Mountain, dans sa déclaration du 29 octobre 2026, citée par [FOX 11 Los Angeles](https://www.foxla.com/news/arieforce-one-coaster-moving-six-flags-magic-mountain-california), traduit de l’anglais
+
+## Ce qui ouvre avant, en 2027
+
+Avant ArieForce One, le Thrill Glider de Vekoma ouvrira en 2027, lui aussi sans date précise. Vous y êtes allongé à plat ventre dans un véhicule façon moto, suspendu sous le rail, le visage tourné vers l’avant. L’attraction culmine à 33 mètres, atteint 80 km/h en deux lancements et enchaîne cinq inversions sur environ 1 030 mètres. Un tour dure 84 secondes, et il faut mesurer au moins 1,22 mètre. Elle se construit sur le terrain de l’ancien Golden Bear Theatre, entre [Full Throttle](ref:six-flags-magic-mountain/full-throttle) et [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom), à côté du Looney Tunes Land réaménagé. Vous trouverez les détails dans notre [article sur le Thrill Glider](/news/thrill-glider-six-flags-magic-mountain).
+
+Les deux montagnes russes s’inscrivent dans une transformation du parc étalée sur plusieurs années. Comme premières étapes, Oerding cite la rénovation du parc aquatique Hurricane Harbor Los Angeles et le nouveau Looney Tunes Land. Sont prévus aussi de nouveaux manèges pour les familles, davantage de spectacles, des événements tout au long de la saison, un parc plus soigné et des travaux d’infrastructure sur l’ensemble du site.
+
+## D’où vient ArieForce One
+
+ArieForce One a ouvert le 31 mars 2023 au Fun Spot America Atlanta, à Fayetteville, en Géorgie. Les derniers tours ont eu lieu le 2 août 2026, quelques semaines avant que le parc ne ferme pour de bon, après 36 ans. Fun Spot America exploite toujours ses deux parcs de Floride, à Orlando et à Kissimmee.
+
+Le 8 septembre, Six Flags a annoncé avoir racheté l’attraction pour la démonter et la remonter dans l’un de ses parcs. Lequel, Six Flags ne le disait pas encore, et son directeur des opérations, Mark Pauls, prévoyait que les fans allaient se mettre à deviner. Les paris ont duré sept semaines.
+
+[Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
+
+Sources :
+[ArieForce One coaster moving to Six Flags Magic Mountain in California (FOX 11 Los Angeles)](https://www.foxla.com/news/arieforce-one-coaster-moving-six-flags-magic-mountain-california),
+[Six Flags rachète ArieForce One (PR Newswire)](https://www.prnewswire.com/news-releases/six-flags-acquires-iconic-arieforce-one-bringing-fan-favorite-roller-coaster-back-to-life-302870870.html),
+[ArieForce One's Next Chapter Begins at Six Flags](https://www.sixflags.com/blog/arieforce-ones-next-chapter-begins-at-six-flags),
+[ArieForce One (Rocky Mountain Construction)](https://rockymtnconstruction.com/roller-coaster/arieforce-one/),
+[ArieForce One dans la Roller Coaster DataBase](https://rcdb.com/19332.htm),
+[Six Flags Magic Mountain Announces Thrill Glider (PR Newswire)](https://www.prnewswire.com/news-releases/six-flags-magic-mountain-announces-thrill-glider-the-worlds-first-thrillglider-roller-coaster-opening-in-2027-302875547.html),
+[New in 2027: Thrill Glider](https://www.sixflags.com/magicmountain/new-in-2027),
+[Retiring X2](https://www.sixflags.com/blog/retiring-x2-magic-mountain).
