@@ -171,6 +171,16 @@ Which two days of a park's calendar are being compared, across a change of month
 - `parkStatsShape` _function_: `ParkStatsShape` of an aggregate; `null` where the chapter renders nothing at all.
 - Types: `ParkStatsFindings`, `BestDaysTier`, `ParkBestDays`, `ParkStatsShape`
 
+### [`purchases.ts`](../../lib/parks/purchases.ts)
+
+- `inPurchaseWindow` _function_: Whether a day lies in the purchases relay's answer: from `today` to `PURCHASE_DAYS_AHEAD` days on. A day outside it is not asked for, since the answer could not hold it.
+- `formattedPurchasePrice` _function_: The price a purchase shows, or `null` where the API sent a placeholder (amount 0, formatted "Unknown") because the real fee is not known: the rule `QueueTypeBadge` applies too.
+- `pickPurchaseDay` _function_: The day whose purchases a card shows: `date` itself where one is named, else the first day from `from` on that carries any. `null` when that day has none, so the card renders nothing.
+- `sortPurchases` _function_: Packages (Multi Pass, Premier Pass) first, then the per-ride passes A→Z.
+- `purchaseDays` _function_: The relay's answer from a park's `/schedule` rows: one entry per date that carries purchases, from the first such row of that date as `pickPurchaseDay` would take it, and of each purchase the fields the card draws.
+- `PURCHASE_DAYS_AHEAD` _const_: How far past the park's today the purchases relay reaches: the API's `/schedule` asked without a window answers from that day 30 days on (backend `docs/frontend/schedule.md`), and the relay asks it so, which keeps one cache entry per park.
+- Types: `PurchaseDay`
+
 ### [`queue-availability.ts`](../../lib/parks/queue-availability.ts)
 
 - `queueAvailability` _function_: The one reading of a queue's `state`, for the card and the ride page alike. The API sends it on every queue type; the paid lanes keep their price while they are full or finished.

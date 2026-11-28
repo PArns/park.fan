@@ -89,6 +89,7 @@
     "test:site-analytics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-site-analytics.mjs",
     "test:park-day-over": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-day-over.mjs",
     "test:park-opening": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-opening.mjs",
+    "test:park-purchases": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-purchases.mjs",
     "test:ride-openings": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-openings.mjs",
     "test:weather-closure": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-weather-closure.mjs",
     "test:weather-hourly": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-weather-hourly.mjs",

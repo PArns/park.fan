@@ -176,6 +176,12 @@ export const ORLANDO: TripRegionConfig = {
   ],
   stormSeason: 'hurricane',
   blockResorts: ['walt-disney-world', 'universal-orlando'],
+  dayPriceParks: [
+    'magic-kingdom-park',
+    'epcot',
+    'disneys-hollywood-studios',
+    'disneys-animal-kingdom-theme-park',
+  ],
   regionGuide: 'orlando-guide',
   // Magic Kingdom's fireworks against its party nights.
   fireworks: true,

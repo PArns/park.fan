@@ -73,6 +73,15 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   their content.
 - **A resort's busiest days** are the highest mean over its parks with a figure, never the
   hours-weighted pick, so a day most of its parks call quiet is never one of its busiest.
+- **Disney's Lightning Lane prices stand beside the figure, never in it** (PAR-1295). The day
+  sheet shows, under each park that sells them, the day's Multi Pass, Premier Pass and single
+  passes with their sold-out state, the park page's `ParkPurchasesCard` (`TripDayPrices`). Disney
+  sets them per day, so they are a demand signal and a budget line; no ranking reads them until
+  somebody has measured how they track the waits. The calendar has no prices, so they come from
+  the park's `/schedule` rows through `…/<park>/purchases`, one request per park the region lists
+  in `dayPriceParks` (Orlando: the four theme parks), asked when a sheet opens on a day from today
+  to 30 days on. The answer holds every priced day of that window, so a second day asks nothing;
+  Disney prices about three weeks ahead, and a day without prices draws nothing.
 - **School holidays are US ones, and say so.** The calendar's break line, reasons and the best-time pages name "US
   school holidays"; break names go through `translateHolidayName(cleanBreakName(…))`
   (`lib/trip-regions/break-runs.ts`).

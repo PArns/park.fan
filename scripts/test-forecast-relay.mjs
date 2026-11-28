@@ -55,7 +55,7 @@ const testCases = [
     expected: true,
   },
   {
-    name: 'the live poll, calendar, plan, stats, weather, positions and rides answer pages only',
+    name: 'the live poll, calendar, plan, stats, weather, positions, prices and rides answer pages only',
     actual: () =>
       [
         [],
@@ -68,6 +68,7 @@ const testCases = [
         ['stats', 'day'],
         ['stats', 'hourly'],
         ['positions'],
+        ['purchases'],
         ['weather', 'nowcast'],
         ['weather', 'hourly'],
         ['attractions', 'tron-lightcycle-run'],

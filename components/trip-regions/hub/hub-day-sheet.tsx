@@ -46,6 +46,7 @@ import type {
 } from '@/lib/trip-regions/types';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import { PlanSelect } from '../planner/plan-controls';
+import { TripDayPrices } from '../trip-day-prices';
 import { DayWeather } from '@/components/common/day-weather';
 
 /** How many big rides a park lists for its day. */
@@ -54,11 +55,12 @@ const BIG_RIDES = 5;
 /**
  * One day of every park of the region, the hub's level of detail: per resort the parks by shortest line,
  * each with its hours, the hotel guests' early slot, the evening event and when the day guests
- * leave, the seasons, the drive from the chosen hotel area and, on request, its five big rides.
- * The same figure as the square, and no hourly curve: the day planner owns that. A bottom sheet on
- * a phone, a side panel on a desktop; Radix returns focus to the square that opened it. Its one
- * primary action, „Reise ab diesem Tag planen“, starts the trip planner with the day as the
- * arrival (`onPlanTrip`); each park's „Im Tagesplaner öffnen“ stays the quieter outline button.
+ * leave, the seasons, the drive from the chosen hotel area, on request its five big rides, and the
+ * day's Lightning Lane prices where the park sells them (`TripDayPrices`). The same figure as the
+ * square, and no hourly curve: the day planner owns that. A bottom sheet on a phone, a side panel
+ * on a desktop; Radix returns focus to the square that opened it. Its one primary action, „Reise
+ * ab diesem Tag planen“, starts the trip planner with the day as the arrival (`onPlanTrip`); each
+ * park's „Im Tagesplaner öffnen“ stays the quieter outline button.
  */
 export function HubDaySheet({
   day,
@@ -190,6 +192,7 @@ export function HubDaySheet({
                           park={park}
                           parkDay={parkDay}
                           date={day.date}
+                          todayIso={todayIso}
                           calendar={calendar}
                           region={region}
                           area={area}
@@ -228,6 +231,7 @@ function SheetPark({
   park,
   parkDay,
   date,
+  todayIso,
   calendar,
   region,
   area,
@@ -243,6 +247,7 @@ function SheetPark({
   park: TripRegionPark;
   parkDay: TripParkDay | undefined;
   date: string;
+  todayIso: string;
   calendar: TripCalendar;
   region: TripRegion;
   area: string;
@@ -259,7 +264,7 @@ function SheetPark({
   // The calendar's and its lanes' words, where the sheet says the same thing about the same day.
   const tCalendar = useTranslations('tripHub.calendar');
   const tLanes = useTranslations('tripHub.lanes');
-  const { timezone } = requireTripRegion(region.slug);
+  const { timezone, dayPriceParks } = requireTripRegion(region.slug);
   const clock = (iso: string) => formatClockTime(iso, locale, timezone);
   const seasonsOf = (ids: string[] | undefined): TripSeason[] =>
     (ids ?? [])
@@ -381,6 +386,14 @@ function SheetPark({
             )}
           </ul>
           {isRankable(parkDay) && <BigRides park={park} date={date} />}
+          <TripDayPrices
+            park={park}
+            date={date}
+            today={todayIso}
+            dayPriceParks={dayPriceParks}
+            headingLevel={4}
+            className="mt-2 p-3"
+          />
           {plannable && (
             <TripPlanDayButton
               region={region.slug}

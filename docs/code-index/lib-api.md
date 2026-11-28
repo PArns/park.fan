@@ -156,6 +156,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `leanParkForAttractionShell` _function_: Trim for the ATTRACTION page's `initialPark` prop — the React Query seed for `useLiveAttractionData`, serialized into the HTML of every attraction page.
 - Types: `LiveAttractionSnapshot`, `LiveRestaurantSnapshot`, `LiveParkSnapshot`
 
+### [`park-purchases.ts`](../../lib/api/park-purchases.ts)
+
+- `getParkPurchaseDays` _function_: A park's day prices for paid queue products (Disney's Lightning Lane), from its `/schedule` rows asked without a window: the API's own today to `PURCHASE_DAYS_AHEAD` days on, so every reader of a park shares one Data Cache entry.
+
 ### [`parks.ts`](../../lib/api/parks.ts)
 
 - `leanParkForParkShell` _function_: Trim for the PARK page's serialized park snapshot.
