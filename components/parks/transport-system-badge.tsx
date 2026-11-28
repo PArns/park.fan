@@ -2,7 +2,7 @@ import { TramFront } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
-import type { AttractionKind } from '@/lib/api/types';
+import type { AttractionKind, AttractionKindSource } from '@/lib/api/types';
 
 interface TransportSystemBadgeProps {
   /**
@@ -10,6 +10,12 @@ interface TransportSystemBadgeProps {
    * null and absent — renders nothing.
    */
   attractionKind?: AttractionKind | null;
+  /**
+   * Who decided the kind. A `derived` `TRANSPORT` renders nothing: for a minor ride the API's rule
+   * may have read it from the name alone, and the badge tells a visitor to discount the queue.
+   * Absent (an older payload) predates the rule, so its kind is an editor's.
+   */
+  attractionKindSource?: AttractionKindSource | null;
   className?: string;
 }
 
@@ -23,10 +29,14 @@ interface TransportSystemBadgeProps {
  * less, not more. `null` is unknown, not "no", as for {@link VirtualLineBadge}; see
  * `docs/frontend/attraction-kind.md` in v4.api.park.fan.
  */
-export function TransportSystemBadge({ attractionKind, className }: TransportSystemBadgeProps) {
+export function TransportSystemBadge({
+  attractionKind,
+  attractionKindSource,
+  className,
+}: TransportSystemBadgeProps) {
   const t = useTranslations('parks.transportSystem');
 
-  if (attractionKind !== 'TRANSPORT') return null;
+  if (attractionKind !== 'TRANSPORT' || attractionKindSource === 'derived') return null;
 
   return (
     <Badge

@@ -705,7 +705,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                           marker for a station on a park railway, whose wait is
                           a departure interval rather than a queue. Independent
                           of the season and works badges beside it. */}
-                      <TransportSystemBadge attractionKind={attraction.attractionKind} />
+                      <TransportSystemBadge
+                        attractionKind={attraction.attractionKind}
+                        attractionKindSource={attraction.attractionKindSource}
+                      />
                       <HalloweenMazeBadge attractionKind={attraction.attractionKind} />
                       {(attraction.isSeasonal || attraction.pausedBySeason) && (
                         <SeasonalBadge

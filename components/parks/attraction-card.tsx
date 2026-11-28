@@ -553,7 +553,12 @@ export function AttractionCard({
                 number: on a station the queue is people waiting for the next
                 departure, so a high reading says the train is due rather than
                 that the ride is popular. */}
-            <TransportSystemBadge attractionKind={attraction.attractionKind} />
+            <TransportSystemBadge
+              attractionKind={attraction.attractionKind}
+              attractionKindSource={
+                'attractionKindSource' in attraction ? attraction.attractionKindSource : undefined
+              }
+            />
             <HalloweenMazeBadge attractionKind={attraction.attractionKind} />
             {/* Rope drop is planning info — shown regardless of live status (it
                 matters most before the park opens). */}
