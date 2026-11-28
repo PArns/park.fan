@@ -105,19 +105,25 @@ The German names the admin shows for the permissions and for the answers of a ke
 
 ### [`facilities.ts`](../../lib/admin/facilities.ts)
 
+- `facilityTypeMeta` _function_: The name, tally word, colour and count of a point type; a type the page lacks is „Sonstiges“.
+- `facilityTypeCount` _function_: The visible points of one type in a park's counts.
+- `facilityCountsLine` _function_: A row's tally: „12 WC · 3 Wasser · 11 Sehensw.“, toilets always, the other types where there are any.
+- `orderFacilityPoints` _function_: A park's points for the list: grouped by type in `FACILITY_TYPES` order, unknown types last, and within a type the waiting ones first, then by name and OSM id.
 - `facilityState` _function_: A park's state for the list. What a visitor gets comes first: an approved or imported park keeps that state when a later run failed, and its row says so in its own line.
 - `facilityStateCounts` _function_: How many parks are in each state, for the filter's numbers.
-- `filterFacilityParks` _function_: The parks in one state (`all` for every state) whose name or country contains the search text.
+- `facilityParksToReview` _function_: The parks that wait for an editor: offline and never approved, or online with new points.
+- `filterFacilityParks` _function_: The parks in one state (`all` for every state) that have a visible point of `type` (`all` for any) and whose name or country contains the search text.
 - `facilityQueueText` _function_: The status line of the import queue, or null when it is idle and the last run did not fail.
 - `facilityPlot` _function_: Lays a park's outline and points out for an SVG: north up, a degree of longitude shortened by the cosine of the latitude so the park keeps its shape, and a margin so a point on the edge is not cut.
 - `osmElementUrl` _function_: The page of an OSM element on openstreetmap.org, where a wrong point is corrected.
 - `isOutlineRef` _function_: True when `text` names an OSM outline the way the import takes it: `way/123` or `relation/123`.
 - `isFacilitiesBackendMissing` _function_: True when the API answering is older than these routes: it deploys apart from the site.
 - `FACILITIES_API` _const_: The admin proxy prefix of every facility endpoint.
+- `FACILITY_TYPES` _const_: The point types the API serves, in the order the page lists them.
 - `FACILITY_STATES` _const_: The states in the order the filter lists them.
 - `FACILITY_STATE_LABEL` _const_: The admin's word for a `FacilityState`.
 - `FACILITY_STATE_TONE` _const_: The chip colour of a `FacilityState`.
-- Types: `FacilityReviewStatus`, `FacilityRunOutcome`, `FacilityParkRow`, `FacilityBulkProgress`, `FacilityQueueState`, `FacilityList`, `FacilityPoint`, `FacilityReview`, `FacilityBulkApproval`, `FacilityState`, `FacilityPlot`
+- Types: `FacilityReviewStatus`, `FacilityRunOutcome`, `FacilityParkRow`, `FacilityCounts`, `FacilityType`, `FacilityTypeMeta`, `FacilityBulkProgress`, `FacilityQueueState`, `FacilityList`, `FacilityPoint`, `FacilityReview`, `FacilityBulkApproval`, `FacilityState`, `FacilityPlot`
 
 ### [`github.ts`](../../lib/admin/github.ts)
 

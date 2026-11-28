@@ -10,7 +10,6 @@ import {
   Loader2,
   MapPinned,
   RefreshCw,
-  Toilet,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -19,20 +18,24 @@ import {
   FACILITY_STATES,
   FACILITY_STATE_LABEL,
   FACILITY_STATE_TONE,
+  FACILITY_TYPES,
+  facilityCountsLine,
   facilityPlot,
   facilityQueueText,
   facilityState,
   facilityStateCounts,
+  facilityTypeMeta,
   filterFacilityParks,
   isFacilitiesBackendMissing,
   isOutlineRef,
+  orderFacilityPoints,
   osmElementUrl,
   type FacilityBulkApproval,
   type FacilityList,
   type FacilityParkRow,
-  type FacilityPoint,
   type FacilityReview,
   type FacilityState,
+  type FacilityType,
 } from '@/lib/admin/facilities';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { formatAgo } from '../_lib/format';
@@ -55,14 +58,11 @@ const LIST_KEY = adminKeys.raw(FACILITIES_API);
 /** While an import runs the list is read again this often; idle, it is not polled. */
 const BUSY_REFETCH_MS = 10_000;
 
-const POINT_LABEL: Record<FacilityPoint['type'], string> = {
-  toilets: 'Toilette',
-  drinking_water: 'Trinkwasser',
-};
-const POINT_COLOR: Record<FacilityPoint['type'], string> = {
-  toilets: 'fill-sky-400',
-  drinking_water: 'fill-teal-300',
-};
+/** The type filter's choices: every type, or one. */
+const TYPE_OPTIONS = [
+  { value: 'all' as const, label: 'Alle Arten' },
+  ...FACILITY_TYPES.map((value) => ({ value, label: facilityTypeMeta(value).short })),
+];
 const WHEELCHAIR_LABEL = {
   yes: 'rollstuhlgerecht',
   limited: 'eingeschränkt',
@@ -70,8 +70,8 @@ const WHEELCHAIR_LABEL = {
 };
 
 /**
- * Toilets and drinking water from OpenStreetMap: the import for every park, the review of what
- * came in, and the approval without which no point reaches a visitor.
+ * The places in a park from OpenStreetMap, toilets, drinking water and sights: the import for every
+ * park, the review of what came in, and the approval without which no point reaches a visitor.
  */
 export default function FacilitiesPage() {
   const query = useAdminQuery<FacilityList>(LIST_KEY, FACILITIES_API, {
@@ -117,14 +117,18 @@ function useFacilityWrite() {
 
 function FacilitiesBoard({ list }: { list: FacilityList }) {
   const { busy, run } = useFacilityWrite();
-  const [state, setState] = useState<FacilityState | 'all'>('review');
+  const counts = useMemo(() => facilityStateCounts(list.parks), [list.parks]);
+  // Opens where the work is: first reviews, then parks with new points.
+  const [state, setState] = useState<FacilityState | 'all'>(() =>
+    counts.review > 0 ? 'review' : counts.update > 0 ? 'update' : 'all'
+  );
+  const [type, setType] = useState<FacilityType | 'all'>('all');
   const [search, setSearch] = useState('');
   const [open, setOpen] = useState<string | null>(null);
 
-  const counts = useMemo(() => facilityStateCounts(list.parks), [list.parks]);
   const shown = useMemo(
-    () => filterFacilityParks(list.parks, state, search),
-    [list.parks, state, search]
+    () => filterFacilityParks(list.parks, state, search, type),
+    [list.parks, state, search, type]
   );
   const approvable = list.parks.filter((park) => park.bulkApprovable).length;
   const queueText = facilityQueueText(list.queue);
@@ -159,7 +163,7 @@ function FacilitiesBoard({ list }: { list: FacilityList }) {
         <PanelHeader
           icon={Download}
           title="Aus OpenStreetMap einlesen"
-          hint="Toiletten und Trinkwasser im Umriss jedes Parks. Ein Park nach dem anderen, mit Pause; alle Parks dauern eine bis mehrere Stunden. Nichts davon ist öffentlich, bevor der Park freigegeben ist."
+          hint="Toiletten, Trinkwasser und Sehenswürdigkeiten im Umriss jedes Parks. Ein Park nach dem anderen, mit Pause; alle Parks dauern eine bis mehrere Stunden. Kein Punkt ist öffentlich, bevor er freigegeben ist."
         />
         <PanelBody className="space-y-3">
           {queueText && (
@@ -190,7 +194,7 @@ function FacilitiesBoard({ list }: { list: FacilityList }) {
               onClick={() => {
                 if (
                   confirm(
-                    'Alle Parks neu einlesen, auch die schon eingelesenen? Ein freigegebener Park, der dabei einen neuen Punkt bekommt, muss wieder freigegeben werden.'
+                    'Alle Parks neu einlesen, auch die schon eingelesenen? Ein freigegebener Park bleibt dabei online; bringt der Lauf neue Punkte, warten nur diese auf deine Freigabe.'
                   )
                 ) {
                   void importAll(true);
@@ -213,7 +217,8 @@ function FacilitiesBoard({ list }: { list: FacilityList }) {
           <p className="text-muted-foreground text-xs">
             „Alle Parks importieren“ nimmt nur Parks, deren letzter Lauf nicht durchging; erneut
             gestartet, setzt es fort. Die Sammelfreigabe nimmt Parks mit mindestens drei sichtbaren
-            Punkten, die alle im Umriss liegen. Daten © OpenStreetMap-Mitwirkende, ODbL.
+            Punkten gleich welcher Art, die alle im Umriss liegen. Daten ©
+            OpenStreetMap-Mitwirkende, ODbL.
           </p>
         </PanelBody>
       </Panel>
@@ -233,6 +238,7 @@ function FacilitiesBoard({ list }: { list: FacilityList }) {
             ]}
             className="flex-wrap"
           />
+          <Segmented label="Art" value={type} onChange={setType} options={TYPE_OPTIONS} />
           <TextInput
             type="search"
             aria-label="Park suchen"
@@ -244,12 +250,12 @@ function FacilitiesBoard({ list }: { list: FacilityList }) {
         </Toolbar>
         {shown.length === 0 ? (
           <EmptyState
-            icon={Toilet}
+            icon={MapPinned}
             title="Kein Park in dieser Auswahl"
             description={
-              state === 'review'
+              state === 'review' || state === 'update'
                 ? 'Nichts wartet auf eine Prüfung. Starte oben den Import, oder wähle einen anderen Zustand.'
-                : 'Wähle einen anderen Zustand oder leere die Suche.'
+                : 'Wähle einen anderen Zustand oder eine andere Art, oder leere die Suche.'
             }
           />
         ) : (
@@ -283,7 +289,7 @@ function ParkRow({
   onToggle: () => void;
 }) {
   const state = facilityState(park);
-  const { toilets, drinkingWater, hidden, outside } = park.counts;
+  const { hidden, outside, awaitingReview = 0 } = park.counts;
   return (
     <>
       <button
@@ -308,10 +314,11 @@ function ParkRow({
         )}
         {park.status !== 'none' && park.status !== 'pending' && (
           <span className="text-muted-foreground text-xs tabular-nums">
-            {toilets} WC · {drinkingWater} Wasser
+            {facilityCountsLine(park.counts)}
             {hidden > 0 && ` · ${hidden} ausgeblendet`}
           </span>
         )}
+        {awaitingReview > 0 && <Chip tone="primary">{awaitingReview} neu</Chip>}
         {outside > 0 && <Chip tone="warning">{outside} außerhalb</Chip>}
         {park.lastRun === 'failed' && state !== 'failed' && (
           <Chip tone="danger">letzter Lauf fehlgeschlagen</Chip>
@@ -331,6 +338,7 @@ function ParkReview({ park }: { park: FacilityParkRow }) {
   const { busy, run } = useFacilityWrite();
   const [outline, setOutline] = useState('');
   const [marked, setMarked] = useState<string | null>(null);
+  const [type, setType] = useState<FacilityType | 'all'>('all');
 
   const write = (name: string, title: string, suffix: string) =>
     run(name, title, async () => {
@@ -338,13 +346,19 @@ function ParkReview({ park }: { park: FacilityParkRow }) {
       invalidate(key);
     });
 
-  const points = query.data?.facilities ?? [];
+  const all = query.data?.facilities;
+  const points = useMemo(
+    () => orderFacilityPoints((all ?? []).filter((p) => type === 'all' || p.type === type)),
+    [all, type]
+  );
   const plot = useMemo(
-    () => facilityPlot(query.data?.import?.boundaryRings ?? [], query.data?.facilities ?? []),
-    [query.data]
+    () => facilityPlot(query.data?.import?.boundaryRings ?? [], points),
+    [query.data, points]
   );
   const approved = park.status === 'approved';
-  const visible = points.filter((point) => !point.hidden).length;
+  const online = approved || Boolean(park.approvedAt);
+  const visible = (all ?? []).filter((point) => !point.hidden).length;
+  const waiting = (all ?? []).filter((point) => !point.hidden && point.awaitingReview).length;
 
   return (
     <div className="space-y-4 border-t border-white/[0.06] bg-white/[0.015] px-4 py-4">
@@ -362,109 +376,154 @@ function ParkReview({ park }: { park: FacilityParkRow }) {
       ) : !query.data ? (
         <LoadingState label="Lädt Punkte…" />
       ) : (
-        points.length > 0 && (
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,480px)_minmax(0,1fr)]">
-            {plot && (
-              <svg
-                viewBox={`0 0 ${plot.width} ${plot.height}`}
-                role="img"
-                aria-label={`Umriss von ${park.name} mit ${points.length} Punkten, Norden oben`}
-                className="h-auto w-full rounded-xl border border-white/[0.08] bg-black/20"
-              >
-                {plot.paths.map((d) => (
-                  <path key={d} d={d} className="fill-emerald-500/10 stroke-emerald-400/70" />
-                ))}
-                {plot.points.map((dot, index) => {
-                  const point = points[index];
-                  return (
-                    <circle
-                      key={dot.id}
-                      cx={dot.x}
-                      cy={dot.y}
-                      r={marked === dot.id ? 8 : 5}
-                      onMouseEnter={() => setMarked(dot.id)}
-                      onMouseLeave={() => setMarked(null)}
-                      className={cn(
-                        'stroke-black/60 transition-[r]',
-                        POINT_COLOR[point.type],
-                        point.hidden && 'opacity-30',
-                        !point.insideOutline && 'stroke-amber-400 stroke-2'
-                      )}
-                    >
-                      <title>{`${POINT_LABEL[point.type]} ${point.osmType}/${point.osmId}`}</title>
-                    </circle>
-                  );
-                })}
-              </svg>
-            )}
-            <ul className="divide-y divide-white/[0.06] text-sm">
-              {points.map((point) => (
-                <li
-                  key={point.id}
-                  onMouseEnter={() => setMarked(point.id)}
-                  onMouseLeave={() => setMarked(null)}
-                  className={cn(
-                    'flex flex-wrap items-center gap-x-2 gap-y-1 py-1.5',
-                    marked === point.id && 'bg-white/[0.04]',
-                    point.hidden && 'text-muted-foreground'
-                  )}
+        (all ?? []).length > 0 && (
+          <div className="space-y-3">
+            <Segmented
+              label="Art im Plot und in der Liste"
+              value={type}
+              onChange={setType}
+              options={TYPE_OPTIONS}
+            />
+            <div className="grid gap-4 lg:grid-cols-[minmax(0,480px)_minmax(0,1fr)]">
+              {plot && (
+                <svg
+                  viewBox={`0 0 ${plot.width} ${plot.height}`}
+                  role="img"
+                  aria-label={`Umriss von ${park.name} mit ${points.length} Punkten, Norden oben`}
+                  className="h-auto w-full rounded-xl border border-white/[0.08] bg-black/20"
                 >
-                  <span className="min-w-0 flex-1">
-                    <span className={cn(point.hidden && 'line-through')}>
-                      {POINT_LABEL[point.type]}
-                      {point.name && ` „${point.name}“`}
-                    </span>
-                    <span className="text-muted-foreground block text-xs">
-                      {[
-                        point.wheelchair && WHEELCHAIR_LABEL[point.wheelchair],
-                        point.changingTable && 'Wickeltisch',
-                        point.fee && 'kostet',
-                        `in OSM geändert ${point.osmTimestamp.slice(0, 4)}`,
-                      ]
-                        .filter(Boolean)
-                        .join(' · ')}
-                    </span>
-                  </span>
-                  {!point.insideOutline && <Chip tone="warning">außerhalb</Chip>}
-                  <a
-                    href={osmElementUrl(point.osmType, point.osmId)}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`${point.osmType}/${point.osmId} auf openstreetmap.org`}
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    disabled={busy !== null}
-                    onClick={() =>
-                      void write(
-                        point.id,
-                        point.hidden ? 'Punkt wieder sichtbar' : 'Punkt ausgeblendet',
-                        `/points/${point.id}/${point.hidden ? 'show' : 'hide'}`
-                      )
-                    }
-                  >
-                    {busy === point.id ? (
-                      <Loader2 className="animate-spin" />
-                    ) : point.hidden ? (
-                      <Eye />
-                    ) : (
-                      <EyeOff />
+                  {plot.paths.map((d) => (
+                    <path key={d} d={d} className="fill-emerald-500/10 stroke-emerald-400/70" />
+                  ))}
+                  {plot.points.map((dot, index) => {
+                    const point = points[index];
+                    return (
+                      <circle
+                        key={dot.id}
+                        cx={dot.x}
+                        cy={dot.y}
+                        r={marked === dot.id ? 8 : 5}
+                        onMouseEnter={() => setMarked(dot.id)}
+                        onMouseLeave={() => setMarked(null)}
+                        className={cn(
+                          'stroke-black/60 transition-[r]',
+                          facilityTypeMeta(point.type).fill,
+                          point.hidden && 'opacity-30',
+                          point.awaitingReview && 'stroke-white stroke-2',
+                          !point.insideOutline && 'stroke-amber-400 stroke-2'
+                        )}
+                      >
+                        <title>
+                          {[
+                            facilityTypeMeta(point.type).label,
+                            point.name && `„${point.name}“`,
+                            point.awaitingReview && 'neu',
+                            `${point.osmType}/${point.osmId}`,
+                          ]
+                            .filter(Boolean)
+                            .join(' ')}
+                        </title>
+                      </circle>
+                    );
+                  })}
+                </svg>
+              )}
+              <ul className="divide-y divide-white/[0.06] text-sm">
+                {points.map((point, index) => (
+                  <li
+                    key={point.id}
+                    onMouseEnter={() => setMarked(point.id)}
+                    onMouseLeave={() => setMarked(null)}
+                    className={cn(
+                      'flex flex-wrap items-center gap-x-2 gap-y-1 py-1.5',
+                      marked === point.id && 'bg-white/[0.04]',
+                      point.hidden && 'text-muted-foreground'
                     )}
-                    {point.hidden ? 'Einblenden' : 'Ausblenden'}
-                  </Button>
-                </li>
-              ))}
-            </ul>
+                  >
+                    {(index === 0 || points[index - 1].type !== point.type) && (
+                      <span className="text-muted-foreground w-full pt-2 text-xs font-medium tracking-wide uppercase">
+                        {facilityTypeMeta(point.type).label}
+                      </span>
+                    )}
+                    <span className="min-w-0 flex-1">
+                      <span className={cn(point.hidden && 'line-through')}>
+                        {facilityTypeMeta(point.type).label}
+                        {point.name && ` „${point.name}“`}
+                      </span>
+                      <span className="text-muted-foreground block text-xs">
+                        {[
+                          point.wheelchair && WHEELCHAIR_LABEL[point.wheelchair],
+                          point.changingTable && 'Wickeltisch',
+                          point.fee && 'kostet',
+                          `in OSM geändert ${point.osmTimestamp.slice(0, 4)}`,
+                        ]
+                          .filter(Boolean)
+                          .join(' · ')}
+                      </span>
+                    </span>
+                    {point.awaitingReview && !point.hidden && <Chip tone="primary">neu</Chip>}
+                    {!point.insideOutline && <Chip tone="warning">außerhalb</Chip>}
+                    <a
+                      href={osmElementUrl(point.osmType, point.osmId)}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${point.osmType}/${point.osmId} auf openstreetmap.org`}
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      disabled={busy !== null}
+                      onClick={() =>
+                        void write(
+                          point.id,
+                          point.hidden ? 'Punkt wieder sichtbar' : 'Punkt ausgeblendet',
+                          `/points/${point.id}/${point.hidden ? 'show' : 'hide'}`
+                        )
+                      }
+                    >
+                      {busy === point.id ? (
+                        <Loader2 className="animate-spin" />
+                      ) : point.hidden ? (
+                        <Eye />
+                      ) : (
+                        <EyeOff />
+                      )}
+                      {point.hidden ? 'Einblenden' : 'Ausblenden'}
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         )
       )}
 
+      {online && waiting > 0 && (
+        <p className="text-sm">
+          Online; {waiting === 1 ? 'den neuen Punkt' : `die ${waiting} neuen Punkte`} sieht noch
+          niemand.
+        </p>
+      )}
+
       <div className="flex flex-wrap items-end gap-2">
-        {approved ? (
+        {!approved && (
+          <Button
+            size="sm"
+            disabled={busy !== null || park.status !== 'imported' || visible === 0}
+            onClick={() => void write('approve', `${park.name} freigegeben`, '/approve')}
+          >
+            {busy === 'approve' ? <Loader2 className="animate-spin" /> : <CheckCheck />}
+            {online && waiting > 0
+              ? waiting === 1
+                ? 'Neuen Punkt freigeben'
+                : `${waiting} neue Punkte freigeben`
+              : 'Freigeben'}
+          </Button>
+        )}
+        {online && (
           <Button
             size="sm"
             variant="outline"
@@ -472,15 +531,6 @@ function ParkReview({ park }: { park: FacilityParkRow }) {
             onClick={() => void write('withdraw', 'Freigabe zurückgezogen', '/withdraw')}
           >
             Freigabe zurückziehen
-          </Button>
-        ) : (
-          <Button
-            size="sm"
-            disabled={busy !== null || park.status !== 'imported' || visible === 0}
-            onClick={() => void write('approve', `${park.name} freigegeben`, '/approve')}
-          >
-            {busy === 'approve' ? <Loader2 className="animate-spin" /> : <CheckCheck />}
-            Freigeben
           </Button>
         )}
         <Button
@@ -528,7 +578,8 @@ function ParkReview({ park }: { park: FacilityParkRow }) {
       </div>
       <p className="text-muted-foreground text-xs">
         Ein falscher Punkt wird in OpenStreetMap berichtigt und neu eingelesen; „Ausblenden“ ist für
-        Punkte, die dort stimmen und für Besucher nicht taugen, etwa vor dem Eingang.
+        Punkte, die dort stimmen und für Besucher nicht taugen, etwa vor dem Eingang, und für einen
+        neuen Punkt, den du nicht freigeben willst.
       </p>
     </div>
   );

@@ -11,6 +11,7 @@ import {
 import type { DataQualityReport, QueueStatusResponse, SystemHealthResponse } from '@/lib/api/admin';
 import type { MlOverview } from '@/lib/api/admin-ml-overview';
 import type { SubmissionSummary } from '@/lib/contribute/types';
+import { FACILITIES_API, type FacilityList } from '@/lib/admin/facilities';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { useCan } from '../_app/session';
 import {
@@ -48,7 +49,8 @@ function readingOf<T>(query: UseQueryResult<T, AdminApiError>): Reading<T> {
 
 /**
  * The admin's situation for the overview and the sidebar's dots: reads the five monitoring
- * answers, and for the owner the open API key requests, under the keys their own pages use (so answering a data-quality card clears its count
+ * answers, for editors the parks' places waiting for review, and for the owner the open API key
+ * requests, under the keys their own pages use (so answering a data-quality card clears its count
  * here too) and folds them with `deriveAdminHealth`. `live` polls host and queues every minute
  * while the tab is in front; without it they refresh on focus. `retry` asks one area's source
  * again.
@@ -60,6 +62,7 @@ export function useAdminHealth({ live = false }: { live?: boolean } = {}): {
   retry: (area: HealthAreaId) => void;
 } {
   const canModerate = useCan('author');
+  const isEditor = useCan('editor');
   const isOwner = useCan('owner');
   const now = useMinuteNow();
   const poll = live ? FAST_STALE_MS : false;
@@ -92,6 +95,11 @@ export function useAdminHealth({ live = false }: { live?: boolean } = {}): {
   );
 
   const keyRequests = useKeyRequests({ enabled: isOwner, staleTime: SLOW_STALE_MS });
+  // The facilities page reads the same key, so an approval there clears the count at once.
+  const facilities = useAdminQuery<FacilityList>(adminKeys.raw(FACILITIES_API), FACILITIES_API, {
+    enabled: isEditor,
+    staleTime: SLOW_STALE_MS,
+  });
 
   const health = useMemo(
     () =>
@@ -102,6 +110,7 @@ export function useAdminHealth({ live = false }: { live?: boolean } = {}): {
         ml: readingOf(ml),
         contributions: canModerate ? readingOf(contributions) : { state: 'forbidden' },
         keyRequests: isOwner ? readingOf(keyRequests) : { state: 'forbidden' },
+        facilities: isEditor ? readingOf(facilities) : { state: 'forbidden' },
         now: now ?? 0,
       }),
     // The query objects are new on every render; what the derivation reads is this.
@@ -119,7 +128,10 @@ export function useAdminHealth({ live = false }: { live?: boolean } = {}): {
       contributions.error,
       keyRequests.data,
       keyRequests.error,
+      facilities.data,
+      facilities.error,
       canModerate,
+      isEditor,
       isOwner,
       now,
     ]

@@ -856,10 +856,12 @@ page and the API uses it from the next notification on, with no environment vari
 
 `pnpm test:admin-apns` covers the file name, the refused files, the upload's body and the 404.
 
-## Toiletten und Wasser: `/admin/facilities`
+## Orte im Park: `/admin/facilities`
 
-Where an editor reads the parks' toilets and drinking water from OpenStreetMap, looks at what came
-in and approves it; without the approval no point reaches a visitor. The API's side, the ODbL
+Where an editor reads the parks' toilets, drinking water and sights from OpenStreetMap, looks at
+what came in and approves it; without the approval no point reaches a visitor. A sight is a named
+figure bin (Efteling's Holle Bolle Gijs), statue, fountain, viewpoint or historic object; which OSM
+tags count is the API's rule. The API's side, the ODbL
 duties and the owner's steps after a deploy are `docs/frontend/facilities.md` in `v4.api.park.fan`.
 
 - **The import is a job, never a request.** „Alle Parks importieren“ queues one bulk run
@@ -867,13 +869,25 @@ duties and the owner's steps after a deploy are `docs/frontend/facilities.md` in
   all parks take one to several hours. It visits only parks whose last run did not go through, so
   pressing it again resumes; „Alle neu einlesen“ sends `all: true`. While a run is queued or active
   the page reads the list every ten seconds and shows the tally; idle, it does not poll.
-- **One state per park** (`facilityState` in `lib/admin/facilities.ts`): Zu prüfen, Freigegeben,
-  Kein Umriss, Fehlgeschlagen, Nicht eingelesen. What a visitor gets wins: an approved park whose
-  later run failed stays „Freigegeben“ and carries a red chip beside it. The filter shows each
-  state's number and opens on „Zu prüfen“.
+- **One state per park** (`facilityState` in `lib/admin/facilities.ts`): Zu prüfen, Neue Punkte,
+  Freigegeben, Kein Umriss, Fehlgeschlagen, Nicht eingelesen. What a visitor gets wins: an approved
+  park whose later run failed stays „Freigegeben“ and carries a red chip beside it. „Zu prüfen“ is a
+  park nobody approved yet, offline; „Neue Punkte“ one that is online while a re-import's new or
+  changed points wait (`approvedAt` set, `status` imported). The filter shows each state's number
+  and opens on „Zu prüfen“, else on „Neue Punkte“, else on all parks.
+- **Point types in one place** (`facilityTypeMeta`): word, tally word and colour per type; a type
+  the page does not know yet shows as „Sonstiges“ in grey. A row's tally is `facilityCountsLine`
+  („12 WC · 3 Wasser · 11 Sehensw.“) with a chip „5 neu“ while points wait. A second filter takes
+  the parks with a visible point of one type.
+- **The sidebar counts** the parks in „Zu prüfen“ and „Neue Punkte“ (`facilityParksToReview`),
+  for editors, under the list's own query key, so an approval clears it at once.
 - **A park opens in place**: its outline and points as an SVG (`facilityPlot`, north up, longitude
-  shortened by the latitude's cosine), no map tiles. A point outside the outline has an amber ring
-  and an „außerhalb“ chip, a hidden one is faded. Each point links to its element on
+  shortened by the latitude's cosine), no map tiles, narrowed to one type if the editor picks one.
+  A point outside the outline has an amber ring and an „außerhalb“ chip, a waiting one a white ring
+  and a „neu“ chip, a hidden one is faded; hovering names a sight. The list is grouped by type,
+  the waiting points first (`orderFacilityPoints`). On a park that is online the button reads
+  „5 neue Punkte freigeben“ beside „Freigabe zurückziehen“; hiding a new point before that is how
+  an editor turns it down. Each point links to its element on
   openstreetmap.org, where a wrong point is corrected; „Ausblenden“ is for one that is right there
   and useless to a visitor.
 - **A park without an outline** says which outlines were found near it. The editor looks the right
@@ -883,8 +897,9 @@ duties and the owner's steps after a deploy are `docs/frontend/facilities.md` in
   the outline.
 - **An API without the routes** answers 404; the page then says the API is not ready.
 
-`pnpm test:admin-facilities` covers the states, the filter, the queue's line, the plot and the
-sidebar entry.
+`pnpm test:admin-facilities` covers the states, the types and the tally, both filters, the order
+of the points, the queue's line, the plot and the sidebar entry; `pnpm test:admin-health` the
+sidebar count.
 
 ## The admin on a phone
 
