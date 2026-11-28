@@ -55,10 +55,10 @@ Wer in Brühl nur einen Zweitwohnsitz hat oder nebenan in Köln wohnt, gehört n
 
 Der Besuch ist bis zum 24. Januar 2027 möglich, die Weihnachtsferien sind ausgenommen. In NRW dauern sie von Mittwoch, dem 23. Dezember, bis Mittwoch, dem 6. Januar. Außerdem fallen die Tage weg, an denen der Wintertraum ohnehin zu hat. Damit bleiben:
 
-- jeder Tag bis einschließlich Dienstag, 22. Dezember
+- im Dezember der 5. bis 11. und der 13. bis 22.; den 30. November bis 4. Dezember und Samstag, den 12., lässt das Formular nicht zu
 - vom 7. bis zum 24. Januar, außer Dienstag, 12., und Mittwoch, 13. Januar, an denen der Park geschlossen ist
 
-Wie lange die Stadt Brühl für die Prüfung braucht, hat das Phantasialand nicht bekannt gegeben. Für einen Wunschtag in der ersten Dezemberwoche würde ich mich deshalb heute noch anmelden und nicht erst am 14. Dezember. Am wenigsten los war im letzten Wintertraum nach unseren Messungen unter der Woche im Januar. Mein Tipp deshalb: ein Montag bis Freitag nach den Ferien.
+Wie lange die Stadt Brühl für die Prüfung braucht, hat das Phantasialand nicht bekannt gegeben. Wer im Dezember kommen will, meldet sich deshalb besser jetzt an und nicht erst am 14. Am wenigsten los war im letzten Wintertraum nach unseren Messungen unter der Woche im Januar. Mein Tipp deshalb: ein Montag bis Freitag nach den Ferien.
 
 ```best-days-widget slug=phantasialand
 
@@ -84,10 +84,10 @@ Der Wintertraum hat täglich von 11 bis 20 Uhr geöffnet, die Shows des Abends u
 
 ## Begleitung von außerhalb
 
-Wer nicht in Brühl wohnt, kauft ein normales Tagesticket, und das gibt es nur online, das Phantasialand hat keine Tageskasse. Im [Black Deal](/news/phantasialand-black-deal-wintertraum) kostet ein Wintertraum-Tag ab 29 €, am Wochenende und in den Ferien ab 33 €, solange das Kontingent reicht. Am Besuchstag selbst kannst du bis 16 Uhr im Online-Shop kaufen, falls die Kölner Verwandtschaft erst beim Frühstück beschließt, doch mitzukommen.
+Wer nicht in Brühl wohnt, kauft ein normales Tagesticket, und das gibt es nur online, das Phantasialand hat keine Tageskasse. Im [Black Deal](/news/phantasialand-black-deal-wintertraum) kostet ein Wintertraum-Tag ab 29 €, am Wochenende und in den Ferien ab 33 €, allerdings nur noch bis Montag, 30. November. Am Besuchstag selbst kannst du bis 16 Uhr im Online-Shop kaufen, falls die Kölner Verwandtschaft erst beim Frühstück beschließt, doch mitzukommen.
 
 ## 60 Jahre in Badorf
 
 Eröffnet hat das Phantasialand am 30. April 1967 als Märchenwald, wie es heute aussieht, steht in unserem [Guide zum Phantasialand](/blog/phantasialand-tipps). Gegründet haben ihn der Schausteller Gottlieb Löffelhardt und der Puppenspieler Richard Schmidt. Der Park liegt im Südwesten des Brühler Stadtteils Badorf auf dem Höhenrücken der Ville. Mit Parkplätzen und Hotels kommt das Gelände auf rund 28 Hektar, der Park selbst auf etwa 12.
 
-Quellen: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informationen und Anreise (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Ferienordnung NRW (Schulministerium)](https://www.schulministerium.nrw/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).
+Quellen: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informationen und Anreise (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Ferienordnung NRW (Schulministerium)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).
