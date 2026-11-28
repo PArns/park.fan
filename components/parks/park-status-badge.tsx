@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { Clock, AlertTriangle, XCircle, Wrench, Ban } from 'lucide-react';
+import { Clock, AlertTriangle, XCircle, Wrench, Ban, DoorClosed } from 'lucide-react';
 import type { ParkStatus, AttractionStatus } from '@/lib/api/types';
 
 /**
@@ -12,8 +12,15 @@ import type { ParkStatus, AttractionStatus } from '@/lib/api/types';
  */
 export type ClosedPermanentlyStatus = 'RETIRED';
 
+/**
+ * A park that reads CLOSED but opens again within days: tonight, or between two opening days of
+ * its season. Not an API status either; the caller that knows the schedule passes it
+ * (`isClosedForNow`, `lib/blog/live-display.ts`).
+ */
+export type ClosedForNowStatus = 'CLOSED_FOR_NOW';
+
 interface ParkStatusBadgeProps {
-  status: ParkStatus | AttractionStatus | ClosedPermanentlyStatus;
+  status: ParkStatus | AttractionStatus | ClosedPermanentlyStatus | ClosedForNowStatus;
   /** Text in place of the status's word, in the status's look: „Öffnet am 31. Oktober". */
   label?: ReactNode;
   className?: string;
@@ -35,6 +42,9 @@ export function ParkStatusBadge({ status, label, className }: ParkStatusBadgePro
     // The closed colour, because it is closed; its own icon, because it is not the CLOSED of
     // tonight — the two stand side by side in a news post about the park.
     RETIRED: { color: 'badge-status-closed', icon: Ban },
+    // Grey: the park opens again within days, and in running text a red badge reads as a park
+    // shut down.
+    CLOSED_FOR_NOW: { color: 'badge-status-unknown', icon: DoorClosed },
   };
 
   const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.CLOSED;

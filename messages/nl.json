@@ -969,6 +969,7 @@
     "status": {
       "OPERATING": "Open",
       "CLOSED": "Gesloten",
+      "CLOSED_FOR_NOW": "Nu dicht",
       "REFURBISHMENT": "Onderhoud",
       "DOWN": "Storing",
       "UNKNOWN": "Onbekend",

@@ -714,6 +714,7 @@
     "status": {
       "OPERATING": "Geöffnet",
       "CLOSED": "Geschlossen",
+      "CLOSED_FOR_NOW": "Gerade zu",
       "REFURBISHMENT": "In Wartung",
       "DOWN": "Störung",
       "UNKNOWN": "Unbekannt",

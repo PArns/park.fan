@@ -108,6 +108,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`live-display.ts`](../../lib/blog/live-display.ts)
 
 - `isNotOperating` _function_: True when a park/attraction status string means "not currently operating".
+- `isClosedForNow` _function_: Whether a CLOSED park is only shut until its next opening day: that opening is ahead of `nowMs` and nearer than `OFFSEASON_MIN_DAYS`, the line the park card draws between a few days off and the off season.
 - `waitTimeBadgeClass` _function_: Severity-coloured badge class for a wait time in minutes, on the same `waitTimeCrowdTier` thresholds and palette as `WaitTimeValue` and CrowdLevelBadge.
 - `inlinePerformanceSlot` _function_: What a blog ride reference shows for a ride that starts at set times: the next start (`HH:MM`), `pending` while the park's clock is not read yet, or null when it shows its status or wait as usual.
 

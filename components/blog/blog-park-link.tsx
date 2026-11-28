@@ -12,8 +12,9 @@ import {
   PARK_CALENDAR_SEGMENTS,
 } from '@/lib/parks/calendar-segments';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
-import { isNotOperating } from '@/lib/blog/live-display';
+import { isClosedForNow, isNotOperating } from '@/lib/blog/live-display';
 import { useLiveBlogPark } from '@/lib/blog/use-blog-live';
+import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 import { STANDALONE_CARD_ROWS_CLASS } from '@/components/parks/card-rows';
 
@@ -53,6 +54,8 @@ export function BlogParkLink({
   // A post stands at the edge for up to a day, so `resolvedPark` carries whatever the park's
   // status was at render time. Refresh it in the browser (see `useLiveBlogPark`).
   const park = useLiveBlogPark(resolvedPark);
+  // Only a closed park reads the clock, to tell a night off from a closure.
+  const nowMs = useMinuteNow(park?.status === 'CLOSED');
   const label = children ?? park?.name ?? fallbackLabel;
   const bare = options?.has('bare') ?? false;
 
@@ -81,7 +84,10 @@ export function BlogParkLink({
   // the park is shut. Real badge components — not recoloured link text.
   const liveBadge = closed ? (
     park.status ? (
-      <ParkStatusBadge status={park.status} className={INLINE_BADGE} />
+      <ParkStatusBadge
+        status={isClosedForNow(park, nowMs) ? 'CLOSED_FOR_NOW' : park.status}
+        className={INLINE_BADGE}
+      />
     ) : null
   ) : park.crowdLevel ? (
     <CrowdLevelBadge level={park.crowdLevel} className={INLINE_BADGE} />

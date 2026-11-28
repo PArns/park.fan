@@ -8,10 +8,12 @@ helper's default, and it is set from the data's cadence, never as a floor under 
   `export const revalidate` does not override it: it is a default any shorter fetch beats. So a
   number typed into a component decides how often a whole class of pages rebuilds, and every
   rebuild is an ISR write and a full render.
-- **A seed with a client overlay may cache for a long time.** `getGlobalStats` and `getGeoLiveStats`
-  are SSR seeds replaced on mount. Where there is no overlay and the value is compared against a
-  threshold, stale is wrong rather than old; that is why the hottest-parks heat banner was removed
-  instead of slowed down.
+- **A seed with a client overlay may cache for a long time.** `getGlobalStats` is an SSR seed
+  replaced on mount (`useGlobalStats`); the open-park counts of `/parks` and the continent pages
+  have no seed at all and come from `useGeoLiveStats` on the client. A count with no overlay stays
+  as it was at the build for the whole window. Where there is no overlay and the value is compared
+  against a threshold, stale is wrong rather than old; that is why the hottest-parks heat banner
+  was removed instead of slowed down.
 - **A parameter is right only when the window belongs to the caller**: then the constant is named
   and its docstring says why (`CACHE_TTL.geoSitemap`, a day for the surfaces that enumerate URLs).
   When the second caller goes, the parameter goes with it.

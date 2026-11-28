@@ -5,10 +5,41 @@ import {
   type PerformanceGate,
 } from '@/lib/utils/performance-schedule';
 import type { ParkWallClock } from '@/lib/utils/park-day';
+import { OFFSEASON_MIN_DAYS, nextParkOpening, operatingHours } from '@/lib/utils/schedule-utils';
+import type { ScheduleSummary } from '@/lib/api/types';
 
 /** True when a park/attraction status string means "not currently operating". */
 export function isNotOperating(status: string | undefined): boolean {
   return !!status && status !== 'OPERATING' && status !== 'UNKNOWN';
+}
+
+/**
+ * Whether a CLOSED park is only shut until its next opening day: that opening is ahead of `nowMs`
+ * and nearer than {@link OFFSEASON_MIN_DAYS}, the line the park card draws between a few days off
+ * and the off season. A park closed during its own hours (weather, an incident), off season or
+ * without a known opening stays a closure.
+ *
+ * @param nowMs The client clock, null before it is read: then a park with opening hours today
+ *   counts, so the first paint already matches the common case of a park shut overnight.
+ */
+export function isClosedForNow(
+  park: {
+    status?: string;
+    timezone?: string;
+    todaySchedule?: ScheduleSummary | null;
+    nextSchedule?: ScheduleSummary | null;
+  },
+  nowMs: number | null
+): boolean {
+  if (park.status !== 'CLOSED') return false;
+  if (nowMs === null) return operatingHours(park.todaySchedule) !== null;
+  const opening = nextParkOpening(
+    park.todaySchedule,
+    park.nextSchedule,
+    park.timezone ?? 'UTC',
+    nowMs
+  );
+  return opening !== null && Date.parse(opening.at) - nowMs < OFFSEASON_MIN_DAYS * 86_400_000;
 }
 
 /**

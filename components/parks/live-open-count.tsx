@@ -5,16 +5,17 @@ import { useGeoLiveStats, findOpenParkCount } from '@/lib/hooks/use-geo-live-sta
 import { cn } from '@/lib/utils';
 
 /**
- * Inline live "open parks" number for a continent (or a country within it). Renders a skeleton
- * until the shared {@link useGeoLiveStats} batch call lands, so the surrounding text can be
- * prerendered/cached without baking a stale count into the ISR shell.
+ * Inline live "open parks" number for every park, a continent or a country within it. Renders a
+ * skeleton until the shared {@link useGeoLiveStats} batch call lands, so the surrounding text can
+ * be prerendered/cached without baking a stale count into the ISR shell.
  */
 export function LiveOpenCount({
   continent,
   country,
   className,
 }: {
-  continent: string;
+  /** Without it, the count of every park the API knows open. */
+  continent?: string;
   country?: string;
   className?: string;
 }) {
