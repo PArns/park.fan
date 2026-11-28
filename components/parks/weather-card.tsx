@@ -41,15 +41,12 @@ interface WeatherCardProps {
   forecast?: WeatherDay[];
   /** Optional live nowcast: overrides icon/description with current observed conditions. */
   nowcast?: WeatherNowcast | null;
-  /** Geo-routing params — when provided, enables live nowcast polling. */
+  /** Geo-routing params — when provided, enables live nowcast polling and, with `timezone`, the
+      hour-by-hour day view for today (drawn once a nowcast exists). */
   continent?: string;
   country?: string;
   city?: string;
   parkSlug?: string;
-  /** Park coordinates + timezone — when provided (and a nowcast exists), enables
-      the detailed hour-by-hour day view for today. */
-  latitude?: number | null;
-  longitude?: number | null;
   timezone?: string;
   /** Park schedule — today's opening hours are marked in the hourly day view. */
   schedule?: ScheduleItem[] | null;
@@ -73,8 +70,6 @@ export function WeatherCard({
   country,
   city,
   parkSlug,
-  latitude,
-  longitude,
   timezone,
   schedule,
   hasOperatingSchedule,
@@ -104,8 +99,10 @@ export function WeatherCard({
   // is ready when the nowcast lands; rendering still needs a nowcast. A static `hourly` prop
   // (showcases) takes precedence and disables the fetch.
   const { data: fetchedHourly, isLoading: hourlyLoading } = useWeatherHourly({
-    latitude,
-    longitude,
+    continent,
+    country,
+    city,
+    parkSlug,
     timezone,
     enabled: hourly === undefined,
   });
@@ -117,7 +114,7 @@ export function WeatherCard({
   // Both flags are false during SSR (the queries are browser-only), so the reservation is gated on
   // mount instead: the box is held from the first paint whenever a chart is possible at all, and
   // released once both queries have answered.
-  const chartPossible = Boolean(timezone && latitude != null && longitude != null);
+  const chartPossible = hasParams && !!timezone;
   const holdChartBox = chartPossible && (!mounted || chartPending);
 
   // The base forecast (current + 7-day strip) is baked into the 1-day ISR shell, so it would be up

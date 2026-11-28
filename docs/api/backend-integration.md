@@ -16,7 +16,7 @@ this page and the others in `docs/api/` cover only the frontend's side.
   `stats.ts`, `integrated-calendar.ts`, …), each owning its Data Cache window and tags. The
   modules and what each exports are in the code index: [lib/api](../code-index/lib-api.md).
 - The browser polls the relays under `app/api/*` (`/api/parks/[...path]`, `/api/parks/live`,
-  `/api/search`, `/api/analytics/*`, `/api/weather/hourly`, `/api/og/*` …; listed in
+  `/api/search`, `/api/analytics/*`, `/api/og/*` …; listed in
   [app/api](../code-index/app-api.md)). A relay passes only slugs upstream and reports a
   failure as a non-200 without cache headers —
   [the rule](../rules/an-api-route-passes-only-slugs-upstream.md); the CDN windows it answers

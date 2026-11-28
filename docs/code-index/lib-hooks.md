@@ -352,7 +352,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-weather-hourly.ts`](../../lib/hooks/use-weather-hourly.ts)
 
-- `useWeatherHourly` _hook_: A day's hour-by-hour forecast (temperature, precipitation) for a park location, through the cached `/api/weather/hourly` proxy.
+- `useWeatherHourly` _hook_: A park-day's hour-by-hour forecast (temperature, precipitation) from the API's `/weather/hourly`, through the cached `/api/parks/<geo>/<park>/weather/hourly` relay.
 
 ### [`use-weather-nowcast.ts`](../../lib/hooks/use-weather-nowcast.ts)
 

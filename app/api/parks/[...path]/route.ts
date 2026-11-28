@@ -19,6 +19,7 @@ import {
   leanParkForLivePoll,
 } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
+import { getParkWeatherHourlyFresh, hourlyDayPoints } from '@/lib/api/weather-hourly';
 import { getParkHistoricalStats, getParkHourlyProfile, getRideDayCurve } from '@/lib/api/stats';
 import { getPlanDay } from '@/lib/api/plan';
 import {
@@ -37,6 +38,7 @@ import {
   tagPurgedCacheHeaders,
 } from '@/lib/api/cdn-cache-headers';
 import {
+  isIsoDate,
   isServableCalendarRange,
   isServableHourlyDate,
   isServableHourlyProfileRange,
@@ -96,6 +98,14 @@ const RIDE_STATS_CACHE_CONTROL =
  * next.config.ts, like every other cacheable /api route.
  */
 const LIVE_POLL_CACHE_CONTROL = 'public, max-age=0, s-maxage=30, stale-while-revalidate=30';
+
+/**
+ * Fifteen minutes for `…/weather/hourly`, one park-day of the API's hourly forecast. The API
+ * refetches the forecast every two hours and every visitor of a park asks for the same day, so the
+ * window collapses them onto a few reads. Repeated in next.config.ts, like every other cacheable
+ * /api route.
+ */
+const WEATHER_HOURLY_CACHE_CONTROL = 'public, s-maxage=900, stale-while-revalidate=900';
 
 /** A model call answers in a few seconds; a tip that takes longer is simply not shown. */
 const PARKY_TIP_TIMEOUT_MS = 12_000;
@@ -702,10 +712,39 @@ export async function GET(
     }
   }
 
+  if (path && path.length === 6 && path[4] === 'weather' && path[5] === 'hourly') {
+    const [continent, country, city, park] = path;
+    // Required: without it, a copy the CDN keeps past the park's midnight would be yesterday's.
+    const date = request.nextUrl.searchParams.get('date');
+    if (!date || !isIsoDate(date)) {
+      return NextResponse.json({ error: 'Invalid date' }, { status: 400, headers: NO_STORE });
+    }
+
+    try {
+      const hourly = await getParkWeatherHourlyFresh(continent, country, city, park);
+      const day = hourly ? hourlyDayPoints(hourly, date) : null;
+
+      if (!day) {
+        return NextResponse.json(
+          { error: 'Hourly weather not available' },
+          { status: 404, headers: NO_STORE }
+        );
+      }
+
+      return NextResponse.json(day, { headers: cdnCacheHeaders(WEATHER_HOURLY_CACHE_CONTROL) });
+    } catch (error) {
+      console.error('[Weather Hourly API] Error:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch hourly weather' },
+        { status: 500, headers: NO_STORE }
+      );
+    }
+  }
+
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /ride-stats, /stats, /stats/hourly, /stats/day, /wait-times, /parky-tip, or /weather/nowcast',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /ride-stats, /stats, /stats/hourly, /stats/day, /wait-times, /parky-tip, /weather/nowcast, or /weather/hourly',
     },
     { status: 400 }
   );

@@ -9,7 +9,7 @@ import { yFor, type DayGrid } from './day-grid';
  * {@link weatherRailSegments} returns nothing rather than inventing a value.
  */
 
-/** How many days ahead the hourly forecast reaches. Measured, not documented upstream. */
+/** How many days after today the API's `/weather/hourly` serves. */
 export const WEATHER_RAIL_MAX_LEAD_DAYS = 14;
 
 /**

@@ -1109,6 +1109,12 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=60, stale-while-revalidate=120'),
       },
       {
+        // One park-day of the API's hourly forecast, behind the weather day chart and the
+        // planner's weather rail. The handler's own value (WEATHER_HOURLY_CACHE_CONTROL).
+        source: '/api/parks/:continent/:country/:city/:park/weather/hourly',
+        headers: sharedCache('public, s-maxage=900, stale-while-revalidate=900'),
+      },
+      {
         // Card-overlay live status batch (use-live-parks-by-region), polled by every hub card grid,
         // the featured-parks strip and the blog's park references. Same collapse rationale as
         // the park poll below; the response is byte-identical for every visitor of a region set,
@@ -1161,11 +1167,6 @@ const nextConfig: NextConfig = {
         // MUST stay after the blanket /api no-store rule to re-enable CDN caching.
         source: '/api/image',
         headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=604800'),
-      },
-      {
-        // Open-Meteo's hourly forecast for one park-day, behind the weather day chart.
-        source: '/api/weather/hourly',
-        headers: sharedCache('public, s-maxage=900, stale-while-revalidate=900'),
       },
       {
         // The header menu's cities+parks pane, fetched per opened country. Structure, not status.

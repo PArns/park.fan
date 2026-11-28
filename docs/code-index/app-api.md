@@ -515,12 +515,6 @@ Route `/api/trips` (route).
 
 - `POST` _function_: Storing a plan. A thin relay, see `lib/api/relay.ts`, which also says why the visitor's own address goes along.
 
-### [`weather/hourly/route.ts`](../../app/api/weather/hourly/route.ts)
-
-Route `/api/weather/hourly` (route).
-
-- `GET` _function_
-
 ### [`webhooks/vercel-comments/route.ts`](../../app/api/webhooks/vercel-comments/route.ts)
 
 Route `/api/webhooks/vercel-comments` (route).

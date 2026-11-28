@@ -6645,7 +6645,7 @@ step: {
     const rail = await browser.newPage({ viewport: { width, height } });
     noteErrors(rail);
 
-    await rail.route('**/api/weather/hourly**', (route) =>
+    await rail.route('**/weather/hourly**', (route) =>
       route.fulfill({
         status: 200,
         contentType: 'application/json',
@@ -6696,10 +6696,6 @@ step: {
               dayPeak: 45,
               uncertaintyMinutes: 10,
               sampleDays: 400,
-              // The park's position, to about a kilometre. Nothing else the
-              // planner fetches carries one — this is where the rail gets it.
-              latitude: 50.7985,
-              longitude: 6.8792,
             },
           ],
           shows: [],
