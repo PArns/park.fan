@@ -1295,7 +1295,7 @@
     },
     "headlinerForecastTitle": "Expected peak waits (headliners)",
     "crowdMeaning": {
-      "very_low": "Barely any crowds – short waits, even on the big coasters.",
+      "very_low": "Barely any crowds – short waits, even at the headliners.",
       "low": "Quiet day – waits below average.",
       "moderate": "A typical day – normal waits for this park.",
       "high": "Busier than usual – expect noticeably longer waits.",
@@ -1604,9 +1604,9 @@
         "boardingGroupsAvailable": "Boarding Groups Available",
         "boardingGroupsDistributed": "Groups Distributed",
         "boardingGroupsPaused": "Boarding Groups Paused",
-        "returnState": "Return time: {state}",
-        "return": "Return time: {start}–{end}",
-        "returnNoEnd": "Return time: {start}"
+        "returnState": "Return Time: {kind, select, full {Fully Booked} finished {None Left} other {{state}}}",
+        "return": "Return Time: {start}–{end}",
+        "returnNoEnd": "Return Time: {start}"
       }
     },
     "h1Suffix": "Live Wait Time",
@@ -1733,7 +1733,7 @@
       "medianCaption": "Median in minutes",
       "medianDetail": "Half of the {usable} outages with an observed end were over after {minutes} minutes.",
       "longestCaption": "Longest outage",
-      "shareDetail": "Reported outages took up about {percent}% of the time the ride was running or reported down.",
+      "shareDetail": "Outages took up about {percent}% of the time the ride was running or reported down.",
       "withheld": {
         "not_down_capable": "No data source reports outages for this park. Whether {name} breaks down is something we cannot see here.",
         "park_never_reports": "The data source for this park does not report outages. We spot them from closures during opening hours, but publish no statistics on them.",
@@ -1749,7 +1749,7 @@
         "heavily_censored": "{count} outages were reported in the last {days} days. For too many of them we never saw the end, usually because the park closed while the ride was still down. That is not enough for a duration.",
         "stale_data": "These figures are not current right now, so we are not showing them."
       },
-      "longestDetail": "The longest of the {usable} outages with an observed end."
+      "longestDetail": "Out of the {usable} outages with an observed end."
     },
     "retired": {
       "h1Suffix": "Closed Permanently",
@@ -3706,7 +3706,7 @@
       "resultEnd": "Last ride by",
       "resultWait": "Time queuing in total",
       "resultOut": "Left out",
-      "resultPinnedOut": "{count, plural, one {This pinned ride no longer fits into the day} other {These pinned rides no longer fit into the day}}",
+      "resultPinnedOut": "{count, plural, one {No longer fits into the day, even at the top} other {No longer fit into the day, even at the top}}",
       "resultHint": "You can still drag, delete and re-sort everything in the planner afterwards.",
       "apply": "Apply plan",
       "applied": "{count, plural, one {One ride planned} other {# rides planned}}",
