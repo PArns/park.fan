@@ -55,10 +55,10 @@ If Brühl is only your second home, or you live next door in Cologne, you're not
 
 You can visit until 24 January 2027, except during the Christmas school holidays, which in North Rhine-Westphalia run from Wednesday, 23 December, to Wednesday, 6 January. Days when Wintertraum is closed anyway are out as well. That leaves:
 
-- every day up to and including Tuesday, 22 December
+- in December, the 5th to the 11th and the 13th to the 22nd; the form doesn't accept 30 November to 4 December or Saturday the 12th
 - 7 to 24 January, except Tuesday the 12th and Wednesday the 13th, when the park is closed
 
-Phantasialand hasn't announced how long the town of Brühl takes to check each application. If you want a day in the first week of December, I'd sign up today rather than on 14 December. In our measurements at last year's Wintertraum, the shortest queues were on weekdays in January, so my tip is a day from Monday to Friday after the holidays.
+Phantasialand hasn't announced how long the town of Brühl takes to check each application. So if you want to go in December, you're better off signing up now than waiting until the 14th. In our measurements at last year's Wintertraum, the shortest queues were on weekdays in January, so my tip is a day from Monday to Friday after the holidays.
 
 ```best-days-widget slug=phantasialand
 
@@ -84,10 +84,10 @@ Wintertraum is open daily from 11 am to 8 pm. The evening shows and the rides th
 
 ## Friends from outside Brühl
 
-Anyone who doesn't live in Brühl buys a normal day ticket, and only online: Phantasialand has no ticket office at the gate. In the [Black Deal](/news/phantasialand-black-deal-wintertraum), a Wintertraum day costs from €29, or from €33 at weekends and in the holidays, while the quota lasts. On the day itself, the online shop sells tickets until 4 pm, which is good news for the relative who says no all week and changes their mind over breakfast.
+Anyone who doesn't live in Brühl buys a normal day ticket, and only online: Phantasialand has no ticket office at the gate. In the [Black Deal](/news/phantasialand-black-deal-wintertraum), a Wintertraum day costs from €29, or from €33 at weekends and in the holidays, but only until Monday, 30 November. On the day itself, the online shop sells tickets until 4 pm, which is good news for the relative who says no all week and changes their mind over breakfast.
 
 ## 60 years in Badorf
 
 Phantasialand opened on 30 April 1967 as a fairy-tale forest; what it looks like today is in our [Phantasialand guide](/blog/phantasialand-wait-times-tips). It was founded by the showman Gottlieb Löffelhardt and the puppeteer Richard Schmidt. The park sits in the south-west of Badorf, a district of Brühl, on the Ville ridge. With car parks and hotels, the site covers about 28 hectares, the park itself about 12.
 
-Sources: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Information and directions (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [NRW school holiday dates (Ministry of Education)](https://www.schulministerium.nrw/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).
+Sources: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Information and directions (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [NRW school holiday dates (Ministry of Education)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).

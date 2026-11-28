@@ -55,10 +55,10 @@ Chi a Brühl ha solo un secondo domicilio, o vive appena oltre il confine, a Col
 
 La visita è possibile fino al 24 gennaio 2027, escluse le vacanze di Natale, che nella Renania Settentrionale-Vestfalia vanno da mercoledì 23 dicembre a mercoledì 6 gennaio. Saltano anche i giorni in cui il Wintertraum è chiuso comunque. Restano quindi:
 
-- tutti i giorni fino a martedì 22 dicembre compreso
+- a dicembre dal 5 all’11 e dal 13 al 22; il modulo non accetta i giorni dal 30 novembre al 4 dicembre né sabato 12
 - dal 7 al 24 gennaio, tranne martedì 12 e mercoledì 13 gennaio, quando il parco è chiuso
 
-Il Phantasialand non ha reso noto quanto tempo serva alla città di Brühl per il controllo. Se punti a un giorno della prima settimana di dicembre, io mi iscriverei oggi stesso, non il 14. Secondo le nostre misurazioni, all’ultimo Wintertraum c’era meno gente durante la settimana a gennaio, perciò il mio consiglio è un giorno dal lunedì al venerdì dopo le vacanze.
+Il Phantasialand non ha reso noto quanto tempo serva alla città di Brühl per il controllo. Perciò, se vuoi andarci a dicembre, conviene iscriverti adesso e non aspettare il 14. Secondo le nostre misurazioni, all’ultimo Wintertraum c’era meno gente durante la settimana a gennaio, perciò il mio consiglio è un giorno dal lunedì al venerdì dopo le vacanze.
 
 ```best-days-widget slug=phantasialand
 
@@ -84,10 +84,10 @@ Il Wintertraum è aperto tutti i giorni dalle 11 alle 20. Gli spettacoli della s
 
 ## Chi viene da fuori
 
-Chi non vive a Brühl compra un normale biglietto giornaliero, e solo online, perché il Phantasialand non ha biglietteria. Con il [Black Deal](/news/phantasialand-black-deal-wintertraum) una giornata al Wintertraum costa da 29 €, nel fine settimana e nelle vacanze da 33 €, finché c’è contingente. Il giorno stesso della visita lo puoi comprare nel negozio online fino alle 16, che basta anche per lo zio di Colonia che si convince solo a colazione.
+Chi non vive a Brühl compra un normale biglietto giornaliero, e solo online, perché il Phantasialand non ha biglietteria. Con il [Black Deal](/news/phantasialand-black-deal-wintertraum) una giornata al Wintertraum costa da 29 €, nel fine settimana e nelle vacanze da 33 €, ma solo fino a lunedì 30 novembre. Il giorno stesso della visita lo puoi comprare nel negozio online fino alle 16, che basta anche per lo zio di Colonia che si convince solo a colazione.
 
 ## 60 anni a Badorf
 
 Il Phantasialand ha aperto il 30 aprile 1967 come bosco delle fiabe; com’è oggi lo racconta la nostra [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli). Lo hanno fondato il giostraio Gottlieb Löffelhardt e il burattinaio Richard Schmidt. Il parco si trova a sud-ovest di Badorf, quartiere di Brühl, sulla dorsale collinare della Ville. Con parcheggi e hotel l’area arriva a circa 28 ettari, il parco da solo a circa 12.
 
-Fonti: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informazioni e arrivo (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Calendario delle vacanze scolastiche NRW (ministero dell’istruzione)](https://www.schulministerium.nrw/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).
+Fonti: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informazioni e arrivo (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Calendario delle vacanze scolastiche NRW (ministero dell’istruzione)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).

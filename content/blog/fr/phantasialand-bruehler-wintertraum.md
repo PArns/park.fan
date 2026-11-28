@@ -55,10 +55,10 @@ Une résidence secondaire à Brühl ne suffit pas, et habiter juste à côté, �
 
 Tu peux venir jusqu’au 24 janvier 2027, sauf pendant les vacances de Noël, qui durent en Rhénanie-du-Nord-Westphalie du mercredi 23 décembre au mercredi 6 janvier. Les jours où le Wintertraum est de toute façon fermé tombent aussi. Il reste donc :
 
-- tous les jours jusqu’au mardi 22 décembre inclus
+- en décembre, du 5 au 11 et du 13 au 22 ; le formulaire n’accepte ni la période du 30 novembre au 4 décembre ni le samedi 12
 - du 7 au 24 janvier, sauf le mardi 12 et le mercredi 13 janvier, où le parc est fermé
 
-Le Phantasialand n’a pas indiqué combien de temps il faut à la ville de Brühl pour vérifier les inscriptions. Pour un jour de la première semaine de décembre, je m’inscrirais donc aujourd’hui plutôt que le 14 décembre. Au dernier Wintertraum, d’après nos relevés, c’est en semaine en janvier qu’il y avait le moins de monde. Mon conseil : un jour du lundi au vendredi après les vacances.
+Le Phantasialand n’a pas indiqué combien de temps il faut à la ville de Brühl pour vérifier les inscriptions. Si tu veux venir en décembre, mieux vaut donc t’inscrire maintenant plutôt que d’attendre le 14. Au dernier Wintertraum, d’après nos relevés, c’est en semaine en janvier qu’il y avait le moins de monde. Mon conseil : un jour du lundi au vendredi après les vacances.
 
 ```best-days-widget slug=phantasialand
 
@@ -84,10 +84,10 @@ Le Wintertraum ouvre tous les jours de 11 h à 20 h. Les spectacles du soir et l
 
 ## Les accompagnants venus d’ailleurs
 
-Qui n’habite pas à Brühl achète un billet journée normal, et seulement en ligne, car le Phantasialand n’a pas de caisse sur place. Avec le [Black Deal](/news/phantasialand-black-deal-wintertraum), une journée au Wintertraum coûte à partir de 29 €, et à partir de 33 € le week-end et pendant les vacances, dans la limite du contingent. Le jour même, la boutique en ligne vend jusqu’à 16 h, de quoi laisser au cousin de Cologne le temps de finir sa grasse matinée avant de se décider.
+Qui n’habite pas à Brühl achète un billet journée normal, et seulement en ligne, car le Phantasialand n’a pas de caisse sur place. Avec le [Black Deal](/news/phantasialand-black-deal-wintertraum), une journée au Wintertraum coûte à partir de 29 €, et à partir de 33 € le week-end et pendant les vacances, mais seulement jusqu’au lundi 30 novembre. Le jour même, la boutique en ligne vend jusqu’à 16 h, de quoi laisser au cousin de Cologne le temps de finir sa grasse matinée avant de se décider.
 
 ## 60 ans à Badorf
 
 Le Phantasialand a ouvert le 30 avril 1967 comme forêt des contes. Ce qu’il est devenu depuis, notre [guide du Phantasialand](/blog/phantasialand-temps-d-attente-conseils) le raconte. Ses fondateurs sont le forain Gottlieb Löffelhardt et le marionnettiste Richard Schmidt. Le parc se trouve au sud-ouest de Badorf, un quartier de Brühl, sur la crête de la Ville. Parkings et hôtels compris, le site couvre environ 28 hectares, le parc lui-même 12 à peu près.
 
-Sources : [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informations et accès (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [calendrier des vacances scolaires de Rhénanie-du-Nord-Westphalie (ministère de l’Éducation du Land)](https://www.schulministerium.nrw/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930), [Phantasialand (Wikipédia, allemand)](https://de.wikipedia.org/wiki/Phantasialand).
+Sources : [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informations et accès (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [calendrier des vacances scolaires de Rhénanie-du-Nord-Westphalie (ministère de l’Éducation du Land)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipédia, allemand)](https://de.wikipedia.org/wiki/Phantasialand).

@@ -55,10 +55,10 @@ Heb je in Brühl alleen een tweede adres, of woon je een stukje verderop in Keul
 
 Je kunt tot 24 januari 2027 gaan, behalve in de kerstvakantie. In Noordrijn-Westfalen loopt die van woensdag 23 december tot en met woensdag 6 januari. Ook de dagen waarop de Wintertraum sowieso dicht is, vallen af. Dan blijft over:
 
-- elke dag tot en met dinsdag 22 december
+- in december van de 5e tot en met de 11e en van de 13e tot en met de 22e; het formulier laat 30 november tot en met 4 december en zaterdag de 12e niet toe
 - 7 tot en met 24 januari, behalve dinsdag 12 en woensdag 13 januari, als het park gesloten is
 
-Hoe lang de gemeente Brühl over de controle doet, heeft Phantasialand niet bekendgemaakt. Wil je in de eerste week van december, dan zou ik me vandaag nog aanmelden en niet pas op 14 december. Tijdens de vorige Wintertraum was het volgens onze metingen doordeweeks in januari het minst druk. Mijn tip is daarom een dag van maandag tot en met vrijdag na de vakantie.
+Hoe lang de gemeente Brühl over de controle doet, heeft Phantasialand niet bekendgemaakt. Wil je in december gaan, meld je dan beter nu al aan en wacht niet tot de 14e. Tijdens de vorige Wintertraum was het volgens onze metingen doordeweeks in januari het minst druk. Mijn tip is daarom een dag van maandag tot en met vrijdag na de vakantie.
 
 ```best-days-widget slug=phantasialand
 
@@ -84,10 +84,10 @@ De Wintertraum is elke dag open van 11 tot 20 uur. De avondshows en de attractie
 
 ## Gezelschap van buiten Brühl
 
-Wie niet in Brühl woont, koopt een gewoon dagticket, en dat kan alleen online, want Phantasialand heeft geen kassa bij de ingang. Met de [Black Deal](/news/phantasialand-black-deal-wintertraum) kost een Wintertraum-dag vanaf € 29, in het weekend en in de vakantie vanaf € 33, zolang er tickets zijn. Op de dag zelf koop je tot 16 uur in de webshop. Dat is ruim op tijd voor de neef uit Keulen die pas bij het ontbijt hoort dat de rest van de familie vandaag gratis naar binnen mag.
+Wie niet in Brühl woont, koopt een gewoon dagticket, en dat kan alleen online, want Phantasialand heeft geen kassa bij de ingang. Met de [Black Deal](/news/phantasialand-black-deal-wintertraum) kost een Wintertraum-dag vanaf € 29, in het weekend en in de vakantie vanaf € 33, maar alleen nog tot maandag 30 november. Op de dag zelf koop je tot 16 uur in de webshop. Dat is ruim op tijd voor de neef uit Keulen die pas bij het ontbijt hoort dat de rest van de familie vandaag gratis naar binnen mag.
 
 ## Zestig jaar in Badorf
 
 Phantasialand ging op 30 april 1967 open als sprookjesbos. Hoe het er nu uitziet, lees je in onze [gids voor Phantasialand](/blog/phantasialand-wachttijden-tips). De oprichters waren kermisexploitant Gottlieb Löffelhardt en poppenspeler Richard Schmidt. Het park ligt in het zuidwesten van Badorf, een wijk van Brühl, op de heuvelrug van de Ville. Met parkeerplaatsen en hotels is het terrein zo’n 28 hectare groot, het park zelf ongeveer 12.
 
-Bronnen: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informationen und Anreise (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [vakantieregeling NRW (ministerie van Onderwijs van NRW)](https://www.schulministerium.nrw/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).
+Bronnen: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informationen und Anreise (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [vakantieregeling NRW (ministerie van Onderwijs van NRW)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).
