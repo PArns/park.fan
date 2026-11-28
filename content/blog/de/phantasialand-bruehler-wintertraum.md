@@ -47,9 +47,7 @@ Das [Phantasialand](ref:phantasialand) lädt alle, die mit Hauptwohnsitz in Brü
 
 ## Wer mitmachen darf
 
-Jede Person kann die Einladung einmal nutzen. Ein Formular gilt für genau eine Person, eine vierköpfige Familie füllt es also viermal aus. Für Schülerinnen und Schüler, die auf eine Brühler Schule gehen, aber außerhalb wohnen, gibt es ein eigenes Formular, den Link dazu bekommen sie über ihre Schule.
-
-Wer in Brühl nur einen Zweitwohnsitz hat oder nebenan in Köln wohnt, gehört nicht dazu.
+Jede Person kann die Einladung einmal nutzen. Ein Formular gilt für genau eine Person, eine vierköpfige Familie füllt es also viermal aus. Für Schülerinnen und Schüler, die auf eine Brühler Schule gehen, aber außerhalb wohnen, gibt es ein eigenes Formular, den Link dazu bekommen sie über ihre Schule. Ein Zweitwohnsitz in Brühl reicht nicht.
 
 ## Welche Tage gehen
 
@@ -58,7 +56,7 @@ Der Besuch ist bis zum 24. Januar 2027 möglich, die Weihnachtsferien sind ausge
 - im Dezember der 5. bis 11. und der 13. bis 22. (vom 30. November bis 4. Dezember und am Samstag, dem 12., nimmt das Formular keine Anmeldung an)
 - vom 7. bis zum 24. Januar, außer Dienstag, 12., und Mittwoch, 13. Januar, an denen der Park geschlossen ist
 
-Das Ticket kommt erst, wenn die Stadt Brühl deine Anmeldung geprüft hat. Wie lange das dauert, hat das Phantasialand nicht bekannt gegeben, wer im Dezember kommen will, meldet sich also besser jetzt an und nicht erst kurz vor Schluss. Am wenigsten los war im letzten Wintertraum nach unseren Messungen unter der Woche im Januar, und so einen Tag nach den Ferien würde ich nehmen.
+Vor dem Ticket prüft die Stadt Brühl deine Anmeldung, und der erste wählbare Tag ist schon der 5. Dezember. Wer im Dezember kommen will, meldet sich deshalb besser jetzt an und nicht erst kurz vor Schluss. Am wenigsten los war im letzten Wintertraum nach unseren Messungen unter der Woche im Januar, und so einen Tag nach den Ferien würde ich nehmen.
 
 ```best-days-widget slug=phantasialand
 
@@ -66,9 +64,9 @@ Das Ticket kommt erst, wenn die Stadt Brühl deine Anmeldung geprüft hat. Wie l
 
 ## So meldest du dich an
 
-Im Formular stehen Name, E-Mail-Adresse, Telefonnummer, Anschrift, Geburtsdatum und der gewünschte Besuchstag. Den Namen schreibst du genau so wie im Personalausweis, mit allen Sonderzeichen: Wer dort Jürgen heißt, ist im Formular nicht Juergen. Außerdem stimmst du zu, dass das Phantasialand deine Angaben an die Stadt Brühl gibt, die sie mit dem Melderegister abgleicht. Hat die Stadt deine Angaben bestätigt, kommt das Ticket per E-Mail.
+Im Formular stehen Name, E-Mail-Adresse, Telefonnummer, Anschrift, Geburtsdatum und der gewünschte Besuchstag. Den Namen schreibst du genau so wie im Personalausweis, mit allen Sonderzeichen: Wer dort Jürgen heißt, ist im Formular nicht Juergen. Außerdem stimmst du zu, dass das Phantasialand deine Angaben an die Stadt Brühl gibt, die sie mit dem Melderegister abgleicht. Das Ticket schickt dir das Phantasialand danach per E-Mail.
 
-Jeder Besuchstag hat ein begrenztes Kontingent, und einen Ersatztag für einen vollen Wunschtag stellt das Phantasialand nirgends in Aussicht. Auch deshalb lohnt es sich nicht, bis zum 15. zu warten.
+Jeder Besuchstag hat ein begrenztes Kontingent. Von einem Ersatztag, falls deiner voll ist, steht auf der Anmeldeseite nichts.
 
 ```cta-widget
 href: https://www.phantasialand.de/de/euer-bruehler-wintertraum/
@@ -78,9 +76,9 @@ text: Halte den Personalausweis bereit, Anmeldeschluss ist der 15. Dezember 2026
 
 ## Am Eingang und im Park
 
-Das Ticket ist nicht übertragbar und gilt nur zusammen mit einem gültigen Nachweis deines Wohnsitzes. Welches Dokument dafür gilt, nennt das Phantasialand nicht. Ich würde den Personalausweis einstecken, weil deine Anschrift darin steht und du den Namen schon nach ihm ins Formular geschrieben hast.
+Das Ticket ist nicht übertragbar und gilt nur zusammen mit einem gültigen Nachweis deines Wohnsitzes. Eine Liste der gültigen Nachweise gibt es nicht. Ich würde den Personalausweis einstecken, weil deine Anschrift darin steht und du den Namen schon nach ihm ins Formular geschrieben hast.
 
-Der Wintertraum öffnet um 11 Uhr und schließt um 20 Uhr. Die Shows des Abends und die Bahnen, die im Winter fahren, findest du in unserem [Guide zum Wintertraum](/blog/phantasialand-wintertraum). Gegen 19:50 Uhr steigt über dem Kaiserplatz das Feuerwerk von MAGIC SYMPHONY. Ob es stattfindet, hängt vom Wetter ab.
+Der Wintertraum öffnet um 11 Uhr und schließt um 20 Uhr. Die Shows des Abends und die Bahnen, die im Winter fahren, findest du in unserem [Guide zum Wintertraum](/blog/phantasialand-wintertraum). Gegen 19:50 Uhr steigt über dem Kaiserplatz das Feuerwerk von MAGIC SYMPHONY, wenn das Wetter es zulässt.
 
 ## Begleitung von außerhalb
 
@@ -88,6 +86,6 @@ Freunde und Verwandte, die nicht in Brühl gemeldet sind, brauchen ein normales 
 
 ## 60 Jahre in Badorf
 
-Am 30. April 1967 eröffneten der Schausteller Gottlieb Löffelhardt und der Puppenspieler Richard Schmidt im Südwesten des Brühler Stadtteils Badorf, auf dem Höhenrücken der Ville, einen Märchenwald, aus dem das Phantasialand wurde. Mit Parkplätzen und Hotels kommt das Gelände auf rund 28 Hektar, der Park selbst auf etwa 12. Durch den Park von heute führt unser [Guide zum Phantasialand](/blog/phantasialand-tipps).
+Am 30. April 1967 eröffneten der Schausteller Gottlieb Löffelhardt und der Puppenspieler Richard Schmidt im Südwesten des Brühler Stadtteils Badorf, auf dem Höhenrücken der Ville, einen Märchenwald, aus dem das Phantasialand wurde. Heute hat der Park etwa 12 Hektar, mit Parkplätzen und Hotels rund 28, und alles liegt weiter in Brühl. Für den Park von heute gibt es unseren [Guide zum Phantasialand](/blog/phantasialand-tipps).
 
 Quellen: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informationen und Anreise (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Ferienordnung NRW (Schulministerium)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).
