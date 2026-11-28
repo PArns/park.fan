@@ -137,8 +137,8 @@ test(
   () => Object.keys(hourlyDayPoints(berlin, '2026-11-28').points[0]).sort(),
   ['isDay', 'precipitationMm', 'precipitationProbability', 'temperatureC', 'time', 'weatherCode']
 );
-test('a day the answer does not hold is null', () => hourlyDayPoints(berlin, '2026-11-27'), null);
-test('a day past the horizon is null', () => hourlyDayPoints(berlin, '2026-12-14'), null);
+test('a day before the answer’s first is null', () => hourlyDayPoints(berlin, '2026-11-27'), null);
+test('a day after the answer’s last is null', () => hourlyDayPoints(berlin, '2026-12-14'), null);
 test(
   'a day without hours is null',
   () =>
