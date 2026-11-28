@@ -71,9 +71,12 @@ published entry, every published, non-reconstructed entry's heading in `docs/cha
 same date, no `## Unreleased` section, every fragment foldable as it stands
 (`scripts/lib/changelog-fragments.mjs`), no skeleton `TODO` in a published entry, every highlight in
 the media database. `scripts/check-prose.mjs --only=changelog` applies [the writing rules](../writing/README.md) to
-the entries, the honesty family as an error, and one rule of the changelog's own: a list item may not
-open on bold. `pnpm test:changelog-fragments` runs a whole cut in a scratch directory. Whether an
-entry says what a visitor gets is the PO's read.
+the entries, the honesty family as an error and the patterns of
+[§2.20](../writing/2-20-check-patterns.md) on every bullet, and two rules of the changelog's own: a
+list item may not open on bold (an error), and three bullets under `## Fixed` may not close on `now`
+or `before` (a warning, [§5.8](../writing/5-site-copy.md#58-the-public-changelog-contentchangelog)).
+`pnpm test:changelog-fragments` runs a whole cut in a scratch directory. Whether an entry says what
+a visitor gets is the PO's read.
 
 The page is `/en/changelog`, English only; `/changelog` and the other locale spellings are 308s in
 `next.config.ts` `redirects()`, which runs before the proxy. Authoring contract for the entries:

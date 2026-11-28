@@ -25,8 +25,9 @@ a paragraph or a neighbouring block. Numbers 21, 39 and 67 are not rules: 21 is 
 opens a line, an error under §4.4; 39 is the caption pass; 67 (an example from the rulebook copied
 into a post) fired on the wording the rulebook recommends and was dropped.
 
-Three more named warnings live with the rule they enforce: `news-outlet-attribution` (§5.0),
-`withheld-as-said` (§1.9) and `excerpt-length` (§5.4).
+Four more named warnings live with the rule they enforce: `news-outlet-attribution` (§5.0),
+`withheld-as-said` (§1.9), `excerpt-length` (§5.4) and `fixed-now-refrain` (§5.8). On the public
+changelog every rule reads each bullet as a paragraph (§5.8).
 
 ## The rules
 
@@ -94,7 +95,7 @@ Three more named warnings live with the rule they enforce: `news-outlet-attribut
 - **#64 `weather-caveat`** (1 sentence; all six, captions). The bad-weather caveat that fits every ride in every park. `Bei extremem Wetter kann in beiden Parks jede Bahn im Freien … schließen.`
 - **#65 `pair-ellipsis`** (6 pairs, or 1 percentage; de en). The second half of a comparison without its verb, or a bare percentage. `…, im Europa-Park an 16 Prozent`
 - **#66 `publish-day-snapshot`** (1 sentence; de en). The post's own `date` with a time of day, outside a `Stand …` stamp (§3.3, rule 15). `am 22. Oktober um 22 Uhr`
-- **#68 `brochure-span`** (1 sentence; de en, captions). A `von … bis …` range with no figure in it. `von der spanischen Finca bis zum Leuchtturm aus Neuengland`
+- **#68 `brochure-span`** (1 sentence; de en, captions). A `von … bis …` range with no figure in it. `von der spanischen Finca bis zum Leuchtturm aus Neuengland` Also a pair of bare nouns on each end, as in the draft of the 2.20.0 changelog: `from rope drop and single rider to maintenance and out of season`. With `to` inside a pair it is a path and stays: `from continent to country and city down to a single park`.
 - **#69 `record-triple`** (3 sentences; de en). Three superlatives as a formula, or `all three records`; a post about records is left out. `holds all three records`
 - **#70 `name-history-series`** (3 sentences; de en es). The history of a ride's name, ride after ride. `Bis 2004 hieß sie Wild Wild West` In Spanish the apposition counts too: `, hasta 2018 SkyScreamer,`, `, antes Roller Skater,`, `primero como Tony Hawk’s Big Spin y luego como Pandemonium`.
 - **#71 `since-template`** (4, and 3 per 1,000 words; de en es). `ist/fährt/hält seit …`, `has held … since`. `has held all three Dutch records since 2002` In Spanish `funciona desde el 14 de abril de 2000`, five times in one coaster chapter.

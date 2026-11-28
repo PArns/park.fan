@@ -43,6 +43,7 @@ import {
   TAILS,
   WATCH,
   captionFindings,
+  changelogFindings,
   isNews,
   oldSpellings,
   slopFindings,
@@ -1424,6 +1425,14 @@ function databaseProse(file, raw, body, locale) {
       warn(file, `${field} lists the post's chapters (§5.4) — "${value.slice(0, 70)}…"`);
 }
 
+/** The §2.20 patterns that fired on one file, one warning per rule with its first hit. */
+function reportSlop(file, findings) {
+  for (const { rule, section, hits } of findings) {
+    warn(file, `${rule} (${section}), ${hits.length}×: "${hits[0].slice(0, 90)}"`);
+    for (const hit of hits) ruleHit(rule, file, hit);
+  }
+}
+
 function scan(file, raw, { subject, skip = [] } = {}) {
   // A phrase wrapped across two lines (`datos\n    reales` in YAML, a hard-wrapped paragraph)
   // is the same phrase: every list below is written with plain spaces.
@@ -1483,10 +1492,7 @@ for (const locale of runs('blog') ? LOCALES : []) {
     );
     researchVoice(file, raw, locale);
     databaseProse(file, raw, body, locale);
-    for (const { rule, section, hits } of slopFindings(raw, locale, plainTextFields(raw))) {
-      warn(file, `${rule} (${section}), ${hits.length}×: "${hits[0].slice(0, 90)}"`);
-      for (const hit of hits) ruleHit(rule, file, hit);
-    }
+    reportSlop(file, slopFindings(raw, locale, plainTextFields(raw)));
     const werktag = werktagSentences(`${body}\n\n${frontAndImages}`, locale);
     for (const hit of werktag) ruleHit('werktag-meaning', file, hit);
     if (werktag.length)
@@ -1986,11 +1992,13 @@ for (const route of HEADER_ROUTES) {
 
 /*
  * `content/changelog/<version>.md` is English, and every sentence in it is about us, so it is read
- * the way a catalog string is: the honesty family is an error, not a candidate. One rule is the
- * changelog's own. 2.12.0 shipped with every one of its twenty bullets opening on a bold phrase and
- * a full stop (`- **The day ends when the park closes.** The grid read …`), the chat-window layout
- * §4.2 names as the loudest formatting tell there is, and the collection's own README prescribed
- * it. A list item here is a sentence; bold is for a name or a number inside it.
+ * the way a catalog string is: the honesty family is an error, not a candidate. The patterns of
+ * §2.20 read each bullet as a paragraph (`changelogFindings()`); one of them, the refrain under
+ * `## Fixed`, is the changelog's own. So is one error: 2.12.0 shipped with every one of its twenty
+ * bullets opening on a bold phrase and a full stop (`- **The day ends when the park closes.** The
+ * grid read …`), the chat-window layout §4.2 names as the loudest formatting tell there is, and the
+ * collection's own README prescribed it. A list item here is a sentence; bold is for a name or a
+ * number inside it.
  *
  * The release structure (file names, versions, dates, `package.json`) is `pnpm check:changelog`.
  */
@@ -2019,10 +2027,11 @@ for (const name of runs('changelog') ? changelogFiles : []) {
       `${boldLeads} list item(s) open on bold (§4.2): write the sentence, bold only a name or a number`
     );
 
-  // The rules every page of ours gets (#683), then the changelog's own.
+  // The rules every page of ours gets (#683), the patterns of §2.20, then the changelog's own.
   hardRules(file, body, 'en');
   scan(file, body, { subject: 'us' });
   styleHabits(file, body, 'en');
+  reportSlop(file, changelogFindings(raw, plainTextFields(raw)));
 
   for (const [field, value] of plainTextFields(raw)) {
     if (value.includes('—')) fail(file, `${field}: em dash (§4.1)`);

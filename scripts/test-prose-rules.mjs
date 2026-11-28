@@ -14,6 +14,7 @@ import {
   WATCH,
   blocks,
   captionFindings,
+  changelogFindings,
   oldSpellings,
   slopFindings,
   splitSentences,
@@ -1485,6 +1486,22 @@ yes(
 );
 yes('brochure-span', 'The hotels range from a Spanish finca to a New England lighthouse.', 'en');
 no('brochure-span', 'Die Warteschlange bleibt von der Öffnung bis zum Abend gleich lang.');
+// …and a pair of bare nouns on each end, but not a path through the site or a span of figures
+yes(
+  'brochure-span',
+  'A ride in his answer carries the ride page’s badges, from rope drop and single rider to maintenance and out of season.',
+  'en'
+);
+yes(
+  'brochure-span',
+  'Eine Bahn in seiner Antwort trägt die Abzeichen der Bahnseite, von Rope Drop und Single Rider bis zu Wartung und außer Saison.'
+);
+no(
+  'brochure-span',
+  'Pages go from continent to country and city down to a single park and ride.',
+  'en'
+);
+no('brochure-span', 'The queue grew from 10 and 15 minutes to 40 and 45 minutes.', 'en');
 
 // 69 record-triple
 yes(
@@ -2851,6 +2868,23 @@ assert.equal(
   null
 );
 
+// …the plan and the planner's details in a changelog bullet, the details only with their verb
+cases += 4;
+assert.equal(
+  'The plan puts each park on the day of your trip with the shortest queues.'.match(PRODUCT_SUBJECT)
+    .length,
+  1
+);
+assert.equal(
+  'The details show what a Park Hopper would add on which dates.'.match(PRODUCT_SUBJECT).length,
+  1
+);
+assert.equal('Die Details zeigen, was ein Park Hopper bringt.'.match(PRODUCT_SUBJECT).length, 1);
+assert.equal(
+  'whilst preserving the details that give it its character'.match(PRODUCT_SUBJECT),
+  null
+);
+
 // 4 handoff-object-first: `stellen … vor`, `veröffentlicht`, `Our guides … go through`
 yes(
   'handoff-object-first',
@@ -3762,6 +3796,67 @@ no(
   `---\ncategory: news\n---\n\nDas Efteling verkauft jetzt Karten für seinen Silvesterabend am 31. Dezember.`,
   'de',
   [['excerpt', 'Das Efteling verkauft jetzt Karten für seinen Silvesterabend am 31. Dezember.']]
+);
+
+// The public changelog: every bullet is read as a paragraph, so the patterns reach it (§5.8)
+const entry = (sections) =>
+  `---\nversion: '9.9.0'\nsummary: >\n  One paragraph.\nmode: published\nhighlights:\n  - image: changelog/x\n---\n\n${Object.entries(
+    sections
+  )
+    .map(([heading, bullets]) => `## ${heading}\n\n${bullets.map((b) => `- ${b}`).join('\n')}`)
+    .join('\n\n')}\n`;
+const inChangelog = (id, md, expected) => {
+  cases++;
+  assert.equal(
+    changelogFindings(md).some((f) => f.rule === id),
+    expected,
+    `${id} should ${expected ? 'fire' : 'stay quiet'} on the changelog entry:\n${md}`
+  );
+};
+inChangelog(
+  'brochure-span',
+  entry({
+    New: [
+      'A ride in his answer carries the ride page’s badges, from rope drop and single rider to\n  maintenance and out of season.',
+    ],
+  }),
+  true
+);
+// Every sentence of the changelog is about park.fan, as in a post filed under `park-fan`.
+inChangelog(
+  'product-opener-series',
+  entry({
+    New: [
+      'The trip planner puts each park on its quietest day.',
+      'The trip planner reads your tickets.',
+      'The trip planner marks party nights.',
+      'The trip planner adds an evening idea.',
+      'The trip planner shares a link to the plan.',
+    ],
+  }),
+  false
+);
+
+// fixed-now-refrain (§5.8): bullet after bullet under Fixed closes on now or before
+const refrain = [
+  'The weather chart and its legend ran off the side of a 360 px phone. Both fit the screen now.',
+  'The day planner put the last show of the day at midnight. It now stands at the end of the day.',
+  'Saved shows and restaurants opened an empty page. Their links pointed nowhere before.',
+];
+inChangelog('fixed-now-refrain', entry({ Fixed: refrain }), true);
+inChangelog('fixed-now-refrain', entry({ Fixed: refrain.slice(0, 2) }), false);
+inChangelog('fixed-now-refrain', entry({ Improved: refrain }), false);
+// A bullet of one sentence that says what works now is the fix itself, not a refrain.
+inChangelog(
+  'fixed-now-refrain',
+  entry({
+    Fixed: [
+      'Saved shows now lead to their park’s shows.',
+      'The day planner now puts the last show at the end of the day.',
+      'The weather chart now fits a 360 px phone, legend included.',
+    ],
+  }),
+  false
 );
 
 // Spanish, since the critic read of the Spanish guide: 8, 14, 70, 71, 73, 119

@@ -23,9 +23,10 @@
  * `pnpm test:prose-rules` holds one positive and one negative case per rule, with the sentences
  * the critic quoted as fixtures.
  *
- * Two rules here belong to other sections of docs/writing/, because they are rules Patrick set
- * rather than patterns the critic counted: `news-outlet-attribution` (§5.0) and
- * `withheld-as-said` (§1.9).
+ * Some rules here belong to other sections of docs/writing/, because they are rules Patrick set
+ * or belong to one surface: `news-outlet-attribution` (§5.0), `withheld-as-said` (§1.9),
+ * `excerpt-length` (§5.4) and `fixed-now-refrain` (§5.8), which only a changelog entry can trip.
+ * `changelogFindings()` runs every rule over such an entry.
  */
 
 /* ------------------------------------------------------------------ shared helpers */
@@ -441,10 +442,12 @@ export const TAILS = {
  * compounds count since the guides of 2026-11-14 (`Der Reiseplaner zählt einen Tag als heiß`,
  * `The trip planner treats a day as hot`), and so does the plan it makes (`der Plan rechnet mit
  * dem frühen Einlass`) and our best-time pages in the plural (`die Seiten zur besten Reisezeit
- * rechnen dort mit dem Vorjahr`).
+ * rechnen dort mit dem Vorjahr`). The planner's "Details" panel counts only with its verb right
+ * after it (`The details show what a Park Hopper would add`): with words in between it would count
+ * a quoted press release (`preserving the details that give it its character`).
  */
 export const PRODUCT_SUBJECT =
-  /\b(?:(?:der|the) (?:reiseplaner|tagesplaner|planer|kompass|assistent|plan|trip planner|day planner|planner|compass|assistant) (?:weiß|knows|(?!(?:ist|is|in|im|auf|on|of|von|zu|to|mit|with|als|as|und|and|oder|or|nicht|not|bis|its|seine?|for|für|was|war)\b)\p{Ll}+[ts])|(?:die seiten zur besten reisezeit|the best-time pages) (?:\p{L}+ ){0,4}?(?:rechnen|zählen|nennen|zeigen|work|count|show|list|give))\b/giu;
+  /\b(?:(?:der|the) (?:reiseplaner|tagesplaner|planer|kompass|assistent|plan|trip planner|day planner|planner|compass|assistant) (?:weiß|knows|(?!(?:ist|is|in|im|auf|on|of|von|zu|to|mit|with|als|as|und|and|oder|or|nicht|not|bis|its|seine?|for|für|was|war)\b)\p{Ll}+[ts])|(?:die seiten zur besten reisezeit|the best-time pages) (?:\p{L}+ ){0,4}?(?:rechnen|zählen|nennen|zeigen|work|count|show|list|give)|(?:die details|the details) (?:zeigen|nennen|listen|show|list|give|name|tell))\b/giu;
 
 /* ------------------------------------------------------------------ the rules */
 
@@ -1344,9 +1347,23 @@ const CLOCK_AFTER = {
   en: /^[^.]{0,25}?(?<!\p{L})(?:at \d{1,2}(?:[.:]\d\d)?\s?(?:am|pm|h)?|at noon|around noon|at midday|in the (?:morning|afternoon|evening))(?!\p{L})/iu,
 };
 
+/**
+ * The span also takes a pair of bare nouns on each end, the shape a list of features takes:
+ * `from rope drop and single rider to maintenance and out of season`. Neither pair may hold a span
+ * word, so `from continent to country and city down to a single park` stays a path.
+ */
+const SPAN_WORD = String.raw`(?!(?:von|bis|from|to)(?!\p{L}))\p{L}[\p{L}'’-]*`;
+const spanPair = (and) =>
+  String.raw`(?:${SPAN_WORD} ){0,2}?${SPAN_WORD} ${and} (?:${SPAN_WORD} ){0,2}?${SPAN_WORD}`;
 const BROCHURE_SPAN = {
-  de: /(?<!\p{L})von (?:der|dem|einer|einem) (?:\p{Ll}+ )?\p{Lu}\p{L}+ (?:\p{L}+ ){0,3}?bis (?:zum|zur|zu einer|zu einem) (?:\p{Ll}+ )?\p{Lu}\p{L}+/u,
-  en: /(?<!\p{L})from an? (?:\p{L}+ ){1,3}?to an? (?:\p{L}+ ){0,3}?\p{L}+/u,
+  de: new RegExp(
+    String.raw`(?<!\p{L})von (?:(?:der|dem|einer|einem) (?:\p{Ll}+ )?\p{Lu}\p{L}+ (?:\p{L}+ ){0,3}?bis (?:zum|zur|zu einer|zu einem) (?:\p{Ll}+ )?\p{Lu}\p{L}+|${spanPair('und')} bis (?:zu |zum |zur )?${spanPair('und')}(?!\p{L}))`,
+    'u'
+  ),
+  en: new RegExp(
+    String.raw`(?<!\p{L})from (?:an? (?:\p{L}+ ){1,3}?to an? (?:\p{L}+ ){0,3}?\p{L}+|${spanPair('and')} to ${spanPair('and')}(?!\p{L}))`,
+    'u'
+  ),
 };
 
 /** `von der Öffnung bis zum Abend` is a span of the day, not a catalogue. */
@@ -2145,6 +2162,11 @@ function echoShare(a, b) {
   const B = contentWords(b);
   return A.size < 4 || B.size < 4 ? 0 : jaccard(A, B);
 }
+
+/** The state after a fix or before it, as the last word of a changelog bullet (§5.8). */
+const FIXED_STATE_END = /(?<!\p{L})(?:now|before)\.$/iu;
+/** `now` as a word of its own, so `nowhere` is not the state after the fix. */
+const NOW = /(?<!\p{L})now(?!\p{L})/iu;
 
 export const SLOP_RULES = [
   {
@@ -4547,8 +4569,8 @@ export const SLOP_RULES = [
     // Five per post; a post about park.fan, where the tool is the topic, is left out.
     locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 5,
-    run({ bs, locale, raw }) {
-      if (isAboutUs(raw)) return [];
+    run({ bs, locale, aboutUs }) {
+      if (aboutUs) return [];
       return paragraphs(beforeFaq(bs)).flatMap((b) =>
         splitSentences(b.text).filter((s) => PRODUCT_OPENER[locale].test(s))
       );
@@ -4564,8 +4586,8 @@ export const SLOP_RULES = [
     // Reiseplaner`) follows the reader and stays. Three paragraphs; a post about park.fan is left out.
     locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 3,
-    run({ bs, locale, raw }) {
-      if (isAboutUs(raw)) return [];
+    run({ bs, locale, aboutUs }) {
+      if (aboutUs) return [];
       return paragraphs(beforeFaq(bs))
         .map((b) => lastSentence(b.text))
         .filter((s) => {
@@ -4761,8 +4783,8 @@ export const SLOP_RULES = [
     // byline that says `wir` elsewhere. One per post; a post about park.fan is exempt.
     locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 1,
-    run({ bs, locale, raw }) {
-      if (/^category:\s*['"]?park-fan\b/m.test(raw)) return [];
+    run({ bs, locale, aboutUs }) {
+      if (aboutUs) return [];
       return paragraphs(bs).flatMap((b) =>
         splitSentences(b.text).filter((s) => SITE_MEASURED[locale].test(s))
       );
@@ -4887,18 +4909,53 @@ export const SLOP_RULES = [
       return intro.filter((s) => lead.some((e) => echoShare(e, s) >= ECHO_MIN_JACCARD));
     },
   },
+  {
+    id: 'fixed-now-refrain',
+    section: '§5.8',
+    // `Both fit the screen now.`, `It now stands at the end of the day.`, `Their links pointed
+    // nowhere before.`: bullet after bullet under `## Fixed` closes on the state after the fix or
+    // the one before it, which the heading has already said. A bullet counts when its last sentence
+    // ends on `now` or `before`, or has `now` in it after a sentence about the fault. Only a
+    // changelog entry has the heading.
+    locales: ['en'],
+    min: 3,
+    run({ bs }) {
+      const fixed = chaptersOf(bs).find((c) => c.heading?.text === 'Fixed');
+      return paragraphs(fixed?.blocks ?? [])
+        .map((b) => splitSentences(b.text))
+        .filter((s) => FIXED_STATE_END.test(s.at(-1)) || (s.length > 1 && NOW.test(s.at(-1))))
+        .map((s) => s.at(-1));
+    },
+  },
 ];
+
+function findings(ctx, rules) {
+  return rules
+    .filter((r) => r.locales.includes(ctx.locale))
+    .map((r) => ({ rule: r.id, section: r.section, min: r.min, hits: r.run(ctx) }))
+    .filter((f) => f.hits.length >= f.min);
+}
 
 /**
  * Every pattern that fires on one post, as `{ rule, section, hits }`. `fields` is the frontmatter's
  * plain-text fields (`plainTextFields()` in `check-prose.mjs`); `rules` lets a test run one rule.
  */
 export function slopFindings(raw, locale, fields = [], rules = SLOP_RULES) {
-  const ctx = { bs: blocks(raw), locale, fields, raw };
-  return rules
-    .filter((r) => r.locales.includes(locale))
-    .map((r) => ({ rule: r.id, section: r.section, min: r.min, hits: r.run(ctx) }))
-    .filter((f) => f.hits.length >= f.min);
+  return findings({ bs: blocks(raw), locale, fields, raw, aboutUs: isAboutUs(raw) }, rules);
+}
+
+/**
+ * Every pattern that fires on one entry of the public changelog (`content/changelog/`, English), as
+ * `slopFindings()` returns them. An entry is bullets under `## New`, `## Improved` and `## Fixed`,
+ * and the rules read paragraphs, so each bullet is read as one. The summary is left out: it repeats
+ * the bullets by design. Every sentence there is about park.fan, so the rules that leave out a post
+ * about park.fan leave the changelog out too.
+ */
+export function changelogFindings(raw, fields = []) {
+  const bullets = raw
+    .replace(/^---\n[\s\S]*?\n---\n/, '')
+    .replace(/^[ \t]*(?:[-*+]|\d+\.)[ \t]+/gm, '\n');
+  return findings({ bs: blocks(bullets), locale: 'en', fields, raw, aboutUs: true }, SLOP_RULES);
 }
 
 /**
