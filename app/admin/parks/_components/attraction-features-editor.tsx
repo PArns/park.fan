@@ -4,8 +4,14 @@ import { useMemo, useState } from 'react';
 import { ListChecks, Loader2, Save, TriangleAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import {
+  attractionKindLabel,
+  curatedFieldOptions,
+  shownAttractionKind,
+} from '@/lib/admin/attraction-kind';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
 import type { AdminAttractionListItem, AdminParkDetail, CuratedFieldSpec } from '../../_lib/types';
+import { useServedAttractionKinds } from '../../_lib/use-served-attraction-kinds';
 import {
   EmptyState,
   ErrorState,
@@ -94,9 +100,6 @@ function parkFastPass(park: AdminParkDetail) {
   };
 }
 
-/** German labels for the `attractionKind` values the API lists; an unknown value shows as itself. */
-const ATTRACTION_KIND_LABELS: Record<string, string> = { MAZE: 'Halloween-Maze' };
-
 /** The park editor's table for ride features such as fast pass or single rider, ride by ride. */
 export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
   const canEdit = useCan('editor');
@@ -116,11 +119,7 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
     adminKeys.fields,
     '/api/admin/content/fields'
   );
-  const optionsFor = (key: FieldKey) =>
-    (specs.data?.attraction.find((spec) => spec.key === key)?.options ?? []).map((option) => ({
-      value: option,
-      label: (key === 'attractionKind' && ATTRACTION_KIND_LABELS[option]) || option,
-    }));
+  const optionsFor = (key: FieldKey) => curatedFieldOptions(specs.data?.attraction, key);
 
   const rows = useMemo(() => attractions.data?.attractions ?? [], [attractions.data]);
   const base = useMemo(() => {
@@ -130,6 +129,7 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
   }, [rows]);
 
   const [column, setColumn] = useState<Column>('fastPass');
+  const served = useServedAttractionKinds(park.id, column === 'kind' ? park.path : null);
   const [overrides, setOverrides] = useState<Record<string, Partial<RowState>>>({});
   const [reason, setReason] = useState('');
   const [sourceUrl, setSourceUrl] = useState('');
@@ -158,6 +158,12 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
   const countSet = (field: FieldKey) =>
     Object.values(draft).filter((row) => isSet(row[field])).length;
   const flagged = countSet('hasFastPass');
+  /** The API's guess for a row nobody has decided, or null; an edit in the draft counts. */
+  const derivedKind = (id: string) => {
+    const shown = shownAttractionKind(draft[id]?.attractionKind, served[id]);
+    return shown?.derived ? shown.kind : null;
+  };
+  const derivedCount = rows.filter((row) => derivedKind(row.id) !== null).length;
 
   function setRow(id: string, next: Partial<RowState>) {
     setOverrides((current) => ({
@@ -271,19 +277,34 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
             disabled={disabled || !specs.isSuccess}
           />
         );
-      case 'kind':
+      case 'kind': {
+        const derived = derivedKind(row.id);
         return (
-          <Select
-            value={state.attractionKind}
-            onValueChange={(attractionKind) => setRow(row.id, { attractionKind })}
-            options={optionsFor('attractionKind')}
-            emptyLabel="— nicht entschieden —"
-            className="w-40"
-            // Without the option list a stored value shows as "—", and the only
-            // pick left would clear it.
-            disabled={disabled || !specs.isSuccess}
-          />
+          <>
+            {derived && (
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={() => setRow(row.id, { attractionKind: derived })}
+                disabled={disabled || !specs.isSuccess}
+              >
+                Übernehmen
+              </Button>
+            )}
+            <Select
+              value={state.attractionKind}
+              onValueChange={(attractionKind) => setRow(row.id, { attractionKind })}
+              options={optionsFor('attractionKind')}
+              placeholder={derived ? `abgeleitet: ${attractionKindLabel(derived)}` : undefined}
+              emptyLabel="— nicht entschieden —"
+              className="w-52"
+              // Without the option list a stored value shows as "—", and the only
+              // pick left would clear it.
+              disabled={disabled || !specs.isSuccess}
+            />
+          </>
         );
+      }
     }
   }
 
@@ -297,7 +318,9 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
             ? park_.name
               ? `${park_.name}${park_.currency ? ` · ${park_.currency}` : ''} · ${flagged} von ${rows.length} Bahnen`
               : `Ohne Namen heißt das Produkt überall „Fast Pass" · ${flagged} von ${rows.length} Bahnen`
-            : `${active.label} · ${countSet(active.field)} von ${rows.length} Bahnen gesetzt`
+            : `${active.label} · ${countSet(active.field)} von ${rows.length} Bahnen gesetzt${
+                column === 'kind' && derivedCount > 0 ? `, ${derivedCount} abgeleitet` : ''
+              }`
         }
       />
 

@@ -274,6 +274,19 @@ export interface AbsenceRetiredUnreviewed {
   lastReading: string | null;
 }
 
+/**
+ * A park with live attractions that neither an editor nor the API's rule gave a kind. Retired
+ * attractions are left out, and a park whose every attraction has one is not listed.
+ */
+export interface AttractionsWithoutKind {
+  parkId: string;
+  parkName: string;
+  /** Live attractions of the park, with a kind or without. */
+  attractions: number;
+  /** Resolved names of the ones without a kind, alphabetical; the report sends no ids. */
+  withoutKind: string[];
+}
+
 /** A job that keeps failing, with the reason Bull gave last. */
 export interface FailingJob {
   queue: string;
@@ -290,4 +303,6 @@ export interface DataQualityReport {
   failingJobs: FailingJob[];
   /** Absent from an API that does not send it yet. */
   absenceRetiredUnreviewed?: AbsenceRetiredUnreviewed[];
+  /** Most attractions without a kind first. Absent from an API that does not send it yet. */
+  attractionsWithoutKind?: AttractionsWithoutKind[];
 }

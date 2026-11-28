@@ -417,7 +417,7 @@ export async function GET(
   }
 
   // What the ride page needs to name a shorter queue nearby and the live poll leaves out: where
-  // each ride is, its type and its minimum height. Day-stable like `positions`.
+  // each ride is, its type, its minimum height and its kind. Day-stable like `positions`.
   if (path && path.length === 5 && path[4] === 'ride-alternatives') {
     const [continent, country, city, park] = path;
 
@@ -434,6 +434,7 @@ export async function GET(
         longitude: typeof a.longitude === 'number' ? a.longitude : null,
         types: a.rideProfile?.types ?? [],
         minimumHeight: a.minimumHeight ?? null,
+        attractionKind: a.attractionKind ?? null,
       }));
 
       return NextResponse.json({ rides }, { headers: cdnCacheHeaders(RIDE_STATS_CACHE_CONTROL) });

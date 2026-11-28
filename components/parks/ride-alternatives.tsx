@@ -82,6 +82,7 @@ function RideAlternativesList({
       longitude: info(a.slug)?.longitude ?? null,
       types: info(a.slug)?.types ?? [],
       minimumHeight: info(a.slug)?.minimumHeight ?? null,
+      kind: info(a.slug)?.attractionKind ?? null,
     }));
     const here = info(attractionSlug);
     return rankRideAlternatives(
@@ -91,6 +92,7 @@ function RideAlternativesList({
         latitude: here?.latitude ?? null,
         longitude: here?.longitude ?? null,
         types: here?.types ?? [],
+        kind: here?.attractionKind ?? null,
       },
       candidates
     );

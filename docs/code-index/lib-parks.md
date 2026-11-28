@@ -176,6 +176,7 @@ Which two days of a park's calendar are being compared, across a change of month
 - `rankRideAlternatives` _function_: Up to three open rides of the same park that are at least 15 minutes shorter than the ride the visitor is looking at: same ride type first, then the rest, each group nearest first.
 - `MIN_ALTERNATIVE_SAVING_MIN` _const_: An alternative must save at least this many minutes (on the displayed, rounded waits).
 - `MAX_ALTERNATIVES` _const_: How many alternatives the ride page names.
+- `KINDS_WITHOUT_A_SWAPPABLE_QUEUE` _const_: Kinds whose posted wait is not a queue to swap a ride's for: a railway's follows its timetable, a show's counts down to the next performance, and a game has no ride behind it. Such a candidate is only offered for a ride of the same kind.
 - Types: `AlternativeCandidate`, `RideAlternative`
 
 ### [`ride-openings.ts`](../../lib/parks/ride-openings.ts)

@@ -273,7 +273,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-ride-alternative-meta.ts`](../../lib/hooks/use-ride-alternative-meta.ts)
 
-- `useRideAlternativeMeta` _hook_: Position, ride type and minimum height of every ride in a park, keyed by slug: the part of „a shorter queue nearby" that the lean live poll does not carry. The answer is day-stable on both ends, so it is fetched once per tab.
+- `useRideAlternativeMeta` _hook_: Position, ride type, minimum height and kind of every ride in a park, keyed by slug: the part of „a shorter queue nearby" that the lean live poll does not carry. The answer is day-stable on both ends, so it is fetched once per tab.
 - Types: `RideAlternativeMeta`
 
 ### [`use-ride-day-curve.ts`](../../lib/hooks/use-ride-day-curve.ts)
