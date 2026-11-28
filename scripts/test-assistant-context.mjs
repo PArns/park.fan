@@ -1069,10 +1069,94 @@ check(
   'the button sets the interview on its first step'
 );
 check(interviewStore.getSnapshot(), interviewStore.getSnapshot(), 'one snapshot between writes');
-check(takeInterviewKickoff(), 'day', 'its first question waits for the window');
+check(takeInterviewKickoff(), { kind: 'day' }, 'its start waits for the window');
 check(takeInterviewKickoff(), null, 'once');
+startInterview({ kind: 'day', park: 'phantasialand', parkName: 'Phantasialand' });
+check(
+  takeInterviewKickoff(),
+  { kind: 'day', parkName: 'Phantasialand' },
+  "the park's name waits with it"
+);
+check(interviewStore.getSnapshot().park, 'phantasialand', 'and stays out of the state');
 interviewStore.set(null);
 check(interviewStore.getSnapshot(), null, 'ended');
+
+// --- The interview's first question, worded without a model ---
+const { interviewKickoff } = await import('@/lib/assistant/interview-kickoff.ts');
+const interviewAt = (start) => ({
+  step: start.kind === 'trip' ? 'region' : 'day',
+  answered: [],
+  skipped: [],
+  mustDoRides: [],
+  source: 'planner',
+  ...start,
+});
+// 2026-11-26 is a Thursday.
+const kickoffContext = { plannedParks: [], today: '2026-11-26' };
+const tripKickoff = interviewKickoff(interviewAt({ kind: 'trip', region: 'japan' }), {
+  ...kickoffContext,
+  tripDates: { from: '2026-12-16', to: '2026-12-17' },
+});
+check(
+  [tripKickoff.interview.step, tripKickoff.interview.answered, tripKickoff.ask],
+  ['dates', ['region'], 'askDatesHeld'],
+  "a trip from a hub's button: the region is settled, the planner's dates are confirmed"
+);
+check(
+  interviewKickoff(interviewAt({ kind: 'trip', region: 'japan' }), kickoffContext).ask,
+  'askDates',
+  'without dates in the planner the dates are asked'
+);
+check(
+  interviewKickoff(interviewAt({ kind: 'trip' }), kickoffContext),
+  null,
+  'a trip without a region is left to the model'
+);
+const mustDo = interviewKickoff(
+  interviewAt({ kind: 'day', park: 'phantasialand', date: '2026-12-05' }),
+  { ...kickoffContext, parkName: 'Phantasialand' }
+);
+check(
+  [mustDo.interview.step, mustDo.interview.answered, mustDo.ask],
+  ['mustdo', ['day'], 'askMustDo'],
+  "a day from the planner's column: park and day are settled, the rides are asked"
+);
+const whichDay = interviewKickoff(interviewAt({ kind: 'day', park: 'phantasialand' }), {
+  ...kickoffContext,
+  parkName: 'Phantasialand',
+});
+check(
+  [whichDay.interview.step, whichDay.interview.answered, whichDay.ask, whichDay.replies],
+  [
+    'day',
+    [],
+    'askDay',
+    [{ key: 'replyToday' }, { key: 'replyTomorrow' }, { weekdayOf: '2026-11-28' }],
+  ],
+  'a park without a day: today, tomorrow, the coming Saturday'
+);
+check(
+  interviewKickoff(interviewAt({ kind: 'day', park: 'phantasialand' }), {
+    ...kickoffContext,
+    parkName: 'Phantasialand',
+    today: '2026-11-27',
+  }).replies[2],
+  { weekdayOf: '2026-11-29' },
+  'on a Friday tomorrow is the Saturday, so the Sunday is offered'
+);
+check(
+  interviewKickoff(interviewAt({ kind: 'day', park: 'phantasialand' }), kickoffContext),
+  null,
+  'a park without its name is left to the model'
+);
+check(
+  interviewKickoff(interviewAt({ kind: 'day' }), {
+    ...kickoffContext,
+    plannedParks: ['Toverland', 'Efteling', 'Toverland'],
+  }).replies,
+  [{ park: 'Toverland' }, { park: 'Efteling' }, { park: 'Phantasialand' }],
+  "no park yet: the visitor's planned parks first, each once, then the big ones"
+);
 
 // --- A hub link as Parky writes it, in the reader's own segment ---
 const { regionHubPath } = await import('@/lib/assistant/links.ts');

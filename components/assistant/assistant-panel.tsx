@@ -48,7 +48,7 @@ import {
   suggestionKeysOf,
   type AssistantOpener,
 } from '@/lib/assistant/opener';
-import { yoursValues } from '@/lib/assistant/parky/yours';
+import { weekdayOf, yoursValues } from '@/lib/assistant/parky/yours';
 import { yoursHere } from '@/lib/assistant/parky/yours-here';
 import { AssistantSubtitle } from './assistant-subtitle';
 import { parkPathOf } from '@/lib/assistant/parky/easter-eggs';
@@ -69,6 +69,12 @@ import { AssistantReplies } from './assistant-replies';
 import { AssistantReceipts, ASSISTANT_DONE_CHIP_CLASS } from './assistant-receipt';
 import { AssistantInterviewBar } from './assistant-interview-bar';
 import { interviewStore, takeInterviewKickoff } from '@/lib/assistant/interview';
+import { interviewKickoff } from '@/lib/assistant/interview-kickoff';
+import { currentTripQuery } from '@/lib/assistant/trip-context';
+import { plannedDayRows } from '@/lib/planner/types';
+import { plannerStore } from '@/lib/planner/store';
+import { formatParkDayRange, parkDayOf } from '@/lib/utils/park-day';
+import { longDate } from '@/lib/planner/park-time';
 import { takeTripIdeaAsk } from '@/lib/assistant/trip-idea';
 import { takeParkyAsk } from '@/lib/assistant/ask';
 import { AssistantTripIdeaCard } from './assistant-trip-idea';
@@ -213,13 +219,57 @@ export function AssistantPanel({
     interviewStore.getServerSnapshot
   );
 
-  // The planner's interview button: its first question goes out once the window can send it.
-  const { send, phase } = chat;
+  // The planner's interview button: Parky's first question, worded here while the chat is still
+  // unasked, so a visitor who only looks costs no model call. In a chat under way the model asks.
+  const { send, openWith, unasked, phase } = chat;
   useEffect(() => {
     if (!open || session.state !== 'ready' || phase !== 'idle') return;
-    const kind = takeInterviewKickoff();
-    if (kind) {
-      void send(t(kind === 'trip' ? 'interview.kickoffTrip' : 'interview.kickoffDay'), 'interview');
+    const start = takeInterviewKickoff();
+    if (start) {
+      const interview = interviewStore.getSnapshot();
+      const trip = new URLSearchParams(interview?.region ? currentTripQuery(interview.region) : '');
+      const from = trip.get('from');
+      const to = trip.get('to');
+      const kickoff =
+        unasked && interview
+          ? interviewKickoff(interview, {
+              parkName: start.parkName,
+              ...(from && to && { tripDates: { from, to } }),
+              plannedParks: plannedDayRows(
+                Object.values(plannerStore.getSnapshot().parks),
+                locale
+              ).map((row) => row.name),
+              today: parkDayOf(Date.now(), undefined),
+            })
+          : null;
+      if (!kickoff) {
+        void send(
+          t(start.kind === 'trip' ? 'interview.kickoffTrip' : 'interview.kickoffDay'),
+          'interview'
+        );
+        return;
+      }
+      interviewStore.set(kickoff.interview);
+      openWith(
+        t(`interview.kickoff.${kickoff.ask}`, {
+          park: start.parkName ?? '',
+          date: kickoff.interview.date ? longDate(kickoff.interview.date, locale) : '',
+          dates: from && to ? formatParkDayRange(locale, from, to) : '',
+        }),
+        kickoff.replies.map((reply) =>
+          'park' in reply
+            ? reply.park
+            : 'weekdayOf' in reply
+              ? weekdayOf(reply.weekdayOf, locale).replace(/^./u, (first) =>
+                  first.toLocaleUpperCase(locale)
+                )
+              : t(`interview.kickoff.${reply.key}`)
+        )
+      );
+      trackSiteEvent('assistant_replies_shown', {
+        count: kickoff.replies.length,
+        context: 'interview',
+      });
       return;
     }
     // „Im Chat“ on one of the trip planner's ideas: the question, with the idea under the answer.
@@ -231,7 +281,7 @@ export function AssistantPanel({
     // A stamp, a tip or an empty state on the page asked about what it shows.
     const asked = takeParkyAsk();
     if (asked) void send(asked.question, 'context', undefined, undefined, undefined, asked.dayTip);
-  }, [open, session.state, phase, send, t]);
+  }, [open, session.state, phase, send, openWith, unasked, locale, t]);
 
   /** A receipt's undo goes through Parky's own, which leaves a plan the visitor changed since. */
   const undo = async (messageId: string, receipt: AssistantReceipt) => {
@@ -252,6 +302,10 @@ export function AssistantPanel({
    * asked in between, so the report can tell a look from a conversation.
    */
   const askedAtOpen = useRef(0);
+  const answering = useRef(false);
+  useEffect(() => {
+    answering.current = phase !== 'idle';
+  }, [phase]);
   const asked = chat.messages.filter((m) => m.role === 'user').length;
   const askedNow = useRef(asked);
   useEffect(() => {
@@ -270,7 +324,10 @@ export function AssistantPanel({
     askedAtOpen.current = askedNow.current;
     trackSiteEvent('assistant_opened', { source: openedBy });
     return () =>
-      trackSiteEvent('assistant_closed', { questions: askedNow.current - askedAtOpen.current });
+      trackSiteEvent('assistant_closed', {
+        questions: askedNow.current - askedAtOpen.current,
+        answering: answering.current,
+      });
   }, [open, openedBy]);
 
   // On a phone the window stands in what the browser shows: with the keyboard up iOS shows less
@@ -486,9 +543,12 @@ export function AssistantPanel({
               className="flex-1 space-y-3 overflow-y-auto overscroll-contain px-4 py-3 text-sm"
               aria-live="polite"
             >
-              <div className="bg-muted/60 w-fit max-w-[92%] rounded-2xl rounded-tl-sm px-3 py-2">
-                {greeting}
-              </div>
+              {/* A chat the widget opened with its own line starts there, not with the greeting. */}
+              {!chat.messages[0]?.local && (
+                <div className="bg-muted/60 w-fit max-w-[92%] rounded-2xl rounded-tl-sm px-3 py-2">
+                  {greeting}
+                </div>
+              )}
               {chat.messages.length === 0 && (
                 <div className="flex flex-wrap gap-2 pt-1">
                   {suggestions.map((suggestion) => (

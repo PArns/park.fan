@@ -6522,7 +6522,22 @@
         "mustdo": "Attracties die je wilt"
       },
       "kickoffTrip": "Plan mijn reis met me, vraag voor vraag.",
-      "kickoffDay": "Plan mijn parkdag met me, vraag voor vraag."
+      "kickoffDay": "Plan mijn parkdag met me, vraag voor vraag.",
+      "kickoff": {
+        "askPark": "Voor welk park plannen we?",
+        "askDay": "{park}, graag. Op welke dag ben je daar?",
+        "askMustDo": "{park}, {date}: welke attracties mag je niet missen?",
+        "askDates": "Dan plannen we je reis. Wanneer wil je gaan?",
+        "askDatesHeld": "In de planner staat {dates}. Blijft dat zo?",
+        "replyToday": "Vandaag",
+        "replyTomorrow": "Morgen",
+        "replyCoasters": "De grootste achtbanen",
+        "replyQuiet": "Waar het rustig is",
+        "replyUnsure": "Weet ik nog niet",
+        "replyDatesKeep": "Ja, dat klopt",
+        "replyDatesFind": "Zoek de rustigste dagen voor me",
+        "replyDatesSummer": "Volgende zomer"
+      }
     },
     "muteLines": "Tekstballonnen verbergen",
     "subtitle": "Je parkmaatje",

@@ -343,11 +343,22 @@ shows and arrival). The order is a guide: what a visitor says early is taken at 
   with no park chosen yet ([homepage](homepage.md#the-day-planner-with-parky)); for a visitor the
   rollout left out it leads to Parky's page instead. A press (`openInterview`) sets
   the interview on its first step (`startInterview`, which counts `assistant_interview_started`
-  with `source: planner`) and opens the window
-  (`openParky('interview')`), which sends „Plan meine Reise mit mir, Frage für Frage." as the
-  visitor's message once its session is ready (`takeInterviewKickoff`, `assistant_question` kind
-  `interview`). In the chat: asking for it, or the opener's `suggestInterview` and
-  `suggestInterviewHere`.
+  with `source: planner`) and opens the window (`openParky('interview')`). In the chat: asking for
+  it, or the opener's `suggestInterview` and `suggestInterviewHere`.
+- **The first question costs no model call.** Of the 18 interview chats kept in the last week of
+  November 2026, 11 ended after the first exchange, which was only Parky asking back. So once the
+  session is ready the window words that question itself (`interviewKickoff`,
+  `lib/assistant/interview-kickoff.ts`, the strings in `assistant.interview.kickoff`) and shows it
+  as Parky's line in place of the greeting, with replies under it (`openWith`, a message marked
+  `local`). What the planner already answers is not asked and counts as answered: a hub's button
+  settles the region and asks for the dates, as a confirmation where the planner on screen has
+  some; the day planner's column settles park and day and asks for the rides. A park without a
+  day gets „Heute", „Morgen" and the coming weekend day, a day without a park the visitor's
+  planned parks and three big ones. The visitor's first answer, a reply or typed, is the chat's
+  first question: it carries the line to the API as `opener`, which reads the answer against it.
+  In a chat that already has a question, or where the widget cannot word the question (a park
+  without its name), the window sends „Plan meine Reise mit mir, Frage für Frage." as the
+  visitor's message as before (`assistant_question` kind `interview`) and the model asks.
 - **The state** (`interviewStore`, `lib/assistant/interview.ts`, session storage beside the chat)
   goes with every question as `interview` and changes only by the API's `interview_state` action
   and the bar's button. Every answer is in the planners already, so leaving keeps everything.
@@ -843,11 +854,13 @@ Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `
 language switch, `interview` from a planner's button, or `stamp`, `tip`, `callout` and `empty` from a Parky element that asks about what it shows, `askParky` in `lib/assistant/ask.ts`, its question sent as kind `context`), `assistant_line_shown`,
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
 entrance, bored, woke, holiday, park, fact, secret, weather, live, clock, or the answer's planner, plan, favourite, alert, theme
-or install), `assistant_closed` (questions while open), `assistant_question` (suggestion, typed, a reply chip
+or install), `assistant_closed` (questions while open, and `answering` when it closed with an
+answer still on its way), `assistant_question` (suggestion, typed, a reply chip
 or the interview button, never the text; `first` for a chat's first, `position` for a chip, 1 the
 model's likeliest), `assistant_greeting` (once per chat, the greeting's kind: today, yesterday,
 tomorrow, soon, trip, back or plain), `assistant_replies_shown` (how many chips, and after what:
-`interview`, `plan_change` or `answer`), `assistant_interview_started` (trip or day, from the
+`interview`, `plan_change` or `answer`; the replies under the interview's own first question count
+as `interview`), `assistant_interview_started` (trip or day, from the
 planner or the chat, its `region`, `none` for a park day or a region not settled yet),
 `assistant_interview_step` (each step with `outcome` answered or skipped, and the region),
 `assistant_interview_ended` (done or left, the steps answered, `plan` whether the core stood, the
@@ -901,7 +914,8 @@ in the planner always in full, the other days by park and date, nothing when emp
 planner's bridge and remembered trip (a bare hub never erases it, a bad record costs itself), the
 trips snapshot, Parky's trip undo (and that it leaves a trip the visitor changed since), the new
 action checks (a trip change, replies, a move to a time, a filed trip's height, the interview's
-state), the interview store and the button's first question, the hub link resolved, the
+state), the interview store and the button's start, the first question the window words itself
+(what the planner settles, the replies, what is left to the model), the hub link resolved, the
 reorder, Parky's undo (and that it leaves a day the visitor changed since), and the checks of every planner edit (ids that are no ids dropped, an
 optional field that fails left out, nothing riding along) and of a reserved trip (each park
 checked, each park and day once, at most 16, filed in one write), the reminders' snapshot, the slugs they

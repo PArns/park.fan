@@ -6522,7 +6522,22 @@
         "mustdo": "Attractions à faire"
       },
       "kickoffTrip": "Prépare mon voyage avec moi, question par question.",
-      "kickoffDay": "Prépare ma journée au parc avec moi, question par question."
+      "kickoffDay": "Prépare ma journée au parc avec moi, question par question.",
+      "kickoff": {
+        "askPark": "On prépare quel parc ?",
+        "askDay": "{park}, avec plaisir. Tu y vas quel jour ?",
+        "askMustDo": "{park}, {date} : quelles attractions veux-tu faire à tout prix ?",
+        "askDates": "On prépare ton voyage. Tu veux partir quand ?",
+        "askDatesHeld": "Le planificateur indique {dates}. On garde ces dates ?",
+        "replyToday": "Aujourd’hui",
+        "replyTomorrow": "Demain",
+        "replyCoasters": "Les plus grandes montagnes russes",
+        "replyQuiet": "Là où c’est calme",
+        "replyUnsure": "Je ne sais pas encore",
+        "replyDatesKeep": "Oui, ça me va",
+        "replyDatesFind": "Trouve-moi les jours les plus calmes",
+        "replyDatesSummer": "L’été prochain"
+      }
     },
     "muteLines": "Masquer les bulles",
     "subtitle": "Ton pote des parcs",

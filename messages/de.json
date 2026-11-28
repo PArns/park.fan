@@ -6522,7 +6522,22 @@
         "mustdo": "Wunschfahrten"
       },
       "kickoffTrip": "Plan meine Reise mit mir, Frage für Frage.",
-      "kickoffDay": "Plan meinen Parktag mit mir, Frage für Frage."
+      "kickoffDay": "Plan meinen Parktag mit mir, Frage für Frage.",
+      "kickoff": {
+        "askPark": "Für welchen Park planen wir?",
+        "askDay": "{park}, gern. An welchem Tag bist du dort?",
+        "askMustDo": "{park}, {date}: Welche Fahrten dürfen nicht fehlen?",
+        "askDates": "Dann planen wir deine Reise. Wann soll es losgehen?",
+        "askDatesHeld": "Im Planer steht {dates}. Bleibt es dabei?",
+        "replyToday": "Heute",
+        "replyTomorrow": "Morgen",
+        "replyCoasters": "Die größten Achterbahnen",
+        "replyQuiet": "Wo wenig los ist",
+        "replyUnsure": "Weiß ich noch nicht",
+        "replyDatesKeep": "Ja, das passt",
+        "replyDatesFind": "Such mir die ruhigsten Tage",
+        "replyDatesSummer": "Nächsten Sommer"
+      }
     },
     "muteLines": "Sprechblasen ausblenden",
     "subtitle": "Dein Park-Buddy",
