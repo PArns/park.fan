@@ -245,10 +245,12 @@ export function AttractionCard({
   // Gates above read the raw block; what the badges print is the five-minute figure the card shows.
   const ropeDropShown = ropeDropData ? ropeDropDisplayWaits(ropeDropData) : null;
 
-  // A favourite types its queues loosely; the API sends both the same shape.
-  const queueChips = isOperatingOrUnknown
-    ? liveQueueChips(attraction.queues as import('@/lib/api/types').QueueDataItem[] | undefined)
-    : [];
+  // A favourite types its queues loosely; the API sends both the same shape. Live readings only for
+  // a running ride, like the standby wait: an UNKNOWN one keeps its curated fact chips instead.
+  const queueChips =
+    status === 'OPERATING'
+      ? liveQueueChips(attraction.queues as import('@/lib/api/types').QueueDataItem[] | undefined)
+      : [];
   const factChipsCovered = factChipsCoveredByLive(queueChips);
 
   // The bottom glass panel (wait time + sparkline, or the next performance) only exists when
