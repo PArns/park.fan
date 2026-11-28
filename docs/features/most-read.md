@@ -159,6 +159,38 @@ the fallback without doubles and at its length.
   `url` the API path) and tops up from it. Without `locale` the route still serves the request ranking,
   which the maintenance page polls and `content-urls` uses for the prewarm order.
 
+### Country lists
+
+The same ranking orders a country's parks in two places: the country page
+(`app/[locale]/parks/[continent]/[country]/page.tsx`) and the header menu's country pane
+(`/api/nav/geo/[continent]/[country]?locale=`). Both keep their city grouping. `orderCitiesByViews`
+puts the parks of a city by their views and the cities by their most viewed park; a park without
+counted views keeps its old place after them, A–Z on the country page, by park count and name in
+the menu. A city's place comes from its leader, not the sum of its parks, so the country's most
+viewed park in the reader's language is always the first card.
+
+- **From eleven views** (`PARK_ORDER_MIN_VIEWS`). The API takes at most ten reads of one page from
+  one address per UTC day, so below eleven one address on one day could set the order every reader
+  of the language sees for a month. Measured on 28 November 2026 over 30 days: de 10 parks above
+  it (Phantasialand 582, Europa-Park 332, then 40 and less), en 43, fr 12, es 11, nl 5 (Phantasialand
+  46, Efteling 35), it 3. A Dutch reader of the German page gets Brühl (Phantasialand), then Rust
+  with Traumatica ahead of Europa-Park and Rulantica, then the other cities A–Z; an Italian reader
+  gets the whole German page A–Z.
+- **A full ranking cuts higher.** The API returns at most 50 parks (`VIEWED_PARKS_ASK_FOR`). When
+  all 50 come back, a park with as many views as the 50th may lie past the cut, so
+  `parkOrderViews` counts only the parks above it (en ended at 7 views on 28 November, under the
+  minimum, so it changes nothing yet).
+- **Read for a day.** `getParkOrderViews` asks the request URL of the hero's fallback on
+  `CACHE_TTL.parkViewOrder` (a day), so both share one Data Cache entry. The country pages already
+  rebuild once a day on `CACHE_TTL.countrySummary`, so their window stays a day, and the menu's
+  answer keeps its day at the edge, now one copy per locale. A list is at most two days behind the
+  counter.
+- **A failed counter is the old order**, never a failed page or a 502: the cities are the answer,
+  the views only sort them.
+- **The order is no content change.** The hub's `<lastmod>` fingerprint sorts its parks
+  (`fingerprintGeoHub`), so a reorder moves no date
+  ([a `<lastmod>` is observed](../rules/a-lastmod-is-observed-never-stamped.md)).
+
 ### The popular-park cards
 
 `FeaturedParksSlot` (`components/home/featured-parks-slot.tsx`) draws the cards as a story chapter
@@ -212,4 +244,6 @@ news label is the news category's (`categories.json`), passed in by the server p
 `pnpm test:most-read` resolves real manifests against a stubbed API: a key is the same post at each
 locale's `postPath`, junk keys drop out, a thin ranking fills with the newest posts, places survive
 leaving a post out, the leader rule, a failed ranking throws, and the beacon's gates. `pnpm test:viewed-parks`
-covers the park resolver.
+covers the park resolver, `pnpm test:park-view-order` the country lists: the minimum and the cut, the
+order on Germany with the de and nl views, the menu route with and without a locale and with the
+counter down, and the hub fingerprint that ignores the order.

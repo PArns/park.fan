@@ -197,7 +197,6 @@ function resolveDayWindow(
 }
 
 interface HourColumn {
-  time: string;
   timeLabel: string;
   left: number;
   width: number;
@@ -230,11 +229,12 @@ const HourColumns = memo(function HourColumns({
 
   return (
     <div className="absolute inset-0">
-      {columns.map((c) => {
+      {columns.map((c, i) => {
         const isPast = c.hour < nowHour;
         const { icon: HourIcon, label, color } = getWeatherConfig(c.weatherCode, c.isDay);
         return (
-          <Tooltip key={c.time}>
+          // By position: a fall-back day lists its repeated hour twice, so no time is unique.
+          <Tooltip key={i}>
             <TooltipTrigger asChild>
               <div
                 className="absolute inset-y-0"
@@ -489,7 +489,6 @@ function WeatherHourlyChartBody({
           ? `${formatTempWithUnit(p.temperatureC, 'C')} (${formatTempWithUnit(p.temperatureC, 'F')}) · `
           : '';
       return {
-        time: p.time,
         timeLabel: time,
         left: xEdge(i),
         width: xEdge(i + 1) - xEdge(i),

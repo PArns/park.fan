@@ -4,9 +4,9 @@ import { SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata, buildAlternates } from '@/lib/utils/metadata';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getContinents } from '@/lib/api/discovery';
-import { getGeoLiveStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
-import { GeoLocationCard } from '@/components/common/geo-location-card';
+import { LiveOpenCount } from '@/components/parks/live-open-count';
+import { LiveRegionCards, type StaticRegionCard } from '@/components/parks/live-region-cards';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { ItemListStructuredData } from '@/components/seo/structured-data';
@@ -48,26 +48,13 @@ export default async function ParksPage({ params }: ParksPageProps) {
   const t = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
 
-  const [continents, liveStats] = await Promise.all([
-    catchNonFatal(getContinents()).then((r) => r ?? []),
-    catchNonFatal(getGeoLiveStats()),
-  ]);
+  // The open-park counts are layered on the client (<LiveOpenCount> / <LiveRegionCards>), as on
+  // the continent pages: this shell is built from the geo structure and kept for its window, so a
+  // count baked into it would stay as it was at the build.
+  const continents = (await catchNonFatal(getContinents())) ?? [];
 
-  const continentItems = continents.map((continent) => {
-    const continentStats = liveStats?.continents.find((c) => c.slug === continent.slug);
-
-    return {
-      ...continent,
-      openParkCount: continentStats?.openParkCount ?? continent.openParkCount ?? 0,
-      // Bare [lat, lng] tuples for every park on the continent — the card computes the distance
-      // to the nearest one on the client, once the visitor's position is known.
-      parkCoordinates: collectParkCoordinates(continent),
-    };
-  });
-
-  const totalParks = continentItems.reduce((sum, c) => sum + c.parkCount, 0);
-  const totalCountries = continentItems.reduce((sum, c) => sum + c.countryCount, 0);
-  const totalOpenParks = continentItems.reduce((sum, c) => sum + (c.openParkCount || 0), 0);
+  const totalParks = continents.reduce((sum, c) => sum + c.parkCount, 0);
+  const totalCountries = continents.reduce((sum, c) => sum + c.countryCount, 0);
 
   const tCommon = await getTranslations('common');
 
@@ -75,7 +62,7 @@ export default async function ParksPage({ params }: ParksPageProps) {
 
   const tNav = await getTranslations('navigation');
 
-  const itemListItems = continentItems.map((continent) => {
+  const itemListItems = continents.map((continent) => {
     const name = translateContinent(t, continent.slug, locale, continent.name);
     return { name, url: `/${locale}/parks/${continent.slug}` };
   });
@@ -95,7 +82,7 @@ export default async function ParksPage({ params }: ParksPageProps) {
           description={
             <>
               <span className="text-park-primary font-medium">
-                {totalOpenParks} {t('open')}
+                <LiveOpenCount /> {t('open')}
               </span>{' '}
               / {totalParks} {tExplore('stats.park', { count: totalParks })} • {totalCountries}{' '}
               {tExplore('stats.country', { count: totalCountries })}
@@ -103,26 +90,20 @@ export default async function ParksPage({ params }: ParksPageProps) {
           }
         />
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {continentItems.map((continent) => {
-            const continentName = translateContinent(t, continent.slug, locale, continent.name);
-
-            return (
-              <GeoLocationCard
-                key={continent.slug}
-                name={continentName}
-                slug={continent.slug}
-                href={`/parks/${continent.slug}`}
-                openParkCount={continent.openParkCount}
-                totalParkCount={continent.parkCount}
-                subtitle={`${continent.countryCount} ${tExplore('stats.country', { count: continent.countryCount })}`}
-                parkCoordinates={continent.parkCoordinates}
-                variant="continent"
-                headingAs="h2"
-              />
-            );
-          })}
-        </div>
+        <LiveRegionCards
+          regions={continents.map((continent): StaticRegionCard => ({
+            slug: continent.slug,
+            name: translateContinent(t, continent.slug, locale, continent.name),
+            href: `/parks/${continent.slug}`,
+            totalParkCount: continent.parkCount,
+            subtitle: `${continent.countryCount} ${tExplore('stats.country', { count: continent.countryCount })}`,
+            // Bare [lat, lng] tuples for every park on the continent — the card computes the
+            // distance to the nearest one on the client, once the visitor's position is known.
+            parkCoordinates: collectParkCoordinates(continent),
+          }))}
+          headingAs="h2"
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        />
       </PageContainer>
     </RouteMessages>
   );

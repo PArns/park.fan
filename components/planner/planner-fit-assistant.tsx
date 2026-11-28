@@ -2,13 +2,14 @@
 
 import { useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { AlertTriangle, ArrowRight, Check } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Check, Pin } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { formatShortDuration } from '@/lib/utils/duration';
 import { formatGridTime } from '@/lib/planner/park-time';
 import {
   fitChoiceAll,
+  fitLeftOut,
   fitOrder,
   togglePin,
   toggleLever,
@@ -118,6 +119,15 @@ export function PlannerFitAssistant({
   const missed = useMemo(() => new Set(answer?.missed ?? []), [answer]);
   const pinned = useMemo(() => new Set(choice.priority), [choice]);
   const byKey = useMemo(() => new Map(wishes.map((wish) => [wish.key, wish])), [wishes]);
+  const leftOut = useMemo(
+    () => fitLeftOut(answer ?? { missed: [], pinnedMissed: [] }, choice),
+    [answer, choice]
+  );
+  const namesOf = (keys: readonly string[]) =>
+    keys
+      .map((key) => byKey.get(key)?.attractionName)
+      .filter(Boolean)
+      .join(' · ');
 
   const index = steps.indexOf(step);
   const goTo = (next: FitStep) => {
@@ -255,17 +265,17 @@ export function PlannerFitAssistant({
                 </ul>
 
                 {/* Named, never counted: before a press that takes rides out of the day, the honest
-                    thing to show is which ones. */}
-                {(missed.size > 0 || choice.dropped.size > 0) && (
-                  <div className="border-crowd-high/30 bg-crowd-high/10 flex flex-col gap-1 rounded-md border px-2.5 py-2">
-                    <p className="text-crowd-high text-[11px] font-medium">{t('fit.resultOut')}</p>
-                    <p className="text-muted-foreground text-[11px] leading-snug">
-                      {[...missed, ...choice.dropped]
-                        .map((key) => byKey.get(key)?.attractionName)
-                        .filter(Boolean)
-                        .join(' · ')}
-                    </p>
-                  </div>
+                    thing to show is which ones. A pin that could not be kept gets its own box:
+                    giving up every unpinned ride would not have made room for it. */}
+                {leftOut.pinned.length > 0 && (
+                  <ResultNames
+                    title={t('fit.resultPinnedOut', { count: leftOut.pinned.length })}
+                    names={namesOf(leftOut.pinned)}
+                    pinned
+                  />
+                )}
+                {leftOut.rest.length > 0 && (
+                  <ResultNames title={t('fit.resultOut')} names={namesOf(leftOut.rest)} />
                 )}
 
                 <p className="text-muted-foreground flex items-start gap-1.5 text-xs leading-relaxed">
@@ -305,6 +315,26 @@ export function PlannerFitAssistant({
         </div>
       </DialogContent>
     </Dialog>
+  );
+}
+
+function ResultNames({
+  title,
+  names,
+  pinned = false,
+}: {
+  title: string;
+  names: string;
+  pinned?: boolean;
+}) {
+  return (
+    <div className="border-crowd-high/30 bg-crowd-high/10 flex flex-col gap-1 rounded-md border px-2.5 py-2">
+      <p className="text-crowd-high flex items-center gap-1 text-[11px] font-medium">
+        {pinned && <Pin className="size-3 shrink-0 fill-current" aria-hidden="true" />}
+        {title}
+      </p>
+      <p className="text-muted-foreground text-[11px] leading-snug">{names}</p>
+    </div>
   );
 }
 

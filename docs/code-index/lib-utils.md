@@ -383,10 +383,11 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 
 ### [`park-utils.ts`](../../lib/utils/park-utils.ts)
 
-- `getAttractionDisplayStatus` _function_: Effective display status of an attraction: every attraction is CLOSED while the park is not operating; otherwise the STANDBY queue status beats the attraction's own field.
+- `getAttractionDisplayStatus` _function_: Effective display status of an attraction: every attraction is CLOSED while the park is not operating; otherwise the STANDBY queue status beats the attraction's own field, and a ride that carries neither is UNKNOWN.
 - `getLiveAttractionStatus` _function_: The status a visitor is shown for one attraction, from the live payload.
 - `isAttractionOpenNow` _function_: Whether a ride counts as open now: strictly OPERATING, and UNKNOWN is not it, since a count or a filter promising "open" must not answer with rides nobody has heard from.
 - `getStandbyWait` _function_: STANDBY wait of an attraction in minutes, or null when it has no standby queue. Says nothing about whether the ride is open: pair it with `getAttractionDisplayStatus`.
+- `liveStandbyWait` _function_: The standby wait a visitor is shown: the reading of a ride that runs now by `getLiveAttractionStatus`, else null. An UNKNOWN ride may still carry a figure its feed stopped updating, and a closed one its last.
 - `groupAttractionsByLand` _function_: Groups attractions by land (`fallbackName` when none), each land sorted by name.
 - `sortByShortestWait` _function_: The park's rides in one flat list, shortest standby wait first. A ride without a readable wait (shut, or no standby reading) goes after every ride that has one, in name order like the lands.
 - `chunk` _function_: The list cut into consecutive slices of `size` (the last may be shorter).
@@ -564,9 +565,9 @@ The earliest showtime of `show` that is still ahead of `nowMs`, in epoch ms, or 
 
 ### [`text-fold.ts`](../../lib/utils/text-fold.ts)
 
-- `foldText` _function_: Text reduced for matching: lower case, accents off, "ß" as "ss", so "farup" finds "Fårup" and "strasse" finds "Straße". "ß" has no Unicode decomposition, hence the explicit replace.
 - `foldRideName` _function_: A ride name reduced for matching, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.".
 - `matchesQuery` _function_: Whether every word of `query` occurs, folded, in at least one of `fields`, so "phanta" finds Phantasialand and "rust europa" finds Europa-Park by its town. An empty query matches all.
+- `foldText` _const_: Text reduced for matching: lower case, accents off, "ß" as "ss", so "farup" finds "Fårup" and "strasse" finds "Straße".
 
 ### [`touch-target.ts`](../../lib/utils/touch-target.ts)
 
@@ -604,6 +605,7 @@ Converts backend API URLs to frontend routes. Always go through these helpers wi
 - `isWalkOnWait` _function_: Whether a posted wait is a walk-on: at or under `limit` (`WALK_ON_MAX_MINUTES` unless a surface passes its own). A posted 13 (`WALK_ON_WAIT_MINUTES`) is not one; it reads „13 Min".
 - `roundWaitTo5` _function_: Rounds a wait time for display to five-minute steps, except the posted walk-on 13 (`WALK_ON_WAIT_MINUTES`). Parks post multiples of five; percentiles and averages on top are what produce 51 or 47.
 - `typicalHourFigures` _function_: The two figures of the ride panel's „usually X, rarely over Y" line, both rounded for display, or null when there is nothing to say.
+- `waitBandTop` _function_: The top of a forecast's spread as a displayed wait: `wait` plus `uncertaintyMinutes`, on the five-minute grid, so the day dialog can say „~45 bis ~60 Min.".
 - `roundAverageWaitTo5` _function_: The five-minute grid for a figure this app computes itself, such as a mean over many days. The walk-on 13 is a value a park posts; an average that happens to land on 13 is an ordinary short wait and goes to 15 like 12.8 does.
 - `roundWaitDeltaTo5` _function_: The same five-minute grid for a DIFFERENCE between two wait times. `roundWaitTo5` floors everything under 2.5 to zero, which is right for a queue and wrong for a delta: it would turn every falling trend into „stable".
 - `shortTermWaitTrend` _function_: The short-term movement of one queue, as a direction and the number that produced it, from the same arithmetic so arrow and figure cannot disagree.

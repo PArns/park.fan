@@ -63,6 +63,17 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 - `APP_VERSION_PATTERN` _const_: `1`, `1.0` or `1.0.1`, the only forms the API accepts.
 - Types: `AppPlatform`, `PlatformConfig`, `AppConfigView`
 
+### [`attraction-kind.ts`](../../lib/admin/attraction-kind.ts)
+
+- `attractionKindLabel` _function_: The German name of an attraction kind; a value the API added after this list shows as itself.
+- `curatedEnumOptions` _function_: The options of a curated enum field as the admin's selects list them, in the API's order: an attraction kind under its German name, any other value as itself.
+- `curatedFieldOptions` _function_: `curatedEnumOptions` for one key of `GET /v1/admin/content/fields`, so a kind the API adds shows up in every select without a frontend change. Empty while the descriptors are not loaded.
+- `shownAttractionKind` _function_: The kind an admin row shows: the editor's stored value, else the API's derived one, flagged so the editor sees the decision is still open.
+- `servedKindsFromList` _function_: The served kinds of a park's attractions, keyed by id, read off the admin list: the editor's kind where `attractionKindSource` is `curated`, the rule's where it is `derived`.
+- `rowsWithoutKind` _function_: The rows of a park's admin attraction list that a data-quality „ohne Gattung" entry names, for a report that sends names only: a row matches on its resolved name and on storing no kind, and two rows of the same name are both listed.
+- `kindlessAttractions` _function_: The attractions a data-quality „ohne Gattung" card asks about: the report's `withoutKindRefs` where it sends them, else the rows of the park's list that `rowsWithoutKind` finds by name. Null while that fallback still waits for the list.
+- Types: `CuratedEnumOption`, `ServedAttractionKind`, `ShownAttractionKind`, `AttractionKindColumns`, `KindlessAttraction`
+
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 
 - `textFromDrafts` _function_: `![alt | caption | …](path)` for one image, across every filled locale.
@@ -94,19 +105,25 @@ The German names the admin shows for the permissions and for the answers of a ke
 
 ### [`facilities.ts`](../../lib/admin/facilities.ts)
 
+- `facilityTypeMeta` _function_: The name, tally word, colour and count of a point type; a type the page lacks is „Sonstiges“.
+- `facilityTypeCount` _function_: The visible points of one type in a park's counts.
+- `facilityCountsLine` _function_: A row's tally: „12 WC · 3 Wasser · 11 Sehensw.“, toilets always, the other types where there are any.
+- `orderFacilityPoints` _function_: A park's points for the list: grouped by type in `FACILITY_TYPES` order, unknown types last, and within a type the waiting ones first, then by name and OSM id.
 - `facilityState` _function_: A park's state for the list. What a visitor gets comes first: an approved or imported park keeps that state when a later run failed, and its row says so in its own line.
 - `facilityStateCounts` _function_: How many parks are in each state, for the filter's numbers.
-- `filterFacilityParks` _function_: The parks in one state (`all` for every state) whose name or country contains the search text.
+- `facilityParksToReview` _function_: The parks that wait for an editor: offline and never approved, or online with new points.
+- `filterFacilityParks` _function_: The parks in one state (`all` for every state) that have a visible point of `type` (`all` for any) and whose name or country contains the search text.
 - `facilityQueueText` _function_: The status line of the import queue, or null when it is idle and the last run did not fail.
 - `facilityPlot` _function_: Lays a park's outline and points out for an SVG: north up, a degree of longitude shortened by the cosine of the latitude so the park keeps its shape, and a margin so a point on the edge is not cut.
 - `osmElementUrl` _function_: The page of an OSM element on openstreetmap.org, where a wrong point is corrected.
 - `isOutlineRef` _function_: True when `text` names an OSM outline the way the import takes it: `way/123` or `relation/123`.
 - `isFacilitiesBackendMissing` _function_: True when the API answering is older than these routes: it deploys apart from the site.
 - `FACILITIES_API` _const_: The admin proxy prefix of every facility endpoint.
+- `FACILITY_TYPES` _const_: The point types the API serves, in the order the page lists them.
 - `FACILITY_STATES` _const_: The states in the order the filter lists them.
 - `FACILITY_STATE_LABEL` _const_: The admin's word for a `FacilityState`.
 - `FACILITY_STATE_TONE` _const_: The chip colour of a `FacilityState`.
-- Types: `FacilityReviewStatus`, `FacilityRunOutcome`, `FacilityParkRow`, `FacilityBulkProgress`, `FacilityQueueState`, `FacilityList`, `FacilityPoint`, `FacilityReview`, `FacilityBulkApproval`, `FacilityState`, `FacilityPlot`
+- Types: `FacilityReviewStatus`, `FacilityRunOutcome`, `FacilityParkRow`, `FacilityCounts`, `FacilityType`, `FacilityTypeMeta`, `FacilityBulkProgress`, `FacilityQueueState`, `FacilityList`, `FacilityPoint`, `FacilityReview`, `FacilityBulkApproval`, `FacilityState`, `FacilityPlot`
 
 ### [`github.ts`](../../lib/admin/github.ts)
 
@@ -300,6 +317,39 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `LOW_TRUTH_COVERAGE` _const_: Below this coverage the day view says the comparison rests on few measurements.
 - `MATRIX_BLOCKS` _const_: How the matrix is cut into blocks: the live and today rows share one, since the same models answer both. A group not named here gets a block of its own after these.
 - Types: `DayChoice`, `CellRef`, `ResultDate`, `FamilyRun`, `MatrixBlock`
+
+### [`news-export-arrival.ts`](../../lib/admin/news-export-arrival.ts)
+
+- `postArrivals` _function_: When each of `files` (repository paths, the first the longest waiting) reached the default branch, in ms, read through GitHub with the admin's token and kept in memory.
+- `ARRIVALS_PER_CHECK` _const_: Files the check asks GitHub about at most per report; the rest wait for the next one.
+
+### [`news-export-lag.ts`](../../lib/admin/news-export-lag.ts)
+
+- `parseExportList` _function_: An export list's JSON (`{schema, generatedAt, locale, posts}`) as the check needs it. Without a readable `generatedAt` and a post array it failed; a post without slug, title or date is skipped, as the API's push job skips it.
+- `compareExportFeed` _function_: Compares one feed of the export with the site's posts of that feed, locale by locale.
+- `exportIsLate` _function_: Whether a feed's missing posts have waited past the amber mark, so no run is still on its way.
+- `exportVerdict` _function_: A feed's verdict in a few words: `aktuell`, `1 Meldung noch nicht drin` while a run may still be on its way, `2 Guides fehlen` after that, and the locales whose list could not be read.
+- `exportNeedsRun` _function_: Whether a new run is the answer: a feed is late or a list could not be read.
+- `exportRunRefusal` _function_: The answer to a start that failed, with the German sentence the panel shows.
+- `exportRunUnclear` _function_: The answer to a start that was sent while GitHub answered with no answer in time or a 5xx: the workflow may run all the same, so a second start would queue a second run behind it.
+- `EXPORT_BEHIND_MINUTES` _const_: Minutes a post may be on the site without being in the export. Amber after an hour, longer than two runs back to back, so nothing that was on its way is still running.
+- `DISPLAY_LOCALE` _const_: The locale whose titles the admin shows where a post has it, since the admin reads German.
+- `NEWS_EXPORT_WORKFLOW` _const_: The export's workflow file in `.github/workflows/`, which a new run is started from.
+- Types: `ExportPostRef`, `SitePostRef`, `ExportListReading`, `MissingPost`, `ExportFeedStatus`, `NewsExportReport`, `NewsExportRunAnswer`, `NewsExportRunFailure`, `NewsExportRunRefusal`
+
+### [`news-export-report.ts`](../../lib/admin/news-export-report.ts)
+
+- `buildNewsExportReport` _function_: The app's news and guides export on media.park.fan against this deployment's posts, per feed: when it last ran, its newest post and the site's, and what it is missing.
+
+### [`news-export-run.ts`](../../lib/admin/news-export-run.ts)
+
+- `newsExportWorkflowUrl` _function_: The workflow's page on GitHub, which lists its runs and has „Run workflow“.
+- `startNewsExport` _function_: Starts the export workflow by `workflow_dispatch` with the admin's GitHub token, on the repository's default branch rather than the admin's base branch: a run publishes to the bucket the app reads, and only the default branch is live.
+- Types: `NewsExportRunResult`
+
+### [`park-geo-path.ts`](../../lib/admin/park-geo-path.ts)
+
+- `parkGeoSegments` _function_: The four slugs of a park's geo path, as an admin route takes it in `?path=`, or null when it is not four slugs. `/v1/parks/a/b/c/d`, `/parks/a/b/c/d` and `a/b/c/d` all name the same park.
 
 ### [`parky-elements.ts`](../../lib/admin/parky-elements.ts)
 

@@ -6,7 +6,8 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import type L from 'leaflet';
 import type { ParkWithAttractions, ParkAttraction, ParkShow } from '@/lib/api/types';
 import { formatDistance } from '@/lib/utils/distance-utils';
-import { getStandbyWait } from '@/lib/utils/park-utils';
+import { liveStandbyWait } from '@/lib/utils/park-utils';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { stripNewPrefix } from '@/lib/utils';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { useParkMapGeolocation } from '@/lib/hooks/use-park-map-geolocation';
@@ -259,7 +260,11 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
           </Marker>
         )}
 
-        <AttractionMarkers attractions={validAttractions} figures={figures} />
+        <AttractionMarkers
+          attractions={validAttractions}
+          parkStatus={park.status}
+          figures={figures}
+        />
         <ShowMarkers shows={validShows} timezone={park.timezone} focusSlug={focusShowSlug} />
         <RestaurantMarkers restaurants={validRestaurants} />
       </MapContainer>
@@ -274,10 +279,9 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
               ) : null}
               <ul className="space-y-2">
                 {nearbyEntities.map((entity) => {
-                  const waitTime =
-                    entity.type === 'attraction'
-                      ? getStandbyWait(entity.data as ParkAttraction)
-                      : null;
+                  const attraction =
+                    entity.type === 'attraction' ? (entity.data as ParkAttraction) : null;
+                  const waitTime = attraction ? liveStandbyWait(attraction, park.status) : null;
                   const nextShow =
                     entity.type === 'show' ? getNextShowTime(entity.data as ParkShow) : null;
 
@@ -289,7 +293,7 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
                           {entity.type === 'restaurant' && '🍴'} {entity.name}
                         </span>
                         <div className="text-muted-foreground flex flex-shrink-0 items-center gap-2 text-[10px]">
-                          {waitTime !== null && <span>⏱️ {waitTime} min</span>}
+                          {waitTime !== null && <span>⏱️ {roundWaitTo5(waitTime)} min</span>}
                           {nextShow && (
                             <span>
                               🕐 {tCommon('in')} {nextShow}

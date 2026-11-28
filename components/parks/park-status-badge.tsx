@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { Clock, AlertTriangle, XCircle, Wrench, Ban } from 'lucide-react';
+import { Clock, AlertTriangle, XCircle, Wrench, Ban, DoorClosed } from 'lucide-react';
 import type { ParkStatus, AttractionStatus } from '@/lib/api/types';
 
 /**
@@ -12,8 +12,15 @@ import type { ParkStatus, AttractionStatus } from '@/lib/api/types';
  */
 export type ClosedPermanentlyStatus = 'RETIRED';
 
+/**
+ * A park that reads CLOSED but opens again within days: tonight, or between two opening days of
+ * its season. Not an API status either; the caller that knows the schedule passes it
+ * (`isClosedForNow`, `lib/blog/live-display.ts`).
+ */
+export type ClosedForNowStatus = 'CLOSED_FOR_NOW';
+
 interface ParkStatusBadgeProps {
-  status: ParkStatus | AttractionStatus | ClosedPermanentlyStatus;
+  status: ParkStatus | AttractionStatus | ClosedPermanentlyStatus | ClosedForNowStatus;
   /** Text in place of the status's word, in the status's look: „Öffnet am 31. Oktober". */
   label?: ReactNode;
   className?: string;
@@ -21,7 +28,8 @@ interface ParkStatusBadgeProps {
 
 /**
  * Status badge for a park or a ride: operating, down, closed, refurbishment, unknown, or `RETIRED`
- * for a ride that closed for good. An unrecognised status falls back to the closed style.
+ * for a ride that closed for good. An unrecognised status reads as unknown, never as closed: it
+ * says nothing about whether the ride runs.
  */
 export function ParkStatusBadge({ status, label, className }: ParkStatusBadgeProps) {
   const t = useTranslations('parks.status');
@@ -35,16 +43,20 @@ export function ParkStatusBadge({ status, label, className }: ParkStatusBadgePro
     // The closed colour, because it is closed; its own icon, because it is not the CLOSED of
     // tonight — the two stand side by side in a news post about the park.
     RETIRED: { color: 'badge-status-closed', icon: Ban },
+    // Grey: the park opens again within days, and in running text a red badge reads as a park
+    // shut down.
+    CLOSED_FOR_NOW: { color: 'badge-status-unknown', icon: DoorClosed },
   };
 
-  const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.CLOSED;
+  const known = status in statusConfig ? status : 'UNKNOWN';
+  const config = statusConfig[known];
   const Icon = config.icon;
 
   return (
     <Badge className={cn(config.color, className)}>
       <Icon className="h-3 w-3 text-white" />
       {/* A span of its own: a label with markup in it is no bare text `Badge` would wrap. */}
-      <span>{label ?? t(status)}</span>
+      <span>{label ?? t(known)}</span>
     </Badge>
   );
 }

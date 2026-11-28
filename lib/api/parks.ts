@@ -7,12 +7,13 @@ import { getGeoStructure } from './discovery';
 import {
   VIEWED_PARKS_ASK_FOR,
   VIEWED_PARKS_DAYS,
+  parkOrderViews,
   rankedFirst,
   resolveViewedParks,
 } from '@/lib/parks/viewed-parks';
 import type { MostReadRanking } from '@/lib/blog/most-read-config';
 import type { Locale } from '@/i18n/config';
-import { parkCacheTag } from './park-live-projection';
+import { parkCacheTag, parkCalendarCacheTag } from './park-live-projection';
 import { parseCoordinate, withAttractionCoordinates, withCoordinates } from './coordinates';
 import type {
   CrowdLevel,
@@ -21,6 +22,7 @@ import type {
   ParkWithAttractions,
   ParkAttraction,
   AttractionResponse,
+  DowntimeBlock,
   ParkWaitTimesResponse,
   PopularPark,
   ScheduleItem,
@@ -177,17 +179,14 @@ function leanAttractionForShell(a: ParkAttraction): ParkAttraction {
   // which is the copy that lands in the HTML of every park page. 1.0 KB per park page, on the
   // route with the second-highest origin-miss count in the app.
   //
-  // `baseline` is rendered now (the ride card's crowd-scale tooltip) and still stays out of
-  // the HTML: the tooltip draws nothing until someone reaches for it, and the poll that
-  // `useLiveParkData` fires on mount carries it long before that. Shipping it here would put
-  // a number in every park page's HTML that no first paint shows.
+  // `baseline` stays: the crowd badge prints it („Niedrig · sonst 45 Min."), so the first paint
+  // needs it, and a badge that grows when the poll brings it shifts the card grid.
   const {
     url: _url,
     history: _history,
     hourlyForecast: _hourlyForecast,
     predictionAccuracy: _predictionAccuracy,
     comparison: _comparison,
-    baseline: _baseline,
     ...lean
   } = a as ParkAttraction & { comparison?: unknown };
   if (lean.statistics) {
@@ -491,6 +490,28 @@ export async function getAttractionByGeoPathFresh(
 }
 
 /**
+ * The ride's reported-outage block for the ride page's downtime chapter, which the server render
+ * must have: whether that chapter exists at all is only known from it, so it cannot arrive with
+ * the client's detail query. The park payload does not carry it, and the detail's history is the
+ * bulk of that response, so this asks for one day of history and keeps only the block. Without the
+ * forecast flag the answer is public and Cloudflare shares it; the block is rebuilt nightly, which
+ * is the window {@link ATTRACTION_REVALIDATE} already holds.
+ */
+export async function getAttractionDowntime(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  attractionSlug: string
+): Promise<DowntimeBlock | undefined> {
+  const detail = await api.get<Pick<AttractionResponse, 'downtime'>>(
+    `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+    { params: { days: 1 }, next: { revalidate: ATTRACTION_REVALIDATE, tags: ['attractions'] } }
+  );
+  return detail.downtime;
+}
+
+/**
  * Live (no-store) lean wait-times snapshot for a whole park — park status + every attraction's
  * queues, ~9 KB where the full park payload is ~95 KB.
  *
@@ -574,10 +595,12 @@ export interface ParkYearlyPredictions {
  * (Europa-Park answered with 124 entries over the same span, not 182), which is why the consumer
  * lays the days out against the calendar instead of trusting the list to be dense.
  *
- * Data-cached for {@link CACHE_TTL.predictions} — a day, which is the forecast's own cadence: the
- * backend recomputes it in the nightly batch and caches it 24 h in Redis behind the same window.
- * Tagged with the park's own tag so a forecast warmup drops this entry rather than waiting the
- * window out.
+ * Data-cached for {@link CACHE_TTL.predictions}, a day. The API's forecast warmup, twice a day,
+ * drops its own copy of the outlook, and the ring after it carries {@link parkCalendarCacheTag}, so
+ * the outlook changes with the calendar grid and the month summary beside it instead of up to a day
+ * later. The park's own tag stays: the API keeps its answer for an hour and a schedule correction
+ * does not drop it, so the correction's ring can fetch the old closures once more; while the park
+ * is open, the park's tag comes every 15 minutes and fetches the corrected ones about an hour later.
  *
  * Returns `null` for anything that goes wrong, including the 404 a park without a forecast gets:
  * a park page must not fail over a chapter most of its readers scroll past. A degraded answer is
@@ -595,7 +618,11 @@ export async function getParkYearlyPredictions(
     const cached = await api.get<ParkYearlyPredictions>(path, {
       next: {
         revalidate: CACHE_TTL.predictions,
-        tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
+        tags: [
+          'parks',
+          parkCacheTag(continent, country, city, parkSlug),
+          parkCalendarCacheTag(continent, country, city, parkSlug),
+        ],
       },
     });
     if (!cached.isDegraded) return cached;
@@ -626,16 +653,11 @@ export function getPopularParks(limit = 20): Promise<PopularPark[]> {
  */
 export async function getMostViewedParks(locale: Locale, limit = 20): Promise<PopularPark[]> {
   const [top, geo, requested] = await Promise.all([
-    api
-      .get<{ items: MostReadRanking }>('/v1/page-views/top', {
-        params: { kind: 'park', locale, days: VIEWED_PARKS_DAYS, limit: VIEWED_PARKS_ASK_FOR },
-        next: { revalidate: CACHE_TTL.pageViews, tags: ['page-views'] },
-      })
-      .catch(() => ({ items: [] })),
+    getParkViewRanking(locale, CACHE_TTL.pageViews).catch((): MostReadRanking => []),
     getGeoStructure(),
     getPopularParks(limit),
   ]);
-  const viewed: PopularPark[] = resolveViewedParks(top.items, geo).map((park) => ({
+  const viewed: PopularPark[] = resolveViewedParks(top, geo).map((park) => ({
     rank: 0,
     requests: park.views,
     id: park.id,
@@ -650,4 +672,34 @@ export async function getMostViewedParks(locale: Locale, limit = 20): Promise<Po
     ...park,
     rank: index + 1,
   }));
+}
+
+/**
+ * The views that order a country's park list for this locale's readers (`parkOrderViews`), on
+ * the day-long {@link CACHE_TTL.parkViewOrder}: the country pages and the header menu's country
+ * pane. Empty when the counter does not answer, and the lists keep their own order.
+ */
+export async function getParkOrderViews(locale: Locale): Promise<ReadonlyMap<string, number>> {
+  try {
+    return parkOrderViews(
+      await getParkViewRanking(locale, CACHE_TTL.parkViewOrder),
+      VIEWED_PARKS_ASK_FOR
+    );
+  } catch {
+    return new Map();
+  }
+}
+
+/**
+ * This locale's park ranking over {@link VIEWED_PARKS_DAYS} days, {@link VIEWED_PARKS_ASK_FOR}
+ * long. One request URL for every reader, so the hero's fallback and the country lists share one
+ * Data Cache entry and one upstream call; each reader brings its own window.
+ */
+function getParkViewRanking(locale: Locale, revalidate: number): Promise<MostReadRanking> {
+  return api
+    .get<{ items: MostReadRanking }>('/v1/page-views/top', {
+      params: { kind: 'park', locale, days: VIEWED_PARKS_DAYS, limit: VIEWED_PARKS_ASK_FOR },
+      next: { revalidate, tags: ['page-views'] },
+    })
+    .then((top) => top.items);
 }

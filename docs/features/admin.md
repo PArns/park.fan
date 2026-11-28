@@ -194,6 +194,21 @@ a proxy that eats `challenges.cloudflare.com`), the form says so and offers a re
 **remounts** the widget, since there is nothing to reset when the script never arrived. The loader
 forgets a failed script promise for the same reason; otherwise every retry would fail instantly.
 
+### Headers shared with the site
+
+The admin lives on park.fan's own origin and gets the headers `next.config.ts` sends on every path:
+`X-Frame-Options: DENY`, HSTS, `nosniff`, `Referrer-Policy` and `Permissions-Policy`. The first rule
+in `headers()` adds the site's baseline `Content-Security-Policy: object-src 'none'; base-uri 'self'`:
+no plugin content, and no injected `<base>` that resolves the page's `/_next/…` scripts against
+another host. It names no script or style source. A policy that does needs a fresh nonce per
+request, so every page it covers renders per request and no shared cache can hold it.
+
+The SVG rule further down replaces the baseline with
+`default-src 'none'; style-src 'unsafe-inline'; sandbox`, because an SVG opened on its own is a
+document on the admin's origin. Next lets the last matching rule win per key, so the baseline stays
+first. `pnpm test:security-headers` resolves the rules the way Next does and fails if a page, the
+admin or an SVG gets another policy.
+
 ## The login screen
 
 One `<form>` holds e-mail, password and the six-digit code from the first paint and sends all three
@@ -473,7 +488,7 @@ park page's `ThemePark` structured data.
 
 The park editor's **Merkmale** tab (`?tab=features`, `parks/_components/attraction-features-editor.tsx`)
 edits five per-ride facts as one table, one chip per column: Fast Pass (`hasFastPass`,
-`fastPassPrice`), Virtual Line, Single Rider, Indoor/Outdoor and Typ (`attractionKind`). The generic
+`fastPassPrice`), Virtual Line, Single Rider, Indoor/Outdoor and Gattung (`attractionKind`). The generic
 editor shows the same columns, but the source is a park's price or info page listing a dozen rides
 at once; ride by ride that is forty page views and forty revalidations. The list delivers the
 columns raw (`null` = not checked), the select options come from the field descriptors, and edits
@@ -484,6 +499,34 @@ and, in each, only the changed fields; each ride keeps its own audit row and und
 cache eviction and revalidation are batched (backend: curation → editing a whole park's list). The
 Fast Pass chip says what the generic editor cannot: that the park has no currency set (the API
 serves no price above 0 without one), and that 0 means free, not unknown.
+
+The Gattung column also shows the kind the API's rule derived where nobody decided one
+(`attractionKindSource: "derived"`, contract in the backend's
+[attraction kind](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/attraction-kind.md)):
+the select reads „abgeleitet: Show“ and „Übernehmen“ stores it as the editor's kind. The served
+kinds come from the admin list itself, whose rows carry `derivedAttractionKind` and
+`attractionKindSource` beside the stored column (`servedKindsFromList`, `useServedAttractionKinds`).
+An API that does not send the two columns yet gets the old way: `/api/admin/attraction-kinds?path=`
+reads the park shell the park page renders from and answers per attraction id. That route and the
+fallback go once the API ships the columns. The Fahrgeschäfte tab shows the same kind as a chip,
+muted while only the rule says so. A ride's own page (`/admin/attractions/:id`) reads the park's
+list too, under the same key, and its Gattung field offers the derived kind the same way: the empty
+select reads „abgeleitet: Show“, „Übernehmen“ puts it in the form, and the save bar writes it
+through the ride's audited PATCH (`derivedValues` on `CuratedFieldsPanel`). A curated kind shows as
+any correction does. Labels, options and the stored-before-derived choice are
+`lib/admin/attraction-kind.ts` (`pnpm test:admin-attraction-kind`); a kind the API adds later shows
+as its raw value. Every screen reads a park's list through `useParkAttractions`
+(`_lib/use-park-attractions.ts`), one key per query string.
+
+What neither an editor nor the rule could file is the data-quality section „Attraktionen ohne
+Gattung“ (`data-quality/kind-actions.tsx`), one card per park. The report names the attractions
+and, from the API that sends them, their ids (`withoutKindRefs`); without the ids the card matches
+the names against the park's list (`rowsWithoutKind`), a fallback that goes with the
+attraction-kinds route (`kindlessAttractions` picks one). The picks are saved in one bulk PATCH. An
+attraction no kind fits (a pool, a Christmas market) gets „Passt in keine Gattung“ on its row: the
+editor says what it is, and the card writes a `no_kind_fits` review mark through
+`/api/admin/review-marks` with that as its reason, then invalidates the report, which leaves marked
+attractions out. An API that does not know the mark yet refuses it, and the row shows its message.
 
 ### Seasons
 
@@ -813,10 +856,12 @@ page and the API uses it from the next notification on, with no environment vari
 
 `pnpm test:admin-apns` covers the file name, the refused files, the upload's body and the 404.
 
-## Toiletten und Wasser: `/admin/facilities`
+## Orte im Park: `/admin/facilities`
 
-Where an editor reads the parks' toilets and drinking water from OpenStreetMap, looks at what came
-in and approves it; without the approval no point reaches a visitor. The API's side, the ODbL
+Where an editor reads the parks' toilets, drinking water and sights from OpenStreetMap, looks at
+what came in and approves it; without the approval no point reaches a visitor. A sight is a named
+figure bin (Efteling's Holle Bolle Gijs), statue, fountain, viewpoint or historic object; which OSM
+tags count is the API's rule. The API's side, the ODbL
 duties and the owner's steps after a deploy are `docs/frontend/facilities.md` in `v4.api.park.fan`.
 
 - **The import is a job, never a request.** „Alle Parks importieren“ queues one bulk run
@@ -824,13 +869,25 @@ duties and the owner's steps after a deploy are `docs/frontend/facilities.md` in
   all parks take one to several hours. It visits only parks whose last run did not go through, so
   pressing it again resumes; „Alle neu einlesen“ sends `all: true`. While a run is queued or active
   the page reads the list every ten seconds and shows the tally; idle, it does not poll.
-- **One state per park** (`facilityState` in `lib/admin/facilities.ts`): Zu prüfen, Freigegeben,
-  Kein Umriss, Fehlgeschlagen, Nicht eingelesen. What a visitor gets wins: an approved park whose
-  later run failed stays „Freigegeben“ and carries a red chip beside it. The filter shows each
-  state's number and opens on „Zu prüfen“.
+- **One state per park** (`facilityState` in `lib/admin/facilities.ts`): Zu prüfen, Neue Punkte,
+  Freigegeben, Kein Umriss, Fehlgeschlagen, Nicht eingelesen. What a visitor gets wins: an approved
+  park whose later run failed stays „Freigegeben“ and carries a red chip beside it. „Zu prüfen“ is a
+  park nobody approved yet, offline; „Neue Punkte“ one that is online while a re-import's new or
+  changed points wait (`approvedAt` set, `status` imported). The filter shows each state's number
+  and opens on „Zu prüfen“, else on „Neue Punkte“, else on all parks.
+- **Point types in one place** (`facilityTypeMeta`): word, tally word and colour per type; a type
+  the page does not know yet shows as „Sonstiges“ in grey. A row's tally is `facilityCountsLine`
+  („12 WC · 3 Wasser · 11 Sehensw.“) with a chip „5 neu“ while points wait. A second filter takes
+  the parks with a visible point of one type.
+- **The sidebar counts** the parks in „Zu prüfen“ and „Neue Punkte“ (`facilityParksToReview`),
+  for editors, under the list's own query key, so an approval clears it at once.
 - **A park opens in place**: its outline and points as an SVG (`facilityPlot`, north up, longitude
-  shortened by the latitude's cosine), no map tiles. A point outside the outline has an amber ring
-  and an „außerhalb“ chip, a hidden one is faded. Each point links to its element on
+  shortened by the latitude's cosine), no map tiles, narrowed to one type if the editor picks one.
+  A point outside the outline has an amber ring and an „außerhalb“ chip, a waiting one a white ring
+  and a „neu“ chip, a hidden one is faded; hovering names a sight. The list is grouped by type,
+  the waiting points first (`orderFacilityPoints`). On a park that is online the button reads
+  „5 neue Punkte freigeben“ beside „Freigabe zurückziehen“; hiding a new point before that is how
+  an editor turns it down. Each point links to its element on
   openstreetmap.org, where a wrong point is corrected; „Ausblenden“ is for one that is right there
   and useless to a visitor.
 - **A park without an outline** says which outlines were found near it. The editor looks the right
@@ -840,8 +897,9 @@ duties and the owner's steps after a deploy are `docs/frontend/facilities.md` in
   the outline.
 - **An API without the routes** answers 404; the page then says the API is not ready.
 
-`pnpm test:admin-facilities` covers the states, the filter, the queue's line, the plot and the
-sidebar entry.
+`pnpm test:admin-facilities` covers the states, the types and the tally, both filters, the order
+of the points, the queue's line, the plot and the sidebar entry; `pnpm test:admin-health` the
+sidebar count.
 
 ## The admin on a phone
 
@@ -878,6 +936,9 @@ sidebar entry.
 ## Related
 
 - [Writing to the media database](media-database-writes.md): the media browser, sessions and uploads
+- [Watching the export](media-database.md#watching-the-export): „Export für die App“ on
+  `/admin/system`, whether the app's news and guides on media.park.fan are behind the site, and
+  „Export neu starten“
 - [Contributions](contribute.md): the moderation queue at `/admin/contributions`
 - [Most read](most-read.md#the-admin): `/admin/popularity`
 - [Site analytics](site-analytics.md#the-admin): `/admin/traffic` with its filters and map, its event pages, `/admin/traffic/seo`, `/admin/traffic/keywords`, `/admin/traffic/search`, `/admin/traffic/planner` and the live view `/admin/traffic/live`

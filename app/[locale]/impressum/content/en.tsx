@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
+import { LegalLink } from '@/components/legal/legal-blocks';
 import { DATA_TERMS_ANCHOR, RSL_LICENSE_PATH } from '@/lib/agents/licensing';
 import { ATTRIBUTION_ANCHOR, DEVELOPERS_PATH } from '@/lib/developers/paths';
 import type { ImpressumStory } from './story';
@@ -220,11 +221,24 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
         </h2>
         <p className="mb-4">
           Without an account and without an API key, the API at api.park.fan serves a park&apos;s
-          current wait times and nothing else. Everything else park.fan publishes on its pages and
-          through the API may be used outside park.fan only with an API key: the directory of parks
-          and rides, park and ride data such as heights, minimum height, ride profiles and links,
-          opening hours, seasons and events, the weather, the statistics, the forecasts, the day and
-          trip planners and the travel region data. Texts and photos are not included.
+          current wait times and, at <code>/v1/parks/…/facilities</code>, its toilets and drinking
+          water. Everything else park.fan publishes on its pages and through the API may be used
+          outside park.fan only with an API key: the directory of parks and rides, park and ride
+          data such as heights, minimum height, ride profiles and links, opening hours, seasons and
+          events, the weather, the statistics, the forecasts, the day and trip planners and the
+          travel region data. Texts and photos are not included.
+        </p>
+        <p className="mb-4">
+          Nothing in this section applies to the data on toilets and drinking water. It comes from
+          OpenStreetMap (
+          <LegalLink href="https://www.openstreetmap.org/copyright">
+            © OpenStreetMap contributors
+          </LegalLink>
+          ) and is licensed under the{' '}
+          <LegalLink href="https://opendatacommons.org/licenses/odbl/1-0/">
+            Open Database License (ODbL)
+          </LegalLink>
+          ; only the terms of that licence apply to it.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">API keys with permissions</h3>

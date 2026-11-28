@@ -5,8 +5,8 @@ import { CornerUpRight, Loader2 } from 'lucide-react';
 import { useCan } from '../../_app/session';
 import { AdminApiError, adminFetch, adminKeys, adminRequest, useAdminQuery } from '../../_lib/api';
 import { isRedirectablePath, slugsFromPublicPath } from '../../_lib/public-path';
-import type { AdminAttractionListItem } from '../../_lib/types';
 import { parkCatalogOptions, useParkCatalog } from '../../_lib/use-park-catalog';
+import { useParkAttractions } from '../../_lib/use-park-attractions';
 import { SearchSelect } from '../../_ui/controls';
 import { useToast } from '../../_ui/toast';
 
@@ -102,10 +102,7 @@ function RedirectPicker({
     ride ? resolvePath : null
   );
   const parkId = resolved.data?.park?.id ?? null;
-  const rides = useAdminQuery<{ attractions: AdminAttractionListItem[] }>(
-    adminKeys.parkAttractions(parkId ?? '', { params: '' }),
-    parkId ? `/api/admin/content/parks/${parkId}/attractions` : null
-  );
+  const rides = useParkAttractions(parkId);
 
   async function undo(fromPath: string) {
     try {

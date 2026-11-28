@@ -152,11 +152,12 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 - `addWishKey` _function_: The wish key for a ride being added.
 - `fitChoiceAll` _function_: Everything ticked, nothing shortened, nothing pinned: how the question opens. `priority` starts empty, meaning the visitor has not spoken, so a pre-filled list does not make every ride look pinned.
 - `fitOrder` _function_: The wishes in the order the day is decided in, which is what the list draws: pinned first, then the rest as offered, and a second go on a ride behind every first one, because the engine gives a lap up first and "gestrichen wird von unten" …
+- `fitLeftOut` _function_: The wish keys a choice leaves out, in two groups: the pins the day could not keep, and the rest.
 - `leverKey` _function_: A lever's identity, so a caller can hold a set of the ones already pulled.
 - `toggleLever` _function_: One lever pressed, as a new choice. Two levers on one block are alternatives, so taking one sets the other down, and every press is its own inverse.
 - `toggleWish` _function_: One wish ticked or unticked. A ride nobody plans is not a ride anybody pinned.
 - `togglePin` _function_: One wish pinned to the top of the order, or unpinned.
-- Types: `FitWish`, `FitBlock`, `FitChoice`, `FitLeverKind`, `FitLever`, `FitLeverView`
+- Types: `FitWish`, `FitBlock`, `FitChoice`, `FitLeverKind`, `FitLever`, `FitLeverView`, `FitLeftOut`
 
 ### [`leg-chip.ts`](../../lib/planner/leg-chip.ts)
 
@@ -495,6 +496,6 @@ The link that hands a stored plan to somebody else, and how it is read back.
 - `weatherRailSegments` _function_: One segment per hour the axis covers, in order: clipped to the axis, not to the opening hours, since the rain before opening decides what somebody wears. Hours the forecast lacks are skipped, not filled.
 - `isWet` _function_: Whether this hour is wet enough to print a figure rather than an icon. Alternatives, because the gutter beside an hour label has room for one of them.
 - `withinWeatherHorizon` _function_: Whether a date is inside the hourly forecast's reach. Both dates are park-local `YYYY-MM-DD`, so this counts calendar days through `Date.UTC`, never `new Date(string)`, which depends on the reader's offset.
-- `WEATHER_RAIL_MAX_LEAD_DAYS` _const_: How many days ahead the hourly forecast reaches. Measured, not documented upstream.
+- `WEATHER_RAIL_MAX_LEAD_DAYS` _const_: How many days after today the API's `/weather/hourly` serves.
 - `WET_MM_FLOOR` _const_: Below this an hour counts as dry: 0.05 mm is a damp railing, not rain to plan around.
 - Types: `WeatherRailGroup`, `WeatherRailSegment`

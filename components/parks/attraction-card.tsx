@@ -33,6 +33,7 @@ import { SeasonalBadge } from './seasonal-badge';
 import { WorksPeriodBadge } from './works-period-badge';
 import { worksPeriodOn, worksPeriodsOf } from '@/lib/utils/works-period';
 import { QueueTypeBadge } from './queue-type-badge';
+import { factChipsCoveredByLive, liveQueueChips } from '@/lib/parks/queue-availability';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { VirtualLineBadge } from '@/components/parks/virtual-line-badge';
@@ -206,7 +207,9 @@ export function AttractionCard({
         day: todayIso,
       })
     : null;
-  const waitTime = isOperatingOrUnknown && !performanceTimes ? getStandbyWait(attraction) : null;
+  // Only a running ride has a wait: an UNKNOWN one may carry a reported figure, and the ride's own
+  // page shows none for it either.
+  const waitTime = status === 'OPERATING' && !performanceTimes ? getStandbyWait(attraction) : null;
   const parkName =
     parkNameProp ??
     ('park' in attraction && attraction.park?.name
@@ -227,7 +230,7 @@ export function AttractionCard({
   const stats = attraction.statistics;
   const history = stats?.history;
 
-  const trend = isOperatingOrUnknown && waitTime !== null ? shortTermWaitTrend(history) : null;
+  const trend = waitTime !== null ? shortTermWaitTrend(history) : null;
 
   // The "in X min" text is time-relative, so the client <AttractionCardBestTime> renders it. A ride
   // that starts at set times today has its next show instead.
@@ -242,13 +245,21 @@ export function AttractionCard({
   // Gates above read the raw block; what the badges print is the five-minute figure the card shows.
   const ropeDropShown = ropeDropData ? ropeDropDisplayWaits(ropeDropData) : null;
 
+  // A favourite types its queues loosely; the API sends both the same shape. Live readings only for
+  // a running ride, like the standby wait: an UNKNOWN one keeps its curated fact chips instead.
+  const queueChips =
+    status === 'OPERATING'
+      ? liveQueueChips(attraction.queues as import('@/lib/api/types').QueueDataItem[] | undefined)
+      : [];
+  const factChipsCovered = factChipsCoveredByLive(queueChips);
+
   // The bottom glass panel (wait time + sparkline, or the next performance) only exists when
   // there is one of the two. Without it row 3 is empty rather than covered, so the photo
   // the visitor sees runs all the way down — and the framed photo layer has to
   // claim that row too, or its lower edge sits exposed mid-card as a crop seam.
-  const waitShown = isOperatingOrUnknown && waitTime !== null;
+  const waitShown = waitTime !== null;
   const hasBottomPanel = performanceTimes !== null || waitShown;
-  const walkOn = parkyStamp && status === 'OPERATING' && waitShown;
+  const walkOn = parkyStamp && waitShown;
   // 40 px per corner circle (34 px and a 6 px gap), a pair at the least, and never less than the
   // corner Parky stands in.
   const cornerReserve = Math.max(
@@ -528,9 +539,10 @@ export function AttractionCard({
                 />
               )
             )}
-            {isOperatingOrUnknown && !performanceTimes && crowdLevel && (
+            {status === 'OPERATING' && !performanceTimes && crowdLevel && (
               // The scale is this ride's own, in minutes, and only where the API sent the
-              // baseline it rated against — without one the badge stands alone.
+              // baseline it rated against — without one the badge stands alone. The badge names
+              // that baseline too, or two cards at 35 min read „Niedrig" and „Hoch" side by side.
               <RideCrowdScaleTooltip
                 level={isColoredCrowdLevel(crowdLevel) ? crowdLevel : null}
                 baseline={attraction.baseline}
@@ -539,6 +551,7 @@ export function AttractionCard({
                   level={
                     crowdLevel as 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme'
                   }
+                  usualMinutes={attraction.baseline}
                 />
               </RideCrowdScaleTooltip>
             )}
@@ -546,7 +559,10 @@ export function AttractionCard({
                 number: on a station the queue is people waiting for the next
                 departure, so a high reading says the train is due rather than
                 that the ride is popular. */}
-            <TransportSystemBadge attractionKind={attraction.attractionKind} />
+            <TransportSystemBadge
+              attractionKind={attraction.attractionKind}
+              attractionKindSource={attraction.attractionKindSource}
+            />
             <HalloweenMazeBadge attractionKind={attraction.attractionKind} />
             {/* Rope drop is planning info — shown regardless of live status (it
                 matters most before the park opens). */}
@@ -579,37 +595,33 @@ export function AttractionCard({
               compact
             />
             {/* `insideLink`: the whole card is an anchor, so the glossary link
-                degrades to a tooltip rather than nesting an <a> inside one. */}
-            <SingleRiderBadge
-              hasSingleRider={'hasSingleRider' in attraction ? attraction.hasSingleRider : null}
-              insideLink
-            />
-            <VirtualLineBadge
-              hasVirtualLine={'hasVirtualLine' in attraction ? attraction.hasVirtualLine : null}
-              insideLink
-            />
-            <FastPassBadge
-              fastPass={'fastPass' in attraction ? attraction.fastPass : null}
-              insideLink
-            />
-            {isOperatingOrUnknown &&
-              attraction.queues
-                ?.filter((q) => {
-                  if (q.queueType === 'STANDBY') return false;
-                  if (q.queueType === 'SINGLE_RIDER') {
-                    if (!('waitTime' in q)) return false;
-                    const wt = q.waitTime;
-                    return wt !== null && wt !== undefined && typeof wt === 'number' && wt > 0;
-                  }
-                  return true;
-                })
-                .map((queue, i) => (
-                  <QueueTypeBadge
-                    key={`${queue.queueType}-${i}`}
-                    queue={queue as import('@/lib/api/types').QueueDataItem}
-                    timezone={effectiveTimezone}
-                  />
-                ))}
+                degrades to a tooltip rather than nesting an <a> inside one. A fact chip
+                gives way to a live chip of the same lane, which also says what it does now. */}
+            {!factChipsCovered.singleRider && (
+              <SingleRiderBadge
+                hasSingleRider={'hasSingleRider' in attraction ? attraction.hasSingleRider : null}
+                insideLink
+              />
+            )}
+            {!factChipsCovered.virtualLine && (
+              <VirtualLineBadge
+                hasVirtualLine={'hasVirtualLine' in attraction ? attraction.hasVirtualLine : null}
+                insideLink
+              />
+            )}
+            {!factChipsCovered.fastPass && (
+              <FastPassBadge
+                fastPass={'fastPass' in attraction ? attraction.fastPass : null}
+                insideLink
+              />
+            )}
+            {queueChips.map((queue, i) => (
+              <QueueTypeBadge
+                key={`${queue.queueType}-${i}`}
+                queue={queue}
+                timezone={effectiveTimezone}
+              />
+            ))}
           </div>
           {/* A block of its own under the badges, never in the badge wrap: a sentence whose
               position depends on how many badges are present makes the card height

@@ -247,8 +247,8 @@ once a session like every answer).
 
 ## Caching and payload
 
-`revalidate` is a week: every fetch in the render (`getGlobalStats`, `getGeoLiveStats`,
-`getGeoStructure`) is cached a week, and the AI and families chapters that pinned the route to a day
+`revalidate` is a week: every fetch in the render (`getGlobalStats`, `getGeoStructure`) is cached a
+week, and the AI and families chapters that pinned the route to a day
 are gone ([PAR-1113](https://linear.app/parkfan/issue/PAR-1113)). Read `initialRevalidateSeconds` in
 `.next/prerender-manifest.json` after touching a fetch.
 

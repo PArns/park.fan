@@ -159,6 +159,12 @@ export function DailyWaitTimeChart({
     10
   );
   const hasCorridor = typedSlots.some((s) => s.typicalLow != null && s.typicalHigh != null);
+  // The bars are coloured by their wait, and a fixed swatch would match none of them. The legend
+  // takes the bar at „Jetzt", or the first bar with a value while no slot is now.
+  const legendValue =
+    typedSlots[currentIndex]?.value ?? typedSlots.find((s) => s.value !== null)?.value ?? null;
+  const legendSwatch =
+    legendValue !== null ? CROWD_DOT_CLASS[waitTimeCrowdTier(legendValue)] : 'bg-crowd-moderate';
 
   const fmt = (times: string[]) =>
     times.map((t) => formatSlotTime(t, locale, translations.timeSuffix)).join(', ');
@@ -214,11 +220,14 @@ export function DailyWaitTimeChart({
 
       <div className="text-muted-foreground mb-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px]">
         <span className="flex items-center gap-1.5">
-          <span className="bg-crowd-moderate h-2.5 w-2 rounded-sm opacity-40" aria-hidden="true" />
+          <span
+            className={cn(legendSwatch, 'h-2.5 w-2 rounded-sm opacity-40')}
+            aria-hidden="true"
+          />
           {translations.legendRecorded}
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="bg-crowd-moderate h-2.5 w-2 rounded-sm" aria-hidden="true" />
+          <span className={cn(legendSwatch, 'h-2.5 w-2 rounded-sm')} aria-hidden="true" />
           {translations.legendForecast}
         </span>
         {(hasCorridor || expectTypical) && translations.legendTypical && (

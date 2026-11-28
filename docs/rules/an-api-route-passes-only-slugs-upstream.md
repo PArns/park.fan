@@ -7,7 +7,8 @@
   paths are not slugs, re-encodes its segments instead (`lib/admin/proxy-path.ts`).
 - **Secrets.** A route gated on an environment secret fails closed when the secret is unset. Cron
   routes open with `cronUnauthorized(request)` (`lib/security/cron-auth.ts`, a 503 then);
-  `/api/revalidate` uses the same `bearerUnauthorized` for its own secret.
+  `/api/revalidate` uses the same `bearerUnauthorized` for its own secret, and so do
+  `/api/news-export/status` and `/api/news-export/run`, which the API's MCP tools call with it.
 - **Failures.** An upstream failure is answered as a non-200 without cache headers, never as
   `200 {}`. A partial answer (some regions failed) is still an answer; an empty one is not.
 - **Every error response under a shared header rule carries its own `Cache-Control`**:

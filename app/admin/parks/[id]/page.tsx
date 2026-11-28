@@ -20,10 +20,17 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatRiderHeight } from '@/lib/utils/temperature';
+import {
+  attractionKindLabel,
+  shownAttractionKind,
+  type ServedAttractionKind,
+} from '@/lib/admin/attraction-kind';
 import { adminKeys, useAdminQuery } from '../../_lib/api';
-import type { AdminAttractionListItem, AdminParkDetail } from '../../_lib/types';
+import type { AdminParkDetail } from '../../_lib/types';
 import { withFuzzyMatches } from '../../_lib/search-hits';
 import { useFuzzyHits } from '../../_lib/use-fuzzy-hits';
+import { useParkAttractions } from '../../_lib/use-park-attractions';
+import { useServedAttractionKinds } from '../../_lib/use-served-attraction-kinds';
 import {
   AdminPage,
   Chip,
@@ -144,7 +151,7 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
           canEdit={canEdit}
         />
       )}
-      {tab === 'attractions' && <ParkAttractionsTab parkId={id} />}
+      {tab === 'attractions' && <ParkAttractionsTab parkId={id} parkPath={data.path} />}
       {tab === 'features' && <AttractionFeaturesEditor park={data} />}
       {tab === 'seasons' && (
         <div id="seasons">
@@ -268,16 +275,34 @@ function ParkHeader({ park }: { park: AdminParkDetail }) {
  * costs one request rather than two.
  */
 function ParkPhotoCoverage({ parkId, parkSlug }: { parkId: string; parkSlug: string }) {
-  const attractions = useAdminQuery<{ total: number; attractions: AdminAttractionListItem[] }>(
-    adminKeys.parkAttractions(parkId, { params: '' }),
-    `/api/admin/content/parks/${parkId}/attractions?`
-  );
+  const attractions = useParkAttractions(parkId);
 
   if (!attractions.data) return null;
   return <PhotoCoverage parkSlug={parkSlug} attractions={attractions.data.attractions} />;
 }
 
-function ParkAttractionsTab({ parkId }: { parkId: string }) {
+/**
+ * A row's kind: primary when an editor stored it, muted like a detected season when only the API's
+ * rule did, nothing when neither could tell.
+ */
+function KindChip({
+  stored,
+  served,
+}: {
+  stored: string | null | undefined;
+  served: ServedAttractionKind | undefined;
+}) {
+  const kind = shownAttractionKind(stored, served);
+  if (!kind) return null;
+  return (
+    <Chip tone={kind.derived ? 'muted' : 'primary'}>
+      {attractionKindLabel(kind.kind)}
+      {kind.derived && ' · abgeleitet'}
+    </Chip>
+  );
+}
+
+function ParkAttractionsTab({ parkId, parkPath }: { parkId: string; parkPath: string }) {
   const [query, setQuery] = useState('');
   const [includeRetired, setIncludeRetired] = useState(false);
 
@@ -288,19 +313,13 @@ function ParkAttractionsTab({ parkId }: { parkId: string }) {
     return search.toString();
   }, [query, includeRetired]);
 
-  const attractions = useAdminQuery<{ total: number; attractions: AdminAttractionListItem[] }>(
-    adminKeys.parkAttractions(parkId, { params }),
-    `/api/admin/content/parks/${parkId}/attractions?${params}`
-  );
+  const attractions = useParkAttractions(parkId, params);
 
   // The site's fuzzy search adds the rides a typo hides ("blue fir"); retired ones it never finds.
   const fuzzyIds = useFuzzyHits(query, 'attraction').hits.map((hit) => hit.id);
-  const unsearchedParams = includeRetired ? 'includeRetired=true' : '';
-  const unsearched = useAdminQuery<{ total: number; attractions: AdminAttractionListItem[] }>(
-    adminKeys.parkAttractions(parkId, { params: unsearchedParams }),
-    fuzzyIds.length > 0
-      ? `/api/admin/content/parks/${parkId}/attractions?${unsearchedParams}`
-      : null
+  const unsearched = useParkAttractions(
+    fuzzyIds.length > 0 ? parkId : null,
+    includeRetired ? 'includeRetired=true' : ''
   );
   const rows = withFuzzyMatches(
     attractions.data?.attractions ?? [],
@@ -308,6 +327,7 @@ function ParkAttractionsTab({ parkId }: { parkId: string }) {
     fuzzyIds,
     (attraction) => attraction.id
   );
+  const servedKinds = useServedAttractionKinds(parkId, parkPath, rows);
 
   return (
     <Panel>
@@ -397,6 +417,10 @@ function ParkAttractionsTab({ parkId }: { parkId: string }) {
                 </div>
 
                 <div className="flex shrink-0 items-center gap-1.5">
+                  <KindChip
+                    stored={attraction.attractionKind}
+                    served={servedKinds[attraction.id]}
+                  />
                   {attraction.isSeasonal && (
                     <Chip tone={attraction.seasonalityCurated ? 'primary' : 'muted'}>saisonal</Chip>
                   )}

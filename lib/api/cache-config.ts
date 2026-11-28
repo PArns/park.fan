@@ -59,6 +59,10 @@ export const CACHE_TTL = {
   // /v1/page-views/top, the most-read rankings over 7 and 30 days. The API caches them for an hour
   // too: a sum over a week does not move in five minutes, and the lists are not a ticker.
   pageViews: 3600,
+  // The same park ranking, asked for a day fresh by the lists it orders: the country pages and the
+  // header menu's country pane. A day is a thirtieth of the window it sums, and the country pages
+  // are ISR on `countrySummary`'s day: an hour here would rebuild each of them 24 times a day.
+  parkViewOrder: 86400,
   // `/v1/trip-regions/:region`, the parks, hotel areas and drive times of a region. Curated in the
   // API's code and moved only by its deploy; the API asks the edge for a day too.
   tripRegion: 86400,
@@ -69,4 +73,8 @@ export const CACHE_TTL = {
   // The region's `/calendar` and `/best-days`, which the API keeps an hour in Redis and rebuilds
   // from the calendar warmup twice a day. An hour is the API's own window, not a page's floor.
   tripRegionData: 3600,
+  // A park's `/schedule` rows, read for their day prices (`getParkPurchaseDays`). The API keeps
+  // the route an hour at the edge, and Disney moves a day's price and its sold-out state within
+  // the day, so the park's day-long snapshot is too old for them.
+  parkSchedule: 3600,
 } as const;

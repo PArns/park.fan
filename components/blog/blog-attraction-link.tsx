@@ -8,7 +8,12 @@ import { BlogAttractionCardLive } from './blog-attraction-card-live';
 import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { PERFORMANCE_BADGE_CLASS } from '@/components/parks/performance-badge';
-import { inlinePerformanceSlot, isNotOperating, waitTimeBadgeClass } from '@/lib/blog/live-display';
+import {
+  inlinePerformanceSlot,
+  isNotOperating,
+  rideChipClosedStatus,
+  waitTimeBadgeClass,
+} from '@/lib/blog/live-display';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { parkWallClock } from '@/lib/utils/park-day';
 import { formatPerformanceTime } from '@/lib/utils/performance-schedule';
@@ -61,9 +66,10 @@ export function BlogAttractionLink({
   // refresh both in the browser (`useLiveBlogRide`). The hover card fetches the fuller payload once it opens.
   const { park, attraction } = useLiveBlogRide(resolvedPark, resolvedAttraction);
   const label = children ?? attraction?.attractionName ?? fallbackLabel;
-  // Only a ride with a programme reads the clock, so the other chips take no minute tick.
+  // Only a ride with a programme or a closed park reads the clock, so the other chips take no
+  // minute tick.
   const schedules = attraction?.detail?.performanceSchedules;
-  const nowMs = useMinuteNow(!!schedules?.length);
+  const nowMs = useMinuteNow(!!schedules?.length || park?.status === 'CLOSED');
   const bare = options?.has('bare') ?? false;
   // `chip`: the live badge without the "(Park, Country)" note, for prose that already names the park.
   const chipOnly = options?.has('chip') ?? false;
@@ -107,7 +113,17 @@ export function BlogAttractionLink({
       )}
     </Badge>
   ) : closed ? (
-    <ParkStatusBadge status={attraction.status ?? 'CLOSED'} className={INLINE_BADGE} />
+    <ParkStatusBadge
+      status={rideChipClosedStatus(
+        {
+          status: attraction.status,
+          isCurrentlyInSeason: attraction.detail?.isCurrentlyInSeason,
+        },
+        park,
+        nowMs
+      )}
+      className={INLINE_BADGE}
+    />
   ) : typeof attraction.currentWaitTime === 'number' ? (
     <Badge className={cn(waitTimeBadgeClass(attraction.currentWaitTime), INLINE_BADGE)}>
       <Clock className="h-2.5 w-2.5" aria-hidden="true" />

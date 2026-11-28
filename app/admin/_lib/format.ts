@@ -31,6 +31,23 @@ export function formatDay(value: string | null): string {
   );
 }
 
+/**
+ * A timestamp as day and time on German time, `27.11., 17:36`, `—` when there is none. Berlin
+ * rather than the reader's clock, because post dates are written there.
+ */
+export function formatDayTime(value: string | null): string {
+  if (!value) return '—';
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return value;
+  return getDateTimeFormat('de-DE', {
+    day: '2-digit',
+    month: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Berlin',
+  }).format(parsed);
+}
+
 /** An ISO time as the admin says it, in German and relative to now: `vor 3 Stunden`. */
 export function formatAgo(iso: string): string {
   return formatDistanceToNow(parseISO(iso), { addSuffix: true, locale: de });

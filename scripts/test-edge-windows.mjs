@@ -12,8 +12,8 @@
  * browser asks for, before any rewrite. See docs/rules/an-isr-route-needs-both-halves.md.
  */
 import assert from 'node:assert/strict';
-import { getPathMatch } from 'next/dist/shared/lib/router/utils/path-match.js';
 import nextConfig from '../next.config.ts';
+import { resolveHeader } from './lib/header-rules.mjs';
 import { locales } from '../i18n/config.ts';
 import { GLOSSARY_SEGMENTS } from '../lib/glossary/segments.ts';
 import { PARK_CALENDAR_SEGMENTS } from '../lib/parks/calendar-segments.ts';
@@ -114,24 +114,7 @@ for (const region of LIVE_TRIP_REGIONS) {
 
 const rules = await nextConfig.headers();
 
-/**
- * The value a header ends up with for `path`, and the source of the rule that set it: every
- * matching rule applies, the last one wins.
- */
-function headerFor(path, key) {
-  let value;
-  let source;
-  for (const rule of rules) {
-    if (!getPathMatch(rule.source)(path)) continue;
-    for (const header of rule.headers) {
-      if (header.key.toLowerCase() === key) {
-        value = header.value;
-        source = rule.source;
-      }
-    }
-  }
-  return { value, source };
-}
+const headerFor = (path, key) => resolveHeader(rules, path, key);
 
 let passed = 0;
 for (const [route, { url, rule }] of Object.entries(ROUTES)) {

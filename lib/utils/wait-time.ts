@@ -55,6 +55,18 @@ export function typicalHourFigures(
 }
 
 /**
+ * The top of a forecast's spread as a displayed wait: `wait` plus `uncertaintyMinutes`, on the
+ * five-minute grid, so the day dialog can say „~45 bis ~60 Min.". The band is one-sided (how much
+ * longer the queue can plausibly run), so it never becomes a `±`. `null` without a band, which is
+ * „not known" rather than zero, and where the band is too narrow to reach the next step.
+ */
+export function waitBandTop(wait: number, band: number | null | undefined): number | null {
+  if (band == null || !Number.isFinite(band)) return null;
+  const top = roundWaitTo5(wait + band);
+  return top > wait ? top : null;
+}
+
+/**
  * The five-minute grid for a figure this app computes itself, such as a mean over many days. The
  * walk-on 13 is a value a park posts; an average that happens to land on 13 is an ordinary short
  * wait and goes to 15 like 12.8 does.

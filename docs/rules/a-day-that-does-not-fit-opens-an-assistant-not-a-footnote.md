@@ -15,7 +15,9 @@ and answers `needs-fit` where anything would be left out; the press then opens
   the engine as an ADD. The optimiser alone may never delete somebody's entry; this list, where
   the ride is named, is the one place that is relaxed.
 - **The visitor's order beats the park's curation**: `isWanted` counts a ride named in `priority` as
-  one somebody is there for, so a pinned filler no longer goes before an unpinned headliner.
+  one somebody is there for, so a pinned filler no longer goes before an unpinned headliner. A pin
+  is given up only where no unpinned ride can make room, and the result names such a pin apart
+  from the rest (`pinnedMissed`).
 - **Solving it may not take the screen away.** The dialog's band and the wizard's block carry a
   state: the crowd tint with a warning while something is left out, `status-operating` with a check
   („So passen alle 10 Bahnen in den Tag") once nothing is. The wizard's block stays while anything

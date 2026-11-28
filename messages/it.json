@@ -57,13 +57,7 @@
     "temperatureUnitToggle": "Cambia unità di temperatura",
     "updated": "Aggiornato",
     "reservation": "Prenotazione richiesta",
-    "trend": "Tendenza",
     "in": "tra",
-    "vsTypical": "vs tipico",
-    "much_higher": "Molto più alta",
-    "higher": "Più alta",
-    "lower": "Più bassa",
-    "much_lower": "Molto più bassa",
     "typical": "Tipico",
     "up": "Su",
     "down": "Giù",
@@ -722,7 +716,8 @@
       "extreme": "Estrema",
       "full": "Pieno",
       "unknown": "Nessuna previsione",
-      "closed": "Chiuso"
+      "closed": "Chiuso",
+      "withUsual": "{level} · di solito {minutes} min"
     },
     "crowdScale": {
       "title": "Livelli di affluenza",
@@ -740,7 +735,7 @@
       "between": "{min}–{max} min",
       "from": "da {min} min"
     },
-    "avgWaitTime": "Tempo di attesa medio",
+    "avgHeadlinerPeak": "Attesa di picco media (attrazioni di punta)",
     "openAttractions": "Attrazioni aperte",
     "closedAttractions": "Attrazioni chiuse",
     "schedule": "Programma",
@@ -841,7 +836,6 @@
     "mapMarkers": {
       "noMapData": "Nessun dato cartografico disponibile per questo parco.",
       "parkCenter": "Centro del parco",
-      "status": "Stato",
       "waitTime": "Tempo di attesa",
       "crowdLevel": "Livello di affluenza",
       "topSpeed": "Velocità max",
@@ -969,6 +963,7 @@
     "status": {
       "OPERATING": "Aperto",
       "CLOSED": "Chiuso",
+      "CLOSED_FOR_NOW": "Chiuso per ora",
       "REFURBISHMENT": "In manutenzione",
       "DOWN": "Fermo",
       "UNKNOWN": "Sconosciuto",
@@ -1222,7 +1217,6 @@
     },
     "crowdToday": "Affluenza di oggi",
     "crowdTodaySoFar": "finora",
-    "crowdTodayShort": "Oggi",
     "clock": {
       "localTime": "ora locale"
     },
@@ -1299,9 +1293,9 @@
       "instruction": "Consiglio",
       "source": "Fonte: {name}"
     },
-    "headlinerForecastTitle": "Attese previste (highlights)",
+    "headlinerForecastTitle": "Attese di picco previste (attrazioni di punta)",
     "crowdMeaning": {
-      "very_low": "Quasi nessuna coda – attese brevi, anche sulle attrazioni principali.",
+      "very_low": "Quasi nessuna coda – attese brevi, anche sulle attrazioni di punta.",
       "low": "Giornata tranquilla – attese sotto la media.",
       "moderate": "Una giornata tipica – attese normali per questo parco.",
       "high": "Più affollato del solito – aspettati attese decisamente più lunghe.",
@@ -1314,8 +1308,8 @@
       "soFarLabel": "Oggi finora",
       "hourlyTitle": "Previsione oraria",
       "holidaysTitle": "Festività e vacanze scolastiche",
-      "actualWaitsTitle": "Attese medie",
-      "waitBand": "± {minutes} min",
+      "actualWaitsTitle": "Attese di picco registrate (attrazioni di punta)",
+      "waitBand": "fino a ~{minutes} {unit}",
       "waitBandUnknown": "nessun margine noto",
       "openToday": "Mostra i dettagli di oggi",
       "prevDay": "Giorno precedente",
@@ -1360,13 +1354,13 @@
         "busiestPast": "{count, plural, =1 {L’affluenza maggiore c’è stata {days}.} other {L’affluenza maggiore c’è stata {days}.}}",
         "hours": "Di solito aperto dalle {from} alle {to}.",
         "schoolVacation": "{days, plural, =1 {Un giorno cade} other {# giorni cadono}} nelle vacanze scolastiche della regione del parco.",
-        "headlinerFuture": "Sulle attrazioni principali sono attesi in media {minutes} minuti.",
-        "headlinerPast": "Le attrazioni principali hanno registrato in media {minutes} minuti.",
+        "headlinerFuture": "Nel loro momento più affollato, le attrazioni di punta arrivano in media a {minutes} minuti.",
+        "headlinerPast": "Nel loro momento più affollato, le attrazioni di punta hanno registrato in media {minutes} minuti.",
         "factOpenDays": "Aperto",
         "factOpenDaysValue": "{open} giorni su {total}",
         "factHours": "Orari",
         "factHoursValue": "{from}–{to}",
-        "factWait": "Media attrazioni principali",
+        "factWait": "Attesa di picco media (attrazioni di punta)",
         "factWaitValue": "{minutes} min",
         "factSchoolVacation": "Vacanze scolastiche",
         "factSchoolVacationValue": "{days, plural, =1 {# giorno} other {# giorni}}",
@@ -1374,9 +1368,9 @@
       },
       "dataset": {
         "name": "Affluenza e tempi di attesa a {park}, {month}",
-        "description": "Affluenza prevista per ogni giorno di {month} a {park}: orari, festività e vacanze scolastiche, previsioni meteo e l’attesa prevista sulle attrazioni principali. Ricavato da tempi di attesa misurati.",
+        "description": "Affluenza prevista per ogni giorno di {month} a {park}: orari, festività e vacanze scolastiche, previsioni meteo e l’attesa di picco prevista delle attrazioni di punta. Ricavato da tempi di attesa misurati.",
         "varCrowd": "Affluenza prevista per giorno",
-        "varWait": "Attesa prevista sulle attrazioni principali",
+        "varWait": "Attesa di picco prevista delle attrazioni di punta",
         "varHours": "Orari di apertura",
         "varHolidays": "Festività e vacanze scolastiche",
         "varWeather": "Previsioni meteo"
@@ -1467,7 +1461,7 @@
       "noReasons": "Per questi due giorni non ci sono valori confrontabili.",
       "difference": "Differenza: {value}",
       "reasonCrowd": "Affluenza",
-      "reasonWait": "Attesa alle attrazioni principali",
+      "reasonWait": "Attesa di picco delle attrazioni di punta",
       "reasonHours": "Orari di apertura",
       "reasonWeather": "Precipitazioni",
       "reasonHoliday": "Festivi e vacanze",
@@ -1516,13 +1510,6 @@
     "title": "Attrazioni",
     "sectionNavLabel": "Sezioni di questa pagina",
     "waitTime": "Tempo di attesa",
-    "status": {
-      "operating": "Operativa",
-      "down": "Temporaneamente ferma",
-      "closed": "Chiusa",
-      "refurbishment": "In manutenzione",
-      "unknown": "Sconosciuto"
-    },
     "label": {
       "OPERATING": "Aperta",
       "DOWN": "Ferma",
@@ -1609,16 +1596,17 @@
         "singleRiderNoTime": "Single Rider",
         "lightningLane": "Lightning Lane: {price}",
         "lightningLaneNoPrice": "Lightning Lane: disponibile",
+        "lightningLaneState": "Lightning Lane: {state}",
         "express": "Express: {price}",
         "expressNoPrice": "Express: disponibile",
-        "virtualQueue": "Coda virtuale",
-        "virtualQueueFull": "Coda virtuale piena",
+        "expressState": "Express: {state}",
         "boardingGroups": "Gruppi di imbarco: {start}-{end}",
         "boardingGroupsAvailable": "Gruppi di imbarco disponibili",
         "boardingGroupsDistributed": "Gruppi distribuiti",
         "boardingGroupsPaused": "Gruppi di imbarco in pausa",
-        "return": "Ritorno: {start} - {end}",
-        "returnNoEnd": "Ritorno: {start}"
+        "returnState": "Orario di ritorno: {kind, select, full {Esaurito} finished {Terminato per oggi} other {{state}}}",
+        "return": "Orario di ritorno: {start}–{end}",
+        "returnNoEnd": "Orario di ritorno: {start}"
       }
     },
     "h1Suffix": "Tempo di attesa in diretta",
@@ -1745,7 +1733,7 @@
       "medianCaption": "Mediana in minuti",
       "medianDetail": "Metà dei {usable} guasti con una fine osservata era finita dopo {minutes} minuti.",
       "longestCaption": "Guasto più lungo",
-      "shareDetail": "Circa il {percent} % del tempo in cui l'attrazione era in funzione.",
+      "shareDetail": "I guasti hanno occupato circa il {percent} % del tempo in cui l'attrazione era in funzione o segnalata come guasta.",
       "withheld": {
         "not_down_capable": "Per questo parco nessuna fonte dati segnala guasti. Se {name} si ferma, qui non lo vediamo.",
         "park_never_reports": "La fonte dati di questo parco non segnala guasti. Li riconosciamo dalle chiusure durante l'orario di apertura, ma non pubblichiamo statistiche.",
@@ -1761,7 +1749,7 @@
         "heavily_censored": "Negli ultimi {days} giorni sono stati segnalati {count} guasti. Di troppi non abbiamo visto la fine, di solito perché il parco ha chiuso mentre l'attrazione era ancora ferma. È troppo poco per indicare una durata.",
         "stale_data": "Questi dati non sono aggiornati al momento, quindi non li mostriamo."
       },
-      "longestDetail": "Il massimo dei {count} guasti segnalati."
+      "longestDetail": "Tra i {usable} guasti con una fine osservata."
     },
     "retired": {
       "h1Suffix": "Chiuso definitivamente",
@@ -3718,6 +3706,7 @@
       "resultEnd": "Ultima attrazione entro le",
       "resultWait": "Attesa complessiva",
       "resultOut": "Resta fuori",
+      "resultPinnedOut": "{count, plural, one {Non ci sta più nella giornata, nemmeno in cima} other {Non ci stanno più nella giornata, nemmeno in cima}}",
       "resultHint": "Nel pianificatore puoi ancora spostare, eliminare e riordinare.",
       "apply": "Applica il piano",
       "applied": "{count, plural, one {Una attrazione pianificata} other {# attrazioni pianificate}}",

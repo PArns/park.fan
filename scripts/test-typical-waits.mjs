@@ -27,7 +27,12 @@
 
 import { quietestWeekdays } from '../lib/utils/typical-waits.ts';
 import { ropeDropDisplayWaits } from '../lib/utils/rope-drop.ts';
-import { isWalkOnWait, roundAverageWaitTo5, roundWaitTo5 } from '../lib/utils/wait-time.ts';
+import {
+  isWalkOnWait,
+  roundAverageWaitTo5,
+  roundWaitTo5,
+  waitBandTop,
+} from '../lib/utils/wait-time.ts';
 import { waitTimeCrowdTier } from '../lib/utils/crowd-level-styles.ts';
 
 const testCases = [];
@@ -333,6 +338,17 @@ test("a 10 is not, at the colour's line", () => isWalkOnWait(10), false);
 test('a posted 13 is not a walk-on', () => isWalkOnWait(13), false);
 test('a 12 is not', () => isWalkOnWait(12), false);
 test('a 10 is one by a wider line, as Parky draws it', () => isWalkOnWait(10, 10), true);
+
+// --- the top of a forecast's spread -------------------------------------------------------------
+
+// `uncertaintyMinutes` is how much longer the queue can run, one-sided: the day dialog prints
+// „~45 bis ~60", never „± 12".
+test('the band is added on top, then rounded', () => waitBandTop(45, 12), 55);
+test('a wide band rounds like any wait', () => waitBandTop(35, 48.6), 85);
+test('no band is not a band of zero', () => waitBandTop(45, null), null);
+test('an absent band says nothing either', () => waitBandTop(45, undefined), null);
+test('a literal 0 does not reach the next step', () => waitBandTop(45, 0), null);
+test('a band under the rounding says nothing beside the figure', () => waitBandTop(45, 2), null);
 
 let passed = 0;
 let failed = 0;

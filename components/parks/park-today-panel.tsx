@@ -53,6 +53,7 @@ import { rideAlertAttractionsFor } from '@/components/push/ride-alert-park-conte
 import { ShowFollowBell } from '@/components/push/show-follow-bell';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
+import { CROWD_DOT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 /** Rows the headliner and show columns ever show. The show column runs one short of the
@@ -65,6 +66,9 @@ import type { ParkWithAttractions } from '@/lib/api/types';
  */
 const WARNING_STRIP =
   'space-y-0 rounded-none border-x-0 border-t-0 shadow-none [&_.rounded-xl]:rounded-none [&>div]:rounded-none';
+
+/** Where the occupancy bar ends: twice a typical day, which sits in its middle. */
+const OCCUPANCY_BAR_MAX = 200;
 
 const HEADLINER_ROWS = 6;
 const SHOW_ROWS = 4;
@@ -203,6 +207,9 @@ export function ParkTodayPanel({
   const currentCrowd =
     (stats ? headline.crowdLevel : undefined) ?? park.currentLoad?.crowdLevel ?? null;
   const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
+  // The level „Andrang jetzt" shows, which the occupancy bar is coloured by.
+  const occupancyLevel =
+    isOpenish && currentCrowd && isColoredCrowdLevel(currentCrowd) ? currentCrowd : null;
   // A measured peak hour happened. An estimated one is a forecast for today, and the API sends it
   // for a day the park does not open as well.
   const peakHour =
@@ -742,29 +749,23 @@ export function ParkTodayPanel({
                   {occupancy ? `${Math.round(occupancy.current)} %` : '—'}
                 </span>
               </div>
-              {/* occupancy.current is relative to the 90th-percentile baseline and can exceed 100. */}
+              {/* 100 % is a typical day, not a full park. A bar ending there draws an ordinary day
+                  nearly full and red beside „Normal", so it runs to 200 % with the typical day as
+                  the notch in the middle, in the colour of the level beside it. Nothing under it
+                  says „x % niedriger": `comparedToTypical` is the same reading minus 100. */}
               <Progress
-                value={occupancy ? Math.min(100, Math.max(0, occupancy.current)) : 0}
+                value={occupancy ? occupancy.current : 0}
+                max={OCCUPANCY_BAR_MAX}
+                indicatorClassName={
+                  occupancyLevel ? CROWD_DOT_CLASS[occupancyLevel] : 'bg-muted-foreground/40'
+                }
                 aria-label={t('occupancy')}
-              />
-              {occupancy && occupancy.comparisonStatus !== 'typical' && (
-                <p className="text-xs">
-                  <span
-                    className={cn(
-                      'font-semibold',
-                      occupancy.comparisonStatus === 'higher' ||
-                        occupancy.comparisonStatus === 'much_higher'
-                        ? 'text-status-closed'
-                        : 'text-status-operating'
-                    )}
-                  >
-                    {Math.abs(occupancy.comparedToTypical)} %
-                  </span>{' '}
-                  <span className="text-muted-foreground">
-                    {tCommon(occupancy.comparisonStatus)}
-                  </span>
-                </p>
-              )}
+              >
+                <span
+                  aria-hidden="true"
+                  className="bg-background absolute inset-y-0 left-1/2 w-0.5 -translate-x-1/2"
+                />
+              </Progress>
               {/* Peak wait and peak hour sit beside the occupancy bar, not in the headliner column:
                   both are park-wide readings about today, not about one queue. */}
               {stats && (peakWait > 0 || peakHour) && (

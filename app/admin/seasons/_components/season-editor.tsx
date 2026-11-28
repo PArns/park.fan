@@ -26,7 +26,7 @@ import {
 import { SEASON_STATUS_TONE } from '@/components/parks/season-headline';
 import { SeasonKindIcon } from '@/components/parks/season-kind-icon';
 import { isSeasonEvent } from '@/lib/parks/park-season-days';
-import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
+import { adminFetch, adminKeys, useInvalidateAdmin } from '../../_lib/api';
 import { formatAgo } from '../../_lib/format';
 import {
   SEASON_KIND_OPTIONS,
@@ -49,13 +49,9 @@ import {
   weekdayDates,
   type SeasonDraft,
 } from '../../_lib/seasons';
-import type {
-  AdminAttractionListItem,
-  ParkSeason,
-  ParkSeasonKind,
-  ParkSeasonStatus,
-} from '../../_lib/types';
+import type { ParkSeason, ParkSeasonKind, ParkSeasonStatus } from '../../_lib/types';
 import { parkCatalogOptions, useParkCatalog } from '../../_lib/use-park-catalog';
+import { useParkAttractions } from '../../_lib/use-park-attractions';
 import {
   Field,
   MultiSearchSelect,
@@ -342,10 +338,7 @@ export function SeasonEditor({
   const choosePark = !season && parkId === null;
   const parks = useParkCatalog(choosePark);
   // With retired rides too, so a season that names one still shows its name.
-  const rides = useAdminQuery<{ attractions: AdminAttractionListItem[] }>(
-    adminKeys.parkAttractions(park ?? '', { params: 'includeRetired=true' }),
-    park ? `/api/admin/content/parks/${park}/attractions?includeRetired=true` : null
-  );
+  const rides = useParkAttractions(park, 'includeRetired=true');
   const rideOptions = (rides.data?.attractions ?? []).map((ride) => ({
     value: ride.id,
     label: ride.name,

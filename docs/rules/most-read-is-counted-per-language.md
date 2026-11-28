@@ -20,7 +20,9 @@
 - **Popular parks follow the views too**: four surfaces take the locale's most viewed parks and fill
   up with their hand-picked list (`rankedFirst`); which surfaces and from where is
   [most read → popular parks](../features/most-read.md#popular-parks). The footer's four countries
-  never change.
+  never change. A country's park list, on its page and in the menu, is ordered by the same ranking
+  from `PARK_ORDER_MIN_VIEWS` on, read for a day
+  ([country lists](../features/most-read.md#country-lists)).
 
 ## Why
 
@@ -33,6 +35,6 @@ on a blip, and a list shorter than its placeholder moves the page under the read
 
 ## Check
 
-`pnpm test:most-read`, `pnpm test:viewed-parks`. Background:
+`pnpm test:most-read`, `pnpm test:viewed-parks`, `pnpm test:park-view-order`. Background:
 [most read](../features/most-read.md) (beacon, rankings, surfaces, admin); the API half is
 [`docs/frontend/page-views.md`](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/page-views.md).

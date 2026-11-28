@@ -14,6 +14,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { isIsoDate } from '@/lib/utils/calendar-utils';
+import { curatedEnumOptions } from '@/lib/admin/attraction-kind';
 import { adminFetch, useInvalidateAdmin } from '../_lib/api';
 import type { CuratedField, CurationResponse } from '../_lib/types';
 import {
@@ -98,6 +99,8 @@ function formatFieldValue(field: CuratedField, value: unknown): string {
       return field.unit ? `${String(value)} ${field.unit}` : String(value);
     case 'date':
       return formatDay(value);
+    case 'enum':
+      return curatedEnumOptions(field.key, [String(value)])[0]?.label ?? String(value);
     case 'periods':
       return periodRows(value).length > 0
         ? periodRows(value)
@@ -149,11 +152,14 @@ function sameValue(a: unknown, b: unknown): boolean {
 function CuratedFieldRow({
   field,
   value,
+  derived,
   onChange,
   disabled,
 }: {
   field: CuratedField;
   value: unknown;
+  /** What the API's rule serves while the field is empty; see `CuratedFieldsPanel`. */
+  derived: unknown;
   onChange: (value: unknown) => void;
   disabled: boolean;
 }) {
@@ -164,9 +170,22 @@ function CuratedFieldRow({
     value !== undefined &&
     value !== '' &&
     !(Array.isArray(value) && value.length === 0);
+  const offered = hasCorrection || derived === null || derived === undefined ? null : derived;
   const error = dirty ? listFieldError(field, value) : null;
   const agreesWithUpstream =
     hasCorrection && !field.humanOnly && sameValue(value, field.syncedValue);
+  const control = (
+    <FieldControl
+      field={field}
+      id={id}
+      value={value}
+      placeholder={
+        offered === null ? placeholderFor(field) : `abgeleitet: ${formatFieldValue(field, offered)}`
+      }
+      onChange={onChange}
+      disabled={disabled}
+    />
+  );
 
   return (
     <Field
@@ -202,7 +221,22 @@ function CuratedFieldRow({
         </div>
       }
     >
-      <FieldControl field={field} id={id} value={value} onChange={onChange} disabled={disabled} />
+      {offered === null ? (
+        control
+      ) : (
+        <div className="flex items-center gap-2">
+          <div className="min-w-0 flex-1">{control}</div>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => onChange(offered)}
+            disabled={disabled}
+            title="Abgeleiteten Wert übernehmen"
+          >
+            Übernehmen
+          </Button>
+        </div>
+      )}
 
       {agreesWithUpstream && (
         <p className="flex items-center gap-1.5 text-xs text-amber-400">
@@ -238,12 +272,15 @@ function FieldControl({
   field,
   id,
   value,
+  placeholder,
   onChange,
   disabled,
 }: {
   field: CuratedField;
   id: string;
   value: unknown;
+  /** What an empty input says; `placeholderFor` unless the API derives a value. */
+  placeholder: string;
   onChange: (value: unknown) => void;
   disabled: boolean;
 }) {
@@ -254,7 +291,7 @@ function FieldControl({
           id={id}
           disabled={disabled}
           value={typeof value === 'string' ? value : ''}
-          placeholder={placeholderFor(field)}
+          placeholder={placeholder}
           onChange={(event) => onChange(event.target.value || null)}
         />
       );
@@ -275,7 +312,7 @@ function FieldControl({
             inputMode={field.type === 'decimal' ? 'decimal' : 'numeric'}
             value={typeof value === 'number' ? value : null}
             onValueChange={onChange}
-            placeholder={placeholderFor(field)}
+            placeholder={placeholder}
             className="max-w-32"
           />
           {field.unit && <span className="text-muted-foreground text-xs">{field.unit}</span>}
@@ -289,7 +326,7 @@ function FieldControl({
           disabled={disabled}
           maxLength={field.maxLength}
           value={typeof value === 'string' ? value : ''}
-          placeholder={placeholderFor(field)}
+          placeholder={placeholder}
           onChange={(event) => onChange(event.target.value || null)}
         />
       );
@@ -310,11 +347,8 @@ function FieldControl({
           disabled={disabled}
           value={typeof value === 'string' ? value : null}
           onValueChange={onChange}
-          placeholder={placeholderFor(field)}
-          options={(field.options ?? []).map((option) => ({
-            value: option,
-            label: option,
-          }))}
+          placeholder={placeholder}
+          options={curatedEnumOptions(field.key, field.options)}
         />
       );
 
@@ -368,7 +402,7 @@ function FieldControl({
           id={id}
           disabled={disabled}
           value={typeof value === 'string' ? value : ''}
-          placeholder={placeholderFor(field)}
+          placeholder={placeholder}
           onChange={(event) => onChange(event.target.value || null)}
         />
       );
@@ -751,6 +785,7 @@ function CuratedFieldsEditor({
   saving = false,
   saveError,
   groupExtras,
+  derivedValues,
 }: {
   fields: CuratedField[];
   form: CuratedFormState;
@@ -759,6 +794,7 @@ function CuratedFieldsEditor({
   saving?: boolean;
   saveError?: string | null;
   groupExtras?: CuratedGroupExtras;
+  derivedValues?: CuratedDerivedValues;
 }) {
   const [reason, setReason] = useState('');
   const [sourceUrl, setSourceUrl] = useState('');
@@ -896,6 +932,7 @@ function CuratedFieldsEditor({
                 key={field.key}
                 field={field}
                 value={form.values[field.key]}
+                derived={derivedValues?.[field.key]}
                 onChange={(value) => form.setValue(field.key, value)}
                 disabled={disabled || saving}
               />
@@ -984,6 +1021,13 @@ type QueryPrefix = readonly unknown[];
  */
 export type CuratedGroupExtras = Readonly<Partial<Record<string, ReactNode>>>;
 
+/**
+ * What the API's own rule serves for a field nobody corrected, by field key, like a ride's derived
+ * kind. The empty field reads „abgeleitet: …“, and „Übernehmen“ puts the value in the form, so the
+ * save writes it as the editor's like any other correction.
+ */
+export type CuratedDerivedValues = Readonly<Partial<Record<string, unknown>>>;
+
 /** The "Kuratierte Felder" panel of a park or a ride: the editor, its save, and the undo toast. */
 export function CuratedFieldsPanel({
   fields,
@@ -995,6 +1039,7 @@ export function CuratedFieldsPanel({
   savedDescription,
   canEdit,
   groupExtras,
+  derivedValues,
 }: {
   fields: CuratedField[];
   endpoint: string;
@@ -1006,6 +1051,7 @@ export function CuratedFieldsPanel({
   savedDescription?: string;
   canEdit: boolean;
   groupExtras?: CuratedGroupExtras;
+  derivedValues?: CuratedDerivedValues;
 }) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
@@ -1091,6 +1137,7 @@ export function CuratedFieldsPanel({
           saveError={error}
           onSave={save}
           groupExtras={groupExtras}
+          derivedValues={derivedValues}
         />
       </PanelBody>
     </Panel>

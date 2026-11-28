@@ -4,8 +4,8 @@ import {
   bestDaysCacheTag,
   getIntegratedCalendar,
   getBestDaysSnapshotFresh,
-  parkCalendarCacheTag,
 } from '@/lib/api/integrated-calendar';
+import { parkCalendarCacheTag } from '@/lib/api/park-live-projection';
 import {
   foreignForecastRequest,
   isKeylessRelayPath,
@@ -19,8 +19,10 @@ import {
   leanParkForLivePoll,
 } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
+import { getParkWeatherHourlyFresh, hourlyDayPoints } from '@/lib/api/weather-hourly';
 import { getParkHistoricalStats, getParkHourlyProfile, getRideDayCurve } from '@/lib/api/stats';
 import { getPlanDay } from '@/lib/api/plan';
+import { getParkPurchaseDays } from '@/lib/api/park-purchases';
 import {
   enrichAttractionsWithImages,
   getCardObjectPosition,
@@ -37,6 +39,7 @@ import {
   tagPurgedCacheHeaders,
 } from '@/lib/api/cdn-cache-headers';
 import {
+  isIsoDate,
   isServableCalendarRange,
   isServableHourlyDate,
   isServableHourlyProfileRange,
@@ -49,7 +52,7 @@ import {
 } from '@/lib/parks/park-simulation';
 import { isSlugPath } from '@/lib/utils/servable-route';
 import { pickRideFigures } from '@/lib/api/ride-figures';
-import { catchNonFatal, getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
+import { ApiError, catchNonFatal, getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { isParkyDayTip, isServableTipRequest, mayKeepNoTip } from '@/lib/assistant/parky-tip';
 import { relayJsonWrite } from '@/lib/api/relay';
 import { ridesInWorksOn } from '@/lib/utils/works-period';
@@ -89,6 +92,13 @@ const RIDE_STATS_CACHE_CONTROL =
   'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400';
 
 /**
+ * The window for `…/purchases`, the trip sheets' day prices: the hour of their Data Cache entry
+ * (`CACHE_TTL.parkSchedule`), in the browser too, since a sheet opened again within it asks
+ * nothing new. Repeated verbatim in next.config.ts.
+ */
+const PURCHASES_CACHE_CONTROL = 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=600';
+
+/**
  * The park page's live poll. Every visitor of a park gets the same bytes, and the client asks every
  * five minutes, so 30 s in the shared cache collapses a park's open tabs into about two origin calls
  * a minute while the waits on screen stay at most a minute behind the API's own five-minute cycle.
@@ -96,6 +106,14 @@ const RIDE_STATS_CACHE_CONTROL =
  * next.config.ts, like every other cacheable /api route.
  */
 const LIVE_POLL_CACHE_CONTROL = 'public, max-age=0, s-maxage=30, stale-while-revalidate=30';
+
+/**
+ * Fifteen minutes for `…/weather/hourly`, one park-day of the API's hourly forecast. The API
+ * refetches the forecast every two hours and every visitor of a park asks for the same day, so the
+ * window collapses them onto a few reads. Repeated in next.config.ts, like every other cacheable
+ * /api route.
+ */
+const WEATHER_HOURLY_CACHE_CONTROL = 'public, s-maxage=900, stale-while-revalidate=900';
 
 /** A model call answers in a few seconds; a tip that takes longer is simply not shown. */
 const PARKY_TIP_TIMEOUT_MS = 12_000;
@@ -109,7 +127,7 @@ export async function GET(
 
   // Before any segment reaches a backend URL: see `isSlugPath`.
   if (!path || !isSlugPath(path)) {
-    return NextResponse.json({ error: 'Invalid path' }, { status: 400 });
+    return NextResponse.json({ error: 'Invalid path' }, { status: 400, headers: NO_STORE });
   }
 
   // Beyond the wait times every branch relays keyed data, so it answers park.fan's own pages only.
@@ -177,7 +195,7 @@ export async function GET(
     if (!from || !to) {
       return NextResponse.json(
         { error: 'Missing required query parameters: from, to' },
-        { status: 400 }
+        { status: 400, headers: NO_STORE }
       );
     }
 
@@ -186,7 +204,7 @@ export async function GET(
         {
           error: `Invalid range. Expected: YYYY-MM-DD, from <= to, at most ${MAX_CALENDAR_RANGE_DAYS} days`,
         },
-        { status: 400 }
+        { status: 400, headers: NO_STORE }
       );
     }
 
@@ -232,7 +250,7 @@ export async function GET(
     if (!date || !isServableHourlyDate(date, Date.now())) {
       return NextResponse.json(
         { error: 'Missing or out-of-range query parameter: date (YYYY-MM-DD, today ± a day)' },
-        { status: 400 }
+        { status: 400, headers: NO_STORE }
       );
     }
 
@@ -417,7 +435,8 @@ export async function GET(
   }
 
   // What the ride page needs to name a shorter queue nearby and the live poll leaves out: where
-  // each ride is, its type and its minimum height. Day-stable like `positions`.
+  // each ride is, its type, its minimum height and its kind with who decided it. Day-stable like
+  // `positions`.
   if (path && path.length === 5 && path[4] === 'ride-alternatives') {
     const [continent, country, city, park] = path;
 
@@ -434,6 +453,8 @@ export async function GET(
         longitude: typeof a.longitude === 'number' ? a.longitude : null,
         types: a.rideProfile?.types ?? [],
         minimumHeight: a.minimumHeight ?? null,
+        attractionKind: a.attractionKind ?? null,
+        attractionKindSource: a.attractionKindSource ?? null,
       }));
 
       return NextResponse.json({ rides }, { headers: cdnCacheHeaders(RIDE_STATS_CACHE_CONTROL) });
@@ -441,6 +462,26 @@ export async function GET(
       console.error('[Ride-Alternatives API] Error:', error);
       return NextResponse.json(
         { error: 'Failed to fetch ride alternatives' },
+        { status: 500, headers: NO_STORE }
+      );
+    }
+  }
+
+  // Day prices of paid queue products for the trip hub's and the trip planner's day sheets, asked
+  // when a sheet opens on a park that sells them. No window in the URL: one cache entry per park.
+  if (path && path.length === 5 && path[4] === 'purchases') {
+    const [continent, country, city, park] = path;
+
+    try {
+      const days = await getParkPurchaseDays(continent, country, city, park);
+      return NextResponse.json({ days }, { headers: cdnCacheHeaders(PURCHASES_CACHE_CONTROL) });
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 404) {
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
+      }
+      console.error('[Purchases API] Error:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch day prices' },
         { status: 500, headers: NO_STORE }
       );
     }
@@ -701,12 +742,41 @@ export async function GET(
     }
   }
 
+  if (path && path.length === 6 && path[4] === 'weather' && path[5] === 'hourly') {
+    const [continent, country, city, park] = path;
+    // Required: without it, a copy the CDN keeps past the park's midnight would be yesterday's.
+    const date = request.nextUrl.searchParams.get('date');
+    if (!date || !isIsoDate(date)) {
+      return NextResponse.json({ error: 'Invalid date' }, { status: 400, headers: NO_STORE });
+    }
+
+    try {
+      const hourly = await getParkWeatherHourlyFresh(continent, country, city, park);
+      const day = hourly ? hourlyDayPoints(hourly, date) : null;
+
+      if (!day) {
+        return NextResponse.json(
+          { error: 'Hourly weather not available' },
+          { status: 404, headers: NO_STORE }
+        );
+      }
+
+      return NextResponse.json(day, { headers: cdnCacheHeaders(WEATHER_HOURLY_CACHE_CONTROL) });
+    } catch (error) {
+      console.error('[Weather Hourly API] Error:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch hourly weather' },
+        { status: 500, headers: NO_STORE }
+      );
+    }
+  }
+
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /ride-stats, /stats, /stats/hourly, /stats/day, /wait-times, /parky-tip, or /weather/nowcast',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /purchases, /ride-stats, /stats, /stats/hourly, /stats/day, /wait-times, /parky-tip, /weather/nowcast, or /weather/hourly',
     },
-    { status: 400 }
+    { status: 400, headers: NO_STORE }
   );
 }
 

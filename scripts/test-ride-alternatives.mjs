@@ -1,6 +1,8 @@
 /**
  * Ride alternatives (`lib/parks/ride-alternatives.ts`): open rides at least 15 printed minutes
- * shorter, same type first and nearest first, three at most, nothing without a live wait.
+ * shorter, same type first and nearest first, three at most, nothing without a live wait, and a
+ * transport system, show or game only for one of its own kind; a transport system only the API's
+ * rule derived counts as unknown, as on the transport badge (`statedAttractionKind`).
  */
 
 import assert from 'node:assert/strict';
@@ -108,6 +110,76 @@ check(
   rankRideAlternatives({ ...here, types: [] }, [ride('x', 10, 48.001, ['coasters'])])[0].sameType,
   false,
   'no type on the current ride, never the same type'
+);
+
+const ofKind = (slug, kind) => ({ ...ride(slug, 10, 48.001), kind });
+check(
+  slugs(
+    rankRideAlternatives({ ...here, kind: 'RIDE' }, [
+      ofKind('railway', 'TRANSPORT'),
+      ofKind('show', 'SHOW'),
+      ofKind('arcade', 'GAME'),
+      ofKind('coaster', 'RIDE'),
+    ])
+  ),
+  ['coaster'],
+  'a transport system, show or game is no alternative to a ride'
+);
+check(
+  slugs(
+    rankRideAlternatives({ ...here, kind: null }, [
+      ofKind('railway', 'TRANSPORT'),
+      ofKind('unjudged', null),
+      ofKind('walkthrough', 'WALKTHROUGH'),
+      ofKind('later-kind', 'FLUME'),
+    ])
+  ),
+  ['later-kind', 'unjudged', 'walkthrough'],
+  'a null, unknown or other kind stays in, for a current ride of no kind too'
+);
+check(
+  slugs(
+    rankRideAlternatives({ ...here, kind: 'SHOW' }, [
+      ofKind('other-show', 'SHOW'),
+      ofKind('railway', 'TRANSPORT'),
+    ])
+  ),
+  ['other-show'],
+  'a show answers a show'
+);
+
+const derived = (slug, kind) => ({ ...ofKind(slug, kind), kindSource: 'derived' });
+check(
+  slugs(
+    rankRideAlternatives({ ...here, kind: 'RIDE' }, [
+      derived('express-coaster', 'TRANSPORT'),
+      { ...ofKind('railway', 'TRANSPORT'), kindSource: 'curated' },
+      derived('derived-show', 'SHOW'),
+      derived('derived-game', 'GAME'),
+    ])
+  ),
+  ['express-coaster'],
+  'a derived transport system stays in, a curated one and a derived show or game do not'
+);
+check(
+  slugs(
+    rankRideAlternatives({ ...here, kind: 'TRANSPORT', kindSource: 'derived' }, [
+      { ...ofKind('railway', 'TRANSPORT'), kindSource: 'curated' },
+      ofKind('coaster', 'RIDE'),
+    ])
+  ),
+  ['coaster'],
+  'a ride only the rule called a transport system is not offered a railway'
+);
+check(
+  slugs(
+    rankRideAlternatives({ ...here, kind: 'TRANSPORT' }, [
+      ofKind('other-railway', 'TRANSPORT'),
+      derived('express-coaster', 'TRANSPORT'),
+    ])
+  ),
+  ['express-coaster', 'other-railway'],
+  'a railway without a source is an editor’s and answers a railway'
 );
 
 console.log(`ride-alternatives: ${passed} checks passed`);

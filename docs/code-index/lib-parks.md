@@ -21,6 +21,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `historyHasARunningDay` _function_: Whether the ride ran on any day of the window, which decides between a grid and one line.
 - Types: `AttractionHistoryStatus`
 
+### [`attraction-kind.ts`](../../lib/parks/attraction-kind.ts)
+
+- `statedAttractionKind` _function_: The kind the site acts on for an attraction: the API's, except a `TRANSPORT` that only the API's rule derived, which reads as unknown.
+
 ### [`calendar-grid-geometry.ts`](../../lib/parks/calendar-grid-geometry.ts)
 
 - `weekRowsInMonth` _function_: Week rows a month spans on a Monday-first seven-column grid.
@@ -171,11 +175,30 @@ Which two days of a park's calendar are being compared, across a change of month
 - `parkStatsShape` _function_: `ParkStatsShape` of an aggregate; `null` where the chapter renders nothing at all.
 - Types: `ParkStatsFindings`, `BestDaysTier`, `ParkBestDays`, `ParkStatsShape`
 
+### [`purchases.ts`](../../lib/parks/purchases.ts)
+
+- `inPurchaseWindow` _function_: Whether a day lies in the purchases relay's answer: from `today` to `PURCHASE_DAYS_AHEAD` days on. A day outside it is not asked for, since the answer could not hold it.
+- `formattedPurchasePrice` _function_: The price a paid product shows, a day's purchase or a ride's paid lane, or `null` where the API sent a placeholder (amount 0, formatted "Unknown") because the real fee is not known.
+- `pickPurchaseDay` _function_: The day whose purchases a card shows: `date` itself where one is named, else the first day from `from` on that carries any. `null` when that day has none, so the card renders nothing.
+- `sortPurchases` _function_: Packages (Multi Pass, Premier Pass) first, then the per-ride passes A→Z.
+- `purchaseDays` _function_: The relay's answer from a park's `/schedule` rows: one entry per date that carries purchases, from the first such row of that date as `pickPurchaseDay` would take it, and of each purchase the fields the card draws.
+- `PURCHASE_DAYS_AHEAD` _const_: How far past the park's today the purchases relay reaches: the API's `/schedule` asked without a window answers from that day 30 days on (backend `docs/frontend/schedule.md`), and the relay asks it so, which keeps one cache entry per park.
+- Types: `PurchaseDay`
+
+### [`queue-availability.ts`](../../lib/parks/queue-availability.ts)
+
+- `queueAvailability` _function_: The one reading of a queue's `state`, for the card and the ride page alike. The API sends it on every queue type; the paid lanes keep their price while they are full or finished.
+- `queueShut` _function_: `full` or `finished` while the lane hands out nothing, else `null`. A shut paid lane still carries its price and its last return window or wait, and none of them may read as on sale.
+- `liveQueueChips` _function_: The queues an attraction card shows as live chips: everything but standby, and single rider only while it posts a wait.
+- `factChipsCoveredByLive` _function_: Which curated fact chips a live chip already covers. The live chip names the same lane and says what it does right now, full or finished included, so the fact beside it would be the same word twice.
+- Types: `QueueAvailability`, `QueueShut`
+
 ### [`ride-alternatives.ts`](../../lib/parks/ride-alternatives.ts)
 
 - `rankRideAlternatives` _function_: Up to three open rides of the same park that are at least 15 minutes shorter than the ride the visitor is looking at: same ride type first, then the rest, each group nearest first.
 - `MIN_ALTERNATIVE_SAVING_MIN` _const_: An alternative must save at least this many minutes (on the displayed, rounded waits).
 - `MAX_ALTERNATIVES` _const_: How many alternatives the ride page names.
+- `KINDS_WITHOUT_A_SWAPPABLE_QUEUE` _const_: Kinds whose posted wait is not a queue to swap a ride's for: a railway's follows its timetable, a show's counts down to the next performance, and a game has no ride behind it. Such a candidate is only offered for a ride of the same kind.
 - Types: `AlternativeCandidate`, `RideAlternative`
 
 ### [`ride-openings.ts`](../../lib/parks/ride-openings.ts)
@@ -216,10 +239,13 @@ Which two days of a park's calendar are being compared, across a change of month
 
 - `geoParks` _function_: Every park of the geo structure by UUID, in the structure's order (continents, then countries, cities and parks as the API lists them), with the fields the popular-parks surfaces draw.
 - `resolveViewedParks` _function_: The ranked parks the geo structure knows, most viewed first, without those under `VIEWED_PARK_MIN_VIEWS`. A key that is no park of the structure (a park since merged or removed) is dropped.
+- `parkOrderViews` _function_: The views, by park id, that may order a country's parks: those of at least `PARK_ORDER_MIN_VIEWS`, and where the ranking came back as long as `askedFor`, only those above its last entry, since a park with as many views as the last may lie …
+- `orderCitiesByViews` _function_: A country's cities in view order: in each city the counted parks by their views, the others after them as they came; the cities by their most viewed park, those without a counted park after them as they came.
 - `rankedFirst` _function_: `ranked` first, then `fallback` without what `ranked` already holds, cut to `count`: how a popular-parks surface puts the counted parks ahead of its hand-picked list and keeps its length when few parks were read.
 - `VIEWED_PARKS_DAYS` _const_: The window the park ranking sums over, in UTC days with today included.
 - `VIEWED_PARK_MIN_VIEWS` _const_: Views a park needs in that window to count as popular: below it one reader would decide.
 - `VIEWED_PARKS_ASK_FOR` _const_: The parks asked of the API per locale, its most. A country column in the footer takes the country's parks among them, so the cut has to reach past the few parks every language reads.
+- `PARK_ORDER_MIN_VIEWS` _const_: Views a park needs before a country's list places it by them (the country page, the header menu's country pane); below, it keeps the list's own order.
 - Types: `ViewedPark`
 
 ### [`weather-closure.ts`](../../lib/parks/weather-closure.ts)

@@ -37,6 +37,14 @@ Route `/api/admin/[...path]` (route).
 - `PUT` _const_
 - `DELETE` _const_
 
+### [`admin/attraction-kinds/route.ts`](../../app/api/admin/attraction-kinds/route.ts)
+
+Route `/api/admin/attraction-kinds` (route).
+
+- `GET` _function_: One park's attraction kinds as the public payload serves them, keyed by attraction id, with who decided each.
+- `runtime` _const_
+- `dynamic` _const_
+
 ### [`admin/backlinks/route.ts`](../../app/api/admin/backlinks/route.ts)
 
 Route `/api/admin/backlinks` (route).
@@ -183,6 +191,22 @@ Route `/api/admin/media/session` (route).
 - `GET` _function_
 - `runtime` _const_: Whether a media session is running, where, and what is in it. A session is the branch with the `media/session-` prefix and its pull request; the state lives in git, so a reload, a second tab or another machine see the same one.
 - `dynamic` _const_
+
+### [`admin/news-export/route.ts`](../../app/api/admin/news-export/route.ts)
+
+Route `/api/admin/news-export` (route).
+
+- `GET` _function_: GET /api/admin/news-export: the app's news and guides export on media.park.fan against this deployment's posts, for „Export für die App“ on `/admin/system`. The API's MCP tools read the same report from `/api/news-export/status`.
+- `dynamic` _const_
+- `runtime` _const_
+
+### [`admin/news-export/run/route.ts`](../../app/api/admin/news-export/run/route.ts)
+
+Route `/api/admin/news-export/run` (route).
+
+- `POST` _function_: POST /api/admin/news-export/run: „Export neu starten“ on `/admin/system`.
+- `dynamic` _const_
+- `runtime` _const_
 
 ### [`admin/session/route.ts`](../../app/api/admin/session/route.ts)
 
@@ -401,6 +425,22 @@ Route `/api/nearby` (route).
 
 - `GET` _function_
 
+### [`news-export/run/route.ts`](../../app/api/news-export/run/route.ts)
+
+Route `/api/news-export/run` (route).
+
+- `POST` _function_: POST /api/news-export/run: starts the export workflow for the API's MCP tools, as „Export neu starten“ does in the admin, with the same answers: `{ started: true, workflowUrl }`, or `{ started: false, reason }` with 503 (no GitHub token …
+- `dynamic` _const_
+- `runtime` _const_
+
+### [`news-export/status/route.ts`](../../app/api/news-export/status/route.ts)
+
+Route `/api/news-export/status` (route).
+
+- `GET` _function_: GET /api/news-export/status: the report `/api/admin/news-export` answers the admin (`NewsExportReport`), for the API's MCP tools, which hold no admin session.
+- `dynamic` _const_
+- `runtime` _const_
+
 ### [`og/[...path]/route.tsx`](../../app/api/og/%5B...path%5D/route.tsx)
 
 Route `/api/og/[...path]` (route).
@@ -498,12 +538,6 @@ Route `/api/trips/[id]` (route).
 Route `/api/trips` (route).
 
 - `POST` _function_: Storing a plan. A thin relay, see `lib/api/relay.ts`, which also says why the visitor's own address goes along.
-
-### [`weather/hourly/route.ts`](../../app/api/weather/hourly/route.ts)
-
-Route `/api/weather/hourly` (route).
-
-- `GET` _function_
 
 ### [`webhooks/vercel-comments/route.ts`](../../app/api/webhooks/vercel-comments/route.ts)
 

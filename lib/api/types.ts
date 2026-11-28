@@ -8,11 +8,20 @@ export type ParkStatus = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
 export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT' | 'UNKNOWN';
 
 /**
- * What an attraction is FOR, decided by an editor; the API's `ATTRACTION_KIND_VALUES` is the same
- * four. Not the upstream's free-text `attractionType`, which files water rides as ATTRACTION and
- * walkthroughs as RIDE. Contract: `docs/frontend/attraction-kind.md` in v4.api.park.fan.
+ * What an attraction is FOR: an editor's verdict, or where nobody gave one, the API's rule
+ * ({@link AttractionKindSource} says which). The six values of the API's `ATTRACTION_KIND_VALUES`;
+ * more may follow, so a reader tests for the values it knows and reads any other as unknown. Not
+ * the upstream's free-text `attractionType`, which files water rides as ATTRACTION and walkthroughs
+ * as RIDE. Contract: `docs/frontend/attraction-kind.md` in v4.api.park.fan.
  */
-export type AttractionKind = 'RIDE' | 'TRANSPORT' | 'SHOW' | 'WALKTHROUGH' | 'MAZE';
+export type AttractionKind = 'RIDE' | 'TRANSPORT' | 'SHOW' | 'WALKTHROUGH' | 'MAZE' | 'GAME';
+
+/**
+ * Who decided an attraction's kind. `curated` is an editor's and final; a maze filed by the API's
+ * maze rule reads as one too. `derived` is the API's nightly rule, which can be wrong and is
+ * replaced by a better one. Null whenever the kind is null.
+ */
+export type AttractionKindSource = 'curated' | 'derived';
 
 /**
  * Where an attraction stands in the weather: the ride under a roof (`indoor`), in the open
@@ -254,7 +263,10 @@ export interface WeatherNowcast {
   warnings?: WeatherWarning[];
 }
 
-/** One hour of today's forecast (proxied from Open-Meteo). */
+/**
+ * One hour of a park-day's forecast as the day chart and the planner's weather rail read it:
+ * `/api/parks/<geo>/<park>/weather/hourly`, cut from the API's {@link WeatherHourly}.
+ */
 export interface WeatherHourlyPoint {
   /** Naive park-local hour ("YYYY-MM-DDTHH:00"), same convention as nowcast steps. */
   time: string;
@@ -267,11 +279,51 @@ export interface WeatherHourlyPoint {
   isDay: boolean;
 }
 
-/** Today's hour-by-hour weather forecast. */
+/** One park-day's hour-by-hour forecast, midnight to midnight on the park's clock. */
 export interface WeatherHourlyToday {
   /** IANA timezone the point times are local to. */
   timezone: string;
   points: WeatherHourlyPoint[];
+}
+
+/** One hour of the API's `/weather/hourly`. Units: °C, mm, %, km/h, degrees the wind comes from. */
+export interface WeatherHour {
+  /** The hour's start on the park's clock with its offset (`2026-11-25T14:00+01:00`). */
+  time: string;
+  temperatureC: number | null;
+  apparentTemperatureC: number | null;
+  precipitationMm: number | null;
+  precipitationProbability: number | null;
+  weatherCode: number | null;
+  windSpeedKmh: number | null;
+  windGustsKmh: number | null;
+  windDirectionDeg: number | null;
+  isDay: boolean | null;
+}
+
+/** One park-local day of the API's `/weather/hourly`: 24 hours, 23 or 25 on a DST changeover. */
+export interface WeatherHourlyDay {
+  /** Park-local `YYYY-MM-DD`. */
+  date: string;
+  /** On the park's clock with its offset; `null` where none falls on that date. */
+  sunrise: string | null;
+  sunset: string | null;
+  hours: WeatherHour[];
+}
+
+/**
+ * The API's `GET /v1/parks/<geo>/<park>/weather/hourly`: the park's today and up to 14 more days,
+ * hour by hour (backend `docs/frontend/weather.md`).
+ */
+export interface WeatherHourly {
+  park: { id: string; name: string; slug: string; timezone: string };
+  /** When the forecast behind the answer was fetched (UTC ISO). */
+  generatedAt: string;
+  /** When the API refetches it, or the park's next midnight if that comes first (UTC ISO). */
+  nextUpdateAt: string;
+  /** Today first; every listed day is whole. */
+  days: WeatherHourlyDay[];
+  attribution: WeatherNowcastAttribution;
 }
 
 /** The kinds of queue a ride can have. */
@@ -298,7 +350,14 @@ export interface QueueTrend {
 export interface BaseQueue {
   queueType: QueueType;
   status: QueueStatus;
+  /** When the posted wait last changed. */
   lastUpdated: string;
+  /**
+   * When a source last delivered the ride, changed or not: the time an „Aktualisiert" line shows.
+   * Absent on a payload built before the field existed and `null` on a heartbeat row; fall back to
+   * `lastUpdated` then.
+   */
+  lastObserved?: string | null;
   /** Present on live standby/single-rider queues; absent from the park-list snapshot. */
   trend?: QueueTrend;
 }
@@ -315,9 +374,10 @@ export interface SingleRiderQueue extends BaseQueue {
   waitTime: number | null;
 }
 
-/** A free virtual queue with return times. */
+/** A queue with return times and no price of its own: a virtual queue, or Disney's Multi Pass. */
 export interface ReturnTimeQueue extends BaseQueue {
   queueType: 'RETURN_TIME';
+  /** `AVAILABLE`, `TEMP_FULL`, `FINISHED`: read it with `queueAvailability()`. */
   state: string | null;
   returnStart: string | null;
   returnEnd: string | null;
@@ -326,6 +386,8 @@ export interface ReturnTimeQueue extends BaseQueue {
 /** A paid return-time offer (e.g. Lightning Lane). */
 export interface PaidReturnTimeQueue extends BaseQueue {
   queueType: 'PAID_RETURN_TIME';
+  /** `AVAILABLE`, `TEMP_FULL`, `FINISHED`: read it with `queueAvailability()`. */
+  state?: string | null;
   returnStart: string | null;
   returnEnd: string | null;
   price: {
@@ -347,6 +409,8 @@ export interface BoardingGroupQueue extends BaseQueue {
 /** A paid standby line. */
 export interface PaidStandbyQueue extends BaseQueue {
   queueType: 'PAID_STANDBY';
+  /** `AVAILABLE`, `TEMP_FULL`, `FINISHED`: read it with `queueAvailability()`. */
+  state?: string | null;
   waitTime: number | null;
   price: {
     amount: number;
@@ -778,11 +842,6 @@ export interface ParkAttraction {
    * so it rides the server render and not the poll. See {@link PerformanceSchedule}.
    */
   performanceSchedules?: PerformanceSchedule[];
-  /**
-   * Reported-outage figures, or the reason there are none. Attraction detail response only: the
-   * park page renders none of it, so the park list and the poll do not carry it.
-   */
-  downtime?: DowntimeBlock;
   /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
   minimumHeight?: number | null;
   /** Maximum rider height in cm (kiddie rides). */
@@ -803,10 +862,13 @@ export interface ParkAttraction {
    */
   hasSingleRider?: boolean | null;
   /**
-   * What this attraction is for: a ride, a transport system, a show or a walkthrough, curated per
-   * attraction. Null or absent means nobody has judged it, never „it is a ride"; render nothing.
+   * What this attraction is for (see {@link AttractionKind}): the editor's kind, else the one the
+   * API's rule derived. Null or absent means neither could tell, never „it is a ride"; render
+   * nothing.
    */
   attractionKind?: AttractionKind | null;
+  /** Who decided {@link ParkAttraction.attractionKind}; null or absent with a null kind. */
+  attractionKindSource?: AttractionKindSource | null;
   /**
    * Indoor, outdoor or outdoor with a roofed queue (see {@link IndoorOutdoor}). Curated and
    * day-stable, so it rides the server render, not the poll. Null or absent means unchecked,
@@ -1144,10 +1206,13 @@ export interface AttractionResponse {
    */
   hasSingleRider?: boolean | null;
   /**
-   * What this attraction is for: a ride, a transport system, a show or a walkthrough, curated per
-   * attraction. Null or absent means nobody has judged it, never „it is a ride"; render nothing.
+   * What this attraction is for (see {@link AttractionKind}): the editor's kind, else the one the
+   * API's rule derived. Null or absent means neither could tell, never „it is a ride"; render
+   * nothing.
    */
   attractionKind?: AttractionKind | null;
+  /** Who decided {@link AttractionResponse.attractionKind}; null or absent with a null kind. */
+  attractionKindSource?: AttractionKindSource | null;
   /** The ride's performance start times, as on {@link ParkAttraction.performanceSchedules}. */
   performanceSchedules?: PerformanceSchedule[];
   /** The curated works window that matters today, as on {@link ParkAttraction.worksPeriod}. */
@@ -1176,7 +1241,8 @@ export interface AttractionResponse {
   rideProfile?: RideProfile | null;
   /**
    * How often this ride has been reported down, or the reason nothing is said. Absent while the
-   * reconstruction has never run; present-and-withheld carries the reason.
+   * reconstruction has never run; present-and-withheld carries the reason. Only this response
+   * carries it, never the park payload, so the ride page reads it with `getAttractionDowntime`.
    */
   downtime?: DowntimeBlock;
   /**

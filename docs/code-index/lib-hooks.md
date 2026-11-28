@@ -79,7 +79,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-geo-live-stats.ts`](../../lib/hooks/use-geo-live-stats.ts)
 
 - `useGeoLiveStats` _hook_: Live open-park counts per continent and country, one request shared by every consumer on a page. Client-only, so the counts are not baked into the ISR shell.
-- `findOpenParkCount` _function_: The live open-park count for a continent or a country within it.
+- `findOpenParkCount` _function_: The live open-park count of every park, of a continent, or of a country within it.
 
 ### [`use-global-stats.ts`](../../lib/hooks/use-global-stats.ts)
 
@@ -273,7 +273,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-ride-alternative-meta.ts`](../../lib/hooks/use-ride-alternative-meta.ts)
 
-- `useRideAlternativeMeta` _hook_: Position, ride type and minimum height of every ride in a park, keyed by slug: the part of „a shorter queue nearby" that the lean live poll does not carry. The answer is day-stable on both ends, so it is fetched once per tab.
+- `useRideAlternativeMeta` _hook_: Position, ride type, minimum height and kind of every ride in a park, keyed by slug: the part of „a shorter queue nearby" that the lean live poll does not carry. The answer is day-stable on both ends, so it is fetched once per tab.
 - Types: `RideAlternativeMeta`
 
 ### [`use-ride-day-curve.ts`](../../lib/hooks/use-ride-day-curve.ts)
@@ -352,7 +352,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-weather-hourly.ts`](../../lib/hooks/use-weather-hourly.ts)
 
-- `useWeatherHourly` _hook_: A day's hour-by-hour forecast (temperature, precipitation) for a park location, through the cached `/api/weather/hourly` proxy.
+- `useWeatherHourly` _hook_: A park-day's hour-by-hour forecast (temperature, precipitation) from the API's `/weather/hourly`, through the cached `/api/parks/<geo>/<park>/weather/hourly` relay.
 
 ### [`use-weather-nowcast.ts`](../../lib/hooks/use-weather-nowcast.ts)
 

@@ -2,6 +2,7 @@ import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
+import { LegalLink } from '@/components/legal/legal-blocks';
 import { DATA_TERMS_ANCHOR, RSL_LICENSE_PATH } from '@/lib/agents/licensing';
 import { ATTRIBUTION_ANCHOR, DEVELOPERS_PATH } from '@/lib/developers/paths';
 import type { ImpressumStory } from './story';
@@ -222,13 +223,26 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           Nutzung der Daten
         </h2>
         <p className="mb-4">
-          Ohne Anmeldung und ohne API-Key gibt die API unter api.park.fan nur die aktuellen
-          Wartezeiten eines Parks heraus. Alles andere, was park.fan auf den Seiten und über die API
+          Ohne Anmeldung und ohne API-Key gibt die API unter api.park.fan die aktuellen Wartezeiten
+          eines Parks heraus und unter <code>/v1/parks/…/facilities</code> seine Toiletten und
+          Trinkwasserstellen. Alles andere, was park.fan auf den Seiten und über die API
           veröffentlicht, darf außerhalb von park.fan nur mit einem API-Key genutzt werden: das
           Verzeichnis der Parks und Attraktionen, Park- und Attraktionsdaten wie Höhen,
           Mindestgröße, Fahrprofile und Links, Öffnungszeiten, Saisons und Events, das Wetter, die
           Statistiken, die Prognosen, der Tages- und der Reiseplaner und die Daten der
           Reiseregionen. Texte und Fotos gehören nicht dazu.
+        </p>
+        <p className="mb-4">
+          Nichts in diesem Abschnitt gilt für die Daten zu Toiletten und Trinkwasserstellen. Diese
+          Daten stammen aus OpenStreetMap (
+          <LegalLink href="https://www.openstreetmap.org/copyright/de">
+            © OpenStreetMap-Mitwirkende
+          </LegalLink>
+          ) und stehen unter der{' '}
+          <LegalLink href="https://opendatacommons.org/licenses/odbl/1-0/">
+            Open Database License (ODbL)
+          </LegalLink>
+          ; für sie gelten allein die Bedingungen dieser Lizenz.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">API-Key mit Berechtigungen</h3>

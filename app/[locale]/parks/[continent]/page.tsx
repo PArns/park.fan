@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getCountriesInContinent, getContinents } from '@/lib/api/discovery';
 import { nullOnNotFound } from '@/lib/api/client';
-import { LiveCountryCards, type StaticCountryCard } from '@/components/parks/live-country-cards';
+import { LiveRegionCards, type StaticRegionCard } from '@/components/parks/live-region-cards';
 import { LiveOpenCount } from '@/components/parks/live-open-count';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
@@ -66,7 +66,7 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   const t = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
 
-  // Live open-park counts are layered on the client (<LiveCountryCards> / <LiveOpenCount>), so
+  // Live open-park counts are layered on the client (<LiveRegionCards> / <LiveOpenCount>), so
   // this shell stays status-free and cacheable. `nullOnNotFound`, not `catchNonFatal`: only the
   // API's own 404 may become `notFound()`, which this prerendered page would otherwise keep for
   // its whole `revalidate`.
@@ -151,9 +151,9 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
         <section aria-label={tExplore('countries')}>
           <h2 className="sr-only">{tExplore('countries')}</h2>
           {/* Status-free shell; live open-park counts overlaid client-side (shared geo-live call). */}
-          <LiveCountryCards
+          <LiveRegionCards
             continent={continent}
-            countries={countries.map((country): StaticCountryCard => ({
+            regions={countries.map((country): StaticRegionCard => ({
               slug: country.slug,
               name: translateCountry(t, country.slug, locale, country.name),
               href: `/parks/${continent}/${country.slug}`,

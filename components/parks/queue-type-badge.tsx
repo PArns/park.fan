@@ -5,18 +5,31 @@ import { cn } from '@/lib/utils';
 import type { QueueDataItem, QueueType } from '@/lib/api/types';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { formatTime } from '@/lib/utils/intl-format';
+import { formattedPurchasePrice } from '@/lib/parks/purchases';
+import { queueAvailability, queueShut, type QueueShut } from '@/lib/parks/queue-availability';
 
 /** The glossary term that explains each queue type, for the queue labels that link to it. */
 export const QUEUE_GLOSSARY_TERMS: Partial<Record<QueueType, string>> = {
   SINGLE_RIDER: 'single-rider',
-  RETURN_TIME: 'virtual-queue',
+  // Not `virtual-queue`: at Disney this queue is the paid Lightning Lane Multi Pass.
+  RETURN_TIME: 'return-time',
   BOARDING_GROUP: 'boarding-group',
   PAID_RETURN_TIME: 'lightning-lane',
   PAID_STANDBY: 'express-pass',
 };
 
+/**
+ * The status word for a lane that is full or finished, in `attractions`. The card's chip and the
+ * ride page's status badge both read it from here.
+ */
+export const QUEUE_SHUT_STATUS_KEYS = {
+  full: 'queue.status.FULL',
+  finished: 'queue.status.FINISHED',
+} as const satisfies Record<QueueShut, string>;
+
 const colorPrimary = 'badge-primary';
 const colorPaid = 'badge-status-down';
+const colorShut = 'badge-status-unknown';
 
 interface QueueTypeBadgeProps {
   queue: QueueDataItem;
@@ -24,8 +37,9 @@ interface QueueTypeBadgeProps {
 }
 
 /**
- * Badge for a ride's extra queue: single rider, virtual queue return window, boarding groups,
- * Lightning Lane or Express price. Nothing for standby; most link to their glossary term.
+ * Badge for a ride's extra queue: single rider, return window, boarding groups, Lightning Lane or
+ * Express price, or that the lane is full or finished. Nothing for standby; most link to their
+ * glossary term.
  */
 export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
   const t = useTranslations('attractions');
@@ -34,21 +48,14 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
   let Icon = Ticket;
   let label = '';
   let colorClass = colorPrimary;
+  // A full or finished paid lane still carries its price, so the state goes first.
+  const shut = queueShut(queue);
+  const shutState = shut ? t(QUEUE_SHUT_STATUS_KEYS[shut]) : null;
 
   const getWaitTime = (q: QueueDataItem): number | null => {
     if (!('waitTime' in q)) return null;
     const wt = q.waitTime;
     return wt !== null && wt !== undefined && typeof wt === 'number' && wt > 0 ? wt : null;
-  };
-
-  // The API may send placeholder prices (amount 0, formatted "Unknown") when the
-  // real fee isn't available. Treat those as "no price" so we never render junk.
-  const getFormattedPrice = (q: QueueDataItem): string | null => {
-    if (!('price' in q) || !q.price) return null;
-    const { amount, formatted } = q.price;
-    if (!formatted || formatted.trim().toLowerCase() === 'unknown') return null;
-    if (typeof amount === 'number' && amount <= 0) return null;
-    return formatted;
   };
 
   switch (queue.queueType) {
@@ -67,29 +74,30 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
 
     case 'PAID_RETURN_TIME': {
       Icon = Zap;
-      const price = getFormattedPrice(queue);
-      label = price
-        ? t('queue.details.lightningLane', { price })
-        : t('queue.details.lightningLaneNoPrice');
-      colorClass = colorPaid;
+      const price = formattedPurchasePrice(queue);
+      label = shutState
+        ? t('queue.details.lightningLaneState', { state: shutState })
+        : price
+          ? t('queue.details.lightningLane', { price })
+          : t('queue.details.lightningLaneNoPrice');
+      colorClass = shutState ? colorShut : colorPaid;
       break;
     }
 
     case 'PAID_STANDBY': {
       Icon = Zap;
-      const price = getFormattedPrice(queue);
-      label = price ? t('queue.details.express', { price }) : t('queue.details.expressNoPrice');
-      colorClass = colorPaid;
+      const price = formattedPurchasePrice(queue);
+      label = shutState
+        ? t('queue.details.expressState', { state: shutState })
+        : price
+          ? t('queue.details.express', { price })
+          : t('queue.details.expressNoPrice');
+      colorClass = shutState ? colorShut : colorPaid;
       break;
     }
 
     case 'RETURN_TIME':
-      if (
-        'state' in queue &&
-        queue.state === 'AVAILABLE' &&
-        'returnStart' in queue &&
-        queue.returnStart
-      ) {
+      if (queueAvailability(queue) === 'available' && queue.returnStart) {
         const timeFormat: Intl.DateTimeFormatOptions = {
           hour: '2-digit',
           minute: '2-digit',
@@ -97,18 +105,19 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
           ...(timezone ? { timeZone: timezone } : {}),
         };
         const start = formatTime(new Date(queue.returnStart), locale, timeFormat);
-        const end =
-          'returnEnd' in queue && queue.returnEnd
-            ? formatTime(new Date(queue.returnEnd), locale, timeFormat)
-            : null;
+        const end = queue.returnEnd
+          ? formatTime(new Date(queue.returnEnd), locale, timeFormat)
+          : null;
         label = end
           ? t('queue.details.return', { start, end })
           : t('queue.details.returnNoEnd', { start });
+      } else if (shutState) {
+        // `kind` lets a language agree the word with its own noun: Italian's „orario" is
+        // masculine, the shared status words agree with „coda".
+        label = t('queue.details.returnState', { state: shutState, kind: shut ?? 'other' });
+        colorClass = colorShut;
       } else {
-        label =
-          'state' in queue && queue.state === 'FULL'
-            ? t('queue.details.virtualQueueFull')
-            : t('queue.details.virtualQueue');
+        label = t('queue.RETURN_TIME');
       }
       break;
 

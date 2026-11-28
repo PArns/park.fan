@@ -17,12 +17,12 @@ import { bearerUnauthorized } from '@/lib/security/cron-auth';
  * Tags in use (see lib/api/*): geo · parks · attractions · analytics · popular-parks · ml ·
  * weather · best-days:<park-slug> · park:<continent>/<country>/<city>/<park-slug> (one park's
  * structure fetch — see `parkCacheTag`) · park-calendar:<continent>/<country>/<city>/<park-slug>
- * (one park's calendar: the month summary, and the Vercel copies of the calendar and tip relays,
- * which name it in `Vercel-Cache-Tag` — see `parkCalendarCacheTag`; best-days:<park-slug> ends the
- * best-days relay's the same way) · trip-region:<region> · trip-tickets:<region> (the
- * ticket catalog, after every admin edit; `lib/trip-regions/api.ts`) · trip-regions (the list of
- * regions). `paths` takes concrete URLs (e.g. /de, /en/parks) for
- * the page shells themselves.
+ * (one park's calendar: the month summary, the yearly outlook, and the Vercel copies of the
+ * calendar and tip relays, which name it in `Vercel-Cache-Tag` — see `parkCalendarCacheTag`;
+ * best-days:<park-slug> ends the best-days relay's the same way) · trip-region:<region> ·
+ * trip-tickets:<region> (the ticket catalog, after every admin edit; `lib/trip-regions/api.ts`) ·
+ * trip-regions (the list of regions). `paths` takes concrete URLs (e.g. /de, /en/parks) for the
+ * page shells themselves.
  *
  * Callers: the backend's change-detection webhook (v4.api.park.fan) and manual ops. The
  * endpoint is disabled (503) until REVALIDATE_SECRET is configured in the environment.

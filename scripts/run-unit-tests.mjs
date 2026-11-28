@@ -51,6 +51,7 @@ if (process.argv.includes('--list')) {
 // from racing each other over a half-written manifest. MEDIA_VERIFY=0 keeps the media generator off
 // the live catalog, so no test result depends on api.park.fan.
 const PRELUDE = [
+  ['scripts/generate-build-info.mjs', '--offline', '--if-missing'],
   ['scripts/generate-blog-manifest.mjs'],
   ['scripts/generate-media-manifest.mjs'],
   // The tests never ask the API: an existing seed stays, a missing one is written empty.

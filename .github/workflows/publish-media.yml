@@ -13,10 +13,17 @@ on:
       - 'public/media/**'
       - 'content/blog/**'
       - 'scripts/news-export.mjs'
+      - 'scripts/lib/map-with-concurrency.mjs'
       - 'lib/blog/news-blocks.ts'
+      - 'lib/blog/news-export-feeds.ts'
+      - 'lib/blog/backlinks.ts'
       - 'lib/navigation/blog-menu.ts'
       - 'scripts/publish-media-r2.mjs'
   workflow_dispatch:
+
+# Nothing here writes to the repository; the upload reaches R2 with its own keys.
+permissions:
+  contents: read
 
 concurrency:
   group: publish-media
@@ -25,6 +32,8 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Backstop for a hang outside the upload step; the upload has its own limit below.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v7
 
@@ -37,16 +46,66 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       # The crops are not in git, and the manifest only knows a `…-16x9.jpg` cover whose file exists.
+      # generate-image-crops keys each crop by its photo's bytes and focal point; the cache hands
+      # back the last run's, so only a new or refocused photo is cut again.
+      - uses: actions/cache@v6
+        with:
+          path: .next/cache/image-crops
+          key: image-crops-${{ hashFiles('public/media/**') }}
+          restore-keys: image-crops-
+
       - run: pnpm generate:image-crops
 
       - run: pnpm generate:media
 
       - run: pnpm generate:blog-manifest
 
+      # A job may run six hours by default, and a run that hangs holds the concurrency group, and every
+      # export queued behind it, that long. Fifty minutes is about twice a normal run
+      # (docs/features/media-database.md#watching-the-export).
       - name: pnpm publish:media
+        id: upload
+        timeout-minutes: 50
         run: pnpm publish:media
         env:
           R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+
+      # The website shows a post as soon as it deploys; the app and the push notifications get it only
+      # from this upload. GitHub's own notice for a red run names the workflow, not that consequence,
+      # so the summary and the annotation say what is missing, what is live and how to catch up.
+      # `cancelled()` too: the job's 60-minute limit cancels the run, and `failure()` is false then.
+      - name: Say what the app is missing
+        if: failure() || cancelled()
+        env:
+          UPLOAD: ${{ steps.upload.outcome }}
+          JOB: ${{ job.status }}
+        run: |
+          if [ "$JOB" = cancelled ]; then
+            what="was cancelled"
+            why="Someone stopped the run, or it ran past the job's 60-minute limit."
+          else
+            what="failed"
+            why=""
+          fi
+          if [ "$UPLOAD" = failure ] || [ "$UPLOAD" = cancelled ]; then
+            state="The upload stopped partway: files written before it stopped are new, the rest and index.json are still those of the last successful run."
+          else
+            state="Nothing was uploaded: media.park.fan still serves the export of the last successful run."
+          fi
+          {
+            echo "### The export for the app $what"
+            echo
+            if [ -n "$why" ]; then
+              echo "$why"
+              echo
+            fi
+            echo "$state"
+            echo
+            echo "Until a run succeeds, the app and its push notifications lack posts the website already shows. The admin's System page lists them under „Export für die App“."
+            echo
+            echo "Start a new run with **Run workflow** on this workflow's page, or \`gh workflow run publish-media.yml\`."
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "::error title=Export for the app $what::$state Start a new run once the cause is fixed: gh workflow run publish-media.yml"

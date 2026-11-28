@@ -57,6 +57,16 @@ const testCases = [
     actual: () => findOpenParkCount(GEO_LIVE, 'asia'),
     expected: 64,
   },
+  {
+    name: 'without a continent the count is every open park, as /parks shows it',
+    actual: () => findOpenParkCount(GEO_LIVE),
+    expected: 66,
+  },
+  {
+    name: 'without a continent and before the data, still the skeleton state',
+    actual: () => findOpenParkCount(undefined),
+    expected: undefined,
+  },
 
   // ---- noLiveWaitTimesReason ----
   {

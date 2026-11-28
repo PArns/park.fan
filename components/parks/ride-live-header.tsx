@@ -112,7 +112,6 @@ export function RideLiveHeader({
         park={park}
         attraction={attraction}
         status={status}
-        statusLabel={t(`status.${status.toLowerCase()}` as 'status.operating')}
         todayIso={todayIso}
         performanceTimes={performanceTimes}
         shellSlotCount={shellSlotCount}

@@ -207,8 +207,9 @@ an explanation into a portrait of the software. Say what the reader sees or does
 `Ein Block rastet auf fünf Minuten ein`, `Du gibst an, wie groß die kleinste Person ist`.
 `check:prose` warns above 6 per 1,000 words (the planner page read 8.8). The count takes the
 compounds (`Der Reiseplaner zählt einen Tag als heiß`, `The trip planner treats a day as hot`),
-the plan it makes and our best-time pages. A guide sits under that rate and can still start ten
-sentences at the tool or end chapter after chapter on it; `product-opener-series` and
+the plan it makes, our best-time pages and the planner's details with their verb right after them
+(`The details show what a Park Hopper would add`). A guide sits under that rate and can still
+start ten sentences at the tool or end chapter after chapter on it; `product-opener-series` and
 `product-close-series` (§2.20) count those.
 
 **A document does no sums.** `Eines davon rechnet durch, was passiert, wenn der Ententeich

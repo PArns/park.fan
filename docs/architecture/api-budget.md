@@ -56,7 +56,7 @@ The park row predates `/plan/day`, which made it nine calls (below).
 ```
 +1.8s   40.3 KB  /api/parks/<geo>/<park>                  live poll, repeats every 5 min
 +1.8s    4.9 KB  /api/parks/<geo>/<park>/weather/nowcast  rain/storm warning
-+1.8s    3.0 KB  /api/weather/hourly                      today's weather chart
++1.8s    3.0 KB  /api/parks/<geo>/<park>/weather/hourly   today's weather chart
 +2.4s   14.8 KB  /api/parks/<geo>/<park>/best-days        90-day crowd projection      ← loads last
 +2.5s    3.0 KB  /api/parks/<geo>/<park>/stats            2-year aggregate             ← loads last
 +2.5s    1.9 KB  /api/parks/<geo>/<park>/calendar?…       today only, for the forecast cell
@@ -111,9 +111,10 @@ lays it over the server-rendered park in the hook's `select`, so every consumer 
 render appears within one poll.
 
 - `comparison` is never rendered and is not in the projection.
-- `baseline` rides the poll for the ride card's crowd-scale tooltip
-  (`rideCrowdMinuteRanges`) but stays out of the server render, which a shell written before opening
-  would not have anyway: +39 B brotli per poll on Epcot's 33 rides.
+- `baseline` rides the poll and the server render: the ride card's crowd badge prints it
+  („Niedrig · sonst 45 Min.“) and its crowd-scale tooltip reads it (`rideCrowdMinuteRanges`). A
+  badge that waited for the poll would grow after the first paint and move the card grid. +39 B
+  brotli per poll on Epcot's 33 rides.
 - Each ride's `park: { slug }`, the key `enrichAttractionsWithImages` looks a photo up by, is
   stripped after the lookup: nothing reads a park that carries only a slug.
 - `dataTimestamp`, the time the API built the payload, rides every poll: the „as of" line over the
@@ -166,6 +167,14 @@ The detail's `hasDayCurve` decides whether the chart asks `/stats/day` for its P
 `useRideDayCurve` sends nothing; `true` or absent (unknown to the API) asks as before. The flag
 reaches the chart through the client's own detail query, not the ride shell, which is built from
 the park payload and never carries it.
+
+`downtime` is the one field of the detail the server render needs: whether the downtime chapter
+exists at all, a 271 px panel on desktop or one line, is only known from it, so it cannot wait for
+the client's query ([a streamed section owes the page its height](../rules/a-streamed-section-owes-the-page-its-height.md)).
+The park payload does not carry it. `getAttractionDowntime` asks the detail with `?days=1`, which
+cuts the history and the schedule to one day (Baron 1898, 2026-11-28: 3.5 KB instead of 29.7 KB),
+without the forecast flag so Cloudflare shares the answer, and keeps it a day in the Data Cache,
+the window the nightly profile rebuild sets. The ride page runs it beside `getRideRank`.
 
 ### Park schedule: only today's holiday context ships
 

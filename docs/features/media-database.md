@@ -245,7 +245,8 @@ images: {id: {v, w, h, widths, focus, credit, attribution, roles, bannerFocus?, 
   path, because `disneyland-park` and `universal-islands-of-adventure` each exist twice, and the photo
   is looked up by that path too. `credit` is
   `getCreditLine()`, `attribution` is `needsAttribution()`; the app shows the line on the photo when
-  it is true, as the cards do. Files are scaled, never cropped, so the app applies `focus` itself.
+  it is true, as the cards do. The line carries its own `©`, so it is drawn as it stands, with no
+  „Foto:“ in front, as `PhotoCredit` draws it on the website. Files are scaled, never cropped, so the app applies `focus` itself.
 - **When:** `.github/workflows/publish-media.yml` on every push to `main` touching `public/media/**`
   or `content/blog/**`, and by hand (`workflow_dispatch`). Secrets: `R2_ENDPOINT`
   (`https://<account>.eu.r2.cloudflarestorage.com`), `R2_BUCKET`, `R2_ACCESS_KEY_ID`,
@@ -261,14 +262,16 @@ written before them.
 
 - **Which posts:** the `/news` listing: `isNewsCategory()` (`news` and `news/…`), `listPosts()` so
   drafts, hidden and scheduled posts stay out, only posts the locale has itself (no English
-  fallback), newest first by date and time, at most 100 per locale.
+  fallback), newest first by date and time, all of them: the app searches and filters the list on
+  the device, so it holds every post the website's search finds (117 German news are 100 KB, 26 KB
+  compressed).
 - **Guides:** every other post (the `/blog` listing, `selectGuides()`) is written by the same code
   to `guides/<locale>.json` and `guides/<locale>/<slug>.json`, with the same fields and block
-  types as the news files below. Two things differ: `url` is
-  `https://park.fan/<locale>/blog/<slug>`, and the list is not capped.
+  types as the news files below. Only `url` differs: it is
+  `https://park.fan/<locale>/blog/<slug>`.
 - **`news/<locale>.json`:** `{schema: 1, generatedAt, locale, posts: [Post]}`, with `Post` =
   `{slug, url, title, teaser, publishedAt, updatedAt?, category, categoryLabel?, terms?, parks,
-parkSlugs, cover, coverAlt, readingMinutes}`. `url` is the absolute
+parkSlugs, rides, cover, coverAlt, readingMinutes}`. `url` is the absolute
   `https://park.fan/<locale>/news/<slug>`; `publishedAt` and `updatedAt` carry Berlin's offset;
   `teaser` is the frontmatter `excerpt`; `categoryLabel` and `terms` are the post's entry in the
   site search (`getPostSearchIndex`, `lib/navigation/blog-menu.ts`): the category's label in that
@@ -278,14 +281,15 @@ parkSlugs, cover, coverAlt, readingMinutes}`. `url` is the absolute
   geo paths of the parks the post is about, the keys of `parks` in `index.json`, the park of the
   news label first (`getNewsParkRef`); `parkSlugs` are the same parks as slugs, because a park
   nobody photographed and no post linked by its full path has no known path and is then missing
-  from `parks` only; `cover` is an id in `images` of `index.json` or `null` (the post has no photo:
-  draw the fallback), `coverAlt` its alt text in that locale.
-- **`news/<locale>/<slug>.json`:** `Post` plus `schema`, `locale`, `author`, `rides` and `blocks`.
+  from `parks` only; `rides` are the post's `rideLinks` as `<park geo path>/<ride slug>`, where the
+  park's path is known; `cover` is an id in `images` of `index.json` or `null` (the post has no
+  photo: draw the fallback), `coverAlt` its alt text in that locale.
+- **`news/<locale>/<slug>.json`:** `Post` plus `schema`, `locale`, `author` and `blocks`.
   `author` is the byline, `{name, role, avatar, avatarSmall}`: the short name, the role in that
   locale or `null`, and the avatar as absolute `https://media.park.fan/authors/<name>-<hash>-<w>.webp`
   URLs (192 px and 96 px squares) or `null`. The app loads them from the bucket, never from the
-  website; the hash is that of the source file, so a key is immutable and uploaded once. `rides` are the post's `rideLinks` as
-  `<park geo path>/<ride slug>`, where the park's path is known. `blocks`, in reading order:
+  website; the hash is that of the source file, so a key is immutable and uploaded once. `blocks`,
+  in reading order:
   - `{type: 'heading', level, text, id}`, `id` the anchor the web gives the heading (`#id`)
   - `{type: 'paragraph', text}`
   - `{type: 'list', ordered, items: [text]}`
@@ -329,6 +333,80 @@ parkSlugs, cover, coverAlt, readingMinutes}`. `url` is the absolute
   `parseWidgetAttrs`, the parser the web's own widgets use.
 - **Photos:** a cover or inline photo not among the card photos is exported with the same widths
   and added to `images`; `license: unknown` is left out, so the post gets `cover: null`.
+
+### Watching the export
+
+The website shows a post from its deploy on; the app and the API's push notifications get it only
+from this export. A run that fails or never starts leaves them silent while the site looks fine, so
+two places say so.
+
+- **The workflow** stops `pnpm publish:media` after 50 minutes and the job after 60. A run took 18
+  to 26 minutes in November 2026, and a job may run six hours by default: a run that hangs would
+  hold the concurrency group, and every export queued behind it, that long. A failed run writes a job summary and an `::error` annotation that say whether
+  anything was uploaded (the lists go up after the bodies and `index.json` last, so a run that
+  stopped partway leaves some lists new and the rest old) and how to start a new one: **Run
+  workflow** on the workflow's page, or `gh workflow run publish-media.yml`. A cancelled run writes
+  the same, since the job's limit cancels a run rather than failing it (`failure() || cancelled()`).
+  GitHub notifies whoever triggered the run. The workflow's token may only read the repository
+  (`permissions: contents: read`), and its push paths include every file the export imports that
+  decides what goes out (`news-export-feeds.ts`, `backlinks.ts`, `map-with-concurrency.mjs`).
+- **`/admin/system`, „Export für die App“** (`app/admin/system/news-export-panel.tsx`). Its route,
+  `GET /api/admin/news-export` (role viewer), builds the report in `lib/admin/news-export-report.ts`:
+  it reads the twelve lists (`news/` and `guides/`, six
+  locales) server-side, never from the browser, and keeps each one it could read for five minutes
+  in memory: the lists' own `max-age`, and not the Data Cache, which would store all twelve again
+  every window to serve a handful of editors. It compares them with the deployment's own posts,
+  selected by the functions the export uses (`EXPORT_FEEDS` in `lib/blog/news-export-feeds.ts`,
+  which `scripts/news-export.mjs` iterates too).
+  Per feed the panel shows when the export last ran (the oldest `generatedAt`, so a run that
+  stopped halfway shows), the newest post in the export and on the site, and every post the site
+  lists and the export lacks, with its locales.
+- **By slug, not by date.** A post merged days after its own date is older than the last run, so
+  comparing `generatedAt` with the newest date would call the export current.
+- **How long a post has waited** counts from its date or from when it reached the default
+  branch, whichever is later. The arrival is read from GitHub with the admin's token
+  (`lib/admin/news-export-arrival.ts`): the oldest commit on the default branch that touches the
+  post's German file (else the file the site falls back to), and of that commit the earliest merge
+  of a pull request into the default branch, since a commit made on a branch carries the branch's
+  time; a commit pushed straight to the branch counts with its own. Only missing posts are asked
+  about, five per check, oldest first, and a time once read is kept in memory, since it never
+  changes. Without a token, or where GitHub fails, the wait counts from the deployment's build time
+  (`build-info.json`) instead, the latest the post can have arrived; that clock starts again with
+  every later deploy, which is why it is only the fallback. Amber after an hour, longer than two
+  runs back to back; red after six hours, the
+  window in which the API still announces a post (`NEWS_MAX_AGE_MS` in its news push job): an
+  export that catches up later brings the post to the app without a notification. A list that
+  cannot be read is red. While a post is younger than the hour, the tile says „noch nicht drin“.
+- **The answer** to an amber or red feed is a new run, so the panel asks „Export neu starten?“. An
+  editor starts it there: `POST /api/admin/news-export/run` (role editor, the floor of the admin's
+  other job starts) dispatches `publish-media.yml` on the repository's default branch, not the
+  admin's base branch, since only the default branch is live, with the admin's GitHub token
+  (`lib/admin/news-export-run.ts`). It answers `{started: true, workflowUrl}`, or
+  `{started: false, reason}` with 503 without a token and 502 for anything GitHub refused; the
+  reason is the German sentence the panel shows, and a 403 most likely means a token without
+  „Actions: Read and write“. When the dispatch was sent and GitHub gave no answer in time or a 5xx,
+  the run may have started all the same: the answer is 504 with `maybeStarted: true`, the panel says
+  „Vielleicht gestartet“ and links the workflow's runs to look at before starting another, and the
+  API's `run_news_export` treats the 504 as unclear. The log gets GitHub's status, never the request. After a start the
+  panel links the workflow page and reads the export once more 25 minutes later, or on „Neu lesen“;
+  it does not poll. A viewer gets the workflow page instead of the button; while no feed is amber
+  or red, an editor still finds the button below the tiles. The pure half is `lib/admin/news-export-lag.ts` (`pnpm test:admin-news-export`,
+  which also starts a run against a stand-in for GitHub).
+- **The API's MCP tools** read and start the same through two server routes gated like
+  `/api/revalidate`, `Authorization: Bearer $REVALIDATE_SECRET`, 503 without the secret and 401 on a
+  wrong one: `GET /api/news-export/status` answers the `NewsExportReport` above (`no-store`), and
+  `POST /api/news-export/run` starts a run with the admin route's answers. The API depends on both
+  paths and shapes; `pnpm test:admin-news-export` checks the status against a copy of the API's
+  schema (`newsExportReport` in its `src/mcp/tools/news-export.tools.ts`), and the role floors of
+  the admin's two routes. Like `/api/revalidate` they are outside `proxy.ts`'s matcher and not in
+  `robots.txt`, which names only the back office. Cloudflare challenges non-browser clients on
+  `park.fan/api/*`, so whatever lets the API's calls to `/api/revalidate` through has to cover
+  `/api/news-export/` too.
+
+Two cases reach the panel as a missing post and nothing else: a merge that touched none of the
+workflow's paths, and a scheduled post, which the run at its merge leaves out and no later run
+picks up until something else starts one. The regular comparison inside the API, which would put a
+late export on the overview, belongs to the backend.
 
 ## Related
 

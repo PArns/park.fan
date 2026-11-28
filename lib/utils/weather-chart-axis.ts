@@ -7,7 +7,7 @@
  * is open around the clock, or the gain is too small.
  *
  * Everything works in a continuous index `s ∈ [0, n]` over the hourly points, not in hours since
- * midnight: on a DST changeover Open-Meteo returns 23 or 25 points. Column `i` spans `[i, i + 1]`
+ * midnight: on a DST changeover the API's day has 23 or 25 hours. Column `i` spans `[i, i + 1]`
  * with its point at `i + 0.5`. All x values are viewBox percentages (0–100).
  * See docs/rules/weather-day-chart-is-built-around-the-parks-hours.md.
  */

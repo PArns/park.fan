@@ -16,7 +16,7 @@ this page and the others in `docs/api/` cover only the frontend's side.
   `stats.ts`, `integrated-calendar.ts`, …), each owning its Data Cache window and tags. The
   modules and what each exports are in the code index: [lib/api](../code-index/lib-api.md).
 - The browser polls the relays under `app/api/*` (`/api/parks/[...path]`, `/api/parks/live`,
-  `/api/search`, `/api/analytics/*`, `/api/weather/hourly`, `/api/og/*` …; listed in
+  `/api/search`, `/api/analytics/*`, `/api/og/*` …; listed in
   [app/api](../code-index/app-api.md)). A relay passes only slugs upstream and reports a
   failure as a non-200 without cache headers —
   [the rule](../rules/an-api-route-passes-only-slugs-upstream.md); the CDN windows it answers
@@ -61,8 +61,16 @@ contract is in `app/api/revalidate/route.ts`: `Authorization: Bearer $REVALIDATE
 (**503** until the secret is set), at most 50 entries per array, **400** when neither
 `tags` nor `paths` has one. A park's own tag is `park:<continent>/<country>/<city>/<slug>`
 (`parkCacheTag`, `lib/api/park-live-projection.ts`), its calendar's
-`park-calendar:<continent>/<country>/<city>/<slug>` (`parkCalendarCacheTag`,
-`lib/api/integrated-calendar.ts`); each has a hand-written twin in the API — change both.
+`park-calendar:<continent>/<country>/<city>/<slug>` (`parkCalendarCacheTag`, the same file); each
+has a hand-written twin in the API — change both.
+
+## The export for the MCP tools
+
+The API's MCP server reads and restarts the app's news export through `GET /api/news-export/status`
+and `POST /api/news-export/run`, with the same `Authorization: Bearer $REVALIDATE_SECRET` (**503**
+until the secret is set, **401** on any other). Paths and answers are in
+[watching the export](../features/media-database.md#watching-the-export); the API depends on both,
+so a rename is a change on both sides.
 
 ## Favorites
 

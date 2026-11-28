@@ -78,6 +78,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `formatDisplayName` _function_: A display name with the first letter of each part capitalised, fixed on the way out rather than in the account. Only first letters change, so `McMahon` does not become `Mcmahon`.
 - `formatUptime` _function_: Formats an uptime given in hours as `3d 4h` from one day up, otherwise as `5h 12m`.
 - `formatDay` _function_: A timestamp as a German calendar day for admin lists, `—` when there is none.
+- `formatDayTime` _function_: A timestamp as day and time on German time, `27.11., 17:36`, `—` when there is none. Berlin rather than the reader's clock, because post dates are written there.
 - `formatAgo` _function_: An ISO time as the admin says it, in German and relative to now: `vor 3 Stunden`.
 - `maeColor` _function_: Returns the text colour class for a model's MAE: green below 10, amber below 15, red above.
 
@@ -155,7 +156,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_lib/use-admin-health.ts`](../../app/admin/_lib/use-admin-health.ts)
 
-- `useAdminHealth` _hook_: The admin's situation for the overview and the sidebar's dots: reads the five monitoring answers, and for the owner the open API key requests, under the keys their own pages use (so answering a data-quality card clears its count here too) …
+- `useAdminHealth` _hook_: The admin's situation for the overview and the sidebar's dots: reads the five monitoring answers, for editors the parks' places waiting for review, and for the owner the open API key requests, under the keys their own pages use (so …
 - Types: `AdminHealthData`
 
 ### [`_lib/use-fuzzy-hits.ts`](../../app/admin/_lib/use-fuzzy-hits.ts)
@@ -175,10 +176,19 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useLocalPreference` _hook_: Returns a string preference kept in localStorage and its setter. The server and a failed read give `defaultValue`; a change in another admin tab updates this one too.
 
+### [`_lib/use-park-attractions.ts`](../../app/admin/_lib/use-park-attractions.ts)
+
+- `useParkAttractions` _hook_: One park's admin attraction list, under one key per query string, so the screens that show the same list share one request. `params` is the query string without its `?`; a null `parkId` asks nothing.
+- Types: `ParkAttractionList`
+
 ### [`_lib/use-park-catalog.ts`](../../app/admin/_lib/use-park-catalog.ts)
 
 - `useParkCatalog` _hook_: Every park, under the key of the parks page's unfiltered list, so a park picker opened anywhere in the admin asks once and a page that already holds the list costs nothing. `enabled: false` reads the cache without asking.
 - `parkCatalogOptions` _function_: The parks as picker options: the name, town and country as a hint, and the slug to match on.
+
+### [`_lib/use-served-attraction-kinds.ts`](../../app/admin/_lib/use-served-attraction-kinds.ts)
+
+- `useServedAttractionKinds` _hook_: The kinds the API serves for one park's attractions, keyed by attraction id, read off the rows of the park's admin list (`servedKindsFromList`). The map is empty until the rows are in.
 
 ### [`_lib/works-periods.ts`](../../app/admin/_lib/works-periods.ts)
 
@@ -278,7 +288,7 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 ### [`_ui/curated-fields.tsx`](../../app/admin/_ui/curated-fields.tsx)
 
 - `CuratedFieldsPanel` _component_: The "Kuratierte Felder" panel of a park or a ride: the editor, its save, and the undo toast.
-- Types: `CuratedGroupExtras`
+- Types: `CuratedGroupExtras`, `CuratedDerivedValues`
 
 ### [`_ui/day-calendar.tsx`](../../app/admin/_ui/day-calendar.tsx)
 
@@ -771,6 +781,10 @@ Route `/admin/contributions` (page).
 
 - `default (ContributionsPage)` _component_
 
+### [`data-quality/kind-actions.tsx`](../../app/admin/data-quality/kind-actions.tsx)
+
+- `WithoutKindParkCard` _component_: Data-quality card for one park's live attractions that carry no kind, asking what each one is: names them, and opens a select per attraction on the card that saves through the audited bulk endpoint, beside a review mark for an attraction …
+
 ### [`data-quality/page.tsx`](../../app/admin/data-quality/page.tsx)
 
 Route `/admin/data-quality` (page).
@@ -808,7 +822,7 @@ Route `/admin` (error).
 
 Route `/admin/facilities` (page).
 
-- `default (FacilitiesPage)` _component_: Toilets and drinking water from OpenStreetMap: the import for every park, the review of what came in, and the approval without which no point reaches a visitor.
+- `default (FacilitiesPage)` _component_: The places in a park from OpenStreetMap, toilets, drinking water and sights: the import for every park, the review of what came in, and the approval without which no point reaches a visitor.
 
 ### [`go/page.tsx`](../../app/admin/go/page.tsx)
 
@@ -1031,6 +1045,10 @@ Route `/admin/retirement` (page).
 Route `/admin/seasons` (page).
 
 - `default (SeasonsPage)` _component_: Every park's seasons in one place, filtered by year, kind, status, trip region, park and whether they run today, with the form to add, change or delete one. The filters are the address, so a reload or a shared link opens the same list.
+
+### [`system/news-export-panel.tsx`](../../app/admin/system/news-export-panel.tsx)
+
+- `NewsExportPanel` _component_: The native app's export on media.park.fan against the site, per feed: when it last ran, its newest post and the site's, and what it lacks.
 
 ### [`system/page.tsx`](../../app/admin/system/page.tsx)
 

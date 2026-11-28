@@ -861,6 +861,15 @@ const nextConfig: NextConfig = {
     }));
 
     return [
+      // The site's baseline Content-Security-Policy, the admin's too, since it shares this origin.
+      // It names no script or style source and so blocks nothing the pages load; one that does
+      // needs a nonce per request. First, because the last rule that sets a key wins and the SVG
+      // rule below has to keep its stricter policy; see
+      // docs/features/admin.md#headers-shared-with-the-site.
+      {
+        source: '/(.*)',
+        headers: [{ key: 'Content-Security-Policy', value: "object-src 'none'; base-uri 'self'" }],
+      },
       // Content-Language per locale — helps Google associate pages with their language
       ...localeHeaderRules,
       // Machine-readable entry points, advertised where an agent arrives first (RFC 8288 +
@@ -1055,6 +1064,12 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400'),
       },
       {
+        // The trip sheets' day prices: PURCHASES_CACHE_CONTROL in app/api/parks/[...path]/route.ts,
+        // kept identical.
+        source: '/api/parks/:continent/:country/:city/:park/purchases',
+        headers: sharedCache('public, max-age=3600, s-maxage=3600, stale-while-revalidate=600'),
+      },
+      {
         // The blog's inline ride references poll this, so it is live data — but the backend
         // caches it 5 min anyway, and one post naming ten rides in one park is one request.
         source: '/api/parks/:continent/:country/:city/:park/wait-times',
@@ -1109,6 +1124,12 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=60, stale-while-revalidate=120'),
       },
       {
+        // One park-day of the API's hourly forecast, behind the weather day chart and the
+        // planner's weather rail. The handler's own value (WEATHER_HOURLY_CACHE_CONTROL).
+        source: '/api/parks/:continent/:country/:city/:park/weather/hourly',
+        headers: sharedCache('public, s-maxage=900, stale-while-revalidate=900'),
+      },
+      {
         // Card-overlay live status batch (use-live-parks-by-region), polled by every hub card grid,
         // the featured-parks strip and the blog's park references. Same collapse rationale as
         // the park poll below; the response is byte-identical for every visitor of a region set,
@@ -1161,11 +1182,6 @@ const nextConfig: NextConfig = {
         // MUST stay after the blanket /api no-store rule to re-enable CDN caching.
         source: '/api/image',
         headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=604800'),
-      },
-      {
-        // Open-Meteo's hourly forecast for one park-day, behind the weather day chart.
-        source: '/api/weather/hourly',
-        headers: sharedCache('public, s-maxage=900, stale-while-revalidate=900'),
       },
       {
         // The header menu's cities+parks pane, fetched per opened country. Structure, not status.

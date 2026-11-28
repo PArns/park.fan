@@ -184,6 +184,7 @@ export function buildDemoFixtures(nowMs: number): DemoFixtures {
     // 70 ÷ the ride's 45-minute baseline is ~156 %, and the tier boundary to
     // "very high" is 150. The card's badge is therefore not a styling choice.
     crowdLevel: 'very_high',
+    baseline: TARON_BASELINE,
     trend: 'up',
     isHeadliner: true,
     minimumHeight: 130,
@@ -233,6 +234,7 @@ export function buildDemoFixtures(nowMs: number): DemoFixtures {
     status: 'OPERATING',
     // Live on 2026-08-24: 15 minutes against a 30-minute baseline, so "very low".
     crowdLevel: 'very_low',
+    baseline: 30,
     trend: 'down',
     isHeadliner: true,
     minimumHeight: 140,

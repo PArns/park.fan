@@ -24,7 +24,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `freshNewsSince` _function_: The first day a news post still counts as fresh for a title card's rail: 30 days back from the park's `todayIso`, so readers find something to read on most parks.
 - `getFreshNewsForPark` _function_: The newest news post ABOUT one park (its `getNewsParkRef` is this park, not a passing mention) dated on or after `sinceIso`, or `null`.
 - `getNewsParkRef` _function_: The one park a news post is about, for its label and the park filter on `/news`: the first `parkLinks` entry in the author's order (English first, then the other locales alphabetically, so the answer does not depend on file order), else …
-- `getParkSlugsOfPost` _function_: The parks whose pages list a post, by translation key: the park index read backwards, so the search finds a post by every park whose page links it (`getPostSearchIndex`), and `parkLinks` decides there exactly as it does on the park pages.
+- `getParkRefsOfPost` _function_: The parks whose pages list a post, by translation key: the park index read backwards, so `parkLinks` decides here exactly as it does on the park pages.
+- `getParkSlugsOfPost` _function_: `getParkRefsOfPost` as slugs, so the search finds a post by every park whose page links it (`getPostSearchIndex`).
 - `getPostsForRide` _function_: The same for a single ride. Ranking and locale semantics as above.
 - `getPostAboutRide` _function_: The post ABOUT one ride — configured for it, or tagged or filed under it, never a passing mention in the body — preferring an article to news, or `null`. What the ride page's title card shows.
 - `getFreshNewsAboutRide` _function_: The newest news post about one ride (configured, tagged or filed under it) dated on or after `sinceIso`, or `null`: the ride page's rail, ahead of the park's own news.
@@ -107,6 +108,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`live-display.ts`](../../lib/blog/live-display.ts)
 
 - `isNotOperating` _function_: True when a park/attraction status string means "not currently operating".
+- `isClosedForNow` _function_: Whether a CLOSED park is only shut until its next opening day: that opening is ahead of `nowMs` and nearer than `OFFSEASON_MIN_DAYS`, the line the park card draws between a few days off and the off season.
+- `rideChipClosedStatus` _function_: The badge a blog ride chip shows for a ride that is not running.
 - `waitTimeBadgeClass` _function_: Severity-coloured badge class for a wait time in minutes, on the same `waitTimeCrowdTier` thresholds and palette as `WaitTimeValue` and CrowdLevelBadge.
 - `inlinePerformanceSlot` _function_: What a blog ride reference shows for a ride that starts at set times: the next start (`HH:MM`), `pending` while the park's clock is not read yet, or null when it shows its status or wait as usual.
 
@@ -155,12 +158,19 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`news-blocks.ts`](../../lib/blog/news-blocks.ts)
 
-- `selectNews` _function_: News only (the `/news` listing), own-locale posts, newest first, capped.
-- `selectGuides` _function_: The guides (the `/blog` listing: every post that is not news), own-locale posts, newest first. Not capped, because a guide stays worth reading where a news post ages out.
+- `selectNews` _function_: News only (the `/news` listing), own-locale posts, newest first. Not capped: the app searches and filters the list on the device, so a post left out is one the website's search finds and the app's does not.
+- `selectGuides` _function_: The guides (the `/blog` listing: every post that is not news), own-locale posts, newest first.
 - `inlineText` _function_: Inline markdown reduced to bold, italic and absolute links. Anything else is dropped.
 - `markdownToBlocks` _function_: A post body as blocks. Widgets that draw live park data (`best-days-widget`, `hourly-profile-widget`, `ride-waits-widget`, `stats-widget`) become `widget` blocks the app fills from its own API calls; `weather-widget`, `map-widget` and …
-- `NEWS_EXPORT_CAP` _const_: At most this many news posts per locale in `news/<locale>.json`.
 - Types: `NewsBlock`, `NewsParkRef`, `NewsParkWidgetBlock`, `NewsGalleryImage`, `NewsWidgetBlock`, `BlockContext`
+
+### [`news-export-feeds.ts`](../../lib/blog/news-export-feeds.ts)
+
+- `exportListKey` _function_: The bucket key of one feed's list in one locale: `news/de.json`.
+- `exportListUrl` _function_: The list of one feed in one locale: `https://media.park.fan/news/de.json`.
+- `MEDIA_EXPORT_BASE` _const_: The bucket's public host.
+- `EXPORT_FEEDS` _const_: The export's post feeds: each a folder of its own on the bucket, with the posts that go into it.
+- Types: `ExportFeed`
 
 ### [`news-park.ts`](../../lib/blog/news-park.ts)
 

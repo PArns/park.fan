@@ -27,8 +27,7 @@ Only `/wait-times` stays open.
 - **A relay that sends the site's key answers only this site's pages.** Every branch of
   `/api/parks/*` but `/wait-times` (`isKeylessRelayPath()`), `/api/parks/near`, `/api/parks/popular`,
   `/api/parks/live`, `/api/search`, `/api/favorites`, `/api/nearby`, `/api/analytics/*`, `/api/ml/*`,
-  `/api/nav/geo/*`, `/api/nav/trip-regions`, every route of `/api/trip-regions/*` and
-  `/api/weather/hourly` (Open-Meteo, which the API keeps behind `live.weather` too) call
+  `/api/nav/geo/*`, `/api/nav/trip-regions` and every route of `/api/trip-regions/*` call
   `isSameOriginRequest()` (`lib/api/forecast-relay.ts`) and answer 403 otherwise. Without it the
   relay is the API without a key. A new relay that passes on API data starts with the same line. A
   script that calls one sends `Sec-Fetch-Site: same-origin`, as `check-planner.mjs` does.

@@ -8,6 +8,7 @@ import {
   HeartPulse,
   Link2Off,
   ListX,
+  Shapes,
   ShieldCheck,
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
@@ -24,7 +25,9 @@ import {
   PanelHeader,
 } from '../_ui/primitives';
 import { Select } from '../_ui/controls';
+import { MoreButton, useShowMore } from '../traffic/_components/list-parts';
 import { SilencedClusterCard, UnreviewedParkCard } from './season-actions';
+import { WithoutKindParkCard } from './kind-actions';
 import type { AbsenceRetiredUnreviewed, DataQualityReport } from '@/lib/api/admin';
 
 /**
@@ -77,6 +80,8 @@ export default function DataQualityPage() {
     (groups, row) => groups.set(row.parkId, [...(groups.get(row.parkId) ?? []), row]),
     new Map()
   );
+  // One card per park runs to hundreds, so the list folds.
+  const withoutKind = useShowMore(quality.data?.attractionsWithoutKind ?? []);
 
   return (
     <AdminPage width="wide">
@@ -249,6 +254,37 @@ export default function DataQualityPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+        </PanelBody>
+      </Panel>
+
+      <Panel>
+        <PanelHeader icon={Shapes} title="Attraktionen ohne Gattung" />
+        <PanelBody className="space-y-3">
+          <p className="text-muted-foreground text-sm">
+            Attraktionen, deren Gattung weder jemand eingetragen hat noch die API ableiten konnte.
+            Die API leitet sie jede Nacht aus der Bahnart im Ride-Profil, der Mindestgröße und bei
+            Nebenattraktionen aus dem Namen ab. Bekommt eine Attraktion ein Ride-Profil mit Bahnart
+            oder eine Mindestgröße, steht sie ab der nächsten Nacht nicht mehr auf dieser Liste.
+            Ohne Gattung zeigt die Website keinen Hinweis auf Transportsystem oder Halloween-Maze.
+            Was in keine Gattung passt, etwa ein Pool oder ein Weihnachtsmarkt, nimmt „Passt in
+            keine Gattung“ von der Liste.
+          </p>
+          {quality.error ? null : quality.loading && !quality.data ? (
+            <LoadingState />
+          ) : withoutKind.more.total === 0 ? (
+            <EmptyState
+              icon={ShieldCheck}
+              title="Jede Attraktion hat eine Gattung"
+              description="Von jemandem eingetragen oder von der API abgeleitet."
+            />
+          ) : (
+            <div className="space-y-2">
+              {withoutKind.shown.map((park) => (
+                <WithoutKindParkCard key={park.parkId} park={park} />
+              ))}
+              <MoreButton {...withoutKind.more} />
             </div>
           )}
         </PanelBody>

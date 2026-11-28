@@ -90,7 +90,7 @@ export function BlogGallery({ images, className, heading }: BlogGalleryProps) {
             {img.caption && (
               <figcaption className="text-muted-foreground mt-2 text-sm leading-snug">
                 {img.caption}
-                {img.credit && <span className="text-muted-foreground/70"> © {img.credit}</span>}
+                {img.credit && <span className="text-muted-foreground/70"> {img.credit}</span>}
               </figcaption>
             )}
           </figure>
@@ -127,7 +127,7 @@ export function BlogGallery({ images, className, heading }: BlogGalleryProps) {
                       <p className="text-foreground line-clamp-3">{active.caption}</p>
                     )}
                     {active.credit && (
-                      <p className="text-muted-foreground mt-1 text-xs">© {active.credit}</p>
+                      <p className="text-muted-foreground mt-1 text-xs">{active.credit}</p>
                     )}
                   </div>
                   <div className="text-muted-foreground shrink-0 text-xs tabular-nums">
