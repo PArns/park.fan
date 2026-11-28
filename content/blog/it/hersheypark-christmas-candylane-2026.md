@@ -39,6 +39,9 @@ seo:
     - TREEville Hersheypark
 ---
 
+> [!UPDATE] 2026-11-28
+> La Fire & Ice Experience ha debuttato soltanto il 27 novembre, un venerdì ([comunicato](https://stories.hersheypa.com/hersheypark-christmas-candylane-debuts-new-fire--ice-experience/)). Va in scena il venerdì e il sabato, fino al 27 dicembre secondo il parco. Dalle 17.15 parte uno spettacolo ogni 15 minuti, e alle 20 seguono i fuochi d'artificio. Si svolge nell'ex vasca dell'attrazione acquatica Tidal Force, dove al posto degli spruzzi adesso ci sono le fiamme. La Candylane non aveva mai usato effetti pirotecnici prima di questa stagione. Lo spettacolo è compreso nel biglietto della Candylane.
+
 Il 13 novembre a [Hersheypark](ref:hersheypark), in Pennsylvania, comincia la Christmas Candylane, e per la prima volta in 20 stagioni senza Hershey Sweet Lights. Il percorso in auto tra le luci non torna nel 2026: il parco dice di voler puntare sull'ampliamento della Candylane. Le luci della Candylane si guardano a piedi, dentro il parco. In compenso arriva la Fire & Ice Experience, dove luci e fiamme libere si accendono a tempo con una colonna sonora scritta apposta.
 
 [Hersheypark](ref:hersheypark?full)
@@ -95,6 +98,7 @@ Per mangiare sono aperti, tra gli altri, 1906 Grill, 8-Cut Crust e Chickie's & P
 
 Fonti:
 [Hersheypark Christmas Candylane](https://www.hersheypark.com/plan-your-visit/christmas-candylane),
+[Comunicato su Fire & Ice (Hershey, PA Stories)](https://stories.hersheypa.com/hersheypark-christmas-candylane-debuts-new-fire--ice-experience/),
 [Fall Weekend 2026 (Hershey, PA Stories)](https://stories.hersheypa.com/hersheypark-to-hold-fall-weekend-november-7-and-8-2026/),
 [Attrazioni della stagione natalizia](https://www.hersheypark.com/things-to-do/rides-and-attractions?season=Christmas),
 [Orari di Hersheypark](https://www.hersheypark.com/plan-your-visit/hours).
