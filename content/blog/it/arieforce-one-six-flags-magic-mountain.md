@@ -2,7 +2,7 @@
 title: 'ArieForce One si trasferisce a Six Flags Magic Mountain'
 translationKey: arieforce-one-six-flags-magic-mountain
 date: '2026-11-28'
-time: '09:30'
+time: '08:09'
 author: patrick
 mode: published
 featured: false
@@ -38,7 +38,7 @@ seo:
     - six flags magic mountain tempi di attesa
 ---
 
-ArieForce One verrà ricostruita a [Six Flags Magic Mountain](ref:six-flags-magic-mountain), a nord di Los Angeles. Arriva dal Fun Spot America Atlanta, in Georgia, un parco che ha chiuso. A confermarlo è stato il direttore del parco, Brian Oerding, con una dichiarazione del 29 ottobre riportata da FOX 11 Los Angeles. Il coaster dovrebbe tornare in funzione nella stagione 2028 o in quella 2029. Six Flags non ha ancora comunicato né la data di apertura, né il punto del parco in cui sorgerà, né l’altezza minima richiesta.
+ArieForce One verrà ricostruita a [Six Flags Magic Mountain](ref:six-flags-magic-mountain), a nord di Los Angeles. Arriva dal Fun Spot America Atlanta, in Georgia, un parco che ha chiuso. A confermarlo è stato il direttore del parco, Brian Oerding, con una dichiarazione del 29 ottobre riportata da FOX 11 Los Angeles. Il coaster dovrebbe tornare in funzione nella stagione 2028 o in quella 2029. Six Flags non ha ancora comunicato né la data di apertura né l’altezza minima richiesta.
 
 ## Che coaster è ArieForce One
 
@@ -50,9 +50,9 @@ Il nome resta. Ricorda John Arie Sr., fondatore di Fun Spot America, e Six Flags
 
 ## Dove e quando verrà montato
 
-[X2](ref:six-flags-magic-mountain/x2) è fermo da luglio, e a fine settembre Six Flags [lo ha ritirato per sempre](/news/x2-six-flags-magic-mountain-chiude). Il suo spazio si libera, ma se ArieForce One finirà lì è ancora incerto quanto la data di apertura.
+[X2](ref:six-flags-magic-mountain/x2) è fermo da luglio, e a fine settembre Six Flags [lo ha ritirato per sempre](/news/x2-six-flags-magic-mountain-chiude). Il suo spazio si libera. Se ArieForce One finirà lì non si sa ancora, perché Six Flags non ha indicato in quale punto del parco sorgerà.
 
-Le tempistiche e il resto dei piani per il parco Six Flags li presenterà solo all’inizio del 2027, anche se a fine ottobre Oerding ha lasciato intendere che i primi pezzi potessero essere già in viaggio sui camion.
+Le tempistiche e il resto dei piani per il parco Six Flags li presenterà solo all’inizio del 2027. A fine ottobre Oerding ha lasciato intendere che i primi pezzi potessero essere già in viaggio sui camion.
 
 > [!QUOTE]
 > A Six Flags Magic Mountain stiamo costruendo qualcosa di molto più grande di una singola attrazione. […] Il prossimo capitolo comincia nel 2027 con il debutto del Thrill Glider, il primo del suo genere. Ora possiamo confermare che arriverà anche ArieForce One, amatissimo dai fan.
@@ -63,7 +63,7 @@ Le tempistiche e il resto dei piani per il parco Six Flags li presenterà solo a
 
 ## Il Thrill Glider arriva prima, nel 2027
 
-Il Thrill Glider di Vekoma aprirà nel 2027, anche questo senza una data precisa. Si viaggia sdraiati a pancia in giù in un veicolo simile a una moto, appesi sotto il binario con il viso rivolto in avanti. Il coaster è alto 33 metri, raggiunge gli 80 km/h con due lanci e ha cinque inversioni su circa 1.030 metri. Un giro dura 84 secondi e per salire bisogna essere alti almeno 1,22 metri. Lo stanno costruendo dove c’era il Golden Bear Theatre, tra [Full Throttle](ref:six-flags-magic-mountain/full-throttle) e [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom), accanto al Looney Tunes Land rinnovato. Trovi i dettagli nel nostro [articolo sul Thrill Glider](/news/thrill-glider-six-flags-magic-mountain).
+Il Thrill Glider di Vekoma aprirà nel 2027, anche questo senza una data precisa. Si viaggia sdraiati a pancia in giù in un veicolo simile a una moto, appesi sotto il binario con il viso rivolto in avanti. Il coaster è alto 33 metri, raggiunge gli 80 km/h con due lanci e ha cinque inversioni su circa 1.030 metri. Un giro dura 84 secondi e per salire bisogna essere alti almeno 1,22 metri. Lo stanno costruendo dove c’era il Golden Bear Theatre, tra [Full Throttle](ref:six-flags-magic-mountain/full-throttle) e [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom), proprio accanto al Looney Tunes Land. Trovi i dettagli nel nostro [articolo sul Thrill Glider](/news/thrill-glider-six-flags-magic-mountain).
 
 Le due attrazioni fanno parte di un rinnovamento che durerà diversi anni. Come primi passi Oerding indica la ristrutturazione del parco acquatico Hurricane Harbor Los Angeles e la riprogettazione del Looney Tunes Land. Per quello che verrà dopo, Six Flags per ora indica solo delle categorie: nuove attrazioni per famiglie, più spettacoli, eventi distribuiti lungo la stagione e lavori su allestimenti e infrastrutture in tutto il parco.
 

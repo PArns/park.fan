@@ -2,7 +2,7 @@
 title: 'ArieForce One is moving to Six Flags Magic Mountain'
 translationKey: arieforce-one-six-flags-magic-mountain
 date: '2026-11-28'
-time: '09:30'
+time: '08:09'
 author: patrick
 mode: published
 featured: false
@@ -38,7 +38,7 @@ seo:
     - six flags magic mountain wait times
 ---
 
-ArieForce One, the coaster from the closed Fun Spot America Atlanta in Georgia, is getting a new home at [Six Flags Magic Mountain](ref:six-flags-magic-mountain) north of Los Angeles. Park president Brian Oerding confirmed it on 29 October in a statement reported by FOX 11 Los Angeles. The ride is due to run again in the 2028 or 2029 season. Six Flags hasn't announced an opening date, where in the park it'll go or the height requirement.
+ArieForce One, the coaster from the closed Fun Spot America Atlanta in Georgia, is being rebuilt at [Six Flags Magic Mountain](ref:six-flags-magic-mountain) north of Los Angeles. Park president Brian Oerding confirmed it on 29 October in a statement reported by FOX 11 Los Angeles. The ride is due to run again in the 2028 or 2029 season. Six Flags hasn't announced an opening date or the height requirement.
 
 ## What kind of ride it is
 
@@ -50,9 +50,9 @@ The name stays. It honours John Arie Sr., who founded Fun Spot America, and Six 
 
 ## Where and when it goes up
 
-[X2](ref:six-flags-magic-mountain/x2) hasn't run since July, and at the end of September Six Flags [retired it for good](/news/x2-six-flags-magic-mountain-closed). That frees up its site, though whether ArieForce One lands there is as open as the opening date.
+[X2](ref:six-flags-magic-mountain/x2) hasn't run since July, and at the end of September Six Flags [retired it for good](/news/x2-six-flags-magic-mountain-closed). That frees up its site. Whether ArieForce One goes there is still open, because Six Flags hasn't said where in the park it will stand.
 
-Six Flags plans to present the timeline and the rest of its plans for the park in early 2027, though Oerding hinted in late October that the first pieces might already be on trucks heading to the park.
+Six Flags will present the timeline and its other plans for the park in early 2027. In late October, Oerding hinted that the first pieces might already be on trucks heading to the park.
 
 > [!QUOTE]
 > At Six Flags Magic Mountain, we're building toward something much bigger than any single attraction. […] The next chapter arrives in 2027 with the debut of the first-of-its-kind Thrill Glider. Now, we can confirm the future addition of the fan-favorite ArieForce One.
@@ -61,9 +61,9 @@ Six Flags plans to present the timeline and the rest of its plans for the park i
 
 ## The Thrill Glider opens first, in 2027
 
-Vekoma's Thrill Glider opens ahead of ArieForce One in 2027, also without a fixed date. You lie face down in a vehicle shaped like a motorbike and hang beneath the track, facing forward. The ride is 107 feet tall, reaches 50 mph over two launches and packs five inversions into about 3,380 feet. A ride lasts 84 seconds, and you need to be 48 inches tall. It's going up on the site of the former Golden Bear Theatre, between [Full Throttle](ref:six-flags-magic-mountain/full-throttle) and [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom), next to the redesigned Looney Tunes Land. Our [post on the Thrill Glider](/news/thrill-glider-six-flags-magic-mountain) has more.
+Vekoma's Thrill Glider opens ahead of ArieForce One in 2027, also without a fixed date. You lie face down in a vehicle shaped like a motorbike and hang beneath the track, facing forward. The ride is 107 feet tall, reaches 50 mph over two launches and packs five inversions into about 3,380 feet. A ride lasts 84 seconds, and you need to be 48 inches tall. It's going up on the site of the former Golden Bear Theatre, between [Full Throttle](ref:six-flags-magic-mountain/full-throttle) and [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom), next to Looney Tunes Land. Our [post on the Thrill Glider](/news/thrill-glider-six-flags-magic-mountain) has more.
 
-Both coasters are part of a makeover spread over several years. Oerding names the overhaul of the Hurricane Harbor Los Angeles water park and the reimagining of Looney Tunes Land as the first steps. For what comes after, Six Flags names only categories so far: new family rides, more shows, events through the season, and theming and infrastructure work across the park.
+Both coasters are part of a makeover spread over several years. Oerding names the overhaul of the Hurricane Harbor Los Angeles water park and a new look for Looney Tunes Land as the first steps. For what comes after, Six Flags names only categories so far: new family rides, more shows, events through the season, and theming and infrastructure work across the park.
 
 ## Where ArieForce One comes from
 

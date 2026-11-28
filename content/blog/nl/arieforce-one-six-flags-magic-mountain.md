@@ -2,7 +2,7 @@
 title: 'ArieForce One verhuist naar Six Flags Magic Mountain'
 translationKey: arieforce-one-six-flags-magic-mountain
 date: '2026-11-28'
-time: '09:30'
+time: '08:09'
 author: patrick
 mode: published
 featured: false
@@ -38,7 +38,7 @@ seo:
     - six flags magic mountain wait times
 ---
 
-De achtbaan ArieForce One uit het gesloten Fun Spot America Atlanta in Georgia krijgt een nieuw thuis in [Six Flags Magic Mountain](ref:six-flags-magic-mountain), ten noorden van Los Angeles. Parkdirecteur Brian Oerding bevestigde dat op 29 oktober in een verklaring waarover FOX 11 Los Angeles berichtte. De baan moet in het seizoen 2028 of 2029 weer rijden. Een openingsdatum, de plek in het park en de minimumlengte heeft Six Flags nog niet bekendgemaakt.
+De achtbaan ArieForce One uit het gesloten Fun Spot America Atlanta in Georgia krijgt een nieuw thuis in [Six Flags Magic Mountain](ref:six-flags-magic-mountain), ten noorden van Los Angeles. Parkdirecteur Brian Oerding bevestigde dat op 29 oktober in een verklaring waarover FOX 11 Los Angeles berichtte. De baan moet in het seizoen 2028 of 2029 weer rijden. Een openingsdatum en de minimumlengte heeft Six Flags nog niet bekendgemaakt.
 
 ## Wat voor baan ArieForce One is
 
@@ -50,9 +50,9 @@ De naam blijft. Die verwijst naar John Arie Sr., de oprichter van Fun Spot Ameri
 
 ## Waar en wanneer hij wordt opgebouwd
 
-[X2](ref:six-flags-magic-mountain/x2) rijdt sinds juli niet meer, en eind september heeft Six Flags de baan [definitief buiten gebruik gesteld](/news/x2-six-flags-magic-mountain-gesloten). Daarmee komt dat terrein vrij. Of ArieForce One daar terechtkomt, is net zo onzeker als de openingsdatum.
+[X2](ref:six-flags-magic-mountain/x2) rijdt sinds juli niet meer, en eind september heeft Six Flags de baan [definitief buiten gebruik gesteld](/news/x2-six-flags-magic-mountain-gesloten). Daarmee komt dat terrein vrij. Of ArieForce One daar terechtkomt, is nog onduidelijk, want de plek in het park heeft Six Flags niet genoemd.
 
-Het tijdschema en de rest van de plannen voor het park wil Six Flags pas begin 2027 presenteren, al liet Oerding eind oktober doorschemeren dat de eerste onderdelen misschien al per vrachtwagen onderweg waren.
+Het tijdschema en de rest van de plannen voor het park wil Six Flags pas begin 2027 presenteren. Eind oktober liet Oerding doorschemeren dat de eerste onderdelen misschien al per vrachtwagen onderweg waren.
 
 > [!QUOTE]
 > Bij Six Flags Magic Mountain werken we toe naar iets dat veel groter is dan één attractie. […] Het volgende hoofdstuk begint in 2027 met de Thrill Glider, de eerste baan in zijn soort. Nu kunnen we bevestigen dat publiekslieveling ArieForce One erbij komt.
@@ -63,7 +63,7 @@ Het tijdschema en de rest van de plannen voor het park wil Six Flags pas begin 2
 
 ## De Thrill Glider is in 2027 eerst aan de beurt
 
-De Thrill Glider van Vekoma opent in 2027, ook nog zonder vaste datum. Je ligt op je buik, als op een motor, met je gezicht naar voren onder de rails. De baan is 33 meter hoog, komt met twee launches op 80 km/u en heeft vijf inversies op zo'n 1.030 meter. Een rit duurt 84 seconden, meerijden mag vanaf 1,22 meter. Hij wordt gebouwd op het terrein van het voormalige Golden Bear Theatre, tussen [Full Throttle](ref:six-flags-magic-mountain/full-throttle) en [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom) en naast het vernieuwde Looney Tunes Land. Meer daarover lees je in ons [artikel over de Thrill Glider](/news/thrill-glider-six-flags-magic-mountain).
+De Thrill Glider van Vekoma opent in 2027, ook nog zonder vaste datum. Je ligt op je buik, als op een motor, met je gezicht naar voren onder de rails. De baan is 33 meter hoog, komt met twee launches op 80 km/u en heeft vijf inversies op zo'n 1.030 meter. Een rit duurt 84 seconden, meerijden mag vanaf 1,22 meter. Hij wordt gebouwd op het terrein van het voormalige Golden Bear Theatre, tussen [Full Throttle](ref:six-flags-magic-mountain/full-throttle) en [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom) en direct naast Looney Tunes Land. Meer daarover lees je in ons [artikel over de Thrill Glider](/news/thrill-glider-six-flags-magic-mountain).
 
 Beide banen horen bij een verbouwing die een paar jaar duurt. Als eerste stappen noemt Oerding de vernieuwing van waterpark Hurricane Harbor Los Angeles en de herinrichting van Looney Tunes Land. Voor wat daarna komt, noemt Six Flags tot nu toe alleen categorieën: nieuwe attracties voor gezinnen, meer shows, evenementen verspreid over het seizoen en werk aan de aankleding en de infrastructuur in het hele park.
 

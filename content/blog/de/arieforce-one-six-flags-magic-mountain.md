@@ -2,7 +2,7 @@
 title: 'ArieForce One zieht nach Six Flags Magic Mountain'
 translationKey: arieforce-one-six-flags-magic-mountain
 date: '2026-11-28'
-time: '09:30'
+time: '08:09'
 author: patrick
 mode: published
 featured: false
@@ -38,7 +38,7 @@ seo:
     - six flags magic mountain wait times
 ---
 
-Die Achterbahn ArieForce One aus dem geschlossenen Fun Spot America Atlanta in Georgia wird in [Six Flags Magic Mountain](ref:six-flags-magic-mountain) nördlich von Los Angeles wieder aufgebaut. Das hat Parkchef Brian Oerding am 29. Oktober in einer Stellungnahme bestätigt, über die FOX 11 Los Angeles berichtet hat. Wieder fahren soll die Bahn in der Saison 2028 oder 2029. Einen Tag für die Eröffnung, den Platz im Park und die Mindestgröße hat Six Flags noch nicht bekannt gegeben.
+Die Achterbahn ArieForce One aus dem geschlossenen Fun Spot America Atlanta in Georgia wird in [Six Flags Magic Mountain](ref:six-flags-magic-mountain) nördlich von Los Angeles wieder aufgebaut. Das hat Parkchef Brian Oerding am 29. Oktober in einer Stellungnahme bestätigt, über die FOX 11 Los Angeles berichtet hat. Wieder fahren soll die Bahn in der Saison 2028 oder 2029. Einen Tag für die Eröffnung und die Mindestgröße hat Six Flags noch nicht bekannt gegeben.
 
 ## Was für eine Bahn ArieForce One ist
 
@@ -50,7 +50,7 @@ Der Name bleibt. Er erinnert an John Arie Sr., der Fun Spot America gegründet h
 
 ## Wo und wann sie aufgebaut wird
 
-[X2](ref:six-flags-magic-mountain/x2) fährt seit Juli nicht mehr, und Ende September hat Six Flags die Bahn [endgültig stillgelegt](/news/x2-six-flags-magic-mountain-geschlossen). Ihre Fläche wird damit frei, und ob ArieForce One dort hinkommt, ist so offen wie der Eröffnungstag.
+[X2](ref:six-flags-magic-mountain/x2) fährt seit Juli nicht mehr, und Ende September hat Six Flags die Bahn [endgültig stillgelegt](/news/x2-six-flags-magic-mountain-geschlossen). Damit wird ihre Fläche frei. Ob ArieForce One dorthin kommt, ist noch offen, denn den Platz im Park hat Six Flags nicht genannt.
 
 Den Zeitplan und die übrigen Pläne für den Park will Six Flags erst Anfang 2027 vorstellen. Die ersten Teile könnten nach Oerdings Andeutung von Ende Oktober aber schon per Lastwagen unterwegs sein.
 
@@ -63,7 +63,7 @@ Den Zeitplan und die übrigen Pläne für den Park will Six Flags erst Anfang 20
 
 ## Der Thrill Glider kommt 2027 zuerst
 
-Vor ArieForce One eröffnet 2027 der Thrill Glider von Vekoma, ebenfalls ohne festen Tag. Auf ihm liegst du bäuchlings in einem Fahrzeug wie auf einem Motorrad und hängst mit dem Gesicht nach vorn unter der Schiene. Die Bahn ist 33 Meter hoch, beschleunigt mit zwei Abschüssen auf 80 km/h und hat auf rund 1.030 Metern fünf Inversionen. Eine Fahrt dauert 84 Sekunden, mitfahren darfst du ab 1,22 Metern. Gebaut wird sie auf dem Gelände des früheren Golden Bear Theatre zwischen [Full Throttle](ref:six-flags-magic-mountain/full-throttle) und [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom), neben dem neu gestalteten Looney Tunes Land. Mehr dazu steht in unserem [Beitrag zum Thrill Glider](/news/thrill-glider-six-flags-magic-mountain).
+Vor ArieForce One eröffnet 2027 der Thrill Glider von Vekoma, ebenfalls ohne festen Tag. Auf ihm liegst du bäuchlings in einem Fahrzeug wie auf einem Motorrad und hängst mit dem Gesicht nach vorn unter der Schiene. Die Bahn ist 33 Meter hoch, beschleunigt mit zwei Abschüssen auf 80 km/h und hat auf rund 1.030 Metern fünf Inversionen. Eine Fahrt dauert 84 Sekunden, mitfahren darfst du ab 1,22 Metern. Gebaut wird sie auf dem Gelände des früheren Golden Bear Theatre zwischen [Full Throttle](ref:six-flags-magic-mountain/full-throttle) und [Lex Luthor: Drop of Doom](ref:six-flags-magic-mountain/lex-luthor-drop-of-doom), gleich neben Looney Tunes Land. Mehr dazu steht in unserem [Beitrag zum Thrill Glider](/news/thrill-glider-six-flags-magic-mountain).
 
 Beide Bahnen gehören zu einem Umbau über mehrere Jahre. Als erste Schritte nennt Oerding den Umbau des Wasserparks Hurricane Harbor Los Angeles und die Neugestaltung von Looney Tunes Land. Was danach kommen soll, nennt Six Flags bisher nur in Kategorien: neue Fahrgeschäfte für Familien, mehr Shows, Events über die Saison und Arbeiten an Gestaltung und Infrastruktur im ganzen Park.
 
