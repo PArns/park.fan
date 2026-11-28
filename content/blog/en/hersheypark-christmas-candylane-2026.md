@@ -40,7 +40,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-28
-> The Fire & Ice Experience only premiered on Friday, November 27, two weeks after Candylane opened, Hersheypark says in a [press release](https://stories.hersheypa.com/hersheypark-christmas-candylane-debuts-new-fire--ice-experience/). It runs on Fridays and Saturdays, through December 27 according to the park, with a show every 15 minutes from 5:15 pm until the fireworks at 8 pm. Lights and flames go off to Christmas music in the former Tidal Force basin, and it's the first time Candylane has used pyrotechnics. You don't pay extra: it's included in your Candylane ticket.
+> The Fire & Ice Experience didn't premiere until Friday, November 27 ([press release](https://stories.hersheypa.com/hersheypark-christmas-candylane-debuts-new-fire--ice-experience/)). It runs on Fridays and Saturdays, through December 27 according to the park. Shows start every 15 minutes from 5:15 pm, and fireworks follow at 8 pm. The stage is the old basin of the Tidal Force water ride. Candylane had never used pyrotechnics before this season. The show is included in your Candylane ticket.
 
 Christmas Candylane opens at [Hersheypark](ref:hersheypark) in Pennsylvania on November 13, and for the first time in 20 seasons it'll run without Hershey Sweet Lights. The drive-through light show isn't coming back in 2026; the park says it wants to put its effort into growing Candylane instead. Candylane's own lights are inside the park, and you walk past them. New this year is the Fire & Ice Experience, where lights and open flames go off in time to a soundtrack written for it.
 

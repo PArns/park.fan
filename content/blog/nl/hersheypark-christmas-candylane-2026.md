@@ -40,7 +40,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-28
-> De Fire & Ice Experience ging pas op vrijdag 27 november in première, twee weken na de start van de Candylane, meldt Hersheypark in een [persbericht](https://stories.hersheypa.com/hersheypark-christmas-candylane-debuts-new-fire--ice-experience/). De show draait op vrijdag en zaterdag, volgens het park tot en met 27 december, vanaf 17.15 uur elk kwartier tot het vuurwerk om 20.00 uur. In het voormalige bassin van Tidal Force gaan lichten en vlammen aan op kerstmuziek, en voor het eerst gebruikt het park bij de Candylane pyrotechniek. Apart betalen hoef je niet, want de show zit in je ticket voor de Candylane.
+> De Fire & Ice Experience ging pas op vrijdag 27 november in première ([persbericht](https://stories.hersheypa.com/hersheypark-christmas-candylane-debuts-new-fire--ice-experience/)). De show is er op vrijdag en zaterdag, volgens het park tot en met 27 december. Vanaf 17.15 uur begint elk kwartier een voorstelling, om 20.00 uur volgt vuurwerk. De show speelt in het oude bassin van de waterbaan Tidal Force, waar je nu vlammen ziet in plaats van nat te worden. Pyrotechniek had de Candylane vóór dit seizoen nooit. De show zit in je ticket voor de Candylane.
 
 [Hersheypark](ref:hersheypark) in Pennsylvania opent op 13 november de Christmas Candylane, en voor het eerst in 20 seizoenen hoort Hershey Sweet Lights daar niet bij. De autorit langs de lichtjes komt in 2026 niet terug: het park zegt zich te willen richten op het uitbreiden van de Candylane. De lichtjes van de Candylane bekijk je te voet, in het park zelf. Nieuw in het park is de Fire & Ice Experience, waar lichten en open vlammen gelijk oplichten op muziek die ervoor gemaakt is.
 
