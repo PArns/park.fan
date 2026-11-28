@@ -8,7 +8,12 @@ import { Card } from '@/components/ui/card';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { Badge } from '@/components/ui/badge';
 import { SectionHeading } from '@/components/common/section-heading';
-import { QUEUE_GLOSSARY_TERMS, QueueTypeBadge } from '@/components/parks/queue-type-badge';
+import {
+  QUEUE_GLOSSARY_TERMS,
+  QUEUE_SHUT_STATUS_KEYS,
+  QueueTypeBadge,
+} from '@/components/parks/queue-type-badge';
+import { queueShut } from '@/lib/parks/queue-availability';
 import { TrendPill } from '@/components/parks/trend-pill';
 import { DailyWaitTimeChartClient } from '@/components/parks/daily-wait-time-chart-client';
 import { DailyWaitTimeChartPlaceholder } from '@/components/parks/daily-wait-time-chart-placeholder';
@@ -199,55 +204,73 @@ export function LiveAttractionData({
           >
             {attraction.queues
               .filter((q) => q.queueType !== 'STANDBY')
-              .map((queue, i) => (
-                <div key={i} className={PANEL_CELL}>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="font-medium">
-                        {QUEUE_GLOSSARY_TERMS[queue.queueType] ? (
-                          <GlossaryTermLink termId={QUEUE_GLOSSARY_TERMS[queue.queueType]!}>
-                            {t(QUEUE_TYPE_KEYS[queue.queueType])}
-                          </GlossaryTermLink>
-                        ) : (
-                          t(QUEUE_TYPE_KEYS[queue.queueType])
-                        )}{' '}
-                      </span>
-                      <Badge variant="outline">{t(QUEUE_STATUS_KEYS[queue.status])}</Badge>
-                    </div>
-                    {/* The same queue detail the attraction cards show. */}
-                    <QueueTypeBadge queue={queue} timezone={park.timezone} />
-                    {/* Only the detail fetch carries a per-queue trend, not the live park poll.
-                        Arrow and delta come from the same averages, so they never disagree. */}
-                    {(() => {
-                      const trend = detail?.queues?.find(
-                        (q) => q.queueType === queue.queueType
-                      )?.trend;
-                      if (!trend) return null;
-                      const delta = roundWaitDeltaTo5(trend.recentAverage - trend.previousAverage);
-                      const direction = delta > 0 ? 'up' : delta < 0 ? 'down' : 'stable';
-                      return <TrendPill direction={direction} delta={delta} />;
-                    })()}
-                    {/* Paid standby lanes carry both a price (shown in the badge above) and a
-                        wait time — surface the wait prominently. */}
-                    {queue.queueType === 'PAID_STANDBY' && queue.waitTime !== null && (
-                      <p className="text-2xl font-bold">
-                        {queue.waitTime} <span className="text-muted-foreground text-sm">min</span>
-                      </p>
-                    )}
-                    {/* Lightning Lane carries both a price (badge) and a return window — the
-                        badge omits the window, so show it here. */}
-                    {queue.queueType === 'PAID_RETURN_TIME' &&
-                      queue.returnStart &&
-                      queue.returnEnd && (
-                        <p className="text-muted-foreground text-sm">
-                          {t('returnTime')}:{' '}
-                          <LocalTime time={queue.returnStart} timeZone={park.timezone} /> -{' '}
-                          <LocalTime time={queue.returnEnd} timeZone={park.timezone} />
+              .map((queue, i) => {
+                // A full or finished lane keeps its last window and wait in the payload; shown,
+                // they would read as on offer now.
+                const shut = queueShut(queue);
+                return (
+                  <div key={i} className={PANEL_CELL}>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="font-medium">
+                          {QUEUE_GLOSSARY_TERMS[queue.queueType] ? (
+                            <GlossaryTermLink termId={QUEUE_GLOSSARY_TERMS[queue.queueType]!}>
+                              {t(QUEUE_TYPE_KEYS[queue.queueType])}
+                            </GlossaryTermLink>
+                          ) : (
+                            t(QUEUE_TYPE_KEYS[queue.queueType])
+                          )}{' '}
+                        </span>
+                        {/* "Open" beside a finished lane contradicts the chip below; a lane
+                            that is down or closed says that instead. */}
+                        <Badge variant="outline">
+                          {t(
+                            shut && queue.status === 'OPERATING'
+                              ? QUEUE_SHUT_STATUS_KEYS[shut]
+                              : QUEUE_STATUS_KEYS[queue.status]
+                          )}
+                        </Badge>
+                      </div>
+                      {/* The same queue detail the attraction cards show. */}
+                      <QueueTypeBadge queue={queue} timezone={park.timezone} />
+                      {/* Only the detail fetch carries a per-queue trend, not the live park poll.
+                          Arrow and delta come from the same averages, so they never disagree. */}
+                      {!shut &&
+                        (() => {
+                          const trend = detail?.queues?.find(
+                            (q) => q.queueType === queue.queueType
+                          )?.trend;
+                          if (!trend) return null;
+                          const delta = roundWaitDeltaTo5(
+                            trend.recentAverage - trend.previousAverage
+                          );
+                          const direction = delta > 0 ? 'up' : delta < 0 ? 'down' : 'stable';
+                          return <TrendPill direction={direction} delta={delta} />;
+                        })()}
+                      {/* Paid standby lanes carry both a price (shown in the badge above) and a
+                          wait time — surface the wait prominently. */}
+                      {!shut && queue.queueType === 'PAID_STANDBY' && queue.waitTime !== null && (
+                        <p className="text-2xl font-bold">
+                          {queue.waitTime}{' '}
+                          <span className="text-muted-foreground text-sm">min</span>
                         </p>
                       )}
+                      {/* Lightning Lane carries both a price (badge) and a return window — the
+                          badge omits the window, so show it here. */}
+                      {!shut &&
+                        queue.queueType === 'PAID_RETURN_TIME' &&
+                        queue.returnStart &&
+                        queue.returnEnd && (
+                          <p className="text-muted-foreground text-sm">
+                            {t('returnTime')}:{' '}
+                            <LocalTime time={queue.returnStart} timeZone={park.timezone} /> -{' '}
+                            <LocalTime time={queue.returnEnd} timeZone={park.timezone} />
+                          </p>
+                        )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
           </PanelGrid>
         </div>
       )}

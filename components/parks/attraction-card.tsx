@@ -33,6 +33,7 @@ import { SeasonalBadge } from './seasonal-badge';
 import { WorksPeriodBadge } from './works-period-badge';
 import { worksPeriodOn, worksPeriodsOf } from '@/lib/utils/works-period';
 import { QueueTypeBadge } from './queue-type-badge';
+import { factChipsCoveredByLive, liveQueueChips } from '@/lib/parks/queue-availability';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { VirtualLineBadge } from '@/components/parks/virtual-line-badge';
@@ -241,6 +242,12 @@ export function AttractionCard({
   const eveningBetter = ropeDropData !== null && !ropeDrop && isEveningBetter(ropeDropData);
   // Gates above read the raw block; what the badges print is the five-minute figure the card shows.
   const ropeDropShown = ropeDropData ? ropeDropDisplayWaits(ropeDropData) : null;
+
+  // A favourite types its queues loosely; the API sends both the same shape.
+  const queueChips = isOperatingOrUnknown
+    ? liveQueueChips(attraction.queues as import('@/lib/api/types').QueueDataItem[] | undefined)
+    : [];
+  const factChipsCovered = factChipsCoveredByLive(queueChips);
 
   // The bottom glass panel (wait time + sparkline, or the next performance) only exists when
   // there is one of the two. Without it row 3 is empty rather than covered, so the photo
@@ -579,37 +586,33 @@ export function AttractionCard({
               compact
             />
             {/* `insideLink`: the whole card is an anchor, so the glossary link
-                degrades to a tooltip rather than nesting an <a> inside one. */}
-            <SingleRiderBadge
-              hasSingleRider={'hasSingleRider' in attraction ? attraction.hasSingleRider : null}
-              insideLink
-            />
-            <VirtualLineBadge
-              hasVirtualLine={'hasVirtualLine' in attraction ? attraction.hasVirtualLine : null}
-              insideLink
-            />
-            <FastPassBadge
-              fastPass={'fastPass' in attraction ? attraction.fastPass : null}
-              insideLink
-            />
-            {isOperatingOrUnknown &&
-              attraction.queues
-                ?.filter((q) => {
-                  if (q.queueType === 'STANDBY') return false;
-                  if (q.queueType === 'SINGLE_RIDER') {
-                    if (!('waitTime' in q)) return false;
-                    const wt = q.waitTime;
-                    return wt !== null && wt !== undefined && typeof wt === 'number' && wt > 0;
-                  }
-                  return true;
-                })
-                .map((queue, i) => (
-                  <QueueTypeBadge
-                    key={`${queue.queueType}-${i}`}
-                    queue={queue as import('@/lib/api/types').QueueDataItem}
-                    timezone={effectiveTimezone}
-                  />
-                ))}
+                degrades to a tooltip rather than nesting an <a> inside one. A fact chip
+                gives way to a live chip of the same lane, which also says what it does now. */}
+            {!factChipsCovered.singleRider && (
+              <SingleRiderBadge
+                hasSingleRider={'hasSingleRider' in attraction ? attraction.hasSingleRider : null}
+                insideLink
+              />
+            )}
+            {!factChipsCovered.virtualLine && (
+              <VirtualLineBadge
+                hasVirtualLine={'hasVirtualLine' in attraction ? attraction.hasVirtualLine : null}
+                insideLink
+              />
+            )}
+            {!factChipsCovered.fastPass && (
+              <FastPassBadge
+                fastPass={'fastPass' in attraction ? attraction.fastPass : null}
+                insideLink
+              />
+            )}
+            {queueChips.map((queue, i) => (
+              <QueueTypeBadge
+                key={`${queue.queueType}-${i}`}
+                queue={queue}
+                timezone={effectiveTimezone}
+              />
+            ))}
           </div>
           {/* A block of its own under the badges, never in the badge wrap: a sentence whose
               position depends on how many badges are present makes the card height

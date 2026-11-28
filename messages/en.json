@@ -1609,16 +1609,17 @@
         "singleRiderNoTime": "Single Rider",
         "lightningLane": "Lightning Lane: {price}",
         "lightningLaneNoPrice": "Lightning Lane: Available",
+        "lightningLaneState": "Lightning Lane: {state}",
         "express": "Express: {price}",
         "expressNoPrice": "Express: Available",
-        "virtualQueue": "Virtual Queue",
-        "virtualQueueFull": "Virtual Queue Full",
+        "expressState": "Express: {state}",
         "boardingGroups": "Boarding Groups: {start}-{end}",
         "boardingGroupsAvailable": "Boarding Groups Available",
         "boardingGroupsDistributed": "Groups Distributed",
         "boardingGroupsPaused": "Boarding Groups Paused",
-        "return": "Return: {start} - {end}",
-        "returnNoEnd": "Return: {start}"
+        "returnState": "Return time: {state}",
+        "return": "Return time: {start}–{end}",
+        "returnNoEnd": "Return time: {start}"
       }
     },
     "h1Suffix": "Live Wait Time",

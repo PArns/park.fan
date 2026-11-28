@@ -214,6 +214,7 @@ export async function buildNewsExport(chosen, avatars) {
           ...(found?.category ? { categoryLabel: found.category } : {}),
           ...(terms ? { terms } : {}),
           ...parksOf(post.translationKey),
+          rides: ridesOf(fm.rideLinks),
           cover: cover?.id ?? null,
           coverAlt: cover ? (fm.coverImage?.alt ?? getMediaAlt(cover.id, locale)) : null,
           readingMinutes: post.readingTimeMinutes,
@@ -231,7 +232,6 @@ export async function buildNewsExport(chosen, avatars) {
             locale,
             ...meta,
             author: authorOf(fm.author, locale, avatars),
-            rides: ridesOf(fm.rideLinks),
             blocks,
           },
         });
