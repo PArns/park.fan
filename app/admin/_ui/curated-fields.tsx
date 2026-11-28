@@ -14,6 +14,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { isIsoDate } from '@/lib/utils/calendar-utils';
+import { curatedEnumOptions } from '@/lib/admin/attraction-kind';
 import { adminFetch, useInvalidateAdmin } from '../_lib/api';
 import type { CuratedField, CurationResponse } from '../_lib/types';
 import {
@@ -311,10 +312,7 @@ function FieldControl({
           value={typeof value === 'string' ? value : null}
           onValueChange={onChange}
           placeholder={placeholderFor(field)}
-          options={(field.options ?? []).map((option) => ({
-            value: option,
-            label: option,
-          }))}
+          options={curatedEnumOptions(field.key, field.options)}
         />
       );
 

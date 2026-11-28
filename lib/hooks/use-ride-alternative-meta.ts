@@ -1,6 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
+import type { AttractionKind } from '@/lib/api/types';
 
 /** What the live poll leaves out about one ride, as `/ride-alternatives` answers it. */
 export interface RideAlternativeMeta {
@@ -9,6 +10,8 @@ export interface RideAlternativeMeta {
   longitude: number | null;
   types: string[];
   minimumHeight: number | null;
+  /** Absent from an answer the CDN cached before the relay sent it. */
+  attractionKind?: AttractionKind | null;
 }
 
 interface UseRideAlternativeMetaParams {
@@ -20,7 +23,7 @@ interface UseRideAlternativeMetaParams {
 }
 
 /**
- * Position, ride type and minimum height of every ride in a park, keyed by slug: the part of
+ * Position, ride type, minimum height and kind of every ride in a park, keyed by slug: the part of
  * „a shorter queue nearby" that the lean live poll does not carry. The answer is day-stable on
  * both ends, so it is fetched once per tab.
  */

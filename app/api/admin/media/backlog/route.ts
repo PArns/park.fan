@@ -5,6 +5,7 @@ import { Octokit } from '@octokit/rest';
 import { adminGithubToken, adminRepo } from '@/lib/admin/github';
 import { readSessionJson, resolveSession, sessionFiles } from '@/lib/admin/media-session';
 import { denyUnlessAdmin } from '@/lib/admin/session';
+import { parkGeoSegments } from '@/lib/admin/park-geo-path';
 import { getParkByGeoPathFreshWithoutForecasts } from '@/lib/api/parks';
 import { getParkHistoricalStats } from '@/lib/api/stats';
 import { getParkImages, getRideImages } from '@/lib/media';
@@ -17,7 +18,6 @@ import {
 } from '@/lib/media/session-photos';
 import { getStandbyWait } from '@/lib/utils/park-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
-import { SLUG_RE } from '@/lib/media/sidecar.mjs';
 import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 /**
@@ -73,24 +73,11 @@ async function sessionPhotos(
   return { names: sessionNames(files, parkSlug), rides: ridesInSidecars(sidecars, parkSlug) };
 }
 
-/** `/v1/parks/a/b/c/d`, `/parks/a/b/c/d` and `a/b/c/d` all name the same park. */
-function geoSegments(raw: string | null): string[] | null {
-  if (!raw) return null;
-  const parts = raw
-    .replace(/^\/?(?:v1\/)?parks\//, '')
-    .split('/')
-    .map((segment) => segment.trim())
-    .filter(Boolean);
-  if (parts.length !== 4) return null;
-  if (parts.some((segment) => !SLUG_RE.test(segment))) return null;
-  return parts;
-}
-
 export async function GET(request: Request) {
   const denied = await denyUnlessAdmin(request);
   if (denied) return denied;
 
-  const segments = geoSegments(new URL(request.url).searchParams.get('path'));
+  const segments = parkGeoSegments(new URL(request.url).searchParams.get('path'));
   if (!segments) {
     return NextResponse.json(
       { error: 'path must be continent/country/city/park' },

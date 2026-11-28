@@ -8,6 +8,7 @@ import {
   HeartPulse,
   Link2Off,
   ListX,
+  Shapes,
   ShieldCheck,
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
@@ -24,7 +25,9 @@ import {
   PanelHeader,
 } from '../_ui/primitives';
 import { Select } from '../_ui/controls';
+import { MoreButton, useShowMore } from '../traffic/_components/list-parts';
 import { SilencedClusterCard, UnreviewedParkCard } from './season-actions';
+import { WithoutKindParkCard } from './kind-actions';
 import type { AbsenceRetiredUnreviewed, DataQualityReport } from '@/lib/api/admin';
 
 /**
@@ -77,6 +80,8 @@ export default function DataQualityPage() {
     (groups, row) => groups.set(row.parkId, [...(groups.get(row.parkId) ?? []), row]),
     new Map()
   );
+  // One card per park runs to hundreds, so the list folds.
+  const withoutKind = useShowMore(quality.data?.attractionsWithoutKind ?? []);
 
   return (
     <AdminPage width="wide">
@@ -249,6 +254,36 @@ export default function DataQualityPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+        </PanelBody>
+      </Panel>
+
+      <Panel>
+        <PanelHeader icon={Shapes} title="Attraktionen ohne Art" />
+        <PanelBody className="space-y-3">
+          <p className="text-muted-foreground text-sm">
+            Attraktionen, deren Art weder jemand eingetragen hat noch die API ableiten konnte. Die
+            Regel liest jede Nacht die Bahnart im Ride-Profil, die Mindestgröße und bei
+            Nebenattraktionen den Namen; ein Ride-Profil mit Bahnart oder eine Mindestgröße nimmt
+            eine Attraktion also ab der nächsten Nacht auch von der Liste. Ohne Art zeigt die
+            Website keinen Hinweis auf Transportsystem oder Maze. Was in keine Art passt, etwa ein
+            Pool oder ein Weihnachtsmarkt, bleibt hier stehen.
+          </p>
+          {quality.error ? null : quality.loading && !quality.data ? (
+            <LoadingState />
+          ) : withoutKind.more.total === 0 ? (
+            <EmptyState
+              icon={ShieldCheck}
+              title="Jede Attraktion hat eine Art"
+              description="Von jemandem eingetragen oder von der API abgeleitet."
+            />
+          ) : (
+            <div className="space-y-2">
+              {withoutKind.shown.map((park) => (
+                <WithoutKindParkCard key={park.parkId} park={park} />
+              ))}
+              <MoreButton {...withoutKind.more} />
             </div>
           )}
         </PanelBody>

@@ -20,10 +20,16 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatRiderHeight } from '@/lib/utils/temperature';
+import {
+  attractionKindLabel,
+  shownAttractionKind,
+  type ServedAttractionKind,
+} from '@/lib/admin/attraction-kind';
 import { adminKeys, useAdminQuery } from '../../_lib/api';
 import type { AdminAttractionListItem, AdminParkDetail } from '../../_lib/types';
 import { withFuzzyMatches } from '../../_lib/search-hits';
 import { useFuzzyHits } from '../../_lib/use-fuzzy-hits';
+import { useServedAttractionKinds } from '../../_lib/use-served-attraction-kinds';
 import {
   AdminPage,
   Chip,
@@ -144,7 +150,7 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
           canEdit={canEdit}
         />
       )}
-      {tab === 'attractions' && <ParkAttractionsTab parkId={id} />}
+      {tab === 'attractions' && <ParkAttractionsTab parkId={id} parkPath={data.path} />}
       {tab === 'features' && <AttractionFeaturesEditor park={data} />}
       {tab === 'seasons' && (
         <div id="seasons">
@@ -277,9 +283,31 @@ function ParkPhotoCoverage({ parkId, parkSlug }: { parkId: string; parkSlug: str
   return <PhotoCoverage parkSlug={parkSlug} attractions={attractions.data.attractions} />;
 }
 
-function ParkAttractionsTab({ parkId }: { parkId: string }) {
+/**
+ * A row's kind: primary when an editor stored it, muted like a detected season when only the API's
+ * rule did, nothing when neither could tell.
+ */
+function KindChip({
+  stored,
+  served,
+}: {
+  stored: string | null | undefined;
+  served: ServedAttractionKind | undefined;
+}) {
+  const kind = shownAttractionKind(stored, served);
+  if (!kind) return null;
+  return (
+    <Chip tone={kind.derived ? 'muted' : 'primary'}>
+      {attractionKindLabel(kind.kind)}
+      {kind.derived && ' · abgeleitet'}
+    </Chip>
+  );
+}
+
+function ParkAttractionsTab({ parkId, parkPath }: { parkId: string; parkPath: string }) {
   const [query, setQuery] = useState('');
   const [includeRetired, setIncludeRetired] = useState(false);
+  const servedKinds = useServedAttractionKinds(parkId, parkPath);
 
   const params = useMemo(() => {
     const search = new URLSearchParams();
@@ -397,6 +425,10 @@ function ParkAttractionsTab({ parkId }: { parkId: string }) {
                 </div>
 
                 <div className="flex shrink-0 items-center gap-1.5">
+                  <KindChip
+                    stored={attraction.attractionKind}
+                    served={servedKinds[attraction.id]}
+                  />
                   {attraction.isSeasonal && (
                     <Chip tone={attraction.seasonalityCurated ? 'primary' : 'muted'}>saisonal</Chip>
                   )}

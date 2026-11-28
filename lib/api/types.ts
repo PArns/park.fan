@@ -8,11 +8,20 @@ export type ParkStatus = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
 export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT' | 'UNKNOWN';
 
 /**
- * What an attraction is FOR, decided by an editor; the API's `ATTRACTION_KIND_VALUES` is the same
- * four. Not the upstream's free-text `attractionType`, which files water rides as ATTRACTION and
- * walkthroughs as RIDE. Contract: `docs/frontend/attraction-kind.md` in v4.api.park.fan.
+ * What an attraction is FOR: an editor's verdict, or where nobody gave one, the API's rule
+ * ({@link AttractionKindSource} says which). The six values of the API's `ATTRACTION_KIND_VALUES`;
+ * more may follow, so a reader tests for the values it knows and reads any other as unknown. Not
+ * the upstream's free-text `attractionType`, which files water rides as ATTRACTION and walkthroughs
+ * as RIDE. Contract: `docs/frontend/attraction-kind.md` in v4.api.park.fan.
  */
-export type AttractionKind = 'RIDE' | 'TRANSPORT' | 'SHOW' | 'WALKTHROUGH' | 'MAZE';
+export type AttractionKind = 'RIDE' | 'TRANSPORT' | 'SHOW' | 'WALKTHROUGH' | 'MAZE' | 'GAME';
+
+/**
+ * Who decided an attraction's kind. `curated` is an editor's and final; a maze filed by the API's
+ * maze rule reads as one too. `derived` is the API's nightly rule, which can be wrong and is
+ * replaced by a better one. Null whenever the kind is null.
+ */
+export type AttractionKindSource = 'curated' | 'derived';
 
 /**
  * Where an attraction stands in the weather: the ride under a roof (`indoor`), in the open
@@ -808,10 +817,13 @@ export interface ParkAttraction {
    */
   hasSingleRider?: boolean | null;
   /**
-   * What this attraction is for: a ride, a transport system, a show or a walkthrough, curated per
-   * attraction. Null or absent means nobody has judged it, never „it is a ride"; render nothing.
+   * What this attraction is for (see {@link AttractionKind}): the editor's kind, else the one the
+   * API's rule derived. Null or absent means neither could tell, never „it is a ride"; render
+   * nothing.
    */
   attractionKind?: AttractionKind | null;
+  /** Who decided {@link ParkAttraction.attractionKind}; null or absent with a null kind. */
+  attractionKindSource?: AttractionKindSource | null;
   /**
    * Indoor, outdoor or outdoor with a roofed queue (see {@link IndoorOutdoor}). Curated and
    * day-stable, so it rides the server render, not the poll. Null or absent means unchecked,
@@ -1149,10 +1161,13 @@ export interface AttractionResponse {
    */
   hasSingleRider?: boolean | null;
   /**
-   * What this attraction is for: a ride, a transport system, a show or a walkthrough, curated per
-   * attraction. Null or absent means nobody has judged it, never „it is a ride"; render nothing.
+   * What this attraction is for (see {@link AttractionKind}): the editor's kind, else the one the
+   * API's rule derived. Null or absent means neither could tell, never „it is a ride"; render
+   * nothing.
    */
   attractionKind?: AttractionKind | null;
+  /** Who decided {@link AttractionResponse.attractionKind}; null or absent with a null kind. */
+  attractionKindSource?: AttractionKindSource | null;
   /** The ride's performance start times, as on {@link ParkAttraction.performanceSchedules}. */
   performanceSchedules?: PerformanceSchedule[];
   /** The curated works window that matters today, as on {@link ParkAttraction.worksPeriod}. */

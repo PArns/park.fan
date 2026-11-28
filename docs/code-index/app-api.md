@@ -37,6 +37,14 @@ Route `/api/admin/[...path]` (route).
 - `PUT` _const_
 - `DELETE` _const_
 
+### [`admin/attraction-kinds/route.ts`](../../app/api/admin/attraction-kinds/route.ts)
+
+Route `/api/admin/attraction-kinds` (route).
+
+- `GET` _function_: One park's attraction kinds as the public payload serves them, keyed by attraction id, with who decided each.
+- `runtime` _const_
+- `dynamic` _const_
+
 ### [`admin/backlinks/route.ts`](../../app/api/admin/backlinks/route.ts)
 
 Route `/api/admin/backlinks` (route).

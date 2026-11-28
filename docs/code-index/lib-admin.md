@@ -63,6 +63,15 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 - `APP_VERSION_PATTERN` _const_: `1`, `1.0` or `1.0.1`, the only forms the API accepts.
 - Types: `AppPlatform`, `PlatformConfig`, `AppConfigView`
 
+### [`attraction-kind.ts`](../../lib/admin/attraction-kind.ts)
+
+- `attractionKindLabel` _function_: The German name of an attraction kind; a value the API added after this list shows as itself.
+- `curatedEnumOptions` _function_: The options of a curated enum field as the admin's selects list them, in the API's order: an attraction kind under its German name, any other value as itself.
+- `curatedFieldOptions` _function_: `curatedEnumOptions` for one key of `GET /v1/admin/content/fields`, so a kind the API adds shows up in every select without a frontend change. Empty while the descriptors are not loaded.
+- `shownAttractionKind` _function_: The kind an admin row shows: the editor's stored value, else the API's derived one, flagged so the editor sees the decision is still open.
+- `rowsWithoutKind` _function_: The rows of a park's admin attraction list that a data-quality „ohne Art" entry names. The report sends names, not ids, so a row matches on its resolved name and on storing no kind; two rows of the same name are both listed.
+- Types: `CuratedEnumOption`, `ServedAttractionKind`, `ShownAttractionKind`
+
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 
 - `textFromDrafts` _function_: `![alt | caption | …](path)` for one image, across every filled locale.
@@ -300,6 +309,10 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `LOW_TRUTH_COVERAGE` _const_: Below this coverage the day view says the comparison rests on few measurements.
 - `MATRIX_BLOCKS` _const_: How the matrix is cut into blocks: the live and today rows share one, since the same models answer both. A group not named here gets a block of its own after these.
 - Types: `DayChoice`, `CellRef`, `ResultDate`, `FamilyRun`, `MatrixBlock`
+
+### [`park-geo-path.ts`](../../lib/admin/park-geo-path.ts)
+
+- `parkGeoSegments` _function_: The four slugs of a park's geo path, as an admin route takes it in `?path=`, or null when it is not four slugs. `/v1/parks/a/b/c/d`, `/parks/a/b/c/d` and `a/b/c/d` all name the same park.
 
 ### [`parky-elements.ts`](../../lib/admin/parky-elements.ts)
 
