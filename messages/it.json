@@ -1617,7 +1617,7 @@
         "boardingGroupsAvailable": "Gruppi di imbarco disponibili",
         "boardingGroupsDistributed": "Gruppi distribuiti",
         "boardingGroupsPaused": "Gruppi di imbarco in pausa",
-        "returnState": "Orario di ritorno: {state}",
+        "returnState": "Orario di ritorno: {kind, select, full {Pieno} finished {Terminato} other {{state}}}",
         "return": "Orario di ritorno: {start}–{end}",
         "returnNoEnd": "Orario di ritorno: {start}"
       }

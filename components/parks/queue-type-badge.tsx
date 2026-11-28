@@ -121,7 +121,9 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
           ? t('queue.details.return', { start, end })
           : t('queue.details.returnNoEnd', { start });
       } else if (shutState) {
-        label = t('queue.details.returnState', { state: shutState });
+        // `kind` lets a language agree the word with its own noun: Italian's „orario" is
+        // masculine, the shared status words agree with „coda".
+        label = t('queue.details.returnState', { state: shutState, kind: shut ?? 'other' });
         colorClass = colorShut;
       } else {
         label = t('queue.RETURN_TIME');

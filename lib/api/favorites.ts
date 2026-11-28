@@ -147,7 +147,7 @@ export interface FavoriteAttraction extends Pick<
   /** Focal point as a CSS `object-position`, attached by the same proxy route. */
   backgroundPosition?: string;
   /**
-   * Not yet delivered by /v1/favorites either; typed so the card's transport badge lights up once
+   * Not yet delivered by /v1/favorites; typed so the card's transport badge lights up once
    * the API ships it.
    */
   attractionKind?: AttractionKind | null;
