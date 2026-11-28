@@ -495,6 +495,6 @@ The link that hands a stored plan to somebody else, and how it is read back.
 - `weatherRailSegments` _function_: One segment per hour the axis covers, in order: clipped to the axis, not to the opening hours, since the rain before opening decides what somebody wears. Hours the forecast lacks are skipped, not filled.
 - `isWet` _function_: Whether this hour is wet enough to print a figure rather than an icon. Alternatives, because the gutter beside an hour label has room for one of them.
 - `withinWeatherHorizon` _function_: Whether a date is inside the hourly forecast's reach. Both dates are park-local `YYYY-MM-DD`, so this counts calendar days through `Date.UTC`, never `new Date(string)`, which depends on the reader's offset.
-- `WEATHER_RAIL_MAX_LEAD_DAYS` _const_: How many days ahead the hourly forecast reaches. Measured, not documented upstream.
+- `WEATHER_RAIL_MAX_LEAD_DAYS` _const_: How many days after today the API's `/weather/hourly` serves.
 - `WET_MM_FLOOR` _const_: Below this an hour counts as dry: 0.05 mm is a damp railing, not rain to plan around.
 - Types: `WeatherRailGroup`, `WeatherRailSegment`

@@ -69,6 +69,7 @@ const testCases = [
         ['stats', 'hourly'],
         ['positions'],
         ['weather', 'nowcast'],
+        ['weather', 'hourly'],
         ['attractions', 'tron-lightcycle-run'],
       ].some((rest) => isKeylessRelayPath([...park, ...rest])),
     expected: false,

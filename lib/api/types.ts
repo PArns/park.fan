@@ -254,7 +254,10 @@ export interface WeatherNowcast {
   warnings?: WeatherWarning[];
 }
 
-/** One hour of today's forecast (proxied from Open-Meteo). */
+/**
+ * One hour of a park-day's forecast as the day chart and the planner's weather rail read it:
+ * `/api/parks/<geo>/<park>/weather/hourly`, cut from the API's {@link WeatherHourly}.
+ */
 export interface WeatherHourlyPoint {
   /** Naive park-local hour ("YYYY-MM-DDTHH:00"), same convention as nowcast steps. */
   time: string;
@@ -267,11 +270,51 @@ export interface WeatherHourlyPoint {
   isDay: boolean;
 }
 
-/** Today's hour-by-hour weather forecast. */
+/** One park-day's hour-by-hour forecast, midnight to midnight on the park's clock. */
 export interface WeatherHourlyToday {
   /** IANA timezone the point times are local to. */
   timezone: string;
   points: WeatherHourlyPoint[];
+}
+
+/** One hour of the API's `/weather/hourly`. Units: °C, mm, %, km/h, degrees the wind comes from. */
+export interface WeatherHour {
+  /** The hour's start on the park's clock with its offset (`2026-11-25T14:00+01:00`). */
+  time: string;
+  temperatureC: number | null;
+  apparentTemperatureC: number | null;
+  precipitationMm: number | null;
+  precipitationProbability: number | null;
+  weatherCode: number | null;
+  windSpeedKmh: number | null;
+  windGustsKmh: number | null;
+  windDirectionDeg: number | null;
+  isDay: boolean | null;
+}
+
+/** One park-local day of the API's `/weather/hourly`: 24 hours, 23 or 25 on a DST changeover. */
+export interface WeatherHourlyDay {
+  /** Park-local `YYYY-MM-DD`. */
+  date: string;
+  /** On the park's clock with its offset; `null` where none falls on that date. */
+  sunrise: string | null;
+  sunset: string | null;
+  hours: WeatherHour[];
+}
+
+/**
+ * The API's `GET /v1/parks/<geo>/<park>/weather/hourly`: the park's today and up to 14 more days,
+ * hour by hour (backend `docs/frontend/weather.md`).
+ */
+export interface WeatherHourly {
+  park: { id: string; name: string; slug: string; timezone: string };
+  /** When the forecast behind the answer was fetched (UTC ISO). */
+  generatedAt: string;
+  /** When the API refetches it, or the park's next midnight if that comes first (UTC ISO). */
+  nextUpdateAt: string;
+  /** Today first; every listed day is whole. */
+  days: WeatherHourlyDay[];
+  attribution: WeatherNowcastAttribution;
 }
 
 /** The kinds of queue a ride can have. */

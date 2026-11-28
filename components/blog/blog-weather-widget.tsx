@@ -57,8 +57,6 @@ export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) 
         country={geo.country}
         city={geo.city}
         parkSlug={geo.parkSlug}
-        latitude={full.latitude}
-        longitude={full.longitude}
         timezone={full.timezone}
         schedule={full.schedule}
         hasOperatingSchedule={full.hasOperatingSchedule}

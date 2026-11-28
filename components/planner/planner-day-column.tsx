@@ -573,6 +573,7 @@ export function PlannerDayColumn({
                 closedNow={closedNow}
                 prefs={prefs}
                 parkSlug={park?.slug}
+                parkGeo={park?.geo}
                 onDropRide={fileDropped}
                 onResize={(entryId, durationMinutes) => {
                   if (parkSlug && date) editCustom(parkSlug, date, entryId, { durationMinutes });

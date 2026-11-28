@@ -56,7 +56,7 @@ The park row predates `/plan/day`, which made it nine calls (below).
 ```
 +1.8s   40.3 KB  /api/parks/<geo>/<park>                  live poll, repeats every 5 min
 +1.8s    4.9 KB  /api/parks/<geo>/<park>/weather/nowcast  rain/storm warning
-+1.8s    3.0 KB  /api/weather/hourly                      today's weather chart
++1.8s    3.0 KB  /api/parks/<geo>/<park>/weather/hourly   today's weather chart
 +2.4s   14.8 KB  /api/parks/<geo>/<park>/best-days        90-day crowd projection      ← loads last
 +2.5s    3.0 KB  /api/parks/<geo>/<park>/stats            2-year aggregate             ← loads last
 +2.5s    1.9 KB  /api/parks/<geo>/<park>/calendar?…       today only, for the forecast cell

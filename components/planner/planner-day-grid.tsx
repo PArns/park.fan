@@ -75,7 +75,7 @@ import { cn } from '@/lib/utils';
 import { PlannerDragDemo } from './planner-drag-demo';
 import { partyFlags } from '@/lib/planner/party';
 import { unavailableNote } from '@/lib/planner/unavailable';
-import type { PlannerDayPrefs, PlannerEntry } from '@/lib/planner/types';
+import type { PlannerDayPrefs, PlannerEntry, PlannerGeo } from '@/lib/planner/types';
 import type { PlanDay, PlanDayRide, PlanDayTier } from '@/lib/api/types';
 import { UNUSABLE_HATCH_IMAGE } from '@/lib/utils/hatch';
 
@@ -99,6 +99,8 @@ interface PlannerDayGridProps {
   onResize?: (entryId: string, durationMinutes: number) => void;
   /** The plan's active park. A ride dropped in from another park is refused. */
   parkSlug?: string;
+  /** Where the active park sits in the API's paths, for the day's hourly weather. */
+  parkGeo?: PlannerGeo;
   /** A ride dragged in from the page behind the panel, dropped at this minute. */
   onDropRide?: (attractionSlug: string, attractionName: string, startMinute: number) => void;
   /** Rides reporting closed right now. Empty where the date is not today. */
@@ -152,6 +154,7 @@ export function PlannerDayGrid({
   emptyAction = null,
   onResize,
   parkSlug,
+  parkGeo,
   onDropRide,
   closedNow,
   prefs,
@@ -346,29 +349,16 @@ export function PlannerDayGrid({
   }, [entries, day, ridesBySlug, liveWaits, nowMinute]);
 
   /**
-   * Where the park is, to about a kilometre, taken off the first ride with a position: nothing the
-   * planner fetches carries the park's own, and the weather proxy rounds to two decimals anyway.
-   */
-  const located = day?.rides?.find(
-    (ride) => typeof ride.latitude === 'number' && typeof ride.longitude === 'number'
-  );
-  const parkLat = located?.latitude ?? null;
-  const parkLon = located?.longitude ?? null;
-
-  /**
    * The hourly forecast for the day being planned, not for today. Gated on the forecast's own reach
-   * (about fourteen days), or every later day would put a failing request behind it.
+   * (fourteen days), or every later day would put a request for nothing behind it.
    */
   const planDate = day?.context.date;
-  const weatherEnabled = Boolean(
-    parkLat !== null &&
-    parkLon !== null &&
-    planDate &&
-    withinWeatherHorizon(todayInZone(timezone), planDate)
-  );
+  const weatherEnabled = Boolean(planDate && withinWeatherHorizon(todayInZone(timezone), planDate));
   const { data: hourlyWeather } = useWeatherHourly({
-    latitude: parkLat,
-    longitude: parkLon,
+    continent: parkGeo?.continent,
+    country: parkGeo?.country,
+    city: parkGeo?.city,
+    parkSlug,
     timezone,
     date: planDate,
     enabled: weatherEnabled,

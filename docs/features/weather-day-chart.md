@@ -10,6 +10,17 @@ card, container-query tick density) is
 Geometry is pure and lives in `lib/utils/weather-chart-axis.ts`, tested by
 `pnpm test:weather-chart-axis`; the component only renders.
 
+## Where the hours come from
+
+`useWeatherHourly` asks `/api/parks/<geo>/<park>/weather/hourly?date=<park-local day>`. The relay reads
+the API's `/weather/hourly` (today and fourteen more days, refetched every two hours; backend
+`docs/frontend/weather.md`) with the site's key and answers that one day (`hourlyDayPoints` in
+`lib/api/weather-hourly.ts`, tested by `pnpm test:weather-hourly`). Each hour keeps its wall-clock time
+and drops the offset (`2026-11-28T14:00`), because the chart compares it as a string with the schedule
+and the nowcast. Feels-like and wind stay behind, so a day is about 3 KB. The planner's weather rail
+reads the same route for the day being planned. The browser never talks to Open-Meteo; the card
+credits it because the API's weather comes from there.
+
 ## The warp in numbers
 
 An open hour is drawn `OPEN_HOUR_RATIO` (4) times as wide as a closed one; the opening hours never
@@ -43,8 +54,9 @@ narrower than a linear axis would.
 
 ## Index coordinates, not hours
 
-Everything works in a continuous index `s ∈ [0, n]` over the hourly points. Open-Meteo returns the day
-asked for, so on a DST changeover `n` is 23 or 25 and `points[i]` is not the `i`-th hour.
+Everything works in a continuous index `s ∈ [0, n]` over the hourly points. The API lists a day from
+midnight to midnight on the park's clock, so on a DST changeover `n` is 23 or 25 and `points[i]` is not
+the `i`-th hour.
 `indexForMinute()` maps a wall-clock minute onto that axis: on the autumn changeover the repeated hour
 resolves to its later occurrence, on the spring one the skipped hour maps onto the start of the hour
 that replaced it.

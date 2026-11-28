@@ -45,7 +45,6 @@ export const PURGED_API_DIRS = [
   'search',
   'trip-regions',
   'trips',
-  'weather',
   'webhooks',
 ] as const;
 
