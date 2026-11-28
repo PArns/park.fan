@@ -194,6 +194,21 @@ a proxy that eats `challenges.cloudflare.com`), the form says so and offers a re
 **remounts** the widget, since there is nothing to reset when the script never arrived. The loader
 forgets a failed script promise for the same reason; otherwise every retry would fail instantly.
 
+### Headers shared with the site
+
+The admin lives on park.fan's own origin and gets the headers `next.config.ts` sends on every path:
+`X-Frame-Options: DENY`, HSTS, `nosniff`, `Referrer-Policy` and `Permissions-Policy`. The first rule
+in `headers()` adds the site's baseline `Content-Security-Policy: object-src 'none'; base-uri 'self'`:
+no plugin content, and no injected `<base>` that resolves the page's `/_next/…` scripts against
+another host. It names no script or style source. A policy that does needs a fresh nonce per
+request, so every page it covers renders per request and no shared cache can hold it.
+
+The SVG rule further down replaces the baseline with
+`default-src 'none'; style-src 'unsafe-inline'; sandbox`, because an SVG opened on its own is a
+document on the admin's origin. Next lets the last matching rule win per key, so the baseline stays
+first. `pnpm test:security-headers` resolves the rules the way Next does and fails if a page, the
+admin or an SVG gets another policy.
+
 ## The login screen
 
 One `<form>` holds e-mail, password and the six-digit code from the first paint and sends all three

@@ -170,6 +170,7 @@
     "test:admin-provenance": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-provenance.mjs",
     "test:admin-search-console": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-search-console.mjs",
     "test:admin-mcp": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-mcp.mjs",
+    "test:security-headers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-security-headers.mjs",
     "test:admin-proxy-path": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-proxy-path.mjs",
     "test:forecast-relay": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-forecast-relay.mjs",
     "test:admin-api-keys": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-api-keys.mjs",
