@@ -166,6 +166,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`news-export-feeds.ts`](../../lib/blog/news-export-feeds.ts)
 
+- `exportListKey` _function_: The bucket key of one feed's list in one locale: `news/de.json`.
 - `exportListUrl` _function_: The list of one feed in one locale: `https://media.park.fan/news/de.json`.
 - `MEDIA_EXPORT_BASE` _const_: The bucket's public host.
 - `EXPORT_FEEDS` _const_: The export's post feeds: each a folder of its own on the bucket, with the posts that go into it.

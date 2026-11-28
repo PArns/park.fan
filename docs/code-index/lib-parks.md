@@ -21,6 +21,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `historyHasARunningDay` _function_: Whether the ride ran on any day of the window, which decides between a grid and one line.
 - Types: `AttractionHistoryStatus`
 
+### [`attraction-kind.ts`](../../lib/parks/attraction-kind.ts)
+
+- `statedAttractionKind` _function_: The kind the site acts on for an attraction: the API's, except a `TRANSPORT` that only the API's rule derived, which reads as unknown.
+
 ### [`calendar-grid-geometry.ts`](../../lib/parks/calendar-grid-geometry.ts)
 
 - `weekRowsInMonth` _function_: Week rows a month spans on a Monday-first seven-column grid.
@@ -174,7 +178,7 @@ Which two days of a park's calendar are being compared, across a change of month
 ### [`purchases.ts`](../../lib/parks/purchases.ts)
 
 - `inPurchaseWindow` _function_: Whether a day lies in the purchases relay's answer: from `today` to `PURCHASE_DAYS_AHEAD` days on. A day outside it is not asked for, since the answer could not hold it.
-- `formattedPurchasePrice` _function_: The price a purchase shows, or `null` where the API sent a placeholder (amount 0, formatted "Unknown") because the real fee is not known: the rule `QueueTypeBadge` applies too.
+- `formattedPurchasePrice` _function_: The price a paid product shows, a day's purchase or a ride's paid lane, or `null` where the API sent a placeholder (amount 0, formatted "Unknown") because the real fee is not known.
 - `pickPurchaseDay` _function_: The day whose purchases a card shows: `date` itself where one is named, else the first day from `from` on that carries any. `null` when that day has none, so the card renders nothing.
 - `sortPurchases` _function_: Packages (Multi Pass, Premier Pass) first, then the per-ride passes A→Z.
 - `purchaseDays` _function_: The relay's answer from a park's `/schedule` rows: one entry per date that carries purchases, from the first such row of that date as `pickPurchaseDay` would take it, and of each purchase the fields the card draws.

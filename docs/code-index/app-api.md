@@ -204,7 +204,7 @@ Route `/api/admin/news-export` (route).
 
 Route `/api/admin/news-export/run` (route).
 
-- `POST` _function_: POST /api/admin/news-export/run: „Export neu starten“ on `/admin/system`. Starts the export workflow on GitHub and answers `{ started: true, workflowUrl }`, or `{ started: false, reason }` with 503 (no token here) or 502 (GitHub refused).
+- `POST` _function_: POST /api/admin/news-export/run: „Export neu starten“ on `/admin/system`.
 - `dynamic` _const_
 - `runtime` _const_
 

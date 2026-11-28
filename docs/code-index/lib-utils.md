@@ -387,6 +387,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `getLiveAttractionStatus` _function_: The status a visitor is shown for one attraction, from the live payload.
 - `isAttractionOpenNow` _function_: Whether a ride counts as open now: strictly OPERATING, and UNKNOWN is not it, since a count or a filter promising "open" must not answer with rides nobody has heard from.
 - `getStandbyWait` _function_: STANDBY wait of an attraction in minutes, or null when it has no standby queue. Says nothing about whether the ride is open: pair it with `getAttractionDisplayStatus`.
+- `liveStandbyWait` _function_: The standby wait a visitor is shown: the reading of a ride that runs now by `getLiveAttractionStatus`, else null. An UNKNOWN ride may still carry a figure its feed stopped updating, and a closed one its last.
 - `groupAttractionsByLand` _function_: Groups attractions by land (`fallbackName` when none), each land sorted by name.
 - `sortByShortestWait` _function_: The park's rides in one flat list, shortest standby wait first. A ride without a readable wait (shut, or no standby reading) goes after every ride that has one, in name order like the lands.
 - `chunk` _function_: The list cut into consecutive slices of `size` (the last may be shorter).
@@ -564,9 +565,9 @@ The earliest showtime of `show` that is still ahead of `nowMs`, in epoch ms, or 
 
 ### [`text-fold.ts`](../../lib/utils/text-fold.ts)
 
-- `foldText` _function_: Text reduced for matching: lower case, accents off, "ß" as "ss", so "farup" finds "Fårup" and "strasse" finds "Straße". "ß" has no Unicode decomposition, hence the explicit replace.
 - `foldRideName` _function_: A ride name reduced for matching, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.".
 - `matchesQuery` _function_: Whether every word of `query` occurs, folded, in at least one of `fields`, so "phanta" finds Phantasialand and "rust europa" finds Europa-Park by its town. An empty query matches all.
+- `foldText` _const_: Text reduced for matching: lower case, accents off, "ß" as "ss", so "farup" finds "Fårup" and "strasse" finds "Straße".
 
 ### [`touch-target.ts`](../../lib/utils/touch-target.ts)
 
