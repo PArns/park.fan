@@ -3718,6 +3718,7 @@
       "resultEnd": "Ultima attrazione entro le",
       "resultWait": "Attesa complessiva",
       "resultOut": "Resta fuori",
+      "resultPinnedOut": "{count, plural, one {Questa attrazione fissata in cima non ci sta più nella giornata} other {Queste attrazioni fissate in cima non ci stanno più nella giornata}}",
       "resultHint": "Nel pianificatore puoi ancora spostare, eliminare e riordinare.",
       "apply": "Applica il piano",
       "applied": "{count, plural, one {Una attrazione pianificata} other {# attrazioni pianificate}}",

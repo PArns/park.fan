@@ -3718,6 +3718,7 @@
       "resultEnd": "Letzte Bahn bis",
       "resultWait": "Wartezeit zusammen",
       "resultOut": "Bleibt draußen",
+      "resultPinnedOut": "{count, plural, one {Diese gepinnte Bahn passt nicht mehr in den Tag} other {Diese gepinnten Bahnen passen nicht mehr in den Tag}}",
       "resultHint": "Im Planer kannst du danach weiter schieben, löschen und neu sortieren.",
       "apply": "Plan übernehmen",
       "applied": "{count, plural, one {Eine Bahn eingeplant} other {# Bahnen eingeplant}}",

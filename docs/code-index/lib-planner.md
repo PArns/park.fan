@@ -152,11 +152,12 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 - `addWishKey` _function_: The wish key for a ride being added.
 - `fitChoiceAll` _function_: Everything ticked, nothing shortened, nothing pinned: how the question opens. `priority` starts empty, meaning the visitor has not spoken, so a pre-filled list does not make every ride look pinned.
 - `fitOrder` _function_: The wishes in the order the day is decided in, which is what the list draws: pinned first, then the rest as offered, and a second go on a ride behind every first one, because the engine gives a lap up first and "gestrichen wird von unten" …
+- `fitLeftOut` _function_: The wish keys a choice leaves out, in two groups: the pins the day could not keep, and the rest.
 - `leverKey` _function_: A lever's identity, so a caller can hold a set of the ones already pulled.
 - `toggleLever` _function_: One lever pressed, as a new choice. Two levers on one block are alternatives, so taking one sets the other down, and every press is its own inverse.
 - `toggleWish` _function_: One wish ticked or unticked. A ride nobody plans is not a ride anybody pinned.
 - `togglePin` _function_: One wish pinned to the top of the order, or unpinned.
-- Types: `FitWish`, `FitBlock`, `FitChoice`, `FitLeverKind`, `FitLever`, `FitLeverView`
+- Types: `FitWish`, `FitBlock`, `FitChoice`, `FitLeverKind`, `FitLever`, `FitLeverView`, `FitLeftOut`
 
 ### [`leg-chip.ts`](../../lib/planner/leg-chip.ts)
 

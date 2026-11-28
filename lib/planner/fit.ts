@@ -141,6 +141,30 @@ export function fitOrder(wishes: readonly FitWish[], choice: FitChoice): FitWish
   return [...out, ...laps];
 }
 
+/** What a choice leaves out of the day, in the two groups the result names apart. */
+export interface FitLeftOut {
+  /** Pinned wishes the day has no minute for, even with every unpinned ride given up first. */
+  pinned: string[];
+  /** Everything else not planned: the wishes that find no minute, then the ones unticked. */
+  rest: string[];
+}
+
+/**
+ * The wish keys a choice leaves out, in two groups: the pins the day could not keep, and the rest.
+ * A pin is the visitor's strongest answer, and the engine gives one up only where nothing unpinned
+ * can make room, so a pin that falls out is a different statement from a ride that lost its place.
+ */
+export function fitLeftOut(
+  answer: { missed: readonly string[]; pinnedMissed: readonly string[] },
+  choice: FitChoice
+): FitLeftOut {
+  const pinned = new Set(answer.pinnedMissed);
+  return {
+    pinned: answer.missed.filter((key) => pinned.has(key)),
+    rest: [...answer.missed.filter((key) => !pinned.has(key)), ...choice.dropped],
+  };
+}
+
 /** A lever's identity, so a caller can hold a set of the ones already pulled. */
 export function leverKey(lever: Pick<FitLever, 'kind' | 'entryId'>): string {
   return `${lever.kind}:${lever.entryId ?? '*'}`;

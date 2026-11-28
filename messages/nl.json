@@ -3718,6 +3718,7 @@
       "resultEnd": "Laatste attractie tot",
       "resultWait": "Wachttijd bij elkaar",
       "resultOut": "Blijft eruit",
+      "resultPinnedOut": "{count, plural, one {Deze vastgepinde attractie past niet meer in de dag} other {Deze vastgepinde attracties passen niet meer in de dag}}",
       "resultHint": "In de planner kun je daarna nog schuiven, verwijderen en opnieuw sorteren.",
       "apply": "Plan overnemen",
       "applied": "{count, plural, one {Eén attractie ingepland} other {# attracties ingepland}}",

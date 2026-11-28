@@ -62,6 +62,11 @@ export interface FitAnswer {
   fitted: string[];
   /** Ticked wishes that find no minute before closing. */
   missed: string[];
+  /**
+   * The pinned wishes of {@link missed}: no minute even with every unpinned ride given up first.
+   * Empty without a pin.
+   */
+  pinnedMissed: string[];
   endMinute: number;
   totalWaitMinutes: number;
   idleMinutes: number;
@@ -247,7 +252,8 @@ function stopWithNulls(stop: OptimizeStop): OptimizeStop {
 
 /**
  * The answer as the types promise it. The API drops every `null` field from its JSON, and a stop
- * without an `entryId` is a ride being added, which callers test with `=== null`.
+ * without an `entryId` is a ride being added, which callers test with `=== null`. A server older
+ * than `pinnedMissed` sends no such list, which reads as no pin missed.
  */
 function withNulls(raw: OptimizeAnswer): OptimizeAnswer {
   const fit = raw.fit ?? null;
@@ -260,6 +266,7 @@ function withNulls(raw: OptimizeAnswer): OptimizeAnswer {
     fit: fit && {
       ...fit,
       wishes: fit.wishes.map((wish) => ({ ...wish, entryId: wish.entryId ?? null })),
+      pinnedMissed: fit.pinnedMissed ?? [],
       stops: fit.stops.map(stopWithNulls),
       levers: fit.levers ?? null,
       applied: fit.applied ?? null,

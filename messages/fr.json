@@ -3718,6 +3718,7 @@
       "resultEnd": "Dernière attraction jusqu’à",
       "resultWait": "Temps d’attente cumulé",
       "resultOut": "Laissé de côté",
+      "resultPinnedOut": "{count, plural, one {Cette attraction épinglée ne rentre plus dans la journée} other {Ces attractions épinglées ne rentrent plus dans la journée}}",
       "resultHint": "Dans le planning, vous pourrez encore déplacer, supprimer et retrier.",
       "apply": "Appliquer le plan",
       "applied": "{count, plural, one {Une attraction planifiée} other {# attractions planifiées}}",
