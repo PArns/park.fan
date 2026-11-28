@@ -156,7 +156,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_lib/use-admin-health.ts`](../../app/admin/_lib/use-admin-health.ts)
 
-- `useAdminHealth` _hook_: The admin's situation for the overview and the sidebar's dots: reads the five monitoring answers, and for the owner the open API key requests, under the keys their own pages use (so answering a data-quality card clears its count here too) …
+- `useAdminHealth` _hook_: The admin's situation for the overview and the sidebar's dots: reads the five monitoring answers, for editors the parks' places waiting for review, and for the owner the open API key requests, under the keys their own pages use (so …
 - Types: `AdminHealthData`
 
 ### [`_lib/use-fuzzy-hits.ts`](../../app/admin/_lib/use-fuzzy-hits.ts)
@@ -822,7 +822,7 @@ Route `/admin` (error).
 
 Route `/admin/facilities` (page).
 
-- `default (FacilitiesPage)` _component_: Toilets and drinking water from OpenStreetMap: the import for every park, the review of what came in, and the approval without which no point reaches a visitor.
+- `default (FacilitiesPage)` _component_: The places in a park from OpenStreetMap, toilets, drinking water and sights: the import for every park, the review of what came in, and the approval without which no point reaches a visitor.
 
 ### [`go/page.tsx`](../../app/admin/go/page.tsx)
 

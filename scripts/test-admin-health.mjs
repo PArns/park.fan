@@ -142,6 +142,7 @@ function sources(overrides = {}) {
     ml: ok(ml()),
     contributions: ok({ pending: [] }),
     keyRequests: ok({ items: [] }),
+    facilities: ok({ parks: [] }),
     now: NOW,
     ...overrides,
   };
@@ -254,6 +255,27 @@ test('no card and no count without an open request, or for a role that cannot re
   assert.equal(decided.signals['/admin/api-keys'], undefined);
   const editor = deriveAdminHealth(sources({ keyRequests: { state: 'forbidden' } }));
   assert.equal(editor.problems.length, 0);
+});
+
+test('the places page counts the parks waiting for an editor, and no role below sees it', () => {
+  const health = deriveAdminHealth(
+    sources({
+      facilities: ok({
+        parks: [
+          { status: 'imported', lastRun: 'ok' },
+          { status: 'imported', lastRun: 'ok', approvedAt: '2026-11-26T09:00:00Z' },
+          { status: 'approved', lastRun: 'ok' },
+          { status: 'pending', lastRun: 'no_outline' },
+        ],
+      }),
+    })
+  );
+  assert.deepEqual(health.signals['/admin/facilities'], { tone: 'warn', count: 2 });
+  // A sidebar count only: the overview's problems stay as they were.
+  assert.equal(health.problems.length, 0);
+  assert.equal(deriveAdminHealth(sources()).signals['/admin/facilities'], undefined);
+  const author = deriveAdminHealth(sources({ facilities: { state: 'forbidden' } }));
+  assert.equal(author.signals['/admin/facilities'], undefined);
 });
 
 test('a stale feed and a stopped weather import are faults with their own button', () => {

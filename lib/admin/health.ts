@@ -9,6 +9,7 @@ import type { MlOverview } from '@/lib/api/admin-ml-overview';
 import type { SubmissionSummary } from '@/lib/contribute/types';
 import { getNumberFormat } from '@/lib/utils/intl-format';
 import type { KeyRequestRecord } from '@/lib/developers/key-request';
+import { facilityParksToReview, type FacilityParkRow } from '@/lib/admin/facilities';
 
 /**
  * The admin's situation in one derivation: the monitoring answers (host, feeds, queues, models,
@@ -161,6 +162,10 @@ export interface HealthSources {
   contributions: Reading<SubmissionSummary>;
   /** The developers' key requests; the owner's alone, `forbidden` for every other role. */
   keyRequests: Reading<{ items: readonly KeyRequestRecord[] }>;
+  /** The parks' places from OpenStreetMap; from `editor` up, `forbidden` below. */
+  facilities: Reading<{
+    parks: readonly Pick<FacilityParkRow, 'status' | 'lastRun' | 'approvedAt'>[];
+  }>;
   /** Epoch ms, from the shared minute clock. */
   now: number;
 }
@@ -818,6 +823,10 @@ function navSignals(
   if (sources.keyRequests.state === 'ok') {
     const pending = pendingKeyRequests(sources.keyRequests.data.items).length;
     if (pending > 0) signals['/admin/api-keys'] = { tone: 'warn', count: pending };
+  }
+  if (sources.facilities.state === 'ok') {
+    const waiting = facilityParksToReview(sources.facilities.data.parks);
+    if (waiting > 0) signals['/admin/facilities'] = { tone: 'warn', count: waiting };
   }
   return signals;
 }

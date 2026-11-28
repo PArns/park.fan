@@ -1,8 +1,8 @@
 /**
- * The admin's page for the parks' toilets and drinking water from OpenStreetMap
- * (`/v1/admin/facilities`): its shapes, the one state a park's row shows, the filter, and the plot
- * of a park's outline with its points. The API drops null fields, so anything that may be null
- * arrives as absent and is typed optional.
+ * The admin's page for the places in a park from OpenStreetMap, toilets, drinking water and sights
+ * (`/v1/admin/facilities`): its shapes, the point types, the one state a park's row shows, the
+ * filter, and the plot of a park's outline with its points. The API drops null fields, so anything
+ * that may be null arrives as absent and is typed optional.
  */
 
 /** The admin proxy prefix of every facility endpoint. */
@@ -25,10 +25,78 @@ export interface FacilityParkRow {
   lastRunMessage?: string;
   boundary?: { type: 'way' | 'relation'; id: string; name?: string };
   importedAt?: string;
+  /** The last approval; while it is set the park is served, also with points waiting. */
   approvedAt?: string;
-  counts: { toilets: number; drinkingWater: number; hidden: number; outside: number };
+  counts: FacilityCounts;
   /** Whether the bulk approval would take this park. */
   bulkApprovable: boolean;
+}
+
+/**
+ * A park's visible points per type, the hidden ones, those outside the outline and those waiting
+ * for review. An API from before sights and waiting points leaves the last two out.
+ */
+export interface FacilityCounts {
+  toilets: number;
+  drinkingWater: number;
+  sights?: number;
+  hidden: number;
+  outside: number;
+  awaitingReview?: number;
+}
+
+/** The point types the API serves, in the order the page lists them. */
+export const FACILITY_TYPES = ['toilets', 'drinking_water', 'sight'] as const;
+
+/** One of {@link FACILITY_TYPES}. */
+export type FacilityType = (typeof FACILITY_TYPES)[number];
+
+/** How the page names and draws a point type, and which of the park's counts holds it. */
+export interface FacilityTypeMeta {
+  label: string;
+  /** The word in a row's tally: „12 WC“. */
+  short: string;
+  /** The dot's fill in the plot. */
+  fill: string;
+  count: 'toilets' | 'drinkingWater' | 'sights' | null;
+}
+
+const TYPE_META: Record<FacilityType, FacilityTypeMeta> = {
+  toilets: { label: 'Toilette', short: 'WC', fill: 'fill-sky-400', count: 'toilets' },
+  drinking_water: {
+    label: 'Trinkwasser',
+    short: 'Wasser',
+    fill: 'fill-teal-300',
+    count: 'drinkingWater',
+  },
+  sight: { label: 'Sehenswürdigkeit', short: 'Sehensw.', fill: 'fill-amber-300', count: 'sights' },
+};
+
+/** What a type the page does not know yet looks like, so a new one never breaks the list. */
+const UNKNOWN_TYPE: FacilityTypeMeta = {
+  label: 'Sonstiges',
+  short: 'sonstige',
+  fill: 'fill-zinc-400',
+  count: null,
+};
+
+/** The name, tally word, colour and count of a point type; a type the page lacks is „Sonstiges“. */
+export function facilityTypeMeta(type: string): FacilityTypeMeta {
+  return (TYPE_META as Record<string, FacilityTypeMeta | undefined>)[type] ?? UNKNOWN_TYPE;
+}
+
+/** The visible points of one type in a park's counts. */
+export function facilityTypeCount(counts: FacilityCounts, type: FacilityType): number {
+  const key = facilityTypeMeta(type).count;
+  return key ? (counts[key] ?? 0) : 0;
+}
+
+/** A row's tally: „12 WC · 3 Wasser · 11 Sehensw.“, toilets always, the other types where there are any. */
+export function facilityCountsLine(counts: FacilityCounts): string {
+  const parts = FACILITY_TYPES.map((type) => [type, facilityTypeCount(counts, type)] as const)
+    .filter(([type, count]) => count > 0 || type === 'toilets')
+    .map(([type, count]) => `${count} ${facilityTypeMeta(type).short}`);
+  return parts.join(' · ');
 }
 
 /** A bulk run's place and tally. */
@@ -57,7 +125,8 @@ export interface FacilityList {
 /** One imported point of `GET facilities/{parkId}`. */
 export interface FacilityPoint {
   id: string;
-  type: 'toilets' | 'drinking_water';
+  /** One of {@link FACILITY_TYPES}, or a newer one the page shows as „Sonstiges“. */
+  type: string;
   latitude: number;
   longitude: number;
   name?: string;
@@ -69,6 +138,28 @@ export interface FacilityPoint {
   osmTimestamp: string;
   hidden: boolean;
   insideOutline: boolean;
+  /** New or changed since the park was last approved: no visitor sees it yet. */
+  awaitingReview?: boolean;
+}
+
+/**
+ * A park's points for the list: grouped by type in {@link FACILITY_TYPES} order, unknown types last,
+ * and within a type the waiting ones first, then by name and OSM id.
+ */
+export function orderFacilityPoints<
+  T extends Pick<FacilityPoint, 'type' | 'awaitingReview' | 'name' | 'osmId'>,
+>(points: readonly T[]): T[] {
+  const rank = (type: string) => {
+    const index = (FACILITY_TYPES as readonly string[]).indexOf(type);
+    return index === -1 ? FACILITY_TYPES.length : index;
+  };
+  return [...points].sort(
+    (a, b) =>
+      rank(a.type) - rank(b.type) ||
+      Number(Boolean(b.awaitingReview)) - Number(Boolean(a.awaitingReview)) ||
+      (a.name ?? '').localeCompare(b.name ?? '', 'de') ||
+      a.osmId.localeCompare(b.osmId, 'en', { numeric: true })
+  );
 }
 
 /** `GET facilities/{parkId}`: the outline as rings of `[longitude, latitude]` and every point. */
@@ -84,16 +175,21 @@ export interface FacilityBulkApproval {
   parks: string[];
 }
 
-/** The one state a park's row shows, which is also what the list filters by. */
-export type FacilityState = 'approved' | 'review' | 'no_outline' | 'failed' | 'none';
+/**
+ * The one state a park's row shows, which is also what the list filters by. `review` is a park
+ * nobody approved yet, offline; `update` one that is online with new points waiting.
+ */
+export type FacilityState = 'approved' | 'review' | 'update' | 'no_outline' | 'failed' | 'none';
 
 /**
  * A park's state for the list. What a visitor gets comes first: an approved or imported park
  * keeps that state when a later run failed, and its row says so in its own line.
  */
-export function facilityState(row: Pick<FacilityParkRow, 'status' | 'lastRun'>): FacilityState {
+export function facilityState(
+  row: Pick<FacilityParkRow, 'status' | 'lastRun' | 'approvedAt'>
+): FacilityState {
   if (row.status === 'approved') return 'approved';
-  if (row.status === 'imported') return 'review';
+  if (row.status === 'imported') return row.approvedAt ? 'update' : 'review';
   if (row.lastRun === 'no_outline') return 'no_outline';
   if (row.lastRun === 'failed') return 'failed';
   return 'none';
@@ -102,6 +198,7 @@ export function facilityState(row: Pick<FacilityParkRow, 'status' | 'lastRun'>):
 /** The states in the order the filter lists them. */
 export const FACILITY_STATES: FacilityState[] = [
   'review',
+  'update',
   'approved',
   'no_outline',
   'failed',
@@ -111,6 +208,7 @@ export const FACILITY_STATES: FacilityState[] = [
 /** The admin's word for a {@link FacilityState}. */
 export const FACILITY_STATE_LABEL: Record<FacilityState, string> = {
   review: 'Zu prüfen',
+  update: 'Neue Punkte',
   approved: 'Freigegeben',
   no_outline: 'Kein Umriss',
   failed: 'Fehlgeschlagen',
@@ -120,6 +218,7 @@ export const FACILITY_STATE_LABEL: Record<FacilityState, string> = {
 /** The chip colour of a {@link FacilityState}. */
 export const FACILITY_STATE_TONE = {
   review: 'warning',
+  update: 'primary',
   approved: 'success',
   no_outline: 'muted',
   failed: 'danger',
@@ -128,10 +227,11 @@ export const FACILITY_STATE_TONE = {
 
 /** How many parks are in each state, for the filter's numbers. */
 export function facilityStateCounts(
-  parks: readonly Pick<FacilityParkRow, 'status' | 'lastRun'>[]
+  parks: readonly Pick<FacilityParkRow, 'status' | 'lastRun' | 'approvedAt'>[]
 ): Record<FacilityState, number> {
   const counts: Record<FacilityState, number> = {
     review: 0,
+    update: 0,
     approved: 0,
     no_outline: 0,
     failed: 0,
@@ -141,14 +241,33 @@ export function facilityStateCounts(
   return counts;
 }
 
-/** The parks in one state (`all` for every state) whose name or country contains the search text. */
+/** The parks that wait for an editor: offline and never approved, or online with new points. */
+export function facilityParksToReview(
+  parks: readonly Pick<FacilityParkRow, 'status' | 'lastRun' | 'approvedAt'>[]
+): number {
+  const counts = facilityStateCounts(parks);
+  return counts.review + counts.update;
+}
+
+/**
+ * The parks in one state (`all` for every state) that have a visible point of `type` (`all` for
+ * any) and whose name or country contains the search text.
+ */
 export function filterFacilityParks<
-  T extends Pick<FacilityParkRow, 'status' | 'lastRun' | 'name' | 'country'>,
->(parks: readonly T[], state: FacilityState | 'all', search: string): T[] {
+  T extends Pick<FacilityParkRow, 'status' | 'lastRun' | 'approvedAt' | 'name' | 'country'> & {
+    counts?: FacilityCounts;
+  },
+>(
+  parks: readonly T[],
+  state: FacilityState | 'all',
+  search: string,
+  type: FacilityType | 'all' = 'all'
+): T[] {
   const needle = search.trim().toLowerCase();
   return parks.filter(
     (park) =>
       (state === 'all' || facilityState(park) === state) &&
+      (type === 'all' || (park.counts ? facilityTypeCount(park.counts, type) > 0 : false)) &&
       (needle === '' || `${park.name} ${park.country ?? ''}`.toLowerCase().includes(needle))
   );
 }
