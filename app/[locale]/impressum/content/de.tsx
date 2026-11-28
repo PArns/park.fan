@@ -223,8 +223,9 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           Nutzung der Daten
         </h2>
         <p className="mb-4">
-          Ohne Anmeldung und ohne API-Key gibt die API unter api.park.fan nur die aktuellen
-          Wartezeiten eines Parks heraus. Alles andere, was park.fan auf den Seiten und über die API
+          Ohne Anmeldung und ohne API-Key gibt die API unter api.park.fan die aktuellen Wartezeiten
+          eines Parks heraus und unter <code>/v1/parks/…/facilities</code> seine Toiletten und
+          Trinkwasserstellen. Alles andere, was park.fan auf den Seiten und über die API
           veröffentlicht, darf außerhalb von park.fan nur mit einem API-Key genutzt werden: das
           Verzeichnis der Parks und Attraktionen, Park- und Attraktionsdaten wie Höhen,
           Mindestgröße, Fahrprofile und Links, Öffnungszeiten, Saisons und Events, das Wetter, die
@@ -232,9 +233,8 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           Reiseregionen. Texte und Fotos gehören nicht dazu.
         </p>
         <p className="mb-4">
-          Nichts in diesem Abschnitt gilt für die Daten zu Toiletten und Trinkwasserstellen, die die
-          API ohne API-Key unter <code>/v1/parks/…/facilities</code> herausgibt. Diese Daten stammen
-          aus OpenStreetMap (
+          Nichts in diesem Abschnitt gilt für die Daten zu Toiletten und Trinkwasserstellen. Diese
+          Daten stammen aus OpenStreetMap (
           <LegalLink href="https://www.openstreetmap.org/copyright/de">
             © OpenStreetMap-Mitwirkende
           </LegalLink>
