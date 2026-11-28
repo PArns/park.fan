@@ -6522,7 +6522,22 @@
         "mustdo": "Rides you want"
       },
       "kickoffTrip": "Plan my trip with me, one question at a time.",
-      "kickoffDay": "Plan my park day with me, one question at a time."
+      "kickoffDay": "Plan my park day with me, one question at a time.",
+      "kickoff": {
+        "askPark": "Which park are we planning?",
+        "askDay": "{park}, gladly. Which day are you there?",
+        "askMustDo": "{park}, {date}: which rides can’t you miss?",
+        "askDates": "Let’s plan your trip. When do you want to go?",
+        "askDatesHeld": "The planner says {dates}. Does that still stand?",
+        "replyToday": "Today",
+        "replyTomorrow": "Tomorrow",
+        "replyCoasters": "The biggest coasters",
+        "replyQuiet": "Wherever it’s quiet",
+        "replyUnsure": "Not sure yet",
+        "replyDatesKeep": "Yes, that works",
+        "replyDatesFind": "Find me the quietest days",
+        "replyDatesSummer": "Next summer"
+      }
     },
     "muteLines": "Hide speech bubbles",
     "subtitle": "Your park buddy",

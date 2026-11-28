@@ -6522,7 +6522,22 @@
         "mustdo": "Atracciones que quieres"
       },
       "kickoffTrip": "Planea mi viaje conmigo, pregunta a pregunta.",
-      "kickoffDay": "Planea mi día en el parque conmigo, pregunta a pregunta."
+      "kickoffDay": "Planea mi día en el parque conmigo, pregunta a pregunta.",
+      "kickoff": {
+        "askPark": "¿Qué parque planeamos?",
+        "askDay": "{park}, con gusto. ¿Qué día vas?",
+        "askMustDo": "{park}, {date}: ¿qué atracciones no te puedes perder?",
+        "askDates": "Planeamos tu viaje. ¿Cuándo quieres ir?",
+        "askDatesHeld": "En el planificador pone {dates}. ¿Lo dejamos así?",
+        "replyToday": "Hoy",
+        "replyTomorrow": "Mañana",
+        "replyCoasters": "Las montañas rusas más grandes",
+        "replyQuiet": "Donde haya poca gente",
+        "replyUnsure": "Aún no lo sé",
+        "replyDatesKeep": "Sí, me va bien",
+        "replyDatesFind": "Búscame los días más tranquilos",
+        "replyDatesSummer": "El próximo verano"
+      }
     },
     "muteLines": "Ocultar los bocadillos",
     "subtitle": "Tu colega de parques",

@@ -83,6 +83,8 @@ export interface AssistantChatMessage {
   failures?: PushWriteError[];
   /** Parky asked for the visitor's position; the answer carries the share buttons. */
   asksLocation?: boolean;
+  /** A line the widget wrote itself, with no model behind it: no rating, and it opens the chat. */
+  local?: true;
   /** Set on an answer that failed; `text` is then empty. */
   error?: 'limit' | 'off' | 'upstream' | 'network' | 'session' | 'expired' | 'unclear' | 'ended';
 }
@@ -185,6 +187,11 @@ export function useAssistantChat(
     void onAction(action);
   }, [phase, onAction]);
 
+  /** No question was asked yet: the next one is the chat's first. */
+  const unasked = !stored.messages.some((m) => m.role === 'user');
+  /** The line the widget opened the chat with in place of the greeting, where it did. */
+  const opening = stored.messages[0]?.local ? stored.messages[0].text : null;
+
   const patchLast = useCallback(
     (patch: (message: AssistantChatMessage) => AssistantChatMessage) =>
       setStored((current) => ({
@@ -214,7 +221,7 @@ export function useAssistantChat(
       if (readBreakUntil(breakStorage()) !== null) return;
       trackSiteEvent('assistant_question', {
         kind,
-        first: stored.messages.length === 0,
+        first: unasked,
         ...(position !== undefined && { position }),
       });
       /** Whether this answer changed a plan, so chips after it count as a change's. */
@@ -249,7 +256,7 @@ export function useAssistantChat(
       const pageName =
         page && parkNameIn(document.querySelectorAll('script[type="application/ld+json"]'));
       if (page && pageName) rememberLastPark(pageName, page.parkSlug);
-      const opener = stored.messages.length === 0 ? greetingRef.current?.trim() : undefined;
+      const opener = unasked ? (opening ?? greetingRef.current)?.trim() : undefined;
       try {
         const alerts = assistantAlertsSnapshot(
           await readPushState().catch(() => 'unavailable' as const),
@@ -284,7 +291,7 @@ export function useAssistantChat(
             // The window's greeting, so an answer to it („ja“, „super!“) reads right.
             ...(opener && { opener: opener.slice(0, OPENER_MAX) }),
             // The tapped day tip: the API reads the day's facts and hands Parky his sentence.
-            ...(dayTip && stored.messages.length === 0 && { dayTip }),
+            ...(dayTip && unasked && { dayTip }),
           }),
         });
         if (response.status === 401) {
@@ -398,7 +405,8 @@ export function useAssistantChat(
       locale,
       phase,
       stored.conversationId,
-      stored.messages.length,
+      unasked,
+      opening,
       patchLast,
       sessionToken,
       dropSession,
@@ -471,6 +479,21 @@ export function useAssistantChat(
     []
   );
 
+  /**
+   * Opens the chat with a line and replies the widget words itself, at no model call: the first
+   * answer carries the line to the API as `opener`. Only while nothing was asked yet.
+   */
+  const openWith = useCallback((text: string, replies: string[]) => {
+    setStored((current) =>
+      current.messages.some((m) => m.role === 'user')
+        ? current
+        : {
+            conversationId: null,
+            messages: [{ id: localId(), role: 'assistant', text, replies, local: true }],
+          }
+    );
+  }, []);
+
   const reset = useCallback(() => {
     abort.current?.abort();
     setStored({ conversationId: null, messages: [] });
@@ -482,7 +505,9 @@ export function useAssistantChat(
     phase,
     lookup,
     pausedUntil,
+    unasked,
     send,
+    openWith,
     shareLocation,
     settleAlert,
     settleReceipt,

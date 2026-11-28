@@ -638,6 +638,7 @@ export function PlannerDayColumn({
                   )}
                   <ParkyDayInterviewButton
                     park={park?.slug}
+                    parkName={park?.name}
                     date={date ?? undefined}
                     className="mt-3"
                   />
