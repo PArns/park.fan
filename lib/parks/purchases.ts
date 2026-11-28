@@ -23,10 +23,13 @@ export function inPurchaseWindow(date: string, today: string | null): boolean {
 export type PurchaseDay = Pick<ScheduleItem, 'date' | 'purchases'>;
 
 /**
- * The price a purchase shows, or `null` where the API sent a placeholder (amount 0, formatted
- * "Unknown") because the real fee is not known: the rule `QueueTypeBadge` applies too.
+ * The price a paid product shows, a day's purchase or a ride's paid lane, or `null` where the API
+ * sent a placeholder (amount 0, formatted "Unknown") because the real fee is not known.
+ * `ParkPurchasesCard` and `QueueTypeBadge` both read it here.
  */
-export function formattedPurchasePrice(item: SchedulePurchaseItem): string | null {
+export function formattedPurchasePrice(item: {
+  price?: { amount?: number | null; formatted?: string | null } | null;
+}): string | null {
   if (!item.price) return null;
   const { amount, formatted } = item.price;
   if (!formatted || formatted.trim().toLowerCase() === 'unknown') return null;
