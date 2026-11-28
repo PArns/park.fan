@@ -2,7 +2,7 @@
 title: 'Phantasialand trakteert inwoners van Brühl op de Wintertraum'
 translationKey: phantasialand-bruehler-wintertraum
 date: '2026-11-28'
-time: '17:40'
+time: '18:19'
 author: patrick
 mode: published
 featured: false
@@ -47,9 +47,7 @@ seo:
 
 ## Wie mee mag doen
 
-Iedereen kan de uitnodiging één keer gebruiken. Een formulier is voor precies één persoon, dus een gezin van vier vult het vier keer in. Leerlingen die in Brühl naar school gaan maar ergens anders wonen, hebben een eigen formulier. De link daarnaar krijgen ze via hun school.
-
-Heb je in Brühl alleen een tweede adres, of woon je een stukje verderop in Keulen, dan val je erbuiten.
+Iedereen kan de uitnodiging één keer gebruiken. Een formulier is voor precies één persoon, dus een gezin van vier vult het vier keer in. Leerlingen die in Brühl naar school gaan maar ergens anders wonen, hebben een eigen formulier. De link daarnaar krijgen ze via hun school. Een tweede adres in Brühl is niet genoeg.
 
 ## Op welke dagen het kan
 
@@ -58,7 +56,7 @@ Je kunt tot 24 januari 2027 gaan, behalve in de kerstvakantie. In Noordrijn-West
 - in december van de 5e tot en met de 11e en van de 13e tot en met de 22e (van 30 november tot en met 4 december en op zaterdag de 12e neemt het formulier geen aanmeldingen aan)
 - 7 tot en met 24 januari, behalve dinsdag 12 en woensdag 13 januari, als het park gesloten is
 
-Het ticket komt pas als de gemeente Brühl je aanmelding heeft gecontroleerd. Hoe lang dat duurt, heeft Phantasialand niet bekendgemaakt. Wil je in december gaan, meld je dan beter nu al aan en niet pas op het laatste moment. Tijdens de vorige Wintertraum was het volgens onze metingen doordeweeks in januari het minst druk. Zo’n dag na de vakantie zou ik kiezen.
+Voordat je het ticket krijgt, controleert de gemeente Brühl je aanmelding, en de eerste dag die je kunt kiezen is al 5 december. Wil je in december gaan, meld je dan beter nu al aan en niet pas op het laatste moment. Tijdens de vorige Wintertraum was het volgens onze metingen doordeweeks in januari het minst druk. Zo’n dag na de vakantie zou ik kiezen.
 
 ```best-days-widget slug=phantasialand
 
@@ -66,9 +64,9 @@ Het ticket komt pas als de gemeente Brühl je aanmelding heeft gecontroleerd. Ho
 
 ## Zo meld je je aan
 
-Het formulier vraagt naar je naam, e-mailadres, telefoonnummer, adres, geboortedatum en de dag waarop je wilt komen. Je naam schrijf je precies zoals op je identiteitskaart, met alle bijzondere tekens: wie daar Jürgen heet, is in het formulier geen Juergen. Je geeft ook toestemming dat Phantasialand je gegevens doorgeeft aan de gemeente Brühl, die ze naast het bevolkingsregister legt. Heeft de gemeente je gegevens bevestigd, dan krijg je het ticket per e-mail.
+Het formulier vraagt naar je naam, e-mailadres, telefoonnummer, adres, geboortedatum en de dag waarop je wilt komen. Je naam schrijf je precies zoals op je identiteitskaart, met alle bijzondere tekens: wie daar Jürgen heet, is in het formulier geen Juergen. Je geeft ook toestemming dat Phantasialand je gegevens doorgeeft aan de gemeente Brühl, die ze naast het bevolkingsregister legt. Daarna stuurt Phantasialand je het ticket per e-mail.
 
-Per bezoekdag is er een beperkt aantal plaatsen, en nergens belooft Phantasialand je een andere dag als je voorkeursdag vol is. Ook daarom heeft het geen zin om tot de 15e te wachten.
+Per bezoekdag is er een beperkt aantal plaatsen. Over een vervangende dag als de jouwe vol is, staat op de aanmeldpagina niets.
 
 ```cta-widget
 href: https://www.phantasialand.de/de/euer-bruehler-wintertraum/
@@ -78,9 +76,9 @@ text: Houd je identiteitskaart bij de hand. De aanmelding sluit op 15 december 2
 
 ## Bij de ingang en in het park
 
-Het ticket is persoonlijk en geldt alleen samen met een geldig bewijs van je woonadres. Welk document daarvoor geldt, noemt Phantasialand niet. Ik zou je Duitse identiteitskaart meenemen, omdat je adres erop staat en je je naam al precies zo in het formulier hebt geschreven.
+Het ticket is persoonlijk en geldt alleen samen met een geldig bewijs van je woonadres. Een lijst van geldige bewijzen is er niet. Ik zou je Duitse identiteitskaart meenemen, omdat je adres erop staat en je je naam al precies zo in het formulier hebt geschreven.
 
-De Wintertraum gaat om 11 uur open en sluit om 20 uur. De avondshows en de attracties die in de winter rijden, staan in onze [gids voor de Wintertraum](/blog/phantasialand-wintertraum). Rond 19:50 uur gaat boven de Kaiserplatz het vuurwerk van MAGIC SYMPHONY de lucht in. Of het doorgaat, hangt af van het weer.
+De Wintertraum gaat om 11 uur open en sluit om 20 uur. De avondshows en de attracties die in de winter rijden, staan in onze [gids voor de Wintertraum](/blog/phantasialand-wintertraum). Rond 19:50 uur gaat boven de Kaiserplatz het vuurwerk van MAGIC SYMPHONY de lucht in, als het weer het toelaat.
 
 ## Gezelschap van buiten Brühl
 
@@ -88,6 +86,6 @@ Vrienden en familie die niet in Brühl staan ingeschreven, hebben een gewoon dag
 
 ## Zestig jaar in Badorf
 
-Op 30 april 1967 openden kermisexploitant Gottlieb Löffelhardt en poppenspeler Richard Schmidt in het zuidwesten van Badorf, een wijk van Brühl, op de heuvelrug van de Ville, een sprookjesbos waaruit Phantasialand is gegroeid. Met parkeerplaatsen en hotels is het terrein zo’n 28 hectare groot, het park zelf ongeveer 12. Onze [gids voor Phantasialand](/blog/phantasialand-wachttijden-tips) neemt je mee door het park van nu.
+Op 30 april 1967 openden kermisexploitant Gottlieb Löffelhardt en poppenspeler Richard Schmidt in het zuidwesten van Badorf, een wijk van Brühl, op de heuvelrug van de Ville, een sprookjesbos waaruit Phantasialand is gegroeid. Nu is het park zo’n 12 hectare groot, met parkeerplaatsen en hotels ongeveer 28, en alles ligt nog altijd in Brühl. Voor het park van nu is er onze [gids voor Phantasialand](/blog/phantasialand-wachttijden-tips).
 
 Bronnen: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informationen und Anreise (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [vakantieregeling NRW (ministerie van Onderwijs van NRW)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).

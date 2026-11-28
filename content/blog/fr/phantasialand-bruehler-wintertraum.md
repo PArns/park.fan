@@ -2,7 +2,7 @@
 title: 'Le Phantasialand offre le Wintertraum aux habitants de Brühl'
 translationKey: phantasialand-bruehler-wintertraum
 date: '2026-11-28'
-time: '17:40'
+time: '18:19'
 author: patrick
 mode: published
 featured: false
@@ -47,9 +47,7 @@ Le [Phantasialand](ref:phantasialand) offre une journée gratuite au Wintertraum
 
 ## Qui peut en profiter
 
-Chaque personne peut profiter de l’invitation une fois. Un formulaire correspond à une seule personne : une famille de quatre le remplit donc quatre fois. Les élèves d’une école de Brühl qui habitent ailleurs ont leur propre formulaire. C’est leur école qui leur en donne le lien.
-
-Une résidence secondaire à Brühl ne suffit pas, pas plus qu’habiter juste à côté, à Cologne.
+Chaque personne peut profiter de l’invitation une fois. Un formulaire correspond à une seule personne : une famille de quatre le remplit donc quatre fois. Les élèves d’une école de Brühl qui habitent ailleurs ont leur propre formulaire. C’est leur école qui leur en donne le lien. Une résidence secondaire à Brühl ne suffit pas.
 
 ## Les jours possibles
 
@@ -58,7 +56,7 @@ Tu peux venir jusqu’au 24 janvier 2027, sauf pendant les vacances de Noël. En
 - en décembre, du 5 au 11 et du 13 au 22 (du 30 novembre au 4 décembre et le samedi 12, le formulaire n’accepte pas d’inscription)
 - du 7 au 24 janvier, sauf le mardi 12 et le mercredi 13 janvier, où le parc est fermé
 
-Le billet n’arrive qu’une fois ton inscription vérifiée par la ville de Brühl. Le Phantasialand n’a pas indiqué combien de temps cela prend. Si tu veux venir en décembre, mieux vaut donc t’inscrire maintenant que juste avant la clôture. Au dernier Wintertraum, d’après nos relevés, c’est en semaine en janvier qu’il y avait le moins de monde. Un jour comme ça après les vacances, c’est ce que je choisirais.
+Avant le billet, la ville de Brühl vérifie ton inscription, et le premier jour possible tombe dès le 5 décembre. Si tu veux venir en décembre, mieux vaut donc t’inscrire maintenant que juste avant la clôture. Au dernier Wintertraum, d’après nos relevés, c’est en semaine en janvier qu’il y avait le moins de monde. Un jour comme ça après les vacances, c’est ce que je choisirais.
 
 ```best-days-widget slug=phantasialand
 
@@ -66,9 +64,9 @@ Le billet n’arrive qu’une fois ton inscription vérifiée par la ville de Br
 
 ## S’inscrire
 
-Le formulaire demande ton nom, ton adresse e-mail, ton numéro de téléphone, ton adresse postale, ta date de naissance et le jour de visite souhaité. Le nom s’écrit exactement comme sur ta carte d’identité, caractères spéciaux compris : celui qui s’appelle Jürgen sur sa carte n’est pas Juergen dans le formulaire. Tu acceptes aussi que le Phantasialand transmette tes données à la ville de Brühl, qui les compare au registre des habitants. Une fois tes données confirmées par la ville, le billet arrive par e-mail.
+Le formulaire demande ton nom, ton adresse e-mail, ton numéro de téléphone, ton adresse postale, ta date de naissance et le jour de visite souhaité. Le nom s’écrit exactement comme sur ta carte d’identité, caractères spéciaux compris : celui qui s’appelle Jürgen sur sa carte n’est pas Juergen dans le formulaire. Tu acceptes aussi que le Phantasialand transmette tes données à la ville de Brühl, qui les compare au registre des habitants. Le Phantasialand t’envoie ensuite le billet par e-mail.
 
-Chaque jour de visite a un contingent limité, et le Phantasialand ne promet nulle part un autre jour si celui que tu voulais est complet. Raison de plus pour ne pas attendre le 15.
+Chaque jour de visite a un contingent limité. La page d’inscription ne dit rien d’un jour de remplacement si le tien est complet.
 
 ```cta-widget
 href: https://www.phantasialand.de/de/euer-bruehler-wintertraum/
@@ -78,9 +76,9 @@ text: Garde ta carte d’identité sous la main. Les inscriptions ferment le 15 
 
 ## À l’entrée et dans le parc
 
-Le billet n’est pas cessible et ne vaut qu’avec un justificatif de domicile valable. Le Phantasialand ne dit pas quel document il accepte. Moi, je prendrais la carte d’identité, parce que ton adresse y figure et que tu as déjà recopié ton nom d’après elle dans le formulaire.
+Le billet n’est pas cessible et ne vaut qu’avec un justificatif de domicile valable. Il n’existe pas de liste des justificatifs acceptés. Moi, je prendrais la carte d’identité, parce que ton adresse y figure et que tu as déjà recopié ton nom d’après elle dans le formulaire.
 
-Le Wintertraum ouvre à 11 h et ferme à 20 h. Les spectacles du soir et les attractions qui tournent en hiver sont dans notre [guide du Wintertraum](/blog/phantasialand-wintertraum). Vers 19 h 50, le feu d’artifice de MAGIC SYMPHONY s’élève au-dessus de la Kaiserplatz. Qu’il ait lieu ou non dépend de la météo.
+Le Wintertraum ouvre à 11 h et ferme à 20 h. Les spectacles du soir et les attractions qui tournent en hiver sont dans notre [guide du Wintertraum](/blog/phantasialand-wintertraum). Vers 19 h 50, le feu d’artifice de MAGIC SYMPHONY s’élève au-dessus de la Kaiserplatz, si la météo le permet.
 
 ## Les accompagnants venus d’ailleurs
 
@@ -88,6 +86,6 @@ Les amis et la famille qui ne sont pas inscrits à Brühl ont besoin d’un bill
 
 ## 60 ans à Badorf
 
-Le 30 avril 1967, le forain Gottlieb Löffelhardt et le marionnettiste Richard Schmidt ont ouvert au sud-ouest de Badorf, un quartier de Brühl, sur la crête de la Ville, une forêt des contes devenue depuis le Phantasialand. Parkings et hôtels compris, le site couvre environ 28 hectares, le parc lui-même 12 à peu près. Le parc tel qu’il est aujourd’hui, tu le découvres dans notre [guide du Phantasialand](/blog/phantasialand-temps-d-attente-conseils).
+Le 30 avril 1967, le forain Gottlieb Löffelhardt et le marionnettiste Richard Schmidt ont ouvert au sud-ouest de Badorf, un quartier de Brühl, sur la crête de la Ville, une forêt des contes devenue depuis le Phantasialand. Aujourd’hui, le parc couvre environ 12 hectares, quelque 28 avec les parkings et les hôtels, et tout se trouve toujours à Brühl. Pour le parc d’aujourd’hui, il y a notre [guide du Phantasialand](/blog/phantasialand-temps-d-attente-conseils).
 
 Sources : [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informations et accès (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [calendrier des vacances scolaires de Rhénanie-du-Nord-Westphalie (ministère de l’Éducation du Land)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipédia, allemand)](https://de.wikipedia.org/wiki/Phantasialand).

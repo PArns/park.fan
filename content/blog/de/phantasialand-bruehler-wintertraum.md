@@ -2,7 +2,7 @@
 title: 'Brühler kommen kostenlos in den Phantasialand-Wintertraum'
 translationKey: phantasialand-bruehler-wintertraum
 date: '2026-11-28'
-time: '17:40'
+time: '18:19'
 author: patrick
 mode: published
 featured: false

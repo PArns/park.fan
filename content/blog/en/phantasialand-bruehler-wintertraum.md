@@ -2,7 +2,7 @@
 title: 'Phantasialand gives Brühl residents a free Wintertraum day'
 translationKey: phantasialand-bruehler-wintertraum
 date: '2026-11-28'
-time: '17:40'
+time: '18:19'
 author: patrick
 mode: published
 featured: false
@@ -47,9 +47,7 @@ seo:
 
 ## Who can take part
 
-Everyone can use the invitation once. One form covers exactly one person, so a family of four fills it in four times. Pupils who go to a school in Brühl but live outside the town get a separate form. Their school sends them the link.
-
-If Brühl is only your second home, or you live next door in Cologne, you're not included.
+Everyone can use the invitation once. One form covers exactly one person, so a family of four fills it in four times. Pupils who go to a school in Brühl but live outside the town get a separate form. Their school sends them the link. A second home in Brühl isn't enough.
 
 ## Which days you can pick
 
@@ -58,7 +56,7 @@ You can visit until 24 January 2027, except during the Christmas school holidays
 - in December, the 5th to the 11th and the 13th to the 22nd (the form doesn't take sign-ups for 30 November to 4 December or for Saturday the 12th)
 - 7 to 24 January, except Tuesday the 12th and Wednesday the 13th, when the park is closed
 
-The ticket only comes once the town of Brühl has checked your application. Phantasialand hasn't announced how long that takes, so if you want to go in December, sign up now rather than just before the deadline. In our measurements at last year's Wintertraum, the shortest queues were on weekdays in January. A day like that after the holidays is the one I'd pick.
+Before you get the ticket, the town of Brühl checks your application, and the first day you can pick is already 5 December. So if you want to go in December, sign up now rather than just before the deadline. In our measurements at last year's Wintertraum, the shortest queues were on weekdays in January. A day like that after the holidays is the one I'd pick.
 
 ```best-days-widget slug=phantasialand
 
@@ -66,9 +64,9 @@ The ticket only comes once the town of Brühl has checked your application. Phan
 
 ## How to sign up
 
-The form asks for your name, email address, phone number, postal address, date of birth and the day you'd like to visit. Type your name exactly as it appears on your ID card, special characters included: a Jürgen on the card can't be a Juergen on the form. You also agree that Phantasialand passes your details to the town of Brühl, which checks them against the residents' register. Once the town has confirmed your details, the ticket arrives by email.
+The form asks for your name, email address, phone number, postal address, date of birth and the day you'd like to visit. Type your name exactly as it appears on your ID card, special characters included: a Jürgen on the card can't be a Juergen on the form. You also agree that Phantasialand passes your details to the town of Brühl, which checks them against the residents' register. Phantasialand then sends you the ticket by email.
 
-Each visiting day has a limited number of places, and nowhere does Phantasialand promise you a different day if the one you want is full. That's another reason not to wait until the 15th.
+Each visiting day has a limited number of places. The registration page says nothing about a replacement day if yours is full.
 
 ```cta-widget
 href: https://www.phantasialand.de/de/euer-bruehler-wintertraum/
@@ -78,9 +76,9 @@ text: Have your ID card ready. Sign-ups close on 15 December 2026.
 
 ## At the gate and in the park
 
-The ticket can't be passed on and is only valid together with valid proof of where you live. Phantasialand doesn't name the document it accepts. I'd take your ID card, because it has your address on it and you've already copied your name from it onto the form.
+The ticket can't be passed on and is only valid together with valid proof of where you live. There's no list of accepted documents. I'd take your ID card, because it has your address on it and you've already copied your name from it onto the form.
 
-Wintertraum opens at 11 am and closes at 8 pm. The evening shows and the rides that run in winter are in our [Wintertraum guide](/blog/phantasialand-wintertraum). At around 7:50 pm, the MAGIC SYMPHONY fireworks go up over Kaiserplatz. Whether the show goes ahead depends on the weather.
+Wintertraum opens at 11 am and closes at 8 pm. The evening shows and the rides that run in winter are in our [Wintertraum guide](/blog/phantasialand-wintertraum). At around 7:50 pm, the MAGIC SYMPHONY fireworks go up over Kaiserplatz, weather permitting.
 
 ## Friends from outside Brühl
 
@@ -88,6 +86,6 @@ Friends and relatives who aren't registered in Brühl need a normal day ticket. 
 
 ## 60 years in Badorf
 
-On 30 April 1967, the showman Gottlieb Löffelhardt and the puppeteer Richard Schmidt opened a fairy-tale forest in the south-west of Badorf, a district of Brühl, on the Ville ridge, and it grew into Phantasialand. With car parks and hotels, the site covers about 28 hectares, the park itself about 12. Our [Phantasialand guide](/blog/phantasialand-wait-times-tips) takes you round the park as it is today.
+On 30 April 1967, the showman Gottlieb Löffelhardt and the puppeteer Richard Schmidt opened a fairy-tale forest in the south-west of Badorf, a district of Brühl, on the Ville ridge, and it grew into Phantasialand. Today the park covers about 12 hectares, or around 28 with its car parks and hotels, and all of it is still in Brühl. For the park as it is today, there's our [Phantasialand guide](/blog/phantasialand-wait-times-tips).
 
 Sources: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Information and directions (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [NRW school holiday dates (Ministry of Education)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).
