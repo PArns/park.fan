@@ -4,10 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Loader2, Save, Shapes } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { curatedFieldOptions, rowsWithoutKind } from '@/lib/admin/attraction-kind';
+import { curatedFieldOptions, kindlessAttractions } from '@/lib/admin/attraction-kind';
 import type { AttractionsWithoutKind } from '@/lib/api/admin';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
-import type { AdminAttractionListItem, CuratedFieldSpec } from '../_lib/types';
+import type { CuratedFieldSpec } from '../_lib/types';
+import { useParkAttractions } from '../_lib/use-park-attractions';
 import { Chip, ErrorState, SkeletonRows } from '../_ui/primitives';
 import { Select } from '../_ui/controls';
 import { useToast } from '../_ui/toast';
@@ -24,12 +25,9 @@ function KindPicker({ park, onClose }: { park: AttractionsWithoutKind; onClose: 
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
   const canEdit = useCan('editor');
-  // The report names attractions without ids; the park's list, under the key the park editor
-  // reads it with, supplies them.
-  const list = useAdminQuery<{ total: number; attractions: AdminAttractionListItem[] }>(
-    adminKeys.parkAttractions(park.parkId, { params: '' }),
-    `/api/admin/content/parks/${park.parkId}/attractions?`
-  );
+  // A report without `withoutKindRefs` names the attractions only, and the park's list supplies
+  // their ids. That list and the name matching go once the API sends the refs.
+  const list = useParkAttractions(park.withoutKindRefs ? null : park.parkId);
   const specs = useAdminQuery<{ attraction: CuratedFieldSpec[] }>(
     adminKeys.fields,
     '/api/admin/content/fields'
@@ -38,7 +36,8 @@ function KindPicker({ park, onClose }: { park: AttractionsWithoutKind; onClose: 
   const [picked, setPicked] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
 
-  const rows = rowsWithoutKind(park.withoutKind, list.data?.attractions ?? []);
+  const found = kindlessAttractions(park, list.data?.attractions);
+  const rows = found ?? [];
   const entries = rows.flatMap((row) =>
     picked[row.id] ? [{ id: row.id, fields: { attractionKind: picked[row.id] } }] : []
   );
@@ -77,7 +76,7 @@ function KindPicker({ park, onClose }: { park: AttractionsWithoutKind; onClose: 
   }
 
   if (list.isError) return <ErrorState message={list.error.message} />;
-  if (list.isLoading) return <SkeletonRows rows={3} />;
+  if (found === null) return <SkeletonRows rows={3} />;
 
   return (
     <div className="border-border/60 mt-3 space-y-3 rounded-lg border p-3">

@@ -283,8 +283,13 @@ export interface AttractionsWithoutKind {
   parkName: string;
   /** Live attractions of the park, with a kind or without. */
   attractions: number;
-  /** Resolved names of the ones without a kind, alphabetical; the report sends no ids. */
+  /** Resolved names of the ones without a kind, alphabetical. */
   withoutKind: string[];
+  /**
+   * The same attractions with their ids, in the same order. Absent from an API that does not send
+   * it yet; the card then finds the ids by name in the park's list.
+   */
+  withoutKindRefs?: { id: string; name: string; slug: string }[];
 }
 
 /** A job that keeps failing, with the reason Bull gave last. */

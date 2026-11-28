@@ -3,9 +3,10 @@ import { levelAbove, worstTone, type HealthTone, type Threshold } from './health
 
 /**
  * Whether the native app's export on media.park.fan is behind the website: which posts the site
- * lists that the export's lists do not, and for how long. Pure, so the admin's route and
- * `pnpm test:admin-news-export` read the same verdicts; the route fetches the lists and the site's
- * posts (`app/api/admin/news-export/route.ts`).
+ * lists that the export's lists do not, and for how long, and what starting a new run answers.
+ * Pure, so the routes, the panel and `pnpm test:admin-news-export` read the same verdicts; the
+ * lists and the site's posts are read in `lib/admin/news-export-report.ts`, the run is started in
+ * `lib/admin/news-export-run.ts`.
  *
  * Posts are compared by slug, not by date: a post merged days after its own date is older than
  * the last run and would pass a comparison of `generatedAt` with the newest date.
@@ -71,7 +72,10 @@ export interface ExportFeedStatus {
   unreadable: { locale: string; message: string }[];
 }
 
-/** What `/api/admin/news-export` answers: both feeds, and where a new run is started. */
+/**
+ * What `/api/admin/news-export` and `/api/news-export/status` answer: both feeds, and where a new
+ * run is started.
+ */
 export interface NewsExportReport {
   /** When the oldest of the lists was fetched; the route keeps a list for a few minutes. */
   checkedAt: string;
@@ -247,4 +251,53 @@ export function exportVerdict(status: ExportFeedStatus): string {
 export function exportNeedsRun(feeds: readonly ExportFeedStatus[]): boolean {
   const tone = worstTone(feeds.map((feed) => feed.tone));
   return tone === 'warn' || tone === 'bad';
+}
+
+/** The export's workflow file in `.github/workflows/`, which a new run is started from. */
+export const NEWS_EXPORT_WORKFLOW = 'publish-media.yml';
+
+/**
+ * What starting a run answers, from `/api/admin/news-export/run` and `/api/news-export/run` alike:
+ * the workflow's page where the run shows up, or why it did not start, in German.
+ */
+export type NewsExportRunAnswer =
+  { started: true; workflowUrl: string } | { started: false; reason: string };
+
+/**
+ * Why a run did not start: no token on this deployment, the status GitHub refused with, or no
+ * answer from GitHub at all.
+ */
+export type NewsExportRunFailure = 'no-token' | 'unreachable' | number;
+
+/** A refused start as the routes answer it: 503 without a token, 502 for anything GitHub did. */
+export interface NewsExportRunRefusal {
+  status: 502 | 503;
+  answer: { started: false; reason: string };
+}
+
+const GITHUB_REFUSALS: Readonly<Record<number, string>> = {
+  401: 'GitHub hat das Token abgelehnt (401), es ist abgelaufen oder widerrufen.',
+  // A fine-grained token that sees the repository but may not run its workflows answers 403.
+  403: 'GitHub hat den Start abgelehnt (403). Dem Token fehlt vermutlich die Berechtigung „Actions: Read and write“ für das Repository.',
+  404: `GitHub findet den Workflow nicht (404). Entweder sieht das Token das Repository nicht, oder ${NEWS_EXPORT_WORKFLOW} fehlt auf dem Standard-Branch.`,
+  422: `GitHub nimmt den Start nicht an (422): ${NEWS_EXPORT_WORKFLOW} hat auf dem Standard-Branch keinen workflow_dispatch-Trigger.`,
+};
+
+/** The answer to a start that failed, with the German sentence the panel shows. */
+export function exportRunRefusal(failure: NewsExportRunFailure): NewsExportRunRefusal {
+  if (failure === 'no-token') {
+    return {
+      status: 503,
+      answer: {
+        started: false,
+        reason:
+          'Auf dem Server ist kein GitHub-Token hinterlegt (BLOG_EDITOR_GITHUB_TOKEN). Der Lauf lässt sich auf GitHub mit „Run workflow“ starten.',
+      },
+    };
+  }
+  const reason =
+    failure === 'unreachable'
+      ? 'GitHub hat nicht geantwortet. In ein paar Minuten noch einmal versuchen oder den Lauf auf GitHub starten.'
+      : (GITHUB_REFUSALS[failure] ?? `GitHub hat den Start mit ${failure} abgelehnt.`);
+  return { status: 502, answer: { started: false, reason } };
 }

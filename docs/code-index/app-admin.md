@@ -176,6 +176,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useLocalPreference` _hook_: Returns a string preference kept in localStorage and its setter. The server and a failed read give `defaultValue`; a change in another admin tab updates this one too.
 
+### [`_lib/use-park-attractions.ts`](../../app/admin/_lib/use-park-attractions.ts)
+
+- `useParkAttractions` _hook_: One park's admin attraction list, under one key per query string, so the screens that show the same list share one request. `params` is the query string without its `?`; a null `parkId` asks nothing.
+- Types: `ParkAttractionList`
+
 ### [`_lib/use-park-catalog.ts`](../../app/admin/_lib/use-park-catalog.ts)
 
 - `useParkCatalog` _hook_: Every park, under the key of the parks page's unfiltered list, so a park picker opened anywhere in the admin asks once and a page that already holds the list costs nothing. `enabled: false` reads the cache without asking.
@@ -183,7 +188,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_lib/use-served-attraction-kinds.ts`](../../app/admin/_lib/use-served-attraction-kinds.ts)
 
-- `useServedAttractionKinds` _hook_: The kinds the public payload serves for one park's attractions, keyed by attraction id, from `/api/admin/attraction-kinds`.
+- `useServedAttractionKinds` _hook_: The kinds the API serves for one park's attractions, keyed by attraction id, read off the rows of the park's admin list (`servedKindsFromList`). The map is empty until the rows are in.
 
 ### [`_lib/works-periods.ts`](../../app/admin/_lib/works-periods.ts)
 
@@ -283,7 +288,7 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 ### [`_ui/curated-fields.tsx`](../../app/admin/_ui/curated-fields.tsx)
 
 - `CuratedFieldsPanel` _component_: The "Kuratierte Felder" panel of a park or a ride: the editor, its save, and the undo toast.
-- Types: `CuratedGroupExtras`
+- Types: `CuratedGroupExtras`, `CuratedDerivedValues`
 
 ### [`_ui/day-calendar.tsx`](../../app/admin/_ui/day-calendar.tsx)
 

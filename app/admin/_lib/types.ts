@@ -1,4 +1,9 @@
-import type { BoundSeason, ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
+import type {
+  AttractionKindSource,
+  BoundSeason,
+  ParkSeasonKind,
+  ParkSeasonStatus,
+} from '@/lib/api/types';
 
 /**
  * The shapes the admin API answers with, hand-written and narrow: they describe what the admin
@@ -160,6 +165,13 @@ export interface AdminAttractionListItem {
   indoorOutdoor?: string | null;
   /** Null is "nobody decided", never RIDE. */
   attractionKind?: string | null;
+  /**
+   * The kind the API's rule derives, kept for every row, curated or not. Absent from an API that
+   * does not send it yet, like `attractionKindSource`.
+   */
+  derivedAttractionKind?: string | null;
+  /** Who decided the kind the API serves; null when neither the editor nor the rule did. */
+  attractionKindSource?: AttractionKindSource | null;
   hasRideProfile: boolean;
   curatedFieldCount: number;
   updatedAt: string;

@@ -348,7 +348,8 @@ two places say so.
   workflow** on the workflow's page, or `gh workflow run publish-media.yml`. GitHub notifies
   whoever triggered the run.
 - **`/admin/system`, „Export für die App“** (`app/admin/system/news-export-panel.tsx`). Its route,
-  `GET /api/admin/news-export` (role viewer), reads the twelve lists (`news/` and `guides/`, six
+  `GET /api/admin/news-export` (role viewer), builds the report in `lib/admin/news-export-report.ts`:
+  it reads the twelve lists (`news/` and `guides/`, six
   locales) server-side, never from the browser, and keeps each one it could read for five minutes
   in memory: the lists' own `max-age`, and not the Data Cache, which would store all twelve again
   every window to serve a handful of editors. It compares them with the deployment's own posts,
@@ -364,9 +365,26 @@ two places say so.
   window in which the API still announces a post (`NEWS_MAX_AGE_MS` in its news push job): an
   export that catches up later brings the post to the app without a notification. A list that
   cannot be read is red. While a post is younger than the hour, the tile says „noch nicht drin“.
-- **The answer** to an amber or red feed is a new run, so the panel asks „Export neu starten?“ and
-  links the workflow page. The pure half is `lib/admin/news-export-lag.ts`
-  (`pnpm test:admin-news-export`).
+- **The answer** to an amber or red feed is a new run, so the panel asks „Export neu starten?“. An
+  editor starts it there: `POST /api/admin/news-export/run` (role editor, the floor of the admin's
+  other job starts) dispatches `publish-media.yml` on the repository's default branch, not the
+  admin's base branch, since only the default branch is live, with the admin's GitHub token
+  (`lib/admin/news-export-run.ts`). It answers `{started: true, workflowUrl}`, or
+  `{started: false, reason}` with 503 without a token and 502 for anything GitHub refused; the
+  reason is the German sentence the panel shows, and a 403 most likely means a token without
+  „Actions: Read and write“. The log gets GitHub's status, never the request. After a start the
+  panel links the workflow page and reads the export once more 25 minutes later, or on „Neu lesen“;
+  it does not poll. A viewer gets the workflow page instead of the button; while no feed is amber
+  or red, an editor still finds the button below the tiles. The pure half is `lib/admin/news-export-lag.ts` (`pnpm test:admin-news-export`,
+  which also starts a run against a stand-in for GitHub).
+- **The API's MCP tools** read and start the same through two server routes gated like
+  `/api/revalidate`, `Authorization: Bearer $REVALIDATE_SECRET`, 503 without the secret and 401 on a
+  wrong one: `GET /api/news-export/status` answers the `NewsExportReport` above (`no-store`), and
+  `POST /api/news-export/run` starts a run with the admin route's answers. The API depends on both
+  paths and shapes. Like `/api/revalidate` they are outside `proxy.ts`'s matcher and not in
+  `robots.txt`, which names only the back office. Cloudflare challenges non-browser clients on
+  `park.fan/api/*`, so whatever lets the API's calls to `/api/revalidate` through has to cover
+  `/api/news-export/` too.
 
 Two cases reach the panel as a missing post and nothing else: a merge that touched none of the
 workflow's paths, and a scheduled post, which the run at its merge leaves out and no later run

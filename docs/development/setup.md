@@ -94,23 +94,23 @@ and this table only names it.
 
 **Admin**
 
-| Variable                        | Default                        | Kind   | Read by                                                                                        |
-| ------------------------------- | ------------------------------ | ------ | ---------------------------------------------------------------------------------------------- |
-| `BLOG_EDITOR_GITHUB_TOKEN`      | `GITHUB_TOKEN`, else none      | secret | `lib/admin/github.ts`; without one the blog editor and the media admin cannot save             |
-| `GITHUB_REPOSITORY`             | `PArns/park.fan`               | server | same: the repository those pull requests go to                                                 |
-| `BLOG_EDITOR_BASE_BRANCH`       | `main`                         | server | same: their base branch                                                                        |
-| `BLOG_EDITOR_ANTHROPIC_API_KEY` | `ANTHROPIC_API_KEY`, else none | secret | `app/api/admin/blog-editor/translate/route.ts`; without a key the translate button answers 500 |
-| `BLOG_EDITOR_TRANSLATE_MODEL`   | `claude-sonnet-4-5`            | server | same ([blog editor](../features/blog-editor.md#translate))                                     |
+| Variable                        | Default                        | Kind   | Read by                                                                                                                                              |
+| ------------------------------- | ------------------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `BLOG_EDITOR_GITHUB_TOKEN`      | `GITHUB_TOKEN`, else none      | secret | `lib/admin/github.ts`; without one the blog editor and the media admin cannot save, and „Export neu starten“ needs it with „Actions: Read and write“ |
+| `GITHUB_REPOSITORY`             | `PArns/park.fan`               | server | same: the repository those pull requests go to                                                                                                       |
+| `BLOG_EDITOR_BASE_BRANCH`       | `main`                         | server | same: their base branch                                                                                                                              |
+| `BLOG_EDITOR_ANTHROPIC_API_KEY` | `ANTHROPIC_API_KEY`, else none | secret | `app/api/admin/blog-editor/translate/route.ts`; without a key the translate button answers 500                                                       |
+| `BLOG_EDITOR_TRANSLATE_MODEL`   | `claude-sonnet-4-5`            | server | same ([blog editor](../features/blog-editor.md#translate))                                                                                           |
 
 **Secrets that open a route.** Without its secret a route refuses every request (503; the comment
 webhook 500), so an unset variable never leaves it open.
 
-| Variable                                                                     | Route                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `CRON_SECRET`                                                                | every `/api/cron/*` (`cronUnauthorized`, `lib/security/cron-auth.ts`); see [cron jobs](#cron-jobs)                                                                                                     |
-| `REVALIDATE_SECRET`                                                          | `/api/revalidate`, called by the backend ([invalidation](../architecture/caching-strategy.md#invalidation))                                                                                            |
-| `VERCEL_DEPLOY_WEBHOOK_SECRET`, `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ZONE_ID` | `/api/webhooks/vercel-deploy`, the Cloudflare purge after a deploy ([CDN caching](../architecture/cdn-caching.md#a-deploy-purges-cloudflare))                                                          |
-| `VERCEL_COMMENT_WEBHOOK_SECRET`, `GITHUB_DISPATCH_TOKEN`                     | `/api/webhooks/vercel-comments`; `VERCEL_API_TOKEN`, `VERCEL_TEAM_ID` and the `VERCEL_COMMENT_SYNC*` / `VERCEL_PRODUCTION_BRANCH` toggles are optional ([Vercel comment sync](vercel-comment-sync.md)) |
+| Variable                                                                     | Route                                                                                                                                                                                                                                                                 |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CRON_SECRET`                                                                | every `/api/cron/*` (`cronUnauthorized`, `lib/security/cron-auth.ts`); see [cron jobs](#cron-jobs)                                                                                                                                                                    |
+| `REVALIDATE_SECRET`                                                          | `/api/revalidate`, called by the backend ([invalidation](../architecture/caching-strategy.md#invalidation)); `/api/news-export/status` and `/api/news-export/run`, called by its MCP tools ([watching the export](../features/media-database.md#watching-the-export)) |
+| `VERCEL_DEPLOY_WEBHOOK_SECRET`, `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ZONE_ID` | `/api/webhooks/vercel-deploy`, the Cloudflare purge after a deploy ([CDN caching](../architecture/cdn-caching.md#a-deploy-purges-cloudflare))                                                                                                                         |
+| `VERCEL_COMMENT_WEBHOOK_SECRET`, `GITHUB_DISPATCH_TOKEN`                     | `/api/webhooks/vercel-comments`; `VERCEL_API_TOKEN`, `VERCEL_TEAM_ID` and the `VERCEL_COMMENT_SYNC*` / `VERCEL_PRODUCTION_BRANCH` toggles are optional ([Vercel comment sync](vercel-comment-sync.md))                                                                |
 
 **Set by the platform**, never by hand: `NODE_ENV`; `NEXT_PHASE` (`phase-production-build` turns on
 the build's API retries in `lib/api/client.ts` and the missing-translation log in

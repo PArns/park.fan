@@ -69,8 +69,10 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 - `curatedEnumOptions` _function_: The options of a curated enum field as the admin's selects list them, in the API's order: an attraction kind under its German name, any other value as itself.
 - `curatedFieldOptions` _function_: `curatedEnumOptions` for one key of `GET /v1/admin/content/fields`, so a kind the API adds shows up in every select without a frontend change. Empty while the descriptors are not loaded.
 - `shownAttractionKind` _function_: The kind an admin row shows: the editor's stored value, else the API's derived one, flagged so the editor sees the decision is still open.
-- `rowsWithoutKind` _function_: The rows of a park's admin attraction list that a data-quality „ohne Art" entry names. The report sends names, not ids, so a row matches on its resolved name and on storing no kind; two rows of the same name are both listed.
-- Types: `CuratedEnumOption`, `ServedAttractionKind`, `ShownAttractionKind`
+- `servedKindsFromList` _function_: The served kinds of a park's attractions, keyed by id, read off the admin list: the editor's kind where `attractionKindSource` is `curated`, the rule's where it is `derived`.
+- `rowsWithoutKind` _function_: The rows of a park's admin attraction list that a data-quality „ohne Art" entry names, for a report that sends names only: a row matches on its resolved name and on storing no kind, and two rows of the same name are both listed.
+- `kindlessAttractions` _function_: The attractions a data-quality „ohne Art" card asks about: the report's `withoutKindRefs` where it sends them, else the rows of the park's list that `rowsWithoutKind` finds by name. Null while that fallback still waits for the list.
+- Types: `CuratedEnumOption`, `ServedAttractionKind`, `ShownAttractionKind`, `AttractionKindColumns`, `KindlessAttraction`
 
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 
@@ -317,8 +319,20 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `exportIsLate` _function_: Whether a feed's missing posts have waited past the amber mark, so no run is still on its way.
 - `exportVerdict` _function_: A feed's verdict in a few words: `aktuell`, `1 Meldung noch nicht drin` while a run may still be on its way, `2 Guides fehlen` after that, and the locales whose list could not be read.
 - `exportNeedsRun` _function_: Whether a new run is the answer: a feed is late or a list could not be read.
+- `exportRunRefusal` _function_: The answer to a start that failed, with the German sentence the panel shows.
 - `EXPORT_BEHIND_MINUTES` _const_: Minutes a post may be on the site without being in the export. Amber after an hour, longer than two runs back to back, so nothing that was on its way is still running.
-- Types: `ExportPostRef`, `SitePostRef`, `ExportListReading`, `MissingPost`, `ExportFeedStatus`, `NewsExportReport`
+- `NEWS_EXPORT_WORKFLOW` _const_: The export's workflow file in `.github/workflows/`, which a new run is started from.
+- Types: `ExportPostRef`, `SitePostRef`, `ExportListReading`, `MissingPost`, `ExportFeedStatus`, `NewsExportReport`, `NewsExportRunAnswer`, `NewsExportRunFailure`, `NewsExportRunRefusal`
+
+### [`news-export-report.ts`](../../lib/admin/news-export-report.ts)
+
+- `buildNewsExportReport` _function_: The app's news and guides export on media.park.fan against this deployment's posts, per feed: when it last ran, its newest post and the site's, and what it is missing.
+
+### [`news-export-run.ts`](../../lib/admin/news-export-run.ts)
+
+- `newsExportWorkflowUrl` _function_: The workflow's page on GitHub, which lists its runs and has „Run workflow“.
+- `startNewsExport` _function_: Starts the export workflow by `workflow_dispatch` with the admin's GitHub token, on the repository's default branch rather than the admin's base branch: a run publishes to the bucket the app reads, and only the default branch is live.
+- Types: `NewsExportRunResult`
 
 ### [`park-geo-path.ts`](../../lib/admin/park-geo-path.ts)
 

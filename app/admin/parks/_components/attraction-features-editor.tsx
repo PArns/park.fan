@@ -11,6 +11,7 @@ import {
 } from '@/lib/admin/attraction-kind';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
 import type { AdminAttractionListItem, AdminParkDetail, CuratedFieldSpec } from '../../_lib/types';
+import { useParkAttractions } from '../../_lib/use-park-attractions';
 import { useServedAttractionKinds } from '../../_lib/use-served-attraction-kinds';
 import {
   EmptyState,
@@ -106,12 +107,8 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
 
-  // Same key and same query string as the Fahrgeschäfte tab's unfiltered list,
-  // so opening both tabs costs one request rather than two.
-  const attractions = useAdminQuery<{ total: number; attractions: AdminAttractionListItem[] }>(
-    adminKeys.parkAttractions(park.id, { params: '' }),
-    `/api/admin/content/parks/${park.id}/attractions?`
-  );
+  // The Fahrgeschäfte tab's unfiltered list, so opening both tabs costs one request.
+  const attractions = useParkAttractions(park.id);
 
   // The options of both selects come from the backend's field list, so a new
   // attraction kind shows up here without a frontend change.
@@ -129,7 +126,11 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
   }, [rows]);
 
   const [column, setColumn] = useState<Column>('fastPass');
-  const served = useServedAttractionKinds(park.id, column === 'kind' ? park.path : null);
+  const served = useServedAttractionKinds(
+    park.id,
+    column === 'kind' ? park.path : null,
+    attractions.data?.attractions
+  );
   const [overrides, setOverrides] = useState<Record<string, Partial<RowState>>>({});
   const [reason, setReason] = useState('');
   const [sourceUrl, setSourceUrl] = useState('');
