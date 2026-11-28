@@ -180,7 +180,9 @@ night never makes a date look quiet (`dateFigure`).
   (`PlanSpareSuggestions`).
   The rides come from the day planner's `/plan/day`, asked only when the sheet opens; their minutes
   are left out, because they come from another model than the day's figure and two numbers for
-  one wait on one sheet read as one of them wrong. Then Pin, Swap and "Plan this day".
+  one wait on one sheet read as one of them wrong. Under them a Disney park's Lightning Lane
+  prices for the day, as on the hub's day sheet ([orlando-hub](orlando-hub.md#data), PAR-1295),
+  named by park on a day with two. Then Pin, Swap and "Plan this day".
 - **Level 3, the day planner.** "Plan this day" publishes the park (`plannerPagePark` and a
   `PlannerPageParkBeacon`), leaves the date in `plannerPageDay` and asks for the wizard with
   ``plannerUi.requestOpen(`${region}-hub`, 'page-park-wizard')`` (`orlando-hub`), as the homepage

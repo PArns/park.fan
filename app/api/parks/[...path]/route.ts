@@ -21,6 +21,7 @@ import {
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 import { getParkHistoricalStats, getParkHourlyProfile, getRideDayCurve } from '@/lib/api/stats';
 import { getPlanDay } from '@/lib/api/plan';
+import { getParkPurchaseDays } from '@/lib/api/park-purchases';
 import {
   enrichAttractionsWithImages,
   getCardObjectPosition,
@@ -49,7 +50,7 @@ import {
 } from '@/lib/parks/park-simulation';
 import { isSlugPath } from '@/lib/utils/servable-route';
 import { pickRideFigures } from '@/lib/api/ride-figures';
-import { catchNonFatal, getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
+import { ApiError, catchNonFatal, getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { isParkyDayTip, isServableTipRequest, mayKeepNoTip } from '@/lib/assistant/parky-tip';
 import { relayJsonWrite } from '@/lib/api/relay';
 import { ridesInWorksOn } from '@/lib/utils/works-period';
@@ -87,6 +88,13 @@ const CALENDAR_HOURLY_CACHE_CONTROL = 'public, s-maxage=300, stale-while-revalid
  */
 const RIDE_STATS_CACHE_CONTROL =
   'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400';
+
+/**
+ * The window for `…/purchases`, the trip sheets' day prices: the hour of their Data Cache entry
+ * (`CACHE_TTL.parkSchedule`), in the browser too, since a sheet opened again within it asks
+ * nothing new. Repeated verbatim in next.config.ts.
+ */
+const PURCHASES_CACHE_CONTROL = 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=600';
 
 /**
  * The park page's live poll. Every visitor of a park gets the same bytes, and the client asks every
@@ -446,6 +454,26 @@ export async function GET(
     }
   }
 
+  // Day prices of paid queue products for the trip hub's and the trip planner's day sheets, asked
+  // when a sheet opens on a park that sells them. No window in the URL: one cache entry per park.
+  if (path && path.length === 5 && path[4] === 'purchases') {
+    const [continent, country, city, park] = path;
+
+    try {
+      const days = await getParkPurchaseDays(continent, country, city, park);
+      return NextResponse.json({ days }, { headers: cdnCacheHeaders(PURCHASES_CACHE_CONTROL) });
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 404) {
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
+      }
+      console.error('[Purchases API] Error:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch day prices' },
+        { status: 500, headers: NO_STORE }
+      );
+    }
+  }
+
   // The lean status and queue snapshot, polled by the blog's inline ride references so a static
   // post does not keep its build-time snapshot. The CDN window collapses concurrent readers of one
   // post onto one origin call.
@@ -704,7 +732,7 @@ export async function GET(
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /ride-stats, /stats, /stats/hourly, /stats/day, /wait-times, /parky-tip, or /weather/nowcast',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /purchases, /ride-stats, /stats, /stats/hourly, /stats/day, /wait-times, /parky-tip, or /weather/nowcast',
     },
     { status: 400 }
   );

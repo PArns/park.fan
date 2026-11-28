@@ -221,6 +221,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'parks.calendarLegendGroups',
     'parks.calendarMarks',
     'parks.holidayContext',
+    'parks.purchases',
     'parks.seasons',
     'parks.worksPeriod',
     'tripHub.calendar',

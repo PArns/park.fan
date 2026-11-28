@@ -370,6 +370,10 @@ The class strings of the hub calendar's marks, shared by the week grid, the phon
 - `REGION_KICKER` _const_: The line over the card's name, where the region is or what the card is for. `primary-ink`, not `primary`: the brand blue misses AA as 11 px text on the light fade.
 - `REGION_PILL` _const_: The cards' buttons are the site's (`buttonVariants`), drawn as pills as in the draft.
 
+### [`trip-day-prices.tsx`](../../components/trip-regions/trip-day-prices.tsx)
+
+- `TripDayPrices` _component_: A park's Lightning Lane prices on one day of a trip sheet, the hub's and the planner's, as the park page shows them (`ParkPurchasesCard`).
+
 ### [`trip-planner-band.tsx`](../../components/trip-regions/trip-planner-band.tsx)
 
 - `TripPlannerBand` _component_: The way from a page about a trip region's parks into the region's planner, one line per region: „Mehrere Tage in Orlando", „Magic Kingdom einplanen" or „Reiseplaner öffnen", and the hub by its name.

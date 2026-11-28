@@ -69,6 +69,7 @@ import { useAreaName, useBaseName, useVenueName } from './plan-place-words';
 import { MOVE_INK, MoveIcon, useMoveNotes, useMoveWords } from './plan-stay-band';
 import { baseLeg } from '@/lib/trip-regions/plan-stays';
 import { PlanSpareSuggestions } from './plan-spare-run';
+import { TripDayPrices } from '../trip-day-prices';
 
 /** How many of a park's headliners the sheet names: the five a day is usually judged by. */
 const BIG_RIDES = 5;
@@ -78,7 +79,8 @@ const BIG_RIDES = 5;
  * the right edge at a desk. The one-line reason, the runner-up day and what it costs, the hours
  * with the hotel's perks, why a short day is short and how many hours it loses, the day's events
  * with their status, the drive from the hotel area, the weather where a forecast reaches, the big
- * rides of that day (the day planner's own `/plan/day`, asked only when the sheet opens), and the
+ * rides of that day (the day planner's own `/plan/day`, asked only when the sheet opens), the
+ * park's Lightning Lane prices of the day where it sells them (`TripDayPrices`), and the
  * three things to do: pin, swap with another day (the swap mode, `PlanSwapMode`), and "Plan this day", which opens the day planner
  * on that park and date (Level 3).
  */
@@ -174,7 +176,17 @@ function DayDetails({
   const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
   const tSeasons = useTranslations('parks.seasons');
-  const { locale, timeZone, parkName, region, state, tickets: catalog } = usePlanContext();
+  const {
+    locale,
+    timeZone,
+    parkName,
+    parkBySlug,
+    region,
+    config,
+    state,
+    today,
+    tickets: catalog,
+  } = usePlanContext();
   const seasonName = useSeasonName();
   const resortWord = useResortWord();
   const hopperWord = useHopperWord();
@@ -464,6 +476,23 @@ function DayDetails({
       {day.evening && <EveningSection evening={day.evening} date={day.date} />}
 
       {isPark && first && <DayRides slug={first.slug} date={day.date} />}
+
+      {isPark &&
+        day.parks.map((visit) => {
+          const park = parkBySlug.get(visit.slug);
+          return park ? (
+            <TripDayPrices
+              key={`prices-${visit.slug}`}
+              park={park}
+              date={day.date}
+              today={today}
+              dayPriceParks={config.dayPriceParks}
+              note={day.parks.length > 1 ? name(visit.slug) : undefined}
+              headingLevel={3}
+              className="p-3"
+            />
+          ) : null;
+        })}
 
       <div className="flex flex-col gap-2 pt-1">
         <div className="grid grid-cols-2 gap-2">

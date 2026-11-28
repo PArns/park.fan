@@ -209,6 +209,12 @@ export interface TripRegionConfig {
   /** The ticket step; absent, the planner plans without asking for tickets. */
   tickets?: TripTicketStep;
   /**
+   * The parks whose schedule carries a price per day for paid queue products (Disney's Lightning
+   * Lane), by slug. The hub's and the planner's day sheets ask these parks alone for their prices
+   * (`TripDayPrices`), so a sheet of sixteen parks costs no request for the twelve that sell none.
+   */
+  dayPriceParks?: readonly string[];
+  /**
    * The blog post that explains the region's planner, by its slug per locale: the planner's fields
    * carry one short line each and link here for the rest. `pnpm test:orlando-plan` checks the posts
    * exist.

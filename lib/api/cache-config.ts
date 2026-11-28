@@ -69,4 +69,8 @@ export const CACHE_TTL = {
   // The region's `/calendar` and `/best-days`, which the API keeps an hour in Redis and rebuilds
   // from the calendar warmup twice a day. An hour is the API's own window, not a page's floor.
   tripRegionData: 3600,
+  // A park's `/schedule` rows, read for their day prices (`getParkPurchaseDays`). The API keeps
+  // the route an hour at the edge, and Disney moves a day's price and its sold-out state within
+  // the day, so the park's day-long snapshot is too old for them.
+  parkSchedule: 3600,
 } as const;
