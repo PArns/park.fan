@@ -2,6 +2,7 @@ import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
+import { LegalLink } from '@/components/legal/legal-blocks';
 import { DATA_TERMS_ANCHOR, RSL_LICENSE_PATH } from '@/lib/agents/licensing';
 import { ATTRIBUTION_ANCHOR, DEVELOPERS_PATH } from '@/lib/developers/paths';
 import type { ImpressumStory } from './story';
@@ -229,6 +230,19 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           Mindestgröße, Fahrprofile und Links, Öffnungszeiten, Saisons und Events, das Wetter, die
           Statistiken, die Prognosen, der Tages- und der Reiseplaner und die Daten der
           Reiseregionen. Texte und Fotos gehören nicht dazu.
+        </p>
+        <p className="mb-4">
+          Nichts in diesem Abschnitt gilt für die Daten zu Toiletten und Trinkwasserstellen, die die
+          API ohne API-Key unter <code>/v1/parks/…/facilities</code> herausgibt. Diese Daten stammen
+          aus OpenStreetMap (
+          <LegalLink href="https://www.openstreetmap.org/copyright/de">
+            © OpenStreetMap-Mitwirkende
+          </LegalLink>
+          ) und stehen unter der{' '}
+          <LegalLink href="https://opendatacommons.org/licenses/odbl/1-0/">
+            Open Database License (ODbL)
+          </LegalLink>
+          ; für sie gelten allein die Bedingungen dieser Lizenz.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">API-Key mit Berechtigungen</h3>

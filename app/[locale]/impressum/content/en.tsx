@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
+import { LegalLink } from '@/components/legal/legal-blocks';
 import { DATA_TERMS_ANCHOR, RSL_LICENSE_PATH } from '@/lib/agents/licensing';
 import { ATTRIBUTION_ANCHOR, DEVELOPERS_PATH } from '@/lib/developers/paths';
 import type { ImpressumStory } from './story';
@@ -225,6 +226,19 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
           and rides, park and ride data such as heights, minimum height, ride profiles and links,
           opening hours, seasons and events, the weather, the statistics, the forecasts, the day and
           trip planners and the travel region data. Texts and photos are not included.
+        </p>
+        <p className="mb-4">
+          Nothing in this section applies to the data on toilets and drinking water that the API
+          serves without an API key at <code>/v1/parks/…/facilities</code>. It comes from
+          OpenStreetMap (
+          <LegalLink href="https://www.openstreetmap.org/copyright">
+            © OpenStreetMap contributors
+          </LegalLink>
+          ) and is licensed under the{' '}
+          <LegalLink href="https://opendatacommons.org/licenses/odbl/1-0/">
+            Open Database License (ODbL)
+          </LegalLink>
+          ; only the terms of that licence apply to it.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">API keys with permissions</h3>
