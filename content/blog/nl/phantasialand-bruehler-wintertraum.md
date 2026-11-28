@@ -66,9 +66,9 @@ Het ticket komt pas als de gemeente Brühl je aanmelding heeft gecontroleerd. Ho
 
 ## Zo meld je je aan
 
-Het formulier vraagt naar je naam, e-mailadres, telefoonnummer, adres, geboortedatum en de dag waarop je wilt komen. Je naam schrijf je precies zoals op je identiteitskaart, met alle bijzondere tekens: wie daar Jürgen heet, is in het formulier geen Juergen. Je geeft ook toestemming dat Phantasialand je gegevens doorgeeft aan de gemeente Brühl, die ze naast het bevolkingsregister legt. Daarna stuurt Phantasialand je het ticket per e-mail.
+Het formulier vraagt naar je naam, e-mailadres, telefoonnummer, adres, geboortedatum en de dag waarop je wilt komen. Je naam schrijf je precies zoals op je identiteitskaart, met alle bijzondere tekens: wie daar Jürgen heet, is in het formulier geen Juergen. Je geeft ook toestemming dat Phantasialand je gegevens doorgeeft aan de gemeente Brühl, die ze naast het bevolkingsregister legt. Heeft de gemeente je gegevens bevestigd, dan krijg je het ticket per e-mail.
 
-Per bezoekdag is er een beperkt aantal plaatsen. Is je voorkeursdag al vol, dan heeft Phantasialand niet bekendgemaakt of je een andere dag aangeboden krijgt.
+Per bezoekdag is er een beperkt aantal plaatsen, en nergens belooft Phantasialand je een andere dag als je voorkeursdag vol is. Ook daarom heeft het geen zin om tot de 15e te wachten.
 
 ```cta-widget
 href: https://www.phantasialand.de/de/euer-bruehler-wintertraum/
@@ -78,16 +78,16 @@ text: Houd je identiteitskaart bij de hand. De aanmelding sluit op 15 december 2
 
 ## Bij de ingang en in het park
 
-Het ticket is persoonlijk en geldt alleen samen met een geldig bewijs van je woonadres. Welk document daarvoor geldt, noemt Phantasialand niet. Op de Duitse identiteitskaart staat je adres, en het formulier gaat al uit van de schrijfwijze daarop. Die steek je dus in je jaszak.
+Het ticket is persoonlijk en geldt alleen samen met een geldig bewijs van je woonadres. Welk document daarvoor geldt, noemt Phantasialand niet. Ik zou je Duitse identiteitskaart meenemen, omdat je adres erop staat en je je naam al precies zo in het formulier hebt geschreven.
 
-De Wintertraum is op zijn openingsdagen van 11 tot 20 uur open. De avondshows en de attracties die in de winter rijden, staan in onze [gids voor de Wintertraum](/blog/phantasialand-wintertraum). Om ongeveer 19:50 uur sluit MAGIC SYMPHONY de dag af boven de Kaiserplatz, als het weer meewerkt.
+De Wintertraum gaat om 11 uur open en sluit om 20 uur. De avondshows en de attracties die in de winter rijden, staan in onze [gids voor de Wintertraum](/blog/phantasialand-wintertraum). Rond 19:50 uur gaat boven de Kaiserplatz het vuurwerk van MAGIC SYMPHONY de lucht in. Of het doorgaat, hangt af van het weer.
 
 ## Gezelschap van buiten Brühl
 
-Wie niet met zijn hoofdadres in Brühl staat ingeschreven, heeft een gewoon dagticket nodig, ook vrienden en familie die meekomen. Dat koop je alleen online: Phantasialand heeft geen kassa bij de ingang. Met de [Black Deal](/news/phantasialand-black-deal-wintertraum) kost een Wintertraum-dag vanaf € 29, in het weekend en in de vakantie vanaf € 33, maar alleen nog tot maandag 30 november. Op de dag zelf koop je tot 16 uur in de webshop. Dat is ruim op tijd voor de neef uit Keulen die pas bij het ontbijt hoort dat de rest van de familie vandaag gratis naar binnen mag.
+Vrienden en familie die niet in Brühl staan ingeschreven, hebben een gewoon dagticket nodig. Dat verkoopt Phantasialand alleen in de webshop. Met de [Black Deal](/news/phantasialand-black-deal-wintertraum) kost een Wintertraum-dag vanaf € 29, in het weekend en in de vakantie vanaf € 33, maar alleen nog tot maandag 30 november. Besluit de neef uit Keulen pas bij het ontbijt om toch mee te gaan, dan verkoopt de webshop nog tot 16 uur tickets voor die dag.
 
 ## Zestig jaar in Badorf
 
-Phantasialand ging op 30 april 1967 open als sprookjesbos. De oprichters waren kermisexploitant Gottlieb Löffelhardt en poppenspeler Richard Schmidt. Het park ligt in het zuidwesten van Badorf, een wijk van Brühl, op de heuvelrug van de Ville. Met parkeerplaatsen en hotels is het terrein zo’n 28 hectare groot, het park zelf ongeveer 12. Onze [gids voor Phantasialand](/blog/phantasialand-wachttijden-tips) neemt je mee door het park van nu.
+Op 30 april 1967 openden kermisexploitant Gottlieb Löffelhardt en poppenspeler Richard Schmidt in het zuidwesten van Badorf, een wijk van Brühl, op de heuvelrug van de Ville, een sprookjesbos waaruit Phantasialand is gegroeid. Met parkeerplaatsen en hotels is het terrein zo’n 28 hectare groot, het park zelf ongeveer 12. Onze [gids voor Phantasialand](/blog/phantasialand-wachttijden-tips) neemt je mee door het park van nu.
 
 Bronnen: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Informationen und Anreise (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [vakantieregeling NRW (ministerie van Onderwijs van NRW)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).

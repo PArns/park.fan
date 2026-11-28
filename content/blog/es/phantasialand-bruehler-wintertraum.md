@@ -66,9 +66,9 @@ La entrada no llega hasta que el Ayuntamiento de Brühl haya comprobado tu inscr
 
 ## Cómo inscribirte
 
-El formulario pide nombre, correo electrónico, teléfono, dirección, fecha de nacimiento y el día que quieres ir. El nombre se escribe tal cual aparece en el documento de identidad, con todos sus caracteres especiales: quien en el carné se llama Jürgen no puede poner Juergen. Además aceptas que el Phantasialand pase tus datos al Ayuntamiento de Brühl, que los coteja con el padrón municipal. Después, el Phantasialand te manda la entrada por correo.
+El formulario pide nombre, correo electrónico, teléfono, dirección, fecha de nacimiento y el día que quieres ir. El nombre se escribe tal cual aparece en el documento de identidad, con todos sus caracteres especiales: quien en el carné se llama Jürgen no puede poner Juergen. Además aceptas que el Phantasialand pase tus datos al Ayuntamiento de Brühl, que los coteja con el padrón municipal. Cuando el Ayuntamiento haya confirmado tus datos, recibirás la entrada por correo.
 
-Cada día de visita tiene un cupo limitado. Si tu fecha ya está completa, el Phantasialand no ha comunicado si te ofrecen otra.
+Cada día de visita tiene un cupo limitado, y el Phantasialand no promete en ningún sitio otro día si el tuyo ya está completo. Por eso tampoco merece la pena esperar al día 15.
 
 ```cta-widget
 href: https://www.phantasialand.de/de/euer-bruehler-wintertraum/
@@ -78,16 +78,16 @@ text: Ten a mano el documento de identidad. Último día para inscribirte: 15/12
 
 ## En la entrada y dentro del parque
 
-La entrada es personal e intransferible y solo vale junto con un justificante válido de tu domicilio. El Phantasialand no dice qué documento sirve. En el documento de identidad alemán figura tu dirección, y el formulario ya se guía por cómo escribe tu nombre. Así que conviene llevarlo en el bolsillo.
+La entrada es personal e intransferible y solo vale junto con un justificante válido de tu domicilio. El Phantasialand no dice qué documento sirve. Yo llevaría el documento de identidad alemán, porque en él figura tu dirección y el nombre del formulario ya lo escribiste tal como aparece en él.
 
-En sus días de apertura, el Wintertraum abre de 11:00 a 20:00. Los espectáculos de la noche y las atracciones que funcionan en invierno están en nuestra [guía del Wintertraum](/blog/phantasialand-wintertraum). Para cerrar, hacia las 19:50 llega MAGIC SYMPHONY a la Kaiserplatz, si el tiempo lo permite.
+El Wintertraum abre a las 11:00 y cierra a las 20:00. Los espectáculos de la noche y las atracciones que funcionan en invierno están en nuestra [guía del Wintertraum](/blog/phantasialand-wintertraum). Hacia las 19:50, los fuegos artificiales de MAGIC SYMPHONY se elevan sobre la Kaiserplatz. Que se celebren o no depende del tiempo.
 
 ## Si viene alguien de fuera
 
-Quien no esté empadronado con residencia principal en Brühl necesita una entrada de día normal, también los amigos y familiares que te acompañen. Solo se vende online: el Phantasialand no tiene taquilla. Con el [Black Deal](/news/phantasialand-black-deal-wintertraum), un día del Wintertraum cuesta desde 29 €, y en fin de semana y vacaciones desde 33 €, pero solo hasta el lunes 30 de noviembre. Para el mismo día de la visita, la tienda online vende hasta las 16:00, de modo que el primo de Colonia puede seguir dudando hasta después de comer.
+Los amigos y familiares que no estén empadronados en Brühl necesitan una entrada de día normal. El Phantasialand solo la vende en su tienda online. Con el [Black Deal](/news/phantasialand-black-deal-wintertraum), un día del Wintertraum cuesta desde 29 €, y en fin de semana y vacaciones desde 33 €, pero solo hasta el lunes 30 de noviembre. Si un primo de Colonia decide en el desayuno que al final se apunta, la tienda online sigue vendiendo entradas para ese mismo día hasta las 16:00.
 
 ## 60 años en Badorf
 
-El Phantasialand abrió el 30 de abril de 1967 como un bosque de cuentos. Lo fundaron el feriante Gottlieb Löffelhardt y el titiritero Richard Schmidt. El parque está al suroeste de Badorf, un barrio de Brühl, sobre la loma de la Ville. Con aparcamientos y hoteles, el terreno suma unas 28 hectáreas, y el parque en sí, unas 12. Cómo es el parque hoy lo puedes leer en nuestra [guía del Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
+El 30 de abril de 1967, el feriante Gottlieb Löffelhardt y el titiritero Richard Schmidt abrieron al suroeste de Badorf, un barrio de Brühl, sobre la loma de la Ville, un bosque de cuentos del que salió el Phantasialand. Con aparcamientos y hoteles, el terreno suma unas 28 hectáreas, y el parque en sí, unas 12. Cómo es el parque hoy lo puedes leer en nuestra [guía del Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
 
 Fuentes: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Información y cómo llegar (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [calendario de vacaciones de Renania del Norte-Westfalia (Ministerio de Educación)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).

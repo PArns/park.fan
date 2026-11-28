@@ -66,9 +66,9 @@ The ticket only comes once the town of Brühl has checked your application. Phan
 
 ## How to sign up
 
-The form asks for your name, email address, phone number, postal address, date of birth and the day you'd like to visit. Type your name exactly as it appears on your ID card, special characters included: a Jürgen on the card can't be a Juergen on the form. You also agree that Phantasialand passes your details to the town of Brühl, which checks them against the residents' register. Phantasialand then sends you the ticket by email.
+The form asks for your name, email address, phone number, postal address, date of birth and the day you'd like to visit. Type your name exactly as it appears on your ID card, special characters included: a Jürgen on the card can't be a Juergen on the form. You also agree that Phantasialand passes your details to the town of Brühl, which checks them against the residents' register. Once the town has confirmed your details, the ticket arrives by email.
 
-Each visiting day has a limited number of places. If the day you want is already full, Phantasialand hasn't announced whether you'll be offered another.
+Each visiting day has a limited number of places, and nowhere does Phantasialand promise you a different day if the one you want is full. That's another reason not to wait until the 15th.
 
 ```cta-widget
 href: https://www.phantasialand.de/de/euer-bruehler-wintertraum/
@@ -78,16 +78,16 @@ text: Have your ID card ready. Sign-ups close on 15 December 2026.
 
 ## At the gate and in the park
 
-The ticket can't be passed on and is only valid together with valid proof of where you live. Phantasialand doesn't name the document it accepts. Your ID card has your address on it, and the form already goes by the way it spells your name. So it goes in your coat pocket.
+The ticket can't be passed on and is only valid together with valid proof of where you live. Phantasialand doesn't name the document it accepts. I'd take your ID card, because it has your address on it and you've already copied your name from it onto the form.
 
-Wintertraum is open from 11 am to 8 pm on the days it opens. The evening shows and the rides that run in winter are in our [Wintertraum guide](/blog/phantasialand-wintertraum). The day ends at around 7:50 pm with MAGIC SYMPHONY on Kaiserplatz, weather permitting.
+Wintertraum opens at 11 am and closes at 8 pm. The evening shows and the rides that run in winter are in our [Wintertraum guide](/blog/phantasialand-wintertraum). At around 7:50 pm, the MAGIC SYMPHONY fireworks go up over Kaiserplatz. Whether the show goes ahead depends on the weather.
 
 ## Friends from outside Brühl
 
-Anyone whose main home isn't registered in Brühl needs a normal day ticket, and that includes friends and relatives who come along. Day tickets are only sold online: Phantasialand has no ticket office at the gate. In the [Black Deal](/news/phantasialand-black-deal-wintertraum), a Wintertraum day costs from €29, or from €33 at weekends and in the holidays, but only until Monday, 30 November. On the day itself, the online shop sells tickets until 4 pm, which is good news for the relative who says no all week and changes their mind over breakfast.
+Friends and relatives who aren't registered in Brühl need a normal day ticket. Phantasialand only sells those in its online shop. In the [Black Deal](/news/phantasialand-black-deal-wintertraum), a Wintertraum day costs from €29, or from €33 at weekends and in the holidays, but only until Monday, 30 November. If a cousin from Cologne decides over breakfast to come after all, the online shop still sells tickets for that day until 4 pm.
 
 ## 60 years in Badorf
 
-Phantasialand opened on 30 April 1967 as a fairy-tale forest. It was founded by the showman Gottlieb Löffelhardt and the puppeteer Richard Schmidt. The park sits in the south-west of Badorf, a district of Brühl, on the Ville ridge. With car parks and hotels, the site covers about 28 hectares, the park itself about 12. Our [Phantasialand guide](/blog/phantasialand-wait-times-tips) takes you round the park as it is today.
+On 30 April 1967, the showman Gottlieb Löffelhardt and the puppeteer Richard Schmidt opened a fairy-tale forest in the south-west of Badorf, a district of Brühl, on the Ville ridge, and it grew into Phantasialand. With car parks and hotels, the site covers about 28 hectares, the park itself about 12. Our [Phantasialand guide](/blog/phantasialand-wait-times-tips) takes you round the park as it is today.
 
 Sources: [Euer Brühler Wintertraum (Phantasialand)](https://www.phantasialand.de/de/euer-bruehler-wintertraum/), [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Information and directions (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [NRW school holiday dates (Ministry of Education)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30), [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand).
