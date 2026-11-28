@@ -1,7 +1,7 @@
 'use client';
 
 import { createElement, useState, type ReactNode } from 'react';
-import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { roundWaitTo5, waitBandTop } from '@/lib/utils/wait-time';
 import { useLocale, useTranslations } from 'next-intl';
 import { addDays, format, parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
@@ -498,8 +498,9 @@ export function ParkCalendarDayDetail({
                 </div>
                 {avgWait !== null && (
                   <div className="min-w-0 text-right">
+                    {/* The mean of the headliners' daily peaks, not an average wait. */}
                     <h3 className="text-muted-foreground text-xs font-semibold tracking-[0.06em] uppercase">
-                      {t('avgWaitTime')}
+                      {t('avgHeadlinerPeak')}
                     </h3>
                     <p
                       className={cn(
@@ -549,7 +550,7 @@ export function ParkCalendarDayDetail({
             </section>
           )}
 
-          {/* Headliner waits — actual averages on past days, forecast on today/future */}
+          {/* Headliner peaks: recorded on past days, forecast on today and after. */}
           {hasForecast && (
             <section className="flex flex-col gap-2">
               <h3 className="text-muted-foreground text-xs font-semibold tracking-[0.06em] uppercase">
@@ -559,6 +560,7 @@ export function ParkCalendarDayDetail({
                 {forecast!.rides.map((r) => {
                   const band = r.uncertaintyMinutes ?? null;
                   const hasBand = band !== null && Number.isFinite(band);
+                  const bandTop = waitBandTop(r.waitTime, band);
                   if (worksIds.has(r.attractionId)) {
                     return (
                       <li key={r.attractionId} className="flex items-center justify-between gap-4">
@@ -585,12 +587,15 @@ export function ParkCalendarDayDetail({
                           ~{r.waitTime} {tCommon('min')}
                         </span>
                         {/* The spread belongs to a prediction, so an `actual` day gets no slot at
-                            all, as the planner does for a ticked-off stop. */}
+                            all, as the planner does for a ticked-off stop. A band too narrow to
+                            reach the next five minutes says nothing beside the figure. */}
                         {!forecast!.actual && (
                           <span className="text-muted-foreground text-xs tabular-nums">
-                            {hasBand
-                              ? t('dayDetail.waitBand', { minutes: band })
-                              : t('dayDetail.waitBandUnknown')}
+                            {bandTop !== null
+                              ? t('dayDetail.waitBand', { minutes: bandTop, unit: tCommon('min') })
+                              : hasBand
+                                ? null
+                                : t('dayDetail.waitBandUnknown')}
                           </span>
                         )}
                       </span>
@@ -600,7 +605,7 @@ export function ParkCalendarDayDetail({
               </ul>
               {!heroShowsAvgWait && (
                 <p className="text-muted-foreground border-border/50 mt-0.5 border-t pt-2 text-xs">
-                  {t('avgWaitTime')}: Ø {roundWaitTo5(forecast!.avgWait)} {tCommon('min')}
+                  {t('avgHeadlinerPeak')}: {roundWaitTo5(forecast!.avgWait)} {tCommon('min')}
                 </p>
               )}
             </section>
